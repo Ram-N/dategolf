@@ -2,7 +2,7 @@
   <div class="flex-1 flex flex-col overflow-hidden">
 
     <!-- Scrollable content area -->
-    <div class="flex-1 overflow-y-auto flex flex-col items-center justify-center px-4 py-3 text-center">
+    <div class="flex-1 overflow-y-auto flex flex-col items-center justify-start px-4 pt-6 pb-3 text-center">
 
       <!-- Optimal badge -->
       <div v-if="result.isOptimal" class="mb-3 inline-flex items-center gap-2 bg-green-900/50 border border-green-700 rounded-full px-4 py-1.5">
