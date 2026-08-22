@@ -1,4 +1,4 @@
-# Quando Historical Golf — Technical Rewrite & Implementation Plan
+# DateGolf — Technical Rewrite & Implementation Plan
 
 ## 1. Rewrite Strategy
 
@@ -442,7 +442,7 @@ Generate a spoiler-free share representation.
 Example:
 
 ```text
-QUANDO
+DATEGOLF
 Daily Challenge
 Score: 73
 6 / 4 / 21 / 2 / 40

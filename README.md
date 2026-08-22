@@ -1,6 +1,6 @@
-# quando
+# DateGolf
 
-This template should help get you started developing with Vue 3 in Vite.
+A daily 5-hole history game. Pick events to match target years. Lower score wins.
 
 ## Recommended IDE Setup
 

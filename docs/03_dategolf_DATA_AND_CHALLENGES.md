@@ -1,8 +1,8 @@
-# Quando Historical Golf — Historical Event Data, Difficulty & Daily Challenge Design
+# DateGolf — Historical Event Data, Difficulty & Daily Challenge Design
 
 ## 1. Purpose
 
-The quality of Quando depends heavily on the quality of its historical event database.
+The quality of DateGolf depends heavily on the quality of its historical event database.
 
 The database is not simply a list of famous historical facts.
 
@@ -104,7 +104,7 @@ For example, ten obscure battles from the same country are less valuable than a 
 
 The game is intended for students in India, so Indian history should have substantial representation.
 
-However, Quando is a world-history game.
+However, DateGolf is a world-history game.
 
 The database should contain meaningful representation from:
 

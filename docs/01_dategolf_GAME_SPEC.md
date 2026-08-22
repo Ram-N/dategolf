@@ -1,8 +1,8 @@
-# Quando Historical Golf — Game & Product Specification
+# DateGolf — Game & Product Specification
 
 ## 1. Overview
 
-Quando Historical Golf is a daily history game for students. It combines historical knowledge, estimation, discovery, and golf-style scoring.
+DateGolf is a daily history game for students. It combines historical knowledge, estimation, discovery, and golf-style scoring.
 
 The central question is:
 
@@ -34,7 +34,7 @@ The game should feel like golf rather than a conventional quiz: a close answer i
 
 Every question should teach something, even when the player does not score well.
 
-After every guess, Quando should reveal:
+After every guess, DateGolf should reveal:
 
 1. The player's selected event.
 2. The event's actual year.
@@ -305,7 +305,7 @@ Sharing should be spoiler-free.
 
 A shared result could look like:
 
-> QUANDO — Daily Challenge  
+> DATEGOLF — Daily Challenge  
 > 5 holes  
 > Score: 73  
 > 6 / 4 / 21 / 2 / 40  
@@ -321,7 +321,7 @@ Accounts are not required for the initial version.
 
 ## 13. Product Personality
 
-Quando should feel:
+DateGolf should feel:
 
 - intelligent
 - playful

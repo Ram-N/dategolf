@@ -14,7 +14,7 @@ export const useGameStore = defineStore('game', () => {
   const playerStats = ref<PlayerStats | null>(null)
   const challenge = ref<DailyChallenge | null>(null)
   const isLoading = ref(true)
-  const phase = ref<'playing' | 'revealing' | 'complete'>('playing')
+  const phase = ref<'landing' | 'playing' | 'revealing' | 'complete'>('landing')
 
   // ── Computed ───────────────────────────────────────────────────────────────
   const currentHole = computed(() => gameState.value?.currentHole ?? 0)
@@ -45,10 +45,11 @@ export const useGameStore = defineStore('game', () => {
     const saved = loadSession(todayDate)
     if (saved) {
       gameState.value = saved
-      phase.value = saved.completed ? 'complete' : 'playing'
+      // Resume mid-game directly; completed or fresh → show landing
+      phase.value = saved.completed ? 'landing' : 'playing'
     } else {
       gameState.value = createGame(challenge.value)
-      phase.value = 'playing'
+      phase.value = 'landing'
     }
 
     playerStats.value = loadStats()
@@ -68,6 +69,10 @@ export const useGameStore = defineStore('game', () => {
     if (newState.completed) {
       playerStats.value = recordCompletion(newState)
     }
+  }
+
+  function startChallenge() {
+    phase.value = 'playing'
   }
 
   function advanceFromReveal() {
@@ -99,6 +104,7 @@ export const useGameStore = defineStore('game', () => {
     scoreStatus,
     // actions
     init,
+    startChallenge,
     pickEvent,
     advanceFromReveal,
   }

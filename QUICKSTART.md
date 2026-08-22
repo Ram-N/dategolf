@@ -58,7 +58,7 @@ src/
     sharing.ts                ← Web Share API + clipboard fallback
   stores/game.ts              ← Pinia store connecting engine to Vue
   views/
-    DailyChallengeView.vue    ← Top-level orchestrator (phases: playing/revealing/complete)
+    DailyChallengeView.vue    ← Top-level orchestrator (phases: landing/playing/revealing/complete)
   components/
     GameHeader.vue            ← Hole progress (●●●○○) + score
     TargetYear.vue            ← Big year display
@@ -67,9 +67,9 @@ src/
     AnswerReveal.vue          ← Year reveal, penalty, better alternatives
     FinalScoreView.vue        ← 5-hole summary, stats, share button
 docs/
-  01_QUANDO_GAME_SPEC.md      ← Original game design spec
-  02_QUANDO_TECHNICAL_PLAN.md ← Technical architecture + 11-phase plan
-  03_QUANDO_DATA_AND_CHALLENGES.md ← Event data design + challenge rules
+  01_dategolf_GAME_SPEC.md      ← Game design spec
+  02_dategolf_TECHNICAL_PLAN.md ← Technical architecture + 11-phase plan
+  03_dategolf_DATA_AND_CHALLENGES.md ← Event data design + challenge rules
 scripts/
   validate-events.cjs         ← Run after editing events.json
 ```
