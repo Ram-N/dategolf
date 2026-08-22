@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col min-h-screen max-w-lg mx-auto">
+  <div class="flex flex-col h-screen max-w-lg mx-auto overflow-hidden">
 
     <!-- Loading -->
     <div v-if="store.isLoading" class="flex-1 flex items-center justify-center">

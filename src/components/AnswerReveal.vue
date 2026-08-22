@@ -1,13 +1,11 @@
 <template>
-  <div class="flex flex-col min-h-screen bg-gray-950">
-    <!-- Header spacer -->
-    <div class="h-2" />
+  <div class="flex-1 flex flex-col overflow-hidden">
 
-    <!-- Main reveal card -->
-    <div class="flex-1 flex flex-col items-center justify-center px-4 py-6 text-center">
+    <!-- Scrollable content area -->
+    <div class="flex-1 overflow-y-auto flex flex-col items-center justify-center px-4 py-3 text-center">
 
       <!-- Optimal badge -->
-      <div v-if="result.isOptimal" class="mb-4 inline-flex items-center gap-2 bg-green-900/50 border border-green-700 rounded-full px-4 py-1.5">
+      <div v-if="result.isOptimal" class="mb-3 inline-flex items-center gap-2 bg-green-900/50 border border-green-700 rounded-full px-4 py-1.5">
         <span class="text-green-400 text-sm font-semibold">Perfect choice!</span>
       </div>
 
@@ -15,31 +13,31 @@
       <h2 class="text-2xl font-bold text-white mb-1">{{ result.eventName }}</h2>
 
       <!-- Year reveal -->
-      <div class="text-5xl font-black tabular-nums my-4" :class="penaltyColorClass">
+      <div class="text-5xl font-black tabular-nums my-2" :class="penaltyColorClass">
         {{ displayEventYear }}
       </div>
 
       <!-- Target vs event -->
-      <div class="flex items-center gap-3 text-sm text-gray-400 mb-6">
+      <div class="flex items-center gap-3 text-sm text-gray-400 mb-3">
         <span>Target: <span class="text-white font-medium">{{ displayTargetYear }}</span></span>
         <span class="text-gray-700">·</span>
         <span>Penalty: <span class="font-bold text-lg" :class="penaltyColorClass">+{{ result.penalty }}</span></span>
       </div>
 
       <!-- Running score -->
-      <div class="bg-gray-900 rounded-xl px-6 py-3 mb-6 border border-gray-800">
+      <div class="bg-gray-900 rounded-xl px-6 py-2 mb-3 border border-gray-800">
         <span class="text-xs text-gray-500 uppercase tracking-widest">Running Total</span>
         <div class="text-2xl font-bold tabular-nums" :class="scoreStatusClass">{{ totalScore }}</div>
       </div>
 
       <!-- Better alternatives -->
-      <div v-if="result.betterAlternatives.length > 0" class="w-full max-w-md mb-6">
-        <p class="text-xs text-gray-500 uppercase tracking-widest mb-3">Better choices were available</p>
+      <div v-if="result.betterAlternatives.length > 0" class="w-full max-w-md">
+        <p class="text-xs text-gray-500 uppercase tracking-widest mb-2">Better choices were available</p>
         <div class="space-y-2">
           <div
             v-for="alt in result.betterAlternatives"
             :key="alt.eventId"
-            class="bg-gray-900 rounded-xl px-4 py-3 flex justify-between items-center border border-gray-800"
+            class="bg-gray-900 rounded-xl px-4 py-2 flex justify-between items-center border border-gray-800"
           >
             <div class="text-left">
               <div class="text-sm font-medium text-white">{{ alt.eventName }}</div>
@@ -55,15 +53,16 @@
 
     </div>
 
-    <!-- CTA -->
-    <div class="px-4 pb-8">
+    <!-- CTA — always visible at bottom -->
+    <div class="px-4 pb-5 pt-2 shrink-0">
       <button
-        class="w-full py-4 rounded-xl bg-white text-gray-900 font-bold text-lg hover:bg-gray-100 transition-colors"
+        class="w-full py-3 rounded-xl bg-white text-gray-900 font-bold text-lg hover:bg-gray-100 transition-colors"
         @click="emit('next')"
       >
         {{ isLastHole ? 'See Final Score' : 'Next Hole →' }}
       </button>
     </div>
+
   </div>
 </template>
 
