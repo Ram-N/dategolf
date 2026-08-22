@@ -1,0 +1,101 @@
+<template>
+  <div class="flex flex-col min-h-screen bg-gray-950">
+    <!-- Header spacer -->
+    <div class="h-2" />
+
+    <!-- Main reveal card -->
+    <div class="flex-1 flex flex-col items-center justify-center px-4 py-6 text-center">
+
+      <!-- Optimal badge -->
+      <div v-if="result.isOptimal" class="mb-4 inline-flex items-center gap-2 bg-green-900/50 border border-green-700 rounded-full px-4 py-1.5">
+        <span class="text-green-400 text-sm font-semibold">Perfect choice!</span>
+      </div>
+
+      <!-- Event name -->
+      <h2 class="text-2xl font-bold text-white mb-1">{{ result.eventName }}</h2>
+
+      <!-- Year reveal -->
+      <div class="text-5xl font-black tabular-nums my-4" :class="penaltyColorClass">
+        {{ displayEventYear }}
+      </div>
+
+      <!-- Target vs event -->
+      <div class="flex items-center gap-3 text-sm text-gray-400 mb-6">
+        <span>Target: <span class="text-white font-medium">{{ displayTargetYear }}</span></span>
+        <span class="text-gray-700">·</span>
+        <span>Penalty: <span class="font-bold text-lg" :class="penaltyColorClass">+{{ result.penalty }}</span></span>
+      </div>
+
+      <!-- Running score -->
+      <div class="bg-gray-900 rounded-xl px-6 py-3 mb-6 border border-gray-800">
+        <span class="text-xs text-gray-500 uppercase tracking-widest">Running Total</span>
+        <div class="text-2xl font-bold tabular-nums" :class="scoreStatusClass">{{ totalScore }}</div>
+      </div>
+
+      <!-- Better alternatives -->
+      <div v-if="result.betterAlternatives.length > 0" class="w-full max-w-md mb-6">
+        <p class="text-xs text-gray-500 uppercase tracking-widest mb-3">Better choices were available</p>
+        <div class="space-y-2">
+          <div
+            v-for="alt in result.betterAlternatives"
+            :key="alt.eventId"
+            class="bg-gray-900 rounded-xl px-4 py-3 flex justify-between items-center border border-gray-800"
+          >
+            <div class="text-left">
+              <div class="text-sm font-medium text-white">{{ alt.eventName }}</div>
+              <div class="text-xs text-gray-500">Year: {{ formatYear(alt.eventYear) }}</div>
+            </div>
+            <div class="text-right">
+              <div class="text-lg font-bold text-green-400">+{{ alt.penalty }}</div>
+              <div class="text-xs text-gray-600">penalty</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="px-4 pb-8">
+      <button
+        class="w-full py-4 rounded-xl bg-white text-gray-900 font-bold text-lg hover:bg-gray-100 transition-colors"
+        @click="emit('next')"
+      >
+        {{ isLastHole ? 'See Final Score' : 'Next Hole →' }}
+      </button>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import type { HoleResult, ScoreStatus } from '@/types'
+
+const props = defineProps<{
+  result: HoleResult
+  totalScore: number
+  scoreStatus: ScoreStatus
+  isLastHole: boolean
+}>()
+
+const emit = defineEmits<{ next: [] }>()
+
+function formatYear(y: number) {
+  return y < 0 ? `${Math.abs(y)} BCE` : String(y)
+}
+
+const displayEventYear = computed(() => formatYear(props.result.eventYear))
+const displayTargetYear = computed(() => formatYear(props.result.targetYear))
+
+const penaltyColorClass = computed(() => {
+  if (props.result.penalty <= 5) return 'text-green-400'
+  if (props.result.penalty <= 30) return 'text-yellow-400'
+  return 'text-red-400'
+})
+
+const scoreStatusClass = computed(() => ({
+  'score-good': props.scoreStatus === 'good',
+  'score-warning': props.scoreStatus === 'warning',
+  'score-danger': props.scoreStatus === 'danger',
+}))
+</script>

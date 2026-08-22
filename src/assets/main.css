@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-gray-950 text-white min-h-screen;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  #app {
+    @apply min-h-screen;
+  }
+}
