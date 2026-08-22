@@ -59,7 +59,7 @@
         class="w-full py-3 rounded-xl bg-white text-gray-900 font-bold text-lg hover:bg-gray-100 transition-colors"
         @click="emit('next')"
       >
-        {{ isLastHole ? 'See Final Score' : 'Next Hole →' }}
+        {{ isLastHole ? 'See Final Score' : 'Next Round →' }}
       </button>
     </div>
 
