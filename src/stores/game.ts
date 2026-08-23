@@ -38,8 +38,18 @@ export const useGameStore = defineStore('game', () => {
     events.value = eventsModule.default as Event[]
     initSearch(events.value)
 
-    // Generate today's challenge (deterministic)
-    challenge.value = generateDailyChallenge(todayDate)
+    // Load today's challenge from pre-generated file; fall back to generator
+    const mmdd = todayDate.slice(5) // "2026-08-22" → "08-22"
+    try {
+      const res = await fetch('/data/daily_challenges.json')
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const allChallenges = (await res.json()) as Record<string, number[]>
+      const targetYears = allChallenges[mmdd]
+      if (!targetYears || targetYears.length !== 5) throw new Error('Missing entry')
+      challenge.value = { id: `challenge-${todayDate}`, date: todayDate, targetYears }
+    } catch {
+      challenge.value = generateDailyChallenge(todayDate)
+    }
 
     // Try to resume a saved game
     const saved = loadSession(todayDate)
