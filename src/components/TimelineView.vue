@@ -60,11 +60,11 @@
           <!-- Alt / notable: floating label above the line at assigned row -->
           <template v-if="m.labelSide === 'above' && m.type !== 'target'">
             <div
-              class="absolute text-center leading-snug"
+              class="absolute text-center leading-snug label-name"
               :style="{
-                left: (m.x - 46) + 'px',
+                left: (m.x - 50) + 'px',
                 top: rowNameY(m) + 'px',
-                width: '92px',
+                width: '100px',
                 fontSize: '11px',
                 color: m.type === 'notable' ? '#4b5563' : '#d1d5db',
               }"
@@ -151,11 +151,9 @@ const props = defineProps<{
 const scrollEl = ref<HTMLElement | null>(null)
 
 // ── Layout constants ────────────────────────────────────────────────────────
-const PADDING = 72     // px of clear space each side of track
-const LINE_Y = 128     // px from top to the horizontal track line
-const CONTAINER_H = 210 // total height of the SVG-like canvas
-const ROW_H = 40       // height of each label row above the line
-const LABEL_H = 30     // name (14px) + gap + year (14px) = label box height
+const PADDING = 72
+const ROW_H = 44       // height per label row above the line
+const LABEL_H = 32     // name rows (up to 2 lines) + year
 
 // ── Data helpers ────────────────────────────────────────────────────────────
 function formatYear(y: number) {
@@ -218,9 +216,8 @@ function yearToX(year: number): number {
   return PADDING + ((year - minYear.value) / yearSpan.value) * trackWidth.value
 }
 
-// ── Row assignment: greedy, sorted by x ─────────────────────────────────────
-// Each row can hold one label per 90px of horizontal space.
-// Assigns the lowest available row to each above-line marker.
+// ── Row assignment: greedy, sorted by x ──────────────────────────────────────
+// Labels are 100px wide centered on x, so minimum gap between centers is 100px.
 type BaseMarker = {
   id: string; type: string; x: number; year: string; name: string;
   r: number; color: string; labelColor: string; labelSide: 'above' | 'below';
@@ -232,14 +229,14 @@ function assignRows(markers: BaseMarker[]): RenderedMarker[] {
   const rowLastX = new Map<number, number>()
   return sorted.map(m => {
     let row = 0
-    while ((rowLastX.get(row) ?? -Infinity) + 90 > m.x) row++
+    while ((rowLastX.get(row) ?? -Infinity) + 100 > m.x) row++
     rowLastX.set(row, m.x)
     return { ...m, row }
   })
 }
 
-// ── Build all markers ────────────────────────────────────────────────────────
-const renderedMarkers = computed<RenderedMarker[]>(() => {
+// ── Build above markers and assign rows ──────────────────────────────────────
+const aboveMarkers = computed<RenderedMarker[]>(() => {
   const above: BaseMarker[] = []
 
   for (const e of notableNearby.value) {
@@ -258,8 +255,24 @@ const renderedMarkers = computed<RenderedMarker[]>(() => {
     })
   }
 
-  const withRows = assignRows(above)
+  return assignRows(above)
+})
 
+// ── Dynamic LINE_Y: grows with the number of label rows needed ───────────────
+// 36px reserved at top for the TARGET badge; each row adds ROW_H px.
+const maxRow = computed(() =>
+  aboveMarkers.value.reduce((max, m) => Math.max(max, m.row), -1)
+)
+
+const LINE_Y = computed(() =>
+  Math.max(76, 36 + (maxRow.value + 1) * ROW_H)
+)
+
+// Below the line: dot (8px) + gap (6px) + year text (~16px) + name text (~28px) = ~58px
+const CONTAINER_H = computed(() => LINE_Y.value + 72)
+
+// ── All rendered markers ──────────────────────────────────────────────────────
+const renderedMarkers = computed<RenderedMarker[]>(() => {
   const pc = playerColor.value
   const below: RenderedMarker[] = [
     {
@@ -278,23 +291,24 @@ const renderedMarkers = computed<RenderedMarker[]>(() => {
     },
   ]
 
-  return [...withRows, ...below]
+  return [...aboveMarkers.value, ...below]
 })
 
 // ── Row → y helpers ──────────────────────────────────────────────────────────
 function rowNameY(m: RenderedMarker): number {
-  return LINE_Y - (m.row + 1) * ROW_H
+  return LINE_Y.value - (m.row + 1) * ROW_H
 }
 
 function rowYearY(m: RenderedMarker): number {
-  return rowNameY(m) + 15
+  return rowNameY(m) + 16
 }
 
 function connectorTop(m: RenderedMarker): number {
   return rowNameY(m) + LABEL_H
 }
 
-// ── Auto-scroll: center the midpoint of target and player ────────────────────
+// ── Auto-scroll: show both player and target if they fit; otherwise keep
+// the leftmost marker visible (≥80px from left edge) and let the user scroll.
 function scrollToCenter() {
   nextTick(() => {
     requestAnimationFrame(() => {
@@ -303,7 +317,10 @@ function scrollToCenter() {
       if (viewWidth === 0) return
       const tx = yearToX(props.result.targetYear)
       const px = yearToX(props.result.eventYear)
-      scrollEl.value.scrollLeft = Math.max(0, (tx + px) / 2 - viewWidth / 2)
+      const centered = (tx + px) / 2 - viewWidth / 2
+      const leftmost = Math.min(tx, px)
+      // Don't scroll so far right that the leftmost marker disappears off-screen
+      scrollEl.value.scrollLeft = Math.max(0, Math.min(centered, leftmost - 80))
     })
   })
 }
@@ -327,5 +344,11 @@ watch(() => props.result, scrollToCenter)
 .timeline-scroll::-webkit-scrollbar-thumb {
   background: #4b5563;
   border-radius: 3px;
+}
+.label-name {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 </style>
