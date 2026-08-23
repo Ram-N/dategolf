@@ -7,7 +7,9 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/datepick',
+      redirect: () => {
+        return window.location.hostname.startsWith('datepick.') ? '/datepick' : '/dategolf'
+      },
     },
     {
       path: '/dategolf',
