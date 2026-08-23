@@ -100,6 +100,12 @@ export function generateDatePickChallenge(dateStr: string, allEvents: Event[]): 
     }
   }
 
+  // Shuffle so questions aren't always presented in chronological era order
+  for (let i = questions.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1))
+    ;[questions[i], questions[j]] = [questions[j]!, questions[i]!]
+  }
+
   return {
     id: `datepick-${dateStr}`,
     date: dateStr,
