@@ -1,0 +1,311 @@
+eventID,stem,event,details,wikipedia,mnemonic,itemDifficulty,categories,America,Europe,Asia,Africa,China,Discovery,Britain,France,Greek,India,Inventions,MiddleEast,prehistory,Religion,Roman,Royalty,Russia,Science,SouthAmerica,Wars,World,YearNum
+0,c.3500 BC,"Invention of the wheel and plough in Mesopotamia (present-day Iraq); invention of the sail in Egypt: three fundamental inventions for trade, agriculture and exploration",,https://en.wikipedia.org/wiki/Plough#History,,6,"[prehistory,]",,,,,,,,,,,,,1.0,,,,,,,,1.0,-3500
+1,c.3200 BC,Invention of writing in Mesopotamia: the means to record and understand human history,,https://en.wikipedia.org/wiki/History_of_writing#Inventions_of_writing,,8,"[prehistory,]",,,,,,,,,,,,,1.0,,,,,,,,1.0,-3200
+2,c.3000 BC,Founding of the first cities in Sumeria (present-day Iraq): origin of modern social and administrative structures,,https://en.wikipedia.org/wiki/Sumer#City-states_in_Mesopotamia,,8,"[prehistory,]",,,,,,,,,,,,,1.0,,,,,,,,1.0,-3000
+3,c.3000 BC,Building of the Great Pyramid.,,https://en.wikipedia.org/wiki/Building_the_Great_Pyramid,,4,"[prehistory,]",,,,,,,,,,,,,1.0,,,,,,,,1.0,-3000
+4,c.1600 BC,Modern alphabet invented: the essential means of communication of complex concepts and culture,,https://en.wikipedia.org/wiki/Alphabet#History,,8,"[prehistory,]",,,,,,,,,,,,,1.0,,,,,,,,1.0,-1600
+5,c.1600 BC,"Beginning of Greek civilisation: essential to Western heritage and the root of mathematics, philosophy, political thinking and medicine",,https://en.wikipedia.org/wiki/History_of_Greece#Cycladic_and_Minoan_civilization,,7,"[prehistory,]",,,,,,,,,,,,,1.0,,,,,,,,,-1600
+6,1200 BC,Consensus for the Fall of Troy (if there was a Trojan War).,,https://en.wikipedia.org/wiki/Trojan_War,,6,,,,,,,,,,1.0,,,,,,,,,,,1.0,,-1200
+7,995 BC,The Judean King David captures Jerusalem.,,,,5,,,,,,,,,,,,,,,,,1.0,,,,,,-995
+8,776 BC,Legendary start of the Ancient Olympics.,,https://en.wikipedia.org/wiki/Ancient_Olympic_Games#First_games,,4,,,,,,,,,,1.0,,,,,,,,,,,,1.0,-776
+9,776 BC,First Olympiad in Greece.,,https://en.wikipedia.org/wiki/Ancient_Olympic_Games#First_games,,6,"[prehistory,]",,1.0,,,,,,,,,,,1.0,,,,,,,,,-776
+10,753 BC,"Foundation of Rome: the Roman Empire is a pillar of the modern age, producing ideas on justice, law, engineering and warfare",,https://en.wikipedia.org/wiki/Founding_of_Rome#Date,,5,"[prehistory,]",,,,,,,,,,,,,1.0,,,,,,,,,-753
+11,753 BC,Legendary founding of Rome.,,https://en.wikipedia.org/wiki/Founding_of_Rome#Date,,4,,,,,,,,,,,,,,,,1.0,,,,,,,-753
+12,c.670 BC,"Invention of ironworking: metallurgy is the key to further technical, economic and military developments",,,,8,"[prehistory,]",,,,,,,,,,,,,1.0,,,,,,,,,-670
+13,588 BC,Babylonian King Nebuchadnezzar conquers Jerusalem and brings the Judean king and thousands of citizens of Judea back to Babylon with him.,,,,8,,,,,,,,,,,,,,,,,1.0,,,,1.0,,-588
+14,585 BC,Greek philosopher Thales of Miletus successfully predicts a solar eclipse on May 28.,,,,7,,,,,,,,,,1.0,,,,,,,,,,,,,-585
+15,c. 576 BC ,Birth of Gautam Buddha,,https://en.wikipedia.org/wiki/Gautama_Buddha#Historical_person,,5,,,,,,,,,,,1.0,,,1.0,1.0,,,,,,,,-576
+16,c.551 BC,"Birth of Confucius, the founder of one of the world's major philosophical systems",,,,7,"[prehistory,]",,,,,,,,,,,,,1.0,1.0,,,,,,,1.0,-551
+17,550 BC,Cyrus the Great establishes the Achaemenid dynasty of the Persian Empire.,,,,7,,,,,,,,,,1.0,,,,,,,,,,,,,-550
+18,490 BC,Greeks win against the Persians in Battle of Marathon.,,,,5,,,,,,,,,,1.0,,,,,,,,,,,1.0,,-490
+19,490 BC,"Greeks defeated the Persians at the Battle of Marathon.Battle of Marathon: the Greeks repel a Persian invasion, securing the survival of Greek culture and science",,,,7,"[prehistory,]",,,,,,,,,,,,,1.0,,,,,,,1.0,,-490
+20,486 BC,"Birth of Buddha, founder of one of the world's major religions",,,,7,,,,,,,,,,,1.0,,,1.0,1.0,,,,,,,1.0,-486
+21,483 BC,Indian philosopher Siddhartha Gautama Buddha dies and his followers begin to organize a religious movement based on his teachings.,,,,7,,,,,,,,,,,1.0,,,,,,,,,,,1.0,-483
+22,360 BC,The period of Aristotle and Plato.,,,,7,,,,,,,,,,1.0,,,,1.0,,,,,,,,,-360
+23,336 BC,Philip's son Alexander the Great rules Macedonia.,,,,7,,,,,,,,,,1.0,,,,,,,1.0,,,,,,-336
+24,334 BC,Alexander fights and wins against the Persians at the Battle of Granicus in Anatolia.,,,,6,,,,,,,,,,1.0,,,,,,,,,,,1.0,,-334
+25,333 BC,Macedonian forces under Alexander defeat the Persians at the Battle of Issus.,,,,6,,,,,,,,,,1.0,,,,,,,,,,,1.0,,-333
+26,332 BC,"Alexander conquers Egypt, founds Alexandria, and installs a Greek government but leaves the next year.",,,,6,,,,,,,,,,1.0,,,,,,,,,,,1.0,,-332
+27,332 BC,Egypt conquered by Alexander.,,,,8,,,,,,,,,,1.0,,,,1.0,,,,,,,,,-332
+28,331 BC,"At the Battle of Gaugamela, Alexander defeats the Persian king Darius III.",,,,6,,,,,,,,,,1.0,,,,,,,,,,,1.0,,-331
+29,327 BC,Empire of Alexander the Great reaches into India: the first example of a long-term and often violent interrelationship between Europe and Asia,,,,6,,,,,,,,,,,,,,1.0,,,,,,,,,-327
+30,327 BC ,Alexander's invasion of India. It opened a land route between India and Europe,"The Indian campaign of Alexander the Great began in 327 BC. After conquering the Achaemenid Empire of Persia, the Macedonian king Alexander launched a campaign into the Indian subcontinent in present-day Afghanistan and Pakistan",https://en.wikipedia.org/wiki/Indian_campaign_of_Alexander_the_Great,,6,,,1.0,,,,,,,,1.0,,,1.0,,,,,,,1.0,,-327
+31,326 BC,"Alexander reaches the limit of his expansion, winning the Battle of the Hydaspes in the northern Punjab region of what is today Pakistan.",,,,6,,,,,,,,,,1.0,,,,,,,,,,,1.0,,-326
+32,324 BC,"The Mauryan empire in India is founded by Chandragupta Maurya, the first ruler to unite most of the Indian subcontinent.",,,,5,,,,,,,,,,,1.0,,,,,,1.0,,,,,,-324
+33,323 BC,"Alexander dies, and his empire falls apart as his generals, the diadochi, battle one another for supremacy.",,,,4,,,,,,,,,,1.0,,,,,,,1.0,,,,,,-323
+34,323 BC,Alexander dies at Babylon.,,,,5,,,,,,,,,,1.0,,,,1.0,,,,,,,,,-323
+35,313 BC ,Accession of Chandragupta Maurya according to Jain traditions,,,,8,,,,,,,,,,,1.0,,,1.0,,,,,,,,,-313
+36,305 BC ,Defeat of Seleucus at the hands of Chandragupta Maurya," Seleucus I Nicator, one of Alexander's Macedonian generals who in 312 BCE established the Seleucid Kingdom with its capital at Babylon, brought Persia and Bactria under his own authority, putting his eastern front facing the empire of Chandragupta. Seleucus and Chandragupta waged war until they came to an understanding with each other. Seleucus married off his daughter to Chandragupta to forge an alliance",https://en.wikipedia.org/wiki/Chandragupta_Maurya#War_and_marriage_alliance_with_Seleucus,,10,,,,,,,,,,,1.0,,,1.0,,,,,,,1.0,,-305
+37,305 BC,"The first Greek pharaoh of Egypt, Ptolemy I, takes over the reins and establishes the Ptolemaic dynasty.",,,,8,,,,,,,,,,1.0,,,,,,,,,,,,,-305
+38,c. 265 BC ,Start of King Ashoka s reign in India,Assuming that the Buddha died in 483 BCE  a date proposed by several scholars  Ashoka must have ascended the throne in 265 BCE,https://en.wikipedia.org/wiki/Ashoka#Date_of_ascension,,9,,,,,,,,,,,1.0,,,1.0,,,,,,,,,-265
+39,261 BC ,End of the conquest of Kalinga by King Ashoka of India.,"The Kalinga War (ended c.?261 BCE) was fought in ancient India between the Maurya Empire under Ashoka and the state of Kalinga, an independent feudal kingdom located on the east coast, in the present-day state of Odisha and northern parts of Andhra Pradesh. It is presumed that the battle was fought on Dhauli hills.",https://en.wikipedia.org/wiki/Kalinga_War,"4 Years after ascending to the throne, Ashoka fought with the Kalingas",10,,,,,,,,,,,1.0,,,1.0,,,,,,,1.0,,-261
+40,240 BC,Greek mathematician Eratosthenes measures the Earth's circumference.,,,,7,,,,,,,,,,1.0,,,,,,,,,,,,,-240
+41,214 BC,Work on the Great Wall of China begins.,,,,8,,,,,,1.0,,,,,,,,1.0,,,,,,,,,-214
+42,202 BC,Hannibal is defeated by Rome: the victory is essential to secure the survival and expansion of Roman civilisation,,,,7,"[prehistory, Roman,]",,1.0,,,,,,,,,,,1.0,,1.0,,,,,1.0,,-202
+43,60 BC,"Roman leaders Pompey, Crassus, and Julius Caesar form the First Triumvirate.","The First Triumvirate was an informal alliance among three prominent politicians in the late Roman Republic: Gaius Julius Caesar, Gnaeus Pompeius Magnus and Marcus  Crassus.",https://en.wikipedia.org/wiki/First_Triumvirate,,7,,,,,,,,,,,,,,,,1.0,,,,,,,-60
+44,55 BC,Julius Ceasar attacks Great Britain.,,,,5,"[prehistory, Roman,]",,1.0,,,,,,,,,,,1.0,,1.0,,,,,1.0,,-55
+45,55 BC,Julius Caesar invades Britain.,,,,6,,,,,,,,,,,,,,,,1.0,,,,,1.0,,-55
+46,49 BC,"Caesar crosses the Rubicon, precipitating the Roman Civil War.",,,,4,,,,,,,,,,,,,,,,1.0,,,,,1.0,,-49
+47,48 BC,Battle of Pharsalus (Ceaser vs Pompey), The Battle of Pharsalus was the decisive battle of Caesar's Civil War fought on 9 August 48 BC near Pharsalus in central Greece. Julius Caesar and his allies formed up opposite the army of the Roman Republic under the command of Pompey. Pompey had the backing of a majority of Roman senators and his army significantly outnumbered the veteran Caesarian legions  but Pompey lost fled to Egypt and was murdered there.,https://en.wikipedia.org/wiki/Battle_of_Pharsalus,,5,,,,,,,,,,,,,,,,1.0,,,,,1.0,,-48
+48,44 BC,"On the Ides of March (March 15), Caesar is assassinated.",,,,6,,,,,,,,,,,,,,,,1.0,,,,,,,-44
+49,43 BC,"The 2nd Triumvirate, that of Marc Antony, Octavian, and M Aemillius Lepidus, is established.",,,,9,,,,,,,,,,,,,,,,1.0,,,,,,,-43
+50,27 BC,Founding of the Roman Empire: this is the start of the classic period of Roman domination in Europe and the Mediterranean,,,,6,"[prehistory, Roman,]",,1.0,,,,,,,,,,,1.0,,1.0,,,,,,,-27
+51,c.5 BC,"Birth of Jesus Christ, founder of the many branches of Christianity. The exact date is disputed",,,,3,,,,,,,,,,,,,,,1.0,,,,,,,1.0,-5
+52,29,Crucifixion of Jesus Christ.,,,,3,,,,,,,,,,,,,,,1.0,1.0,,,,,,,29
+53,33,Judean philosopher Jesus is executed by Rome and his followers continue.,"According to the canonical gospels, Jesus was arrested and tried by the Sanhedrin, and then by Pontius Pilate, who sentenced him to be scourged, and finally crucified by the Romans",https://en.wikipedia.org/wiki/Crucifixion_of_Jesus,"Believed to be April 3, 33. Friday a day of lunar eclipse.",3,,,,,,,,,,,,,,,1.0,1.0,,,,,,1.0,33
+54,64,Rome burns while Nero (supposedly) fiddles.,"The popular legend that Nero played the fiddle while Rome burned ""is at least partly a literary construct of Flavian propaganda. Nero was egotistical, unpopular and built a temple to himself on the site of the fire, leading to this assertion about him ""fiddling.""",https://en.wikipedia.org/wiki/Nero#Great_Fire_of_Rome,Fire started in 64. Nero was done by 68,6,,,1.0,,,,,,,,,,,,,1.0,,,,,,,64
+55,79,Mount Vesuvius erupts burying the Roman cities of Pompeii and Herculaneum.,"In the autumn of 79 AD, Mount Vesuvius violently spewed forth a deadly cloud of super-heated gases to a height of 33 km (21 mi), ejecting molten rock, pulverized pumice and hot ash, ultimately releasing 100,000 times the thermal energy of the Hiroshima bomb.",https://en.wikipedia.org/wiki/Eruption_of_Mount_Vesuvius_in_79_AD,"Emperor Titus started his rule in 79, and a coin found in Pompeii was from that time. ",3,,,1.0,,,,,,,,,,,,,1.0,,,,,,1.0,79
+56,105,"First use of modern paper: this replaced stone, slate, papyrus and vellum as a cheap and convenient medium",,,,8,,,,,,,,,,,,,,,,,,,,,,1.0,105
+57,122,"Roman soldiers begin building Hadrian's Wall, a defensive structure that will eventually stretch 70 miles across Northern England and marks the northern limit of the empire in Great Britain.","Hadrian's Wall is a former defensive fortification of the Roman province of Britannia, begun in AD 122 in the reign of the emperor Hadrian",https://en.wikipedia.org/wiki/Hadrian%27s_Wall,"In 122, Hadrian (emperor since 117) decided to end the empire's expansion, and commissioned the wall.",7,,,1.0,,,,,1.0,,,,,,,,1.0,,,,,,,122
+58,280,Unification of China under the Western Chin dynasty creates the political shape of modern China,,,,8,,,,,,1.0,,,,,,,,,,,,,,,,,280
+59,312,Roman Emperor Constantine converts to Christianity: this made it possible for Christianity to spread across Europe,,,,3,,,1.0,,,,,,,,,,,,1.0,1.0,,,,,,,312
+60,320,"Commencement of Gupta era, the Golden Age of ancient India",,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,320
+61,324,Constantine the Great establishes his capital at Byzantium (Constantinople).,"In 324, the ancient city of Byzantium was renamed ""New Rome"" and declared the new capital of the Roman Empire by Emperor Constantine the Great",https://en.wikipedia.org/wiki/Constantine_the_Great#Foundation_of_Constantinople,"In 324, Byzantium was chosen as the capital, because of the strategic importance of the East.",5,,,1.0,1.0,,,,,,,,,,,,1.0,1.0,,,,,1.0,324
+62,375,Huns' invasion of Europe.,,,,8,,,1.0,,,,,,,,,,,,,,,,,,1.0,,375
+63,380,Accession of Vikramaditya,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,380
+64,476,Fall of the Roman Empire in the West ends 800 years of Roman hegemony. The creation of moderen Europe begins,,,,3,,,1.0,,,,,,,,,,,,,,,,,,,1.0,476
+65,476,"Arguably, the western Roman Empire ends when Emperor Romulus Augustulus is removed from office."," In 476, the Germanic leader Odoacer staged a revolt and deposed the Emperor Romulus Augustulus. From then on, no Roman emperor would ever again rule from a post in Italy, leading many to cite 476 as the year the Western Empire suffered its deathblow.",https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire,"Exactly 1300 years after the end of the Roman empire, America gains independence.",5,,,1.0,,,,,,,,,,,,,1.0,1.0,,,,,1.0,476
+66,529,"St Benedict of Nursia, Italy founded the Benedictine order","The monastery at Subiaco in Italy, established by Benedict of Nursia c.529, was the first of the dozen monasteries he founded",https://en.wikipedia.org/wiki/Benedictines,,10,,,1.0,,,,,,,,,,,,1.0,,,,,,,,529
+67,570,Prophet Mohammed born at Mecca.,,,,2,"[Islam, ]",,,1.0,,,,,,,,,,,1.0,,,,,,,1.0,570
+68,c.AD 570,"Birth of Muhammad, founder of one of the world's great religions",,,,3,"[Islam, ]",,,,,,,,,,,,,,1.0,,,,,,,,570
+69,622,Flight of Mohammed from Mecca to Madina.,,,,6,"[Islam, ]",,,1.0,,,,,,,,,,,1.0,,,,,,,,622
+70,632,Death of Mohammed; Beginning of Hijiri Era.,,,,6,"[Islam, ]",,,1.0,,,,,,,,,,,1.0,,,,,,,,632
+71,711,Arabs invade Spain.,,https://en.wikipedia.org/wiki/Arabs_in_Europe#Arab_occupation_of_Iberian_Peninsula,,8,"[Islam, ]",,1.0,1.0,,,,,,,,,,,,,,,,,1.0,,711
+72,712,First invasion in Sind by Arabs,,,,9,,,,,,,,,,,1.0,,,,,,,,,,1.0,,712
+73,c.AD 730,Printing invented in China: an essential step in mass communication/ administration/cultural dissemination,,,,8,,,,,,1.0,,,,,,,,,,,,,,,,1.0,730
+74,800,"Charlemagne crowned Emperor of the new Western Empire. This marked the point at which Europe began to reintegrate. The Holy Roman Empire lasts for 1,000 years",,,,7,,,1.0,,,,,1.0,,,,,,,,1.0,,,,,,,800
+75,836,Accession of King Bhoja of Kanauj,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,836
+76,882,Vikings founded Russia - settling in Kiev,"Oleg of Novgorod is credited with seizing power in Kiev (Kyiv), and he was the supreme ruler of the Rus' from 882 to 912.",https://en.wikipedia.org/wiki/Oleg_of_Novgorod,,10,,,1.0,,,,,,,,,,,,,,,1.0,,,,,882
+77,985,"Accession of Rajaraja, the Chola ruler",,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,985
+78,998,Accession of Sultan Mahmud,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,998
+79,c. 1000,Lief Erikson believed to have set foot in North America,"Leif Erikson was a Norse explorer who is thought to have been the first European to have set foot on continental   North America, approximately half a millennium before   Christopher Columbus",https://en.wikipedia.org/wiki/Leif_Erikson,,5,,1.0,1.0,,,,1.0,,,,,,,,,,,,,,,1.0,1000
+80,1001,"First invasion of India by Mahmud Ghazni who defeated Jaipal, ruler of Punjab",,,,9,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1001
+81,1054,Schism of Greek and Latin Christian Churches divides Christianity permanently into two geographical and denominational halves,,,,7,,,1.0,,,,,,,,,,,,1.0,,,,,,,,1054
+82,1066,Norman invasion of England; Victory of William the Conquerer over the English King Harold II at Hastings.,,,,2,,,1.0,,,,,1.0,,,,,,,,,,,,,1.0,,1066
+83,1066,The battle of Hastings and the Norman conquest,,,,2,,,1.0,,,,,1.0,,,,,,,,,,,,,1.0,,1066
+84,1078,Tower of London was built,Work on the White Tower which gives the whole castle its name is usually considered to have begun in 1078,https://en.wikipedia.org/wiki/Tower_of_London,,7,,,,,,,,1.0,,,,,,,,,,,,,,,1078
+85,1088,"First university founded in Bologna, Italy: the start of a modern conception of higher learning and universal knowledge",,,,7,,,1.0,,,,,,,,,,,,,,,,,,,1.0,1088
+86,1095,The First Crusade is decreed. The start of European Christian knights mounting successive military campaigns in attempts to conquer the Holy Land.,,,,6,,,,,,,,,,,,,,,1.0,,,,,,1.0,,1095
+87,1095,The first crusade.,"The First Crusade (1096-1099) was the first of a series of religious wars, or Crusades, initiated, supported and at times directed by the Latin Church in the medieval period.",https://en.wikipedia.org/wiki/First_Crusade,,7,,,1.0,,,,,,,,,,,,1.0,,,,,,1.0,,1095
+88,1150,University of Paris established in France.,"In 1150, the future University of Paris was a student-teacher corporation operating as an annex of the Notre-Dame cathedral school",https://en.wikipedia.org/wiki/University_of_Paris#Origins,,8,,,1.0,,,,,,1.0,,,,,,,,,,,,,,1150
+89,1192,Second Battle of Tarain,"The Second Battle of Tarain was fought in 1192 CE between the Ghurid forces of Muhammad Ghuri and the Rajput Confederacy of Prithviraj Chauhan. It took place near Tarain (modern Taraori), which is 110 kilometres (68 mi), north of Delhi. The battle ended in decisive victory for invading Ghurids and their successful penetration in north Indian plain",https://en.wikipedia.org/wiki/Second_Battle_of_Tarain,,10,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1192
+90,1206,Genghis Khan begins his conquest of Asia. This has a major impact on Asian development and the movement of peoples,,,,6,,,,1.0,,,,,,,,,,,,,,,,,1.0,,1206
+91,1206,Accession of Qutub-ud-din Aibak to the throne of Delhi,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1206
+92,1215,Magna Carta signed by King John at Runnymede: this is the origin of the modern concept of constitutional rule,,,,3,,,1.0,,,,,1.0,,,,,,,,,,,,,,1.0,1215
+93,1221,Genghis Khan invaded India (Mongol invasion),,,,9,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1221
+94,1236,Accession of Razia Sultan to the throne of Delhi,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1236
+95,1271,"Marco Polo sets off for Asia, with his father and uncle.","Marco Polo was an explorer, and writer who travelled through Asia along the Silk Road between 1271 and 1295. His travels are recorded in   The Travels of Marco Polo",https://en.wikipedia.org/wiki/Marco_Polo#Early_life_and_Asian_travel,,8,,,1.0,1.0,,,,,,,,,,,,,,,,,,,1271
+96,1280,Roger Bacon invents gunpowder.,,,,6,"[Britain, Middle Ages, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1280
+97,1296,Accession of Ala-ud-din Khalji,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1296
+98,1314,The battle of Bannockburn in which the Scottish leader Robert the Bruce took on the English king Edward II in a pivotal conflict in Scotland's fight for independence.,,,,8,,,1.0,,,,,1.0,,,,,,,,,,,,,1.0,,1314
+99,1325,Accession of Muhammad-bin Tughlaq,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1325
+100,1327,Shifting of Capital from Delhi to Daulatabad to Deccan by the Tughlaq,,,,9,,,,,,,,,,,1.0,,,,,,,,,,,,1327
+101,1336,Foundation of Vijayanagar empire in South India,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1336
+102,1338,The Hundred years War broke out.,,,,7,"[Wars, Britain, France, Middle Ages]",,1.0,,,,,1.0,,,,,,,,,,,,,1.0,,1338
+103,1348,England faces Black Death Plague.,"The summer of 1348 saw the first outbreak of the bubonic plague in England, leading to an epidemic of huge proportions. The disease is estimated to have killed between a third and a half of the population    a devastating and unprecedented death rate.",,,6,"[Britain,]",,1.0,,,,,,,,,,,,,,,,,,,,1348
+104,1351,Accession of Feroz Shah,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1351
+105,1398,Invasion of India by Timur Lang,,,,8,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1398
+106,1453,Turks captured Constantinople; Renaissance in Europe.,,,,4,"[Middle Ages, ]",,1.0,1.0,,,,,,,,,,,,,,,,,1.0,,1453
+107,1453,"Fall of Constantinople to the Ottoman Turks: Almost 500 years of Turkish domination of the Eastern Mediterranean, North Africa and the Middle East begins",,,,4,"[Middle Ages, ]",,,1.0,,,,,,,,,,,1.0,,,,,,1.0,,1453
+108,1455,First book printed with moveable type: Johannes Gutenberg's revolution in printing technology makes mass-market reading possible,,,The Fall of Constantinople and Guttenberg happened around the same time. ~2 years of each other,6,"[Middle Ages, ]",,1.0,,,,,,,,,,,,,,,,,,,1.0,1455
+109,1469,Birth of Guru Nanak,,,,8,,,,,,,,,,,1.0,,,,1.0,,,,,,,,1469
+110,1490,"Leonard da Vinci draws the ""Vitruvian Man"" showing proportions of the human body.","The drawing, which is in ink on paper, depicts a man in two superimposed positions with his arms and legs apart and inscribed in a circle and square.",https://en.wikipedia.org/wiki/Vitruvian_Man,,7,"[Renaissance, ]",,1.0,,,,,,,,,,,,,,,,,,,,1490
+111,1492,Discovery of America by Columbus.,,,,1,"[America, ]",1.0,1.0,,,,1.0,,,,,,,,,,,,,,,,1492
+112,1492,"Christopher Columbus discovers the New World, bringing the Americas into a global trading/cultural system",,,,1,"[America, ]",1.0,1.0,,,,,,,,,,,,,,,,,,,,1492
+113,1494,Accession of Babur in Ferghana,,,,7,,,,,,,,,,,1.0,,,,,,,,,,,,1494
+114,1498,First voyage of Vasco da Gama to India (discovery of sea route to India via the Cape of Good Hope.),,,,3,,,,,,,,,,,1.0,,,,,,,,,,,,1498
+115,1498,Sea-route to India discovered by Vasco-de-Gama.,,,,3,"[India, ]",,1.0,,,,1.0,,,,1.0,,,,,,,,,,,,1498
+116,1509,"Invention of the watch: essential to a modern economy and administration, this introduces the concept of regular timekeeping",,,,7,"[Inventions, ]",,1.0,,,,,,,,,,,,,,,,,,,1.0,1509
+117,1517,Martin Luther launches the Reformation. It is the start of Protestant Christianity and the idea of religious individualism,,,"Gutterberg's printing press (~1450) gave wider access to the Bible, which in turn led to alternative interpretations, including that of Martin Luther, whose ""95 Theses"" a document printed by the hundred-thousand sparked the Protestant Reformation. ",4,"[Christianity, ]",,1.0,,,,,,,,,,,,1.0,,,,,,,,1517
+118,1519,"Cortes begins his conquest of South America, which becomes part of the wider world economic and political system",,,,5,"[Latin America, ]",,,,,,,,,,,,,,,,,,,,,1.0,1519
+119,1526,The Mughals empire begings. The Mughals from Central Asia began to rule parts of India,,,,6,"[India, Empire, Asia, ]",,,,,,,,,,1.0,,,,,,,,,,,,1526
+120,1526,"First Battle of Panipat, Babur defeated Ibrahim Lodi; Foundation of Mughal rule by Babur",,,,9,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1526
+121,1530,Death of Babur and accession of Humayun,,,,9,,,,,,,,,,,1.0,,,,,,,,,,,,1530
+122,1539,Sher Shah Suri defeated Humayun and became India's emperor,,,,10,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1539
+123,1543,Copernicus publishes his Heliocentric theory -- that planents revolve around the sun,"This model positioned the Sun at the center of the Universe, motionless, with Earth and the other planets orbiting around it in circular paths, modified by epicycles, and at uniform speeds. The Copernican model displaced the geocentric model of Ptolemy that had prevailed for centuries, which had placed Earth at the center of the Universe.",,,7,,,1.0,,,,,,,,,,,,,,,,1.0,,,,1543
+124,1555,Humayun recaptured the throne of Delhi,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1555
+125,1556,Second Battle of Panipat,,,,10,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1556
+126,1564,William Shakespeare is born: his plays make fundamental statements about the human condition,,,,4,"[Britain, Literature, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1564
+127,1576,Battle of Haldighati; Rana Pratap defeated by Akbar,,,,10,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1576
+128,1582,Din-e-Illahi founded by Akbar,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1582
+129,1588,Spanish Armada defeated.,,,,5,"[Europe, Spain, ",,1.0,,,,,,,,,,,,,,,,,,1.0,,1588
+130,1600,British East India Company established in India.,,,,6,"[Britain, India, ]",,1.0,,,,,1.0,,,1.0,,,,,,,,,,,,1600
+131,1600,East India Company established,,,,5,,,,,,,,,,,1.0,,,,,,,,,,,,1600
+132,1603,Death of Queen Elizabeth I.,"Her reign is famous for the defeat of the Armada, and for successful raids against the Spanish. Elizabeth established an English church that helped shape a national identity and remains in place today",https://en.wikipedia.org/wiki/Elizabeth_I#Death,,5,,,1.0,,,,,1.0,,,,,,,,,1.0,,,,,,1603
+133,1605,Death of Akbar and accession of Jahangir,,,,9,,,,,,,,,,,1.0,,,,,,,,,,,,1605
+134,1606,Execution of Sikh Guru Arjan Dev by the Mughals,"Guru Arjan was arrested under the orders of the Mughal Emperor Jahangir and asked to convert to Islam. He refused, was tortured and executed in 1606 CE",https://en.wikipedia.org/wiki/Guru_Arjan#Death,,10,,,,,,,,,,,1.0,,,,1.0,,,,,,,,1606
+135,1609,Kepler discovers that planets have elliptical orbits,"Kepler discovered that the orbit of Mars was an ellipse. In 1609 he published Astronomia Nova, delineating his discoveries, which are now called Kepler's first two laws of planetary motion.",,,6,,,1.0,,,,1.0,,,,,,,,,,,,1.0,,,,1609
+136,1611,Jahangir marries Nur Jahan,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1611
+137,1620,"Mayflower arrives in America -- Pilgrims arrived at Cape Cod, carrying passengers from England.","Mayflower arrived in New England on November 11, 1620 after a voyage of 66 days. Although the Pilgrims had originally intended to settle near the Hudson River in New York, dangerous shoals and poor winds forced the ship to seek shelter at Cape Cod.",https://en.wikipedia.org/wiki/Mayflower,"The puritans wanted to ""purify"" England's Anglician church. QE1 and King James (in the early 1600's) ""Persecuted"" them.",3,,,,,,,,,,,,,,,1.0,,,,,,,,1620
+138,1627,Birth of Shivaji and death of Jahangir,,,,9,,,,,,,,,,,1.0,,,,,,,,,,,,1627
+139,1628,Shah Jahan becomes emperor of India,,,,9,,,,,,,,,,,1.0,,,,,,,,,,,,1628
+140,1631,Death of Mumtaj Mahal,,,,9,,,,,,,,,,,1.0,,,,,,,,,,,,1631
+141,1632,"Galileo publishes a book claiming that the planets moved around the sun (Heliocentric), and angering the then pope.","In 1632 Galileo angered the Pope when he published a book in which he openly stated that the Earth was moving around the Sun. He was put on trial by the Inquisition in Rome, where he was found suspect of heresy, and forced to say that all of his findings were wrong",,,7,,,1.0,,,,1.0,,,,,,,,1.0,,,,1.0,,,,1632
+142,1634,The British permitted to trade in India in Bengal,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1634
+143,1649,Execution of Charles I.,,,,8,"[Britain, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1649
+144,1651,"Thomas Hobbes's Leviathan is published: this is the origin of the modern idea of civil society, equality before the law and egoistic individualism",,,,8,"[Britain, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1651
+145,1659,"Accession of Aurangzeb, Shah Jahan imprisoned",,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1659
+146,1660,Monarchy restored in England.,,,,6,"[Britain, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1660
+147,1665,Shivaji imprisoned by Aurangzeb,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1665
+148,1665,The Great Plague of England.,,,,6,"[Catastrophes, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1665
+149,1666,The Great Fire of London,"The city was essentially medieval in its street plan, an overcrowded warren of narrow, winding, cobbled alleys. Building with wood and roofing with thatch had been prohibited for centuries, but these cheap materials continued to be used.",https://en.wikipedia.org/wiki/Great_Fire_of_London,"The 1666 fire, in essense ended ""Medieval"" London, and led to important restructuring. Remember, it came 1 year after the Great Plague.",6,"[Catastrophes, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1666
+150,1666,Death of Shah Jahan,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1666
+151,1668,Glorious Revolution in England.,,,,8,"[Britain, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1668
+152,1675,"Execution of Teg Bahadur, the ninth Guru of Sikhs",,,,10,,,,,,,,,,,1.0,,,,1.0,,,,,,,,1675
+153,1680,Death of Shivaji,,,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1680
+154,1687,"Isaac Newton publishes Principia Mathematica, the foundation of modern physics",,,,5,"[Britain, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1687
+155,1704,Battle of Blenheim.,,,,9,"[Europe, Spain, Germany]",,1.0,,,,,1.0,,,,,,,,,,,,,1.0,,1704
+156,1707,Union of England and Scotland.,,,,6,"[Britain, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1707
+157,1707,Death of Aurangzeb,,,,8,,,,,,,,,,,1.0,,,,,,,,,,,,1707
+158,1708,Death of Guru Gobind Singh,,,,10,,,,,,,,,,,1.0,,,,1.0,,,,,,,,1708
+159,1735,"Euler solves the ""Seven Bridges of Kongsberg"" problem, the start of the Graph Theory branch of mathematics.","In 1735, Euler presented a solution to the problem known as the Seven Bridges of K  nigsberg.[73] The city of K  nigsberg, Prussia was set on the Pregel River, and included two large islands that were connected to each other and the mainland by seven bridges. The problem is to decide whether it is possible to follow a path that crosses each bridge exactly once and returns to the starting point. It is not possible. This solution is considered to be the first theorem of graph theory",https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg,,7,,,1.0,,,,,,,,,,,,,,,,1.0,,,,1735
+160,1739,Nadir Shah invades India,,,,10,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1739
+161,1757,"Battle of Plassey, establishment of British political rule in India at the hands of Lord Clive",,,,6,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1757
+162,1761,Third Battle of Panipat; Shah Alam II becomes India's emperor,,,,8,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1761
+163,1764,Battle of Buxor,,,,8,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1764
+164,1765,Clive appointed Company's Governor in India,,,,8,,,,,,,,,,,1.0,,,,,,,,,,,,1765
+165,1767,First Mysore War,,,,10,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1767
+166,1770,The Great Bengal Famine,The Bengal Famine of 1770 was a famine that struck the Bengal region between 1769 and 1770 and affected some 30 million people,https://en.wikipedia.org/wiki/Great_Bengal_famine_of_1770,,7,,,,,,,,,,,1.0,,,,,,,,,,,,1770
+167,1776,"Adam Smith publishes the Wealth of Nation, a fundamental work in Classical Economics","The central thesis of Smith's ""The Wealth of Nations"" is th at our individual need to fulfill self-interest results in societal benefit, in what is known as his ""invisible hand"".",https://en.wikipedia.org/wiki/The_Wealth_of_Nations,,3,,,1.0,,,,,,,,,,,,,,,,,,,1.0,1776
+168,1776,American Declaration of Independence determines the political evolution of the New World and the rise of American power,,,,1,"[America, ]",1.0,,,,,,,,,,,,,,,,,,,,,1776
+169,1776,Declaration of American Independence.,,,,1,"[America, ]",1.0,,,,,,,,,,,,,,,,,,,,,1776
+170,1780,Second Mysore War,,,,10,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1780
+171,1784,Pitt's India Act,"The East India Company Act (EIC Act 1784), also known as Pitt's India Act, was an Act of the Parliament of Great Britain intended to address the shortcomings of the Regulating Act of 1773 by bringing the East India Company's rule in India under the control of the British Government.",https://en.wikipedia.org/wiki/Pitt%27s_India_Act,,10,,,,,,,,,,,1.0,,,,,,,,,,,,1784
+172,1789,French Revolution; George Washington elected the first President of America.,,,,5,"[France, America]",1.0,,,,,,,1.0,,,,,,,,,,,,,,1789
+173,1789,French Revolution marks a fundamental break with the tradition of monarchy; the 'rights of man' are enshrined,,,,5,"[France, Enlightenment]",,1.0,,,,,,1.0,,,,,,,,,,,,,,1789
+174,1790,Start of the Third Mysore War,,,,10,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1790
+175,1794,Invention of the Internal Combustion Engine,"1794, Robert Street patented an internal combustion engine, which was also the first to use liquid fuel, and built an engine around that time.",https://en.wikipedia.org/wiki/Internal_combustion_engine#History,,7,,1.0,,,,,,,,,,1.0,,,,,,,,,,1.0,1794
+176,1796,Dr Jenner created the first-ever Vaccine,"On 14 May 1796, Jenner tested his hypothesis by inoculating James Phipps, an eight-year-old boy who was the son of Jenner's gardener",https://en.wikipedia.org/wiki/Edward_Jenner#Invention_of_the_vaccine,,7,,,1.0,,,,,1.0,,,,1.0,,,,,,,1.0,,,,1796
+177,1799,Fourth Mysore War; Death of Tipu Sultan,,,,10,,,,,,,,,,,1.0,,,,,,,,,,1.0,,1799
+178,1803,"Start of the Lewis & Clark expedition, in America.","The Lewis and Clark Expedition from August 31, 1803, to September 25, 1806, also known as the Corps of Discovery Expedition, was the United States expedition to cross the newly acquired western portion of the country after the Louisiana Purchase.",https://en.wikipedia.org/wiki/Lewis_and_Clark_Expedition,It took exactly 30 years after America independence for a team to cross from the East coast to the west coast.,4,"[Expeditions, Firsts, ]",1.0,,,,,,,,,,,,,,,,,,,,,1803
+179,1804,Lewis and Clark Expedition,The exploration of the American West began with the expedition of Meriwether Lewis and William Clark.,,,3,,1.0,,,,,,,,,,,,,,,,,,,,,1804
+180,1805,Battle of Trafalagar and Nelson's death.,,,,7,"[Britain, France,]",,1.0,,,,,1.0,,,,,,,,,,,,,1.0,,1805
+181,1815,"Battle of Waterloo: the Napoleonic Empire ends, and with it Napoleon's ambition to rule and reform all of Europe",,,,3,"[France, ]",,1.0,,,,,,1.0,,,,,,,,,,,,1.0,,1815
+182,1815,Battle of Waterloo; Napolean exiled to St. Helena.,,,,3,"[France, ]",,1.0,,,,,,1.0,,,,,,,,,,,,1.0,,1815
+183,1815,The Battle of Waterloo,"The French military leader Napoleon Bonaparte was defeated by the British and Prussian armies, marking the end of the Napoleonic Wars.",,,2,,,1.0,,,,,,,,,,,,,,,,,,,,1815
+184,1821,Death of Napolean.,,,,7,"[France, ]",,1.0,,,,,,1.0,,,,,,,,,,,,,,1821
+185,1825,"Rocket steam locomotive built, marking the start of the railway age of cheap, fast land transport",,,,7,"[Britain, Inventions, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1825
+186,1830,Indian Removal Act,President Andrew Jackson signed this act which forced Native American tribes to relocate from the southeastern United States to Indian Territory in present-day Oklahoma.,,,9,,1.0,,,,,,,,,,,,,,,,,,,,,1830
+187,1832,Reforms Bill passed in England.,,,,9,"[Britain, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1832
+188,1837,Queen Victoria ascends to the throne,"Queen Victoria became the Queen of the United Kingdom and ruled until 1901, a period known as the Victorian era.",,,5,,,1.0,,,,,,,,,,,,,,,,,,,,1837
+189,1837,Queen Victoria's accession to the throne of England.,,,,4,"[Britain, ]",,1.0,,,,,1.0,,,,,,,,,,,,,,,1837
+190,1844,The first use of nitrous gas for Anesthesia by Dr. Horace Wells.,"In 1844, Dr.  Wells conducted a trial on himself by inhaling nitrous oxide and having John Riggs extract a tooth.[5] Upon a successful trial where he did not feel any pain, Wells went on to use nitrous oxide on at least 12 other patients in his office.",https://en.wikipedia.org/wiki/Horace_Wells#Career,,8,,1.0,,,,,,,,,,1.0,,,,,,,1.0,,,,1844
+191,1848,Revolutions of 1848,Revolutions of 1848: A series of uprisings and revolutions across Europe sparked significant political and social change throughout the continent.,,,7,,,1.0,,,,,,,,,,,,,,,,,,,,1848
+192,1853,"Crimean War -- Russia fights the Ottoman Empire, Britain and France.","The Crimean War was a military conflict fought from October 1853 to February 1856 in which Russia lost to an alliance of France, the Ottoman Empire, the United Kingdom and Piedmont-Sardinia",https://en.wikipedia.org/wiki/Crimean_War,,8,,,1.0,,,,,,,,,,,,,,,1.0,,,1.0,,1853
+193,1859,"Publication of Darwin's The Origin of Species. His theory of evolution transforms the view of Man and his environment, and belief in God"," Published on 24 November 1859, is a work of scientific literature by Charles Darwin that is considered to be the foundation of evolutionary biology",https://en.wikipedia.org/wiki/On_the_Origin_of_Species,"Darwin conceived the ideas in 1839, and waited 20 years for various reasons.",5,,,1.0,,,,,1.0,,,,,,,,,,,1.0,,,,1859
+194,1859,"Drilling of the first modern oil well.  At Titusville, Penn., Col. Edwin Drake drilled the first successful well through rock and produced crude oil",,,,5,"[Discovery, ",1.0,,,,,,,,,,,,,,,,,,,,,1859
+195,1861,American Civil War begins,"The American Civil War began with the secession of several southern states from the Union, ultimately resulting in the deadliest war in American history.",,,2,,1.0,,,,,,,,,,,,,,,,,,,,,1861
+196,1861,Beginning of the American Civil War.,,,,4,"[America, ]",1.0,,,,,,,,,,,,,,,,,,,1.0,,1861
+197,1863,Slavery abolished in USA,,,,5,"[America, ]",1.0,,,,,,,,,,,,,,,,,,,,,1863
+198,1865,End of the American Civil War,"Confederate General Robert E. Lee surrendered to Union General Ulysses S. Grant, effectively ending the Civil War and leading to the abolition of slavery in the United States.",,,2,,1.0,,,,,,,,,,,,,,,,,,,,,1865
+199,1865,"General Robert E. Lee surrendered his 28,000 Confederate troops to Union General Ulysses S. Grant, effectively ending the American Civil War",,https://en.wikipedia.org/wiki/Battle_of_Appomattox_Court_House#Surrender,,5,,1.0,,,,,,,,,,,,,,,,,,,1.0,,1865
+200,1865,Assassination of Abraham Lincoln.,,,,5,"[America, ]",1.0,,,,,,,,,,,,,,,,,,,,,1865
+201,1867,Purchase of Alaska - US buys Alaska from Russia.,Secretary of State William Seward made the purchase which also ended Russia's presence in North America and ensured U.S. access to the Pacific northern rim.,https://en.wikipedia.org/wiki/Alaska_Purchase,,7,,1.0,1.0,,,,,,,,,,,,,,,1.0,,,,,1867
+202,1869,Opening of the Suez Canal for traffic.,,,,7,"[Africa, France]",,,,1.0,,,,1.0,,,,,,,,,,,,,,1869
+203,1871,"""Dr. Livingstone, I presume"": US journalist Stanley finds explorer Dr. Livingstone","After nearly eight months Stanley found Livingstone in Ujiji, a small village on the shore of Lake Tanganyika on November 10, 1871.",https://en.wikipedia.org/wiki/Henry_Morton_Stanley#Finding_David_Livingstone,"Slave trade ended ~1850, and colonization of Congo happened in 1885. This episode was right in between.",7,,,,,1.0,,,1.0,,,,,,,,,,,,,,,1871
+204,1876,Alexander Graham Bell Invents the telephone,"On March 10, 1876,  Bell spoke the sentence ""Mr. Watson Come here I want to see you"" into the liquid transmitter and the first phone call was made.",https://en.wikipedia.org/wiki/Alexander_Graham_Bell#The_race_to_the_patent_office,"Exactly 100 years after the US declared Independence, the telephone showed up!",5,,1.0,,,,,,,,,,1.0,,,,,,,1.0,,,,1876
+205,1876,The Battle of Little Bighorn,"The Sioux and Cheyenne defeated General Custer and his troops in a battle in present-day Montana, leading to increased tensions and conflict between Native Americans and settlers in the western United States.",,,6,,1.0,,,,,,,,,,,,,,,,,,,,,1876
+206,1879,Edison invents the electric light bulb,Light bulbs with a carbon filament were first demonstrated by Edison in October 1879,https://en.wikipedia.org/wiki/Edison_light_bulb,The telephone showed up 3 years before the bulb!,6,,1.0,,,,,,,,,,1.0,,,,,,,1.0,,,,1879
+207,1883,Eruption of Krakatoa,over 70% of the island of Krakatoa and its surrounding archipelago were destroyed as it collapsed into a caldera.,https://en.wikipedia.org/wiki/Krakatoa#1883_eruption,,7,,,,1.0,,,,,,,,,,,,,,,,,,1.0,1883
+208,1885,"Benz develops first petrol-driven car, starting the most profound technical and social revolution of the modern age",,,,6,"[Inventions, Germany, Europe]",,1.0,,,,,,,,,1.0,,,,,,,1.0,,,1.0,1885
+209,1889,Eiffel Tower completed,"The iconic Eiffel Tower was completed and opened to the public in Paris, France.",,,4,,,1.0,,,,,,,,,,,,,,,,,,,,1889
+210,1893,New Zealand introduces unrestricted women's suffrage. At this point women win the principle of full political equality,,,,7,[World],,,,,,,,,,,,,,,,,,,,,1.0,1893
+211,1895,Marconi invented the radio for wireless transmission, Marconi transmitted radio signals for about 1.5 miles (2.4 km) at the end of 1895,https://en.wikipedia.org/wiki/Invention_of_radio#Marconi,X-Rays and Radio discovered/invented in the same year.,4,"[Invention, Science, Italy]",,1.0,,,,,,,,,1.0,,,,,,,,,,,1895
+212,1895,Roentgen discovered X-Rays.,,,X-Rays and Radio discovered/invented in the same year.,5,"[Invention, Science, Germany]",,1.0,,,,1.0,,,,,,,,,,,,,,,,1895
+213,1898,Spanish-American War,"The United States declared war on Spain, ultimately resulting in the acquisition of Puerto Rico, Guam, and the Philippines by the United States.",,,4,,1.0,,,,,,,,,,,,,,,,,,,,,1898
+214,1903,The Wright brothers invent the first powered aircraft.," The Wrights finally took to the air on December 17, 1903, making two flights each from level ground into a freezing headwind gusting to 27 miles per hour (43 km/h)",https://en.wikipedia.org/wiki/Wright_brothers#First_powered_flight,,4,,1.0,,,,,,,,,,1.0,,,,,,,1.0,,,,1903
+215,1904,Russo-Japan war.,,https://en.wikipedia.org/wiki/Russo-Japanese_War, This was was fought between the Empire of Japan and the Russian Empire during 1904 and 1905 over rival imperial ambitions in Manchuria and the Korean Empire,7,"[Russia, Japan, ]",,,1.0,,,,,,,,,,,,,,1.0,,,1.0,,1904
+216,1905,Japan defeated Russia; Discovery of the theory of Relativity by Einstein.,,,,3,"[Japan, Science,]",,,1.0,,,,,,,,,,,,,,,,,1.0,,1905
+217,1905,Einstein's theory of special relativity published. It transforms the nature of modern physical knowledge,,,,4,"[Science,]",,1.0,,,,,,,,,,,,,,,,,,,,1905
+218,1911,Roald Amundsen becomes the first person to reach the South Pole.,"The first ever expedition to reach the geographic Southern Pole was led by the Norwegian explorer Roald Amundsen. He and four others arrived at the pole on 14 December 1911, five weeks ahead of a British party led by Robert Falcon Scott as part of the Terra Nova Expedition.",https://en.wikipedia.org/wiki/Amundsen%27s_South_Pole_expedition,The North Pole was reached in 1909. So Amundsen changed his plans to head to the South Pole in 1911,5,"[Expeditions, Firsts, ]",,1.0,,,,,,,,,,,,,,,,,,,1.0,1911
+219,1911,Chinese Revolution.,,,,6,"[China, ]",,,,,1.0,,,,,,,,,,,,,,,,,1911
+220,1912,Republic of China established.,,,,5,"[China, ]",,,,,1.0,,,,,,,,,,,,,,,,,1912
+221,1914,Beginning of World War I.,,,,2,"[Wars, ]",,1.0,,,,,1.0,,,,,,,,,,1.0,,,1.0,,1914
+222,1917,"Russian Revolution creates the first successful, long-term revolutionary state",,,,5,"[Rusia, ]",,1.0,,,,,,,,,,,,,,,1.0,,,,,1917
+223,1918,End of World War I.,,,,2,"[Wars, ]",,1.0,,,,,,,,,,,,,,,,,,1.0,,1918
+224,1918,End of the First World War. The Habsburg and Ottoman empires collapse; maps of Europe and the Middle East are redrawn,,,,2,"[Wars, ]",,1.0,,,,,,,,,,,,,,,,,,1.0,,1918
+225,1919,Treaty of Versailles signed.,,,,4,"[Wars, Europe]",,1.0,,,,,,1.0,,,,,,,,,,,,,,1919
+226,1920,Formation of the League of Nations.,,,,4,"[Wars, Europe]",,1.0,,,,,,,,,,,,,,,,,,,,1920
+227,1923,Turkey declared Republic.,,,,7,"[Turkey, World]",,,1.0,,,,,,,,,,,,,,,,,,,1923
+228,1926,Invention of Television,"Scottish inventor John Logie Baird, in 1926, demonstrated the transmission of an image of a face in motion by radio. This is widely regarded as the world's first public television demonstration",https://en.wikipedia.org/wiki/Television#History,Priorities! Humans invented a TV 2 years before they discovered Penicillin.,7,,,,,,,,,,,,1.0,,,,,,,1.0,,,,1926
+229,1928,Alexander Fleming discovered penicillin,In 1928 Dr Alexander Fleming returned from a holiday to find mould growing on a Petri dish of Staphylococcus bacteria. He noticed the mould seemed to be preventing the bacteria around it from growing. He soon identified that the mould produced a self-defence chemical that could kill bacteria.,https://en.wikipedia.org/wiki/Penicillin#Discovery,,7,,,1.0,,,,1.0,1.0,,,,,,,,,,,1.0,,,1.0,1928
+230,1930,Discovery of planet Pluto,"Tombaugh discovered the tiny, distant planet by use of a new astronomic technique of photographic plates combined with a blink microscope.",,,6,,,,,,,1.0,,,,,,,,,,,,,,,,1930
+231,1933,Hitler became the Chancellor of Germany.,,,,5,"[Germany, Europe]",,1.0,,,,,,,,,,,,,,,,,,,,1933
+232,1936,Beginning of the Spanish Civil War.,,,,7,"[Spain, Europe,]",,1.0,,,,,,,,,,,,,,,,,,1.0,,1936
+233,1939,"Outbreak of Second World War: 50 million die worldwide from 1939-45 in the world's largest and most deadly conflict, which ends the long age of imperialisms",,,,1,"[Wars, ]",,1.0,,,,,,,,,,,,,,,,,,1.0,,1939
+234,1939,World War II begins.,,,,1,"[Wars, ]",,1.0,,,,,,,,,,,,,,,,,,1.0,,1939
+235,1941,Russia invaded by Hitler; Pearl Harbour invaded by Japan.,,,,6,"[Wars, ]",,1.0,,,,,,,,,,,,,,,1.0,,,1.0,,1941
+236,1945,"when the first nuclear bomb is detonated, mankind develops the means to destroy itself",,,,2,"[Japan, Science,]",1.0,,1.0,,,,,,,,,,,,,,,,,1.0,,1945
+237,1945,Establishment of UNO; End of World War II; Hiroshima and Nagasaki experience the first dropping of the Atom Bomb; Death of President Roosevelt.,,,,6,"[Wars, ]",,1.0,1.0,,,,,,,,,,,,,,,,,,,1945
+238,1945,End of Second World War;,,,,1,"[Wars, ]",,1.0,1.0,,,,,,,,,,,,,,,,,1.0,,1945
+239,1946,Civil War in China.,,,,5,"[Wars, ]",,,,,1.0,,,,,,,,,,,,,,,1.0,,1946
+240,1948,Burma and Ceylon get independence.,,,,8,"[Asia, World,]",,,1.0,,,,,,,,,,,,,,,,,,,1948
+241,1949,Indonesia gets independence;,,,,8,,,,1.0,,,,,,,,,,,,,,,,,,,1949
+242,1949,The Communists capture power in China.,,,,4,"[Government, ]",,,,,1.0,,,,,,,,,,,,,,,,,1949
+243,1949,Communist China founded: China is created as a single territorial unit with a common administration and a modernising economy,,,,6,,,,,,1.0,,,,,,,,,,,,,,,,,1949
+244,1952,General Eisenhower elected as the American President.,,,,3,,1.0,,,,,,,,,,,,,,,,1.0,,,,,1952
+245,1953,Death of Stalin,"Joseph Stalin, second leader of the Soviet Union, died on 5 March 1953 at the Kuntsevo Dacha, at the age of 74, after suffering a stroke. ",https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Joseph_Stalin,,5,,,,,,,,,,,,,,,,,,1.0,,,,,1953
+246,1953,Mt. Everest conquered for the first time.,"The 1953 British Mount Everest expedition was the ninth mountaineering expedition to attempt the first ascent of Mount Everest, and the first confirmed to have succeeded when Tenzing Norgay and Edmund Hillary reached the summit on 29 May 1953",https://en.wikipedia.org/wiki/1953_British_Mount_Everest_expedition,,3,[Achievement],,,1.0,,,,,,,,,,,,,,,,,,1.0,1953
+247,1954,Military Aid Pact between China and Pakistan;,,,,9,,,,1.0,,1.0,,,,,1.0,,,,,,,,,,,,1954
+248,1955,Austria gets independence; Bandung Conference.,,,,7,,,1.0,,,,,,,,,,,,,,,,,,,,1955
+249,1956,"Suez Canal nationalised by President Nasser; Egypt attacked by the forces of Britain, France and Israel.",,,,6,,,,,1.0,,,,,,,,1.0,,,,,,,,,,1956
+250,1957,First artificial satellite launched by Russia.,,,,6,,,,,,,,,,,,,,,,,,1.0,1.0,,,,1957
+251,1958,Egypt and Syria united and renamed United Arab Republic (UAR),,,,7,,,,,,,,,,,,,1.0,,,,,,,,,,1958
+252,1959,Chinese capture Tibet; Dalai Lama flees to India; Sputnik launched by Russia.,,,,5,,,,,,1.0,,,,,1.0,,,,1.0,,,,,,,,1959
+253,1959,"Invention of the silicon chip is the major technical invention of the past century, making possible the computer age",,,,5,,1.0,,,,,,,,,,,,,,,,,1.0,,,,1959
+254,1960,"First contraceptive pill made available for women, who can now make their own biological choices about reproduction",,,,6,,1.0,,,,,,,,,,,,,,,,,,,,,1960
+255,1960,Explosion of an atom bomb device by France;,,,,3,"[Wars, ]",,1.0,,,,,,1.0,,,,,,,,,,1.0,,,,1960
+256,1960,Election of John F. Kennedy as President of USA,,,,2,"[Government, ]",1.0,,,,,,,,,,,,,,,,,,,,,1960
+257,1961,Yuri Gagarin of USSR becomes the first spaceman.,,,,5,,,,,,,,,,,,,,,,,,1.0,1.0,,,,1961
+258,1963,John F. Kennedy assassinated.,,,,3,"[Government, ]",1.0,,,,,,,,,,,,,,,,,,,,,1963
+259,1963,Malaysia established,,,,6,"[Government, ]",,,1.0,,,,,,,,,,,,,,,,,,,1963
+260,1963,Partial Nuclear Test-Ban Treaty signed;,,,,7,,,,,,,,,,,,,,,,,,,,,,1.0,1963
+261,1964,Discovery of the Universe's Cosmic microwave Background Radiation,"In 1964 while using the Horn Antenna, Penzias and Wilson stumbled on the microwave background radiation that permeates the universe.",https://en.wikipedia.org/wiki/Discovery_of_cosmic_microwave_background_radiation,,7,,1.0,,,,,1.0,,,,,,,,,,,,1.0,,,,1964
+262,1965,Singapore becomes the sovereign independent nation,,,,6,,,,1.0,,,,,,,,,,,,,,,,,,,1965
+263,1965,Death of Sir Winston Churchill,,,,4,,,1.0,,,,,1.0,,,,,,,,,,,,,,,1965
+264,1965,"Outbreak of the Second Indo-Pak war, also called the ""Second Kashmir War""",,https://en.wikipedia.org/wiki/Indo-Pakistani_War_of_1965,,7,,,,1.0,,,,,,,1.0,,,,,,,,,,1.0,,1965
+265,1966,Tashkent Pact; A Russian aircraft lands on moon.,,,,8,,,,,,,,,,,,,,,,,,1.0,,,,,1966
+266,1967,Chinese explode hydrogen bomb; Arab-Israel War; Suez Canal closed.,,,,8,,,,,1.0,1.0,,,,,,,,,,,,,,,1.0,,1967
+267,1971,"Outbreak of Indo-Pak war; Birth of Bangladesh; Surrender of 93,000 Pakistani troops; Khruschev died; Z.A. Bhutto new President of Pakistan.",,,,6,,,,1.0,,,,,,,1.0,,,,,,,,,,1.0,,1971
+268,1972,Sheikh Mujibur Rahman freed from Pakistani Jail and assumed the office of P.M. Bangladesh; Nixon of USA visited China; King Mahendra of Nepal died; USA and the USSR sign Strategic Arms Limitations Treaty.,,,,9,,,,1.0,,,,,,,,,,,,,,,,,,,1972
+269,1973,Outbreak of fourth Arab-Israeli war; Fourth non-aligned summit in Algiers.,,,,7,,,,1.0,1.0,,,,,,,,1.0,,,,,,,,1.0,,1973
+270,1975,"Sheikh Mujibur Rahman, President of Bangladesh assassinated; King Faisal of Saudi Arabia, assassinated; Suez Canal reopened; Red Cross force Cambodia Government to Surrender.",,,,7,,,,,1.0,,,,,,,,,,,,,,,,,,1975
+271,1976,Jimmy Carter elected President of USA,,,,3,,1.0,,,,1.0,,,,,,,,,,,,,,,,,1976
+272,1976,Death of Mao Zhedong (China),"Mao suffered two major heart attacks, one in March and another in July, then a third on September 5, rendering him an invalid. He died nearly four days later, at 00:10 on September 9, 1976, at the age of 82.",https://en.wikipedia.org/wiki/Mao_Zedong#Death_and_aftermath,"Carter becomes US President, and Mao dies that same year.",6,,,,,,1.0,,,,,,,,,,,,,,,,,1976
+273,1976,Seychelles gets independence,"In 1976, Seychelles was granted independence from the United Kingdom and became a republic. It has been a member of the Commonwealth ever since",https://en.wikipedia.org/wiki/Seychelles#Independence,,9,,,,,1.0,,,1.0,,,,,,,,,,,,,,,1976
+274,1976,Viking I lands on Mars," Viking 1 (sent by NASA) touched down on Mars on July 20, 1976, the first successful Mars lander in history.",https://en.wikipedia.org/wiki/Viking_1,,8,,,,,,,,,,,,,,,,,,,1.0,,,1.0,1976
+275,1976,"Chou-En Lai, P.M. of China, dies",Zhou Enlai was the first Premier of the People's Republic of China serving from 1 October 1949 until his death on 8 January 1976,https://en.wikipedia.org/wiki/Zhou_Enlai#Death,Died the same year as Mao. A double blow to China,8,,,,,,1.0,,,,,,,,,,,,,,,,,1976
+276,1978,"Agreement between Israel and Egypt; Vietnam attacked Cambodia; Z.A. Bhutto, former P.M. of Pakistan, sentenced to death; Bloody coup in Afghanistan; Mohammed Daoud assassinated; World's first test-tube baby born.",,,,9,,,,,,,,,,,,,,,,,,,,,1.0,1.0,1978
+277,1979,Cambodian rebels grab power in Pnom Penh,,,,9,,,,1.0,,,,,,,,,,,,,,,,,,,1979
+278,1979,Chinese aggression in Vietnam;,,,,8,,,1.0,,,1.0,,,,,,,,,,,,,,,,,1979
+279,1979,Mrs. Margaret Thatcher is the first woman P.M. of Britain.,,,,6,,,1.0,,,,,1.0,,,,,,,,,,,,,,,1979
+280,1979,Mr. Z.A. Bhutto hanged,,,,8,,,,1.0,,,,,,,,,,,,,,,,,,,1979
+281,1980,Ronald Reagon elected USA President.,,,,3,,1.0,,,,,,,,,,,,,,,,,,,,,1980
+282,1980,War starts between Iran and Iraq,,,,5,"[Conflicts, ]",,,1.0,,,,,,,,,,,,,,,,,1.0,,1980
+283,1982,"Falklands, captured by Argentina; Israel attacks South Lebanon; Argentina forces surrender to British; P.L.O. Chief Yesser Arafat leaves Beirut; Bashir Gemyel, the President elect of Lebanon, assassinated; Soviet President breathes his last.",,,,4,,,,,,,,,,,,,,,,,,,,1.0,,,1982
+284,1983,US attacks Grenada; USA withdraws from UNESCO.,,,,4,,1.0,,,,,,,,,,,,,,,,,,,1.0,,1983
+285,1985,Vietnam withdraws troops from Kampuchia.,,,,8,,,,1.0,,,,,,,,,,,,,,,,,1.0,,1985
+286,1985,India gets Presidentship of the UN Security Council,,,,7,,,,,,,,,,,1.0,,,,,,,,,,,,1985
+287,1985,Soviet President Mr. Konstantin Chernenko dies,,,,7,,,,,,,,,,,,,,,,,,1.0,,,,,1985
+288,1986,American air attack on Libya.,,,,8,,1.0,,,,,,,,,,,,,,,,,,,1.0,,1986
+289,1987,"Nuclear tests by USSR; Fresh proposal by Gorbachev; Group 77 meet at Havana; Unsuccessful military coup in Philippines, Prime Minister of Lebanon killed.",,,,8,,,,,,,,,,,,,,,,,,1.0,,,,1.0,1987
+290,1988,"Arafat declares on independent state of Palestine,",,,,8,,,,,,,,,,,,,1.0,,,,,,,,,,1988
+291,1988,"Nearly 1,00,000 people killed in earthquake in Armenia.",,,,8,,,,1.0,,,,,,,,,,,,,,,,,,,1988
+292,1988,"WHO observes 7th of April as no smoking day, French President re-elected, Gen. Zia-ul-Haq killed in plane crash, Quake kills about 1,000 people in Bihar (India),",,,,8,,,,,,,,,,,1.0,,,,,,,,,,,,1988
+293,1988,"George Bush elected President of USA,",,,,4,,1.0,,,,,,,,,,,,,,,,,,,,,1988
+294,1989,The UN Peace keeping force starts implementation of UN Resolution 435 for the independence of  Namibia.,,,,8,,,,,1.0,,,,,,,,,,,,,,,,,,1989
+295,1989,Collapse of Communist regimes in Europe: marks the end of the long communist experiment; Asian communism is also transformed.,,,,3,,,1.0,,,,,,,,,,,,,,,,,,,,1989
+296,1990,The Panamanian President surrenders to the United States. South Africa lifts lean on African National Congress. Lithuania declares independence from the Soviet Union. Namibia becomes a free nation. Iraq overruns Kuwait. East and West Germanys unite.,,,,8,,,,,,,,,,,,,,,,,,1.0,,,,,1990
+297,1991,"War breaks out in the Gulf when Iraq invades Kuwait, resulting in the defeat of Iraq.",,,,5,,,,1.0,,,,,,,,,1.0,,,,,,,,1.0,,1991
+298,1993,START II (Strategic Arms Reduction Treaty) signed between the US and Russia,"Presidents George H. W. Bush and Boris Yeltsin sign START II on 3 January 1993 in Vladimir Hall, Moscow Kremlin",https://en.wikipedia.org/wiki/START_II,,8,,1.0,,,,,,,,,,,,,,,,1.0,,,,1.0,1993
+299,1994,South Africa emerged from aparthied regime with Nelson Mandela as its president. GATT treaty signed to create World Trade Organisation (WTO).,,,,6,,,,,1.0,,,,,,,,,,,,,,,,,,1994
+300,1995,WTO comes into existence. Nuclear test by France. Balkan peace accord signed.,,,,8,,,,,,,,,,,,,,,,,,,,,,1.0,1995
+301,1996,Dolly the sheep becomes the first mammal to be cloned from an adult cell.,"Her birth proved that specialised cells could be used to create an exact copy of the animal they came from. This knowledge changed what scientists thought was possible and opened up a lot of possibilities in biology and medicine, including the development of personalised stem cells known as iPS cells.",https://en.wikipedia.org/wiki/Dolly_(sheep),,6,,,,,,,,,,,,,,,,,,,1.0,,,1.0,1996
+302,1996,Taliban capture Kabul and execute former communist President Najibullah.,,,,8,"[Conflicts, ]",,,1.0,,,,,,,,,,,,,,,,,1.0,1.0,1996
+303,1996,India refuses to sign CTBT.,,,,8,,,,,,,,,,,1.0,,,,,,,,,,,,1996
+304,1996,Clinton re-elected US President.,,,,4,,1.0,,,,,,,,,,,,,,,,,,,,,1996
+305,1996,Shekh Hasina Wajed new PM of Bangladesh.,,,,10,,,,1.0,,,,,,,1.0,,,,,,,,,,,,1996
+306,1996,Kofi Annan new UN Secretary General.,,,,5,,,,,,,,,,,,,,,,,,,,,,1.0,1996
+307,1997,Tony Blair back in power in UK. Mohd. Khatami elected president of Iran. Hong Kong goes back to China after 99 year British rule.,,,,5,,,,,,1.0,,1.0,,,,,,,,,,,,,,,1997
+308,1998,Indonesian President Suharto resigns. Pakistan test fires `Gauri' missile. US President Clinton faces impeachment.,,,,8,,1.0,,,,,,,,,,,,,,,,,,,,,1998
+309,1999,Yugoslavia accepts a peace plan for Kosovo.,,,,8,,,1.0,,,,,,,,,,,,,,,,,,,,1999

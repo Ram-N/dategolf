@@ -1,0 +1,1135 @@
+I’d make this a **companion-game specification**, with DateGolf and DatePick explicitly sharing the same historical data and application architecture. The important thing is that the coding agent should understand that **DatePick is not a second app**; it is a second game mode in the existing DateGolf project.
+
+# DatePick — Product & Technical Specification
+
+## 1. Overview
+
+Add a second daily history game called **DatePick** to the existing **DateGolf** Vue application.
+
+DatePick is the complementary inverse of DateGolf:
+
+* **DateGolf:** Given a year, choose the historical event closest to it.
+* **DatePick:** Given a historical event, choose the year in which it occurred.
+
+Both games should live in the **same Vue codebase**, use the same `events.json` historical database, share common components/utilities where appropriate, and be accessible through separate routes.
+
+The existing DateGolf game must continue to work exactly as it does today.
+
+The goal is to add DatePick without creating a second codebase or duplicating the historical data.
+
+---
+
+# 2. Product Relationship
+
+The application should now contain two games:
+
+## DateGolf
+
+> **Hit the date.**
+
+The player receives a target year and selects a historical event.
+
+Example:
+
+**1900**
+
+Player chooses:
+
+> End of World War II
+
+Actual year: 1945
+
+Score:
+
+> **45 years**
+
+Lower is better.
+
+---
+
+## DatePick
+
+> **Pick the date.**
+
+The player receives a historical event and chooses its year from four choices.
+
+Example:
+
+### Battle of Hastings
+
+When did it happen?
+
+**A. 1014**
+**B. 1066**
+**C. 1215**
+**D. 1415**
+
+Correct answer:
+
+> **1066**
+
+DatePick is therefore a traditional multiple-choice history game, but it should retain the visual personality and educational quality of DateGolf.
+
+---
+
+# 3. Application Architecture
+
+Do **not** create a separate DatePick project.
+
+Use the existing Vue application.
+
+Conceptually:
+
+```text
+Vue Application
+│
+├── DateGolf
+│   └── /dategolf
+│
+├── DatePick
+│   └── /datepick
+│
+├── Shared Historical Data
+│   └── events.json
+│
+├── Shared Game Utilities
+│
+├── Shared UI Components
+│
+└── Shared Daily Challenge Infrastructure
+```
+
+Use Vue Router or the routing mechanism already established in the project.
+
+The desired routes are:
+
+```text
+/dategolf
+/datepick
+```
+
+If the existing application currently uses another route structure, preserve existing routes and add DatePick cleanly.
+
+---
+
+# 4. Shared Historical Dataset
+
+Continue using the existing `events.json`.
+
+There should be **one authoritative event database**.
+
+Do not duplicate the events into a separate DatePick data file.
+
+The current database contains approximately 300–400 historical events, spanning roughly:
+
+**3000 BCE → present**
+
+The database may grow to 500 or more events over time.
+
+An event should have at least:
+
+```text
+id
+name
+year
+categories
+region
+aliases
+description
+difficulty
+importance
+```
+
+The exact existing schema should be inspected before modifying it.
+
+Do not unnecessarily change the existing DateGolf data model.
+
+---
+
+# 5. DatePick Daily Challenge
+
+DatePick should be designed primarily around a **Daily Challenge**.
+
+Each day contains:
+
+**8 questions**
+
+All players receive the same eight questions for that date.
+
+For example:
+
+> DatePick — Daily Challenge
+> 8 Questions
+
+The player progresses through questions one at a time.
+
+At the end:
+
+> **7 / 8**
+
+or:
+
+> **8 / 8**
+
+The challenge should be deterministic.
+
+If two students open DatePick on the same day, they should receive the same eight questions.
+
+This is important because students should be able to compare results.
+
+---
+
+# 6. Daily Challenge Distribution
+
+The eight questions should represent a broad sweep of history, but with a deliberate emphasis on modern history.
+
+A starting distribution should be approximately:
+
+### 4 questions — 1800 or later
+
+### 4 questions — before 1800
+
+This gives the game chronological breadth while recognizing that students are generally more familiar with modern history.
+
+The exact distribution should be configurable.
+
+For example:
+
+```text
+4 modern
+2 early modern
+1 medieval
+1 ancient
+```
+
+could be another valid configuration.
+
+Do not hard-code the distribution into multiple components. Put the challenge-generation rules in one place.
+
+---
+
+# 7. Historical Range
+
+The database spans approximately:
+
+**3000 BCE → present**
+
+DatePick should make use of this entire range over time.
+
+The game should not accidentally become a 19th/20th-century history quiz merely because those events are more familiar.
+
+The daily challenge should therefore deliberately include older history.
+
+However, ancient questions should not dominate the game.
+
+The purpose of the weighting is:
+
+> Broad historical coverage + stronger emphasis on modern history.
+
+---
+
+# 8. Question Selection
+
+A question is generated by selecting an event from `events.json`.
+
+For example:
+
+```text
+Event:
+Battle of Hastings
+
+Year:
+1066
+```
+
+The player sees:
+
+> **Battle of Hastings**
+
+but not:
+
+> 1066
+
+The correct answer is the event's canonical `year`.
+
+The question generator should avoid repeating the same event within a single daily challenge.
+
+---
+
+# 9. Four Answer Choices
+
+Each DatePick question has exactly four choices:
+
+* one correct year
+* three distractor years
+
+Example:
+
+### Battle of Hastings
+
+A. 1014
+B. 1066
+C. 1215
+D. 1415
+
+Exactly one answer must be correct.
+
+The choices should be shuffled so that the correct answer is not always in the same position.
+
+---
+
+# 10. Good Distractors Are Critical
+
+The quality of DatePick depends heavily on the quality of its distractors.
+
+Do **not** simply generate three random years.
+
+Bad:
+
+> Battle of Hastings
+
+* 1066
+* 1776
+* 1969
+* 2020
+
+This tests whether the student can identify an obviously different century rather than whether they know the historical date.
+
+Instead, use historically plausible distractors.
+
+For 1066, possible distractors might be:
+
+* 1014
+* 1087
+* 1215
+
+The exact values should depend on the available event database.
+
+---
+
+# 11. Prefer Real Event Years as Distractors
+
+Where possible, distractor years should come from the years of **other events in the historical database**.
+
+This creates an important property:
+
+Every answer choice represents a real historical date.
+
+For example:
+
+```text
+Correct:
+Battle of Hastings → 1066
+
+Distractor:
+Magna Carta → 1215
+
+Distractor:
+Norman Conquest milestone → another year
+
+Distractor:
+Another historical event → another year
+```
+
+This is better than inventing arbitrary years.
+
+It also means the answer choices themselves can become learning opportunities.
+
+---
+
+# 12. Distractor Algorithm
+
+The first implementation should rank potential distractors using historical distance.
+
+For a correct year:
+
+```text
+targetYear = event.year
+distance = abs(candidate.year - targetYear)
+```
+
+Prefer candidates that are:
+
+* reasonably close
+* not identical to the correct year
+* from different events
+* not duplicates
+
+For example, if:
+
+```text
+target = 1066
+```
+
+candidate years might be:
+
+```text
+1014 → 52 years away
+1087 → 21 years away
+1215 → 149 years away
+1776 → 710 years away
+1969 → 903 years away
+```
+
+The first three are much better distractors.
+
+---
+
+# 13. Avoid Excessively Easy Distractors
+
+The distractor system should avoid choices that make the answer obvious because of enormous chronological differences.
+
+For example:
+
+```text
+1066
+1776
+1969
+2020
+```
+
+is a poor question.
+
+Prefer:
+
+```text
+1066
+1014
+1087
+1215
+```
+
+when the database permits it.
+
+However, do not make every question impossibly difficult.
+
+Difficulty should vary naturally.
+
+---
+
+# 14. Distractor Difficulty
+
+The challenge generator should support different levels of distractor closeness.
+
+For example:
+
+### Easy question
+
+Correct answer is relatively distinct from distractors.
+
+### Medium question
+
+One or two distractors are historically close.
+
+### Difficult question
+
+All four years are relatively close.
+
+Example:
+
+> 1914
+> 1918
+> 1939
+> 1945
+
+The difficulty should emerge from the event and distractor configuration rather than requiring a separate complicated difficulty engine.
+
+---
+
+# 15. Important Distractor Rule
+
+Do not use the same event as both the question and a distractor.
+
+Every answer choice should correspond to a distinct historical event.
+
+If two events share the same canonical year, they can technically create duplicate answer values, but this should be avoided.
+
+The question generator should reject a choice set such as:
+
+```text
+1066
+1066
+1215
+1453
+```
+
+because it creates an ambiguous question.
+
+---
+
+# 16. Question Quality Scoring
+
+Consider implementing a question-quality function.
+
+For each possible set of four choices, calculate factors such as:
+
+* distance between correct answer and distractors
+* distance among distractors
+* historical diversity
+* event importance
+* event familiarity
+* whether the choices create obvious elimination patterns
+
+Then select a high-quality set.
+
+Do not over-engineer the first version.
+
+A simple ranking algorithm is sufficient initially.
+
+The architecture should allow the algorithm to become more sophisticated later.
+
+---
+
+# 17. Avoid Chronological Clues in the UI
+
+The event name must not reveal its date.
+
+For example, do not display:
+
+> Indian Independence — 1947
+
+before answering.
+
+Likewise, avoid descriptions containing dates.
+
+The player should only see:
+
+> Indian independence
+
+The year is revealed after the answer.
+
+---
+
+# 18. Answer Reveal
+
+After the player chooses an answer, immediately show whether they were correct.
+
+For example:
+
+> **Correct**
+
+**1066**
+
+> William the Conqueror defeated Harold Godwinson at the Battle of Hastings in 1066.
+
+Or:
+
+> **Not quite**
+
+**Correct answer: 1066**
+
+Then provide the brief historical explanation.
+
+The reveal should be educational rather than merely evaluative.
+
+---
+
+# 19. Educational Explanation
+
+Each event should ideally have a short description in the data.
+
+Example:
+
+```json
+{
+  "name": "Battle of Hastings",
+  "year": 1066,
+  "description": "William the Conqueror defeated Harold Godwinson in a battle that led to Norman control of England."
+}
+```
+
+The description should be concise enough to display comfortably on a phone.
+
+Aim for roughly one or two sentences.
+
+Do not turn each question into a history textbook.
+
+The rhythm should remain:
+
+**Question → Answer → Learn → Next**
+
+---
+
+# 20. Question Progress
+
+During play, always show progress.
+
+For example:
+
+> **QUESTION 3 OF 8**
+
+A small progress indicator can show:
+
+```text
+● ● ● ○ ○ ○ ○ ○
+```
+
+or an equivalent accessible design.
+
+The student should always know how far they are through the daily challenge.
+
+---
+
+# 21. Scoring
+
+The simplest scoring system is:
+
+* Correct → 1 point
+* Incorrect → 0 points
+
+Display:
+
+> **7 / 8**
+
+Do not use negative scoring initially.
+
+DateGolf already provides the numerical golf-style scoring experience.
+
+DatePick should feel faster and more conventional.
+
+Future versions could potentially introduce:
+
+* streak bonuses
+* speed bonuses
+* difficulty scoring
+* perfect-day streaks
+
+but these should not be part of the initial implementation.
+
+---
+
+# 22. Daily Results
+
+At the end of eight questions:
+
+# DATEPICK
+
+## 7 / 8
+
+Then show:
+
+```text
+1  Correct
+2  Correct
+3  Wrong
+4  Correct
+5  Correct
+6  Correct
+7  Correct
+8  Correct
+```
+
+The player should be able to review the questions.
+
+For incorrect answers, show:
+
+* event
+* player's answer
+* correct year
+* short explanation
+
+---
+
+# 23. Sharing
+
+DatePick should have the same social DNA as DateGolf.
+
+Example share text:
+
+> DATEPICK
+> Daily Challenge
+> 7 / 8
+>
+> Can you beat me?
+
+Do not reveal the answers.
+
+Use the Web Share API where available and provide a clipboard fallback.
+
+---
+
+# 24. DateGolf and DatePick Navigation
+
+The application should make it easy to switch between the two games.
+
+Possible landing/navigation:
+
+```text
+HISTORY GAMES
+
+DateGolf
+Hit the date.
+
+DatePick
+Pick the date.
+```
+
+The two games should feel like siblings.
+
+Do not make the application feel like two unrelated products.
+
+---
+
+# 25. Shared Components
+
+Reuse components where it makes sense:
+
+* application header
+* daily challenge header
+* progress indicator
+* answer/reveal card
+* share button
+* final score card
+* historical event display
+* typography
+* spacing
+* buttons
+* color system
+
+Do not force reuse where the interactions are fundamentally different.
+
+DateGolf's event search UI and DatePick's answer-choice UI should remain distinct.
+
+---
+
+# 26. Shared Utilities
+
+Share:
+
+* event loading
+* event validation
+* date/year formatting
+* daily seed generation
+* historical weighting
+* local persistence utilities
+* sharing utilities
+* event metadata
+
+Keep DateGolf-specific scoring separate from DatePick-specific scoring.
+
+---
+
+# 27. Suggested Project Structure
+
+Adapt this to the existing project rather than blindly imposing it:
+
+```text
+src/
+  components/
+    shared/
+    dategolf/
+    datepick/
+
+  views/
+    DateGolfView.vue
+    DatePickView.vue
+
+  engine/
+    shared/
+    dategolf/
+    datepick/
+
+  data/
+    events.json
+
+  services/
+    dailyChallenge.ts
+    persistence.ts
+    sharing.ts
+
+  utils/
+    dates.ts
+    random.ts
+
+  types/
+    events.ts
+    game.ts
+```
+
+The important principle is that **DateGolf and DatePick share infrastructure but have separate game engines where their rules differ.**
+
+---
+
+# 28. Daily Challenge Seed
+
+Use a deterministic seed based on the calendar date.
+
+Conceptually:
+
+```text
+2026-08-23
+      ↓
+seed
+      ↓
+DatePick question set
+```
+
+The same date must always generate the same questions and answer choices.
+
+The seed should be independent of browser/device.
+
+A user refreshing the page must not receive a different challenge.
+
+---
+
+# 29. Daily Challenge Generation Process
+
+Recommended process:
+
+### Step 1
+
+Create the day's seed.
+
+### Step 2
+
+Select eight target events according to the desired historical distribution.
+
+### Step 3
+
+Ensure no event is repeated.
+
+### Step 4
+
+For each event, generate candidate distractors.
+
+### Step 5
+
+Rank distractor sets by quality.
+
+### Step 6
+
+Select the best valid set of four years.
+
+### Step 7
+
+Shuffle answer positions deterministically.
+
+### Step 8
+
+Store the generated challenge in memory for the session.
+
+Because the generation is deterministic, it does not necessarily need to be stored in a database.
+
+---
+
+# 30. Historical Distribution
+
+Start with:
+
+```text
+4 questions — 1800 or later
+4 questions — before 1800
+```
+
+Within the pre-1800 group, allow a mixture of:
+
+* ancient
+* classical
+* medieval
+* early modern
+
+Within the post-1800 group, favor:
+
+* 1800–1899
+* 1900–1949
+* 1950–1999
+* 2000–present
+
+The exact percentages should be configurable.
+
+Do not allow the game to become overwhelmingly 20th-century.
+
+---
+
+# 31. Importance and Difficulty
+
+Use the existing event metadata if it already exists.
+
+Importance can influence which events appear in daily challenges.
+
+Prefer important and recognizable events, while occasionally including medium/difficult events.
+
+For example:
+
+```text
+High importance:
+higher probability
+
+Medium importance:
+normal probability
+
+Low importance:
+lower probability
+```
+
+Difficulty can be used for balancing.
+
+A daily challenge should not accidentally contain eight extremely obscure events.
+
+---
+
+# 32. Question Variety
+
+A daily challenge should have topical variety.
+
+Avoid:
+
+```text
+Q1 war
+Q2 war
+Q3 war
+Q4 war
+...
+```
+
+If possible, vary:
+
+* geography
+* politics
+* science
+* war
+* culture
+* technology
+* exploration
+* social history
+
+This is another reason to use the event metadata.
+
+---
+
+# 33. Quality-Control Simulation
+
+Before deploying the generator, simulate many daily challenges.
+
+Generate at least several hundred hypothetical days.
+
+Inspect:
+
+* year distribution
+* geographic distribution
+* topic distribution
+* duplicate rate
+* question difficulty
+* distractor quality
+* frequency of repeated events
+* number of obviously easy questions
+
+The goal is to tune the generator rather than manually curate every future day.
+
+---
+
+# 34. Critical Product Principle
+
+DatePick should not become simply:
+
+> "Do you remember the date?"
+
+It should become:
+
+> "Can you locate this event in history?"
+
+The distinction matters.
+
+The four choices should encourage students to reason:
+
+> "I know this happened around the early 1900s, so 1914 seems plausible."
+
+That makes DatePick complementary to DateGolf.
+
+---
+
+# 35. Relationship Between the Games
+
+The final application should feel like one historical playground with two complementary games:
+
+## DateGolf
+
+**Given a date → find the event.**
+
+Tests:
+
+* temporal intuition
+* historical estimation
+* relative chronology
+
+## DatePick
+
+**Given an event → pick the date.**
+
+Tests:
+
+* historical recall
+* chronological knowledge
+* recognition of historical periods
+
+Both use:
+
+* the same events
+* the same historical universe
+* the same daily concept
+* the same student audience
+* the same Vue application
+* the same deployment
+* the same visual language
+
+---
+
+# 36. Implementation Phases
+
+## Phase 1 — Inspect Existing DateGolf
+
+Do not change DateGolf behavior.
+
+Understand:
+
+* current Vue structure
+* routing
+* events.json schema
+* existing components
+* daily challenge implementation
+* styling system
+* deployment configuration
+
+---
+
+## Phase 2 — Create DatePick Engine
+
+Implement:
+
+* question selection
+* historical weighting
+* distractor generation
+* deterministic randomization
+* answer validation
+* score calculation
+* daily challenge generation
+
+Write unit tests before building the UI.
+
+---
+
+## Phase 3 — Add `/datepick`
+
+Add the Vue route.
+
+Create the DatePick view and components.
+
+Verify DateGolf continues to work.
+
+---
+
+## Phase 4 — Build the Question Experience
+
+Implement:
+
+* event title
+* four choices
+* progress
+* selection state
+* answer reveal
+* explanation
+* next question
+
+Optimize for mobile.
+
+---
+
+## Phase 5 — Build Daily Challenge
+
+Implement:
+
+* eight questions
+* deterministic date-based seed
+* 4/4 historical weighting
+* event/topic diversity
+* quality-controlled distractors
+
+---
+
+## Phase 6 — Results and Sharing
+
+Implement:
+
+* final score
+* answer review
+* daily completion state
+* share card
+* Web Share API
+* clipboard fallback
+
+---
+
+## Phase 7 — Tune the Generator
+
+Simulate hundreds or thousands of challenges.
+
+Review the generated questions.
+
+Tune:
+
+* historical distribution
+* difficulty
+* distractor distance
+* importance weighting
+* topic diversity
+
+---
+
+## Phase 8 — Polish
+
+Ensure both games feel like one product.
+
+Test:
+
+* mobile Safari
+* Android Chrome
+* desktop browsers
+* refresh/resume behavior
+* daily rollover
+* sharing
+* accessibility
+* performance
+
+---
+
+# 37. Final Implementation Principle
+
+The existing DateGolf application is already a production game.
+
+**Do not rewrite DateGolf while adding DatePick unless a genuine architectural problem requires it.**
+
+Add DatePick cleanly to the existing architecture.
+
+The desired final result is:
+
+```text
+                 ONE VUE APPLICATION
+                         |
+          ┌──────────────┴──────────────┐
+          |                             |
+      /dategolf                     /datepick
+          |                             |
+      DateGolf                       DatePick
+          |                             |
+          └──────────────┬──────────────┘
+                         |
+                  events.json
+                         |
+               Historical Game Engine
+```
+
+One codebase.
+
+One historical dataset.
+
+Two complementary games.
+
+Two daily challenges.
+
+No duplicated data.
+
+No unnecessary database.
+
+No second deployment architecture.
+
+The long-term opportunity is to make the application a small **daily history-game platform**, with DateGolf and DatePick as the first two experiences.

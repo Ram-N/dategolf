@@ -1,4 +1,4 @@
-# DateGolf — Quick Start
+# DateGolf + DatePick — Quick Start
 
 > Run this file when returning after a gap: `cat QUICKSTART.md`
 
@@ -6,7 +6,13 @@
 
 ## What is this?
 
-A daily browser-based **history golf game**. Each day players get 5 target years. They pick historical events to land as close as possible to each target — lowest total score wins (like golf). Built for Indian students but covers world history.
+Two daily browser-based history games in one app:
+
+**DateGolf** — Given 5 target years, pick historical events to land as close as possible to each — lowest total penalty wins (like golf).
+
+**DatePick** — Given 8 historical events, pick the correct year from 4 choices. Score out of 8.
+
+Both games share the same event dataset and are seeded by date (same date = same challenge for everyone).
 
 - **Live site**: https://dategolf.vercel.app
 - **GitHub**: https://github.com/Ram-N/dategolf
@@ -46,44 +52,70 @@ node scripts/validate-events.cjs   # Validate events.json data quality
 
 ```
 src/
-  types/index.ts              ← All TypeScript interfaces (start here)
-  data/events.json            ← 269 historical events (the dataset)
+  types/
+    index.ts                  ← DateGolf interfaces (Event, GameState, etc.)
+    datepick.ts               ← DatePick interfaces (DatePickQuestion, etc.)
+  data/events.json            ← 269 historical events (shared by both games)
   engine/
-    gameEngine.ts             ← Pure game logic, zero Vue deps
-    challengeGenerator.ts     ← Seeded daily target-year generation
+    gameEngine.ts             ← DateGolf pure game logic, zero Vue deps
+    challengeGenerator.ts     ← DateGolf seeded daily target-year generation
+    datepick/
+      challengeGenerator.ts   ← DatePick seeded 8-question generation (6 era bands)
+      distractorEngine.ts     ← Ranked distractor selection (prefers close years)
     __tests__/                ← Unit tests for engine + generator
   services/
     eventSearch.ts            ← Fuse.js fuzzy search (name+alias only)
-    persistence.ts            ← localStorage: session resume, streak, stats
-    sharing.ts                ← Web Share API + clipboard fallback
-  stores/game.ts              ← Pinia store connecting engine to Vue
+    persistence.ts            ← DateGolf localStorage: session resume, streak, stats
+    sharing.ts                ← DateGolf Web Share API + clipboard fallback
+    datepickPersistence.ts    ← DatePick localStorage: session resume, streak, stats
+    datepickSharing.ts        ← DatePick share text builder (✅/❌ emoji grid)
+  stores/
+    game.ts                   ← DateGolf Pinia store
+    datepick.ts               ← DatePick Pinia store
   views/
-    DailyChallengeView.vue    ← Top-level orchestrator (phases: landing/playing/revealing/complete)
+    DailyChallengeView.vue    ← DateGolf orchestrator (landing/playing/revealing/complete)
+    DatePickView.vue          ← DatePick orchestrator (same phase pattern)
   components/
-    GameHeader.vue            ← Hole progress (●●●○○) + score
-    TargetYear.vue            ← Big year display
-    EventFinder.vue           ← Search input + category chips + results list
-    ConfirmSelection.vue      ← Bottom-sheet confirm before locking in
-    AnswerReveal.vue          ← Year reveal, penalty, better alternatives
-    FinalScoreView.vue        ← 5-hole summary, stats, share button
+    GameHeader.vue            ← DateGolf: hole progress (●●●○○) + score
+    TargetYear.vue            ← DateGolf: big year display
+    EventFinder.vue           ← DateGolf: search input + category chips + results
+    ConfirmSelection.vue      ← DateGolf: bottom-sheet confirm before locking in
+    AnswerReveal.vue          ← DateGolf: year reveal, penalty, better alternatives
+    FinalScoreView.vue        ← DateGolf: 5-hole summary, stats, share button
+    datepick/
+      DatePickHeader.vue      ← DatePick: progress dots + live score
+      QuestionCard.vue        ← DatePick: event name + 4 choice buttons
+      QuestionReveal.vue      ← DatePick: correct/wrong + explanation
+      DatePickResults.vue     ← DatePick: final score, answer review, share
+  router/index.ts             ← / → /datepick, /dategolf, /datepick routes
+  App.vue                     ← Minimal nav bar (DateGolf | DatePick)
 docs/
-  01_dategolf_GAME_SPEC.md      ← Game design spec
-  02_dategolf_TECHNICAL_PLAN.md ← Technical architecture + 11-phase plan
+  01_dategolf_GAME_SPEC.md      ← DateGolf design spec
+  02_dategolf_TECHNICAL_PLAN.md ← Technical architecture
   03_dategolf_DATA_AND_CHALLENGES.md ← Event data design + challenge rules
+  04_datepick_SPECS.md          ← DatePick design spec
 scripts/
   validate-events.cjs         ← Run after editing events.json
 ```
 
 ---
 
-## How the game works (engineering view)
+## How the games work (engineering view)
 
+### DateGolf
 1. **App loads** → reads today's date → `generateDailyChallenge(date)` seeds a PRNG from the date string → picks 5 target years across 7 weighted historical eras (same date = same targets everywhere)
 2. **localStorage** is checked — if a game for today exists, it resumes from that state
 3. **Player searches** for an event by name/keyword → Fuse.js searches `name` + `aliases` only (year is never indexed or shown)
-4. **Player confirms** → `selectEvent()` in the pure game engine calculates `penalty = |targetYear - eventYear|`, finds up to 2 better alternatives (one from each side of the target), advances the hole
+4. **Player confirms** → `selectEvent()` calculates `penalty = |targetYear - eventYear|`, finds up to 2 better alternatives, advances the hole
 5. **Reveal screen** shows the event year, penalty, running total, and alternatives
 6. After **5 holes**, final score screen with spoiler-free share text
+
+### DatePick
+1. **App loads** → `generateDatePickChallenge(date)` seeds a different PRNG (salted with `datepick:`) → picks 8 events across 6 fixed era bands (1 ancient, 1 medieval, 2 early-modern, 1 1800s, 2 1900–1949, 1 1950+)
+2. **localStorage** is checked — incomplete game resumes mid-question
+3. **Each question** shows the event name + description, with 4 year choices (correct year + 3 distractors ranked by proximity)
+4. **Player picks** → reveal shows ✓/✗ + the correct year + full description
+5. After **8 questions**, results screen shows score out of 8 with per-question breakdown and share text
 
 ---
 
@@ -104,15 +136,22 @@ Inspect deployments: https://vercel.com/ram-ns-projects/dategolf
 
 | Area | Status |
 |---|---|
-| Game engine + tests | ✅ Complete |
+| DateGolf game engine + tests | ✅ Complete |
 | 269 historical events | ✅ Complete |
-| Daily challenge generator | ✅ Deterministic seeded PRNG |
+| DateGolf daily challenge generator | ✅ Deterministic seeded PRNG |
 | Fuzzy event search | ✅ Fuse.js, year never leaked |
-| Full 5-hole game UI | ✅ Mobile-first |
+| DateGolf full 5-hole game UI | ✅ Mobile-first |
 | Answer reveal + alternatives | ✅ Educational reveal |
-| localStorage persistence | ✅ Resume mid-game on reload |
-| Streak + personal best | ✅ Tracked in localStorage |
-| Spoiler-free sharing | ✅ Web Share API + clipboard |
+| DateGolf localStorage persistence | ✅ Resume mid-game on reload |
+| Streak + personal best (DateGolf) | ✅ Tracked in localStorage |
+| Spoiler-free sharing (DateGolf) | ✅ Web Share API + clipboard |
+| **DatePick game mode** | ✅ Complete |
+| DatePick challenge generator | ✅ 8 questions, 6 era bands, seeded |
+| DatePick distractor engine | ✅ Proximity-ranked distractors |
+| DatePick UI (4 phases) | ✅ Mobile-first |
+| DatePick localStorage persistence | ✅ Resume + streak + best score |
+| DatePick sharing | ✅ ✅/❌ emoji grid |
+| Game nav bar (DateGolf ↔ DatePick) | ✅ Top nav with active state |
 | Vercel deployment | ✅ Live at dategolf.vercel.app |
 
 ---
@@ -167,9 +206,10 @@ Inspect deployments: https://vercel.com/ram-ns-projects/dategolf
 
 - **Year never shown during search** — `eventSearch.ts` only indexes `name` + `aliases`
 - **Engine has zero Vue deps** — `src/engine/` must stay pure TypeScript
-- **Same date = same challenge** — the PRNG seed is derived from the date string only
+- **Same date = same challenge** — the PRNG seed is derived from the date string only; DatePick uses a different salt (`datepick:`) so its seed is independent from DateGolf's
 - **No backend** — everything is static JSON + localStorage; keep it that way for v1
-- **Used-event rule** — each event can only be picked once per 5-hole round; enforced by engine
+- **Used-event rule (DateGolf)** — each event can only be picked once per 5-hole round; enforced by engine
+- **Events are shared** — both games read from `src/data/events.json`; don't add game-specific fields to the shared Event type
 
 ---
 
