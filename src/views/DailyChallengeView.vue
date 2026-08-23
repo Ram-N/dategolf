@@ -82,6 +82,7 @@
         :totalScore="store.totalScore"
         :scoreStatus="store.scoreStatus"
         :completed="true"
+        :holeResults="store.holeResults"
       />
       <FinalScoreView
         :gameState="store.gameState!"
@@ -99,6 +100,7 @@
         :totalScore="store.totalScore"
         :scoreStatus="store.scoreStatus"
         :completed="false"
+        :holeResults="store.holeResults"
       />
       <AnswerReveal
         :result="store.lastHoleResult"
@@ -116,6 +118,7 @@
         :totalScore="store.totalScore"
         :scoreStatus="store.scoreStatus"
         :completed="false"
+        :holeResults="store.holeResults"
       />
 
       <TargetYear
