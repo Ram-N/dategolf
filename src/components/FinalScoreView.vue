@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col min-h-screen bg-gray-950">
-    <div class="flex-1 flex flex-col items-center justify-center px-4 py-8 text-center">
+  <div class="flex flex-col flex-1 overflow-y-auto bg-gray-950">
+    <div class="flex flex-col items-center px-4 py-8 text-center">
 
       <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">Final Score</p>
       <div class="text-7xl font-black tabular-nums mb-2" :class="scoreStatusClass">
@@ -52,13 +52,19 @@
 
     </div>
 
-    <!-- Share button -->
-    <div class="px-4 pb-8 space-y-3">
+    <!-- Actions -->
+    <div class="px-4 pb-8 space-y-3 w-full max-w-sm mx-auto">
       <button
         class="w-full py-4 rounded-xl bg-white text-gray-900 font-bold text-lg hover:bg-gray-100 transition-colors"
         @click="onShare"
       >
         {{ shareLabel }}
+      </button>
+      <button
+        class="w-full py-3 rounded-xl border border-gray-700 text-gray-400 text-sm hover:border-gray-500 hover:text-white transition-colors"
+        @click="emit('back')"
+      >
+        ← Back to Home
       </button>
       <p class="text-xs text-gray-600 text-center">Come back tomorrow for a new challenge</p>
     </div>
@@ -78,6 +84,8 @@ const props = defineProps<{
   scoreStatus: ScoreStatus
   stats: PlayerStats | null
 }>()
+
+const emit = defineEmits<{ back: [] }>()
 
 const shareLabel = ref('Share Result')
 

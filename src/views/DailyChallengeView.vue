@@ -90,6 +90,7 @@
         :totalScore="store.totalScore"
         :scoreStatus="store.scoreStatus"
         :stats="store.playerStats"
+        @back="store.phase = 'landing'"
       />
     </template>
 
@@ -107,6 +108,7 @@
         :totalScore="store.totalScore"
         :scoreStatus="store.scoreStatus"
         :isLastHole="store.currentHole >= 5"
+        :events="store.events"
         @next="store.advanceFromReveal()"
       />
     </template>

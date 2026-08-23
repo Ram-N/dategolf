@@ -30,7 +30,12 @@
         <div class="text-2xl font-bold tabular-nums" :class="scoreStatusClass">{{ totalScore }}</div>
       </div>
 
-      <!-- Better alternatives -->
+      <!-- Timeline -->
+      <div class="w-full max-w-md mb-4">
+        <TimelineView :result="result" :events="events" />
+      </div>
+
+      <!-- Better alternatives cards -->
       <div v-if="result.betterAlternatives.length > 0" class="w-full max-w-md">
         <p class="text-xs text-gray-500 uppercase tracking-widest mb-2">Better choices were available</p>
         <div class="space-y-2">
@@ -41,7 +46,7 @@
           >
             <div class="text-left">
               <div class="text-sm font-medium text-white">{{ alt.eventName }}</div>
-              <div class="text-xs text-gray-500">Year: {{ formatYear(alt.eventYear) }}</div>
+              <div class="text-xs text-gray-500">{{ formatYear(alt.eventYear) }}</div>
             </div>
             <div class="text-right">
               <div class="text-lg font-bold text-green-400">+{{ alt.penalty }}</div>
@@ -68,13 +73,15 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { HoleResult, ScoreStatus } from '@/types'
+import type { HoleResult, ScoreStatus, Event } from '@/types'
+import TimelineView from './TimelineView.vue'
 
 const props = defineProps<{
   result: HoleResult
   totalScore: number
   scoreStatus: ScoreStatus
   isLastHole: boolean
+  events?: Event[]
 }>()
 
 const emit = defineEmits<{ next: [] }>()
