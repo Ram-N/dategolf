@@ -1,0 +1,2564 @@
+{
+  "01-01": [
+    "crucifixion-of-jesus",
+    "moors-invade-spain",
+    "protestant-reformation",
+    "long-march-china",
+    "television-invented"
+  ],
+  "01-02": [
+    "birth-of-buddha",
+    "woodblock-printing-china",
+    "american-war-independence-ends",
+    "telephone-invented",
+    "osama-bin-laden-killed"
+  ],
+  "01-03": [
+    "gupta-empire-founded",
+    "timur-sacks-delhi",
+    "babur-founds-mughal-empire",
+    "independence-south-africa",
+    "india-china-war"
+  ],
+  "01-04": [
+    "great-wall-china",
+    "joan-of-arc-burned",
+    "protestant-reformation",
+    "tiananmen-square",
+    "tagore-nobel-prize"
+  ],
+  "01-05": [
+    "maya-classic-period",
+    "fall-of-constantinople",
+    "american-revolution",
+    "gorbachev-becomes-leader",
+    "space-race-yuri-gagarin"
+  ],
+  "01-06": [
+    "birth-of-buddha",
+    "battle-of-bannockburn",
+    "trans-atlantic-slave-trade-peak",
+    "rise-of-nazism",
+    "battle-of-trafalgar"
+  ],
+  "01-07": [
+    "constantinople-founded",
+    "islamic-golden-age",
+    "american-revolution",
+    "india-china-war",
+    "cold-war-begins"
+  ],
+  "01-08": [
+    "roman-republic-founded",
+    "battle-of-tours",
+    "battle-of-haldighati",
+    "partition-india-pakistan",
+    "telephone-invented"
+  ],
+  "01-09": [
+    "code-of-hammurabi",
+    "genghis-khan-unifies-mongols",
+    "conquest-of-peru-inca",
+    "chinese-communist-revolution",
+    "apartheid-south-africa"
+  ],
+  "01-10": [
+    "pax-romana",
+    "viking-exploration-north-america",
+    "french-revolution-declaration",
+    "first-use-of-anesthesia",
+    "covid-19-pandemic"
+  ],
+  "01-11": [
+    "ashoka-converts-to-buddhism",
+    "timur-sacks-delhi",
+    "humayun-defeated-kanauj",
+    "death-of-stalin",
+    "abolition-slavery-us"
+  ],
+  "01-12": [
+    "caesar-crosses-rubicon",
+    "printing-movable-type-china",
+    "abolition-slavery-france",
+    "space-station-iss",
+    "pokhran-nuclear-tests"
+  ],
+  "01-13": [
+    "alexander-conquests",
+    "zheng-he-voyages",
+    "mughal-akbar-administration",
+    "demonetization-india",
+    "first-oil-well"
+  ],
+  "01-14": [
+    "first-cities-mesopotamia",
+    "guru-nanak-born",
+    "akbar-din-i-ilahi",
+    "battle-of-britain",
+    "abolition-slavery-us"
+  ],
+  "01-15": [
+    "birth-of-buddha",
+    "islamic-caliphate-expands",
+    "english-civil-war",
+    "rise-of-nazism",
+    "indo-pak-1965-war"
+  ],
+  "01-16": [
+    "crucifixion-of-jesus",
+    "invention-of-compass",
+    "second-battle-of-panipat",
+    "korean-war",
+    "palestine-israel-state"
+  ],
+  "01-17": [
+    "thales-solar-eclipse",
+    "guru-nanak-born",
+    "east-india-company-founded",
+    "paris-climate-agreement",
+    "nirbhaya-case-protests"
+  ],
+  "01-18": [
+    "great-fire-of-rome",
+    "invention-of-zero",
+    "battle-of-plassey",
+    "gujarat-earthquake",
+    "wright-brothers-flight"
+  ],
+  "01-19": [
+    "first-triumvirate",
+    "chola-rajaraja-peak",
+    "second-battle-of-panipat",
+    "chinese-cultural-revolution",
+    "everest-first-ascent"
+  ],
+  "01-20": [
+    "roman-republic-founded",
+    "aztec-empire-peak",
+    "american-revolution",
+    "berlin-wall-falls",
+    "jallianwala-bagh-massacre"
+  ],
+  "01-21": [
+    "paper-invented-china",
+    "battle-of-hastings",
+    "abolition-slavery-france",
+    "opium-war-second",
+    "non-cooperation-movement"
+  ],
+  "01-22": [
+    "aryabhata-heliocentric",
+    "founding-of-islam",
+    "french-revolution-declaration",
+    "atomic-bomb-hiroshima",
+    "ghana-independence"
+  ],
+  "01-23": [
+    "roman-republic-founded",
+    "invention-of-zero",
+    "battle-of-haldighati",
+    "economic-liberalization-india",
+    "caa-protests-india"
+  ],
+  "01-24": [
+    "hippocrates-medicine",
+    "gunpowder-invented",
+    "steam-engine-watt",
+    "tiananmen-one",
+    "sputnik-launch"
+  ],
+  "01-25": [
+    "great-fire-of-rome",
+    "black-death-arrives-china",
+    "portuguese-arrive-japan",
+    "first-football-world-cup",
+    "japan-meiji-constitution"
+  ],
+  "01-26": [
+    "ashoka-becomes-emperor",
+    "age-of-exploration-portugal",
+    "signing-of-treaty-westphalia",
+    "nato-founded",
+    "jallianwala-bagh-massacre"
+  ],
+  "01-27": [
+    "battle-of-mahabharata",
+    "black-death-europe",
+    "shivaji-crowned-chhatrapati",
+    "suez-canal-opens",
+    "revolutions-of-1848"
+  ],
+  "01-28": [
+    "fall-of-troy",
+    "battle-of-tours",
+    "east-india-company-bengal",
+    "curie-radioactivity",
+    "nirbhaya-case-protests"
+  ],
+  "01-29": [
+    "ashoka-becomes-emperor",
+    "joan-of-arc-burned",
+    "first-battle-of-panipat",
+    "vietnam-partition",
+    "everest-first-ascent"
+  ],
+  "01-30": [
+    "pax-romana",
+    "black-death-arrives-china",
+    "glorious-revolution",
+    "penicillin-discovered",
+    "sachin-tendulkar-debut"
+  ],
+  "01-31": [
+    "invention-of-the-wheel",
+    "renaissance-da-vinci",
+    "wealth-of-nations-published",
+    "krakatoa-erupts",
+    "nirbhaya-case-protests"
+  ],
+  "02-01": [
+    "first-triumvirate",
+    "mahmud-ghazni-somnath",
+    "french-revolution",
+    "brahmos-missile-india",
+    "cold-war-begins"
+  ],
+  "02-02": [
+    "fall-of-troy",
+    "printing-movable-type-china",
+    "hobbes-leviathan",
+    "curie-radioactivity",
+    "indo-pak-1965-war"
+  ],
+  "02-03": [
+    "invention-of-the-wheel",
+    "viking-exploration-north-america",
+    "newton-laws-of-motion",
+    "russo-japanese-war",
+    "thatcher-becomes-pm"
+  ],
+  "02-04": [
+    "pax-romana",
+    "charlemagne-crowned-emperor",
+    "portuguese-arrive-japan",
+    "dna-structure-discovered",
+    "south-african-boer-war"
+  ],
+  "02-05": [
+    "first-triumvirate",
+    "ming-dynasty-founded",
+    "renaissance-michelangelo",
+    "amazon-founded",
+    "end-world-war-two"
+  ],
+  "02-06": [
+    "qin-unification-china",
+    "harsha-reign-begins",
+    "humayun-defeated-kanauj",
+    "nato-founded",
+    "manhattan-project"
+  ],
+  "02-07": [
+    "birth-of-confucius",
+    "hijra",
+    "spanish-armada-defeated",
+    "economic-liberalization-india",
+    "abolition-slavery-us"
+  ],
+  "02-08": [
+    "code-of-hammurabi",
+    "hundred-years-war",
+    "haitian-revolution",
+    "first-oil-well",
+    "indira-gandhi-assassination"
+  ],
+  "02-09": [
+    "nalanda-university-founded",
+    "woodblock-printing-china",
+    "copernicus-heliocentric",
+    "iphone-launched",
+    "bangladesh-liberation-war"
+  ],
+  "02-10": [
+    "caesar-crosses-rubicon",
+    "islamic-golden-age",
+    "renaissance-shakespeare",
+    "operation-blue-star",
+    "dolly-sheep-cloned"
+  ],
+  "02-11": [
+    "ashoka-becomes-emperor",
+    "gunpowder-invented",
+    "mughal-empire-zenith-aurangzeb",
+    "covid-19-pandemic",
+    "modi-elected-pm"
+  ],
+  "02-12": [
+    "babylonian-conquest-jerusalem",
+    "vasco-da-gama-india-route",
+    "galileo-telescope",
+    "ghana-independence",
+    "global-financial-crisis"
+  ],
+  "02-13": [
+    "great-fire-of-rome",
+    "invention-of-compass",
+    "english-restoration",
+    "aids-epidemic",
+    "vietnam-war"
+  ],
+  "02-14": [
+    "fall-of-troy",
+    "chola-rajaraja-peak",
+    "akbar-din-i-ilahi",
+    "darwin-evolution",
+    "partition-india-pakistan"
+  ],
+  "02-15": [
+    "sumerian-writing",
+    "age-of-exploration-portugal",
+    "act-of-union-1707",
+    "non-cooperation-movement",
+    "rwandan-genocide"
+  ],
+  "02-16": [
+    "birth-of-buddha",
+    "birth-of-muhammad",
+    "first-battle-of-panipat",
+    "gst-implemented-india",
+    "kargil-war"
+  ],
+  "02-17": [
+    "egyptian-pyramids-built",
+    "black-death-europe",
+    "spanish-armada-defeated",
+    "rise-of-nazism",
+    "global-financial-crisis"
+  ],
+  "02-18": [
+    "qin-unification-china",
+    "gunpowder-invented",
+    "mughal-empire-zenith-aurangzeb",
+    "ramanujan-born",
+    "covid-lockdown-india"
+  ],
+  "02-19": [
+    "julius-caesar-assassination",
+    "zheng-he-voyages",
+    "great-fire-london",
+    "television-invented",
+    "bangladesh-liberation-war"
+  ],
+  "02-20": [
+    "eruption-of-vesuvius",
+    "mongol-empire-peak",
+    "taj-mahal-construction-begins",
+    "india-china-war",
+    "apartheid-sharpeville-massacre"
+  ],
+  "02-21": [
+    "ashoka-converts-to-buddhism",
+    "hijra",
+    "opium-trade-china-east-india",
+    "indian-ocean-tsunami-india",
+    "human-genome-project"
+  ],
+  "02-22": [
+    "fall-of-roman-empire-west",
+    "islamic-caliphate-expands",
+    "spanish-armada-defeated",
+    "fall-of-qing-dynasty",
+    "einstein-relativity"
+  ],
+  "02-23": [
+    "first-triumvirate",
+    "battle-of-bannockburn",
+    "copernicus-heliocentric",
+    "india-china-war",
+    "partition-of-bengal"
+  ],
+  "02-24": [
+    "roman-republic-founded",
+    "black-death-arrives-china",
+    "spanish-armada-defeated",
+    "emancipation-proclamation",
+    "civil-rights-act-us"
+  ],
+  "02-25": [
+    "fall-of-roman-empire-west",
+    "renaissance-begins-florence",
+    "conquest-of-peru-inca",
+    "revolutions-of-1848",
+    "space-shuttle-columbia"
+  ],
+  "02-26": [
+    "first-triumvirate",
+    "birth-of-muhammad",
+    "babur-founds-mughal-empire",
+    "ottoman-empire-falls",
+    "australia-federation"
+  ],
+  "02-27": [
+    "death-of-alexander",
+    "hundred-years-war",
+    "great-fire-london",
+    "first-world-war-ends",
+    "ghana-independence"
+  ],
+  "02-28": [
+    "indus-valley-begins",
+    "islamic-golden-age",
+    "english-civil-war",
+    "napoleonic-wars",
+    "french-colonial-algeria"
+  ],
+  "02-29": [
+    "cyrus-founds-persian-empire",
+    "black-death-arrives-china",
+    "death-of-elizabeth-i",
+    "india-china-war",
+    "malala-nobel-peace-prize"
+  ],
+  "03-01": [
+    "christianity-roman-empire",
+    "renaissance-begins-florence",
+    "boston-tea-party",
+    "caa-protests-india",
+    "khmer-rouge-cambodia"
+  ],
+  "03-02": [
+    "greek-olympics-ancient",
+    "charlemagne-crowned-emperor",
+    "death-of-elizabeth-i",
+    "bolshevik-civil-war",
+    "opium-war-second"
+  ],
+  "03-03": [
+    "indus-valley-begins",
+    "age-of-exploration-portugal",
+    "great-fire-london",
+    "iran-islamic-revolution",
+    "operation-blue-star"
+  ],
+  "03-04": [
+    "founding-of-rome",
+    "hijra",
+    "newton-laws-of-motion",
+    "abolition-slavery-us",
+    "swadeshi-movement"
+  ],
+  "03-05": [
+    "egyptian-pyramids-built",
+    "joan-of-arc-burned",
+    "first-battle-of-panipat",
+    "arab-spring",
+    "ottoman-empire-falls"
+  ],
+  "03-06": [
+    "battle-of-gaugamela",
+    "moors-invade-spain",
+    "euler-konigsberg-bridges",
+    "chinese-civil-war",
+    "internet-invented"
+  ],
+  "03-07": [
+    "pax-romana",
+    "founding-of-islam",
+    "industrial-revolution-textile",
+    "abolition-slavery-us",
+    "space-race-yuri-gagarin"
+  ],
+  "03-08": [
+    "eruption-of-vesuvius",
+    "age-of-exploration-portugal",
+    "euler-konigsberg-bridges",
+    "falklands-war",
+    "atomic-bomb-hiroshima"
+  ],
+  "03-09": [
+    "birth-of-confucius",
+    "viking-exploration-north-america",
+    "signing-of-treaty-westphalia",
+    "ramanujan-born",
+    "global-financial-crisis"
+  ],
+  "03-10": [
+    "great-fire-of-rome",
+    "great-schism",
+    "great-plague-london",
+    "atomic-bomb-hiroshima",
+    "american-civil-war"
+  ],
+  "03-11": [
+    "invention-of-the-wheel",
+    "black-death-arrives-china",
+    "industrial-revolution-textile",
+    "mandela-freed",
+    "unification-germany"
+  ],
+  "03-12": [
+    "egyptian-pyramids-built",
+    "timur-sacks-delhi",
+    "battle-of-haldighati",
+    "thatcher-becomes-pm",
+    "first-football-world-cup"
+  ],
+  "03-13": [
+    "battle-of-mahabharata",
+    "first-crusade",
+    "first-battle-of-panipat",
+    "television-invented",
+    "korean-war"
+  ],
+  "03-14": [
+    "greek-democracy-athens",
+    "islamic-golden-age",
+    "english-restoration",
+    "gorbachev-becomes-leader",
+    "demonetization-india"
+  ],
+  "03-15": [
+    "battle-of-marathon",
+    "gutenberg-printing-press",
+    "french-revolution-declaration",
+    "indian-ocean-tsunami-india",
+    "operation-blue-star"
+  ],
+  "03-16": [
+    "invention-of-the-wheel",
+    "guru-nanak-born",
+    "haitian-revolution",
+    "sachin-tendulkar-debut",
+    "japanese-pearl-harbor"
+  ],
+  "03-17": [
+    "eruption-of-vesuvius",
+    "islamic-caliphate-expands",
+    "copernicus-heliocentric",
+    "first-football-world-cup",
+    "krakatoa-erupts"
+  ],
+  "03-18": [
+    "phoenician-alphabet-invented",
+    "renaissance-begins-florence",
+    "portuguese-arrive-japan",
+    "hitler-rise-chancellor",
+    "spanish-civil-war"
+  ],
+  "03-19": [
+    "pax-romana",
+    "gunpowder-invented",
+    "american-declaration",
+    "cold-war-begins",
+    "panama-canal-opens"
+  ],
+  "03-20": [
+    "paper-invented-china",
+    "aztec-empire-peak",
+    "first-vaccine-smallpox",
+    "first-football-world-cup",
+    "thatcher-becomes-pm"
+  ],
+  "03-21": [
+    "crucifixion-of-jesus",
+    "mongol-empire-peak",
+    "abolition-slavery-france",
+    "long-march-china",
+    "first-use-of-anesthesia"
+  ],
+  "03-22": [
+    "invention-of-the-wheel",
+    "university-of-bologna-founded",
+    "french-revolution",
+    "ramanujan-born",
+    "september-11-attacks"
+  ],
+  "03-23": [
+    "cyrus-founds-persian-empire",
+    "islamic-golden-age",
+    "american-war-independence-ends",
+    "civil-rights-act-us",
+    "sachin-tendulkar-debut"
+  ],
+  "03-24": [
+    "maya-classic-period",
+    "mongol-empire-peak",
+    "act-of-union-1707",
+    "abolition-slavery-britain",
+    "zulu-war"
+  ],
+  "03-25": [
+    "egyptian-pyramids-built",
+    "columbus-reaches-americas",
+    "portuguese-arrive-japan",
+    "gorbachev-becomes-leader",
+    "opium-wars-china"
+  ],
+  "03-26": [
+    "alexander-conquests",
+    "age-of-exploration-portugal",
+    "act-of-union-1707",
+    "marconi-invents-radio",
+    "south-korea-economic-miracle"
+  ],
+  "03-27": [
+    "battle-of-mahabharata",
+    "founding-of-islam",
+    "galileo-telescope",
+    "indian-constitution-adopted",
+    "chinese-opium-ban"
+  ],
+  "03-28": [
+    "platos-academy-founded",
+    "gunpowder-invented",
+    "opium-trade-china-east-india",
+    "chinese-civil-war",
+    "mumbai-terrorist-attacks"
+  ],
+  "03-29": [
+    "phoenician-alphabet-invented",
+    "first-crusade",
+    "french-revolution",
+    "tiananmen-square",
+    "decolonization-africa"
+  ],
+  "03-30": [
+    "birth-of-jesus",
+    "battle-of-tours",
+    "spanish-armada-defeated",
+    "south-african-boer-war",
+    "russo-japanese-war"
+  ],
+  "03-31": [
+    "death-of-alexander",
+    "harsha-reign-begins",
+    "shakespeare-born",
+    "indian-independence",
+    "apartheid-sharpeville-massacre"
+  ],
+  "04-01": [
+    "fall-of-roman-empire-west",
+    "guru-nanak-born",
+    "tipu-sultan-killed",
+    "chinese-civil-war",
+    "japanese-empire-manchuria"
+  ],
+  "04-02": [
+    "founding-of-rome",
+    "columbus-reaches-americas",
+    "conquest-of-peru-inca",
+    "everest-first-ascent",
+    "opium-wars-china"
+  ],
+  "04-03": [
+    "eratosthenes-measures-earth",
+    "kievan-rus-founded",
+    "mughal-akbar-administration",
+    "us-civil-rights-march-selma",
+    "mahatma-gandhi-assassinated"
+  ],
+  "04-04": [
+    "babylonian-conquest-jerusalem",
+    "magna-carta",
+    "pilgrims-land-plymouth",
+    "rise-of-nazism",
+    "first-oil-well"
+  ],
+  "04-05": [
+    "nalanda-university-founded",
+    "mahmud-ghazni-somnath",
+    "taj-mahal-construction-begins",
+    "brahmos-missile-india",
+    "smallpox-eradicated"
+  ],
+  "04-06": [
+    "battle-of-gaugamela",
+    "renaissance-da-vinci",
+    "abolition-slavery-france",
+    "bhopal-gas-tragedy",
+    "japan-world-war-two-defeat"
+  ],
+  "04-07": [
+    "sumerian-writing",
+    "moors-invade-spain",
+    "renaissance-shakespeare",
+    "russo-japanese-war",
+    "internet-invented"
+  ],
+  "04-08": [
+    "cyrus-founds-persian-empire",
+    "founding-of-islam",
+    "conquest-of-peru-inca",
+    "collapse-apartheid-negotiations",
+    "martin-luther-king-speech"
+  ],
+  "04-09": [
+    "platos-academy-founded",
+    "battle-of-hastings",
+    "hobbes-leviathan",
+    "dolly-sheep-cloned",
+    "smallpox-eradicated"
+  ],
+  "04-10": [
+    "fall-of-troy",
+    "genghis-khan-unifies-mongols",
+    "euler-konigsberg-bridges",
+    "einstein-relativity",
+    "great-depression"
+  ],
+  "04-11": [
+    "first-cities-mesopotamia",
+    "vasco-da-gama-india-route",
+    "hobbes-leviathan",
+    "napoleonic-wars",
+    "falklands-war"
+  ],
+  "04-12": [
+    "fall-of-roman-empire-west",
+    "timur-sacks-delhi",
+    "opium-trade-china-east-india",
+    "black-holes-confirmed",
+    "global-financial-crisis"
+  ],
+  "04-13": [
+    "babylonian-conquest-jerusalem",
+    "invention-of-compass",
+    "hobbes-leviathan",
+    "first-oil-well",
+    "mumbai-terrorist-attacks"
+  ],
+  "04-14": [
+    "socrates-execution",
+    "gutenberg-printing-press",
+    "thirty-years-war",
+    "chandrayaan-1-launched",
+    "indian-national-congress-founded"
+  ],
+  "04-15": [
+    "christianity-roman-empire",
+    "great-schism",
+    "newton-laws-of-motion",
+    "d-day-normandy",
+    "mumbai-terrorist-attacks"
+  ],
+  "04-16": [
+    "death-of-alexander",
+    "battle-of-hastings",
+    "signing-of-treaty-westphalia",
+    "malala-nobel-peace-prize",
+    "holocaust"
+  ],
+  "04-17": [
+    "caesar-crosses-rubicon",
+    "woodblock-printing-china",
+    "mughal-akbar-administration",
+    "space-race-yuri-gagarin",
+    "mumbai-terrorist-attacks"
+  ],
+  "04-18": [
+    "alexander-founds-alexandria",
+    "renaissance-da-vinci",
+    "american-war-independence-ends",
+    "suffragette-emmeline-pankhurst",
+    "hong-kong-handover"
+  ],
+  "04-19": [
+    "julius-caesar-assassination",
+    "great-schism",
+    "signing-of-treaty-westphalia",
+    "chernobyl-disaster",
+    "napoleonic-wars"
+  ],
+  "04-20": [
+    "battle-of-marathon",
+    "printing-movable-type-china",
+    "battle-of-haldighati",
+    "south-korea-economic-miracle",
+    "internet-invented"
+  ],
+  "04-21": [
+    "pax-romana",
+    "fall-of-constantinople",
+    "thirty-years-war",
+    "six-day-war",
+    "civil-rights-act-us"
+  ],
+  "04-22": [
+    "punic-wars",
+    "renaissance-da-vinci",
+    "battle-of-haldighati",
+    "smallpox-eradicated",
+    "bangladesh-liberation-war"
+  ],
+  "04-23": [
+    "attila-hun-invasions",
+    "islamic-golden-age",
+    "boston-tea-party",
+    "lincoln-assassination",
+    "spanish-civil-war"
+  ],
+  "04-24": [
+    "great-wall-china",
+    "guru-nanak-born",
+    "east-india-company-bengal",
+    "pokhran-nuclear-tests",
+    "indian-independence"
+  ],
+  "04-25": [
+    "code-of-hammurabi",
+    "chola-rajaraja-peak",
+    "opium-trade-china-east-india",
+    "d-day-normandy",
+    "treaty-of-versailles"
+  ],
+  "04-26": [
+    "fall-of-roman-empire-west",
+    "charlemagne-crowned-emperor",
+    "portuguese-arrive-japan",
+    "first-steam-railway",
+    "first-use-of-anesthesia"
+  ],
+  "04-27": [
+    "birth-of-confucius",
+    "vijayanagara-empire-founded",
+    "industrial-revolution-textile",
+    "american-civil-war",
+    "indo-pak-1965-war"
+  ],
+  "04-28": [
+    "death-of-alexander",
+    "aztec-empire-peak",
+    "euler-konigsberg-bridges",
+    "fall-of-qing-dynasty",
+    "caa-protests-india"
+  ],
+  "04-29": [
+    "hadrians-wall",
+    "genghis-khan-unifies-mongols",
+    "shivaji-crowned-chhatrapati",
+    "ghana-independence",
+    "television-invented"
+  ],
+  "04-30": [
+    "greek-olympics-ancient",
+    "fall-of-constantinople",
+    "american-revolution",
+    "battle-of-trafalgar",
+    "cricket-test-first"
+  ],
+  "05-01": [
+    "nalanda-university-founded",
+    "mongol-empire-peak",
+    "akbar-din-i-ilahi",
+    "russo-japanese-war",
+    "malala-nobel-peace-prize"
+  ],
+  "05-02": [
+    "silk-road-opens",
+    "black-death-arrives-china",
+    "spanish-conquest-mexico",
+    "berlin-wall-falls",
+    "chinese-civil-war"
+  ],
+  "05-03": [
+    "birth-of-jesus",
+    "black-death-europe",
+    "hobbes-leviathan",
+    "chernobyl-disaster",
+    "green-revolution-india"
+  ],
+  "05-04": [
+    "founding-of-rome",
+    "vijayanagara-empire-founded",
+    "english-restoration",
+    "gandhi-salt-march",
+    "chinese-civil-war"
+  ],
+  "05-05": [
+    "crucifixion-of-jesus",
+    "mahmud-ghazni-somnath",
+    "french-revolution",
+    "falklands-war",
+    "khmer-rouge-cambodia"
+  ],
+  "05-06": [
+    "maya-classic-period",
+    "printing-movable-type-china",
+    "spanish-armada-defeated",
+    "hitler-rise-chancellor",
+    "indian-independence"
+  ],
+  "05-07": [
+    "hippocrates-medicine",
+    "timur-sacks-delhi",
+    "babur-founds-mughal-empire",
+    "japan-meiji-constitution",
+    "x-rays-discovered"
+  ],
+  "05-08": [
+    "birth-of-buddha",
+    "genghis-khan-unifies-mongols",
+    "american-revolution",
+    "modern-olympics-founded",
+    "demonetization-india"
+  ],
+  "05-09": [
+    "thales-solar-eclipse",
+    "invention-of-zero",
+    "execution-of-charles-i",
+    "decolonization-africa",
+    "japan-world-war-two-defeat"
+  ],
+  "05-10": [
+    "death-of-alexander",
+    "genghis-khan-unifies-mongols",
+    "french-revolution",
+    "babri-masjid-demolition",
+    "malala-nobel-peace-prize"
+  ],
+  "05-11": [
+    "sumerian-writing",
+    "zheng-he-voyages",
+    "english-civil-war",
+    "world-wide-web-invention",
+    "battle-of-trafalgar"
+  ],
+  "05-12": [
+    "platos-academy-founded",
+    "great-schism",
+    "founding-of-united-states",
+    "french-colonial-algeria",
+    "space-race-yuri-gagarin"
+  ],
+  "05-13": [
+    "first-triumvirate",
+    "timur-sacks-delhi",
+    "french-revolution-declaration",
+    "wto-founded",
+    "jallianwala-bagh-massacre"
+  ],
+  "05-14": [
+    "qin-unification-china",
+    "kievan-rus-founded",
+    "east-india-company-founded",
+    "martin-luther-king-speech",
+    "khmer-rouge-cambodia"
+  ],
+  "05-15": [
+    "sumerian-writing",
+    "genghis-khan-unifies-mongols",
+    "pilgrims-land-plymouth",
+    "global-financial-crisis",
+    "osama-bin-laden-killed"
+  ],
+  "05-16": [
+    "fall-of-roman-empire-west",
+    "magna-carta",
+    "wealth-of-nations-published",
+    "australia-federation",
+    "six-day-war"
+  ],
+  "05-17": [
+    "battle-of-mahabharata",
+    "gutenberg-printing-press",
+    "mughal-empire-zenith-aurangzeb",
+    "first-steam-railway",
+    "suez-crisis"
+  ],
+  "05-18": [
+    "great-fire-of-rome",
+    "mongol-empire-peak",
+    "copernicus-heliocentric",
+    "chinese-cultural-revolution",
+    "partition-of-bengal"
+  ],
+  "05-19": [
+    "indus-valley-begins",
+    "viking-exploration-north-america",
+    "english-civil-war",
+    "nuremberg-trials",
+    "first-world-war-ends"
+  ],
+  "05-20": [
+    "ashoka-converts-to-buddhism",
+    "battle-of-hastings",
+    "pilgrims-land-plymouth",
+    "everest-first-ascent",
+    "rise-of-nazism"
+  ],
+  "05-21": [
+    "constantinople-founded",
+    "marco-polo-china",
+    "renaissance-shakespeare",
+    "abolition-slavery-us",
+    "moon-landing"
+  ],
+  "05-22": [
+    "sumerian-writing",
+    "timur-sacks-delhi",
+    "spanish-conquest-mexico",
+    "mahatma-gandhi-assassinated",
+    "treaty-of-versailles"
+  ],
+  "05-23": [
+    "great-fire-of-rome",
+    "invention-of-zero",
+    "french-revolution",
+    "space-shuttle-columbia",
+    "chinese-opium-ban"
+  ],
+  "05-24": [
+    "constantinople-founded",
+    "harsha-reign-begins",
+    "spanish-armada-defeated",
+    "world-war-one",
+    "greek-independence"
+  ],
+  "05-25": [
+    "eruption-of-vesuvius",
+    "moors-invade-spain",
+    "euler-konigsberg-bridges",
+    "bolshevik-civil-war",
+    "six-day-war"
+  ],
+  "05-26": [
+    "hadrians-wall",
+    "viking-exploration-north-america",
+    "french-revolution",
+    "korean-war",
+    "australia-federation"
+  ],
+  "05-27": [
+    "pax-romana",
+    "joan-of-arc-burned",
+    "american-war-independence-ends",
+    "caa-protests-india",
+    "krakatoa-erupts"
+  ],
+  "05-28": [
+    "nalanda-university-founded",
+    "islamic-golden-age",
+    "galileo-telescope",
+    "cricket-test-first",
+    "internet-invented"
+  ],
+  "05-29": [
+    "sumerian-writing",
+    "great-schism",
+    "euler-konigsberg-bridges",
+    "osama-bin-laden-killed",
+    "death-of-stalin"
+  ],
+  "05-30": [
+    "battle-of-gaugamela",
+    "vasco-da-gama-india-route",
+    "mughal-akbar-administration",
+    "emancipation-proclamation",
+    "independence-south-africa"
+  ],
+  "05-31": [
+    "hadrians-wall",
+    "aztec-empire-peak",
+    "spanish-armada-defeated",
+    "telephone-invented",
+    "malala-nobel-peace-prize"
+  ],
+  "06-01": [
+    "nalanda-university-founded",
+    "great-schism",
+    "first-vaccine-smallpox",
+    "mangalyaan-mars-mission",
+    "amazon-founded"
+  ],
+  "06-02": [
+    "fall-of-roman-empire-west",
+    "moors-invade-spain",
+    "french-revolution-storming-bastille",
+    "mandela-freed",
+    "chinese-opium-ban"
+  ],
+  "06-03": [
+    "platos-academy-founded",
+    "timur-sacks-delhi",
+    "hobbes-leviathan",
+    "chandrayaan-1-launched",
+    "korean-war"
+  ],
+  "06-04": [
+    "egyptian-pyramids-built",
+    "black-death-europe",
+    "steam-engine-watt",
+    "cold-war-begins",
+    "latin-american-independence"
+  ],
+  "06-05": [
+    "death-of-alexander",
+    "hundred-years-war",
+    "conquest-of-peru-inca",
+    "south-korea-economic-miracle",
+    "nato-founded"
+  ],
+  "06-06": [
+    "crucifixion-of-jesus",
+    "black-death-arrives-china",
+    "american-declaration",
+    "modern-olympics-founded",
+    "martin-luther-king-speech"
+  ],
+  "06-07": [
+    "ironworking-spreads",
+    "ming-dynasty-founded",
+    "steam-engine-watt",
+    "hitler-rise-chancellor",
+    "hong-kong-handover"
+  ],
+  "06-08": [
+    "fall-of-roman-empire-west",
+    "timur-sacks-delhi",
+    "french-revolution",
+    "oil-crisis-1973",
+    "six-day-war"
+  ],
+  "06-09": [
+    "ashoka-becomes-emperor",
+    "age-of-exploration-portugal",
+    "east-india-company-founded",
+    "end-world-war-two",
+    "television-invented"
+  ],
+  "06-10": [
+    "julius-caesar-assassination",
+    "gutenberg-printing-press",
+    "boston-tea-party",
+    "everest-first-ascent",
+    "partition-india-pakistan"
+  ],
+  "06-11": [
+    "sumerian-writing",
+    "hundred-years-war",
+    "first-vaccine-smallpox",
+    "nuremberg-trials",
+    "partition-of-bengal"
+  ],
+  "06-12": [
+    "qin-unification-china",
+    "gunpowder-invented",
+    "taj-mahal-construction-begins",
+    "gandhi-salt-march",
+    "cold-war-begins"
+  ],
+  "06-13": [
+    "roman-republic-founded",
+    "joan-of-arc-burned",
+    "american-revolution",
+    "long-march-china",
+    "berlin-wall-falls"
+  ],
+  "06-14": [
+    "invention-of-the-wheel",
+    "ming-dynasty-founded",
+    "mughal-akbar-administration",
+    "lincoln-assassination",
+    "turkish-republic-founded"
+  ],
+  "06-15": [
+    "hadrians-wall",
+    "vijayanagara-empire-founded",
+    "steam-engine-watt",
+    "chandrayaan-2-launched",
+    "death-of-mao"
+  ],
+  "06-16": [
+    "punic-wars",
+    "harsha-reign-begins",
+    "babur-founds-mughal-empire",
+    "holocaust",
+    "jallianwala-bagh-massacre"
+  ],
+  "06-17": [
+    "battle-of-gaugamela",
+    "columbus-reaches-americas",
+    "spanish-armada-defeated",
+    "manhattan-project",
+    "chandrayaan-1-launched"
+  ],
+  "06-18": [
+    "augustus-first-emperor",
+    "invention-of-compass",
+    "great-fire-london",
+    "sachin-tendulkar-debut",
+    "operation-blue-star"
+  ],
+  "06-19": [
+    "platos-academy-founded",
+    "mongol-empire-peak",
+    "american-war-independence-ends",
+    "chernobyl-disaster",
+    "japan-world-war-two-defeat"
+  ],
+  "06-20": [
+    "cyrus-founds-persian-empire",
+    "kievan-rus-founded",
+    "humayun-defeated-kanauj",
+    "black-holes-confirmed",
+    "fall-of-qing-dynasty"
+  ],
+  "06-21": [
+    "hippocrates-medicine",
+    "moors-invade-spain",
+    "american-war-independence-ends",
+    "bhopal-gas-tragedy",
+    "modi-elected-pm"
+  ],
+  "06-22": [
+    "ironworking-spreads",
+    "charlemagne-crowned-emperor",
+    "battle-of-haldighati",
+    "oil-crisis-1973",
+    "long-march-china"
+  ],
+  "06-23": [
+    "christianity-roman-empire",
+    "age-of-exploration-portugal",
+    "founding-of-united-states",
+    "india-wins-cricket-world-cup",
+    "collapse-apartheid-negotiations"
+  ],
+  "06-24": [
+    "greek-democracy-athens",
+    "islamic-caliphate-expands",
+    "abolition-slavery-france",
+    "fall-of-qing-dynasty",
+    "holocaust"
+  ],
+  "06-25": [
+    "birth-of-buddha",
+    "invention-of-compass",
+    "shakespeare-born",
+    "quit-india-movement",
+    "latin-american-independence"
+  ],
+  "06-26": [
+    "maya-classic-period",
+    "timur-sacks-delhi",
+    "copernicus-heliocentric",
+    "long-march-china",
+    "first-use-of-anesthesia"
+  ],
+  "06-27": [
+    "indus-valley-begins",
+    "renaissance-begins-florence",
+    "death-of-elizabeth-i",
+    "malala-nobel-peace-prize",
+    "partition-of-africa-colonial"
+  ],
+  "06-28": [
+    "crucifixion-of-jesus",
+    "hundred-years-war",
+    "conquest-of-peru-inca",
+    "latin-american-independence",
+    "rajiv-gandhi-assassination"
+  ],
+  "06-29": [
+    "greek-democracy-athens",
+    "vijayanagara-empire-founded",
+    "great-fire-london",
+    "jfk-assassination",
+    "cold-war-begins"
+  ],
+  "06-30": [
+    "ironworking-spreads",
+    "hijra",
+    "renaissance-shakespeare",
+    "world-wide-web-invention",
+    "krakatoa-erupts"
+  ],
+  "07-01": [
+    "aryabhata-heliocentric",
+    "invention-of-zero",
+    "signing-of-treaty-westphalia",
+    "death-of-mao",
+    "american-civil-war"
+  ],
+  "07-02": [
+    "julius-caesar-assassination",
+    "aztec-empire-peak",
+    "opium-trade-china-east-india",
+    "crimean-war",
+    "x-rays-discovered"
+  ],
+  "07-03": [
+    "greek-olympics-ancient",
+    "zheng-he-voyages",
+    "galileo-telescope",
+    "lincoln-assassination",
+    "chinese-civil-war"
+  ],
+  "07-04": [
+    "fall-of-troy",
+    "renaissance-begins-florence",
+    "founding-of-united-states",
+    "contraceptive-pill-approved",
+    "dolly-sheep-cloned"
+  ],
+  "07-05": [
+    "pax-romana",
+    "gutenberg-printing-press",
+    "akbar-din-i-ilahi",
+    "falklands-war",
+    "everest-first-ascent"
+  ],
+  "07-06": [
+    "punic-wars",
+    "battle-of-bannockburn",
+    "galileo-telescope",
+    "rwandan-genocide",
+    "cuban-missile-crisis"
+  ],
+  "07-07": [
+    "battle-of-marathon",
+    "zheng-he-voyages",
+    "industrial-revolution-textile",
+    "indian-rebellion-1857",
+    "taliban-capture-kabul"
+  ],
+  "07-08": [
+    "gupta-empire-founded",
+    "islamic-caliphate-expands",
+    "founding-of-united-states",
+    "russian-revolution",
+    "space-station-iss"
+  ],
+  "07-09": [
+    "thales-solar-eclipse",
+    "viking-exploration-north-america",
+    "boston-tea-party",
+    "abolition-slavery-us",
+    "curie-radioactivity"
+  ],
+  "07-10": [
+    "invention-of-the-wheel",
+    "marco-polo-china",
+    "english-restoration",
+    "modi-elected-pm",
+    "collapse-apartheid-negotiations"
+  ],
+  "07-11": [
+    "eratosthenes-measures-earth",
+    "printing-movable-type-china",
+    "magellan-circumnavigation",
+    "women-suffrage-us",
+    "world-war-two"
+  ],
+  "07-12": [
+    "paper-invented-china",
+    "kievan-rus-founded",
+    "renaissance-shakespeare",
+    "space-station-iss",
+    "rwandan-genocide"
+  ],
+  "07-13": [
+    "eruption-of-vesuvius",
+    "charlemagne-crowned-emperor",
+    "hobbes-leviathan",
+    "krakatoa-erupts",
+    "gorbachev-becomes-leader"
+  ],
+  "07-14": [
+    "birth-of-buddha",
+    "fall-of-constantinople",
+    "portuguese-arrive-japan",
+    "japanese-empire-manchuria",
+    "suffrage-new-zealand"
+  ],
+  "07-15": [
+    "egyptian-pyramids-built",
+    "hijra",
+    "second-battle-of-panipat",
+    "manhattan-project",
+    "collapse-apartheid-negotiations"
+  ],
+  "07-16": [
+    "gupta-empire-founded",
+    "zheng-he-voyages",
+    "death-of-elizabeth-i",
+    "jfk-assassination",
+    "indian-national-congress-founded"
+  ],
+  "07-17": [
+    "ashoka-converts-to-buddhism",
+    "columbus-reaches-americas",
+    "galileo-telescope",
+    "paris-climate-agreement",
+    "mao-great-leap-forward"
+  ],
+  "07-18": [
+    "roman-republic-founded",
+    "black-death-europe",
+    "mughal-empire-zenith-aurangzeb",
+    "viking-1-mars",
+    "jfk-assassination"
+  ],
+  "07-19": [
+    "code-of-hammurabi",
+    "joan-of-arc-burned",
+    "magellan-circumnavigation",
+    "south-korea-economic-miracle",
+    "end-world-war-two"
+  ],
+  "07-20": [
+    "pax-romana",
+    "viking-exploration-north-america",
+    "protestant-reformation",
+    "suez-canal-opens",
+    "non-cooperation-movement"
+  ],
+  "07-21": [
+    "paper-invented-china",
+    "zheng-he-voyages",
+    "trans-atlantic-slave-trade-peak",
+    "greek-independence",
+    "arab-spring"
+  ],
+  "07-22": [
+    "aryabhata-heliocentric",
+    "mahmud-ghazni-somnath",
+    "euler-konigsberg-bridges",
+    "chinese-opium-ban",
+    "suffragette-emmeline-pankhurst"
+  ],
+  "07-23": [
+    "eratosthenes-measures-earth",
+    "ming-dynasty-founded",
+    "steam-engine-watt",
+    "civil-rights-act-us",
+    "rise-of-nazism"
+  ],
+  "07-24": [
+    "ironworking-spreads",
+    "age-of-exploration-portugal",
+    "hobbes-leviathan",
+    "gujarat-earthquake",
+    "death-of-mao"
+  ],
+  "07-25": [
+    "code-of-hammurabi",
+    "vijayanagara-empire-founded",
+    "taj-mahal-construction-begins",
+    "decolonization-africa",
+    "indian-independence"
+  ],
+  "07-26": [
+    "hippocrates-medicine",
+    "guru-nanak-born",
+    "conquest-of-peru-inca",
+    "south-african-boer-war",
+    "japan-world-war-two-defeat"
+  ],
+  "07-27": [
+    "death-of-alexander",
+    "columbus-reaches-americas",
+    "shivaji-crowned-chhatrapati",
+    "world-war-two",
+    "chandrayaan-1-launched"
+  ],
+  "07-28": [
+    "battle-of-gaugamela",
+    "renaissance-begins-florence",
+    "magellan-circumnavigation",
+    "indo-pak-1965-war",
+    "meiji-restoration-japan"
+  ],
+  "07-29": [
+    "hippocrates-medicine",
+    "viking-exploration-north-america",
+    "thirty-years-war",
+    "krakatoa-erupts",
+    "mao-great-leap-forward"
+  ],
+  "07-30": [
+    "great-wall-china",
+    "birth-of-muhammad",
+    "boston-tea-party",
+    "ethiopian-famine",
+    "chinese-cultural-revolution"
+  ],
+  "07-31": [
+    "death-of-alexander",
+    "hijra",
+    "mughal-akbar-administration",
+    "aids-epidemic",
+    "nato-founded"
+  ],
+  "08-01": [
+    "birth-of-jesus",
+    "hundred-years-war",
+    "east-india-company-bengal",
+    "civil-rights-act-us",
+    "crimean-war"
+  ],
+  "08-02": [
+    "thales-solar-eclipse",
+    "mahmud-ghazni-somnath",
+    "act-of-union-1707",
+    "ramanujan-born",
+    "world-war-two"
+  ],
+  "08-03": [
+    "punic-wars",
+    "columbus-reaches-americas",
+    "shivaji-crowned-chhatrapati",
+    "indian-national-congress-founded",
+    "great-reform-act"
+  ],
+  "08-04": [
+    "crucifixion-of-jesus",
+    "joan-of-arc-burned",
+    "french-revolution-declaration",
+    "turkish-republic-founded",
+    "gst-implemented-india"
+  ],
+  "08-05": [
+    "founding-of-rome",
+    "great-schism",
+    "act-of-union-1707",
+    "latin-american-independence",
+    "sachin-tendulkar-debut"
+  ],
+  "08-06": [
+    "death-of-alexander",
+    "arab-traders-kerala",
+    "akbar-din-i-ilahi",
+    "krakatoa-erupts",
+    "chinese-cultural-revolution"
+  ],
+  "08-07": [
+    "fall-of-troy",
+    "fall-of-constantinople",
+    "abolition-slavery-france",
+    "modern-olympics-founded",
+    "tiananmen-one"
+  ],
+  "08-08": [
+    "maya-classic-period",
+    "printing-movable-type-china",
+    "newton-laws-of-motion",
+    "demonetization-india",
+    "hitler-rise-chancellor"
+  ],
+  "08-09": [
+    "death-of-alexander",
+    "vijayanagara-empire-founded",
+    "great-fire-london",
+    "television-invented",
+    "indo-pak-1965-war"
+  ],
+  "08-10": [
+    "caesar-crosses-rubicon",
+    "battle-of-tours",
+    "english-civil-war",
+    "einstein-relativity",
+    "amazon-founded"
+  ],
+  "08-11": [
+    "great-wall-china",
+    "woodblock-printing-china",
+    "tipu-sultan-killed",
+    "first-oil-well",
+    "long-march-china"
+  ],
+  "08-12": [
+    "nalanda-university-founded",
+    "marco-polo-china",
+    "pilgrims-land-plymouth",
+    "thatcher-becomes-pm",
+    "japanese-empire-manchuria"
+  ],
+  "08-13": [
+    "aryabhata-heliocentric",
+    "birth-of-muhammad",
+    "death-of-elizabeth-i",
+    "covid-lockdown-india",
+    "japanese-pearl-harbor"
+  ],
+  "08-14": [
+    "augustus-first-emperor",
+    "age-of-exploration-portugal",
+    "boston-tea-party",
+    "death-of-mao",
+    "x-rays-discovered"
+  ],
+  "08-15": [
+    "punic-wars",
+    "timur-sacks-delhi",
+    "great-fire-london",
+    "apartheid-south-africa",
+    "indian-independence"
+  ],
+  "08-16": [
+    "babylonian-conquest-jerusalem",
+    "columbus-reaches-americas",
+    "spanish-armada-defeated",
+    "rajiv-gandhi-assassination",
+    "vietnam-partition"
+  ],
+  "08-17": [
+    "birth-of-buddha",
+    "marco-polo-china",
+    "magellan-circumnavigation",
+    "united-nations-founded",
+    "bangladesh-liberation-war"
+  ],
+  "08-18": [
+    "maya-classic-period",
+    "genghis-khan-unifies-mongols",
+    "english-civil-war",
+    "chandrayaan-1-launched",
+    "space-shuttle-columbia"
+  ],
+  "08-19": [
+    "greek-olympics-ancient",
+    "hundred-years-war",
+    "magellan-circumnavigation",
+    "partition-of-africa-colonial",
+    "iran-islamic-revolution"
+  ],
+  "08-20": [
+    "augustus-first-emperor",
+    "university-of-bologna-founded",
+    "tipu-sultan-killed",
+    "unification-germany",
+    "jfk-assassination"
+  ],
+  "08-21": [
+    "phoenician-alphabet-invented",
+    "ming-dynasty-founded",
+    "great-plague-london",
+    "latin-american-independence",
+    "black-holes-confirmed"
+  ],
+  "08-22": [
+    "greek-olympics-ancient",
+    "marco-polo-china",
+    "tipu-sultan-killed",
+    "indian-ocean-tsunami-india",
+    "modern-olympics-founded"
+  ],
+  "08-23": [
+    "egyptian-pyramids-built",
+    "vijayanagara-empire-founded",
+    "french-revolution-storming-bastille",
+    "first-football-world-cup",
+    "partition-india-pakistan"
+  ],
+  "08-24": [
+    "birth-of-jesus",
+    "columbus-reaches-americas",
+    "signing-of-treaty-westphalia",
+    "space-shuttle-columbia",
+    "abolition-slavery-us"
+  ],
+  "08-25": [
+    "socrates-execution",
+    "renaissance-da-vinci",
+    "first-vaccine-smallpox",
+    "indira-gandhi-assassination",
+    "everest-first-ascent"
+  ],
+  "08-26": [
+    "hippocrates-medicine",
+    "aztec-empire-peak",
+    "american-declaration",
+    "khmer-rouge-cambodia",
+    "ethiopian-famine"
+  ],
+  "08-27": [
+    "first-cities-mesopotamia",
+    "gutenberg-printing-press",
+    "first-battle-of-panipat",
+    "ottoman-empire-falls",
+    "kargil-war"
+  ],
+  "08-28": [
+    "paper-invented-china",
+    "printing-movable-type-china",
+    "akbar-din-i-ilahi",
+    "suez-canal-opens",
+    "martin-luther-king-speech"
+  ],
+  "08-29": [
+    "phoenician-alphabet-invented",
+    "aztec-empire-peak",
+    "american-declaration",
+    "unification-germany",
+    "civil-rights-act-us"
+  ],
+  "08-30": [
+    "founding-of-rome",
+    "columbus-reaches-americas",
+    "galileo-telescope",
+    "great-reform-act",
+    "first-use-of-anesthesia"
+  ],
+  "08-31": [
+    "hippocrates-medicine",
+    "hijra",
+    "death-of-elizabeth-i",
+    "chinese-communist-revolution",
+    "dna-structure-discovered"
+  ],
+  "09-01": [
+    "ashoka-becomes-emperor",
+    "battle-of-tours",
+    "spanish-armada-defeated",
+    "operation-blue-star",
+    "apartheid-sharpeville-massacre"
+  ],
+  "09-02": [
+    "julius-caesar-assassination",
+    "renaissance-da-vinci",
+    "french-revolution-storming-bastille",
+    "partition-of-bengal",
+    "wright-brothers-flight"
+  ],
+  "09-03": [
+    "ironworking-spreads",
+    "arab-traders-kerala",
+    "industrial-revolution-textile",
+    "everest-first-ascent",
+    "pokhran-nuclear-tests"
+  ],
+  "09-04": [
+    "paper-invented-china",
+    "chola-rajaraja-peak",
+    "shivaji-crowned-chhatrapati",
+    "babri-masjid-demolition",
+    "suffrage-new-zealand"
+  ],
+  "09-05": [
+    "birth-of-buddha",
+    "black-death-arrives-china",
+    "east-india-company-bengal",
+    "great-depression",
+    "us-civil-rights-march-selma"
+  ],
+  "09-06": [
+    "cyrus-founds-persian-empire",
+    "guru-nanak-born",
+    "renaissance-michelangelo",
+    "six-day-war",
+    "world-war-two"
+  ],
+  "09-07": [
+    "paper-invented-china",
+    "timur-sacks-delhi",
+    "second-battle-of-panipat",
+    "american-civil-war",
+    "civil-rights-act-us"
+  ],
+  "09-08": [
+    "platos-academy-founded",
+    "age-of-exploration-portugal",
+    "galileo-telescope",
+    "september-11-attacks",
+    "india-china-war"
+  ],
+  "09-09": [
+    "hadrians-wall",
+    "viking-exploration-north-america",
+    "great-plague-london",
+    "quit-india-movement",
+    "tagore-nobel-prize"
+  ],
+  "09-10": [
+    "alexander-founds-alexandria",
+    "vijayanagara-empire-founded",
+    "conquest-of-peru-inca",
+    "ottoman-empire-falls",
+    "everest-first-ascent"
+  ],
+  "09-11": [
+    "julius-caesar-assassination",
+    "first-crusade",
+    "euler-konigsberg-bridges",
+    "holocaust",
+    "paris-climate-agreement"
+  ],
+  "09-12": [
+    "greek-democracy-athens",
+    "harsha-reign-begins",
+    "abolition-slavery-france",
+    "iphone-launched",
+    "sputnik-launch"
+  ],
+  "09-13": [
+    "roman-republic-founded",
+    "birth-of-muhammad",
+    "euler-konigsberg-bridges",
+    "mangalyaan-mars-mission",
+    "revolutions-of-1848"
+  ],
+  "09-14": [
+    "pax-romana",
+    "hundred-years-war",
+    "abolition-slavery-france",
+    "world-war-two",
+    "non-cooperation-movement"
+  ],
+  "09-15": [
+    "birth-of-jesus",
+    "viking-exploration-north-america",
+    "opium-trade-china-east-india",
+    "black-holes-confirmed",
+    "iphone-launched"
+  ],
+  "09-16": [
+    "paper-invented-china",
+    "woodblock-printing-china",
+    "east-india-company-bengal",
+    "gandhi-born",
+    "space-station-iss"
+  ],
+  "09-17": [
+    "great-fire-of-rome",
+    "founding-of-islam",
+    "galileo-telescope",
+    "jfk-assassination",
+    "queen-victoria-accession"
+  ],
+  "09-18": [
+    "augustus-first-emperor",
+    "invention-of-compass",
+    "wealth-of-nations-published",
+    "ramanujan-born",
+    "suez-canal-opens"
+  ],
+  "09-19": [
+    "greek-democracy-athens",
+    "battle-of-hastings",
+    "american-war-independence-ends",
+    "contraceptive-pill-approved",
+    "suffragette-emmeline-pankhurst"
+  ],
+  "09-20": [
+    "babylonian-conquest-jerusalem",
+    "woodblock-printing-china",
+    "french-revolution-storming-bastille",
+    "ethiopian-famine",
+    "indian-constitution-adopted"
+  ],
+  "09-21": [
+    "silk-road-opens",
+    "black-death-europe",
+    "east-india-company-founded",
+    "australia-federation",
+    "great-depression"
+  ],
+  "09-22": [
+    "aryabhata-heliocentric",
+    "vijayanagara-empire-founded",
+    "french-revolution-declaration",
+    "holocaust",
+    "partition-india-pakistan"
+  ],
+  "09-23": [
+    "fall-of-roman-empire-west",
+    "moors-invade-spain",
+    "great-plague-london",
+    "emancipation-proclamation",
+    "suffrage-new-zealand"
+  ],
+  "09-24": [
+    "constantinople-founded",
+    "kievan-rus-founded",
+    "tipu-sultan-killed",
+    "osama-bin-laden-killed",
+    "covid-lockdown-india"
+  ],
+  "09-25": [
+    "paper-invented-china",
+    "magna-carta",
+    "first-vaccine-smallpox",
+    "berlin-wall-falls",
+    "indian-constitution-adopted"
+  ],
+  "09-26": [
+    "cyrus-founds-persian-empire",
+    "age-of-exploration-portugal",
+    "english-civil-war",
+    "september-11-attacks",
+    "dna-structure-discovered"
+  ],
+  "09-27": [
+    "phoenician-alphabet-invented",
+    "renaissance-da-vinci",
+    "akbar-din-i-ilahi",
+    "moon-landing",
+    "first-steam-railway"
+  ],
+  "09-28": [
+    "birth-of-jesus",
+    "renaissance-begins-florence",
+    "thirty-years-war",
+    "taliban-capture-kabul",
+    "jallianwala-bagh-massacre"
+  ],
+  "09-29": [
+    "great-fire-of-rome",
+    "invention-of-zero",
+    "east-india-company-bengal",
+    "chinese-cultural-revolution",
+    "paris-climate-agreement"
+  ],
+  "09-30": [
+    "battle-of-marathon",
+    "fall-of-constantinople",
+    "execution-of-charles-i",
+    "krakatoa-erupts",
+    "japan-meiji-constitution"
+  ],
+  "10-01": [
+    "phoenician-alphabet-invented",
+    "chola-rajaraja-peak",
+    "mughal-empire-zenith-aurangzeb",
+    "tesla-ac-electricity",
+    "french-colonial-algeria"
+  ],
+  "10-02": [
+    "ashoka-converts-to-buddhism",
+    "invention-of-compass",
+    "boston-tea-party",
+    "malala-nobel-peace-prize",
+    "ethiopian-famine"
+  ],
+  "10-03": [
+    "death-of-alexander",
+    "age-of-exploration-portugal",
+    "american-war-independence-ends",
+    "covid-19-pandemic",
+    "modern-olympics-founded"
+  ],
+  "10-04": [
+    "thales-solar-eclipse",
+    "battle-of-bannockburn",
+    "english-restoration",
+    "ottoman-empire-falls",
+    "nato-founded"
+  ],
+  "10-05": [
+    "phoenician-alphabet-invented",
+    "renaissance-da-vinci",
+    "galileo-inquisition",
+    "gorbachev-becomes-leader",
+    "human-genome-project"
+  ],
+  "10-06": [
+    "platos-academy-founded",
+    "hijra",
+    "signing-of-treaty-westphalia",
+    "long-march-china",
+    "einstein-relativity"
+  ],
+  "10-07": [
+    "fall-of-troy",
+    "black-death-arrives-china",
+    "babur-founds-mughal-empire",
+    "chandrayaan-1-launched",
+    "first-world-war-ends"
+  ],
+  "10-08": [
+    "great-fire-of-rome",
+    "aztec-empire-peak",
+    "battle-of-plassey",
+    "greek-independence",
+    "revolutions-of-1848"
+  ],
+  "10-09": [
+    "attila-hun-invasions",
+    "university-of-bologna-founded",
+    "spanish-armada-defeated",
+    "partition-of-africa-colonial",
+    "mandela-freed"
+  ],
+  "10-10": [
+    "thales-solar-eclipse",
+    "invention-of-zero",
+    "abolition-slavery-france",
+    "sachin-tendulkar-debut",
+    "russian-revolution"
+  ],
+  "10-11": [
+    "augustus-first-emperor",
+    "gunpowder-invented",
+    "haitian-revolution",
+    "women-suffrage-us",
+    "japan-world-war-two-defeat"
+  ],
+  "10-12": [
+    "nalanda-university-founded",
+    "battle-of-tours",
+    "french-revolution-storming-bastille",
+    "collapse-apartheid-negotiations",
+    "napoleonic-wars"
+  ],
+  "10-13": [
+    "fall-of-roman-empire-west",
+    "viking-raids-begin",
+    "humayun-defeated-kanauj",
+    "chandrayaan-1-launched",
+    "first-steam-railway"
+  ],
+  "10-14": [
+    "battle-of-mahabharata",
+    "birth-of-muhammad",
+    "taj-mahal-construction-begins",
+    "ottoman-empire-falls",
+    "rwandan-genocide"
+  ],
+  "10-15": [
+    "hippocrates-medicine",
+    "harsha-reign-begins",
+    "shakespeare-born",
+    "first-football-world-cup",
+    "crimean-war"
+  ],
+  "10-16": [
+    "battle-of-mahabharata",
+    "marco-polo-china",
+    "glorious-revolution",
+    "krakatoa-erupts",
+    "darwin-evolution"
+  ],
+  "10-17": [
+    "eratosthenes-measures-earth",
+    "battle-of-bannockburn",
+    "french-revolution",
+    "nato-founded",
+    "iran-iraq-war"
+  ],
+  "10-18": [
+    "augustus-first-emperor",
+    "islamic-caliphate-expands",
+    "english-restoration",
+    "iran-islamic-revolution",
+    "jallianwala-bagh-massacre"
+  ],
+  "10-19": [
+    "birth-of-jesus",
+    "founding-of-islam",
+    "wealth-of-nations-published",
+    "iphone-launched",
+    "falklands-war"
+  ],
+  "10-20": [
+    "battle-of-marathon",
+    "black-death-arrives-china",
+    "steam-engine-watt",
+    "great-reform-act",
+    "indian-rebellion-1857"
+  ],
+  "10-21": [
+    "eratosthenes-measures-earth",
+    "magna-carta",
+    "hobbes-leviathan",
+    "mangalyaan-mars-mission",
+    "cricket-test-first"
+  ],
+  "10-22": [
+    "qin-unification-china",
+    "vasco-da-gama-india-route",
+    "english-restoration",
+    "american-civil-war",
+    "abolition-slavery-us"
+  ],
+  "10-23": [
+    "hippocrates-medicine",
+    "joan-of-arc-burned",
+    "portuguese-arrive-japan",
+    "darwin-evolution",
+    "partition-of-africa-colonial"
+  ],
+  "10-24": [
+    "roman-republic-founded",
+    "gutenberg-printing-press",
+    "east-india-company-bengal",
+    "babri-masjid-demolition",
+    "chernobyl-disaster"
+  ],
+  "10-25": [
+    "maya-classic-period",
+    "battle-of-hastings",
+    "english-civil-war",
+    "collapse-apartheid-negotiations",
+    "operation-blue-star"
+  ],
+  "10-26": [
+    "greek-democracy-athens",
+    "black-death-arrives-china",
+    "newton-laws-of-motion",
+    "wto-founded",
+    "south-korea-economic-miracle"
+  ],
+  "10-27": [
+    "phoenician-alphabet-invented",
+    "columbus-reaches-americas",
+    "humayun-defeated-kanauj",
+    "indian-ocean-tsunami-india",
+    "space-shuttle-columbia"
+  ],
+  "10-28": [
+    "nalanda-university-founded",
+    "renaissance-begins-florence",
+    "wealth-of-nations-published",
+    "bolshevik-civil-war",
+    "south-korea-economic-miracle"
+  ],
+  "10-29": [
+    "punic-wars",
+    "kievan-rus-founded",
+    "execution-of-charles-i",
+    "partition-india-pakistan",
+    "indo-pak-1965-war"
+  ],
+  "10-30": [
+    "battle-of-gaugamela",
+    "marco-polo-china",
+    "wealth-of-nations-published",
+    "gandhi-born",
+    "atomic-bomb-hiroshima"
+  ],
+  "10-31": [
+    "ashoka-becomes-emperor",
+    "battle-of-hastings",
+    "boston-tea-party",
+    "great-depression",
+    "dna-structure-discovered"
+  ],
+  "11-01": [
+    "greek-olympics-ancient",
+    "renaissance-da-vinci",
+    "great-fire-london",
+    "first-oil-well",
+    "suez-canal-opens"
+  ],
+  "11-02": [
+    "code-of-hammurabi",
+    "arab-traders-kerala",
+    "hobbes-leviathan",
+    "gandhi-born",
+    "dna-structure-discovered"
+  ],
+  "11-03": [
+    "fall-of-roman-empire-west",
+    "woodblock-printing-china",
+    "act-of-union-1707",
+    "indian-rebellion-1857",
+    "rwandan-genocide"
+  ],
+  "11-04": [
+    "caesar-crosses-rubicon",
+    "renaissance-begins-florence",
+    "pilgrims-land-plymouth",
+    "global-financial-crisis",
+    "indian-national-congress-founded"
+  ],
+  "11-05": [
+    "death-of-alexander",
+    "first-crusade",
+    "tipu-sultan-killed",
+    "mumbai-terrorist-attacks",
+    "india-china-war"
+  ],
+  "11-06": [
+    "christianity-roman-empire",
+    "hijra",
+    "death-of-elizabeth-i",
+    "amazon-founded",
+    "d-day-normandy"
+  ],
+  "11-07": [
+    "platos-academy-founded",
+    "islamic-caliphate-expands",
+    "euler-konigsberg-bridges",
+    "thatcher-becomes-pm",
+    "first-world-war-ends"
+  ],
+  "11-08": [
+    "greek-olympics-ancient",
+    "guru-nanak-born",
+    "great-fire-london",
+    "treaty-of-versailles",
+    "cricket-test-first"
+  ],
+  "11-09": [
+    "platos-academy-founded",
+    "renaissance-begins-florence",
+    "galileo-inquisition",
+    "krakatoa-erupts",
+    "rise-of-nazism"
+  ],
+  "11-10": [
+    "julius-caesar-assassination",
+    "kievan-rus-founded",
+    "french-revolution-declaration",
+    "cuban-missile-crisis",
+    "tiananmen-square"
+  ],
+  "11-11": [
+    "nalanda-university-founded",
+    "gutenberg-printing-press",
+    "industrial-revolution-textile",
+    "arab-spring",
+    "brahmos-missile-india"
+  ],
+  "11-12": [
+    "caesar-crosses-rubicon",
+    "harsha-reign-begins",
+    "battle-of-plassey",
+    "iphone-launched",
+    "islamic-state-rise"
+  ],
+  "11-13": [
+    "constantinople-founded",
+    "great-schism",
+    "pilgrims-land-plymouth",
+    "mahatma-gandhi-assassinated",
+    "battle-of-trafalgar"
+  ],
+  "11-14": [
+    "ironworking-spreads",
+    "battle-of-tours",
+    "euler-konigsberg-bridges",
+    "iphone-launched",
+    "ghana-independence"
+  ],
+  "11-15": [
+    "code-of-hammurabi",
+    "ming-dynasty-founded",
+    "battle-of-haldighati",
+    "death-of-stalin",
+    "space-race-yuri-gagarin"
+  ],
+  "11-16": [
+    "ashoka-converts-to-buddhism",
+    "university-of-bologna-founded",
+    "second-battle-of-panipat",
+    "korean-war",
+    "d-day-normandy"
+  ],
+  "11-17": [
+    "christianity-roman-empire",
+    "battle-of-hastings",
+    "french-revolution",
+    "economic-liberalization-india",
+    "collapse-apartheid-negotiations"
+  ],
+  "11-18": [
+    "code-of-hammurabi",
+    "hijra",
+    "portuguese-arrive-japan",
+    "curie-radioactivity",
+    "pokhran-nuclear-tests"
+  ],
+  "11-19": [
+    "indus-valley-begins",
+    "renaissance-da-vinci",
+    "babur-founds-mughal-empire",
+    "hitler-rise-chancellor",
+    "civil-rights-act-us"
+  ],
+  "11-20": [
+    "death-of-alexander",
+    "mahmud-ghazni-somnath",
+    "battle-of-haldighati",
+    "iran-iraq-war",
+    "krakatoa-erupts"
+  ],
+  "11-21": [
+    "platos-academy-founded",
+    "mongol-empire-peak",
+    "humayun-defeated-kanauj",
+    "spanish-civil-war",
+    "osama-bin-laden-killed"
+  ],
+  "11-22": [
+    "paper-invented-china",
+    "age-of-exploration-portugal",
+    "shivaji-crowned-chhatrapati",
+    "india-wins-cricket-world-cup",
+    "mumbai-terrorist-attacks"
+  ],
+  "11-23": [
+    "battle-of-marathon",
+    "founding-of-islam",
+    "akbar-din-i-ilahi",
+    "sputnik-launch",
+    "amazon-founded"
+  ],
+  "11-24": [
+    "indus-valley-begins",
+    "birth-of-muhammad",
+    "battle-of-haldighati",
+    "quit-india-movement",
+    "first-world-war-ends"
+  ],
+  "11-25": [
+    "nalanda-university-founded",
+    "woodblock-printing-china",
+    "founding-of-united-states",
+    "great-depression",
+    "battle-of-britain"
+  ],
+  "11-26": [
+    "hippocrates-medicine",
+    "moors-invade-spain",
+    "renaissance-michelangelo",
+    "tiananmen-one",
+    "south-korea-economic-miracle"
+  ],
+  "11-27": [
+    "ironworking-spreads",
+    "woodblock-printing-china",
+    "english-civil-war",
+    "indira-gandhi-assassination",
+    "demonetization-india"
+  ],
+  "11-28": [
+    "birth-of-buddha",
+    "black-death-europe",
+    "act-of-union-1707",
+    "global-financial-crisis",
+    "palestine-israel-state"
+  ],
+  "11-29": [
+    "egyptian-pyramids-built",
+    "magna-carta",
+    "tipu-sultan-killed",
+    "chinese-opium-ban",
+    "martin-luther-king-speech"
+  ],
+  "11-30": [
+    "sumerian-writing",
+    "black-death-arrives-china",
+    "first-battle-of-panipat",
+    "atomic-bomb-hiroshima",
+    "dissolution-soviet-union"
+  ],
+  "12-01": [
+    "ashoka-becomes-emperor",
+    "zheng-he-voyages",
+    "signing-of-treaty-westphalia",
+    "gst-implemented-india",
+    "september-11-attacks"
+  ],
+  "12-02": [
+    "death-of-alexander",
+    "printing-movable-type-china",
+    "humayun-defeated-kanauj",
+    "mao-great-leap-forward",
+    "greek-independence"
+  ],
+  "12-03": [
+    "hippocrates-medicine",
+    "islamic-golden-age",
+    "french-revolution-declaration",
+    "pokhran-nuclear-tests",
+    "us-civil-rights-march-selma"
+  ],
+  "12-04": [
+    "hadrians-wall",
+    "invention-of-compass",
+    "babur-founds-mughal-empire",
+    "martin-luther-king-speech",
+    "cricket-test-first"
+  ],
+  "12-05": [
+    "birth-of-confucius",
+    "mongol-empire-peak",
+    "trans-atlantic-slave-trade-peak",
+    "ghana-independence",
+    "india-wins-cricket-world-cup"
+  ],
+  "12-06": [
+    "code-of-hammurabi",
+    "magna-carta",
+    "tipu-sultan-killed",
+    "d-day-normandy",
+    "partition-india-pakistan"
+  ],
+  "12-07": [
+    "birth-of-buddha",
+    "university-of-bologna-founded",
+    "french-revolution",
+    "wright-brothers-flight",
+    "emancipation-proclamation"
+  ],
+  "12-08": [
+    "great-wall-china",
+    "aztec-empire-peak",
+    "humayun-defeated-kanauj",
+    "operation-blue-star",
+    "smallpox-eradicated"
+  ],
+  "12-09": [
+    "babylonian-conquest-jerusalem",
+    "first-crusade",
+    "taj-mahal-construction-begins",
+    "covid-19-pandemic",
+    "human-genome-project"
+  ],
+  "12-10": [
+    "aryabhata-heliocentric",
+    "battle-of-tours",
+    "spanish-armada-defeated",
+    "telephone-invented",
+    "marconi-invents-radio"
+  ],
+  "12-11": [
+    "cyrus-founds-persian-empire",
+    "charlemagne-crowned-emperor",
+    "shakespeare-born",
+    "wto-founded",
+    "modern-olympics-founded"
+  ],
+  "12-12": [
+    "constantinople-founded",
+    "fall-of-constantinople",
+    "first-battle-of-panipat",
+    "russo-japanese-war",
+    "space-station-iss"
+  ],
+  "12-13": [
+    "qin-unification-china",
+    "black-death-arrives-china",
+    "founding-of-united-states",
+    "mandela-freed",
+    "internet-invented"
+  ],
+  "12-14": [
+    "punic-wars",
+    "renaissance-da-vinci",
+    "euler-konigsberg-bridges",
+    "brahmos-missile-india",
+    "gujarat-earthquake"
+  ],
+  "12-15": [
+    "birth-of-jesus",
+    "battle-of-hastings",
+    "tipu-sultan-killed",
+    "space-station-iss",
+    "atomic-bomb-hiroshima"
+  ],
+  "12-16": [
+    "greek-olympics-ancient",
+    "battle-of-bannockburn",
+    "first-battle-of-panipat",
+    "moon-landing",
+    "civil-rights-act-us"
+  ],
+  "12-17": [
+    "crucifixion-of-jesus",
+    "great-schism",
+    "french-revolution-storming-bastille",
+    "long-march-china",
+    "independence-south-africa"
+  ],
+  "12-18": [
+    "indus-valley-begins",
+    "first-crusade",
+    "newton-laws-of-motion",
+    "american-civil-war",
+    "d-day-normandy"
+  ],
+  "12-19": [
+    "ashoka-converts-to-buddhism",
+    "battle-of-bannockburn",
+    "magellan-circumnavigation",
+    "opium-war-second",
+    "korean-war"
+  ],
+  "12-20": [
+    "greek-democracy-athens",
+    "invention-of-zero",
+    "steam-engine-watt",
+    "suez-canal-opens",
+    "hong-kong-handover"
+  ],
+  "12-21": [
+    "pax-romana",
+    "black-death-europe",
+    "english-civil-war",
+    "chinese-cultural-revolution",
+    "internet-invented"
+  ],
+  "12-22": [
+    "caesar-crosses-rubicon",
+    "founding-of-islam",
+    "english-restoration",
+    "rajiv-gandhi-assassination",
+    "space-shuttle-columbia"
+  ],
+  "12-23": [
+    "babylonian-conquest-jerusalem",
+    "battle-of-hastings",
+    "battle-of-plassey",
+    "bangladesh-liberation-war",
+    "iran-islamic-revolution"
+  ],
+  "12-24": [
+    "greek-olympics-ancient",
+    "hijra",
+    "english-restoration",
+    "telephone-invented",
+    "cold-war-begins"
+  ],
+  "12-25": [
+    "maya-classic-period",
+    "arab-traders-kerala",
+    "newton-laws-of-motion",
+    "human-genome-project",
+    "suffragette-emmeline-pankhurst"
+  ],
+  "12-26": [
+    "silk-road-opens",
+    "ming-dynasty-founded",
+    "industrial-revolution-textile",
+    "curie-radioactivity",
+    "indian-constitution-adopted"
+  ],
+  "12-27": [
+    "alexander-conquests",
+    "printing-movable-type-china",
+    "english-civil-war",
+    "decolonization-africa",
+    "partition-india-pakistan"
+  ],
+  "12-28": [
+    "paper-invented-china",
+    "joan-of-arc-burned",
+    "spanish-conquest-mexico",
+    "kargil-war",
+    "human-genome-project"
+  ],
+  "12-29": [
+    "socrates-execution",
+    "invention-of-zero",
+    "pilgrims-land-plymouth",
+    "gandhi-born",
+    "berlin-wall-falls"
+  ],
+  "12-30": [
+    "paper-invented-china",
+    "genghis-khan-unifies-mongols",
+    "death-of-elizabeth-i",
+    "penicillin-discovered",
+    "covid-lockdown-india"
+  ],
+  "12-31": [
+    "eruption-of-vesuvius",
+    "joan-of-arc-burned",
+    "tipu-sultan-killed",
+    "x-rays-discovered",
+    "indian-independence"
+  ]
+}
