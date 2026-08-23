@@ -79,7 +79,7 @@ function holeIndicatorClass(index: number) {
 
 function segmentLeft(index: number): number {
   let total = 0
-  for (let i = 0; i < index; i++) total += props.holeResults[i].penalty
+  for (let i = 0; i < index; i++) total += props.holeResults[i]?.penalty ?? 0
   return Math.min((total / scale.value) * 100, 100)
 }
 
