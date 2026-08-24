@@ -152,8 +152,9 @@ const scrollEl = ref<HTMLElement | null>(null)
 
 // ── Layout constants ────────────────────────────────────────────────────────
 const PADDING = 72
-const ROW_H = 44       // height per label row above the line
-const LABEL_H = 32     // name rows (up to 2 lines) + year
+const YOU_ZONE = 30    // px reserved above LINE_Y for the YOU▼ badge
+const ROW_H = 52       // height per label row above the line (name 2-lines + year + margin)
+const LABEL_H = 44     // name (~30px) + year (14px) = 44px content height
 
 // ── Data helpers ────────────────────────────────────────────────────────────
 function formatYear(y: number) {
@@ -265,7 +266,7 @@ const maxRow = computed(() =>
 )
 
 const LINE_Y = computed(() =>
-  Math.max(76, 36 + (maxRow.value + 1) * ROW_H)
+  Math.max(76, 36 + YOU_ZONE + (maxRow.value + 1) * ROW_H)
 )
 
 // Below the line: dot (8px) + gap (6px) + year text (~16px) + name text (~28px) = ~58px
@@ -296,11 +297,13 @@ const renderedMarkers = computed<RenderedMarker[]>(() => {
 
 // ── Row → y helpers ──────────────────────────────────────────────────────────
 function rowNameY(m: RenderedMarker): number {
-  return LINE_Y.value - (m.row + 1) * ROW_H
+  // Offset by YOU_ZONE so above-line labels never enter the YOU▼ badge zone
+  return LINE_Y.value - YOU_ZONE - (m.row + 1) * ROW_H
 }
 
 function rowYearY(m: RenderedMarker): number {
-  return rowNameY(m) + 16
+  // Name text can be 2 lines (~30px at 11px/leading-snug), so year goes below that
+  return rowNameY(m) + 30
 }
 
 function connectorTop(m: RenderedMarker): number {
