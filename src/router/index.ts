@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DailyChallengeView from '../views/DailyChallengeView.vue'
 import DatePickView from '../views/DatePickView.vue'
+import CreatorView from '../views/CreatorView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/datepick',
       name: 'datepick',
       component: DatePickView,
+    },
+    {
+      path: '/creator',
+      name: 'creator',
+      component: CreatorView,
     },
   ],
 })

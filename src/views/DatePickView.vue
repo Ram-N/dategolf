@@ -92,7 +92,7 @@
 
       <!-- Complete -->
       <template v-else-if="store.phase === 'complete'">
-        <div class="flex-1 overflow-hidden">
+        <div class="flex-1 overflow-y-auto">
           <DatePickResults
             v-if="store.gameState"
             :game-state="store.gameState"
