@@ -129,5 +129,82 @@
         ]
       }
     ]
+  },
+  "cuban-missile-crisis": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "The Bay of Pigs invasion fails in 1961 — a botched US attempt to overthrow Castro. Just one year later, in 1962, Soviet missiles show up in Cuba, a direct consequence of Castro turning to Moscow for protection after the invasion.",
+          "The Berlin Wall goes up in August 1961. About a year later, in October 1962, Cold War tension peaks again with missiles in Cuba — two back-to-back Cold War flashpoints."
+        ]
+      },
+      {
+        "label": "Year of 1962",
+        "items": [
+          "John Glenn becomes the first American to orbit Earth in February 1962, the same year the Cuban Missile Crisis unfolds in October — space-race triumph and nuclear near-disaster in the same year.",
+          "The crisis lasted thirteen days in October 1962. The number 13 helps lock in the year: thirteen tense days in '62."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Kennedy was assassinated in November 1963, just over a year after the crisis. Think: 1962 = missiles; 1963 = Dallas.",
+          "The Nuclear Test Ban Treaty is signed in 1963, one year after the crisis — a direct result of both superpowers stepping back from the brink they reached in 1962."
+        ]
+      }
+    ]
+  },
+  "palestine-israel-state": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "World War II ends in 1945. Just three years later, in 1948, Israel is established — the Holocaust's aftermath directly accelerated international support for a Jewish state.",
+          "The Balfour Declaration, Britain's pledge of support for a Jewish homeland in Palestine, comes in 1917. Israel's founding follows 31 years later, in 1948 — roughly a generation from promise to statehood."
+        ]
+      },
+      {
+        "label": "Year of 1948",
+        "items": [
+          "Mahatma Gandhi is assassinated in India in January 1948, and Israel declares independence in May 1948. Pair 'Gandhi dies' with 'Israel founded' to make the year 1948 stick.",
+          "The Universal Declaration of Human Rights is adopted by the UN in December 1948, the same year Israel is established — two major postwar milestones in international order, months apart."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Suez Crisis bridge: Israel's founding in 1948 was followed by its next major conflict, the Suez Crisis, 8 years later in 1956.",
+          "Six-Day War anchor: The Six-Day War happens in 1967, 19 years after Israel's founding. Subtract 19 from 1967 to land on 1948.",
+          "Camp David Accords anchor: Israel and Egypt sign the Camp David Accords in 1978, 30 years after Israel's establishment — three decades from founding to its first peace treaty with an Arab neighbor."
+        ]
+      }
+    ]
+  },
+  "partition-of-bengal": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Indian National Congress anchor: The INC is founded in 1885, giving Indian nationalism its first organized political voice. Twenty years later, in 1905, Curzon's partition transforms Congress from a moderate group into a mass nationalist movement.",
+          "Queen Victoria dies in 1901. Just four years into the new Edwardian era, in 1905, the Partition of Bengal ignites the Swadeshi movement — an early crack in British authority."
+        ]
+      },
+      {
+        "label": "Year of 1905",
+        "items": [
+          "1905 is also the year of the Russian Revolution of 1905, when workers and peasants rise against the Tsar — the same year colonial subjects in Bengal rise against British rule, half a world apart.",
+          "Einstein publishes his special theory of relativity in 1905, his 'miracle year.' The same year, a very different kind of upheaval — political rather than scientific — reshapes Bengal."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "The All-India Muslim League is founded just one year later, in 1906 in Dhaka — the Partition of Bengal directly catalyzed the communal politics that would shape the subcontinent for decades.",
+          "The partition is reversed in 1911, six years later, under massive public pressure — a rare colonial reversal. The same year, the British shift their imperial capital from Calcutta to Delhi. Subtract 6 from 1911 to land on 1905.",
+          "Gandhi returns to India in 1915, ten years after the partition, and later builds directly on the Swadeshi boycott tactics pioneered in 1905 for his own independence campaigns."
+        ]
+      }
+    ]
   }
 }
