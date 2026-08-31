@@ -50,5 +50,31 @@
         ]
       }
     ]
+  },
+  "babylonian-conquest-jerusalem": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Northern Kingdom anchor: The Kingdom of Israel (the North) fell to the Assyrians in 722 BCE. Judah (the South) survived for another 134 years before Jerusalem fell to Nebuchadnezzar II in 588–586 BCE.",
+          "Nebuchadnezzar II becomes king of Babylon in 605 BCE, the same year he crushes Egypt at Carchemish. Jerusalem's conquest follows about 17 years into his reign, in 588 BCE.",
+          "Count forward from the first deportation: Babylon exiles King Jehoiachin and part of Jerusalem's elite in 597 BCE. The final conquest and the Temple's destruction come about nine years later, in 588 BCE."
+        ]
+      },
+      {
+        "label": "Year of 588 BCE",
+        "items": [
+          "588 BCE comes just one generation after Babylon itself broke free of Assyrian rule in 626 BCE — the new Babylonian Empire wasted little time turning to conquer its neighbors.",
+          "Greek philosopher Thales of Miletus predicts a solar eclipse around 585 BCE, just three years after Jerusalem's fall — a useful cross-check if you know early Greek science dates."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Cyrus the Great conquers Babylon in 539 BCE, ending the exile. Subtract 49 years from that to land on 588 BCE, when the exile began.",
+          "Second Temple bookend: Solomon's First Temple was destroyed by Babylon in 588/586 BCE. The Second Temple was destroyed by the Romans in 70 CE — over 650 years later."
+        ]
+      }
+    ]
   }
 }

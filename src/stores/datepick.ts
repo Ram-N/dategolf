@@ -54,7 +54,13 @@ export const useDatePickStore = defineStore('datepick', () => {
     const saved = loadSession(todayDate)
     if (saved) {
       gameState.value = saved
-      phase.value = saved.completed ? 'landing' : 'playing'
+      if (saved.completed) {
+        phase.value = 'landing'
+      } else if (saved.answers[saved.currentQuestion]) {
+        phase.value = 'revealing'
+      } else {
+        phase.value = 'playing'
+      }
     } else {
       const challenge = generateDatePickChallenge(todayDate, events.value)
       gameState.value = {
