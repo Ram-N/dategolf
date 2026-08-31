@@ -76,5 +76,31 @@
         ]
       }
     ]
+  },
+  "execution-of-charles-i": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Count forward from the English Civil War: fighting between King Charles I and Parliament breaks out in 1642. Seven years of war and political maneuvering later, the king is tried and executed in 1649. Think: seven years from civil war to regicide.",
+          "The Mayflower sails for the New World in 1620. Charles I is executed 29 years later, in 1649 — roughly one generation after the Pilgrims left England."
+        ]
+      },
+      {
+        "label": "Year of 1649",
+        "items": [
+          "1649 falls almost exactly at the midpoint of the 17th century — a king beheaded just one year shy of the century's halfway mark.",
+          "England abolishes the monarchy and declares itself a Commonwealth in the same year, 1649 — the execution and the birth of the republic happen together."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Restoration anchor: Charles I was executed in 1649, and the monarchy returned just 11 years later in 1660 when Charles II was restored to the throne. Think: 'Charles dies → 11 years → Charles returns.'",
+          "The Glorious Revolution came 39 years after Charles I's execution, in 1688. The long struggle over the power of Crown and Parliament continued from 1649 toward the constitutional settlement of 1688.",
+          "French Revolution comparison: The execution of Charles I in 1649 predates the execution of Louis XVI of France in 1793 by 144 years — England set the precedent for regicide long before France followed."
+        ]
+      }
+    ]
   }
 }
