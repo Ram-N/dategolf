@@ -1,4 +1,30 @@
 {
+  "france-abolishes-slavery": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Five years after the Revolution: The French Revolution begins in 1789 with the Storming of the Bastille. The slogan Liberté, égalité, fraternité was proclaimed — and five years later, in 1794, the National Convention extended it to enslaved populations in French territories.",
+          "Haitian Revolution trigger: The major slave revolt in Saint-Domingue began in 1791. It took 3 years of intense fighting on the island before Paris formally ratified full emancipation in 1794. The sequence: 1789 → 1791 → 1794."
+        ]
+      },
+      {
+        "label": "Year of 1794",
+        "items": [
+          "1794 is the height of the Reign of Terror — Robespierre is executed that same July. The National Convention was in its most radical phase, the same political energy that pushed through abolition.",
+          "Toussaint Louverture, the future leader of Haiti, was already a rising military commander in Saint-Domingue by 1794 — the same year France's decree legally caught up to the revolution already underway on the ground."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Napoleon reverses the decree in 1802 — just eight years later. A short-lived window of legal freedom under French law: 1794 to 1802.",
+          "Haiti declares full independence in 1804, ten years after France's abolition decree — a straight line from legal emancipation to the colony's break from France.",
+          "France was the first major European colonial power to abolish slavery in 1794. Britain followed: subtract 13 years to reach the abolition of the British slave trade in 1807, or 40 years to reach Britain's full abolition of slavery in 1834."
+        ]
+      }
+    ]
+  },
   "marconi-wireless-telegraphy": {
     "groups": [
       {
