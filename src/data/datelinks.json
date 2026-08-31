@@ -1,0 +1,28 @@
+{
+  "marconi-wireless-telegraphy": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Count forward from Hertz: Heinrich Hertz proved electromagnetic waves exist in 1887–88. Marconi turns that pure theory into a practical device about 7-8 years later, in 1895.",
+          "Sequential Tech Link: Hertz (1887) → Marconi (1895). Eight years from 'waves exist' to 'send a message with them.'"
+        ]
+      },
+      {
+        "label": "Year of 1895",
+        "items": [
+          "1895 was the birth year of two mass-communication technologies: wireless radio (Marconi) and cinema (Lumière brothers). Both born the same year.",
+          "The '1-8-9-5' bridge trick: Röntgen also discovered X-rays in 1895. Pair 'invisible waves' (X-rays) with 'invisible signals' (radio) — both in 1895."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Turn of the Century Anchor: 1895 = exactly 5 years before 1900. A late-Victorian invention, not a 1930s one.",
+          "Marconi → Atlantic → 1901: 1895 = local demo. Six years later, 1901 = transatlantic signal.",
+          "Titanic anchor: Wireless saved survivors in 1912. Subtract ~17 years → 1895, when the technology was first demonstrated."
+        ]
+      }
+    ]
+  }
+}
