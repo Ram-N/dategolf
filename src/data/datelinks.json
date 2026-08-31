@@ -102,5 +102,32 @@
         ]
       }
     ]
+  },
+  "battle-of-bannockburn": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Magna Carta anchor: Magna Carta was sealed in 1215. Bannockburn came 99 years later, in 1314 — almost exactly a century from Magna Carta to Scotland's great victory over England.",
+          "William Wallace wins the Battle of Stirling Bridge in 1297, near the same ground. Bannockburn comes 17 years later, in 1314, finishing what Wallace started.",
+          "Edward I, the 'Hammer of the Scots,' dies in 1307. Just seven years after his death, his son Edward II suffers the humiliating defeat at Bannockburn in 1314."
+        ]
+      },
+      {
+        "label": "Year of 1314",
+        "items": [
+          "The Knights Templar are dissolved and their last Grand Master burned at the stake in 1314 — the same year, on the other side of Europe, Robert the Bruce was securing Scotland's independence.",
+          "1314 sits early in the fourteenth century, a full generation before the Black Death reaches Europe in 1347 — a useful anchor if you know the plague date."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Declaration of Arbroath anchor: Scotland sent the famous Declaration of Arbroath to the Pope asserting independence in 1320 — just 6 years after the military triumph at Bannockburn in 1314.",
+          "Treaty of Edinburgh-Northampton anchor: England formally recognized Scottish independence in 1328, 14 years after Bannockburn. Subtract 14 from 1328 to land on 1314.",
+          "The Hundred Years' War between England and France breaks out in 1337, just 23 years after Bannockburn — England was still nursing its Scottish defeat when it turned to fight France next."
+        ]
+      }
+    ]
   }
 }
