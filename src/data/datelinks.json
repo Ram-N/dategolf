@@ -181,6 +181,182 @@
       }
     ]
   },
+  "death-of-elizabeth-i": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "The Spanish Armada is defeated in 1588, one of Elizabeth's greatest triumphs. Fifteen years later, in 1603, she dies, having outlived her most famous victory by over a decade.",
+          "Elizabeth I becomes queen in 1558. She dies 45 years later, in 1603, after one of the longest reigns in English history up to that point."
+        ]
+      },
+      {
+        "label": "Year of 1603",
+        "items": [
+          "1603 marks a major royal transition: Elizabeth I dies and James VI of Scotland becomes James I of England, beginning the Stuart dynasty. Think 'Elizabeth ends → James begins' in 1603.",
+          "1603 sits between two famous landmarks: Elizabeth I dies in 1603, and the Gunpowder Plot to blow up Parliament is uncovered just two years later, in 1605."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "The Gunpowder Plot is uncovered in 1605, just two years after Elizabeth's death. Think 1603 → Elizabeth dies; 1605 → Guy Fawkes and the failed plot to blow up Parliament.",
+          "The English Civil War begins in 1642, 39 years after Elizabeth's death. The Tudor age ended in 1603; within four decades, England would be fighting a civil war and eventually executing a king."
+        ]
+      }
+    ]
+  },
+  "founding-of-rome": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "The first Olympic Games are traditionally dated to 776 BCE, just 23 years before Rome's legendary founding in 753 BCE — two foundational myths of the ancient Mediterranean world, born within a generation of each other.",
+          "Roman writers linked their city's origins back to the fall of Troy, traditionally placed around 1184 BCE — over 400 years before Rome's own legendary founding date."
+        ]
+      },
+      {
+        "label": "Year of 753 BCE",
+        "items": [
+          "A useful number trick: 'seven-five-three' — Rome's traditional story begins in 753 BCE.",
+          "753 BCE is a purely legendary date, calculated centuries later by the Roman scholar Varro — less a historical fact than a founding myth, similar to how other ancient cultures gave their cities a symbolic origin story."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "The Roman Republic traditionally began in 509 BCE, 244 years after the founding of Rome. Think 753 BCE → kings; 509 BCE → Republic.",
+          "Julius Caesar was assassinated in 44 BCE. From Rome's traditional founding in 753 BCE to Caesar's death is just over 700 years — a useful reminder of how long the Roman story lasted."
+        ]
+      }
+    ]
+  },
+  "spanish-civil-war": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Spain becomes a republic in 1931, five years before civil war breaks out in 1936, as tensions between left and right factions build toward open conflict.",
+          "Hitler comes to power in Germany in 1933. Three years later, in 1936, the Spanish Civil War begins, with Nazi Germany and Fascist Italy supporting Franco's Nationalists."
+        ]
+      },
+      {
+        "label": "Year of 1936",
+        "items": [
+          "1936 is also the year Hitler hosts the Berlin Olympics and remilitarizes the Rhineland — the same year fascist and authoritarian forces are testing their strength across Europe, Spain included.",
+          "The Spanish Civil War begins in 1936, just three years before World War II erupts in 1939. It is often called a dress rehearsal for the larger war soon to follow."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "World War II begins in 1939, three years after the Spanish Civil War starts. Subtract 3 from 1939 to land on 1936.",
+          "Franco rules Spain as dictator until his death in 1975, 39 years after the war began in 1936 — the conflict's winner held power for nearly four decades afterward."
+        ]
+      }
+    ]
+  },
+  "first-oil-well": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Edwin Drake begins drilling near Titusville, Pennsylvania in 1858, using a steam engine borrowed from salt-well drilling techniques. He strikes oil the following year, in 1859.",
+          "Darwin anchor: Charles Darwin published On the Origin of Species in 1859. Pair 'oil underground' with 'evolution' — two revolutionary developments in the same year."
+        ]
+      },
+      {
+        "label": "Year of 1859",
+        "items": [
+          "1859 is also the year Charles Darwin publishes On the Origin of Species — the same year one discovery reshaped biology while another, quietly in Pennsylvania, was about to reshape energy and industry.",
+          "1859 sits right before the outbreak of the American Civil War in 1861 — Drake's well strikes oil just two years before the war that would soon demand more fuel and industry than ever."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "John D. Rockefeller founds Standard Oil in 1870, eleven years after Drake's well. Subtract 11 from 1870 to land on 1859.",
+          "Karl Benz patents the first commercial gasoline automobile in 1886 — add 27 years to Drake's 1859 discovery to reach the moment oil found its defining new purpose."
+        ]
+      }
+    ]
+  },
+  "chandrayaan-3-lunar-landing": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "India's Chandrayaan-2 attempted a lunar landing in 2019 but its lander crashed during the final descent. Four years later, Chandrayaan-3 achieved the landing in 2023.",
+          "The first human Moon landing was Apollo 11 in 1969. Chandrayaan-3 came 54 years later, in 2023 — more than half a century after humans first walked on the Moon."
+        ]
+      },
+      {
+        "label": "Year of 2023",
+        "items": [
+          "2023 is also the year Russia's Luna-25 mission crashed attempting the same south-pole landing, just days before Chandrayaan-3 succeeded — a striking same-year contrast between failure and success.",
+          "ChatGPT's public release caused a massive AI boom starting in late 2022 and through 2023 — the same year India made its own historic technological leap, on the Moon rather than in software."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "China lands its Chang'e-6 mission on the Moon's far side in 2024, one year after Chandrayaan-3 — back-to-back lunar milestones from Asian space programs.",
+          "India plans a crewed Moon landing by 2040. Chandrayaan-3 in 2023 marks the first major stepping stone toward that goal — 17 years before the target."
+        ]
+      }
+    ]
+  },
+  "wealth-of-nations-published": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "The Seven Years' War ends in 1763, reshaping global trade and colonial economics. Thirteen years later, in 1776, Smith publishes his landmark critique of mercantilism.",
+          "The American Revolution began in 1775. One year later, in 1776, Adam Smith published The Wealth of Nations on the very same day the colonies declared independence."
+        ]
+      },
+      {
+        "label": "Year of 1776",
+        "items": [
+          "1776 is one of the most memorable years in history: the American Declaration of Independence and The Wealth of Nations were both published the same year. Pair 'political freedom' with 'economic freedom' — both in 1776.",
+          "Think 1776 = Jefferson and Adam Smith. The colonies were challenging political authority while Smith was questioning how economies should be organised."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "The French Revolution begins in 1789, 13 years after Smith's book, partly fueled by the economic grievances he analyzed. Subtract 13 from 1789 to land on 1776.",
+          "Smith dies in 1790, just fourteen years after publishing his masterwork — long enough to see it become the foundational text of classical economics."
+        ]
+      }
+    ]
+  },
+  "penicillin-discovered": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Alexander Fleming started working on bacteriology and antiseptics during World War I. About a decade after the war ends in 1918, his famous accidental discovery in the lab follows from that background — landing in 1928.",
+          "Charles Lindbergh made the first solo nonstop transatlantic flight in 1927. One year later, in 1928, Fleming discovered penicillin."
+        ]
+      },
+      {
+        "label": "Year of 1928",
+        "items": [
+          "1928 is also the year Amelia Earhart becomes the first woman to fly across the Atlantic — two very different breakthroughs, one in the sky and one in a petri dish, the same year.",
+          "1928 is the year of the first Academy Awards ceremony and the signing of the Kellogg-Briand Pact — think '1928 = penicillin and the beginning of the Hollywood awards era.'"
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "The stock market crashes in 1929, just one year after Fleming discovered penicillin. Think 1928 → penicillin; 1929 → Wall Street crashes.",
+          "Penicillin isn't mass-produced until World War II, around 1943 — 15 years after its discovery. Subtract 15 from 1943 to land on 1928.",
+          "Fleming shares the Nobel Prize in Medicine in 1945, 17 years after his original discovery — it took nearly two decades for the finding to be fully recognized and put to wide use."
+        ]
+      }
+    ]
+  },
   "partition-of-bengal": {
     "groups": [
       {

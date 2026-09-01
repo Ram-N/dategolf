@@ -131,6 +131,50 @@
         </div>
       </div>
 
+      <!-- Memory Aid Coverage -->
+      <div class="mt-10">
+        <div class="flex items-center justify-between mb-3">
+          <p class="text-xs text-zinc-600 uppercase tracking-widest">Memory Aid Coverage</p>
+          <span class="text-xs text-zinc-500">{{ coveredCount }} / {{ allEvents.length }} events</span>
+        </div>
+        <div class="overflow-x-auto rounded-xl border border-zinc-800">
+          <table class="w-full text-xs">
+            <thead>
+              <tr class="border-b border-zinc-800 text-zinc-500 uppercase tracking-widest">
+                <th class="text-left px-3 py-2 font-medium">Event</th>
+                <th class="text-right px-3 py-2 font-medium w-16">Year</th>
+                <th class="text-center px-2 py-2 font-medium w-12">Back</th>
+                <th class="text-center px-2 py-2 font-medium w-10">Yr</th>
+                <th class="text-center px-2 py-2 font-medium w-14">Ahead</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="row in eventCoverage"
+                :key="row.id"
+                class="border-b border-zinc-900 last:border-0"
+                :class="row.hasAny ? '' : 'bg-zinc-900/40'"
+              >
+                <td class="px-3 py-1.5 text-zinc-300">{{ row.name }}</td>
+                <td class="px-3 py-1.5 text-right font-mono text-zinc-500">{{ formatYear(row.year) }}</td>
+                <td class="px-2 py-1.5 text-center">
+                  <span v-if="row.hasBack" class="text-green-400">✓</span>
+                  <span v-else class="text-zinc-700">·</span>
+                </td>
+                <td class="px-2 py-1.5 text-center">
+                  <span v-if="row.hasYearOf" class="text-green-400">✓</span>
+                  <span v-else class="text-zinc-700">·</span>
+                </td>
+                <td class="px-2 py-1.5 text-center">
+                  <span v-if="row.hasAhead" class="text-green-400">✓</span>
+                  <span v-else class="text-zinc-700">·</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -207,10 +251,16 @@ function nextWeek() {
 // ── Events + challenge generation ─────────────────────────────────────────────
 const allEvents = ref<Event[]>([])
 
+const datelinks = ref<Record<string, { groups: { label: string; items: string[] }[] }>>({})
+
 onMounted(async () => {
   unlocked.value = sessionStorage.getItem(SESSION_KEY) === '1'
-  const mod = await import('@/data/events.json')
-  allEvents.value = mod.default as Event[]
+  const [evMod, dlMod] = await Promise.all([
+    import('@/data/events.json'),
+    import('@/data/datelinks.json'),
+  ])
+  allEvents.value = evMod.default as Event[]
+  datelinks.value = dlMod.default as typeof datelinks.value
 })
 
 const challenge = computed<DatePickChallenge | null>(() => {
@@ -245,4 +295,34 @@ const eraSummary = computed(() => {
 function formatYear(year: number): string {
   return year < 0 ? `${Math.abs(year)} BCE` : String(year)
 }
+
+// ── Memory aid coverage ────────────────────────────────────────────────────────
+const eventCoverage = computed(() => {
+  return allEvents.value
+    .map((e) => {
+      const entry = datelinks.value[e.id]
+      const groups = entry?.groups ?? []
+      const labels = groups.map((g) => g.label)
+      const hasBack = labels.includes('Look Back')
+      const hasYearOf = labels.some((l) => l.startsWith('Year of'))
+      const hasAhead = labels.includes('Look Ahead')
+      return {
+        id: e.id,
+        name: e.name,
+        year: e.year,
+        hasBack,
+        hasYearOf,
+        hasAhead,
+        hasAny: hasBack || hasYearOf || hasAhead,
+      }
+    })
+    .sort((a, b) => {
+      // uncovered first, then partially covered, then fully covered
+      const scoreA = (a.hasBack ? 1 : 0) + (a.hasYearOf ? 1 : 0) + (a.hasAhead ? 1 : 0)
+      const scoreB = (b.hasBack ? 1 : 0) + (b.hasYearOf ? 1 : 0) + (b.hasAhead ? 1 : 0)
+      return scoreA - scoreB
+    })
+})
+
+const coveredCount = computed(() => eventCoverage.value.filter((r) => r.hasAny).length)
 </script>
