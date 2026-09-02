@@ -38,11 +38,11 @@ It is a flat JSON object. Every key is an **event ID** (see below). Every value 
 
 **Rules:**
 - Top-level keys are event IDs — strings, no spaces, kebab-case
-- `groups` is an array of 1–3 objects
+- `groups` is an array of 1–4 objects
 - Each group has exactly two fields: `label` (string) and `items` (array of strings)
 - `items` holds 1–4 short paragraphs — plain prose, no markdown, no bullet symbols
 - Groups are optional — include only the ones that have something genuinely useful to say
-- Order groups as: Look Back → Year of [YEAR] → Look Ahead (when all three exist)
+- Order groups as: Look Back → Year of [YEAR] → Look Ahead → Event Timeline (when all exist)
 
 ---
 
@@ -64,7 +64,7 @@ To find an ID for any event, search `events.json` for the event name and copy th
 
 ---
 
-## The Three Group Labels
+## The Four Group Labels
 
 You may use any or all of these. Use only the ones that offer real mnemonic value.
 
@@ -115,6 +115,40 @@ Connect the event's year to something **later** the student is more likely to kn
 **Good for**: Events that caused something famous, events that sit near a round century, inventions whose later milestone is well-known.
 
 **Avoid**: Later events that are nearly as obscure as the target year itself.
+
+---
+
+### 4. `"Event Timeline"`
+
+The label is always the fixed string `"Event Timeline"` (no year substitution needed).
+
+Each item is a key moment *within* the event's own internal history, formatted as:
+
+```
+"YEAR — short description"
+```
+
+Examples:
+```
+"1789 — Estates-General convenes; Storming of the Bastille in July"
+"Oct 22, 1962 — Kennedy's televised address reveals the crisis; US naval blockade begins"
+"1939–40 — Florey and Chain at Oxford purify penicillin and run first animal tests"
+```
+
+The UI renders these in a distinct monospace-style layout — date on the left, description on the right — rather than as prose paragraphs.
+
+**When to use**: Events that span multiple years or phases and have a well-known internal sequence (wars, revolutions, slow-burn discoveries, political crises with distinct turning points). Not useful for events that are a single moment with no meaningful phases.
+
+**How many items**: 3–6 entries. Fewer than 3 is not a useful timeline; more than 6 becomes a history lesson rather than a mnemonic.
+
+**Format rules**:
+- Always use an em-dash surrounded by spaces: ` — ` (not a hyphen, not `–`)
+- Start with the year or date (can be a range like `1939–40` or include a month like `Oct 16, 1962`)
+- Keep the description short — one clause, not a full sentence
+- Entries should be in chronological order
+- Do not use markdown or bullet symbols inside the string
+
+**Ordering**: Place `"Event Timeline"` after the three standard groups if all are present.
 
 ---
 
@@ -248,9 +282,9 @@ Event ID: `code-of-hammurabi`
 
 ## What Not to Do
 
-- Do not add a `"label"` value other than `"Look Back"`, `"Year of [YEAR]"`, or `"Look Ahead"`. The UI expects these exact patterns.
+- Do not add a `"label"` value other than `"Look Back"`, `"Year of [YEAR]"`, `"Look Ahead"`, or `"Event Timeline"`. The UI expects these exact strings.
 - Do not use markdown inside item strings (no `**bold**`, no `- bullet`).
 - Do not invent an event ID — it must match `events.json` exactly.
 - Do not create entries for events that are not in `events.json` — they will never be shown.
-- Do not add more than 3 groups per event.
+- Do not add more than 4 groups per event.
 - Do not pad items with filler. If you cannot think of a strong anchor, omit that group.

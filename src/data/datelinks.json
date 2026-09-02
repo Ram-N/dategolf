@@ -100,6 +100,16 @@
           "The Glorious Revolution came 39 years after Charles I's execution, in 1688. The long struggle over the power of Crown and Parliament continued from 1649 toward the constitutional settlement of 1688.",
           "French Revolution comparison: The execution of Charles I in 1649 predates the execution of Louis XVI of France in 1793 by 144 years — England set the precedent for regicide long before France followed."
         ]
+      },
+      {
+        "label": "Event Timeline",
+        "items": [
+          "1642 — Charles I raises his standard at Nottingham; the English Civil War begins",
+          "1645 — New Model Army formed; decisive Parliamentarian victory at the Battle of Naseby breaks Royalist power",
+          "1646 — Charles surrenders to the Scottish army, who hand him to Parliament the following year",
+          "1648 — Second Civil War; Pride's Purge removes moderate MPs, leaving the 'Rump Parliament' that will try the king",
+          "Jan 30, 1649 — Charles I tried, convicted of treason, and beheaded outside the Banqueting House in London"
+        ]
       }
     ]
   },
@@ -151,6 +161,16 @@
         "items": [
           "Kennedy was assassinated in November 1963, just over a year after the crisis. Think: 1962 = missiles; 1963 = Dallas.",
           "The Nuclear Test Ban Treaty is signed in 1963, one year after the crisis — a direct result of both superpowers stepping back from the brink they reached in 1962."
+        ]
+      },
+      {
+        "label": "Event Timeline",
+        "items": [
+          "Oct 16, 1962 — Kennedy briefed on U-2 spy photos showing Soviet missile sites under construction in Cuba",
+          "Oct 22, 1962 — Kennedy's televised address reveals the crisis; US naval blockade of Cuba begins",
+          "Oct 24, 1962 — Soviet cargo ships approach the blockade line, then stop and turn back",
+          "Oct 27, 1962 — 'Black Saturday': a U-2 is shot down over Cuba; another strays into Soviet airspace; war feels imminent",
+          "Oct 28, 1962 — Khrushchev announces Soviet missiles will be withdrawn; crisis ends"
         ]
       }
     ]
@@ -353,6 +373,16 @@
           "The stock market crashes in 1929, just one year after Fleming discovered penicillin. Think 1928 → penicillin; 1929 → Wall Street crashes.",
           "Penicillin isn't mass-produced until World War II, around 1943 — 15 years after its discovery. Subtract 15 from 1943 to land on 1928.",
           "Fleming shares the Nobel Prize in Medicine in 1945, 17 years after his original discovery — it took nearly two decades for the finding to be fully recognized and put to wide use."
+        ]
+      },
+      {
+        "label": "Event Timeline",
+        "items": [
+          "1928 — Fleming notices a mold (Penicillium notatum) has killed bacteria on a culture plate left near an open window",
+          "1929 — Fleming publishes his findings; few scientists take notice, and he cannot isolate the active compound",
+          "1939–40 — Howard Florey and Ernst Chain at Oxford purify penicillin and run the first animal tests",
+          "1942 — First human patient successfully treated; US and UK governments fund mass production for the war effort",
+          "1945 — Fleming, Florey, and Chain share the Nobel Prize in Physiology or Medicine"
         ]
       }
     ]

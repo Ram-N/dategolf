@@ -48,13 +48,25 @@
           {{ group.label }}
         </button>
         <div v-if="openGroups[gi]" class="pl-5 pb-2 space-y-2">
-          <p
-            v-for="(item, ii) in group.items"
-            :key="ii"
-            class="text-xs text-zinc-400 leading-relaxed"
-          >
-            {{ item }}
-          </p>
+          <template v-if="group.label === 'Event Timeline'">
+            <div
+              v-for="(item, ii) in group.items"
+              :key="ii"
+              class="text-xs leading-snug flex gap-2"
+            >
+              <span class="font-mono text-zinc-300 shrink-0">{{ timelineYear(item) }}</span>
+              <span class="text-zinc-500">{{ timelineDesc(item) }}</span>
+            </div>
+          </template>
+          <template v-else>
+            <p
+              v-for="(item, ii) in group.items"
+              :key="ii"
+              class="text-xs text-zinc-400 leading-relaxed"
+            >
+              {{ item }}
+            </p>
+          </template>
         </div>
       </div>
     </div>
@@ -104,6 +116,16 @@ function toggleGroup(index: number) {
 
 function formatYear(year: number): string {
   return year < 0 ? `${Math.abs(year)} BCE` : String(year)
+}
+
+function timelineYear(item: string): string {
+  const i = item.indexOf(' — ')
+  return i >= 0 ? item.slice(0, i) : item
+}
+
+function timelineDesc(item: string): string {
+  const i = item.indexOf(' — ')
+  return i >= 0 ? item.slice(i + 3) : ''
 }
 
 function choiceRevealClass(index: number): string {

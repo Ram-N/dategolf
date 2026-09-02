@@ -146,6 +146,7 @@
                 <th class="text-center px-2 py-2 font-medium w-12">Back</th>
                 <th class="text-center px-2 py-2 font-medium w-10">Yr</th>
                 <th class="text-center px-2 py-2 font-medium w-14">Ahead</th>
+                <th class="text-center px-2 py-2 font-medium w-10">TL</th>
               </tr>
             </thead>
             <tbody>
@@ -167,6 +168,10 @@
                 </td>
                 <td class="px-2 py-1.5 text-center">
                   <span v-if="row.hasAhead" class="text-green-400">✓</span>
+                  <span v-else class="text-zinc-700">·</span>
+                </td>
+                <td class="px-2 py-1.5 text-center">
+                  <span v-if="row.hasTimeline" class="text-green-400">✓</span>
                   <span v-else class="text-zinc-700">·</span>
                 </td>
               </tr>
@@ -306,6 +311,7 @@ const eventCoverage = computed(() => {
       const hasBack = labels.includes('Look Back')
       const hasYearOf = labels.some((l) => l.startsWith('Year of'))
       const hasAhead = labels.includes('Look Ahead')
+      const hasTimeline = labels.includes('Event Timeline')
       return {
         id: e.id,
         name: e.name,
@@ -313,13 +319,14 @@ const eventCoverage = computed(() => {
         hasBack,
         hasYearOf,
         hasAhead,
-        hasAny: hasBack || hasYearOf || hasAhead,
+        hasTimeline,
+        hasAny: hasBack || hasYearOf || hasAhead || hasTimeline,
       }
     })
     .sort((a, b) => {
       // uncovered first, then partially covered, then fully covered
-      const scoreA = (a.hasBack ? 1 : 0) + (a.hasYearOf ? 1 : 0) + (a.hasAhead ? 1 : 0)
-      const scoreB = (b.hasBack ? 1 : 0) + (b.hasYearOf ? 1 : 0) + (b.hasAhead ? 1 : 0)
+      const scoreA = (a.hasBack ? 1 : 0) + (a.hasYearOf ? 1 : 0) + (a.hasAhead ? 1 : 0) + (a.hasTimeline ? 1 : 0)
+      const scoreB = (b.hasBack ? 1 : 0) + (b.hasYearOf ? 1 : 0) + (b.hasAhead ? 1 : 0) + (b.hasTimeline ? 1 : 0)
       return scoreA - scoreB
     })
 })
