@@ -387,6 +387,41 @@
       }
     ]
   },
+  "alexander-conquests": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Philip II of Macedon is assassinated in 336 BCE, two years before Alexander crosses into Asia in 334 BCE — the young king moves fast, securing Greece and launching his invasion within two years of taking the throne.",
+          "The Persian Wars, when Greece repelled Persian invasions at Marathon (490 BCE) and Salamis (480 BCE), end more than 140 years before Alexander goes on the offensive in 334 BCE — he's finally turning the tables on the old invader."
+        ]
+      },
+      {
+        "label": "Year of 334 BCE",
+        "items": [
+          "334 BCE falls in the same century as Aristotle's peak teaching years — Aristotle personally tutored Alexander as a boy, and just a few years later his student is crossing into Asia to conquer an empire.",
+          "334 BCE sits almost exactly 290 years before Julius Caesar's assassination in 44 BCE — a useful bridge if you know Caesar's date well."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Alexander dies in 323 BCE, just 11 years after beginning his conquests in 334 BCE — one of history's shortest windows between a campaign's start and an empire's peak.",
+          "The decisive Battle of Gaugamela, which breaks Persian resistance for good, happens in 331 BCE, three years after the campaign begins. Subtract 3 from 331 to land on 334 BCE."
+        ]
+      },
+      {
+        "label": "Event Timeline",
+        "items": [
+          "336 BCE — Philip II of Macedon is assassinated; Alexander, aged 20, inherits the throne",
+          "334 BCE — Alexander crosses the Hellespont into Asia Minor and wins his first major battle against the Persians at the Granicus River",
+          "333 BCE — Alexander defeats Darius III at the Battle of Issus, forcing the Persian king to flee",
+          "332 BCE — Alexander conquers Egypt without resistance and founds the city of Alexandria",
+          "331 BCE — Decisive victory over Darius III at Gaugamela effectively ends the Persian Empire's resistance"
+        ]
+      }
+    ]
+  },
   "partition-of-bengal": {
     "groups": [
       {
