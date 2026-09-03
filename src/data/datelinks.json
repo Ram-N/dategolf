@@ -422,6 +422,41 @@
       }
     ]
   },
+  "glorious-revolution": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Charles II is restored to the throne in 1660, 28 years before the Glorious Revolution in 1688 — the Stuart monarchy that had been briefly abolished under Cromwell gets deposed again, this time for good, less than three decades later.",
+          "James II becomes king in 1685, just three years before Parliament invites William of Orange to invade in 1688 — a remarkably short reign before his own subjects push him out."
+        ]
+      },
+      {
+        "label": "Year of 1688",
+        "items": [
+          "1688 sits almost exactly a century before the French Revolution begins in 1789 — England settles its power struggle between Crown and Parliament peacefully, roughly 100 years before France does it violently.",
+          "1688 falls 39 years after the execution of Charles I in 1649 — father beheaded by Parliament, son restored and later deposed by it, all within one Stuart family saga."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "The English Bill of Rights is passed in 1689, one year after William and Mary take the throne. Subtract 1 from 1689 to land on 1688.",
+          "The Act of Union merges England and Scotland into Great Britain in 1707, 19 years after the Glorious Revolution — the new constitutional settlement of 1688 held firm long enough to absorb an even bigger political change two decades later."
+        ]
+      },
+      {
+        "label": "Event Timeline",
+        "items": [
+          "1685 — James II, a Catholic, becomes king, alarming a largely Protestant Parliament",
+          "June 1688 — James II's son is born, raising fears of a Catholic dynasty; Parliament invites William of Orange to intervene",
+          "Nov 1688 — William lands at Torbay with an invasion force; James II's support collapses almost immediately",
+          "Dec 1688 — James II flees to France without a major battle being fought",
+          "Feb 1689 — William and Mary are jointly declared king and queen after accepting the Bill of Rights"
+        ]
+      }
+    ]
+  },
   "partition-of-bengal": {
     "groups": [
       {
