@@ -457,6 +457,41 @@
       }
     ]
   },
+  "vasco-da-gama-india-route": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Bartolomeu Dias rounds the Cape of Good Hope in 1488, proving Africa's southern tip could be sailed around. Ten years later, in 1498, da Gama finishes the job and reaches India.",
+          "Columbus sails west and reaches the Americas in 1492, still believing he'd found a route to Asia. Six years later, in 1498, da Gama actually gets there, by sailing the opposite direction around Africa."
+        ]
+      },
+      {
+        "label": "Year of 1498",
+        "items": [
+          "1498 falls just six years after Columbus's famous 1492 voyage — two competing routes to Asia, one west and one around Africa, discovered within a single decade.",
+          "1498 is only four years after the Treaty of Tordesillas in 1494, when Spain and Portugal carved up the unexplored world between them — da Gama's voyage delivers on Portugal's half of that bargain."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "The Portuguese establish their trading colony at Goa in India in 1510, 12 years after da Gama's voyage. Subtract 12 from 1510 to land on 1498.",
+          "Magellan's expedition completes the first circumnavigation of the globe in 1522, 24 years after da Gama's sea route to India — the Age of Exploration's early breakthrough leads to its ultimate proof that the world could be sailed around entirely."
+        ]
+      },
+      {
+        "label": "Event Timeline",
+        "items": [
+          "1497 — Vasco da Gama departs Lisbon with four ships, tasked with finding a sea route to India",
+          "Nov 1497 — Da Gama rounds the Cape of Good Hope, following the path Dias had charted a decade earlier",
+          "Apr 1498 — With the help of a local pilot, da Gama's fleet crosses the Indian Ocean from East Africa",
+          "May 1498 — Da Gama arrives at Calicut on India's southwest coast, completing the first all-sea route from Europe to Asia",
+          "1499 — Da Gama returns to Portugal, having lost half his crew and two of his four ships, but proving the route was viable"
+        ]
+      }
+    ]
+  },
   "partition-of-bengal": {
     "groups": [
       {
