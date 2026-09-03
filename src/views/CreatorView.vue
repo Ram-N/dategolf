@@ -137,6 +137,45 @@
           <p class="text-xs text-zinc-600 uppercase tracking-widest">Memory Aid Coverage</p>
           <span class="text-xs text-zinc-500">{{ coveredCount }} / {{ allEvents.length }} events</span>
         </div>
+
+        <!-- Summary row -->
+        <div class="grid grid-cols-4 gap-2 mb-4">
+          <div class="bg-zinc-900 rounded-lg px-3 py-2 text-center border border-zinc-800">
+            <div class="text-base font-bold text-white">{{ coverageSummary.back }}</div>
+            <div class="text-xs text-zinc-500 mt-0.5">Look Back</div>
+          </div>
+          <div class="bg-zinc-900 rounded-lg px-3 py-2 text-center border border-zinc-800">
+            <div class="text-base font-bold text-white">{{ coverageSummary.yearOf }}</div>
+            <div class="text-xs text-zinc-500 mt-0.5">Year Of</div>
+          </div>
+          <div class="bg-zinc-900 rounded-lg px-3 py-2 text-center border border-zinc-800">
+            <div class="text-base font-bold text-white">{{ coverageSummary.ahead }}</div>
+            <div class="text-xs text-zinc-500 mt-0.5">Look Ahead</div>
+          </div>
+          <div class="bg-zinc-900 rounded-lg px-3 py-2 text-center border border-zinc-800">
+            <div class="text-base font-bold text-white">{{ coverageSummary.timeline }}</div>
+            <div class="text-xs text-zinc-500 mt-0.5">Timeline</div>
+          </div>
+        </div>
+
+        <!-- Filter toggle -->
+        <div class="flex gap-1 mb-3">
+          <button
+            v-for="opt in (['all', 'covered', 'uncovered'] as const)"
+            :key="opt"
+            @click="coverageFilter = opt"
+            class="px-3 py-1 rounded-lg text-xs font-medium transition-colors capitalize"
+            :class="coverageFilter === opt
+              ? 'bg-white text-black'
+              : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'"
+          >
+            {{ opt }}
+            <span class="ml-1 opacity-60">
+              {{ opt === 'all' ? allEvents.length : opt === 'covered' ? coveredCount : allEvents.length - coveredCount }}
+            </span>
+          </button>
+        </div>
+
         <div class="overflow-x-auto rounded-xl border border-zinc-800">
           <table class="w-full text-xs">
             <thead>
@@ -151,7 +190,7 @@
             </thead>
             <tbody>
               <tr
-                v-for="row in eventCoverage"
+                v-for="row in filteredCoverage"
                 :key="row.id"
                 class="border-b border-zinc-900 last:border-0"
                 :class="row.hasAny ? '' : 'bg-zinc-900/40'"
@@ -332,4 +371,19 @@ const eventCoverage = computed(() => {
 })
 
 const coveredCount = computed(() => eventCoverage.value.filter((r) => r.hasAny).length)
+
+const coverageFilter = ref<'all' | 'covered' | 'uncovered'>('all')
+
+const filteredCoverage = computed(() => {
+  if (coverageFilter.value === 'covered') return eventCoverage.value.filter((r) => r.hasAny)
+  if (coverageFilter.value === 'uncovered') return eventCoverage.value.filter((r) => !r.hasAny)
+  return eventCoverage.value
+})
+
+const coverageSummary = computed(() => ({
+  back: eventCoverage.value.filter((r) => r.hasBack).length,
+  yearOf: eventCoverage.value.filter((r) => r.hasYearOf).length,
+  ahead: eventCoverage.value.filter((r) => r.hasAhead).length,
+  timeline: eventCoverage.value.filter((r) => r.hasTimeline).length,
+}))
 </script>
