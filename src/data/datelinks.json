@@ -492,6 +492,41 @@
       }
     ]
   },
+  "hitler-rise-chancellor": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "The Wall Street Crash hits in 1929, four years before Hitler takes power in 1933. Mass unemployment and economic collapse in Germany during those years fuel the Nazi Party's rapid rise.",
+          "Hitler's failed Beer Hall Putsch happens in 1923, exactly ten years before he's legally appointed Chancellor in 1933 — he goes from attempting a coup and landing in prison to reaching power through the ballot box a decade later."
+        ]
+      },
+      {
+        "label": "Year of 1933",
+        "items": [
+          "1933 is also the year Franklin D. Roosevelt takes office as US President and launches the New Deal — two very different responses to the same Great Depression, on opposite sides of the Atlantic, the same year.",
+          "1933 falls 15 years after the end of World War I in 1918 — the harsh terms of that war's peace treaty are still fueling German resentment when Hitler takes power a generation later."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Germany invades Poland in 1939, six years after Hitler becomes Chancellor, starting World War II. Subtract 6 from 1939 to land on 1933.",
+          "Hitler dies by suicide in 1945, 12 years after taking power, as the Nazi regime collapses — a twelve-year span from appointment to total defeat."
+        ]
+      },
+      {
+        "label": "Event Timeline",
+        "items": [
+          "1929 — The Great Depression begins, devastating the German economy and boosting support for extremist parties",
+          "Jul 1932 — The Nazi Party becomes the largest party in the Reichstag, though still short of a majority",
+          "Jan 30, 1933 — President Hindenburg appoints Hitler as Chancellor, believing conservative politicians could control him",
+          "Feb 1933 — The Reichstag Fire is used as a pretext to suspend civil liberties and arrest political opponents",
+          "Mar 1933 — The Enabling Act passes, granting Hitler dictatorial powers and effectively ending German democracy"
+        ]
+      }
+    ]
+  },
   "partition-of-bengal": {
     "groups": [
       {
