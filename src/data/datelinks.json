@@ -552,5 +552,79 @@
         ]
       }
     ]
+  },
+  "telephone-invented": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "America's centennial gift: The telephone is invented in 1876 — exactly 100 years after the Declaration of Independence in 1776. The United States turns 100 and gets the telephone. Now the president can make calls.",
+          "Telegraph came first — subtract 32 years: Morse demonstrated the electric telegraph in 1844. Bell patents the telephone 32 years later in 1876, turning dots and dashes into a real human voice."
+        ]
+      },
+      {
+        "label": "Year of 1876",
+        "items": [
+          "The Centennial Exhibition: The 1876 World's Fair in Philadelphia was held specifically to celebrate the USA's 100th birthday — and Bell demonstrated the telephone there. The invention and the anniversary were literally at the same party."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Edison's phonograph one year later: Bell patents the telephone in 1876; Edison records sound on the phonograph in 1877. Two consecutive years, two ways of capturing the human voice.",
+          "Marconi's wireless radio in 1895 — 19 years later: telephone (wired voice, 1876) → radio (wireless signal, 1895). Add roughly 20 years to get from Bell to wireless."
+        ]
+      }
+    ]
+  },
+  "trans-atlantic-slave-trade-peak": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "1633 is too early — that's the growth phase, not the peak: The first enslaved Africans arrive in British Virginia in 1619, and the trade expands steadily through the 1600s. But the massive sugar, tobacco, and rice plantation economies of the Caribbean and American South don't reach full scale until the mid-1700s. 1633 is near the start of the ramp-up, not the top.",
+          "The sugar boom drives the peak: Caribbean sugar plantations explode in scale from the late 1600s onward. By 1750, Britain, France, and Portugal are all running plantation systems at maximum capacity — that's what pushes the trade to 80,000+ Africans transported per year."
+        ]
+      },
+      {
+        "label": "Year of 1750",
+        "items": [
+          "Midpoint of the 18th century: 1750 is exactly halfway through the 1700s — the century the trade will be abolished in. The trade peaks at the precise midpoint of the century that ends it.",
+          "Enlightenment irony: Montesquieu criticises slavery in 1748, just two years before the trade reaches its highest volume. The Age of Reason and the peak of the slave trade occupy the exact same moment."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "American Revolution 26 years later: The Declaration of Independence proclaims 'all men are created equal' in 1776 — just 26 years after the trade peaks. The same plantation economy that drives the 1750 peak funds much of the colonial wealth that makes the revolution possible.",
+          "British abolition in 1807 — 57 years later: Peak (1750) → ban (1807). The abolitionist movement builds for half a century before Parliament acts. Subtract 57 years from 1807 to land on the peak."
+        ]
+      }
+    ]
+  },
+  "cyrus-founds-persian-empire": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Don't confuse 588 and 550: Babylon destroyed Jerusalem's Temple in 588 BCE — 38 years before Cyrus founds the Persian Empire. The sequence runs 588 → 550 → 539: Babylon crushes Jerusalem, then Cyrus builds Persia, then Cyrus conquers Babylon and frees those same exiles.",
+          "Axial Age cluster: Confucius was born in 551 BCE — almost the exact moment Cyrus launches the Persian Empire in 550 BCE. Buddha was born around 563 BCE. Three world-changers all appear within a single decade in the 550s–560s BCE."
+        ]
+      },
+      {
+        "label": "Year of 550 BCE",
+        "items": [
+          "Midpoint anchor: 550 BCE is exactly halfway between 600 BCE and 500 BCE — the precise midpoint of the 6th century BCE. Put Cyrus in the dead centre of the 500s BCE.",
+          "Double-nickel: 5-5-0. The Persian Empire starts at a double-nickel date, not a round 500 or 600."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Edict of Cyrus — 11 years later: Cyrus founds Persia in 550 BCE, conquers Babylon in 539 BCE (11 years later), and immediately frees the Jewish exiles. Short chain: 550 → 539 → end of the exile.",
+          "Marathon anchor: The Battle of Marathon is 490 BCE. Subtract exactly 60 years → 550 BCE. The empire Cyrus builds in 550 is the same one that invades Greece 60 years later."
+        ]
+      }
+    ]
   }
 }
