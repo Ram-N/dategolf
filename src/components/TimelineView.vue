@@ -2,14 +2,26 @@
   <div class="w-full bg-gray-900/60 rounded-2xl border border-gray-800 px-3 py-4">
     <p class="text-[10px] uppercase tracking-widest text-gray-600 mb-2 text-center">Timeline</p>
 
-    <div ref="scrollEl" class="timeline-scroll overflow-x-scroll">
+    <div ref="scrollEl" class="timeline-scroll overflow-x-auto">
       <div class="relative" :style="{ width: containerWidth + 'px', height: CONTAINER_H + 'px' }">
 
         <!-- Track line -->
         <div
           class="absolute bg-gray-700 rounded-full"
-          :style="{ left: PADDING + 'px', top: LINE_Y + 'px', width: trackWidth + 'px', height: '2px' }"
+          :style="{ left: PADDING + 'px', top: LINE_Y + 'px', width: (containerWidth - PADDING * 2) + 'px', height: '2px' }"
         />
+
+        <!-- Axis break: player is far from the cluster, so the gap is cut out -->
+        <template v-if="brokenSide">
+          <div
+            class="absolute text-center label-bg"
+            :style="{ left: (breakX - 9) + 'px', top: (LINE_Y - 9) + 'px', width: '18px', fontSize: '14px', lineHeight: '18px', color: '#6b7280' }"
+          >≈</div>
+          <div
+            class="absolute text-center"
+            :style="{ left: (breakX - 30) + 'px', top: (LINE_Y - 24) + 'px', width: '60px', fontSize: '10px', color: '#6b7280' }"
+          >{{ gapYears }} yrs</div>
+        </template>
 
         <template v-for="m in renderedMarkers" :key="m.id">
 
@@ -60,7 +72,7 @@
           <!-- Alt / notable: floating label above the line at assigned row -->
           <template v-if="m.labelSide === 'above' && m.type !== 'target'">
             <div
-              class="absolute text-center leading-snug label-name"
+              class="absolute text-center leading-snug label-name label-bg"
               :style="{
                 left: (m.x - 50) + 'px',
                 top: rowNameY(m) + 'px',
@@ -70,7 +82,7 @@
               }"
             >{{ m.name }}</div>
             <div
-              class="absolute text-center font-bold tabular-nums"
+              class="absolute text-center font-bold tabular-nums label-bg"
               :style="{
                 left: (m.x - 28) + 'px',
                 top: rowYearY(m) + 'px',
@@ -140,8 +152,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, watch, nextTick } from 'vue'
+import { computed, ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import type { HoleResult, Event } from '@/types'
+import { penaltyTier, TIER_COLORS } from '@/utils/penaltyTier'
 
 const props = defineProps<{
   result: HoleResult
@@ -149,9 +162,11 @@ const props = defineProps<{
 }>()
 
 const scrollEl = ref<HTMLElement | null>(null)
+const viewWidth = ref(0)
 
 // ── Layout constants ────────────────────────────────────────────────────────
-const PADDING = 72
+const PADDING = 52     // ≥ half a label's width (100px) so edge labels aren't clipped
+const BREAK_W = 90     // px between the player and the cluster when the axis is broken
 const YOU_ZONE = 30    // px reserved above LINE_Y for the YOU▼ badge
 const ROW_H = 52       // height per label row above the line (name 2-lines + year + margin)
 const LABEL_H = 44     // name (~30px) + year (14px) = 44px content height
@@ -162,16 +177,14 @@ function formatYear(y: number) {
 }
 
 function penaltyColor(p: number): string {
-  if (p <= 20) return '#22c55e'
-  if (p <= 75) return '#f59e0b'
-  return '#ef4444'
+  return TIER_COLORS[penaltyTier(p)]
 }
 
 const playerColor = computed(() => penaltyColor(props.result.penalty))
 
 // ── Notable nearby events (for bad guesses) ─────────────────────────────────
 const notableNearby = computed(() => {
-  if (!props.events || props.result.penalty <= 75) return []
+  if (!props.events || penaltyTier(props.result.penalty) !== 'bad') return []
   const target = props.result.targetYear
   const usedYears = new Set([
     props.result.eventYear,
@@ -191,31 +204,79 @@ const hasAlts = computed(() => props.result.betterAlternatives.length > 0)
 const hasNotable = computed(() => notableNearby.value.length > 0)
 
 // ── Year → pixel mapping ────────────────────────────────────────────────────
-const allYears = computed(() => [
+// The "cluster" is everything around the target. If the player's pick is
+// further from the cluster than the cluster is wide, the axis is broken:
+// the cluster gets the full width and the player sits beyond a ≈ break.
+const clusterYears = computed(() => [
   props.result.targetYear,
-  props.result.eventYear,
   ...props.result.betterAlternatives.slice(0, 2).map(a => a.eventYear),
   ...notableNearby.value.map(e => e.year),
 ])
 
-const minYear = computed(() => Math.min(...allYears.value))
-const maxYear = computed(() => Math.max(...allYears.value))
-const yearSpan = computed(() => Math.max(maxYear.value - minYear.value, 10))
-
-const pxPerYear = computed(() => {
-  if (yearSpan.value <= 20)  return 18
-  if (yearSpan.value <= 50)  return 10
-  if (yearSpan.value <= 150) return 5
-  if (yearSpan.value <= 400) return 2.5
-  return 1.2
+const brokenSide = computed<'left' | 'right' | null>(() => {
+  const p = props.result.eventYear
+  const lo = Math.min(...clusterYears.value)
+  const hi = Math.max(...clusterYears.value)
+  const threshold = Math.max(hi - lo, 20)
+  if (lo - p > threshold) return 'left'
+  if (p - hi > threshold) return 'right'
+  return null
 })
 
-const trackWidth = computed(() => Math.max(yearSpan.value * pxPerYear.value, 200))
-const containerWidth = computed(() => trackWidth.value + PADDING * 2)
+const axisYears = computed(() =>
+  brokenSide.value ? clusterYears.value : [...clusterYears.value, props.result.eventYear]
+)
+
+const minYear = computed(() => Math.min(...axisYears.value))
+const maxYear = computed(() => Math.max(...axisYears.value))
+const yearSpan = computed(() => Math.max(maxYear.value - minYear.value, brokenSide.value ? 1 : 10))
+
+function steppedPxPerYear(span: number): number {
+  if (span <= 20)  return 18
+  if (span <= 50)  return 10
+  if (span <= 150) return 5
+  if (span <= 400) return 2.5
+  return 1.2
+}
+
+// Shrink to fit the visible width so all markers show without scrolling;
+// trackWidth's 200px floor still allows scrolling on very narrow screens.
+const pxPerYear = computed(() => {
+  const stepped = steppedPxPerYear(yearSpan.value)
+  if (viewWidth.value === 0) return stepped
+  // A broken axis is already zoomed, so the cluster always fills the width
+  if (brokenSide.value) return (viewWidth.value - PADDING * 2 - BREAK_W) / yearSpan.value
+  return Math.min(stepped, (viewWidth.value - PADDING * 2) / yearSpan.value)
+})
+
+const trackWidth = computed(() =>
+  Math.max(yearSpan.value * pxPerYear.value, brokenSide.value ? 110 : 200)
+)
+const containerWidth = computed(() =>
+  trackWidth.value + PADDING * 2 + (brokenSide.value ? BREAK_W : 0)
+)
 
 function yearToX(year: number): number {
-  return PADDING + ((year - minYear.value) / yearSpan.value) * trackWidth.value
+  const offset = brokenSide.value === 'left' ? BREAK_W : 0
+  return PADDING + offset + ((year - minYear.value) / yearSpan.value) * trackWidth.value
 }
+
+const playerX = computed(() => {
+  if (brokenSide.value === 'left') return PADDING
+  if (brokenSide.value === 'right') return PADDING + trackWidth.value + BREAK_W
+  return yearToX(props.result.eventYear)
+})
+
+const breakX = computed(() =>
+  brokenSide.value === 'left' ? PADDING + BREAK_W / 2 : PADDING + trackWidth.value + BREAK_W / 2
+)
+
+// Years cut out of the axis, from the player to the nearest cluster edge
+const gapYears = computed(() =>
+  brokenSide.value === 'left'
+    ? minYear.value - props.result.eventYear
+    : props.result.eventYear - maxYear.value
+)
 
 // ── Row assignment: greedy, sorted by x ──────────────────────────────────────
 // Labels are 100px wide centered on x, so minimum gap between centers is 100px.
@@ -278,7 +339,7 @@ const renderedMarkers = computed<RenderedMarker[]>(() => {
   const below: RenderedMarker[] = [
     {
       id: 'player', type: 'player',
-      x: yearToX(props.result.eventYear),
+      x: playerX.value,
       year: formatYear(props.result.eventYear),
       name: props.result.eventName,
       r: 8, color: pc, labelColor: pc, labelSide: 'below', row: 0,
@@ -319,7 +380,7 @@ function scrollToCenter() {
       const viewWidth = scrollEl.value.clientWidth
       if (viewWidth === 0) return
       const tx = yearToX(props.result.targetYear)
-      const px = yearToX(props.result.eventYear)
+      const px = playerX.value
       const centered = (tx + px) / 2 - viewWidth / 2
       const leftmost = Math.min(tx, px)
       // Don't scroll so far right that the leftmost marker disappears off-screen
@@ -328,7 +389,19 @@ function scrollToCenter() {
   })
 }
 
-onMounted(scrollToCenter)
+let resizeObserver: ResizeObserver | null = null
+
+onMounted(() => {
+  if (scrollEl.value) {
+    viewWidth.value = scrollEl.value.clientWidth
+    resizeObserver = new ResizeObserver(() => {
+      if (scrollEl.value) viewWidth.value = scrollEl.value.clientWidth
+    })
+    resizeObserver.observe(scrollEl.value)
+  }
+  scrollToCenter()
+})
+onUnmounted(() => resizeObserver?.disconnect())
 watch(() => props.result, scrollToCenter)
 </script>
 
@@ -347,6 +420,11 @@ watch(() => props.result, scrollToCenter)
 .timeline-scroll::-webkit-scrollbar-thumb {
   background: #4b5563;
   border-radius: 3px;
+}
+.label-bg {
+  /* Matches the card background so the target's dashed stem passes behind labels */
+  background-color: #0b111f;
+  z-index: 5;
 }
 .label-name {
   overflow: hidden;
