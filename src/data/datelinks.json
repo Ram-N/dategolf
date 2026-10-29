@@ -626,5 +626,16 @@
         ]
       }
     ]
+  },
+  "greek-olympics-ancient": {
+    "groups": [
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Same-digits trick: the Olympics begin in 776 BCE. Flip to 776 CE, then add 1,000 years → 1776, the American Declaration of Independence. Put a 1 in front of 776 and you land on a date you already know.",
+          "Rome anchor: Rome's legendary founding is 753 BCE. The first Olympics came 23 years earlier, in 776 BCE, so Greece was already holding games before Rome existed."
+        ]
+      }
+    ]
   }
 }
