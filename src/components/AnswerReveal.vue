@@ -39,10 +39,12 @@
       <div v-if="result.betterAlternatives.length > 0" class="w-full max-w-md">
         <p class="text-xs text-gray-500 uppercase tracking-widest mb-2">Better choices were available</p>
         <div class="space-y-2">
-          <div
+          <button
             v-for="alt in result.betterAlternatives"
             :key="alt.eventId"
-            class="bg-gray-900 rounded-xl px-4 py-2 flex justify-between items-center border border-gray-800"
+            type="button"
+            class="w-full bg-gray-900 rounded-xl px-4 py-2 flex justify-between items-center border border-gray-800 hover:border-green-800 transition-colors"
+            @click="openEventId = alt.eventId"
           >
             <div class="text-left">
               <div class="text-sm font-medium text-white">{{ alt.eventName }}</div>
@@ -52,8 +54,9 @@
               <div class="text-lg font-bold text-green-400">+{{ alt.penalty }}</div>
               <div class="text-xs text-gray-600">penalty</div>
             </div>
-          </div>
+          </button>
         </div>
+        <p class="text-xs text-gray-600 mt-2">Tap a card to learn more</p>
       </div>
 
     </div>
@@ -68,13 +71,16 @@
       </button>
     </div>
 
+    <EventInfoCard v-if="openEvent" :event="openEvent" @close="openEventId = null" />
+
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { HoleResult, ScoreStatus, Event } from '@/types'
 import TimelineView from './TimelineView.vue'
+import EventInfoCard from './EventInfoCard.vue'
 
 const props = defineProps<{
   result: HoleResult
@@ -85,6 +91,9 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{ next: [] }>()
+
+const openEventId = ref<string | null>(null)
+const openEvent = computed(() => props.events?.find(e => e.id === openEventId.value) ?? null)
 
 function formatYear(y: number) {
   return y < 0 ? `${Math.abs(y)} BCE` : String(y)
