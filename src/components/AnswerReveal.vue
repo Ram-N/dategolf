@@ -81,6 +81,7 @@ import { computed, ref } from 'vue'
 import type { HoleResult, ScoreStatus, Event } from '@/types'
 import TimelineView from './TimelineView.vue'
 import EventInfoCard from './EventInfoCard.vue'
+import { penaltyTextClass } from '@/utils/penaltyTier'
 
 const props = defineProps<{
   result: HoleResult
@@ -102,11 +103,7 @@ function formatYear(y: number) {
 const displayEventYear = computed(() => formatYear(props.result.eventYear))
 const displayTargetYear = computed(() => formatYear(props.result.targetYear))
 
-const penaltyColorClass = computed(() => {
-  if (props.result.penalty <= 5) return 'text-green-400'
-  if (props.result.penalty <= 30) return 'text-yellow-400'
-  return 'text-red-400'
-})
+const penaltyColorClass = computed(() => penaltyTextClass(props.result.penalty))
 
 const scoreStatusClass = computed(() => ({
   'score-good': props.scoreStatus === 'good',

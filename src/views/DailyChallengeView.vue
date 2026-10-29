@@ -158,6 +158,7 @@ import EventFinder from '@/components/EventFinder.vue'
 import ConfirmSelection from '@/components/ConfirmSelection.vue'
 import AnswerReveal from '@/components/AnswerReveal.vue'
 import FinalScoreView from '@/components/FinalScoreView.vue'
+import { penaltyTextClass } from '@/utils/penaltyTier'
 
 const store = useGameStore()
 const pendingEvent = ref<Event | null>(null)
@@ -175,9 +176,7 @@ function formatYear(y: number) {
 }
 
 function penaltyClass(p: number) {
-  if (p <= 5) return 'text-green-400'
-  if (p <= 30) return 'text-yellow-400'
-  return 'text-red-400'
+  return penaltyTextClass(p)
 }
 
 function onEventSelected(event: Event) {

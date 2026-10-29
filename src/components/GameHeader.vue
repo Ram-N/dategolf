@@ -15,6 +15,7 @@
             :key="i"
             class="w-2 h-2 rounded-full transition-colors"
             :class="holeIndicatorClass(i - 1)"
+            :style="holeIndicatorStyle(i - 1)"
           />
         </div>
 
@@ -50,6 +51,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { ScoreStatus, HoleResult } from '@/types'
+import { penaltyTier, TIER_COLORS } from '@/utils/penaltyTier'
 
 const SCALE_TIERS = [200, 500, 1000, 2000, 5000]
 
@@ -72,9 +74,15 @@ const scoreClass = computed(() => ({
 }))
 
 function holeIndicatorClass(index: number) {
-  if (index < props.currentHole) return 'bg-gray-400'
+  if (props.holeResults[index]) return ''
   if (index === props.currentHole && !props.completed) return 'bg-white ring-1 ring-white ring-offset-1 ring-offset-gray-950'
   return 'bg-gray-700'
+}
+
+// Played holes are colored by how well they went
+function holeIndicatorStyle(index: number) {
+  const result = props.holeResults[index]
+  return result ? { backgroundColor: segmentColor(result.penalty) } : {}
 }
 
 function segmentLeft(index: number): number {
@@ -88,8 +96,6 @@ function segmentWidth(penalty: number): number {
 }
 
 function segmentColor(penalty: number): string {
-  if (penalty <= 20) return '#22c55e'  // green-500
-  if (penalty <= 75) return '#f59e0b'  // amber-400
-  return '#ef4444'                      // red-500
+  return TIER_COLORS[penaltyTier(penalty)]
 }
 </script>
