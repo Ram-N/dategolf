@@ -663,5 +663,57 @@
         ]
       }
     ]
+  },
+  "space-shuttle-columbia": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Challenger exploded on launch in January 1986. Add 17 years → 2003, when Columbia broke up on reentry. Two shuttles lost, one on the way up and one on the way down.",
+          "Columbia was the very first shuttle to reach space, in April 1981. It flew for 22 years before it was lost in February 2003, on its 28th mission."
+        ]
+      },
+      {
+        "label": "Year of 2003",
+        "items": [
+          "The US-led invasion of Iraq began in March 2003, about seven weeks after Columbia was lost on February 1. Both happened early in George W. Bush's first term, in the shadow of 9/11 (2001).",
+          "Space race flip: in October 2003, eight months after Columbia, China flew its first astronaut, Yang Liwei. One country's shuttles were grounded the same year another sent its first person into orbit.",
+          "Concorde, the supersonic airliner, made its last commercial flight in October 2003. Two icons of 1970s flying machines faded out in the same year."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "The shuttle program ended in July 2011 with Atlantis. Subtract 8 years → 2003. Columbia's loss was the beginning of the end for the shuttle.",
+          "The shuttles returned to flight with Discovery in July 2005, after about two and a half years on the ground. Count back from 2005 → early 2003."
+        ]
+      }
+    ]
+  },
+  "act-of-union-1707": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Crowns first, Parliaments later: when Elizabeth I died in 1603, James VI of Scotland also became James I of England. One king, two countries. Add 104 years → 1707, when the two Parliaments finally merged too.",
+          "Shakespeare's era to Newton's: Shakespeare wrote for James I after the 1603 crown union, and Newton published the Principia in 1687. Add 20 years to the Principia → 1707. Great Britain was born in Newton's lifetime."
+        ]
+      },
+      {
+        "label": "Year of 1707",
+        "items": [
+          "Two great scientists were born in 1707: Carl Linnaeus, who gave living things their two-part Latin names, and the mathematician Leonhard Euler. The year Great Britain was born, so were the men who named nature and wrote much of modern math.",
+          "The Mughal emperor Aurangzeb died in 1707 and his empire began to break apart. That same year Britain unites. One empire starts to fade as the island that would later rule India comes together."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Declaration of Independence 1776 → subtract 69 years → 1707. The American colonists broke away from a Great Britain that was less than 70 years old.",
+          "Ireland joins in 1801 to make the United Kingdom of Great Britain and Ireland. Subtract 94 years → 1707. First Great Britain (1707), then the United Kingdom (1801).",
+          "Scotland voted on leaving the union in 2014 and stayed. Subtract 307 years → 1707. The union was just past its 300th birthday."
+        ]
+      }
+    ]
   }
 }
