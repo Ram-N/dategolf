@@ -45,20 +45,28 @@
       </div>
     </div>
 
-    <!-- Share button -->
-    <button
-      class="w-full py-3 rounded-xl bg-white text-black font-bold text-sm hover:bg-zinc-200 active:scale-95 transition-all"
-      @click="share"
-    >
-      {{ shareStatus === 'copied' ? 'Copied!' : shareStatus === 'shared' ? 'Shared!' : 'Share Result' }}
-    </button>
+    <!-- Share / copy buttons -->
+    <div class="flex gap-3">
+      <button
+        class="flex-1 py-3 rounded-xl bg-white text-black font-bold text-sm hover:bg-zinc-200 active:scale-95 transition-all"
+        @click="share"
+      >
+        {{ shareStatus === 'copied' ? 'Copied!' : shareStatus === 'shared' ? 'Shared!' : 'Share Result' }}
+      </button>
+      <button
+        class="flex-1 py-3 rounded-xl border border-zinc-600 text-white font-bold text-sm hover:bg-zinc-800 active:scale-95 transition-all"
+        @click="copy"
+      >
+        {{ copyLabel }}
+      </button>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import type { DatePickGameState, DatePickStats } from '@/types/datepick'
-import { shareResult } from '@/services/datepickSharing'
+import { copyResult, shareResult } from '@/services/datepickSharing'
 
 const props = defineProps<{
   gameState: DatePickGameState
@@ -66,6 +74,7 @@ const props = defineProps<{
 }>()
 
 const shareStatus = ref<'idle' | 'shared' | 'copied' | 'error'>('idle')
+const copyLabel = ref('Copy Results')
 
 const score = computed(() => props.gameState.answers.filter((a) => a.isCorrect).length)
 const total = computed(() => props.gameState.questions.length)
@@ -87,5 +96,10 @@ async function share() {
   const result = await shareResult(props.gameState)
   shareStatus.value = result
   setTimeout(() => (shareStatus.value = 'idle'), 2500)
+}
+
+async function copy() {
+  copyLabel.value = (await copyResult(props.gameState)) ? 'Copied!' : 'Could not copy'
+  setTimeout(() => (copyLabel.value = 'Copy Results'), 2500)
 }
 </script>

@@ -54,12 +54,20 @@
 
     <!-- Actions -->
     <div class="px-4 pb-8 space-y-3 w-full max-w-sm mx-auto">
-      <button
-        class="w-full py-4 rounded-xl bg-white text-gray-900 font-bold text-lg hover:bg-gray-100 transition-colors"
-        @click="onShare"
-      >
-        {{ shareLabel }}
-      </button>
+      <div class="flex gap-3">
+        <button
+          class="flex-1 py-4 rounded-xl bg-white text-gray-900 font-bold text-lg hover:bg-gray-100 transition-colors"
+          @click="onShare"
+        >
+          {{ shareLabel }}
+        </button>
+        <button
+          class="flex-1 py-4 rounded-xl border border-gray-600 text-white font-bold text-lg hover:bg-gray-800 transition-colors"
+          @click="onCopy"
+        >
+          {{ copyLabel }}
+        </button>
+      </div>
       <button
         class="w-full py-3 rounded-xl border border-gray-700 text-gray-400 text-sm hover:border-gray-500 hover:text-white transition-colors"
         @click="emit('back')"
@@ -75,7 +83,8 @@
 import { ref, computed } from 'vue'
 import type { HoleResult, PlayerStats, ScoreStatus } from '@/types'
 import type { GameState } from '@/types'
-import { shareResult } from '@/services/sharing'
+import { copyResult, shareResult } from '@/services/sharing'
+import { penaltyTextClass } from '@/utils/penaltyTier'
 
 const props = defineProps<{
   gameState: GameState
@@ -88,15 +97,14 @@ const props = defineProps<{
 const emit = defineEmits<{ back: [] }>()
 
 const shareLabel = ref('Share Result')
+const copyLabel = ref('Copy Results')
 
 function formatYear(y: number) {
   return y < 0 ? `${Math.abs(y)} BCE` : String(y)
 }
 
 function holePenaltyClass(p: number) {
-  if (p <= 5) return 'text-green-400'
-  if (p <= 30) return 'text-yellow-400'
-  return 'text-red-400'
+  return penaltyTextClass(p)
 }
 
 const scoreStatusClass = computed(() => ({
@@ -123,5 +131,10 @@ async function onShare() {
     shareLabel.value = 'Could not share'
     setTimeout(() => (shareLabel.value = 'Share Result'), 2000)
   }
+}
+
+async function onCopy() {
+  copyLabel.value = (await copyResult(props.gameState)) ? 'Copied!' : 'Could not copy'
+  setTimeout(() => (copyLabel.value = 'Copy Results'), 2000)
 }
 </script>

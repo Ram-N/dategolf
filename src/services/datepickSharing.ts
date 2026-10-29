@@ -1,12 +1,25 @@
 import type { DatePickGameState } from '@/types/datepick'
+import { copyText } from '@/services/sharing'
+
+export const PLAY_URL = 'https://datepick.genwise.in/datepick'
 
 export function buildShareText(state: DatePickGameState): string {
   const score = state.answers.filter((a) => a.isCorrect).length
   const total = state.questions.length
   const icons = state.answers.map((a) => (a.isCorrect ? '✅' : '❌')).join(' ')
-  const date = state.challengeDate
 
-  return [`DatePick ${date}`, `${score} / ${total}`, icons, 'dategolf.app/datepick'].join('\n')
+  return [
+    `📅 DatePick ${state.challengeDate}`,
+    `My score: ${score} / ${total}`,
+    icons,
+    '',
+    `Can you beat me? Play today's challenge:`,
+    PLAY_URL,
+  ].join('\n')
+}
+
+export async function copyResult(state: DatePickGameState): Promise<boolean> {
+  return copyText(buildShareText(state))
 }
 
 export async function shareResult(
@@ -23,10 +36,5 @@ export async function shareResult(
     }
   }
 
-  try {
-    await navigator.clipboard.writeText(text)
-    return 'copied'
-  } catch {
-    return 'error'
-  }
+  return (await copyText(text)) ? 'copied' : 'error'
 }
