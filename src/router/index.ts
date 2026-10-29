@@ -16,11 +16,13 @@ const router = createRouter({
       path: '/dategolf',
       name: 'daily',
       component: DailyChallengeView,
+      meta: { title: 'DateGolf — Daily History Golf' },
     },
     {
       path: '/datepick',
       name: 'datepick',
       component: DatePickView,
+      meta: { title: 'DatePick' },
     },
     {
       path: '/creator',
@@ -28,6 +30,10 @@ const router = createRouter({
       component: CreatorView,
     },
   ],
+})
+
+router.afterEach((to) => {
+  if (to.meta.title) document.title = to.meta.title as string
 })
 
 export default router
