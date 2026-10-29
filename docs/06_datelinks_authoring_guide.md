@@ -54,7 +54,7 @@ Examples:
 
 | Event name | Event ID |
 |---|---|
-| Marconi demonstrates wireless telegraphy | `marconi-wireless-telegraphy` |
+| Marconi demonstrates wireless telegraphy | `marconi-invents-radio` |
 | Invention of the Wheel | `invention-of-the-wheel` |
 | Invention of Sumerian Writing | `sumerian-writing` |
 | Code of Hammurabi Established | `code-of-hammurabi` |
@@ -192,10 +192,10 @@ Each string in `items` is one self-contained memory aid. Think of it as a single
 ## Complete Example
 
 Event: **Marconi demonstrates wireless telegraphy, 1895**
-Event ID: `marconi-wireless-telegraphy`
+Event ID: `marconi-invents-radio`
 
 ```json
-"marconi-wireless-telegraphy": {
+"marconi-invents-radio": {
   "groups": [
     {
       "label": "Look Back",

@@ -106,6 +106,12 @@ events.forEach(e => {
 })
 pass('Non-empty name/id check passed')
 
+// 8. date-LINKS keys match event IDs (otherwise the entry never displays)
+const datelinks = JSON.parse(fs.readFileSync(path.join(__dirname, '../src/data/datelinks.json'), 'utf8'))
+const orphanKeys = Object.keys(datelinks).filter(k => !uniqueIds.has(k))
+orphanKeys.forEach(k => fail(`datelinks.json key not in events.json: ${k}`))
+if (orphanKeys.length === 0) pass(`All ${Object.keys(datelinks).length} datelinks keys match event IDs`)
+
 // Summary
 console.log(`\n${'─'.repeat(40)}`)
 if (errors === 0) {
