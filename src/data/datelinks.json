@@ -637,5 +637,31 @@
         ]
       }
     ]
+  },
+  "first-vaccine-smallpox": {
+    "groups": [
+      {
+        "label": "Look Back",
+        "items": [
+          "Older idea, safer trick: inoculating people with real smallpox (variolation) reached England in 1721, brought by Lady Mary Wortley Montagu from the Ottoman Empire. Jenner's 1796 breakthrough was swapping in harmless cowpox, 75 years later.",
+          "Revolution anchor: Declaration of Independence 1776 → add 20 years → 1796. Smallpox was the great killer of that era: in 1777 George Washington had his army inoculated the old, risky way, with real smallpox. Jenner's safe cowpox version arrived 19 years later."
+        ]
+      },
+      {
+        "label": "Year of 1796",
+        "items": [
+          "George Washington gives his Farewell Address in 1796, the same year Jenner vaccinates 8-year-old James Phipps. Think founding-fathers era, not Victorian.",
+          "Seven years after the Bastille (1789), a young Napoleon launches his Italian campaign in 1796. Vaccination is born in the age of revolutions."
+        ]
+      },
+      {
+        "label": "Look Ahead",
+        "items": [
+          "Why it feels too early: Jenner had no idea what germs were. Pasteur's germ theory came in the 1860s and viruses weren't discovered until the 1890s. The vaccine came first; the science explaining it came 70–100 years later.",
+          "Smallpox was declared eradicated in 1980. Subtract 184 years → 1796. Less than two centuries from the first vaccine to wiping out the disease.",
+          "Pasteur's rabies vaccine (1885) came 89 years after Jenner. Pasteur named all such treatments vaccines in Jenner's honor, from vacca, Latin for cow."
+        ]
+      }
+    ]
   }
 }
