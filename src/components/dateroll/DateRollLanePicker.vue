@@ -42,47 +42,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
 import { LANES, type LaneId, type LaneState } from '@/engine/dateroll/lanes'
+import { usePopover } from '@/composables/usePopover'
 
 defineProps<{ state: LaneState }>()
 const emit = defineEmits<{ toggle: [id: LaneId]; move: [id: LaneId, dir: -1 | 1]; reset: [] }>()
 
-const open = ref(false)
-const panelLeft = ref(0)
-const PANEL_W = 256 // w-64
-const EDGE = 8
+const { open, rootEl, panelLeft, toggle: toggleOpen } = usePopover(256) // panel is w-64
 
-// Right-align under the button, but keep the panel on screen — the button moves as the
-// toolbar wraps, and on a phone it can sit mid-screen.
-function toggleOpen() {
-  if (!open.value && rootEl.value) {
-    const r = rootEl.value.getBoundingClientRect()
-    const wanted = r.right - PANEL_W
-    const clamped = Math.min(Math.max(wanted, EDGE), window.innerWidth - EDGE - PANEL_W)
-    panelLeft.value = clamped - r.left
-  }
-  open.value = !open.value
-}
-const rootEl = ref<HTMLDivElement | null>(null)
 const LABELS = new Map(LANES.map((l) => [l.id, l.label]))
 const labelOf = (id: LaneId) => LABELS.get(id) ?? id
-
-// Close on outside click or Escape.
-function onDocPointer(e: PointerEvent) {
-  if (open.value && rootEl.value && !rootEl.value.contains(e.target as Node)) open.value = false
-}
-function onKey(e: KeyboardEvent) {
-  if (e.key === 'Escape') open.value = false
-}
-onMounted(() => {
-  document.addEventListener('pointerdown', onDocPointer)
-  window.addEventListener('keydown', onKey)
-})
-onUnmounted(() => {
-  document.removeEventListener('pointerdown', onDocPointer)
-  window.removeEventListener('keydown', onKey)
-})
 </script>
 
 <style scoped>

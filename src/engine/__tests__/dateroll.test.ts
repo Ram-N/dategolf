@@ -27,6 +27,13 @@ import {
 import { groupFor } from '../dateroll/categoryGroups'
 import { densityBins } from '../dateroll/density'
 import {
+  NO_FILTERS,
+  categoriesByFrequency,
+  importanceThreshold,
+  matchesFilters,
+  toggleIn,
+} from '../dateroll/filters'
+import {
   DEFAULT_LANES,
   laneFor,
   moveLane,
@@ -153,6 +160,7 @@ describe('visibility', () => {
   it('never overlaps labels, never runs a leader through a label, never crosses leaders (fuzz)', () => {
     let seed = 42
     const rand = () => ((seed = (seed * 1664525 + 1013904223) % 2 ** 32) / 2 ** 32)
+    const violations: string[] = []
     for (let run = 0; run < 300; run++) {
       const items = Array.from({ length: 40 }, (_, i) => {
         const lines = 1 + Math.floor(rand() * 3)
@@ -175,18 +183,19 @@ describe('visibility', () => {
       })
       for (let i = 0; i < geom.length; i++) {
         const a = geom[i]!
-        expect(a.rect.x1).toBeGreaterThanOrEqual(0)
-        expect(a.rect.x2).toBeLessThanOrEqual(OPTS.width)
+        if (a.rect.x1 < 0 || a.rect.x2 > OPTS.width) violations.push(`run ${run}: label off screen`)
         for (let j = 0; j < geom.length; j++) {
           const b = geom[j]!
           if (i === j || a.side !== b.side) continue
           const overlap = a.rect.x1 < b.rect.x2 && b.rect.x1 < a.rect.x2 && a.rect.d1 < b.rect.d2 && b.rect.d1 < a.rect.d2
-          expect(overlap).toBe(false)
-          expect(segmentHitsRect(a.leader, b.rect)).toBe(false)
-          if (j > i) expect(segmentsCross(a.leader, b.leader)).toBe(false)
+          if (overlap) violations.push(`run ${run}: labels ${i}/${j} overlap`)
+          if (segmentHitsRect(a.leader, b.rect)) violations.push(`run ${run}: leader ${i} through label ${j}`)
+          if (j > i && segmentsCross(a.leader, b.leader)) violations.push(`run ${run}: leaders ${i}/${j} cross`)
         }
       }
     }
+    // One assertion at the end: ~500k expect() calls inside the loops made this test slow.
+    expect(violations).toEqual([])
   })
 })
 
@@ -354,5 +363,48 @@ describe('lanes', () => {
     expect(fixed.order).toHaveLength(7)
     expect(fixed.visible).toEqual(DEFAULT_LANES.visible)
     expect(sanitizeLanes(null)).toEqual(DEFAULT_LANES)
+  })
+})
+
+describe('filters', () => {
+  const sci = { categories: ['Science', 'Technology'], region: 'Europe' }
+  const war = { categories: ['War'], region: 'North America' }
+
+  it('lets everything through with no filters', () => {
+    expect(matchesFilters(sci, NO_FILTERS, true)).toBe(true)
+    expect(matchesFilters(war, NO_FILTERS, true)).toBe(true)
+  })
+
+  it('matches any selected category', () => {
+    const f = { ...NO_FILTERS, categories: ['Technology', 'Religion'] }
+    expect(matchesFilters(sci, f, true)).toBe(true)
+    expect(matchesFilters(war, f, true)).toBe(false)
+  })
+
+  it('combines categories and regions with AND, regions via lanes', () => {
+    const f = { ...NO_FILTERS, categories: ['War'], regions: ['americas' as LaneId] }
+    expect(matchesFilters(war, f, true)).toBe(true) // North America → americas lane
+    expect(matchesFilters({ ...war, region: 'Europe' }, f, true)).toBe(false)
+    expect(matchesFilters({ ...war, region: 'Europe' }, f, false)).toBe(true) // regions ignored in Lanes mode
+  })
+
+  it('shifts the importance threshold with the detail setting', () => {
+    expect(importanceThreshold(5000, 0)).toBe(7)
+    expect(importanceThreshold(5000, 2)).toBe(5)
+    expect(importanceThreshold(5000, -2)).toBe(9)
+    expect(importanceThreshold(10, 2)).toBe(0) // never below zero
+  })
+
+  it('lists categories most common first', () => {
+    expect(categoriesByFrequency([sci, war, { categories: ['War'], region: '' }])).toEqual([
+      'War',
+      'Science',
+      'Technology',
+    ])
+  })
+
+  it('toggles values in a list', () => {
+    expect(toggleIn(['a'], 'b')).toEqual(['a', 'b'])
+    expect(toggleIn(['a', 'b'], 'a')).toEqual(['b'])
   })
 })

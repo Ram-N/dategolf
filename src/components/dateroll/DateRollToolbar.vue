@@ -21,6 +21,15 @@
           {{ m.label }}
         </button>
       </div>
+      <DateRollFilters
+        :filters="filters"
+        :categories="categories"
+        :mode="mode"
+        @toggle-category="(c) => emit('toggleCategory', c)"
+        @toggle-region="(id) => emit('toggleRegion', id)"
+        @set-detail="(d) => emit('setDetail', d)"
+        @clear="emit('clearFilters')"
+      />
       <DateRollLanePicker
         v-if="mode === 'lanes'"
         :state="laneState"
@@ -65,9 +74,18 @@ import type { View } from '@/engine/dateroll/timeScale'
 import type { Theme, ViewMode } from '@/stores/dateroll'
 import type { LaneId, LaneState } from '@/engine/dateroll/lanes'
 import DateRollLanePicker from './DateRollLanePicker.vue'
+import DateRollFilters from './DateRollFilters.vue'
+import type { Filters } from '@/engine/dateroll/filters'
 import { formatYear, parseYear } from '@/utils/formatYear'
 
-defineProps<{ view: View; theme: Theme; mode: ViewMode; laneState: LaneState }>()
+defineProps<{
+  view: View
+  theme: Theme
+  mode: ViewMode
+  laneState: LaneState
+  filters: Filters
+  categories: string[]
+}>()
 const emit = defineEmits<{
   zoomIn: []
   zoomOut: []
@@ -78,6 +96,10 @@ const emit = defineEmits<{
   toggleLane: [id: LaneId]
   moveLane: [id: LaneId, dir: -1 | 1]
   resetLanes: []
+  toggleCategory: [c: string]
+  toggleRegion: [id: LaneId]
+  setDetail: [detail: number]
+  clearFilters: []
 }>()
 
 const MODES: { id: ViewMode; label: string }[] = [

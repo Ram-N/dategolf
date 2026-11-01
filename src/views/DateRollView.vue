@@ -5,6 +5,8 @@
       :theme="store.theme"
       :mode="store.mode"
       :lane-state="store.laneState"
+      :filters="store.filters"
+      :categories="store.categories"
       @zoom-in="store.zoomIn()"
       @zoom-out="store.zoomOut()"
       @reset="store.reset()"
@@ -14,6 +16,10 @@
       @toggle-lane="store.toggleLane"
       @move-lane="store.moveLane"
       @reset-lanes="store.resetLanes()"
+      @toggle-category="store.toggleCategory"
+      @toggle-region="store.toggleRegion"
+      @set-detail="store.setDetail"
+      @clear-filters="store.clearFilters()"
     />
 
     <DateRollMinimap v-if="!store.isLoading" :years="eventYears" :view="store.view" @center-at="store.centerAt" />
@@ -24,8 +30,10 @@
     <div v-else class="flex-1 min-h-[320px]">
       <DateRollTimeline
         ref="timeline"
-        :events="store.events"
-        :durations="store.durations"
+        :events="store.filteredEvents"
+        :all-events="store.events"
+        :durations="store.filteredDurations"
+        :detail="store.filters.detail"
         :view="store.view"
         :mode="store.mode"
         :lanes="store.lanes"
@@ -49,6 +57,11 @@
       <span class="flex items-center gap-1.5 secondary">
         <span class="inline-block w-4 h-2.5 rounded-sm kind-period" /> Period
       </span>
+      <span v-if="filterSummary" class="secondary">
+        · Showing: <strong>{{ filterSummary }}</strong>
+        <button class="underline ml-1" @click="store.clearFilters()">Clear</button>
+      </span>
+      <span v-if="filterSummary && store.filteredEvents.length === 0" class="secondary">— nothing matches these filters</span>
       <span v-if="hiddenCount > 0" class="secondary">· {{ hiddenCount }} more in view — zoom in to reveal</span>
       <span class="ml-auto muted">Scroll to zoom · drag to move · ← → pan · + − zoom</span>
     </div>
@@ -69,6 +82,7 @@
 import { computed, onMounted, onUnmounted, useTemplateRef } from 'vue'
 import { useDateRollStore } from '@/stores/dateroll'
 import { CATEGORY_GROUPS } from '@/engine/dateroll/categoryGroups'
+import { LANES } from '@/engine/dateroll/lanes'
 import DateRollToolbar from '@/components/dateroll/DateRollToolbar.vue'
 import DateRollTimeline from '@/components/dateroll/DateRollTimeline.vue'
 import DateRollMinimap from '@/components/dateroll/DateRollMinimap.vue'
@@ -78,7 +92,17 @@ import DurationInfoCard from '@/components/dateroll/DurationInfoCard.vue'
 const store = useDateRollStore()
 const timeline = useTemplateRef<InstanceType<typeof DateRollTimeline>>('timeline')
 const hiddenCount = computed(() => timeline.value?.hiddenCount ?? 0)
-const eventYears = computed(() => store.events.map((e) => e.year))
+// The minimap shows the density of whatever the filters let through — e.g. a history of science.
+const eventYears = computed(() => store.filteredEvents.map((e) => e.year))
+
+// Footer summary of active filters.
+const filterSummary = computed(() => {
+  const f = store.filters
+  const parts = [...f.categories]
+  if (store.mode === 'world') parts.push(...f.regions.map((id) => LANES.find((l) => l.id === id)?.label ?? id))
+  if (f.detail) parts.push(f.detail > 0 ? `more detail (+${f.detail})` : `less detail (${f.detail})`)
+  return parts.join(' · ')
+})
 
 function onKey(e: KeyboardEvent) {
   if (e.target instanceof HTMLInputElement || store.selectedEvent || store.selectedDuration) return

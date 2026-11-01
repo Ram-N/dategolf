@@ -2,7 +2,7 @@
 
 > Companion to `07_DateRoll_Brainstorming.md` (ideas) and `08_DateRoll_highlevel_specs.md` (spec).
 > "Time River" was the earlier working name. **DateRoll** is current.
-> Last updated: 2026-11-01 (Phase 4 complete)
+> Last updated: 2026-11-01 (Phase 5 complete)
 
 ## Status at a glance
 
@@ -13,7 +13,7 @@
 | 2.5 | Polish before Phase 3: look & theme, crowding, minimap, touch & motion | ✅ Done |
 | 3 | Duration bars (`durations.json`) | ✅ Done |
 | 4 | Regional lanes | ✅ Done (civilisation lanes deferred) |
-| 5 | Category filters + importance control | ⏳ TBD |
+| 5 | Category filters + importance control | ✅ Done |
 | 6 | Exploration: "what was happening elsewhere?", period select, density | ⏳ TBD |
 | 7 | Games built on the timeline | ⏳ TBD |
 
@@ -227,11 +227,23 @@ Decisions with Ram (2026-11-01): a **World ↔ Lanes toggle** rather than replac
 - **Deferred:** "expand a region into civilisations" (e.g. Europe → Greece / Rome / Byzantine). It needs either a `civilizations[]` field on events or matching events to durations by span + region; decide when we return to it.
 - **Data gaps the lanes expose:** e.g. East Asia has no events in 1450–1650, and Global is sparse before 1500. Worth adding events there.
 
-## Phase 5 — Filters + progressive detail ⏳ TBD
-- Category chips use the **existing** categories (`Politics, War, Science, Culture, Religion, Social, Technology, Arts, Medicine, Exploration…`), not the spec's proposed 12.
-- Category and lane filters combine with AND.
-- An importance slider can override the automatic zoom threshold.
-- Optional: retune `minImportanceForSpan` once lanes change how much space each event gets.
+## Phase 5 — Filters + progressive detail ✅
+- **`engine/dateroll/filters.ts`:**
+  - `matchesFilters`: any selected category, AND any selected region (regions via `laneFor`)
+  - `importanceThreshold`: the zoom threshold shifted by the detail setting
+  - `categoriesByFrequency`: the category list comes from the data, most common first, so there are no hard-coded category names
+- **Store:** `filters` = {categories, regions, detail}, persisted as `dateroll:filters` and sanitised on load. `filteredEvents` and `filteredDurations` feed the timeline and minimap.
+  - **Region filtering is World-mode only.** In Lanes mode the lane picker is the region control, and the filter panel says so.
+- **`DateRollFilters.vue`** (toolbar popover, "Filters (n)" badge):
+  - category and region chips
+  - a 5-step Fewer ↔ More detail slider
+  - "Clear all filters"
+- **`composables/usePopover.ts`:** shared open/close, outside-click/Esc and on-screen positioning. The lane picker was refactored onto it.
+- **Filters apply everywhere:** event labels, empire/period bars, the minimap histogram (selecting Science shows the density of the history of science) and the "N more in view" count. **Milestone section lines ignore filters**, so the sections stay put.
+- **Footer:** "Showing: Science · Technology · Europe · more detail (+2) — Clear", plus a "nothing matches" note when a combination is empty.
+- **Verified in the browser** by checking every visible label and bar against `events.json` / `durations.json` for each filter combination (zero mismatches). The detail slider gives 9 / 14 / 17 labels at Fewer / Auto / More in a 400-year view.
+- **Test fix:** the 300-run layout fuzz test now collects violations and asserts once; ~500k in-loop `expect()` calls had pushed it past Vitest's 5s timeout under load.
+- **Data notes found while testing:** some events carry surprising categories (e.g. Adam Smith and the Great Plague of London appear under Science/Technology). Worth a pass when the data is revisited.
 
 ## Phase 6 — Exploration features ⏳ TBD
 - **What was happening elsewhere?** From the event card: top events in other lanes within ±25–50 years, plus durations active that year. Built as a pure engine function.

@@ -171,9 +171,9 @@ import type { Duration } from '@/types/dateroll'
 import erasData from '@/data/eras.json'
 import milestoneIds from '@/data/milestones.json'
 import { formatTick, span, ticks, xToYear, yearToX, type View } from '@/engine/dateroll/timeScale'
+import { importanceThreshold } from '@/engine/dateroll/filters'
 import {
   layoutLabels,
-  minImportanceForSpan,
   spaceMilestones,
   wrapLabel,
   type Side,
@@ -184,8 +184,10 @@ import { LANES, laneFor, type LaneId } from '@/engine/dateroll/lanes'
 import { formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{
-  events: Event[]
+  events: Event[] // already filtered
+  allEvents: Event[] // unfiltered: milestone section lines stay put whatever the filters
   durations: Duration[]
+  detail: number
   view: View
   mode: 'world' | 'lanes'
   lanes: LaneId[]
@@ -278,7 +280,8 @@ const inView = computed(() =>
 
 // Section lines for the milestones in view, thinned so wide zooms stay uncluttered.
 const milestoneLines = computed(() => {
-  const ranked = inView.value
+  const ranked = props.allEvents
+    .filter((e) => e.year >= props.view.start && e.year <= props.view.end)
     .filter((e) => MILESTONE_RANK.has(e.id))
     .sort((a, b) => MILESTONE_RANK.get(a.id)! - MILESTONE_RANK.get(b.id)!)
     .map((e) => ({ id: e.id, x: yearToX(e.year, props.view, width.value) }))
@@ -374,7 +377,7 @@ function boxPosition(t: Track, side: Side, level: number, boxH: number) {
 }
 
 function layoutMarkers(t: Track, sectionIds: Set<string>) {
-  const minImp = minImportanceForSpan(span(props.view))
+  const minImp = importanceThreshold(span(props.view), props.detail)
   const candidates = t.events
     .filter((e) => e.importance >= minImp || sectionIds.has(e.id))
     .map((e) => {
@@ -423,7 +426,7 @@ function layoutMarkers(t: Track, sectionIds: Set<string>) {
 
 // Duration bars in view: important ones, plus any wide enough to read, packed into rows.
 function layoutBars(t: Track) {
-  const minImp = minImportanceForSpan(span(props.view))
+  const minImp = importanceThreshold(span(props.view), props.detail)
   const candidates = t.durations
     .map((d) => ({
       d,

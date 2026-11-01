@@ -15,6 +15,7 @@ import {
 } from '@/engine/dateroll/timeScale'
 import {
   DEFAULT_LANES,
+  LANES,
   moveLane as moveLaneIn,
   sanitizeLanes,
   toggleLane as toggleLaneIn,
@@ -22,11 +23,21 @@ import {
   type LaneId,
   type LaneState,
 } from '@/engine/dateroll/lanes'
+import {
+  DETAIL_MAX,
+  DETAIL_MIN,
+  NO_FILTERS,
+  categoriesByFrequency,
+  matchesFilters,
+  toggleIn,
+  type Filters,
+} from '@/engine/dateroll/filters'
 
 const VIEW_KEY = 'dateroll:view'
 const THEME_KEY = 'dateroll:theme'
 const MODE_KEY = 'dateroll:mode'
 const LANES_KEY = 'dateroll:lanes'
+const FILTERS_KEY = 'dateroll:filters'
 const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's default zoom
 const ANIM_MS = 350
 
@@ -71,6 +82,18 @@ function loadTheme(): Theme {
   return window.matchMedia?.('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
 }
 
+const LANE_IDS = new Set<string>(LANES.map((l) => l.id))
+
+function loadFilters(): Filters {
+  const raw = loadJson<Partial<Filters>>(FILTERS_KEY)
+  const detail = Number(raw?.detail)
+  return {
+    categories: Array.isArray(raw?.categories) ? raw.categories.filter((c) => typeof c === 'string') : [],
+    regions: Array.isArray(raw?.regions) ? raw.regions.filter((id) => LANE_IDS.has(id)) : [],
+    detail: Number.isInteger(detail) ? Math.min(DETAIL_MAX, Math.max(DETAIL_MIN, detail)) : 0,
+  }
+}
+
 export const useDateRollStore = defineStore('dateroll', () => {
   // ── State ──────────────────────────────────────────────────────────────────
   const events = ref<Event[]>([])
@@ -82,6 +105,7 @@ export const useDateRollStore = defineStore('dateroll', () => {
   const theme = ref<Theme>(loadTheme())
   const mode = ref<ViewMode>(loadJson<ViewMode>(MODE_KEY) === 'lanes' ? 'lanes' : 'world')
   const laneState = ref<LaneState>(sanitizeLanes(loadJson<LaneState>(LANES_KEY)))
+  const filters = ref<Filters>(loadFilters())
 
   // ── Computed ───────────────────────────────────────────────────────────────
   const selectedEvent = computed(
@@ -93,6 +117,17 @@ export const useDateRollStore = defineStore('dateroll', () => {
   const viewSpan = computed(() => span(view.value))
   const lanes = computed(() => visibleLanes(laneState.value))
 
+  // Region filtering is a World-mode control; in Lanes mode the lane picker decides regions.
+  const applyRegions = computed(() => mode.value === 'world')
+  const filteredEvents = computed(() =>
+    events.value.filter((e) => matchesFilters(e, filters.value, applyRegions.value)),
+  )
+  const filteredDurations = computed(() =>
+    durations.value.filter((d) => matchesFilters(d, filters.value, applyRegions.value)),
+  )
+  const categories = computed(() => categoriesByFrequency([...events.value, ...durations.value]))
+
+  watch(filters, (f) => saveJson(FILTERS_KEY, f), { deep: true })
   watch(mode, (m) => saveJson(MODE_KEY, m))
   watch(laneState, (l) => saveJson(LANES_KEY, l))
 
@@ -229,6 +264,22 @@ export const useDateRollStore = defineStore('dateroll', () => {
     laneState.value = DEFAULT_LANES
   }
 
+  function toggleCategory(c: string) {
+    filters.value = { ...filters.value, categories: toggleIn(filters.value.categories, c) }
+  }
+
+  function toggleRegion(id: LaneId) {
+    filters.value = { ...filters.value, regions: toggleIn(filters.value.regions, id) }
+  }
+
+  function setDetail(detail: number) {
+    filters.value = { ...filters.value, detail: Math.min(DETAIL_MAX, Math.max(DETAIL_MIN, Math.round(detail))) }
+  }
+
+  function clearFilters() {
+    filters.value = NO_FILTERS
+  }
+
   return {
     events,
     durations,
@@ -241,6 +292,10 @@ export const useDateRollStore = defineStore('dateroll', () => {
     mode,
     laneState,
     lanes,
+    filters,
+    filteredEvents,
+    filteredDurations,
+    categories,
     load,
     zoomAt,
     zoomIn,
@@ -257,5 +312,9 @@ export const useDateRollStore = defineStore('dateroll', () => {
     toggleLane,
     moveLane,
     resetLanes,
+    toggleCategory,
+    toggleRegion,
+    setDetail,
+    clearFilters,
   }
 })
