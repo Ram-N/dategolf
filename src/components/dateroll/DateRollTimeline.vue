@@ -110,6 +110,31 @@
           >{{ line }}</tspan>
         </text>
       </g>
+
+      <!-- Duration band: empires/dynasties (solid) and periods (dashed) as Gantt bars -->
+      <line x1="0" :x2="width" :y1="bandTop" :y2="bandTop" class="band-rule" />
+      <text x="8" :y="bandTop + 11" class="band-title">Empires &amp; dynasties</text>
+      <text x="8" :y="periodsTop - 4" class="band-title">Periods</text>
+      <g
+        v-for="b in bars"
+        :key="b.d.id"
+        class="cursor-pointer bar"
+        :class="[b.d.kind, { selected: b.d.id === selectedDurationId }]"
+        @click="onBarClick(b.d.id)"
+      >
+        <title>{{ b.tooltip }}</title>
+        <rect
+          :x="b.x"
+          :y="b.y"
+          :width="b.w"
+          :height="BAR_H"
+          rx="3"
+          :fill="`var(--dr-${b.group})`"
+          :stroke="`var(--dr-${b.group})`"
+          class="bar-rect"
+        />
+        <text v-if="b.label" :x="b.labelX" :y="b.y + BAR_H - 3" class="bar-text">{{ b.label }}</text>
+      </g>
     </svg>
   </div>
 </template>
@@ -117,6 +142,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import type { Event } from '@/types'
+import type { Duration } from '@/types/dateroll'
 import erasData from '@/data/eras.json'
 import milestoneIds from '@/data/milestones.json'
 import { formatTick, span, ticks, xToYear, yearToX, type View } from '@/engine/dateroll/timeScale'
@@ -128,13 +154,21 @@ import {
   type Side,
 } from '@/engine/dateroll/visibility'
 import { groupFor } from '@/engine/dateroll/categoryGroups'
+import { formatSpan, packBars } from '@/engine/dateroll/durations'
 import { formatYear } from '@/utils/formatYear'
 
-const props = defineProps<{ events: Event[]; view: View; selectedId: string | null }>()
+const props = defineProps<{
+  events: Event[]
+  durations: Duration[]
+  view: View
+  selectedId: string | null
+  selectedDurationId: string | null
+}>()
 const emit = defineEmits<{
   zoomAt: [anchorYear: number, factor: number]
   panBy: [deltaYears: number]
   select: [id: string]
+  selectDuration: [id: string]
 }>()
 
 // Label geometry. Vertical space on each side of the axis is cut into LEVEL_H levels;
@@ -172,10 +206,24 @@ onMounted(() => {
 onUnmounted(() => observer?.disconnect())
 
 // Axis runs through the middle; labels fill outward above and below it.
-const axisY = computed(() => Math.round(height.value / 2))
+// Duration band at the bottom (fixed height so the axis doesn't jump while zooming).
+// Two sub-bands so long empires can't crowd out periods (or vice versa).
+const BAR_H = 12
+const BAR_ROW = 16
+const ROWS_PER_KIND = 3
+const SUB_HEADER = 15
+const BAND_H = 2 * (SUB_HEADER + ROWS_PER_KIND * BAR_ROW) + 4
+const BAR_MIN_PX = 80 // a bar this wide shows even if below the importance threshold
+
+const bandTop = computed(() => height.value - BAND_H)
+const empiresTop = computed(() => bandTop.value + SUB_HEADER)
+const periodsTop = computed(() => empiresTop.value + ROWS_PER_KIND * BAR_ROW + SUB_HEADER)
+
+// The axis runs through the middle of the area above the band; labels fill outward from it.
+const axisY = computed(() => Math.round(bandTop.value / 2))
 const levelsPerSide = computed(() => {
   const above = axisY.value - AXIS_GAP - TOP_SPACE
-  const below = height.value - axisY.value - TICK_SPACE - 6
+  const below = bandTop.value - axisY.value - TICK_SPACE - 6
   return Math.max(2, Math.floor(Math.min(above, below) / LEVEL_H))
 })
 
@@ -272,6 +320,57 @@ const markers = computed(() => {
       radius: 4 + Math.max(0, c.event.importance - 4) * 0.6,
       // Year first: the event is what students are learning to place.
       tooltip: `${formatYear(c.event.year)} — ${c.event.name}`,
+    }
+  })
+})
+
+// Duration bars in view: important ones, plus any wide enough to read, packed into rows.
+const bars = computed(() => {
+  const minImp = minImportanceForSpan(span(props.view))
+  const candidates = props.durations
+    .filter((d) => d.endYear >= props.view.start && d.startYear <= props.view.end)
+    .map((d) => {
+      const x1 = yearToX(d.startYear, props.view, width.value)
+      const x2 = yearToX(d.endYear, props.view, width.value)
+      return { d, x1, x2 }
+    })
+    .filter((c) => c.d.importance >= minImp || c.x2 - c.x1 >= BAR_MIN_PX)
+  const byId = new Map(candidates.map((c) => [c.d.id, c]))
+
+  const pack = (kind: Duration['kind']) =>
+    packBars(
+      candidates
+        .filter((c) => c.d.kind === kind)
+        .map((c) => ({
+          id: c.d.id,
+          // Clamp so off-screen ends don't stop other bars sharing the row.
+          x1: Math.max(c.x1, -10),
+          x2: Math.max(Math.min(c.x2, width.value + 10), Math.max(c.x1, -10) + 3),
+          priority: c.d.importance,
+        })),
+      ROWS_PER_KIND,
+    )
+  const placed = [
+    ...pack('empire').map((p) => ({ ...p, top: empiresTop.value })),
+    ...pack('period').map((p) => ({ ...p, top: periodsTop.value })),
+  ]
+
+  return placed.map((p) => {
+    const { d, x1, x2 } = byId.get(p.id)!
+    const x = Math.max(x1, -2)
+    const w = Math.max(3, Math.min(x2, width.value + 2) - x)
+    // Name sticks to the visible left edge so it stays readable as the bar scrolls.
+    const chars = Math.floor((w - 10) / 5.6)
+    const label = chars >= d.name.length ? d.name : chars >= 4 ? d.name.slice(0, chars - 1) + '…' : ''
+    return {
+      d,
+      x,
+      w,
+      y: p.top + p.row * BAR_ROW,
+      label,
+      labelX: Math.max(x, 0) + 5,
+      group: groupFor(d.categories),
+      tooltip: `${formatSpan(d, formatYear)} — ${d.name}`,
     }
   })
 })
@@ -385,6 +484,11 @@ function onMarkerClick(id: string) {
   if (justDragged) return
   emit('select', id)
 }
+
+function onBarClick(id: string) {
+  if (justDragged) return
+  emit('selectDuration', id)
+}
 </script>
 
 <style scoped>
@@ -419,6 +523,34 @@ function onMarkerClick(id: string) {
 }
 .label-text.anchor {
   font-weight: 700;
+}
+.band-rule {
+  stroke: var(--dr-border-soft);
+}
+.band-title {
+  fill: var(--dr-muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.bar-rect {
+  fill-opacity: 0.4;
+  stroke-width: 1;
+}
+.bar.period .bar-rect {
+  fill-opacity: 0.12;
+  stroke-dasharray: 4 2;
+}
+.bar:hover .bar-rect,
+.bar.selected .bar-rect {
+  stroke: var(--dr-text);
+  stroke-width: 1.5;
+}
+.bar-text {
+  fill: var(--dr-text);
+  font-size: 10px;
+  pointer-events: none;
 }
 .marker:hover .label-bg,
 .marker.selected .label-bg {

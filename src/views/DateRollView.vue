@@ -19,11 +19,14 @@
       <DateRollTimeline
         ref="timeline"
         :events="store.events"
+        :durations="store.durations"
         :view="store.view"
         :selected-id="store.selectedEvent?.id ?? null"
+        :selected-duration-id="store.selectedDuration?.id ?? null"
         @zoom-at="store.zoomAt"
         @pan-by="store.panBy"
         @select="store.select"
+        @select-duration="store.selectDuration"
       />
     </div>
 
@@ -32,11 +35,25 @@
         <span class="inline-block w-2.5 h-2.5 rounded-full" :style="{ background: `var(--dr-${g.id})` }" />
         {{ g.label }}
       </span>
+      <span class="flex items-center gap-1.5 secondary">
+        <span class="inline-block w-4 h-2.5 rounded-sm kind-empire" /> Empire
+      </span>
+      <span class="flex items-center gap-1.5 secondary">
+        <span class="inline-block w-4 h-2.5 rounded-sm kind-period" /> Period
+      </span>
       <span v-if="hiddenCount > 0" class="secondary">· {{ hiddenCount }} more in view — zoom in to reveal</span>
       <span class="ml-auto muted">Scroll to zoom · drag to move · ← → pan · + − zoom</span>
     </div>
 
     <EventInfoCard v-if="store.selectedEvent" :event="store.selectedEvent" @close="store.select(null)" />
+    <DurationInfoCard
+      v-if="store.selectedDuration"
+      :duration="store.selectedDuration"
+      :events="store.events"
+      @close="store.selectDuration(null)"
+      @open-event="store.select"
+      @show-on-timeline="showSelectedDuration"
+    />
   </div>
 </template>
 
@@ -48,6 +65,7 @@ import DateRollToolbar from '@/components/dateroll/DateRollToolbar.vue'
 import DateRollTimeline from '@/components/dateroll/DateRollTimeline.vue'
 import DateRollMinimap from '@/components/dateroll/DateRollMinimap.vue'
 import EventInfoCard from '@/components/EventInfoCard.vue'
+import DurationInfoCard from '@/components/dateroll/DurationInfoCard.vue'
 
 const store = useDateRollStore()
 const timeline = useTemplateRef<InstanceType<typeof DateRollTimeline>>('timeline')
@@ -55,11 +73,18 @@ const hiddenCount = computed(() => timeline.value?.hiddenCount ?? 0)
 const eventYears = computed(() => store.events.map((e) => e.year))
 
 function onKey(e: KeyboardEvent) {
-  if (e.target instanceof HTMLInputElement || store.selectedEvent) return
+  if (e.target instanceof HTMLInputElement || store.selectedEvent || store.selectedDuration) return
   if (e.key === 'ArrowLeft') store.panBy(-store.viewSpan * 0.1)
   else if (e.key === 'ArrowRight') store.panBy(store.viewSpan * 0.1)
   else if (e.key === '+' || e.key === '=') store.zoomIn()
   else if (e.key === '-') store.zoomOut()
+}
+
+function showSelectedDuration() {
+  const d = store.selectedDuration
+  if (!d) return
+  store.selectDuration(null)
+  store.showSpan(d.startYear, d.endYear)
 }
 
 onMounted(() => {
@@ -119,6 +144,14 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 }
 .dateroll .secondary {
   color: var(--dr-text-2);
+}
+.dateroll .kind-empire {
+  background: color-mix(in srgb, var(--dr-text-2) 40%, transparent);
+  border: 1px solid var(--dr-text-2);
+}
+.dateroll .kind-period {
+  background: color-mix(in srgb, var(--dr-text-2) 12%, transparent);
+  border: 1px dashed var(--dr-text-2);
 }
 .dateroll .muted {
   color: var(--dr-muted);

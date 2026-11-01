@@ -26,7 +26,10 @@ import {
 } from '../dateroll/visibility'
 import { groupFor } from '../dateroll/categoryGroups'
 import { densityBins } from '../dateroll/density'
-import { parseYear } from '@/utils/formatYear'
+import { eventsDuring, formatSpan, packBars } from '../dateroll/durations'
+import { formatYear, parseYear } from '@/utils/formatYear'
+import type { Event } from '@/types'
+import type { Duration } from '@/types/dateroll'
 
 const W = 1000
 
@@ -249,5 +252,67 @@ describe('interpolateView', () => {
     const mid = interpolateView(a, b, 0.5)
     expect(span(mid)).toBeCloseTo(Math.sqrt(5000 * 100))
     expect((mid.start + mid.end) / 2).toBeCloseTo((-500 + 1450) / 2)
+  })
+})
+
+describe('durations', () => {
+  it('packs overlapping bars into rows, most important first', () => {
+    const placed = packBars(
+      [
+        { id: 'minor', x1: 0, x2: 100, priority: 3 },
+        { id: 'major', x1: 50, x2: 200, priority: 9 },
+        { id: 'later', x1: 210, x2: 300, priority: 5 },
+      ],
+      2,
+    )
+    expect(placed).toEqual([
+      { id: 'major', row: 0 },
+      { id: 'later', row: 0 },
+      { id: 'minor', row: 1 },
+    ])
+  })
+
+  it('drops bars that fit in no row', () => {
+    const placed = packBars(
+      [
+        { id: 'a', x1: 0, x2: 100, priority: 9 },
+        { id: 'b', x1: 10, x2: 90, priority: 5 },
+      ],
+      1,
+    )
+    expect(placed.map((p) => p.id)).toEqual(['a'])
+  })
+
+  const roman: Duration = {
+    id: 'roman-empire',
+    name: 'Roman Empire',
+    startYear: -27,
+    endYear: 476,
+    description: '',
+    categories: ['Politics'],
+    region: 'Europe',
+    importance: 9,
+    kind: 'empire',
+    approximate: true,
+  }
+
+  it('lists the most important same-region events during a duration, in date order', () => {
+    const ev = (id: string, year: number, importance: number, region = 'Europe'): Event => ({
+      id,
+      name: id,
+      year,
+      importance,
+      region,
+      categories: ['Politics'],
+      aliases: [],
+      description: '',
+      difficulty: 'easy',
+    })
+    const events = [ev('late', 400, 5), ev('early', 10, 8), ev('minor', 200, 2), ev('asia', 100, 9, 'East Asia'), ev('after', 600, 9)]
+    expect(eventsDuring(events, roman, 2).map((e) => e.id)).toEqual(['early', 'late'])
+  })
+
+  it('marks approximate spans with c.', () => {
+    expect(formatSpan(roman, formatYear)).toBe('c. 27 BCE – c. 476')
   })
 })

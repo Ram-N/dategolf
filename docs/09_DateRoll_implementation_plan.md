@@ -2,7 +2,7 @@
 
 > Companion to `07_DateRoll_Brainstorming.md` (ideas) and `08_DateRoll_highlevel_specs.md` (spec).
 > "Time River" was the earlier working name. **DateRoll** is current.
-> Last updated: 2026-11-01 (Phase 2.5 complete)
+> Last updated: 2026-11-01 (Phase 3 complete)
 
 ## Status at a glance
 
@@ -11,7 +11,7 @@
 | 1 | Inspect codebase + data, propose architecture | ✅ Done |
 | 2 | Basic timeline: axis, pan, zoom, event markers, info card | ✅ Coded (uncommitted) |
 | 2.5 | Polish before Phase 3: look & theme, crowding, minimap, touch & motion | ✅ Done |
-| 3 | Duration bars (`durations.json`) | ⏳ TBD |
+| 3 | Duration bars (`durations.json`) | ✅ Done |
 | 4 | Regional lanes | ⏳ TBD |
 | 5 | Category filters + importance control | ⏳ TBD |
 | 6 | Exploration: "what was happening elsewhere?", period select, density | ⏳ TBD |
@@ -170,14 +170,36 @@ Ram's request: finish all four improvements, one at a time, before starting dura
 - **Robustness:** a new gesture's primary pointer clears stale pointer state, so a lost `pointerup` can't turn the next tap into a pinch. Play-testing caught that bug.
 - **Verified with real touch events via CDP:** pinch zooms 100 → 29 years with the centre held, a swipe pans, and a tap opens the card.
 
-## Phase 3 — Duration bars ⏳ TBD
-- **Data:** create `src/data/durations.json`.
-  - Copy ChronoLogic's 65 `period` entries. Drop the 10 `point` ones, which already exist as events.
-  - Add about 25–30 empires/dynasties in the same schema plus `approximate?: boolean`. Candidates: Indus Valley, Maurya, Gupta, Chola, Delhi Sultanate, Roman Republic, Roman Empire, Byzantine, Han, Tang, Song, Ming, Qing, Abbasid, Ottoman, Safavid, Aztec, Inca, Classic Maya, Mali, Old/New Kingdom Egypt.
-- **Type + validation:** add a `Duration` type and `scripts/validate-durations.cjs`, modelled on `validate-events.cjs`. Check unique IDs and `startYear ≤ endYear`.
-- **Rendering:** draw bars behind the markers, stacked in rows so overlapping bars don't collide (a pure engine function). Show a bar if its importance passes the zoom threshold **or** it's at least N px wide.
-- **Detail card:** add `DurationInfoCard.vue` with the name, span, description, and the events that fall inside it.
-- **Open question:** should bars share the marker area or get a band of their own above the axis? Decide while building.
+## Phase 3 — Duration bars ✅
+### Data
+- **`src/data/durations.json`:** 98 entries, validated by `scripts/validate-durations.cjs`.
+- **65 periods** come from ChronoLogic's `public/data/events.json`; its 10 point events were dropped, since they already exist as events. Translated into our conventions:
+  - categories: war→War; revolution and political→Politics; cultural and construction→Culture; scientific→Science
+  - importance (ChronoLogic 1 = most important): 1→8, 2→5, 3→3
+  - its single "Asia" region split by hand into South Asia, East Asia and Southeast Asia
+- **33 empires/dynasties added**, from the Old Kingdom of Egypt to the Soviet Union, covering every region. Mughal and the Mongol conquests were already in ChronoLogic's set; Mughal is reclassified as an empire.
+- **Type** (`src/types/dateroll.ts`): `Duration` = `id, name, startYear, endYear, description, categories, region, importance (1–9), kind ('empire' | 'period'), approximate?`. `approximate` marks traditional or disputed dates (displayed as "c.").
+
+### Display
+- **Placement:** a dedicated band at the bottom of the timeline. Sharing the axis area would collide with labels and leaders. The axis stays centred in the space above it, and the band has a fixed height so the axis doesn't move while zooming.
+- **Two sub-bands, three rows each:** *Empires & dynasties* (solid bars) and *Periods* (dashed). They were split after play-testing showed long empires crowding out the Renaissance and Reformation in a single shared band.
+- **Which bars show:** a bar appears if its importance passes the zoom threshold **or** it's at least 80px wide. Bars are packed into rows by importance (`packBars`).
+- **Labels and colour:** bars are coloured by category group, like event dots. Names stick to the visible left edge and truncate to fit. The tooltip is year-first ("c. 320 – c. 550 — Gupta Empire").
+- **`DurationInfoCard.vue`** (follows the light/dark theme) shows:
+  - kind, span, length and region
+  - the description, plus a note when dates are approximate
+  - **"Meanwhile in {region}"**: up to 8 same-region events during the span (`eventsDuring`), each opening its event card
+  - **Show on timeline**: frames the span with a 15% margin (`showSpan`)
+- An event card and a duration card never show at once. The footer legend now includes Empire / Period swatches.
+
+### Known limits / follow-ups
+- "Meanwhile in…" matches the region string exactly, so thinly covered regions show few events (the Ottoman Empire lists 2). Phase 4's region → lane mapping, and possibly a world-wide "meanwhile" list (Phase 6), will improve this.
+- `scripts/validate-events.cjs` reports 67 errors that predate this work:
+  - 66 events have importance 6–9, but the validator only allows 1–5 (the `Event` type was widened in Phase 2)
+  - 1 event name contains a year
+
+  The validator's range should be updated to 1–9.
+- Play-test note: Chromium swallows a tap made within a moment of a fast swipe (the tap only stops the fling). The touch test waits 600ms after swiping.
 
 ## Phase 4 — Lanes ⏳ TBD
 - `lanes.ts` maps regions to default lanes:

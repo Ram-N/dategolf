@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
 import type { Event } from '@/types'
+import type { Duration } from '@/types/dateroll'
 import {
   FULL_VIEW,
   centerOn,
@@ -44,14 +45,19 @@ function loadTheme(): Theme {
 export const useDateRollStore = defineStore('dateroll', () => {
   // ── State ──────────────────────────────────────────────────────────────────
   const events = ref<Event[]>([])
+  const durations = ref<Duration[]>([])
   const isLoading = ref(true)
   const view = ref<View>(loadView())
   const selectedEventId = ref<string | null>(null)
+  const selectedDurationId = ref<string | null>(null)
   const theme = ref<Theme>(loadTheme())
 
   // ── Computed ───────────────────────────────────────────────────────────────
   const selectedEvent = computed(
     () => events.value.find((e) => e.id === selectedEventId.value) ?? null,
+  )
+  const selectedDuration = computed(
+    () => durations.value.find((d) => d.id === selectedDurationId.value) ?? null,
   )
   const viewSpan = computed(() => span(view.value))
 
@@ -73,8 +79,12 @@ export const useDateRollStore = defineStore('dateroll', () => {
 
   // ── Actions ────────────────────────────────────────────────────────────────
   async function load() {
-    const eventsModule = await import('@/data/events.json')
+    const [eventsModule, durationsModule] = await Promise.all([
+      import('@/data/events.json'),
+      import('@/data/durations.json'),
+    ])
     events.value = eventsModule.default as Event[]
+    durations.value = durationsModule.default as Duration[]
     isLoading.value = false
   }
 
@@ -147,8 +157,21 @@ export const useDateRollStore = defineStore('dateroll', () => {
     animateTo(FULL_VIEW)
   }
 
+  /** Frame a span of years with a little margin either side. */
+  function showSpan(startYear: number, endYear: number) {
+    const s = Math.max(endYear - startYear, 2)
+    animateTo(makeView(startYear - s * 0.15, s * 1.3))
+  }
+
+  // An event card and a duration card never show at once.
   function select(id: string | null) {
     selectedEventId.value = id
+    if (id) selectedDurationId.value = null
+  }
+
+  function selectDuration(id: string | null) {
+    selectedDurationId.value = id
+    if (id) selectedEventId.value = null
   }
 
   function toggleTheme() {
@@ -157,10 +180,12 @@ export const useDateRollStore = defineStore('dateroll', () => {
 
   return {
     events,
+    durations,
     isLoading,
     view,
     viewSpan,
     selectedEvent,
+    selectedDuration,
     theme,
     load,
     zoomAt,
@@ -170,7 +195,9 @@ export const useDateRollStore = defineStore('dateroll', () => {
     centerAt,
     jumpTo,
     reset,
+    showSpan,
     select,
+    selectDuration,
     toggleTheme,
   }
 })
