@@ -24,6 +24,7 @@ import {
   type LayoutItem,
 } from '../dateroll/visibility'
 import { groupFor } from '../dateroll/categoryGroups'
+import { densityBins } from '../dateroll/density'
 import { parseYear } from '@/utils/formatYear'
 
 const W = 1000
@@ -223,5 +224,13 @@ describe('spaceMilestones', () => {
   it('keeps higher-ranked lines and drops crowded lower-ranked ones', () => {
     const ranked = [{ id: 'a', x: 100 }, { id: 'b', x: 120 }, { id: 'c', x: 300 }]
     expect(spaceMilestones(ranked, 48).map((m) => m.id)).toEqual(['a', 'c'])
+  })
+})
+
+describe('densityBins', () => {
+  it('counts events per equal time slice, ignoring out-of-range years', () => {
+    const bins = densityBins([-100, -50, 0, 10, 99, 100, 500], -100, 100, 4)
+    expect(bins.map((b) => b.count)).toEqual([1, 1, 2, 2]) // bins are [start, end); the last includes its end
+    expect(bins[0]).toMatchObject({ start: -100, end: -50 })
   })
 })

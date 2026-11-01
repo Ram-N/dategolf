@@ -10,6 +10,8 @@
       @toggle-theme="store.toggleTheme()"
     />
 
+    <DateRollMinimap v-if="!store.isLoading" :years="eventYears" :view="store.view" @center-at="store.centerAt" />
+
     <div v-if="store.isLoading" class="flex-1 flex items-center justify-center text-sm muted">
       Loading…
     </div>
@@ -44,11 +46,13 @@ import { useDateRollStore } from '@/stores/dateroll'
 import { CATEGORY_GROUPS } from '@/engine/dateroll/categoryGroups'
 import DateRollToolbar from '@/components/dateroll/DateRollToolbar.vue'
 import DateRollTimeline from '@/components/dateroll/DateRollTimeline.vue'
+import DateRollMinimap from '@/components/dateroll/DateRollMinimap.vue'
 import EventInfoCard from '@/components/EventInfoCard.vue'
 
 const store = useDateRollStore()
 const timeline = useTemplateRef<InstanceType<typeof DateRollTimeline>>('timeline')
 const hiddenCount = computed(() => timeline.value?.hiddenCount ?? 0)
+const eventYears = computed(() => store.events.map((e) => e.year))
 
 function onKey(e: KeyboardEvent) {
   if (e.target instanceof HTMLInputElement || store.selectedEvent) return

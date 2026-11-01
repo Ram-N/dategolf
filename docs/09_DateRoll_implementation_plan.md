@@ -2,7 +2,7 @@
 
 > Companion to `07_DateRoll_Brainstorming.md` (ideas) and `08_DateRoll_highlevel_specs.md` (spec).
 > "Time River" was the earlier working name. **DateRoll** is current.
-> Last updated: 2026-11-01 (Phase 2.5 step 2)
+> Last updated: 2026-11-01 (Phase 2.5 step 3)
 
 ## Status at a glance
 
@@ -10,7 +10,7 @@
 |---|---|---|
 | 1 | Inspect codebase + data, propose architecture | ✅ Done |
 | 2 | Basic timeline: axis, pan, zoom, event markers, info card | ✅ Coded (uncommitted) |
-| 2.5 | Polish before Phase 3: look & theme, crowding, minimap, touch & motion | 🔄 In progress (2 of 4 done) |
+| 2.5 | Polish before Phase 3: look & theme, crowding, minimap, touch & motion | 🔄 In progress (3 of 4 done) |
 | 3 | Duration bars (`durations.json`) | ⏳ TBD |
 | 4 | Regional lanes | ⏳ TBD |
 | 5 | Category filters + importance control | ⏳ TBD |
@@ -153,8 +153,12 @@ Ram's request: finish all four improvements, one at a time, before starting dura
 - **The shift is capped deliberately:** a label far from its year teaches the wrong date.
 - **Known limit:** at full zoom (5,600 years) the 1500–2030 strip is only about 136px wide, so only a few of its major events get labels. The minimap (step 3) is the intended overview.
 
-### 3. Overview minimap ⏳
-A thin strip of the whole 5,600 years with a draggable box for the current view, plus an event-density histogram (doubles as the Phase 6 density idea).
+### 3. Overview minimap ✅
+- `DateRollMinimap.vue`: a 46px strip under the toolbar covering all 5,600 years.
+- **Density histogram:** about one bar per 5px. Heights use a square-root scale so sparse ancient periods stay visible. Hovering a bar shows e.g. "1500 – 1525: 12 events". The bin counting lives in `engine/dateroll/density.ts`.
+- **Viewport box:** outlines the current view; the area outside it is dimmed. The box is at least 8px wide so it stays grabbable when zoomed far in.
+- **Navigation:** click to centre the view there (zoom kept). Drag to scrub; grabbing inside the box keeps the offset, so the box doesn't jump. Uses the store's new `centerAt(year)`.
+- This also covers the Phase 6 "historical density" idea.
 
 ### 4. Touch + smooth motion ⏳
 Pinch-zoom (two-pointer), and eased animation for button zoom, jump and reset (interpolate the centre linearly and the span geometrically). Honour `prefers-reduced-motion`.

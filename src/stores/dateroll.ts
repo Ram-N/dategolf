@@ -87,6 +87,11 @@ export const useDateRollStore = defineStore('dateroll', () => {
     view.value = pan(view.value, deltaYears)
   }
 
+  /** Move the view so `year` is centred, keeping the current zoom. */
+  function centerAt(year: number) {
+    view.value = centerOn(year, viewSpan.value)
+  }
+
   function jumpTo(year: number) {
     view.value = centerOn(year, Math.min(viewSpan.value, JUMP_SPAN))
   }
@@ -115,6 +120,7 @@ export const useDateRollStore = defineStore('dateroll', () => {
     zoomIn,
     zoomOut,
     panBy,
+    centerAt,
     jumpTo,
     reset,
     select,
