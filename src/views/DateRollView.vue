@@ -3,11 +3,17 @@
     <DateRollToolbar
       :view="store.view"
       :theme="store.theme"
+      :mode="store.mode"
+      :lane-state="store.laneState"
       @zoom-in="store.zoomIn()"
       @zoom-out="store.zoomOut()"
       @reset="store.reset()"
       @jump="store.jumpTo"
       @toggle-theme="store.toggleTheme()"
+      @set-mode="store.setMode"
+      @toggle-lane="store.toggleLane"
+      @move-lane="store.moveLane"
+      @reset-lanes="store.resetLanes()"
     />
 
     <DateRollMinimap v-if="!store.isLoading" :years="eventYears" :view="store.view" @center-at="store.centerAt" />
@@ -21,6 +27,8 @@
         :events="store.events"
         :durations="store.durations"
         :view="store.view"
+        :mode="store.mode"
+        :lanes="store.lanes"
         :selected-id="store.selectedEvent?.id ?? null"
         :selected-duration-id="store.selectedDuration?.id ?? null"
         @zoom-at="store.zoomAt"

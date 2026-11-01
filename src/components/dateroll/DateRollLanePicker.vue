@@ -1,0 +1,130 @@
+<template>
+  <div ref="rootEl" class="relative">
+    <button
+      class="btn"
+      :aria-expanded="open"
+      aria-haspopup="true"
+      @click="toggleOpen"
+    >
+      Lanes ▾
+    </button>
+    <div v-if="open" class="panel absolute top-11 z-40 w-64 rounded-xl border p-2"
+      :style="{ left: panelLeft + 'px' }" role="menu">
+      <div
+        v-for="(id, i) in state.order"
+        :key="id"
+        class="flex items-center gap-2 px-2 py-1 rounded-lg row"
+      >
+        <label class="flex items-center gap-2 flex-1 cursor-pointer text-sm">
+          <input
+            type="checkbox"
+            :checked="state.visible.includes(id)"
+            :disabled="state.visible.length === 1 && state.visible.includes(id)"
+            @change="emit('toggle', id)"
+          />
+          {{ labelOf(id) }}
+        </label>
+        <button class="move" :disabled="i === 0" :aria-label="`Move ${labelOf(id)} up`" @click="emit('move', id, -1)">↑</button>
+        <button
+          class="move"
+          :disabled="i === state.order.length - 1"
+          :aria-label="`Move ${labelOf(id)} down`"
+          @click="emit('move', id, 1)"
+        >
+          ↓
+        </button>
+      </div>
+      <button class="reset w-full mt-1 py-1.5 rounded-lg text-xs font-semibold" @click="emit('reset')">
+        Restore default lanes
+      </button>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref } from 'vue'
+import { LANES, type LaneId, type LaneState } from '@/engine/dateroll/lanes'
+
+defineProps<{ state: LaneState }>()
+const emit = defineEmits<{ toggle: [id: LaneId]; move: [id: LaneId, dir: -1 | 1]; reset: [] }>()
+
+const open = ref(false)
+const panelLeft = ref(0)
+const PANEL_W = 256 // w-64
+const EDGE = 8
+
+// Right-align under the button, but keep the panel on screen — the button moves as the
+// toolbar wraps, and on a phone it can sit mid-screen.
+function toggleOpen() {
+  if (!open.value && rootEl.value) {
+    const r = rootEl.value.getBoundingClientRect()
+    const wanted = r.right - PANEL_W
+    const clamped = Math.min(Math.max(wanted, EDGE), window.innerWidth - EDGE - PANEL_W)
+    panelLeft.value = clamped - r.left
+  }
+  open.value = !open.value
+}
+const rootEl = ref<HTMLDivElement | null>(null)
+const LABELS = new Map(LANES.map((l) => [l.id, l.label]))
+const labelOf = (id: LaneId) => LABELS.get(id) ?? id
+
+// Close on outside click or Escape.
+function onDocPointer(e: PointerEvent) {
+  if (open.value && rootEl.value && !rootEl.value.contains(e.target as Node)) open.value = false
+}
+function onKey(e: KeyboardEvent) {
+  if (e.key === 'Escape') open.value = false
+}
+onMounted(() => {
+  document.addEventListener('pointerdown', onDocPointer)
+  window.addEventListener('keydown', onKey)
+})
+onUnmounted(() => {
+  document.removeEventListener('pointerdown', onDocPointer)
+  window.removeEventListener('keydown', onKey)
+})
+</script>
+
+<style scoped>
+.btn {
+  height: 2.25rem;
+  padding: 0 0.75rem;
+  border-radius: 0.5rem;
+  background: var(--dr-btn);
+  color: var(--dr-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.btn:hover {
+  background: var(--dr-btn-hover);
+}
+.panel {
+  background: var(--dr-surface);
+  border-color: var(--dr-border);
+  color: var(--dr-text);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.25);
+}
+.row:hover {
+  background: var(--dr-btn);
+}
+.move {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.375rem;
+  color: var(--dr-text-2);
+}
+.move:hover:not(:disabled) {
+  background: var(--dr-btn-hover);
+  color: var(--dr-text);
+}
+.move:disabled {
+  opacity: 0.3;
+}
+.reset {
+  color: var(--dr-text-2);
+}
+.reset:hover {
+  background: var(--dr-btn);
+  color: var(--dr-text);
+}
+</style>

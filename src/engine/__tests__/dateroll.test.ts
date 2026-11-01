@@ -26,6 +26,15 @@ import {
 } from '../dateroll/visibility'
 import { groupFor } from '../dateroll/categoryGroups'
 import { densityBins } from '../dateroll/density'
+import {
+  DEFAULT_LANES,
+  laneFor,
+  moveLane,
+  sanitizeLanes,
+  toggleLane,
+  visibleLanes,
+  type LaneId,
+} from '../dateroll/lanes'
 import { eventsDuring, formatSpan, packBars } from '../dateroll/durations'
 import { formatYear, parseYear } from '@/utils/formatYear'
 import type { Event } from '@/types'
@@ -314,5 +323,36 @@ describe('durations', () => {
 
   it('marks approximate spans with c.', () => {
     expect(formatSpan(roman, formatYear)).toBe('c. 27 BCE – c. 476')
+  })
+})
+
+describe('lanes', () => {
+  it('maps inconsistent region strings onto lanes', () => {
+    expect(laneFor('World')).toBe('global')
+    expect(laneFor('North America')).toBe('americas')
+    expect(laneFor('Southeast Asia')).toBe('east-asia')
+    expect(laneFor('Atlantis')).toBe('global')
+  })
+
+  it('shows lanes in order and keeps at least one visible', () => {
+    expect(visibleLanes(DEFAULT_LANES)).toEqual(['south-asia', 'east-asia', 'europe', 'global'])
+    const one = { order: DEFAULT_LANES.order, visible: ['europe'] as LaneId[] }
+    expect(toggleLane(one, 'europe')).toBe(one)
+    expect(toggleLane(one, 'africa').visible).toEqual(['europe', 'africa'])
+  })
+
+  it('reorders lanes and ignores moves past either end', () => {
+    const moved = moveLane(DEFAULT_LANES, 'europe', -1)
+    expect(moved.order.slice(0, 3)).toEqual(['south-asia', 'europe', 'east-asia'])
+    expect(moveLane(DEFAULT_LANES, 'south-asia', -1)).toBe(DEFAULT_LANES)
+    expect(moveLane(DEFAULT_LANES, 'global', 1)).toBe(DEFAULT_LANES)
+  })
+
+  it('repairs saved lane state', () => {
+    const fixed = sanitizeLanes({ order: ['europe', 'bogus' as LaneId], visible: [] })
+    expect(fixed.order[0]).toBe('europe')
+    expect(fixed.order).toHaveLength(7)
+    expect(fixed.visible).toEqual(DEFAULT_LANES.visible)
+    expect(sanitizeLanes(null)).toEqual(DEFAULT_LANES)
   })
 })

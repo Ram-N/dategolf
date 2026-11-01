@@ -2,7 +2,7 @@
 
 > Companion to `07_DateRoll_Brainstorming.md` (ideas) and `08_DateRoll_highlevel_specs.md` (spec).
 > "Time River" was the earlier working name. **DateRoll** is current.
-> Last updated: 2026-11-01 (Phase 3 complete)
+> Last updated: 2026-11-01 (Phase 4 complete)
 
 ## Status at a glance
 
@@ -12,7 +12,7 @@
 | 2 | Basic timeline: axis, pan, zoom, event markers, info card | ✅ Coded (uncommitted) |
 | 2.5 | Polish before Phase 3: look & theme, crowding, minimap, touch & motion | ✅ Done |
 | 3 | Duration bars (`durations.json`) | ✅ Done |
-| 4 | Regional lanes | ⏳ TBD |
+| 4 | Regional lanes | ✅ Done (civilisation lanes deferred) |
 | 5 | Category filters + importance control | ⏳ TBD |
 | 6 | Exploration: "what was happening elsewhere?", period select, density | ⏳ TBD |
 | 7 | Games built on the timeline | ⏳ TBD |
@@ -201,18 +201,31 @@ Ram's request: finish all four improvements, one at a time, before starting dura
   The validator's range should be updated to 1–9.
 - Play-test note: Chromium swallows a tap made within a moment of a fast swipe (the tap only stops the fling). The touch test waits 600ms after swiping.
 
-## Phase 4 — Lanes ⏳ TBD
-- `lanes.ts` maps regions to default lanes:
-  - South Asia
-  - East Asia (+ Southeast Asia)
-  - Europe
-  - Middle East
-  - Africa
-  - Americas (+ North/South America)
-  - Global (+ World, Oceania for now)
-- Lane picker: show/hide, reorder (up/down buttons, no drag library), reset to default. Lane layout persists in localStorage.
-- Each lane gets its own label rows. `layoutLabels` already works per lane.
-- **Open question:** "Expand into civilizations" (e.g. Europe → Greece / Rome / Byzantine) is the one feature that may need a new data field. Either add `civilizations[]` to events, or match events to a civilization by its duration span + region. Matching may avoid a schema change.
+## Phase 4 — Lanes ✅
+Decisions with Ram (2026-11-01): a **World ↔ Lanes toggle** rather than replacing the single timeline, with **4 default lanes**.
+
+- **`engine/dateroll/lanes.ts`:** seven lanes map the inconsistent region strings at load time, so `events.json` is untouched:
+  - South Asia; East Asia (+ Southeast Asia); Europe; Middle East; Africa
+  - Americas (+ North / South America)
+  - Global (+ World, Oceania, anything unrecognised)
+
+  It also holds `toggleLane`, which won't hide the last visible lane, plus `moveLane` and `sanitizeLanes`. The last repairs saved state when lanes change.
+- **Store:** `mode` ('world' | 'lanes') and `laneState` ({order, visible}) persist as `dateroll:mode` and `dateroll:lanes`. Defaults: South Asia, East Asia, Europe, Global.
+- **Timeline refactor:** the component now renders a list of *tracks*. World mode is one track with the two-sub-band duration strip. Lanes mode is one track per visible lane, each containing:
+  - the lane name, its own axis, and labels above and below (same callout layout and guarantees)
+  - that region's bars: one empire row + one period row, or empires only if the lane is under 120px tall
+- **Shared across lanes:** era bands, milestone lines (so they line up across regions) and one row of year labels at the bottom.
+- **Toolbar:** a `World | Lanes` segmented control, plus `DateRollLanePicker.vue` in Lanes mode.
+  - Per lane: checkbox, ↑/↓, and "Restore default lanes".
+  - Closes on outside click or Esc.
+  - The panel position is clamped on screen (the button can sit mid-screen on phones).
+- **Verified in the browser** at full zoom, 1550, 300 BC and 1950:
+  - no label overlaps
+  - no leader through a label
+  - every label and bar stays inside its own lane
+  - the 1950 view shows 52 labels across 4 lanes, vs 34 in World mode
+- **Deferred:** "expand a region into civilisations" (e.g. Europe → Greece / Rome / Byzantine). It needs either a `civilizations[]` field on events or matching events to durations by span + region; decide when we return to it.
+- **Data gaps the lanes expose:** e.g. East Asia has no events in 1450–1650, and Global is sparse before 1500. Worth adding events there.
 
 ## Phase 5 — Filters + progressive detail ⏳ TBD
 - Category chips use the **existing** categories (`Politics, War, Science, Culture, Religion, Social, Technology, Arts, Medicine, Exploration…`), not the spec's proposed 12.

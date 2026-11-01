@@ -8,6 +8,28 @@
       </p>
     </div>
 
+    <div class="flex items-center gap-2">
+      <div class="seg flex rounded-lg p-0.5" role="group" aria-label="Timeline layout">
+        <button
+          v-for="m in MODES"
+          :key="m.id"
+          class="seg-btn"
+          :class="{ active: mode === m.id }"
+          :aria-pressed="mode === m.id"
+          @click="emit('setMode', m.id)"
+        >
+          {{ m.label }}
+        </button>
+      </div>
+      <DateRollLanePicker
+        v-if="mode === 'lanes'"
+        :state="laneState"
+        @toggle="(id) => emit('toggleLane', id)"
+        @move="(id, dir) => emit('moveLane', id, dir)"
+        @reset="emit('resetLanes')"
+      />
+    </div>
+
     <form class="flex items-center gap-2" @submit.prevent="submitJump">
       <input
         v-model="jumpInput"
@@ -40,17 +62,28 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { View } from '@/engine/dateroll/timeScale'
-import type { Theme } from '@/stores/dateroll'
+import type { Theme, ViewMode } from '@/stores/dateroll'
+import type { LaneId, LaneState } from '@/engine/dateroll/lanes'
+import DateRollLanePicker from './DateRollLanePicker.vue'
 import { formatYear, parseYear } from '@/utils/formatYear'
 
-defineProps<{ view: View; theme: Theme }>()
+defineProps<{ view: View; theme: Theme; mode: ViewMode; laneState: LaneState }>()
 const emit = defineEmits<{
   zoomIn: []
   zoomOut: []
   reset: []
   jump: [year: number]
   toggleTheme: []
+  setMode: [mode: ViewMode]
+  toggleLane: [id: LaneId]
+  moveLane: [id: LaneId, dir: -1 | 1]
+  resetLanes: []
 }>()
+
+const MODES: { id: ViewMode; label: string }[] = [
+  { id: 'world', label: 'World' },
+  { id: 'lanes', label: 'Lanes' },
+]
 
 const jumpInput = ref('')
 const jumpError = ref(false)
@@ -101,5 +134,21 @@ function submitJump() {
 }
 .btn:hover {
   background: var(--dr-btn-hover);
+}
+.seg {
+  background: var(--dr-btn);
+}
+.seg-btn {
+  height: 2rem;
+  padding: 0 0.75rem;
+  border-radius: 0.375rem;
+  color: var(--dr-text-2);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.seg-btn.active {
+  background: var(--dr-surface);
+  color: var(--dr-text);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
 }
 </style>

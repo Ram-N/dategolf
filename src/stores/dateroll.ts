@@ -13,9 +13,20 @@ import {
   zoomAround,
   type View,
 } from '@/engine/dateroll/timeScale'
+import {
+  DEFAULT_LANES,
+  moveLane as moveLaneIn,
+  sanitizeLanes,
+  toggleLane as toggleLaneIn,
+  visibleLanes,
+  type LaneId,
+  type LaneState,
+} from '@/engine/dateroll/lanes'
 
 const VIEW_KEY = 'dateroll:view'
 const THEME_KEY = 'dateroll:theme'
+const MODE_KEY = 'dateroll:mode'
+const LANES_KEY = 'dateroll:lanes'
 const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's default zoom
 const ANIM_MS = 350
 
@@ -31,6 +42,24 @@ function loadView(): View {
 }
 
 export type Theme = 'light' | 'dark'
+export type ViewMode = 'world' | 'lanes'
+
+function loadJson<T>(key: string): T | null {
+  try {
+    const raw = localStorage.getItem(key)
+    return raw ? (JSON.parse(raw) as T) : null
+  } catch {
+    return null
+  }
+}
+
+function saveJson(key: string, value: unknown) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value))
+  } catch {
+    // storage unavailable — setting just won't persist
+  }
+}
 
 function loadTheme(): Theme {
   try {
@@ -51,6 +80,8 @@ export const useDateRollStore = defineStore('dateroll', () => {
   const selectedEventId = ref<string | null>(null)
   const selectedDurationId = ref<string | null>(null)
   const theme = ref<Theme>(loadTheme())
+  const mode = ref<ViewMode>(loadJson<ViewMode>(MODE_KEY) === 'lanes' ? 'lanes' : 'world')
+  const laneState = ref<LaneState>(sanitizeLanes(loadJson<LaneState>(LANES_KEY)))
 
   // ── Computed ───────────────────────────────────────────────────────────────
   const selectedEvent = computed(
@@ -60,6 +91,10 @@ export const useDateRollStore = defineStore('dateroll', () => {
     () => durations.value.find((d) => d.id === selectedDurationId.value) ?? null,
   )
   const viewSpan = computed(() => span(view.value))
+  const lanes = computed(() => visibleLanes(laneState.value))
+
+  watch(mode, (m) => saveJson(MODE_KEY, m))
+  watch(laneState, (l) => saveJson(LANES_KEY, l))
 
   watch(view, (v) => {
     try {
@@ -178,6 +213,22 @@ export const useDateRollStore = defineStore('dateroll', () => {
     theme.value = theme.value === 'dark' ? 'light' : 'dark'
   }
 
+  function setMode(m: ViewMode) {
+    mode.value = m
+  }
+
+  function toggleLane(id: LaneId) {
+    laneState.value = toggleLaneIn(laneState.value, id)
+  }
+
+  function moveLane(id: LaneId, dir: -1 | 1) {
+    laneState.value = moveLaneIn(laneState.value, id, dir)
+  }
+
+  function resetLanes() {
+    laneState.value = DEFAULT_LANES
+  }
+
   return {
     events,
     durations,
@@ -187,6 +238,9 @@ export const useDateRollStore = defineStore('dateroll', () => {
     selectedEvent,
     selectedDuration,
     theme,
+    mode,
+    laneState,
+    lanes,
     load,
     zoomAt,
     zoomIn,
@@ -199,5 +253,9 @@ export const useDateRollStore = defineStore('dateroll', () => {
     select,
     selectDuration,
     toggleTheme,
+    setMode,
+    toggleLane,
+    moveLane,
+    resetLanes,
   }
 })

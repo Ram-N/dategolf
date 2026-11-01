@@ -29,7 +29,7 @@
         :stroke="t.year === 0 ? 'var(--dr-axis)' : 'var(--dr-grid)'"
       />
 
-      <!-- Milestone section lines: a few turning points cut the roll into natural sections -->
+      <!-- Milestone section lines run through every lane, so they line up across regions -->
       <line
         v-for="ms in milestoneLines"
         :key="ms.id"
@@ -41,100 +41,125 @@
         pointer-events="none"
       />
 
-      <!-- Leaders (dot → label, angled when the label is shifted sideways) sit beneath all labels -->
-      <line
-        v-for="m in markers"
-        :key="m.event.id"
-        :x1="m.x"
-        :x2="m.leaderX"
-        :y1="axisY"
-        :y2="m.leaderEnd"
-        :stroke="`var(--dr-${m.group})`"
-        stroke-opacity="0.55"
-        pointer-events="none"
-      />
+      <!-- One track in World mode, one per visible lane in Lanes mode -->
+      <g v-for="t in layouts" :key="t.id">
+        <template v-if="t.label">
+          <line v-if="t.index > 0" x1="0" :x2="width" :y1="t.top" :y2="t.top" class="lane-rule" />
+          <text x="8" :y="t.top + 13" class="lane-label">{{ t.label }}</text>
+        </template>
 
-      <!-- Axis + tick labels -->
-      <line x1="0" :x2="width" :y1="axisY" :y2="axisY" stroke="var(--dr-axis)" stroke-width="2" />
-      <text
-        v-for="t in tickMarks"
-        :key="t.year"
-        :x="t.x"
-        :y="axisY + 16"
-        text-anchor="middle"
-        class="tick-label"
-      >
-        {{ t.label }}
-      </text>
-
-      <!-- Hidden events: faint dots hint that zooming reveals more -->
-      <circle v-for="h in hiddenDots" :key="h.id" :cx="h.x" :cy="axisY" r="2" class="hidden-dot" />
-
-      <!-- Visible events -->
-      <circle
-        v-for="m in markers"
-        :key="m.event.id"
-        :cx="m.x"
-        :cy="axisY"
-        :r="m.radius"
-        :fill="`var(--dr-${m.group})`"
-        :stroke="m.event.id === selectedId ? 'var(--dr-text)' : 'var(--dr-bg)'"
-        stroke-width="2"
-        class="cursor-pointer"
-        @click="onMarkerClick(m.event.id)"
-      >
-        <title>{{ m.tooltip }}</title>
-      </circle>
-      <g
-        v-for="m in markers"
-        :key="m.event.id"
-        class="cursor-pointer marker"
-        :class="{ selected: m.event.id === selectedId }"
-        @click="onMarkerClick(m.event.id)"
-      >
-        <title>{{ m.tooltip }}</title>
-        <rect
-          :x="m.labelX - m.labelWidth / 2"
-          :y="m.boxTop"
-          :width="m.labelWidth"
-          :height="m.boxH"
-          rx="4"
-          class="label-bg"
+        <!-- Leaders (dot → label, angled when the label is shifted sideways) sit beneath all labels -->
+        <line
+          v-for="m in t.markers"
+          :key="m.event.id"
+          :x1="m.x"
+          :x2="m.leaderX"
+          :y1="t.axisY"
+          :y2="m.leaderEnd"
+          :stroke="`var(--dr-${m.group})`"
+          stroke-opacity="0.55"
+          pointer-events="none"
         />
-        <text text-anchor="middle" class="label-text" :class="{ anchor: m.bold }">
-          <tspan
-            v-for="(line, i) in m.lines"
-            :key="i"
-            :x="m.labelX"
-            :y="m.boxTop + BOX_PAD + 10 + i * LINE_H"
-          >{{ line }}</tspan>
+
+        <line x1="0" :x2="width" :y1="t.axisY" :y2="t.axisY" stroke="var(--dr-axis)" :stroke-width="t.label ? 1.5 : 2" />
+        <template v-if="!t.label">
+          <text
+            v-for="tk in tickMarks"
+            :key="tk.year"
+            :x="tk.x"
+            :y="t.axisY + 16"
+            text-anchor="middle"
+            class="tick-label"
+          >
+            {{ tk.label }}
+          </text>
+        </template>
+
+        <!-- Hidden events: faint dots hint that zooming reveals more -->
+        <circle v-for="h in t.hiddenDots" :key="h.id" :cx="h.x" :cy="t.axisY" r="2" class="hidden-dot" />
+
+        <!-- Visible events -->
+        <circle
+          v-for="m in t.markers"
+          :key="m.event.id"
+          :cx="m.x"
+          :cy="t.axisY"
+          :r="m.radius"
+          :fill="`var(--dr-${m.group})`"
+          :stroke="m.event.id === selectedId ? 'var(--dr-text)' : 'var(--dr-bg)'"
+          stroke-width="2"
+          class="cursor-pointer"
+          @click="onMarkerClick(m.event.id)"
+        >
+          <title>{{ m.tooltip }}</title>
+        </circle>
+        <g
+          v-for="m in t.markers"
+          :key="m.event.id"
+          class="cursor-pointer marker"
+          :class="{ selected: m.event.id === selectedId }"
+          @click="onMarkerClick(m.event.id)"
+        >
+          <title>{{ m.tooltip }}</title>
+          <rect
+            :x="m.labelX - m.labelWidth / 2"
+            :y="m.boxTop"
+            :width="m.labelWidth"
+            :height="m.boxH"
+            rx="4"
+            class="label-bg"
+          />
+          <text text-anchor="middle" class="label-text" :class="{ anchor: m.bold }">
+            <tspan
+              v-for="(line, i) in m.lines"
+              :key="i"
+              :x="m.labelX"
+              :y="m.boxTop + BOX_PAD + 10 + i * LINE_H"
+            >{{ line }}</tspan>
+          </text>
+        </g>
+
+        <!-- Duration bars: empires/dynasties (solid) and periods (dashed) -->
+        <template v-if="!t.label">
+          <line x1="0" :x2="width" :y1="t.bandTop" :y2="t.bandTop" class="lane-rule" />
+          <text v-for="r in t.barRows" :key="r.kind" x="8" :y="r.top - 4" class="band-title">{{ r.title }}</text>
+        </template>
+        <g
+          v-for="b in t.bars"
+          :key="b.d.id"
+          class="cursor-pointer bar"
+          :class="[b.d.kind, { selected: b.d.id === selectedDurationId }]"
+          @click="onBarClick(b.d.id)"
+        >
+          <title>{{ b.tooltip }}</title>
+          <rect
+            :x="b.x"
+            :y="b.y"
+            :width="b.w"
+            :height="BAR_H"
+            rx="3"
+            :fill="`var(--dr-${b.group})`"
+            :stroke="`var(--dr-${b.group})`"
+            class="bar-rect"
+          />
+          <text v-if="b.label" :x="b.labelX" :y="b.y + BAR_H - 3" class="bar-text">{{ b.label }}</text>
+        </g>
+      </g>
+
+      <!-- Lanes share one row of year labels along the bottom -->
+      <template v-if="mode === 'lanes'">
+        <line x1="0" :x2="width" :y1="height - TICK_STRIP" :y2="height - TICK_STRIP" class="lane-rule" />
+        <text
+          v-for="tk in tickMarks"
+          :key="tk.year"
+          :x="tk.x"
+          :y="height - 6"
+          text-anchor="middle"
+          class="tick-label"
+        >
+          {{ tk.label }}
         </text>
-      </g>
-
-      <!-- Duration band: empires/dynasties (solid) and periods (dashed) as Gantt bars -->
-      <line x1="0" :x2="width" :y1="bandTop" :y2="bandTop" class="band-rule" />
-      <text x="8" :y="bandTop + 11" class="band-title">Empires &amp; dynasties</text>
-      <text x="8" :y="periodsTop - 4" class="band-title">Periods</text>
-      <g
-        v-for="b in bars"
-        :key="b.d.id"
-        class="cursor-pointer bar"
-        :class="[b.d.kind, { selected: b.d.id === selectedDurationId }]"
-        @click="onBarClick(b.d.id)"
-      >
-        <title>{{ b.tooltip }}</title>
-        <rect
-          :x="b.x"
-          :y="b.y"
-          :width="b.w"
-          :height="BAR_H"
-          rx="3"
-          :fill="`var(--dr-${b.group})`"
-          :stroke="`var(--dr-${b.group})`"
-          class="bar-rect"
-        />
-        <text v-if="b.label" :x="b.labelX" :y="b.y + BAR_H - 3" class="bar-text">{{ b.label }}</text>
-      </g>
+      </template>
     </svg>
   </div>
 </template>
@@ -155,12 +180,15 @@ import {
 } from '@/engine/dateroll/visibility'
 import { groupFor } from '@/engine/dateroll/categoryGroups'
 import { formatSpan, packBars } from '@/engine/dateroll/durations'
+import { LANES, laneFor, type LaneId } from '@/engine/dateroll/lanes'
 import { formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{
   events: Event[]
   durations: Duration[]
   view: View
+  mode: 'world' | 'lanes'
+  lanes: LaneId[]
   selectedId: string | null
   selectedDurationId: string | null
 }>()
@@ -171,7 +199,7 @@ const emit = defineEmits<{
   selectDuration: [id: string]
 }>()
 
-// Label geometry. Vertical space on each side of the axis is cut into LEVEL_H levels;
+// Label geometry. Vertical space on each side of an axis is cut into LEVEL_H levels;
 // an n-line label takes n + 1 levels, leaving a constant gap between stacked labels.
 const LEVEL_H = 13
 const LINE_H = 13
@@ -181,13 +209,26 @@ const MAX_LINES = 3
 const CHAR_W = 6.2 // approx width of an 11px system-ui character
 const CHAR_W_BOLD = 6.8
 const ANCHOR_IMPORTANCE = 7
-const TICK_SPACE = 24 // room under the axis reserved for tick labels
-const TOP_SPACE = 30 // room at the top for era names
-const AXIS_GAP = 10 // gap between the axis and the nearest label above it
+const ERA_SPACE = 28 // room at the top for era names
+const AXIS_GAP = 10 // gap between an axis and the nearest label
+const TICK_SPACE = 24 // World mode: room under the axis for year labels
+const TICK_STRIP = 20 // Lanes mode: shared year labels along the bottom
+const LANE_HEADER = 18 // room for the lane name
 const MILESTONE_GAP_PX = 48
 const MILESTONE_PRIORITY = 100 // milestones claim label space before everything else
 
+// Duration bars. World mode has two sub-bands so long empires can't crowd out periods;
+// each lane gets one row per kind (or just empires when the lane is short).
+const BAR_H = 12
+const BAR_ROW = 16
+const WORLD_ROWS_PER_KIND = 3
+const SUB_HEADER = 15
+const WORLD_BAND_H = 2 * (SUB_HEADER + WORLD_ROWS_PER_KIND * BAR_ROW) + 4
+const LANE_TWO_ROW_MIN_H = 120
+const BAR_MIN_PX = 80 // a bar this wide shows even if below the importance threshold
+
 const MILESTONE_RANK = new Map((milestoneIds as string[]).map((id, i) => [id, i]))
+const LANE_LABEL = new Map(LANES.map((l) => [l.id, l.label]))
 
 // ── Size ────────────────────────────────────────────────────────────────────
 const containerEl = ref<HTMLDivElement | null>(null)
@@ -205,38 +246,7 @@ onMounted(() => {
 })
 onUnmounted(() => observer?.disconnect())
 
-// Axis runs through the middle; labels fill outward above and below it.
-// Duration band at the bottom (fixed height so the axis doesn't jump while zooming).
-// Two sub-bands so long empires can't crowd out periods (or vice versa).
-const BAR_H = 12
-const BAR_ROW = 16
-const ROWS_PER_KIND = 3
-const SUB_HEADER = 15
-const BAND_H = 2 * (SUB_HEADER + ROWS_PER_KIND * BAR_ROW) + 4
-const BAR_MIN_PX = 80 // a bar this wide shows even if below the importance threshold
-
-const bandTop = computed(() => height.value - BAND_H)
-const empiresTop = computed(() => bandTop.value + SUB_HEADER)
-const periodsTop = computed(() => empiresTop.value + ROWS_PER_KIND * BAR_ROW + SUB_HEADER)
-
-// The axis runs through the middle of the area above the band; labels fill outward from it.
-const axisY = computed(() => Math.round(bandTop.value / 2))
-const levelsPerSide = computed(() => {
-  const above = axisY.value - AXIS_GAP - TOP_SPACE
-  const below = bandTop.value - axisY.value - TICK_SPACE - 6
-  return Math.max(2, Math.floor(Math.min(above, below) / LEVEL_H))
-})
-
-function boxPosition(side: Side, level: number, boxH: number) {
-  if (side === 'above') {
-    const bottom = axisY.value - AXIS_GAP - level * LEVEL_H
-    return { boxTop: bottom - boxH, leaderEnd: bottom }
-  }
-  const top = axisY.value + TICK_SPACE + level * LEVEL_H
-  return { boxTop: top, leaderEnd: top }
-}
-
-// ── Layout ──────────────────────────────────────────────────────────────────
+// ── Shared layers ───────────────────────────────────────────────────────────
 const tickMarks = computed(() =>
   ticks(props.view, width.value).map((year) => ({
     year,
@@ -275,10 +285,97 @@ const milestoneLines = computed(() => {
   return spaceMilestones(ranked, MILESTONE_GAP_PX)
 })
 
-const markers = computed(() => {
+// ── Tracks ──────────────────────────────────────────────────────────────────
+interface BarRow {
+  kind: Duration['kind']
+  title: string
+  top: number
+  rows: number
+}
+
+interface Track {
+  id: string
+  index: number
+  label: string | null // lane name; null for the single World track
+  top: number
+  axisY: number
+  levelsPerSide: number
+  belowGap: number // distance from the axis to the first label level below it
+  bandTop: number
+  barRows: BarRow[]
+  events: Event[]
+  durations: Duration[]
+}
+
+const tracks = computed<Track[]>(() => {
+  const h = height.value
+  const durationsInView = props.durations.filter(
+    (d) => d.endYear >= props.view.start && d.startYear <= props.view.end,
+  )
+
+  if (props.mode === 'world') {
+    const bandTop = h - WORLD_BAND_H
+    const empiresTop = bandTop + SUB_HEADER
+    const periodsTop = empiresTop + WORLD_ROWS_PER_KIND * BAR_ROW + SUB_HEADER
+    const axisY = Math.round((ERA_SPACE + bandTop) / 2)
+    const above = axisY - AXIS_GAP - ERA_SPACE
+    const below = bandTop - axisY - TICK_SPACE - 6
+    return [
+      {
+        id: 'world',
+        index: 0,
+        label: null,
+        top: ERA_SPACE,
+        axisY,
+        levelsPerSide: Math.max(2, Math.floor(Math.min(above, below) / LEVEL_H)),
+        belowGap: TICK_SPACE,
+        bandTop,
+        barRows: [
+          { kind: 'empire', title: 'Empires & dynasties', top: empiresTop, rows: WORLD_ROWS_PER_KIND },
+          { kind: 'period', title: 'Periods', top: periodsTop, rows: WORLD_ROWS_PER_KIND },
+        ],
+        events: inView.value,
+        durations: durationsInView,
+      },
+    ]
+  }
+
+  const laneH = (h - ERA_SPACE - TICK_STRIP) / Math.max(1, props.lanes.length)
+  const kinds: Duration['kind'][] = laneH >= LANE_TWO_ROW_MIN_H ? ['empire', 'period'] : ['empire']
+  return props.lanes.map((id, index) => {
+    const top = ERA_SPACE + index * laneH
+    const bandTop = top + laneH - kinds.length * BAR_ROW - 4
+    const axisY = Math.round((top + LANE_HEADER + bandTop) / 2)
+    const above = axisY - AXIS_GAP - (top + LANE_HEADER)
+    const below = bandTop - axisY - AXIS_GAP
+    return {
+      id,
+      index,
+      label: LANE_LABEL.get(id) ?? id,
+      top,
+      axisY,
+      levelsPerSide: Math.max(0, Math.floor(Math.min(above, below) / LEVEL_H)),
+      belowGap: AXIS_GAP,
+      bandTop,
+      barRows: kinds.map((kind, i) => ({ kind, title: '', top: bandTop + 2 + i * BAR_ROW, rows: 1 })),
+      events: inView.value.filter((e) => laneFor(e.region) === id),
+      durations: durationsInView.filter((d) => laneFor(d.region) === id),
+    }
+  })
+})
+
+function boxPosition(t: Track, side: Side, level: number, boxH: number) {
+  if (side === 'above') {
+    const bottom = t.axisY - AXIS_GAP - level * LEVEL_H
+    return { boxTop: bottom - boxH, leaderEnd: bottom }
+  }
+  const top = t.axisY + t.belowGap + level * LEVEL_H
+  return { boxTop: top, leaderEnd: top }
+}
+
+function layoutMarkers(t: Track, sectionIds: Set<string>) {
   const minImp = minImportanceForSpan(span(props.view))
-  const sectionIds = new Set(milestoneLines.value.map((m) => m.id))
-  const candidates = inView.value
+  const candidates = t.events
     .filter((e) => e.importance >= minImp || sectionIds.has(e.id))
     .map((e) => {
       const x = yearToX(e.year, props.view, width.value)
@@ -303,9 +400,9 @@ const markers = computed(() => {
     })),
     {
       width: width.value,
-      levelsPerSide: levelsPerSide.value,
+      levelsPerSide: t.levelsPerSide,
       levelH: LEVEL_H,
-      axisGap: { above: AXIS_GAP, below: TICK_SPACE },
+      axisGap: { above: AXIS_GAP, below: t.belowGap },
     },
   )
 
@@ -315,32 +412,31 @@ const markers = computed(() => {
       ...c,
       labelX: p.labelX,
       leaderX: p.leaderX,
-      ...boxPosition(p.side, p.level, c.boxH),
+      ...boxPosition(t, p.side, p.level, c.boxH),
       group: groupFor(c.event.categories),
       radius: 4 + Math.max(0, c.event.importance - 4) * 0.6,
       // Year first: the event is what students are learning to place.
       tooltip: `${formatYear(c.event.year)} — ${c.event.name}`,
     }
   })
-})
+}
 
 // Duration bars in view: important ones, plus any wide enough to read, packed into rows.
-const bars = computed(() => {
+function layoutBars(t: Track) {
   const minImp = minImportanceForSpan(span(props.view))
-  const candidates = props.durations
-    .filter((d) => d.endYear >= props.view.start && d.startYear <= props.view.end)
-    .map((d) => {
-      const x1 = yearToX(d.startYear, props.view, width.value)
-      const x2 = yearToX(d.endYear, props.view, width.value)
-      return { d, x1, x2 }
-    })
+  const candidates = t.durations
+    .map((d) => ({
+      d,
+      x1: yearToX(d.startYear, props.view, width.value),
+      x2: yearToX(d.endYear, props.view, width.value),
+    }))
     .filter((c) => c.d.importance >= minImp || c.x2 - c.x1 >= BAR_MIN_PX)
   const byId = new Map(candidates.map((c) => [c.d.id, c]))
 
-  const pack = (kind: Duration['kind']) =>
+  const placed = t.barRows.flatMap((r) =>
     packBars(
       candidates
-        .filter((c) => c.d.kind === kind)
+        .filter((c) => c.d.kind === r.kind)
         .map((c) => ({
           id: c.d.id,
           // Clamp so off-screen ends don't stop other bars sharing the row.
@@ -348,12 +444,9 @@ const bars = computed(() => {
           x2: Math.max(Math.min(c.x2, width.value + 10), Math.max(c.x1, -10) + 3),
           priority: c.d.importance,
         })),
-      ROWS_PER_KIND,
-    )
-  const placed = [
-    ...pack('empire').map((p) => ({ ...p, top: empiresTop.value })),
-    ...pack('period').map((p) => ({ ...p, top: periodsTop.value })),
-  ]
+      r.rows,
+    ).map((p) => ({ ...p, top: r.top })),
+  )
 
   return placed.map((p) => {
     const { d, x1, x2 } = byId.get(p.id)!
@@ -373,16 +466,23 @@ const bars = computed(() => {
       tooltip: `${formatSpan(d, formatYear)} — ${d.name}`,
     }
   })
+}
+
+const layouts = computed(() => {
+  const sectionIds = new Set(milestoneLines.value.map((m) => m.id))
+  return tracks.value.map((t) => {
+    const markers = layoutMarkers(t, sectionIds)
+    const shown = new Set(markers.map((m) => m.event.id))
+    const hiddenDots = t.events
+      .filter((e) => !shown.has(e.id))
+      .map((e) => ({ id: e.id, x: yearToX(e.year, props.view, width.value) }))
+    return { ...t, markers, hiddenDots, bars: layoutBars(t) }
+  })
 })
 
-const hiddenDots = computed(() => {
-  const shown = new Set(markers.value.map((m) => m.event.id))
-  return inView.value
-    .filter((e) => !shown.has(e.id))
-    .map((e) => ({ id: e.id, x: yearToX(e.year, props.view, width.value) }))
+defineExpose({
+  hiddenCount: computed(() => layouts.value.reduce((n, t) => n + t.hiddenDots.length, 0)),
 })
-
-defineExpose({ hiddenCount: computed(() => hiddenDots.value.length) })
 
 // ── Wheel: zoom around cursor; horizontal / shift+wheel pans ────────────────
 function localX(clientX: number) {
@@ -504,6 +604,19 @@ function onBarClick(id: string) {
   stroke-width: 1.5;
   stroke-dasharray: 6 4;
 }
+.lane-rule {
+  stroke: var(--dr-border-soft);
+}
+.lane-label {
+  fill: var(--dr-text-2);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  paint-order: stroke;
+  stroke: var(--dr-bg);
+  stroke-width: 4px;
+}
 .tick-label {
   fill: var(--dr-text-2);
   font-size: 11px;
@@ -523,9 +636,6 @@ function onBarClick(id: string) {
 }
 .label-text.anchor {
   font-weight: 700;
-}
-.band-rule {
-  stroke: var(--dr-border-soft);
 }
 .band-title {
   fill: var(--dr-muted);
