@@ -146,6 +146,14 @@
         </g>
       </g>
 
+      <!-- Shift-drag period selection -->
+      <g v-if="selection" pointer-events="none">
+        <rect :x="selection.x" y="0" :width="selection.w" :height="height" class="selection" />
+        <text :x="selection.x + selection.w / 2" y="44" text-anchor="middle" class="selection-label">
+          {{ selection.label }}
+        </text>
+      </g>
+
       <!-- Lanes share one row of year labels along the bottom -->
       <template v-if="mode === 'lanes'">
         <line x1="0" :x2="width" :y1="height - TICK_STRIP" :y2="height - TICK_STRIP" class="lane-rule" />
@@ -199,6 +207,7 @@ const emit = defineEmits<{
   panBy: [deltaYears: number]
   select: [id: string]
   selectDuration: [id: string]
+  selectRange: [startYear: number, endYear: number]
 }>()
 
 // Label geometry. Vertical space on each side of an axis is cut into LEVEL_H levels;
@@ -513,6 +522,18 @@ let lastX = 0
 let lastPinch: { mid: number; dist: number } | null = null
 let justDragged = false
 
+// Shift-drag (mouse) selects a period instead of panning.
+const selectFrom = ref<number | null>(null)
+const selectTo = ref(0)
+const selection = computed(() => {
+  if (selectFrom.value === null) return null
+  const x = Math.min(selectFrom.value, selectTo.value)
+  const w = Math.abs(selectTo.value - selectFrom.value)
+  const y1 = Math.round(xToYear(x, props.view, width.value))
+  const y2 = Math.round(xToYear(x + w, props.view, width.value))
+  return { x, w, label: `${formatYear(y1)} – ${formatYear(y2)}`, y1, y2 }
+})
+
 function pinchState() {
   const [a, b] = [...pointers.values()]
   return {
@@ -529,6 +550,12 @@ function onPointerDown(e: PointerEvent) {
     lastPinch = null
     dragging.value = false
   }
+  if (e.shiftKey && e.pointerType === 'mouse') {
+    selectFrom.value = selectTo.value = localX(e.clientX)
+    justDragged = false
+    ;(e.currentTarget as Element).setPointerCapture(e.pointerId)
+    return
+  }
   pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
   if (pointers.size === 1) {
     downX = lastX = e.clientX
@@ -542,6 +569,10 @@ function onPointerDown(e: PointerEvent) {
 }
 
 function onPointerMove(e: PointerEvent) {
+  if (selectFrom.value !== null) {
+    selectTo.value = Math.min(Math.max(localX(e.clientX), 0), width.value)
+    return
+  }
   if (!pointers.has(e.pointerId)) return
   pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
 
@@ -569,6 +600,16 @@ function onPointerUp(e: PointerEvent) {
   pointers.delete(e.pointerId)
   const el = e.currentTarget as Element
   if (el.hasPointerCapture(e.pointerId)) el.releasePointerCapture(e.pointerId)
+
+  if (selectFrom.value !== null) {
+    const sel = selection.value
+    selectFrom.value = null
+    if (sel && sel.w > 8) {
+      justDragged = true // don't let the release also count as a click on a marker
+      emit('selectRange', sel.y1, sel.y2)
+    }
+    return
+  }
 
   if (pointers.size === 1) {
     // Pinch ended with one finger still down: carry on as a drag from where it is.
@@ -664,6 +705,20 @@ function onBarClick(id: string) {
   fill: var(--dr-text);
   font-size: 10px;
   pointer-events: none;
+}
+.selection {
+  fill: var(--dr-text);
+  fill-opacity: 0.07;
+  stroke: var(--dr-text-2);
+  stroke-dasharray: 4 3;
+}
+.selection-label {
+  fill: var(--dr-text);
+  font-size: 12px;
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: var(--dr-bg);
+  stroke-width: 4px;
 }
 .marker:hover .label-bg,
 .marker.selected .label-bg {

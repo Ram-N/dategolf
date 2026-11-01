@@ -56,6 +56,9 @@
       <button class="btn w-9" aria-label="Zoom out" @click="emit('zoomOut')">−</button>
       <button class="btn w-9" aria-label="Zoom in" @click="emit('zoomIn')">+</button>
       <button class="btn" @click="emit('reset')">Reset</button>
+      <button class="btn" title="Summarise the period in view (or shift-drag across the timeline)" @click="emit('summarize')">
+        What happened?
+      </button>
       <button
         class="btn w-9"
         :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
@@ -100,6 +103,7 @@ const emit = defineEmits<{
   toggleRegion: [id: LaneId]
   setDetail: [detail: number]
   clearFilters: []
+  summarize: []
 }>()
 
 const MODES: { id: ViewMode; label: string }[] = [

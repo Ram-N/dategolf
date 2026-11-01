@@ -102,6 +102,7 @@ export const useDateRollStore = defineStore('dateroll', () => {
   const view = ref<View>(loadView())
   const selectedEventId = ref<string | null>(null)
   const selectedDurationId = ref<string | null>(null)
+  const summaryRange = ref<{ start: number; end: number } | null>(null)
   const theme = ref<Theme>(loadTheme())
   const mode = ref<ViewMode>(loadJson<ViewMode>(MODE_KEY) === 'lanes' ? 'lanes' : 'world')
   const laneState = ref<LaneState>(sanitizeLanes(loadJson<LaneState>(LANES_KEY)))
@@ -233,15 +234,45 @@ export const useDateRollStore = defineStore('dateroll', () => {
     animateTo(makeView(startYear - s * 0.15, s * 1.3))
   }
 
-  // An event card and a duration card never show at once.
+  // Only one card shows at a time: event, duration, or period summary.
   function select(id: string | null) {
     selectedEventId.value = id
-    if (id) selectedDurationId.value = null
+    if (id) {
+      selectedDurationId.value = null
+      summaryRange.value = null
+    }
   }
 
   function selectDuration(id: string | null) {
     selectedDurationId.value = id
-    if (id) selectedEventId.value = null
+    if (id) {
+      selectedEventId.value = null
+      summaryRange.value = null
+    }
+  }
+
+  function openSummary(start: number, end: number) {
+    selectedEventId.value = null
+    selectedDurationId.value = null
+    summaryRange.value = { start: Math.min(start, end), end: Math.max(start, end) }
+  }
+
+  function closeSummary() {
+    summaryRange.value = null
+  }
+
+  /** Open an event's card and glide the timeline to it (from Meanwhile / summary links). */
+  function goToEvent(id: string) {
+    const e = events.value.find((ev) => ev.id === id)
+    if (!e) return
+    select(id)
+    centerAt(e.year, true)
+  }
+
+  /** Close the card and frame the century around a year. */
+  function showSurrounding(year: number) {
+    select(null)
+    showSpan(year - 50, year + 50)
   }
 
   function toggleTheme() {
@@ -288,6 +319,7 @@ export const useDateRollStore = defineStore('dateroll', () => {
     viewSpan,
     selectedEvent,
     selectedDuration,
+    summaryRange,
     theme,
     mode,
     laneState,
@@ -307,6 +339,10 @@ export const useDateRollStore = defineStore('dateroll', () => {
     showSpan,
     select,
     selectDuration,
+    openSummary,
+    closeSummary,
+    goToEvent,
+    showSurrounding,
     toggleTheme,
     setMode,
     toggleLane,

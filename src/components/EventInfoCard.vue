@@ -30,6 +30,8 @@
             {{ event.categories.join(' · ') }} · {{ event.region }}
           </p>
           <DateLinksSection :eventId="event.id" :year="event.year" />
+          <!-- Optional extra content (DateRoll's "Meanwhile" section); DateGolf passes none -->
+          <slot />
         </div>
 
       </div>

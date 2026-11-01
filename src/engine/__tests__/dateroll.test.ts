@@ -26,6 +26,7 @@ import {
 } from '../dateroll/visibility'
 import { groupFor } from '../dateroll/categoryGroups'
 import { densityBins } from '../dateroll/density'
+import { activeDuring, beforeAndAfter, meanwhile, summarizePeriod } from '../dateroll/explore'
 import {
   NO_FILTERS,
   categoriesByFrequency,
@@ -406,5 +407,76 @@ describe('filters', () => {
   it('toggles values in a list', () => {
     expect(toggleIn(['a'], 'b')).toEqual(['a', 'b'])
     expect(toggleIn(['a', 'b'], 'a')).toEqual(['b'])
+  })
+})
+
+describe('explore', () => {
+  const ev = (id: string, year: number, region: string, importance = 5): Event => ({
+    id,
+    name: id,
+    year,
+    region,
+    importance,
+    categories: ['Politics'],
+    aliases: [],
+    description: '',
+    difficulty: 'easy',
+  })
+  const constantinople = ev('constantinople', 1453, 'Europe', 5)
+  const events = [
+    constantinople,
+    ev('gutenberg', 1440, 'Europe', 5),
+    ev('columbus', 1492, 'North America', 8),
+    ev('far-americas', 1600, 'Americas', 9),
+    ev('zheng-he', 1405, 'East Asia', 6),
+    ev('ming-minor', 1450, 'East Asia', 3),
+    ev('ming-big', 1421, 'East Asia', 7),
+    ev('ottoman', 1450, 'Middle East', 4),
+    ev('rome', -27, 'Europe', 9),
+  ]
+
+  it('finds the top events in other lanes within the window', () => {
+    const m = meanwhile(events, constantinople, 50, 2)
+    expect(m.map((l) => l.lane)).toEqual(['east-asia', 'middle-east', 'americas'])
+    expect(m[0]!.events.map((e) => e.id)).toEqual(['zheng-he', 'ming-big']) // top 2 by importance, in date order
+    expect(m[2]!.events.map((e) => e.id)).toEqual(['columbus']) // 1600 is outside ±50
+  })
+
+  it('finds neighbours before and after in the same lane', () => {
+    const { before, after } = beforeAndAfter(events, constantinople, 2)
+    expect(before.map((e) => e.id)).toEqual(['rome', 'gutenberg'])
+    expect(after).toEqual([])
+  })
+
+  const dur = (id: string, s: number, e: number, kind: Duration['kind'], importance = 5): Duration => ({
+    id,
+    name: id,
+    startYear: s,
+    endYear: e,
+    kind,
+    importance,
+    description: '',
+    categories: ['Politics'],
+    region: 'Europe',
+  })
+  const durations = [
+    dur('byzantine', 330, 1453, 'empire', 8),
+    dur('ottoman', 1299, 1922, 'empire', 8),
+    dur('ming', 1368, 1644, 'empire', 9),
+    dur('renaissance', 1400, 1600, 'period', 5),
+    dur('rome', -27, 476, 'empire', 9),
+  ]
+
+  it('lists durations active at a year, most important first', () => {
+    expect(activeDuring(durations, 1453, 1453, 'empire').map((d) => d.id)).toEqual(['ming', 'byzantine', 'ottoman'])
+    expect(activeDuring(durations, 1453, 1453, 'period').map((d) => d.id)).toEqual(['renaissance'])
+  })
+
+  it('summarises a period by lane', () => {
+    const s = summarizePeriod(events, durations, 1400, 1500)
+    expect(s.total).toBe(7)
+    expect(s.empires.map((d) => d.id)).toEqual(['ming', 'byzantine', 'ottoman'])
+    expect(s.lanes.map((l) => l.lane)).toEqual(['east-asia', 'europe', 'middle-east', 'americas'])
+    expect(s.lanes.find((l) => l.lane === 'east-asia')!.events).toHaveLength(3)
   })
 })

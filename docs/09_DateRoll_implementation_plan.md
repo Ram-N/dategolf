@@ -2,7 +2,7 @@
 
 > Companion to `07_DateRoll_Brainstorming.md` (ideas) and `08_DateRoll_highlevel_specs.md` (spec).
 > "Time River" was the earlier working name. **DateRoll** is current.
-> Last updated: 2026-11-01 (Phase 5 complete)
+> Last updated: 2026-11-01 (Phase 6 complete)
 
 ## Status at a glance
 
@@ -14,7 +14,7 @@
 | 3 | Duration bars (`durations.json`) | ✅ Done |
 | 4 | Regional lanes | ✅ Done (civilisation lanes deferred) |
 | 5 | Category filters + importance control | ✅ Done |
-| 6 | Exploration: "what was happening elsewhere?", period select, density | ⏳ TBD |
+| 6 | Exploration: "what was happening elsewhere?", period select, density | ✅ Done |
 | 7 | Games built on the timeline | ⏳ TBD |
 
 **Decisions made with Ram (2026-11-01)**
@@ -245,11 +245,26 @@ Decisions with Ram (2026-11-01): a **World ↔ Lanes toggle** rather than replac
 - **Test fix:** the 300-run layout fuzz test now collects violations and asserts once; ~500k in-loop `expect()` calls had pushed it past Vitest's 5s timeout under load.
 - **Data notes found while testing:** some events carry surprising categories (e.g. Adam Smith and the Great Plague of London appear under Science/Technology). Worth a pass when the data is revisited.
 
-## Phase 6 — Exploration features ⏳ TBD
-- **What was happening elsewhere?** From the event card: top events in other lanes within ±25–50 years, plus durations active that year. Built as a pure engine function.
-- **Select a period:** drag-select a range to get a summary grouped by lane, plus empires active then.
-- **Related events** and links to "show surrounding period".
-- **Density strip:** a small histogram under the axis, with event counts per bucket.
+## Phase 6 — Exploration features ✅
+- **`engine/dateroll/explore.ts`** (pure, unit-tested):
+  - `meanwhile`: the top 2 events in each *other* lane within ±50 years
+  - `beforeAndAfter`: the nearest neighbours in the same lane
+  - `activeDuring`: durations of a kind overlapping a year or range
+  - `summarizePeriod`: empires, periods and the top 4 events per lane for a range
+- **Event card → "Meanwhile"** (`EventMeanwhile.vue`):
+  - *Before & after in {region}* with the event itself highlighted, *Meanwhile around the world (±50 years)*, and *Empires in {year}* chips
+  - **Show the surrounding century** frames ±50 years
+  - Event links call `goToEvent`, which opens the card *and* glides the timeline there, so you can hop through history. Empire chips open the duration card.
+  - It plugs into the shared `EventInfoCard` through a new optional `<slot />`. DateGolf passes nothing, so its card is unchanged (verified).
+- **Period summary** (`PeriodSummaryCard.vue`, follows the theme):
+  - **What happened?** in the toolbar summarises the current view
+  - **Shift-drag** (mouse) across the timeline selects a custom range; a dashed band with a live year label follows the drag, and the view doesn't pan
+  - shows empire and period chips (each opens its card), events grouped by region (each opens its card and navigates), and **Zoom to this period**
+  - respects the active filters ("2 events matching your filters")
+- **Related events:** covered by *Before & after* and *Meanwhile*. **Density:** already covered by the minimap histogram (Phase 2.5).
+- **Store:** `summaryRange`, `openSummary`/`closeSummary`, `goToEvent`, `showSurrounding`. Event, duration and summary cards are mutually exclusive.
+- **Small fixes:** wrapped names stay aligned with their year column in both lists; the mouse/keyboard hint line is hidden on small screens (gives the phone timeline +37px).
+- **Data notes:** *Before & after* exposes sparse regions. For example, the Middle East's nearest events before 1453 are 786 and 1096. Fall of Constantinople is tagged Middle East rather than Europe.
 
 ## Phase 7 — Games ⏳ TBD
 Each game is a separate pure engine module plus its own view, using a seeded daily PRNG like DatePick (same date = same challenge). Suggested order:

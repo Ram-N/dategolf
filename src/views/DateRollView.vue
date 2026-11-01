@@ -20,6 +20,7 @@
       @toggle-region="store.toggleRegion"
       @set-detail="store.setDetail"
       @clear-filters="store.clearFilters()"
+      @summarize="store.openSummary(store.view.start, store.view.end)"
     />
 
     <DateRollMinimap v-if="!store.isLoading" :years="eventYears" :view="store.view" @center-at="store.centerAt" />
@@ -43,6 +44,7 @@
         @pan-by="store.panBy"
         @select="store.select"
         @select-duration="store.selectDuration"
+        @select-range="store.openSummary"
       />
     </div>
 
@@ -63,16 +65,34 @@
       </span>
       <span v-if="filterSummary && store.filteredEvents.length === 0" class="secondary">— nothing matches these filters</span>
       <span v-if="hiddenCount > 0" class="secondary">· {{ hiddenCount }} more in view — zoom in to reveal</span>
-      <span class="ml-auto muted">Scroll to zoom · drag to move · ← → pan · + − zoom</span>
+      <span class="ml-auto muted hidden sm:inline">Scroll to zoom · drag to move · shift-drag to summarise · ← → pan · + − zoom</span>
     </div>
 
-    <EventInfoCard v-if="store.selectedEvent" :event="store.selectedEvent" @close="store.select(null)" />
+    <EventInfoCard v-if="store.selectedEvent" :event="store.selectedEvent" @close="store.select(null)">
+      <EventMeanwhile
+        :event="store.selectedEvent"
+        :events="store.filteredEvents"
+        :durations="store.durations"
+        @open-event="store.goToEvent"
+        @open-duration="store.selectDuration"
+        @show-surrounding="store.showSurrounding(store.selectedEvent.year)"
+      />
+    </EventInfoCard>
+    <PeriodSummaryCard
+      v-if="summary"
+      :summary="summary"
+      :filtered="isFiltering(store.filters)"
+      @close="store.closeSummary()"
+      @open-event="store.goToEvent"
+      @open-duration="store.selectDuration"
+      @zoom-to="zoomToSummary"
+    />
     <DurationInfoCard
       v-if="store.selectedDuration"
       :duration="store.selectedDuration"
       :events="store.events"
       @close="store.selectDuration(null)"
-      @open-event="store.select"
+      @open-event="store.goToEvent"
       @show-on-timeline="showSelectedDuration"
     />
   </div>
@@ -88,6 +108,10 @@ import DateRollTimeline from '@/components/dateroll/DateRollTimeline.vue'
 import DateRollMinimap from '@/components/dateroll/DateRollMinimap.vue'
 import EventInfoCard from '@/components/EventInfoCard.vue'
 import DurationInfoCard from '@/components/dateroll/DurationInfoCard.vue'
+import EventMeanwhile from '@/components/dateroll/EventMeanwhile.vue'
+import PeriodSummaryCard from '@/components/dateroll/PeriodSummaryCard.vue'
+import { summarizePeriod } from '@/engine/dateroll/explore'
+import { isFiltering } from '@/engine/dateroll/filters'
 
 const store = useDateRollStore()
 const timeline = useTemplateRef<InstanceType<typeof DateRollTimeline>>('timeline')
@@ -105,11 +129,23 @@ const filterSummary = computed(() => {
 })
 
 function onKey(e: KeyboardEvent) {
-  if (e.target instanceof HTMLInputElement || store.selectedEvent || store.selectedDuration) return
+  if (e.target instanceof HTMLInputElement || store.selectedEvent || store.selectedDuration || store.summaryRange) return
   if (e.key === 'ArrowLeft') store.panBy(-store.viewSpan * 0.1)
   else if (e.key === 'ArrowRight') store.panBy(store.viewSpan * 0.1)
   else if (e.key === '+' || e.key === '=') store.zoomIn()
   else if (e.key === '-') store.zoomOut()
+}
+
+const summary = computed(() => {
+  const r = store.summaryRange
+  return r ? summarizePeriod(store.filteredEvents, store.filteredDurations, r.start, r.end) : null
+})
+
+function zoomToSummary() {
+  const r = store.summaryRange
+  if (!r) return
+  store.closeSummary()
+  store.showSpan(r.start, r.end)
 }
 
 function showSelectedDuration() {
