@@ -4,6 +4,8 @@ import type { Event } from '@/types'
 import {
   FULL_VIEW,
   centerOn,
+  easeOutCubic,
+  interpolateView,
   makeView,
   pan,
   span,
@@ -14,6 +16,7 @@ import {
 const VIEW_KEY = 'dateroll:view'
 const THEME_KEY = 'dateroll:theme'
 const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's default zoom
+const ANIM_MS = 350
 
 function loadView(): View {
   try {
@@ -75,29 +78,73 @@ export const useDateRollStore = defineStore('dateroll', () => {
     isLoading.value = false
   }
 
+  // ── View animation ─────────────────────────────────────────────────────────
+  // Buttons, jump and reset ease to their target; direct input (wheel, drag, pinch)
+  // applies instantly and cancels any animation in flight.
+  let animFrame: number | null = null
+  let animTarget: View | null = null
+
+  function stopAnimation() {
+    if (animFrame !== null) cancelAnimationFrame(animFrame)
+    animFrame = null
+    animTarget = null
+  }
+
+  function animateTo(target: View) {
+    stopAnimation()
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+      view.value = target
+      return
+    }
+    const from = view.value
+    const t0 = performance.now()
+    animTarget = target
+    const step = (now: number) => {
+      const t = Math.min(1, (now - t0) / ANIM_MS)
+      view.value = interpolateView(from, target, easeOutCubic(t))
+      if (t < 1) {
+        animFrame = requestAnimationFrame(step)
+      } else {
+        animFrame = null
+        animTarget = null
+      }
+    }
+    animFrame = requestAnimationFrame(step)
+  }
+
+  /** Where the view is heading — so repeated clicks build on the target, not a mid-animation frame. */
+  const goal = () => animTarget ?? view.value
+  const centerOf = (v: View) => (v.start + v.end) / 2
+
+  // ── Direct input (instant) ───────────────────────────────────────────────
   function zoomAt(anchorYear: number, factor: number) {
+    stopAnimation()
     view.value = zoomAround(view.value, anchorYear, factor)
   }
 
-  const center = () => (view.value.start + view.value.end) / 2
-  const zoomIn = () => zoomAt(center(), 0.5)
-  const zoomOut = () => zoomAt(center(), 2)
-
   function panBy(deltaYears: number) {
+    stopAnimation()
     view.value = pan(view.value, deltaYears)
   }
 
   /** Move the view so `year` is centred, keeping the current zoom. */
-  function centerAt(year: number) {
-    view.value = centerOn(year, viewSpan.value)
+  function centerAt(year: number, animate = false) {
+    const target = centerOn(year, span(goal()))
+    if (animate) return animateTo(target)
+    stopAnimation()
+    view.value = target
   }
 
+  // ── Buttons (animated) ───────────────────────────────────────────────────
+  const zoomIn = () => animateTo(zoomAround(goal(), centerOf(goal()), 0.5))
+  const zoomOut = () => animateTo(zoomAround(goal(), centerOf(goal()), 2))
+
   function jumpTo(year: number) {
-    view.value = centerOn(year, Math.min(viewSpan.value, JUMP_SPAN))
+    animateTo(centerOn(year, Math.min(span(goal()), JUMP_SPAN)))
   }
 
   function reset() {
-    view.value = FULL_VIEW
+    animateTo(FULL_VIEW)
   }
 
   function select(id: string | null) {

@@ -6,6 +6,7 @@ import {
   MIN_YEAR,
   centerOn,
   formatTick,
+  interpolateView,
   pan,
   span,
   tickStep,
@@ -232,5 +233,21 @@ describe('densityBins', () => {
     const bins = densityBins([-100, -50, 0, 10, 99, 100, 500], -100, 100, 4)
     expect(bins.map((b) => b.count)).toEqual([1, 1, 2, 2]) // bins are [start, end); the last includes its end
     expect(bins[0]).toMatchObject({ start: -100, end: -50 })
+  })
+})
+
+describe('interpolateView', () => {
+  const a = { start: -3000, end: 2000 }
+  const b = { start: 1400, end: 1500 }
+  it('starts at a and ends at b', () => {
+    expect(interpolateView(a, b, 0)).toEqual(a)
+    const end = interpolateView(a, b, 1)
+    expect(end.start).toBeCloseTo(1400)
+    expect(end.end).toBeCloseTo(1500)
+  })
+  it('changes span geometrically and centre linearly', () => {
+    const mid = interpolateView(a, b, 0.5)
+    expect(span(mid)).toBeCloseTo(Math.sqrt(5000 * 100))
+    expect((mid.start + mid.end) / 2).toBeCloseTo((-500 + 1450) / 2)
   })
 })

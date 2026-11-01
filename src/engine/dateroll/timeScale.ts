@@ -68,3 +68,17 @@ export function ticks(view: View, widthPx: number, minGapPx = 80): number[] {
 export function formatTick(year: number): string {
   return year === 0 ? 'BCE | CE' : formatYear(year)
 }
+
+// ── Animation ─────────────────────────────────────────────────────────────────
+/**
+ * View part-way (t ∈ [0, 1]) from a to b. The centre moves linearly but the span changes
+ * geometrically, so a 5000 → 100 year zoom feels even instead of rushing at the start.
+ */
+export function interpolateView(a: View, b: View, t: number): View {
+  const ca = (a.start + a.end) / 2
+  const cb = (b.start + b.end) / 2
+  const s = span(a) * Math.pow(span(b) / span(a), t)
+  return makeView(ca + (cb - ca) * t - s / 2, s)
+}
+
+export const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3)

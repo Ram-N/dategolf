@@ -301,21 +301,58 @@ function onWheel(e: WheelEvent) {
   }
 }
 
-// ── Drag to pan (mouse + touch). Capture only once a drag starts so clicks still reach markers.
+// ── Drag to pan; two-finger pinch to zoom (touch). Capture only once a gesture
+// starts, so a plain click still reaches the marker under it.
 const DRAG_THRESHOLD = 4
 const dragging = ref(false)
-let downX: number | null = null
+const pointers = new Map<number, { x: number; y: number }>()
+let downX = 0
 let lastX = 0
+let lastPinch: { mid: number; dist: number } | null = null
 let justDragged = false
 
+function pinchState() {
+  const [a, b] = [...pointers.values()]
+  return {
+    mid: localX((a!.x + b!.x) / 2),
+    dist: Math.max(10, Math.hypot(a!.x - b!.x, a!.y - b!.y)),
+  }
+}
+
 function onPointerDown(e: PointerEvent) {
-  downX = e.clientX
-  lastX = e.clientX
-  justDragged = false
+  // The first finger of a new gesture is "primary": drop anything left over from a
+  // gesture whose pointerup never arrived, so a tap isn't mistaken for a pinch.
+  if (e.isPrimary) {
+    pointers.clear()
+    lastPinch = null
+    dragging.value = false
+  }
+  pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+  if (pointers.size === 1) {
+    downX = lastX = e.clientX
+    justDragged = false
+  } else if (pointers.size === 2) {
+    const el = e.currentTarget as Element
+    for (const id of pointers.keys()) el.setPointerCapture(id)
+    dragging.value = true
+    lastPinch = pinchState()
+  }
 }
 
 function onPointerMove(e: PointerEvent) {
-  if (downX === null) return
+  if (!pointers.has(e.pointerId)) return
+  pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+  if (lastPinch && pointers.size >= 2) {
+    // Zoom around the point between the fingers, and pan as that point moves.
+    const now = pinchState()
+    const factor = lastPinch.dist / now.dist
+    emit('zoomAt', xToYear(lastPinch.mid, props.view, width.value), factor)
+    emit('panBy', (-(now.mid - lastPinch.mid) / width.value) * span(props.view) * factor)
+    lastPinch = now
+    return
+  }
+
   if (!dragging.value && Math.abs(e.clientX - downX) > DRAG_THRESHOLD) {
     dragging.value = true
     ;(e.currentTarget as Element).setPointerCapture(e.pointerId)
@@ -327,12 +364,21 @@ function onPointerMove(e: PointerEvent) {
 }
 
 function onPointerUp(e: PointerEvent) {
-  if (dragging.value) {
-    justDragged = true
-    ;(e.currentTarget as Element).releasePointerCapture(e.pointerId)
+  pointers.delete(e.pointerId)
+  const el = e.currentTarget as Element
+  if (el.hasPointerCapture(e.pointerId)) el.releasePointerCapture(e.pointerId)
+
+  if (pointers.size === 1) {
+    // Pinch ended with one finger still down: carry on as a drag from where it is.
+    lastPinch = null
+    lastX = [...pointers.values()][0]!.x
+    return
   }
-  dragging.value = false
-  downX = null
+  if (pointers.size === 0) {
+    if (dragging.value) justDragged = true
+    dragging.value = false
+    lastPinch = null
+  }
 }
 
 function onMarkerClick(id: string) {

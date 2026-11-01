@@ -2,7 +2,7 @@
 
 > Companion to `07_DateRoll_Brainstorming.md` (ideas) and `08_DateRoll_highlevel_specs.md` (spec).
 > "Time River" was the earlier working name. **DateRoll** is current.
-> Last updated: 2026-11-01 (Phase 2.5 step 3)
+> Last updated: 2026-11-01 (Phase 2.5 complete)
 
 ## Status at a glance
 
@@ -10,7 +10,7 @@
 |---|---|---|
 | 1 | Inspect codebase + data, propose architecture | ✅ Done |
 | 2 | Basic timeline: axis, pan, zoom, event markers, info card | ✅ Coded (uncommitted) |
-| 2.5 | Polish before Phase 3: look & theme, crowding, minimap, touch & motion | 🔄 In progress (3 of 4 done) |
+| 2.5 | Polish before Phase 3: look & theme, crowding, minimap, touch & motion | ✅ Done |
 | 3 | Duration bars (`durations.json`) | ⏳ TBD |
 | 4 | Regional lanes | ⏳ TBD |
 | 5 | Category filters + importance control | ⏳ TBD |
@@ -122,7 +122,7 @@ durations.json ┼→ src/engine/dateroll/       (pure TS, zero Vue, unit-tested
 
 ---
 
-## Phase 2.5 — Polish before Phase 3 🔄
+## Phase 2.5 — Polish before Phase 3 ✅
 Ram's request: finish all four improvements, one at a time, before starting duration bars.
 
 ### 1. Look & feel ✅
@@ -160,8 +160,15 @@ Ram's request: finish all four improvements, one at a time, before starting dura
 - **Navigation:** click to centre the view there (zoom kept). Drag to scrub; grabbing inside the box keeps the offset, so the box doesn't jump. Uses the store's new `centerAt(year)`.
 - This also covers the Phase 6 "historical density" idea.
 
-### 4. Touch + smooth motion ⏳
-Pinch-zoom (two-pointer), and eased animation for button zoom, jump and reset (interpolate the centre linearly and the span geometrically). Honour `prefers-reduced-motion`.
+### 4. Touch + smooth motion ✅
+- **Animated moves:** the zoom buttons, jump-to-year, Reset and minimap clicks ease over 350ms (`animateTo` in the store).
+  - `interpolateView` moves the centre linearly and the span geometrically, so deep zooms feel even. Easing is ease-out cubic.
+  - Repeated clicks build on the animation's target: two quick zoom-ins = 4×.
+- **Direct input stays instant:** wheel, drag, pinch, arrow keys and minimap drags apply immediately and cancel any animation in flight.
+- `prefers-reduced-motion: reduce` makes every move instant.
+- **Pinch-zoom:** two pointers zoom around their midpoint and pan as it moves. Lifting one finger continues as a drag.
+- **Robustness:** a new gesture's primary pointer clears stale pointer state, so a lost `pointerup` can't turn the next tap into a pinch. Play-testing caught that bug.
+- **Verified with real touch events via CDP:** pinch zooms 100 → 29 years with the centre held, a swipe pans, and a tap opens the card.
 
 ## Phase 3 — Duration bars ⏳ TBD
 - **Data:** create `src/data/durations.json`.

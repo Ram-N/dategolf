@@ -57,7 +57,7 @@ import { densityBins } from '@/engine/dateroll/density'
 import { formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{ years: number[]; view: View }>()
-const emit = defineEmits<{ centerAt: [year: number] }>()
+const emit = defineEmits<{ centerAt: [year: number, animate: boolean] }>()
 
 const HEIGHT = 46
 const BAR_BASE = 32 // bars grow up from here; tick labels sit below
@@ -115,7 +115,7 @@ const box = computed(() => {
   return { x: Math.min(Math.max(0, (x1 + x2) / 2 - w / 2), width.value - w), w }
 })
 
-// ── Click to jump, drag to scrub. Grabbing inside the box keeps its offset so it doesn't jump.
+// ── Click to jump (animated), drag to scrub (instant). Grabbing inside the box keeps its offset so it doesn't jump.
 const dragging = ref(false)
 let grabOffsetYears = 0
 
@@ -131,12 +131,12 @@ function onPointerDown(e: PointerEvent) {
   grabOffsetYears = insideBox ? year - viewCenter.value : 0
   dragging.value = true
   ;(e.currentTarget as Element).setPointerCapture(e.pointerId)
-  if (!insideBox) emit('centerAt', year)
+  if (!insideBox) emit('centerAt', year, true)
 }
 
 function onPointerMove(e: PointerEvent) {
   if (!dragging.value) return
-  emit('centerAt', yearAt(e) - grabOffsetYears)
+  emit('centerAt', yearAt(e) - grabOffsetYears, false)
 }
 
 function onPointerUp(e: PointerEvent) {
