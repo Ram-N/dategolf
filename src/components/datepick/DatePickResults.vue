@@ -64,6 +64,7 @@
 </template>
 
 <script setup lang="ts">
+import { formatYear } from '@/utils/formatYear'
 import { computed, ref } from 'vue'
 import type { DatePickGameState, DatePickStats } from '@/types/datepick'
 import { copyResult, shareResult } from '@/services/datepickSharing'
@@ -88,9 +89,6 @@ const scoreLabel = computed(() => {
   return 'Better luck tomorrow'
 })
 
-function formatYear(year: number): string {
-  return year < 0 ? `${Math.abs(year)} BCE` : String(year)
-}
 
 async function share() {
   const result = await shareResult(props.gameState)

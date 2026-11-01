@@ -224,6 +224,7 @@
 </template>
 
 <script setup lang="ts">
+import { formatYear } from '@/utils/formatYear'
 import { ref, computed, onMounted } from 'vue'
 import { generateDatePickChallenge } from '@/engine/datepick/challengeGenerator'
 import type { Event } from '@/types'
@@ -335,10 +336,6 @@ const eraSummary = computed(() => {
     ).length,
   }))
 })
-
-function formatYear(year: number): string {
-  return year < 0 ? `${Math.abs(year)} BCE` : String(year)
-}
 
 // ── Memory aid coverage ────────────────────────────────────────────────────────
 const eventCoverage = computed(() => {

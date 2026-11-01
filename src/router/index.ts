@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import DailyChallengeView from '../views/DailyChallengeView.vue'
 import DatePickView from '../views/DatePickView.vue'
 import CreatorView from '../views/CreatorView.vue'
+import DateRollView from '../views/DateRollView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,7 +10,10 @@ const router = createRouter({
     {
       path: '/',
       redirect: () => {
-        return window.location.hostname.startsWith('datepick.') ? '/datepick' : '/dategolf'
+        const host = window.location.hostname
+        if (host.startsWith('datepick.')) return '/datepick'
+        if (host.startsWith('dateroll.')) return '/dateroll'
+        return '/dategolf'
       },
     },
     {
@@ -23,6 +27,12 @@ const router = createRouter({
       name: 'datepick',
       component: DatePickView,
       meta: { title: 'DatePick' },
+    },
+    {
+      path: '/dateroll',
+      name: 'dateroll',
+      component: DateRollView,
+      meta: { title: 'DateRoll' },
     },
     {
       path: '/creator',

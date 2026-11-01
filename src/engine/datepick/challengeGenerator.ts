@@ -44,7 +44,7 @@ const ERA_BANDS: EraBand[] = [
 
 /**
  * Weighted random selection from a pool of events.
- * Weight = event.importance (1–5).
+ * Weight = event.importance.
  */
 function weightedSample(events: Event[], rng: () => number): Event {
   const totalWeight = events.reduce((s, e) => s + e.importance, 0)

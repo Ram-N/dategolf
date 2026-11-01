@@ -35,6 +35,7 @@
 </template>
 
 <script setup lang="ts">
+import { formatYear } from '@/utils/formatYear'
 import type { DatePickQuestion } from '@/types/datepick'
 
 const props = defineProps<{
@@ -47,10 +48,6 @@ const emit = defineEmits<{
 }>()
 
 const letters = ['A', 'B', 'C', 'D']
-
-function formatYear(year: number): string {
-  return year < 0 ? `${Math.abs(year)} BCE` : String(year)
-}
 
 function buttonClass(index: number): string {
   if (props.selectedIndex === null) {

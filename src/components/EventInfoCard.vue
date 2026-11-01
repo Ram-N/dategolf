@@ -38,6 +38,7 @@
 </template>
 
 <script setup lang="ts">
+import { formatYear } from '@/utils/formatYear'
 import { onMounted, onUnmounted, ref } from 'vue'
 import type { Event } from '@/types'
 import DateLinksSection from './DateLinksSection.vue'
@@ -46,10 +47,6 @@ defineProps<{ event: Event }>()
 const emit = defineEmits<{ close: [] }>()
 
 const flipped = ref(false)
-
-function formatYear(y: number) {
-  return y < 0 ? `${Math.abs(y)} BCE` : String(y)
-}
 
 function onKey(e: KeyboardEvent) {
   if (e.key === 'Escape') emit('close')

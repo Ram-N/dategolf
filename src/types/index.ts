@@ -8,7 +8,7 @@ export interface Event {
   aliases: string[]
   description: string
   difficulty: 'easy' | 'medium' | 'hard'
-  importance: 1 | 2 | 3 | 4 | 5
+  importance: number // 2–9 in events.json; higher = more prominent
 }
 
 // ── Hole Result ────────────────────────────────────────────────────────────────

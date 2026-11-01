@@ -2,6 +2,7 @@
   <nav v-if="showNav" class="game-nav">
     <RouterLink to="/dategolf" class="nav-link">DateGolf</RouterLink>
     <RouterLink to="/datepick" class="nav-link">DatePick</RouterLink>
+    <RouterLink to="/dateroll" class="nav-link">DateRoll</RouterLink>
   </nav>
   <RouterView />
 </template>
@@ -9,7 +10,7 @@
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router'
 
-const subdomains = ['dategolf.', 'datepick.']
+const subdomains = ['dategolf.', 'datepick.', 'dateroll.']
 const showNav = !subdomains.some((s) => window.location.hostname.startsWith(s))
 </script>
 
