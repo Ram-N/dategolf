@@ -14,7 +14,14 @@ import {
   yearToX,
   zoomAround,
 } from '../dateroll/timeScale'
-import { layoutLabels, minImportanceForSpan } from '../dateroll/visibility'
+import {
+  layoutLabels,
+  minImportanceForSpan,
+  spaceMilestones,
+  wrapLabel,
+  type LayoutItem,
+} from '../dateroll/visibility'
+import { groupFor } from '../dateroll/categoryGroups'
 import { parseYear } from '@/utils/formatYear'
 
 const W = 1000
@@ -87,31 +94,84 @@ describe('visibility', () => {
     expect(minImportanceForSpan(10)).toBe(0)
   })
 
-  it('stacks overlapping labels into rows, most important first', () => {
-    const items = [
-      { id: 'minor', x: 100, labelWidth: 80, importance: 3 },
-      { id: 'major', x: 110, labelWidth: 80, importance: 9 },
-    ]
-    const placed = layoutLabels(items, 2)
+  const item = (id: string, x: number, priority: number, extra: Partial<LayoutItem> = {}): LayoutItem => ({
+    id,
+    x,
+    dotX: x,
+    labelWidth: 80,
+    levels: 2,
+    priority,
+    ...extra,
+  })
+
+  it('places the most important label nearest the axis, then alternates sides', () => {
+    const placed = layoutLabels([item('minor', 100, 3), item('major', 110, 9)], 6)
     expect(placed).toEqual([
-      { id: 'major', x: 110, row: 0 },
-      { id: 'minor', x: 100, row: 1 },
+      { id: 'major', side: 'above', level: 0 },
+      { id: 'minor', side: 'below', level: 0 },
     ])
   })
 
-  it('drops labels that fit in no row', () => {
-    const items = [
-      { id: 'a', x: 100, labelWidth: 80, importance: 9 },
-      { id: 'b', x: 105, labelWidth: 80, importance: 5 },
-    ]
-    expect(layoutLabels(items, 1).map((p) => p.id)).toEqual(['a'])
+  it('drops labels that fit nowhere', () => {
+    // one 2-level slot per side: a takes above, b takes below, c has nowhere left
+    const placed = layoutLabels([item('a', 100, 9), item('b', 105, 7), item('c', 110, 5)], 2)
+    expect(placed.map((p) => p.id)).toEqual(['a', 'b'])
   })
 
-  it('keeps non-overlapping labels on the same row', () => {
-    const items = [
-      { id: 'a', x: 100, labelWidth: 50, importance: 5 },
-      { id: 'b', x: 300, labelWidth: 50, importance: 5 },
-    ]
-    expect(layoutLabels(items, 3).every((p) => p.row === 0)).toBe(true)
+  it('keeps non-overlapping labels on the same level', () => {
+    const placed = layoutLabels([item('a', 100, 5), item('b', 300, 5)], 6)
+    expect(placed.every((p) => p.level === 0 && p.side === 'above')).toBe(true)
+  })
+
+  it('stacks multi-line labels without overlap', () => {
+    // a takes levels 0–3 above; b must start at level 4 or go below
+    const placed = layoutLabels(
+      [item('a', 100, 9, { levels: 4 }), item('b', 300, 8, { levels: 2, x: 300, dotX: 300 }), item('c', 110, 5)],
+      8,
+    )
+    expect(placed.find((p) => p.id === 'c')).toEqual({ id: 'c', side: 'below', level: 0 })
+  })
+
+  it("never lets a leader run through another event's label", () => {
+    // a sits on level 0 above, b below. c's dot is under a's label, so c cannot climb past a.
+    const placed = layoutLabels([item('a', 100, 9), item('b', 100, 8), item('c', 130, 5, { x: 180, dotX: 130 })], 8)
+    const c = placed.find((p) => p.id === 'c')
+    expect(c).toBeUndefined()
+  })
+})
+
+describe('wrapLabel', () => {
+  it('keeps short labels on one line', () => {
+    expect(wrapLabel('Moon Landing')).toEqual(['Moon Landing'])
+  })
+
+  it('wraps long labels at word boundaries', () => {
+    expect(wrapLabel('The Hijra: Muhammad Migrates to Medina')).toEqual([
+      'The Hijra: Muhammad',
+      'Migrates to Medina',
+    ])
+  })
+
+  it('caps at three lines with an ellipsis', () => {
+    const lines = wrapLabel('one two three four five six seven eight nine ten eleven twelve', 10, 3)
+    expect(lines).toHaveLength(3)
+    expect(lines[2]!.endsWith('…')).toBe(true)
+  })
+})
+
+describe('categoryGroups', () => {
+  it('groups by primary category, falling back to other', () => {
+    expect(groupFor(['War', 'Science'])).toBe('power')
+    expect(groupFor(['Exploration'])).toBe('knowledge')
+    expect(groupFor(['Religion', 'Politics'])).toBe('culture')
+    expect(groupFor(['Disasters'])).toBe('other')
+    expect(groupFor([])).toBe('other')
+  })
+})
+
+describe('spaceMilestones', () => {
+  it('keeps higher-ranked lines and drops crowded lower-ranked ones', () => {
+    const ranked = [{ id: 'a', x: 100 }, { id: 'b', x: 120 }, { id: 'c', x: 300 }]
+    expect(spaceMilestones(ranked, 48).map((m) => m.id)).toEqual(['a', 'c'])
   })
 })

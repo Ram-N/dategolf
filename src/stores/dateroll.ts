@@ -12,6 +12,7 @@ import {
 } from '@/engine/dateroll/timeScale'
 
 const VIEW_KEY = 'dateroll:view'
+const THEME_KEY = 'dateroll:theme'
 const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's default zoom
 
 function loadView(): View {
@@ -25,12 +26,25 @@ function loadView(): View {
   }
 }
 
+export type Theme = 'light' | 'dark'
+
+function loadTheme(): Theme {
+  try {
+    const saved = localStorage.getItem(THEME_KEY)
+    if (saved === 'light' || saved === 'dark') return saved
+  } catch {
+    // fall through to the system preference
+  }
+  return window.matchMedia?.('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+}
+
 export const useDateRollStore = defineStore('dateroll', () => {
   // ── State ──────────────────────────────────────────────────────────────────
   const events = ref<Event[]>([])
   const isLoading = ref(true)
   const view = ref<View>(loadView())
   const selectedEventId = ref<string | null>(null)
+  const theme = ref<Theme>(loadTheme())
 
   // ── Computed ───────────────────────────────────────────────────────────────
   const selectedEvent = computed(
@@ -43,6 +57,14 @@ export const useDateRollStore = defineStore('dateroll', () => {
       localStorage.setItem(VIEW_KEY, JSON.stringify(v))
     } catch {
       // storage unavailable — view just won't persist
+    }
+  })
+
+  watch(theme, (t) => {
+    try {
+      localStorage.setItem(THEME_KEY, t)
+    } catch {
+      // storage unavailable — theme just won't persist
     }
   })
 
@@ -77,12 +99,17 @@ export const useDateRollStore = defineStore('dateroll', () => {
     selectedEventId.value = id
   }
 
+  function toggleTheme() {
+    theme.value = theme.value === 'dark' ? 'light' : 'dark'
+  }
+
   return {
     events,
     isLoading,
     view,
     viewSpan,
     selectedEvent,
+    theme,
     load,
     zoomAt,
     zoomIn,
@@ -91,5 +118,6 @@ export const useDateRollStore = defineStore('dateroll', () => {
     jumpTo,
     reset,
     select,
+    toggleTheme,
   }
 })

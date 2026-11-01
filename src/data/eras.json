@@ -1,0 +1,7 @@
+[
+  { "id": "ancient", "name": "Ancient", "start": -3600, "end": -800 },
+  { "id": "classical", "name": "Classical", "start": -800, "end": 500 },
+  { "id": "medieval", "name": "Medieval", "start": 500, "end": 1500 },
+  { "id": "early-modern", "name": "Early Modern", "start": 1500, "end": 1800 },
+  { "id": "modern", "name": "Modern", "start": 1800, "end": 2030 }
+]

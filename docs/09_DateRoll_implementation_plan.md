@@ -2,7 +2,7 @@
 
 > Companion to `07_DateRoll_Brainstorming.md` (ideas) and `08_DateRoll_highlevel_specs.md` (spec).
 > "Time River" was the earlier working name. **DateRoll** is current.
-> Last updated: 2026-11-01
+> Last updated: 2026-11-01 (Phase 2.5 step 1)
 
 ## Status at a glance
 
@@ -10,7 +10,8 @@
 |---|---|---|
 | 1 | Inspect codebase + data, propose architecture | ✅ Done |
 | 2 | Basic timeline: axis, pan, zoom, event markers, info card | ✅ Coded (uncommitted) |
-| 3 | Duration bars (`durations.json`) | ⏳ TBD (next) |
+| 2.5 | Polish before Phase 3: look & theme, crowding, minimap, touch & motion | 🔄 In progress (1 of 4 done) |
+| 3 | Duration bars (`durations.json`) | ⏳ TBD |
 | 4 | Regional lanes | ⏳ TBD |
 | 5 | Category filters + importance control | ⏳ TBD |
 | 6 | Exploration: "what was happening elsewhere?", period select, density | ⏳ TBD |
@@ -121,7 +122,38 @@ durations.json ┼→ src/engine/dateroll/       (pure TS, zero Vue, unit-tested
 
 ---
 
-## Phase 3 — Duration bars ⏳ TBD (next)
+## Phase 2.5 — Polish before Phase 3 🔄
+Ram's request: finish all four improvements, one at a time, before starting duration bars.
+
+### 1. Look & feel ✅
+- **Light/dark theme:** ☀/☾ toggle. Defaults to the OS setting and persists (`dateroll:theme`). Colours are CSS variables (`--dr-*`) defined in `DateRollView.vue`.
+- **Axis at mid-height:** labels fill levels outward above *and* below it (13px levels; an n-line label takes n+1 levels).
+- **Label wrapping:** up to 3 lines of ~20 chars (`wrapLabel`). Layout guarantees: no label overlaps another, a label's own leader never crosses a nearer label, and no leader runs through another event's label (`layoutLabels`).
+- **Category colour:** three hue groups + grey (`categoryGroups.ts`): Politics & War / Science & Discovery / Culture & Society / Other.
+  - Three is the cap: past three hues, scattered dots fail the all-pairs colourblind check.
+  - Validated in both themes with the dataviz palette validator.
+  - Label text stays neutral; the legend is in the footer.
+- **Importance:** shown by dot size; importance ≥7 (and milestones) get bold labels.
+- **Era bands:** faint alternating shading with era names, from `src/data/eras.json`.
+- **Milestone section lines:** dashed full-height lines at 16 hand-picked turning points (`src/data/milestones.json`, ranked by significance).
+  - At wide zoom, lower-ranked lines within 48px of a higher-ranked one are hidden (`spaceMilestones`).
+  - Milestone labels always show and get first claim on space.
+- **Tooltip:** year first (`1453 — Fall of Constantinople`).
+- Known gap: `EventInfoCard` stays dark in light mode, because DateGolf shares it.
+
+### 2. Crowding / use of vertical space ⏳
+The strict no-crossing rule now leaves labels hugging the axis, and dense periods show only a few labels at wide zoom. Ideas:
+- let labels shift sideways from their dot (angled or elbow leaders)
+- per-period label budgets
+- tune `minImportanceForSpan`
+
+### 3. Overview minimap ⏳
+A thin strip of the whole 5,600 years with a draggable box for the current view, plus an event-density histogram (doubles as the Phase 6 density idea).
+
+### 4. Touch + smooth motion ⏳
+Pinch-zoom (two-pointer), and eased animation for button zoom, jump and reset (interpolate the centre linearly and the span geometrically). Honour `prefers-reduced-motion`.
+
+## Phase 3 — Duration bars ⏳ TBD
 - **Data:** create `src/data/durations.json`.
   - Copy ChronoLogic's 65 `period` entries. Drop the 10 `point` ones, which already exist as events.
   - Add about 25–30 empires/dynasties in the same schema plus `approximate?: boolean`. Candidates: Indus Valley, Maurya, Gupta, Chola, Delhi Sultanate, Roman Republic, Roman Empire, Byzantine, Han, Tang, Song, Ming, Qing, Abbasid, Ottoman, Safavid, Aztec, Inca, Classic Maya, Mali, Old/New Kingdom Egypt.
