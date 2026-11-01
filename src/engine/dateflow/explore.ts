@@ -1,5 +1,5 @@
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateroll'
+import type { Duration } from '@/types/dateflow'
 import { LANES, laneFor, type LaneId } from './lanes'
 
 // "What was happening elsewhere?" — pure queries behind the event card's Meanwhile

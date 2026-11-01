@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Validation script for src/data/durations.json (DateRoll duration bars)
+// Validation script for src/data/durations.json (DateFlow duration bars)
 // Run: node scripts/validate-durations.cjs
 
 const fs = require('fs')

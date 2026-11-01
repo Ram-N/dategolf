@@ -40,9 +40,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateroll'
-import { activeDuring, beforeAndAfter, meanwhile } from '@/engine/dateroll/explore'
-import { LANES, laneFor } from '@/engine/dateroll/lanes'
+import type { Duration } from '@/types/dateflow'
+import { activeDuring, beforeAndAfter, meanwhile } from '@/engine/dateflow/explore'
+import { LANES, laneFor } from '@/engine/dateflow/lanes'
 import { formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{ event: Event; events: Event[]; durations: Duration[] }>()

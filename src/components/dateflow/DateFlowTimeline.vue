@@ -14,7 +14,7 @@
     >
       <!-- Era bands: alternating faint fills, name pinned to the visible part of the band -->
       <g v-for="era in eraBands" :key="era.id">
-        <rect v-if="era.shaded" :x="era.x1" y="0" :width="era.x2 - era.x1" :height="height" fill="var(--dr-era)" />
+        <rect v-if="era.shaded" :x="era.x1" y="0" :width="era.x2 - era.x1" :height="height" fill="var(--df-era)" />
         <text v-if="era.showLabel" :x="era.labelX" y="20" class="era-label">{{ era.name }}</text>
       </g>
 
@@ -26,7 +26,7 @@
         :x2="t.x"
         y1="0"
         :y2="height"
-        :stroke="t.year === 0 ? 'var(--dr-axis)' : 'var(--dr-grid)'"
+        :stroke="t.year === 0 ? 'var(--df-axis)' : 'var(--df-grid)'"
       />
 
       <!-- Milestone section lines run through every lane, so they line up across regions -->
@@ -56,12 +56,12 @@
           :x2="m.leaderX"
           :y1="t.axisY"
           :y2="m.leaderEnd"
-          :stroke="`var(--dr-${m.group})`"
+          :stroke="`var(--df-${m.group})`"
           stroke-opacity="0.55"
           pointer-events="none"
         />
 
-        <line x1="0" :x2="width" :y1="t.axisY" :y2="t.axisY" stroke="var(--dr-axis)" :stroke-width="t.label ? 1.5 : 2" />
+        <line x1="0" :x2="width" :y1="t.axisY" :y2="t.axisY" stroke="var(--df-axis)" :stroke-width="t.label ? 1.5 : 2" />
         <template v-if="!t.label">
           <text
             v-for="tk in tickMarks"
@@ -85,8 +85,8 @@
           :cx="m.x"
           :cy="t.axisY"
           :r="m.radius"
-          :fill="`var(--dr-${m.group})`"
-          :stroke="m.event.id === selectedId ? 'var(--dr-text)' : 'var(--dr-bg)'"
+          :fill="`var(--df-${m.group})`"
+          :stroke="m.event.id === selectedId ? 'var(--df-text)' : 'var(--df-bg)'"
           stroke-width="2"
           class="cursor-pointer"
           @click="onMarkerClick(m.event.id)"
@@ -138,8 +138,8 @@
             :width="b.w"
             :height="BAR_H"
             rx="3"
-            :fill="`var(--dr-${b.group})`"
-            :stroke="`var(--dr-${b.group})`"
+            :fill="`var(--df-${b.group})`"
+            :stroke="`var(--df-${b.group})`"
             class="bar-rect"
           />
           <text v-if="b.label" :x="b.labelX" :y="b.y + BAR_H - 3" class="bar-text">{{ b.label }}</text>
@@ -175,20 +175,20 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateroll'
+import type { Duration } from '@/types/dateflow'
 import erasData from '@/data/eras.json'
 import milestoneIds from '@/data/milestones.json'
-import { formatTick, span, ticks, xToYear, yearToX, type View } from '@/engine/dateroll/timeScale'
-import { importanceThreshold } from '@/engine/dateroll/filters'
+import { formatTick, span, ticks, xToYear, yearToX, type View } from '@/engine/dateflow/timeScale'
+import { importanceThreshold } from '@/engine/dateflow/filters'
 import {
   layoutLabels,
   spaceMilestones,
   wrapLabel,
   type Side,
-} from '@/engine/dateroll/visibility'
-import { groupFor } from '@/engine/dateroll/categoryGroups'
-import { formatSpan, packBars } from '@/engine/dateroll/durations'
-import { LANES, laneFor, type LaneId } from '@/engine/dateroll/lanes'
+} from '@/engine/dateflow/visibility'
+import { groupFor } from '@/engine/dateflow/categoryGroups'
+import { formatSpan, packBars } from '@/engine/dateflow/durations'
+import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
 import { formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{
@@ -637,52 +637,52 @@ function onBarClick(id: string) {
 
 <style scoped>
 .era-label {
-  fill: var(--dr-muted);
+  fill: var(--df-muted);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .milestone-line {
-  stroke: var(--dr-milestone);
+  stroke: var(--df-milestone);
   stroke-width: 1.5;
   stroke-dasharray: 6 4;
 }
 .lane-rule {
-  stroke: var(--dr-border-soft);
+  stroke: var(--df-border-soft);
 }
 .lane-label {
-  fill: var(--dr-text-2);
+  fill: var(--df-text-2);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   paint-order: stroke;
-  stroke: var(--dr-bg);
+  stroke: var(--df-bg);
   stroke-width: 4px;
 }
 .tick-label {
-  fill: var(--dr-text-2);
+  fill: var(--df-text-2);
   font-size: 11px;
   font-variant-numeric: tabular-nums;
 }
 .hidden-dot {
-  fill: var(--dr-muted);
+  fill: var(--df-muted);
   opacity: 0.6;
 }
 .label-bg {
-  fill: var(--dr-surface);
-  stroke: var(--dr-border);
+  fill: var(--df-surface);
+  stroke: var(--df-border);
 }
 .label-text {
-  fill: var(--dr-text);
+  fill: var(--df-text);
   font-size: 11px;
 }
 .label-text.anchor {
   font-weight: 700;
 }
 .band-title {
-  fill: var(--dr-muted);
+  fill: var(--df-muted);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -698,31 +698,31 @@ function onBarClick(id: string) {
 }
 .bar:hover .bar-rect,
 .bar.selected .bar-rect {
-  stroke: var(--dr-text);
+  stroke: var(--df-text);
   stroke-width: 1.5;
 }
 .bar-text {
-  fill: var(--dr-text);
+  fill: var(--df-text);
   font-size: 10px;
   pointer-events: none;
 }
 .selection {
-  fill: var(--dr-text);
+  fill: var(--df-text);
   fill-opacity: 0.07;
-  stroke: var(--dr-text-2);
+  stroke: var(--df-text-2);
   stroke-dasharray: 4 3;
 }
 .selection-label {
-  fill: var(--dr-text);
+  fill: var(--df-text);
   font-size: 12px;
   font-weight: 700;
   paint-order: stroke;
-  stroke: var(--dr-bg);
+  stroke: var(--df-bg);
   stroke-width: 4px;
 }
 .marker:hover .label-bg,
 .marker.selected .label-bg {
-  stroke: var(--dr-text);
+  stroke: var(--df-text);
   stroke-width: 1.5;
 }
 </style>

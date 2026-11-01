@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 border-b toolbar">
     <div class="mr-auto">
-      <h1 class="text-xl font-black tracking-tight title">DateRoll</h1>
+      <h1 class="text-xl font-black tracking-tight title">DateFlow</h1>
       <p class="text-xs tabular-nums range">
         {{ formatYear(Math.round(view.start)) }} – {{ formatYear(Math.round(view.end)) }}
         · {{ Math.round(view.end - view.start).toLocaleString() }} years
@@ -21,7 +21,7 @@
           {{ m.label }}
         </button>
       </div>
-      <DateRollFilters
+      <DateFlowFilters
         :filters="filters"
         :categories="categories"
         :mode="mode"
@@ -30,7 +30,7 @@
         @set-detail="(d) => emit('setDetail', d)"
         @clear="emit('clearFilters')"
       />
-      <DateRollLanePicker
+      <DateFlowLanePicker
         v-if="mode === 'lanes'"
         :state="laneState"
         @toggle="(id) => emit('toggleLane', id)"
@@ -73,12 +73,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { View } from '@/engine/dateroll/timeScale'
-import type { Theme, ViewMode } from '@/stores/dateroll'
-import type { LaneId, LaneState } from '@/engine/dateroll/lanes'
-import DateRollLanePicker from './DateRollLanePicker.vue'
-import DateRollFilters from './DateRollFilters.vue'
-import type { Filters } from '@/engine/dateroll/filters'
+import type { View } from '@/engine/dateflow/timeScale'
+import type { Theme, ViewMode } from '@/stores/dateflow'
+import type { LaneId, LaneState } from '@/engine/dateflow/lanes'
+import DateFlowLanePicker from './DateFlowLanePicker.vue'
+import DateFlowFilters from './DateFlowFilters.vue'
+import type { Filters } from '@/engine/dateflow/filters'
 import { formatYear, parseYear } from '@/utils/formatYear'
 
 defineProps<{
@@ -126,24 +126,24 @@ function submitJump() {
 
 <style scoped>
 .toolbar {
-  border-color: var(--dr-border-soft);
+  border-color: var(--df-border-soft);
 }
 .title {
-  color: var(--dr-text);
+  color: var(--df-text);
 }
 .range {
-  color: var(--dr-text-2);
+  color: var(--df-text-2);
 }
 .jump {
-  background: var(--dr-surface);
-  border-color: var(--dr-border);
-  color: var(--dr-text);
+  background: var(--df-surface);
+  border-color: var(--df-border);
+  color: var(--df-text);
 }
 .jump::placeholder {
-  color: var(--dr-muted);
+  color: var(--df-muted);
 }
 .jump:focus {
-  border-color: var(--dr-text-2);
+  border-color: var(--df-text-2);
 }
 .jump.error {
   border-color: #e66767;
@@ -152,29 +152,29 @@ function submitJump() {
   height: 2.25rem;
   padding: 0 0.75rem;
   border-radius: 0.5rem;
-  background: var(--dr-btn);
-  color: var(--dr-text);
+  background: var(--df-btn);
+  color: var(--df-text);
   font-size: 0.875rem;
   font-weight: 600;
   transition: background 0.15s;
 }
 .btn:hover {
-  background: var(--dr-btn-hover);
+  background: var(--df-btn-hover);
 }
 .seg {
-  background: var(--dr-btn);
+  background: var(--df-btn);
 }
 .seg-btn {
   height: 2rem;
   padding: 0 0.75rem;
   border-radius: 0.375rem;
-  color: var(--dr-text-2);
+  color: var(--df-text-2);
   font-size: 0.875rem;
   font-weight: 600;
 }
 .seg-btn.active {
-  background: var(--dr-surface);
-  color: var(--dr-text);
+  background: var(--df-surface);
+  color: var(--df-text);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
 }
 </style>

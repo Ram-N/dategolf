@@ -73,10 +73,10 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { LANES, type LaneId } from '@/engine/dateroll/lanes'
-import { DETAIL_MAX, DETAIL_MIN, type Filters } from '@/engine/dateroll/filters'
+import { LANES, type LaneId } from '@/engine/dateflow/lanes'
+import { DETAIL_MAX, DETAIL_MIN, type Filters } from '@/engine/dateflow/filters'
 import { usePopover } from '@/composables/usePopover'
-import type { ViewMode } from '@/stores/dateroll'
+import type { ViewMode } from '@/stores/dateflow'
 
 const props = defineProps<{ filters: Filters; categories: string[]; mode: ViewMode }>()
 const emit = defineEmits<{
@@ -99,21 +99,21 @@ const activeCount = computed(
   height: 2.25rem;
   padding: 0 0.75rem;
   border-radius: 0.5rem;
-  background: var(--dr-btn);
-  color: var(--dr-text);
+  background: var(--df-btn);
+  color: var(--df-text);
   font-size: 0.875rem;
   font-weight: 600;
 }
 .btn:hover {
-  background: var(--dr-btn-hover);
+  background: var(--df-btn-hover);
 }
 .btn.active {
-  box-shadow: inset 0 0 0 1.5px var(--dr-text-2);
+  box-shadow: inset 0 0 0 1.5px var(--df-text-2);
 }
 .panel {
-  background: var(--dr-surface);
-  border-color: var(--dr-border);
-  color: var(--dr-text);
+  background: var(--df-surface);
+  border-color: var(--df-border);
+  color: var(--df-text);
   box-shadow: 0 10px 30px rgb(0 0 0 / 0.25);
 }
 .heading {
@@ -121,40 +121,40 @@ const activeCount = computed(
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--dr-text-2);
+  color: var(--df-text-2);
   margin-bottom: 0.5rem;
 }
 .hint {
   font-size: 11px;
-  color: var(--dr-muted);
+  color: var(--df-muted);
 }
 .chip {
   padding: 0.25rem 0.625rem;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 600;
-  background: var(--dr-btn);
-  color: var(--dr-text-2);
+  background: var(--df-btn);
+  color: var(--df-text-2);
   border: 1px solid transparent;
 }
 .chip:hover {
-  background: var(--dr-btn-hover);
+  background: var(--df-btn-hover);
 }
 .chip.on {
-  background: var(--dr-text);
-  color: var(--dr-bg);
+  background: var(--df-text);
+  color: var(--df-bg);
 }
 .clear {
-  color: var(--dr-text-2);
+  color: var(--df-text-2);
 }
 .clear:hover:not(:disabled) {
-  background: var(--dr-btn);
-  color: var(--dr-text);
+  background: var(--df-btn);
+  color: var(--df-text);
 }
 .clear:disabled {
   opacity: 0.4;
 }
 input[type='range'] {
-  accent-color: var(--dr-text-2);
+  accent-color: var(--df-text-2);
 }
 </style>

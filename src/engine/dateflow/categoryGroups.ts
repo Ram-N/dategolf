@@ -1,6 +1,6 @@
 // Marker colour groups. Scattered dots stay colourblind-safe with at most three
 // hues (all-pairs check), so the event categories fold into three groups + Other.
-// Order is fixed: it maps to palette slots 1–3 (--dr-power / --dr-knowledge / --dr-culture).
+// Order is fixed: it maps to palette slots 1–3 (--df-power / --df-knowledge / --df-culture).
 
 export type CategoryGroup = 'power' | 'knowledge' | 'culture' | 'other'
 

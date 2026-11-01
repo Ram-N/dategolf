@@ -1,8 +1,8 @@
-# DateRoll
+# DateFlow
 
 ## Product Concept & Initial Development Brief
 
-**Working name:** DateRoll
+**Working name:** DateFlow
 **Product family:** DateGolf / DatePick  
 **Status:** Concept and initial development brief
 
@@ -10,11 +10,11 @@
 
 # 1. Overview
 
-DateRoll is a third experience within the DateGolf / DatePick ecosystem.
+DateFlow is a third experience within the DateGolf / DatePick ecosystem.
 
 The idea is to create a continuous, interactive timeline of human history, spanning approximately 3000 BC to the present.
 
-Unlike traditional historical timelines, which typically focus on a particular period, civilization, or subject, DateRoll brings everything together into one continuous chronological experience.
+Unlike traditional historical timelines, which typically focus on a particular period, civilization, or subject, DateFlow brings everything together into one continuous chronological experience.
 
 Users can scroll horizontally through history, zoom in and out, explore different geographical regions and civilizations, filter by historical categories, and discover what was happening in different parts of the world at any given time.
 
@@ -25,7 +25,7 @@ The experience should serve two purposes:
 
 The underlying philosophy is simple:
 
-**History is one continuous story. DateRoll lets students explore that story from different perspectives.**
+**History is one continuous story. DateFlow lets students explore that story from different perspectives.**
 
 # 2. Core Visualization: One Continuous Timeline
 
@@ -79,7 +79,7 @@ One year should always occupy the same horizontal distance at a given zoom level
 
 ## 2.2 Initial View
 
-On first opening DateRoll, the user should see a relatively uncluttered historical overview.
+On first opening DateFlow, the user should see a relatively uncluttered historical overview.
 
 Rather than displaying every event, initially show perhaps 10–20 major anchor events spanning the entire timeline.
 
@@ -204,7 +204,7 @@ Avoid artificially assigning such events to a single geographical lane.
 
 # 4. Two Types of Historical Information
 
-DateRoll should combine two fundamentally different types of historical information.
+DateFlow should combine two fundamentally different types of historical information.
 
 ## 4.1 Individual Events
 
@@ -416,7 +416,7 @@ This should be a secondary visualization and should not compete with the main ti
 
 # 8. Gaming Possibilities
 
-DateRoll should be designed as an exploration experience, but it also provides an excellent foundation for new chronological games.
+DateFlow should be designed as an exploration experience, but it also provides an excellent foundation for new chronological games.
 
 The games should reuse the existing event and duration databases.
 
@@ -487,7 +487,7 @@ The games should be treated as separate experiences that consume the same histor
 
 Avoid embedding game-specific historical knowledge into the timeline visualization.
 
-The same events and durations should be reusable across all three DateGolf / DatePick / DateRoll experiences.
+The same events and durations should be reusable across all three DateGolf / DatePick / DateFlow experiences.
 
 # 9. Underlying Data Architecture
 
@@ -495,7 +495,7 @@ An important existing advantage is that DateGolf / DatePick already use a shared
 
 There is also an existing durations database containing historical entities and their start/end dates.
 
-**Do not create a separate historical database for DateRoll.**
+**Do not create a separate historical database for DateFlow.**
 
 The new experience should consume and visualize the existing data.
 
@@ -540,7 +540,7 @@ Again, inspect the actual existing schema before making changes.
 
 ## 9.3 Potential Schema Enhancements
 
-DateRoll may require additional metadata.
+DateFlow may require additional metadata.
 
 Potential additions:
 
@@ -564,7 +564,7 @@ The following is a conceptual layout, not a finalized visual design.
 ## Main Timeline Screen
 
 **Top toolbar**
-- DateRoll title.
+- DateFlow title.
 - Search events.
 - Jump to year.
 - Zoom controls.
@@ -756,7 +756,7 @@ Avoid presenting history as a collection of isolated national timelines. Help st
 
 **4. Reuse existing knowledge.**
 
-DateGolf, DatePick, and DateRoll should share the same underlying historical data.
+DateGolf, DatePick, and DateFlow should share the same underlying historical data.
 
 **5. Exploration over presentation.**
 
@@ -784,7 +784,7 @@ First:
 
 Then propose a minimal working implementation for Phase 1 and Phase 2.
 
-The first deliverable should be a functional prototype of DateRoll using the existing event database, with a continuous horizontal timeline, a scrollable viewport, zooming, and event markers.
+The first deliverable should be a functional prototype of DateFlow using the existing event database, with a continuous horizontal timeline, a scrollable viewport, zooming, and event markers.
 
 Do not attempt to implement all the proposed games or exploration features in the first iteration.
 

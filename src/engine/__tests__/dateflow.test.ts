@@ -14,7 +14,7 @@ import {
   xToYear,
   yearToX,
   zoomAround,
-} from '../dateroll/timeScale'
+} from '../dateflow/timeScale'
 import {
   layoutLabels,
   minImportanceForSpan,
@@ -23,17 +23,17 @@ import {
   spaceMilestones,
   wrapLabel,
   type LayoutItem,
-} from '../dateroll/visibility'
-import { groupFor } from '../dateroll/categoryGroups'
-import { densityBins } from '../dateroll/density'
-import { activeDuring, beforeAndAfter, meanwhile, summarizePeriod } from '../dateroll/explore'
+} from '../dateflow/visibility'
+import { groupFor } from '../dateflow/categoryGroups'
+import { densityBins } from '../dateflow/density'
+import { activeDuring, beforeAndAfter, meanwhile, summarizePeriod } from '../dateflow/explore'
 import {
   NO_FILTERS,
   categoriesByFrequency,
   importanceThreshold,
   matchesFilters,
   toggleIn,
-} from '../dateroll/filters'
+} from '../dateflow/filters'
 import {
   DEFAULT_LANES,
   laneFor,
@@ -42,11 +42,11 @@ import {
   toggleLane,
   visibleLanes,
   type LaneId,
-} from '../dateroll/lanes'
-import { eventsDuring, formatSpan, packBars } from '../dateroll/durations'
+} from '../dateflow/lanes'
+import { eventsDuring, formatSpan, packBars } from '../dateflow/durations'
 import { formatYear, parseYear } from '@/utils/formatYear'
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateroll'
+import type { Duration } from '@/types/dateflow'
 
 const W = 1000
 

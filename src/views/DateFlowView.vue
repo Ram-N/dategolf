@@ -1,6 +1,6 @@
 <template>
-  <div class="dateroll flex flex-col h-[calc(100dvh-40px)]" :data-theme="store.theme">
-    <DateRollToolbar
+  <div class="dateflow flex flex-col h-[calc(100dvh-40px)]" :data-theme="store.theme">
+    <DateFlowToolbar
       :view="store.view"
       :theme="store.theme"
       :mode="store.mode"
@@ -23,13 +23,13 @@
       @summarize="store.openSummary(store.view.start, store.view.end)"
     />
 
-    <DateRollMinimap v-if="!store.isLoading" :years="eventYears" :view="store.view" @center-at="store.centerAt" />
+    <DateFlowMinimap v-if="!store.isLoading" :years="eventYears" :view="store.view" @center-at="store.centerAt" />
 
     <div v-if="store.isLoading" class="flex-1 flex items-center justify-center text-sm muted">
       Loading…
     </div>
     <div v-else class="flex-1 min-h-[320px]">
-      <DateRollTimeline
+      <DateFlowTimeline
         ref="timeline"
         :events="store.filteredEvents"
         :all-events="store.events"
@@ -50,7 +50,7 @@
 
     <div class="flex flex-wrap items-center gap-x-5 gap-y-1 px-4 py-2 border-t text-[11px] footer">
       <span v-for="g in CATEGORY_GROUPS" :key="g.id" class="flex items-center gap-1.5 secondary">
-        <span class="inline-block w-2.5 h-2.5 rounded-full" :style="{ background: `var(--dr-${g.id})` }" />
+        <span class="inline-block w-2.5 h-2.5 rounded-full" :style="{ background: `var(--df-${g.id})` }" />
         {{ g.label }}
       </span>
       <span class="flex items-center gap-1.5 secondary">
@@ -100,21 +100,21 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, useTemplateRef } from 'vue'
-import { useDateRollStore } from '@/stores/dateroll'
-import { CATEGORY_GROUPS } from '@/engine/dateroll/categoryGroups'
-import { LANES } from '@/engine/dateroll/lanes'
-import DateRollToolbar from '@/components/dateroll/DateRollToolbar.vue'
-import DateRollTimeline from '@/components/dateroll/DateRollTimeline.vue'
-import DateRollMinimap from '@/components/dateroll/DateRollMinimap.vue'
+import { useDateFlowStore } from '@/stores/dateflow'
+import { CATEGORY_GROUPS } from '@/engine/dateflow/categoryGroups'
+import { LANES } from '@/engine/dateflow/lanes'
+import DateFlowToolbar from '@/components/dateflow/DateFlowToolbar.vue'
+import DateFlowTimeline from '@/components/dateflow/DateFlowTimeline.vue'
+import DateFlowMinimap from '@/components/dateflow/DateFlowMinimap.vue'
 import EventInfoCard from '@/components/EventInfoCard.vue'
-import DurationInfoCard from '@/components/dateroll/DurationInfoCard.vue'
-import EventMeanwhile from '@/components/dateroll/EventMeanwhile.vue'
-import PeriodSummaryCard from '@/components/dateroll/PeriodSummaryCard.vue'
-import { summarizePeriod } from '@/engine/dateroll/explore'
-import { isFiltering } from '@/engine/dateroll/filters'
+import DurationInfoCard from '@/components/dateflow/DurationInfoCard.vue'
+import EventMeanwhile from '@/components/dateflow/EventMeanwhile.vue'
+import PeriodSummaryCard from '@/components/dateflow/PeriodSummaryCard.vue'
+import { summarizePeriod } from '@/engine/dateflow/explore'
+import { isFiltering } from '@/engine/dateflow/filters'
 
-const store = useDateRollStore()
-const timeline = useTemplateRef<InstanceType<typeof DateRollTimeline>>('timeline')
+const store = useDateFlowStore()
+const timeline = useTemplateRef<InstanceType<typeof DateFlowTimeline>>('timeline')
 const hiddenCount = computed(() => timeline.value?.hiddenCount ?? 0)
 // The minimap shows the density of whatever the filters let through — e.g. a history of science.
 const eventYears = computed(() => store.filteredEvents.map((e) => e.year))
@@ -163,65 +163,65 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 </script>
 
 <style>
-/* DateRoll theme tokens. Series colours are the validated reference palette
+/* DateFlow theme tokens. Series colours are the validated reference palette
    (slots 1–3, all-pairs colourblind-safe) stepped separately for each surface. */
-.dateroll[data-theme='dark'] {
-  --dr-bg: #09090b;
-  --dr-surface: #18181b;
-  --dr-border: #3f3f46;
-  --dr-border-soft: #27272a;
-  --dr-text: #f4f4f5;
-  --dr-text-2: #a1a1aa;
-  --dr-muted: #71717a;
-  --dr-grid: #1c1c20;
-  --dr-axis: #52525b;
-  --dr-milestone: #8b8b94;
-  --dr-era: rgb(255 255 255 / 0.035);
-  --dr-btn: #27272a;
-  --dr-btn-hover: #3f3f46;
-  --dr-power: #3987e5;
-  --dr-knowledge: #d95926;
-  --dr-culture: #199e70;
-  --dr-other: #8b8b94;
+.dateflow[data-theme='dark'] {
+  --df-bg: #09090b;
+  --df-surface: #18181b;
+  --df-border: #3f3f46;
+  --df-border-soft: #27272a;
+  --df-text: #f4f4f5;
+  --df-text-2: #a1a1aa;
+  --df-muted: #71717a;
+  --df-grid: #1c1c20;
+  --df-axis: #52525b;
+  --df-milestone: #8b8b94;
+  --df-era: rgb(255 255 255 / 0.035);
+  --df-btn: #27272a;
+  --df-btn-hover: #3f3f46;
+  --df-power: #3987e5;
+  --df-knowledge: #d95926;
+  --df-culture: #199e70;
+  --df-other: #8b8b94;
 }
-.dateroll[data-theme='light'] {
-  --dr-bg: #fcfcfb;
-  --dr-surface: #ffffff;
-  --dr-border: #d4d4d8;
-  --dr-border-soft: #e7e7e5;
-  --dr-text: #18181b;
-  --dr-text-2: #52525b;
-  --dr-muted: #71717a;
-  --dr-grid: #efefed;
-  --dr-axis: #a1a1aa;
-  --dr-milestone: #71717a;
-  --dr-era: rgb(0 0 0 / 0.035);
-  --dr-btn: #f0efec;
-  --dr-btn-hover: #e4e4e1;
-  --dr-power: #2a78d6;
-  --dr-knowledge: #eb6834;
-  --dr-culture: #1baf7a;
-  --dr-other: #8b8b94;
+.dateflow[data-theme='light'] {
+  --df-bg: #fcfcfb;
+  --df-surface: #ffffff;
+  --df-border: #d4d4d8;
+  --df-border-soft: #e7e7e5;
+  --df-text: #18181b;
+  --df-text-2: #52525b;
+  --df-muted: #71717a;
+  --df-grid: #efefed;
+  --df-axis: #a1a1aa;
+  --df-milestone: #71717a;
+  --df-era: rgb(0 0 0 / 0.035);
+  --df-btn: #f0efec;
+  --df-btn-hover: #e4e4e1;
+  --df-power: #2a78d6;
+  --df-knowledge: #eb6834;
+  --df-culture: #1baf7a;
+  --df-other: #8b8b94;
 }
-.dateroll {
-  background: var(--dr-bg);
-  color: var(--dr-text);
+.dateflow {
+  background: var(--df-bg);
+  color: var(--df-text);
 }
-.dateroll .footer {
-  border-color: var(--dr-border-soft);
+.dateflow .footer {
+  border-color: var(--df-border-soft);
 }
-.dateroll .secondary {
-  color: var(--dr-text-2);
+.dateflow .secondary {
+  color: var(--df-text-2);
 }
-.dateroll .kind-empire {
-  background: color-mix(in srgb, var(--dr-text-2) 40%, transparent);
-  border: 1px solid var(--dr-text-2);
+.dateflow .kind-empire {
+  background: color-mix(in srgb, var(--df-text-2) 40%, transparent);
+  border: 1px solid var(--df-text-2);
 }
-.dateroll .kind-period {
-  background: color-mix(in srgb, var(--dr-text-2) 12%, transparent);
-  border: 1px dashed var(--dr-text-2);
+.dateflow .kind-period {
+  background: color-mix(in srgb, var(--df-text-2) 12%, transparent);
+  border: 1px dashed var(--df-text-2);
 }
-.dateroll .muted {
-  color: var(--dr-muted);
+.dateflow .muted {
+  color: var(--df-muted);
 }
 </style>

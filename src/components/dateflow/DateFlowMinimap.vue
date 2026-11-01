@@ -52,8 +52,8 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { FULL_VIEW, formatTick, xToYear, yearToX, type View } from '@/engine/dateroll/timeScale'
-import { densityBins } from '@/engine/dateroll/density'
+import { FULL_VIEW, formatTick, xToYear, yearToX, type View } from '@/engine/dateflow/timeScale'
+import { densityBins } from '@/engine/dateflow/density'
 import { formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{ years: number[]; view: View }>()
@@ -148,27 +148,27 @@ function onPointerUp(e: PointerEvent) {
 
 <style scoped>
 .minimap {
-  border-bottom: 1px solid var(--dr-border-soft);
+  border-bottom: 1px solid var(--df-border-soft);
 }
 .bar {
-  fill: var(--dr-text-2);
+  fill: var(--df-text-2);
   opacity: 0.55;
 }
 .baseline {
-  stroke: var(--dr-border);
+  stroke: var(--df-border);
 }
 .tick {
-  fill: var(--dr-muted);
+  fill: var(--df-muted);
   font-size: 10px;
   font-variant-numeric: tabular-nums;
 }
 .dim {
-  fill: var(--dr-bg);
+  fill: var(--df-bg);
   opacity: 0.55;
 }
 .viewport {
   fill: none;
-  stroke: var(--dr-text);
+  stroke: var(--df-text);
   stroke-width: 1.5;
 }
 </style>

@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import DailyChallengeView from '../views/DailyChallengeView.vue'
 import DatePickView from '../views/DatePickView.vue'
 import CreatorView from '../views/CreatorView.vue'
-import DateRollView from '../views/DateRollView.vue'
+import DateFlowView from '../views/DateFlowView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,7 +12,7 @@ const router = createRouter({
       redirect: () => {
         const host = window.location.hostname
         if (host.startsWith('datepick.')) return '/datepick'
-        if (host.startsWith('dateroll.')) return '/dateroll'
+        if (host.startsWith('dateflow.')) return '/dateflow'
         return '/dategolf'
       },
     },
@@ -29,11 +29,13 @@ const router = createRouter({
       meta: { title: 'DatePick' },
     },
     {
-      path: '/dateroll',
-      name: 'dateroll',
-      component: DateRollView,
-      meta: { title: 'DateRoll' },
+      path: '/dateflow',
+      name: 'dateflow',
+      component: DateFlowView,
+      meta: { title: 'DateFlow' },
     },
+    // DateFlow was called DateRoll until 2026-11-01; keep old links working.
+    { path: '/dateroll', redirect: '/dateflow' },
     {
       path: '/creator',
       name: 'creator',

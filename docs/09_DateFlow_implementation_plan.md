@@ -1,7 +1,7 @@
-# DateRoll — Implementation Plan & Status
+# DateFlow — Implementation Plan & Status
 
-> Companion to `07_DateRoll_Brainstorming.md` (ideas) and `08_DateRoll_highlevel_specs.md` (spec).
-> "Time River" was the earlier working name. **DateRoll** is current.
+> Companion to `07_DateFlow_Brainstorming.md` (ideas) and `08_DateFlow_highlevel_specs.md` (spec).
+> Name history: "Time River" → "DateRoll" → **DateFlow** (renamed 2026-11-01, after Phase 6). Commits before the rename say DateRoll.
 > Last updated: 2026-11-01 (Phase 6 complete)
 
 ## Status at a glance
@@ -33,7 +33,7 @@
 | Gap | Reality | Decision |
 |---|---|---|
 | `importance` typed `1–5` | Actual values run **2–9** (122×5, 120×4, 25×7, 23×6, 14×8, 4×9) | Type widened to `number`. Zoom thresholds tuned to real data. No data edits. |
-| `region` is one inconsistent string | `World`/`Global`, `North America`/`South America`/`Americas`, `Oceania`, `Southeast Asia` | Map to lanes **at load time** in the DateRoll engine (Phase 4). `events.json` stays untouched, so DateGolf/DatePick are unaffected. |
+| `region` is one inconsistent string | `World`/`Global`, `North America`/`South America`/`Americas`, `Oceania`, `Southeast Asia` | Map to lanes **at load time** in the DateFlow engine (Phase 4). `events.json` stays untouched, so DateGolf/DatePick are unaffected. |
 | No `civilizations` field | n/a | Not needed until Phase 4. Add it only if lane expansion requires it. |
 | Skewed density | 218 of 343 events fall after 1500. About 20 fall before 1000 BCE. | Progressive disclosure + label-collision culling. The axis stays **linear** (spec §2.1). |
 
@@ -54,14 +54,14 @@
 
 ```
 events.json ───┐
-durations.json ┼→ src/engine/dateroll/       (pure TS, zero Vue, unit-tested)
+durations.json ┼→ src/engine/dateflow/       (pure TS, zero Vue, unit-tested)
   (Phase 3)    │     timeScale.ts   view math: yearToX / xToYear / zoomAround / pan / ticks
                │     visibility.ts  importance threshold + greedy label layout
                │     lanes.ts       (Phase 4) region → lane mapping
-               └→ src/stores/dateroll.ts      (Pinia: view, selection; later filters/lanes)
-                    → src/views/DateRollView.vue
-                         components/dateroll/DateRollToolbar.vue
-                         components/dateroll/DateRollTimeline.vue   (SVG)
+               └→ src/stores/dateflow.ts      (Pinia: view, selection; later filters/lanes)
+                    → src/views/DateFlowView.vue
+                         components/dateflow/DateFlowToolbar.vue
+                         components/dateflow/DateFlowTimeline.vue   (SVG)
                          components/EventInfoCard.vue               (reused)
 ```
 
@@ -77,17 +77,17 @@ durations.json ┼→ src/engine/dateroll/       (pure TS, zero Vue, unit-tested
 | File | What it does |
 |---|---|
 | `src/utils/formatYear.ts` | Shared `formatYear()` + `parseYear()` (accepts `1453`, `500 BC`, `500 B.C.`, `-44`, `1066 AD`, `AD 800`) |
-| `src/engine/dateroll/timeScale.ts` | `View`, bounds (`-3600`…`2030`, min span 2 yrs), `makeView`, `yearToX`, `xToYear`, `zoomAround`, `pan`, `centerOn`, `tickStep`/`ticks` (steps 1…1000, ≥80px apart), `formatTick` |
-| `src/engine/dateroll/visibility.ts` | `minImportanceForSpan` (>1500 yrs → ≥7, >300 → ≥5, >50 → ≥4, else all) and `layoutLabels` (greedy: most important first, lowest free row, drop what doesn't fit) |
-| `src/stores/dateroll.ts` | Loads events. Holds `view` (persisted to localStorage in try/catch) and `selectedEventId`. Actions: `zoomAt`, `zoomIn/Out`, `panBy`, `jumpTo` (centers a ≤100-year window), `reset`, `select` |
-| `src/components/dateroll/DateRollToolbar.vue` | Title, visible range + span, jump-to-year input (red border on bad input), − / + / Reset |
-| `src/components/dateroll/DateRollTimeline.vue` | SVG with grid, axis, ticks, markers, leader lines and labels. Faint dots mark hidden events, with a "N more in view — zoom in to reveal" hint |
-| `src/views/DateRollView.vue` | Page layout + keyboard (← → pan 10%, + / − zoom) |
-| `src/engine/__tests__/dateroll.test.ts` | 18 tests: round-trip, zoom anchor, clamping, ticks, BCE boundary, parseYear, threshold monotonicity, label layout |
+| `src/engine/dateflow/timeScale.ts` | `View`, bounds (`-3600`…`2030`, min span 2 yrs), `makeView`, `yearToX`, `xToYear`, `zoomAround`, `pan`, `centerOn`, `tickStep`/`ticks` (steps 1…1000, ≥80px apart), `formatTick` |
+| `src/engine/dateflow/visibility.ts` | `minImportanceForSpan` (>1500 yrs → ≥7, >300 → ≥5, >50 → ≥4, else all) and `layoutLabels` (greedy: most important first, lowest free row, drop what doesn't fit) |
+| `src/stores/dateflow.ts` | Loads events. Holds `view` (persisted to localStorage in try/catch) and `selectedEventId`. Actions: `zoomAt`, `zoomIn/Out`, `panBy`, `jumpTo` (centers a ≤100-year window), `reset`, `select` |
+| `src/components/dateflow/DateFlowToolbar.vue` | Title, visible range + span, jump-to-year input (red border on bad input), − / + / Reset |
+| `src/components/dateflow/DateFlowTimeline.vue` | SVG with grid, axis, ticks, markers, leader lines and labels. Faint dots mark hidden events, with a "N more in view — zoom in to reveal" hint |
+| `src/views/DateFlowView.vue` | Page layout + keyboard (← → pan 10%, + / − zoom) |
+| `src/engine/__tests__/dateflow.test.ts` | 18 tests: round-trip, zoom anchor, clamping, ticks, BCE boundary, parseYear, threshold monotonicity, label layout |
 
 ### Edits to existing files
-- `src/router/index.ts`: `/dateroll` route; the `dateroll.` subdomain redirects there.
-- `src/App.vue`: third nav link; `dateroll.` added to the subdomain list.
+- `src/router/index.ts`: `/dateflow` route; the `dateflow.` subdomain redirects there.
+- `src/App.vue`: third nav link; `dateflow.` added to the subdomain list.
 - `src/types/index.ts`: `importance: number`.
 - `formatYear` was duplicated in 4 files (`EventInfoCard`, `QuestionCard`, `DatePickResults`, `CreatorView`). All now import the shared util.
 
@@ -126,7 +126,7 @@ durations.json ┼→ src/engine/dateroll/       (pure TS, zero Vue, unit-tested
 Ram's request: finish all four improvements, one at a time, before starting duration bars.
 
 ### 1. Look & feel ✅
-- **Light/dark theme:** ☀/☾ toggle. Defaults to the OS setting and persists (`dateroll:theme`). Colours are CSS variables (`--dr-*`) defined in `DateRollView.vue`.
+- **Light/dark theme:** ☀/☾ toggle. Defaults to the OS setting and persists (`dateflow:theme`). Colours are CSS variables (`--df-*`) defined in `DateFlowView.vue`.
 - **Axis at mid-height:** labels fill levels outward above *and* below it (13px levels; an n-line label takes n+1 levels).
 - **Label wrapping:** up to 3 lines of ~20 chars (`wrapLabel`). Layout guarantees: no label overlaps another, a label's own leader never crosses a nearer label, and no leader runs through another event's label (`layoutLabels`).
 - **Category colour:** three hue groups + grey (`categoryGroups.ts`): Politics & War / Science & Discovery / Culture & Society / Other.
@@ -154,8 +154,8 @@ Ram's request: finish all four improvements, one at a time, before starting dura
 - **Known limit:** at full zoom (5,600 years) the 1500–2030 strip is only about 136px wide, so only a few of its major events get labels. The minimap (step 3) is the intended overview.
 
 ### 3. Overview minimap ✅
-- `DateRollMinimap.vue`: a 46px strip under the toolbar covering all 5,600 years.
-- **Density histogram:** about one bar per 5px. Heights use a square-root scale so sparse ancient periods stay visible. Hovering a bar shows e.g. "1500 – 1525: 12 events". The bin counting lives in `engine/dateroll/density.ts`.
+- `DateFlowMinimap.vue`: a 46px strip under the toolbar covering all 5,600 years.
+- **Density histogram:** about one bar per 5px. Heights use a square-root scale so sparse ancient periods stay visible. Hovering a bar shows e.g. "1500 – 1525: 12 events". The bin counting lives in `engine/dateflow/density.ts`.
 - **Viewport box:** outlines the current view; the area outside it is dimmed. The box is at least 8px wide so it stays grabbable when zoomed far in.
 - **Navigation:** click to centre the view there (zoom kept). Drag to scrub; grabbing inside the box keeps the offset, so the box doesn't jump. Uses the store's new `centerAt(year)`.
 - This also covers the Phase 6 "historical density" idea.
@@ -178,7 +178,7 @@ Ram's request: finish all four improvements, one at a time, before starting dura
   - importance (ChronoLogic 1 = most important): 1→8, 2→5, 3→3
   - its single "Asia" region split by hand into South Asia, East Asia and Southeast Asia
 - **33 empires/dynasties added**, from the Old Kingdom of Egypt to the Soviet Union, covering every region. Mughal and the Mongol conquests were already in ChronoLogic's set; Mughal is reclassified as an empire.
-- **Type** (`src/types/dateroll.ts`): `Duration` = `id, name, startYear, endYear, description, categories, region, importance (1–9), kind ('empire' | 'period'), approximate?`. `approximate` marks traditional or disputed dates (displayed as "c.").
+- **Type** (`src/types/dateflow.ts`): `Duration` = `id, name, startYear, endYear, description, categories, region, importance (1–9), kind ('empire' | 'period'), approximate?`. `approximate` marks traditional or disputed dates (displayed as "c.").
 
 ### Display
 - **Placement:** a dedicated band at the bottom of the timeline. Sharing the axis area would collide with labels and leaders. The axis stays centred in the space above it, and the band has a fixed height so the axis doesn't move while zooming.
@@ -204,18 +204,18 @@ Ram's request: finish all four improvements, one at a time, before starting dura
 ## Phase 4 — Lanes ✅
 Decisions with Ram (2026-11-01): a **World ↔ Lanes toggle** rather than replacing the single timeline, with **4 default lanes**.
 
-- **`engine/dateroll/lanes.ts`:** seven lanes map the inconsistent region strings at load time, so `events.json` is untouched:
+- **`engine/dateflow/lanes.ts`:** seven lanes map the inconsistent region strings at load time, so `events.json` is untouched:
   - South Asia; East Asia (+ Southeast Asia); Europe; Middle East; Africa
   - Americas (+ North / South America)
   - Global (+ World, Oceania, anything unrecognised)
 
   It also holds `toggleLane`, which won't hide the last visible lane, plus `moveLane` and `sanitizeLanes`. The last repairs saved state when lanes change.
-- **Store:** `mode` ('world' | 'lanes') and `laneState` ({order, visible}) persist as `dateroll:mode` and `dateroll:lanes`. Defaults: South Asia, East Asia, Europe, Global.
+- **Store:** `mode` ('world' | 'lanes') and `laneState` ({order, visible}) persist as `dateflow:mode` and `dateflow:lanes`. Defaults: South Asia, East Asia, Europe, Global.
 - **Timeline refactor:** the component now renders a list of *tracks*. World mode is one track with the two-sub-band duration strip. Lanes mode is one track per visible lane, each containing:
   - the lane name, its own axis, and labels above and below (same callout layout and guarantees)
   - that region's bars: one empire row + one period row, or empires only if the lane is under 120px tall
 - **Shared across lanes:** era bands, milestone lines (so they line up across regions) and one row of year labels at the bottom.
-- **Toolbar:** a `World | Lanes` segmented control, plus `DateRollLanePicker.vue` in Lanes mode.
+- **Toolbar:** a `World | Lanes` segmented control, plus `DateFlowLanePicker.vue` in Lanes mode.
   - Per lane: checkbox, ↑/↓, and "Restore default lanes".
   - Closes on outside click or Esc.
   - The panel position is clamped on screen (the button can sit mid-screen on phones).
@@ -228,13 +228,13 @@ Decisions with Ram (2026-11-01): a **World ↔ Lanes toggle** rather than replac
 - **Data gaps the lanes expose:** e.g. East Asia has no events in 1450–1650, and Global is sparse before 1500. Worth adding events there.
 
 ## Phase 5 — Filters + progressive detail ✅
-- **`engine/dateroll/filters.ts`:**
+- **`engine/dateflow/filters.ts`:**
   - `matchesFilters`: any selected category, AND any selected region (regions via `laneFor`)
   - `importanceThreshold`: the zoom threshold shifted by the detail setting
   - `categoriesByFrequency`: the category list comes from the data, most common first, so there are no hard-coded category names
-- **Store:** `filters` = {categories, regions, detail}, persisted as `dateroll:filters` and sanitised on load. `filteredEvents` and `filteredDurations` feed the timeline and minimap.
+- **Store:** `filters` = {categories, regions, detail}, persisted as `dateflow:filters` and sanitised on load. `filteredEvents` and `filteredDurations` feed the timeline and minimap.
   - **Region filtering is World-mode only.** In Lanes mode the lane picker is the region control, and the filter panel says so.
-- **`DateRollFilters.vue`** (toolbar popover, "Filters (n)" badge):
+- **`DateFlowFilters.vue`** (toolbar popover, "Filters (n)" badge):
   - category and region chips
   - a 5-step Fewer ↔ More detail slider
   - "Clear all filters"
@@ -246,7 +246,7 @@ Decisions with Ram (2026-11-01): a **World ↔ Lanes toggle** rather than replac
 - **Data notes found while testing:** some events carry surprising categories (e.g. Adam Smith and the Great Plague of London appear under Science/Technology). Worth a pass when the data is revisited.
 
 ## Phase 6 — Exploration features ✅
-- **`engine/dateroll/explore.ts`** (pure, unit-tested):
+- **`engine/dateflow/explore.ts`** (pure, unit-tested):
   - `meanwhile`: the top 2 events in each *other* lane within ±50 years
   - `beforeAndAfter`: the nearest neighbours in the same lane
   - `activeDuring`: durations of a kind overlapping a year or range
@@ -278,6 +278,6 @@ Each game is a separate pure engine module plus its own view, using a seeded dai
 
 ## How to run
 ```bash
-npm run dev          # → http://localhost:5173/dateroll
-npm run test:unit    # includes src/engine/__tests__/dateroll.test.ts
+npm run dev          # → http://localhost:5173/dateflow
+npm run test:unit    # includes src/engine/__tests__/dateflow.test.ts
 ```

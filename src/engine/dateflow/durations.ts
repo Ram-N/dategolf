@@ -1,5 +1,5 @@
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateroll'
+import type { Duration } from '@/types/dateflow'
 
 export interface BarItem {
   id: string

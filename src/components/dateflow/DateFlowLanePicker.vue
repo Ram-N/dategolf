@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { LANES, type LaneId, type LaneState } from '@/engine/dateroll/lanes'
+import { LANES, type LaneId, type LaneState } from '@/engine/dateflow/lanes'
 import { usePopover } from '@/composables/usePopover'
 
 defineProps<{ state: LaneState }>()
@@ -59,41 +59,41 @@ const labelOf = (id: LaneId) => LABELS.get(id) ?? id
   height: 2.25rem;
   padding: 0 0.75rem;
   border-radius: 0.5rem;
-  background: var(--dr-btn);
-  color: var(--dr-text);
+  background: var(--df-btn);
+  color: var(--df-text);
   font-size: 0.875rem;
   font-weight: 600;
 }
 .btn:hover {
-  background: var(--dr-btn-hover);
+  background: var(--df-btn-hover);
 }
 .panel {
-  background: var(--dr-surface);
-  border-color: var(--dr-border);
-  color: var(--dr-text);
+  background: var(--df-surface);
+  border-color: var(--df-border);
+  color: var(--df-text);
   box-shadow: 0 10px 30px rgb(0 0 0 / 0.25);
 }
 .row:hover {
-  background: var(--dr-btn);
+  background: var(--df-btn);
 }
 .move {
   width: 1.75rem;
   height: 1.75rem;
   border-radius: 0.375rem;
-  color: var(--dr-text-2);
+  color: var(--df-text-2);
 }
 .move:hover:not(:disabled) {
-  background: var(--dr-btn-hover);
-  color: var(--dr-text);
+  background: var(--df-btn-hover);
+  color: var(--df-text);
 }
 .move:disabled {
   opacity: 0.3;
 }
 .reset {
-  color: var(--dr-text-2);
+  color: var(--df-text-2);
 }
 .reset:hover {
-  background: var(--dr-btn);
-  color: var(--dr-text);
+  background: var(--df-btn);
+  color: var(--df-text);
 }
 </style>

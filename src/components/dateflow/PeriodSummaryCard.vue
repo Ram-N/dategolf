@@ -65,7 +65,7 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
-import type { PeriodSummary } from '@/engine/dateroll/explore'
+import type { PeriodSummary } from '@/engine/dateflow/explore'
 import { formatYear } from '@/utils/formatYear'
 
 defineProps<{ summary: PeriodSummary; filtered: boolean }>()
@@ -82,19 +82,19 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 
 <style scoped>
 .card {
-  background: var(--dr-surface);
-  border-color: var(--dr-border);
-  color: var(--dr-text);
+  background: var(--df-surface);
+  border-color: var(--df-border);
+  color: var(--df-text);
 }
 .secondary {
-  color: var(--dr-text-2);
+  color: var(--df-text-2);
 }
 .heading {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--dr-text-2);
+  color: var(--df-text-2);
   margin-bottom: 0.5rem;
 }
 .lane {
@@ -102,7 +102,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--dr-muted);
+  color: var(--df-muted);
   margin-bottom: 0.125rem;
 }
 .row {
@@ -114,7 +114,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   border-radius: 0.5rem;
 }
 .row:hover {
-  background: var(--dr-btn);
+  background: var(--df-btn);
 }
 .year {
   flex-shrink: 0;
@@ -122,39 +122,39 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   margin-right: 0.5rem;
   font-family: ui-monospace, monospace;
   font-variant-numeric: tabular-nums;
-  color: var(--dr-text-2);
+  color: var(--df-text-2);
 }
 .chip {
   padding: 0.25rem 0.625rem;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 600;
-  background: var(--dr-btn);
-  color: var(--dr-text);
-  border: 1px solid var(--dr-border);
+  background: var(--df-btn);
+  color: var(--df-text);
+  border: 1px solid var(--df-border);
 }
 .chip.period {
   border-style: dashed;
 }
 .chip:hover {
-  background: var(--dr-btn-hover);
+  background: var(--df-btn-hover);
 }
 .close {
   width: 2rem;
   height: 2rem;
   flex-shrink: 0;
   border-radius: 9999px;
-  color: var(--dr-text-2);
+  color: var(--df-text-2);
 }
 .close:hover {
-  background: var(--dr-btn);
-  color: var(--dr-text);
+  background: var(--df-btn);
+  color: var(--df-text);
 }
 .zoom {
-  background: var(--dr-btn);
-  color: var(--dr-text);
+  background: var(--df-btn);
+  color: var(--df-text);
 }
 .zoom:hover {
-  background: var(--dr-btn-hover);
+  background: var(--df-btn-hover);
 }
 </style>

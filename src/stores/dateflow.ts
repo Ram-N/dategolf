@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateroll'
+import type { Duration } from '@/types/dateflow'
 import {
   FULL_VIEW,
   centerOn,
@@ -12,7 +12,7 @@ import {
   span,
   zoomAround,
   type View,
-} from '@/engine/dateroll/timeScale'
+} from '@/engine/dateflow/timeScale'
 import {
   DEFAULT_LANES,
   LANES,
@@ -22,7 +22,7 @@ import {
   visibleLanes,
   type LaneId,
   type LaneState,
-} from '@/engine/dateroll/lanes'
+} from '@/engine/dateflow/lanes'
 import {
   DETAIL_MAX,
   DETAIL_MIN,
@@ -31,13 +31,13 @@ import {
   matchesFilters,
   toggleIn,
   type Filters,
-} from '@/engine/dateroll/filters'
+} from '@/engine/dateflow/filters'
 
-const VIEW_KEY = 'dateroll:view'
-const THEME_KEY = 'dateroll:theme'
-const MODE_KEY = 'dateroll:mode'
-const LANES_KEY = 'dateroll:lanes'
-const FILTERS_KEY = 'dateroll:filters'
+const VIEW_KEY = 'dateflow:view'
+const THEME_KEY = 'dateflow:theme'
+const MODE_KEY = 'dateflow:mode'
+const LANES_KEY = 'dateflow:lanes'
+const FILTERS_KEY = 'dateflow:filters'
 const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's default zoom
 const ANIM_MS = 350
 
@@ -94,7 +94,7 @@ function loadFilters(): Filters {
   }
 }
 
-export const useDateRollStore = defineStore('dateroll', () => {
+export const useDateFlowStore = defineStore('dateflow', () => {
   // ── State ──────────────────────────────────────────────────────────────────
   const events = ref<Event[]>([])
   const durations = ref<Duration[]>([])

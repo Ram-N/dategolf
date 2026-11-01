@@ -9,7 +9,7 @@
       <div class="flex items-start justify-between gap-4">
         <div>
           <div class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest secondary">
-            <span class="inline-block w-2.5 h-2.5 rounded-sm" :style="{ background: `var(--dr-${group})` }" />
+            <span class="inline-block w-2.5 h-2.5 rounded-sm" :style="{ background: `var(--df-${group})` }" />
             {{ duration.kind === 'empire' ? 'Empire / dynasty' : 'Period' }}
           </div>
           <div class="text-2xl font-black tabular-nums mt-2 accent">{{ formatSpan(duration, formatYear) }}</div>
@@ -49,9 +49,9 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue'
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateroll'
-import { eventsDuring, formatSpan } from '@/engine/dateroll/durations'
-import { groupFor } from '@/engine/dateroll/categoryGroups'
+import type { Duration } from '@/types/dateflow'
+import { eventsDuring, formatSpan } from '@/engine/dateflow/durations'
+import { groupFor } from '@/engine/dateflow/categoryGroups'
 import { formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{ duration: Duration; events: Event[] }>()
@@ -75,38 +75,38 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 
 <style scoped>
 .card {
-  background: var(--dr-surface);
-  border-color: var(--dr-border);
-  color: var(--dr-text);
+  background: var(--df-surface);
+  border-color: var(--df-border);
+  color: var(--df-text);
 }
 .secondary {
-  color: var(--dr-text-2);
+  color: var(--df-text-2);
 }
 .muted {
-  color: var(--dr-muted);
+  color: var(--df-muted);
 }
 .accent {
-  color: var(--dr-text);
+  color: var(--df-text);
 }
 .close {
   width: 2rem;
   height: 2rem;
   flex-shrink: 0;
   border-radius: 9999px;
-  color: var(--dr-text-2);
+  color: var(--df-text-2);
 }
 .close:hover {
-  background: var(--dr-btn);
-  color: var(--dr-text);
+  background: var(--df-btn);
+  color: var(--df-text);
 }
 .related:hover {
-  background: var(--dr-btn);
+  background: var(--df-btn);
 }
 .show {
-  background: var(--dr-btn);
-  color: var(--dr-text);
+  background: var(--df-btn);
+  color: var(--df-text);
 }
 .show:hover {
-  background: var(--dr-btn-hover);
+  background: var(--df-btn-hover);
 }
 </style>
