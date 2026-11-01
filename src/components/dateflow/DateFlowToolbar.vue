@@ -59,6 +59,7 @@
       <button class="btn" title="Summarise the period in view (or shift-drag across the timeline)" @click="emit('summarize')">
         What happened?
       </button>
+      <RouterLink to="/dateflow/play" class="btn play">▶ Play</RouterLink>
       <button
         class="btn w-9"
         :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
@@ -73,6 +74,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import type { View } from '@/engine/dateflow/timeScale'
 import type { Theme, ViewMode } from '@/stores/dateflow'
 import type { LaneId, LaneState } from '@/engine/dateflow/lanes'
@@ -160,6 +162,15 @@ function submitJump() {
 }
 .btn:hover {
   background: var(--df-btn-hover);
+}
+.btn.play {
+  display: inline-flex;
+  align-items: center;
+  background: var(--df-text);
+  color: var(--df-bg);
+}
+.btn.play:hover {
+  opacity: 0.9;
 }
 .seg {
   background: var(--df-btn);

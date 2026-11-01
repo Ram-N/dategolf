@@ -1,0 +1,61 @@
+/* DateFlow theme tokens, shared by the timeline and the games. Series colours are the validated reference palette
+   (slots 1–3, all-pairs colourblind-safe) stepped separately for each surface. */
+.dateflow[data-theme='dark'] {
+  --df-bg: #09090b;
+  --df-surface: #18181b;
+  --df-border: #3f3f46;
+  --df-border-soft: #27272a;
+  --df-text: #f4f4f5;
+  --df-text-2: #a1a1aa;
+  --df-muted: #71717a;
+  --df-grid: #1c1c20;
+  --df-axis: #52525b;
+  --df-milestone: #8b8b94;
+  --df-era: rgb(255 255 255 / 0.035);
+  --df-btn: #27272a;
+  --df-btn-hover: #3f3f46;
+  --df-power: #3987e5;
+  --df-knowledge: #d95926;
+  --df-culture: #199e70;
+  --df-other: #8b8b94;
+}
+.dateflow[data-theme='light'] {
+  --df-bg: #fcfcfb;
+  --df-surface: #ffffff;
+  --df-border: #d4d4d8;
+  --df-border-soft: #e7e7e5;
+  --df-text: #18181b;
+  --df-text-2: #52525b;
+  --df-muted: #71717a;
+  --df-grid: #efefed;
+  --df-axis: #a1a1aa;
+  --df-milestone: #71717a;
+  --df-era: rgb(0 0 0 / 0.035);
+  --df-btn: #f0efec;
+  --df-btn-hover: #e4e4e1;
+  --df-power: #2a78d6;
+  --df-knowledge: #eb6834;
+  --df-culture: #1baf7a;
+  --df-other: #8b8b94;
+}
+.dateflow {
+  background: var(--df-bg);
+  color: var(--df-text);
+}
+.dateflow .footer {
+  border-color: var(--df-border-soft);
+}
+.dateflow .secondary {
+  color: var(--df-text-2);
+}
+.dateflow .kind-empire {
+  background: color-mix(in srgb, var(--df-text-2) 40%, transparent);
+  border: 1px solid var(--df-text-2);
+}
+.dateflow .kind-period {
+  background: color-mix(in srgb, var(--df-text-2) 12%, transparent);
+  border: 1px dashed var(--df-text-2);
+}
+.dateflow .muted {
+  color: var(--df-muted);
+}

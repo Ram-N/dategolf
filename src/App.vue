@@ -2,13 +2,16 @@
   <nav v-if="showNav" class="game-nav">
     <RouterLink to="/dategolf" class="nav-link">DateGolf</RouterLink>
     <RouterLink to="/datepick" class="nav-link">DatePick</RouterLink>
-    <RouterLink to="/dateflow" class="nav-link">DateFlow</RouterLink>
+    <!-- Also highlighted on the /dateflow/play game pages -->
+    <RouterLink to="/dateflow" class="nav-link" :class="{ 'router-link-active': route.path.startsWith('/dateflow') }">DateFlow</RouterLink>
   </nav>
   <RouterView />
 </template>
 
 <script setup lang="ts">
-import { RouterView, RouterLink } from 'vue-router'
+import { RouterView, RouterLink, useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const subdomains = ['dategolf.', 'datepick.', 'dateflow.']
 const showNav = !subdomains.some((s) => window.location.hostname.startsWith(s))

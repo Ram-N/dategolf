@@ -2,7 +2,7 @@
 
 > Companion to `07_DateFlow_Brainstorming.md` (ideas) and `08_DateFlow_highlevel_specs.md` (spec).
 > Name history: "Time River" → "DateRoll" → **DateFlow** (renamed 2026-11-01, after Phase 6). Commits before the rename say DateRoll.
-> Last updated: 2026-11-01 (Phase 6 complete)
+> Last updated: 2026-11-01 (Phase 7 complete — all phases done)
 
 ## Status at a glance
 
@@ -15,7 +15,7 @@
 | 4 | Regional lanes | ✅ Done (civilisation lanes deferred) |
 | 5 | Category filters + importance control | ✅ Done |
 | 6 | Exploration: "what was happening elsewhere?", period select, density | ✅ Done |
-| 7 | Games built on the timeline | ⏳ TBD |
+| 7 | Games built on the timeline | ✅ Done |
 
 **Decisions made with Ram (2026-11-01)**
 - Durations come from ChronoLogic's periods (`../ChronoLogic/public/data/events.json`), plus about 25–30 empires and dynasties we add ourselves.
@@ -266,18 +266,43 @@ Decisions with Ram (2026-11-01): a **World ↔ Lanes toggle** rather than replac
 - **Small fixes:** wrapped names stay aligned with their year column in both lists; the mouse/keyboard hint line is hidden on small screens (gives the phone timeline +37px).
 - **Data notes:** *Before & after* exposes sparse regions. For example, the Middle East's nearest events before 1453 are 786 and 1096. Fall of Constantinople is tagged Middle East rather than Europe.
 
-## Phase 7 — Games ⏳ TBD
-Each game is a separate pure engine module plus its own view, using a seeded daily PRNG like DatePick (same date = same challenge). Suggested order:
-1. Which Came First?
-2. Put Them in Order (DatePick-like, on the timeline)
-3. What's Missing? (middle of three events hidden)
-4. What's Happening Elsewhere?
-5. Find the Duration (needs `durations.json`)
+## Phase 7 — Games ✅
+Decisions with Ram (2026-11-01): a **Play hub inside DateFlow**, **daily + practice** rounds (no streaks yet), **all five games**.
 
----
+- **Engine** (`engine/dateflow/games/`, pure):
+  - `random.ts`: mulberry32, string seeds, shuffle and sample. This is a third copy of the generator; DateGolf and DatePick each keep their own.
+  - `rounds.ts`: five generators sharing one round format, `ROUND_LENGTH` = 5 questions. Difficulty rises with each question.
+  - Daily rounds are seeded from `dateflow:{game}:{date}` only (same date, same round for everyone). Practice rounds use a random seed chosen in the UI, so the engine stays deterministic.
+- **The five games:**
+  | Game | How it's built | Gets harder by |
+  |---|---|---|
+  | Which Came First? | two events, pick the earlier | gap shrinks from 300–3000 years to 1–25 |
+  | Put Them in Order | 3 → 4 events, one per region where possible, tap earliest → latest | time window shrinks from 2500 to 150 years |
+  | What's Missing? | two *consecutive-in-region* events plus the one between; distractors lie wholly outside the gap | distractors move from ≥300 years away to the nearest outside the gap |
+  | What's Happening Elsewhere? | anchor event; answer in another region within ±15–40 years; distractors ≥100–500 years away | both bands tighten |
+  | Find the Duration | "Ruled {region} · {span}", name the empire | distractors move from other eras to the same region |
+- **Tests** (`engine/__tests__/dateflow.games.test.ts`) run against the **real** data, so they also prove the data can supply every game. They check:
+  - daily determinism
+  - well-formed options, and no repeated events within a round
+  - **exactly one right answer** per game, over 40 seeded rounds each
+- **UI:**
+  - `/dateflow/play` (`DateFlowPlayView.vue`): game cards with Play daily / Practice, and today's score per game
+  - `/dateflow/play/:game` (`DateFlowGameView.vue`; `?mode=practice` for practice): progress pips, multiple choice (keys 1–4, Enter for next) or tap-to-order
+  - after each answer, a **reveal** with `RevealTimeline.vue`, a "ladder" mini-timeline that plots the events or spans to scale with years. The answer is ✓ (green); wrong picks or misplaced events are ✗ (red), and in the order game each ✗ shows the correct position. Colour is never the only signal.
+  - **Explore on the timeline** frames the question's events in DateFlow
+  - results screen with an emoji row and **Share** (Web Share or clipboard), plus a practice round link
+  - **▶ Play** in the DateFlow toolbar; the nav highlights DateFlow on game pages
+- **Services** (`dateflowGames.ts`): today's first daily score per game (`dateflow:daily:{game}:{date}`) and the share text. Reuses `copyText` from `services/sharing`.
+- **Theme:** tokens moved to `src/assets/dateflow-theme.css`, shared by the timeline and the games.
+- **Fixed during play-testing:**
+  - the order reveal marked every event ✓ even when the player's order was wrong
+  - reveal labels collided or overflowed on phones; they now go on the roomier side and shorten with "…" if needed
+  - edge year labels were clipped
+- **Possible next steps:** streaks and stats per game (like DatePick), a combined "daily five" score, difficulty presets, and putting the order game directly on the big timeline.
 
 ## How to run
 ```bash
 npm run dev          # → http://localhost:5173/dateflow
-npm run test:unit    # includes src/engine/__tests__/dateflow.test.ts
+npm run test:unit    # includes dateflow.test.ts and dateflow.games.test.ts
+# games: http://localhost:5173/dateflow/play
 ```
