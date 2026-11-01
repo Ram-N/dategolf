@@ -41,12 +41,12 @@
         pointer-events="none"
       />
 
-      <!-- Leaders sit beneath all labels so a tall leader never covers a label -->
+      <!-- Leaders (dot → label, angled when the label is shifted sideways) sit beneath all labels -->
       <line
         v-for="m in markers"
         :key="m.event.id"
         :x1="m.x"
-        :x2="m.x"
+        :x2="m.leaderX"
         :y1="axisY"
         :y2="m.leaderEnd"
         :stroke="`var(--dr-${m.group})`"
@@ -238,32 +238,36 @@ const markers = computed(() => {
       const lines = wrapLabel(e.name, LINE_CHARS, MAX_LINES)
       const longest = Math.max(...lines.map((l) => l.length))
       const labelWidth = longest * (bold ? CHAR_W_BOLD : CHAR_W) + 12
-      // Keep labels on screen; the dot and leader stay at the true year.
-      const labelX = Math.min(Math.max(x, labelWidth / 2 + 2), width.value - labelWidth / 2 - 2)
+      const boxH = lines.length * LINE_H + BOX_PAD * 2
       const priority = sectionIds.has(e.id) ? MILESTONE_PRIORITY : e.importance
-      return { event: e, x, lines, labelWidth, labelX, bold, priority }
+      return { event: e, x, lines, labelWidth, boxH, bold, priority }
     })
   const byId = new Map(candidates.map((c) => [c.event.id, c]))
 
   const placed = layoutLabels(
     candidates.map((c) => ({
       id: c.event.id,
-      x: c.labelX,
       dotX: c.x,
       labelWidth: c.labelWidth,
+      boxH: c.boxH,
       levels: c.lines.length + 1,
       priority: c.priority,
     })),
-    levelsPerSide.value,
+    {
+      width: width.value,
+      levelsPerSide: levelsPerSide.value,
+      levelH: LEVEL_H,
+      axisGap: { above: AXIS_GAP, below: TICK_SPACE },
+    },
   )
 
   return placed.map((p) => {
     const c = byId.get(p.id)!
-    const boxH = c.lines.length * LINE_H + BOX_PAD * 2
     return {
       ...c,
-      boxH,
-      ...boxPosition(p.side, p.level, boxH),
+      labelX: p.labelX,
+      leaderX: p.leaderX,
+      ...boxPosition(p.side, p.level, c.boxH),
       group: groupFor(c.event.categories),
       radius: 4 + Math.max(0, c.event.importance - 4) * 0.6,
       // Year first: the event is what students are learning to place.

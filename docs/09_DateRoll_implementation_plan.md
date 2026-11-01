@@ -2,7 +2,7 @@
 
 > Companion to `07_DateRoll_Brainstorming.md` (ideas) and `08_DateRoll_highlevel_specs.md` (spec).
 > "Time River" was the earlier working name. **DateRoll** is current.
-> Last updated: 2026-11-01 (Phase 2.5 step 1)
+> Last updated: 2026-11-01 (Phase 2.5 step 2)
 
 ## Status at a glance
 
@@ -10,7 +10,7 @@
 |---|---|---|
 | 1 | Inspect codebase + data, propose architecture | ✅ Done |
 | 2 | Basic timeline: axis, pan, zoom, event markers, info card | ✅ Coded (uncommitted) |
-| 2.5 | Polish before Phase 3: look & theme, crowding, minimap, touch & motion | 🔄 In progress (1 of 4 done) |
+| 2.5 | Polish before Phase 3: look & theme, crowding, minimap, touch & motion | 🔄 In progress (2 of 4 done) |
 | 3 | Duration bars (`durations.json`) | ⏳ TBD |
 | 4 | Regional lanes | ⏳ TBD |
 | 5 | Category filters + importance control | ⏳ TBD |
@@ -141,11 +141,17 @@ Ram's request: finish all four improvements, one at a time, before starting dura
 - **Tooltip:** year first (`1453 — Fall of Constantinople`).
 - Known gap: `EventInfoCard` stays dark in light mode, because DateGolf shares it.
 
-### 2. Crowding / use of vertical space ⏳
-The strict no-crossing rule now leaves labels hugging the axis, and dense periods show only a few labels at wide zoom. Ideas:
-- let labels shift sideways from their dot (angled or elbow leaders)
-- per-period label budgets
-- tune `minImportanceForSpan`
+### 2. Crowding / use of vertical space ✅
+- **Callout layout:** labels may shift sideways (up to ±130px) from their dot, joined by an angled leader. `layoutLabels` tries slots cheapest first (nearer the axis, then nearer the dot, alternating above/below).
+- **Guarantees** (unit-tested, including a 300-run fuzz test):
+  - no label overlaps another
+  - no leader passes through another label
+  - no two leaders cross
+  - leaders are no flatter than ~27°
+  - labels stay fully on screen
+- **Results:** a 100-year view of the 1900s went from about 10 labels to 35. Layout runs in under 10ms for 150 candidates.
+- **The shift is capped deliberately:** a label far from its year teaches the wrong date.
+- **Known limit:** at full zoom (5,600 years) the 1500–2030 strip is only about 136px wide, so only a few of its major events get labels. The minimap (step 3) is the intended overview.
 
 ### 3. Overview minimap ⏳
 A thin strip of the whole 5,600 years with a draggable box for the current view, plus an event-density histogram (doubles as the Phase 6 density idea).

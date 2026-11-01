@@ -17,6 +17,8 @@ import {
 import {
   layoutLabels,
   minImportanceForSpan,
+  segmentHitsRect,
+  segmentsCross,
   spaceMilestones,
   wrapLabel,
   type LayoutItem,
@@ -94,49 +96,97 @@ describe('visibility', () => {
     expect(minImportanceForSpan(10)).toBe(0)
   })
 
-  const item = (id: string, x: number, priority: number, extra: Partial<LayoutItem> = {}): LayoutItem => ({
+  const OPTS = { width: 1000, levelsPerSide: 12, levelH: 13, axisGap: { above: 10, below: 24 } }
+  const item = (id: string, dotX: number, priority: number, extra: Partial<LayoutItem> = {}): LayoutItem => ({
     id,
-    x,
-    dotX: x,
+    dotX,
     labelWidth: 80,
+    boxH: 19,
     levels: 2,
     priority,
     ...extra,
   })
 
-  it('places the most important label nearest the axis, then alternates sides', () => {
-    const placed = layoutLabels([item('minor', 100, 3), item('major', 110, 9)], 6)
-    expect(placed).toEqual([
-      { id: 'major', side: 'above', level: 0 },
-      { id: 'minor', side: 'below', level: 0 },
-    ])
-  })
-
-  it('drops labels that fit nowhere', () => {
-    // one 2-level slot per side: a takes above, b takes below, c has nowhere left
-    const placed = layoutLabels([item('a', 100, 9), item('b', 105, 7), item('c', 110, 5)], 2)
-    expect(placed.map((p) => p.id)).toEqual(['a', 'b'])
+  it('places the most important label nearest the axis with a vertical leader', () => {
+    const placed = layoutLabels([item('minor', 100, 3), item('major', 110, 9)], OPTS)
+    expect(placed[0]).toMatchObject({ id: 'major', side: 'above', level: 0, labelX: 110, leaderX: 110 })
+    expect(placed[1]).toMatchObject({ id: 'minor', side: 'below', level: 0 })
   })
 
   it('keeps non-overlapping labels on the same level', () => {
-    const placed = layoutLabels([item('a', 100, 5), item('b', 300, 5)], 6)
+    const placed = layoutLabels([item('a', 100, 5), item('b', 300, 5)], OPTS)
     expect(placed.every((p) => p.level === 0 && p.side === 'above')).toBe(true)
   })
 
-  it('stacks multi-line labels without overlap', () => {
-    // a takes levels 0–3 above; b must start at level 4 or go below
-    const placed = layoutLabels(
-      [item('a', 100, 9, { levels: 4 }), item('b', 300, 8, { levels: 2, x: 300, dotX: 300 }), item('c', 110, 5)],
-      8,
-    )
-    expect(placed.find((p) => p.id === 'c')).toEqual({ id: 'c', side: 'below', level: 0 })
+  it('shifts a label sideways when the space above its dot is taken', () => {
+    const placed = layoutLabels([item('a', 100, 9), item('b', 100, 8), item('c', 140, 5)], OPTS)
+    const c = placed.find((p) => p.id === 'c')!
+    expect(c).toBeDefined()
+    expect(c.labelX).not.toBe(140)
   })
 
-  it("never lets a leader run through another event's label", () => {
-    // a sits on level 0 above, b below. c's dot is under a's label, so c cannot climb past a.
-    const placed = layoutLabels([item('a', 100, 9), item('b', 100, 8), item('c', 130, 5, { x: 180, dotX: 130 })], 8)
-    const c = placed.find((p) => p.id === 'c')
-    expect(c).toBeUndefined()
+  it('keeps labels inside the viewport', () => {
+    const placed = layoutLabels([item('edge', 5, 5), item('edge2', 995, 5)], OPTS)
+    expect(placed.map((p) => p.labelX)).toEqual([42, 958])
+  })
+
+  it('drops labels when there is no room at all', () => {
+    const tight = { ...OPTS, levelsPerSide: 2, shifts: [0] }
+    const placed = layoutLabels([item('a', 100, 9), item('b', 105, 7), item('c', 110, 5)], tight)
+    expect(placed.map((p) => p.id)).toEqual(['a', 'b'])
+  })
+
+  it('never overlaps labels, never runs a leader through a label, never crosses leaders (fuzz)', () => {
+    let seed = 42
+    const rand = () => ((seed = (seed * 1664525 + 1013904223) % 2 ** 32) / 2 ** 32)
+    for (let run = 0; run < 300; run++) {
+      const items = Array.from({ length: 40 }, (_, i) => {
+        const lines = 1 + Math.floor(rand() * 3)
+        return item(`e${i}`, rand() * 1000, Math.floor(rand() * 9), {
+          labelWidth: 50 + rand() * 90,
+          boxH: lines * 13 + 6,
+          levels: lines + 1,
+        })
+      })
+      const placed = layoutLabels(items, OPTS)
+      const byId = new Map(items.map((it) => [it.id, it]))
+      const geom = placed.map((p) => {
+        const it = byId.get(p.id)!
+        const d0 = OPTS.axisGap[p.side] + p.level * OPTS.levelH
+        return {
+          side: p.side,
+          rect: { x1: p.labelX - it.labelWidth / 2, x2: p.labelX + it.labelWidth / 2, d1: d0, d2: d0 + it.boxH },
+          leader: { x1: it.dotX, d1: 0, x2: p.leaderX, d2: d0 },
+        }
+      })
+      for (let i = 0; i < geom.length; i++) {
+        const a = geom[i]!
+        expect(a.rect.x1).toBeGreaterThanOrEqual(0)
+        expect(a.rect.x2).toBeLessThanOrEqual(OPTS.width)
+        for (let j = 0; j < geom.length; j++) {
+          const b = geom[j]!
+          if (i === j || a.side !== b.side) continue
+          const overlap = a.rect.x1 < b.rect.x2 && b.rect.x1 < a.rect.x2 && a.rect.d1 < b.rect.d2 && b.rect.d1 < a.rect.d2
+          expect(overlap).toBe(false)
+          expect(segmentHitsRect(a.leader, b.rect)).toBe(false)
+          if (j > i) expect(segmentsCross(a.leader, b.leader)).toBe(false)
+        }
+      }
+    }
+  })
+})
+
+describe('geometry', () => {
+  const rect = { x1: 0, x2: 10, d1: 0, d2: 10 }
+  it('detects a segment through a rect, not one beside it', () => {
+    expect(segmentHitsRect({ x1: -5, d1: 5, x2: 15, d2: 5 }, rect)).toBe(true)
+    expect(segmentHitsRect({ x1: 12, d1: 0, x2: 20, d2: 10 }, rect)).toBe(false)
+    expect(segmentHitsRect({ x1: 5, d1: 10, x2: 5, d2: 20 }, rect)).toBe(false) // touching an edge is fine
+  })
+  it('detects crossing leaders and stacked vertical leaders, not a shared start', () => {
+    expect(segmentsCross({ x1: 0, d1: 0, x2: 10, d2: 10 }, { x1: 10, d1: 0, x2: 0, d2: 10 })).toBe(true)
+    expect(segmentsCross({ x1: 5, d1: 0, x2: 5, d2: 10 }, { x1: 5, d1: 0, x2: 5, d2: 30 })).toBe(true)
+    expect(segmentsCross({ x1: 5, d1: 0, x2: 0, d2: 10 }, { x1: 5, d1: 0, x2: 10, d2: 10 })).toBe(false)
   })
 })
 
