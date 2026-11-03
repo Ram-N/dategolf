@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 200" width="270" height="200">
+  <!-- DateFlow: three regional lanes of history (rounded "empire" bars), with one moment
+       cutting across them all — "what was happening elsewhere?" -->
+  <rect width="270" height="200" fill="#7B4FD6"/>
+  <rect x="44"  y="54"  width="128" height="24" rx="12" fill="#FFD100"/>
+  <rect x="100" y="88"  width="126" height="24" rx="12" fill="#FFFFFF"/>
+  <rect x="62"  y="122" width="118" height="24" rx="12" fill="#0B3954"/>
+  <line x1="146" y1="38" x2="146" y2="162" stroke="#FF8C42" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="146" cy="38" r="13" fill="#FF8C42"/>
+</svg>
