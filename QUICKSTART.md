@@ -28,7 +28,7 @@ npm run dev
 # → http://localhost:5173
 ```
 
-That's it. No backend, no database, no environment variables needed.
+That's it. No backend, no environment variables needed. (Game data is edited in SQLite and exported to static JSON; see *Data* below.)
 
 ---
 
@@ -43,7 +43,10 @@ npm run type-check   # TypeScript check only (vue-tsc)
 npm run lint         # Lint + auto-fix (oxlint + eslint)
 npm run format       # Format src/ with Prettier
 
-node scripts/validate-events.cjs   # Validate events.json data quality
+npm run data:export    # SQLite → app JSON (after editing data/dategolf.db)
+npm run data:validate  # Data integrity checks
+npm run data:compare   # Verify export matches committed JSON
+node scripts/validate-events.cjs   # Legacy events.json rule checks
 ```
 
 ---
@@ -188,17 +191,38 @@ Inspect deployments: https://vercel.com/ram-ns-projects/dategolf
 
 ---
 
-## How to add events
+## Data: SQLite is the source of truth
 
-1. Edit `src/data/events.json` — follow the existing schema exactly
-2. Run `node scripts/validate-events.cjs` — must pass all checks
-3. Key rules:
-   - `id` must be unique kebab-case
-   - `name` must **not** contain years (`1947`, `20th century`, etc.)
-   - BCE years are negative integers (e.g. `-44` = 44 BCE)
-   - `difficulty`: `"easy"` | `"medium"` | `"hard"`
-   - `importance`: integer 1–5
-4. Commit and push — Vercel auto-deploys
+`data/dategolf.db` holds all game data. The app's JSON files are **generated from it — don't hand-edit them**:
+`src/data/{events,durations,datelinks,milestones,eras}.json`, `public/data/daily_challenges.json`.
+
+**Edit workflow**
+1. Open `data/dategolf.db` in DB Browser for SQLite (keep "Foreign keys" on) and edit. Click *Write Changes*.
+2. `npm run data:export`. This regenerates the JSON plus `data/dategolf.sql`, a text dump for readable git diffs.
+3. `npm run data:validate`. It must report 0 errors.
+4. Commit the db, the `.sql` file and the JSON together. Vercel deploys the JSON; it doesn't need Python.
+
+**Adding an event** needs rows in `entities` (id, `primary_type='event'`), `events`, `entity_categories`
+(`facet='event'`, position 0 = primary) and `event_aliases`. Leave `position` NULL. Export sorts by year.
+
+**Rules**
+- `id` must be unique kebab-case. `name` must not contain years.
+- Years are signed: `-1` = 1 BCE, `1` = 1 CE. **There is no year 0** (the schema rejects it).
+- `difficulty`: `easy` | `medium` | `hard`. `importance` is currently 2–9 in the data.
+  (`validate-events.cjs` still expects 1–5. That conflict predates the db and is flagged, not fixed.)
+
+**Commands** (`uv run python tools/manage.py <cmd>`)
+
+| Command | Does |
+|---|---|
+| `validate` | Integrity checks → `data/reports/validate.md` |
+| `export-json` | db → app JSON + `dategolf.sql` |
+| `compare-export` | Proves a fresh export is byte-identical to committed files |
+| `coverage [--bin N]` | Events per N-year bin × region → `data/reports/coverage.md` |
+| `import-legacy --force` | **Rebuilds the db from `data/legacy/` and wipes edits.** Only for re-running the migration. |
+
+`data/legacy/` holds frozen copies of the original 7 files (including `events_master.csv`) with `MANIFEST.json` hashes.
+See `docs/10_DateFlow_Data_Audit_and_SQLite_Handoff.md` and `data/reports/migration.md`.
 
 ---
 

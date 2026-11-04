@@ -1,0 +1,45 @@
+{
+  "imported_at": "2026-11-04T16:29:11+00:00",
+  "schema_version": "1",
+  "files": {
+    "daily_challenges.json": {
+      "sha256": "72ca7c1d3aed9f99169d6e737f2ef1cebf9fd16477b42faaf5932d3f32f608e5",
+      "bytes": 24305
+    },
+    "datelinks.json": {
+      "sha256": "88558f1989ff3034f13592c6292c50405f8e2735c38293e2e5d5445405f2f7aa",
+      "bytes": 43548
+    },
+    "durations.json": {
+      "sha256": "e3bdc05621c7ce235ca7763018eb34530f8545d1f87910daaf3b10f73e519235",
+      "bytes": 32831
+    },
+    "eras.json": {
+      "sha256": "5e6107235485a47a1dec2898a07f6699a5bb08fffbe15a282dd8a531f010556e",
+      "bytes": 366
+    },
+    "events.json": {
+      "sha256": "14f85f1a88d3e0317db6de15e0100af8cfa0b462b3121f8479cb90e906209e38",
+      "bytes": 258392
+    },
+    "events_master.csv": {
+      "sha256": "5666fb60cbb9aa49f67ad5f3d9af807189e9e7cf158132270f3db0c58efae117",
+      "bytes": 56126
+    },
+    "milestones.json": {
+      "sha256": "3d0a46c4637bd2e2d3658c77e853476cc118a7dd36b8e9067e623718618db2b3",
+      "bytes": 402
+    }
+  },
+  "counts": {
+    "events": 343,
+    "time_spans": 98,
+    "eras": 5,
+    "datelinks_keys": 26,
+    "datelinks_groups": 83,
+    "datelinks_items": 198,
+    "milestones": 16,
+    "daily_challenge_dates": 366,
+    "csv_rows": 310
+  }
+}

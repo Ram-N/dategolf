@@ -13,7 +13,10 @@
     "lint": "run-s \"lint:*\"",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "prettier --write --experimental-cli src/"
+    "format": "prettier --write --experimental-cli src/",
+    "data:export": "uv run python tools/manage.py export-json",
+    "data:validate": "uv run python tools/manage.py validate",
+    "data:compare": "uv run python tools/manage.py compare-export"
   },
   "dependencies": {
     "fuse.js": "^7.5.0",

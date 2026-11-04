@@ -1,0 +1,1295 @@
+[
+  {
+    "id": "old-kingdom-egypt",
+    "name": "Old Kingdom of Egypt",
+    "startYear": -2686,
+    "endYear": -2181,
+    "description": "The age of the pyramid builders, when pharaohs ruled a unified Egypt from Memphis.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Africa",
+    "importance": 6,
+    "kind": "empire",
+    "approximate": true
+  },
+  {
+    "id": "indus-valley-mature",
+    "name": "Indus Valley Civilization (Mature Phase)",
+    "startYear": -2600,
+    "endYear": -1900,
+    "description": "Planned cities such as Harappa and Mohenjo-daro flourished with drainage, standard weights and an undeciphered script.",
+    "categories": [
+      "Culture",
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 8,
+    "kind": "empire",
+    "approximate": true
+  },
+  {
+    "id": "construction-great-pyramid",
+    "name": "Construction of the Great Pyramid of Giza",
+    "startYear": -2580,
+    "endYear": -2560,
+    "description": "Construction of the largest Egyptian pyramid as a tomb for Pharaoh Khufu",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Africa",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "akkadian-empire",
+    "name": "Akkadian Empire",
+    "startYear": -2334,
+    "endYear": -2154,
+    "description": "Founded by Sargon of Akkad, often called the first empire, uniting the city-states of Mesopotamia.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 5,
+    "kind": "empire",
+    "approximate": true
+  },
+  {
+    "id": "shang-dynasty",
+    "name": "Shang Dynasty",
+    "startYear": -1600,
+    "endYear": -1046,
+    "description": "The first Chinese dynasty with written records, known for bronze work and oracle-bone inscriptions.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 6,
+    "kind": "empire",
+    "approximate": true
+  },
+  {
+    "id": "new-kingdom-egypt",
+    "name": "New Kingdom of Egypt",
+    "startYear": -1550,
+    "endYear": -1070,
+    "description": "Egypt's imperial age of Hatshepsut, Akhenaten, Tutankhamun and Ramesses II.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Africa",
+    "importance": 6,
+    "kind": "empire",
+    "approximate": true
+  },
+  {
+    "id": "zhou-dynasty",
+    "name": "Zhou Dynasty",
+    "startYear": -1046,
+    "endYear": -256,
+    "description": "China's longest dynasty; its later years saw Confucius, Laozi and the Warring States.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 6,
+    "kind": "empire",
+    "approximate": true
+  },
+  {
+    "id": "achaemenid-empire",
+    "name": "Achaemenid Persian Empire",
+    "startYear": -550,
+    "endYear": -330,
+    "description": "Founded by Cyrus the Great, the largest empire of its time, stretching from the Indus to Egypt and Greece.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 8,
+    "kind": "empire"
+  },
+  {
+    "id": "roman-republic",
+    "name": "Roman Republic",
+    "startYear": -509,
+    "endYear": -27,
+    "description": "Rome governed by elected magistrates and the Senate, expanding across the Mediterranean.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 7,
+    "kind": "empire"
+  },
+  {
+    "id": "persian-wars",
+    "name": "Greco-Persian Wars",
+    "startYear": -499,
+    "endYear": -449,
+    "description": "Series of conflicts between Greek city-states and the Persian Empire",
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "peloponnesian-war",
+    "name": "Peloponnesian War",
+    "startYear": -431,
+    "endYear": -404,
+    "description": "War between Athens and Sparta that reshaped ancient Greece",
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 3,
+    "kind": "period"
+  },
+  {
+    "id": "alexanders-conquests",
+    "name": "Conquests of Alexander the Great",
+    "startYear": -334,
+    "endYear": -323,
+    "description": "Military campaigns that created one of the largest empires of the ancient world",
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "maurya-empire",
+    "name": "Maurya Empire",
+    "startYear": -322,
+    "endYear": -185,
+    "description": "Founded by Chandragupta Maurya; under Ashoka it covered most of the Indian subcontinent and spread Buddhism.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 8,
+    "kind": "empire"
+  },
+  {
+    "id": "punic-wars",
+    "name": "Punic Wars",
+    "startYear": -264,
+    "endYear": -146,
+    "description": "Three wars between Rome and Carthage for control of the western Mediterranean",
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "construction-great-wall",
+    "name": "Construction of the Great Wall of China",
+    "startYear": -221,
+    "endYear": -206,
+    "description": "Qin Dynasty unified and extended earlier walls into a massive defensive fortification",
+    "categories": [
+      "Culture"
+    ],
+    "region": "East Asia",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "han-dynasty",
+    "name": "Han Dynasty",
+    "startYear": -206,
+    "endYear": 220,
+    "description": "A golden age that gave the Chinese people their name, opened the Silk Road and invented paper.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 8,
+    "kind": "empire"
+  },
+  {
+    "id": "fall-of-roman-republic",
+    "name": "Fall of the Roman Republic",
+    "startYear": -133,
+    "endYear": -27,
+    "description": "Period of political upheaval leading to the end of the Roman Republic and rise of the Empire",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "pax-romana",
+    "name": "Pax Romana",
+    "startYear": -27,
+    "endYear": 180,
+    "description": "Period of relative peace and stability across the Roman Empire",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "roman-empire",
+    "name": "Roman Empire",
+    "startYear": -27,
+    "endYear": 476,
+    "description": "From Augustus to the fall of the West, Rome ruled the Mediterranean world and shaped European law, language and culture.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 9,
+    "kind": "empire"
+  },
+  {
+    "id": "classic-maya",
+    "name": "Classic Maya",
+    "startYear": 250,
+    "endYear": 900,
+    "description": "City-states such as Tikal and Palenque flourished with monumental pyramids, writing and astronomy.",
+    "categories": [
+      "Culture",
+      "Politics"
+    ],
+    "region": "Americas",
+    "importance": 6,
+    "kind": "empire",
+    "approximate": true
+  },
+  {
+    "id": "gupta-empire",
+    "name": "Gupta Empire",
+    "startYear": 320,
+    "endYear": 550,
+    "description": "India's classical age of mathematics, astronomy, literature and art; the decimal system and zero took shape.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 8,
+    "kind": "empire",
+    "approximate": true
+  },
+  {
+    "id": "byzantine-empire",
+    "name": "Byzantine Empire",
+    "startYear": 330,
+    "endYear": 1453,
+    "description": "The eastern Roman Empire, ruled from Constantinople, preserving Greek and Roman learning for a thousand years.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 8,
+    "kind": "empire"
+  },
+  {
+    "id": "fall-western-roman-empire",
+    "name": "Fall of the Western Roman Empire",
+    "startYear": 395,
+    "endYear": 476,
+    "description": "Decline and collapse of the western half of the Roman Empire",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "tang-dynasty",
+    "name": "Tang Dynasty",
+    "startYear": 618,
+    "endYear": 907,
+    "description": "A cosmopolitan golden age of Chinese poetry, trade and woodblock printing.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 7,
+    "kind": "empire"
+  },
+  {
+    "id": "umayyad-caliphate",
+    "name": "Umayyad Caliphate",
+    "startYear": 661,
+    "endYear": 750,
+    "description": "The first hereditary Islamic dynasty, ruling from Damascus over lands from Spain to Central Asia.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 6,
+    "kind": "empire"
+  },
+  {
+    "id": "islamic-golden-age",
+    "name": "Islamic Golden Age",
+    "startYear": 750,
+    "endYear": 1258,
+    "description": "Period of cultural, economic, and scientific flourishing in the Islamic world",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Middle East",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "abbasid-caliphate",
+    "name": "Abbasid Caliphate",
+    "startYear": 750,
+    "endYear": 1258,
+    "description": "Ruled from Baghdad, home of the House of Wisdom and the Islamic Golden Age, until the Mongols sacked the city.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 7,
+    "kind": "empire"
+  },
+  {
+    "id": "viking-age",
+    "name": "Viking Age",
+    "startYear": 793,
+    "endYear": 1066,
+    "description": "Period of Norse exploration, expansion, and raids across Europe",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "holy-roman-empire",
+    "name": "Holy Roman Empire",
+    "startYear": 800,
+    "endYear": 1806,
+    "description": "A union of central European territories, from Charlemagne's coronation until Napoleon dissolved it.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "empire"
+  },
+  {
+    "id": "chola-empire",
+    "name": "Chola Empire",
+    "startYear": 848,
+    "endYear": 1279,
+    "description": "A south Indian maritime empire whose navy reached Sri Lanka and Southeast Asia; builders of great temples.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 6,
+    "kind": "empire",
+    "approximate": true
+  },
+  {
+    "id": "song-dynasty",
+    "name": "Song Dynasty",
+    "startYear": 960,
+    "endYear": 1279,
+    "description": "An age of invention in China, with movable type, the compass, gunpowder weapons and paper money.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 7,
+    "kind": "empire"
+  },
+  {
+    "id": "crusades",
+    "name": "The Crusades",
+    "startYear": 1096,
+    "endYear": 1291,
+    "description": "Series of religious wars sanctioned by the Latin Church to recover the Holy Land",
+    "categories": [
+      "War"
+    ],
+    "region": "Middle East",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "mongol-conquests",
+    "name": "Mongol Conquests",
+    "startYear": 1206,
+    "endYear": 1368,
+    "description": "Rapid expansion of the Mongol Empire across Asia and Europe",
+    "categories": [
+      "War"
+    ],
+    "region": "East Asia",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "delhi-sultanate",
+    "name": "Delhi Sultanate",
+    "startYear": 1206,
+    "endYear": 1526,
+    "description": "A series of five dynasties ruling much of northern India from Delhi until the Mughal conquest.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 7,
+    "kind": "empire"
+  },
+  {
+    "id": "mali-empire",
+    "name": "Mali Empire",
+    "startYear": 1235,
+    "endYear": 1600,
+    "description": "A West African empire grown rich on gold and salt trade; Timbuktu became a centre of learning.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Africa",
+    "importance": 6,
+    "kind": "empire",
+    "approximate": true
+  },
+  {
+    "id": "ottoman-empire",
+    "name": "Ottoman Empire",
+    "startYear": 1299,
+    "endYear": 1922,
+    "description": "From Anatolia it grew to rule southeastern Europe, the Middle East and North Africa for six centuries.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 8,
+    "kind": "empire"
+  },
+  {
+    "id": "vijayanagara-empire",
+    "name": "Vijayanagara Empire",
+    "startYear": 1336,
+    "endYear": 1646,
+    "description": "A south Indian empire centred on its capital at Hampi, a great Hindu power of the age.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 5,
+    "kind": "empire"
+  },
+  {
+    "id": "black-death",
+    "name": "The Black Death",
+    "startYear": 1347,
+    "endYear": 1353,
+    "description": "Devastating pandemic of bubonic plague that killed an estimated one-third of Europe's population",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "ming-dynasty",
+    "name": "Ming Dynasty",
+    "startYear": 1368,
+    "endYear": 1644,
+    "description": "Built the Forbidden City and most of today's Great Wall; Zheng He's fleets sailed to Africa.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 8,
+    "kind": "empire"
+  },
+  {
+    "id": "italian-renaissance",
+    "name": "Italian Renaissance",
+    "startYear": 1400,
+    "endYear": 1600,
+    "description": "Cultural movement that profoundly affected European intellectual life with advances in art, architecture, and science",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "aztec-empire",
+    "name": "Aztec Empire",
+    "startYear": 1428,
+    "endYear": 1521,
+    "description": "A Mesoamerican empire ruled from Tenochtitlan, conquered by Hernán Cortés.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Americas",
+    "importance": 6,
+    "kind": "empire"
+  },
+  {
+    "id": "inca-empire",
+    "name": "Inca Empire",
+    "startYear": 1438,
+    "endYear": 1533,
+    "description": "The largest empire in the pre-Columbian Americas, linked by roads along the Andes; conquered by Pizarro.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Americas",
+    "importance": 6,
+    "kind": "empire"
+  },
+  {
+    "id": "gutenberg-printing-press",
+    "name": "Gutenberg's Printing Press",
+    "startYear": 1440,
+    "endYear": 1455,
+    "description": "Development of movable-type printing in Europe, revolutionizing the spread of knowledge",
+    "categories": [
+      "Science"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "age-of-exploration",
+    "name": "Age of Exploration",
+    "startYear": 1492,
+    "endYear": 1600,
+    "description": "European exploration and colonization of the Americas, Africa, and Asia",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Global",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "safavid-empire",
+    "name": "Safavid Empire",
+    "startYear": 1501,
+    "endYear": 1736,
+    "description": "A Persian dynasty that made Shia Islam the state religion of Iran.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 5,
+    "kind": "empire"
+  },
+  {
+    "id": "protestant-reformation",
+    "name": "Protestant Reformation",
+    "startYear": 1517,
+    "endYear": 1648,
+    "description": "Religious reform movement that led to the creation of Protestant churches",
+    "categories": [
+      "Culture",
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "mughal-empire",
+    "name": "Mughal Empire",
+    "startYear": 1526,
+    "endYear": 1857,
+    "description": "Islamic empire that ruled much of the Indian subcontinent",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 8,
+    "kind": "empire"
+  },
+  {
+    "id": "scientific-revolution",
+    "name": "Scientific Revolution",
+    "startYear": 1543,
+    "endYear": 1687,
+    "description": "Period of major advances in mathematics, physics, astronomy, and biology",
+    "categories": [
+      "Science"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "tokugawa-shogunate",
+    "name": "Tokugawa Shogunate",
+    "startYear": 1603,
+    "endYear": 1868,
+    "description": "Two and a half centuries of peace and isolation in Japan under military rulers, ended by the Meiji Restoration.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 6,
+    "kind": "empire"
+  },
+  {
+    "id": "construction-taj-mahal",
+    "name": "Construction of the Taj Mahal",
+    "startYear": 1632,
+    "endYear": 1653,
+    "description": "Construction of the iconic marble mausoleum in Agra, India",
+    "categories": [
+      "Culture"
+    ],
+    "region": "South Asia",
+    "importance": 3,
+    "kind": "period"
+  },
+  {
+    "id": "english-civil-war",
+    "name": "English Civil War",
+    "startYear": 1642,
+    "endYear": 1651,
+    "description": "Series of civil wars between Parliamentarians and Royalists over governance of England",
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "qing-dynasty",
+    "name": "Qing Dynasty",
+    "startYear": 1644,
+    "endYear": 1912,
+    "description": "China's last imperial dynasty, founded by the Manchus and ended by the 1911 revolution.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 8,
+    "kind": "empire"
+  },
+  {
+    "id": "maratha-empire",
+    "name": "Maratha Empire",
+    "startYear": 1674,
+    "endYear": 1818,
+    "description": "Founded by Shivaji, it came to dominate much of India before falling to the British East India Company.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 5,
+    "kind": "empire"
+  },
+  {
+    "id": "glorious-revolution",
+    "name": "Glorious Revolution",
+    "startYear": 1688,
+    "endYear": 1689,
+    "description": "Overthrow of King James II of England by William of Orange",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "industrial-revolution",
+    "name": "Industrial Revolution",
+    "startYear": 1760,
+    "endYear": 1840,
+    "description": "Transition from agrarian economies to industrial manufacturing in Britain and beyond",
+    "categories": [
+      "Science",
+      "Culture"
+    ],
+    "region": "Europe",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "american-revolution",
+    "name": "American Revolution",
+    "startYear": 1775,
+    "endYear": 1783,
+    "description": "Colonial revolt that led to the independence of the United States",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Americas",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "french-revolution",
+    "name": "French Revolution",
+    "startYear": 1789,
+    "endYear": 1799,
+    "description": "Political upheaval in France that overthrew the monarchy and established a republic",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "haitian-revolution",
+    "name": "Haitian Revolution",
+    "startYear": 1791,
+    "endYear": 1804,
+    "description": "Successful slave revolt that established Haiti as the first free black republic",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Americas",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "napoleonic-wars",
+    "name": "Napoleonic Wars",
+    "startYear": 1803,
+    "endYear": 1815,
+    "description": "Series of conflicts involving Napoleon's French Empire against European coalitions",
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "latin-american-independence",
+    "name": "Latin American Wars of Independence",
+    "startYear": 1808,
+    "endYear": 1833,
+    "description": "Series of revolutions that freed most of Latin America from Spanish and Portuguese rule",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Americas",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "opium-wars",
+    "name": "Opium Wars",
+    "startYear": 1839,
+    "endYear": 1860,
+    "description": "Conflicts between China and Western powers over trade and sovereignty",
+    "categories": [
+      "War"
+    ],
+    "region": "East Asia",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "california-gold-rush",
+    "name": "California Gold Rush",
+    "startYear": 1848,
+    "endYear": 1855,
+    "description": "Mass migration to California after gold was discovered at Sutter's Mill",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Americas",
+    "importance": 3,
+    "kind": "period"
+  },
+  {
+    "id": "british-raj",
+    "name": "British Raj",
+    "startYear": 1858,
+    "endYear": 1947,
+    "description": "Direct British Crown rule over the Indian subcontinent, from the 1857 rebellion until independence and partition.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 7,
+    "kind": "empire"
+  },
+  {
+    "id": "american-civil-war",
+    "name": "American Civil War",
+    "startYear": 1861,
+    "endYear": 1865,
+    "description": "War between the Union and Confederate states over slavery and states' rights",
+    "categories": [
+      "War"
+    ],
+    "region": "Americas",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "meiji-restoration",
+    "name": "Meiji Restoration",
+    "startYear": 1868,
+    "endYear": 1912,
+    "description": "Modernization of Japan under Emperor Meiji, transforming it into an industrial power",
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "scramble-for-africa",
+    "name": "Scramble for Africa",
+    "startYear": 1881,
+    "endYear": 1914,
+    "description": "Rapid colonization of the African continent by European powers",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Africa",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "construction-eiffel-tower",
+    "name": "Construction of the Eiffel Tower",
+    "startYear": 1887,
+    "endYear": 1889,
+    "description": "Building of the iconic iron lattice tower in Paris for the 1889 World's Fair",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Europe",
+    "importance": 3,
+    "kind": "period"
+  },
+  {
+    "id": "boxer-rebellion",
+    "name": "Boxer Rebellion",
+    "startYear": 1899,
+    "endYear": 1901,
+    "description": "Anti-foreign uprising in China suppressed by an international coalition",
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 3,
+    "kind": "period"
+  },
+  {
+    "id": "russo-japanese-war",
+    "name": "Russo-Japanese War",
+    "startYear": 1904,
+    "endYear": 1905,
+    "description": "Military conflict in which Japan defeated Russia, shifting power dynamics in East Asia",
+    "categories": [
+      "War"
+    ],
+    "region": "East Asia",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "world-war-1",
+    "name": "World War I",
+    "startYear": 1914,
+    "endYear": 1918,
+    "description": "Global conflict centered in Europe involving the Allied and Central Powers",
+    "categories": [
+      "War"
+    ],
+    "region": "Global",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "russian-revolution",
+    "name": "Russian Revolution",
+    "startYear": 1917,
+    "endYear": 1923,
+    "description": "Revolution that overthrew the Russian monarchy and established the Soviet Union",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "spanish-flu",
+    "name": "Spanish Flu Pandemic",
+    "startYear": 1918,
+    "endYear": 1920,
+    "description": "Deadly influenza pandemic that infected a third of the world's population",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Global",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "indian-independence",
+    "name": "Indian Independence Movement",
+    "startYear": 1920,
+    "endYear": 1947,
+    "description": "Movement led by Gandhi and others that achieved Indian independence from British rule",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "soviet-union",
+    "name": "Soviet Union",
+    "startYear": 1922,
+    "endYear": 1991,
+    "description": "The communist state formed after the Russian Revolution, a superpower of the Cold War until its dissolution.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 8,
+    "kind": "empire"
+  },
+  {
+    "id": "chinese-civil-war",
+    "name": "Chinese Civil War",
+    "startYear": 1927,
+    "endYear": 1949,
+    "description": "War between the Nationalists and Communists that established the People's Republic of China",
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "great-depression",
+    "name": "The Great Depression",
+    "startYear": 1929,
+    "endYear": 1939,
+    "description": "Severe worldwide economic downturn that began with the US stock market crash",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Global",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "spanish-civil-war",
+    "name": "Spanish Civil War",
+    "startYear": 1936,
+    "endYear": 1939,
+    "description": "Civil war between Republicans and Nationalists led by Francisco Franco",
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "world-war-2",
+    "name": "World War II",
+    "startYear": 1939,
+    "endYear": 1945,
+    "description": "Global conflict between the Allies and the Axis powers",
+    "categories": [
+      "War"
+    ],
+    "region": "Global",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "the-holocaust",
+    "name": "The Holocaust",
+    "startYear": 1941,
+    "endYear": 1945,
+    "description": "Systematic genocide of six million Jews by Nazi Germany",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "manhattan-project",
+    "name": "Manhattan Project",
+    "startYear": 1942,
+    "endYear": 1946,
+    "description": "Secret research program that developed the first nuclear weapons",
+    "categories": [
+      "Science"
+    ],
+    "region": "Americas",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "korean-war",
+    "name": "Korean War",
+    "startYear": 1950,
+    "endYear": 1953,
+    "description": "War between North and South Korea involving international forces",
+    "categories": [
+      "War"
+    ],
+    "region": "East Asia",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "cuban-revolution",
+    "name": "Cuban Revolution",
+    "startYear": 1953,
+    "endYear": 1959,
+    "description": "Armed revolt led by Fidel Castro that overthrew the Batista regime",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Americas",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "civil-rights-movement",
+    "name": "American Civil Rights Movement",
+    "startYear": 1954,
+    "endYear": 1968,
+    "description": "Movement to end racial segregation and discrimination in the United States",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Americas",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "vietnam-war",
+    "name": "Vietnam War",
+    "startYear": 1955,
+    "endYear": 1975,
+    "description": "Prolonged conflict between communist North Vietnam and US-backed South Vietnam",
+    "categories": [
+      "War"
+    ],
+    "region": "Southeast Asia",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "space-race",
+    "name": "Space Race",
+    "startYear": 1957,
+    "endYear": 1969,
+    "description": "Competition between the USA and USSR for spaceflight supremacy",
+    "categories": [
+      "Science"
+    ],
+    "region": "Global",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "construction-sydney-opera",
+    "name": "Construction of the Sydney Opera House",
+    "startYear": 1959,
+    "endYear": 1973,
+    "description": "Building of the iconic performing arts center in Sydney, Australia",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Oceania",
+    "importance": 3,
+    "kind": "period"
+  },
+  {
+    "id": "cultural-revolution",
+    "name": "Chinese Cultural Revolution",
+    "startYear": 1966,
+    "endYear": 1976,
+    "description": "Sociopolitical movement launched by Mao Zedong to enforce communism",
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "watergate-scandal",
+    "name": "Watergate Scandal",
+    "startYear": 1972,
+    "endYear": 1974,
+    "description": "Political scandal that led to the resignation of US President Richard Nixon",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Americas",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "iranian-revolution",
+    "name": "Iranian Revolution",
+    "startYear": 1978,
+    "endYear": 1979,
+    "description": "Revolution that overthrew the Shah and established an Islamic republic",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "soviet-afghan-war",
+    "name": "Soviet-Afghan War",
+    "startYear": 1979,
+    "endYear": 1989,
+    "description": "Soviet military intervention in Afghanistan that became a prolonged guerrilla conflict",
+    "categories": [
+      "War"
+    ],
+    "region": "South Asia",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "apartheid-end",
+    "name": "End of Apartheid",
+    "startYear": 1990,
+    "endYear": 1994,
+    "description": "Dismantling of the apartheid system in South Africa, culminating in democratic elections",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Africa",
+    "importance": 8,
+    "kind": "period"
+  },
+  {
+    "id": "human-genome-project",
+    "name": "Human Genome Project",
+    "startYear": 1990,
+    "endYear": 2003,
+    "description": "International research project to map all human genes",
+    "categories": [
+      "Science"
+    ],
+    "region": "Global",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "bosnian-war",
+    "name": "Bosnian War",
+    "startYear": 1992,
+    "endYear": 1995,
+    "description": "Ethnic conflict in Bosnia and Herzegovina following the breakup of Yugoslavia",
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "dot-com-bubble",
+    "name": "Dot-com Bubble",
+    "startYear": 1995,
+    "endYear": 2001,
+    "description": "Speculative bubble in internet-related companies that burst in 2000",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Global",
+    "importance": 3,
+    "kind": "period"
+  },
+  {
+    "id": "war-on-terror",
+    "name": "War on Terror",
+    "startYear": 2001,
+    "endYear": 2021,
+    "description": "Global military campaign against terrorist organizations following the September 11 attacks",
+    "categories": [
+      "War"
+    ],
+    "region": "Global",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "iraq-war",
+    "name": "Iraq War",
+    "startYear": 2003,
+    "endYear": 2011,
+    "description": "US-led invasion and occupation of Iraq",
+    "categories": [
+      "War"
+    ],
+    "region": "Middle East",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "arab-spring",
+    "name": "Arab Spring",
+    "startYear": 2010,
+    "endYear": 2012,
+    "description": "Wave of pro-democracy protests and uprisings across the Arab world",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 5,
+    "kind": "period"
+  },
+  {
+    "id": "covid-19-pandemic",
+    "name": "COVID-19 Pandemic",
+    "startYear": 2020,
+    "endYear": 2023,
+    "description": "Global pandemic caused by the SARS-CoV-2 virus",
+    "categories": [
+      "Culture"
+    ],
+    "region": "Global",
+    "importance": 8,
+    "kind": "period"
+  }
+]
