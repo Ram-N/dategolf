@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS entities (
   id               TEXT PRIMARY KEY,               -- stable semantic slug
   primary_type     TEXT NOT NULL,                  -- event | period | empire | era | ...
   editorial_status TEXT NOT NULL DEFAULT 'draft',  -- imported | needs_review_identity | draft | reviewed
+                                                   -- | proposed (NOT exported until changed)
   created_at       TEXT DEFAULT (datetime('now')), -- NULL = came from the legacy import
   updated_at       TEXT
 );
@@ -191,6 +192,23 @@ FROM legacy_csv_crosswalk x
 JOIN legacy_csv_rows c ON c.event_id = x.csv_event_id
 JOIN events e ON e.entity_id = x.entity_id
 ORDER BY c.row_number, x.rank;
+
+-- Where a non-imported entity came from. AI-drafted content is never verified by default.
+CREATE TABLE IF NOT EXISTS entity_provenance (
+  entity_id    TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
+  origin       TEXT NOT NULL,                      -- e.g. ai_drafted_from_csv
+  csv_event_id INTEGER REFERENCES legacy_csv_rows(event_id),
+  note         TEXT                                -- what a reviewer should check
+);
+
+-- Outcome for CSV rows that match no existing event.
+CREATE TABLE IF NOT EXISTS legacy_csv_triage (
+  csv_event_id      INTEGER PRIMARY KEY REFERENCES legacy_csv_rows(event_id),
+  outcome           TEXT NOT NULL CHECK (outcome IN
+                      ('drafted', 'duplicate_of_existing', 'not_recommended')),
+  related_entity_id TEXT REFERENCES entities(id) ON DELETE SET NULL,
+  note              TEXT
+);
 
 -- ── Change tracking ─────────────────────────────────────────────────────────
 

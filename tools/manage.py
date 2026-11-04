@@ -5,6 +5,7 @@ import json
 import subprocess
 import sys
 
+import drafts
 import exporter
 import importer
 import reconcile
@@ -120,6 +121,19 @@ def coverage(args):
     return 0
 
 
+def approve(args):
+    """Publish proposed entities: they are exported from the next export-json on."""
+    conn = connect()
+    for entity_id in args.ids:
+        cur = conn.execute("UPDATE entities SET editorial_status = 'reviewed', "
+                           "updated_at = datetime('now') "
+                           "WHERE id = ? AND editorial_status = 'proposed'", (entity_id,))
+        print(f"  {'✓ approved' if cur.rowcount else '✗ not a proposed entity:'} {entity_id}")
+    conn.commit()
+    conn.close()
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(prog="manage.py", description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -138,6 +152,14 @@ def main():
 
     sub.add_parser("reconcile-events", help="Propose CSV row ↔ event matches for review"
                    ).set_defaults(fn=lambda a: reconcile.run())
+
+    p = sub.add_parser("load-drafts", help="Load drafted events as proposed (not exported)")
+    p.add_argument("path")
+    p.set_defaults(fn=lambda a: drafts.load(a.path))
+
+    p = sub.add_parser("approve", help="Mark proposed entities reviewed so they export")
+    p.add_argument("ids", nargs="+")
+    p.set_defaults(fn=approve)
 
     p = sub.add_parser("coverage", help="Events per time bin × region")
     p.add_argument("--bin", type=int, default=500, help="Bin width in years (default 500)")

@@ -40,6 +40,15 @@ CHECKS = [
      "SELECT date_key, COUNT(*) FROM daily_challenges GROUP BY date_key HAVING COUNT(*) <> 5"),
     ("error", "Empty event name or description",
      "SELECT entity_id, name FROM events WHERE trim(name) = '' OR trim(description) = ''"),
+    ("error", "Milestone or DateLinks content on a proposed (unexported) entity",
+     "SELECT entity_id, 'milestone' FROM milestone_designations WHERE entity_id IN "
+     "(SELECT id FROM entities WHERE editorial_status = 'proposed') UNION "
+     "SELECT entity_id, 'datelinks' FROM learning_content_groups WHERE entity_id IN "
+     "(SELECT id FROM entities WHERE editorial_status = 'proposed')"),
+    ("warning", "Event name contains a 4-digit year (gives the answer away)",
+     "SELECT entity_id, name FROM events WHERE name GLOB '*[0-9][0-9][0-9][0-9]*'"),
+    ("warning", "Alias contains a 4-digit year (search would reveal the answer)",
+     "SELECT entity_id, alias FROM event_aliases WHERE alias GLOB '*[0-9][0-9][0-9][0-9]*'"),
     ("warning", "Time spans with the same normalised name",
      "SELECT group_concat(entity_id, ', '), lower(trim(name)) FROM time_spans "
      "GROUP BY lower(trim(name)) HAVING COUNT(*) > 1"),
@@ -54,10 +63,20 @@ CHECKS = [
      "(SELECT source_key FROM import_records)"),
     ("review", "Event + time span share one ID (identity decision needed)",
      "SELECT id, primary_type FROM entities WHERE editorial_status = 'needs_review_identity'"),
-    ("review", "Legacy CSV rows with no accepted event match",
+    ("review", "Legacy CSV rows with no accepted match and no triage outcome",
      "SELECT 'events_master.csv', COUNT(*) || ' rows (manage.py reconcile-events proposes)' "
      "FROM legacy_csv_rows WHERE event_id NOT IN (SELECT csv_event_id FROM "
-     "legacy_csv_crosswalk WHERE decision = 'accepted') HAVING COUNT(*) > 0"),
+     "legacy_csv_crosswalk WHERE decision = 'accepted') "
+     "AND event_id NOT IN (SELECT csv_event_id FROM legacy_csv_triage) HAVING COUNT(*) > 0"),
+    ("review", "Proposed events awaiting approval (not exported; manage.py approve <id>)",
+     "SELECT e.id, ev.year || ' · ' || ev.name || coalesce(' — ' || p.note, '') "
+     "FROM entities e JOIN events ev ON ev.entity_id = e.id "
+     "LEFT JOIN entity_provenance p ON p.entity_id = e.id "
+     "WHERE e.editorial_status = 'proposed' ORDER BY p.note IS NULL, ev.year"),
+    ("review", "CSV rows triaged as duplicate / not recommended (incl. date conflicts)",
+     "SELECT 'csv ' || csv_event_id, outcome || coalesce(' → ' || related_entity_id, '') "
+     "|| coalesce(' — ' || note, '') FROM legacy_csv_triage "
+     "WHERE outcome <> 'drafted' ORDER BY note NOT LIKE 'DATE CONFLICT%', csv_event_id"),
     ("review", "Legacy region labels (no reviewed hierarchy yet)",
      "SELECT region, COUNT(*) || ' records' FROM (SELECT region FROM events UNION ALL "
      "SELECT region FROM time_spans WHERE region IS NOT NULL) GROUP BY region ORDER BY 2 DESC"),

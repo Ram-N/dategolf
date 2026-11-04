@@ -8,6 +8,8 @@ from pathlib import Path
 from common import APP_FILES, DUMP_PATH, ROOT, connect
 
 NULLS_LAST = "position IS NULL, position"
+# Proposed entities (e.g. AI drafts) stay out of the app until a reviewer changes their status.
+PUBLISHED = "entity_id NOT IN (SELECT id FROM entities WHERE editorial_status = 'proposed')"
 
 
 def dumps(data):
@@ -22,7 +24,8 @@ def categories(conn, entity_id, facet):
 
 def render_events(conn):
     out = []
-    for e in conn.execute(f"SELECT * FROM events ORDER BY year, {NULLS_LAST}, entity_id"):
+    for e in conn.execute(f"SELECT * FROM events WHERE {PUBLISHED} "
+                          f"ORDER BY year, {NULLS_LAST}, entity_id"):
         aliases = [r["alias"] for r in conn.execute(
             "SELECT alias FROM event_aliases WHERE entity_id = ? ORDER BY position",
             (e["entity_id"],))]
@@ -42,7 +45,7 @@ def render_events(conn):
 
 def render_durations(conn):
     out = []
-    for s in conn.execute(f"SELECT * FROM time_spans WHERE kind <> 'era' "
+    for s in conn.execute(f"SELECT * FROM time_spans WHERE kind <> 'era' AND {PUBLISHED} "
                           f"ORDER BY start_year, {NULLS_LAST}, entity_id"):
         rec = {
             "id": s["entity_id"],
