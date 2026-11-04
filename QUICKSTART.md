@@ -218,6 +218,7 @@ Inspect deployments: https://vercel.com/ram-ns-projects/dategolf
 | `validate` | Integrity checks → `data/reports/validate.md` |
 | `export-json` | db → app JSON + `dategolf.sql` |
 | `compare-export` | Proves a fresh export is byte-identical to committed files |
+| `reconcile-events` | Proposes CSV row ↔ event matches → `legacy_csv_crosswalk` + `data/reports/reconciliation.md`. Review in the `v_csv_crosswalk_review` view and set `decision` to `accepted`/`rejected`. Re-runs keep decided pairs. |
 | `coverage [--bin N]` | Events per N-year bin × region → `data/reports/coverage.md` |
 | `import-legacy --force` | **Rebuilds the db from `data/legacy/` and wipes edits.** Only for re-running the migration. |
 

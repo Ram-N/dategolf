@@ -2,7 +2,7 @@
 
 import json
 
-from common import LEGACY, REPORTS, connect
+from common import LEGACY, REPORTS, connect, ensure_schema
 
 # (severity, check, SQL returning offending rows as (key, detail))
 CHECKS = [
@@ -54,8 +54,10 @@ CHECKS = [
      "(SELECT source_key FROM import_records)"),
     ("review", "Event + time span share one ID (identity decision needed)",
      "SELECT id, primary_type FROM entities WHERE editorial_status = 'needs_review_identity'"),
-    ("review", "Legacy CSV rows not yet reconciled with events",
-     "SELECT 'events_master.csv', COUNT(*) || ' rows' FROM legacy_csv_rows"),
+    ("review", "Legacy CSV rows with no accepted event match",
+     "SELECT 'events_master.csv', COUNT(*) || ' rows (manage.py reconcile-events proposes)' "
+     "FROM legacy_csv_rows WHERE event_id NOT IN (SELECT csv_event_id FROM "
+     "legacy_csv_crosswalk WHERE decision = 'accepted') HAVING COUNT(*) > 0"),
     ("review", "Legacy region labels (no reviewed hierarchy yet)",
      "SELECT region, COUNT(*) || ' records' FROM (SELECT region FROM events UNION ALL "
      "SELECT region FROM time_spans WHERE region IS NOT NULL) GROUP BY region ORDER BY 2 DESC"),
@@ -79,6 +81,7 @@ COUNT_SQL = {
 
 def run():
     conn = connect()
+    ensure_schema(conn)
     results = []
 
     integrity = conn.execute("PRAGMA integrity_check").fetchone()[0]

@@ -7,6 +7,7 @@ import sys
 
 import exporter
 import importer
+import reconcile
 import validate
 from common import APP_FILES, LEGACY, LEGACY_CSV, REPORTS, ROOT, connect
 
@@ -134,6 +135,9 @@ def main():
         fn=lambda a: exporter.run())
     sub.add_parser("compare-export", help="Diff a fresh export against committed files"
                    ).set_defaults(fn=compare_export)
+
+    sub.add_parser("reconcile-events", help="Propose CSV row ↔ event matches for review"
+                   ).set_defaults(fn=lambda a: reconcile.run())
 
     p = sub.add_parser("coverage", help="Events per time bin × region")
     p.add_argument("--bin", type=int, default=500, help="Bin width in years (default 500)")

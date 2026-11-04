@@ -1,18 +1,19 @@
 -- DateFlow source-of-truth schema (Lean v1).
--- Year convention: signed integers, -1 = 1 BCE, 1 = 1 CE. There is no year 0.
+-- Every statement is IF NOT EXISTS so additive changes can be applied to a live db
+-- (common.ensure_schema). Year convention: signed integers, -1 = 1 BCE, 1 = 1 CE. There is no year 0.
 -- Export ordering: events by (year, position), spans by (start_year, position).
 -- A NULL position sorts last, so rows added in a GUI don't need one.
 
 PRAGMA foreign_keys = ON;
 
-CREATE TABLE meta (
+CREATE TABLE IF NOT EXISTS meta (
   key   TEXT PRIMARY KEY,
   value TEXT NOT NULL
 );
 
 -- ── Identity ────────────────────────────────────────────────────────────────
 
-CREATE TABLE entities (
+CREATE TABLE IF NOT EXISTS entities (
   id               TEXT PRIMARY KEY,               -- stable semantic slug
   primary_type     TEXT NOT NULL,                  -- event | period | empire | era | ...
   editorial_status TEXT NOT NULL DEFAULT 'draft',  -- imported | needs_review_identity | draft | reviewed
@@ -22,7 +23,7 @@ CREATE TABLE entities (
 
 -- ── Facets ──────────────────────────────────────────────────────────────────
 
-CREATE TABLE events (
+CREATE TABLE IF NOT EXISTS events (
   entity_id      TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   name           TEXT NOT NULL UNIQUE,
   year           INTEGER NOT NULL CHECK (year <> 0),
@@ -36,14 +37,14 @@ CREATE TABLE events (
   position       INTEGER
 );
 
-CREATE TABLE event_aliases (
+CREATE TABLE IF NOT EXISTS event_aliases (
   entity_id TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   position  INTEGER NOT NULL,
   alias     TEXT NOT NULL,
   PRIMARY KEY (entity_id, position)
 );
 
-CREATE TABLE time_spans (
+CREATE TABLE IF NOT EXISTS time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json
   name        TEXT NOT NULL,
@@ -59,12 +60,12 @@ CREATE TABLE time_spans (
 
 -- ── Categories ──────────────────────────────────────────────────────────────
 
-CREATE TABLE categories (
+CREATE TABLE IF NOT EXISTS categories (
   label TEXT PRIMARY KEY                           -- the 12 legacy labels for now
 );
 
 -- Same entity can carry different categories as an event and as a span.
-CREATE TABLE entity_categories (
+CREATE TABLE IF NOT EXISTS entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   facet     TEXT NOT NULL CHECK (facet IN ('event', 'span')),
   position  INTEGER NOT NULL,                      -- 0 = primary
@@ -74,7 +75,7 @@ CREATE TABLE entity_categories (
 );
 
 -- Filled in by the taxonomy step (8 planned top-level categories).
-CREATE TABLE category_mappings (
+CREATE TABLE IF NOT EXISTS category_mappings (
   legacy_label    TEXT NOT NULL REFERENCES categories(label) ON UPDATE CASCADE,
   target_category TEXT NOT NULL,
   status          TEXT NOT NULL DEFAULT 'needs_review',
@@ -85,7 +86,7 @@ CREATE TABLE category_mappings (
 -- ── Learning content (DateLinks) ────────────────────────────────────────────
 
 -- Entity order in datelinks.json follows the lowest group id.
-CREATE TABLE learning_content_groups (
+CREATE TABLE IF NOT EXISTS learning_content_groups (
   id            INTEGER PRIMARY KEY,
   entity_id     TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   label         TEXT NOT NULL,                     -- original label, verbatim
@@ -93,7 +94,7 @@ CREATE TABLE learning_content_groups (
   UNIQUE (entity_id, display_order)
 );
 
-CREATE TABLE learning_content_items (
+CREATE TABLE IF NOT EXISTS learning_content_items (
   id               INTEGER PRIMARY KEY,
   group_id         INTEGER NOT NULL REFERENCES learning_content_groups(id) ON DELETE CASCADE,
   display_order    INTEGER NOT NULL,
@@ -104,7 +105,7 @@ CREATE TABLE learning_content_items (
 
 -- ── Designations ────────────────────────────────────────────────────────────
 
-CREATE TABLE milestone_designations (
+CREATE TABLE IF NOT EXISTS milestone_designations (
   entity_id     TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   milestone_set TEXT NOT NULL DEFAULT 'legacy_default',
   display_order INTEGER NOT NULL,
@@ -113,7 +114,7 @@ CREATE TABLE milestone_designations (
 );
 
 -- DateGolf daily target years, keyed 'MM-DD'. Years, not event references.
-CREATE TABLE daily_challenges (
+CREATE TABLE IF NOT EXISTS daily_challenges (
   date_key TEXT NOT NULL,
   position INTEGER NOT NULL,
   year     INTEGER NOT NULL CHECK (year <> 0),
@@ -122,12 +123,12 @@ CREATE TABLE daily_challenges (
 
 -- ── Relationships (empty until curated) ─────────────────────────────────────
 
-CREATE TABLE relationship_types (
+CREATE TABLE IF NOT EXISTS relationship_types (
   type      TEXT PRIMARY KEY,
   is_causal INTEGER NOT NULL                       -- contemporary_with is NOT causal
 );
 
-CREATE TABLE relationships (
+CREATE TABLE IF NOT EXISTS relationships (
   id                INTEGER PRIMARY KEY,
   source_entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   relationship_type TEXT NOT NULL REFERENCES relationship_types(type),
@@ -142,7 +143,7 @@ CREATE TABLE relationships (
 -- ── Legacy / provenance ─────────────────────────────────────────────────────
 
 -- events_master.csv, verbatim strings. Awaits reconciliation with events.
-CREATE TABLE legacy_csv_rows (
+CREATE TABLE IF NOT EXISTS legacy_csv_rows (
   event_id        INTEGER PRIMARY KEY,             -- original numeric eventID
   row_number      INTEGER NOT NULL,                -- 1-based data row
   stem            TEXT NOT NULL,
@@ -157,7 +158,7 @@ CREATE TABLE legacy_csv_rows (
 );
 
 -- Raw payload of every imported source record. Never edited.
-CREATE TABLE import_records (
+CREATE TABLE IF NOT EXISTS import_records (
   source_file TEXT NOT NULL,
   source_key  TEXT NOT NULL,                       -- id, MM-DD, or CSV eventID
   position    INTEGER NOT NULL,
@@ -165,12 +166,38 @@ CREATE TABLE import_records (
   PRIMARY KEY (source_file, source_key)
 );
 
+-- Candidate CSV-row ↔ event pairs from `manage.py reconcile-events`.
+-- Many-to-many: one CSV row can bundle several events, one event can appear in several rows.
+-- Set `decision` in a GUI; re-running reconcile never touches decided rows.
+CREATE TABLE IF NOT EXISTS legacy_csv_crosswalk (
+  csv_event_id INTEGER NOT NULL REFERENCES legacy_csv_rows(event_id),
+  entity_id    TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
+  rank         INTEGER NOT NULL,                   -- 1 = best candidate for this CSV row
+  score        REAL NOT NULL,                      -- 0..1, see reasons
+  tier         TEXT NOT NULL CHECK (tier IN
+                 ('exact_match', 'likely_match_needs_review', 'possible_match')),
+  reasons      TEXT NOT NULL,
+  decision     TEXT CHECK (decision IS NULL OR decision IN ('accepted', 'rejected')),
+  note         TEXT,
+  PRIMARY KEY (csv_event_id, entity_id)
+);
+
+-- Side-by-side review: open this view in DB Browser, then edit decisions in the table.
+CREATE VIEW IF NOT EXISTS v_csv_crosswalk_review AS
+SELECT x.csv_event_id, c.year_num AS csv_year, c.event AS csv_text,
+       x.rank, x.tier, x.score, e.year AS event_year, x.entity_id, e.name AS event_name,
+       x.reasons, x.decision
+FROM legacy_csv_crosswalk x
+JOIN legacy_csv_rows c ON c.event_id = x.csv_event_id
+JOIN events e ON e.entity_id = x.entity_id
+ORDER BY c.row_number, x.rank;
+
 -- ── Change tracking ─────────────────────────────────────────────────────────
 
-CREATE TRIGGER events_touch AFTER UPDATE ON events BEGIN
+CREATE TRIGGER IF NOT EXISTS events_touch AFTER UPDATE ON events BEGIN
   UPDATE entities SET updated_at = datetime('now') WHERE id = NEW.entity_id;
 END;
 
-CREATE TRIGGER time_spans_touch AFTER UPDATE ON time_spans BEGIN
+CREATE TRIGGER IF NOT EXISTS time_spans_touch AFTER UPDATE ON time_spans BEGIN
   UPDATE entities SET updated_at = datetime('now') WHERE id = NEW.entity_id;
 END;

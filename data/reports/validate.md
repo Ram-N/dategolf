@@ -21,7 +21,7 @@
 | warning | Event with no aliases (search falls back to name only) | pass |
 | warning | Imported entity with no import record (provenance lost) | pass |
 | review | Event + time span share one ID (identity decision needed) | 25 |
-| review | Legacy CSV rows not yet reconciled with events | 1 |
+| review | Legacy CSV rows with no accepted event match | 1 |
 | review | Legacy region labels (no reviewed hierarchy yet) | 12 |
 | review | Legacy categories with no mapping to the planned taxonomy | 12 |
 | info | Counts changed since the legacy import | pass |
@@ -66,9 +66,9 @@
 - `arab-spring` — event
 - `covid-19-pandemic` — event
 
-## [review] Legacy CSV rows not yet reconciled with events
+## [review] Legacy CSV rows with no accepted event match
 
-- `events_master.csv` — 310 rows
+- `events_master.csv` — 310 rows (manage.py reconcile-events proposes)
 
 ## [review] Legacy region labels (no reviewed hierarchy yet)
 

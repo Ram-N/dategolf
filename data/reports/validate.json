@@ -228,12 +228,12 @@
     },
     {
       "severity": "review",
-      "check": "Legacy CSV rows not yet reconciled with events",
+      "check": "Legacy CSV rows with no accepted event match",
       "count": 1,
       "rows": [
         [
           "events_master.csv",
-          "310 rows"
+          "310 rows (manage.py reconcile-events proposes)"
         ]
       ]
     },
