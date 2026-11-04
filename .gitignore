@@ -41,3 +41,6 @@ __screenshots__/
 
 # Editor workspace
 *.code-workspace
+
+# Python
+__pycache__/

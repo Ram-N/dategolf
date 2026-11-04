@@ -1,1 +1,5 @@
 * text=auto eol=lf
+
+# Frozen migration inputs: store byte-for-byte (CSV is CRLF)
+data/legacy/** -text
+*.db binary
