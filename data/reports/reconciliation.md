@@ -6,9 +6,9 @@ Score = 0.6 × text + 0.4 × year. Text = 0.7 × best of (name, alias) word cove
 
 ## Summary
 
-- CSV rows: 310. With at least one candidate: 295. With none: 15.
-- Candidate pairs proposed this run: 462 (max 3 per row). Pairs already decided and kept: 0.
-- Events with no CSV candidate at all: 144. These are probably newer than the CSV.
+- CSV rows: 310. Already resolved (accepted match or triage) and skipped: 310. Open: 0, of which 0 have a new candidate and 0 have none.
+- Candidate pairs proposed this run: 0 (max 3 per row). Pairs already decided and kept: 464.
+- Events with no CSV candidate at all: 170. These are probably newer than the CSV.
 
 Best candidate per CSV row, by tier:
 
@@ -79,24 +79,9 @@ These are probably duplicate legacy rows, or rows that bundle several events.
 - `vietnam-war` ← CSV 278, 285
 - `world-war-two` ← CSV 233, 234
 
-## CSV rows with no candidate (15)
+## CSV rows with no candidate (0)
 
 These may be events the app doesn't have yet. They're worth reviewing as additions.
 
 | CSV id | Date | Event |
 |---:|---|---|
-| 3 | c.3000 BC | Building of the Great Pyramid. |
-| 15 | c. 576 BC  | Birth of Gautam Buddha |
-| 20 | 486 BC | Birth of Buddha, founder of one of the world's major religions |
-| 22 | 360 BC | The period of Aristotle and Plato. |
-| 96 | 1280 | Roger Bacon invents gunpowder. |
-| 101 | 1336 | Foundation of Vijayanagar empire in South India |
-| 116 | 1509 | Invention of the watch: essential to a modern economy and administration, this introduces the concept of regular timekeeping |
-| 175 | 1794 | Invention of the Internal Combustion Engine |
-| 184 | 1821 | Death of Napolean. |
-| 209 | 1889 | Eiffel Tower completed |
-| 230 | 1930 | Discovery of planet Pluto |
-| 247 | 1954 | Military Aid Pact between China and Pakistan; |
-| 273 | 1976 | Seychelles gets independence |
-| 286 | 1985 | India gets Presidentship of the UN Security Council |
-| 288 | 1986 | American air attack on Libya. |
