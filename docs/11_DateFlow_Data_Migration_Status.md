@@ -108,6 +108,7 @@ Listed in rough priority order. Everything is listed in `data/reports/validate.m
 | Issue | Impact | Suggested fix |
 |---|---|---|
 | 66 aliases contain a 4-digit year (e.g. `Panipat 1556`) | Search indexes aliases, so typing a year can reveal the answer. This breaks the "year never indexed" rule. | Strip the years from the aliases (a small script or a GUI pass) |
+| 18 descriptions mention a year within 50 of the answer (e.g. the wheel says "3500", the Emancipation Proclamation says "1863") | DatePick shows the first 3 lines of the description *before* the guess, so the answer leaks. Flagged by `validate` since 2026-11-06. | Reword each description so it has no years ("two years later" instead of "1865") |
 | Importance scale conflict (data 2–9, validator 1–5) | `validate-events.cjs` fails | Pick one scale; possibly rescale |
 | "Revolutions of 1848" has a year in its name | Gives the answer away | Rename it |
 | Region labels overlap (`Americas` / `North America`, `Global` / `World`); Southeast Asia is filed under East Asia | Filters and maps will be inaccurate | Phase B below |
@@ -139,6 +140,11 @@ The phases are ordered so that each one makes the next one safer. Doc 10's guidi
 - Fill `date_precision`, `is_approximate` and `date_display` on events, starting from the CSV's `stem` column (e.g. "c.3500 BC").
 - Add a tested BCE/CE conversion helper for the missing year 0 (needed for durations and "years between" maths).
 - Show "c." in the UI where it applies.
+- **TODO: make DatePick fair to approximate dates** (raised 2026-11-06).
+  - **Problem:** `src/engine/datepick/distractorEngine.ts` picks wrong answers from real event years, preferring close ones. It only excludes the event's *exact* year. So if an event's true date is a range, another event's year inside or near that range can be offered as a "wrong" answer that is actually defensible.
+  - **Example:** Chandragupta II's accession is c. 375-380. At 380, the Huns' 375 could appear as a wrong answer.
+  - **Current workaround:** the year was set to 375, the same as the Huns, because same-year distractors are already excluded. The event was also marked `is_approximate = 1`, `date_display = 'c. 375-380'`.
+  - **Proposed rule:** when the event is `is_approximate`, skip distractors within ~10 years of `year`, or within the `date_display` range if one is parsed. This needs `is_approximate` and `date_display` exported to `events.json` and added to the `Event` type. Add a unit test next to the existing distractor tests.
 
 ### Phase E — Relationships, the knowledge graph (large; the core of the DateFlow potential)
 - **Populate `relationships` with curated, typed edges** such as `caused`, `part_of`, `preceded` and `contemporary_with`. Every edge is reviewed, and the schema already separates causal types from non-causal ones.
