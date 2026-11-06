@@ -76,8 +76,8 @@ uv run python tools/manage.py approve <id> [<id>…]  # publish proposed drafts
 uv run python tools/manage.py load-drafts <file>    # load a new draft batch as proposed
 uv run python tools/manage.py coverage --bin 250    # coverage at another bin width
 
-# Danger: rebuilds from data/legacy/ and WIPES all db edits
-uv run python tools/manage.py import-legacy --force
+# (import-legacy was removed on 2026-11-06: the db has moved on from the
+#  original files, so rebuilding from data/legacy/ would wipe later work)
 ```
 
 **Rules:**
@@ -192,7 +192,7 @@ data/drafts/                draft batches (JSON) for load-drafts
 data/reports/               migration, validate, coverage, reconciliation reports
 tools/manage.py             CLI router
 tools/schema.sql            schema (idempotent; additive changes apply to the live db)
-tools/importer.py           legacy files → db
+(tools/importer.py          removed 2026-11-06 with import-legacy; see git history)
 tools/exporter.py           db → app JSON (skips `proposed`)
 tools/validate.py           integrity checks + review queue
 tools/reconcile.py          CSV ↔ event match proposals

@@ -7,7 +7,6 @@ import sys
 
 import drafts
 import exporter
-import importer
 import reconcile
 import validate
 from common import APP_FILES, LEGACY, LEGACY_CSV, REPORTS, ROOT, connect
@@ -137,11 +136,6 @@ def approve(args):
 def main():
     parser = argparse.ArgumentParser(prog="manage.py", description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
-
-    p = sub.add_parser("import-legacy", help="Rebuild dategolf.db from data/legacy/")
-    p.add_argument("--dry-run", action="store_true", help="Import in memory, write nothing")
-    p.add_argument("--force", action="store_true", help="Overwrite an existing db")
-    p.set_defaults(fn=lambda a: importer.run(dry_run=a.dry_run, force=a.force))
 
     sub.add_parser("validate", help="Integrity checks + reports").set_defaults(
         fn=lambda a: validate.run())

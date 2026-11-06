@@ -222,7 +222,7 @@ Inspect deployments: https://vercel.com/ram-ns-projects/dategolf
 | `load-drafts <file>` | Loads a batch of drafted events (`data/drafts/*.json`) as `proposed`. **Proposed events are never exported.** |
 | `approve <id> [<id>...]` | Marks proposed events `reviewed`, so the next `export-json` publishes them. To reject one, delete its `entities` row (this cascades). |
 | `coverage [--bin N]` | Events per N-year bin × region → `data/reports/coverage.md` |
-| `import-legacy --force` | **Rebuilds the db from `data/legacy/` and wipes edits.** Only for re-running the migration. |
+| *(recovery)* | Undo uncommitted db edits: `git checkout -- data/dategolf.db`. The `data/dategolf.sql` dump is a full second backup (see doc 12 §6). |
 
 `data/legacy/` holds frozen copies of the original 7 files (including `events_master.csv`) with `MANIFEST.json` hashes.
 See `docs/10_DateFlow_Data_Audit_and_SQLite_Handoff.md` and `data/reports/migration.md`.

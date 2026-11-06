@@ -39,7 +39,7 @@ The short rule: **DB Browser is for content, `uv` is for actions.**
 | Check I didn't break anything | **`uv`** | `npm run data:validate` |
 | See where the data is thin | **`uv`** | `uv run python tools/manage.py coverage` |
 | Refresh CSV match proposals after big changes | **`uv`** | `uv … reconcile-events` (your decisions are kept) |
-| Rebuild the db from the original files | **Never, without asking** | `import-legacy --force` **erases every edit** |
+| Undo db changes I haven't committed | **git** | `git checkout -- data/dategolf.db` (restores the last commit) |
 
 `npm run data:export`, `data:validate` and `data:compare` are shortcuts for the matching `uv run python tools/manage.py …` commands, so either form does the same thing.
 
@@ -207,6 +207,7 @@ If you forget step 1, the export silently leaves out your latest edits. Commit t
 | `FOREIGN KEY constraint failed` | e.g. a category that isn't in the list, or a row whose entity doesn't exist | Use an allowed value (§3) |
 | `CHECK constraint failed` | Year 0, an invalid difficulty, or a span ending before it starts | Fix the value |
 | I want to undo today's edits | — | `git checkout -- data src public` (restores the last commit) |
+| The `.db` file is damaged | — | Rebuild it from the text dump: `mv data/dategolf.db /tmp/broken.db && uv run python -c "import sqlite3; sqlite3.connect('data/dategolf.db').executescript(open('data/dategolf.sql', encoding='utf-8').read())"`, then `npm run data:compare` |
 | Validation reports 67 errors from `validate-events.cjs` | A conflict that predates the migration (importance scale 2–9 vs 1–5) | Known issue; see doc 11 §5 |
 
 ---

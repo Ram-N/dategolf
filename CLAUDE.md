@@ -14,7 +14,7 @@ npm run dev   # → http://localhost:5173
 - **No backend** — the app reads static JSON + localStorage; no server
 - **SQLite is the data source of truth** — edit `data/dategolf.db`, then `npm run data:export`; never hand-edit the generated JSON in `src/data/` or `public/data/`
 - **No year 0** — years are signed (`-1` = 1 BCE); the schema rejects 0
-- **Never run `import-legacy --force`** without asking — it wipes db edits
+- **The db is the only source** — `import-legacy` was removed (rebuilding from `data/legacy/` would wipe all later work); backups are git (`data/dategolf.db`) and the `data/dategolf.sql` dump
 - **Engine stays pure** — `src/engine/` must have zero Vue/Pinia dependencies
 - **Year never indexed** — `eventSearch.ts` only searches `name` + `aliases`, never `year`
 - **Same date = same challenge** — daily PRNG seed comes from date string only; don't add randomness
