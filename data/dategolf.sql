@@ -7960,4 +7960,17 @@ FROM legacy_csv_crosswalk x
 JOIN legacy_csv_rows c ON c.event_id = x.csv_event_id
 JOIN events e ON e.entity_id = x.entity_id
 ORDER BY c.row_number, x.rank;
+CREATE VIEW v_proposed_events AS
+SELECT e.entity_id, e.year, e.name, e.region, e.difficulty, e.importance,
+       (SELECT group_concat(category, ', ') FROM (SELECT category FROM entity_categories c
+        WHERE c.entity_id = e.entity_id AND c.facet = 'event' ORDER BY position)) AS categories,
+       (SELECT group_concat(alias, ' | ') FROM (SELECT alias FROM event_aliases a
+        WHERE a.entity_id = e.entity_id ORDER BY position)) AS aliases,
+       e.description, p.note AS review_note, p.csv_event_id, r.event AS csv_text
+FROM events e
+JOIN entities n ON n.id = e.entity_id
+LEFT JOIN entity_provenance p ON p.entity_id = e.entity_id
+LEFT JOIN legacy_csv_rows r ON r.event_id = p.csv_event_id
+WHERE n.editorial_status = 'proposed'
+ORDER BY p.note IS NULL, e.year;
 COMMIT;

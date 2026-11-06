@@ -210,6 +210,22 @@ CREATE TABLE IF NOT EXISTS legacy_csv_triage (
   note              TEXT
 );
 
+-- Draft review: proposed events with their source CSV row and review note, flagged ones first.
+-- Approve by setting entities.editorial_status = 'reviewed' (or `manage.py approve <id>`).
+CREATE VIEW IF NOT EXISTS v_proposed_events AS
+SELECT e.entity_id, e.year, e.name, e.region, e.difficulty, e.importance,
+       (SELECT group_concat(category, ', ') FROM (SELECT category FROM entity_categories c
+        WHERE c.entity_id = e.entity_id AND c.facet = 'event' ORDER BY position)) AS categories,
+       (SELECT group_concat(alias, ' | ') FROM (SELECT alias FROM event_aliases a
+        WHERE a.entity_id = e.entity_id ORDER BY position)) AS aliases,
+       e.description, p.note AS review_note, p.csv_event_id, r.event AS csv_text
+FROM events e
+JOIN entities n ON n.id = e.entity_id
+LEFT JOIN entity_provenance p ON p.entity_id = e.entity_id
+LEFT JOIN legacy_csv_rows r ON r.event_id = p.csv_event_id
+WHERE n.editorial_status = 'proposed'
+ORDER BY p.note IS NULL, e.year;
+
 -- ── Change tracking ─────────────────────────────────────────────────────────
 
 CREATE TRIGGER IF NOT EXISTS events_touch AFTER UPDATE ON events BEGIN
