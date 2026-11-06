@@ -1,6 +1,7 @@
 """Integrity checks over dategolf.db. Reports problems; never fixes them."""
 
 import json
+import re
 
 from common import LEGACY, REPORTS, connect, ensure_schema
 
@@ -111,6 +112,18 @@ def run():
                     [(r[0], f"rowid {r[1]} -> {r[2]}") for r in fk]))
     for severity, name, sql in CHECKS:
         results.append((severity, name, [tuple(r) for r in conn.execute(sql)]))
+
+    # DatePick shows the description before the guess, so a nearby year in it leaks the answer.
+    leaks = []
+    for entity_id, year, text in conn.execute(
+            "SELECT entity_id, year, description FROM events WHERE entity_id NOT IN "
+            "(SELECT id FROM entities WHERE editorial_status = 'proposed')"):
+        plain = re.sub(r"\d{1,3}(?:,\d{3})+|\d+\.\d+", " ", text)  # skip 28,000 and 7.2
+        near = [n for n in re.findall(r"\b\d{3,4}\b", plain) if abs(int(n) - abs(year)) <= 50]
+        if near:
+            leaks.append((entity_id, f"answer {year}; description mentions {', '.join(near)}"))
+    results.append(("warning", "Description mentions a year near the answer "
+                    "(DatePick shows it before the guess)", leaks))
 
     manifest_path = LEGACY / "MANIFEST.json"
     baseline = json.loads(manifest_path.read_text())["counts"] if manifest_path.exists() else {}
