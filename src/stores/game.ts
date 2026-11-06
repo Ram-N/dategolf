@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import type { Event, GameState, HoleResult, PlayerStats, DailyChallenge } from '@/types'
 import { createGame, selectEvent, getScoreStatus } from '@/engine/gameEngine'
 import { generateDailyChallenge } from '@/engine/challengeGenerator'
+import { quizEvents } from '@/engine/eventPool'
 import { saveSession, loadSession, recordCompletion, loadStats } from '@/services/persistence'
 import { initSearch } from '@/services/eventSearch'
 
@@ -35,7 +36,7 @@ export const useGameStore = defineStore('game', () => {
 
     // Load events from JSON
     const eventsModule = await import('@/data/events.json')
-    events.value = eventsModule.default as Event[]
+    events.value = quizEvents(eventsModule.default as Event[])
     initSearch(events.value)
 
     // Load today's challenge from pre-generated file; fall back to generator

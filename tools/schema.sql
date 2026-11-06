@@ -167,6 +167,13 @@ CREATE TABLE IF NOT EXISTS import_records (
   PRIMARY KEY (source_file, source_key)
 );
 
+-- Events shown in DateFlow only, excluded from DatePick and DateGolf (exported as dateflowOnly: true).
+-- For events whose date is too disputed to be a fair guess. To exclude one, add its id here.
+CREATE TABLE IF NOT EXISTS dateflow_only_events (
+  entity_id TEXT PRIMARY KEY REFERENCES events(entity_id) ON DELETE CASCADE,
+  reason    TEXT
+);
+
 -- Candidate CSV-row ↔ event pairs from `manage.py reconcile-events`.
 -- Many-to-many: one CSV row can bundle several events, one event can appear in several rows.
 -- Set `decision` in a GUI; re-running reconcile never touches decided rows.

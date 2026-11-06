@@ -65,6 +65,7 @@ Here's why:
 | `time_spans` | Periods, empires, eras (durations.json + eras.json) | ✅ |
 | `learning_content_groups` / `_items` | DateLinks | ✅ |
 | `milestone_designations` | The 16 milestone events | ✅ |
+| `dateflow_only_events` | Events shown **only in DateFlow**, excluded from DatePick and DateGolf (date too disputed to guess) | ✅ add or delete rows |
 | `legacy_csv_crosswalk` | CSV ↔ event match proposals | ✅ `decision`, `note` |
 | `v_proposed_events` | **Drafts to review**: read-only view | 👀 read only |
 | `v_csv_crosswalk_review` | **CSV matches side by side**: read-only view | 👀 read only |
@@ -158,6 +159,12 @@ If anything in the batch is invalid, **nothing** is loaded. The error names the 
 Delete its row in **`entities`**. Its event row, aliases, categories and draft notes are removed too. DB Browser's *Foreign keys* setting must be on: it's in Edit → Preferences → Database, and it's on by default. Then export.
 
 If the event is one of the 16 milestones or has DateLinks content, those are deleted with it, so check first.
+
+### 4.5b Keep an event out of DatePick and DateGolf (DateFlow only)
+
+Some events have dates that are too disputed to be a fair guess, like the birth of the Buddha. Two ways to handle them:
+- **Keep the event, but only in DateFlow.** Add a row to `dateflow_only_events` (`entity_id`, plus a `reason`), then export. The exporter writes `"dateflowOnly": true`, and DatePick and DateGolf skip it (`src/engine/eventPool.ts`). Delete the row to undo.
+- **Make it a time span instead.** A period with an approximate start and end, like `life-of-the-buddha`, lives in `time_spans`. Only DateFlow reads spans.
 
 ### 4.6 The 25 shared event/duration IDs
 

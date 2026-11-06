@@ -78,6 +78,9 @@ CHECKS = [
      "SELECT 'csv ' || csv_event_id, outcome || coalesce(' → ' || related_entity_id, '') "
      "|| coalesce(' — ' || note, '') FROM legacy_csv_triage "
      "WHERE outcome <> 'drafted' ORDER BY note NOT LIKE 'DATE CONFLICT%', csv_event_id"),
+    ("info", "DateFlow-only events (excluded from DatePick and DateGolf)",
+     "SELECT d.entity_id, e.year || ' · ' || e.name || coalesce(' — ' || d.reason, '') "
+     "FROM dateflow_only_events d JOIN events e ON e.entity_id = d.entity_id"),
     ("review", "Legacy region labels (no reviewed hierarchy yet)",
      "SELECT region, COUNT(*) || ' records' FROM (SELECT region FROM events UNION ALL "
      "SELECT region FROM time_spans WHERE region IS NOT NULL) GROUP BY region ORDER BY 2 DESC"),

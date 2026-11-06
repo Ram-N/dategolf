@@ -9,6 +9,7 @@ export interface Event {
   description: string
   difficulty: 'easy' | 'medium' | 'hard'
   importance: number // 2–9 in events.json; higher = more prominent
+  dateflowOnly?: boolean // date too disputed to guess: shown in DateFlow, excluded from DateGolf/DatePick
 }
 
 // ── Hole Result ────────────────────────────────────────────────────────────────

@@ -227,6 +227,7 @@
 import { formatYear } from '@/utils/formatYear'
 import { ref, computed, onMounted } from 'vue'
 import { generateDatePickChallenge } from '@/engine/datepick/challengeGenerator'
+import { quizEvents } from '@/engine/eventPool'
 import type { Event } from '@/types'
 import type { DatePickChallenge } from '@/types/datepick'
 import type { DateLinksMap } from '@/types/datelinks'
@@ -309,7 +310,7 @@ onMounted(async () => {
 
 const challenge = computed<DatePickChallenge | null>(() => {
   if (allEvents.value.length === 0) return null
-  return generateDatePickChallenge(selectedDate.value, allEvents.value)
+  return generateDatePickChallenge(selectedDate.value, quizEvents(allEvents.value))
 })
 
 // ── Era bands ─────────────────────────────────────────────────────────────────

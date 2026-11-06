@@ -24,12 +24,13 @@ def categories(conn, entity_id, facet):
 
 def render_events(conn):
     out = []
+    dateflow_only = {r[0] for r in conn.execute("SELECT entity_id FROM dateflow_only_events")}
     for e in conn.execute(f"SELECT * FROM events WHERE {PUBLISHED} "
                           f"ORDER BY year, {NULLS_LAST}, entity_id"):
         aliases = [r["alias"] for r in conn.execute(
             "SELECT alias FROM event_aliases WHERE entity_id = ? ORDER BY position",
             (e["entity_id"],))]
-        out.append({
+        rec = {
             "id": e["entity_id"],
             "name": e["name"],
             "year": e["year"],
@@ -39,7 +40,10 @@ def render_events(conn):
             "description": e["description"],
             "difficulty": e["difficulty"],
             "importance": e["importance"],
-        })
+        }
+        if e["entity_id"] in dateflow_only:
+            rec["dateflowOnly"] = True
+        out.append(rec)
     return dumps(out)
 
 

@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import type { Event } from '@/types'
 import type { DatePickGameState, DatePickStats } from '@/types/datepick'
 import { generateDatePickChallenge } from '@/engine/datepick/challengeGenerator'
+import { quizEvents } from '@/engine/eventPool'
 import {
   saveSession,
   loadSession,
@@ -48,7 +49,7 @@ export const useDatePickStore = defineStore('datepick', () => {
 
     // Load events from JSON
     const eventsModule = await import('@/data/events.json')
-    events.value = eventsModule.default as Event[]
+    events.value = quizEvents(eventsModule.default as Event[])
 
     // Try to resume a saved session for today
     const saved = loadSession(todayDate)
