@@ -25,7 +25,7 @@
 | warning | Imported entity with no import record (provenance lost) | pass |
 | review | Event + time span share one ID (identity decision needed) | 25 |
 | review | Legacy CSV rows with no accepted match and no triage outcome | 1 |
-| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | 68 |
+| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | 7 |
 | review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 9 |
 | review | Legacy region labels (no reviewed hierarchy yet) | 12 |
 | review | Legacy categories with no mapping to the planned taxonomy | 12 |
@@ -33,7 +33,7 @@
 
 ## Counts
 
-- events: 411
+- events: 412
 - time_spans: 98
 - eras: 5
 - datelinks_keys: 26
@@ -150,74 +150,13 @@
 
 ## [review] Proposed events awaiting approval (not exported; manage.py approve <id>)
 
-- `david-captures-jerusalem` — -995 · King David Captures Jerusalem — Traditional date; usually given as c. 1000 BCE and the historicity is debated.
-- `battle-of-zama` — -202 · Battle of Zama — Related: punic-wars (event and span).
-- `second-triumvirate` — -43 · Second Triumvirate Formed — Related: first-triumvirate.
-- `jin-reunifies-china` — 280 · Jin Dynasty Reunifies China — CSV claims this 'creates the political shape of modern China'; omitted as overstated.
-- `huns-arrive-in-europe` — 375 · Huns Arrive in Europe — 375 is the conventional date. Related: attila-hun-invasions (450).
 - `chandragupta-ii-vikramaditya` — 380 · Chandragupta II Vikramaditya Takes the Throne — Accession dates vary (c. 375-380). Related: gupta-empire.
-- `benedictine-order-founded` — 529 · Founding of the Benedictine Order — c. 529. CSV details mention his earlier monasteries at Subiaco.
-- `death-of-muhammad` — 632 · Death of the Prophet Muhammad — CSV also says 'Beginning of Hijri Era', but that begins in 622 (existing hijra), so it is omitted. Related: islamic-caliphate-expands (632).
-- `mahmud-of-ghazni-accession` — 998 · Mahmud of Ghazni Takes Power — Related: mahmud-ghazni-somnath (1026).
-- `tower-of-london-begun` — 1078 · Construction of the Tower of London Begins — 1078 is the usual start date.
 - `university-of-paris-founded` — 1150 · University of Paris Emerges — c. 1150; the royal charter dates from 1200. Related: university-of-bologna-founded.
-- `qutb-ud-din-aibak-delhi` — 1206 · Qutb ud-Din Aibak Founds the Delhi Sultanate — Same start year as span delhi-sultanate (1206-1526): candidate for the event/span identity decision.
-- `muhammad-bin-tughlaq-accession` — 1325 · Muhammad bin Tughlaq Becomes Sultan — CSV row 1327 (capital moved to Daulatabad) is a likely related row.
-- `babur-ruler-of-ferghana` — 1494 · Babur Becomes Ruler of Ferghana — Region uncertain: Ferghana is in Central Asia, which has no legacy label; South Asia was chosen because of his Mughal story. Related: babur-founds-mughal-empire.
 - `first-portable-watches` — 1509 · First Portable Watches — Henlein's work is usually dated c. 1505-1510 and the attribution is debated.
-- `humayun-recaptures-delhi` — 1555 · Humayun Recaptures Delhi — Related: humayun-defeated-kanauj (1540), second-battle-of-panipat (1556).
-- `death-of-jahangir` — 1627 · Death of Jahangir — Split from a CSV row that bundles two events (see birth-of-shivaji).
-- `birth-of-shivaji` — 1627 · Birth of Shivaji — CHECK THE YEAR before approving. The CSV says 1627, but most sources now give 1630 (Maharashtra officially uses 19 Feb 1630). Split from a bundled CSV row. Related: shivaji-crowned-chhatrapati (1674).
-- `battle-of-buxar` — 1764 · Battle of Buxar — Related: battle-of-plassey (1757), east-india-company-bengal.
-- `second-anglo-mysore-war` — 1780 · Second Anglo-Mysore War Begins — Related: tipu-sultan-killed (1799).
 - `robert-street-engine-patent` — 1794 · Robert Street Patents an Internal Combustion Engine — The CSV calls this 'Invention of the Internal Combustion Engine', which is disputed. The draft is narrowed to the specific patent the CSV details describe.
-- `lewis-and-clark-expedition` — 1804 · Lewis and Clark Expedition — Two CSV rows: 178 says 1803 (Lewis set out down the Ohio) and 179 says 1804 (the expedition left the St. Louis area in May 1804). Used 1804.
-- `death-of-napoleon` — 1821 · Death of Napoleon — Related: napoleon-defeat-waterloo (1815).
-- `edison-light-bulb` — 1879 · Edison Demonstrates the Light Bulb — Joseph Swan developed a similar lamp in parallel in England.
-- `benz-motorwagen` — 1885 · Benz Builds the First Practical Automobile — Built 1885, patented January 1886.
-- `integrated-circuit-invented` — 1959 · Silicon Integrated Circuit Invented — Kilby 1958 (germanium), Noyce 1959 (silicon).
-- `france-first-nuclear-test` — 1960 · France Tests Its First Atomic Bomb — Region chosen by the actor (France); the test site is in Algeria (Africa).
-- `formation-of-malaysia` — 1963 · Federation of Malaysia Formed — Region: Southeast Asia, filed under East Asia per existing convention (Vietnam War, Khmer Rouge).
-- `singapore-independence` — 1965 · Singapore Becomes Independent — Region: Southeast Asia, filed under East Asia per existing convention.
-- `khmer-rouge-overthrown` — 1979 · Khmer Rouge Driven from Phnom Penh — CSV says 'Cambodian rebels grab power'; the rebels came to power through a Vietnamese invasion. Related: khmer-rouge-cambodia (1975).
-- `us-invasion-of-grenada` — 1983 · United States Invades Grenada — The CSV row also mentions the US withdrawal from UNESCO (announced 1983, effective 1984), which is not drafted.
-- `spitak-earthquake` — 1988 · Spitak Earthquake in Armenia — The CSV says nearly 100,000 were killed; most estimates are 25,000-50,000, so the draft gives no figure. Region uncertain (Caucasus); Europe chosen, as for other Soviet events.
-- `zia-ul-haq-killed` — 1988 · Zia-ul-Haq Killed in Plane Crash — The CSV row bundles four 1988 items; only this one is drafted. The others are WHO's no-smoking day, the French president's re-election and an earthquake in Bihar.
-- `india-rejects-ctbt` — 1996 · India Refuses to Sign the Test Ban Treaty — Related: pokhran-nuclear-tests.
-- `kofi-annan-secretary-general` — 1996 · Kofi Annan Chosen as UN Secretary-General — Appointed December 1996; took office January 1997.
-- `suharto-resigns` — 1998 · Suharto Resigns — Split from a bundled CSV row (see clinton-impeached). Region: Southeast Asia, filed under East Asia per existing convention.
-- `clinton-impeached` — 1998 · Bill Clinton Impeached — The CSV says 'faces impeachment'; the House vote came in December 1998. The same row mentions Pakistan's Ghauri missile test, which is not drafted.
-- `ptolemaic-dynasty-founded` — -305 · Ptolemy I Becomes Pharaoh of Egypt
-- `caesar-invades-britain` — -55 · Julius Caesar Invades Britain
-- `mihira-bhoja-kannauj` — 836 · Mihira Bhoja Becomes King of Kannauj
-- `razia-sultana-accession` — 1236 · Razia Sultana Takes the Throne of Delhi
-- `alauddin-khalji-accession` — 1296 · Alauddin Khalji Becomes Sultan of Delhi
-- `firuz-shah-tughlaq-accession` — 1351 · Firuz Shah Tughlaq Becomes Sultan
-- `humayun-succeeds-babur` — 1530 · Humayun Succeeds Babur
-- `death-of-akbar` — 1605 · Death of Akbar
-- `martyrdom-of-guru-arjan` — 1606 · Execution of Guru Arjan
-- `jahangir-marries-nur-jahan` — 1611 · Jahangir Marries Nur Jahan
-- `execution-of-guru-tegh-bahadur` — 1675 · Execution of Guru Tegh Bahadur
-- `battle-of-blenheim` — 1704 · Battle of Blenheim
-- `death-of-guru-gobind-singh` — 1708 · Death of Guru Gobind Singh
-- `nadir-shah-sacks-delhi` — 1739 · Nadir Shah Sacks Delhi
-- `indian-removal-act` — 1830 · Indian Removal Act
-- `alaska-purchase` — 1867 · United States Buys Alaska
-- `stanley-finds-livingstone` — 1871 · Stanley Finds Livingstone
-- `battle-of-little-bighorn` — 1876 · Battle of the Little Bighorn
-- `spanish-american-war` — 1898 · Spanish–American War
-- `eisenhower-elected` — 1952 · Eisenhower Elected US President
-- `partial-test-ban-treaty` — 1963 · Partial Nuclear Test Ban Treaty Signed
-- `cosmic-microwave-background` — 1964 · Cosmic Microwave Background Discovered
-- `death-of-churchill` — 1965 · Death of Winston Churchill
-- `jimmy-carter-elected` — 1976 · Jimmy Carter Elected US President
 - `seychelles-independence` — 1976 · Seychelles Gains Independence
-- `bhutto-executed` — 1979 · Zulfikar Ali Bhutto Executed
 - `us-bombing-of-libya` — 1986 · United States Bombs Libya
-- `palestinian-declaration-of-independence` — 1988 · Palestinian Declaration of Independence
 - `namibia-independence-process` — 1989 · UN Transition to Namibian Independence Begins
-- `sheikh-hasina-first-term` — 1996 · Sheikh Hasina Becomes Prime Minister
-- `kosovo-war-ends` — 1999 · Yugoslavia Accepts Kosovo Peace Plan
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 
@@ -235,7 +174,7 @@
 
 - `North America` — 7 records
 - `East Asia` — 64 records
-- `Americas` — 58 records
+- `Americas` — 59 records
 - `Middle East` — 42 records
 - `Oceania` — 4 records
 - `Africa` — 33 records
@@ -263,4 +202,4 @@
 
 ## [info] Counts changed since the legacy import
 
-- `events` — 343 at import -> 411 now
+- `events` — 343 at import -> 412 now

@@ -180,6 +180,25 @@
     "importance": 4
   },
   {
+    "id": "david-captures-jerusalem",
+    "name": "King David Captures Jerusalem",
+    "year": -1000,
+    "categories": [
+      "Religion",
+      "Politics"
+    ],
+    "region": "Middle East",
+    "aliases": [
+      "City of David",
+      "Jebusite Jerusalem",
+      "Israelite capital",
+      "united monarchy of Israel"
+    ],
+    "description": "According to biblical tradition, King David captures the Jebusite city of Jerusalem and makes it the capital of a united Israelite kingdom. Jerusalem becomes the political and religious centre of the Israelites, a status that later shapes its importance for Judaism, Christianity and Islam.",
+    "difficulty": "medium",
+    "importance": 4
+  },
+  {
     "id": "greek-olympics-ancient",
     "name": "Ancient Olympic Games Established",
     "year": -776,
@@ -534,6 +553,24 @@
     "importance": 8
   },
   {
+    "id": "ptolemaic-dynasty-founded",
+    "name": "Ptolemy I Becomes Pharaoh of Egypt",
+    "year": -305,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Ptolemaic dynasty",
+      "Ptolemy Soter",
+      "Greek pharaohs",
+      "Hellenistic Egypt"
+    ],
+    "description": "Ptolemy, one of Alexander the Great's generals, declares himself king of Egypt and founds the Ptolemaic dynasty. His Greek-speaking dynasty rules Egypt from Alexandria for nearly three centuries, ending with Cleopatra VII.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
     "id": "ashoka-becomes-emperor",
     "name": "Ashoka Becomes Mauryan Emperor",
     "year": -268,
@@ -647,6 +684,24 @@
     "importance": 4
   },
   {
+    "id": "battle-of-zama",
+    "name": "Battle of Zama",
+    "year": -202,
+    "categories": [
+      "War"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Scipio defeats Hannibal",
+      "Hannibal defeated",
+      "end of Second Punic War",
+      "Scipio Africanus"
+    ],
+    "description": "The Roman general Scipio Africanus defeats Hannibal near Zama in North Africa, ending the Second Punic War. Carthage gives up its fleet and overseas territories, leaving Rome the dominant power in the western Mediterranean.",
+    "difficulty": "medium",
+    "importance": 5
+  },
+  {
     "id": "silk-road-opens",
     "name": "Silk Road Trade Route Opens",
     "year": -130,
@@ -687,6 +742,23 @@
     "importance": 6
   },
   {
+    "id": "caesar-invades-britain",
+    "name": "Julius Caesar Invades Britain",
+    "year": -55,
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Caesar crosses to Britain",
+      "Roman expedition to Britain",
+      "Caesar in Britain"
+    ],
+    "description": "Julius Caesar leads the first Roman military expedition across the English Channel to Britain, returning with a larger force the following year. He does not conquer the island, but his campaigns draw Britain into the Roman world; full conquest comes under Claudius nearly a century later.",
+    "difficulty": "medium",
+    "importance": 4
+  },
+  {
     "id": "caesar-crosses-rubicon",
     "name": "Caesar Crosses the Rubicon",
     "year": -49,
@@ -725,6 +797,23 @@
     "description": "Roman dictator Julius Caesar is stabbed to death by a group of senators including Brutus and Cassius on the steps of the Senate on the Ides of March. His assassination plunges Rome into civil war and ultimately leads to the transformation of the Republic into the Roman Empire.",
     "difficulty": "easy",
     "importance": 5
+  },
+  {
+    "id": "second-triumvirate",
+    "name": "Second Triumvirate Formed",
+    "year": -43,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Antony Octavian Lepidus",
+      "the triumvirs",
+      "Lex Titia"
+    ],
+    "description": "Mark Antony, Octavian and Marcus Aemilius Lepidus form the Second Triumvirate, a legally sanctioned dictatorship of three men, after Julius Caesar's assassination. They purge their opponents, including Cicero, and defeat Caesar's assassins, but the rivalry between Antony and Octavian later ends the Republic.",
+    "difficulty": "hard",
+    "importance": 4
   },
   {
     "id": "augustus-first-emperor",
@@ -908,6 +997,24 @@
     "importance": 4
   },
   {
+    "id": "jin-reunifies-china",
+    "name": "Jin Dynasty Reunifies China",
+    "year": 280,
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "aliases": [
+      "Western Jin",
+      "Sima Yan",
+      "end of the Three Kingdoms",
+      "Jin conquers Wu"
+    ],
+    "description": "The Western Jin dynasty conquers the state of Wu, ending the Three Kingdoms period and reuniting China under Emperor Wu (Sima Yan). The unity is short-lived: within decades civil war and invasions split northern and southern China again.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
     "id": "christianity-roman-empire",
     "name": "Edict of Milan: Christianity Legalized",
     "year": 313,
@@ -965,6 +1072,24 @@
     "description": "Emperor Constantine the Great dedicates his new capital at the ancient Greek city of Byzantium, renaming it Constantinople in his own honor and investing it with the institutions and architectural splendor of a new Rome. Strategically positioned at the crossroads of Europe and Asia controlling the Bosphorus strait, the city becomes the wealthiest and most powerful city in the Christian world for over a thousand years. As the capital of the Byzantine Empire, Constantinople preserves Roman law and Greek learning through the medieval period until its fall to the Ottoman Turks in 1453.",
     "difficulty": "medium",
     "importance": 7
+  },
+  {
+    "id": "huns-arrive-in-europe",
+    "name": "Huns Arrive in Europe",
+    "year": 375,
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Huns defeat the Goths",
+      "Migration Period begins",
+      "Visigoths cross the Danube",
+      "steppe invaders"
+    ],
+    "description": "The Huns, nomadic horsemen from the steppes, overwhelm the Ostrogoths and drive the Visigoths across the Danube into the Roman Empire. The upheaval sets off the great migrations that help bring down the Western Roman Empire.",
+    "difficulty": "hard",
+    "importance": 5
   },
   {
     "id": "nalanda-university-founded",
@@ -1038,6 +1163,24 @@
       "Aryabhatiya"
     ],
     "description": "The Indian mathematician and astronomer Aryabhata publishes the Aryabhatiya, proposing that the Earth rotates on its axis and calculating the approximate value of pi. His work establishes foundational concepts in Indian mathematics and astronomy.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
+    "id": "benedictine-order-founded",
+    "name": "Founding of the Benedictine Order",
+    "year": 529,
+    "categories": [
+      "Religion"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Monte Cassino",
+      "Rule of Saint Benedict",
+      "Benedict of Nursia",
+      "Western monasticism"
+    ],
+    "description": "Benedict of Nursia establishes the monastery of Monte Cassino in Italy, where he writes the Rule that becomes the model for Western monastic life. Benedictine monasteries go on to preserve learning and shape religious life across medieval Europe.",
     "difficulty": "hard",
     "importance": 4
   },
@@ -1178,6 +1321,24 @@
     "importance": 5
   },
   {
+    "id": "death-of-muhammad",
+    "name": "Death of the Prophet Muhammad",
+    "year": 632,
+    "categories": [
+      "Religion"
+    ],
+    "region": "Middle East",
+    "aliases": [
+      "the Prophet's death",
+      "Abu Bakr first caliph",
+      "Rashidun Caliphate begins",
+      "succession to Muhammad"
+    ],
+    "description": "The Prophet Muhammad dies in Medina, having united much of the Arabian Peninsula under Islam. The dispute over his succession, beginning with the choice of Abu Bakr as the first caliph, later shapes the division between Sunni and Shia Muslims.",
+    "difficulty": "medium",
+    "importance": 5
+  },
+  {
     "id": "moors-invade-spain",
     "name": "Moors Invade Spain",
     "year": 711,
@@ -1298,6 +1459,24 @@
     "importance": 4
   },
   {
+    "id": "mihira-bhoja-kannauj",
+    "name": "Mihira Bhoja Becomes King of Kannauj",
+    "year": 836,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Mihira Bhoja",
+      "Gurjara-Pratihara",
+      "Bhoja of Kanauj",
+      "Adivaraha"
+    ],
+    "description": "Mihira Bhoja ascends the throne of the Gurjara-Pratihara dynasty, ruling from Kannauj. Over a long reign he makes the Pratiharas one of the leading powers of northern India and a barrier against Arab expansion from Sindh.",
+    "difficulty": "hard",
+    "importance": 3
+  },
+  {
     "id": "gunpowder-invented",
     "name": "Gunpowder Invented in China",
     "year": 850,
@@ -1356,6 +1535,23 @@
     ],
     "description": "Rajaraja I ascends to the Chola throne and expands the dynasty into a maritime empire dominating South India and parts of Southeast Asia. He commissions the great Brihadeeswarar temple at Thanjavur, a masterpiece of Dravidian architecture.",
     "difficulty": "medium",
+    "importance": 4
+  },
+  {
+    "id": "mahmud-of-ghazni-accession",
+    "name": "Mahmud of Ghazni Takes Power",
+    "year": 998,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Sultan Mahmud",
+      "Ghaznavid Empire",
+      "Mahmud Ghaznavi"
+    ],
+    "description": "Mahmud becomes ruler of the Ghaznavid state in present-day Afghanistan and builds an empire stretching from eastern Iran to the Punjab. His repeated raids into northern India bring enormous wealth to his capital at Ghazni.",
+    "difficulty": "hard",
     "importance": 4
   },
   {
@@ -1453,6 +1649,24 @@
     "importance": 5
   },
   {
+    "id": "tower-of-london-begun",
+    "name": "Construction of the Tower of London Begins",
+    "year": 1078,
+    "categories": [
+      "Politics",
+      "Culture"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "White Tower",
+      "William the Conqueror's fortress",
+      "Norman castle in London"
+    ],
+    "description": "William the Conqueror begins building the White Tower in London, a stone keep meant to dominate the city after the Norman Conquest. It grows into the Tower of London, serving over the centuries as royal palace, prison, armoury and home of the Crown Jewels.",
+    "difficulty": "medium",
+    "importance": 3
+  },
+  {
     "id": "university-of-bologna-founded",
     "name": "University of Bologna Founded",
     "year": 1088,
@@ -1532,6 +1746,24 @@
     "importance": 5
   },
   {
+    "id": "qutb-ud-din-aibak-delhi",
+    "name": "Qutb ud-Din Aibak Founds the Delhi Sultanate",
+    "year": 1206,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Mamluk dynasty",
+      "Slave dynasty",
+      "first Sultan of Delhi",
+      "Qutub Minar builder"
+    ],
+    "description": "After the death of Muhammad of Ghor, his former slave general Qutb ud-Din Aibak takes power in northern India and becomes the first sultan of Delhi. His Mamluk, or Slave, dynasty begins more than three centuries of sultanate rule.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
     "id": "magna-carta",
     "name": "Magna Carta Signed",
     "year": 1215,
@@ -1549,6 +1781,23 @@
     "description": "English King John is forced by rebellious barons to seal the Magna Carta at Runnymede, establishing for the first time that the king was subject to the rule of law. The document becomes a cornerstone of constitutional governance and influences legal systems around the world.",
     "difficulty": "easy",
     "importance": 5
+  },
+  {
+    "id": "razia-sultana-accession",
+    "name": "Razia Sultana Takes the Throne of Delhi",
+    "year": 1236,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Razia Sultan",
+      "Raziyya",
+      "first woman ruler of Delhi"
+    ],
+    "description": "Razia, daughter of Sultan Iltutmish, becomes ruler of the Delhi Sultanate, the only woman ever to hold its throne. She governs actively and appears in public in male dress, but opposition from the Turkic nobility leads to her overthrow and death within four years.",
+    "difficulty": "hard",
+    "importance": 4
   },
   {
     "id": "marco-polo-china",
@@ -1590,6 +1839,24 @@
     "importance": 5
   },
   {
+    "id": "alauddin-khalji-accession",
+    "name": "Alauddin Khalji Becomes Sultan of Delhi",
+    "year": 1296,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Ala-ud-din Khalji",
+      "Khalji dynasty",
+      "Khalji market reforms",
+      "Mongol invasions repelled"
+    ],
+    "description": "Alauddin Khalji seizes the throne of Delhi after having his uncle, Sultan Jalaluddin, killed. He repels repeated Mongol invasions, introduces strict price controls and land-revenue reforms, and extends the sultanate's power deep into southern India.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
     "id": "battle-of-bannockburn",
     "name": "Battle of Bannockburn",
     "year": 1314,
@@ -1609,6 +1876,23 @@
     "description": "Scottish forces under King Robert the Bruce decisively defeat the much larger English army of Edward II near Stirling Castle, securing Scottish independence from English domination. The battle is the high point of the First War of Scottish Independence and remains the defining moment of Scottish national identity, still commemorated today. Although the formal recognition of Scottish independence required the Treaty of Edinburgh-Northampton in 1328, Bannockburn effectively ends England's attempt to absorb Scotland.",
     "difficulty": "hard",
     "importance": 5
+  },
+  {
+    "id": "muhammad-bin-tughlaq-accession",
+    "name": "Muhammad bin Tughlaq Becomes Sultan",
+    "year": 1325,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Tughlaq dynasty",
+      "token currency",
+      "capital moved to Daulatabad"
+    ],
+    "description": "Muhammad bin Tughlaq becomes sultan of Delhi. A learned but erratic ruler, he is remembered for ambitious schemes that failed, including moving the capital to Daulatabad in the Deccan and issuing a token copper currency.",
+    "difficulty": "hard",
+    "importance": 3
   },
   {
     "id": "black-death-arrives-china",
@@ -1685,6 +1969,24 @@
     "description": "The bubonic plague arrives in Sicily from Crimea and rapidly spreads across Europe, killing an estimated one-third to one-half of the European population within a few years. The catastrophic loss reshapes European society by disrupting feudal systems, labor markets, and the Church's authority.",
     "difficulty": "easy",
     "importance": 5
+  },
+  {
+    "id": "firuz-shah-tughlaq-accession",
+    "name": "Firuz Shah Tughlaq Becomes Sultan",
+    "year": 1351,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Feroz Shah",
+      "Firoz Shah Tughlaq",
+      "Feroz Shah Kotla",
+      "canals of Firuz Shah"
+    ],
+    "description": "Firuz Shah Tughlaq succeeds his cousin Muhammad bin Tughlaq as sultan of Delhi. His long reign is remembered for public works such as canals, new towns and the Feroz Shah Kotla citadel, even as the sultanate's power declines.",
+    "difficulty": "hard",
+    "importance": 3
   },
   {
     "id": "ming-dynasty-founded",
@@ -1918,6 +2220,23 @@
     "importance": 5
   },
   {
+    "id": "babur-ruler-of-ferghana",
+    "name": "Babur Becomes Ruler of Ferghana",
+    "year": 1494,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Babur's first throne",
+      "Ferghana Valley",
+      "Timurid prince"
+    ],
+    "description": "Babur, a Timurid prince descended from both Timur and Genghis Khan, inherits the small kingdom of Ferghana in Central Asia at about the age of eleven. Repeatedly driven from his homeland, he eventually turns south and founds the Mughal Empire in India.",
+    "difficulty": "medium",
+    "importance": 3
+  },
+  {
     "id": "vasco-da-gama-india-route",
     "name": "Vasco da Gama Opens Sea Route to India",
     "year": 1498,
@@ -2050,6 +2369,23 @@
     "importance": 5
   },
   {
+    "id": "humayun-succeeds-babur",
+    "name": "Humayun Succeeds Babur",
+    "year": 1530,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "death of Babur",
+      "second Mughal emperor",
+      "Humayun's accession"
+    ],
+    "description": "Babur, founder of the Mughal Empire, dies in Agra and is succeeded by his son Humayun. Humayun inherits a young, unsettled empire and soon faces challenges from his own brothers and from the Afghan leader Sher Shah Suri.",
+    "difficulty": "hard",
+    "importance": 3
+  },
+  {
     "id": "conquest-of-peru-inca",
     "name": "Spanish Conquest of the Inca Empire",
     "year": 1532,
@@ -2125,6 +2461,25 @@
     "description": "Portuguese traders shipwrecked on the island of Tanegashima introduce firearms to Japan, transforming Japanese warfare and accelerating political change. The arrival begins a period of contact that brings Christianity, new technologies, and trade goods to Japan while exposing it to European influence.",
     "difficulty": "hard",
     "importance": 3
+  },
+  {
+    "id": "humayun-recaptures-delhi",
+    "name": "Humayun Recaptures Delhi",
+    "year": 1555,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Mughal restoration",
+      "return of Humayun",
+      "end of Suri rule",
+      "Battle of Sirhind"
+    ],
+    "description": "After fifteen years in exile, Humayun returns with Persian help, defeats the Suri dynasty and retakes Delhi, restoring Mughal rule. He dies months later after a fall on the steps of his library, leaving the throne to his young son Akbar.",
+    "difficulty": "hard",
+    "importance": 4
   },
   {
     "id": "second-battle-of-panipat",
@@ -2302,6 +2657,40 @@
     "importance": 5
   },
   {
+    "id": "death-of-akbar",
+    "name": "Death of Akbar",
+    "year": 1605,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Akbar the Great dies",
+      "Jahangir becomes emperor",
+      "Prince Salim crowned"
+    ],
+    "description": "Akbar the Great dies at Agra after nearly fifty years on the throne, having built the Mughal Empire into the dominant power of the subcontinent. His son Salim succeeds him as the emperor Jahangir.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
+    "id": "martyrdom-of-guru-arjan",
+    "name": "Execution of Guru Arjan",
+    "year": 1606,
+    "categories": [
+      "Religion"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Guru Arjan Dev martyrdom",
+      "fifth Sikh Guru",
+      "compiler of the Adi Granth"
+    ],
+    "description": "Guru Arjan, the fifth Sikh Guru and compiler of the Adi Granth, is arrested on the orders of the Mughal emperor Jahangir and dies in custody after refusing to convert to Islam. Remembered as the first Sikh martyr, his death leads his successor to militarise the Sikh community.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
     "id": "galileo-telescope",
     "name": "Galileo Turns Telescope to the Heavens",
     "year": 1609,
@@ -2319,6 +2708,25 @@
     "description": "Galileo Galilei uses an improved telescope to make detailed astronomical observations including the moons of Jupiter and the phases of Venus, providing powerful evidence for the Copernican heliocentric model. His findings bring him into conflict with the Catholic Church but fundamentally advance astronomy.",
     "difficulty": "easy",
     "importance": 4
+  },
+  {
+    "id": "jahangir-marries-nur-jahan",
+    "name": "Jahangir Marries Nur Jahan",
+    "year": 1611,
+    "categories": [
+      "Politics",
+      "Social"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Nur Jahan",
+      "Mehr-un-Nissa",
+      "Light of the World",
+      "Mughal empress"
+    ],
+    "description": "The Mughal emperor Jahangir marries Mehr-un-Nissa, who receives the title Nur Jahan, 'Light of the World'. She becomes the most powerful woman in Mughal history, issuing coins and orders in her own name as real power passes to her in Jahangir's later years.",
+    "difficulty": "hard",
+    "importance": 3
   },
   {
     "id": "thirty-years-war",
@@ -2360,6 +2768,39 @@
     "description": "The Mayflower arrives at Plymouth, Massachusetts, carrying 102 passengers — mostly English Separatists seeking religious freedom from the Church of England — after a grueling ten-week voyage. Before landing, the male passengers sign the Mayflower Compact, one of the first governing documents in the New World establishing self-rule by consent of the governed. The Plymouth Colony becomes a founding symbol of American identity, democratic values, and the tradition of seeking religious freedom that draws millions of immigrants to North America.",
     "difficulty": "easy",
     "importance": 6
+  },
+  {
+    "id": "death-of-jahangir",
+    "name": "Death of Jahangir",
+    "year": 1627,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Shah Jahan succeeds",
+      "fourth Mughal emperor dies"
+    ],
+    "description": "The Mughal emperor Jahangir dies while travelling back from Kashmir. After a brief succession struggle his son Khurram takes the throne as Shah Jahan, the emperor who will build the Taj Mahal.",
+    "difficulty": "hard",
+    "importance": 3
+  },
+  {
+    "id": "birth-of-shivaji",
+    "name": "Birth of Shivaji",
+    "year": 1630,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Shivaji Maharaj born",
+      "Shivneri Fort",
+      "founder of the Maratha kingdom"
+    ],
+    "description": "Shivaji Bhonsle is born at the hill fort of Shivneri near Pune. He grows up to challenge the Mughal Empire and the Deccan sultanates, and is later crowned Chhatrapati of a new Maratha kingdom.",
+    "difficulty": "hard",
+    "importance": 4
   },
   {
     "id": "taj-mahal-construction-begins",
@@ -2561,6 +3002,24 @@
     "importance": 4
   },
   {
+    "id": "execution-of-guru-tegh-bahadur",
+    "name": "Execution of Guru Tegh Bahadur",
+    "year": 1675,
+    "categories": [
+      "Religion"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "ninth Sikh Guru",
+      "Teg Bahadur",
+      "Gurdwara Sis Ganj",
+      "Hind di Chadar"
+    ],
+    "description": "Guru Tegh Bahadur, the ninth Sikh Guru, is publicly executed in Delhi on the orders of the Mughal emperor Aurangzeb after refusing to convert to Islam. Sikhs remember him for defending freedom of religion, including that of Kashmiri Hindus.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
     "id": "newton-laws-of-motion",
     "name": "Newton Publishes Laws of Motion",
     "year": 1687,
@@ -2595,6 +3054,24 @@
     ],
     "description": "King James II of England is overthrown and replaced by William of Orange in a largely bloodless coup that establishes constitutional monarchy and parliamentary supremacy. The subsequent Bill of Rights limits royal power and guarantees parliamentary privileges, shaping the British democratic tradition.",
     "difficulty": "medium",
+    "importance": 4
+  },
+  {
+    "id": "battle-of-blenheim",
+    "name": "Battle of Blenheim",
+    "year": 1704,
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Marlborough's victory",
+      "War of the Spanish Succession",
+      "Blindheim",
+      "Prince Eugene of Savoy"
+    ],
+    "description": "An Anglo-Austrian army under the Duke of Marlborough and Prince Eugene of Savoy crushes a Franco-Bavarian force at Blenheim in Bavaria. The victory saves Vienna, knocks Bavaria out of the War of the Spanish Succession and ends the image of French invincibility.",
+    "difficulty": "hard",
     "importance": 4
   },
   {
@@ -2637,6 +3114,23 @@
     "importance": 6
   },
   {
+    "id": "death-of-guru-gobind-singh",
+    "name": "Death of Guru Gobind Singh",
+    "year": 1708,
+    "categories": [
+      "Religion"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "tenth Sikh Guru",
+      "Guru Granth Sahib as eternal Guru",
+      "founder of the Khalsa"
+    ],
+    "description": "Guru Gobind Singh, the tenth Sikh Guru and founder of the Khalsa, dies at Nanded in the Deccan after being attacked. Before his death he declares that the line of human Gurus ends and that the scripture, the Guru Granth Sahib, will be the Sikhs' eternal Guru.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
     "id": "euler-konigsberg-bridges",
     "name": "Euler Solves the Königsberg Bridge Problem",
     "year": 1735,
@@ -2653,6 +3147,24 @@
       "Leonhard Euler mathematics"
     ],
     "description": "The Swiss mathematician Leonhard Euler proves that it is impossible to walk through the city of Königsberg crossing each of its seven bridges exactly once, in the process founding the mathematical field of graph theory. By abstracting the city's geography into nodes and edges, Euler creates a new framework for analyzing connectivity and networks that has no precedent. The paper is considered the first work in graph theory and topology and becomes foundational to modern network analysis, computer science, logistics, and the study of social networks.",
+    "difficulty": "hard",
+    "importance": 5
+  },
+  {
+    "id": "nadir-shah-sacks-delhi",
+    "name": "Nadir Shah Sacks Delhi",
+    "year": 1739,
+    "categories": [
+      "War"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Peacock Throne taken",
+      "Koh-i-Noor seized",
+      "Battle of Karnal",
+      "Persian invasion of India"
+    ],
+    "description": "Nadir Shah of Persia defeats the Mughal army at Karnal and sacks Delhi, massacring thousands of its inhabitants. He carries off enormous treasure, including the Peacock Throne and the Koh-i-Noor diamond, exposing the weakness of the declining Mughal Empire.",
     "difficulty": "hard",
     "importance": 5
   },
@@ -2715,6 +3227,25 @@
     "description": "Britain leads a transformation from manual craft production to machine-based manufacturing in factories, dramatically increasing industrial output and triggering mass urbanization. The Industrial Revolution creates new social classes, alters working conditions, and sets the template for modern economic development worldwide.",
     "difficulty": "easy",
     "importance": 5
+  },
+  {
+    "id": "battle-of-buxar",
+    "name": "Battle of Buxar",
+    "year": 1764,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Battle of Buxor",
+      "Hector Munro",
+      "Treaty of Allahabad",
+      "Shah Alam II defeated"
+    ],
+    "description": "East India Company troops under Hector Munro defeat the combined forces of the Nawab of Bengal, the Nawab of Awadh and the Mughal emperor Shah Alam II. The victory leads to the Treaty of Allahabad, which gives the Company the right to collect revenue in Bengal, Bihar and Orissa.",
+    "difficulty": "hard",
+    "importance": 4
   },
   {
     "id": "east-india-company-bengal",
@@ -2851,6 +3382,24 @@
     "description": "Scottish economist Adam Smith publishes An Inquiry into the Nature and Causes of the Wealth of Nations on the same day the American colonies declare independence, laying the foundations of modern economic theory. Smith argues that free markets, driven by individual self-interest and coordinated by the 'invisible hand' of price signals, generate prosperity more efficiently than state direction of the economy. The book becomes the foundational text of classical economics, its ideas shaping capitalist policy from the Industrial Revolution to the present day.",
     "difficulty": "medium",
     "importance": 8
+  },
+  {
+    "id": "second-anglo-mysore-war",
+    "name": "Second Anglo-Mysore War Begins",
+    "year": 1780,
+    "categories": [
+      "War"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Second Mysore War",
+      "Hyder Ali",
+      "Battle of Pollilur",
+      "Treaty of Mangalore"
+    ],
+    "description": "Hyder Ali of Mysore invades the Carnatic and inflicts a heavy defeat on East India Company forces at Pollilur. The war continues under his son Tipu Sultan after Hyder's death and ends with the Treaty of Mangalore, which restores the pre-war borders.",
+    "difficulty": "hard",
+    "importance": 3
   },
   {
     "id": "american-war-independence-ends",
@@ -3046,6 +3595,25 @@
     "importance": 5
   },
   {
+    "id": "lewis-and-clark-expedition",
+    "name": "Lewis and Clark Expedition",
+    "year": 1804,
+    "categories": [
+      "Exploration"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Corps of Discovery",
+      "Meriwether Lewis",
+      "William Clark",
+      "Sacagawea",
+      "exploring the Louisiana Purchase"
+    ],
+    "description": "Meriwether Lewis and William Clark lead the Corps of Discovery up the Missouri River and across the Rocky Mountains to the Pacific coast, guided in part by the Shoshone woman Sacagawea. The expedition maps newly acquired western lands and strengthens American claims to the Pacific Northwest.",
+    "difficulty": "easy",
+    "importance": 5
+  },
+  {
     "id": "battle-of-trafalgar",
     "name": "Battle of Trafalgar",
     "year": 1805,
@@ -3143,6 +3711,23 @@
     "importance": 3
   },
   {
+    "id": "death-of-napoleon",
+    "name": "Death of Napoleon",
+    "year": 1821,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Napoleon dies on Saint Helena",
+      "Longwood House",
+      "end of Napoleon's exile"
+    ],
+    "description": "Napoleon Bonaparte dies in exile on the remote South Atlantic island of Saint Helena, where the British have held him since Waterloo. His legend, and the legal reforms of the Napoleonic Code, long outlive him.",
+    "difficulty": "medium",
+    "importance": 4
+  },
+  {
     "id": "first-steam-railway",
     "name": "First Public Steam Railway Opens",
     "year": 1825,
@@ -3162,6 +3747,25 @@
     "description": "George Stephenson's Stockton and Darlington Railway opens in northern England, becoming the first public railway to use steam locomotives to carry passengers and freight on a regular commercial service. The success of the line launches the railway age, with networks expanding rapidly across Britain and then the world, transforming the cost and speed of overland transport beyond anything previously imaginable. Cheap, fast railways reshape economies, settlement patterns, and the conduct of warfare, accelerating the Industrial Revolution and binding global trade together.",
     "difficulty": "medium",
     "importance": 7
+  },
+  {
+    "id": "indian-removal-act",
+    "name": "Indian Removal Act",
+    "year": 1830,
+    "categories": [
+      "Politics",
+      "Social"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Trail of Tears",
+      "Andrew Jackson removal policy",
+      "forced relocation of Native Americans",
+      "Cherokee removal"
+    ],
+    "description": "President Andrew Jackson signs the Indian Removal Act, authorising the forced relocation of Native American nations from the southeastern United States to lands west of the Mississippi. The removals that follow, including the Cherokee 'Trail of Tears', cost thousands of lives.",
+    "difficulty": "hard",
+    "importance": 5
   },
   {
     "id": "great-reform-act",
@@ -3464,6 +4068,24 @@
     "importance": 7
   },
   {
+    "id": "alaska-purchase",
+    "name": "United States Buys Alaska",
+    "year": 1867,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Alaska Purchase",
+      "Seward's Folly",
+      "Russian America sold",
+      "Seward's Icebox"
+    ],
+    "description": "The United States buys Alaska from the Russian Empire for 7.2 million dollars, in a deal negotiated by Secretary of State William Seward. Mocked at the time as 'Seward's Folly', the purchase ends Russia's presence in North America and later proves rich in gold and oil.",
+    "difficulty": "medium",
+    "importance": 4
+  },
+  {
     "id": "meiji-restoration-japan",
     "name": "Meiji Restoration in Japan",
     "year": 1868,
@@ -3542,6 +4164,24 @@
     "importance": 4
   },
   {
+    "id": "stanley-finds-livingstone",
+    "name": "Stanley Finds Livingstone",
+    "year": 1871,
+    "categories": [
+      "Exploration"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Dr. Livingstone, I presume",
+      "Henry Morton Stanley",
+      "Ujiji",
+      "David Livingstone"
+    ],
+    "description": "The journalist Henry Morton Stanley, sent by the New York Herald, finds the missing Scottish missionary and explorer David Livingstone at Ujiji on Lake Tanganyika. His reported greeting, 'Dr. Livingstone, I presume?', becomes one of the most famous lines in the history of exploration.",
+    "difficulty": "medium",
+    "importance": 3
+  },
+  {
     "id": "telephone-invented",
     "name": "Telephone Invented",
     "year": 1876,
@@ -3557,6 +4197,24 @@
     ],
     "description": "Alexander Graham Bell makes the first successful voice telephone call, opening an era of instant long-distance communication. His invention rapidly transforms business, society, and personal relationships across the globe and lays the groundwork for all modern telecommunications.",
     "difficulty": "easy",
+    "importance": 4
+  },
+  {
+    "id": "battle-of-little-bighorn",
+    "name": "Battle of the Little Bighorn",
+    "year": 1876,
+    "categories": [
+      "War"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Custer's Last Stand",
+      "Sitting Bull",
+      "Crazy Horse",
+      "Battle of the Greasy Grass"
+    ],
+    "description": "Lakota Sioux and Northern Cheyenne warriors led by Sitting Bull and Crazy Horse destroy Lieutenant Colonel George Custer's detachment of the 7th Cavalry in Montana. The victory is short-lived: the US Army responds with an intensified campaign that forces the Plains nations onto reservations.",
+    "difficulty": "medium",
     "importance": 4
   },
   {
@@ -3595,6 +4253,25 @@
     "description": "British forces invade the Zulu Kingdom and suffer a catastrophic defeat at Isandlwana, one of the worst British military disasters in colonial history, before eventually defeating the Zulus. The war ends the independent Zulu Kingdom and marks Britain's determination to consolidate control of southern Africa.",
     "difficulty": "medium",
     "importance": 3
+  },
+  {
+    "id": "edison-light-bulb",
+    "name": "Edison Demonstrates the Light Bulb",
+    "year": 1879,
+    "categories": [
+      "Technology",
+      "Science"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "carbon filament lamp",
+      "Menlo Park",
+      "incandescent lamp",
+      "Thomas Edison"
+    ],
+    "description": "Thomas Edison and his team at Menlo Park demonstrate a long-lasting incandescent lamp with a carbon filament. Edison's work on bulbs, and on the power stations to supply them, helps bring electric light into homes and cities around the world.",
+    "difficulty": "medium",
+    "importance": 5
   },
   {
     "id": "krakatoa-erupts",
@@ -3674,6 +4351,24 @@
     "description": "King Leopold II of Belgium claims the Congo as his personal property and institutes a brutal forced labor system to harvest rubber and ivory, killing an estimated ten million Congolese. The atrocities, exposed by journalists and activists, spark one of history's first international human rights campaigns.",
     "difficulty": "hard",
     "importance": 4
+  },
+  {
+    "id": "benz-motorwagen",
+    "name": "Benz Builds the First Practical Automobile",
+    "year": 1885,
+    "categories": [
+      "Technology"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Benz Patent-Motorwagen",
+      "Karl Benz",
+      "first petrol car",
+      "horseless carriage"
+    ],
+    "description": "Karl Benz builds his three-wheeled Patent-Motorwagen in Mannheim, powered by a petrol engine of his own design, and patents it early the following year. It is widely regarded as the first practical automobile and begins a transformation of transport, cities and industry.",
+    "difficulty": "medium",
+    "importance": 5
   },
   {
     "id": "ramanujan-born",
@@ -3826,6 +4521,24 @@
     "description": "Marie Curie and her husband Pierre isolate the radioactive elements polonium and radium, pioneering the study of radioactivity and its medical applications. Marie Curie becomes the first woman to win a Nobel Prize and the only person to win it in two different sciences, transforming physics and medicine.",
     "difficulty": "easy",
     "importance": 4
+  },
+  {
+    "id": "spanish-american-war",
+    "name": "Spanish–American War",
+    "year": 1898,
+    "categories": [
+      "War"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Remember the Maine",
+      "Rough Riders",
+      "Cuban independence war",
+      "US takes the Philippines"
+    ],
+    "description": "After the battleship USS Maine explodes in Havana harbour, the United States goes to war with Spain over Cuba. In a few months of fighting the US defeats Spain and gains Puerto Rico, Guam and the Philippines, emerging as a colonial power in the Pacific and the Caribbean.",
+    "difficulty": "easy",
+    "importance": 5
   },
   {
     "id": "south-african-boer-war",
@@ -4869,6 +5582,23 @@
     "importance": 4
   },
   {
+    "id": "eisenhower-elected",
+    "name": "Eisenhower Elected US President",
+    "year": 1952,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "I Like Ike",
+      "Dwight D. Eisenhower",
+      "Ike elected"
+    ],
+    "description": "Dwight D. Eisenhower, the general who commanded Allied forces in Europe during the Second World War, wins the US presidential election for the Republicans. His two terms see the end of the Korean War, the start of the Interstate Highway System and a deepening Cold War.",
+    "difficulty": "easy",
+    "importance": 4
+  },
+  {
     "id": "dna-structure-discovered",
     "name": "DNA Double Helix Structure Discovered",
     "year": 1953,
@@ -5045,6 +5775,43 @@
     "importance": 5
   },
   {
+    "id": "kilby-first-integrated-circuit",
+    "name": "Kilby Builds the First Integrated Circuit",
+    "year": 1958,
+    "categories": [
+      "Technology"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Jack Kilby",
+      "first microchip",
+      "Texas Instruments chip",
+      "germanium integrated circuit"
+    ],
+    "description": "Jack Kilby of Texas Instruments demonstrates the first working integrated circuit, built on a single piece of germanium that carries a transistor, resistors and a capacitor. Putting a whole circuit on one chip points the way to the modern microchip, and Kilby later receives the Nobel Prize in Physics for it.",
+    "difficulty": "medium",
+    "importance": 5
+  },
+  {
+    "id": "noyce-silicon-chip",
+    "name": "Noyce Invents the Silicon Chip",
+    "year": 1959,
+    "categories": [
+      "Technology"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Robert Noyce",
+      "monolithic integrated circuit",
+      "planar process",
+      "Fairchild Semiconductor",
+      "Jean Hoerni"
+    ],
+    "description": "Robert Noyce of Fairchild Semiconductor independently invents the monolithic integrated circuit in silicon, using Jean Hoerni's planar process to build and connect all the components within one flat chip. The design can be mass-produced and becomes the basis of virtually every microchip since, powering the computer age.",
+    "difficulty": "medium",
+    "importance": 5
+  },
+  {
     "id": "decolonization-africa",
     "name": "African Decolonization Wave",
     "year": 1960,
@@ -5103,6 +5870,25 @@
     "description": "The US Food and Drug Administration approves Enovid, the first oral contraceptive pill, developed from the research of Carl Djerassi and others, for contraceptive use. The Pill gives women unprecedented control over their reproductive choices, separating sex from reproduction in a way that transforms gender roles, family planning, and sexual norms across the developed world. It is widely regarded as one of the most socially transformative innovations of the twentieth century, directly enabling the women's liberation movement of the 1960s.",
     "difficulty": "medium",
     "importance": 8
+  },
+  {
+    "id": "france-first-nuclear-test",
+    "name": "France Tests Its First Atomic Bomb",
+    "year": 1960,
+    "categories": [
+      "War",
+      "Technology"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Gerboise Bleue",
+      "French nuclear test",
+      "Reggane",
+      "force de frappe"
+    ],
+    "description": "France explodes its first nuclear device, code-named Gerboise Bleue, in the Algerian Sahara and becomes the world's fourth nuclear power. The test reflects President de Gaulle's determination to give France a nuclear deterrent independent of the United States.",
+    "difficulty": "easy",
+    "importance": 4
   },
   {
     "id": "space-race-yuri-gagarin",
@@ -5223,6 +6009,41 @@
     "importance": 8
   },
   {
+    "id": "formation-of-malaysia",
+    "name": "Federation of Malaysia Formed",
+    "year": 1963,
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "aliases": [
+      "Malaysia Day",
+      "Malaya, Singapore, Sabah and Sarawak",
+      "Tunku Abdul Rahman"
+    ],
+    "description": "Malaya joins with Singapore, Sabah and Sarawak to form the Federation of Malaysia under Prime Minister Tunku Abdul Rahman. The new state faces armed 'Confrontation' from Indonesia, and Singapore leaves the federation within two years.",
+    "difficulty": "medium",
+    "importance": 4
+  },
+  {
+    "id": "partial-test-ban-treaty",
+    "name": "Partial Nuclear Test Ban Treaty Signed",
+    "year": 1963,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Global",
+    "aliases": [
+      "Limited Test Ban Treaty",
+      "atmospheric test ban",
+      "PTBT",
+      "Moscow treaty"
+    ],
+    "description": "The United States, the Soviet Union and Britain sign a treaty in Moscow banning nuclear weapons tests in the atmosphere, in outer space and under water. Signed months after the Cuban Missile Crisis, it is the first major arms-control agreement of the Cold War.",
+    "difficulty": "medium",
+    "importance": 4
+  },
+  {
     "id": "civil-rights-act-us",
     "name": "US Civil Rights Act",
     "year": 1964,
@@ -5239,6 +6060,24 @@
     ],
     "description": "President Lyndon B. Johnson signs the Civil Rights Act into law, prohibiting discrimination based on race, color, religion, sex, or national origin in the United States. The landmark legislation, championed by the civil rights movement led by Martin Luther King Jr., dismantles the legal infrastructure of racial segregation.",
     "difficulty": "easy",
+    "importance": 5
+  },
+  {
+    "id": "cosmic-microwave-background",
+    "name": "Cosmic Microwave Background Discovered",
+    "year": 1964,
+    "categories": [
+      "Science"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Penzias and Wilson",
+      "Big Bang afterglow",
+      "Holmdel Horn Antenna",
+      "CMB radiation"
+    ],
+    "description": "Arno Penzias and Robert Wilson of Bell Labs detect a faint microwave signal coming evenly from every direction in the sky. It turns out to be radiation left over from the early universe, providing strong evidence for the Big Bang theory and later earning them a Nobel Prize.",
+    "difficulty": "medium",
     "importance": 5
   },
   {
@@ -5316,6 +6155,40 @@
       "civil rights Alabama"
     ],
     "description": "Civil rights marchers attempting to walk from Selma to Montgomery, Alabama, are violently beaten by police on the Edmund Pettus Bridge on Bloody Sunday, shocking the nation. The marches contribute directly to the passage of the Voting Rights Act, a cornerstone of American civil rights legislation.",
+    "difficulty": "medium",
+    "importance": 4
+  },
+  {
+    "id": "death-of-churchill",
+    "name": "Death of Winston Churchill",
+    "year": 1965,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Churchill's state funeral",
+      "wartime prime minister dies",
+      "Sir Winston"
+    ],
+    "description": "Sir Winston Churchill, Britain's prime minister for most of the Second World War, dies in London at the age of ninety. He is given a state funeral, an honour rarely granted to anyone outside the royal family.",
+    "difficulty": "easy",
+    "importance": 4
+  },
+  {
+    "id": "singapore-independence",
+    "name": "Singapore Becomes Independent",
+    "year": 1965,
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "aliases": [
+      "Singapore leaves Malaysia",
+      "Lee Kuan Yew",
+      "Republic of Singapore"
+    ],
+    "description": "Singapore is separated from the Federation of Malaysia and becomes a sovereign city-state, with Lee Kuan Yew as prime minister. Despite having few natural resources, it grows into one of the world's wealthiest trading hubs.",
     "difficulty": "medium",
     "importance": 4
   },
@@ -5501,6 +6374,23 @@
     "importance": 6
   },
   {
+    "id": "jimmy-carter-elected",
+    "name": "Jimmy Carter Elected US President",
+    "year": 1976,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Carter defeats Ford",
+      "peanut farmer president",
+      "Jimmy Carter"
+    ],
+    "description": "Jimmy Carter, a former peanut farmer and governor of Georgia, defeats Gerald Ford in the first presidential election after the Watergate scandal. His presidency brings the Camp David Accords but also economic troubles and the Iran hostage crisis.",
+    "difficulty": "easy",
+    "importance": 3
+  },
+  {
     "id": "tiananmen-one",
     "name": "Chinese Economic Reforms Begin",
     "year": 1978,
@@ -5559,6 +6449,42 @@
     "description": "Margaret Thatcher becomes the United Kingdom's first female Prime Minister following a decisive Conservative Party victory in the general election, beginning an eleven-year tenure that transforms British politics and economics. Thatcher dismantles much of Britain's post-war consensus, privatizing state industries, curbing trade union power, and promoting free-market economic policies under the banner of Thatcherism. Her ideological alignment with Ronald Reagan's parallel program in the United States defines the political economy of the English-speaking world in the 1980s and shifts the center of gravity of Western politics.",
     "difficulty": "medium",
     "importance": 7
+  },
+  {
+    "id": "bhutto-executed",
+    "name": "Zulfikar Ali Bhutto Executed",
+    "year": 1979,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Z. A. Bhutto hanged",
+      "Pakistan People's Party founder",
+      "Zia regime"
+    ],
+    "description": "Zulfikar Ali Bhutto, Pakistan's former prime minister and founder of the Pakistan People's Party, is hanged after a disputed murder trial under the military government of General Zia-ul-Haq. His death makes him a martyr to his supporters, and his daughter Benazir later leads the party.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
+    "id": "khmer-rouge-overthrown",
+    "name": "Khmer Rouge Driven from Phnom Penh",
+    "year": 1979,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "East Asia",
+    "aliases": [
+      "Vietnamese invasion of Cambodia",
+      "fall of Pol Pot",
+      "People's Republic of Kampuchea",
+      "Cambodian-Vietnamese War"
+    ],
+    "description": "Vietnamese forces, together with Cambodian rebels opposed to Pol Pot, capture Phnom Penh and drive the Khmer Rouge from power. A Vietnamese-backed government takes over, while the Khmer Rouge retreat to the jungle and fight on for nearly two decades.",
+    "difficulty": "hard",
+    "importance": 4
   },
   {
     "id": "smallpox-eradicated",
@@ -5656,6 +6582,23 @@
     "description": "Captained by Kapil Dev, India defeats the dominant West Indies in the Cricket World Cup final at Lord's in one of the greatest sporting upsets ever. The victory sparks a revolution in Indian cricket and transforms the sport into the nation's dominant cultural obsession.",
     "difficulty": "easy",
     "importance": 4
+  },
+  {
+    "id": "us-invasion-of-grenada",
+    "name": "United States Invades Grenada",
+    "year": 1983,
+    "categories": [
+      "War"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Operation Urgent Fury",
+      "Grenada invasion",
+      "Reagan's Caribbean intervention"
+    ],
+    "description": "After a coup in which Grenada's prime minister Maurice Bishop is killed, US forces invade the small Caribbean island in Operation Urgent Fury. The intervention, condemned by the UN General Assembly, removes the military government within days.",
+    "difficulty": "easy",
+    "importance": 3
   },
   {
     "id": "operation-blue-star",
@@ -5770,6 +6713,57 @@
     ],
     "description": "A reactor at the Chernobyl nuclear power plant in Soviet Ukraine explodes and catches fire, releasing radioactive contamination across much of Europe in the worst nuclear accident in history. The disaster kills dozens directly and exposes millions to radiation, accelerates the decline of the Soviet Union, and reshapes global attitudes toward nuclear power.",
     "difficulty": "easy",
+    "importance": 4
+  },
+  {
+    "id": "palestinian-declaration-of-independence",
+    "name": "Palestinian Declaration of Independence",
+    "year": 1988,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "aliases": [
+      "Arafat declares State of Palestine",
+      "Algiers declaration",
+      "PLO proclaims statehood"
+    ],
+    "description": "Meeting in Algiers, the Palestine National Council led by Yasser Arafat proclaims an independent State of Palestine. The declaration implicitly accepts a two-state solution and is soon recognised by many countries, though the territory remains under Israeli occupation.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
+    "id": "spitak-earthquake",
+    "name": "Spitak Earthquake in Armenia",
+    "year": 1988,
+    "categories": [
+      "Disasters"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Armenian earthquake",
+      "Leninakan earthquake",
+      "Soviet Armenia quake"
+    ],
+    "description": "A powerful earthquake devastates northern Soviet Armenia, destroying the town of Spitak and much of Leninakan and killing tens of thousands of people. For the first time, the Soviet Union openly accepts large-scale aid from the West.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
+    "id": "zia-ul-haq-killed",
+    "name": "Zia-ul-Haq Killed in Plane Crash",
+    "year": 1988,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "death of General Zia",
+      "Bahawalpur air crash",
+      "Pakistan's military ruler dies"
+    ],
+    "description": "General Muhammad Zia-ul-Haq, Pakistan's military ruler since he overthrew Zulfikar Ali Bhutto, dies when his plane crashes near Bahawalpur, along with the US ambassador. Elections later that year bring Benazir Bhutto to power.",
+    "difficulty": "hard",
     "importance": 4
   },
   {
@@ -6085,6 +7079,57 @@
     "importance": 6
   },
   {
+    "id": "india-rejects-ctbt",
+    "name": "India Refuses to Sign the Test Ban Treaty",
+    "year": 1996,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "CTBT",
+      "Comprehensive Nuclear-Test-Ban Treaty",
+      "India blocks the test ban"
+    ],
+    "description": "India refuses to sign the Comprehensive Nuclear-Test-Ban Treaty, objecting that it does not commit the nuclear powers to disarmament, and blocks its adoption at the Conference on Disarmament. The treaty is instead adopted through the UN General Assembly; two years later India carries out nuclear tests.",
+    "difficulty": "hard",
+    "importance": 3
+  },
+  {
+    "id": "kofi-annan-secretary-general",
+    "name": "Kofi Annan Chosen as UN Secretary-General",
+    "year": 1996,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Global",
+    "aliases": [
+      "Kofi Annan",
+      "Ghanaian diplomat leads the UN",
+      "first sub-Saharan African UN chief"
+    ],
+    "description": "The Ghanaian diplomat Kofi Annan is appointed Secretary-General of the United Nations, the first to rise from within the UN's own staff. He later shares the Nobel Peace Prize with the UN for work on peace and human rights.",
+    "difficulty": "medium",
+    "importance": 4
+  },
+  {
+    "id": "sheikh-hasina-first-term",
+    "name": "Sheikh Hasina Becomes Prime Minister",
+    "year": 1996,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Awami League returns to power",
+      "Hasina Wajed",
+      "Bangladesh election"
+    ],
+    "description": "Sheikh Hasina, leader of the Awami League and daughter of Bangladesh's founding leader Sheikh Mujibur Rahman, becomes prime minister for the first time. She goes on to become the country's longest-serving head of government.",
+    "difficulty": "hard",
+    "importance": 3
+  },
+  {
     "id": "hong-kong-handover",
     "name": "Hong Kong Handed Back to China",
     "year": 1997,
@@ -6161,6 +7206,41 @@
     "importance": 4
   },
   {
+    "id": "clinton-impeached",
+    "name": "Bill Clinton Impeached",
+    "year": 1998,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Lewinsky scandal",
+      "Clinton impeachment",
+      "perjury charges"
+    ],
+    "description": "The US House of Representatives impeaches President Bill Clinton on charges of perjury and obstruction of justice arising from his affair with Monica Lewinsky. The Senate acquits him early the following year and he completes his second term.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
+    "id": "suharto-resigns",
+    "name": "Suharto Resigns",
+    "year": 1998,
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "aliases": [
+      "fall of Suharto",
+      "Reformasi",
+      "end of the New Order",
+      "Indonesian financial crisis"
+    ],
+    "description": "Indonesian President Suharto resigns after more than three decades in power, following the Asian financial crisis, mass protests and riots. His fall opens the Reformasi era of democratic reform in the world's largest Muslim-majority country.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
     "id": "kargil-war",
     "name": "Kargil War",
     "year": 1999,
@@ -6177,6 +7257,25 @@
     ],
     "description": "Pakistani soldiers and militants infiltrate the Kargil sector of Jammu and Kashmir, leading to intense high-altitude combat between Indian and Pakistani forces. India successfully recaptures most positions in Operation Vijay, and the conflict remains the only direct war between two nuclear-armed states.",
     "difficulty": "medium",
+    "importance": 4
+  },
+  {
+    "id": "kosovo-war-ends",
+    "name": "Yugoslavia Accepts Kosovo Peace Plan",
+    "year": 1999,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "end of the Kosovo War",
+      "NATO bombing of Yugoslavia ends",
+      "KFOR",
+      "Milosevic withdraws from Kosovo"
+    ],
+    "description": "After eleven weeks of NATO air strikes, Yugoslav President Slobodan Milošević accepts an international peace plan and withdraws Serbian forces from Kosovo. A NATO-led force and a UN administration take over the province, which later declares independence.",
+    "difficulty": "hard",
     "importance": 4
   },
   {
