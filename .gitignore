@@ -44,3 +44,6 @@ __screenshots__/
 
 # Python
 __pycache__/
+
+# Local db snapshots (manage.py backup) — kept off git on purpose
+data/backup/

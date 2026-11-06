@@ -46,6 +46,7 @@ npm run format       # Format src/ with Prettier
 npm run data:export    # SQLite → app JSON (after editing data/dategolf.db)
 npm run data:validate  # Data integrity checks
 npm run data:compare   # Verify export matches committed JSON
+npm run data:backup    # Monthly local db snapshot → data/backup/ (gitignored)
 node scripts/validate-events.cjs   # Legacy events.json rule checks
 ```
 

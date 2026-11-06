@@ -196,6 +196,23 @@ If you forget step 1, the export silently leaves out your latest edits. Commit t
 
 ---
 
+## 5b. Monthly backup
+
+```bash
+npm run data:backup     # → data/backup/dategolf_YYYY-MM-DD_HHMMSS.db
+```
+
+- Click **Write Changes** in DB Browser first. The backup copies only written changes, and it's safe to run while DB Browser is open.
+- Each backup is integrity-checked before the command reports success.
+- Backups are **local only**: `data/backup/` is gitignored, and nothing is copied elsewhere. Git history is the other fallback.
+- Old backups are never deleted automatically. Remove them by hand if the folder grows.
+
+**To restore from a backup:** close DB Browser, then
+```bash
+cp data/backup/dategolf_<date>_<time>.db data/dategolf.db
+npm run data:validate && npm run data:export
+```
+
 ## 6. When something goes wrong
 
 | Symptom | Cause | Fix |
@@ -218,6 +235,7 @@ If you forget step 1, the export silently leaves out your latest edits. Commit t
 npm run data:export                                   # db → game JSON (after every edit session)
 npm run data:validate                                 # integrity checks → data/reports/validate.md
 npm run data:compare                                  # prove the export matches committed JSON
+npm run data:backup                                   # monthly snapshot → data/backup/ (local, not in git)
 uv run python tools/manage.py approve <id> [<id>…]    # publish drafts
 uv run python tools/manage.py load-drafts <file>      # add a batch of new events as drafts
 uv run python tools/manage.py reconcile-events        # refresh CSV match proposals

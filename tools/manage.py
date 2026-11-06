@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import sqlite3
 import subprocess
 import sys
 
@@ -9,7 +10,9 @@ import drafts
 import exporter
 import reconcile
 import validate
-from common import APP_FILES, LEGACY, LEGACY_CSV, REPORTS, ROOT, connect
+from datetime import datetime
+
+from common import APP_FILES, DATA, DB_PATH, LEGACY, LEGACY_CSV, REPORTS, ROOT, connect
 
 
 def first_difference(a, b, path="$"):
@@ -133,6 +136,33 @@ def approve(args):
     return 0
 
 
+def backup(_args):
+    """Snapshot the whole db to data/backup/dategolf_<date>_<time>.db and verify the copy."""
+    dest_dir = DATA / "backup"
+    dest_dir.mkdir(exist_ok=True)
+    dest = dest_dir / f"dategolf_{datetime.now():%Y-%m-%d_%H%M%S}.db"
+
+    # SQLite's backup API gives a consistent copy even while DB Browser has the file open.
+    # It copies only written changes, so click Write Changes first.
+    src = sqlite3.connect(DB_PATH)
+    out = sqlite3.connect(dest)
+    src.backup(out)
+    src.close()
+
+    ok = out.execute("PRAGMA integrity_check").fetchone()[0] == "ok"
+    counts = {t: out.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
+              for t in ("entities", "events", "time_spans", "legacy_csv_crosswalk")}
+    out.close()
+    if not ok:
+        dest.unlink()
+        print("  ✗ Backup failed its integrity check and was deleted.")
+        return 1
+    size_kb = dest.stat().st_size // 1024
+    print(f"  ✓ {dest.relative_to(ROOT)} ({size_kb} KB, integrity ok)")
+    print("    " + ", ".join(f"{t}={n}" for t, n in counts.items()))
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(prog="manage.py", description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -154,6 +184,9 @@ def main():
     p = sub.add_parser("approve", help="Mark proposed entities reviewed so they export")
     p.add_argument("ids", nargs="+")
     p.set_defaults(fn=approve)
+
+    sub.add_parser("backup", help="Snapshot the db to data/backup/ with a date-time name"
+                   ).set_defaults(fn=backup)
 
     p = sub.add_parser("coverage", help="Events per time bin × region")
     p.add_argument("--bin", type=int, default=500, help="Bin width in years (default 500)")

@@ -16,7 +16,8 @@
     "format": "prettier --write --experimental-cli src/",
     "data:export": "uv run python tools/manage.py export-json",
     "data:validate": "uv run python tools/manage.py validate",
-    "data:compare": "uv run python tools/manage.py compare-export"
+    "data:compare": "uv run python tools/manage.py compare-export",
+    "data:backup": "uv run python tools/manage.py backup"
   },
   "dependencies": {
     "fuse.js": "^7.5.0",
