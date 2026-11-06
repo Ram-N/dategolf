@@ -35,16 +35,19 @@ def load(path):
             ins("INSERT INTO entity_provenance VALUES (?, ?, ?, ?)",
                 (e["id"], origin, e.get("csv_event_id"), e.get("note")))
 
+        # A re-draft of an already-drafted CSV row keeps its existing triage row.
         drafted = {e["csv_event_id"] for e in batch["events"] if e.get("csv_event_id") is not None}
-        triage = [(i, "drafted", None, None) for i in sorted(drafted)]
-        triage += [(t["csv_event_id"], t["outcome"], t.get("related_entity_id"), t.get("note"))
-                   for t in batch.get("csv_triage", [])]
+        conn.executemany("INSERT OR IGNORE INTO legacy_csv_triage VALUES (?, 'drafted', NULL, NULL)",
+                         [(i,) for i in sorted(drafted)])
+        triage = [(t["csv_event_id"], t["outcome"], t.get("related_entity_id"), t.get("note"))
+                  for t in batch.get("csv_triage", [])]
         conn.executemany("INSERT INTO legacy_csv_triage VALUES (?, ?, ?, ?)", triage)
     except sqlite3.Error as exc:
         conn.rollback()
         raise SystemExit(f"Nothing loaded: {exc} (while loading {path})")
     conn.commit()
     conn.close()
-    print(f"  Loaded {len(batch['events'])} proposed events and {len(triage)} CSV triage rows.")
+    print(f"  Loaded {len(batch['events'])} proposed events "
+          f"({len(drafted)} source CSV rows, {len(triage)} extra triage rows).")
     print("  They are NOT exported. To publish one, set entities.editorial_status = 'reviewed'.")
     return 0
