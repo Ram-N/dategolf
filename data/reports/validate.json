@@ -521,7 +521,7 @@
       "rows": [
         [
           "events_master.csv",
-          "234 rows (manage.py reconcile-events proposes)"
+          "29 rows (manage.py reconcile-events proposes)"
         ]
       ]
     },
@@ -534,7 +534,7 @@
     {
       "severity": "review",
       "check": "CSV rows triaged as duplicate / not recommended (incl. date conflicts)",
-      "count": 12,
+      "count": 39,
       "rows": [
         [
           "csv 3",
@@ -549,16 +549,84 @@
           "duplicate_of_existing → birth-of-buddha — DATE CONFLICT: CSV says 486 BC, row 15 says c. 576 BC, the app says 563 BCE. Scholarly estimates range from c. 563 to c. 480 BCE."
         ],
         [
+          "csv 5",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
           "csv 22",
           "not_recommended → platos-academy-founded — 'The period of Aristotle and Plato' is an era, not a datable event. Could become a time span."
+        ],
+        [
+          "csv 23",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 25",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 36",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 47",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 80",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 93",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
         ],
         [
           "csv 96",
           "not_recommended → gunpowder-invented — 'Roger Bacon invents gunpowder' conflicts with gunpowder-invented (c. 850, China). Bacon described a recipe c. 1267 but did not invent it."
         ],
         [
+          "csv 100",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
           "csv 101",
           "duplicate_of_existing → vijayanagara-empire-founded — Spelling variant (Vijayanagar). Missed by the matcher; worth adding 'Vijayanagar' as an alias."
+        ],
+        [
+          "csv 140",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 141",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 142",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 147",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 150",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 164",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 165",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 171",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 174",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
         ],
         [
           "csv 175",
@@ -573,8 +641,32 @@
           "not_recommended — 'Military Aid Pact between China and Pakistan, 1954' looks wrong: the 1954 pact was between the US and Pakistan. Check before using."
         ],
         [
+          "csv 251",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 265",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 268",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
           "csv 273",
           "not_recommended — Draft discarded at review: too minor for a world-history game."
+        ],
+        [
+          "csv 275",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 278",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 285",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
         ],
         [
           "csv 286",
@@ -583,6 +675,22 @@
         [
           "csv 288",
           "not_recommended — Draft discarded at review: minor episode; Gaddafi's story is better told through other events."
+        ],
+        [
+          "csv 289",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 296",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 298",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
+        ],
+        [
+          "csv 304",
+          "not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2)."
         ]
       ]
     },
