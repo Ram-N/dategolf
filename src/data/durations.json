@@ -98,6 +98,20 @@
     "approximate": true
   },
   {
+    "id": "life-of-the-buddha",
+    "name": "Life of the Buddha",
+    "startYear": -563,
+    "endYear": -483,
+    "description": "Siddhartha Gautama, the Buddha, lives and teaches in northern India and founds Buddhism. His dates are uncertain: these traditional dates are widely used, but many scholars place his death closer to 400 BCE.",
+    "categories": [
+      "Religion"
+    ],
+    "region": "South Asia",
+    "importance": 4,
+    "kind": "period",
+    "approximate": true
+  },
+  {
     "id": "achaemenid-empire",
     "name": "Achaemenid Persian Empire",
     "startYear": -550,
@@ -165,7 +179,7 @@
   {
     "id": "maurya-empire",
     "name": "Maurya Empire",
-    "startYear": -322,
+    "startYear": -320,
     "endYear": -185,
     "description": "Founded by Chandragupta Maurya; under Ashoka it covered most of the Indian subcontinent and spread Buddhism.",
     "categories": [

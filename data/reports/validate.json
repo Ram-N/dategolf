@@ -1,7 +1,7 @@
 {
   "counts": {
-    "events": 409,
-    "time_spans": 98,
+    "events": 435,
+    "time_spans": 99,
     "eras": 5,
     "datelinks_keys": 26,
     "datelinks_groups": 83,
@@ -517,13 +517,8 @@
     {
       "severity": "review",
       "check": "Legacy CSV rows with no accepted match and no triage outcome",
-      "count": 1,
-      "rows": [
-        [
-          "events_master.csv",
-          "29 rows (manage.py reconcile-events proposes)"
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "review",
@@ -695,6 +690,17 @@
       ]
     },
     {
+      "severity": "info",
+      "check": "DateFlow-only events (excluded from DatePick and DateGolf)",
+      "count": 1,
+      "rows": [
+        [
+          "birth-of-buddha",
+          "-563 · Birth of Siddhartha Gautama — Birth date too disputed for a fair guess (CSV alone gives -576 and -486); user decision 2026-11-06."
+        ]
+      ]
+    },
+    {
       "severity": "review",
       "check": "Legacy region labels (no reviewed hierarchy yet)",
       "count": 12,
@@ -705,15 +711,15 @@
         ],
         [
           "East Asia",
-          "64 records"
+          "68 records"
         ],
         [
           "Americas",
-          "59 records"
+          "64 records"
         ],
         [
           "Middle East",
-          "42 records"
+          "45 records"
         ],
         [
           "Oceania",
@@ -729,7 +735,7 @@
         ],
         [
           "Global",
-          "25 records"
+          "27 records"
         ],
         [
           "Southeast Asia",
@@ -737,11 +743,11 @@
         ],
         [
           "Europe",
-          "156 records"
+          "158 records"
         ],
         [
           "South Asia",
-          "113 records"
+          "124 records"
         ],
         [
           "South America",
@@ -886,11 +892,15 @@
     {
       "severity": "info",
       "check": "Counts changed since the legacy import",
-      "count": 1,
+      "count": 2,
       "rows": [
         [
           "events",
-          "343 at import -> 409 now"
+          "343 at import -> 435 now"
+        ],
+        [
+          "time_spans",
+          "98 at import -> 99 now"
         ]
       ]
     }

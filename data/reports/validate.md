@@ -24,18 +24,19 @@
 | warning | Event with no aliases (search falls back to name only) | pass |
 | warning | Imported entity with no import record (provenance lost) | pass |
 | review | Event + time span share one ID (identity decision needed) | 25 |
-| review | Legacy CSV rows with no accepted match and no triage outcome | 1 |
+| review | Legacy CSV rows with no accepted match and no triage outcome | pass |
 | review | Proposed events awaiting approval (not exported; manage.py approve <id>) | pass |
 | review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 39 |
+| info | DateFlow-only events (excluded from DatePick and DateGolf) | 1 |
 | review | Legacy region labels (no reviewed hierarchy yet) | 12 |
 | review | Legacy categories with no mapping to the planned taxonomy | 12 |
 | warning | Description mentions a year near the answer (DatePick shows it before the guess) | 18 |
-| info | Counts changed since the legacy import | 1 |
+| info | Counts changed since the legacy import | 2 |
 
 ## Counts
 
-- events: 409
-- time_spans: 98
+- events: 435
+- time_spans: 99
 - eras: 5
 - datelinks_keys: 26
 - datelinks_groups: 83
@@ -145,10 +146,6 @@
 - `arab-spring` — event
 - `covid-19-pandemic` — event
 
-## [review] Legacy CSV rows with no accepted match and no triage outcome
-
-- `events_master.csv` — 29 rows (manage.py reconcile-events proposes)
-
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 
 - `csv 3` — duplicate_of_existing → egyptian-pyramids-built — DATE CONFLICT: CSV says c. 3000 BC, the app says 2560 BCE (the span construction-great-pyramid is -2580..-2560).
@@ -191,19 +188,23 @@
 - `csv 298` — not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2).
 - `csv 304` — not_recommended — Reviewed 2026-11-06: no matching event and not added for now (minor, vague, or covered by another event's description). Could be added later at low importance (1-2).
 
+## [info] DateFlow-only events (excluded from DatePick and DateGolf)
+
+- `birth-of-buddha` — -563 · Birth of Siddhartha Gautama — Birth date too disputed for a fair guess (CSV alone gives -576 and -486); user decision 2026-11-06.
+
 ## [review] Legacy region labels (no reviewed hierarchy yet)
 
 - `North America` — 7 records
-- `East Asia` — 64 records
-- `Americas` — 59 records
-- `Middle East` — 42 records
+- `East Asia` — 68 records
+- `Americas` — 64 records
+- `Middle East` — 45 records
 - `Oceania` — 4 records
 - `Africa` — 31 records
 - `World` — 3 records
-- `Global` — 25 records
+- `Global` — 27 records
 - `Southeast Asia` — 2 records
-- `Europe` — 156 records
-- `South Asia` — 113 records
+- `Europe` — 158 records
+- `South Asia` — 124 records
 - `South America` — 1 records
 
 ## [review] Legacy categories with no mapping to the planned taxonomy
@@ -244,4 +245,5 @@
 
 ## [info] Counts changed since the legacy import
 
-- `events` — 343 at import -> 409 now
+- `events` — 343 at import -> 435 now
+- `time_spans` — 98 at import -> 99 now
