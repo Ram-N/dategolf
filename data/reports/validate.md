@@ -25,15 +25,16 @@
 | warning | Imported entity with no import record (provenance lost) | pass |
 | review | Event + time span share one ID (identity decision needed) | 25 |
 | review | Legacy CSV rows with no accepted match and no triage outcome | 1 |
-| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | 7 |
-| review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 9 |
+| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | pass |
+| review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 12 |
 | review | Legacy region labels (no reviewed hierarchy yet) | 12 |
 | review | Legacy categories with no mapping to the planned taxonomy | 12 |
+| warning | Description mentions a year near the answer (DatePick shows it before the guess) | 18 |
 | info | Counts changed since the legacy import | 1 |
 
 ## Counts
 
-- events: 412
+- events: 409
 - time_spans: 98
 - eras: 5
 - datelinks_keys: 26
@@ -148,16 +149,6 @@
 
 - `events_master.csv` — 234 rows (manage.py reconcile-events proposes)
 
-## [review] Proposed events awaiting approval (not exported; manage.py approve <id>)
-
-- `chandragupta-ii-vikramaditya` — 380 · Chandragupta II Vikramaditya Takes the Throne — Accession dates vary (c. 375-380). Related: gupta-empire.
-- `university-of-paris-founded` — 1150 · University of Paris Emerges — c. 1150; the royal charter dates from 1200. Related: university-of-bologna-founded.
-- `first-portable-watches` — 1509 · First Portable Watches — Henlein's work is usually dated c. 1505-1510 and the attribution is debated.
-- `robert-street-engine-patent` — 1794 · Robert Street Patents an Internal Combustion Engine — The CSV calls this 'Invention of the Internal Combustion Engine', which is disputed. The draft is narrowed to the specific patent the CSV details describe.
-- `seychelles-independence` — 1976 · Seychelles Gains Independence
-- `us-bombing-of-libya` — 1986 · United States Bombs Libya
-- `namibia-independence-process` — 1989 · UN Transition to Namibian Independence Begins
-
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 
 - `csv 3` — duplicate_of_existing → egyptian-pyramids-built — DATE CONFLICT: CSV says c. 3000 BC, the app says 2560 BCE (the span construction-great-pyramid is -2580..-2560).
@@ -166,9 +157,12 @@
 - `csv 22` — not_recommended → platos-academy-founded — 'The period of Aristotle and Plato' is an era, not a datable event. Could become a time span.
 - `csv 96` — not_recommended → gunpowder-invented — 'Roger Bacon invents gunpowder' conflicts with gunpowder-invented (c. 850, China). Bacon described a recipe c. 1267 but did not invent it.
 - `csv 101` — duplicate_of_existing → vijayanagara-empire-founded — Spelling variant (Vijayanagar). Missed by the matcher; worth adding 'Vijayanagar' as an alias.
+- `csv 175` — not_recommended — Draft discarded at review: obscure, and the 'first internal combustion engine' framing is disputed (Lenoir 1860 / Otto 1876 are better milestones).
 - `csv 209` — duplicate_of_existing → construction-eiffel-tower — Covered by the time span construction-eiffel-tower (1887..1889).
 - `csv 247` — not_recommended — 'Military Aid Pact between China and Pakistan, 1954' looks wrong: the 1954 pact was between the US and Pakistan. Check before using.
+- `csv 273` — not_recommended — Draft discarded at review: too minor for a world-history game.
 - `csv 286` — not_recommended — Security Council presidency rotates monthly; too minor for the game.
+- `csv 288` — not_recommended — Draft discarded at review: minor episode; Gaddafi's story is better told through other events.
 
 ## [review] Legacy region labels (no reviewed hierarchy yet)
 
@@ -177,11 +171,11 @@
 - `Americas` — 59 records
 - `Middle East` — 42 records
 - `Oceania` — 4 records
-- `Africa` — 33 records
+- `Africa` — 31 records
 - `World` — 3 records
 - `Global` — 25 records
 - `Southeast Asia` — 2 records
-- `Europe` — 157 records
+- `Europe` — 156 records
 - `South Asia` — 113 records
 - `South America` — 1 records
 
@@ -200,6 +194,27 @@
 - `Technology` — 
 - `War` — 
 
+## [warning] Description mentions a year near the answer (DatePick shows it before the guess)
+
+- `invention-of-the-wheel` — answer -3500; description mentions 3500
+- `hadrians-wall` — answer 122; description mentions 117
+- `battle-of-bannockburn` — answer 1314; description mentions 1328
+- `thirty-years-war` — answer 1618; description mentions 1648
+- `execution-of-charles-i` — answer 1649; description mentions 1660
+- `abolition-slavery-britain` — answer 1807; description mentions 1833
+- `revolutions-of-1848` — answer 1848; description mentions 1848
+- `emancipation-proclamation` — answer 1863; description mentions 1863, 1865
+- `suffragette-emmeline-pankhurst` — answer 1903; description mentions 1918
+- `russo-japanese-war` — answer 1904; description mentions 1905
+- `bolshevik-civil-war` — answer 1918; description mentions 1922
+- `death-of-stalin` — answer 1953; description mentions 1956
+- `french-colonial-algeria` — answer 1954; description mentions 1962
+- `death-of-mao` — answer 1976; description mentions 1949
+- `gorbachev-becomes-leader` — answer 1985; description mentions 1989, 1991
+- `berlin-wall-falls` — answer 1989; description mentions 1961
+- `mandela-freed` — answer 1990; description mentions 1994
+- `taliban-capture-kabul` — answer 1996; description mentions 2001
+
 ## [info] Counts changed since the legacy import
 
-- `events` — 343 at import -> 412 now
+- `events` — 343 at import -> 409 now

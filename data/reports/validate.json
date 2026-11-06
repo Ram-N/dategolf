@@ -1,6 +1,6 @@
 {
   "counts": {
-    "events": 412,
+    "events": 409,
     "time_spans": 98,
     "eras": 5,
     "datelinks_keys": 26,
@@ -528,42 +528,13 @@
     {
       "severity": "review",
       "check": "Proposed events awaiting approval (not exported; manage.py approve <id>)",
-      "count": 7,
-      "rows": [
-        [
-          "chandragupta-ii-vikramaditya",
-          "380 · Chandragupta II Vikramaditya Takes the Throne — Accession dates vary (c. 375-380). Related: gupta-empire."
-        ],
-        [
-          "university-of-paris-founded",
-          "1150 · University of Paris Emerges — c. 1150; the royal charter dates from 1200. Related: university-of-bologna-founded."
-        ],
-        [
-          "first-portable-watches",
-          "1509 · First Portable Watches — Henlein's work is usually dated c. 1505-1510 and the attribution is debated."
-        ],
-        [
-          "robert-street-engine-patent",
-          "1794 · Robert Street Patents an Internal Combustion Engine — The CSV calls this 'Invention of the Internal Combustion Engine', which is disputed. The draft is narrowed to the specific patent the CSV details describe."
-        ],
-        [
-          "seychelles-independence",
-          "1976 · Seychelles Gains Independence"
-        ],
-        [
-          "us-bombing-of-libya",
-          "1986 · United States Bombs Libya"
-        ],
-        [
-          "namibia-independence-process",
-          "1989 · UN Transition to Namibian Independence Begins"
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "review",
       "check": "CSV rows triaged as duplicate / not recommended (incl. date conflicts)",
-      "count": 9,
+      "count": 12,
       "rows": [
         [
           "csv 3",
@@ -590,6 +561,10 @@
           "duplicate_of_existing → vijayanagara-empire-founded — Spelling variant (Vijayanagar). Missed by the matcher; worth adding 'Vijayanagar' as an alias."
         ],
         [
+          "csv 175",
+          "not_recommended — Draft discarded at review: obscure, and the 'first internal combustion engine' framing is disputed (Lenoir 1860 / Otto 1876 are better milestones)."
+        ],
+        [
           "csv 209",
           "duplicate_of_existing → construction-eiffel-tower — Covered by the time span construction-eiffel-tower (1887..1889)."
         ],
@@ -598,8 +573,16 @@
           "not_recommended — 'Military Aid Pact between China and Pakistan, 1954' looks wrong: the 1954 pact was between the US and Pakistan. Check before using."
         ],
         [
+          "csv 273",
+          "not_recommended — Draft discarded at review: too minor for a world-history game."
+        ],
+        [
           "csv 286",
           "not_recommended — Security Council presidency rotates monthly; too minor for the game."
+        ],
+        [
+          "csv 288",
+          "not_recommended — Draft discarded at review: minor episode; Gaddafi's story is better told through other events."
         ]
       ]
     },
@@ -630,7 +613,7 @@
         ],
         [
           "Africa",
-          "33 records"
+          "31 records"
         ],
         [
           "World",
@@ -646,7 +629,7 @@
         ],
         [
           "Europe",
-          "157 records"
+          "156 records"
         ],
         [
           "South Asia",
@@ -714,13 +697,92 @@
       ]
     },
     {
+      "severity": "warning",
+      "check": "Description mentions a year near the answer (DatePick shows it before the guess)",
+      "count": 18,
+      "rows": [
+        [
+          "invention-of-the-wheel",
+          "answer -3500; description mentions 3500"
+        ],
+        [
+          "hadrians-wall",
+          "answer 122; description mentions 117"
+        ],
+        [
+          "battle-of-bannockburn",
+          "answer 1314; description mentions 1328"
+        ],
+        [
+          "thirty-years-war",
+          "answer 1618; description mentions 1648"
+        ],
+        [
+          "execution-of-charles-i",
+          "answer 1649; description mentions 1660"
+        ],
+        [
+          "abolition-slavery-britain",
+          "answer 1807; description mentions 1833"
+        ],
+        [
+          "revolutions-of-1848",
+          "answer 1848; description mentions 1848"
+        ],
+        [
+          "emancipation-proclamation",
+          "answer 1863; description mentions 1863, 1865"
+        ],
+        [
+          "suffragette-emmeline-pankhurst",
+          "answer 1903; description mentions 1918"
+        ],
+        [
+          "russo-japanese-war",
+          "answer 1904; description mentions 1905"
+        ],
+        [
+          "bolshevik-civil-war",
+          "answer 1918; description mentions 1922"
+        ],
+        [
+          "death-of-stalin",
+          "answer 1953; description mentions 1956"
+        ],
+        [
+          "french-colonial-algeria",
+          "answer 1954; description mentions 1962"
+        ],
+        [
+          "death-of-mao",
+          "answer 1976; description mentions 1949"
+        ],
+        [
+          "gorbachev-becomes-leader",
+          "answer 1985; description mentions 1989, 1991"
+        ],
+        [
+          "berlin-wall-falls",
+          "answer 1989; description mentions 1961"
+        ],
+        [
+          "mandela-freed",
+          "answer 1990; description mentions 1994"
+        ],
+        [
+          "taliban-capture-kabul",
+          "answer 1996; description mentions 2001"
+        ]
+      ]
+    },
+    {
       "severity": "info",
       "check": "Counts changed since the legacy import",
       "count": 1,
       "rows": [
         [
           "events",
-          "343 at import -> 412 now"
+          "343 at import -> 409 now"
         ]
       ]
     }

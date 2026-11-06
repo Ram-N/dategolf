@@ -1074,6 +1074,24 @@
     "importance": 7
   },
   {
+    "id": "chandragupta-ii-vikramaditya",
+    "name": "Chandragupta II Vikramaditya Takes the Throne",
+    "year": 375,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Vikramaditya",
+      "Chandragupta II",
+      "Gupta golden age",
+      "conquest of the Western Satraps"
+    ],
+    "description": "Chandragupta II, remembered by the title Vikramaditya, becomes emperor of the Gupta Empire. His reign extends Gupta power across northern and western India and is associated with a flowering of Sanskrit literature, art and science.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
     "id": "huns-arrive-in-europe",
     "name": "Huns Arrive in Europe",
     "year": 375,
@@ -1727,6 +1745,25 @@
     "importance": 5
   },
   {
+    "id": "university-of-paris-founded",
+    "name": "Philip II Grants the University of Paris a Royal Charter",
+    "year": 1200,
+    "categories": [
+      "Culture",
+      "Science"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Sorbonne",
+      "Philip Augustus charter",
+      "Notre-Dame cathedral school",
+      "medieval university of Paris"
+    ],
+    "description": "King Philip II (Philip Augustus) grants a royal charter to the masters and students of Paris, placing them under royal protection. Their guild had grown up over several decades around the cathedral school of Notre-Dame, and the University of Paris becomes the leading centre of theology and philosophy in medieval Europe.",
+    "difficulty": "hard",
+    "importance": 4
+  },
+  {
     "id": "genghis-khan-unifies-mongols",
     "name": "Genghis Khan Unifies the Mongols",
     "year": 1206,
@@ -2273,6 +2310,25 @@
     "description": "Michelangelo spends four years painting the iconic ceiling of the Sistine Chapel in the Vatican, depicting scenes from Genesis in an unprecedented display of artistic mastery and physical endurance. The work, including the famous 'Creation of Adam,' stands as one of the supreme achievements of Western art.",
     "difficulty": "easy",
     "importance": 4
+  },
+  {
+    "id": "first-portable-watches",
+    "name": "Peter Henlein Makes the First Portable Watch",
+    "year": 1508,
+    "categories": [
+      "Technology"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Peter Henlein",
+      "Nuremberg egg",
+      "first watch",
+      "steel mainspring",
+      "spring-driven clock"
+    ],
+    "description": "The Nuremberg locksmith Peter Henlein, traditionally credited as the inventor, builds small timepieces driven by a coiled steel mainspring instead of heavy falling weights. These 'Nuremberg eggs' are worn as pendants or carried in pouches, since pockets are not yet common, and begin the shift towards personal timekeeping.",
+    "difficulty": "medium",
+    "importance": 3
   },
   {
     "id": "protestant-reformation",
@@ -6840,6 +6896,25 @@
     "description": "Nelson Mandela is released from Robben Island prison after twenty-seven years of incarceration for his anti-apartheid activism, greeted by massive global celebrations. His release marks the beginning of negotiations to end apartheid and ultimately leads to South Africa's first fully democratic elections in 1994.",
     "difficulty": "easy",
     "importance": 5
+  },
+  {
+    "id": "namibia-independence-process",
+    "name": "Namibia Becomes Independent",
+    "year": 1990,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Namibian independence",
+      "SWAPO",
+      "Sam Nujoma",
+      "end of South West Africa",
+      "UNTAG"
+    ],
+    "description": "Namibia becomes independent after seven decades of South African rule and a long liberation struggle led by SWAPO. UN-supervised elections bring SWAPO to power, and its leader Sam Nujoma becomes the first president, making Namibia one of the last African colonies to gain independence.",
+    "difficulty": "hard",
+    "importance": 4
   },
   {
     "id": "economic-liberalization-india",
