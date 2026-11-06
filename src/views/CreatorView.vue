@@ -229,6 +229,8 @@ import { ref, computed, onMounted } from 'vue'
 import { generateDatePickChallenge } from '@/engine/datepick/challengeGenerator'
 import type { Event } from '@/types'
 import type { DatePickChallenge } from '@/types/datepick'
+import type { DateLinksMap } from '@/types/datelinks'
+import datelinksData from '@/data/datelinks.json'
 
 // ── PIN gate ──────────────────────────────────────────────────────────────────
 // Set VITE_CREATOR_PIN in .env.local to override the default.
@@ -296,16 +298,13 @@ function nextWeek() {
 // ── Events + challenge generation ─────────────────────────────────────────────
 const allEvents = ref<Event[]>([])
 
-const datelinks = ref<Record<string, { groups: { label: string; items: string[] }[] }>>({})
+// Static: dateLinkLookup.ts already bundles this file, so a dynamic import gains nothing.
+const datelinks = datelinksData as DateLinksMap
 
 onMounted(async () => {
   unlocked.value = sessionStorage.getItem(SESSION_KEY) === '1'
-  const [evMod, dlMod] = await Promise.all([
-    import('@/data/events.json'),
-    import('@/data/datelinks.json'),
-  ])
+  const evMod = await import('@/data/events.json')
   allEvents.value = evMod.default as Event[]
-  datelinks.value = dlMod.default as typeof datelinks.value
 })
 
 const challenge = computed<DatePickChallenge | null>(() => {
@@ -341,7 +340,7 @@ const eraSummary = computed(() => {
 const eventCoverage = computed(() => {
   return allEvents.value
     .map((e) => {
-      const entry = datelinks.value[e.id]
+      const entry = datelinks[e.id]
       const groups = entry?.groups ?? []
       const labels = groups.map((g) => g.label)
       const hasBack = labels.includes('Look Back')
