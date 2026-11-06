@@ -3,7 +3,8 @@
 Draft file shape (JSON):
   {"origin": "ai_drafted_from_csv",
    "events": [{id, name, year, categories, region, aliases, description, difficulty,
-               importance, csv_event_id?, note?}, ...],
+               importance, csv_event_id?, note?,
+               is_approximate?, date_display?, date_precision?}, ...],
    "csv_triage": [{csv_event_id, outcome, related_entity_id?, note?}, ...]}
 """
 
@@ -25,9 +26,11 @@ def load(path):
             ins("INSERT INTO entities (id, primary_type, editorial_status) "
                 "VALUES (?, 'event', 'proposed')", (e["id"],))
             ins("INSERT INTO events (entity_id, name, year, region, description, difficulty, "
-                "importance) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                "importance, is_approximate, date_display, date_precision) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (e["id"], e["name"], e["year"], e["region"], e["description"],
-                 e["difficulty"], e["importance"]))
+                 e["difficulty"], e["importance"], 1 if e.get("is_approximate") else None,
+                 e.get("date_display"), e.get("date_precision")))
             conn.executemany("INSERT INTO event_aliases VALUES (?, ?, ?)",
                              [(e["id"], i, a) for i, a in enumerate(e["aliases"])])
             conn.executemany("INSERT INTO entity_categories VALUES (?, 'event', ?, ?)",
