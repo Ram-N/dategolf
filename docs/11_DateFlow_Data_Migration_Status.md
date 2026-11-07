@@ -52,7 +52,12 @@
 
 ## 3. Next steps, in priority order
 
-### Step 1: Make the live game fair *(small; one session)*
+### Step 1: Make the live game fair ✅ *done 2026-11-06*
+
+**Done:** 67 year-leaking aliases fixed, 18 descriptions reworded (and the Mandela prison error corrected), "Revolutions of 1848 Sweep Europe" renamed to "Revolutions Sweep Across Europe", the DatePick approximate-date rule shipped (`APPROX_MIN_GAP = 10`, events export `approximate: true`), and the importance scale settled at **1–9** (the legacy validator updated; it now passes). Validation checks for leaks in aliases and descriptions, so new ones get flagged. What follows is the original plan, kept for reference.
+
+<details><summary>Original Step 1 plan</summary>
+
 
 Players can hit these today:
 - **66 aliases contain a year** (e.g. `Panipat 1556`). DateGolf search can reveal the answer. Strip the years.
@@ -63,6 +68,8 @@ Players can hit these today:
   - This needs `is_approximate` and `date_display` exported and added to the `Event` type, plus a unit test.
   - Current workarounds: Chandragupta II at 375 (same year as the Huns) and the watch at 1508 (same year as Michelangelo).
 - **Settle the importance scale.** The data uses 2–9 (66 events are above 5), but the legacy `validate-events.cjs` assumes 1–5. DatePick picks questions in proportion to importance, so high-importance events come up much more often. Decide the scale, rescale if needed, and update the legacy validator.
+
+</details>
 
 ### Step 2: Controlled vocabularies *(medium; doc 10 phase 4)*
 

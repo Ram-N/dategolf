@@ -84,6 +84,8 @@ Here's why:
 
 - **categories:** Arts, Culture, Disasters, Exploration, Medicine, Politics, Religion, Science, Social, Sports, Technology, War
 - **difficulty:** `easy` · `medium` · `hard`
+- **importance:** 1–9. DateFlow bolds 7 and above; DatePick picks questions in proportion to importance. Use 1–2 for minor events.
+- **is_approximate:** set it to 1 for "c." dates. DatePick then keeps wrong answers more than 10 years away.
 - **year:** a signed integer (`-44` = 44 BCE). **There is no year 0.**
 - **name:** must be unique and must not contain a year (it would give the answer away). The same goes for aliases.
 
