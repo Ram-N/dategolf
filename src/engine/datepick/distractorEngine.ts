@@ -1,5 +1,8 @@
 import type { Event } from '@/types'
 
+/** Wrong answers for an approximate-date event must be more than this many years away. */
+export const APPROX_MIN_GAP = 10
+
 export interface DistractorResult {
   choices: number[] // 4 years including the correct one
   correctIndex: number
@@ -15,9 +18,11 @@ export function generateDistractors(
   allEvents: Event[],
   rng: () => number,
 ): DistractorResult {
-  // Exclude the event itself and duplicates of its year
+  // Exclude the event itself and duplicates of its year. For an approximate date ("c. 375"),
+  // also skip years close enough that a "wrong" answer could be defensible.
+  const minGap = event.approximate ? APPROX_MIN_GAP : 0
   const candidates = allEvents.filter(
-    (e) => e.id !== event.id && e.year !== event.year,
+    (e) => e.id !== event.id && Math.abs(e.year - event.year) > minGap,
   )
 
   // Score by proximity — prefer close years for challenge
@@ -60,6 +65,7 @@ export function generateDistractors(
   const offsets = [10, -10, 25, -25, 50, -50, 100, -100]
   for (const offset of offsets) {
     if (distractorYears.length >= 3) break
+    if (Math.abs(offset) <= minGap) continue
     const synth = event.year + offset
     if (!distractorYears.includes(synth)) {
       distractorYears.push(synth)

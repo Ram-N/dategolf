@@ -8,8 +8,9 @@ export interface Event {
   aliases: string[]
   description: string
   difficulty: 'easy' | 'medium' | 'hard'
-  importance: number // 2–9 in events.json; higher = more prominent
+  importance: number // 1–9; higher = more prominent (DateFlow bolds 7+, DatePick weights by it)
   dateflowOnly?: boolean // date too disputed to guess: shown in DateFlow, excluded from DateGolf/DatePick
+  approximate?: boolean // "c." date: DatePick keeps wrong answers more than APPROX_MIN_GAP years away
 }
 
 // ── Hole Result ────────────────────────────────────────────────────────────────

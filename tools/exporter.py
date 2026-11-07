@@ -43,6 +43,8 @@ def render_events(conn):
         }
         if e["entity_id"] in dateflow_only:
             rec["dateflowOnly"] = True
+        if e["is_approximate"]:
+            rec["approximate"] = True
         out.append(rec)
     return dumps(out)
 
