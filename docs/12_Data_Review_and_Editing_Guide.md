@@ -262,6 +262,14 @@ git add data && git commit -m "data: decide Step 3a shared ids" && git push
 - **Before committing:** `git checkout -- data/dategolf.db` restores the database to the last commit.
 - **Change your mind on one ID** (before or after committing): run the opposite command, e.g. `uv run python tools/manage.py identity korean-war --one`. The log keeps both decisions.
 
+### 4.6b Links between events (Step 3b)
+
+A **link** reads as a sentence: *source → type → target*, plus a one-line "why". For example, *"Partition of Bengal **triggered** the Swadeshi Movement"*. It's **stored once and read from both ends**: Kilby's chip *preceded* Noyce's, and Noyce's *followed* Kilby's. The types, their definitions and their inverse readings are in `relationship_types` (doc 11, 3b-tooling).
+- **Batches** are JSON files loaded with `load-links`. They're **all-or-nothing**: an unknown id or type, a self-link, a missing "why", a duplicate (however it's written) or a contradiction rejects the whole batch, with reasons. You may write `followed`; it's stored as the inverse `preceded`.
+- **Review** on the dashboard (**Review → Links**: each link as a sentence, with Approve / Reject), or with `approve-links` / `reject-links`. Every decision is logged.
+- **Explore** with the dashboard **Connections** page: pick any event or span to see all its links from its point of view.
+- **Validation** flags backwards causes ("1950 triggered 1905"), `part_of` links outside the target's years, and links to unpublished entities.
+
 ### 4.7 Preview in the game
 
 ```bash
@@ -331,7 +339,11 @@ npm run data:dashboard                                # Streamlit → http://loc
 uv run python tools/manage.py reject <id>... --reason "…"     # delete proposed drafts (logged)
 uv run python tools/manage.py set-countries <id> "IN, PK/actor" # replace an entity's country tags (logged)
 uv run python tools/manage.py identity <id>... --one | --split # Step 3a decisions (logged)
-npm run data:test                                     # tests for the review tools (on a temporary db copy)
+uv run python tools/manage.py load-links <file>              # load a batch of links as proposed (all-or-nothing)
+uv run python tools/manage.py approve-links <id>...         # or: dashboard Review → Links
+uv run python tools/manage.py reject-links <id>... --reason "…"
+uv run python tools/manage.py suggest-part-of               # writes part_of candidates to data/drafts/ (loads nothing)
+npm run data:test                                     # tests for the review and link tools (on temporary db copies)
 uv run python tools/manage.py approve <id> [<id>…]    # publish drafts
 uv run python tools/manage.py load-drafts <file>      # add a batch of new events as drafts
 uv run python tools/manage.py reconcile-events        # refresh CSV match proposals

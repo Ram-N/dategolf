@@ -192,6 +192,113 @@ These IDs exist both as an event and as a span. They're flagged `needs_review_id
 - **Recommendation:** confirm all 25 as one subject. **How to run and check it, step by step:** doc 12 §4.6 (dashboard Review → Identity tab, or `manage.py identity`).
 - **Why it matters for linking:** a subject and its own period need no link between them. Splitting an ID would mean creating a separate entity, and then a `part_of` link.
 
+#### 3b-tooling. The link tooling (planned 2026-11-07; ✅ built 2026-11-07)
+
+**Built as planned.** It adds:
+- `tools/links.py`, with the commands `load-links`, `approve-links`, `reject-links` and `suggest-part-of`
+- type labels, inverses and definitions, stored in `relationship_types`
+- the `v_link_review` view
+- 9 new link checks in `validate`
+- the dashboard's **Review → Links** tab and new **Connections** page
+
+Tested by `npm run data:test` (10 link tests, plus 17 review tests) and the dashboard smoke test (5 pages), all on db copies.
+
+**Built-in protections:**
+- `ensure_schema` now adds missing columns itself (`ADDED_COLUMNS` in `tools/common.py`), so live and fresh dbs stay identical.
+- `suggest-part-of` counts a candidate if it's in the same lane **or** shares a location country. Wars cross regions: Zama (Africa) is part of the Punic Wars (Europe).
+
+The plan as written follows.
+
+**Goal:** make links work like everything else in the db. Claude proposes them in batches, you review them on the dashboard (or the CLI), every decision is logged, and validation catches mistakes. This part builds the machinery; the first real batches follow in 3b below.
+
+##### How a link reads
+
+Every link reads as a sentence: **source → type → target**.
+
+| Example | Type | Reads as |
+|---|---|---|
+| `partition-of-bengal` → `swadeshi-movement` | `triggered` | "The Partition of Bengal *triggered* the Swadeshi Movement." |
+| `battle-of-zama` → `punic-wars` | `part_of` | "The Battle of Zama is *part of* the Punic Wars." |
+| `kilby-first-integrated-circuit` → `noyce-silicon-chip` | `preceded` | "Kilby's chip *preceded* Noyce's." (independent work, so not `influenced`) |
+
+Either end can be an event or a span. Each link carries a **one-line "why"** (the description), shown at review time.
+
+##### Conventions (to keep links consistent)
+
+- **Direction:** for causal links, cause → effect. For `part_of`, the smaller thing → the bigger thing. For sequences, earlier → later.
+- **One stored link, two readings (decided 2026-11-07).** A link is stored **once** and read from whichever end you're looking at. Each type has a forward and an **inverse** label (`relationship_types.inverse_label`):
+
+  | Type | On the source | On the target |
+  |---|---|---|
+  | `preceded` | preceded | **followed** |
+  | `triggered` | triggered | was triggered by |
+  | `contributed_to` | contributed to | had as a contributing factor |
+  | `enabled` | enabled | was made possible by |
+  | `influenced` | influenced | was influenced by |
+  | `caused` | caused | was caused by |
+  | `part_of` | is part of | **includes** |
+  | `evolved_into` | evolved into | evolved from |
+  | `contemporary_with`, `opposed`, `interacted_with` | *(symmetric: reads the same both ways)* | |
+
+  So Kilby's card says "preceded Noyce's chip", and Noyce's card says "followed Kilby's chip": **two-way links, one row.**
+- **No duplicates, however a link is written:**
+  - A batch may say "B **followed** A". On loading, that's stored as "A **preceded** B" (sequences are stored earlier → later, like causes → effects, so one date check covers both).
+  - Symmetric links are stored in a fixed (alphabetical) order.
+  - The database's rule that the same link can't be added twice then catches any repeat.
+  - Contradictions such as "A preceded B" *and* "B preceded A" are errors.
+- **In the Review tab, sequences read from the later side ("B followed A")**, which is the more natural phrasing; it's only a matter of display.
+- **The causal types, defined** (these definitions are also stored in the db):
+
+| Type | Use when… | Example |
+|---|---|---|
+| `caused` | the source is the main, direct cause | — (rare; most history has several causes) |
+| `triggered` | the source was the immediate spark of something already building | Partition of Bengal → Swadeshi Movement |
+| `contributed_to` | the source was one of several factors | Treaty of Versailles → rise of Nazism |
+| `enabled` | the source made the target *possible*, without being its motive | Second Battle of Tarain → founding of the Delhi Sultanate |
+| `influenced` | ideas or culture shaped the target | Enlightenment thinkers → American Declaration |
+
+- **Non-causal types** (no claim of cause): `part_of`, `preceded`, `contemporary_with`, `evolved_into`, `opposed`, `interacted_with`. **Close in time is not causation** (doc 10 §4.5).
+
+##### Schema changes (additive; the 3 existing links are kept)
+
+- **`relationships`:**
+  - the status uses `proposed` / `reviewed` like everything else; the 3 split links are already `reviewed`
+  - `followed` is never stored: it's only a way of *writing* a link
+  - new `origin` column: `ai_drafted`, `split`, `user`, or `suggested` (the part_of finder)
+  - new `created_at` column
+- **`relationship_types`:** new `definition`, `direction` (e.g. "cause → effect"), `inverse_label` and `symmetric` columns.
+- **New view `v_link_review`:** each link with both ends' names and years and its type, why and status, so links can be read as sentences.
+
+##### Tool functions (in `tools/links.py`, each with a CLI command, logged in `review_log`, tested on a db copy)
+
+| Function | Does | CLI |
+|---|---|---|
+| `load(path)` | Loads a JSON batch of links (`source`, `type`, `target`, `why`, `confidence`) as `proposed`. **All-or-nothing:** one bad link (unknown id or type, a self-link, a duplicate, or the reverse of an existing `preceded`) rejects the whole batch, with the reason given. | `load-links <file>` |
+| `approve(ids)` / `reject(ids, reason)` | Review decisions; a rejected link is deleted, and its reason stays in the log | `approve-links`, `reject-links` |
+| `suggest_part_of()` | **Finds `part_of` candidates:** events whose year falls inside a span's years, sharing its lane and a country tag or a distinctive word. It writes a draft batch file for Claude to curate. It **never loads anything itself**. | `suggest-part-of` |
+
+##### Validation checks (new)
+
+- **Errors:** an unknown status; a stored `followed` (it should have been turned around on loading); contradictory pairs (A→B and B→A of the same one-way type); a symmetric link out of order.
+- **Warnings (sanity):**
+  - a cause whose source comes *after* its target (e.g. "1950 triggered 1905")
+  - a `part_of` event that falls outside its span's years
+  - a link that touches a `proposed` (unpublished) entity
+- **Review:** links still `proposed`.
+
+##### Dashboard (doc 13, v4)
+
+- **Review → Links tab:** each proposed link as a sentence ("**Partition of Bengal** (1905) *triggered* **Swadeshi Movement** (1905), *because…*"), with Approve / Reject.
+- **A new Connections page:** pick any event or span to see every link **from its point of view** ("followed…", "includes…", "was triggered by…"). This shows the graph taking shape. A network picture can come later.
+
+##### Not in this step
+
+- The batches themselves (3b below).
+- Exporting `relationships.json` (3c).
+- Showing links in the game.
+
+**Done when:** the schema, `tools/links.py`, the CLI, the checks and the dashboard tab and page all work; the tests pass on a copy; and docs 12 and 13 are updated.
+
 #### 3b. Seed about 50–100 reviewed links, easiest first
 
 1. **`part_of` links (events → spans).** These are mostly uncontroversial: Zama → Punic Wars, the Delhi accessions → Delhi Sultanate. Candidates can be proposed automatically: an event inside a span's years, in the same region, with related wording. Each still gets reviewed.

@@ -87,7 +87,7 @@ Both open in your normal Windows browser; from WSL, `localhost` is forwarded aut
 | **v1: Overview and insight** | Health (validation errors and warnings), an "export needed" indicator, the last backup date, with **Export / Validate / Backup** buttons. **Coverage:** a century × region heatmap, categories over time, the importance and difficulty mix. **Map:** a choropleth of events per country, with an era slider (country tags, role = location). | Only via the buttons, which run the existing tools |
 | **v2: Review queues** | One screen per queue with **Approve / Edit / Reject**: proposed drafts, proposed country tags, the 25 shared IDs (**Step 3a is its first use**), and later the links | Yes, through the tools' approve functions |
 | **v3: Editor** | **One form to add or edit an event** across all 4 tables (events, aliases, categories, countries), validated *before* saving. This fixes the "4 tables per event" problem. | Yes, through new functions in `tools/` |
-| **v4: Links (with Step 3b/3c)** | A link-review screen (source → type → target, with names, years and descriptions side by side), a network view, and a chain explorer ("what led to WWII?") | Yes |
+| **v4: Links (✅ built 2026-11-07: Review → Links tab + Connections page; detailed plan in doc 11, "3b-tooling")** | A link-review screen (source → type → target, with names, years and descriptions side by side), a network view, and a chain explorer ("what led to WWII?") | Yes |
 
 ### 4.1 v1 detailed plan (planned 2026-11-07; ✅ built 2026-11-07)
 
