@@ -49,6 +49,12 @@
     },
     {
       "severity": "error",
+      "check": "Region label not in the regions table (add it there, with its lane)",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "error",
       "check": "Event with no categories",
       "count": 0,
       "rows": []
@@ -425,112 +431,57 @@
       ]
     },
     {
-      "severity": "review",
-      "check": "Legacy region labels (no reviewed hierarchy yet)",
+      "severity": "info",
+      "check": "Region labels in use, with their DateFlow lane",
       "count": 12,
       "rows": [
         [
-          "North America",
-          "7 records"
-        ],
-        [
-          "East Asia",
-          "68 records"
-        ],
-        [
-          "Americas",
-          "64 records"
-        ],
-        [
-          "Middle East",
-          "45 records"
-        ],
-        [
-          "Oceania",
-          "4 records"
-        ],
-        [
-          "Africa",
-          "31 records"
-        ],
-        [
-          "World",
-          "3 records"
-        ],
-        [
-          "Global",
-          "27 records"
-        ],
-        [
-          "Southeast Asia",
-          "2 records"
-        ],
-        [
           "Europe",
-          "158 records"
+          "europe · 158 records"
         ],
         [
           "South Asia",
-          "124 records"
+          "south-asia · 124 records"
+        ],
+        [
+          "Americas",
+          "americas · 64 records"
+        ],
+        [
+          "East Asia",
+          "east-asia · 58 records"
+        ],
+        [
+          "Middle East",
+          "middle-east · 45 records"
+        ],
+        [
+          "Africa",
+          "africa · 31 records"
+        ],
+        [
+          "Global",
+          "global · 29 records"
+        ],
+        [
+          "Southeast Asia",
+          "east-asia · 12 records"
+        ],
+        [
+          "North America",
+          "americas · 7 records"
+        ],
+        [
+          "Oceania",
+          "global · 4 records"
         ],
         [
           "South America",
-          "1 records"
-        ]
-      ]
-    },
-    {
-      "severity": "review",
-      "check": "Legacy categories with no mapping to the planned taxonomy",
-      "count": 12,
-      "rows": [
-        [
-          "Arts",
-          ""
+          "americas · 1 records"
         ],
         [
-          "Culture",
-          ""
-        ],
-        [
-          "Disasters",
-          ""
-        ],
-        [
-          "Exploration",
-          ""
-        ],
-        [
-          "Medicine",
-          ""
-        ],
-        [
-          "Politics",
-          ""
-        ],
-        [
-          "Religion",
-          ""
-        ],
-        [
-          "Science",
-          ""
-        ],
-        [
-          "Social",
-          ""
-        ],
-        [
-          "Sports",
-          ""
-        ],
-        [
-          "Technology",
-          ""
-        ],
-        [
-          "War",
-          ""
+          "Antarctica",
+          "global · 1 records"
         ]
       ]
     },

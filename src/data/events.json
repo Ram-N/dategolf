@@ -245,7 +245,7 @@
       "Science",
       "Culture"
     ],
-    "region": "World",
+    "region": "Global",
     "aliases": [
       "Iron Age",
       "iron smelting",
@@ -285,7 +285,8 @@
     "name": "Thales Predicts a Solar Eclipse",
     "year": -585,
     "categories": [
-      "Science"
+      "Science",
+      "Philosophy"
     ],
     "region": "Europe",
     "aliases": [
@@ -324,8 +325,8 @@
     "name": "Birth of Confucius",
     "year": -551,
     "categories": [
-      "Religion",
-      "Culture"
+      "Philosophy",
+      "Religion"
     ],
     "region": "East Asia",
     "aliases": [
@@ -439,7 +440,7 @@
     "name": "Execution of Socrates",
     "year": -399,
     "categories": [
-      "Culture",
+      "Philosophy",
       "Politics"
     ],
     "region": "Europe",
@@ -458,7 +459,7 @@
     "name": "Plato Founds the Academy",
     "year": -387,
     "categories": [
-      "Culture",
+      "Philosophy",
       "Science"
     ],
     "region": "Europe",
@@ -744,9 +745,9 @@
     "name": "Silk Road Trade Route Opens",
     "year": -130,
     "categories": [
+      "Economy",
       "Exploration",
-      "Culture",
-      "Technology"
+      "Culture"
     ],
     "region": "East Asia",
     "aliases": [
@@ -1341,7 +1342,7 @@
     "name": "Arab Traders Arrive in Kerala",
     "year": 629,
     "categories": [
-      "Exploration",
+      "Economy",
       "Religion",
       "Culture"
     ],
@@ -2182,7 +2183,8 @@
     "year": 1415,
     "categories": [
       "Exploration",
-      "Politics"
+      "Politics",
+      "Economy"
     ],
     "region": "Africa",
     "aliases": [
@@ -2749,6 +2751,7 @@
     "name": "East India Company Founded",
     "year": 1600,
     "categories": [
+      "Economy",
       "Politics",
       "Exploration"
     ],
@@ -3050,7 +3053,7 @@
     "name": "Hobbes Publishes Leviathan",
     "year": 1651,
     "categories": [
-      "Culture",
+      "Philosophy",
       "Politics"
     ],
     "region": "Europe",
@@ -3354,7 +3357,8 @@
     "year": 1750,
     "categories": [
       "Social",
-      "Culture"
+      "Culture",
+      "Economy"
     ],
     "region": "Africa",
     "aliases": [
@@ -3394,7 +3398,8 @@
     "categories": [
       "Technology",
       "Social",
-      "Culture"
+      "Culture",
+      "Economy"
     ],
     "region": "Europe",
     "aliases": [
@@ -3450,7 +3455,8 @@
     "name": "East India Company Assumes Control of Bengal",
     "year": 1765,
     "categories": [
-      "Politics"
+      "Politics",
+      "Economy"
     ],
     "region": "South Asia",
     "aliases": [
@@ -3524,6 +3530,7 @@
     "name": "British East India Company Begins Opium Trade",
     "year": 1773,
     "categories": [
+      "Economy",
       "Politics",
       "Social"
     ],
@@ -3582,8 +3589,8 @@
     "name": "Adam Smith Publishes The Wealth of Nations",
     "year": 1776,
     "categories": [
-      "Culture",
-      "Science"
+      "Economy",
+      "Philosophy"
     ],
     "region": "Europe",
     "aliases": [
@@ -4183,8 +4190,8 @@
     "name": "First Commercial Oil Well Drilled",
     "year": 1859,
     "categories": [
-      "Science",
-      "Culture"
+      "Economy",
+      "Technology"
     ],
     "region": "North America",
     "aliases": [
@@ -4949,7 +4956,7 @@
     "categories": [
       "Exploration"
     ],
-    "region": "Global",
+    "region": "Antarctica",
     "aliases": [
       "Roald Amundsen",
       "race to the South Pole",
@@ -5005,7 +5012,8 @@
     "year": 1914,
     "categories": [
       "Technology",
-      "Exploration"
+      "Exploration",
+      "Economy"
     ],
     "region": "Americas",
     "aliases": [
@@ -5274,6 +5282,7 @@
     "name": "Great Depression Begins",
     "year": 1929,
     "categories": [
+      "Economy",
       "Social",
       "Politics"
     ],
@@ -5696,7 +5705,7 @@
     "categories": [
       "Politics"
     ],
-    "region": "East Asia",
+    "region": "Southeast Asia",
     "aliases": [
       "Sukarno and Hatta",
       "Proklamasi",
@@ -5831,7 +5840,7 @@
     "categories": [
       "Politics"
     ],
-    "region": "East Asia",
+    "region": "Southeast Asia",
     "aliases": [
       "Myanmar independence",
       "Union of Burma",
@@ -6017,7 +6026,7 @@
       "Politics",
       "War"
     ],
-    "region": "East Asia",
+    "region": "Southeast Asia",
     "aliases": [
       "Geneva Accords Vietnam",
       "North South Vietnam",
@@ -6055,7 +6064,7 @@
     "categories": [
       "Politics"
     ],
-    "region": "East Asia",
+    "region": "Southeast Asia",
     "aliases": [
       "Asian-African Conference",
       "Nehru, Sukarno and Nasser",
@@ -6359,9 +6368,9 @@
     "name": "South Korean Economic Miracle",
     "year": 1962,
     "categories": [
+      "Economy",
       "Politics",
-      "Technology",
-      "Social"
+      "Technology"
     ],
     "region": "East Asia",
     "aliases": [
@@ -6420,7 +6429,7 @@
     "categories": [
       "Politics"
     ],
-    "region": "East Asia",
+    "region": "Southeast Asia",
     "aliases": [
       "Malaysia Day",
       "Malaya, Singapore, Sabah and Sarawak",
@@ -6513,7 +6522,7 @@
       "War",
       "Politics"
     ],
-    "region": "East Asia",
+    "region": "Southeast Asia",
     "aliases": [
       "US Vietnam conflict",
       "Ho Chi Minh",
@@ -6586,7 +6595,7 @@
     "categories": [
       "Politics"
     ],
-    "region": "East Asia",
+    "region": "Southeast Asia",
     "aliases": [
       "Singapore leaves Malaysia",
       "Lee Kuan Yew",
@@ -6698,9 +6707,9 @@
     "name": "Oil Crisis of the Middle East",
     "year": 1973,
     "categories": [
+      "Economy",
       "Politics",
-      "Social",
-      "Technology"
+      "Social"
     ],
     "region": "Middle East",
     "aliases": [
@@ -6740,7 +6749,7 @@
       "War",
       "Social"
     ],
-    "region": "East Asia",
+    "region": "Southeast Asia",
     "aliases": [
       "Pol Pot genocide",
       "Cambodian genocide",
@@ -6797,7 +6806,7 @@
       "Science",
       "Exploration"
     ],
-    "region": "World",
+    "region": "Global",
     "aliases": [
       "Mars landing",
       "NASA Mars probe",
@@ -6929,7 +6938,7 @@
       "War",
       "Politics"
     ],
-    "region": "East Asia",
+    "region": "Southeast Asia",
     "aliases": [
       "Vietnamese invasion of Cambodia",
       "fall of Pol Pot",
@@ -7352,9 +7361,8 @@
     "name": "Economic Liberalization of India",
     "year": 1991,
     "categories": [
-      "Politics",
-      "Social",
-      "Technology"
+      "Economy",
+      "Politics"
     ],
     "region": "South Asia",
     "aliases": [
@@ -7546,9 +7554,10 @@
     "name": "World Trade Organization Founded",
     "year": 1995,
     "categories": [
+      "Economy",
       "Politics"
     ],
-    "region": "World",
+    "region": "Global",
     "aliases": [
       "WTO",
       "World Trade Organization",
@@ -7751,7 +7760,7 @@
     "categories": [
       "Politics"
     ],
-    "region": "East Asia",
+    "region": "Southeast Asia",
     "aliases": [
       "fall of Suharto",
       "Reformasi",
@@ -7977,9 +7986,9 @@
     "name": "Global Financial Crisis",
     "year": 2008,
     "categories": [
+      "Economy",
       "Social",
-      "Politics",
-      "Technology"
+      "Politics"
     ],
     "region": "Global",
     "aliases": [
@@ -8149,8 +8158,8 @@
     "name": "Demonetization in India",
     "year": 2016,
     "categories": [
-      "Politics",
-      "Social"
+      "Economy",
+      "Politics"
     ],
     "region": "South Asia",
     "aliases": [
@@ -8168,8 +8177,8 @@
     "name": "GST Implemented in India",
     "year": 2017,
     "categories": [
-      "Politics",
-      "Social"
+      "Economy",
+      "Politics"
     ],
     "region": "South Asia",
     "aliases": [

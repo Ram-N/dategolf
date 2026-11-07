@@ -1,0 +1,14 @@
+{
+  "South Asia": "south-asia",
+  "East Asia": "east-asia",
+  "Southeast Asia": "east-asia",
+  "Europe": "europe",
+  "Middle East": "middle-east",
+  "Africa": "africa",
+  "Americas": "americas",
+  "North America": "americas",
+  "South America": "americas",
+  "Antarctica": "global",
+  "Global": "global",
+  "Oceania": "global"
+}

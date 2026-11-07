@@ -18,11 +18,13 @@ const BY_CATEGORY: Record<string, CategoryGroup> = {
   Technology: 'knowledge',
   Medicine: 'knowledge',
   Exploration: 'knowledge',
+  Philosophy: 'knowledge',
   Culture: 'culture',
   Religion: 'culture',
   Arts: 'culture',
   Social: 'culture',
   Sports: 'culture',
+  Economy: 'culture',
 }
 
 /** An event's group comes from its first (primary) category. */

@@ -19,6 +19,7 @@ APP_FILES = {
     "milestones.json": "src/data/milestones.json",
     "eras.json": "src/data/eras.json",
     "daily_challenges.json": "public/data/daily_challenges.json",
+    "regions.json": "src/data/regions.json",
 }
 LEGACY_CSV = "events_master.csv"
 

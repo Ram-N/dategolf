@@ -18,6 +18,10 @@ CHECKS = [
     ("error", "Entity with no event or time-span facet",
      "SELECT id, primary_type FROM entities WHERE id NOT IN (SELECT entity_id FROM events) "
      "AND id NOT IN (SELECT entity_id FROM time_spans)"),
+    ("error", "Region label not in the regions table (add it there, with its lane)",
+     "SELECT entity_id, region FROM events WHERE region NOT IN (SELECT label FROM regions) "
+     "UNION SELECT entity_id, region FROM time_spans WHERE region IS NOT NULL "
+     "AND region NOT IN (SELECT label FROM regions)"),
     ("error", "Event with no categories",
      "SELECT entity_id, name FROM events WHERE entity_id NOT IN "
      "(SELECT entity_id FROM entity_categories WHERE facet = 'event')"),
@@ -79,12 +83,10 @@ CHECKS = [
     ("info", "DateFlow-only events (excluded from DatePick and DateGolf)",
      "SELECT d.entity_id, e.year || ' · ' || e.name || coalesce(' — ' || d.reason, '') "
      "FROM dateflow_only_events d JOIN events e ON e.entity_id = d.entity_id"),
-    ("review", "Legacy region labels (no reviewed hierarchy yet)",
-     "SELECT region, COUNT(*) || ' records' FROM (SELECT region FROM events UNION ALL "
-     "SELECT region FROM time_spans WHERE region IS NOT NULL) GROUP BY region ORDER BY 2 DESC"),
-    ("review", "Legacy categories with no mapping to the planned taxonomy",
-     "SELECT label, '' FROM categories WHERE label NOT IN "
-     "(SELECT legacy_label FROM category_mappings)"),
+    ("info", "Region labels in use, with their DateFlow lane",
+     "SELECT x.region, r.lane || ' · ' || COUNT(*) || ' records' FROM (SELECT region FROM events "
+     "UNION ALL SELECT region FROM time_spans WHERE region IS NOT NULL) x "
+     "JOIN regions r ON r.label = x.region GROUP BY x.region ORDER BY COUNT(*) DESC"),
 ]
 
 COUNT_SQL = {

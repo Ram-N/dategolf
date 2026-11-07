@@ -1,20 +1,21 @@
-// Regional lanes. Event and duration `region` strings are inconsistent ("World" vs
-// "Global", "North America" vs "Americas"), so they're mapped to lanes here rather than
-// edited in the data (DateGolf and DatePick read the same events).
+import regionLanes from '@/data/regions.json'
+
+// Regional lanes. Which region label (e.g. "Southeast Asia", "Oceania") sits in which lane
+// comes from the db's regions table, exported as src/data/regions.json.
 
 export type LaneId = 'south-asia' | 'east-asia' | 'europe' | 'middle-east' | 'africa' | 'americas' | 'global'
 
-export const LANES: { id: LaneId; label: string; regions: string[] }[] = [
-  { id: 'south-asia', label: 'South Asia', regions: ['South Asia'] },
-  { id: 'east-asia', label: 'East Asia', regions: ['East Asia', 'Southeast Asia'] },
-  { id: 'europe', label: 'Europe', regions: ['Europe'] },
-  { id: 'middle-east', label: 'Middle East', regions: ['Middle East'] },
-  { id: 'africa', label: 'Africa', regions: ['Africa'] },
-  { id: 'americas', label: 'Americas', regions: ['Americas', 'North America', 'South America'] },
-  { id: 'global', label: 'Global', regions: ['Global', 'World', 'Oceania'] },
+export const LANES: { id: LaneId; label: string }[] = [
+  { id: 'south-asia', label: 'South Asia' },
+  { id: 'east-asia', label: 'East Asia' },
+  { id: 'europe', label: 'Europe' },
+  { id: 'middle-east', label: 'Middle East' },
+  { id: 'africa', label: 'Africa' },
+  { id: 'americas', label: 'Americas' },
+  { id: 'global', label: 'Global' },
 ]
 
-const BY_REGION = new Map(LANES.flatMap((lane) => lane.regions.map((r) => [r, lane.id] as const)))
+const BY_REGION = new Map(Object.entries(regionLanes as Record<string, LaneId>))
 
 /** Lane for a region string; anything unrecognised is treated as Global. */
 export function laneFor(region: string): LaneId {

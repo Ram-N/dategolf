@@ -65,6 +65,16 @@ CREATE TABLE IF NOT EXISTS categories (
   label TEXT PRIMARY KEY                           -- the 12 legacy labels for now
 );
 
+-- Region hierarchy: every region label belongs to one DateFlow lane (src/engine/dateflow/lanes.ts).
+-- A label equal to its lane's name is the lane itself; others (Southeast Asia, Oceania…) are subregions.
+-- Exported as src/data/regions.json, which lanes.ts reads. Countries can hang under these later.
+CREATE TABLE IF NOT EXISTS regions (
+  label TEXT PRIMARY KEY,
+  lane  TEXT NOT NULL CHECK (lane IN
+          ('south-asia', 'east-asia', 'europe', 'middle-east', 'africa', 'americas', 'global')),
+  note  TEXT
+);
+
 -- Same entity can carry different categories as an event and as a span.
 CREATE TABLE IF NOT EXISTS entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,

@@ -110,6 +110,16 @@ def render_daily(conn):
     return dumps(out)
 
 
+LANE_ORDER = ["south-asia", "east-asia", "europe", "middle-east", "africa", "americas", "global"]
+
+
+def render_regions(conn):
+    """{region label: DateFlow lane id}, grouped by lane in lanes.ts order."""
+    rows = conn.execute("SELECT label, lane FROM regions").fetchall()
+    rows.sort(key=lambda r: (LANE_ORDER.index(r["lane"]), r["label"]))
+    return dumps({r["label"]: r["lane"] for r in rows})
+
+
 def render_csv(conn):
     """Rebuild events_master.csv. Used only to prove the legacy rows are lossless."""
     header = json.loads(conn.execute(
@@ -132,6 +142,7 @@ RENDERERS = {
     "milestones.json": render_milestones,
     "eras.json": render_eras,
     "daily_challenges.json": render_daily,
+    "regions.json": render_regions,
 }
 
 

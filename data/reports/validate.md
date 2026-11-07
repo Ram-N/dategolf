@@ -8,6 +8,7 @@
 | error | Year 0 in a time span | pass |
 | error | Time span starts after it ends | pass |
 | error | Entity with no event or time-span facet | pass |
+| error | Region label not in the regions table (add it there, with its lane) | pass |
 | error | Event with no categories | pass |
 | error | Period/empire with no categories | pass |
 | error | Category row for a facet the entity doesn't have | pass |
@@ -27,8 +28,7 @@
 | review | Proposed events awaiting approval (not exported; manage.py approve <id>) | pass |
 | review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 39 |
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 1 |
-| review | Legacy region labels (no reviewed hierarchy yet) | 12 |
-| review | Legacy categories with no mapping to the planned taxonomy | 12 |
+| info | Region labels in use, with their DateFlow lane | 12 |
 | warning | Description mentions a year near the answer (DatePick shows it before the guess) | pass |
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
 | info | Counts changed since the legacy import | 2 |
@@ -119,35 +119,20 @@
 
 - `birth-of-buddha` — -563 · Birth of Siddhartha Gautama — Birth date too disputed for a fair guess (CSV alone gives -576 and -486); user decision 2026-11-06.
 
-## [review] Legacy region labels (no reviewed hierarchy yet)
+## [info] Region labels in use, with their DateFlow lane
 
-- `North America` — 7 records
-- `East Asia` — 68 records
-- `Americas` — 64 records
-- `Middle East` — 45 records
-- `Oceania` — 4 records
-- `Africa` — 31 records
-- `World` — 3 records
-- `Global` — 27 records
-- `Southeast Asia` — 2 records
-- `Europe` — 158 records
-- `South Asia` — 124 records
-- `South America` — 1 records
-
-## [review] Legacy categories with no mapping to the planned taxonomy
-
-- `Arts` — 
-- `Culture` — 
-- `Disasters` — 
-- `Exploration` — 
-- `Medicine` — 
-- `Politics` — 
-- `Religion` — 
-- `Science` — 
-- `Social` — 
-- `Sports` — 
-- `Technology` — 
-- `War` — 
+- `Europe` — europe · 158 records
+- `South Asia` — south-asia · 124 records
+- `Americas` — americas · 64 records
+- `East Asia` — east-asia · 58 records
+- `Middle East` — middle-east · 45 records
+- `Africa` — africa · 31 records
+- `Global` — global · 29 records
+- `Southeast Asia` — east-asia · 12 records
+- `North America` — americas · 7 records
+- `Oceania` — global · 4 records
+- `South America` — americas · 1 records
+- `Antarctica` — global · 1 records
 
 ## [info] Counts changed since the legacy import
 
