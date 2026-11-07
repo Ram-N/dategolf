@@ -1,5 +1,7 @@
 """Review: every decision waiting on a human. Each button calls a tools/ function (doc 13 §4.2)."""
 
+import hashlib
+
 import streamlit as st
 
 from lib import actions
@@ -26,11 +28,19 @@ if "review_result" in st.session_state:
 
 
 def selectable(df, key, columns=None):
-    """A table with tickable rows; returns the selected rows as a DataFrame."""
+    """A table with tickable rows; returns the selected rows as a DataFrame.
+
+    Streamlit remembers a selection by row *position*. After an action the rows change
+    (decided items leave, flagged ones move), so a remembered position could point at the
+    wrong item. Keying the widget on the exact list of ids resets the ticks whenever it changes.
+    """
+    ids = "|".join(df["entity_id"])
+    widget_key = f"{key}-{hashlib.sha1(ids.encode()).hexdigest()[:10]}"
     shown = df[columns] if columns else df
-    event = st.dataframe(shown, hide_index=True, width="stretch", key=key,
+    event = st.dataframe(shown, hide_index=True, width="stretch", key=widget_key,
                          on_select="rerun", selection_mode="multi-row")
-    return df.iloc[event.selection.rows]
+    rows = [r for r in event.selection.rows if r < len(df)]  # belt and braces
+    return df.iloc[rows]
 
 
 drafts = q("SELECT * FROM v_proposed_events")
@@ -112,7 +122,7 @@ with t_identity:
                 st.write(d["span_description"])
         ids = picked["entity_id"].tolist()
         undecided = shared.loc[shared["status"] == "needs_review_identity", "entity_id"].tolist()
-        c1, c2, c3, _ = st.columns([1, 1, 2, 2])
+        c1, c2, c3, c4, c5 = st.columns([1, 1, 1, 1, 2])
         if c1.button(f"One subject ({len(ids)})", disabled=not ids, type="primary"):
             finish("Identity: one subject", actions.decide_identity(ids, "one"))
 
@@ -129,9 +139,28 @@ with t_identity:
             if st.button("Confirm all", type="primary"):
                 finish("Identity: one subject (all)", actions.decide_identity(ids, "one"))
 
+        @st.dialog("Keep the event only")
+        def drop_span_dialog(ids):
+            st.write("The **span** (and its span categories) will be deleted; the **event** stays. "
+                     "DateFlow will no longer show these as bars: " + ", ".join(f"`{i}`" for i in ids))
+            if st.button("Delete the spans", type="primary"):
+                finish("Identity: span dropped", actions.decide_identity(ids, "drop-span"))
+
         if c2.button(f"Needs a split ({len(ids)})…", disabled=not ids):
             split_dialog(ids)
-        if c3.button(f"All undecided are one subject ({len(undecided)})…", disabled=not undecided):
+        if c3.button(f"Keep event only ({len(ids)})…", disabled=not ids):
+            drop_span_dialog(ids)
+        @st.dialog("Keep the span only")
+        def drop_event_dialog(ids):
+            st.write("The **event** (with its aliases and event categories) will be deleted; the **span** stays. "
+                     "DatePick and DateGolf will no longer use it: " + ", ".join(f"`{i}`" for i in ids))
+            st.caption("Refused for milestones or events with DateLinks content, which hang off the event.")
+            if st.button("Delete the events", type="primary"):
+                finish("Identity: event dropped", actions.decide_identity(ids, "drop-event"))
+
+        if c4.button(f"Keep span only ({len(ids)})…", disabled=not ids):
+            drop_event_dialog(ids)
+        if c5.button(f"All undecided are one subject ({len(undecided)})…", disabled=not undecided):
             all_one_dialog(undecided)
 
 # ── Fix any country tags ─────────────────────────────────────────────────────
