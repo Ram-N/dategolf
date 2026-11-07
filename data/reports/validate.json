@@ -431,6 +431,33 @@
       ]
     },
     {
+      "severity": "warning",
+      "check": "Published event or span with no country tag",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "info",
+      "check": "Entities with an actor but no location (e.g. events on the Moon or Mars)",
+      "count": 2,
+      "rows": [
+        [
+          "moon-landing",
+          "actors only"
+        ],
+        [
+          "viking-1-mars",
+          "actors only"
+        ]
+      ]
+    },
+    {
+      "severity": "review",
+      "check": "Country tags awaiting review (manage.py approve-countries)",
+      "count": 0,
+      "rows": []
+    },
+    {
       "severity": "info",
       "check": "Region labels in use, with their DateFlow lane",
       "count": 12,
@@ -441,7 +468,7 @@
         ],
         [
           "South Asia",
-          "south-asia · 124 records"
+          "south-asia · 125 records"
         ],
         [
           "Americas",
@@ -457,7 +484,7 @@
         ],
         [
           "Africa",
-          "africa · 31 records"
+          "africa · 30 records"
         ],
         [
           "Global",
@@ -496,6 +523,31 @@
       "check": "Alias mentions a year near the answer (DateGolf search would reveal it)",
       "count": 0,
       "rows": []
+    },
+    {
+      "severity": "warning",
+      "check": "No tagged country fits the event's region lane (fix the tags, add an actor, or accept it)",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "info",
+      "check": "Accepted region exceptions (region deliberately differs from location)",
+      "count": 3,
+      "rows": [
+        [
+          "babur-ruler-of-ferghana",
+          "Happened in Ferghana (Central Asia), but filed under South Asia: Babur's story is the Mughal one."
+        ],
+        [
+          "colonial-africa-berlin",
+          "Held in Berlin, but filed under Africa: it is about the partition of Africa."
+        ],
+        [
+          "nato-founded",
+          "Signed in Washington, but filed under Europe: a mainly European alliance."
+        ]
+      ]
     },
     {
       "severity": "info",

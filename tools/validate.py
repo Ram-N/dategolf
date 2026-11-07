@@ -83,6 +83,15 @@ CHECKS = [
     ("info", "DateFlow-only events (excluded from DatePick and DateGolf)",
      "SELECT d.entity_id, e.year || ' · ' || e.name || coalesce(' — ' || d.reason, '') "
      "FROM dateflow_only_events d JOIN events e ON e.entity_id = d.entity_id"),
+    ("warning", "Published event or span with no country tag",
+     "SELECT id, primary_type FROM entities WHERE editorial_status <> 'proposed' "
+     "AND primary_type <> 'era' AND id NOT IN (SELECT entity_id FROM entity_countries)"),
+    ("info", "Entities with an actor but no location (e.g. events on the Moon or Mars)",
+     "SELECT DISTINCT entity_id, 'actors only' FROM entity_countries WHERE entity_id NOT IN "
+     "(SELECT entity_id FROM entity_countries WHERE role = 'location')"),
+    ("review", "Country tags awaiting review (manage.py approve-countries)",
+     "SELECT entity_id, confidence || coalesce(' — ' || note, '') FROM entity_countries "
+     "WHERE position = 0 AND status = 'proposed' ORDER BY confidence = 'high', entity_id"),
     ("info", "Region labels in use, with their DateFlow lane",
      "SELECT x.region, r.lane || ' · ' || COUNT(*) || ' records' FROM (SELECT region FROM events "
      "UNION ALL SELECT region FROM time_spans WHERE region IS NOT NULL) x "
@@ -137,6 +146,30 @@ def run():
             alias_leaks.append((entity_id, f"answer {year}; alias '{alias}'"))
     results.append(("warning", "Alias mentions a year near the answer "
                     "(DateGolf search would reveal it)", alias_leaks))
+
+    # Country tags: at least one tagged country should sit in the entity's lane (Global and ZZ skip).
+    lanes = dict(conn.execute("SELECT label, lane FROM regions").fetchall())
+    mismatches = []
+    for entity_id, region, codes in conn.execute(
+            "SELECT x.entity_id, coalesce(e.region, s.region), group_concat(x.country) "
+            "FROM entity_countries x LEFT JOIN events e ON e.entity_id = x.entity_id "
+            "LEFT JOIN time_spans s ON s.entity_id = x.entity_id "
+            "WHERE x.entity_id NOT IN (SELECT entity_id FROM accepted_region_exceptions) "
+            "GROUP BY x.entity_id"):
+        codes = codes.split(",")
+        if lanes.get(region) == "global" or "ZZ" in codes:
+            continue
+        country_lanes = {lanes.get(r) for code in codes
+                         for row in conn.execute("SELECT region, alt_region FROM countries "
+                                                 "WHERE code = ?", (code,))
+                         for r in row if r}
+        if lanes.get(region) not in country_lanes:
+            mismatches.append((entity_id, f"region {region}; countries {', '.join(codes)}"))
+    results.append(("warning", "No tagged country fits the event's region lane "
+                    "(fix the tags, add an actor, or accept it)", mismatches))
+    results.append(("info", "Accepted region exceptions (region deliberately differs from location)",
+                    [tuple(r) for r in conn.execute(
+                        "SELECT entity_id, reason FROM accepted_region_exceptions ORDER BY entity_id")]))
 
     manifest_path = LEGACY / "MANIFEST.json"
     baseline = json.loads(manifest_path.read_text())["counts"] if manifest_path.exists() else {}

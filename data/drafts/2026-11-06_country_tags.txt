@@ -1,0 +1,617 @@
+# Country tags drafted by Claude, 2026-11-06. NOT verified against sources.
+# Format: entity_id | ISO codes (primary first) | h = high / l = low confidence | optional note
+# Rule: the PRESENT-DAY country where the event happened (or a span's core area).
+# ZZ = worldwide, with no single country (pandemics, world wars as a whole, global agreements).
+# One line per entity; ids shared by an event and a span appear once.
+
+invention-of-the-wheel | IQ | h | Mesopotamia
+sumerian-writing | IQ | h | Uruk
+first-cities-mesopotamia | IQ | h
+indus-valley-begins | PK, IN | l | Harappa and Mohenjo-daro are in Pakistan; other sites in India
+egyptian-pyramids-built | EG | h
+code-of-hammurabi | IQ | h | Babylon
+phoenician-alphabet-invented | LB | h
+fall-of-troy | TR | h
+battle-of-mahabharata | IN | l | Kurukshetra; the battle is legendary and its date traditional
+david-captures-jerusalem | IL, PS | l | Jerusalem; its status is disputed
+greek-olympics-ancient | GR | h | Olympia
+founding-of-rome | IT | h
+ironworking-spreads | ZZ | h | Spread across the Old World
+babylonian-conquest-jerusalem | IL, PS | l | Jerusalem; its status is disputed
+thales-solar-eclipse | TR | l | Miletus, a Greek city now in Turkey
+birth-of-buddha | NP | h | Lumbini
+birth-of-confucius | CN | h
+cyrus-founds-persian-empire | IR | h
+roman-republic-founded | IT | h
+greek-democracy-athens | GR | h
+battle-of-marathon | GR | h
+hippocrates-medicine | GR | h
+socrates-execution | GR | h
+platos-academy-founded | GR | h
+alexander-conquests | GR, TR | l | Sets out from Macedonia, first battle (Granicus) in Anatolia
+alexander-founds-alexandria | EG | h
+battle-of-gaugamela | IQ | h
+battle-of-the-hydaspes | PK | h | Jhelum River, Punjab
+death-of-alexander | IQ | h | Babylon
+maurya-empire-founded | IN | h | Pataliputra (Patna)
+ptolemaic-dynasty-founded | EG | h
+ashoka-becomes-emperor | IN | h
+punic-wars | IT, TN, ES | l | Rome against Carthage (Tunisia); fought across the western Mediterranean
+ashoka-converts-to-buddhism | IN | h | After the Kalinga war (Odisha)
+eratosthenes-measures-earth | EG | h
+qin-unification-china | CN | h
+great-wall-china | CN | h
+battle-of-zama | TN | h
+silk-road-opens | CN | l | The route crosses many countries; China is where it starts
+first-triumvirate | IT | h
+caesar-invades-britain | GB | h
+caesar-crosses-rubicon | IT | h
+julius-caesar-assassination | IT | h
+second-triumvirate | IT | h
+augustus-first-emperor | IT | h
+pax-romana | IT | l | Empire-wide; Italy as its centre
+birth-of-jesus | PS | l | Bethlehem (West Bank); traditional birthplace
+crucifixion-of-jesus | IL, PS | l | Jerusalem; its status is disputed
+great-fire-of-rome | IT | h
+eruption-of-vesuvius | IT | h
+paper-invented-china | CN | h
+hadrians-wall | GB | h
+maya-classic-period | MX, GT, BZ, HN | l | Maya region
+jin-reunifies-china | CN | h
+christianity-roman-empire | IT | h | Edict of Milan
+gupta-empire-founded | IN | h
+constantinople-founded | TR | h
+chandragupta-ii-vikramaditya | IN | h
+huns-arrive-in-europe | UA, RO | l | Pontic steppe and the Danube frontier
+nalanda-university-founded | IN | h
+attila-hun-invasions | HU, FR, IT | l | Base in Pannonia; invasions of Gaul and Italy
+fall-of-roman-empire-west | IT | h | Ravenna
+aryabhata-heliocentric | IN | h
+benedictine-order-founded | IT | h | Monte Cassino
+birth-of-muhammad | SA | h | Mecca
+harsha-reign-begins | IN | h
+founding-of-islam | SA | h | Mecca
+hijra | SA | h | Mecca to Medina
+invention-of-zero | IN | h
+arab-traders-kerala | IN | h
+death-of-muhammad | SA | h | Medina
+islamic-caliphate-expands | SA | l | Starts in Arabia; spreads across the region
+moors-invade-spain | ES | h
+arab-conquest-of-sindh | PK | h
+woodblock-printing-china | CN | h
+battle-of-tours | FR | h
+islamic-golden-age | IQ | l | Centred on Baghdad
+viking-raids-begin | GB | h | Lindisfarne
+charlemagne-crowned-emperor | IT | h | Crowned in Rome
+mihira-bhoja-kannauj | IN | h
+gunpowder-invented | CN | h
+kievan-rus-founded | UA | h | Kyiv
+chola-rajaraja-peak | IN | h | Thanjavur
+mahmud-of-ghazni-accession | AF | h | Ghazni
+viking-exploration-north-america | CA | h | L'Anse aux Meadows, Newfoundland
+mahmud-ghazni-somnath | IN | h
+printing-movable-type-china | CN | h
+great-schism | TR, IT | l | Constantinople and Rome
+battle-of-hastings | GB | h
+tower-of-london-begun | GB | h
+university-of-bologna-founded | IT | h
+first-crusade | FR, IL, PS | l | Called at Clermont (France); ends with the capture of Jerusalem
+invention-of-compass | CN | h
+second-battle-of-tarain | IN | h | Haryana
+university-of-paris-founded | FR | h
+genghis-khan-unifies-mongols | MN | h
+qutb-ud-din-aibak-delhi | IN | h
+magna-carta | GB | h
+razia-sultana-accession | IN | h
+marco-polo-china | CN, IT | l | Travels from Venice to China
+mongol-empire-peak | MN, CN | l | An empire from Korea to Hungary
+alauddin-khalji-accession | IN | h
+battle-of-bannockburn | GB | h | Scotland
+muhammad-bin-tughlaq-accession | IN | h
+black-death-arrives-china | CN | l | Spreads from Central Asia
+vijayanagara-empire-founded | IN | h | Hampi
+hundred-years-war | FR, GB | l | Fought mainly in France
+black-death-europe | IT, FR, GB | l | Continent-wide; arrives via Italian ports
+firuz-shah-tughlaq-accession | IN | h
+ming-dynasty-founded | CN | h
+timur-sacks-delhi | IN | h
+renaissance-begins-florence | IT | h
+zheng-he-voyages | CN | l | Voyages across the Indian Ocean
+age-of-exploration-portugal | PT, MA | l | Ceuta (taken from Morocco; now Spanish) and the West African coast
+joan-of-arc-burned | FR | h | Rouen
+aztec-empire-peak | MX | h
+gutenberg-printing-press | DE | h | Mainz
+fall-of-constantinople | TR | h
+guru-nanak-born | PK | h | Nankana Sahib, now in Pakistan
+renaissance-da-vinci | IT | h
+columbus-reaches-americas | BS, ES | l | First landfall in the Bahamas; sailed for Spain
+babur-ruler-of-ferghana | UZ | h | Ferghana Valley. Region is South Asia because of his Mughal story, so a region warning is expected.
+vasco-da-gama-india-route | IN, PT | l | Lands at Calicut; sails from Lisbon
+first-portable-watches | DE | h | Nuremberg
+renaissance-michelangelo | VA | h | Sistine Chapel, Vatican City
+protestant-reformation | DE | h | Wittenberg
+magellan-circumnavigation | ES | l | Sailed for Spain; the voyage circles the globe
+spanish-conquest-mexico | MX | h
+babur-founds-mughal-empire | IN | h
+first-battle-of-panipat | IN | h
+humayun-succeeds-babur | IN | h | Agra
+conquest-of-peru-inca | PE | h
+humayun-defeated-kanauj | IN | h
+copernicus-heliocentric | PL | h
+portuguese-arrive-japan | JP | h | Tanegashima
+humayun-recaptures-delhi | IN | h
+second-battle-of-panipat | IN | h
+shakespeare-born | GB | h
+mughal-akbar-administration | IN | h
+battle-of-haldighati | IN | h
+akbar-din-i-ilahi | IN | h
+spanish-armada-defeated | GB, ES | l | English Channel; Spain against England
+east-india-company-founded | GB | h | London
+renaissance-shakespeare | GB | h
+death-of-elizabeth-i | GB | h
+death-of-akbar | IN | h | Agra
+martyrdom-of-guru-arjan | PK | h | Lahore, now in Pakistan
+galileo-telescope | IT | h
+kepler-laws-planetary-motion | CZ | h | Prague
+jahangir-marries-nur-jahan | IN | h
+thirty-years-war | DE, CZ | l | Starts in Bohemia; fought mainly in Germany
+pilgrims-land-plymouth | US | h
+death-of-jahangir | PK, IN | l | Dies near Bhimber on the way back from Kashmir; buried in Lahore
+birth-of-shivaji | IN | h | Shivneri
+taj-mahal-construction-begins | IN | h
+galileo-inquisition | IT | h | Rome
+english-civil-war | GB | h
+signing-of-treaty-westphalia | DE | h | Münster and Osnabrück
+execution-of-charles-i | GB | h
+hobbes-leviathan | GB | h
+aurangzeb-becomes-emperor | IN | h
+english-restoration | GB | h
+great-plague-london | GB | h
+great-fire-london | GB | h
+shivaji-crowned-chhatrapati | IN | h | Raigad
+execution-of-guru-tegh-bahadur | IN | h | Delhi
+death-of-shivaji | IN | h
+newton-laws-of-motion | GB | h
+glorious-revolution | GB | h
+battle-of-blenheim | DE | h | Bavaria
+act-of-union-1707 | GB | h
+mughal-empire-zenith-aurangzeb | IN | h
+death-of-guru-gobind-singh | IN | h | Nanded
+euler-konigsberg-bridges | RU | h | Königsberg is now Kaliningrad, Russia
+nadir-shah-sacks-delhi | IN | h
+trans-atlantic-slave-trade-peak | NG, GH, BJ | l | West African coast; the trade spans the Atlantic
+battle-of-plassey | IN | h
+industrial-revolution-textile | GB | h
+third-battle-of-panipat | IN | h
+battle-of-buxar | IN | h
+east-india-company-bengal | IN, BD | l | Bengal is now split between India and Bangladesh
+steam-engine-watt | GB | h
+great-bengal-famine | IN, BD | l | Bengal is now split between India and Bangladesh
+boston-tea-party | US | h
+opium-trade-china-east-india | CN, IN | l | Opium grown in India, sold in China
+american-declaration | US | h
+american-revolution | US | h
+wealth-of-nations-published | GB | h
+second-anglo-mysore-war | IN | h
+american-war-independence-ends | US, FR | l | Treaty signed in Paris; ends the US war
+founding-of-united-states | US | h
+french-revolution | FR | h
+french-revolution-declaration | FR | h
+french-revolution-storming-bastille | FR | h
+haitian-revolution | HT | h
+abolition-slavery-france | FR | h
+first-vaccine-smallpox | GB | h
+tipu-sultan-killed | IN | h | Srirangapatna
+napoleonic-wars | FR | l | Fought across Europe
+lewis-and-clark-expedition | US | h
+battle-of-trafalgar | ES | l | Off Cape Trafalgar, Spain; Britain against France and Spain
+abolition-slavery-britain | GB | h
+latin-american-independence | MX, VE, CO, AR, PE, CL | l | Wars across Spanish America
+napoleon-defeat-waterloo | BE | h
+death-of-napoleon | SH | h | Saint Helena (British territory in the South Atlantic). Region is Europe, so a region warning is expected.
+greek-independence | GR | h
+first-steam-railway | GB | h
+indian-removal-act | US | h
+great-reform-act | GB | h
+queen-victoria-accession | GB | h
+chinese-opium-ban | CN | h | Canton (Guangzhou)
+opium-wars-china | CN, GB | l | Fought in China; Britain against Qing China
+first-use-of-anesthesia | US | h
+revolutions-of-1848 | FR, DE, AT, IT, HU | l | Across Europe
+crimean-war | UA | l | Crimea (internationally recognised as Ukraine; annexed by Russia)
+opium-war-second | CN | h
+indian-rebellion-1857 | IN | h
+darwin-evolution | GB | h
+first-oil-well | US | h | Titusville, Pennsylvania
+american-civil-war | US | h
+emancipation-proclamation | US | h
+abolition-slavery-us | US | h
+lee-surrenders-appomattox | US | h
+lincoln-assassination | US | h
+alaska-purchase | US, RU | l | Russia sells Alaska to the United States
+meiji-restoration-japan | JP | h
+gandhi-born | IN | h | Porbandar
+suez-canal-opens | EG | h
+stanley-finds-livingstone | TZ | h | Ujiji
+unification-germany | DE | h
+battle-of-little-bighorn | US | h
+telephone-invented | US | h
+cricket-test-first | AU | h | Melbourne
+edison-light-bulb | US | h
+zulu-war | ZA | h
+krakatoa-erupts | ID | h
+colonial-africa-berlin | DE | l | Held in Berlin; it divides Africa. Region is Africa, so a region warning is expected.
+benz-motorwagen | DE | h | Mannheim
+indian-national-congress-founded | IN | h | Bombay
+partition-of-africa-colonial | CD | h | Congo Free State
+ramanujan-born | IN | h
+tesla-ac-electricity | US | h
+japan-meiji-constitution | JP | h
+suffrage-new-zealand | NZ | h
+marconi-invents-radio | IT | h
+x-rays-discovered | DE | h | Würzburg
+modern-olympics-founded | GR | l | First modern Games in Athens; the IOC was founded in Paris
+curie-radioactivity | FR | h
+spanish-american-war | CU, PH, US | l | Fought in Cuba and the Philippines
+south-african-boer-war | ZA | h
+australia-federation | AU | h
+suffragette-emmeline-pankhurst | GB | h | Manchester
+wright-brothers-flight | US | h | Kitty Hawk
+russo-japanese-war | CN, JP, RU | l | Fought in Manchuria and Korean waters
+einstein-relativity | CH | h | Bern
+partition-of-bengal | IN, BD | l | Bengal is now split between India and Bangladesh
+swadeshi-movement | IN | h
+amundsen-south-pole | AQ | h
+fall-of-qing-dynasty | CN | h
+tagore-nobel-prize | IN | h
+panama-canal-opens | PA | h
+world-war-one | ZZ | h | A world war
+russian-revolution | RU | h
+bolshevik-civil-war | RU | h
+first-world-war-ends | FR | h | Armistice signed at Compiègne
+jallianwala-bagh-massacre | IN | h | Amritsar
+treaty-of-versailles | FR | h
+league-of-nations-founded | CH | l | Based in Geneva; a global body
+non-cooperation-movement | IN | h
+women-suffrage-us | US | h
+ottoman-empire-falls | TR | h
+turkish-republic-founded | TR | h
+television-invented | GB | h | Baird, London
+chinese-civil-war | CN | h
+penicillin-discovered | GB | h
+great-depression | US | l | Starts with the US stock market crash; worldwide
+discovery-of-pluto | US | h | Lowell Observatory, Arizona
+first-football-world-cup | UY | h
+gandhi-salt-march | IN | h
+japanese-empire-manchuria | CN | h
+hitler-rise-chancellor | DE | h
+long-march-china | CN | h
+rise-of-nazism | DE | h
+spanish-civil-war | ES | h
+world-war-two | ZZ | h | A world war
+battle-of-britain | GB | h
+germany-invades-soviet-union | RU, UA, BY | l | The Eastern Front
+holocaust | DE, PL | l | Across Nazi-occupied Europe; the main death camps were in Poland
+japanese-pearl-harbor | US | h | Hawaii. Region is East Asia (Japan's attack), so a region warning is expected.
+manhattan-project | US | h
+quit-india-movement | IN | h
+d-day-normandy | FR | h
+atomic-bomb-hiroshima | JP | h
+end-world-war-two | ZZ | h | A world war
+indonesia-proclaims-independence | ID | h
+japan-world-war-two-defeat | JP | h
+nuremberg-trials | DE | h
+united-nations-founded | US | l | Founded at San Francisco; a global body
+cold-war-begins | ZZ | h
+indian-independence | IN | h
+partition-india-pakistan | IN, PK, BD | l | Bangladesh was then East Pakistan
+apartheid-south-africa | ZA | h
+burma-independence | MM | h
+ceylon-independence | LK | h
+mahatma-gandhi-assassinated | IN | h
+palestine-israel-state | IL | h
+chinese-communist-revolution | CN | h
+nato-founded | US | l | Treaty signed in Washington; a multinational alliance
+indian-constitution-adopted | IN | h
+korean-war | KR, KP | l | Fought across the Korean peninsula
+eisenhower-elected | US | h
+death-of-stalin | RU | h | Moscow
+dna-structure-discovered | GB | h | Cambridge
+everest-first-ascent | NP, CN | l | The summit is on the Nepal-China border
+french-colonial-algeria | DZ | h
+vietnam-partition | VN | h
+bandung-conference | ID | h
+suez-crisis | EG | h
+ghana-independence | GH | h
+sputnik-launch | KZ | l | Launched from Baikonur (Kazakhstan) by the Soviet Union
+kilby-first-integrated-circuit | US | h
+mao-great-leap-forward | CN | h
+dalai-lama-flees-to-india | CN, IN | l | From Tibet (China) to India
+noyce-silicon-chip | US | h
+apartheid-sharpeville-massacre | ZA | h
+contraceptive-pill-approved | US | h
+decolonization-africa | CD, NG, SN, CI, CM | l | Seventeen countries; the largest are listed
+france-first-nuclear-test | DZ | l | Test site at Reggane, Algeria; a French programme
+jfk-elected | US | h
+space-race-yuri-gagarin | KZ, RU | l | Launched from Baikonur; lands in Russia
+cuban-missile-crisis | CU, US | l
+india-china-war | IN, CN | l | The Himalayan border
+south-korea-economic-miracle | KR | h
+formation-of-malaysia | MY | h
+jfk-assassination | US | h | Dallas
+martin-luther-king-speech | US | h
+partial-test-ban-treaty | RU | l | Signed in Moscow by the US, USSR and UK
+civil-rights-act-us | US | h
+cosmic-microwave-background | US | h
+death-of-churchill | GB | h
+green-revolution-india | IN | h
+indo-pak-1965-war | IN, PK | l
+singapore-independence | SG | h
+us-civil-rights-march-selma | US | h
+vietnam-war | VN | h
+chinese-cultural-revolution | CN | h
+six-day-war | IL, EG, SY, JO | l
+moon-landing | US | l | On the Moon; a US mission
+bangladesh-liberation-war | BD | h
+world-wide-web-invention | US | h | First email (ARPANET)
+oil-crisis-1973 | SA | l | Arab oil embargo; worldwide effects
+yom-kippur-war | IL, EG, SY | l
+assassination-of-sheikh-mujib | BD | h
+khmer-rouge-cambodia | KH | h
+death-of-mao | CN | h
+jimmy-carter-elected | US | h
+viking-1-mars | US | l | On Mars; a US mission
+camp-david-accords | US, EG, IL | l | Talks at Camp David; Egypt-Israel peace
+tiananmen-one | CN | h
+bhutto-executed | PK | h
+iran-islamic-revolution | IR | h
+khmer-rouge-overthrown | KH | h
+thatcher-becomes-pm | GB | h
+iran-iraq-war | IR, IQ | l
+reagan-elected | US | h
+smallpox-eradicated | ZZ | h
+aids-epidemic | US | l | First identified in the US; worldwide
+falklands-war | FK, AR | l | Falkland Islands (British territory, claimed by Argentina)
+india-wins-cricket-world-cup | GB, IN | l | Final played at Lord's, London; India's win
+us-invasion-of-grenada | GD | h
+bhopal-gas-tragedy | IN | h
+ethiopian-famine | ET | h
+indira-gandhi-assassination | IN | h
+operation-blue-star | IN | h | Amritsar
+gorbachev-becomes-leader | RU | h
+chernobyl-disaster | UA | h
+george-hw-bush-elected | US | h
+palestinian-declaration-of-independence | PS | l | Declared in Algiers (Algeria)
+spitak-earthquake | AM | h
+zia-ul-haq-killed | PK | h
+berlin-wall-falls | DE | h
+sachin-tendulkar-debut | PK, IN | l | An Indian player's debut, in Karachi
+tiananmen-square | CN | h
+mandela-freed | ZA | h
+namibia-independence-process | NA | h
+dissolution-soviet-union | RU | l | Fifteen successor states
+economic-liberalization-india | IN | h
+gulf-war | KW, IQ | l
+internet-invented | CH | h | CERN, Geneva
+rajiv-gandhi-assassination | IN | h
+babri-masjid-demolition | IN | h | Ayodhya
+amazon-founded | US | h
+collapse-apartheid-negotiations | ZA | h
+independence-south-africa | ZA | h
+rwandan-genocide | RW | h
+wto-founded | CH | l | Based in Geneva; a global body
+dolly-sheep-cloned | GB | h
+india-rejects-ctbt | IN | h
+kofi-annan-secretary-general | US | l | UN headquarters, New York; Annan is Ghanaian
+sheikh-hasina-first-term | BD | h
+taliban-capture-kabul | AF | h
+hong-kong-handover | CN | h | Hong Kong
+clinton-impeached | US | h
+google-founded | US | h
+pokhran-nuclear-tests | IN | h
+space-station-iss | ZZ | h | In orbit; an international project
+suharto-resigns | ID | h
+kargil-war | IN | h | Kargil, Ladakh
+kosovo-war-ends | RS, XK | l | Kosovo's status is disputed (XK is the commonly used code)
+brahmos-missile-india | IN | h
+gujarat-earthquake | IN | h
+september-11-attacks | US | h
+human-genome-project | ZZ | l | International project
+space-shuttle-columbia | US | h
+indian-ocean-tsunami-india | IN | h
+iphone-launched | US | h
+chandrayaan-1-launched | IN | h
+global-financial-crisis | US | l | Starts in the US; worldwide
+mumbai-terrorist-attacks | IN | h
+arab-spring | TN, EG, LY, SY | l | Starts in Tunisia; spreads across the region
+osama-bin-laden-killed | PK | h | Abbottabad
+nirbhaya-case-protests | IN | h | Delhi
+mangalyaan-mars-mission | IN | h
+islamic-state-rise | IQ, SY | l
+malala-nobel-peace-prize | PK | h | Pakistani laureate (awarded in Oslo)
+modi-elected-pm | IN | h
+paris-climate-agreement | FR | l | Signed in Paris; a global agreement
+demonetization-india | IN | h
+gst-implemented-india | IN | h
+black-holes-confirmed | ZZ | h | Global telescope network
+caa-protests-india | IN | h
+chandrayaan-2-launched | IN | h
+covid-19-pandemic | ZZ | h
+covid-lockdown-india | IN | h
+chandrayaan-3-lunar-landing | IN | h
+
+# ── Spans (ids not shared with events) ──
+old-kingdom-egypt | EG | h
+indus-valley-mature | PK, IN | l | Harappa and Mohenjo-daro are in Pakistan; other sites in India
+construction-great-pyramid | EG | h
+akkadian-empire | IQ, SY | l
+shang-dynasty | CN | h
+new-kingdom-egypt | EG | h
+zhou-dynasty | CN | h
+life-of-the-buddha | IN, NP | l | Born in Lumbini (Nepal); taught and died in northern India
+achaemenid-empire | IR | l | An empire from Egypt to India
+roman-republic | IT | h
+persian-wars | GR, TR | l
+peloponnesian-war | GR | h
+alexanders-conquests | GR, TR, EG, IQ, IR, AF, PK | l | From Macedonia to the Indus
+maurya-empire | IN | l | Also present-day Pakistan, Bangladesh and Afghanistan
+construction-great-wall | CN | h
+han-dynasty | CN | h
+fall-of-roman-republic | IT | h
+roman-empire | IT | l | Empire-wide; Italy as its centre
+classic-maya | MX, GT, BZ, HN | l | Maya region
+gupta-empire | IN | h
+byzantine-empire | TR | l | Centred on Constantinople
+fall-western-roman-empire | IT | l | Across the western empire
+tang-dynasty | CN | h
+umayyad-caliphate | SY | l | Centred on Damascus; from Spain to Central Asia
+abbasid-caliphate | IQ | l | Centred on Baghdad
+viking-age | NO, DK, SE | l | Scandinavian homelands; raids across Europe
+holy-roman-empire | DE | l | Also Austria, Czechia, Italy and the Low Countries
+chola-empire | IN | l | Also Sri Lanka and parts of Southeast Asia
+song-dynasty | CN | h
+crusades | IL, PS, SY, LB | l | The Levant
+mongol-conquests | MN, CN | l | From Korea to Eastern Europe
+delhi-sultanate | IN | h
+mali-empire | ML | l | Also Senegal, Guinea and others
+ottoman-empire | TR | l | Centred on Istanbul; three continents
+vijayanagara-empire | IN | h
+black-death | IT, FR, DE, GB | l | Europe-wide
+ming-dynasty | CN | h
+italian-renaissance | IT | h
+aztec-empire | MX | h
+inca-empire | PE | l | Also Ecuador, Bolivia and Chile
+age-of-exploration | PT, ES | l | Voyages worldwide; led by Portugal and Spain
+safavid-empire | IR | h
+mughal-empire | IN | l | Also Pakistan, Bangladesh and Afghanistan
+scientific-revolution | GB, IT, FR, DE | l | Across Europe
+tokugawa-shogunate | JP | h
+construction-taj-mahal | IN | h
+qing-dynasty | CN | h
+maratha-empire | IN | h
+industrial-revolution | GB | l | Begins in Britain; spreads worldwide
+california-gold-rush | US | h
+british-raj | IN | l | Also Pakistan, Bangladesh and Myanmar
+meiji-restoration | JP | h
+scramble-for-africa | CD, NG, KE, ZA | l | Continent-wide; examples listed
+construction-eiffel-tower | FR | h
+boxer-rebellion | CN | h
+opium-wars | CN, GB | l | Fought in China; Britain against Qing China
+world-war-1 | ZZ | h | A world war
+spanish-flu | ZZ | h
+soviet-union | RU | l | Fifteen republics
+world-war-2 | ZZ | h | A world war
+the-holocaust | DE, PL | l | Across Nazi-occupied Europe; the main death camps were in Poland
+cuban-revolution | CU | h
+civil-rights-movement | US | h
+space-race | US, RU | l
+construction-sydney-opera | AU | h
+cultural-revolution | CN | h
+watergate-scandal | US | h
+iranian-revolution | IR | h
+soviet-afghan-war | AF | h
+apartheid-end | ZA | h
+bosnian-war | BA | h
+dot-com-bubble | US | l | Centred on US tech companies; worldwide
+war-on-terror | AF, IQ, US | l | Worldwide campaign
+iraq-war | IQ | h
+
+# ── Countries: @country | code | name | region | alternate region (optional) ──
+# The alternate region is for countries that straddle two (e.g. Egypt: Africa and Middle East).
+@country | AF | Afghanistan | South Asia
+@country | AM | Armenia | Europe
+@country | AQ | Antarctica | Antarctica
+@country | AR | Argentina | South America
+@country | AT | Austria | Europe
+@country | AU | Australia | Oceania
+@country | BA | Bosnia and Herzegovina | Europe
+@country | BD | Bangladesh | South Asia
+@country | BE | Belgium | Europe
+@country | BJ | Benin | Africa
+@country | BS | Bahamas | North America
+@country | BY | Belarus | Europe
+@country | BZ | Belize | North America
+@country | CA | Canada | North America
+@country | CD | DR Congo | Africa
+@country | CH | Switzerland | Europe
+@country | CI | Côte d'Ivoire | Africa
+@country | CL | Chile | South America
+@country | CM | Cameroon | Africa
+@country | CN | China | East Asia
+@country | CO | Colombia | South America
+@country | CU | Cuba | North America
+@country | CZ | Czechia | Europe
+@country | DE | Germany | Europe
+@country | DK | Denmark | Europe
+@country | DZ | Algeria | Africa | Middle East
+@country | EG | Egypt | Africa | Middle East
+@country | ES | Spain | Europe
+@country | ET | Ethiopia | Africa
+@country | FK | Falkland Islands | South America
+@country | FR | France | Europe
+@country | GB | United Kingdom | Europe
+@country | GD | Grenada | North America
+@country | GH | Ghana | Africa
+@country | GR | Greece | Europe
+@country | GT | Guatemala | North America
+@country | HN | Honduras | North America
+@country | HT | Haiti | North America
+@country | HU | Hungary | Europe
+@country | ID | Indonesia | Southeast Asia
+@country | IL | Israel | Middle East
+@country | IN | India | South Asia
+@country | IQ | Iraq | Middle East
+@country | IR | Iran | Middle East
+@country | IT | Italy | Europe
+@country | JO | Jordan | Middle East
+@country | JP | Japan | East Asia
+@country | KE | Kenya | Africa
+@country | KH | Cambodia | Southeast Asia
+@country | KP | North Korea | East Asia
+@country | KR | South Korea | East Asia
+@country | KW | Kuwait | Middle East
+@country | KZ | Kazakhstan | Central Asia
+@country | LB | Lebanon | Middle East
+@country | LK | Sri Lanka | South Asia
+@country | LY | Libya | Africa | Middle East
+@country | MA | Morocco | Africa | Middle East
+@country | ML | Mali | Africa
+@country | MM | Myanmar | Southeast Asia
+@country | MN | Mongolia | East Asia
+@country | MX | Mexico | North America
+@country | MY | Malaysia | Southeast Asia
+@country | NA | Namibia | Africa
+@country | NG | Nigeria | Africa
+@country | NO | Norway | Europe
+@country | NP | Nepal | South Asia
+@country | NZ | New Zealand | Oceania
+@country | PA | Panama | North America
+@country | PE | Peru | South America
+@country | PH | Philippines | Southeast Asia
+@country | PK | Pakistan | South Asia
+@country | PL | Poland | Europe
+@country | PS | Palestine | Middle East
+@country | PT | Portugal | Europe
+@country | RO | Romania | Europe
+@country | RS | Serbia | Europe
+@country | RU | Russia | Europe | East Asia
+@country | RW | Rwanda | Africa
+@country | SA | Saudi Arabia | Middle East
+@country | SE | Sweden | Europe
+@country | SG | Singapore | Southeast Asia
+@country | SH | Saint Helena | Africa
+@country | SN | Senegal | Africa
+@country | SY | Syria | Middle East
+@country | TN | Tunisia | Africa | Middle East
+@country | TR | Turkey | Middle East | Europe
+@country | TZ | Tanzania | Africa
+@country | UA | Ukraine | Europe
+@country | US | United States | North America
+@country | UY | Uruguay | South America
+@country | UZ | Uzbekistan | Central Asia
+@country | VA | Vatican City | Europe
+@country | VE | Venezuela | South America
+@country | VN | Vietnam | Southeast Asia
+@country | XK | Kosovo | Europe
+@country | ZA | South Africa | Africa
+@country | ZZ | Worldwide (no single country) | Global

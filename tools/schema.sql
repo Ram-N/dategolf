@@ -75,6 +75,38 @@ CREATE TABLE IF NOT EXISTS regions (
   note  TEXT
 );
 
+-- Present-day countries (ISO 3166 alpha-2), each inside a region. ZZ = worldwide, no single country.
+-- alt_region covers countries that straddle two regions (Egypt: Africa and Middle East).
+CREATE TABLE IF NOT EXISTS countries (
+  code       TEXT PRIMARY KEY,
+  name       TEXT NOT NULL UNIQUE,
+  region     TEXT NOT NULL REFERENCES regions(label),
+  alt_region TEXT REFERENCES regions(label)
+);
+
+-- Countries linked to an event or span, in present-day terms (position 0 = primary).
+-- role: 'location' = where it physically happened (a map plots these);
+--       'actor'    = whose action or story it is, when that country isn't the location
+--                    (Pearl Harbor: US location, JP actor).
+-- Not exported yet; groundwork for a map. Approve with `manage.py approve-countries`.
+CREATE TABLE IF NOT EXISTS entity_countries (
+  entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
+  position   INTEGER NOT NULL,
+  country    TEXT NOT NULL REFERENCES countries(code) ON UPDATE CASCADE,
+  confidence TEXT NOT NULL CHECK (confidence IN ('high', 'low')),
+  status     TEXT NOT NULL DEFAULT 'proposed' CHECK (status IN ('proposed', 'reviewed')),
+  note       TEXT,
+  role       TEXT NOT NULL DEFAULT 'location' CHECK (role IN ('location', 'actor')),
+  PRIMARY KEY (entity_id, position),
+  UNIQUE (entity_id, country)
+);
+
+-- Entities whose region deliberately differs from where they happened (validation skips them).
+CREATE TABLE IF NOT EXISTS accepted_region_exceptions (
+  entity_id TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
+  reason    TEXT NOT NULL
+);
+
 -- Same entity can carry different categories as an event and as a span.
 CREATE TABLE IF NOT EXISTS entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
@@ -242,6 +274,24 @@ LEFT JOIN entity_provenance p ON p.entity_id = e.entity_id
 LEFT JOIN legacy_csv_rows r ON r.event_id = p.csv_event_id
 WHERE n.editorial_status = 'proposed'
 ORDER BY p.note IS NULL, e.year;
+
+-- Country review: one row per entity, low-confidence and unreviewed first.
+-- Fix a tag in entity_countries; approve with `manage.py approve-countries`.
+CREATE VIEW IF NOT EXISTS v_country_review AS
+SELECT x.entity_id,
+       coalesce(e.year, s.start_year) AS year,
+       coalesce(e.name, s.name) AS name,
+       coalesce(e.region, s.region) AS region,
+       (SELECT group_concat(country || ' ' || name || CASE role WHEN 'actor' THEN ' (actor)' ELSE '' END, ', ')
+        FROM (SELECT c.country, k.name, c.role
+          FROM entity_countries c JOIN countries k ON k.code = c.country
+          WHERE c.entity_id = x.entity_id ORDER BY c.position)) AS countries,
+       x.confidence, x.status, x.note
+FROM entity_countries x
+LEFT JOIN events e ON e.entity_id = x.entity_id
+LEFT JOIN time_spans s ON s.entity_id = x.entity_id
+WHERE x.position = 0
+ORDER BY x.status = 'reviewed', x.confidence = 'high', coalesce(e.year, s.start_year);
 
 -- ── Change tracking ─────────────────────────────────────────────────────────
 

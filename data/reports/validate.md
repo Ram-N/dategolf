@@ -28,9 +28,14 @@
 | review | Proposed events awaiting approval (not exported; manage.py approve <id>) | pass |
 | review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 39 |
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 1 |
+| warning | Published event or span with no country tag | pass |
+| info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
+| review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
 | warning | Description mentions a year near the answer (DatePick shows it before the guess) | pass |
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
+| warning | No tagged country fits the event's region lane (fix the tags, add an actor, or accept it) | pass |
+| info | Accepted region exceptions (region deliberately differs from location) | 3 |
 | info | Counts changed since the legacy import | 2 |
 
 ## Counts
@@ -119,20 +124,31 @@
 
 - `birth-of-buddha` — -563 · Birth of Siddhartha Gautama — Birth date too disputed for a fair guess (CSV alone gives -576 and -486); user decision 2026-11-06.
 
+## [info] Entities with an actor but no location (e.g. events on the Moon or Mars)
+
+- `moon-landing` — actors only
+- `viking-1-mars` — actors only
+
 ## [info] Region labels in use, with their DateFlow lane
 
 - `Europe` — europe · 158 records
-- `South Asia` — south-asia · 124 records
+- `South Asia` — south-asia · 125 records
 - `Americas` — americas · 64 records
 - `East Asia` — east-asia · 58 records
 - `Middle East` — middle-east · 45 records
-- `Africa` — africa · 31 records
+- `Africa` — africa · 30 records
 - `Global` — global · 29 records
 - `Southeast Asia` — east-asia · 12 records
 - `North America` — americas · 7 records
 - `Oceania` — global · 4 records
 - `South America` — americas · 1 records
 - `Antarctica` — global · 1 records
+
+## [info] Accepted region exceptions (region deliberately differs from location)
+
+- `babur-ruler-of-ferghana` — Happened in Ferghana (Central Asia), but filed under South Asia: Babur's story is the Mughal one.
+- `colonial-africa-berlin` — Held in Berlin, but filed under Africa: it is about the partition of Africa.
+- `nato-founded` — Signed in Washington, but filed under Europe: a mainly European alliance.
 
 ## [info] Counts changed since the legacy import
 

@@ -6,6 +6,7 @@ import sqlite3
 import subprocess
 import sys
 
+import countries
 import drafts
 import exporter
 import reconcile
@@ -184,6 +185,16 @@ def main():
     p = sub.add_parser("approve", help="Mark proposed entities reviewed so they export")
     p.add_argument("ids", nargs="+")
     p.set_defaults(fn=approve)
+
+    p = sub.add_parser("load-countries", help="Load drafted country tags as proposed")
+    p.add_argument("path")
+    p.set_defaults(fn=lambda a: countries.load(a.path))
+
+    p = sub.add_parser("approve-countries", help="Mark country tags reviewed")
+    p.add_argument("ids", nargs="*", help="Entity ids to approve")
+    p.add_argument("--high", action="store_true", help="Approve every high-confidence entity")
+    p.set_defaults(fn=lambda a: countries.approve(a.ids, a.high) if (a.ids or a.high)
+                   else sys.exit("Give entity ids or --high"))
 
     sub.add_parser("backup", help="Snapshot the db to data/backup/ with a date-time name"
                    ).set_defaults(fn=backup)
