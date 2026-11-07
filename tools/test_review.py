@@ -47,7 +47,9 @@ def load_draft(entity_id, csv_event_id=None):
 
 
 def log_rows(entity_id):
-    return db().execute("SELECT action, detail, via FROM review_log WHERE entity_id = ?", (entity_id,)).fetchall()
+    """Log rows written by these tests (the copied db already holds the real decisions)."""
+    return db().execute("SELECT action, detail, via FROM review_log WHERE entity_id = ? AND via = 'test' "
+                        "ORDER BY id", (entity_id,)).fetchall()
 
 
 class TestSafety(unittest.TestCase):
@@ -118,6 +120,69 @@ class TestIdentity(unittest.TestCase):
         quiet(identity.decide, ["korean-war"], "split")
         status = db().execute("SELECT editorial_status FROM entities WHERE id = 'korean-war'").fetchone()[0]
         self.assertEqual(status, "needs_split")
+
+    def test_drop_span_keeps_the_event(self):
+        self.assertEqual(quiet(identity.decide, ["spanish-civil-war"], "drop-span", via="test"), 0)
+        con = db()
+        self.assertIsNone(con.execute("SELECT 1 FROM time_spans WHERE entity_id = 'spanish-civil-war'").fetchone())
+        self.assertIsNone(con.execute("SELECT 1 FROM entity_categories WHERE entity_id = 'spanish-civil-war' "
+                                      "AND facet = 'span'").fetchone())
+        self.assertIsNotNone(con.execute("SELECT 1 FROM events WHERE entity_id = 'spanish-civil-war'").fetchone())
+        self.assertIsNotNone(con.execute("SELECT 1 FROM entity_categories WHERE entity_id = 'spanish-civil-war' "
+                                         "AND facet = 'event'").fetchone())
+        self.assertEqual(con.execute("SELECT editorial_status FROM entities WHERE id = 'spanish-civil-war'").fetchone()[0],
+                         "reviewed")
+        action, detail, _ = log_rows("spanish-civil-war")[-1]
+        self.assertEqual(action, "identity-drop-span")
+        self.assertIn("1936 to 1939", detail)
+
+    def test_drop_event_keeps_the_span(self):
+        eid = "russo-japanese-war"  # each identity test uses its own id
+        kind = db().execute("SELECT kind FROM time_spans WHERE entity_id = ?", (eid,)).fetchone()[0]
+        self.assertEqual(quiet(identity.decide, [eid], "drop-event", via="test"), 0)
+        con = db()
+        self.assertIsNone(con.execute("SELECT 1 FROM events WHERE entity_id = ?", (eid,)).fetchone())
+        self.assertIsNone(con.execute("SELECT 1 FROM event_aliases WHERE entity_id = ?", (eid,)).fetchone())
+        self.assertIsNone(con.execute("SELECT 1 FROM entity_categories WHERE entity_id = ? AND facet = 'event'",
+                                      (eid,)).fetchone())
+        self.assertIsNotNone(con.execute("SELECT 1 FROM time_spans WHERE entity_id = ?", (eid,)).fetchone())
+        self.assertIsNotNone(con.execute("SELECT 1 FROM entity_countries WHERE entity_id = ?", (eid,)).fetchone())
+        self.assertEqual(con.execute("SELECT primary_type FROM entities WHERE id = ?", (eid,)).fetchone()[0], kind)
+        action, detail, _ = log_rows(eid)[-1]
+        self.assertEqual(action, "identity-drop-event")
+        self.assertIn("(1904)", detail)
+
+    def test_drop_event_refuses_a_milestone(self):
+        con = db()
+        con.execute("INSERT INTO milestone_designations (entity_id, display_order) VALUES ('russian-revolution', 99)")
+        con.commit()
+        self.assertEqual(quiet(identity.decide, ["russian-revolution"], "drop-event"), 1)
+        self.assertIsNotNone(db().execute("SELECT 1 FROM events WHERE entity_id = 'russian-revolution'").fetchone())
+
+    def test_split_moves_the_span_and_links_it(self):
+        eid, new = "american-civil-war", "american-civil-war-period"
+        span_cats = db().execute("SELECT category FROM entity_categories WHERE entity_id = ? AND facet = 'span'",
+                                 (eid,)).fetchall()
+        n_countries = db().execute("SELECT COUNT(*) FROM entity_countries WHERE entity_id = ?", (eid,)).fetchone()[0]
+        self.assertEqual(quiet(identity.split, eid, new, via="test"), 0)
+        con = db()
+        self.assertIsNotNone(con.execute("SELECT 1 FROM events WHERE entity_id = ?", (eid,)).fetchone())
+        self.assertIsNone(con.execute("SELECT 1 FROM time_spans WHERE entity_id = ?", (eid,)).fetchone())
+        self.assertIsNotNone(con.execute("SELECT 1 FROM time_spans WHERE entity_id = ?", (new,)).fetchone())
+        self.assertEqual(con.execute("SELECT category FROM entity_categories WHERE entity_id = ? AND facet = 'span'",
+                                     (new,)).fetchall(), span_cats)
+        self.assertEqual(con.execute("SELECT COUNT(*) FROM entity_countries WHERE entity_id = ?", (new,)).fetchone()[0],
+                         n_countries)
+        self.assertIsNotNone(con.execute("SELECT 1 FROM relationships WHERE source_entity_id = ? AND "
+                                         "relationship_type = 'part_of' AND target_entity_id = ?", (eid, new)).fetchone())
+        self.assertEqual(con.execute("PRAGMA foreign_key_check").fetchall(), [])
+        self.assertEqual(log_rows(eid)[-1][0], "identity-split-done")
+
+    def test_split_refuses_bad_ids(self):
+        self.assertEqual(quiet(identity.split, "battle-of-plassey", "plassey-period"), 1)  # not shared
+        self.assertEqual(quiet(identity.split, "french-revolution", "french-revolution"), 1)  # same id
+        self.assertEqual(quiet(identity.split, "french-revolution", "roman-empire"), 1)  # already exists
+        self.assertEqual(quiet(identity.split, "french-revolution", "Bad Id"), 1)  # not kebab-case
 
     def test_refuses_ids_that_are_not_shared(self):
         self.assertEqual(quiet(identity.decide, ["battle-of-plassey"], "one"), 1)

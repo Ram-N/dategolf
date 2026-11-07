@@ -190,7 +190,16 @@ def main():
     g = p.add_mutually_exclusive_group(required=True)
     g.add_argument("--one", action="store_const", const="one", dest="decision", help="One subject")
     g.add_argument("--split", action="store_const", const="split", dest="decision", help="Flag for a split")
+    g.add_argument("--drop-span", action="store_const", const="drop-span", dest="decision",
+                   help="Keep only the event: delete the span")
+    g.add_argument("--drop-event", action="store_const", const="drop-event", dest="decision",
+                   help="Keep only the span: delete the event")
     p.set_defaults(fn=lambda a: identity.decide(a.ids, a.decision))
+
+    p = sub.add_parser("split", help="Step 3a: give a shared id's span its own new id")
+    p.add_argument("id", help="The shared id (the event keeps it)")
+    p.add_argument("new_span_id", help="The new id for the span, e.g. pax-romana-period")
+    p.set_defaults(fn=lambda a: identity.split(a.id, a.new_span_id))
 
     p = sub.add_parser("load-countries", help="Load drafted country tags as proposed")
     p.add_argument("path")
