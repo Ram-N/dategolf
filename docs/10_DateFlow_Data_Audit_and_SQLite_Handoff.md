@@ -648,3 +648,7 @@ The first coding-agent task should be considered complete only when:
 9. Only then begin enriching entities and curating typed relationships.
 
 **Guiding principle:** First make the existing data safe, traceable, and queryable. Then improve its coverage and historical depth. Do not combine migration, historical fact-checking, taxonomy redesign, and frontend redesign into one risky change.
+
+---
+
+> **Status (added 2026-11-07):** Steps 1–8 above are done. For progress and the detailed plan for step 9 (the knowledge graph: why, what the link types mean, and parts 3a/3b/3c), see `11_DateFlow_Data_Migration_Status.md` §3, "Step 3". Day-to-day editing is in `12_Data_Review_and_Editing_Guide.md`.

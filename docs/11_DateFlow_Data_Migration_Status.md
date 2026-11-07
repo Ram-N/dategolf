@@ -132,14 +132,62 @@ Matching against Wikidata's "country" property is possible but slower. It also w
 
 ### Step 3: Start the knowledge graph *(the core DateFlow potential)*
 
-- **First decide the 25 shared event/span IDs:** one subject or two? They're flagged `needs_review_identity`.
-- **Then seed about 50 reviewed relationships from material already in the db:**
-  - the "Related: …" notes on drafts (in `entity_provenance`)
-  - `part_of` links from events to spans (e.g. the Delhi Sultanate accessions → `delhi-sultanate`)
-  - the "related, not the same" CSV pairs that were rejected (e.g. Lee's surrender → American Civil War)
-  - the Kilby → Noyce pair
-- **Export `relationships.json` alongside the existing files**, without changing the current frontend contract.
-- **Remember:** chronological closeness is not causation. `contemporary_with` is not causal, and the schema already separates the two.
+#### What the data knows today, and what it doesn't
+
+Every event knows **when** (year), **where** (region and countries) and **what kind** (categories). Nothing records how events **connect**.
+
+DateFlow's "Meanwhile" section (`src/engine/dateflow/explore.ts`) is purely about time: it shows the most important events in *other* lanes within ±50 years. For the Partition of Bengal (1905) it might show Einstein's relativity paper, which is interesting but unrelated. It can't say what actually matters:
+
+> **Partition of Bengal (1905) → *triggered* → Swadeshi Movement (1905)**
+
+Both events are in the game; nothing records the link. **The objective of Step 3 is to record those connections as reviewed, typed links**, so the games can show *why* history unfolded, not just *when*.
+
+#### What the links make possible (later, in the frontend)
+
+- **"Led to…" and "Because of…"** on an event card. For example, the Treaty of Versailles *contributed to* the rise of Nazism.
+- **Cause-and-effect chains:** Versailles → rise of Nazism → Hitler becomes chancellor → WWII.
+- **Stories within a lane:** the Mughal succession, Babur → Humayun → Akbar → Jahangir → Shah Jahan → Aurangzeb, all already in the data.
+- **Grouping:** the Battle of Zama is *part of* the Punic Wars; Razia Sultana's accession is *part of* the Delhi Sultanate.
+- **New game questions:** "What did X lead to?" or "Put this chain in order".
+
+#### The link types (already in the schema, `relationship_types`)
+
+- **Causal**, a claim that one thing *made* another happen: `caused`, `triggered`, `contributed_to`, `enabled`, `influenced`.
+- **Non-causal**, connected but with no claim of cause: `part_of`, `preceded`, `followed`, `contemporary_with`, `evolved_into`, `opposed`, `interacted_with`.
+
+**Close in time doesn't mean one caused the other.** For example, Noyce's silicon chip came after Kilby's but was developed *independently*, so the right link is `preceded`, not `influenced`. Every link is curated and reviewed. None is extracted automatically from description text (doc 10 §4.5, §8).
+
+#### 3a. Decide the 25 shared event/span IDs *(quick; do first)*
+
+These IDs exist both as an event and as a span. They're flagged `needs_review_identity`.
+- **Almost all are one subject in two forms:** the *event* marks the key moment, and the *span* covers the whole period. Examples: *Napoleonic Wars Begin* (1803) with the span 1803–1815, and *French Revolution* (1789) with the span 1789–1799.
+- **Two differ slightly, because the event marks the end rather than the start:** *Indian Independence* (1947) with the span *Independence Movement* (1920–1947), and *Human Genome Project Completed* (2003) with the span 1990–2003. They still work as one subject, since the event is the culmination of its span.
+- **Recommendation:** confirm all 25 as one subject.
+- **Why it matters for linking:** a subject and its own period need no link between them. Splitting an ID would mean creating a separate entity, and then a `part_of` link.
+
+#### 3b. Seed about 50–100 reviewed links, easiest first
+
+1. **`part_of` links (events → spans).** These are mostly uncontroversial: Zama → Punic Wars, the Delhi accessions → Delhi Sultanate. Candidates can be proposed automatically: an event inside a span's years, in the same region, with related wording. Each still gets reviewed.
+2. **Sequences within a story** (`preceded` / `followed`): the Mughal succession, or the steps of the Indian independence movement.
+3. **Causal links:** about 30 well-established ones, hand-picked. They're the most valuable, and they get the most care. Examples: Partition of Bengal → *triggered* → Swadeshi; Jallianwala Bagh → *contributed_to* → Non-Cooperation; Second Battle of Tarain → *enabled* → founding of the Delhi Sultanate; Battle of Plassey → *enabled* → the Company's control of Bengal.
+
+**Ready-made candidates already in the db:**
+- the 22 "Related: …" notes in `entity_provenance`
+- the "related but not the same" CSV pairs rejected in `legacy_csv_crosswalk` (e.g. Lee's surrender → American Civil War)
+- the Kilby → Noyce pair
+
+#### 3c. Export `relationships.json`
+
+The links go into a new file alongside the existing ones, so **nothing in the game changes yet** and the current frontend data contract stays as it is. Showing the links in DateFlow (e.g. a "Connections" section on the event card) is a **separate, later step**, done once the links have proven useful.
+
+#### Workflow
+
+It's the same review pattern as the event drafts and country tags:
+1. Claude proposes links in batches, each with its type and a one-line justification.
+2. They load as `proposed`.
+3. You confirm, edit or reject them.
+
+Validation then catches links to missing entities, self-links, unknown types and duplicate links.
 
 ### Step 4: Fill the thin periods *(content; can run alongside Steps 1–3)*
 
