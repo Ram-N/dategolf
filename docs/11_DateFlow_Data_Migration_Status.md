@@ -71,11 +71,41 @@ Players can hit these today:
 
 </details>
 
-### Step 2: Controlled vocabularies *(medium; doc 10 phase 4)*
+### Step 2: Controlled vocabularies ✅ *done 2026-11-06*
+
+**Decided:** evolve the existing categories rather than adopt doc 10's 8-category taxonomy, and use a two-level region hierarchy built on the DateFlow lanes.
+
+**Done:**
+- **Categories:** added **Economy** (19 events, e.g. Silk Road, East India Company, Great Depression, WTO, the 2008 crisis, India's liberalisation) and **Philosophy** (6: Confucius, Socrates, Plato's Academy, Hobbes, *Wealth of Nations*, Thales). Clearly wrong tags were fixed along the way, such as "Technology" on the 2008 crisis and "Culture, Science" on *Wealth of Nations*. In DateFlow's colours, Economy joins "Culture & Society" and Philosophy joins "Science & Discovery".
+- **Regions:** a new `regions` table maps every region label to one of the 7 lanes. Lane-level labels sit alongside subregions: Southeast Asia, North America, South America, Oceania and Antarctica.
+  - The 10 Southeast Asian events are re-tagged from "East Asia".
+  - "World" is merged into "Global".
+  - Amundsen is now "Antarctica".
+  - The table is exported as `src/data/regions.json`, so `lanes.ts` reads the mapping from data instead of hard-coding it.
+  - Validation rejects any region label that isn't in the table, and a unit test checks that every label used has a lane.
+- **Content gap noticed:** Philosophy has only 6 events. There's no Laozi, Buddha's teachings as such, Descartes, Locke, Kant or Marx's *Manifesto*, which makes it a good topic for a future draft batch.
+- **Not done (by decision):** `category_mappings` to doc 10's 8 categories stays empty.
+
+### Step 2b: Country tagging *(next; for the future map)*
+
+Tag each event and span with the **present-day country or countries** where it happened (ISO codes such as `IN`, `CN`, `FR`), stored under the region hierarchy. Keep historical polities (Mughal Empire, Roman Empire) separate. Those are spans or a later `polities` table, not countries.
+
+**The fast way, about an hour in total:**
+1. **Claude drafts every tag in one batch** (all ~535 events and spans) as a JSON file. Each record gets its country codes and a confidence: *high* for clear cases (Battle of Plassey → IN), *low* for multi-country or vague ones (Silk Road, the Huns, the Cold War).
+2. **The batch loads into a new `entity_countries` table** as `proposed`, like event drafts, so nothing is final until reviewed.
+3. **You review by exception:** only the low-confidence and multi-country rows, probably 15–20%, in one DB Browser view. Then approve the rest in bulk.
+4. **A validation check** confirms that every country sits inside its event's region (e.g. `IN` under South Asia).
+
+Matching against Wikidata's "country" property is possible but slower. It also works poorly for ancient events, whose countries didn't exist yet.
+
+<details><summary>Original Step 2 plan</summary>
+
 
 - **Categories:** fill `category_mappings` from the 12 legacy labels to the 8 planned top-level categories, keeping the legacy labels. Exploration and Medicine may map to more than one.
 - **Regions:** add a hierarchy (`regions` and `entity_geographies`) and resolve the overlaps: `Americas` / `North America` / `South America`, `Global` / `World`, Southeast Asia filed under East Asia, and Antarctica filed as Global.
 - **Why before Step 3:** relationships, filters and a future map all need clean labels.
+
+</details>
 
 ### Step 3: Start the knowledge graph *(the core DateFlow potential)*
 

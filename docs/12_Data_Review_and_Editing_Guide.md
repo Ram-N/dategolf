@@ -82,7 +82,8 @@ Here's why:
 
 ### Allowed values (the db rejects anything else)
 
-- **categories:** Arts, Culture, Disasters, Exploration, Medicine, Politics, Religion, Science, Social, Sports, Technology, War
+- **categories:** Arts, Culture, Disasters, Economy, Exploration, Medicine, Philosophy, Politics, Religion, Science, Social, Sports, Technology, War. The first one is the *primary*, which sets the DateFlow colour. To add a new category, insert it into `categories` and map it to a colour group in `src/engine/dateflow/categoryGroups.ts`.
+- **region:** must be a label in the `regions` table: South Asia, East Asia, Southeast Asia, Europe, Middle East, Africa, Americas, North America, South America, Global, Oceania or Antarctica. To add one, insert `(label, lane)` into `regions` and export; DateFlow picks up the lane automatically.
 - **difficulty:** `easy` · `medium` · `hard`
 - **importance:** 1–9. DateFlow bolds 7 and above; DatePick picks questions in proportion to importance. Use 1–2 for minor events.
 - **is_approximate:** set it to 1 for "c." dates. DatePick then keeps wrong answers more than 10 years away.
