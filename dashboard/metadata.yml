@@ -1,0 +1,242 @@
+# Datasette config for data/dategolf.db (Datasette 0.65). Read-only browsing: see docs/13.
+# Run: npm run data:browse   →   http://localhost:8001
+title: DateGolf data
+description_html: |-
+  The source of truth for DateGolf, DatePick and DateFlow. <strong>Read-only here</strong>:
+  edit through the tools (doc 12) or, later, the Streamlit dashboard (doc 13).
+  Years are signed integers (<code>-44</code> = 44 BCE); there is no year 0.
+  Start with <a href="/dategolf/events">events</a>, or try a canned query below.
+
+databases:
+  dategolf:
+    description: Every event, span, tag and review decision behind the game's JSON files.
+    tables:
+      # ── Core content ──────────────────────────────────────────────
+      entities:
+        description: One row per id. Holds the editorial status; an id can have an event facet, a span facet, or both.
+        facets: [primary_type, editorial_status]
+        columns:
+          editorial_status: "imported / reviewed / needs_review_identity / proposed (proposed is never exported)"
+          primary_type: event, period, empire or era
+          created_at: NULL means it came from the original import
+          updated_at: Stamped automatically when the event or span is edited
+      events:
+        description: Single-year events used by all three games (exported to src/data/events.json).
+        sort: year
+        facets: [region, difficulty, importance]
+        label_column: name
+        columns:
+          entity_id: The stable id (kebab-case)
+          year: Signed year; -44 = 44 BCE; never 0
+          region: A label from the regions table (decides the DateFlow lane)
+          description: "Shown before the guess in DatePick: must not mention the year"
+          difficulty: easy / medium / hard
+          importance: "1–9; DateFlow bolds 7+, and DatePick picks questions in proportion to it"
+          is_approximate: "1 = a 'c.' date; DatePick keeps wrong answers more than 10 years away"
+          date_display: The true range for approximate dates, e.g. c. 375-380
+          position: Original file order (ties within a year); NULL is fine for new rows
+      event_aliases:
+        description: Search aliases for DateGolf. Must not contain the answer year.
+        columns:
+          position: Order within the event
+      time_spans:
+        description: Periods, empires and eras (exported to durations.json and eras.json). Used by DateFlow only.
+        sort: start_year
+        facets: [kind, region]
+        label_column: name
+        columns:
+          kind: period, empire or era
+          approximate: 1 = traditional or disputed dates (shown with "c.")
+      entity_categories:
+        description: Categories per event or span. Position 0 is the primary category, which sets the DateFlow colour.
+        facets: [category, facet]
+        columns:
+          facet: event or span (one id can carry different categories as each)
+      categories:
+        description: The controlled list of category labels.
+      learning_content_groups:
+        description: DateLinks memory-aid groups per event (exported to datelinks.json).
+      learning_content_items:
+        description: The text items inside each DateLinks group.
+      milestone_designations:
+        description: The 16 DateFlow milestone events (exported to milestones.json).
+      daily_challenges:
+        description: DateGolf's five target years for each calendar day, keyed MM-DD.
+        facets: [date_key]
+      dateflow_only_events:
+        description: Events kept out of DatePick and DateGolf (date too disputed to guess); DateFlow still shows them.
+
+      # ── Geography ─────────────────────────────────────────────────
+      regions:
+        description: Region labels and the DateFlow lane each belongs to (exported to regions.json).
+        facets: [lane]
+      countries:
+        description: Present-day countries (ISO codes) and their region. ZZ = worldwide, no single country.
+        label_column: name
+        facets: [region]
+        columns:
+          alt_region: For countries that straddle two regions (e.g. Egypt is in Africa and the Middle East)
+      entity_countries:
+        description: "Where each event or span happened, in present-day countries. Not exported yet: groundwork for a map."
+        facets: [country, role, status, confidence]
+        columns:
+          role: "location = where it happened; actor = whose story it is (Pearl Harbor: US location, JP actor)"
+          position: 0 = the primary country
+      accepted_region_exceptions:
+        description: Entities whose region deliberately differs from where they happened (validation skips them).
+
+      # ── Knowledge graph (Step 3) ──────────────────────────────────
+      relationships:
+        description: "Typed, reviewed links between entities (Step 3). Close in time does not mean one caused the other."
+      relationship_types:
+        description: Allowed link types. is_causal separates claims of cause from plain connections.
+
+      # ── Provenance and review ─────────────────────────────────────
+      entity_provenance:
+        description: Where non-imported entities came from (e.g. AI-drafted from a CSV row) and the reviewer note.
+        facets: [origin]
+      legacy_csv_rows:
+        description: The original events_master.csv, verbatim (310 rows). Never edited.
+        sort: row_number
+      legacy_csv_crosswalk:
+        description: Match decisions between CSV rows and events. All decided.
+        facets: [decision, tier]
+      legacy_csv_triage:
+        description: The outcome for CSV rows with no matching event (drafted, duplicate, or not recommended).
+        facets: [outcome]
+
+      # ── Review views ──────────────────────────────────────────────
+      v_country_review:
+        description: One row per entity with its countries; anything still proposed comes first.
+      v_proposed_events:
+        description: Event drafts awaiting approval (empty when nothing is waiting).
+      v_csv_crosswalk_review:
+        description: CSV rows next to their candidate events (all decided).
+
+      # ── Internal (hidden; still reachable through SQL) ────────────
+      import_records:
+        hidden: true
+      category_mappings:
+        hidden: true
+      meta:
+        hidden: true
+
+    queries:
+      event_card:
+        title: Event card
+        description: "Everything about one event in one row. Enter an id, e.g. battle-of-plassey."
+        sql: |-
+          SELECT e.entity_id AS id, e.name, e.year, e.date_display, e.region, e.difficulty, e.importance,
+                 n.editorial_status,
+                 (SELECT group_concat(category, ', ') FROM (SELECT category FROM entity_categories
+                    WHERE entity_id = e.entity_id AND facet = 'event' ORDER BY position)) AS categories,
+                 (SELECT group_concat(alias, ' | ') FROM (SELECT alias FROM event_aliases
+                    WHERE entity_id = e.entity_id ORDER BY position)) AS aliases,
+                 (SELECT group_concat(country || CASE role WHEN 'actor' THEN ' (actor)' ELSE '' END, ', ')
+                    FROM (SELECT country, role FROM entity_countries WHERE entity_id = e.entity_id
+                          ORDER BY position)) AS countries,
+                 e.description,
+                 p.origin, p.note AS review_note,
+                 (SELECT event FROM legacy_csv_rows WHERE event_id = coalesce(p.csv_event_id,
+                    (SELECT csv_event_id FROM legacy_csv_crosswalk
+                      WHERE entity_id = e.entity_id AND decision = 'accepted' LIMIT 1))) AS csv_source_text
+          FROM events e
+          JOIN entities n ON n.id = e.entity_id
+          LEFT JOIN entity_provenance p ON p.entity_id = e.entity_id
+          WHERE e.entity_id = :id
+      search_events:
+        title: Search events
+        description: Find events whose name, aliases or description contain a word or phrase.
+        sql: |-
+          SELECT e.year, e.entity_id, e.name, e.region, e.importance
+          FROM events e
+          WHERE e.name LIKE '%' || :q || '%'
+             OR e.description LIKE '%' || :q || '%'
+             OR e.entity_id IN (SELECT entity_id FROM event_aliases WHERE alias LIKE '%' || :q || '%')
+          ORDER BY e.year
+      events_in_country:
+        title: Events in a country
+        description: "Every event and span tagged with a country. Enter an ISO code, e.g. IN, FR or EG."
+        sql: |-
+          SELECT coalesce(e.year, s.start_year) AS year, x.entity_id,
+                 coalesce(e.name, s.name) AS name,
+                 CASE WHEN e.entity_id IS NOT NULL THEN 'event' ELSE 'span' END AS kind,
+                 x.role, k.name AS country
+          FROM entity_countries x
+          JOIN countries k ON k.code = x.country
+          LEFT JOIN events e ON e.entity_id = x.entity_id
+          LEFT JOIN time_spans s ON s.entity_id = x.entity_id AND e.entity_id IS NULL
+          WHERE x.country = upper(:code)
+          ORDER BY year
+      coverage_century_lane:
+        title: Coverage by century × lane
+        description: "Published events per century in each DateFlow lane. Try the chart: x = century_start, y = total."
+        sql: |-
+          WITH c AS (
+            SELECT (CASE WHEN e.year >= 0 THEN e.year / 100 ELSE -((-e.year + 99) / 100) END) * 100 AS century_start,
+                   r.lane
+            FROM events e
+            JOIN regions r ON r.label = e.region
+            WHERE e.entity_id NOT IN (SELECT id FROM entities WHERE editorial_status = 'proposed')
+          )
+          SELECT century_start, COUNT(*) AS total,
+                 SUM(lane = 'south-asia') AS south_asia, SUM(lane = 'east-asia') AS east_asia,
+                 SUM(lane = 'europe') AS europe, SUM(lane = 'middle-east') AS middle_east,
+                 SUM(lane = 'africa') AS africa, SUM(lane = 'americas') AS americas,
+                 SUM(lane = 'global') AS global
+          FROM c GROUP BY century_start ORDER BY century_start
+      category_balance:
+        title: Category balance by century
+        description: How many events carry each category, per century (one row per century × category).
+        sql: |-
+          SELECT (CASE WHEN e.year >= 0 THEN e.year / 100 ELSE -((-e.year + 99) / 100) END) * 100 AS century_start,
+                 ec.category, COUNT(*) AS events
+          FROM events e
+          JOIN entity_categories ec ON ec.entity_id = e.entity_id AND ec.facet = 'event'
+          GROUP BY century_start, ec.category
+          ORDER BY century_start, events DESC
+      thin_centuries:
+        title: Thinnest centuries
+        description: Centuries with the fewest events, including empty ones. Where to aim the next draft batch.
+        sql: |-
+          WITH RECURSIVE centuries(century_start) AS (
+            SELECT -3500 UNION ALL SELECT century_start + 100 FROM centuries WHERE century_start < 2000
+          ),
+          counts AS (
+            SELECT (CASE WHEN year >= 0 THEN year / 100 ELSE -((-year + 99) / 100) END) * 100 AS century_start,
+                   COUNT(*) AS n
+            FROM events GROUP BY 1
+          )
+          SELECT c.century_start, coalesce(counts.n, 0) AS events
+          FROM centuries c LEFT JOIN counts USING (century_start)
+          ORDER BY events, c.century_start
+          LIMIT 20
+      shared_ids_3a:
+        title: Step 3a, the shared event/span ids
+        description: Ids that exist both as an event and as a span. Each needs an identity decision (one subject or two).
+        sql: |-
+          SELECT e.entity_id, e.year AS event_year, e.name AS event_name,
+                 s.start_year || '–' || s.end_year AS span_years, s.name AS span_name, n.editorial_status
+          FROM events e
+          JOIN time_spans s ON s.entity_id = e.entity_id
+          JOIN entities n ON n.id = e.entity_id
+          ORDER BY e.year
+      review_queue:
+        title: Review queue
+        description: Everything waiting on a human decision, across all queues.
+        sql: |-
+          SELECT 'event draft' AS queue, e.entity_id AS entity_id, e.name AS name, coalesce(p.note, '') AS detail
+          FROM events e JOIN entities n ON n.id = e.entity_id
+          LEFT JOIN entity_provenance p ON p.entity_id = e.entity_id
+          WHERE n.editorial_status = 'proposed'
+          UNION ALL
+          SELECT 'country tags', x.entity_id, coalesce(e.name, s.name), x.confidence || coalesce(' — ' || x.note, '')
+          FROM entity_countries x
+          LEFT JOIN events e ON e.entity_id = x.entity_id
+          LEFT JOIN time_spans s ON s.entity_id = x.entity_id
+          WHERE x.position = 0 AND x.status = 'proposed'
+          UNION ALL
+          SELECT 'identity (3a)', n.id, e.name, 'event + span share this id'
+          FROM entities n JOIN events e ON e.entity_id = n.id
+          WHERE n.editorial_status = 'needs_review_identity'
+          ORDER BY queue, entity_id

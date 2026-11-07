@@ -17,7 +17,8 @@
     "data:export": "uv run python tools/manage.py export-json",
     "data:validate": "uv run python tools/manage.py validate",
     "data:compare": "uv run python tools/manage.py compare-export",
-    "data:backup": "uv run python tools/manage.py backup"
+    "data:backup": "uv run python tools/manage.py backup",
+    "data:browse": "uv run --project dashboard datasette data/dategolf.db -m dashboard/metadata.yml -p 8001 --setting sql_time_limit_ms 5000"
   },
   "dependencies": {
     "fuse.js": "^7.5.0",

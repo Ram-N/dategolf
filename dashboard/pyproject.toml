@@ -1,0 +1,12 @@
+[project]
+name = "dategolf-admin"
+version = "0.1.0"
+description = "Local admin tools for data/dategolf.db: Datasette (browse) and Streamlit (manage). See docs/13."
+requires-python = ">=3.11"
+dependencies = [
+    "datasette>=0.65,<0.66",
+    "datasette-vega>=0.6",
+]
+
+[tool.uv]
+package = false
