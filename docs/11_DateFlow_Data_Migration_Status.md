@@ -140,7 +140,8 @@ Replaces DB Browser for everyday work. **Datasette** is for browsing and ad-hoc 
   - **Map:** a world choropleth with a year slider, filters and a per-country drill-down
 
   An `iso3` column was added to `countries`.
-- **Next:** v2 (review queues; Step 3a is its first use), v3 (the event editor) and v4 (links, built with Step 3b/3c).
+- **Streamlit v2 ✅ done 2026-11-07:** a **Review** page (event drafts, country tags, identity 3a, fix any country tags, decision log). Every action is a tested `tools/` function with a matching CLI command, and every decision is recorded in the new `review_log` table.
+- **Next:** use v2 for Step 3a, then v3 (the event editor) and v4 (links, built with Step 3b/3c).
 - **Why before Step 3:** reviewing 50–100 links needs a purpose-built screen, not raw tables.
 
 ### Step 3: Start the knowledge graph *(the core DateFlow potential)*

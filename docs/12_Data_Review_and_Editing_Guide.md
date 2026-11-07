@@ -22,6 +22,8 @@
 
 ---
 
+> **Easiest now:** most reviews (drafts, country tags, Step 3a identities) can be done on the dashboard's **Review** page (`npm run data:dashboard`, doc 13). Every decision is logged in `review_log`. The table below still applies for anything else.
+
 ## 2. DB Browser or `uv`?
 
 The short rule: **DB Browser is for content, `uv` is for actions.**
@@ -255,7 +257,11 @@ npm run data:validate                                 # integrity checks → dat
 npm run data:compare                                  # prove the export matches committed JSON
 npm run data:backup                                   # monthly snapshot → data/backup/ (local, not in git)
 npm run data:browse                                   # Datasette → http://localhost:8001 (read-only browsing + SQL; doc 13)
-npm run data:dashboard                                # Streamlit → http://localhost:8501 (overview, coverage, map; doc 13)
+npm run data:dashboard                                # Streamlit → http://localhost:8501 (overview, review, coverage, map; doc 13)
+uv run python tools/manage.py reject <id>... --reason "…"     # delete proposed drafts (logged)
+uv run python tools/manage.py set-countries <id> "IN, PK/actor" # replace an entity's country tags (logged)
+uv run python tools/manage.py identity <id>... --one | --split # Step 3a decisions (logged)
+npm run data:test                                     # tests for the review tools (on a temporary db copy)
 uv run python tools/manage.py approve <id> [<id>…]    # publish drafts
 uv run python tools/manage.py load-drafts <file>      # add a batch of new events as drafts
 uv run python tools/manage.py reconcile-events        # refresh CSV match proposals

@@ -144,6 +144,55 @@ Run it with `npm run data:dashboard` → `streamlit run dashboard/app.py --serve
 - the map shows the 100 countries
 - it's documented in docs 12 and 13
 
+### 4.2 v2 detailed plan: review queues (planned 2026-11-07; ✅ built 2026-11-07)
+
+**Built as planned.** It adds a **Review** page with tabs for event drafts, country tags, identity (3a), *Fix any country tags* and the *Decision log*; the latest decisions also appear on the Overview.
+- **New tool functions:** `drafts.approve` and `drafts.reject`, `countries.set_tags`, `identity.decide` (in `tools/identity.py`). Matching CLI commands: `approve`, `reject`, `set-countries`, `identity --one|--split`.
+- **Tests:** `npm run data:test` runs 12 tool tests. `npm run data:dashboard:test` checks that all 4 pages render, Validate works and a review decision works. Both run on a **temporary copy** of the database (`DATEGOLF_DB`), and reports also go to the copy's folder.
+- **Verified in the browser,** against a throwaway copy: the "All undecided are one subject" dialog decided all 25 ids, and each decision was logged with `via = dashboard`. The real database was untouched.
+
+**Goal:** one **Review** page where every decision waiting on a human can be made: select items, read the context, and click **Approve**, **Reject** or **Decide**. No terminal and no DB Browser needed. Step 3a is its first real use.
+
+**The rule still holds:** every action is a **function in `tools/`**. The page calls it, and so does a matching `manage.py` command, so the dashboard and the command line stay identical.
+
+#### The queues (tabs on the Review page, each labelled with its count)
+
+| Tab | Items today | Shows for each item | Actions |
+|---|---|---|---|
+| **Event drafts** | 0 (more with every batch) | Name, year, region, categories, aliases, description, review note, source CSV text | **Approve** · **Reject** (with a reason) |
+| **Country tags** | 0 | Entity, its countries with roles, confidence, note | **Approve** · **Approve all high-confidence** · **Fix tags** (type e.g. `IN, PK/actor`; checked before saving) |
+| **Identity (3a)** | **25** | The event and the span side by side: names, years, descriptions | **One subject** (the recommended default) · **Needs a split** (flags it; the split itself is done with Claude, since it renames a span id) |
+| *Links (v4)* | — | *Added with Step 3b* | — |
+
+Each tab has a **table with selectable rows** (pick one or many), a **detail card** for a single selection, and **action buttons** that apply to every selected row. Destructive actions (Reject, Needs a split) ask for confirmation in a dialog. After any action, the page refreshes, and a note reminds you to **Export** (Overview) when the game JSON is affected.
+
+#### New and changed tool functions
+
+| Function | Does | CLI |
+|---|---|---|
+| `drafts.approve(ids)` | Moved out of `manage.py` into a reusable function. Sets the status to `reviewed`. | `approve` (unchanged) |
+| `drafts.reject(ids, reason)` | Deletes the draft (everything linked to it goes too). If it came from a CSV row, records "rejected at review: reason" in `legacy_csv_triage`, so the row stays closed. | `reject <id>... --reason` |
+| `countries.set_tags(id, spec, note)` | Replaces an entity's tags from a spec like `IN, PK/actor`, checking that every code exists | `set-countries <id> "<spec>"` |
+| `identity.decide(ids, decision)` | `one` → status `reviewed`; `split` → status `needs_split` (listed in validation for follow-up) | `identity <id>... --one \| --split` |
+
+#### A small audit trail: `review_log`
+
+A new table, `review_log(at, action, entity_id, detail)`, written by every function above, whether called from the dashboard or the command line. This is the first part of doc 10 §4.7's `change_log`, so review decisions are traceable ("who rejected this draft, when, and why?"). The Overview page shows the latest entries.
+
+#### Testing
+
+- **A test database:** `tools/common.py` reads `DATEGOLF_DB` if it's set, so tests run against a **temporary copy** of the database, never the real one.
+- **Tool tests** (`tools/test_review.py`, stdlib `unittest`): approve, reject (including the CSV triage note), set_tags (a bad code is refused), decide, and log rows written.
+- **The smoke test is extended:** the Review page renders, and on the test copy, one approve and one identity decision go through.
+
+#### Not in v2
+
+- Editing an event's fields (v3, the editor).
+- Actually splitting an identity (flag only; done with Claude).
+- Link review (v4, with Step 3b).
+
+**Done when:** all three tabs work; the tool functions are tested against a copy of the database; the CLI commands match the dashboard; `review_log` records every decision; and the docs are updated (12, 13).
+
 ### Risks and how they're handled
 
 - **Two ways to write.** Only Streamlit writes, and only through `tools/`.
