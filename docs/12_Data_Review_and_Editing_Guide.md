@@ -169,6 +169,21 @@ Some events have dates that are too disputed to be a fair guess, like the birth 
 - **Keep the event, but only in DateFlow.** Add a row to `dateflow_only_events` (`entity_id`, plus a `reason`), then export. The exporter writes `"dateflowOnly": true`, and DatePick and DateGolf skip it (`src/engine/eventPool.ts`). Delete the row to undo.
 - **Make it a time span instead.** A period with an approximate start and end, like `life-of-the-buddha`, lives in `time_spans`. Only DateFlow reads spans.
 
+### 4.5c Country tags
+
+Every event and span is tagged with the **present-day** country (or countries) where it happened, in `entity_countries`. They aren't exported yet; this is groundwork for a map.
+- **`ZZ`** means *worldwide, no single country* (pandemics, world wars as a whole).
+- **Each tag has a `role`:** `location` (where it physically happened, the default; a map plots these) or `actor` (whose action or story it is, when that country isn't the location). Examples: Pearl Harbor → US location, JP actor; Columbus → BS location, ES actor; the Moon landing → US actor only. In the review view, actors show as "(actor)". In a tag file, write `ES/actor`.
+- **The event's `region` is about *whose story it is*;** country tags are about *where* it happened (or who acted). When they deliberately differ (Babur's Ferghana, filed under South Asia), add a row to `accepted_region_exceptions` with a reason, and validation stops warning about it.
+- **To review:** open the view `v_country_review`. Low-confidence and unreviewed tags come first, with a note explaining each.
+- **To fix a tag:** edit `entity_countries` (one row per country; `position` 0 is the primary).
+- **To approve:** `uv run python tools/manage.py approve-countries --high` approves every high-confidence entity, or pass entity ids to approve specific ones.
+- **To add a country:** insert it into `countries` (code, name, region, optional `alt_region` for countries that straddle two regions, like Egypt).
+- **To re-draft tags:** edit the tag file and `load-countries` it again. Reviewed tags are never overwritten.
+- **Which countries to tag, the "defining moments" rule (decided 2026-11-07):** tag the countries where the defining moments happened (key battles, sieges, capitals and foundings), usually 3–8, with the primary first. Don't list a span's full territorial extent; that belongs to the future map. Example: Alexander's conquests → GR, TR, LB, EG, IQ, IR, AF, PK, IN.
+- **Disputed territory policy (decided 2026-11-06): list all parties.** Jerusalem → Israel and Palestine; Bethlehem → Palestine; Crimea → Ukraine (the UN-recognised position); Kosovo → Serbia and Kosovo (`XK`); Falklands → Falkland Islands and Argentina. Follow the same rule for new tags.
+- **Validation warns** when none of an entity's countries fits its region lane (e.g. Pearl Harbor: Hawaii, filed under East Asia).
+
 ### 4.6 The 25 shared event/duration IDs
 
 These are IDs such as `french-revolution` that exist both as an event and as a time span.

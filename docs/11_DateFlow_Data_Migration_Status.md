@@ -86,7 +86,36 @@ Players can hit these today:
 - **Content gap noticed:** Philosophy has only 6 events. There's no Laozi, Buddha's teachings as such, Descartes, Locke, Kant or Marx's *Manifesto*, which makes it a good topic for a future draft batch.
 - **Not done (by decision):** `category_mappings` to doc 10's 8 categories stays empty.
 
-### Step 2b: Country tagging *(next; for the future map)*
+<details><summary>Original Step 2 plan</summary>
+
+
+- **Categories:** fill `category_mappings` from the 12 legacy labels to the 8 planned top-level categories, keeping the legacy labels. Exploration and Medicine may map to more than one.
+- **Regions:** add a hierarchy (`regions` and `entity_geographies`) and resolve the overlaps: `Americas` / `North America` / `South America`, `Global` / `World`, Southeast Asia filed under East Asia, and Antarctica filed as Global.
+- **Why before Step 3:** relationships, filters and a future map all need clean labels.
+
+</details>
+
+### Step 2b: Country tagging ✅ *done 2026-11-07*
+
+**Done so far:**
+- New tables: `countries` (97 present-day countries, each in a region) and `entity_countries`.
+- Claude drafted tags for **all 509 entities** in `data/drafts/2026-11-06_country_tags.txt`: 387 high and 122 low confidence. All are loaded as `proposed`.
+- New commands `load-countries` and `approve-countries`, and the review view `v_country_review` (doc 12 §4.5c).
+- "Central Asia" was added as a region (Middle East lane) for Uzbekistan and Kazakhstan.
+- Validation flags entities whose countries don't fit their region lane. 8 remain, all genuine (e.g. Pearl Harbor, Sputnik).
+- Countries are **not exported** to the game yet.
+
+**Reviewed:**
+- The 387 high-confidence entities are approved.
+- The 7 disputed-territory tags are approved under the **"list all parties"** policy (doc 12 §4.5c).
+
+- **The remaining 115 were reviewed under the "defining moments" rule** (doc 12 §4.5c). 19 were re-tagged, mostly empires that had only their capital's country (e.g. Napoleonic Wars: FR → FR, CZ, ES, RU, DE, BE). Alexander's conquests now has 9 countries. Brazil, Angola and Ecuador were added as countries. All are approved.
+- **Vasco da Gama** moved from region Africa to South Asia, since his defining moment is Calicut.
+- **Result:** all 509 entities have reviewed tags (670 in total, across 100 countries).
+- **Roles added (2026-11-07):** each tag is a `location` (640) or an `actor` (30). For example, Pearl Harbor is US location, JP actor, and Columbus is BS location, ES actor. This resolved 4 of the 7 region warnings. The other 3 (Babur's Ferghana, the Berlin Conference, NATO) are recorded in `accepted_region_exceptions` with reasons. **0 region warnings remain.**
+
+<details><summary>Original Step 2b plan</summary>
+
 
 Tag each event and span with the **present-day country or countries** where it happened (ISO codes such as `IN`, `CN`, `FR`), stored under the region hierarchy. Keep historical polities (Mughal Empire, Roman Empire) separate. Those are spans or a later `polities` table, not countries.
 
@@ -98,12 +127,6 @@ Tag each event and span with the **present-day country or countries** where it h
 
 Matching against Wikidata's "country" property is possible but slower. It also works poorly for ancient events, whose countries didn't exist yet.
 
-<details><summary>Original Step 2 plan</summary>
-
-
-- **Categories:** fill `category_mappings` from the 12 legacy labels to the 8 planned top-level categories, keeping the legacy labels. Exploration and Medicine may map to more than one.
-- **Regions:** add a hierarchy (`regions` and `entity_geographies`) and resolve the overlaps: `Americas` / `North America` / `South America`, `Global` / `World`, Southeast Asia filed under East Asia, and Antarctica filed as Global.
-- **Why before Step 3:** relationships, filters and a future map all need clean labels.
 
 </details>
 
