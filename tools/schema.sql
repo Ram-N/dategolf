@@ -75,14 +75,17 @@ CREATE TABLE IF NOT EXISTS regions (
   note  TEXT
 );
 
--- Present-day countries (ISO 3166 alpha-2), each inside a region. ZZ = worldwide, no single country.
+-- Present-day countries, each inside a region. ZZ = worldwide, no single country.
+-- code = ISO 3166 alpha-2 (the key everything references); iso3 = alpha-3, for maps (Plotly).
 -- alt_region covers countries that straddle two regions (Egypt: Africa and Middle East).
 CREATE TABLE IF NOT EXISTS countries (
   code       TEXT PRIMARY KEY,
   name       TEXT NOT NULL UNIQUE,
   region     TEXT NOT NULL REFERENCES regions(label),
-  alt_region TEXT REFERENCES regions(label)
+  alt_region TEXT REFERENCES regions(label),
+  iso3       TEXT CHECK (iso3 IS NULL OR length(iso3) = 3)
 );
+CREATE UNIQUE INDEX IF NOT EXISTS countries_iso3 ON countries(iso3);
 
 -- Countries linked to an event or span, in present-day terms (position 0 = primary).
 -- role: 'location' = where it physically happened (a map plots these);

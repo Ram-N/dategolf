@@ -32,7 +32,9 @@ def load(path):
     conn = connect()
     ensure_schema(conn)
     try:
-        conn.executemany("INSERT OR REPLACE INTO countries VALUES (?, ?, ?, ?)", countries)
+        conn.executemany("INSERT INTO countries (code, name, region, alt_region) VALUES (?, ?, ?, ?) "
+                         "ON CONFLICT(code) DO UPDATE SET name = excluded.name, region = excluded.region, "
+                         "alt_region = excluded.alt_region", countries)  # keeps iso3
         for entity_id, codes, confidence, note in tags:
             if conn.execute("SELECT 1 FROM entity_countries WHERE entity_id = ? AND status = 'reviewed'",
                             (entity_id,)).fetchone():

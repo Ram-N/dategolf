@@ -75,6 +75,8 @@ databases:
         label_column: name
         facets: [region]
         columns:
+          code: ISO 3166 alpha-2 (the key other tables use)
+          iso3: ISO 3166 alpha-3, used by maps (XKX for Kosovo is common but unofficial; ZZ has none)
           alt_region: For countries that straddle two regions (e.g. Egypt is in Africa and the Middle East)
       entity_countries:
         description: "Where each event or span happened, in present-day countries. Not exported yet: groundwork for a map."
