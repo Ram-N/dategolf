@@ -176,7 +176,7 @@ Both events are in the game; nothing records the link. **The objective of Step 3
 These IDs exist both as an event and as a span. They're flagged `needs_review_identity`.
 - **Almost all are one subject in two forms:** the *event* marks the key moment, and the *span* covers the whole period. Examples: *Napoleonic Wars Begin* (1803) with the span 1803–1815, and *French Revolution* (1789) with the span 1789–1799.
 - **Two differ slightly, because the event marks the end rather than the start:** *Indian Independence* (1947) with the span *Independence Movement* (1920–1947), and *Human Genome Project Completed* (2003) with the span 1990–2003. They still work as one subject, since the event is the culmination of its span.
-- **Recommendation:** confirm all 25 as one subject.
+- **Recommendation:** confirm all 25 as one subject. **How to run and check it, step by step:** doc 12 §4.6 (dashboard Review → Identity tab, or `manage.py identity`).
 - **Why it matters for linking:** a subject and its own period need no link between them. Splitting an ID would mean creating a separate entity, and then a `part_of` link.
 
 #### 3b. Seed about 50–100 reviewed links, easiest first

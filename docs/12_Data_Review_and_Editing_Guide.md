@@ -186,11 +186,75 @@ Every event and span is tagged with the **present-day** country (or countries) w
 - **Disputed territory policy (decided 2026-11-06): list all parties.** Jerusalem → Israel and Palestine; Bethlehem → Palestine; Crimea → Ukraine (the UN-recognised position); Kosovo → Serbia and Kosovo (`XK`); Falklands → Falkland Islands and Argentina. Follow the same rule for new tags.
 - **Validation warns** when none of an entity's countries fits its region lane (e.g. Pearl Harbor: Hawaii, filed under East Asia).
 
-### 4.6 The 25 shared event/duration IDs
+### 4.6 Step 3a: decide the 25 shared event/span IDs (step by step)
 
-These are IDs such as `french-revolution` that exist both as an event and as a time span.
-- **If it's one subject** (the usual case), set `editorial_status` to `reviewed` in `entities`. That's done in DB Browser.
-- **If they're really two different things**, ask Claude to split it. Splitting means moving the span to a new ID across several tables, and DateFlow may reference the ID.
+**What you're deciding:** 25 IDs exist both as an **event** (the key moment, e.g. *Napoleonic Wars Begin*, 1803) and as a **span** (the whole period, e.g. *Napoleonic Wars*, 1803–1815). For each one, decide:
+- **One subject** (the usual answer): the event is simply the key moment of its own span. The status becomes `reviewed`.
+- **Needs a split:** they're really two different things. The status becomes `needs_split`, and the split itself, which gives the span a new ID, is done with Claude afterwards.
+
+The reasoning is in doc 11, Step 3a. **Identity decisions don't change the game:** both statuses still export, so no export is needed afterwards.
+
+#### Step 1: Rehearse on a copy (optional, about 5 minutes)
+
+Try the whole flow on a throwaway copy first, so nothing real changes:
+
+```bash
+cd ~/projects/EduGames/DateGolf
+mkdir -p /tmp/dg-rehearsal && cp data/dategolf.db /tmp/dg-rehearsal/
+DATEGOLF_DB=/tmp/dg-rehearsal/dategolf.db uv run --project dashboard streamlit run dashboard/app.py \
+  --server.address localhost --server.port 8502 --server.headless true
+```
+
+Open **http://localhost:8502** and follow Step 3 below. Everything you click changes only the copy. Stop with **Ctrl+C**, and delete `/tmp/dg-rehearsal` when you're done.
+
+(The Overview's "Game JSON" and "Git" boxes still look at the real files, so they may show differences during a rehearsal. That's expected.)
+
+#### Step 2: Start the dashboard for real
+
+1. If DB Browser is open, **close it** (or click Write Changes / Revert Changes), so the database isn't locked.
+2. Optionally take a backup first: `npm run data:backup`.
+3. Start the dashboard with `npm run data:dashboard`, and open **http://localhost:8501**.
+4. On **Overview**, check that "Waiting on you" shows **Identity (Step 3a) 25**.
+
+#### Step 3: Review and decide
+
+1. Go to **✅ Review** → the **Identity, Step 3a (25)** tab.
+2. **Spot-check a few:** tick **one** row to see the event and the span side by side, each with its description. Ask yourself: is the event just a moment *within* this span? These are worth a look:
+   - `indian-independence`: the event marks the **end** (1947); the span is the movement (1920–1947)
+   - `human-genome-project`: the event marks the **completion** (2003)
+   - `islamic-golden-age`: the event is 786; the span starts at 750
+3. **If any should be split:** tick it, click **Needs a split…**, and confirm. It moves to the bottom of the list, marked `needs_split`.
+4. **For the rest:** click **All undecided are one subject (N)…**, then **Confirm all**. Or tick specific rows and click **One subject**.
+5. A green "done" message appears. Expand **Tool output** to see one ✓ line per ID.
+
+**From the terminal instead:**
+```bash
+uv run python tools/manage.py identity punic-wars pax-romana --one    # one subject
+uv run python tools/manage.py identity korean-war --split             # flag for a split
+```
+
+#### Step 4: Check the result
+
+| Check | Where | Expect |
+|---|---|---|
+| The queue is empty | Overview → "Waiting on you" | **Identity (Step 3a) 0**; "Flagged for split" shows any you flagged |
+| Every decision was logged | Review → **Decision log** tab (or Overview → Recent review decisions) | One `identity-one` or `identity-split` row per ID, `via = dashboard` |
+| Validation agrees | Overview → **Validate now** | 0 errors; the "Event + time span share one ID" review item is gone; flagged ones appear under "Shared ids flagged for a split" |
+| Statuses | Datasette (`npm run data:browse`) → canned query **Step 3a, the shared ids** | `editorial_status` is `reviewed` (or `needs_split`) for all 25 |
+| The game is unchanged | `npm run data:compare` | "Export matches." |
+
+#### Step 5: Commit
+
+```bash
+git add data && git commit -m "data: decide Step 3a shared ids" && git push
+```
+
+(Or ask Claude to commit.) If you flagged any for a split, tell Claude which ones, and the splits are done as a separate change.
+
+#### Undo
+
+- **Before committing:** `git checkout -- data/dategolf.db` restores the database to the last commit.
+- **Change your mind on one ID** (before or after committing): run the opposite command, e.g. `uv run python tools/manage.py identity korean-war --one`. The log keeps both decisions.
 
 ### 4.7 Preview in the game
 
