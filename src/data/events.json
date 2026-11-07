@@ -6515,26 +6515,6 @@
     "importance": 4
   },
   {
-    "id": "vietnam-war",
-    "name": "Vietnam War",
-    "year": 1965,
-    "categories": [
-      "War",
-      "Politics"
-    ],
-    "region": "Southeast Asia",
-    "aliases": [
-      "US Vietnam conflict",
-      "Ho Chi Minh",
-      "Gulf of Tonkin",
-      "anti-war movement",
-      "Tet Offensive"
-    ],
-    "description": "The United States escalates military involvement in Vietnam to prevent a communist takeover of South Vietnam, committing ground troops in a conflict that lasts a decade. The war kills millions of Vietnamese and over 58,000 Americans, divides American society, and ends with the fall of Saigon and communist reunification of Vietnam.",
-    "difficulty": "easy",
-    "importance": 4
-  },
-  {
     "id": "indo-pak-1965-war",
     "name": "India-Pakistan War over Kashmir",
     "year": 1965,

@@ -2012,7 +2012,7 @@ INSERT INTO "entities" VALUES('alexander-founds-alexandria','event','imported',N
 INSERT INTO "entities" VALUES('battle-of-gaugamela','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('death-of-alexander','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('ashoka-becomes-emperor','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('punic-wars','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('punic-wars','event','reviewed',NULL,'2026-11-07 21:12:22');
 INSERT INTO "entities" VALUES('ashoka-converts-to-buddhism','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('eratosthenes-measures-earth','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('qin-unification-china','event','imported',NULL,NULL);
@@ -2022,7 +2022,7 @@ INSERT INTO "entities" VALUES('first-triumvirate','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('caesar-crosses-rubicon','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('julius-caesar-assassination','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('augustus-first-emperor','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('pax-romana','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('pax-romana','event','reviewed',NULL,'2026-11-07 21:23:23');
 INSERT INTO "entities" VALUES('birth-of-jesus','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('crucifixion-of-jesus','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('great-fire-of-rome','event','imported',NULL,NULL);
@@ -2047,7 +2047,7 @@ INSERT INTO "entities" VALUES('islamic-caliphate-expands','event','imported',NUL
 INSERT INTO "entities" VALUES('moors-invade-spain','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('woodblock-printing-china','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('battle-of-tours','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('islamic-golden-age','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('islamic-golden-age','event','reviewed',NULL,'2026-11-07 21:12:22');
 INSERT INTO "entities" VALUES('viking-raids-begin','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('charlemagne-crowned-emperor','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('gunpowder-invented','event','imported',NULL,NULL);
@@ -2076,7 +2076,7 @@ INSERT INTO "entities" VALUES('renaissance-begins-florence','event','imported',N
 INSERT INTO "entities" VALUES('zheng-he-voyages','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('age-of-exploration-portugal','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('joan-of-arc-burned','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('gutenberg-printing-press','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('gutenberg-printing-press','event','reviewed',NULL,'2026-11-07 21:16:00');
 INSERT INTO "entities" VALUES('aztec-empire-peak','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('fall-of-constantinople','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('guru-nanak-born','event','imported',NULL,NULL);
@@ -2084,7 +2084,7 @@ INSERT INTO "entities" VALUES('renaissance-da-vinci','event','imported',NULL,NUL
 INSERT INTO "entities" VALUES('columbus-reaches-americas','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('vasco-da-gama-india-route','event','imported',NULL,'2026-11-07 13:04:35');
 INSERT INTO "entities" VALUES('renaissance-michelangelo','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('protestant-reformation','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('protestant-reformation','event','reviewed',NULL,'2026-11-07 21:12:22');
 INSERT INTO "entities" VALUES('magellan-circumnavigation','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('spanish-conquest-mexico','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('first-battle-of-panipat','event','imported',NULL,NULL);
@@ -2107,7 +2107,7 @@ INSERT INTO "entities" VALUES('thirty-years-war','event','imported',NULL,'2026-1
 INSERT INTO "entities" VALUES('pilgrims-land-plymouth','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('taj-mahal-construction-begins','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('galileo-inquisition','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('english-civil-war','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('english-civil-war','event','reviewed',NULL,'2026-11-07 21:12:22');
 INSERT INTO "entities" VALUES('signing-of-treaty-westphalia','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('execution-of-charles-i','event','imported',NULL,'2026-11-07 01:28:01');
 INSERT INTO "entities" VALUES('hobbes-leviathan','event','imported',NULL,NULL);
@@ -2116,7 +2116,7 @@ INSERT INTO "entities" VALUES('great-plague-london','event','imported',NULL,NULL
 INSERT INTO "entities" VALUES('great-fire-london','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('shivaji-crowned-chhatrapati','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('newton-laws-of-motion','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('glorious-revolution','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('glorious-revolution','event','reviewed',NULL,'2026-11-07 21:12:22');
 INSERT INTO "entities" VALUES('mughal-empire-zenith-aurangzeb','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('act-of-union-1707','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('euler-konigsberg-bridges','event','imported',NULL,NULL);
@@ -2127,22 +2127,22 @@ INSERT INTO "entities" VALUES('east-india-company-bengal','event','imported',NUL
 INSERT INTO "entities" VALUES('steam-engine-watt','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('boston-tea-party','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('opium-trade-china-east-india','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('american-revolution','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('american-revolution','event','reviewed',NULL,'2026-11-07 21:12:22');
 INSERT INTO "entities" VALUES('american-declaration','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('wealth-of-nations-published','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('american-war-independence-ends','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('founding-of-united-states','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('french-revolution','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('french-revolution','event','reviewed',NULL,'2026-11-07 21:12:22');
 INSERT INTO "entities" VALUES('french-revolution-storming-bastille','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('french-revolution-declaration','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('haitian-revolution','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('haitian-revolution','event','reviewed',NULL,'2026-11-07 21:12:22');
 INSERT INTO "entities" VALUES('abolition-slavery-france','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('first-vaccine-smallpox','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('tipu-sultan-killed','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('napoleonic-wars','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('napoleonic-wars','event','reviewed',NULL,'2026-11-07 21:12:22');
 INSERT INTO "entities" VALUES('battle-of-trafalgar','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('abolition-slavery-britain','event','imported',NULL,'2026-11-07 01:28:01');
-INSERT INTO "entities" VALUES('latin-american-independence','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('latin-american-independence','event','reviewed',NULL,'2026-11-07 21:13:03');
 INSERT INTO "entities" VALUES('napoleon-defeat-waterloo','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('greek-independence','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('first-steam-railway','event','imported',NULL,NULL);
@@ -2157,7 +2157,7 @@ INSERT INTO "entities" VALUES('opium-war-second','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('indian-rebellion-1857','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('darwin-evolution','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('first-oil-well','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('american-civil-war','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('american-civil-war','event','reviewed',NULL,'2026-11-07 21:13:03');
 INSERT INTO "entities" VALUES('emancipation-proclamation','event','imported',NULL,'2026-11-07 01:28:01');
 INSERT INTO "entities" VALUES('abolition-slavery-us','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('lincoln-assassination','event','imported',NULL,NULL);
@@ -2184,7 +2184,7 @@ INSERT INTO "entities" VALUES('south-african-boer-war','event','imported',NULL,N
 INSERT INTO "entities" VALUES('australia-federation','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('wright-brothers-flight','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('suffragette-emmeline-pankhurst','event','imported',NULL,'2026-11-07 01:28:01');
-INSERT INTO "entities" VALUES('russo-japanese-war','event','needs_review_identity',NULL,'2026-11-07 01:28:01');
+INSERT INTO "entities" VALUES('russo-japanese-war','event','reviewed',NULL,'2026-11-07 21:13:03');
 INSERT INTO "entities" VALUES('partition-of-bengal','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('swadeshi-movement','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('einstein-relativity','event','imported',NULL,NULL);
@@ -2192,7 +2192,7 @@ INSERT INTO "entities" VALUES('fall-of-qing-dynasty','event','imported',NULL,NUL
 INSERT INTO "entities" VALUES('tagore-nobel-prize','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('world-war-one','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('panama-canal-opens','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('russian-revolution','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('russian-revolution','event','reviewed',NULL,'2026-11-07 21:13:03');
 INSERT INTO "entities" VALUES('first-world-war-ends','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('bolshevik-civil-war','event','imported',NULL,'2026-11-07 01:28:01');
 INSERT INTO "entities" VALUES('jallianwala-bagh-massacre','event','imported',NULL,NULL);
@@ -2202,29 +2202,29 @@ INSERT INTO "entities" VALUES('women-suffrage-us','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('ottoman-empire-falls','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('turkish-republic-founded','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('television-invented','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('chinese-civil-war','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('chinese-civil-war','event','reviewed',NULL,'2026-11-07 20:22:19');
 INSERT INTO "entities" VALUES('penicillin-discovered','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('great-depression','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('great-depression','event','reviewed',NULL,'2026-11-07 20:22:19');
 INSERT INTO "entities" VALUES('gandhi-salt-march','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('first-football-world-cup','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('japanese-empire-manchuria','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('hitler-rise-chancellor','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('long-march-china','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('rise-of-nazism','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('spanish-civil-war','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('spanish-civil-war','event','reviewed',NULL,'2026-11-07 20:22:19');
 INSERT INTO "entities" VALUES('world-war-two','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('battle-of-britain','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('holocaust','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('japanese-pearl-harbor','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('quit-india-movement','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('manhattan-project','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('manhattan-project','event','reviewed',NULL,'2026-11-07 20:22:19');
 INSERT INTO "entities" VALUES('d-day-normandy','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('atomic-bomb-hiroshima','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('united-nations-founded','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('end-world-war-two','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('nuremberg-trials','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('japan-world-war-two-defeat','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('indian-independence','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('indian-independence','event','reviewed',NULL,'2026-11-07 21:23:24');
 INSERT INTO "entities" VALUES('partition-india-pakistan','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('cold-war-begins','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('apartheid-south-africa','event','imported',NULL,NULL);
@@ -2233,7 +2233,7 @@ INSERT INTO "entities" VALUES('palestine-israel-state','event','imported',NULL,N
 INSERT INTO "entities" VALUES('chinese-communist-revolution','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('nato-founded','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('indian-constitution-adopted','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('korean-war','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('korean-war','event','reviewed',NULL,'2026-11-07 21:13:03');
 INSERT INTO "entities" VALUES('dna-structure-discovered','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('death-of-stalin','event','imported',NULL,'2026-11-07 01:28:01');
 INSERT INTO "entities" VALUES('everest-first-ascent','event','imported',NULL,NULL);
@@ -2254,7 +2254,7 @@ INSERT INTO "entities" VALUES('martin-luther-king-speech','event','imported',NUL
 INSERT INTO "entities" VALUES('jfk-assassination','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('civil-rights-act-us','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('green-revolution-india','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('vietnam-war','event','needs_review_identity',NULL,'2026-11-07 01:37:13');
+INSERT INTO "entities" VALUES('vietnam-war','period','reviewed',NULL,'2026-11-07 21:18:28');
 INSERT INTO "entities" VALUES('indo-pak-1965-war','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('us-civil-rights-march-selma','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('chinese-cultural-revolution','event','imported',NULL,NULL);
@@ -2304,14 +2304,14 @@ INSERT INTO "entities" VALUES('kargil-war','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('gujarat-earthquake','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('september-11-attacks','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('brahmos-missile-india','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('human-genome-project','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('human-genome-project','event','reviewed',NULL,'2026-11-07 21:23:24');
 INSERT INTO "entities" VALUES('space-shuttle-columbia','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('indian-ocean-tsunami-india','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('iphone-launched','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('chandrayaan-1-launched','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('mumbai-terrorist-attacks','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('global-financial-crisis','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('arab-spring','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('arab-spring','event','reviewed',NULL,'2026-11-07 20:22:19');
 INSERT INTO "entities" VALUES('osama-bin-laden-killed','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('nirbhaya-case-protests','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('mangalyaan-mars-mission','event','imported',NULL,NULL);
@@ -2325,7 +2325,7 @@ INSERT INTO "entities" VALUES('chandrayaan-2-launched','event','imported',NULL,N
 INSERT INTO "entities" VALUES('caa-protests-india','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('black-holes-confirmed','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('covid-lockdown-india','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('covid-19-pandemic','event','needs_review_identity',NULL,NULL);
+INSERT INTO "entities" VALUES('covid-19-pandemic','event','reviewed',NULL,'2026-11-07 21:13:03');
 INSERT INTO "entities" VALUES('chandrayaan-3-lunar-landing','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('old-kingdom-egypt','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('indus-valley-mature','empire','imported',NULL,NULL);
@@ -2498,6 +2498,9 @@ INSERT INTO "entities" VALUES('jfk-elected','event','reviewed','2026-11-06 23:13
 INSERT INTO "entities" VALUES('reagan-elected','event','reviewed','2026-11-06 23:13:39','2026-11-06 23:21:15');
 INSERT INTO "entities" VALUES('george-hw-bush-elected','event','reviewed','2026-11-06 23:13:39','2026-11-06 23:21:15');
 INSERT INTO "entities" VALUES('life-of-the-buddha','period','reviewed','2026-11-06 23:19:30','2026-11-06 23:21:15');
+INSERT INTO "entities" VALUES('pax-romana-period','period','reviewed','2026-11-07 21:23:23','2026-11-07 21:23:23');
+INSERT INTO "entities" VALUES('indian-independence-movement','period','reviewed','2026-11-07 21:23:24','2026-11-07 21:23:24');
+INSERT INTO "entities" VALUES('human-genome-project-period','period','reviewed','2026-11-07 21:23:24','2026-11-07 21:23:24');
 CREATE TABLE entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   facet     TEXT NOT NULL CHECK (facet IN ('event', 'span')),
@@ -3006,8 +3009,6 @@ INSERT INTO "entity_categories" VALUES('civil-rights-act-us','event',1,'Social')
 INSERT INTO "entity_categories" VALUES('green-revolution-india','event',0,'Science');
 INSERT INTO "entity_categories" VALUES('green-revolution-india','event',1,'Technology');
 INSERT INTO "entity_categories" VALUES('green-revolution-india','event',2,'Social');
-INSERT INTO "entity_categories" VALUES('vietnam-war','event',0,'War');
-INSERT INTO "entity_categories" VALUES('vietnam-war','event',1,'Politics');
 INSERT INTO "entity_categories" VALUES('indo-pak-1965-war','event',0,'War');
 INSERT INTO "entity_categories" VALUES('indo-pak-1965-war','event',1,'Politics');
 INSERT INTO "entity_categories" VALUES('us-civil-rights-march-selma','event',0,'Social');
@@ -3159,7 +3160,7 @@ INSERT INTO "entity_categories" VALUES('punic-wars','span',0,'War');
 INSERT INTO "entity_categories" VALUES('construction-great-wall','span',0,'Culture');
 INSERT INTO "entity_categories" VALUES('han-dynasty','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('fall-of-roman-republic','span',0,'Politics');
-INSERT INTO "entity_categories" VALUES('pax-romana','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('pax-romana-period','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('roman-empire','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('classic-maya','span',0,'Culture');
 INSERT INTO "entity_categories" VALUES('classic-maya','span',1,'Politics');
@@ -3185,7 +3186,6 @@ INSERT INTO "entity_categories" VALUES('ming-dynasty','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('italian-renaissance','span',0,'Culture');
 INSERT INTO "entity_categories" VALUES('aztec-empire','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('inca-empire','span',0,'Politics');
-INSERT INTO "entity_categories" VALUES('gutenberg-printing-press','span',0,'Science');
 INSERT INTO "entity_categories" VALUES('age-of-exploration','span',0,'Culture');
 INSERT INTO "entity_categories" VALUES('safavid-empire','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('protestant-reformation','span',0,'Culture');
@@ -3221,7 +3221,7 @@ INSERT INTO "entity_categories" VALUES('russo-japanese-war','span',0,'War');
 INSERT INTO "entity_categories" VALUES('world-war-1','span',0,'War');
 INSERT INTO "entity_categories" VALUES('russian-revolution','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('spanish-flu','span',0,'Culture');
-INSERT INTO "entity_categories" VALUES('indian-independence','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('indian-independence-movement','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('soviet-union','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('chinese-civil-war','span',0,'War');
 INSERT INTO "entity_categories" VALUES('chinese-civil-war','span',1,'Politics');
@@ -3241,7 +3241,7 @@ INSERT INTO "entity_categories" VALUES('watergate-scandal','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('iranian-revolution','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('soviet-afghan-war','span',0,'War');
 INSERT INTO "entity_categories" VALUES('apartheid-end','span',0,'Politics');
-INSERT INTO "entity_categories" VALUES('human-genome-project','span',0,'Science');
+INSERT INTO "entity_categories" VALUES('human-genome-project-period','span',0,'Science');
 INSERT INTO "entity_categories" VALUES('bosnian-war','span',0,'War');
 INSERT INTO "entity_categories" VALUES('dot-com-bubble','span',0,'Culture');
 INSERT INTO "entity_categories" VALUES('war-on-terror','span',0,'War');
@@ -4085,6 +4085,9 @@ INSERT INTO "entity_countries" VALUES('tagore-nobel-prize',1,'SE','high','review
 INSERT INTO "entity_countries" VALUES('malala-nobel-peace-prize',1,'NO','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('palestinian-declaration-of-independence',1,'DZ','low','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('age-of-exploration',2,'ZZ','low','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('pax-romana-period',0,'IT','low','reviewed','Empire-wide; Italy as its centre','location');
+INSERT INTO "entity_countries" VALUES('indian-independence-movement',0,'IN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('human-genome-project-period',0,'ZZ','low','reviewed','International project','location');
 CREATE TABLE entity_provenance (
   entity_id    TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   origin       TEXT NOT NULL,                      -- e.g. ai_drafted_from_csv
@@ -5402,11 +5405,6 @@ INSERT INTO "event_aliases" VALUES('green-revolution-india',0,'M.S. Swaminathan'
 INSERT INTO "event_aliases" VALUES('green-revolution-india',1,'wheat revolution India');
 INSERT INTO "event_aliases" VALUES('green-revolution-india',2,'food self-sufficiency India');
 INSERT INTO "event_aliases" VALUES('green-revolution-india',3,'high-yield crops');
-INSERT INTO "event_aliases" VALUES('vietnam-war',0,'US Vietnam conflict');
-INSERT INTO "event_aliases" VALUES('vietnam-war',1,'Ho Chi Minh');
-INSERT INTO "event_aliases" VALUES('vietnam-war',2,'Gulf of Tonkin');
-INSERT INTO "event_aliases" VALUES('vietnam-war',3,'anti-war movement');
-INSERT INTO "event_aliases" VALUES('vietnam-war',4,'Tet Offensive');
 INSERT INTO "event_aliases" VALUES('indo-pak-1965-war',0,'Second Kashmir War');
 INSERT INTO "event_aliases" VALUES('indo-pak-1965-war',1,'Operation Gibraltar');
 INSERT INTO "event_aliases" VALUES('indo-pak-1965-war',2,'Tashkent Agreement');
@@ -6332,7 +6330,6 @@ INSERT INTO "events" VALUES('martin-luther-king-speech','Martin Luther King''s M
 INSERT INTO "events" VALUES('jfk-assassination','Assassination of President Kennedy',1963,'North America','President John F. Kennedy is shot and killed while riding in a motorcade through Dealey Plaza in Dallas, Texas, on November 22. The Warren Commission concludes that Lee Harvey Oswald acted alone, though the assassination generates enduring conspiracy theories that have never fully been resolved. Kennedy''s death shocks the world and marks the end of a period of post-war American optimism, transforming American political culture and leaving an indelible mark on the collective memory of a generation.','easy',8,NULL,NULL,NULL,267);
 INSERT INTO "events" VALUES('civil-rights-act-us','US Civil Rights Act',1964,'Americas','President Lyndon B. Johnson signs the Civil Rights Act into law, prohibiting discrimination based on race, color, religion, sex, or national origin in the United States. The landmark legislation, championed by the civil rights movement led by Martin Luther King Jr., dismantles the legal infrastructure of racial segregation.','easy',5,NULL,NULL,NULL,268);
 INSERT INTO "events" VALUES('green-revolution-india','Green Revolution in India',1965,'South Asia','India undertakes the Green Revolution, introducing high-yielding crop varieties, chemical fertilizers, and irrigation technology that dramatically increases agricultural output. Led by scientists like M.S. Swaminathan, the program transforms India from a food-deficient nation to one capable of feeding itself.','medium',4,NULL,NULL,NULL,269);
-INSERT INTO "events" VALUES('vietnam-war','Vietnam War',1965,'Southeast Asia','The United States escalates military involvement in Vietnam to prevent a communist takeover of South Vietnam, committing ground troops in a conflict that lasts a decade. The war kills millions of Vietnamese and over 58,000 Americans, divides American society, and ends with the fall of Saigon and communist reunification of Vietnam.','easy',4,NULL,NULL,NULL,270);
 INSERT INTO "events" VALUES('indo-pak-1965-war','India-Pakistan War over Kashmir',1965,'South Asia','Pakistan launches Operation Gibraltar to infiltrate Jammu and Kashmir, triggering a full-scale war with India that ends in a stalemate and the Tashkent Declaration mediated by the Soviet Union. The war deepens the Kashmir dispute without resolving it.','hard',3,NULL,NULL,NULL,271);
 INSERT INTO "events" VALUES('us-civil-rights-march-selma','Selma to Montgomery Marches',1965,'Americas','Civil rights marchers attempting to walk from Selma to Montgomery, Alabama, are violently beaten by police on the Edmund Pettus Bridge on Bloody Sunday, shocking the nation. The marches contribute directly to the passage of the Voting Rights Act, a cornerstone of American civil rights legislation.','medium',4,NULL,NULL,NULL,272);
 INSERT INTO "events" VALUES('chinese-cultural-revolution','Chinese Cultural Revolution',1966,'East Asia','Mao Zedong launches the Cultural Revolution to reassert ideological purity and his personal authority, unleashing Red Guards who attack intellectuals, destroy cultural heritage, and purge party officials. The decade-long upheaval causes immense suffering and economic disruption, killing hundreds of thousands and sending millions to labor camps.','medium',4,NULL,NULL,NULL,273);
@@ -8979,6 +8976,9 @@ CREATE TABLE relationships (
   CHECK (source_entity_id <> target_entity_id),
   UNIQUE (source_entity_id, relationship_type, target_entity_id)
 );
+INSERT INTO "relationships" VALUES(1,'pax-romana','part_of','pax-romana-period','''Pax Romana Begins'' is a moment within ''Pax Romana'' (created by the split).','high','reviewed');
+INSERT INTO "relationships" VALUES(2,'indian-independence','part_of','indian-independence-movement','''Indian Independence'' is a moment within ''Indian Independence Movement'' (created by the split).','high','reviewed');
+INSERT INTO "relationships" VALUES(3,'human-genome-project','part_of','human-genome-project-period','''Human Genome Project Completed'' is a moment within ''Human Genome Project'' (created by the split).','high','reviewed');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -8987,6 +8987,40 @@ CREATE TABLE review_log (
   detail    TEXT,
   via       TEXT NOT NULL DEFAULT 'cli' CHECK (via IN ('cli', 'dashboard', 'test'))
 );
+INSERT INTO "review_log" VALUES(1,'2026-11-07 20:15:27','identity-split','pax-romana',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(2,'2026-11-07 20:15:51','identity-split','human-genome-project',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(3,'2026-11-07 20:22:19','identity-one','chinese-civil-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(4,'2026-11-07 20:22:19','identity-one','great-depression',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(5,'2026-11-07 20:22:19','identity-one','spanish-civil-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(6,'2026-11-07 20:22:19','identity-one','manhattan-project',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(7,'2026-11-07 20:22:19','identity-one','arab-spring',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(8,'2026-11-07 21:12:22','identity-one','punic-wars',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(9,'2026-11-07 21:12:22','identity-one','islamic-golden-age',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(10,'2026-11-07 21:12:22','identity-one','protestant-reformation',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(11,'2026-11-07 21:12:22','identity-one','english-civil-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(12,'2026-11-07 21:12:22','identity-one','glorious-revolution',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(13,'2026-11-07 21:12:22','identity-one','american-revolution',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(14,'2026-11-07 21:12:22','identity-one','french-revolution',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(15,'2026-11-07 21:12:22','identity-one','haitian-revolution',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(16,'2026-11-07 21:12:22','identity-one','napoleonic-wars',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(17,'2026-11-07 21:13:03','identity-one','latin-american-independence',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(18,'2026-11-07 21:13:03','identity-one','american-civil-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(19,'2026-11-07 21:13:03','identity-one','russo-japanese-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(20,'2026-11-07 21:13:03','identity-one','russian-revolution',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(21,'2026-11-07 21:13:03','identity-one','korean-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(22,'2026-11-07 21:13:03','identity-one','covid-19-pandemic',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(23,'2026-11-07 21:13:15','identity-split','indian-independence',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(24,'2026-11-07 21:16:00','identity-drop-span','gutenberg-printing-press','removed span ''Gutenberg''s Printing Press'' 1440 to 1455','cli');
+INSERT INTO "review_log" VALUES(25,'2026-11-07 21:18:28','identity-drop-event','vietnam-war','removed event ''Vietnam War'' (1965)','cli');
+INSERT INTO "review_log" VALUES(26,'2026-11-07 21:21:55','identity-split','pax-romana',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(27,'2026-11-07 21:21:55','identity-split','indian-independence',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(28,'2026-11-07 21:21:55','identity-split','human-genome-project',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(29,'2026-11-07 21:23:23','identity-split-done','pax-romana','span moved to pax-romana-period; part_of link added','cli');
+INSERT INTO "review_log" VALUES(30,'2026-11-07 21:23:23','identity-split-done','pax-romana-period','new span id, split from pax-romana','cli');
+INSERT INTO "review_log" VALUES(31,'2026-11-07 21:23:24','identity-split-done','indian-independence','span moved to indian-independence-movement; part_of link added','cli');
+INSERT INTO "review_log" VALUES(32,'2026-11-07 21:23:24','identity-split-done','indian-independence-movement','new span id, split from indian-independence','cli');
+INSERT INTO "review_log" VALUES(33,'2026-11-07 21:23:24','identity-split-done','human-genome-project','span moved to human-genome-project-period; part_of link added','cli');
+INSERT INTO "review_log" VALUES(34,'2026-11-07 21:23:24','identity-split-done','human-genome-project-period','new span id, split from human-genome-project','cli');
 CREATE TABLE time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json
@@ -9017,7 +9051,7 @@ INSERT INTO "time_spans" VALUES('punic-wars','period','Punic Wars',-264,-146,'Th
 INSERT INTO "time_spans" VALUES('construction-great-wall','period','Construction of the Great Wall of China',-221,-206,'Qin Dynasty unified and extended earlier walls into a massive defensive fortification','East Asia',5,NULL,14);
 INSERT INTO "time_spans" VALUES('han-dynasty','empire','Han Dynasty',-206,220,'A golden age that gave the Chinese people their name, opened the Silk Road and invented paper.','East Asia',8,NULL,15);
 INSERT INTO "time_spans" VALUES('fall-of-roman-republic','period','Fall of the Roman Republic',-133,-27,'Period of political upheaval leading to the end of the Roman Republic and rise of the Empire','Europe',5,NULL,16);
-INSERT INTO "time_spans" VALUES('pax-romana','period','Pax Romana',-27,180,'Period of relative peace and stability across the Roman Empire','Europe',5,NULL,17);
+INSERT INTO "time_spans" VALUES('pax-romana-period','period','Pax Romana',-27,180,'Period of relative peace and stability across the Roman Empire','Europe',5,NULL,17);
 INSERT INTO "time_spans" VALUES('roman-empire','empire','Roman Empire',-27,476,'From Augustus to the fall of the West, Rome ruled the Mediterranean world and shaped European law, language and culture.','Europe',9,NULL,18);
 INSERT INTO "time_spans" VALUES('classic-maya','empire','Classic Maya',250,900,'City-states such as Tikal and Palenque flourished with monumental pyramids, writing and astronomy.','Americas',6,1,19);
 INSERT INTO "time_spans" VALUES('gupta-empire','empire','Gupta Empire',320,550,'India''s classical age of mathematics, astronomy, literature and art; the decimal system and zero took shape.','South Asia',8,1,20);
@@ -9042,7 +9076,6 @@ INSERT INTO "time_spans" VALUES('ming-dynasty','empire','Ming Dynasty',1368,1644
 INSERT INTO "time_spans" VALUES('italian-renaissance','period','Italian Renaissance',1400,1600,'Cultural movement that profoundly affected European intellectual life with advances in art, architecture, and science','Europe',5,NULL,39);
 INSERT INTO "time_spans" VALUES('aztec-empire','empire','Aztec Empire',1428,1521,'A Mesoamerican empire ruled from Tenochtitlan, conquered by Hernán Cortés.','Americas',6,NULL,40);
 INSERT INTO "time_spans" VALUES('inca-empire','empire','Inca Empire',1438,1533,'The largest empire in the pre-Columbian Americas, linked by roads along the Andes; conquered by Pizarro.','Americas',6,NULL,41);
-INSERT INTO "time_spans" VALUES('gutenberg-printing-press','period','Gutenberg''s Printing Press',1440,1455,'Development of movable-type printing in Europe, revolutionizing the spread of knowledge','Europe',5,NULL,42);
 INSERT INTO "time_spans" VALUES('age-of-exploration','period','Age of Exploration',1492,1600,'European exploration and colonization of the Americas, Africa, and Asia','Global',5,NULL,43);
 INSERT INTO "time_spans" VALUES('safavid-empire','empire','Safavid Empire',1501,1736,'A Persian dynasty that made Shia Islam the state religion of Iran.','Middle East',5,NULL,44);
 INSERT INTO "time_spans" VALUES('protestant-reformation','period','Protestant Reformation',1517,1648,'Religious reform movement that led to the creation of Protestant churches','Europe',5,NULL,45);
@@ -9072,7 +9105,7 @@ INSERT INTO "time_spans" VALUES('russo-japanese-war','period','Russo-Japanese Wa
 INSERT INTO "time_spans" VALUES('world-war-1','period','World War I',1914,1918,'Global conflict centered in Europe involving the Allied and Central Powers','Global',8,NULL,69);
 INSERT INTO "time_spans" VALUES('russian-revolution','period','Russian Revolution',1917,1923,'Revolution that overthrew the Russian monarchy and established the Soviet Union','Europe',8,NULL,70);
 INSERT INTO "time_spans" VALUES('spanish-flu','period','Spanish Flu Pandemic',1918,1920,'Deadly influenza pandemic that infected a third of the world''s population','Global',5,NULL,71);
-INSERT INTO "time_spans" VALUES('indian-independence','period','Indian Independence Movement',1920,1947,'Movement led by Gandhi and others that achieved Indian independence from British rule','South Asia',8,NULL,72);
+INSERT INTO "time_spans" VALUES('indian-independence-movement','period','Indian Independence Movement',1920,1947,'Movement led by Gandhi and others that achieved Indian independence from British rule','South Asia',8,NULL,72);
 INSERT INTO "time_spans" VALUES('soviet-union','empire','Soviet Union',1922,1991,'The communist state formed after the Russian Revolution, a superpower of the Cold War until its dissolution.','Europe',8,NULL,73);
 INSERT INTO "time_spans" VALUES('chinese-civil-war','period','Chinese Civil War',1927,1949,'War between the Nationalists and Communists that established the People''s Republic of China','East Asia',5,NULL,74);
 INSERT INTO "time_spans" VALUES('great-depression','period','The Great Depression',1929,1939,'Severe worldwide economic downturn that began with the US stock market crash','Global',8,NULL,75);
@@ -9091,7 +9124,7 @@ INSERT INTO "time_spans" VALUES('watergate-scandal','period','Watergate Scandal'
 INSERT INTO "time_spans" VALUES('iranian-revolution','period','Iranian Revolution',1978,1979,'Revolution that overthrew the Shah and established an Islamic republic','Middle East',5,NULL,88);
 INSERT INTO "time_spans" VALUES('soviet-afghan-war','period','Soviet-Afghan War',1979,1989,'Soviet military intervention in Afghanistan that became a prolonged guerrilla conflict','South Asia',5,NULL,89);
 INSERT INTO "time_spans" VALUES('apartheid-end','period','End of Apartheid',1990,1994,'Dismantling of the apartheid system in South Africa, culminating in democratic elections','Africa',8,NULL,90);
-INSERT INTO "time_spans" VALUES('human-genome-project','period','Human Genome Project',1990,2003,'International research project to map all human genes','Global',5,NULL,91);
+INSERT INTO "time_spans" VALUES('human-genome-project-period','period','Human Genome Project',1990,2003,'International research project to map all human genes','Global',5,NULL,91);
 INSERT INTO "time_spans" VALUES('bosnian-war','period','Bosnian War',1992,1995,'Ethnic conflict in Bosnia and Herzegovina following the breakup of Yugoslavia','Europe',5,NULL,92);
 INSERT INTO "time_spans" VALUES('dot-com-bubble','period','Dot-com Bubble',1995,2001,'Speculative bubble in internet-related companies that burst in 2000','Global',3,NULL,93);
 INSERT INTO "time_spans" VALUES('war-on-terror','period','War on Terror',2001,2021,'Global military campaign against terrorist organizations following the September 11 attacks','Global',5,NULL,94);

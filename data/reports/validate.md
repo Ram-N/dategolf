@@ -23,7 +23,7 @@
 | warning | Event names that differ only in case or spacing | pass |
 | warning | Event with no aliases (search falls back to name only) | pass |
 | warning | Imported entity with no import record (provenance lost) | pass |
-| review | Event + time span share one ID (identity decision needed) | 25 |
+| review | Event + time span share one ID (identity decision needed) | pass |
 | review | Legacy CSV rows with no accepted match and no triage outcome | pass |
 | review | Proposed events awaiting approval (not exported; manage.py approve <id>) | pass |
 | review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 39 |
@@ -37,12 +37,12 @@
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
 | warning | No tagged country fits the event's region lane (fix the tags, add an actor, or accept it) | pass |
 | info | Accepted region exceptions (region deliberately differs from location) | 3 |
-| info | Counts changed since the legacy import | 2 |
+| info | Counts changed since the legacy import | 1 |
 
 ## Counts
 
-- events: 435
-- time_spans: 99
+- events: 434
+- time_spans: 98
 - eras: 5
 - datelinks_keys: 26
 - datelinks_groups: 83
@@ -50,34 +50,6 @@
 - milestones: 16
 - daily_challenge_dates: 366
 - csv_rows: 310
-
-## [review] Event + time span share one ID (identity decision needed)
-
-- `punic-wars` — event
-- `pax-romana` — event
-- `islamic-golden-age` — event
-- `gutenberg-printing-press` — event
-- `protestant-reformation` — event
-- `english-civil-war` — event
-- `glorious-revolution` — event
-- `american-revolution` — event
-- `french-revolution` — event
-- `haitian-revolution` — event
-- `napoleonic-wars` — event
-- `latin-american-independence` — event
-- `american-civil-war` — event
-- `russo-japanese-war` — event
-- `russian-revolution` — event
-- `chinese-civil-war` — event
-- `great-depression` — event
-- `spanish-civil-war` — event
-- `manhattan-project` — event
-- `indian-independence` — event
-- `korean-war` — event
-- `vietnam-war` — event
-- `human-genome-project` — event
-- `arab-spring` — event
-- `covid-19-pandemic` — event
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 
@@ -132,14 +104,14 @@
 
 ## [info] Region labels in use, with their DateFlow lane
 
-- `Europe` — europe · 158 records
+- `Europe` — europe · 157 records
 - `South Asia` — south-asia · 125 records
 - `Americas` — americas · 64 records
 - `East Asia` — east-asia · 58 records
 - `Middle East` — middle-east · 45 records
 - `Africa` — africa · 30 records
 - `Global` — global · 29 records
-- `Southeast Asia` — east-asia · 12 records
+- `Southeast Asia` — east-asia · 11 records
 - `North America` — americas · 7 records
 - `Oceania` — global · 4 records
 - `South America` — americas · 1 records
@@ -153,5 +125,4 @@
 
 ## [info] Counts changed since the legacy import
 
-- `events` — 343 at import -> 435 now
-- `time_spans` — 98 at import -> 99 now
+- `events` — 343 at import -> 434 now

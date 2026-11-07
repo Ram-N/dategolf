@@ -1,7 +1,7 @@
 {
   "counts": {
-    "events": 435,
-    "time_spans": 99,
+    "events": 434,
+    "time_spans": 98,
     "eras": 5,
     "datelinks_keys": 26,
     "datelinks_groups": 83,
@@ -140,109 +140,8 @@
     {
       "severity": "review",
       "check": "Event + time span share one ID (identity decision needed)",
-      "count": 25,
-      "rows": [
-        [
-          "punic-wars",
-          "event"
-        ],
-        [
-          "pax-romana",
-          "event"
-        ],
-        [
-          "islamic-golden-age",
-          "event"
-        ],
-        [
-          "gutenberg-printing-press",
-          "event"
-        ],
-        [
-          "protestant-reformation",
-          "event"
-        ],
-        [
-          "english-civil-war",
-          "event"
-        ],
-        [
-          "glorious-revolution",
-          "event"
-        ],
-        [
-          "american-revolution",
-          "event"
-        ],
-        [
-          "french-revolution",
-          "event"
-        ],
-        [
-          "haitian-revolution",
-          "event"
-        ],
-        [
-          "napoleonic-wars",
-          "event"
-        ],
-        [
-          "latin-american-independence",
-          "event"
-        ],
-        [
-          "american-civil-war",
-          "event"
-        ],
-        [
-          "russo-japanese-war",
-          "event"
-        ],
-        [
-          "russian-revolution",
-          "event"
-        ],
-        [
-          "chinese-civil-war",
-          "event"
-        ],
-        [
-          "great-depression",
-          "event"
-        ],
-        [
-          "spanish-civil-war",
-          "event"
-        ],
-        [
-          "manhattan-project",
-          "event"
-        ],
-        [
-          "indian-independence",
-          "event"
-        ],
-        [
-          "korean-war",
-          "event"
-        ],
-        [
-          "vietnam-war",
-          "event"
-        ],
-        [
-          "human-genome-project",
-          "event"
-        ],
-        [
-          "arab-spring",
-          "event"
-        ],
-        [
-          "covid-19-pandemic",
-          "event"
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "review",
@@ -470,7 +369,7 @@
       "rows": [
         [
           "Europe",
-          "europe · 158 records"
+          "europe · 157 records"
         ],
         [
           "South Asia",
@@ -498,7 +397,7 @@
         ],
         [
           "Southeast Asia",
-          "east-asia · 12 records"
+          "east-asia · 11 records"
         ],
         [
           "North America",
@@ -558,15 +457,11 @@
     {
       "severity": "info",
       "check": "Counts changed since the legacy import",
-      "count": 2,
+      "count": 1,
       "rows": [
         [
           "events",
-          "343 at import -> 435 now"
-        ],
-        [
-          "time_spans",
-          "98 at import -> 99 now"
+          "343 at import -> 434 now"
         ]
       ]
     }

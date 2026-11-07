@@ -242,7 +242,7 @@
     "kind": "period"
   },
   {
-    "id": "pax-romana",
+    "id": "pax-romana-period",
     "name": "Pax Romana",
     "startYear": -27,
     "endYear": 180,
@@ -570,19 +570,6 @@
     "region": "Americas",
     "importance": 6,
     "kind": "empire"
-  },
-  {
-    "id": "gutenberg-printing-press",
-    "name": "Gutenberg's Printing Press",
-    "startYear": 1440,
-    "endYear": 1455,
-    "description": "Development of movable-type printing in Europe, revolutionizing the spread of knowledge",
-    "categories": [
-      "Science"
-    ],
-    "region": "Europe",
-    "importance": 5,
-    "kind": "period"
   },
   {
     "id": "age-of-exploration",
@@ -968,7 +955,7 @@
     "kind": "period"
   },
   {
-    "id": "indian-independence",
+    "id": "indian-independence-movement",
     "name": "Indian Independence Movement",
     "startYear": 1920,
     "endYear": 1947,
@@ -1216,7 +1203,7 @@
     "kind": "period"
   },
   {
-    "id": "human-genome-project",
+    "id": "human-genome-project-period",
     "name": "Human Genome Project",
     "startYear": 1990,
     "endYear": 2003,
