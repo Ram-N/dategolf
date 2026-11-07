@@ -3,15 +3,21 @@
 Run: npm run data:dashboard:test  (or: uv run --project dashboard python dashboard/smoke_test.py)
 """
 
+import os
+import shutil
 import sys
+import tempfile
 from pathlib import Path
 
-from streamlit.testing.v1 import AppTest
-
 HERE = Path(__file__).resolve().parent
+TMP = Path(tempfile.mkdtemp(prefix="dategolf-smoke-"))
+shutil.copy(HERE.parent / "data" / "dategolf.db", TMP / "dategolf.db")
+os.environ["DATEGOLF_DB"] = str(TMP / "dategolf.db")  # every write lands in the copy, never data/
 sys.path.insert(0, str(HERE))  # so pages can `from lib import ...`
 
-PAGES = ["views/overview.py", "views/coverage.py", "views/map.py"]
+from streamlit.testing.v1 import AppTest  # noqa: E402
+
+PAGES = ["views/overview.py", "views/review.py", "views/coverage.py", "views/map.py"]
 
 
 def check(path: str, after=None) -> list[str]:
@@ -29,7 +35,16 @@ def click_validate(at):
 problems = [p for page in PAGES for p in check(page)]
 problems += check("views/overview.py", after=click_validate)
 
+# A real review decision through the dashboard's action layer, on the copy.
+from lib import actions  # noqa: E402
+
+ok, output = actions.decide_identity(["punic-wars"], "one")
+if not ok:
+    problems.append(f"decide_identity failed: {output}")
+problems += check("views/review.py")  # still renders after a decision
+
+shutil.rmtree(TMP, ignore_errors=True)
 if problems:
     print("FAIL\n" + "\n".join(problems))
     sys.exit(1)
-print(f"OK: {len(PAGES)} pages render, and 'Validate now' runs")
+print(f"OK: {len(PAGES)} pages render, 'Validate now' runs, and a review decision works (on a temporary copy)")

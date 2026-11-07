@@ -1,5 +1,6 @@
 """Read-only access to data/dategolf.db. Every write goes through lib/actions.py (and so tools/)."""
 
+import os
 import sqlite3
 from pathlib import Path
 
@@ -7,7 +8,7 @@ import pandas as pd
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parents[2]
-DB_PATH = ROOT / "data" / "dategolf.db"
+DB_PATH = Path(os.environ.get("DATEGOLF_DB") or ROOT / "data" / "dategolf.db")  # tests use a copy
 
 # DateFlow lanes, in display order (mirrors src/engine/dateflow/lanes.ts).
 LANES = [("south-asia", "South Asia"), ("east-asia", "East Asia"), ("europe", "Europe"),

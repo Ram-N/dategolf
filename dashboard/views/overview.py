@@ -6,7 +6,7 @@ import pandas as pd
 import streamlit as st
 
 from lib import actions
-from lib.db import scalar
+from lib.db import q, scalar
 
 st.title("Overview")
 
@@ -32,8 +32,10 @@ queues = {
     "Event drafts": scalar("SELECT COUNT(*) FROM entities WHERE editorial_status = 'proposed'"),
     "Country tags": scalar("SELECT COUNT(DISTINCT entity_id) FROM entity_countries WHERE status = 'proposed'"),
     "Identity (Step 3a)": scalar("SELECT COUNT(*) FROM entities WHERE editorial_status = 'needs_review_identity'"),
+    "Flagged for split": scalar("SELECT COUNT(*) FROM entities WHERE editorial_status = 'needs_split'"),
 }
-st.caption("Waiting on you: " + " · ".join(f"**{k}** {v}" for k, v in queues.items()))
+st.caption("Waiting on you: " + " · ".join(f"**{k}** {v}" for k, v in queues.items()) +
+           ". Decide them on the **Review** page.")
 
 st.divider()
 
@@ -103,3 +105,11 @@ else:
             with st.expander(f"{icons[sev]} {c['check']} ({c['count']})", expanded=(sev == "error")):
                 rows = pd.DataFrame(c["rows"]).rename(columns={0: "item", 1: "detail"})
                 st.dataframe(rows, hide_index=True, width="stretch")
+
+st.divider()
+st.subheader("Recent review decisions")
+recent = q("SELECT at, action, entity_id, detail, via FROM review_log ORDER BY id DESC LIMIT 10")
+if recent.empty:
+    st.caption("None yet.")
+else:
+    st.dataframe(recent, hide_index=True, width="stretch")

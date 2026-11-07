@@ -12,7 +12,10 @@ from lib.db import ROOT
 
 sys.path.insert(0, str(ROOT / "tools"))
 import common  # noqa: E402  (tools/ is not a package)
+import countries  # noqa: E402
+import drafts  # noqa: E402
 import exporter  # noqa: E402
+import identity  # noqa: E402
 import manage  # noqa: E402
 import validate  # noqa: E402
 
@@ -45,6 +48,28 @@ def run_backup():
     return _run(manage.backup, None)
 
 
+# ── Review decisions (v2): each calls the same tool function as the CLI ──────
+
+def approve_drafts(ids):
+    return _run(drafts.approve, ids, "dashboard")
+
+
+def reject_drafts(ids, reason):
+    return _run(drafts.reject, ids, reason, "dashboard")
+
+
+def approve_country_tags(ids, high=False):
+    return _run(countries.approve, ids, high, "dashboard")
+
+
+def set_country_tags(entity_id, spec, note=None):
+    return _run(countries.set_tags, entity_id, spec, note, "dashboard")
+
+
+def decide_identity(ids, decision):
+    return _run(identity.decide, ids, decision, "dashboard")
+
+
 # ── Status checks (read-only) ─────────────────────────────────────────────────
 
 def export_needed() -> list[str]:
@@ -68,7 +93,7 @@ def last_backup():
 
 def validation_report():
     """The latest data/reports/validate.json and when it was written, or (None, None)."""
-    path = ROOT / "data" / "reports" / "validate.json"
+    path = common.REPORTS / "validate.json"
     if not path.exists():
         return None, None
     return json.loads(path.read_text(encoding="utf-8")), datetime.fromtimestamp(path.stat().st_mtime)
