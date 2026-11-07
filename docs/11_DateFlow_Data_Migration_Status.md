@@ -130,6 +130,13 @@ Matching against Wikidata's "country" property is possible but slower. It also w
 
 </details>
 
+### Step 2c: Admin tools, Datasette and Streamlit 🟡 *started 2026-11-07*
+
+Replaces DB Browser for everyday work. **Datasette** is for browsing and ad-hoc SQL, read-only. A **Streamlit dashboard** is for reviews, edits, charts and the Export/Validate/Backup buttons, and it changes data only by calling the existing `tools/`. The full plan, principles and phases are in **doc 13**.
+- **Step 1, Datasette ✅ done 2026-11-07:** `npm run data:browse` → http://localhost:8001. Every table is described, internal tables are hidden, and there are default facets and 8 canned queries (event card, search, events in a country, coverage, category balance, thin centuries, the shared ids for 3a, and the review queue) in `dashboard/metadata.yml`. The charts plugin `datasette-vega` is installed. Verified: the tools can still write and export while it runs.
+- **Streamlit:** v1 (overview, coverage, map), v2 (review queues; Step 3a is its first use), v3 (the event editor), and v4 (links, built with Step 3b/3c).
+- **Why before Step 3:** reviewing 50–100 links needs a purpose-built screen, not raw tables.
+
 ### Step 3: Start the knowledge graph *(the core DateFlow potential)*
 
 #### What the data knows today, and what it doesn't
