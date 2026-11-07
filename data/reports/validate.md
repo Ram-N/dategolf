@@ -17,8 +17,7 @@
 | error | Daily challenge date without exactly 5 years | pass |
 | error | Empty event name or description | pass |
 | error | Milestone or DateLinks content on a proposed (unexported) entity | pass |
-| warning | Event name contains a 4-digit year (gives the answer away) | 1 |
-| warning | Alias contains a 4-digit year (search would reveal the answer) | 66 |
+| warning | Event name contains a 4-digit year (gives the answer away) | pass |
 | warning | Time spans with the same normalised name | pass |
 | warning | Event names that differ only in case or spacing | pass |
 | warning | Event with no aliases (search falls back to name only) | pass |
@@ -30,7 +29,8 @@
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 1 |
 | review | Legacy region labels (no reviewed hierarchy yet) | 12 |
 | review | Legacy categories with no mapping to the planned taxonomy | 12 |
-| warning | Description mentions a year near the answer (DatePick shows it before the guess) | 18 |
+| warning | Description mentions a year near the answer (DatePick shows it before the guess) | pass |
+| warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
 | info | Counts changed since the legacy import | 2 |
 
 ## Counts
@@ -44,79 +44,6 @@
 - milestones: 16
 - daily_challenge_dates: 366
 - csv_rows: 310
-
-## [warning] Event name contains a 4-digit year (gives the answer away)
-
-- `revolutions-of-1848` — Revolutions of 1848 Sweep Europe
-
-## [warning] Alias contains a 4-digit year (search would reveal the answer)
-
-- `great-schism` — papal schism 1054
-- `battle-of-bannockburn` — Stirling Castle 1314
-- `timur-sacks-delhi` — 1398 India
-- `columbus-reaches-americas` — Columbus 1492
-- `first-battle-of-panipat` — Panipat 1526
-- `second-battle-of-panipat` — Panipat 1556
-- `east-india-company-founded` — 1600 charter
-- `pilgrims-land-plymouth` — 1620 America
-- `english-restoration` — 1660 England
-- `great-plague-london` — London plague 1665
-- `great-fire-london` — London fire 1666
-- `great-fire-london` — 1666 fire city
-- `glorious-revolution` — Bill of Rights 1689
-- `act-of-union-1707` — British union 1707
-- `american-declaration` — Philadelphia 1776
-- `great-reform-act` — Reform Act 1832
-- `queen-victoria-accession` — 1837 Britain
-- `revolutions-of-1848` — 1848 revolutions
-- `revolutions-of-1848` — nationalist uprisings 1848
-- `crimean-war` — 1853 war Russia Britain
-- `indian-rebellion-1857` — 1857 uprising
-- `first-oil-well` — oil discovery 1859
-- `emancipation-proclamation` — 1863 freedom
-- `lincoln-assassination` — Good Friday 1865
-- `krakatoa-erupts` — volcanic eruption 1883
-- `krakatoa-erupts` — tsunami 1883
-- `x-rays-discovered` — radiation discovery 1895
-- `x-rays-discovered` — 1895 physics Nobel
-- `russo-japanese-war` — 1904 Manchuria war
-- `russo-japanese-war` — Japanese victory 1905
-- `fall-of-qing-dynasty` — Chinese Revolution 1911
-- `fall-of-qing-dynasty` — 2000 years of empire ends
-- `turkish-republic-founded` — Lausanne Treaty 1923
-- `great-depression` — stock market crash 1929
-- `death-of-stalin` — Stalin death March 1953
-- `everest-first-ascent` — Everest summit 1953
-- `jfk-assassination` — Dallas 1963
-- `jfk-assassination` — November 22 1963
-- `indo-pak-1965-war` — India Pakistan 1965
-- `six-day-war` — Arab-Israeli War 1967
-- `six-day-war` — 1967 Middle East war
-- `bangladesh-liberation-war` — Indo-Pakistan war 1971
-- `oil-crisis-1973` — 1973 energy crisis
-- `viking-1-mars` — Mars landing 1976
-- `thatcher-becomes-pm` — Conservative revolution 1979
-- `thatcher-becomes-pm` — UK election 1979
-- `iran-iraq-war` — 1980 Persian Gulf
-- `falklands-war` — 1982 South Atlantic
-- `india-wins-cricket-world-cup` — Lords 1983
-- `ethiopian-famine` — Africa famine 1984
-- `gorbachev-becomes-leader` — Cold War thaw 1985
-- `economic-liberalization-india` — 1991 crisis reforms
-- `wto-founded` — 1995 globalization
-- `dolly-sheep-cloned` — cloning breakthrough 1996
-- `taliban-capture-kabul` — Kabul falls 1996
-- `hong-kong-handover` — Hong Kong 1997
-- `hong-kong-handover` — handover ceremony July 1997
-- `gujarat-earthquake` — India earthquake 2001
-- `indian-ocean-tsunami-india` — 2004 tsunami India
-- `global-financial-crisis` — 2008 recession
-- `global-financial-crisis` — Wall Street crash 2008
-- `nirbhaya-case-protests` — December 2012 protests
-- `modi-elected-pm` — BJP landslide 2014
-- `demonetization-india` — 500 1000 rupee notes banned
-- `chandrayaan-3-lunar-landing` — Vikram lander 2023
-- `chandrayaan-3-lunar-landing` — Pragyan rover 2023
 
 ## [review] Event + time span share one ID (identity decision needed)
 
@@ -221,27 +148,6 @@
 - `Sports` — 
 - `Technology` — 
 - `War` — 
-
-## [warning] Description mentions a year near the answer (DatePick shows it before the guess)
-
-- `invention-of-the-wheel` — answer -3500; description mentions 3500
-- `hadrians-wall` — answer 122; description mentions 117
-- `battle-of-bannockburn` — answer 1314; description mentions 1328
-- `thirty-years-war` — answer 1618; description mentions 1648
-- `execution-of-charles-i` — answer 1649; description mentions 1660
-- `abolition-slavery-britain` — answer 1807; description mentions 1833
-- `revolutions-of-1848` — answer 1848; description mentions 1848
-- `emancipation-proclamation` — answer 1863; description mentions 1863, 1865
-- `suffragette-emmeline-pankhurst` — answer 1903; description mentions 1918
-- `russo-japanese-war` — answer 1904; description mentions 1905
-- `bolshevik-civil-war` — answer 1918; description mentions 1922
-- `death-of-stalin` — answer 1953; description mentions 1956
-- `french-colonial-algeria` — answer 1954; description mentions 1962
-- `death-of-mao` — answer 1976; description mentions 1949
-- `gorbachev-becomes-leader` — answer 1985; description mentions 1989, 1991
-- `berlin-wall-falls` — answer 1989; description mentions 1961
-- `mandela-freed` — answer 1990; description mentions 1994
-- `taliban-capture-kabul` — answer 1996; description mentions 2001
 
 ## [info] Counts changed since the legacy import
 

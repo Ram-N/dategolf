@@ -16,7 +16,7 @@
       "sail invented",
       "wheel and plow"
     ],
-    "description": "The wheel and plough are developed in Mesopotamia around 3500 BC, transforming agriculture, transportation, and trade across the ancient world. The sail appears in Egypt around the same period, enabling maritime commerce along the Nile and beyond. Together these three inventions lay the practical foundation for complex civilization and long-distance exchange.",
+    "description": "The wheel and plough are developed in Mesopotamia, transforming agriculture, transportation, and trade across the ancient world. The sail appears in Egypt around the same period, enabling maritime commerce along the Nile and beyond. Together these three inventions lay the practical foundation for complex civilization and long-distance exchange.",
     "difficulty": "medium",
     "importance": 9
   },
@@ -526,7 +526,6 @@
       "Darius III defeated",
       "fall of Persian Empire",
       "Battle of Arbela",
-      "331 BC battle",
       "end of Achaemenid Empire"
     ],
     "description": "Alexander the Great decisively defeats the Persian King Darius III at Gaugamela in present-day Iraq, effectively ending the Achaemenid Persian Empire despite being significantly outnumbered. Alexander's oblique advance and the disciplined Macedonian phalanx shatter the Persian army, opening the road to Babylon, Persepolis, and the East. The battle marks the decisive replacement of Persian hegemony in the Near East with Hellenistic Greek culture, reshaping the civilizations of three continents.",
@@ -588,7 +587,8 @@
     ],
     "description": "Chandragupta Maurya, guided by his adviser Chanakya, overthrows the Nanda dynasty of Magadha and founds the Maurya Empire, ruling from Pataliputra. He goes on to unite most of the Indian subcontinent for the first time and to push back the Greek successors of Alexander.",
     "difficulty": "medium",
-    "importance": 5
+    "importance": 5,
+    "approximate": true
   },
   {
     "id": "ptolemaic-dynasty-founded",
@@ -1009,7 +1009,7 @@
       "Roman fortification Britain",
       "Vallum Hadriani"
     ],
-    "description": "The Roman Emperor Hadrian orders the construction of a defensive wall stretching 117 kilometers across northern Britain, from the Solway Firth to the River Tyne, to control movement between Roman Britain and the unconquered tribes of Caledonia. The wall is the most heavily fortified frontier in the entire Roman Empire, lined with forts, milecastles, and turrets garrisoned by tens of thousands of soldiers. It remains the best-preserved Roman military structure in the world and a UNESCO World Heritage Site.",
+    "description": "The Roman Emperor Hadrian orders the construction of a defensive wall stretching coast to coast across northern Britain, from the Solway Firth to the River Tyne, to control movement between Roman Britain and the unconquered tribes of Caledonia. The wall is the most heavily fortified frontier in the entire Roman Empire, lined with forts, milecastles, and turrets garrisoned by tens of thousands of soldiers. It remains the best-preserved Roman military structure in the world and a UNESCO World Heritage Site.",
     "difficulty": "medium",
     "importance": 5
   },
@@ -1127,7 +1127,8 @@
     ],
     "description": "Chandragupta II, remembered by the title Vikramaditya, becomes emperor of the Gupta Empire. His reign extends Gupta power across northern and western India and is associated with a flowering of Sanskrit literature, art and science.",
     "difficulty": "hard",
-    "importance": 4
+    "importance": 4,
+    "approximate": true
   },
   {
     "id": "huns-arrive-in-europe",
@@ -1251,7 +1252,7 @@
     "aliases": [
       "Prophet Muhammad born",
       "Islam founder born",
-      "Mecca 570",
+      "born in Mecca",
       "Prophet of Islam",
       "Muhammad ibn Abdullah",
       "birth of the Prophet"
@@ -1311,8 +1312,7 @@
       "Muhammad flees Mecca",
       "Islamic calendar begins",
       "Medina migration",
-      "Year One of Islam",
-      "622 AD Islam"
+      "Year One of Islam"
     ],
     "description": "Facing persecution from the Quraysh in Mecca, Muhammad and his followers migrate to the city of Medina in an event known as the Hijra. In Medina, Muhammad establishes the first Muslim community, drafts the Constitution of Medina creating a political-religious framework for governance, and begins building the mosque that becomes the model for Islamic worship. The year of the Hijra is taken as Year One of the Islamic lunar calendar, marking it as the defining moment in the founding of Islam as both a faith and a political community.",
     "difficulty": "medium",
@@ -1696,7 +1696,7 @@
       "East-West Schism",
       "Catholic Orthodox split",
       "Rome Constantinople split",
-      "papal schism 1054",
+      "papal schism",
       "Eastern Orthodox Church founded",
       "Latin Greek church split"
     ],
@@ -1980,11 +1980,11 @@
       "Robert the Bruce",
       "Scottish independence",
       "England vs Scotland",
-      "Stirling Castle 1314",
+      "Stirling Castle",
       "Scottish victory",
       "First War of Scottish Independence"
     ],
-    "description": "Scottish forces under King Robert the Bruce decisively defeat the much larger English army of Edward II near Stirling Castle, securing Scottish independence from English domination. The battle is the high point of the First War of Scottish Independence and remains the defining moment of Scottish national identity, still commemorated today. Although the formal recognition of Scottish independence required the Treaty of Edinburgh-Northampton in 1328, Bannockburn effectively ends England's attempt to absorb Scotland.",
+    "description": "Scottish forces under King Robert the Bruce decisively defeat the much larger English army of Edward II near Stirling Castle, securing Scottish independence from English domination. The battle is the high point of the First War of Scottish Independence and remains the defining moment of Scottish national identity, still commemorated today. Although the formal recognition of Scottish independence required the Treaty of Edinburgh-Northampton fourteen years later, Bannockburn effectively ends England's attempt to absorb Scotland.",
     "difficulty": "hard",
     "importance": 5
   },
@@ -2131,7 +2131,6 @@
       "Timur Lang invasion",
       "Delhi sultanate destroyed",
       "Timurid invasion India",
-      "1398 India",
       "Tamerlane conquests"
     ],
     "description": "Timur, the Central Asian conqueror known in the West as Tamerlane, leads his army into the Indian subcontinent and sacks Delhi, massacring much of its population and stripping the city of its accumulated wealth. The Delhi Sultanate never fully recovers from the blow, plunging northern India into a century of fragmentation and instability. Timur's campaign represents one of the most destructive military incursions in Indian history and reshapes the subcontinent's political landscape, indirectly creating the conditions for the later Mughal conquest.",
@@ -2321,7 +2320,7 @@
     ],
     "region": "Americas",
     "aliases": [
-      "Columbus 1492",
+      "Columbus first voyage",
       "New World discovery",
       "Caribbean landing",
       "Columbian exchange begins"
@@ -2402,7 +2401,8 @@
     ],
     "description": "The Nuremberg locksmith Peter Henlein, traditionally credited as the inventor, builds small timepieces driven by a coiled steel mainspring instead of heavy falling weights. These 'Nuremberg eggs' are worn as pendants or carried in pouches, since pockets are not yet common, and begin the shift towards personal timekeeping.",
     "difficulty": "medium",
-    "importance": 3
+    "importance": 3,
+    "approximate": true
   },
   {
     "id": "protestant-reformation",
@@ -2475,7 +2475,7 @@
     "aliases": [
       "Babur defeats Ibrahim Lodi",
       "Mughal invasion",
-      "Panipat 1526"
+      "Panipat"
     ],
     "description": "Babur defeats Ibrahim Lodi of the Delhi Sultanate at Panipat, using artillery to decisive effect for the first time in Indian warfare. This battle marks the end of the Delhi Sultanate and the beginning of Mughal rule over the Indian subcontinent.",
     "difficulty": "medium",
@@ -2623,7 +2623,7 @@
     "aliases": [
       "Akbar vs Hemu",
       "Bairam Khan",
-      "Panipat 1556"
+      "Panipat"
     ],
     "description": "The young Mughal emperor Akbar, guided by regent Bairam Khan, defeats the Hindu general Hemu at Panipat, consolidating Mughal control over northern India. This battle ensures the survival of the Mughal Empire after the tumultuous reign of Humayun.",
     "difficulty": "medium",
@@ -2758,7 +2758,7 @@
       "EIC",
       "John Company",
       "English East India Company",
-      "1600 charter",
+      "royal charter",
       "colonial trade company",
       "Company Raj"
     ],
@@ -2892,7 +2892,7 @@
       "Habsburg conflict",
       "German war"
     ],
-    "description": "A conflict beginning with a Protestant rebellion in Bohemia draws most of Europe's major powers into a devastating war fought primarily on German soil. The war, ending with the Peace of Westphalia in 1648, reshapes the European political order, establishes state sovereignty, and kills millions.",
+    "description": "A conflict beginning with a Protestant rebellion in Bohemia draws most of Europe's major powers into a devastating war fought primarily on German soil. The war, ending three decades later with the Peace of Westphalia, reshapes the European political order, establishes state sovereignty, and kills millions.",
     "difficulty": "hard",
     "importance": 4
   },
@@ -2910,7 +2910,6 @@
       "Plymouth Colony",
       "Pilgrim Fathers",
       "Mayflower Compact",
-      "1620 America",
       "Puritan settlers New England"
     ],
     "description": "The Mayflower arrives at Plymouth, Massachusetts, carrying 102 passengers — mostly English Separatists seeking religious freedom from the Church of England — after a grueling ten-week voyage. Before landing, the male passengers sign the Mayflower Compact, one of the first governing documents in the New World establishing self-rule by consent of the governed. The Plymouth Colony becomes a founding symbol of American identity, democratic values, and the tradition of seeking religious freedom that draws millions of immigrants to North America.",
@@ -3042,7 +3041,7 @@
       "end of English monarchy temporarily",
       "Parliamentary victory Civil War"
     ],
-    "description": "King Charles I of England is tried for treason by a specially convened Parliamentary court and executed by beheading outside the Banqueting House in London. This unprecedented act — the public trial and execution of a reigning monarch by his own subjects — sends shockwaves across Europe and fundamentally alters the relationship between the Crown and Parliament. England briefly becomes a Commonwealth republic under Oliver Cromwell before the monarchy is restored in 1660, but the episode permanently establishes the principle that the king is not above the law.",
+    "description": "King Charles I of England is tried for treason by a specially convened Parliamentary court and executed by beheading outside the Banqueting House in London. This unprecedented act — the public trial and execution of a reigning monarch by his own subjects — sends shockwaves across Europe and fundamentally alters the relationship between the Crown and Parliament. England briefly becomes a Commonwealth republic under Oliver Cromwell before the monarchy is restored eleven years later, but the episode permanently establishes the principle that the king is not above the law.",
     "difficulty": "medium",
     "importance": 6
   },
@@ -3100,7 +3099,6 @@
       "end of Commonwealth",
       "Cromwell era ends",
       "monarchy restored England",
-      "1660 England",
       "Restoration era"
     ],
     "description": "Charles II enters London in triumph, restoring the monarchy after eleven years of Puritan Commonwealth rule following his father's execution. The Restoration brings a cultural renaissance in England — theaters reopen, the arts flourish, and the court becomes a center of wit and libertinism after the austerity of Cromwellian rule. The period also sees the founding of the Royal Society, cementing England's place at the forefront of the Scientific Revolution.",
@@ -3117,7 +3115,7 @@
     ],
     "region": "Europe",
     "aliases": [
-      "London plague 1665",
+      "London plague",
       "bubonic plague England",
       "Black Death return England",
       "plague pits London",
@@ -3137,12 +3135,11 @@
     ],
     "region": "Europe",
     "aliases": [
-      "London fire 1666",
+      "London fire",
       "Pudding Lane fire",
       "St Paul's Cathedral destroyed",
       "Christopher Wren rebuilds London",
-      "London rebuilt",
-      "1666 fire city"
+      "London rebuilt"
     ],
     "description": "A fire starting in a bakery on Pudding Lane sweeps through the medieval City of London for three days, destroying over 13,000 houses, 87 churches including the old St Paul's Cathedral, and the city's commercial heart. Despite the enormous destruction, few deaths are confirmed, and the fire inadvertently helps end the bubonic plague ravaging the city by destroying rat-infested slums. Architect Christopher Wren leads the rebuilding effort, creating the iconic new St Paul's Cathedral and transforming London into a more modern, fire-resistant city.",
     "difficulty": "easy",
@@ -3233,7 +3230,7 @@
       "William of Orange",
       "James II deposed",
       "English constitutional monarchy",
-      "Bill of Rights 1689"
+      "English Bill of Rights"
     ],
     "description": "King James II of England is overthrown and replaced by William of Orange in a largely bloodless coup that establishes constitutional monarchy and parliamentary supremacy. The subsequent Bill of Rights limits royal power and guarantees parliamentary privileges, shaping the British democratic tradition.",
     "difficulty": "medium",
@@ -3288,7 +3285,7 @@
       "Union of England and Scotland",
       "Kingdom of Great Britain",
       "Scottish Parliament dissolved",
-      "British union 1707",
+      "British union",
       "Treaty of Union",
       "United Kingdom origins"
     ],
@@ -3574,7 +3571,7 @@
       "US independence",
       "Thomas Jefferson",
       "Fourth of July",
-      "Philadelphia 1776"
+      "Philadelphia declaration"
     ],
     "description": "The Continental Congress adopts the Declaration of Independence, drafted primarily by Thomas Jefferson, proclaiming the thirteen colonies' separation from Britain and articulating the Enlightenment principles of natural rights and government by consent. The document becomes one of history's most influential political texts.",
     "difficulty": "easy",
@@ -3867,7 +3864,7 @@
       "British anti-slavery",
       "transatlantic trade abolished"
     ],
-    "description": "The British Parliament passes the Slave Trade Act, abolishing the transatlantic slave trade in the British Empire after decades of campaigning by abolitionists led by William Wilberforce. The law marks a turning point in the global fight against slavery, though slavery itself continues in British colonies until 1833.",
+    "description": "The British Parliament passes the Slave Trade Act, abolishing the transatlantic slave trade in the British Empire after decades of campaigning by abolitionists led by William Wilberforce. The law marks a turning point in the global fight against slavery, though slavery itself continues in British colonies for another generation.",
     "difficulty": "medium",
     "importance": 5
   },
@@ -3995,7 +3992,7 @@
     ],
     "region": "Europe",
     "aliases": [
-      "Reform Act 1832",
+      "Reform Act",
       "British electoral reform",
       "rotten boroughs abolished",
       "parliamentary reform England",
@@ -4019,7 +4016,6 @@
       "Victorian era begins",
       "British Empire peak",
       "Queen Victoria crowned",
-      "1837 Britain",
       "longest reigning monarch"
     ],
     "description": "Eighteen-year-old Victoria becomes Queen of the United Kingdom following the death of her uncle William IV, beginning a reign of 63 years that makes her the longest-serving British monarch up to that point. The Victorian era sees Britain at the height of its imperial power, governing roughly a quarter of the world's land and population, while at home rapid industrialization, social reform movements, scientific advances, and the gradual expansion of democratic rights transform British society. Victoria herself becomes a symbol of moral authority and imperial confidence across the English-speaking world.",
@@ -4086,7 +4082,7 @@
   },
   {
     "id": "revolutions-of-1848",
-    "name": "Revolutions of 1848 Sweep Europe",
+    "name": "Revolutions Sweep Across Europe",
     "year": 1848,
     "categories": [
       "Politics",
@@ -4095,13 +4091,13 @@
     "region": "Europe",
     "aliases": [
       "Springtime of Nations",
-      "1848 revolutions",
+      "Springtime of the Peoples",
       "European revolutions",
       "Year of Revolutions",
       "liberal revolutions Europe",
-      "nationalist uprisings 1848"
+      "nationalist uprisings"
     ],
-    "description": "A wave of liberal and nationalist revolutions erupts across Europe in 1848, toppling or threatening governments in France, the German states, the Austrian Empire, Italy, and beyond in the space of weeks. Driven by demands for constitutional government, national self-determination, and economic reform, the uprisings briefly overthrow many ancien régime governments before being crushed by conservative military force. The revolutions accelerate nationalist movements across Europe, hasten the decline of the old dynastic order, and are accompanied by Marx and Engels's Communist Manifesto, published the same year.",
+    "description": "A wave of liberal and nationalist revolutions erupts across Europe, toppling or threatening governments in France, the German states, the Austrian Empire, Italy, and beyond in the space of weeks. Driven by demands for constitutional government, national self-determination, and economic reform, the uprisings briefly overthrow many ancien régime governments before being crushed by conservative military force. The revolutions accelerate nationalist movements across Europe, hasten the decline of the old dynastic order, and are accompanied by Marx and Engels's Communist Manifesto, published the same year.",
     "difficulty": "medium",
     "importance": 7
   },
@@ -4118,8 +4114,7 @@
       "Florence Nightingale",
       "Charge of the Light Brigade",
       "Crimea war",
-      "siege of Sevastopol",
-      "1853 war Russia Britain"
+      "siege of Sevastopol"
     ],
     "description": "Russia goes to war with the Ottoman Empire over influence in the Holy Land and access to the Black Sea, drawing in Britain, France, and Sardinia on the Ottoman side in the first major European conflict since the Napoleonic Wars. The Crimean War becomes notable for the nursing reforms of Florence Nightingale, which lay the foundations of modern professional nursing, and for the catastrophic Charge of the Light Brigade, immortalized by Tennyson. The war ends Russian expansion toward the Mediterranean and marks the beginning of modern military logistics, journalism, and battlefield medicine.",
     "difficulty": "medium",
@@ -4157,7 +4152,7 @@
     "aliases": [
       "Sepoy Mutiny",
       "Indian Rebellion",
-      "1857 uprising",
+      "Sepoy uprising",
       "Mangal Pandey",
       "Rani Laxmibai"
     ],
@@ -4198,7 +4193,7 @@
       "petroleum industry begins",
       "Edwin Drake",
       "fossil fuel age begins",
-      "oil discovery 1859"
+      "oil discovery"
     ],
     "description": "Edwin Drake successfully drills the first commercial oil well near Titusville, Pennsylvania, striking oil at a depth of 21 meters and triggering an oil rush across the region. The discovery marks the beginning of the modern petroleum industry, enabling oil to be extracted, refined, and sold at scale for the first time. Cheap petroleum powers the second Industrial Revolution, fuels the age of automobiles and aviation, and makes oil the central commodity of the global economy and of geopolitics throughout the twentieth century.",
     "difficulty": "medium",
@@ -4239,10 +4234,9 @@
       "Emancipation Proclamation",
       "slavery abolished Civil War",
       "13th amendment precursor",
-      "1863 freedom",
       "Confederate slaves freed"
     ],
-    "description": "President Abraham Lincoln issues the Emancipation Proclamation, declaring all enslaved people in states in rebellion against the Union to be free as of January 1, 1863. Though initially limited in immediate practical effect — applying only to areas not yet under Union control — the proclamation fundamentally transforms the Civil War from a conflict to preserve the Union into a war for human freedom, giving it a powerful moral dimension. It paves the way for the Thirteenth Amendment, which permanently abolished slavery throughout the United States in 1865.",
+    "description": "President Abraham Lincoln issues the Emancipation Proclamation, declaring all enslaved people in states in rebellion against the Union to be free. Though initially limited in immediate practical effect — applying only to areas not yet under Union control — the proclamation fundamentally transforms the Civil War from a conflict to preserve the Union into a war for human freedom, giving it a powerful moral dimension. It paves the way for the Thirteenth Amendment, which permanently abolished slavery throughout the United States two years later.",
     "difficulty": "easy",
     "importance": 8
   },
@@ -4279,7 +4273,7 @@
       "Ford's Theatre",
       "Lincoln killed",
       "presidential assassination",
-      "Good Friday 1865",
+      "Good Friday shooting",
       "Lincoln murder"
     ],
     "description": "President Abraham Lincoln is shot by Confederate sympathizer John Wilkes Booth at Ford's Theatre in Washington, D.C., dying the following morning just days after the Confederate surrender ends the Civil War. Lincoln's death robs the nation of the leader best positioned to pursue a reconciliatory Reconstruction of the defeated South. The assassination leaves reunification in less capable hands, with consequences — particularly for the rights of newly freed Black Americans — that shape American society for generations.",
@@ -4520,10 +4514,9 @@
     "region": "Southeast Asia",
     "aliases": [
       "Krakatau",
-      "volcanic eruption 1883",
       "Indonesia volcano",
       "loudest sound in history",
-      "tsunami 1883",
+      "Krakatoa tsunami",
       "volcanic winter",
       "Krakatoa explosion"
     ],
@@ -4714,8 +4707,7 @@
       "Wilhelm Röntgen",
       "X-ray discovery",
       "medical imaging invented",
-      "radiation discovery 1895",
-      "1895 physics Nobel"
+      "Röntgen rays"
     ],
     "description": "German physicist Wilhelm Röntgen discovers X-rays while experimenting with cathode ray tubes, producing the first X-ray image — a photograph of his wife's hand with her wedding ring clearly visible — and publishing his findings to astonished scientific and public audiences. The discovery spreads around the world within months and is immediately applied in hospitals for diagnosing fractures and internal conditions previously invisible to physicians. X-rays revolutionize medicine and open the field of radiation physics that leads to further discoveries including radioactivity, the atomic nucleus, and the foundations of quantum mechanics.",
     "difficulty": "medium",
@@ -4848,7 +4840,7 @@
       "votes for women UK",
       "women's suffrage movement"
     ],
-    "description": "Emmeline Pankhurst founds the Women's Social and Political Union in Britain, pioneering militant tactics including hunger strikes, demonstrations, and property damage in the campaign for women's right to vote. The movement's pressure contributes to women over 30 gaining the vote in Britain in 1918.",
+    "description": "Emmeline Pankhurst founds the Women's Social and Political Union in Britain, pioneering militant tactics including hunger strikes, demonstrations, and property damage in the campaign for women's right to vote. The movement's pressure contributes to women over 30 gaining the vote in Britain fifteen years later.",
     "difficulty": "medium",
     "importance": 4
   },
@@ -4864,11 +4856,11 @@
       "Japan defeats Russia",
       "Battle of Tsushima",
       "Port Arthur siege",
-      "1904 Manchuria war",
+      "Manchuria war",
       "Asian power defeats European",
-      "Japanese victory 1905"
+      "Japanese victory over Russia"
     ],
-    "description": "Japan launches a surprise attack on the Russian naval base at Port Arthur, beginning a war that shocks the world when Japan decisively defeats the Russian Empire on both land and sea. The Japanese victory at the Battle of Tsushima — the most decisive naval battle since Trafalgar — is the first major defeat of a European great power by an Asian nation in the modern era. The war accelerates the Russian domestic unrest that leads to the 1905 Revolution and signals Japan's emergence as a major world power, reshaping the balance of power in Asia.",
+    "description": "Japan launches a surprise attack on the Russian naval base at Port Arthur, beginning a war that shocks the world when Japan decisively defeats the Russian Empire on both land and sea. The Japanese victory at the Battle of Tsushima — the most decisive naval battle since Trafalgar — is the first major defeat of a European great power by an Asian nation in the modern era. The war accelerates the Russian domestic unrest that erupts in revolution during the war and signals Japan's emergence as a major world power, reshaping the balance of power in Asia.",
     "difficulty": "medium",
     "importance": 7
   },
@@ -4938,7 +4930,7 @@
     ],
     "region": "East Asia",
     "aliases": [
-      "Chinese Revolution 1911",
+      "Chinese Revolution",
       "Xinhai Revolution",
       "end of imperial China",
       "Republic of China proclaimed",
@@ -5079,7 +5071,7 @@
       "Soviet consolidation",
       "Red Army White Army"
     ],
-    "description": "Following the Bolshevik Revolution, Russia erupts in a devastating civil war between the Bolshevik Red Army and the anti-Bolshevik White forces supported by foreign interventions. The Bolshevik victory consolidates communist rule and leads to the formation of the Soviet Union in 1922.",
+    "description": "Following the Bolshevik Revolution, Russia erupts in a devastating civil war between the Bolshevik Red Army and the anti-Bolshevik White forces supported by foreign interventions. The Bolshevik victory consolidates communist rule and leads to the formation of the Soviet Union a few years later.",
     "difficulty": "medium",
     "importance": 4
   },
@@ -5212,7 +5204,7 @@
       "Ottoman Empire ends",
       "Ankara capital Turkey",
       "secular Turkey",
-      "Lausanne Treaty 1923"
+      "Treaty of Lausanne"
     ],
     "description": "Mustafa Kemal Atatürk proclaims the Republic of Turkey from the ruins of the Ottoman Empire, becoming its first president and implementing one of the most sweeping modernization programs in history. Under Atatürk's direction, Turkey adopts the Latin alphabet, separates religion from the state, grants women the right to vote, replaces Islamic law with European-inspired legal codes, and restructures education and dress along Western lines. The Turkish Republic represents one of the most rapid and radical transformations of a society in the twentieth century.",
     "difficulty": "medium",
@@ -5288,7 +5280,7 @@
     "region": "Global",
     "aliases": [
       "Wall Street Crash",
-      "stock market crash 1929",
+      "stock market crash",
       "economic depression",
       "unemployment crisis"
     ],
@@ -5991,10 +5983,9 @@
       "Soviet Union post-Stalin",
       "Khrushchev succeeds Stalin",
       "de-Stalinization",
-      "Soviet thaw begins",
-      "Stalin death March 1953"
+      "Soviet thaw begins"
     ],
-    "description": "Joseph Stalin, the Soviet dictator who transformed the USSR through forced collectivization, industrial crash programs, the Gulag labor camp system, and purges that killed millions, dies of a stroke after nearly three decades in power. His death triggers a power struggle within the Soviet leadership eventually won by Nikita Khrushchev, who denounces Stalin's crimes in his 1956 'Secret Speech' and initiates a cautious political 'thaw.' Stalin's death marks a significant shift in the Cold War, reducing the acute tensions of his final paranoid years and beginning a gradual, halting reassessment of Soviet policy.",
+    "description": "Joseph Stalin, the Soviet dictator who transformed the USSR through forced collectivization, industrial crash programs, the Gulag labor camp system, and purges that killed millions, dies of a stroke after nearly three decades in power. His death triggers a power struggle within the Soviet leadership eventually won by Nikita Khrushchev, who denounces Stalin's crimes in his 'Secret Speech' three years later and initiates a cautious political 'thaw.' Stalin's death marks a significant shift in the Cold War, reducing the acute tensions of his final paranoid years and beginning a gradual, halting reassessment of Soviet policy.",
     "difficulty": "easy",
     "importance": 7
   },
@@ -6010,7 +6001,7 @@
       "Hillary and Tenzing",
       "Edmund Hillary",
       "Tenzing Norgay",
-      "Everest summit 1953",
+      "Everest summit",
       "highest mountain climbed",
       "top of the world"
     ],
@@ -6053,7 +6044,7 @@
       "French Algeria war",
       "Algerian revolution"
     ],
-    "description": "The Algerian National Liberation Front launches an armed insurgency against French colonial rule, beginning an eight-year war that costs an estimated 300,000-1.5 million Algerian lives. Algeria's independence in 1962 becomes a landmark moment in the global anti-colonial struggle.",
+    "description": "The Algerian National Liberation Front launches an armed insurgency against French colonial rule, beginning an eight-year war that costs an estimated 300,000-1.5 million Algerian lives. Algeria's eventual independence becomes a landmark moment in the global anti-colonial struggle.",
     "difficulty": "medium",
     "importance": 4
   },
@@ -6413,10 +6404,9 @@
     "aliases": [
       "JFK shot",
       "Kennedy assassination",
-      "Dallas 1963",
+      "Dallas shooting",
       "Lee Harvey Oswald",
       "Dealey Plaza",
-      "November 22 1963",
       "Camelot ends"
     ],
     "description": "President John F. Kennedy is shot and killed while riding in a motorcade through Dealey Plaza in Dallas, Texas, on November 22. The Warren Commission concludes that Lee Harvey Oswald acted alone, though the assassination generates enduring conspiracy theories that have never fully been resolved. Kennedy's death shocks the world and marks the end of a period of post-war American optimism, transforming American political culture and leaving an indelible mark on the collective memory of a generation.",
@@ -6547,8 +6537,7 @@
     "aliases": [
       "Second Kashmir War",
       "Operation Gibraltar",
-      "Tashkent Agreement",
-      "India Pakistan 1965"
+      "Tashkent Agreement"
     ],
     "description": "Pakistan launches Operation Gibraltar to infiltrate Jammu and Kashmir, triggering a full-scale war with India that ends in a stalemate and the Tashkent Declaration mediated by the Soviet Union. The war deepens the Kashmir dispute without resolving it.",
     "difficulty": "hard",
@@ -6636,12 +6625,10 @@
     ],
     "region": "Middle East",
     "aliases": [
-      "Arab-Israeli War 1967",
       "Israel captures West Bank",
       "June War",
       "Third Arab-Israeli War",
-      "Sinai Golan Heights captured",
-      "1967 Middle East war"
+      "Sinai Golan Heights captured"
     ],
     "description": "Israel launches preemptive air strikes against Egypt, Jordan, and Syria, destroying their air forces on the ground before seizing the Sinai Peninsula, Gaza Strip, West Bank, and Golan Heights in just six days of fighting. The swift and decisive Israeli victory reshapes the map of the Middle East, creating the territorial situation that defines the Israeli-Palestinian conflict to the present day. The war fundamentally alters the regional balance of power, deepens American and Soviet proxy rivalry in the Middle East, and makes the question of Palestinian statehood a central issue of international politics.",
     "difficulty": "medium",
@@ -6680,7 +6667,7 @@
     "region": "South Asia",
     "aliases": [
       "Bangladesh independence",
-      "Indo-Pakistan war 1971",
+      "Indo-Pakistani war over Bangladesh",
       "East Pakistan",
       "Mukti Bahini"
     ],
@@ -6719,7 +6706,7 @@
     "aliases": [
       "OPEC oil embargo",
       "Arab oil embargo",
-      "1973 energy crisis",
+      "energy crisis",
       "oil shock"
     ],
     "description": "Arab members of OPEC impose an oil embargo on countries supporting Israel in the Yom Kippur War, causing oil prices to quadruple and triggering a global economic crisis. The shock reveals Western economies' vulnerability to Middle Eastern oil and permanently accelerates interest in energy conservation and alternatives.",
@@ -6798,7 +6785,7 @@
       "China after Mao",
       "end of Maoism"
     ],
-    "description": "Mao Zedong, the founder and supreme leader of the People's Republic of China since 1949, dies after three decades of rule that included the Great Leap Forward, the Cultural Revolution, and China's emergence as a nuclear power. His death triggers a brief power struggle ending in the arrest of the radical Gang of Four and the gradual rise of pragmatist Deng Xiaoping. Mao's death is pivotal in world history, marking the beginning of China's transformation from Maoist ideology toward the market-oriented reforms that make it the economic superpower of the twenty-first century.",
+    "description": "Mao Zedong, the founder and supreme leader of the People's Republic of China since its founding, dies after three decades of rule that included the Great Leap Forward, the Cultural Revolution, and China's emergence as a nuclear power. His death triggers a brief power struggle ending in the arrest of the radical Gang of Four and the gradual rise of pragmatist Deng Xiaoping. Mao's death is pivotal in world history, marking the beginning of China's transformation from Maoist ideology toward the market-oriented reforms that make it the economic superpower of the twenty-first century.",
     "difficulty": "easy",
     "importance": 8
   },
@@ -6812,7 +6799,7 @@
     ],
     "region": "World",
     "aliases": [
-      "Mars landing 1976",
+      "Mars landing",
       "NASA Mars probe",
       "Viking Mars lander",
       "first Mars surface images",
@@ -6911,8 +6898,7 @@
       "first female PM Britain",
       "Thatcher government",
       "Thatcherism",
-      "Conservative revolution 1979",
-      "UK election 1979"
+      "Thatcher election victory"
     ],
     "description": "Margaret Thatcher becomes the United Kingdom's first female Prime Minister following a decisive Conservative Party victory in the general election, beginning an eleven-year tenure that transforms British politics and economics. Thatcher dismantles much of Britain's post-war consensus, privatizing state industries, curbing trade union power, and promoting free-market economic policies under the banner of Thatcherism. Her ideological alignment with Ronald Reagan's parallel program in the United States defines the political economy of the English-speaking world in the 1980s and shifts the center of gravity of Western politics.",
     "difficulty": "medium",
@@ -6986,7 +6972,6 @@
       "Saddam Hussein vs Iran",
       "Iraq invades Iran",
       "eight-year war Middle East",
-      "1980 Persian Gulf",
       "chemical weapons war"
     ],
     "description": "Iraq, led by Saddam Hussein, invades Iran in a dispute over the Shatt al-Arab waterway and in an attempt to exploit the instability created by Iran's Islamic Revolution. The resulting war lasts eight years, kills between 500,000 and one million people, and ends in a stalemate with no significant territorial change for either side. The conflict devastates both economies, sees chemical weapons used on a large scale for the first time since World War One, and deepens the Sunni-Shia sectarian fault lines that define Middle Eastern geopolitics.",
@@ -7044,7 +7029,7 @@
       "Malvinas War",
       "British Task Force South Atlantic",
       "Thatcher war Falklands",
-      "1982 South Atlantic"
+      "South Atlantic war"
     ],
     "description": "Argentina invades the British-controlled Falkland Islands in the South Atlantic, prompting Britain under Margaret Thatcher to dispatch a naval task force 13,000 kilometers to retake the remote archipelago. The brief but intense conflict ends in a decisive British military victory after ten weeks of fighting, costing over 900 lives on both sides. The war dramatically boosts Thatcher's domestic political fortunes, contributes to the collapse of Argentina's military junta, and reinforces the principle that territorial disputes should not be resolved by force.",
     "difficulty": "medium",
@@ -7060,7 +7045,7 @@
     "region": "South Asia",
     "aliases": [
       "Kapil Dev World Cup",
-      "Lords 1983",
+      "Lord's final",
       "West Indies vs India final",
       "India cricket champion"
     ],
@@ -7152,7 +7137,7 @@
     ],
     "region": "Africa",
     "aliases": [
-      "Africa famine 1984",
+      "Ethiopia famine",
       "Band Aid",
       "Live Aid concert",
       "Ethiopia hunger crisis"
@@ -7175,9 +7160,9 @@
       "Soviet reform begins",
       "Chernenko dies Gorbachev",
       "USSR reform",
-      "Cold War thaw 1985"
+      "Cold War thaw"
     ],
-    "description": "Mikhail Gorbachev becomes General Secretary of the Communist Party of the Soviet Union following the death of Konstantin Chernenko, becoming at 54 the youngest Soviet leader since Stalin. His policies of glasnost (openness) and perestroika (restructuring) are intended to revitalize the stagnating Soviet system but instead unleash forces far beyond his control, leading to the fall of communist governments across Eastern Europe in 1989 and ultimately the dissolution of the Soviet Union itself in 1991. Gorbachev's accession is one of the pivotal moments of the Cold War.",
+    "description": "Mikhail Gorbachev becomes General Secretary of the Communist Party of the Soviet Union following the death of Konstantin Chernenko, becoming at 54 the youngest Soviet leader since Stalin. His policies of glasnost (openness) and perestroika (restructuring) are intended to revitalize the stagnating Soviet system but instead unleash forces far beyond his control, leading to the fall of communist governments across Eastern Europe within a few years and ultimately the dissolution of the Soviet Union itself. Gorbachev's accession is one of the pivotal moments of the Cold War.",
     "difficulty": "medium",
     "importance": 8
   },
@@ -7301,7 +7286,7 @@
       "East West Berlin",
       "Mauerfall"
     ],
-    "description": "The East German government opens its borders, leading jubilant crowds to tear down the Berlin Wall that has divided the city since 1961. The event symbolizes the collapse of communism in Eastern Europe and leads directly to German reunification and the end of the Cold War.",
+    "description": "The East German government opens its borders, leading jubilant crowds to tear down the Berlin Wall that has divided the city for nearly three decades. The event symbolizes the collapse of communism in Eastern Europe and leads directly to German reunification and the end of the Cold War.",
     "difficulty": "easy",
     "importance": 5
   },
@@ -7339,7 +7324,7 @@
       "ANC leader freed",
       "end apartheid begins"
     ],
-    "description": "Nelson Mandela is released from Robben Island prison after twenty-seven years of incarceration for his anti-apartheid activism, greeted by massive global celebrations. His release marks the beginning of negotiations to end apartheid and ultimately leads to South Africa's first fully democratic elections in 1994.",
+    "description": "Nelson Mandela is released from prison after twenty-seven years of incarceration for his anti-apartheid activism, greeted by massive global celebrations. His release marks the beginning of negotiations to end apartheid and ultimately leads to South Africa's first fully democratic elections four years later.",
     "difficulty": "easy",
     "importance": 5
   },
@@ -7376,7 +7361,7 @@
       "LPG reforms India",
       "Manmohan Singh reforms",
       "India opens economy",
-      "1991 crisis reforms"
+      "balance of payments crisis reforms"
     ],
     "description": "Facing a severe balance-of-payments crisis, Finance Minister Manmohan Singh introduces sweeping economic reforms that liberalize, privatize, and globalize the Indian economy. The reforms dismantle the 'License Raj' and launch India onto a path of rapid economic growth.",
     "difficulty": "medium",
@@ -7569,8 +7554,7 @@
       "World Trade Organization",
       "GATT successor",
       "global trade rules",
-      "free trade institution",
-      "1995 globalization"
+      "free trade institution"
     ],
     "description": "The World Trade Organization comes into being on January 1, replacing the General Agreement on Tariffs and Trade with a permanent institution equipped with binding dispute settlement mechanisms and a mandate to negotiate further trade liberalization. With 123 founding members, the WTO creates the legal framework governing the majority of world trade and becomes the central institution of economic globalization. Its establishment marks the high point of the post-Cold War liberal international order, though it subsequently becomes a focal point of protests against inequality and a target of nationalist backlash.",
     "difficulty": "hard",
@@ -7589,7 +7573,7 @@
       "Dolly cloning",
       "Roslin Institute",
       "somatic cell nuclear transfer",
-      "cloning breakthrough 1996",
+      "cloning breakthrough",
       "Ian Wilmut sheep"
     ],
     "description": "Scientists at the Roslin Institute in Edinburgh successfully clone Dolly the sheep from a single adult mammary cell, making her the first mammal ever cloned from an adult somatic cell rather than an embryo. The achievement overturns decades of biological assumptions about cell differentiation and demonstrates that the DNA of a fully specialized adult cell retains the information needed to produce a complete organism. Dolly's creation ignites intense ethical debate about human cloning and accelerates research into stem cells, regenerative medicine, and the fundamental mechanisms of genetics.",
@@ -7610,10 +7594,10 @@
       "Afghan civil war Taliban",
       "Islamic Emirate of Afghanistan",
       "Najibullah executed",
-      "Kabul falls 1996",
+      "Kabul falls to the Taliban",
       "Afghanistan Taliban rule"
     ],
-    "description": "The Taliban, a fundamentalist Islamist movement that emerged from the Afghan refugee camps of Pakistan, captures the Afghan capital Kabul, executing the former communist president Najibullah and imposing a strict interpretation of Islamic law across the territory they control. Under Taliban rule, women are barred from education and employment, and cultural sites are destroyed, drawing international condemnation. The Taliban government harbors al-Qaeda, setting the conditions for the September 11 attacks and the subsequent US-led invasion of Afghanistan in 2001.",
+    "description": "The Taliban, a fundamentalist Islamist movement that emerged from the Afghan refugee camps of Pakistan, captures the Afghan capital Kabul, executing the former communist president Najibullah and imposing a strict interpretation of Islamic law across the territory they control. Under Taliban rule, women are barred from education and employment, and cultural sites are destroyed, drawing international condemnation. The Taliban government harbors al-Qaeda, setting the conditions for the September 11 attacks and the US-led invasion of Afghanistan five years later.",
     "difficulty": "medium",
     "importance": 6
   },
@@ -7677,10 +7661,9 @@
     ],
     "region": "East Asia",
     "aliases": [
-      "Hong Kong 1997",
       "British Hong Kong ends",
       "one country two systems",
-      "handover ceremony July 1997",
+      "handover ceremony",
       "Chris Patten last governor",
       "Deng Xiaoping Hong Kong deal"
     ],
@@ -7827,7 +7810,6 @@
     "region": "South Asia",
     "aliases": [
       "Bhuj earthquake",
-      "India earthquake 2001",
       "Gujarat quake",
       "Kutch earthquake"
     ],
@@ -7924,7 +7906,6 @@
     ],
     "region": "South Asia",
     "aliases": [
-      "2004 tsunami India",
       "Boxing Day tsunami",
       "Tamil Nadu tsunami",
       "Andaman tsunami"
@@ -8003,9 +7984,8 @@
     "region": "Global",
     "aliases": [
       "Lehman Brothers collapse",
-      "2008 recession",
-      "subprime mortgage crisis",
-      "Wall Street crash 2008"
+      "Great Recession",
+      "subprime mortgage crisis"
     ],
     "description": "The collapse of investment bank Lehman Brothers triggers a global financial crisis that causes the worst economic recession since the Great Depression, wiping out trillions in wealth and causing widespread unemployment worldwide. The crisis reshapes global regulation, exposes deep systemic risks in financial markets, and fuels political populism.",
     "difficulty": "medium",
@@ -8061,7 +8041,7 @@
     "region": "South Asia",
     "aliases": [
       "Delhi gang rape protests",
-      "December 2012 protests",
+      "Nirbhaya protests",
       "India rape protest",
       "women safety India"
     ],
@@ -8097,7 +8077,7 @@
     ],
     "region": "South Asia",
     "aliases": [
-      "BJP landslide 2014",
+      "BJP landslide",
       "NDA government",
       "Modi government",
       "Hindu nationalism politics"
@@ -8311,8 +8291,8 @@
     "region": "South Asia",
     "aliases": [
       "India Moon landing",
-      "Vikram lander 2023",
-      "Pragyan rover 2023",
+      "Vikram lander",
+      "Pragyan rover",
       "ISRO south pole landing"
     ],
     "description": "India's Chandrayaan-3 successfully lands near the lunar south pole, making India the fourth country to achieve a soft lunar landing and the first to land near the south pole. The mission discovers evidence of sulfur and other elements in the lunar soil, generating major scientific interest.",

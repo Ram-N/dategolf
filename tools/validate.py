@@ -48,8 +48,6 @@ CHECKS = [
      "(SELECT id FROM entities WHERE editorial_status = 'proposed')"),
     ("warning", "Event name contains a 4-digit year (gives the answer away)",
      "SELECT entity_id, name FROM events WHERE name GLOB '*[0-9][0-9][0-9][0-9]*'"),
-    ("warning", "Alias contains a 4-digit year (search would reveal the answer)",
-     "SELECT entity_id, alias FROM event_aliases WHERE alias GLOB '*[0-9][0-9][0-9][0-9]*'"),
     ("warning", "Time spans with the same normalised name",
      "SELECT group_concat(entity_id, ', '), lower(trim(name)) FROM time_spans "
      "GROUP BY lower(trim(name)) HAVING COUNT(*) > 1"),
@@ -127,6 +125,16 @@ def run():
             leaks.append((entity_id, f"answer {year}; description mentions {', '.join(near)}"))
     results.append(("warning", "Description mentions a year near the answer "
                     "(DatePick shows it before the guess)", leaks))
+
+    # DateGolf search matches aliases, so a nearby year in one reveals the answer.
+    alias_leaks = []
+    for entity_id, year, alias in conn.execute(
+            "SELECT a.entity_id, e.year, a.alias FROM event_aliases a "
+            "JOIN events e ON e.entity_id = a.entity_id"):
+        if any(abs(int(n) - abs(year)) <= 50 for n in re.findall(r"\b\d{3,4}\b", alias)):
+            alias_leaks.append((entity_id, f"answer {year}; alias '{alias}'"))
+    results.append(("warning", "Alias mentions a year near the answer "
+                    "(DateGolf search would reveal it)", alias_leaks))
 
     manifest_path = LEGACY / "MANIFEST.json"
     baseline = json.loads(manifest_path.read_text())["counts"] if manifest_path.exists() else {}

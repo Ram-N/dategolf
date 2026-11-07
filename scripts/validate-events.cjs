@@ -88,7 +88,7 @@ pass('Date leakage check passed')
 
 // 6. Valid difficulty and importance
 const VALID_DIFFICULTIES = ['easy', 'medium', 'hard']
-const VALID_IMPORTANCE = [1, 2, 3, 4, 5]
+const VALID_IMPORTANCE = [1, 2, 3, 4, 5, 6, 7, 8, 9] // 1–9 scale; DateFlow bolds 7+ (ANCHOR_IMPORTANCE)
 events.forEach(e => {
   if (!VALID_DIFFICULTIES.includes(e.difficulty)) {
     fail(`Invalid difficulty: ${e.id} → ${e.difficulty}`)
