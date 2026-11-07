@@ -17,7 +17,7 @@ sys.path.insert(0, str(HERE))  # so pages can `from lib import ...`
 
 from streamlit.testing.v1 import AppTest  # noqa: E402
 
-PAGES = ["views/overview.py", "views/review.py", "views/coverage.py", "views/map.py"]
+PAGES = ["views/overview.py", "views/review.py", "views/connections.py", "views/coverage.py", "views/map.py"]
 
 
 def check(path: str, after=None) -> list[str]:
@@ -42,6 +42,20 @@ ok, output = actions.decide_identity(["punic-wars"], "one")
 if not ok:
     problems.append(f"decide_identity failed: {output}")
 problems += check("views/review.py")  # still renders after a decision
+
+# Links: load a batch on the copy (written as "followed"), then the Review and Connections pages must render.
+import json  # noqa: E402
+
+batch = TMP / "links.json"
+batch.write_text(json.dumps({"origin": "test", "links": [
+    {"source": "noyce-silicon-chip", "type": "followed", "target": "kilby-first-integrated-circuit",
+     "why": "Noyce's silicon chip came a year after Kilby's germanium one, developed independently."}]}))
+sys.path.insert(0, str(HERE.parent / "tools"))
+import links  # noqa: E402
+
+if links.load(batch) != 0:
+    problems.append("links.load failed")
+problems += check("views/review.py") + check("views/connections.py")
 
 shutil.rmtree(TMP, ignore_errors=True)
 if problems:

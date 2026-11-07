@@ -5,7 +5,7 @@ import hashlib
 import streamlit as st
 
 from lib import actions
-from lib.db import q
+from lib.db import link_sentence, q
 
 st.title("Review")
 
@@ -27,14 +27,14 @@ if "review_result" in st.session_state:
         st.info("The game JSON now differs from the db: **Export** on the Overview page when you're done reviewing.")
 
 
-def selectable(df, key, columns=None):
+def selectable(df, key, columns=None, id_col="entity_id"):
     """A table with tickable rows; returns the selected rows as a DataFrame.
 
     Streamlit remembers a selection by row *position*. After an action the rows change
     (decided items leave, flagged ones move), so a remembered position could point at the
     wrong item. Keying the widget on the exact list of ids resets the ticks whenever it changes.
     """
-    ids = "|".join(df["entity_id"])
+    ids = "|".join(df[id_col].astype(str))
     widget_key = f"{key}-{hashlib.sha1(ids.encode()).hexdigest()[:10]}"
     shown = df[columns] if columns else df
     event = st.dataframe(shown, hide_index=True, width="stretch", key=widget_key,
@@ -53,9 +53,11 @@ shared = q("""
     WHERE n.editorial_status IN ('needs_review_identity', 'needs_split')
     ORDER BY n.editorial_status = 'needs_split', e.year""")
 
-t_drafts, t_tags, t_identity, t_fix, t_log = st.tabs([
+proposed_links = q("SELECT * FROM v_link_review WHERE status = 'proposed'")
+
+t_drafts, t_tags, t_identity, t_links, t_fix, t_log = st.tabs([
     f"Event drafts ({len(drafts)})", f"Country tags ({len(tags)})", f"Identity, Step 3a ({len(shared)})",
-    "Fix any country tags", "Decision log"])
+    f"Links ({len(proposed_links)})", "Fix any country tags", "Decision log"])
 
 # ── Event drafts ─────────────────────────────────────────────────────────────
 with t_drafts:
@@ -162,6 +164,37 @@ with t_identity:
             drop_event_dialog(ids)
         if c5.button(f"All undecided are one subject ({len(undecided)})…", disabled=not undecided):
             all_one_dialog(undecided)
+
+# ── Links ────────────────────────────────────────────────────────────────────
+with t_links:
+    if proposed_links.empty:
+        st.success("No links waiting. New batches arrive with `load-links` (doc 11, 3b).")
+    else:
+        st.caption("Each link reads as a sentence. Sequences are shown from the later side "
+                   "(\"B followed A\"); they're stored once and read both ways.")
+        view = proposed_links.assign(link=proposed_links.apply(link_sentence, axis=1))
+        picked = selectable(view, "links", ["link", "why", "confidence", "origin"], id_col="id")
+        if len(picked) == 1:
+            d = picked.iloc[0]
+            with st.container(border=True):
+                st.markdown(f"**{d['link']}**")
+                st.write(d["why"] or "—")
+                st.caption(f"Stored as `{d['source_id']}` {d['type']} `{d['target_id']}` · "
+                           f"{'causal' if d['is_causal'] else 'not causal'} · confidence {d['confidence'] or '—'}")
+        ids = [int(i) for i in picked["id"]]
+        c1, c2, _ = st.columns([1, 1, 4])
+        if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary", key="approve_links"):
+            finish("Approve links", actions.approve_links(ids))
+
+        @st.dialog("Reject links")
+        def reject_links_dialog(ids):
+            st.write(f"Delete {len(ids)} proposed link(s).")
+            reason = st.text_input("Reason (recorded in the log)")
+            if st.button("Reject", type="primary", disabled=not reason.strip()):
+                finish("Reject links", actions.reject_links(ids, reason))
+
+        if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_links"):
+            reject_links_dialog(ids)
 
 # ── Fix any country tags ─────────────────────────────────────────────────────
 with t_fix:

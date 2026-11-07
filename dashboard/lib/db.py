@@ -74,6 +74,24 @@ def country_tags() -> pd.DataFrame:
         LEFT JOIN time_spans s ON s.entity_id = x.entity_id AND e.entity_id IS NULL""")
 
 
+# How a link type reads from its source (the target side uses relationship_types.inverse_label).
+FORWARD = {"part_of": "is part of", "contributed_to": "contributed to", "evolved_into": "evolved into",
+           "contemporary_with": "was contemporary with", "interacted_with": "interacted with"}
+
+
+def forward_label(rtype: str) -> str:
+    return FORWARD.get(rtype, rtype.replace("_", " "))
+
+
+def link_sentence(row) -> str:
+    """A link as a sentence. Sequences read from the later side ("B followed A"), which is more natural."""
+    src = f"{row['source_name']} ({row['source_year']})"
+    tgt = f"{row['target_name']} ({row['target_year']})"
+    if row["type"] == "preceded":
+        return f"{tgt} followed {src}"
+    return f"{src} {forward_label(row['type'])} {tgt}"
+
+
 def bin_start(years: pd.Series, size: int) -> pd.Series:
     return (years // size) * size  # floor division also bins BCE years correctly
 

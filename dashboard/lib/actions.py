@@ -16,6 +16,7 @@ import countries  # noqa: E402
 import drafts  # noqa: E402
 import exporter  # noqa: E402
 import identity  # noqa: E402
+import links  # noqa: E402
 import manage  # noqa: E402
 import validate  # noqa: E402
 
@@ -68,6 +69,14 @@ def set_country_tags(entity_id, spec, note=None):
 
 def decide_identity(ids, decision):
     return _run(identity.decide, ids, decision, "dashboard")
+
+
+def approve_links(ids):
+    return _run(links.approve, ids, "dashboard")
+
+
+def reject_links(ids, reason):
+    return _run(links.reject, ids, reason, "dashboard")
 
 
 # ── Status checks (read-only) ─────────────────────────────────────────────────
