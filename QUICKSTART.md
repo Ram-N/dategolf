@@ -48,6 +48,7 @@ npm run data:validate  # Data integrity checks
 npm run data:compare   # Verify export matches committed JSON
 npm run data:backup    # Monthly local db snapshot → data/backup/ (gitignored)
 npm run data:browse    # Datasette: browse the db at http://localhost:8001 (read-only; docs/13)
+npm run data:dashboard # Streamlit dashboard at http://localhost:8501 (health, coverage, map; docs/13)
 node scripts/validate-events.cjs   # Legacy events.json rule checks
 ```
 

@@ -28,12 +28,17 @@ dashboard/
   pyproject.toml     uv project: datasette + plugins (Streamlit added in v1)
   uv.lock            pinned versions (committed)
   metadata.yml       Datasette: titles, table/column descriptions, facets, canned queries
-  app.py             Streamlit app (v1+)
+  app.py             Streamlit entry point (st.navigation)
+  views/             one file per page: overview, coverage, map
+  lib/db.py          read-only queries (cached; refresh when the db file changes)
+  lib/actions.py     the only writes: wrappers around tools/ (validate, export, backup)
+  smoke_test.py      headless AppTest check of every page
 ```
 
 ```bash
 npm run data:browse      # Datasette  → http://localhost:8001  (read-only browsing + SQL)
-npm run data:dashboard   # Streamlit  → http://localhost:8501  (v1+: reviews, edits, charts)
+npm run data:dashboard   # Streamlit  → http://localhost:8501  (overview, coverage, map; reviews from v2)
+npm run data:dashboard:test  # headless smoke test of every page
 ```
 
 Both open in your normal Windows browser; from WSL, `localhost` is forwarded automatically.
@@ -83,6 +88,61 @@ Both open in your normal Windows browser; from WSL, `localhost` is forwarded aut
 | **v2: Review queues** | One screen per queue with **Approve / Edit / Reject**: proposed drafts, proposed country tags, the 25 shared IDs (**Step 3a is its first use**), and later the links | Yes, through the tools' approve functions |
 | **v3: Editor** | **One form to add or edit an event** across all 4 tables (events, aliases, categories, countries), validated *before* saving. This fixes the "4 tables per event" problem. | Yes, through new functions in `tools/` |
 | **v4: Links (with Step 3b/3c)** | A link-review screen (source → type → target, with names, years and descriptions side by side), a network view, and a chain explorer ("what led to WWII?") | Yes |
+
+### 4.1 v1 detailed plan (planned 2026-11-07; ✅ built 2026-11-07)
+
+**Built as planned, with these notes:**
+- Pages live in `dashboard/views/`, not `pages/`. Streamlit treats a `pages/` folder specially, and `st.navigation` replaces that.
+- `countries` now has both `code` (ISO-2, the key) and `iso3` (ISO-3 for maps). All 100 countries have one; `ZZ` has none. The country loader keeps `iso3` when re-loading.
+- **Map:** centred on longitude 0, natural-earth projection.
+- **Coverage heatmap:** numbers appear only in non-empty cells.
+- Streamlit's "Deploy" button is hidden (`--client.toolbarMode minimal`), since this tool must never be deployed.
+- `npm run data:dashboard:test` runs the headless smoke test: all pages render, and 'Validate now' works.
+
+**Goal:** a read-mostly dashboard that shows the health of the data at a glance, plus where coverage is thin, both as charts and on a world map. The only writes are three buttons, and each one calls an existing tool function.
+
+**Files:**
+```
+dashboard/
+  app.py            entry point: page config + st.navigation (one page per tab)
+  lib/db.py         read-only queries → pandas DataFrames, cached and refreshed when the db file changes
+  lib/actions.py    thin wrappers that call the tools: validate.run(), exporter.run(), manage.backup()
+  pages/overview.py
+  pages/coverage.py
+  pages/map.py
+  smoke_test.py     headless check with Streamlit's AppTest: every page renders without errors
+```
+Run it with `npm run data:dashboard` → `streamlit run dashboard/app.py --server.address localhost --server.port 8501 --server.headless true`. It binds to localhost only, and headless mode stops it trying to open a browser inside WSL.
+
+**Page 1, Overview:**
+- **Counts:** events, spans, eras, countries in use, country tags, links, and how many items each review queue holds.
+- **Health:** errors, warnings and review items from validation, each expandable to its rows. It reads `data/reports/validate.json`, and "Validate now" refreshes it.
+- **Export needed?** It compares `exporter.render_all()` against the committed JSON files, the same check `compare-export` does. A red badge plus "Export now" appears when they differ.
+- **Last backup:** the date of the newest file in `data/backup/`. "Back up now" runs `manage.backup()`, and the badge turns amber after 35 days.
+- **Uncommitted changes:** `git status` on `data/`, `src/data/` and `public/data/`, so you know when to commit.
+- **Buttons: Validate now, Export now, Back up now.** Each shows the tool's own output, and a locked database (DB Browser holding unwritten changes) produces a friendly message, not a crash.
+
+**Page 2, Coverage:**
+- **A heatmap of events per time bin × DateFlow lane.** The bin size can be 50, 100, 250 or 500 years, defaulting to a century. This shows Step 4's gaps at a glance.
+- **Categories over time:** stacked bars, with the option to show all categories or the primary category only.
+- **Distributions:** importance (1–9), difficulty, regions, and the event-versus-span mix.
+- **Thinnest bins:** a table, matching Datasette's `thin_centuries`.
+
+**Page 3, Map:**
+- **A world choropleth of events per country**, from `entity_countries`. By default it counts `role = location`, with a toggle to include actors. `ZZ` (worldwide) is listed separately rather than drawn.
+- **Filters:** a year-range slider (an era preview of DateFlow's future map mode), category, and events or spans.
+- **Pick a country** to see its events and spans in a table below the map.
+- **Needs ISO-3 codes:** Plotly's world map uses 3-letter codes. Add an `iso3` column to `countries` (e.g. IN → IND), with values for all 100 countries, so the database stays the single source. This is reusable for the game's future map, too.
+
+**Not in v1:** any editing, the review queues (v2), the event editor (v3), and links (v4).
+
+**Dependencies** (added to `dashboard/pyproject.toml`): `streamlit`, `pandas`, `plotly`.
+
+**Done when:**
+- all three pages render with real data, and `smoke_test.py` passes
+- the three buttons work, including the friendly locked-db message
+- the map shows the 100 countries
+- it's documented in docs 12 and 13
 
 ### Risks and how they're handled
 

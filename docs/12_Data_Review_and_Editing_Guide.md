@@ -255,6 +255,7 @@ npm run data:validate                                 # integrity checks → dat
 npm run data:compare                                  # prove the export matches committed JSON
 npm run data:backup                                   # monthly snapshot → data/backup/ (local, not in git)
 npm run data:browse                                   # Datasette → http://localhost:8001 (read-only browsing + SQL; doc 13)
+npm run data:dashboard                                # Streamlit → http://localhost:8501 (overview, coverage, map; doc 13)
 uv run python tools/manage.py approve <id> [<id>…]    # publish drafts
 uv run python tools/manage.py load-drafts <file>      # add a batch of new events as drafts
 uv run python tools/manage.py reconcile-events        # refresh CSV match proposals
