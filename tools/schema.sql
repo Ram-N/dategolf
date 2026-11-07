@@ -296,6 +296,17 @@ LEFT JOIN time_spans s ON s.entity_id = x.entity_id
 WHERE x.position = 0
 ORDER BY x.status = 'reviewed', x.confidence = 'high', coalesce(e.year, s.start_year);
 
+-- Every review decision (approve, reject, re-tag, identity), from the CLI or the dashboard.
+-- entity_id has no foreign key on purpose: rejected drafts are deleted, but their log stays.
+CREATE TABLE IF NOT EXISTS review_log (
+  id        INTEGER PRIMARY KEY,
+  at        TEXT NOT NULL DEFAULT (datetime('now')),
+  action    TEXT NOT NULL,                       -- approve-draft, reject-draft, approve-countries, ...
+  entity_id TEXT NOT NULL,
+  detail    TEXT,
+  via       TEXT NOT NULL DEFAULT 'cli' CHECK (via IN ('cli', 'dashboard', 'test'))
+);
+
 -- ── Change tracking ─────────────────────────────────────────────────────────
 
 CREATE TRIGGER IF NOT EXISTS events_touch AFTER UPDATE ON events BEGIN

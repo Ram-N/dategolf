@@ -453,6 +453,12 @@
     },
     {
       "severity": "review",
+      "check": "Shared ids flagged for a split (Step 3a; do the split with Claude)",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "review",
       "check": "Country tags awaiting review (manage.py approve-countries)",
       "count": 0,
       "rows": []

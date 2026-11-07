@@ -8979,6 +8979,14 @@ CREATE TABLE relationships (
   CHECK (source_entity_id <> target_entity_id),
   UNIQUE (source_entity_id, relationship_type, target_entity_id)
 );
+CREATE TABLE review_log (
+  id        INTEGER PRIMARY KEY,
+  at        TEXT NOT NULL DEFAULT (datetime('now')),
+  action    TEXT NOT NULL,                       -- approve-draft, reject-draft, approve-countries, ...
+  entity_id TEXT NOT NULL,
+  detail    TEXT,
+  via       TEXT NOT NULL DEFAULT 'cli' CHECK (via IN ('cli', 'dashboard', 'test'))
+);
 CREATE TABLE time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json

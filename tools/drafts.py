@@ -12,7 +12,7 @@ import json
 import sqlite3
 from pathlib import Path
 
-from common import connect, ensure_schema
+from common import connect, ensure_schema, log
 
 
 def load(path):
@@ -54,3 +54,51 @@ def load(path):
           f"({len(drafted)} source CSV rows, {len(triage)} extra triage rows).")
     print("  They are NOT exported. To publish one, set entities.editorial_status = 'reviewed'.")
     return 0
+
+
+def approve(ids, via="cli"):
+    """Publish proposed entities: they are exported from the next export-json on."""
+    conn = connect()
+    ok = True
+    for entity_id in ids:
+        cur = conn.execute("UPDATE entities SET editorial_status = 'reviewed', updated_at = datetime('now') "
+                           "WHERE id = ? AND editorial_status = 'proposed'", (entity_id,))
+        if cur.rowcount:
+            log(conn, "approve-draft", entity_id, via=via)
+        ok = ok and bool(cur.rowcount)
+        print(f"  {'✓ approved' if cur.rowcount else '✗ not a proposed entity:'} {entity_id}")
+    conn.commit()
+    conn.close()
+    return 0 if ok else 1
+
+
+def reject(ids, reason, via="cli"):
+    """Delete proposed drafts. A draft from a CSV row leaves a note on that row's triage."""
+    if not reason or not reason.strip():
+        print("  ✗ a reason is required")
+        return 1
+    conn = connect()
+    ok = True
+    for entity_id in ids:
+        row = conn.execute("SELECT p.csv_event_id FROM entities n LEFT JOIN entity_provenance p "
+                           "ON p.entity_id = n.id WHERE n.id = ? AND n.editorial_status = 'proposed'",
+                           (entity_id,)).fetchone()
+        if row is None:
+            print(f"  ✗ not a proposed entity: {entity_id}")
+            ok = False
+            continue
+        csv_id = row[0]
+        conn.execute("DELETE FROM entities WHERE id = ?", (entity_id,))  # cascades to its rows
+        if csv_id is not None:
+            note = f"Draft {entity_id} rejected at review: {reason.strip()}"
+            conn.execute("UPDATE legacy_csv_triage SET note = trim(coalesce(note || ' ', '') || ?) "
+                         "WHERE csv_event_id = ?", (note, csv_id))
+            # No surviving draft from this row? Then it's closed as not recommended.
+            if not conn.execute("SELECT 1 FROM entity_provenance WHERE csv_event_id = ?", (csv_id,)).fetchone():
+                conn.execute("UPDATE legacy_csv_triage SET outcome = 'not_recommended' "
+                             "WHERE csv_event_id = ? AND outcome = 'drafted'", (csv_id,))
+        log(conn, "reject-draft", entity_id, reason.strip(), via=via)
+        print(f"  ✓ rejected {entity_id}")
+    conn.commit()
+    conn.close()
+    return 0 if ok else 1

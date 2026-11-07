@@ -89,6 +89,8 @@ CHECKS = [
     ("info", "Entities with an actor but no location (e.g. events on the Moon or Mars)",
      "SELECT DISTINCT entity_id, 'actors only' FROM entity_countries WHERE entity_id NOT IN "
      "(SELECT entity_id FROM entity_countries WHERE role = 'location')"),
+    ("review", "Shared ids flagged for a split (Step 3a; do the split with Claude)",
+     "SELECT id, primary_type FROM entities WHERE editorial_status = 'needs_split'"),
     ("review", "Country tags awaiting review (manage.py approve-countries)",
      "SELECT entity_id, confidence || coalesce(' — ' || note, '') FROM entity_countries "
      "WHERE position = 0 AND status = 'proposed' ORDER BY confidence = 'high', entity_id"),

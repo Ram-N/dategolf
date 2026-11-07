@@ -8,7 +8,7 @@ Tag file lines (see data/drafts/*_country_tags.txt):
 import sqlite3
 from pathlib import Path
 
-from common import connect, ensure_schema
+from common import connect, ensure_schema, log
 
 
 def parse(path):
@@ -58,18 +58,66 @@ def load(path):
     return 0
 
 
-def approve(ids, high):
+def approve(ids, high, via="cli"):
     conn = connect()
     if high:
-        cur = conn.execute("UPDATE entity_countries SET status = 'reviewed' WHERE status = 'proposed' "
-                           "AND entity_id IN (SELECT entity_id FROM entity_countries "
-                           "WHERE position = 0 AND confidence = 'high')")
-    else:
-        cur = conn.execute(f"UPDATE entity_countries SET status = 'reviewed' WHERE status = 'proposed' "
-                           f"AND entity_id IN ({','.join('?' * len(ids))})", ids)
+        ids = [r[0] for r in conn.execute("SELECT DISTINCT entity_id FROM entity_countries "
+                                          "WHERE position = 0 AND confidence = 'high' AND status = 'proposed'")]
+    ids = [i for i in ids if conn.execute("SELECT 1 FROM entity_countries WHERE entity_id = ? "
+                                          "AND status = 'proposed'", (i,)).fetchone()]
+    if not ids:
+        print("  Nothing to approve.")
+        conn.close()
+        return 0
+    cur = conn.execute(f"UPDATE entity_countries SET status = 'reviewed' WHERE status = 'proposed' "
+                       f"AND entity_id IN ({','.join('?' * len(ids))})", ids)
+    for entity_id in ids:
+        log(conn, "approve-countries", entity_id, "all high-confidence" if high else None, via=via)
     conn.commit()
     left = conn.execute("SELECT COUNT(DISTINCT entity_id) FROM entity_countries "
                         "WHERE status = 'proposed'").fetchone()[0]
     print(f"  Approved {cur.rowcount} country tags. Entities still proposed: {left}.")
     conn.close()
     return 0
+
+
+def set_tags(entity_id, spec, note=None, via="cli"):
+    """Replace an entity's country tags from a spec like "IN, PK/actor" (human-set, so reviewed)."""
+    conn = connect()
+    known = {r[0] for r in conn.execute("SELECT code FROM countries")}
+    exists = conn.execute("SELECT 1 FROM entities WHERE id = ?", (entity_id,)).fetchone()
+    tags = []
+    for part in [p.strip() for p in spec.split(",") if p.strip()]:
+        code, _, role = part.partition("/")
+        code, role = code.strip().upper(), (role.strip().lower() or "location")
+        tags.append((code, role))
+    problems = []
+    if not exists:
+        problems.append(f"unknown entity {entity_id}")
+    if not tags:
+        problems.append("no countries given")
+    problems += [f"unknown country code {c}" for c, _ in tags if c not in known]
+    problems += [f"role must be location or actor, not {r}" for _, r in tags if r not in ("location", "actor")]
+    if len({c for c, _ in tags}) != len(tags):
+        problems.append("a country is listed twice")
+    if problems:
+        print("  ✗ " + "; ".join(problems))
+        conn.close()
+        return 1
+    old = conn.execute("SELECT group_concat(country || CASE role WHEN 'actor' THEN '/actor' ELSE '' END, ', ') "
+                       "FROM (SELECT country, role FROM entity_countries WHERE entity_id = ? ORDER BY position)",
+                       (entity_id,)).fetchone()[0]
+    keep_note = conn.execute("SELECT note FROM entity_countries WHERE entity_id = ? AND position = 0",
+                             (entity_id,)).fetchone()
+    note = note if note is not None else (keep_note[0] if keep_note else None)
+    conn.execute("DELETE FROM entity_countries WHERE entity_id = ?", (entity_id,))
+    conn.executemany("INSERT INTO entity_countries (entity_id, position, country, confidence, status, note, role) "
+                     "VALUES (?, ?, ?, 'high', 'reviewed', ?, ?)",
+                     [(entity_id, i, c, note if i == 0 else None, r) for i, (c, r) in enumerate(tags)])
+    new = ", ".join(c + ("/actor" if r == "actor" else "") for c, r in tags)
+    log(conn, "set-countries", entity_id, f"{old or '(none)'} -> {new}", via=via)
+    conn.commit()
+    conn.close()
+    print(f"  ✓ {entity_id}: {new}")
+    return 0
+

@@ -9,6 +9,7 @@ import sys
 import countries
 import drafts
 import exporter
+import identity
 import reconcile
 import validate
 from datetime import datetime
@@ -124,19 +125,6 @@ def coverage(args):
     return 0
 
 
-def approve(args):
-    """Publish proposed entities: they are exported from the next export-json on."""
-    conn = connect()
-    for entity_id in args.ids:
-        cur = conn.execute("UPDATE entities SET editorial_status = 'reviewed', "
-                           "updated_at = datetime('now') "
-                           "WHERE id = ? AND editorial_status = 'proposed'", (entity_id,))
-        print(f"  {'✓ approved' if cur.rowcount else '✗ not a proposed entity:'} {entity_id}")
-    conn.commit()
-    conn.close()
-    return 0
-
-
 def backup(_args):
     """Snapshot the whole db to data/backup/dategolf_<date>_<time>.db and verify the copy."""
     dest_dir = DATA / "backup"
@@ -184,7 +172,25 @@ def main():
 
     p = sub.add_parser("approve", help="Mark proposed entities reviewed so they export")
     p.add_argument("ids", nargs="+")
-    p.set_defaults(fn=approve)
+    p.set_defaults(fn=lambda a: drafts.approve(a.ids))
+
+    p = sub.add_parser("reject", help="Delete proposed drafts (logged, with a reason)")
+    p.add_argument("ids", nargs="+")
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: drafts.reject(a.ids, a.reason))
+
+    p = sub.add_parser("set-countries", help='Replace an entity\'s country tags, e.g. "IN, PK/actor"')
+    p.add_argument("id")
+    p.add_argument("spec")
+    p.add_argument("--note")
+    p.set_defaults(fn=lambda a: countries.set_tags(a.id, a.spec, a.note))
+
+    p = sub.add_parser("identity", help="Step 3a: decide shared event/span ids")
+    p.add_argument("ids", nargs="+")
+    g = p.add_mutually_exclusive_group(required=True)
+    g.add_argument("--one", action="store_const", const="one", dest="decision", help="One subject")
+    g.add_argument("--split", action="store_const", const="split", dest="decision", help="Flag for a split")
+    p.set_defaults(fn=lambda a: identity.decide(a.ids, a.decision))
 
     p = sub.add_parser("load-countries", help="Load drafted country tags as proposed")
     p.add_argument("path")
