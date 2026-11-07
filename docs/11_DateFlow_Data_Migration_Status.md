@@ -171,7 +171,20 @@ Both events are in the game; nothing records the link. **The objective of Step 3
 
 **Close in time doesn't mean one caused the other.** For example, Noyce's silicon chip came after Kilby's but was developed *independently*, so the right link is `preceded`, not `influenced`. Every link is curated and reviewed. None is extracted automatically from description text (doc 10 §4.5, §8).
 
-#### 3a. Decide the 25 shared event/span IDs *(quick; do first)*
+#### 3a. Decide the 25 shared event/span IDs ✅ *done 2026-11-07*
+
+**Outcome:**
+
+| Decision | Count | IDs |
+|---|---:|---|
+| One subject | 20 | e.g. `french-revolution`, `napoleonic-wars`, `korean-war` |
+| Keep event only (span deleted) | 1 | `gutenberg-printing-press`, the 1440 event |
+| Keep span only (event deleted) | 1 | `vietnam-war`, the 1955–1975 span ("1965" was falsely precise) |
+| Split | 3 | `pax-romana` → span `pax-romana-period`; `indian-independence` → `indian-independence-movement`; `human-genome-project` → `human-genome-project-period`. Each event keeps the original id and is linked to its period with a reviewed `part_of` link, the first 3 relationships. |
+
+Every decision is in `review_log`. The tools that made them are `identity --one / --split / --drop-span / --drop-event` and `split <id> <new_span_id>`, or the dashboard Review → Identity tab (doc 12 §4.6). The original plan follows.
+
+##### Original plan: 3a. Decide the 25 shared event/span IDs *(quick; do first)*
 
 These IDs exist both as an event and as a span. They're flagged `needs_review_identity`.
 - **Almost all are one subject in two forms:** the *event* marks the key moment, and the *span* covers the whole period. Examples: *Napoleonic Wars Begin* (1803) with the span 1803–1815, and *French Revolution* (1789) with the span 1789–1799.

@@ -191,6 +191,8 @@ Every event and span is tagged with the **present-day** country (or countries) w
 **What you're deciding:** 25 IDs exist both as an **event** (the key moment, e.g. *Napoleonic Wars Begin*, 1803) and as a **span** (the whole period, e.g. *Napoleonic Wars*, 1803–1815). For each one, decide:
 - **One subject** (the usual answer): the event is simply the key moment of its own span. The status becomes `reviewed`.
 - **Needs a split:** they're really two different things. The status becomes `needs_split`, and the split itself, which gives the span a new ID, is done with Claude afterwards.
+- **Keep event only:** the span adds nothing, so it's **deleted** (with its span categories) and only the event remains. Example: Gutenberg, kept as the 1440 event. DateFlow stops showing it as a bar, so **this one does change the game: export afterwards.**
+- **Keep span only:** a single year undersells it or is falsely precise, so the **event** is **deleted** (with its aliases and event categories) and only the span remains. Example: the Vietnam War, kept as the 1955–1975 span rather than "1965". DatePick and DateGolf stop using it, so **export afterwards**. It's refused for DateFlow milestones and for events with DateLinks content, because those hang off the event.
 
 The reasoning is in doc 11, Step 3a. **Identity decisions don't change the game:** both statuses still export, so no export is needed afterwards.
 
@@ -224,6 +226,8 @@ Open **http://localhost:8502** and follow Step 3 below. Everything you click cha
    - `human-genome-project`: the event marks the **completion** (2003)
    - `islamic-golden-age`: the event is 786; the span starts at 750
 3. **If any should be split:** tick it, click **Needs a split…**, and confirm. It moves to the bottom of the list, marked `needs_split`.
+   **If the span should go:** tick it, click **Keep event only…**, and confirm.
+   **If the event should go:** tick it, click **Keep span only…**, and confirm.
 4. **For the rest:** click **All undecided are one subject (N)…**, then **Confirm all**. Or tick specific rows and click **One subject**.
 5. A green "done" message appears. Expand **Tool output** to see one ✓ line per ID.
 
@@ -231,6 +235,8 @@ Open **http://localhost:8502** and follow Step 3 below. Everything you click cha
 ```bash
 uv run python tools/manage.py identity punic-wars pax-romana --one    # one subject
 uv run python tools/manage.py identity korean-war --split             # flag for a split
+uv run python tools/manage.py identity gutenberg-printing-press --drop-span   # keep the event only
+uv run python tools/manage.py identity vietnam-war --drop-event               # keep the span only
 ```
 
 #### Step 4: Check the result
