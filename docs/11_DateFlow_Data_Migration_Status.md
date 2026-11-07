@@ -1,44 +1,32 @@
-# DateFlow Data: SQLite Migration Status and Next Steps
+# DateFlow Data: Status and Next Steps
 
-**Written:** 2026-11-04 · **Follows:** `10_DateFlow_Data_Audit_and_SQLite_Handoff.md`
+**Last updated:** 2026-11-06 · **Follows:** `10_DateFlow_Data_Audit_and_SQLite_Handoff.md` · **How-to:** `12_Data_Review_and_Editing_Guide.md`
 
-**One-line status:** SQLite is now the source of truth for all game data. The app's JSON is generated from it, byte-identical to the old hand-edited files. 68 drafted events are waiting for review, and nothing new has reached the game yet.
+**One-line status:** The data foundation from doc 10 is complete.
+- SQLite (`data/dategolf.db`) is the single source of truth, and the game's JSON is generated from it.
+- The legacy CSV is fully reconciled.
+- The game has grown from **343 to 435 reviewed events**.
+- Nothing is waiting for review.
 
 ---
 
-## 1. What was done
+## 1. What was done (2026-11-04 → 2026-11-06)
 
-### 1.1 Migration (doc 10, phases 0–2, 5, 6) — committed `3c8d8cf`, `8d7991c`
+| Area | Outcome | Commits |
+|---|---|---|
+| **Migration** (doc 10 phases 0–2, 5, 6) | All 7 data files are imported losslessly into SQLite. The export is proven byte-identical to the old hand-edited JSON. Originals are frozen in `data/legacy/` with sha256 hashes. | `3c8d8cf`, `8d7991c` |
+| **Validation** | `validate` runs about 30 checks. It reports 0 errors, plus warnings for answer leaks (years in aliases or descriptions). | `19cc8a3` and others |
+| **CSV reconciliation** (doc 10 phase 3) | All 310 `events_master.csv` rows have an outcome. **240 are linked to events** and 70 are closed by triage (duplicate, not recommended, or drafted into a new event). There are no undecided proposals. | `4ad0b16`, `14413d9` |
+| **New events** | Two reviewed batches: 64 events from unmatched CSV rows and 27 from the review's "add" candidates. Each draft was AI-drafted, reviewed and then approved. Reviewer edits are recorded in `entity_provenance`. | `6600375`, `8c0172f`, `7fb36b9`, `a64370d` |
+| **DateFlow-only events** | Events whose date is too disputed to guess can be listed in `dateflow_only_events`. They export with `dateflowOnly: true`, and DatePick and DateGolf skip them (`src/engine/eventPool.ts`). Used for the birth of the Buddha. His death became the span `life-of-the-buddha`. | `e1f3252` |
+| **Review tooling** | `load-drafts` (batch drafts as `proposed`, with optional approximate dates) and `approve`. Views `v_proposed_events` and `v_csv_crosswalk_review`. `reconcile-events` no longer reopens resolved rows. | `5601b02`, `7758592`, `c44a238` |
+| **Clean-up** | `import-legacy` was removed (rebuilding from the originals would wipe later work), along with the root CSV. The frozen copies stay in `data/legacy/`. | `d82e393` |
+| **Backup** | `npm run data:backup` writes a local, integrity-checked snapshot to `data/backup/` (gitignored). | `eb9e868` |
+| **Docs** | Doc 12 is the day-to-day review and editing guide. | `f524dce` |
 
-- **All 7 data files now live in one database, `data/dategolf.db`.** The seven are `events`, `durations`, `datelinks`, `milestones`, `eras`, `daily_challenges` and `events_master.csv`.
-- **The import is lossless.** Every source record's raw JSON is also kept in `import_records`.
-- **The originals are frozen** in `data/legacy/` with a sha256 `MANIFEST.json`. Git stores them byte-for-byte (`-text`), because the CSV uses CRLF line endings.
-- **Exports are proven exact.** `compare-export` checks that a fresh export is byte-identical to the committed app JSON, and that the CSV rebuilds exactly from its table.
-- **The 25 IDs that are both an event and a duration** are stored as one entity with two facets (an event row and a time-span row) and flagged `needs_review_identity`. Nothing was merged or dropped.
-- **Validation:** `validate` runs 28 checks and writes `data/reports/validate.{md,json}`. It currently reports 0 errors.
-- **Coverage:** the first report, `data/reports/coverage.md`, gives events per 500-year bin × region.
-- **Git storage:** the `.db` is committed together with a text dump, `data/dategolf.sql`, so changes show up as readable diffs.
-
-### 1.2 CSV ↔ event reconciliation (doc 10, phase 3) — committed `4ad0b16`
-
-- **`reconcile-events` proposes up to 3 candidate events per CSV row**, stored in `legacy_csv_crosswalk`.
-  - The score combines year proximity with name, alias and description overlap, weighting rare words more heavily (IDF).
-  - A shared year alone never creates a candidate.
-- **Results for the 310 CSV rows:**
-  - 114 strong matches (`exact_match`)
-  - 67 likely matches and 53 possible matches
-  - 76 rows with no candidate
-- **Nothing is auto-accepted.** You set `decision` to accepted or rejected in the review view `v_csv_crosswalk_review`, and re-runs keep every decided pair.
-
-### 1.3 The 76 unmatched CSV rows — ⚠️ **NOT YET COMMITTED**
-
-- **Every row has an outcome**, recorded in `legacy_csv_triage`:
-  - 66 rows → **68 drafted events**: two bundled rows were split, and the two Lewis & Clark rows were merged.
-  - 5 duplicates of existing events.
-  - 4 not recommended.
-- **The drafts are stored with status `proposed`, and the exporter skips that status.** Each draft's origin and review note are recorded in `entity_provenance`.
-- The batch source file is `data/drafts/2026-11-04_csv_unmatched.json`. It was loaded with the new `load-drafts` command; `approve` publishes individual drafts.
-- **Caveat:** the names, descriptions and aliases were AI-drafted from the CSV text and general knowledge. They are *not* verified against sources.
+**Decisions made along the way:**
+- Approximate dates use a year inside the documented range that doesn't sit next to another event's year (Chandragupta II at 375, the Henlein watch at 1508). The true range is kept in `date_display`.
+- Minor events are kept at low importance rather than dropped.
 
 ---
 
@@ -46,155 +34,116 @@
 
 | Item | Count |
 |---|---:|
-| Published events | 343 |
-| Proposed (draft) events | 68 |
-| Time spans (periods + empires) | 98 |
-| Eras | 5 |
+| Published events | **435** (1 DateFlow-only) |
+| Proposed (draft) events | 0 |
+| Time spans: periods and empires / eras | 99 / 5 |
 | DateLinks: keys / groups / items | 26 / 83 / 198 |
 | Milestones | 16 |
 | Daily challenge dates | 366 |
-| Legacy CSV rows | 310 (234 with match candidates, 76 triaged) |
-| Relationships | 0 (table exists; 12 relationship types seeded) |
+| Legacy CSV rows | 310: 240 linked, 70 closed by triage |
+| Relationships | 0 (table and 12 types ready) |
 
-**Coverage imbalance:** 244 of 343 published events (71%) fall after 1500, and there are none at all for 2500–2001 BCE. The drafts make this only slightly better (20 of the 68 are pre-1500, and 25 are South Asian), because the CSV itself leans modern and India-focused.
+**Coverage is still uneven:**
+- Only **123 of 435 events (28%) are before 1500**, and 63 are before 500 CE.
+- **Africa and the Americas have 11 events between them before 1500.**
+- Europe (130) and South Asia (111) dominate.
 
 ---
 
-## 3. How to work with the data now
+## 3. Next steps, in priority order
+
+### Step 1: Make the live game fair *(small; one session)*
+
+Players can hit these today:
+- **66 aliases contain a year** (e.g. `Panipat 1556`). DateGolf search can reveal the answer. Strip the years.
+- **18 descriptions mention a year within 50 of the answer.** DatePick shows them before the guess. Reword them ("two years later"). They're listed in `data/reports/validate.md`.
+- **"Revolutions of 1848 Sweep Europe"** has its year in its name. Rename it.
+- **DatePick on approximate dates.** `src/engine/datepick/distractorEngine.ts` only excludes the exact year, so for an event marked `c.` another event a few years away can be offered as a "wrong" answer that is defensible.
+  - Rule: when `is_approximate`, skip distractors within about 10 years.
+  - This needs `is_approximate` and `date_display` exported and added to the `Event` type, plus a unit test.
+  - Current workarounds: Chandragupta II at 375 (same year as the Huns) and the watch at 1508 (same year as Michelangelo).
+- **Settle the importance scale.** The data uses 2–9 (66 events are above 5), but the legacy `validate-events.cjs` assumes 1–5. DatePick picks questions in proportion to importance, so high-importance events come up much more often. Decide the scale, rescale if needed, and update the legacy validator.
+
+### Step 2: Controlled vocabularies *(medium; doc 10 phase 4)*
+
+- **Categories:** fill `category_mappings` from the 12 legacy labels to the 8 planned top-level categories, keeping the legacy labels. Exploration and Medicine may map to more than one.
+- **Regions:** add a hierarchy (`regions` and `entity_geographies`) and resolve the overlaps: `Americas` / `North America` / `South America`, `Global` / `World`, Southeast Asia filed under East Asia, and Antarctica filed as Global.
+- **Why before Step 3:** relationships, filters and a future map all need clean labels.
+
+### Step 3: Start the knowledge graph *(the core DateFlow potential)*
+
+- **First decide the 25 shared event/span IDs:** one subject or two? They're flagged `needs_review_identity`.
+- **Then seed about 50 reviewed relationships from material already in the db:**
+  - the "Related: …" notes on drafts (in `entity_provenance`)
+  - `part_of` links from events to spans (e.g. the Delhi Sultanate accessions → `delhi-sultanate`)
+  - the "related, not the same" CSV pairs that were rejected (e.g. Lee's surrender → American Civil War)
+  - the Kilby → Noyce pair
+- **Export `relationships.json` alongside the existing files**, without changing the current frontend contract.
+- **Remember:** chronological closeness is not causation. `contemporary_with` is not causal, and the schema already separates the two.
+
+### Step 4: Fill the thin periods *(content; can run alongside Steps 1–3)*
+
+- **Draft a targeted batch of about 40 events** for pre-500 CE, Africa and the Americas before 1500, Southeast Asia and Oceania. Use the proven pipeline: `load-drafts`, then review, then `approve` (doc 12 §4.4).
+- **Optionally add the 27 minor CSV rows at importance 1–2.** They're listed with the SQL in `data/drafts/next_batch_candidates.md`.
+
+### Step 5: Attach sources *(small; pairs well with Step 4)*
+
+- **55 linked CSV rows have Wikipedia URLs** that are unused. Add `sources` and `entity_sources` tables (doc 10 §4.7) and copy those URLs onto their events.
+- **From then on, give every new draft a source,** so AI-drafted content is checkable.
+
+---
+
+## 4. Open decisions (need you, not code)
+
+- **The 25 shared event/span IDs** (Step 3).
+- **The importance scale** (Step 1).
+- **The Great Pyramid date conflict.** The CSV says c. 3000 BC and the app says 2560 BCE. It's recorded in triage and left unchanged.
+- **The 39 triaged CSV rows** (duplicates or not recommended) are listed in `validate.md`, in case you want to revisit any at low importance.
+
+---
+
+## 5. Later phases (after Steps 1–5)
+
+- **People, places and reigns** (doc 10 §4.2). Keep lifespan separate from reign. The Delhi Sultanate and Mughal accessions are natural seeds for reigns. Use `entity_phases` (rise, zenith, decline) only where meaningful.
+- **Temporal precision.** Fill `date_precision` and `date_display` for older events from the CSV `stem` column (e.g. "c.3500 BC"). Add a tested helper for the missing year 0, and show "c." in the UI.
+- **Analysis commands:** temporal and geographic coverage, category balance, entity completeness, relationship density and enrichment priorities. Keep the weights configurable and show each component (doc 10 §6). They measure what the *database* contains, not how much history happened.
+- **DateFlow features:** "Meanwhile" views, cause-and-effect chains, the rise and fall of empires, map mode, and smarter daily challenges driven by coverage and relationships.
+
+---
+
+## 6. How to work with the data
+
+The full guide is doc 12. In short:
 
 ```bash
-# Day to day
-#   1. Edit data/dategolf.db in DB Browser for SQLite (keep foreign keys on)
-npm run data:export      # db → src/data/*.json, public/data/daily_challenges.json, data/dategolf.sql
+# Edit data/dategolf.db in DB Browser (Write Changes!), then:
+npm run data:export      # db → game JSON + data/dategolf.sql
 npm run data:validate    # must report 0 errors
-npm run data:compare     # optional: proves the export matches what's committed
-#   2. Commit the .db, .sql and JSON together
-
-# Review tools
-uv run python tools/manage.py reconcile-events      # refresh CSV match proposals
-uv run python tools/manage.py approve <id> [<id>…]  # publish proposed drafts
-uv run python tools/manage.py load-drafts <file>    # load a new draft batch as proposed
-uv run python tools/manage.py coverage --bin 250    # coverage at another bin width
-
-# (import-legacy was removed on 2026-11-06: the db has moved on from the
-#  original files, so rebuilding from data/legacy/ would wipe later work)
+npm run data:backup      # monthly local snapshot → data/backup/
+# Commit the .db, .sql and JSON together
 ```
 
 **Rules:**
 - Never hand-edit the generated JSON.
 - Years are signed (`-1` = 1 BCE) and there is no year 0.
 - `proposed` entities never export.
+- To undo uncommitted db edits, run `git checkout -- data/dategolf.db`.
 
----
-
-## 4. Review queue (needs you, not code)
-
-Listed in rough priority order. Everything is listed in `data/reports/validate.md`.
-
-1. **Commit the draft batch** (§1.3). Doing this first means a review session starts from a saved state.
-2. **Check the year on `birth-of-shivaji`.** The CSV says 1627, but most sources say 1630. The CSV value was kept and flagged.
-3. **Resolve three date conflicts with existing events:**
-   - Great Pyramid: the CSV says c. 3000 BC, the app says 2560 BCE.
-   - Buddha's birth: the CSV has two rows (576 BC and 486 BC), the app says 563 BCE.
-4. **Review the 68 drafts.** Approve them, edit them, or delete their `entities` row. The flagged ones are listed first.
-5. **Review the CSV match proposals**, starting with the 114 `exact_match` pairs, which go quickly.
-6. **Decide each of the 25 shared IDs:** keep it as one subject, or split it into two IDs.
-7. **Settle the importance scale.** The data uses 2–9, but `validate-events.cjs` allows only 1–5, so it already fails on 67 events. Decide which is right.
-
----
-
-## 5. Known issues found during the migration (pre-existing, not fixed)
-
-| Issue | Impact | Suggested fix |
-|---|---|---|
-| 66 aliases contain a 4-digit year (e.g. `Panipat 1556`) | Search indexes aliases, so typing a year can reveal the answer. This breaks the "year never indexed" rule. | Strip the years from the aliases (a small script or a GUI pass) |
-| 18 descriptions mention a year within 50 of the answer (e.g. the wheel says "3500", the Emancipation Proclamation says "1863") | DatePick shows the first 3 lines of the description *before* the guess, so the answer leaks. Flagged by `validate` since 2026-11-06. | Reword each description so it has no years ("two years later" instead of "1865") |
-| Importance scale conflict (data 2–9, validator 1–5) | `validate-events.cjs` fails | Pick one scale; possibly rescale |
-| "Revolutions of 1848" has a year in its name | Gives the answer away | Rename it |
-| Region labels overlap (`Americas` / `North America`, `Global` / `World`); Southeast Asia is filed under East Asia | Filters and maps will be inaccurate | Phase B below |
-| `events_master.csv` is also still in the repo root | Clutter (the frozen copy is in `data/legacy/`) | Delete the root copy |
-| Adding an event by hand touches 4 tables | Friction in the GUI | Add an `add-event` command, or use draft batches (`load-drafts`) |
-
----
-
-## 6. Future phases
-
-The phases are ordered so that each one makes the next one safer. Doc 10's guiding principle still applies: make the data safe and traceable first, then deepen it.
-
-### Phase A — Finish reconciliation (small)
-- Work through the review queue in §4.
-- Add a simple `review-stats` view that tracks accepted, rejected and pending counts.
-- Pull useful CSV-only fields onto matched events: `wikipedia` URLs (for sources) and `mnemonic` (for DateLinks).
-- Reduce the "CSV rows with no accepted match" review count to 0.
-
-### Phase B — Controlled vocabularies (medium; doc 10 §3.3, phase 4)
-- **Categories:** fill `category_mappings` from the 12 legacy labels to the 8 planned top-level categories, keeping the legacy labels. Some labels map to more than one category (Exploration, Medicine).
-- **Geography:** add a `regions` hierarchy and `entity_geographies` (region → subregion → present-day country, plus historical polity). Resolve the overlapping labels.
-- This phase is what makes filtering by region and a future map view possible.
-
-### Phase C — Sources and provenance (medium; doc 10 §4.7)
-- Add `sources`, `entity_sources` and `change_log`, and seed `sources` from the CSV's `wikipedia` column.
-- Add a `needs_source` validation check for published events, and record the AI-assisted origin of drafts as part of this.
-
-### Phase D — Temporal precision (small)
-- Fill `date_precision`, `is_approximate` and `date_display` on events, starting from the CSV's `stem` column (e.g. "c.3500 BC").
-- Add a tested BCE/CE conversion helper for the missing year 0 (needed for durations and "years between" maths).
-- Show "c." in the UI where it applies.
-- **TODO: make DatePick fair to approximate dates** (raised 2026-11-06).
-  - **Problem:** `src/engine/datepick/distractorEngine.ts` picks wrong answers from real event years, preferring close ones. It only excludes the event's *exact* year. So if an event's true date is a range, another event's year inside or near that range can be offered as a "wrong" answer that is actually defensible.
-  - **Example:** Chandragupta II's accession is c. 375-380. At 380, the Huns' 375 could appear as a wrong answer.
-  - **Current workaround:** the year was set to 375, the same as the Huns, because same-year distractors are already excluded. The event was also marked `is_approximate = 1`, `date_display = 'c. 375-380'`.
-  - **Proposed rule:** when the event is `is_approximate`, skip distractors within ~10 years of `year`, or within the `date_display` range if one is parsed. This needs `is_approximate` and `date_display` exported to `events.json` and added to the `Event` type. Add a unit test next to the existing distractor tests.
-
-### Phase E — Relationships, the knowledge graph (large; the core of the DateFlow potential)
-- **Populate `relationships` with curated, typed edges** such as `caused`, `part_of`, `preceded` and `contemporary_with`. Every edge is reviewed, and the schema already separates causal types from non-causal ones.
-- **Good first sources of candidates:**
-  - `part_of` edges from events to their spans (the 25 shared IDs, Delhi Sultanate accessions → `delhi-sultanate`)
-  - related pairs that the reconciler found (e.g. Lee's surrender → American Civil War)
-  - the "Related:" notes in the draft batch
-  - DateLinks prose, extracted as candidate edges only, never automatically
-- Export a new `relationships.json` *alongside* the current JSON. The existing frontend data contract stays as it is.
-
-### Phase F — New entity types (large)
-- Add `people` (keeping lifespan separate from reign), `places`, `entity_phases` (rise/zenith/decline, only where meaningful) and `reigns`.
-- The Delhi Sultanate and Mughal accessions in the draft batch are natural seeds for reigns.
-
-### Phase G — Coverage-driven enrichment (ongoing)
-- Add analysis commands: `temporal-coverage`, `geographic-coverage`, `category-balance`, `entity-completeness`, `relationship-analysis` and `enrichment-priorities`. Keep the weights configurable and show each component score (doc 10 §6).
-- Use these reports to plan **targeted draft batches** for the thin areas: pre-1500 (especially 2500–1000 BCE), Africa, the Americas before 1500, Southeast Asia and Oceania. Load each batch with `load-drafts` and review it like the CSV batch.
-- Reminder: these reports measure what the *database* contains, not how much history happened.
-
-### Phase H — DateFlow features on top of the data
-These become possible once phases B, E and F exist:
-- **"Meanwhile" views:** what was happening elsewhere at the same time, using `contemporary_with` edges plus the region hierarchy.
-- **Cause-and-effect chains:** follow the `caused` and `enabled` paths through an era.
-- **Rise and fall of empires:** span phases drawn on the timeline.
-- **Map mode:** events and spans placed on changing borders.
-- **Smarter daily challenges:** choose target years and distractors using coverage and relationships, rather than the year alone.
-- **Content authoring loop:** DateLinks and memory aids attached to entities, with an editorial status.
-
----
-
-## 7. Suggested next session
-
-1. Commit the draft batch.
-2. Spend about 30 minutes in DB Browser on the review queue (§4, items 2–5).
-3. Approve the drafts that pass, then `data:export`, `data:validate`, commit.
-4. Pick the next build step. The recommended one is **Phase B (vocabularies)**. It is small, it blocks filtering and maps, and it should come before relationships so that edges attach to clean categories and regions.
-
-## 8. File map
+## 7. File map
 
 ```
 data/dategolf.db            source of truth
-data/dategolf.sql           text dump (readable diffs)
-data/legacy/                frozen originals + MANIFEST.json
-data/drafts/                draft batches (JSON) for load-drafts
+data/dategolf.sql           text dump (readable diffs; also a full backup)
+data/backup/                local monthly snapshots (gitignored)
+data/legacy/                frozen originals + MANIFEST.json (archive)
+data/drafts/                draft batches + next_batch_candidates.md
 data/reports/               migration, validate, coverage, reconciliation reports
-tools/manage.py             CLI router
+tools/manage.py             CLI: validate, export-json, compare-export, reconcile-events,
+                            load-drafts, approve, backup, coverage
 tools/schema.sql            schema (idempotent; additive changes apply to the live db)
-(tools/importer.py          removed 2026-11-06 with import-legacy; see git history)
-tools/exporter.py           db → app JSON (skips `proposed`)
+tools/exporter.py           db → app JSON (skips `proposed`; adds `dateflowOnly`)
 tools/validate.py           integrity checks + review queue
-tools/reconcile.py          CSV ↔ event match proposals
+tools/reconcile.py          CSV ↔ event match proposals (skips resolved rows)
 tools/drafts.py             draft batch loader
+src/engine/eventPool.ts     quizEvents(): drops DateFlow-only events for DateGolf/DatePick
 ```
