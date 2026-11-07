@@ -169,19 +169,28 @@ CREATE TABLE IF NOT EXISTS daily_challenges (
 
 -- ── Relationships (empty until curated) ─────────────────────────────────────
 
+-- A link is stored once and read from either end: source → label → target, or target → inverse_label → source.
+-- 'followed' is a written form only: links written that way are stored as the inverse 'preceded'.
 CREATE TABLE IF NOT EXISTS relationship_types (
-  type      TEXT PRIMARY KEY,
-  is_causal INTEGER NOT NULL                       -- contemporary_with is NOT causal
+  type          TEXT PRIMARY KEY,
+  is_causal     INTEGER NOT NULL,                  -- contemporary_with is NOT causal
+  definition    TEXT,                              -- when to use it
+  direction     TEXT,                              -- which way it is stored, e.g. "cause → effect"
+  inverse_label TEXT,                              -- how it reads from the target, e.g. "followed"
+  symmetric     INTEGER NOT NULL DEFAULT 0         -- 1 = reads the same both ways (stored in id order)
 );
 
+-- Typed links between entities (Step 3b). Status: proposed → reviewed (doc 11, 3b-tooling).
 CREATE TABLE IF NOT EXISTS relationships (
   id                INTEGER PRIMARY KEY,
   source_entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   relationship_type TEXT NOT NULL REFERENCES relationship_types(type),
   target_entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
-  description       TEXT,
+  description       TEXT,                          -- the one-line "why"
   confidence        TEXT,
-  editorial_status  TEXT NOT NULL DEFAULT 'draft',
+  editorial_status  TEXT NOT NULL DEFAULT 'proposed',
+  origin            TEXT,                          -- ai_drafted / split / user / suggested
+  created_at        TEXT,
   CHECK (source_entity_id <> target_entity_id),
   UNIQUE (source_entity_id, relationship_type, target_entity_id)
 );
@@ -306,6 +315,23 @@ CREATE TABLE IF NOT EXISTS review_log (
   detail    TEXT,
   via       TEXT NOT NULL DEFAULT 'cli' CHECK (via IN ('cli', 'dashboard', 'test'))
 );
+
+-- Links as readable sentences, with both ends' names and years (events or spans).
+CREATE VIEW IF NOT EXISTS v_link_review AS
+SELECT r.id, r.editorial_status AS status,
+       r.source_entity_id AS source_id,
+       coalesce(se.name, ss.name) AS source_name, coalesce(se.year, ss.start_year) AS source_year,
+       r.relationship_type AS type, t.inverse_label,
+       r.target_entity_id AS target_id,
+       coalesce(te.name, ts.name) AS target_name, coalesce(te.year, ts.start_year) AS target_year,
+       r.description AS why, r.confidence, r.origin, t.is_causal, t.symmetric
+FROM relationships r
+JOIN relationship_types t ON t.type = r.relationship_type
+LEFT JOIN events se ON se.entity_id = r.source_entity_id
+LEFT JOIN time_spans ss ON ss.entity_id = r.source_entity_id AND se.entity_id IS NULL
+LEFT JOIN events te ON te.entity_id = r.target_entity_id
+LEFT JOIN time_spans ts ON ts.entity_id = r.target_entity_id AND te.entity_id IS NULL
+ORDER BY r.editorial_status = 'reviewed', r.id;
 
 -- ── Change tracking ─────────────────────────────────────────────────────────
 

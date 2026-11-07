@@ -10,6 +10,7 @@ import countries
 import drafts
 import exporter
 import identity
+import links
 import reconcile
 import validate
 from datetime import datetime
@@ -200,6 +201,23 @@ def main():
     p.add_argument("id", help="The shared id (the event keeps it)")
     p.add_argument("new_span_id", help="The new id for the span, e.g. pax-romana-period")
     p.set_defaults(fn=lambda a: identity.split(a.id, a.new_span_id))
+
+    p = sub.add_parser("load-links", help="Load a batch of links as proposed (all-or-nothing)")
+    p.add_argument("path")
+    p.set_defaults(fn=lambda a: links.load(a.path))
+
+    p = sub.add_parser("approve-links", help="Mark proposed links reviewed")
+    p.add_argument("ids", nargs="+", type=int)
+    p.set_defaults(fn=lambda a: links.approve(a.ids))
+
+    p = sub.add_parser("reject-links", help="Delete proposed links (logged, with a reason)")
+    p.add_argument("ids", nargs="+", type=int)
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: links.reject(a.ids, a.reason))
+
+    p = sub.add_parser("suggest-part-of", help="Write part_of candidates to a draft file (loads nothing)")
+    p.add_argument("--out", help="Output path (default data/drafts/<date>_part_of_suggestions.json)")
+    p.set_defaults(fn=lambda a: links.suggest_part_of(a.out))
 
     p = sub.add_parser("load-countries", help="Load drafted country tags as proposed")
     p.add_argument("path")

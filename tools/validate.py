@@ -52,6 +52,24 @@ CHECKS = [
      "(SELECT id FROM entities WHERE editorial_status = 'proposed')"),
     ("warning", "Event name contains a 4-digit year (gives the answer away)",
      "SELECT entity_id, name FROM events WHERE name GLOB '*[0-9][0-9][0-9][0-9]*'"),
+    ("error", "Link with an unknown status (use proposed or reviewed)",
+     "SELECT id, editorial_status FROM relationships WHERE editorial_status NOT IN ('proposed', 'reviewed')"),
+    ("error", "Link stored as 'followed' (should be stored as the inverse 'preceded')",
+     "SELECT id, source_entity_id || ' followed ' || target_entity_id FROM relationships "
+     "WHERE relationship_type = 'followed'"),
+    ("error", "Contradictory links (A→B and B→A of the same one-way type)",
+     "SELECT a.id, a.source_entity_id || ' ' || a.relationship_type || ' ' || a.target_entity_id || ' and back' "
+     "FROM relationships a JOIN relationships b ON a.source_entity_id = b.target_entity_id "
+     "AND a.target_entity_id = b.source_entity_id AND a.relationship_type = b.relationship_type "
+     "JOIN relationship_types t ON t.type = a.relationship_type WHERE t.symmetric = 0 AND a.id < b.id"),
+    ("error", "Symmetric link not stored in id order",
+     "SELECT r.id, r.source_entity_id || ' ' || r.relationship_type || ' ' || r.target_entity_id "
+     "FROM relationships r JOIN relationship_types t ON t.type = r.relationship_type "
+     "WHERE t.symmetric = 1 AND r.source_entity_id > r.target_entity_id"),
+    ("warning", "Link touches a proposed (unpublished) entity",
+     "SELECT r.id, r.source_entity_id || ' ' || r.relationship_type || ' ' || r.target_entity_id "
+     "FROM relationships r WHERE r.source_entity_id IN (SELECT id FROM entities WHERE editorial_status = 'proposed') "
+     "OR r.target_entity_id IN (SELECT id FROM entities WHERE editorial_status = 'proposed')"),
     ("warning", "Time spans with the same normalised name",
      "SELECT group_concat(entity_id, ', '), lower(trim(name)) FROM time_spans "
      "GROUP BY lower(trim(name)) HAVING COUNT(*) > 1"),
@@ -89,6 +107,9 @@ CHECKS = [
     ("info", "Entities with an actor but no location (e.g. events on the Moon or Mars)",
      "SELECT DISTINCT entity_id, 'actors only' FROM entity_countries WHERE entity_id NOT IN "
      "(SELECT entity_id FROM entity_countries WHERE role = 'location')"),
+    ("review", "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
+     "SELECT id, source_id || ' ' || type || ' ' || target_id || coalesce(' — ' || why, '') "
+     "FROM v_link_review WHERE status = 'proposed'"),
     ("review", "Shared ids flagged for a split (Step 3a; do the split with Claude)",
      "SELECT id, primary_type FROM entities WHERE editorial_status = 'needs_split'"),
     ("review", "Country tags awaiting review (manage.py approve-countries)",
@@ -172,6 +193,26 @@ def run():
     results.append(("info", "Accepted region exceptions (region deliberately differs from location)",
                     [tuple(r) for r in conn.execute(
                         "SELECT entity_id, reason FROM accepted_region_exceptions ORDER BY entity_id")]))
+
+    # Link date sanity: causes and sequences run earlier → later; part_of sits inside its target.
+    years = {}
+    for eid, y in conn.execute("SELECT entity_id, year FROM events"):
+        years[eid] = (y, y)
+    for eid, a, b in conn.execute("SELECT entity_id, start_year, end_year FROM time_spans"):
+        years.setdefault(eid, (a, b))
+    forward, outside = [], []
+    for lid, src, rtype, tgt, causal in conn.execute(
+            "SELECT r.id, r.source_entity_id, r.relationship_type, r.target_entity_id, t.is_causal "
+            "FROM relationships r JOIN relationship_types t ON t.type = r.relationship_type"):
+        if src not in years or tgt not in years:
+            continue
+        (s0, s1), (t0, t1) = years[src], years[tgt]
+        if (causal or rtype in ("preceded", "evolved_into")) and s0 > t0:
+            forward.append((lid, f"{src} ({s0}) {rtype} {tgt} ({t0}): the source starts later"))
+        if rtype == "part_of" and (s0 < t0 or s1 > t1):
+            outside.append((lid, f"{src} ({s0} to {s1}) part_of {tgt} ({t0} to {t1}): outside its years"))
+    results.append(("warning", "Link runs backwards in time (cause or sequence after its target)", forward))
+    results.append(("warning", "part_of link outside the target's years", outside))
 
     manifest_path = LEGACY / "MANIFEST.json"
     baseline = json.loads(manifest_path.read_text())["counts"] if manifest_path.exists() else {}

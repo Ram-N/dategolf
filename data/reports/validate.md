@@ -19,6 +19,11 @@
 | error | Empty event name or description | pass |
 | error | Milestone or DateLinks content on a proposed (unexported) entity | pass |
 | warning | Event name contains a 4-digit year (gives the answer away) | pass |
+| error | Link with an unknown status (use proposed or reviewed) | pass |
+| error | Link stored as 'followed' (should be stored as the inverse 'preceded') | pass |
+| error | Contradictory links (A→B and B→A of the same one-way type) | pass |
+| error | Symmetric link not stored in id order | pass |
+| warning | Link touches a proposed (unpublished) entity | pass |
 | warning | Time spans with the same normalised name | pass |
 | warning | Event names that differ only in case or spacing | pass |
 | warning | Event with no aliases (search falls back to name only) | pass |
@@ -30,6 +35,7 @@
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 1 |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -37,6 +43,8 @@
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
 | warning | No tagged country fits the event's region lane (fix the tags, add an actor, or accept it) | pass |
 | info | Accepted region exceptions (region deliberately differs from location) | 3 |
+| warning | Link runs backwards in time (cause or sequence after its target) | pass |
+| warning | part_of link outside the target's years | pass |
 | info | Counts changed since the legacy import | 1 |
 
 ## Counts

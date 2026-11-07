@@ -114,6 +114,36 @@
       "rows": []
     },
     {
+      "severity": "error",
+      "check": "Link with an unknown status (use proposed or reviewed)",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "error",
+      "check": "Link stored as 'followed' (should be stored as the inverse 'preceded')",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "error",
+      "check": "Contradictory links (A→B and B→A of the same one-way type)",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "error",
+      "check": "Symmetric link not stored in id order",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "warning",
+      "check": "Link touches a proposed (unpublished) entity",
+      "count": 0,
+      "rows": []
+    },
+    {
       "severity": "warning",
       "check": "Time spans with the same normalised name",
       "count": 0,
@@ -352,6 +382,12 @@
     },
     {
       "severity": "review",
+      "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "review",
       "check": "Shared ids flagged for a split (Step 3a; do the split with Claude)",
       "count": 0,
       "rows": []
@@ -453,6 +489,18 @@
           "Signed in Washington, but filed under Europe: a mainly European alliance."
         ]
       ]
+    },
+    {
+      "severity": "warning",
+      "check": "Link runs backwards in time (cause or sequence after its target)",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "warning",
+      "check": "part_of link outside the target's years",
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "info",

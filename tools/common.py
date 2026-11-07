@@ -43,6 +43,24 @@ def log(conn, action, entity_id, detail=None, via="cli"):
                  (action, entity_id, detail, via))
 
 
+# Columns added after their table was first created. schema.sql has them for fresh builds;
+# ensure_schema adds any that a live db is missing (SQLite can't do ADD COLUMN IF NOT EXISTS).
+ADDED_COLUMNS = [
+    ("entity_countries", "role", "TEXT NOT NULL DEFAULT 'location' CHECK (role IN ('location', 'actor'))"),
+    ("countries", "iso3", "TEXT CHECK (iso3 IS NULL OR length(iso3) = 3)"),
+    ("relationships", "origin", "TEXT"),
+    ("relationships", "created_at", "TEXT"),
+    ("relationship_types", "definition", "TEXT"),
+    ("relationship_types", "direction", "TEXT"),
+    ("relationship_types", "inverse_label", "TEXT"),
+    ("relationship_types", "symmetric", "INTEGER NOT NULL DEFAULT 0"),
+]
+
+
 def ensure_schema(conn):
-    """Apply additive schema changes (new tables/views) to an existing db."""
+    """Apply additive schema changes (new columns, tables and views) to an existing db."""
+    for table, column, ddl in ADDED_COLUMNS:  # before the views, which may use these columns
+        cols = [r[1] for r in conn.execute(f"PRAGMA table_info({table})")]
+        if cols and column not in cols:
+            conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {ddl}")
     conn.executescript(SCHEMA.read_text(encoding="utf-8"))

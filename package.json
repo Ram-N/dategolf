@@ -21,7 +21,7 @@
     "data:browse": "uv run --project dashboard datasette data/dategolf.db -m dashboard/metadata.yml -p 8001 --setting sql_time_limit_ms 5000",
     "data:dashboard": "uv run --project dashboard streamlit run dashboard/app.py --server.address localhost --server.port 8501 --server.headless true --browser.gatherUsageStats false --client.toolbarMode minimal",
     "data:dashboard:test": "uv run --project dashboard python dashboard/smoke_test.py",
-    "data:test": "uv run python tools/test_review.py"
+    "data:test": "uv run python tools/test_review.py && uv run python tools/test_links.py"
   },
   "dependencies": {
     "fuse.js": "^7.5.0",

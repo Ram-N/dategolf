@@ -8952,19 +8952,19 @@ INSERT INTO "regions" VALUES('Central Asia','middle-east','No own lane; shown in
 CREATE TABLE relationship_types (
   type      TEXT PRIMARY KEY,
   is_causal INTEGER NOT NULL                       -- contemporary_with is NOT causal
-);
-INSERT INTO "relationship_types" VALUES('caused',1);
-INSERT INTO "relationship_types" VALUES('contributed_to',1);
-INSERT INTO "relationship_types" VALUES('enabled',1);
-INSERT INTO "relationship_types" VALUES('influenced',1);
-INSERT INTO "relationship_types" VALUES('triggered',1);
-INSERT INTO "relationship_types" VALUES('preceded',0);
-INSERT INTO "relationship_types" VALUES('followed',0);
-INSERT INTO "relationship_types" VALUES('part_of',0);
-INSERT INTO "relationship_types" VALUES('contemporary_with',0);
-INSERT INTO "relationship_types" VALUES('opposed',0);
-INSERT INTO "relationship_types" VALUES('interacted_with',0);
-INSERT INTO "relationship_types" VALUES('evolved_into',0);
+, definition TEXT, direction TEXT, inverse_label TEXT, symmetric INTEGER NOT NULL DEFAULT 0);
+INSERT INTO "relationship_types" VALUES('caused',1,'The source is the main, direct cause (rare: most history has several causes).','cause → effect','was caused by',0);
+INSERT INTO "relationship_types" VALUES('contributed_to',1,'The source was one of several factors.','cause → effect','had as a contributing factor',0);
+INSERT INTO "relationship_types" VALUES('enabled',1,'The source made the target possible, without being its motive.','cause → effect','was made possible by',0);
+INSERT INTO "relationship_types" VALUES('influenced',1,'Ideas or culture from the source shaped the target.','influence → influenced','was influenced by',0);
+INSERT INTO "relationship_types" VALUES('triggered',1,'The source was the immediate spark of something already building.','cause → effect','was triggered by',0);
+INSERT INTO "relationship_types" VALUES('preceded',0,'Came before, in the same story. No claim of cause.','earlier → later','followed',0);
+INSERT INTO "relationship_types" VALUES('followed',0,'Written form only: stored as the inverse of ''preceded''.','later → earlier (never stored)','preceded',0);
+INSERT INTO "relationship_types" VALUES('part_of',0,'A smaller thing within a bigger one (a battle in a war, an accession in a dynasty).','smaller → bigger','includes',0);
+INSERT INTO "relationship_types" VALUES('contemporary_with',0,'Happened or existed at the same time. No claim of any other connection.','either way','contemporary with',1);
+INSERT INTO "relationship_types" VALUES('opposed',0,'Were on opposite sides.','either way','opposed',1);
+INSERT INTO "relationship_types" VALUES('interacted_with',0,'Had contact or exchange.','either way','interacted with',1);
+INSERT INTO "relationship_types" VALUES('evolved_into',0,'The source changed into the target over time.','earlier → later','evolved from',0);
 CREATE TABLE relationships (
   id                INTEGER PRIMARY KEY,
   source_entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
@@ -8972,13 +8972,13 @@ CREATE TABLE relationships (
   target_entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   description       TEXT,
   confidence        TEXT,
-  editorial_status  TEXT NOT NULL DEFAULT 'draft',
+  editorial_status  TEXT NOT NULL DEFAULT 'draft', origin TEXT, created_at TEXT,
   CHECK (source_entity_id <> target_entity_id),
   UNIQUE (source_entity_id, relationship_type, target_entity_id)
 );
-INSERT INTO "relationships" VALUES(1,'pax-romana','part_of','pax-romana-period','''Pax Romana Begins'' is a moment within ''Pax Romana'' (created by the split).','high','reviewed');
-INSERT INTO "relationships" VALUES(2,'indian-independence','part_of','indian-independence-movement','''Indian Independence'' is a moment within ''Indian Independence Movement'' (created by the split).','high','reviewed');
-INSERT INTO "relationships" VALUES(3,'human-genome-project','part_of','human-genome-project-period','''Human Genome Project Completed'' is a moment within ''Human Genome Project'' (created by the split).','high','reviewed');
+INSERT INTO "relationships" VALUES(1,'pax-romana','part_of','pax-romana-period','''Pax Romana Begins'' is a moment within ''Pax Romana'' (created by the split).','high','reviewed','split','2026-11-07 21:33:23');
+INSERT INTO "relationships" VALUES(2,'indian-independence','part_of','indian-independence-movement','''Indian Independence'' is a moment within ''Indian Independence Movement'' (created by the split).','high','reviewed','split','2026-11-07 21:33:23');
+INSERT INTO "relationships" VALUES(3,'human-genome-project','part_of','human-genome-project-period','''Human Genome Project Completed'' is a moment within ''Human Genome Project'' (created by the split).','high','reviewed','split','2026-11-07 21:33:23');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -9180,4 +9180,19 @@ LEFT JOIN time_spans s ON s.entity_id = x.entity_id
 WHERE x.position = 0
 ORDER BY x.status = 'reviewed', x.confidence = 'high', coalesce(e.year, s.start_year);
 CREATE UNIQUE INDEX countries_iso3 ON countries(iso3);
+CREATE VIEW v_link_review AS
+SELECT r.id, r.editorial_status AS status,
+       r.source_entity_id AS source_id,
+       coalesce(se.name, ss.name) AS source_name, coalesce(se.year, ss.start_year) AS source_year,
+       r.relationship_type AS type, t.inverse_label,
+       r.target_entity_id AS target_id,
+       coalesce(te.name, ts.name) AS target_name, coalesce(te.year, ts.start_year) AS target_year,
+       r.description AS why, r.confidence, r.origin, t.is_causal, t.symmetric
+FROM relationships r
+JOIN relationship_types t ON t.type = r.relationship_type
+LEFT JOIN events se ON se.entity_id = r.source_entity_id
+LEFT JOIN time_spans ss ON ss.entity_id = r.source_entity_id AND se.entity_id IS NULL
+LEFT JOIN events te ON te.entity_id = r.target_entity_id
+LEFT JOIN time_spans ts ON ts.entity_id = r.target_entity_id AND te.entity_id IS NULL
+ORDER BY r.editorial_status = 'reviewed', r.id;
 COMMIT;
