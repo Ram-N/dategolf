@@ -10,6 +10,16 @@
 
 ---
 
+## ▶ Your next actions (updated 2026-11-08)
+
+1. **Review the first link batch: 142 `part_of` links.** On the dashboard, go to **Review → Links**. The step-by-step guide is **doc 12 §4.6c**. The 9 medium-confidence links are the ones that need real judgement.
+2. **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project` and `arab-spring` (all "one subject"). Change any with `manage.py identity <id> --one|--split|--drop-span|--drop-event`.
+3. **Then tell Claude to continue.** The next link batch is **sequences** (`preceded`, e.g. the Mughal succession), then **causal** links, then **3c** (export `relationships.json`).
+
+Before reviewing, restart the dashboard (`npm run data:dashboard`) so it has the latest code.
+
+---
+
 ## 1. What was done (2026-11-04 → 2026-11-06)
 
 | Area | Outcome | Commits |
@@ -299,7 +309,21 @@ Either end can be an event or a span. Each link carries a **one-line "why"** (th
 
 **Done when:** the schema, `tools/links.py`, the CLI, the checks and the dashboard tab and page all work; the tests pass on a copy; and docs 12 and 13 are updated.
 
-#### 3b. Seed about 50–100 reviewed links, easiest first
+#### 3b. Link batches
+
+| Batch | Status | File |
+|---|---|---|
+| **1. `part_of`** | 🟡 **142 loaded as proposed, 2026-11-07: awaiting your review** (doc 12 §4.6c) | `data/drafts/2026-11-07_part_of_batch.json` |
+| 2. Sequences (`preceded`) | Next | — |
+| 3. Causal links | After batch 2 | — |
+
+**Batch 1 rule** (also written in the batch file): an event is `part_of` a span when it's an **episode of that span's own story**. That covers a battle in its war; a reign, act or achievement of its state or era; or its founding or its end. Merely happening in the same place and time doesn't count, so there are no natural disasters and no outside invaders. Causes (e.g. Qin unification → the Great Wall) are saved for batch 3.
+- 124 links were curated from `suggest-part-of`'s 197 candidates, and 18 were added by hand (e.g. D-Day → WWII, Galileo → Scientific Revolution).
+- 133 are high confidence and 9 medium.
+
+The original 3b plan follows.
+
+##### Original plan: 3b. Seed about 50–100 reviewed links, easiest first
 
 1. **`part_of` links (events → spans).** These are mostly uncontroversial: Zama → Punic Wars, the Delhi accessions → Delhi Sultanate. Candidates can be proposed automatically: an event inside a span's years, in the same region, with related wording. Each still gets reviewed.
 2. **Sequences within a story** (`preceded` / `followed`): the Mughal succession, or the steps of the Indian independence movement.
@@ -337,12 +361,11 @@ Validation then catches links to missing entities, self-links, unknown types and
 
 ## 4. Open decisions (need you, not code)
 
-- **The 25 shared event/span IDs** (Step 3).
-- **The importance scale** (Step 1).
+- **Review the 142 proposed `part_of` links** (see "Your next actions" above).
+- **The 5 Step 3a decisions to double-check** (see above).
 - **The Great Pyramid date conflict.** The CSV says c. 3000 BC and the app says 2560 BCE. It's recorded in triage and left unchanged.
 - **The 39 triaged CSV rows** (duplicates or not recommended) are listed in `validate.md`, in case you want to revisit any at low importance.
-
----
+- *Done:* the 25 shared ids (Step 3a, 2026-11-07); the importance scale (1–9, 2026-11-06).
 
 ## 5. Later phases (after Steps 1–5)
 

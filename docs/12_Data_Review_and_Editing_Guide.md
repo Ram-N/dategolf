@@ -270,6 +270,62 @@ A **link** reads as a sentence: *source → type → target*, plus a one-line "w
 - **Explore** with the dashboard **Connections** page: pick any event or span to see all its links from its point of view.
 - **Validation** flags backwards causes ("1950 triggered 1905"), `part_of` links outside the target's years, and links to unpublished entities.
 
+### 4.6c Reviewing a link batch, step by step (e.g. the 142 `part_of` links)
+
+#### What you're deciding
+
+For each proposed link: **is this sentence true, and is it the right *kind* of link?** For `part_of`, the test is: *"Is the event an episode of this span's own story?"* That means a battle in its war; a reign, act or achievement of its state or era; or its founding or its end.
+
+- ✅ *Battle of Zama is part of the Punic Wars.* ✅ *Razia Sultana's accession is part of the Delhi Sultanate.*
+- ❌ *Vesuvius erupting is part of the Roman Empire* (same place and time, not its story). These were already left out of batch 1.
+- ❌ A **cause** written as `part_of`: *Qin unification is part of the Great Wall's construction* should be "Qin unification **enabled** it" (batch 3).
+
+**Links don't change the game yet** (they aren't exported until Step 3c), so no export is needed after reviewing.
+
+#### Step 1: Open the queue
+
+1. Close DB Browser, or click Write Changes there.
+2. Run `npm run data:dashboard` (restart it if it's already running), then open **http://localhost:8501**.
+3. Go to **✅ Review** → the **Links (142)** tab.
+
+#### Step 2: Read and decide
+
+1. **Click one row** to see its card: the sentence, its one-line "why", how it's stored, and its confidence.
+2. **Start with the 9 medium-confidence links.** These are the real judgement calls:
+   - **Inventions as part of a dynasty's era:** paper → Han, woodblock printing → Tang, movable type and the compass → Song. Is an achievement *under* a dynasty part of it?
+   - **Endings as part of what they end:** Indian independence → British Raj, Meiji → Tokugawa shogunate, Mao's death → Cultural Revolution.
+   - **Charlemagne's coronation → Holy Roman Empire:** historians debate whether the empire starts there or in 962.
+   - **Taj Mahal construction → Mughal Empire.**
+3. **Reject what's wrong:** tick it, click **Reject…**, and give a short reason (it's logged). If it's really a different link type, add a note in the reason, e.g. "should be enabled", and Claude can redraft it.
+4. **Approve the rest:** tick them (the header checkbox selects everything still listed), then click **Approve**.
+
+**From the terminal instead:**
+```bash
+uv run python tools/manage.py approve-links 12 13 14               # link ids are shown in Datasette / the db
+uv run python tools/manage.py reject-links 15 --reason "should be enabled, not part_of"
+```
+
+#### Step 3: Check the result
+
+| Check | Where | Expect |
+|---|---|---|
+| The queue is empty | Review → **Links (0)** | "No links waiting" |
+| The graph reads well from both ends | **🔗 Connections** → pick e.g. *Mughal Empire* | "includes" lists its accessions and battles; on *Battle of Zama*, "is part of" Punic Wars |
+| Every decision was logged | Review → **Decision log** | `approve-link` / `reject-link` rows, `via = dashboard` |
+| Validation agrees | Overview → **Validate now** | 0 errors; no "Links awaiting review" |
+
+#### Step 4: Commit
+
+```bash
+git add data && git commit -m "data: review part_of link batch" && git push
+```
+(Or ask Claude.) Then tell Claude to draft the next batch.
+
+#### Undo
+
+- **Before committing:** `git checkout -- data/dategolf.db` restores the database to the last commit.
+- **A rejected link was actually right:** ask Claude to re-add it in a small batch (rejected links are deleted, but their reason stays in the log).
+
 ### 4.7 Preview in the game
 
 ```bash
