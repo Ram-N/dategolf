@@ -18,6 +18,12 @@
 
 Before reviewing, restart the dashboard (`npm run data:dashboard`) so it has the latest code.
 
+**Claude's side while you review (agreed order, 2026-11-08). Pick work that doesn't add to your review queue:**
+1. **Step 5: Sources.** Add a `sources` table (doc 10 §4.7). Copy the 55 Wikipedia URLs from linked CSV rows across automatically, and propose the obvious Wikipedia article for the rest as `proposed`. Show Wikipedia links on the dashboard's Review and Connections cards and in Datasette. **Plan it briefly before building.**
+2. **Dashboard v3: the event editor.** One form to edit name, year, description, aliases, categories and countries, validated before saving (doc 13).
+3. **Draft link batch 2 (sequences / `preceded`, e.g. the Mughal succession) as a file only. Don't load it** until batch 1 is reviewed.
+4. **Later:** 3c (export `relationships.json`, best after the review) and Step 4 (new events for thin periods, best when no review queue is waiting).
+
 ---
 
 ## 1. What was done (2026-11-04 → 2026-11-06)
