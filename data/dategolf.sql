@@ -9081,8 +9081,8 @@ INSERT INTO "relationships" VALUES(28,'lee-surrenders-appomattox','part_of','ame
 INSERT INTO "relationships" VALUES(29,'emancipation-proclamation','part_of','american-civil-war','Issued by Lincoln as a war measure.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(30,'american-declaration','part_of','american-revolution','The revolution''s founding document.','high','reviewed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(31,'american-war-independence-ends','part_of','american-revolution','The treaty that ends the revolutionary war.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(32,'battle-of-trafalgar','part_of','napoleonic-wars','The naval battle that ends Napoleon''s hopes of invading Britain.','high','proposed','ai_drafted','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(33,'napoleon-defeat-waterloo','part_of','napoleonic-wars','Napoleon''s final defeat, which ends the wars.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(32,'battle-of-trafalgar','part_of','napoleonic-wars','The naval battle that ends Napoleon''s hopes of invading Britain.','high','reviewed','ai_drafted','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(33,'napoleon-defeat-waterloo','part_of','napoleonic-wars','Napoleon''s final defeat, which ends the wars.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(34,'bolshevik-civil-war','part_of','russian-revolution','The civil war that decides the revolution''s outcome.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(35,'long-march-china','part_of','chinese-civil-war','The Communist retreat during the civil war.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(36,'chinese-communist-revolution','part_of','chinese-civil-war','The Communist victory that ends the civil war.','high','proposed','suggested','2026-11-07 21:41:29');
@@ -9363,6 +9363,8 @@ INSERT INTO "review_log" VALUES(158,'2026-11-08 22:44:59','approve-link','americ
 INSERT INTO "review_log" VALUES(159,'2026-11-08 22:44:59','approve-link','bolshevik-civil-war','link #34: bolshevik-civil-war part_of russian-revolution','dashboard');
 INSERT INTO "review_log" VALUES(160,'2026-11-08 22:44:59','approve-link','long-march-china','link #35: long-march-china part_of chinese-civil-war','dashboard');
 INSERT INTO "review_log" VALUES(161,'2026-11-08 22:44:59','approve-link','opium-war-second','link #38: opium-war-second part_of opium-wars','dashboard');
+INSERT INTO "review_log" VALUES(162,'2026-11-08 22:54:49','approve-link','battle-of-trafalgar','link #32: battle-of-trafalgar part_of napoleonic-wars','dashboard');
+INSERT INTO "review_log" VALUES(163,'2026-11-08 22:54:49','approve-link','napoleon-defeat-waterloo','link #33: napoleon-defeat-waterloo part_of napoleonic-wars','dashboard');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),

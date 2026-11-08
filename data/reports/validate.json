@@ -383,7 +383,7 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 85,
+      "count": 83,
       "rows": [
         [
           21,
@@ -396,14 +396,6 @@
         [
           31,
           "american-war-independence-ends part_of american-revolution — The treaty that ends the revolutionary war."
-        ],
-        [
-          32,
-          "battle-of-trafalgar part_of napoleonic-wars — The naval battle that ends Napoleon's hopes of invading Britain."
-        ],
-        [
-          33,
-          "napoleon-defeat-waterloo part_of napoleonic-wars — Napoleon's final defeat, which ends the wars."
         ],
         [
           36,
