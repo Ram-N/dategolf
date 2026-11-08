@@ -383,16 +383,8 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 81,
+      "count": 79,
       "rows": [
-        [
-          21,
-          "battle-of-zama part_of punic-wars — The battle that ends the Second Punic War."
-        ],
-        [
-          36,
-          "chinese-communist-revolution part_of chinese-civil-war — The Communist victory that ends the civil war."
-        ],
         [
           39,
           "d-day-normandy part_of world-war-2 — The Allied landings in Normandy."

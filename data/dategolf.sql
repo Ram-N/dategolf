@@ -9070,7 +9070,7 @@ INSERT INTO "relationships" VALUES(17,'world-war-one','part_of','world-war-1','T
 INSERT INTO "relationships" VALUES(18,'first-world-war-ends','part_of','world-war-1','The armistice that ends the First World War.','high','reviewed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(19,'world-war-two','part_of','world-war-2','The outbreak of the Second World War.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(20,'end-world-war-two','part_of','world-war-2','The end of the Second World War.','high','reviewed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(21,'battle-of-zama','part_of','punic-wars','The battle that ends the Second Punic War.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(21,'battle-of-zama','part_of','punic-wars','The battle that ends the Second Punic War.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(22,'battle-of-marathon','part_of','persian-wars','The Athenian victory in the first Persian invasion of Greece.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(23,'battle-of-gaugamela','part_of','alexanders-conquests','Alexander''s decisive victory over Darius III.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(24,'battle-of-the-hydaspes','part_of','alexanders-conquests','The battle at the eastern limit of Alexander''s campaign.','high','reviewed','suggested','2026-11-07 21:41:29');
@@ -9083,7 +9083,6 @@ INSERT INTO "relationships" VALUES(32,'battle-of-trafalgar','part_of','napoleoni
 INSERT INTO "relationships" VALUES(33,'napoleon-defeat-waterloo','part_of','napoleonic-wars','Napoleon''s final defeat, which ends the wars.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(34,'bolshevik-civil-war','part_of','russian-revolution','The civil war that decides the revolution''s outcome.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(35,'long-march-china','part_of','chinese-civil-war','The Communist retreat during the civil war.','high','reviewed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(36,'chinese-communist-revolution','part_of','chinese-civil-war','The Communist victory that ends the civil war.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(37,'opium-wars-china','part_of','opium-wars','The First Opium War.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(38,'opium-war-second','part_of','opium-wars','The Second Opium War.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(39,'d-day-normandy','part_of','world-war-2','The Allied landings in Normandy.','high','proposed','ai_drafted','2026-11-07 21:41:29');
@@ -9194,6 +9193,7 @@ INSERT INTO "relationships" VALUES(144,'gorbachev-becomes-leader','part_of','sov
 INSERT INTO "relationships" VALUES(145,'dissolution-soviet-union','part_of','soviet-union','The end of the Soviet Union.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(146,'lee-surrenders-appomattox','ended','american-civil-war','Lee''s surrender at Appomattox effectively ended the war.','high','reviewed','user','2026-11-08 22:55:58');
 INSERT INTO "relationships" VALUES(147,'american-war-independence-ends','ended','american-revolution','The Treaty of Paris formally ended the revolutionary war.','high','reviewed','user','2026-11-08 22:55:58');
+INSERT INTO "relationships" VALUES(148,'chinese-communist-revolution','ended','chinese-civil-war','The Communist victory and the founding of the People''s Republic ended the civil war''s main fighting; no peace treaty was ever signed, and the Nationalists held on in Taiwan.','high','reviewed','user','2026-11-08 22:57:09');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -9369,6 +9369,9 @@ INSERT INTO "review_log" VALUES(164,'2026-11-08 22:55:57','reject-link','lee-sur
 INSERT INTO "review_log" VALUES(165,'2026-11-08 22:55:57','reject-link','american-war-independence-ends','link #31: american-war-independence-ends part_of american-revolution — Should be ended (user, batch 1 review): an ending isn''t part of what it ends','cli');
 INSERT INTO "review_log" VALUES(166,'2026-11-08 22:55:58','approve-link','lee-surrenders-appomattox','link #146: lee-surrenders-appomattox ended american-civil-war','cli');
 INSERT INTO "review_log" VALUES(167,'2026-11-08 22:55:58','approve-link','american-war-independence-ends','link #147: american-war-independence-ends ended american-revolution','cli');
+INSERT INTO "review_log" VALUES(168,'2026-11-08 22:56:25','approve-link','battle-of-zama','link #21: battle-of-zama part_of punic-wars','dashboard');
+INSERT INTO "review_log" VALUES(169,'2026-11-08 22:57:09','reject-link','chinese-communist-revolution','link #36: chinese-communist-revolution part_of chinese-civil-war — Should be ended (user, batch 1 review): an ending isn''t part of what it ends','cli');
+INSERT INTO "review_log" VALUES(170,'2026-11-08 22:57:09','approve-link','chinese-communist-revolution','link #148: chinese-communist-revolution ended chinese-civil-war','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
