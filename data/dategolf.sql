@@ -9549,6 +9549,7 @@ END;
 CREATE TRIGGER time_spans_touch AFTER UPDATE ON time_spans BEGIN
   UPDATE entities SET updated_at = datetime('now') WHERE id = NEW.entity_id;
 END;
+CREATE UNIQUE INDEX countries_iso3 ON countries(iso3);
 CREATE VIEW v_csv_crosswalk_review AS
 SELECT x.csv_event_id, c.year_num AS csv_year, c.event AS csv_text,
        x.rank, x.tier, x.score, e.year AS event_year, x.entity_id, e.name AS event_name,
@@ -9585,21 +9586,22 @@ LEFT JOIN events e ON e.entity_id = x.entity_id
 LEFT JOIN time_spans s ON s.entity_id = x.entity_id
 WHERE x.position = 0
 ORDER BY x.status = 'reviewed', x.confidence = 'high', coalesce(e.year, s.start_year);
-CREATE UNIQUE INDEX countries_iso3 ON countries(iso3);
 CREATE VIEW v_link_review AS
 SELECT r.id, r.editorial_status AS status,
        r.source_entity_id AS source_id,
-       coalesce(se.name, ss.name) AS source_name, coalesce(se.year, ss.start_year) AS source_year,
+       coalesce(ss.name, se.name) AS source_name, coalesce(ss.start_year, se.year) AS source_year,
+       ss.end_year AS source_end_year,
        r.relationship_type AS type, t.inverse_label,
        r.target_entity_id AS target_id,
-       coalesce(te.name, ts.name) AS target_name, coalesce(te.year, ts.start_year) AS target_year,
+       coalesce(ts.name, te.name) AS target_name, coalesce(ts.start_year, te.year) AS target_year,
+       ts.end_year AS target_end_year,
        r.description AS why, r.confidence, r.origin, t.is_causal, t.symmetric
 FROM relationships r
 JOIN relationship_types t ON t.type = r.relationship_type
 LEFT JOIN events se ON se.entity_id = r.source_entity_id
-LEFT JOIN time_spans ss ON ss.entity_id = r.source_entity_id AND se.entity_id IS NULL
+LEFT JOIN time_spans ss ON ss.entity_id = r.source_entity_id
 LEFT JOIN events te ON te.entity_id = r.target_entity_id
-LEFT JOIN time_spans ts ON ts.entity_id = r.target_entity_id AND te.entity_id IS NULL
+LEFT JOIN time_spans ts ON ts.entity_id = r.target_entity_id
 ORDER BY r.editorial_status = 'reviewed', r.id;
 CREATE VIEW v_source_review AS
 SELECT x.entity_id,
