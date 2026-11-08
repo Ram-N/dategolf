@@ -190,6 +190,15 @@ def main():
                    help="Rename the span, not the event")
     p.set_defaults(fn=lambda a: edit.rename(a.id, a.name, a.description, a.facet))
 
+    p = sub.add_parser("set-span-years", help="Change a span's start and end years (signed; -215 = 215 BCE)")
+    p.add_argument("id")
+    p.add_argument("start", type=int)
+    p.add_argument("end", type=int)
+    g = p.add_mutually_exclusive_group()
+    g.add_argument("--approximate", action="store_const", const=True, dest="approximate", help="Mark as c.")
+    g.add_argument("--exact", action="store_const", const=False, dest="approximate", help="Clear c.")
+    p.set_defaults(fn=lambda a: edit.set_span_years(a.id, a.start, a.end, a.approximate))
+
     p = sub.add_parser("set-countries", help='Replace an entity\'s country tags, e.g. "IN, PK/actor"')
     p.add_argument("id")
     p.add_argument("spec")

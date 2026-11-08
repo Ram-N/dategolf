@@ -112,6 +112,16 @@ class TestRename(unittest.TestCase):
         self.assertEqual(quiet(edit.rename, "battle-of-hastings", "  ", via="test"), 1)
 
 
+    def test_set_span_years(self):
+        self.assertEqual(quiet(edit.set_span_years, "construction-great-wall", -215, -206, True, via="test"), 0)
+        self.assertEqual(db().execute("SELECT start_year, end_year, approximate FROM time_spans "
+                                      "WHERE entity_id = 'construction-great-wall'").fetchone(), (-215, -206, 1))
+        self.assertEqual(log_rows("construction-great-wall")[-1][0], "set-span-years")
+        self.assertEqual(quiet(edit.set_span_years, "construction-great-wall", -200, -206, via="test"), 1)
+        self.assertEqual(quiet(edit.set_span_years, "construction-great-wall", -1, 0, via="test"), 1)
+        self.assertEqual(quiet(edit.set_span_years, "no-such-id", 1, 2, via="test"), 1)
+
+
 class TestCountries(unittest.TestCase):
     def test_set_tags_replaces_and_logs(self):
         self.assertEqual(quiet(countries.set_tags, "battle-of-zama", "TN, IT/actor", via="test"), 0)
