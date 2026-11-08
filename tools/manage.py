@@ -8,6 +8,7 @@ import sys
 
 import countries
 import drafts
+import edit
 import exporter
 import identity
 import links
@@ -180,6 +181,14 @@ def main():
     p.add_argument("ids", nargs="+")
     p.add_argument("--reason", required=True)
     p.set_defaults(fn=lambda a: drafts.reject(a.ids, a.reason))
+
+    p = sub.add_parser("rename", help="Rename an event (old name kept as an alias) or a span; the id stays")
+    p.add_argument("id")
+    p.add_argument("name")
+    p.add_argument("--description", help="A new description too (must not mention the year)")
+    p.add_argument("--span", action="store_const", const="span", default="event", dest="facet",
+                   help="Rename the span, not the event")
+    p.set_defaults(fn=lambda a: edit.rename(a.id, a.name, a.description, a.facet))
 
     p = sub.add_parser("set-countries", help='Replace an entity\'s country tags, e.g. "IN, PK/actor"')
     p.add_argument("id")

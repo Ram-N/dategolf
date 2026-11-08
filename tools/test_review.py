@@ -24,6 +24,7 @@ sys.path.insert(0, str(HERE))
 import common  # noqa: E402
 import countries  # noqa: E402
 import drafts  # noqa: E402
+import edit  # noqa: E402
 import identity  # noqa: E402
 
 
@@ -88,6 +89,27 @@ class TestDrafts(unittest.TestCase):
         outcome, note = db().execute("SELECT outcome, note FROM legacy_csv_triage WHERE csv_event_id = 21").fetchone()
         self.assertEqual(outcome, "drafted")
         self.assertIn("Draft test-csv-draft rejected at review: not needed", note)
+
+
+class TestRename(unittest.TestCase):
+    def test_event_keeps_old_name_as_alias(self):
+        conn = db()
+        old = conn.execute("SELECT name FROM events WHERE entity_id = 'holocaust'").fetchone()[0]
+        self.assertEqual(quiet(edit.rename, "holocaust", "Test Holocaust Begins", "New text.", via="test"), 0)
+        self.assertEqual(conn.execute("SELECT name, description FROM events WHERE entity_id = 'holocaust'").fetchone(),
+                         ("Test Holocaust Begins", "New text."))
+        aliases = [r[0] for r in conn.execute("SELECT alias FROM event_aliases WHERE entity_id = 'holocaust'")]
+        self.assertIn(old, aliases)
+        self.assertEqual(log_rows("holocaust")[-1][0], "rename-event")
+
+    def test_span_and_refusals(self):
+        self.assertEqual(quiet(edit.rename, "meiji-restoration", "Test Meiji Era", facet="span", via="test"), 0)
+        self.assertEqual(db().execute("SELECT name FROM time_spans WHERE entity_id = 'meiji-restoration'"
+                                      ).fetchone()[0], "Test Meiji Era")
+        taken = db().execute("SELECT name FROM events WHERE entity_id = 'magna-carta'").fetchone()[0]
+        self.assertEqual(quiet(edit.rename, "battle-of-hastings", taken, via="test"), 1)
+        self.assertEqual(quiet(edit.rename, "no-such-id", "X", via="test"), 1)
+        self.assertEqual(quiet(edit.rename, "battle-of-hastings", "  ", via="test"), 1)
 
 
 class TestCountries(unittest.TestCase):
