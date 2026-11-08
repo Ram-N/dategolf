@@ -1189,7 +1189,7 @@
   },
   {
     "id": "fall-of-roman-empire-west",
-    "name": "Fall of the Western Roman Empire",
+    "name": "Last Western Roman Emperor Deposed",
     "year": 476,
     "categories": [
       "Politics",
@@ -1200,7 +1200,8 @@
       "Romulus Augustulus deposed",
       "end of Rome",
       "Roman collapse",
-      "barbarian kingdoms"
+      "barbarian kingdoms",
+      "Fall of the Western Roman Empire"
     ],
     "description": "The last Western Roman Emperor, Romulus Augustulus, is deposed by the Germanic chieftain Odoacer, marking the conventional end of the Western Roman Empire and the beginning of the Middle Ages. The fall reshapes Europe into a mosaic of Germanic kingdoms with profound consequences for civilization.",
     "difficulty": "medium",
@@ -6860,7 +6861,7 @@
   },
   {
     "id": "iran-islamic-revolution",
-    "name": "Iranian Islamic Revolution",
+    "name": "Islamic Republic Established in Iran",
     "year": 1979,
     "categories": [
       "Politics",
@@ -6872,7 +6873,8 @@
       "Khomeini revolution",
       "Shah overthrown Iran",
       "Islamic Republic Iran",
-      "Iranian revolution"
+      "Iranian revolution",
+      "Iranian Islamic Revolution"
     ],
     "description": "Ayatollah Khomeini leads a popular revolution that overthrows the US-backed Shah of Iran and establishes an Islamic Republic. The revolution reshapes Middle Eastern politics, triggers the Iran-Iraq War, and fundamentally alters US-Iran relations with repercussions that extend into the present day.",
     "difficulty": "medium",

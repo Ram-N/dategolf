@@ -35,7 +35,7 @@
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 1 |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 111 |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 106 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -114,8 +114,6 @@
 
 - `6` — egyptian-pyramids-built part_of construction-great-pyramid — The completion of the building work on the Great Pyramid.
 - `7` — great-wall-china part_of construction-great-wall — The start of building under the Qin.
-- `9` — fall-of-roman-empire-west part_of fall-western-roman-empire — 476, the final moment of the western empire's long decline.
-- `15` — iran-islamic-revolution part_of iranian-revolution — The revolution's victory, the climax of the span.
 - `18` — first-world-war-ends part_of world-war-1 — The armistice that ends the First World War.
 - `20` — end-world-war-two part_of world-war-2 — The end of the Second World War.
 - `21` — battle-of-zama part_of punic-wars — The battle that ends the Second Punic War.
@@ -175,13 +173,11 @@
 - `86` — death-of-akbar part_of mughal-empire — Akbar's death and Jahangir's succession.
 - `87` — jahangir-marries-nur-jahan part_of mughal-empire — The marriage that makes Nur Jahan a power at court.
 - `88` — death-of-jahangir part_of mughal-empire — Jahangir's death and Shah Jahan's succession.
-- `89` — taj-mahal-construction-begins part_of mughal-empire — Shah Jahan's imperial monument.
 - `90` — aurangzeb-becomes-emperor part_of mughal-empire — Aurangzeb's accession.
 - `91` — mughal-empire-zenith-aurangzeb part_of mughal-empire — The empire at its largest, at Aurangzeb's death.
 - `93` — death-of-shivaji part_of maratha-empire — The founder's death.
 - `94` — third-battle-of-panipat part_of maratha-empire — The Maratha defeat at Panipat.
 - `95` — partition-of-bengal part_of british-raj — An act of the Raj's administration.
-- `96` — indian-independence part_of british-raj — Independence ends British rule.
 - `98` — gandhi-salt-march part_of indian-independence-movement — The civil disobedience campaign against the salt tax.
 - `99` — quit-india-movement part_of indian-independence-movement — The movement's last great campaign.
 - `100` — silk-road-opens part_of han-dynasty — Opened by the Han envoy Zhang Qian's missions.
@@ -194,7 +190,6 @@
 - `109` — mongol-empire-peak part_of mongol-conquests — The empire at its height, after the conquest of Song China.
 - `110` — japan-meiji-constitution part_of meiji-restoration — The Meiji Constitution.
 - `111` — meiji-restoration-japan part_of tokugawa-shogunate — The restoration that ends the shogunate.
-- `112` — death-of-mao part_of cultural-revolution — Mao's death ends the Cultural Revolution.
 - `113` — moors-invade-spain part_of umayyad-caliphate — The Umayyad conquest of Iberia.
 - `115` — renaissance-begins-florence part_of italian-renaissance — The Renaissance's beginnings in Florence.
 - `116` — renaissance-da-vinci part_of italian-renaissance — Leonardo, a defining figure of the Italian Renaissance.

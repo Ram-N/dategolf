@@ -4172,13 +4172,13 @@
     },
     {
       "id": "iran-islamic-revolution",
-      "name": "Iranian Islamic Revolution",
+      "name": "Islamic Republic Established in Iran",
       "year": 1979,
       "title": "Iranian Revolution",
       "url": "https://en.wikipedia.org/wiki/Iranian_Revolution",
-      "origin": "title_match",
-      "confidence": "medium",
-      "asked": "Iranian Islamic Revolution",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Iranian Revolution",
       "note": null
     },
     {

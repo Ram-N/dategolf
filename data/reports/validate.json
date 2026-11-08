@@ -383,7 +383,7 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 111,
+      "count": 106,
       "rows": [
         [
           6,
@@ -392,14 +392,6 @@
         [
           7,
           "great-wall-china part_of construction-great-wall — The start of building under the Qin."
-        ],
-        [
-          9,
-          "fall-of-roman-empire-west part_of fall-western-roman-empire — 476, the final moment of the western empire's long decline."
-        ],
-        [
-          15,
-          "iran-islamic-revolution part_of iranian-revolution — The revolution's victory, the climax of the span."
         ],
         [
           18,
@@ -638,10 +630,6 @@
           "death-of-jahangir part_of mughal-empire — Jahangir's death and Shah Jahan's succession."
         ],
         [
-          89,
-          "taj-mahal-construction-begins part_of mughal-empire — Shah Jahan's imperial monument."
-        ],
-        [
           90,
           "aurangzeb-becomes-emperor part_of mughal-empire — Aurangzeb's accession."
         ],
@@ -660,10 +648,6 @@
         [
           95,
           "partition-of-bengal part_of british-raj — An act of the Raj's administration."
-        ],
-        [
-          96,
-          "indian-independence part_of british-raj — Independence ends British rule."
         ],
         [
           98,
@@ -712,10 +696,6 @@
         [
           111,
           "meiji-restoration-japan part_of tokugawa-shogunate — The restoration that ends the shogunate."
-        ],
-        [
-          112,
-          "death-of-mao part_of cultural-revolution — Mao's death ends the Cultural Revolution."
         ],
         [
           113,
