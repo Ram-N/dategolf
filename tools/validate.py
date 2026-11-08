@@ -195,11 +195,12 @@ def run():
                         "SELECT entity_id, reason FROM accepted_region_exceptions ORDER BY entity_id")]))
 
     # Link date sanity: causes and sequences run earlier → later; part_of sits inside its target.
+    # An entity's years cover both its facets: a shared id (event 1803 + span 1803-1815) spans 1803-1815.
     years = {}
-    for eid, y in conn.execute("SELECT entity_id, year FROM events"):
-        years[eid] = (y, y)
-    for eid, a, b in conn.execute("SELECT entity_id, start_year, end_year FROM time_spans"):
-        years.setdefault(eid, (a, b))
+    for eid, a, b in conn.execute("SELECT entity_id, year, year FROM events UNION ALL "
+                                  "SELECT entity_id, start_year, end_year FROM time_spans"):
+        lo, hi = years.get(eid, (a, b))
+        years[eid] = (min(lo, a), max(hi, b))
     forward, outside = [], []
     for lid, src, rtype, tgt, causal in conn.execute(
             "SELECT r.id, r.source_entity_id, r.relationship_type, r.target_entity_id, t.is_causal "
