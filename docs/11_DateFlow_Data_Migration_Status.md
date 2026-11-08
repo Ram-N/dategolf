@@ -12,7 +12,7 @@
 
 ## ▶ Your next actions (updated 2026-11-08)
 
-1. **Review the first link batch: 142 `part_of` links (108 left).** On the dashboard, go to **Review → Links**. The step-by-step guide is **doc 12 §4.6c**. The 9 medium-confidence links are the ones that need real judgement. *2026-11-08:* the 30 "event starts the span" links are approved. Four of their events were renamed to say "Begins", with the old names kept as aliases, and the span `meiji-restoration` is now named **Meiji Era** (`manage.py rename`).
+1. **Review the first link batch: 142 `part_of` links (107 left).** On the dashboard, go to **Review → Links**. The step-by-step guide is **doc 12 §4.6c**. The 9 medium-confidence links are the ones that need real judgement. *2026-11-08:* the 30 "event starts the span" links are approved. Four of their events were renamed to say "Begins", with the old names kept as aliases, and the span `meiji-restoration` is now named **Meiji Era** (`manage.py rename`).
 2. **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project` and `arab-spring` (all "one subject"). Change any with `manage.py identity <id> --one|--split|--drop-span|--drop-event`.
 3. **Then tell Claude to continue.** The next link batch is **sequences** (`preceded`, e.g. the Mughal succession), then **causal** links, then **3c** (export `relationships.json`).
 
@@ -22,7 +22,8 @@ Before reviewing, restart the dashboard (`npm run data:dashboard`) so it has the
 1. ~~**Step 5: Sources.**~~ ✅ Built 2026-11-08. The 57 CSV sources are in the db. **Batch 1 (460 articles) is a file only:** `data/drafts/sources_batch1.json`. Load it after the link review with `manage.py load-sources data/drafts/sources_batch1.json`, then review it in **Review → Sources** (doc 12 §4.6d).
 2. **Dashboard v3: the event editor.** One form to edit name, year, description, aliases, categories and countries, validated before saving (doc 13).
 3. **Draft link batch 2 (sequences / `preceded`, e.g. the Mughal succession) as a file only. Don't load it** until batch 1 is reviewed.
-4. **Later:** 3c (export `relationships.json`, best after the review) and Step 4 (new events for thin periods, best when no review queue is waiting).
+4. **Right after the link review: a date-precision batch (pre-sorted, as a file).** None of the 20 events before 500 BCE was marked approximate, though most are conventional dates (the wheel, writing, Troy, Kurukshetra, King David, ironworking...). Propose `--approximate` plus a `date_display` range for each, and consider making Kurukshetra DateFlow-only (its date is disputed by over 2,000 years). Apply with `manage.py set-event-date` after approval. Agreed 2026-11-08; the Great Pyramid was done as the first case.
+5. **Later:** 3c (export `relationships.json`, best after the review) and Step 4 (new events for thin periods, best when no review queue is waiting).
 
 ---
 
@@ -404,7 +405,7 @@ Validation then catches links to missing entities, self-links, unknown types and
 
 - **Review the 142 proposed `part_of` links** (see "Your next actions" above).
 - **The 5 Step 3a decisions to double-check** (see above).
-- **The Great Pyramid date conflict.** The CSV says c. 3000 BC and the app says 2560 BCE. It's recorded in triage and left unchanged.
+- ~~**The Great Pyramid date conflict.**~~ ✅ Resolved 2026-11-08. The CSV's c. 3000 BC is wrong. The event is now **Great Pyramid of Giza Completed, c. 2560 BCE** (approximate, `date_display` "c. 2600–2560 BCE"), and the span `construction-great-pyramid` is **c. 2600 to 2560 BCE**.
 - **The 39 triaged CSV rows** (duplicates or not recommended) are listed in `validate.md`, in case you want to revisit any at low importance.
 - *Done:* the 25 shared ids (Step 3a, 2026-11-07); the importance scale (1–9, 2026-11-06).
 

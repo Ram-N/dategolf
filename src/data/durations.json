@@ -31,7 +31,7 @@
   {
     "id": "construction-great-pyramid",
     "name": "Construction of the Great Pyramid of Giza",
-    "startYear": -2580,
+    "startYear": -2600,
     "endYear": -2560,
     "description": "Construction of the largest Egyptian pyramid as a tomb for Pharaoh Khufu",
     "categories": [
@@ -39,7 +39,8 @@
     ],
     "region": "Africa",
     "importance": 5,
-    "kind": "period"
+    "kind": "period",
+    "approximate": true
   },
   {
     "id": "akkadian-empire",

@@ -24,6 +24,17 @@
       "note": null
     },
     {
+      "id": "construction-great-pyramid",
+      "name": "Construction of the Great Pyramid of Giza",
+      "year": -2600,
+      "title": "Great Pyramid of Giza",
+      "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Great Pyramid of Giza",
+      "note": null
+    },
+    {
       "id": "indus-valley-begins",
       "name": "Indus Valley Civilization Begins",
       "year": -2600,
@@ -46,19 +57,8 @@
       "note": null
     },
     {
-      "id": "construction-great-pyramid",
-      "name": "Construction of the Great Pyramid of Giza",
-      "year": -2580,
-      "title": "Great Pyramid of Giza",
-      "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
-      "origin": "ai_drafted",
-      "confidence": "high",
-      "asked": "Great Pyramid of Giza",
-      "note": null
-    },
-    {
       "id": "egyptian-pyramids-built",
-      "name": "Great Pyramid of Giza Built",
+      "name": "Great Pyramid of Giza Completed",
       "year": -2560,
       "title": "Great Pyramid of Giza",
       "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
@@ -464,17 +464,6 @@
       "note": null
     },
     {
-      "id": "construction-great-wall",
-      "name": "Construction of the Great Wall of China",
-      "year": -221,
-      "title": "Great Wall of China",
-      "url": "https://en.wikipedia.org/wiki/Great_Wall_of_China",
-      "origin": "ai_drafted",
-      "confidence": "high",
-      "asked": "Great Wall of China",
-      "note": null
-    },
-    {
       "id": "qin-unification-china",
       "name": "Qin Dynasty Unifies China",
       "year": -221,
@@ -483,6 +472,17 @@
       "origin": "ai_drafted",
       "confidence": "high",
       "asked": "Qin's wars of unification",
+      "note": null
+    },
+    {
+      "id": "construction-great-wall",
+      "name": "Construction of the Great Wall of China",
+      "year": -215,
+      "title": "Great Wall of China",
+      "url": "https://en.wikipedia.org/wiki/Great_Wall_of_China",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Great Wall of China",
       "note": null
     },
     {

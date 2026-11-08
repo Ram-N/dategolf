@@ -1988,7 +1988,7 @@ INSERT INTO "entities" VALUES('invention-of-the-wheel','event','imported',NULL,'
 INSERT INTO "entities" VALUES('sumerian-writing','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('first-cities-mesopotamia','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('indus-valley-begins','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('egyptian-pyramids-built','event','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('egyptian-pyramids-built','event','imported',NULL,'2026-11-08 22:01:05');
 INSERT INTO "entities" VALUES('code-of-hammurabi','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('phoenician-alphabet-invented','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('fall-of-troy','event','imported',NULL,NULL);
@@ -2329,7 +2329,7 @@ INSERT INTO "entities" VALUES('covid-19-pandemic','event','reviewed',NULL,'2026-
 INSERT INTO "entities" VALUES('chandrayaan-3-lunar-landing','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('old-kingdom-egypt','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('indus-valley-mature','empire','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('construction-great-pyramid','period','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('construction-great-pyramid','period','imported',NULL,'2026-11-08 22:01:05');
 INSERT INTO "entities" VALUES('akkadian-empire','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('shang-dynasty','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('new-kingdom-egypt','empire','imported',NULL,NULL);
@@ -6119,6 +6119,7 @@ INSERT INTO "event_aliases" VALUES('chinese-cultural-revolution',4,'Chinese Cult
 INSERT INTO "event_aliases" VALUES('industrial-revolution-textile',5,'Industrial Revolution Transforms Britain');
 INSERT INTO "event_aliases" VALUES('iran-islamic-revolution',4,'Iranian Islamic Revolution');
 INSERT INTO "event_aliases" VALUES('fall-of-roman-empire-west',4,'Fall of the Western Roman Empire');
+INSERT INTO "event_aliases" VALUES('egyptian-pyramids-built',4,'Great Pyramid of Giza Built');
 CREATE TABLE events (
   entity_id      TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   name           TEXT NOT NULL UNIQUE,
@@ -6136,7 +6137,7 @@ INSERT INTO "events" VALUES('invention-of-the-wheel','Invention of the Wheel',-3
 INSERT INTO "events" VALUES('sumerian-writing','Invention of Sumerian Writing',-3200,'Middle East','The Sumerians of ancient Mesopotamia develop cuneiform, the world''s earliest writing system, initially used for recording trade transactions on clay tablets. This invention enables the transmission of complex knowledge, law, and literature across generations and marks the beginning of recorded history.','easy',5,NULL,NULL,NULL,1);
 INSERT INTO "events" VALUES('first-cities-mesopotamia','First Cities Founded in Mesopotamia',-3000,'Middle East','The first true cities emerge in Sumer, the southern region of Mesopotamia, with Uruk growing into the world''s largest settlement with a population in the tens of thousands. These urban centers develop specialized labor, centralized administration, monumental architecture, and complex trade networks stretching across the ancient Near East. The Sumerian city-state becomes the template for human political and social organization.','medium',8,NULL,NULL,NULL,2);
 INSERT INTO "events" VALUES('indus-valley-begins','Indus Valley Civilization Begins',-2600,'South Asia','One of the world''s earliest urban civilizations emerges in the Indus River valley, featuring advanced city planning, drainage systems, and trade networks. Cities like Mohenjo-daro and Harappa flourish with populations in the tens of thousands.','medium',5,NULL,NULL,NULL,3);
-INSERT INTO "events" VALUES('egyptian-pyramids-built','Great Pyramid of Giza Built',-2560,'Africa','The Great Pyramid of Giza is constructed as a tomb for Pharaoh Khufu, requiring an estimated 2.3 million stone blocks and decades of labor. It stands as the tallest man-made structure in the world for nearly four millennia and remains one of the seven wonders of the ancient world.','easy',5,NULL,NULL,NULL,4);
+INSERT INTO "events" VALUES('egyptian-pyramids-built','Great Pyramid of Giza Completed',-2560,'Africa','The Great Pyramid of Giza is constructed as a tomb for Pharaoh Khufu, requiring an estimated 2.3 million stone blocks and decades of labor. It stands as the tallest man-made structure in the world for nearly four millennia and remains one of the seven wonders of the ancient world.','easy',5,NULL,1,'c. 2600–2560 BCE',4);
 INSERT INTO "events" VALUES('code-of-hammurabi','Code of Hammurabi Established',-1754,'Middle East','Babylonian king Hammurabi promulgates one of the earliest and most complete written legal codes, covering commerce, property, family, and criminal law. The code, inscribed on a stone stele, introduces the principle of presumption of innocence and establishes the idea of law as a public institution.','medium',4,NULL,NULL,NULL,5);
 INSERT INTO "events" VALUES('phoenician-alphabet-invented','Phoenician Alphabet Invented',-1600,'Middle East','The Phoenicians develop the first widely used alphabetic writing system, consisting of 22 consonant letters derived from earlier Semitic scripts used in the Sinai Peninsula. Unlike the complex syllabic systems of Mesopotamia and Egypt, the alphabet''s simplicity allows merchants and administrators to learn it rapidly, and it spreads across the Mediterranean world through Phoenician trade networks. Nearly all modern alphabets, including Greek, Latin, Arabic, and Hebrew, descend from this Phoenician innovation.','hard',9,NULL,NULL,NULL,6);
 INSERT INTO "events" VALUES('fall-of-troy','Fall of Troy',-1200,'Europe','The city of Troy, located in present-day northwest Turkey, falls to a coalition of Greek forces after a legendary ten-year siege, according to ancient tradition immortalized in Homer''s Iliad. The Trojan horse — a giant wooden horse concealing Greek soldiers — becomes one of history''s most enduring stories of deception in warfare. Archaeological excavations at Hisarlik confirm a real Bronze Age city was violently destroyed around this period, lending historical weight to the legend.','easy',6,NULL,NULL,NULL,7);
@@ -9053,7 +9054,7 @@ INSERT INTO "relationships" VALUES(2,'indian-independence','part_of','indian-ind
 INSERT INTO "relationships" VALUES(3,'human-genome-project','part_of','human-genome-project-period','''Human Genome Project Completed'' is a moment within ''Human Genome Project'' (created by the split).','high','reviewed','split','2026-11-07 21:33:23');
 INSERT INTO "relationships" VALUES(4,'maya-classic-period','part_of','classic-maya','The start of the Classic period of Maya civilization.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(5,'black-death-europe','part_of','black-death','The plague''s arrival in Europe, the core of the pandemic.','high','reviewed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(6,'egyptian-pyramids-built','part_of','construction-great-pyramid','The completion of the building work on the Great Pyramid.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(6,'egyptian-pyramids-built','part_of','construction-great-pyramid','The completion of the building work on the Great Pyramid.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(7,'great-wall-china','part_of','construction-great-wall','The start of building under the Qin.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(8,'taj-mahal-construction-begins','part_of','construction-taj-mahal','The start of the Taj Mahal''s construction.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(9,'fall-of-roman-empire-west','part_of','fall-western-roman-empire','476, the final moment of the western empire''s long decline.','high','reviewed','suggested','2026-11-07 21:41:29');
@@ -9190,7 +9191,7 @@ INSERT INTO "relationships" VALUES(139,'civil-rights-act-us','part_of','civil-ri
 INSERT INTO "relationships" VALUES(140,'sputnik-launch','part_of','space-race','The first satellite starts the space race.','high','reviewed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(141,'space-race-yuri-gagarin','part_of','space-race','The first human in space.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(142,'moon-landing','part_of','space-race','The Moon landing, the race''s culmination.','high','proposed','ai_drafted','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(143,'death-of-stalin','part_of','soviet-union','The death of the Soviet leader.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(143,'death-of-stalin','part_of','soviet-union','The death of the Soviet leader.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(144,'gorbachev-becomes-leader','part_of','soviet-union','Gorbachev becomes the Soviet leader.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(145,'dissolution-soviet-union','part_of','soviet-union','The end of the Soviet Union.','high','proposed','suggested','2026-11-07 21:41:29');
 CREATE TABLE review_log (
@@ -9338,6 +9339,11 @@ INSERT INTO "review_log" VALUES(134,'2026-11-08 21:52:41','approve-link','iran-i
 INSERT INTO "review_log" VALUES(135,'2026-11-08 21:55:00','set-span-years','construction-great-wall','-221 to -206 → c. -215 to -206','cli');
 INSERT INTO "review_log" VALUES(136,'2026-11-08 21:55:00','rename-event','qin-unification-china','''Qin Dynasty Unifies China'' → ''Qin Dynasty Unifies China''; new description','cli');
 INSERT INTO "review_log" VALUES(137,'2026-11-08 21:55:00','approve-link','great-wall-china','link #7: great-wall-china part_of construction-great-wall','cli');
+INSERT INTO "review_log" VALUES(138,'2026-11-08 21:56:08','approve-link','death-of-stalin','link #143: death-of-stalin part_of soviet-union','dashboard');
+INSERT INTO "review_log" VALUES(139,'2026-11-08 22:01:05','set-event-date','egyptian-pyramids-built','-2560 → c. -2560 (c. 2600–2560 BCE)','cli');
+INSERT INTO "review_log" VALUES(140,'2026-11-08 22:01:05','rename-event','egyptian-pyramids-built','''Great Pyramid of Giza Built'' → ''Great Pyramid of Giza Completed''','cli');
+INSERT INTO "review_log" VALUES(141,'2026-11-08 22:01:05','set-span-years','construction-great-pyramid','-2580 to -2560 → c. -2600 to -2560','cli');
+INSERT INTO "review_log" VALUES(142,'2026-11-08 22:01:06','approve-link','egyptian-pyramids-built','link #6: egyptian-pyramids-built part_of construction-great-pyramid','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -9417,7 +9423,7 @@ CREATE TABLE time_spans (
 );
 INSERT INTO "time_spans" VALUES('old-kingdom-egypt','empire','Old Kingdom of Egypt',-2686,-2181,'The age of the pyramid builders, when pharaohs ruled a unified Egypt from Memphis.','Africa',6,1,0);
 INSERT INTO "time_spans" VALUES('indus-valley-mature','empire','Indus Valley Civilization (Mature Phase)',-2600,-1900,'Planned cities such as Harappa and Mohenjo-daro flourished with drainage, standard weights and an undeciphered script.','South Asia',8,1,1);
-INSERT INTO "time_spans" VALUES('construction-great-pyramid','period','Construction of the Great Pyramid of Giza',-2580,-2560,'Construction of the largest Egyptian pyramid as a tomb for Pharaoh Khufu','Africa',5,NULL,2);
+INSERT INTO "time_spans" VALUES('construction-great-pyramid','period','Construction of the Great Pyramid of Giza',-2600,-2560,'Construction of the largest Egyptian pyramid as a tomb for Pharaoh Khufu','Africa',5,1,2);
 INSERT INTO "time_spans" VALUES('akkadian-empire','empire','Akkadian Empire',-2334,-2154,'Founded by Sargon of Akkad, often called the first empire, uniting the city-states of Mesopotamia.','Middle East',5,1,3);
 INSERT INTO "time_spans" VALUES('shang-dynasty','empire','Shang Dynasty',-1600,-1046,'The first Chinese dynasty with written records, known for bronze work and oracle-bone inscriptions.','East Asia',6,1,4);
 INSERT INTO "time_spans" VALUES('new-kingdom-egypt','empire','New Kingdom of Egypt',-1550,-1070,'Egypt''s imperial age of Hatshepsut, Akhenaten, Tutankhamun and Ramesses II.','Africa',6,1,5);

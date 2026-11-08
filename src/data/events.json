@@ -81,7 +81,7 @@
   },
   {
     "id": "egyptian-pyramids-built",
-    "name": "Great Pyramid of Giza Built",
+    "name": "Great Pyramid of Giza Completed",
     "year": -2560,
     "categories": [
       "Culture",
@@ -92,11 +92,13 @@
       "Khufu pyramid",
       "Cheops pyramid",
       "Giza pyramids",
-      "seven wonders ancient world"
+      "seven wonders ancient world",
+      "Great Pyramid of Giza Built"
     ],
     "description": "The Great Pyramid of Giza is constructed as a tomb for Pharaoh Khufu, requiring an estimated 2.3 million stone blocks and decades of labor. It stands as the tallest man-made structure in the world for nearly four millennia and remains one of the seven wonders of the ancient world.",
     "difficulty": "easy",
-    "importance": 5
+    "importance": 5,
+    "approximate": true
   },
   {
     "id": "code-of-hammurabi",

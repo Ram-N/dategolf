@@ -383,12 +383,8 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 105,
+      "count": 103,
       "rows": [
-        [
-          6,
-          "egyptian-pyramids-built part_of construction-great-pyramid — The completion of the building work on the Great Pyramid."
-        ],
         [
           18,
           "first-world-war-ends part_of world-war-1 — The armistice that ends the First World War."
@@ -792,10 +788,6 @@
         [
           142,
           "moon-landing part_of space-race — The Moon landing, the race's culmination."
-        ],
-        [
-          143,
-          "death-of-stalin part_of soviet-union — The death of the Soviet leader."
         ],
         [
           144,
