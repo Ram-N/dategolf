@@ -35,7 +35,7 @@
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 1 |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 103 |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 98 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -45,6 +45,7 @@
 | info | Accepted region exceptions (region deliberately differs from location) | 3 |
 | warning | Link runs backwards in time (cause or sequence after its target) | pass |
 | warning | part_of link outside the target's years | pass |
+| warning | ended link not at the end of what it ended | pass |
 | info | Counts changed since the legacy import | 1 |
 
 ## Counts
@@ -179,15 +180,10 @@
 - `98` — gandhi-salt-march part_of indian-independence-movement — The civil disobedience campaign against the salt tax.
 - `99` — quit-india-movement part_of indian-independence-movement — The movement's last great campaign.
 - `100` — silk-road-opens part_of han-dynasty — Opened by the Han envoy Zhang Qian's missions.
-- `101` — paper-invented-china part_of han-dynasty — Paper-making under the Han.
-- `102` — woodblock-printing-china part_of tang-dynasty — Woodblock printing under the Tang.
-- `103` — printing-movable-type-china part_of song-dynasty — Bi Sheng's movable type under the Song.
-- `104` — invention-of-compass part_of song-dynasty — The magnetic compass under the Song.
 - `106` — zheng-he-voyages part_of ming-dynasty — The Ming treasure-fleet voyages.
 - `107` — fall-of-qing-dynasty part_of qing-dynasty — The end of the Qing.
 - `109` — mongol-empire-peak part_of mongol-conquests — The empire at its height, after the conquest of Song China.
 - `110` — japan-meiji-constitution part_of meiji-restoration — The Meiji Constitution.
-- `111` — meiji-restoration-japan part_of tokugawa-shogunate — The restoration that ends the shogunate.
 - `113` — moors-invade-spain part_of umayyad-caliphate — The Umayyad conquest of Iberia.
 - `115` — renaissance-begins-florence part_of italian-renaissance — The Renaissance's beginnings in Florence.
 - `116` — renaissance-da-vinci part_of italian-renaissance — Leonardo, a defining figure of the Italian Renaissance.

@@ -296,9 +296,10 @@ For each proposed link: **is this sentence true, and is it the right *kind* of l
    - **Endings as part of what they end:** Indian independence → British Raj, Meiji → Tokugawa shogunate, Mao's death → Cultural Revolution.
    - **Charlemagne's coronation → Holy Roman Empire:** historians debate whether the empire starts there or in 962.
    - **Taj Mahal construction → Mughal Empire.**
-3. **Decide the 30 "starts the span" links as a group.** Choose **Show → Event starts the span**. Each one is an event in a span's first year, often the same subject (Black Death Strikes Europe → The Black Death, 1347 to 1353). Approve them all if you want year markers tied to their periods, or reject with "same subject as the span". Spans always show their full years (e.g. "1347 to 1353"), and events show one year.
-4. **Reject what's wrong:** tick it, click **Reject…**, and give a short reason (it's logged). If it's really a different link type, add a note in the reason, e.g. "should be enabled", and Claude can redraft it.
-5. **Approve the rest:** tick them (the header checkbox selects everything still listed), then click **Approve**.
+3. **Endings aren't `part_of`.** If an event *ended* the span (a revolution overthrowing a dynasty), reject the link with a reason such as "should be ended". Claude redrafts it as `ended` ("X ended Y", read from Y as "was ended by X") in the next batch. Example: Meiji Restoration → Tokugawa Shogunate.
+4. **Decide the 30 "starts the span" links as a group.** Choose **Show → Event starts the span**. Each one is an event in a span's first year, often the same subject (Black Death Strikes Europe → The Black Death, 1347 to 1353). Approve them all if you want year markers tied to their periods, or reject with "same subject as the span". Spans always show their full years (e.g. "1347 to 1353"), and events show one year.
+5. **Reject what's wrong:** tick it, click **Reject…**, and give a short reason (it's logged). If it's really a different link type, add a note in the reason, e.g. "should be enabled", and Claude can redraft it.
+6. **Approve the rest:** tick them (the header checkbox selects everything still listed), then click **Approve**.
 
 **From the terminal instead:**
 ```bash

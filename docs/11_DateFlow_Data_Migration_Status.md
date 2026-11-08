@@ -12,7 +12,7 @@
 
 ## ▶ Your next actions (updated 2026-11-08)
 
-1. **Review the first link batch: 142 `part_of` links (107 left).** On the dashboard, go to **Review → Links**. The step-by-step guide is **doc 12 §4.6c**. The 9 medium-confidence links are the ones that need real judgement. *2026-11-08:* the 30 "event starts the span" links are approved. Four of their events were renamed to say "Begins", with the old names kept as aliases, and the span `meiji-restoration` is now named **Meiji Era** (`manage.py rename`).
+1. **Review the first link batch: 142 `part_of` links (98 left).** On the dashboard, go to **Review → Links**. The step-by-step guide is **doc 12 §4.6c**. The 9 medium-confidence links are the ones that need real judgement. *2026-11-08:* the 30 "event starts the span" links are approved. Four of their events were renamed to say "Begins", with the old names kept as aliases, and the span `meiji-restoration` is now named **Meiji Era** (`manage.py rename`).
 2. **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project` and `arab-spring` (all "one subject"). Change any with `manage.py identity <id> --one|--split|--drop-span|--drop-event`.
 3. **Then tell Claude to continue.** The next link batch is **sequences** (`preceded`, e.g. the Mughal succession), then **causal** links, then **3c** (export `relationships.json`).
 
@@ -21,7 +21,7 @@ Before reviewing, restart the dashboard (`npm run data:dashboard`) so it has the
 **Claude's side while you review (agreed order, 2026-11-08). Pick work that doesn't add to your review queue:**
 1. ~~**Step 5: Sources.**~~ ✅ Built 2026-11-08. The 57 CSV sources are in the db. **Batch 1 (460 articles) is a file only:** `data/drafts/sources_batch1.json`. Load it after the link review with `manage.py load-sources data/drafts/sources_batch1.json`, then review it in **Review → Sources** (doc 12 §4.6d).
 2. **Dashboard v3: the event editor.** One form to edit name, year, description, aliases, categories and countries, validated before saving (doc 13).
-3. **Draft link batch 2 (sequences / `preceded`, e.g. the Mughal succession) as a file only. Don't load it** until batch 1 is reviewed.
+3. **Draft link batch 2 (sequences / `preceded`, e.g. the Mughal succession, plus `ended` links such as Meiji Restoration → Tokugawa Shogunate) as a file only. Don't load it** until batch 1 is reviewed. *2026-11-08:* the `ended` type was added after the user rejected "Meiji Restoration is part of the Tokugawa Shogunate". Endings aren't part of what they end.
 4. **Right after the link review: a date-precision batch (pre-sorted, as a file).** None of the 20 events before 500 BCE was marked approximate, though most are conventional dates (the wheel, writing, Troy, Kurukshetra, King David, ironworking...). Propose `--approximate` plus a `date_display` range for each, and consider making Kurukshetra DateFlow-only (its date is disputed by over 2,000 years). Apply with `manage.py set-event-date` after approval. Agreed 2026-11-08; the Great Pyramid was done as the first case.
 5. **Later:** 3c (export `relationships.json`, best after the review) and Step 4 (new events for thin periods, best when no review queue is waiting).
 
@@ -255,6 +255,7 @@ Either end can be an event or a span. Each link carries a **one-line "why"** (th
   | `caused` | caused | was caused by |
   | `part_of` | is part of | **includes** |
   | `evolved_into` | evolved into | evolved from |
+  | `ended` | ended | **was ended by** |
   | `contemporary_with`, `opposed`, `interacted_with` | *(symmetric: reads the same both ways)* | |
 
   So Kilby's card says "preceded Noyce's chip", and Noyce's card says "followed Kilby's chip": **two-way links, one row.**
@@ -273,6 +274,7 @@ Either end can be an event or a span. Each link carries a **one-line "why"** (th
 | `contributed_to` | the source was one of several factors | Treaty of Versailles → rise of Nazism |
 | `enabled` | the source made the target *possible*, without being its motive | Second Battle of Tarain → founding of the Delhi Sultanate |
 | `influenced` | ideas or culture shaped the target | Enlightenment thinkers → American Declaration |
+| `ended` *(added 2026-11-08)* | the source brought the target to an end; it falls at the target's end (validate warns otherwise) | Meiji Restoration → Tokugawa Shogunate |
 
 - **Non-causal types** (no claim of cause): `part_of`, `preceded`, `contemporary_with`, `evolved_into`, `opposed`, `interacted_with`. **Close in time is not causation** (doc 10 §4.5).
 

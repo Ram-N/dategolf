@@ -383,7 +383,7 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 103,
+      "count": 98,
       "rows": [
         [
           18,
@@ -654,22 +654,6 @@
           "silk-road-opens part_of han-dynasty — Opened by the Han envoy Zhang Qian's missions."
         ],
         [
-          101,
-          "paper-invented-china part_of han-dynasty — Paper-making under the Han."
-        ],
-        [
-          102,
-          "woodblock-printing-china part_of tang-dynasty — Woodblock printing under the Tang."
-        ],
-        [
-          103,
-          "printing-movable-type-china part_of song-dynasty — Bi Sheng's movable type under the Song."
-        ],
-        [
-          104,
-          "invention-of-compass part_of song-dynasty — The magnetic compass under the Song."
-        ],
-        [
           106,
           "zheng-he-voyages part_of ming-dynasty — The Ming treasure-fleet voyages."
         ],
@@ -684,10 +668,6 @@
         [
           110,
           "japan-meiji-constitution part_of meiji-restoration — The Meiji Constitution."
-        ],
-        [
-          111,
-          "meiji-restoration-japan part_of tokugawa-shogunate — The restoration that ends the shogunate."
         ],
         [
           113,
@@ -912,6 +892,12 @@
     {
       "severity": "warning",
       "check": "part_of link outside the target's years",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "warning",
+      "check": "ended link not at the end of what it ended",
       "count": 0,
       "rows": []
     },

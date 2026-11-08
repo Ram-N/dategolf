@@ -9038,6 +9038,7 @@ INSERT INTO "relationship_types" VALUES('contemporary_with',0,'Happened or exist
 INSERT INTO "relationship_types" VALUES('opposed',0,'Were on opposite sides.','either way','opposed',1);
 INSERT INTO "relationship_types" VALUES('interacted_with',0,'Had contact or exchange.','either way','interacted with',1);
 INSERT INTO "relationship_types" VALUES('evolved_into',0,'The source changed into the target over time.','earlier → later','evolved from',0);
+INSERT INTO "relationship_types" VALUES('ended',1,'The source brought the target to an end: a revolution ending a dynasty, independence ending colonial rule. The source falls at the target''s end.','ender → what ended','was ended by',0);
 CREATE TABLE relationships (
   id                INTEGER PRIMARY KEY,
   source_entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
@@ -9149,17 +9150,16 @@ INSERT INTO "relationships" VALUES(97,'non-cooperation-movement','part_of','indi
 INSERT INTO "relationships" VALUES(98,'gandhi-salt-march','part_of','indian-independence-movement','The civil disobedience campaign against the salt tax.','high','proposed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(99,'quit-india-movement','part_of','indian-independence-movement','The movement''s last great campaign.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(100,'silk-road-opens','part_of','han-dynasty','Opened by the Han envoy Zhang Qian''s missions.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(101,'paper-invented-china','part_of','han-dynasty','Paper-making under the Han.','medium','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(102,'woodblock-printing-china','part_of','tang-dynasty','Woodblock printing under the Tang.','medium','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(103,'printing-movable-type-china','part_of','song-dynasty','Bi Sheng''s movable type under the Song.','medium','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(104,'invention-of-compass','part_of','song-dynasty','The magnetic compass under the Song.','medium','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(101,'paper-invented-china','part_of','han-dynasty','Paper-making under the Han.','medium','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(102,'woodblock-printing-china','part_of','tang-dynasty','Woodblock printing under the Tang.','medium','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(103,'printing-movable-type-china','part_of','song-dynasty','Bi Sheng''s movable type under the Song.','medium','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(104,'invention-of-compass','part_of','song-dynasty','The magnetic compass under the Song.','medium','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(105,'ming-dynasty-founded','part_of','ming-dynasty','The founding of the Ming.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(106,'zheng-he-voyages','part_of','ming-dynasty','The Ming treasure-fleet voyages.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(107,'fall-of-qing-dynasty','part_of','qing-dynasty','The end of the Qing.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(108,'genghis-khan-unifies-mongols','part_of','mongol-conquests','The unification that launches the conquests.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(109,'mongol-empire-peak','part_of','mongol-conquests','The empire at its height, after the conquest of Song China.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(110,'japan-meiji-constitution','part_of','meiji-restoration','The Meiji Constitution.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(111,'meiji-restoration-japan','part_of','tokugawa-shogunate','The restoration that ends the shogunate.','medium','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(112,'death-of-mao','part_of','cultural-revolution','Mao''s death ends the Cultural Revolution.','medium','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(113,'moors-invade-spain','part_of','umayyad-caliphate','The Umayyad conquest of Iberia.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(114,'viking-raids-begin','part_of','viking-age','The Lindisfarne raid that opens the Viking Age.','high','reviewed','suggested','2026-11-07 21:41:29');
@@ -9344,6 +9344,12 @@ INSERT INTO "review_log" VALUES(139,'2026-11-08 22:01:05','set-event-date','egyp
 INSERT INTO "review_log" VALUES(140,'2026-11-08 22:01:05','rename-event','egyptian-pyramids-built','''Great Pyramid of Giza Built'' → ''Great Pyramid of Giza Completed''','cli');
 INSERT INTO "review_log" VALUES(141,'2026-11-08 22:01:05','set-span-years','construction-great-pyramid','-2580 to -2560 → c. -2600 to -2560','cli');
 INSERT INTO "review_log" VALUES(142,'2026-11-08 22:01:06','approve-link','egyptian-pyramids-built','link #6: egyptian-pyramids-built part_of construction-great-pyramid','cli');
+INSERT INTO "review_log" VALUES(143,'2026-11-08 22:04:19','approve-link','paper-invented-china','link #101: paper-invented-china part_of han-dynasty','dashboard');
+INSERT INTO "review_log" VALUES(144,'2026-11-08 22:06:11','approve-link','woodblock-printing-china','link #102: woodblock-printing-china part_of tang-dynasty','dashboard');
+INSERT INTO "review_log" VALUES(145,'2026-11-08 22:06:11','approve-link','printing-movable-type-china','link #103: printing-movable-type-china part_of song-dynasty','dashboard');
+INSERT INTO "review_log" VALUES(146,'2026-11-08 22:07:24','approve-link','invention-of-compass','link #104: invention-of-compass part_of song-dynasty','dashboard');
+INSERT INTO "review_log" VALUES(147,'2026-11-08 22:12:34','reject-link','meiji-restoration-japan','link #111: meiji-restoration-japan part_of tokugawa-shogunate — It is not a part, it ended the Shogunate.','dashboard');
+INSERT INTO "review_log" VALUES(148,'2026-11-08 22:13:34','add-link-type','type:ended','ended / was ended by: The source brought the target to an end: a revolution ending a dynasty, independence ending colonial rule. The source falls at the target''s end.','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
