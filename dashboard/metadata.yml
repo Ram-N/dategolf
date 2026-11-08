@@ -106,6 +106,17 @@ databases:
       legacy_csv_triage:
         description: The outcome for CSV rows with no matching event (drafted, duplicate, or not recommended).
         facets: [outcome]
+      sources:
+        description: "Step 5: one row per Wikipedia article (or web page or book); several entities can share one."
+        facets: [kind]
+        label_column: title
+        columns:
+          url: May end in a #section (e.g. the CSV's links)
+      entity_sources:
+        description: "Which source supports which event or span. Proposed rows await review (Review → Sources)."
+        facets: [status, origin, confidence]
+        columns:
+          origin: "csv (from events_master.csv) / title_match (the name is the article title) / ai_drafted (picked by Claude)"
 
       # ── Review views ──────────────────────────────────────────────
       v_country_review:
@@ -114,6 +125,9 @@ databases:
         description: Event drafts awaiting approval (empty when nothing is waiting).
       v_csv_crosswalk_review:
         description: CSV rows next to their candidate events (all decided).
+      v_source_review:
+        description: Each entity's sources with its name and year; proposed, picked ones first.
+        facets: [status, origin]
 
       # ── Internal (hidden; still reachable through SQL) ────────────
       import_records:
@@ -141,7 +155,9 @@ databases:
                  p.origin, p.note AS review_note,
                  (SELECT event FROM legacy_csv_rows WHERE event_id = coalesce(p.csv_event_id,
                     (SELECT csv_event_id FROM legacy_csv_crosswalk
-                      WHERE entity_id = e.entity_id AND decision = 'accepted' LIMIT 1))) AS csv_source_text
+                      WHERE entity_id = e.entity_id AND decision = 'accepted' LIMIT 1))) AS csv_source_text,
+                 (SELECT group_concat(o.url, ' ') FROM entity_sources x JOIN sources o ON o.id = x.source_id
+                    WHERE x.entity_id = e.entity_id) AS sources
           FROM events e
           JOIN entities n ON n.id = e.entity_id
           LEFT JOIN entity_provenance p ON p.entity_id = e.entity_id
@@ -223,6 +239,16 @@ databases:
           JOIN time_spans s ON s.entity_id = e.entity_id
           JOIN entities n ON n.id = e.entity_id
           ORDER BY e.year
+      unsourced:
+        title: Events and spans without a source
+        description: "Published entities with no source yet (Step 5). Fill them with suggest-sources, then load-sources."
+        sql: |-
+          SELECT n.id, n.primary_type, coalesce(e.year, s.start_year) AS year, coalesce(e.name, s.name) AS name
+          FROM entities n
+          LEFT JOIN events e ON e.entity_id = n.id
+          LEFT JOIN time_spans s ON s.entity_id = n.id
+          WHERE n.editorial_status <> 'proposed' AND n.id NOT IN (SELECT entity_id FROM entity_sources)
+          ORDER BY year
       review_queue:
         title: Review queue
         description: Everything waiting on a human decision, across all queues.

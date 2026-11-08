@@ -5,7 +5,7 @@ import hashlib
 import streamlit as st
 
 from lib import actions
-from lib.db import link_sentence, q
+from lib.db import has_sources, link_sentence, q, source_links
 
 st.title("Review")
 
@@ -27,7 +27,7 @@ if "review_result" in st.session_state:
         st.info("The game JSON now differs from the db: **Export** on the Overview page when you're done reviewing.")
 
 
-def selectable(df, key, columns=None, id_col="entity_id"):
+def selectable(df, key, columns=None, id_col="entity_id", column_config=None):
     """A table with tickable rows; returns the selected rows as a DataFrame.
 
     Streamlit remembers a selection by row *position*. After an action the rows change
@@ -37,7 +37,7 @@ def selectable(df, key, columns=None, id_col="entity_id"):
     ids = "|".join(df[id_col].astype(str))
     widget_key = f"{key}-{hashlib.sha1(ids.encode()).hexdigest()[:10]}"
     shown = df[columns] if columns else df
-    event = st.dataframe(shown, hide_index=True, width="stretch", key=widget_key,
+    event = st.dataframe(shown, hide_index=True, width="stretch", key=widget_key, column_config=column_config,
                          on_select="rerun", selection_mode="multi-row")
     rows = [r for r in event.selection.rows if r < len(df)]  # belt and braces
     return df.iloc[rows]
@@ -54,10 +54,12 @@ shared = q("""
     ORDER BY n.editorial_status = 'needs_split', e.year""")
 
 proposed_links = q("SELECT * FROM v_link_review WHERE status = 'proposed'")
+proposed_sources = (q("SELECT * FROM v_source_review WHERE status = 'proposed'") if has_sources()
+                    else q("SELECT NULL AS entity_id WHERE 0"))
 
-t_drafts, t_tags, t_identity, t_links, t_fix, t_log = st.tabs([
+t_drafts, t_tags, t_identity, t_links, t_sources, t_fix, t_log = st.tabs([
     f"Event drafts ({len(drafts)})", f"Country tags ({len(tags)})", f"Identity, Step 3a ({len(shared)})",
-    f"Links ({len(proposed_links)})", "Fix any country tags", "Decision log"])
+    f"Links ({len(proposed_links)})", f"Sources ({len(proposed_sources)})", "Fix any country tags", "Decision log"])
 
 # ── Event drafts ─────────────────────────────────────────────────────────────
 with t_drafts:
@@ -76,6 +78,8 @@ with t_drafts:
                     st.warning(f"Review note: {d['review_note']}")
                 if d["csv_text"]:
                     st.caption(f"Source CSV text: {d['csv_text']}")
+                if (wiki := source_links(d["entity_id"])):
+                    st.markdown(wiki)
         ids = picked["entity_id"].tolist()
         c1, c2, _ = st.columns([1, 1, 4])
         if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary"):
@@ -195,6 +199,39 @@ with t_links:
 
         if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_links"):
             reject_links_dialog(ids)
+
+# ── Sources ──────────────────────────────────────────────────────────────────
+with t_sources:
+    if proposed_sources.empty:
+        st.success("No sources waiting. New batches arrive with `load-sources` (doc 11, Step 5).")
+    else:
+        st.caption("Is this the article about this event or span? Exact name matches (high) are listed last: "
+                   "skim them and approve in bulk. Open a link to check.")
+        exact = proposed_sources[(proposed_sources["origin"] == "title_match") & (proposed_sources["confidence"] == "high")]
+        picked = selectable(proposed_sources, "sources",
+                            ["year", "name", "title", "url", "origin", "confidence", "note"],
+                            column_config={"url": st.column_config.LinkColumn("article", display_text="open")})
+        if len(picked) == 1:
+            d = picked.iloc[0]
+            with st.container(border=True):
+                st.markdown(f"**{d['name']}** ({d['year']}) → 📖 [{d['title']}]({d['url']})")
+                st.caption(f"`{d['entity_id']}` · {d['origin']} · confidence {d['confidence'] or '—'}")
+        ids = list(dict.fromkeys(picked["entity_id"]))
+        c1, c2, c3, _ = st.columns([1, 1, 2, 2])
+        if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary", key="approve_sources"):
+            finish("Approve sources", actions.approve_sources(ids))
+
+        @st.dialog("Reject sources")
+        def reject_sources_dialog(ids):
+            st.write(f"Remove the proposed source from {len(ids)} entity(s). They'll show as unsourced again.")
+            reason = st.text_input("Reason (recorded in the log)")
+            if st.button("Reject", type="primary", disabled=not reason.strip()):
+                finish("Reject sources", actions.reject_sources(ids, reason))
+
+        if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_sources"):
+            reject_sources_dialog(ids)
+        if c3.button(f"Approve all exact name matches ({len(exact)})", disabled=exact.empty):
+            finish("Approve exact name matches", actions.approve_sources([], True))
 
 # ── Fix any country tags ─────────────────────────────────────────────────────
 with t_fix:

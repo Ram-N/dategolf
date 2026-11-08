@@ -57,6 +57,21 @@ if links.load(batch) != 0:
     problems.append("links.load failed")
 problems += check("views/review.py") + check("views/connections.py")
 
+# Sources: the CSV import, then a proposed one; both pages render, and approving through the dashboard works.
+import sources  # noqa: E402
+
+sources.import_csv()
+batch = TMP / "sources.json"
+batch.write_text(json.dumps({"sources": [{"id": "noyce-silicon-chip", "title": "Integrated circuit",
+                                          "url": "https://en.wikipedia.org/wiki/Integrated_circuit",
+                                          "origin": "ai_drafted", "confidence": "high"}]}))
+if sources.load(batch) != 0:
+    problems.append("sources.load failed")
+problems += check("views/review.py") + check("views/connections.py")
+ok, output = actions.approve_sources(["noyce-silicon-chip"])
+if not ok:
+    problems.append(f"approve_sources failed: {output}")
+
 shutil.rmtree(TMP, ignore_errors=True)
 if problems:
     print("FAIL\n" + "\n".join(problems))

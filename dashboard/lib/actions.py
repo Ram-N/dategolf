@@ -18,6 +18,7 @@ import exporter  # noqa: E402
 import identity  # noqa: E402
 import links  # noqa: E402
 import manage  # noqa: E402
+import sources  # noqa: E402
 import validate  # noqa: E402
 
 LOCKED_HINT = ("The database is locked, probably by DB Browser holding unwritten changes. "
@@ -77,6 +78,14 @@ def approve_links(ids):
 
 def reject_links(ids, reason):
     return _run(links.reject, ids, reason, "dashboard")
+
+
+def approve_sources(ids, title_matches=False):
+    return _run(sources.approve, ids, "dashboard", title_matches)
+
+
+def reject_sources(ids, reason):
+    return _run(sources.reject, ids, reason, "dashboard")
 
 
 # ── Status checks (read-only) ─────────────────────────────────────────────────

@@ -3,7 +3,7 @@
 import pandas as pd
 import streamlit as st
 
-from lib.db import forward_label, q
+from lib.db import forward_label, q, source_links
 
 st.title("Connections")
 st.caption("Links are stored once and read from either end: on Kilby's chip it says *preceded*, "
@@ -37,6 +37,8 @@ choice = st.selectbox("Event or span", linked_first, format_func=lambda i: label
                       help="Linked entities are listed first.")
 
 mine = links[(links["source_id"] == choice) | (links["target_id"] == choice)]
+if (wiki := source_links(choice)):
+    st.markdown(wiki)
 if mine.empty:
     st.caption("No links yet for this one.")
 else:

@@ -100,3 +100,17 @@ def bin_label(start: int, size: int) -> str:
     fmt = lambda y: f"{-y} BCE" if y < 0 else str(y)
     end = start + size - 1
     return f"{fmt(start or 1)}–{fmt(end)}"  # no year 0
+
+
+def has_sources() -> bool:
+    """Step 5's tables exist (any tools/ write, e.g. import-csv-sources, creates them)."""
+    return bool(scalar("SELECT count(*) FROM sqlite_master WHERE name = 'v_source_review'"))
+
+
+def source_links(entity_id: str) -> str:
+    """The entity's sources as markdown links ('' if none); proposed ones are marked ⏳."""
+    if not has_sources():
+        return ""
+    rows = q("SELECT title, url, status FROM v_source_review WHERE entity_id = ? AND url IS NOT NULL", entity_id)
+    return " · ".join(f"📖 [{r.title}]({r.url}){' ⏳' if r.status == 'proposed' else ''}"
+                      for r in rows.itertuples())
