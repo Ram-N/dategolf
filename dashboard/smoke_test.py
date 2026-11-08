@@ -32,11 +32,14 @@ def click_validate(at):
     return button.click().run()
 
 
-problems = [p for page in PAGES for p in check(page)]
+from lib import actions  # noqa: E402
+
+ok, output = actions.update_schema()  # what app.py does once at startup
+problems = [] if ok else [f"update_schema failed: {output}"]
+problems += [p for page in PAGES for p in check(page)]
 problems += check("views/overview.py", after=click_validate)
 
 # A real review decision through the dashboard's action layer, on the copy.
-from lib import actions  # noqa: E402
 
 ok, output = actions.decide_identity(["punic-wars"], "one")
 if not ok:

@@ -45,11 +45,13 @@ else:
     rows = []
     for _, r in mine.iterrows():
         if r["source_id"] == choice:  # read forwards
-            verb, other, other_id, year = forward_label(r["type"]), r["target_name"], r["target_id"], r["target_year"]
+            verb, other, other_id = forward_label(r["type"]), r["target_name"], r["target_id"]
+            year = when(r["target_year"], r["target_end_year"])
         else:  # read from the target: the inverse label
-            verb, other, other_id, year = r["inverse_label"], r["source_name"], r["source_id"], r["source_year"]
+            verb, other, other_id = r["inverse_label"], r["source_name"], r["source_id"]
+            year = when(r["source_year"], r["source_end_year"])
         rows.append({"": "⏳" if r["status"] == "proposed" else "", "relation": verb,
-                     "other": f"{other} ({when(other_id, year)})", "why": r["why"], "other id": other_id})
+                     "other": f"{other} ({year})", "why": r["why"], "other id": other_id})
     table = pd.DataFrame(rows).sort_values(["relation", "other"])
     st.markdown(f"**{labels.get(choice, choice)}**")
     st.dataframe(table, hide_index=True, width="stretch")

@@ -38,6 +38,16 @@ def _run(fn, *args):
         return False, f"{exc}\n{buf.getvalue()}"
 
 
+def update_schema():
+    """Bring the db's tables and views up to the code's schema.sql (additive; views are rebuilt)."""
+    def apply():
+        conn = common.connect()
+        common.ensure_schema(conn)
+        conn.commit()
+        conn.close()
+    return _run(apply)
+
+
 def run_validate():
     return _run(validate.run)
 

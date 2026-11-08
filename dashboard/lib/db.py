@@ -83,29 +83,21 @@ def forward_label(rtype: str) -> str:
     return FORWARD.get(rtype, rtype.replace("_", " "))
 
 
-def span_years() -> dict:
-    """{id: (start, end)} for spans that link to as spans (a shared id reads as its event, as in v_link_review)."""
-    df = q("SELECT entity_id, start_year, end_year FROM time_spans WHERE entity_id NOT IN (SELECT entity_id FROM events)")
-    return {r.entity_id: (r.start_year, r.end_year) for r in df.itertuples()}
-
-
-def when(entity_id: str, year) -> str:
+def when(year, end_year) -> str:
     """'1347' for an event, '1347 to 1353' for a span, so the two are never confused."""
-    span = span_years().get(entity_id)
-    return f"{span[0]} to {span[1]}" if span and span[0] != span[1] else str(year)
+    return f"{year} to {int(end_year)}" if pd.notna(end_year) and end_year != year else str(year)
 
 
 def starts_span(row) -> bool:
     """An event that is part_of a span and happens in the span's first year ("X begins" → X)."""
-    span = span_years().get(row["target_id"])
-    return (row["type"] == "part_of" and span is not None and row["source_id"] not in span_years()
-            and row["source_year"] == span[0])
+    return (row["type"] == "part_of" and pd.notna(row["target_end_year"]) and pd.isna(row["source_end_year"])
+            and row["source_year"] == row["target_year"])
 
 
 def link_sentence(row) -> str:
     """A link as a sentence. Sequences read from the later side ("B followed A"), which is more natural."""
-    src = f"{row['source_name']} ({when(row['source_id'], row['source_year'])})"
-    tgt = f"{row['target_name']} ({when(row['target_id'], row['target_year'])})"
+    src = f"{row['source_name']} ({when(row['source_year'], row['source_end_year'])})"
+    tgt = f"{row['target_name']} ({when(row['target_year'], row['target_end_year'])})"
     if row["type"] == "preceded":
         return f"{tgt} followed {src}"
     return f"{src} {forward_label(row['type'])} {tgt}"

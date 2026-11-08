@@ -1,6 +1,7 @@
 """Paths and connection helper shared by the data tools."""
 
 import os
+import re
 import sqlite3
 from pathlib import Path
 
@@ -63,4 +64,9 @@ def ensure_schema(conn):
         cols = [r[1] for r in conn.execute(f"PRAGMA table_info({table})")]
         if cols and column not in cols:
             conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {ddl}")
-    conn.executescript(SCHEMA.read_text(encoding="utf-8"))
+    # Views hold no data, so recreate schema.sql's own views: an edited view then reaches a live db.
+    # Views made by hand (e.g. in DB Browser) aren't touched.
+    schema = SCHEMA.read_text(encoding="utf-8")
+    for view in re.findall(r"CREATE VIEW IF NOT EXISTS (\w+)", schema):
+        conn.execute(f"DROP VIEW IF EXISTS {view}")
+    conn.executescript(schema)

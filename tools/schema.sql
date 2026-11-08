@@ -317,20 +317,24 @@ CREATE TABLE IF NOT EXISTS review_log (
 );
 
 -- Links as readable sentences, with both ends' names and years (events or spans).
+-- A shared id (event + span, Step 3a "one subject") reads as its span: "Napoleonic Wars, 1803 to 1815",
+-- not its event "Napoleonic Wars Begin". *_end_year is NULL for an event.
 CREATE VIEW IF NOT EXISTS v_link_review AS
 SELECT r.id, r.editorial_status AS status,
        r.source_entity_id AS source_id,
-       coalesce(se.name, ss.name) AS source_name, coalesce(se.year, ss.start_year) AS source_year,
+       coalesce(ss.name, se.name) AS source_name, coalesce(ss.start_year, se.year) AS source_year,
+       ss.end_year AS source_end_year,
        r.relationship_type AS type, t.inverse_label,
        r.target_entity_id AS target_id,
-       coalesce(te.name, ts.name) AS target_name, coalesce(te.year, ts.start_year) AS target_year,
+       coalesce(ts.name, te.name) AS target_name, coalesce(ts.start_year, te.year) AS target_year,
+       ts.end_year AS target_end_year,
        r.description AS why, r.confidence, r.origin, t.is_causal, t.symmetric
 FROM relationships r
 JOIN relationship_types t ON t.type = r.relationship_type
 LEFT JOIN events se ON se.entity_id = r.source_entity_id
-LEFT JOIN time_spans ss ON ss.entity_id = r.source_entity_id AND se.entity_id IS NULL
+LEFT JOIN time_spans ss ON ss.entity_id = r.source_entity_id
 LEFT JOIN events te ON te.entity_id = r.target_entity_id
-LEFT JOIN time_spans ts ON ts.entity_id = r.target_entity_id AND te.entity_id IS NULL
+LEFT JOIN time_spans ts ON ts.entity_id = r.target_entity_id
 ORDER BY r.editorial_status = 'reviewed', r.id;
 
 -- ── Sources (Step 5) ────────────────────────────────────────────────────────

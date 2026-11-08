@@ -328,7 +328,7 @@ Decisions with Ram (2026-11-01): a **Play hub inside DateFlow**, **daily + pract
   3. **Followed / Preceded**
   4. the causal ones (**Led to / Was caused by…**)
   5. **Includes** (last, because it can be long: the Mughal Empire has about 15)
-- **Shared ids** (one subject, both an event and a span) resolve to the same connections on both cards.
+- **Shared ids** (one subject, both an event and a span) resolve to the same connections on both cards. When a shared id is the *other* end of a link, it's shown as its **span** ("Napoleonic Wars, 1803 to 1815"), never as its event ("Napoleonic Wars Begin"). Otherwise "Battle of Trafalgar is part of Napoleonic Wars Begin" reads as if the battle were part of the war's opening. The dashboard's `v_link_review` follows the same rule (2026-11-08).
 - **Unit tests,** including tests against the real data:
   - both readings of one link
   - unknown ids are skipped
