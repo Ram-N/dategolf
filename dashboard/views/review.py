@@ -5,7 +5,7 @@ import hashlib
 import streamlit as st
 
 from lib import actions
-from lib.db import has_sources, link_sentence, q, source_links
+from lib.db import has_sources, link_sentence, q, source_links, starts_span
 
 st.title("Review")
 
@@ -176,7 +176,15 @@ with t_links:
     else:
         st.caption("Each link reads as a sentence. Sequences are shown from the later side "
                    "(\"B followed A\"); they're stored once and read both ways.")
-        view = proposed_links.assign(link=proposed_links.apply(link_sentence, axis=1))
+        view = proposed_links.assign(link=proposed_links.apply(link_sentence, axis=1),
+                                     starts=proposed_links.apply(starts_span, axis=1))
+        n_starts = int(view["starts"].sum())
+        show = st.radio("Show", ["All", f"Event starts the span ({n_starts})", "The rest"], horizontal=True,
+                        help="'Starts the span': the event is in the span's first year, often the same subject "
+                             "(Black Death Strikes Europe → The Black Death). Decide them as a group: tick the "
+                             "header box to select all shown.")
+        if show != "All":
+            view = view[view["starts"] == show.startswith("Event starts")]
         picked = selectable(view, "links", ["link", "why", "confidence", "origin"], id_col="id")
         if len(picked) == 1:
             d = picked.iloc[0]

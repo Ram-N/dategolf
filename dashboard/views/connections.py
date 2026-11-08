@@ -3,7 +3,7 @@
 import pandas as pd
 import streamlit as st
 
-from lib.db import forward_label, q, source_links
+from lib.db import forward_label, q, source_links, when
 
 st.title("Connections")
 st.caption("Links are stored once and read from either end: on Kilby's chip it says *preceded*, "
@@ -49,7 +49,7 @@ else:
         else:  # read from the target: the inverse label
             verb, other, other_id, year = r["inverse_label"], r["source_name"], r["source_id"], r["source_year"]
         rows.append({"": "⏳" if r["status"] == "proposed" else "", "relation": verb,
-                     "other": f"{other} ({year})", "why": r["why"], "other id": other_id})
+                     "other": f"{other} ({when(other_id, year)})", "why": r["why"], "other id": other_id})
     table = pd.DataFrame(rows).sort_values(["relation", "other"])
     st.markdown(f"**{labels.get(choice, choice)}**")
     st.dataframe(table, hide_index=True, width="stretch")
