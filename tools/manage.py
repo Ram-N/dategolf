@@ -243,6 +243,15 @@ def main():
     p.add_argument("--reason", required=True)
     p.set_defaults(fn=lambda a: links.reject(a.ids, a.reason))
 
+    p = sub.add_parser("add-link-type", help="Add a link type, e.g. ended / was ended by")
+    p.add_argument("type")
+    p.add_argument("--inverse", required=True, help="How it reads from the target, e.g. 'was ended by'")
+    p.add_argument("--definition", required=True, help="When to use it")
+    p.add_argument("--direction", required=True, help="Which way it is stored, e.g. 'ender → what ended'")
+    p.add_argument("--causal", action="store_true", help="The source brings the target about (or its end)")
+    p.add_argument("--symmetric", action="store_true", help="Reads the same both ways")
+    p.set_defaults(fn=lambda a: links.add_type(a.type, a.inverse, a.definition, a.direction, a.causal, a.symmetric))
+
     p = sub.add_parser("suggest-part-of", help="Write part_of candidates to a draft file (loads nothing)")
     p.add_argument("--out", help="Output path (default data/drafts/<date>_part_of_suggestions.json)")
     p.set_defaults(fn=lambda a: links.suggest_part_of(a.out))

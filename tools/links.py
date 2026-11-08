@@ -129,6 +129,30 @@ def reject(ids, reason, via="cli"):
     return 0 if ok else 1
 
 
+def add_type(rtype, inverse, definition, direction, causal=False, symmetric=False, via="cli"):
+    """Add a link type (e.g. ended / was ended by). Existing types are never changed."""
+    if not rtype.replace("_", "").isalpha() or rtype != rtype.lower():
+        print(f"  ✗ a type is lowercase words joined by _, not {rtype!r}")
+        return 1
+    if not (inverse.strip() and definition.strip() and direction.strip()):
+        print("  ✗ an inverse label, a definition and a direction are all required")
+        return 1
+    conn = connect()
+    ensure_schema(conn)
+    if conn.execute("SELECT 1 FROM relationship_types WHERE type = ?", (rtype,)).fetchone():
+        print(f"  ✗ the type {rtype} already exists")
+        conn.close()
+        return 1
+    conn.execute("INSERT INTO relationship_types (type, is_causal, definition, direction, inverse_label, symmetric) "
+                 "VALUES (?, ?, ?, ?, ?, ?)", (rtype, int(causal), definition.strip(), direction.strip(),
+                                               inverse.strip(), int(symmetric)))
+    log(conn, "add-link-type", f"type:{rtype}", f"{rtype} / {inverse.strip()}: {definition.strip()}", via=via)
+    conn.commit()
+    conn.close()
+    print(f"  ✓ added link type {rtype} (inverse: {inverse.strip()})")
+    return 0
+
+
 # ── part_of candidates ────────────────────────────────────────────────────────
 
 # Words too common in span names to count as evidence on their own.

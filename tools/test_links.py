@@ -117,6 +117,25 @@ class TestValidation(unittest.TestCase):
         self.assertTrue(any("moon-landing" in r[1] for r in rows))
 
 
+class TestTypes(unittest.TestCase):
+    def test_add_type_then_use_it(self):
+        self.assertEqual(quiet(links.add_type, "test_ended", "was test-ended by", "Test.", "a → b", True,
+                               via="test"), 0)
+        self.assertEqual(quiet(links.add_type, "test_ended", "x", "x", "x", via="test"), 1)  # exists
+        self.assertEqual(quiet(links.add_type, "Bad Type", "x", "x", "x", via="test"), 1)
+        self.assertEqual(quiet(links.add_type, "test_other", " ", "x", "x", via="test"), 1)
+        self.assertEqual(load(("meiji-restoration-japan", "test_ended", "tokugawa-shogunate", "it ended it"),
+                              name="t1"), 0)
+
+    def test_ended_date_check(self):
+        conn = db()
+        if not conn.execute("SELECT 1 FROM relationship_types WHERE type = 'ended'").fetchone():
+            quiet(links.add_type, "ended", "was ended by", "Test.", "ender → ended", True, via="test")
+        load(("sputnik-launch", "ended", "tokugawa-shogunate", "wrong end"), name="t2")
+        rows = TestValidation.check_rows(self, "ended link not at the end")
+        self.assertTrue(any("sputnik-launch" in r[1] for r in rows))
+
+
 class TestSuggest(unittest.TestCase):
     def test_suggests_without_loading(self):
         out = TMP / "suggest.json"

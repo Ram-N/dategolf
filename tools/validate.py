@@ -194,26 +194,31 @@ def run():
                     [tuple(r) for r in conn.execute(
                         "SELECT entity_id, reason FROM accepted_region_exceptions ORDER BY entity_id")]))
 
-    # Link date sanity: causes and sequences run earlier → later; part_of sits inside its target.
+    # Link date sanity: causes and sequences run earlier → later; part_of sits inside its target;
+    # an ended link's source falls at its target's end.
     # An entity's years cover both its facets: a shared id (event 1803 + span 1803-1815) spans 1803-1815.
     years = {}
     for eid, a, b in conn.execute("SELECT entity_id, year, year FROM events UNION ALL "
                                   "SELECT entity_id, start_year, end_year FROM time_spans"):
         lo, hi = years.get(eid, (a, b))
         years[eid] = (min(lo, a), max(hi, b))
-    forward, outside = [], []
+    forward, outside, ending = [], [], []
     for lid, src, rtype, tgt, causal in conn.execute(
             "SELECT r.id, r.source_entity_id, r.relationship_type, r.target_entity_id, t.is_causal "
             "FROM relationships r JOIN relationship_types t ON t.type = r.relationship_type"):
         if src not in years or tgt not in years:
             continue
         (s0, s1), (t0, t1) = years[src], years[tgt]
-        if (causal or rtype in ("preceded", "evolved_into")) and s0 > t0:
+        if rtype == "ended":  # the ender happens during the target, at or near its end
+            if s0 < t0 or s0 > t1 + 1:
+                ending.append((lid, f"{src} ({s0}) ended {tgt} ({t0} to {t1}): not at its end"))
+        elif (causal or rtype in ("preceded", "evolved_into")) and s0 > t0:
             forward.append((lid, f"{src} ({s0}) {rtype} {tgt} ({t0}): the source starts later"))
         if rtype == "part_of" and (s0 < t0 or s1 > t1):
             outside.append((lid, f"{src} ({s0} to {s1}) part_of {tgt} ({t0} to {t1}): outside its years"))
     results.append(("warning", "Link runs backwards in time (cause or sequence after its target)", forward))
     results.append(("warning", "part_of link outside the target's years", outside))
+    results.append(("warning", "ended link not at the end of what it ended", ending))
 
     manifest_path = LEGACY / "MANIFEST.json"
     baseline = json.loads(manifest_path.read_text())["counts"] if manifest_path.exists() else {}
