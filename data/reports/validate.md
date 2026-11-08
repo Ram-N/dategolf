@@ -35,7 +35,7 @@
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 1 |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 98 |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 85 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -113,25 +113,12 @@
 
 ## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
 
-- `18` — first-world-war-ends part_of world-war-1 — The armistice that ends the First World War.
-- `20` — end-world-war-two part_of world-war-2 — The end of the Second World War.
 - `21` — battle-of-zama part_of punic-wars — The battle that ends the Second Punic War.
-- `22` — battle-of-marathon part_of persian-wars — The Athenian victory in the first Persian invasion of Greece.
-- `23` — battle-of-gaugamela part_of alexanders-conquests — Alexander's decisive victory over Darius III.
-- `24` — battle-of-the-hydaspes part_of alexanders-conquests — The battle at the eastern limit of Alexander's campaign.
-- `25` — alexander-founds-alexandria part_of alexanders-conquests — Founded during the conquest of Egypt.
-- `26` — death-of-alexander part_of alexanders-conquests — The death that ends the conquests.
-- `27` — execution-of-charles-i part_of english-civil-war — The king's execution, the climax of the civil war.
 - `28` — lee-surrenders-appomattox part_of american-civil-war — The surrender that effectively ends the war.
-- `29` — emancipation-proclamation part_of american-civil-war — Issued by Lincoln as a war measure.
-- `30` — american-declaration part_of american-revolution — The revolution's founding document.
 - `31` — american-war-independence-ends part_of american-revolution — The treaty that ends the revolutionary war.
 - `32` — battle-of-trafalgar part_of napoleonic-wars — The naval battle that ends Napoleon's hopes of invading Britain.
 - `33` — napoleon-defeat-waterloo part_of napoleonic-wars — Napoleon's final defeat, which ends the wars.
-- `34` — bolshevik-civil-war part_of russian-revolution — The civil war that decides the revolution's outcome.
-- `35` — long-march-china part_of chinese-civil-war — The Communist retreat during the civil war.
 - `36` — chinese-communist-revolution part_of chinese-civil-war — The Communist victory that ends the civil war.
-- `38` — opium-war-second part_of opium-wars — The Second Opium War.
 - `39` — d-day-normandy part_of world-war-2 — The Allied landings in Normandy.
 - `40` — battle-of-britain part_of world-war-2 — The air war over Britain.
 - `41` — germany-invades-soviet-union part_of world-war-2 — Operation Barbarossa opens the Eastern Front.
