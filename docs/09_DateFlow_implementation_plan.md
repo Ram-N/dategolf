@@ -16,6 +16,7 @@
 | 5 | Category filters + importance control | ✅ Done |
 | 6 | Exploration: "what was happening elsewhere?", period select, density | ✅ Done |
 | 7 | Games built on the timeline | ✅ Done |
+| 8 | Connections: links between events and spans on the cards and the timeline | 📝 Planned 2026-11-08, awaiting "go" |
 
 **Decisions made with Ram (2026-11-01)**
 - Durations come from ChronoLogic's periods (`../ChronoLogic/public/data/events.json`), plus about 25–30 empires and dynasties we add ourselves.
@@ -299,6 +300,66 @@ Decisions with Ram (2026-11-01): a **Play hub inside DateFlow**, **daily + pract
   - reveal labels collided or overflowed on phones; they now go on the roomier side and shorten with "…" if needed
   - edge year labels were clipped
 - **Possible next steps:** streaks and stats per game (like DatePick), a combined "daily five" score, difficulty presets, and putting the order game directly on the big timeline.
+
+## Phase 8 — Connections 📝 (planned 2026-11-08, awaiting "go")
+
+**Goal:** DateFlow's first use of the links curated in the data work (doc 11, Step 3b). When you open an event or a span, you see what it's connected to and can click through: *"First Battle of Panipat is part of the Mughal Empire"*, and from the empire's side, *"Mughal Empire includes Babur Founds the Mughal Empire, First Battle of Panipat, Humayun Succeeds Babur…"* That turns the timeline from "what happened when" into "how things fit together".
+
+**What's there to show.** Only **reviewed** links are exported. Today these are all `part_of` (46 reviewed, about 140 after the current review, touching about 190 events and spans). Link batch 2 adds `preceded` and `ended`, and batch 3 adds the causal types. **Each batch appears in DateFlow on the next export, with no code change**, because the UI reads every type through its labels.
+
+### 8a. Export `relationships.json` (this is doc 11's Step 3c)
+- **New generated file `src/data/relationships.json`:**
+
+  ```json
+  {"types": {"part_of": {"label": "is part of", "inverse": "includes", "causal": false}, ...},
+   "links": [{"source": "battle-of-plassey", "type": "part_of", "target": "british-raj", "why": "..."}, ...]}
+  ```
+
+  - **Links:** reviewed only, in a stable order (by id), so `compare-export` stays byte-identical.
+  - **Types:** only the ones in use. Proposed links never leave the db.
+- **Built like the other files:** `tools/exporter.py` writes it, `APP_FILES` includes it (so `compare-export` and validate cover it), and a `scripts/validate-relationships.cjs` check runs alongside the existing validators: every end must exist in `events.json` or `durations.json`, and every type must be known.
+- **Only DateFlow imports it,** lazily like `durations.json`. DateGolf and DatePick are untouched.
+
+### 8b. Engine: `src/engine/dateflow/connections.ts` (pure TS, no Vue)
+- **`connectionsFor(id, data)`:** that entity's links, read from its own side. On the source it uses the forward label ("is part of"), on the target the inverse ("includes"). Results are grouped by label, and each item carries the other end's id, name, year or span, kind (event or span) and "why".
+- **Grouping order on a card:**
+  1. **Part of**
+  2. **Ended / Was ended by**
+  3. **Followed / Preceded**
+  4. the causal ones (**Led to / Was caused by…**)
+  5. **Includes** (last, because it can be long: the Mughal Empire has about 15)
+- **Shared ids** (one subject, both an event and a span) resolve to the same connections on both cards.
+- **Unit tests,** including tests against the real data:
+  - both readings of one link
+  - unknown ids are skipped
+  - every link end resolves to an event or a span
+
+### 8c. UI: a "Connections" section on both cards
+- **`EventConnections.vue`** goes under the event card's existing "Meanwhile" slot and into `DurationInfoCard.vue`. Each row reads like the dashboard's: the relation label, then the other item's year (or "1347 to 1353") and name. The "why" appears as a small line underneath, or on hover.
+- **Click a row** to open that event's or span's card (the existing `store.select` / `store.selectDuration`). **Show on timeline** keeps working.
+- **Long groups** show 5 items plus "+ 10 more". An item hidden by the current lanes, filters or detail level is still listed; opening it frames it on the timeline.
+- **Nothing to show:** if an entity has no links, the section doesn't appear (no empty headings).
+
+### 8d. Timeline highlight (small)
+- **While a card is open,** connected markers and bars on screen get a ring, and unconnected ones dim slightly. This is a `relatedIds` prop on `DateFlowTimeline.vue`, next to the existing `selectedId`. It's off when no card is open.
+- **No connector lines** in Phase 8: they get cluttered fast across lanes. Revisit them with the chain explorer.
+
+### Testing
+- `npm run test:unit` (new connections tests) and `npm run build`.
+- `npm run data:compare` and `data:validate`, including the new validator.
+- **A Playwright play-test (`DISPLAY=:0`):**
+  - open the Mughal Empire and see "Includes" with Babur
+  - click through to Babur's event and see "Part of: Mughal Empire"
+  - check the highlight ring, with no console errors
+  - check light and dark themes, and phone width
+
+### Not in Phase 8 (later phases)
+- **A "what led to this?" chain explorer:** a walk back through causal and `preceded` links. It's only worth building once batch 3 (causal links) is reviewed, since today it would only walk `part_of`.
+- A network or graph view, connector lines, and connections inside the Phase 7 games (e.g. "which war was this battle part of?").
+- Rise and fall of empires, map mode, smarter daily challenges (doc 11 §5).
+
+### Order and size
+8a, then 8b, then 8c, then 8d, each a commit that passes its tests on its own. It's best started when the link review is done, so the first export carries about 140 reviewed links rather than 46. About a session of work.
 
 ## How to run
 ```bash

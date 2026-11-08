@@ -14,16 +14,24 @@
 
 1. **Review the first link batch: 142 `part_of` links (98 left).** On the dashboard, go to **Review → Links**. The step-by-step guide is **doc 12 §4.6c**. The 9 medium-confidence links are the ones that need real judgement. *2026-11-08:* the 30 "event starts the span" links are approved. Four of their events were renamed to say "Begins", with the old names kept as aliases, and the span `meiji-restoration` is now named **Meiji Era** (`manage.py rename`).
 2. **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project` and `arab-spring` (all "one subject"). Change any with `manage.py identity <id> --one|--split|--drop-span|--drop-event`.
-3. **Then tell Claude to continue.** The next link batch is **sequences** (`preceded`, e.g. the Mughal succession), then **causal** links, then **3c** (export `relationships.json`).
+3. **Then tell Claude to continue** (see the roadmap below).
 
 Before reviewing, restart the dashboard (`npm run data:dashboard`) so it has the latest code.
 
-**Claude's side while you review (agreed order, 2026-11-08). Pick work that doesn't add to your review queue:**
-1. ~~**Step 5: Sources.**~~ ✅ Built 2026-11-08. The 57 CSV sources are in the db. **Batch 1 (460 articles) is a file only:** `data/drafts/sources_batch1.json`. Load it after the link review with `manage.py load-sources data/drafts/sources_batch1.json`, then review it in **Review → Sources** (doc 12 §4.6d).
-2. **Dashboard v3: the event editor.** One form to edit name, year, description, aliases, categories and countries, validated before saving (doc 13).
-3. **Draft link batch 2 (sequences / `preceded`, e.g. the Mughal succession, plus `ended` links such as Meiji Restoration → Tokugawa Shogunate) as a file only. Don't load it** until batch 1 is reviewed. *2026-11-08:* the `ended` type was added after the user rejected "Meiji Restoration is part of the Tokugawa Shogunate". Endings aren't part of what they end.
-4. **Right after the link review: a date-precision batch (pre-sorted, as a file).** None of the 20 events before 500 BCE was marked approximate, though most are conventional dates (the wheel, writing, Troy, Kurukshetra, King David, ironworking...). Propose `--approximate` plus a `date_display` range for each, and consider making Kurukshetra DateFlow-only (its date is disputed by over 2,000 years). Apply with `manage.py set-event-date` after approval. Agreed 2026-11-08; the Great Pyramid was done as the first case.
-5. **Later:** 3c (export `relationships.json`, best after the review) and Step 4 (new events for thin periods, best when no review queue is waiting).
+### 🗺 Roadmap (agreed 2026-11-08)
+
+The data work now feeds new DateFlow experiences. **DateFlow comes back straight after 3c**, rather than waiting for all the data work: the links are already good enough to build on.
+
+| # | Who | What | Notes |
+|---|---|---|---|
+| 1 | You | **Finish the link review** (98 left) | Doc 12 §4.6c |
+| 2 | Claude | **Date-precision batch** for the 20 events before 500 BCE (a pre-sorted file) | Mark most `--approximate` with a `date_display` range. Consider making Kurukshetra DateFlow-only (its date is disputed by over 2,000 years). The Great Pyramid was done as the first case. |
+| 3 | Claude | **3c: export `relationships.json`** (reviewed links only) | The first step of Phase 8 |
+| 4 | Claude | **DateFlow Phase 8: Connections** | Plan in **doc 09, Phase 8**. Cards show "part of / includes / ended / followed", and each one can be clicked through. |
+| 5 | Either order | **v3 event editor** (dashboard, doc 13; reuses `tools/edit.py`) · **link batch 2** (sequences `preceded` plus `ended`, e.g. Meiji Restoration → Tokugawa Shogunate) · **link batch 3** (causal) · **Step 4** (new events for the gaps on the Coverage heatmap) · **sources batch 1** (`data/drafts/sources_batch1.json`, already drafted; doc 12 §4.6d) | Each batch appears in DateFlow as soon as it's reviewed and exported. Load one review queue at a time. |
+| 6 | Later | **DateFlow Phase 9+:** a "what led to this?" chain explorer (needs batch 3), rise and fall of empires, a map mode, smarter daily challenges | See §5 |
+
+**Done along the way:** Step 5 sources ✅ (2026-11-08: 57 CSV sources in the db, batch 1 drafted). The `ended` link type was added 2026-11-08, after the user rejected "Meiji Restoration is part of the Tokugawa Shogunate": endings aren't part of what they end.
 
 ---
 
