@@ -326,6 +326,29 @@ git add data && git commit -m "data: review part_of link batch" && git push
 - **Before committing:** `git checkout -- data/dategolf.db` restores the database to the last commit.
 - **A rejected link was actually right:** ask Claude to re-add it in a small batch (rejected links are deleted, but their reason stays in the log).
 
+### 4.6d Reviewing sources (Step 5)
+
+Each event and span gets a Wikipedia article, so drafted content can be checked. The CSV's own URLs are already in as `reviewed`. Everything else arrives as a batch of **proposed** sources.
+
+1. **Load** (once): `uv run python tools/manage.py load-sources data/drafts/sources_batch1.json`. It's all-or-nothing: one bad entry rejects the whole batch.
+2. **Open** the dashboard, **Review → Sources**. The rows you need to think about come first: medium-confidence picks, then the other picks, then name redirects. Exact name matches come last.
+3. **Decide:**
+   - Click **open** to check an article.
+   - Tick rows, then **Approve** or **Reject…**. Rejecting needs a reason, and the entity goes back to unsourced.
+   - **Approve all exact name matches** does the 128 easy ones at once.
+   - The question is simply: *is this the article about this event?* A broad article (the person, the empire) is fine when no event article exists.
+4. **Fix a wrong one:** reject it, add `"<id>": "Right title"` to `data/drafts/sources_batch1_picks.json`, then re-run:
+
+   ```bash
+   manage.py suggest-sources --picks data/drafts/sources_batch1_picks.json --out data/drafts/sources_fix.json
+   manage.py load-sources data/drafts/sources_fix.json
+   ```
+
+   Only entities with no source end up in a new file. The tool checks every title on Wikipedia (whether it exists, where it redirects, whether it's a disambiguation page).
+5. **CLI equivalents:** `approve-sources <ids>`, `approve-sources --title-matches`, and `reject-sources <ids> --reason "..."`.
+
+Sources aren't exported to the game yet, so `compare-export` is unaffected. **New drafts** can carry `"source": "https://en.wikipedia.org/wiki/..."` in `load-drafts`. That source is approved or removed together with its draft.
+
 ### 4.7 Preview in the game
 
 ```bash

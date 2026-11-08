@@ -19,7 +19,7 @@
 Before reviewing, restart the dashboard (`npm run data:dashboard`) so it has the latest code.
 
 **Claude's side while you review (agreed order, 2026-11-08). Pick work that doesn't add to your review queue:**
-1. **Step 5: Sources.** Add a `sources` table (doc 10 §4.7). Copy the 55 Wikipedia URLs from linked CSV rows across automatically, and propose the obvious Wikipedia article for the rest as `proposed`. Show Wikipedia links on the dashboard's Review and Connections cards and in Datasette. **Plan it briefly before building.**
+1. ~~**Step 5: Sources.**~~ ✅ Built 2026-11-08. The 57 CSV sources are in the db. **Batch 1 (460 articles) is a file only:** `data/drafts/sources_batch1.json`. Load it after the link review with `manage.py load-sources data/drafts/sources_batch1.json`, then review it in **Review → Sources** (doc 12 §4.6d).
 2. **Dashboard v3: the event editor.** One form to edit name, year, description, aliases, categories and countries, validated before saving (doc 13).
 3. **Draft link batch 2 (sequences / `preceded`, e.g. the Mughal succession) as a file only. Don't load it** until batch 1 is reviewed.
 4. **Later:** 3c (export `relationships.json`, best after the review) and Step 4 (new events for thin periods, best when no review queue is waiting).
@@ -362,6 +362,41 @@ Validation then catches links to missing entities, self-links, unknown types and
 
 - **55 linked CSV rows have Wikipedia URLs** that are unused. Add `sources` and `entity_sources` tables (doc 10 §4.7) and copy those URLs onto their events.
 - **From then on, give every new draft a source,** so AI-drafted content is checkable.
+
+#### Step 5 plan (2026-11-08; ✅ built the same day)
+
+**What's there:** 70 CSV rows have a Wikipedia URL. 55 are linked to 53 events, and 12 belong to events drafted from the CSV (so about 60 entities get one for free). Of the 524 event and span names, about 190 match a Wikipedia title exactly or through a redirect, and 6 hit a disambiguation page. About 330 are headline-style ("Ashoka Converts to Buddhism") and need an article chosen.
+
+**Schema** (additive, in `schema.sql`):
+- `sources`: `id`, `kind` (`wikipedia` | `web` | `book`), `title`, `url` (unique), `created_at`. One row per page, which several entities can share.
+- `entity_sources`: `entity_id`, `source_id`, `status` (`proposed` | `reviewed`), `origin` (`csv` | `title_match` | `ai_drafted`), `note`. Primary key `(entity_id, source_id)`.
+- View `v_source_review`: entity name and year beside the article title and URL, proposed rows first.
+
+**Tools** (`tools/sources.py` plus CLI commands, every write logged in `review_log`):
+1. `import-csv-sources`: copies the CSV URLs (through accepted crosswalk rows and drafted-from-CSV provenance) as **`reviewed`**, since they're your own data. Re-running it does nothing new.
+2. `suggest-sources`: Claude writes a draft file `data/drafts/sources_batch1.json` (entity → article title). It checks every title against the Wikipedia API (whether it exists, where it redirects, whether it's a disambiguation page) and stores the resolved canonical title and URL. Exact name matches are marked high confidence. For the ~330 others, Claude picks the article. Nothing is loaded at this point.
+3. `load-sources <file>`: all-or-nothing, like `load-links`. It loads as **`proposed`** and rejects unknown ids, duplicates, and missing or disambiguation pages.
+4. `approve-sources` / `reject-sources <ids>`.
+5. `load-drafts` accepts an optional `source` (a Wikipedia title) per draft, so new drafts arrive with a source.
+
+**Dashboard:** a **Review → Sources** tab (tick, approve, reject), with name-match rows sorted separately so they can be bulk-approved. A 📖 Wikipedia link on the draft card in Review and on the selected entity in Connections. **Datasette:** descriptions for the new tables, a canned query for "entities without a source", and URLs shown as links.
+
+**Not in Step 5:** exporting sources to the game JSON (so `compare-export` stays byte-identical), and non-Wikipedia sources (the schema allows them).
+
+**Tests** run on a db copy with a fake Wikipedia checker, so they're offline. Only `suggest-sources` touches the network, at about 11 batched requests with a polite User-Agent and no personal data.
+
+**Review cost for you:** about 190 title matches to skim and bulk-approve, plus about 330 picked articles. Batch 1 can stay in the file until the link review is done, so it doesn't add to your queue.
+
+**As built:**
+- **CSV import:** `import-csv-sources` attached **57 CSV sources** (59 CSV row links; two rows repeat a URL). They're `reviewed`, and some carry a `#section`.
+- **Batch 1:** `data/drafts/sources_batch1.json` covers all 460 remaining entities, with 0 unresolved:
+  - **128 exact name matches** (high): bulk-approve them with one button.
+  - **36 name redirects** (medium), e.g. "The Long March" → *Long March*.
+  - **296 picked articles**, 23 of them medium. Claude's picks are in `data/drafts/sources_batch1_picks.json`; re-run `suggest-sources --picks` on that file to rebuild the batch.
+  - Three bad redirects were overridden: *Classic Maya language*, *Mesoamerican chronology* and *Planets beyond Neptune*.
+- **Broad articles:** about 30 events point to a person or a broad article rather than the event itself (e.g. *Death of Akbar* → *Akbar*), because Wikipedia has no article for the event. They're marked high when the article covers the event well.
+- **Tested:** the batch loads cleanly on a db copy, and the Sources tab was checked in the browser.
+- **A test fix along the way:** `test_links.py`'s part_of suggestion test had been failing since batch 1 was loaded (Zama is already linked). It's now independent of the loaded links.
 
 ---
 

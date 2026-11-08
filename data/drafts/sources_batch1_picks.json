@@ -1,0 +1,909 @@
+{
+ "picks": {
+  "indus-valley-begins": {
+   "title": "Indus Valley Civilisation"
+  },
+  "indus-valley-mature": {
+   "title": "Indus Valley Civilisation"
+  },
+  "construction-great-pyramid": {
+   "title": "Great Pyramid of Giza"
+  },
+  "egyptian-pyramids-built": {
+   "title": "Great Pyramid of Giza"
+  },
+  "code-of-hammurabi": {
+   "title": "Code of Hammurabi"
+  },
+  "david-captures-jerusalem": {
+   "title": "David"
+  },
+  "classical": {
+   "title": "Classical antiquity"
+  },
+  "ironworking-spreads": {
+   "title": "Iron Age",
+   "confidence": "medium"
+  },
+  "babylonian-conquest-jerusalem": {
+   "title": "Siege of Jerusalem (587 BC)"
+  },
+  "thales-solar-eclipse": {
+   "title": "Eclipse of Thales"
+  },
+  "birth-of-buddha": {
+   "title": "The Buddha"
+  },
+  "birth-of-confucius": {
+   "title": "Confucius"
+  },
+  "cyrus-founds-persian-empire": {
+   "title": "Cyrus the Great"
+  },
+  "roman-republic-founded": {
+   "title": "Overthrow of the Roman monarchy"
+  },
+  "greek-democracy-athens": {
+   "title": "Athenian democracy"
+  },
+  "hippocrates-medicine": {
+   "title": "Hippocrates"
+  },
+  "platos-academy-founded": {
+   "title": "Platonic Academy"
+  },
+  "alexander-conquests": {
+   "title": "Wars of Alexander the Great"
+  },
+  "alexander-founds-alexandria": {
+   "title": "History of Alexandria"
+  },
+  "maurya-empire-founded": {
+   "title": "Chandragupta Maurya"
+  },
+  "ptolemaic-dynasty-founded": {
+   "title": "Ptolemy I Soter"
+  },
+  "punic-wars": {
+   "title": "Punic Wars"
+  },
+  "eratosthenes-measures-earth": {
+   "title": "Eratosthenes"
+  },
+  "construction-great-wall": {
+   "title": "Great Wall of China"
+  },
+  "qin-unification-china": {
+   "title": "Qin's wars of unification"
+  },
+  "great-wall-china": {
+   "title": "Great Wall of China"
+  },
+  "silk-road-opens": {
+   "title": "Silk Road"
+  },
+  "caesar-invades-britain": {
+   "title": "Julius Caesar's invasions of Britain"
+  },
+  "caesar-crosses-rubicon": {
+   "title": "Crossing the Rubicon"
+  },
+  "julius-caesar-assassination": {
+   "title": "Assassination of Julius Caesar"
+  },
+  "second-triumvirate": {
+   "title": "Second Triumvirate"
+  },
+  "augustus-first-emperor": {
+   "title": "Augustus"
+  },
+  "pax-romana": {
+   "title": "Pax Romana"
+  },
+  "birth-of-jesus": {
+   "title": "Nativity of Jesus"
+  },
+  "paper-invented-china": {
+   "title": "History of paper"
+  },
+  "jin-reunifies-china": {
+   "title": "Jin dynasty (266–420)"
+  },
+  "christianity-roman-empire": {
+   "title": "Edict of Milan"
+  },
+  "gupta-empire-founded": {
+   "title": "Gupta Empire"
+  },
+  "chandragupta-ii-vikramaditya": {
+   "title": "Chandragupta II"
+  },
+  "huns-arrive-in-europe": {
+   "title": "Huns"
+  },
+  "nalanda-university-founded": {
+   "title": "Nalanda mahavihara"
+  },
+  "attila-hun-invasions": {
+   "title": "Attila"
+  },
+  "aryabhata-heliocentric": {
+   "title": "Aryabhata"
+  },
+  "birth-of-muhammad": {
+   "title": "Mawlid",
+   "confidence": "medium"
+  },
+  "harsha-reign-begins": {
+   "title": "Harsha"
+  },
+  "founding-of-islam": {
+   "title": "Muhammad's first revelation"
+  },
+  "hijra": {
+   "title": "Hijrah"
+  },
+  "invention-of-zero": {
+   "title": "0"
+  },
+  "arab-traders-kerala": {
+   "title": "Cheraman Juma Mosque",
+   "confidence": "medium"
+  },
+  "death-of-muhammad": {
+   "title": "Death of Muhammad"
+  },
+  "islamic-caliphate-expands": {
+   "title": "Early Muslim conquests"
+  },
+  "arab-conquest-of-sindh": {
+   "title": "Umayyad conquest of Sindh"
+  },
+  "woodblock-printing-china": {
+   "title": "Woodblock printing"
+  },
+  "islamic-golden-age": {
+   "title": "Islamic Golden Age"
+  },
+  "viking-raids-begin": {
+   "title": "Viking Age"
+  },
+  "charlemagne-crowned-emperor": {
+   "title": "Charlemagne"
+  },
+  "mihira-bhoja-kannauj": {
+   "title": "Mihira Bhoja"
+  },
+  "gunpowder-invented": {
+   "title": "History of gunpowder"
+  },
+  "chola-rajaraja-peak": {
+   "title": "Rajaraja I"
+  },
+  "mahmud-of-ghazni-accession": {
+   "title": "Mahmud of Ghazni"
+  },
+  "mahmud-ghazni-somnath": {
+   "title": "Somnath temple",
+   "confidence": "medium"
+  },
+  "printing-movable-type-china": {
+   "title": "Bi Sheng"
+  },
+  "great-schism": {
+   "title": "East–West Schism"
+  },
+  "university-of-bologna-founded": {
+   "title": "University of Bologna"
+  },
+  "invention-of-compass": {
+   "title": "History of the compass"
+  },
+  "genghis-khan-unifies-mongols": {
+   "title": "Genghis Khan"
+  },
+  "qutb-ud-din-aibak-delhi": {
+   "title": "Qutb ud-Din Aibak"
+  },
+  "magna-carta": {
+   "title": "Magna Carta"
+  },
+  "razia-sultana-accession": {
+   "title": "Razia Sultana"
+  },
+  "mongol-empire-peak": {
+   "title": "Mongol Empire"
+  },
+  "alauddin-khalji-accession": {
+   "title": "Alauddin Khalji"
+  },
+  "muhammad-bin-tughlaq-accession": {
+   "title": "Muhammad bin Tughluq"
+  },
+  "black-death-arrives-china": {
+   "title": "Black Death"
+  },
+  "vijayanagara-empire-founded": {
+   "title": "Vijayanagara Empire"
+  },
+  "black-death-europe": {
+   "title": "Black Death"
+  },
+  "firuz-shah-tughlaq-accession": {
+   "title": "Firuz Shah Tughlaq"
+  },
+  "ming-dynasty-founded": {
+   "title": "Ming dynasty"
+  },
+  "timur-sacks-delhi": {
+   "title": "Sack of Delhi (1398)"
+  },
+  "renaissance-begins-florence": {
+   "title": "Florentine Renaissance",
+   "confidence": "medium"
+  },
+  "zheng-he-voyages": {
+   "title": "Ming treasure voyages"
+  },
+  "age-of-exploration-portugal": {
+   "title": "Portuguese discoveries"
+  },
+  "joan-of-arc-burned": {
+   "title": "Trial of Joan of Arc"
+  },
+  "aztec-empire-peak": {
+   "title": "Aztec Empire"
+  },
+  "gutenberg-printing-press": {
+   "title": "Printing press"
+  },
+  "guru-nanak-born": {
+   "title": "Guru Nanak"
+  },
+  "columbus-reaches-americas": {
+   "title": "Voyages of Christopher Columbus"
+  },
+  "babur-ruler-of-ferghana": {
+   "title": "Babur"
+  },
+  "vasco-da-gama-india-route": {
+   "title": "Portuguese India Armadas",
+   "confidence": "medium"
+  },
+  "first-portable-watches": {
+   "title": "Peter Henlein"
+  },
+  "renaissance-michelangelo": {
+   "title": "Sistine Chapel ceiling"
+  },
+  "protestant-reformation": {
+   "title": "Reformation"
+  },
+  "magellan-circumnavigation": {
+   "title": "Magellan expedition"
+  },
+  "babur-founds-mughal-empire": {
+   "title": "First Battle of Panipat"
+  },
+  "humayun-succeeds-babur": {
+   "title": "Humayun"
+  },
+  "conquest-of-peru-inca": {
+   "title": "Spanish conquest of the Inca Empire"
+  },
+  "humayun-defeated-kanauj": {
+   "title": "Battle of Kannauj"
+  },
+  "copernicus-heliocentric": {
+   "title": "De revolutionibus orbium coelestium"
+  },
+  "portuguese-arrive-japan": {
+   "title": "Nanban trade"
+  },
+  "humayun-recaptures-delhi": {
+   "title": "Humayun"
+  },
+  "shakespeare-born": {
+   "title": "William Shakespeare"
+  },
+  "mughal-akbar-administration": {
+   "title": "Mansabdar"
+  },
+  "akbar-din-i-ilahi": {
+   "title": "Din-i Ilahi"
+  },
+  "spanish-armada-defeated": {
+   "title": "Spanish Armada"
+  },
+  "east-india-company-founded": {
+   "title": "East India Company"
+  },
+  "renaissance-shakespeare": {
+   "title": "William Shakespeare"
+  },
+  "death-of-akbar": {
+   "title": "Akbar"
+  },
+  "galileo-telescope": {
+   "title": "Galileo Galilei"
+  },
+  "kepler-laws-planetary-motion": {
+   "title": "Kepler's laws of planetary motion"
+  },
+  "jahangir-marries-nur-jahan": {
+   "title": "Nur Jahan"
+  },
+  "thirty-years-war": {
+   "title": "Thirty Years' War"
+  },
+  "death-of-jahangir": {
+   "title": "Jahangir"
+  },
+  "birth-of-shivaji": {
+   "title": "Shivaji"
+  },
+  "construction-taj-mahal": {
+   "title": "Taj Mahal"
+  },
+  "taj-mahal-construction-begins": {
+   "title": "Taj Mahal"
+  },
+  "galileo-inquisition": {
+   "title": "Galileo affair"
+  },
+  "signing-of-treaty-westphalia": {
+   "title": "Peace of Westphalia"
+  },
+  "hobbes-leviathan": {
+   "title": "Leviathan (Hobbes book)"
+  },
+  "aurangzeb-becomes-emperor": {
+   "title": "Aurangzeb"
+  },
+  "english-restoration": {
+   "title": "Stuart Restoration"
+  },
+  "shivaji-crowned-chhatrapati": {
+   "title": "Shivaji"
+  },
+  "execution-of-guru-tegh-bahadur": {
+   "title": "Guru Tegh Bahadur"
+  },
+  "death-of-shivaji": {
+   "title": "Shivaji"
+  },
+  "newton-laws-of-motion": {
+   "title": "Philosophiæ Naturalis Principia Mathematica"
+  },
+  "glorious-revolution": {
+   "title": "Glorious Revolution"
+  },
+  "act-of-union-1707": {
+   "title": "Acts of Union 1707"
+  },
+  "mughal-empire-zenith-aurangzeb": {
+   "title": "Mughal Empire"
+  },
+  "death-of-guru-gobind-singh": {
+   "title": "Guru Gobind Singh"
+  },
+  "nadir-shah-sacks-delhi": {
+   "title": "Nader Shah's invasion of India"
+  },
+  "trans-atlantic-slave-trade-peak": {
+   "title": "Atlantic slave trade"
+  },
+  "industrial-revolution-textile": {
+   "title": "Industrial Revolution"
+  },
+  "east-india-company-bengal": {
+   "title": "Treaty of Allahabad"
+  },
+  "steam-engine-watt": {
+   "title": "Watt steam engine"
+  },
+  "opium-trade-china-east-india": {
+   "title": "History of opium in China"
+  },
+  "american-declaration": {
+   "title": "United States Declaration of Independence"
+  },
+  "second-anglo-mysore-war": {
+   "title": "Second Anglo-Mysore War"
+  },
+  "american-war-independence-ends": {
+   "title": "Treaty of Paris (1783)"
+  },
+  "founding-of-united-states": {
+   "title": "Constitution of the United States"
+  },
+  "abolition-slavery-france": {
+   "title": "Abolition of slavery in France",
+   "confidence": "medium"
+  },
+  "tipu-sultan-killed": {
+   "title": "Siege of Seringapatam (1799)"
+  },
+  "modern": {
+   "title": "Modern era"
+  },
+  "napoleonic-wars": {
+   "title": "Napoleonic Wars"
+  },
+  "abolition-slavery-britain": {
+   "title": "Slave Trade Act 1807"
+  },
+  "latin-american-independence": {
+   "title": "Spanish American wars of independence"
+  },
+  "first-steam-railway": {
+   "title": "Stockton and Darlington Railway"
+  },
+  "great-reform-act": {
+   "title": "Reform Act 1832"
+  },
+  "queen-victoria-accession": {
+   "title": "Queen Victoria"
+  },
+  "chinese-opium-ban": {
+   "title": "Destruction of opium at Humen"
+  },
+  "revolutions-of-1848": {
+   "title": "Revolutions of 1848"
+  },
+  "first-oil-well": {
+   "title": "Drake Well"
+  },
+  "emancipation-proclamation": {
+   "title": "Emancipation Proclamation"
+  },
+  "abolition-slavery-us": {
+   "title": "Thirteenth Amendment to the United States Constitution"
+  },
+  "meiji-restoration-japan": {
+   "title": "Meiji Restoration"
+  },
+  "gandhi-born": {
+   "title": "Mahatma Gandhi"
+  },
+  "suez-canal-opens": {
+   "title": "Suez Canal"
+  },
+  "cricket-test-first": {
+   "title": "Test cricket",
+   "confidence": "medium"
+  },
+  "colonial-africa-berlin": {
+   "title": "Berlin Conference"
+  },
+  "benz-motorwagen": {
+   "title": "Benz Patent-Motorwagen"
+  },
+  "indian-national-congress-founded": {
+   "title": "Indian National Congress"
+  },
+  "partition-of-africa-colonial": {
+   "title": "Atrocities in the Congo Free State"
+  },
+  "construction-eiffel-tower": {
+   "title": "Eiffel Tower"
+  },
+  "ramanujan-born": {
+   "title": "Srinivasa Ramanujan"
+  },
+  "tesla-ac-electricity": {
+   "title": "War of the currents",
+   "confidence": "medium"
+  },
+  "japan-meiji-constitution": {
+   "title": "Meiji Constitution"
+  },
+  "suffrage-new-zealand": {
+   "title": "Women's suffrage in New Zealand"
+  },
+  "x-rays-discovered": {
+   "title": "X-ray"
+  },
+  "modern-olympics-founded": {
+   "title": "1896 Summer Olympics"
+  },
+  "curie-radioactivity": {
+   "title": "Marie Curie"
+  },
+  "south-african-boer-war": {
+   "title": "Second Boer War"
+  },
+  "suffragette-emmeline-pankhurst": {
+   "title": "Women's Social and Political Union"
+  },
+  "einstein-relativity": {
+   "title": "Special relativity"
+  },
+  "partition-of-bengal": {
+   "title": "Partition of Bengal (1905)"
+  },
+  "swadeshi-movement": {
+   "title": "Swadeshi movement"
+  },
+  "fall-of-qing-dynasty": {
+   "title": "1911 Revolution"
+  },
+  "tagore-nobel-prize": {
+   "title": "Rabindranath Tagore"
+  },
+  "panama-canal-opens": {
+   "title": "Panama Canal"
+  },
+  "world-war-one": {
+   "title": "World War I"
+  },
+  "first-world-war-ends": {
+   "title": "Armistice of 11 November 1918"
+  },
+  "treaty-of-versailles": {
+   "title": "Treaty of Versailles"
+  },
+  "league-of-nations-founded": {
+   "title": "League of Nations"
+  },
+  "women-suffrage-us": {
+   "title": "Nineteenth Amendment to the United States Constitution"
+  },
+  "ottoman-empire-falls": {
+   "title": "Abolition of the Ottoman sultanate"
+  },
+  "turkish-republic-founded": {
+   "title": "Proclamation of the Republic of Turkey"
+  },
+  "great-depression": {
+   "title": "Great Depression"
+  },
+  "first-football-world-cup": {
+   "title": "1930 FIFA World Cup"
+  },
+  "gandhi-salt-march": {
+   "title": "Salt March"
+  },
+  "japanese-empire-manchuria": {
+   "title": "Japanese invasion of Manchuria"
+  },
+  "hitler-rise-chancellor": {
+   "title": "Adolf Hitler's rise to power"
+  },
+  "rise-of-nazism": {
+   "title": "Nazi Germany"
+  },
+  "world-war-two": {
+   "title": "World War II"
+  },
+  "germany-invades-soviet-union": {
+   "title": "Operation Barbarossa"
+  },
+  "manhattan-project": {
+   "title": "Manhattan Project"
+  },
+  "d-day-normandy": {
+   "title": "Normandy landings"
+  },
+  "atomic-bomb-hiroshima": {
+   "title": "Atomic bombings of Hiroshima and Nagasaki"
+  },
+  "end-world-war-two": {
+   "title": "End of World War II in Europe"
+  },
+  "indonesia-proclaims-independence": {
+   "title": "Proclamation of Indonesian Independence"
+  },
+  "japan-world-war-two-defeat": {
+   "title": "Surrender of Japan"
+  },
+  "united-nations-founded": {
+   "title": "United Nations"
+  },
+  "cold-war-begins": {
+   "title": "Cold War"
+  },
+  "indian-independence": {
+   "title": "Indian Independence Act 1947"
+  },
+  "apartheid-south-africa": {
+   "title": "Apartheid"
+  },
+  "burma-independence": {
+   "title": "Burma Independence Act 1947"
+  },
+  "ceylon-independence": {
+   "title": "Dominion of Ceylon"
+  },
+  "mahatma-gandhi-assassinated": {
+   "title": "Assassination of Mahatma Gandhi"
+  },
+  "palestine-israel-state": {
+   "title": "Israeli Declaration of Independence"
+  },
+  "nato-founded": {
+   "title": "NATO"
+  },
+  "indian-constitution-adopted": {
+   "title": "Constitution of India"
+  },
+  "eisenhower-elected": {
+   "title": "1952 United States presidential election"
+  },
+  "dna-structure-discovered": {
+   "title": "Molecular Structure of Nucleic Acids: A Structure for Deoxyribose Nucleic Acid"
+  },
+  "vietnam-partition": {
+   "title": "1954 Geneva Conference"
+  },
+  "ghana-independence": {
+   "title": "Ghana Independence Act 1957",
+   "confidence": "medium"
+  },
+  "sputnik-launch": {
+   "title": "Sputnik 1"
+  },
+  "kilby-first-integrated-circuit": {
+   "title": "Invention of the integrated circuit"
+  },
+  "mao-great-leap-forward": {
+   "title": "Great Leap Forward"
+  },
+  "construction-sydney-opera": {
+   "title": "Sydney Opera House"
+  },
+  "dalai-lama-flees-to-india": {
+   "title": "1959 Tibetan uprising"
+  },
+  "noyce-silicon-chip": {
+   "title": "Robert Noyce"
+  },
+  "contraceptive-pill-approved": {
+   "title": "Combined oral contraceptive pill"
+  },
+  "decolonization-africa": {
+   "title": "Decolonisation of Africa"
+  },
+  "france-first-nuclear-test": {
+   "title": "Gerboise Bleue"
+  },
+  "jfk-elected": {
+   "title": "1960 United States presidential election"
+  },
+  "space-race-yuri-gagarin": {
+   "title": "Vostok 1"
+  },
+  "india-china-war": {
+   "title": "Sino-Indian War"
+  },
+  "south-korea-economic-miracle": {
+   "title": "Miracle on the Han River"
+  },
+  "formation-of-malaysia": {
+   "title": "Malaysia Agreement"
+  },
+  "martin-luther-king-speech": {
+   "title": "March on Washington for Jobs and Freedom"
+  },
+  "partial-test-ban-treaty": {
+   "title": "Partial Nuclear Test Ban Treaty"
+  },
+  "civil-rights-act-us": {
+   "title": "Civil Rights Act of 1964"
+  },
+  "singapore-independence": {
+   "title": "Proclamation of Singapore"
+  },
+  "us-civil-rights-march-selma": {
+   "title": "Selma to Montgomery marches"
+  },
+  "world-wide-web-invention": {
+   "title": "History of email"
+  },
+  "oil-crisis-1973": {
+   "title": "1973 oil crisis"
+  },
+  "khmer-rouge-cambodia": {
+   "title": "Fall of Phnom Penh"
+  },
+  "jimmy-carter-elected": {
+   "title": "1976 United States presidential election"
+  },
+  "tiananmen-one": {
+   "title": "Chinese economic reform"
+  },
+  "bhutto-executed": {
+   "title": "Zulfikar Ali Bhutto"
+  },
+  "khmer-rouge-overthrown": {
+   "title": "Cambodian–Vietnamese War"
+  },
+  "thatcher-becomes-pm": {
+   "title": "Margaret Thatcher"
+  },
+  "iran-iraq-war": {
+   "title": "Iran–Iraq War"
+  },
+  "reagan-elected": {
+   "title": "1980 United States presidential election"
+  },
+  "smallpox-eradicated": {
+   "title": "Eradication of smallpox"
+  },
+  "aids-epidemic": {
+   "title": "HIV/AIDS"
+  },
+  "india-wins-cricket-world-cup": {
+   "title": "1983 Cricket World Cup"
+  },
+  "us-invasion-of-grenada": {
+   "title": "United States invasion of Grenada"
+  },
+  "ethiopian-famine": {
+   "title": "1983–1985 famine in Ethiopia"
+  },
+  "gorbachev-becomes-leader": {
+   "title": "Mikhail Gorbachev"
+  },
+  "chernobyl-disaster": {
+   "title": "Chernobyl disaster"
+  },
+  "george-hw-bush-elected": {
+   "title": "1988 United States presidential election"
+  },
+  "spitak-earthquake": {
+   "title": "1988 Armenian earthquake"
+  },
+  "zia-ul-haq-killed": {
+   "title": "Death of Muhammad Zia-ul-Haq"
+  },
+  "berlin-wall-falls": {
+   "title": "Fall of the Berlin Wall"
+  },
+  "sachin-tendulkar-debut": {
+   "title": "Sachin Tendulkar"
+  },
+  "mandela-freed": {
+   "title": "Nelson Mandela"
+  },
+  "namibia-independence-process": {
+   "title": "History of Namibia",
+   "confidence": "medium"
+  },
+  "economic-liberalization-india": {
+   "title": "Economic liberalisation in India"
+  },
+  "internet-invented": {
+   "title": "World Wide Web"
+  },
+  "amazon-founded": {
+   "title": "Amazon (company)"
+  },
+  "collapse-apartheid-negotiations": {
+   "title": "1994 South African general election"
+  },
+  "independence-south-africa": {
+   "title": "Presidency of Nelson Mandela"
+  },
+  "dot-com-bubble": {
+   "title": "Dot-com bubble"
+  },
+  "wto-founded": {
+   "title": "World Trade Organization"
+  },
+  "india-rejects-ctbt": {
+   "title": "Comprehensive Nuclear-Test-Ban Treaty",
+   "confidence": "medium"
+  },
+  "kofi-annan-secretary-general": {
+   "title": "Kofi Annan"
+  },
+  "sheikh-hasina-first-term": {
+   "title": "Sheikh Hasina"
+  },
+  "taliban-capture-kabul": {
+   "title": "Battle of Kabul (1992–1996)",
+   "confidence": "medium"
+  },
+  "hong-kong-handover": {
+   "title": "Handover of Hong Kong"
+  },
+  "clinton-impeached": {
+   "title": "Impeachment of Bill Clinton"
+  },
+  "google-founded": {
+   "title": "Google"
+  },
+  "pokhran-nuclear-tests": {
+   "title": "Pokhran-II"
+  },
+  "space-station-iss": {
+   "title": "Assembly of the International Space Station"
+  },
+  "suharto-resigns": {
+   "title": "Fall of Suharto"
+  },
+  "kosovo-war-ends": {
+   "title": "Kosovo War"
+  },
+  "brahmos-missile-india": {
+   "title": "BrahMos"
+  },
+  "september-11-attacks": {
+   "title": "September 11 attacks"
+  },
+  "human-genome-project": {
+   "title": "Human Genome Project"
+  },
+  "indian-ocean-tsunami-india": {
+   "title": "2004 Indian Ocean earthquake and tsunami"
+  },
+  "iphone-launched": {
+   "title": "IPhone (1st generation)"
+  },
+  "chandrayaan-1-launched": {
+   "title": "Chandrayaan-1"
+  },
+  "mumbai-terrorist-attacks": {
+   "title": "2008 Mumbai attacks"
+  },
+  "osama-bin-laden-killed": {
+   "title": "Killing of Osama bin Laden"
+  },
+  "nirbhaya-case-protests": {
+   "title": "2012 Delhi gang rape and murder"
+  },
+  "mangalyaan-mars-mission": {
+   "title": "Mars Orbiter Mission"
+  },
+  "islamic-state-rise": {
+   "title": "Islamic State"
+  },
+  "malala-nobel-peace-prize": {
+   "title": "Malala Yousafzai"
+  },
+  "modi-elected-pm": {
+   "title": "2014 Indian general election"
+  },
+  "paris-climate-agreement": {
+   "title": "Paris Agreement"
+  },
+  "demonetization-india": {
+   "title": "2016 Indian banknote demonetisation"
+  },
+  "gst-implemented-india": {
+   "title": "Goods and Services Tax (India)"
+  },
+  "black-holes-confirmed": {
+   "title": "Messier 87",
+   "confidence": "medium"
+  },
+  "caa-protests-india": {
+   "title": "Citizenship Amendment Act protests"
+  },
+  "chandrayaan-2-launched": {
+   "title": "Chandrayaan-2"
+  },
+  "covid-19-pandemic": {
+   "title": "COVID-19 pandemic"
+  },
+  "covid-lockdown-india": {
+   "title": "COVID-19 lockdown in India"
+  },
+  "chandrayaan-3-lunar-landing": {
+   "title": "Chandrayaan-3"
+  },
+  "classic-maya": {
+   "title": "Maya civilization",
+   "note": "The name redirected to Classic Maya language"
+  },
+  "maya-classic-period": {
+   "title": "Maya civilization",
+   "note": "The name redirected to Mesoamerican chronology"
+  },
+  "discovery-of-pluto": {
+   "title": "Pluto",
+   "note": "The name redirected to Planets beyond Neptune"
+  }
+ }
+}

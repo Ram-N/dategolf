@@ -56,6 +56,7 @@ Both open in your normal Windows browser; from WSL, `localhost` is forwarded aut
 - **Plain-English descriptions for every table and its key columns.** Datasette becomes *living documentation* of the data model.
 - **Hidden internal tables:** `import_records` (raw migration payloads), `category_mappings` (unused) and `meta`. They're still reachable through SQL.
 - **Default facets and sort orders.** For example, `events` opens sorted by year with facets for region, difficulty and importance, and `entity_countries` has facets for country, role and status.
+- **Sources (Step 5):** `sources`, `entity_sources` and `v_source_review` have descriptions, and Datasette turns URLs into clickable links. `event_card` lists an event's source URLs. The Streamlit side has the **Review → Sources** tab and 📖 links in Connections and on the draft card.
 - **Label columns,** so links show names instead of IDs where possible (`events.name`, `time_spans.name`, `countries.name`).
 - **Canned queries:** named, saved SQL pages, some with parameters.
 
@@ -68,6 +69,7 @@ Both open in your normal Windows browser; from WSL, `localhost` is forwarded aut
 | `category_balance` | Category counts per century |
 | `thin_centuries` | The centuries with the fewest events: where to aim the next draft batch |
 | `shared_ids_3a` | The 25 IDs that are both an event and a span (Step 3a) |
+| `unsourced` | Published events and spans with no source yet (Step 5) |
 | `review_queue` | Everything waiting on a human: proposed drafts, proposed country tags, identity reviews |
 
 ### Learning notes
