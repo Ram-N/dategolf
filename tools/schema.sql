@@ -333,6 +333,40 @@ LEFT JOIN events te ON te.entity_id = r.target_entity_id
 LEFT JOIN time_spans ts ON ts.entity_id = r.target_entity_id AND te.entity_id IS NULL
 ORDER BY r.editorial_status = 'reviewed', r.id;
 
+-- ── Sources (Step 5) ────────────────────────────────────────────────────────
+
+-- One row per page or book; several entities can share one. A url may carry a #section.
+CREATE TABLE IF NOT EXISTS sources (
+  id         INTEGER PRIMARY KEY,
+  kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
+  title      TEXT NOT NULL,
+  url        TEXT UNIQUE CHECK (url IS NULL OR url LIKE 'https://%' OR url LIKE 'http://%'),
+  created_at TEXT DEFAULT (datetime('now'))
+);
+
+-- Which source supports which entity. Proposed rows await review (tools/sources.py).
+CREATE TABLE IF NOT EXISTS entity_sources (
+  entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
+  source_id  INTEGER NOT NULL REFERENCES sources(id) ON DELETE CASCADE,
+  status     TEXT NOT NULL CHECK (status IN ('proposed', 'reviewed')),
+  origin     TEXT NOT NULL,                      -- csv | title_match | ai_drafted
+  confidence TEXT CHECK (confidence IS NULL OR confidence IN ('high', 'medium', 'low')),
+  note       TEXT,
+  PRIMARY KEY (entity_id, source_id)
+);
+
+-- Sources beside their entity's name and year, proposed (and less certain) first.
+CREATE VIEW IF NOT EXISTS v_source_review AS
+SELECT x.entity_id,
+       coalesce(e.year, s.start_year) AS year,
+       coalesce(e.name, s.name) AS name,
+       o.title, o.url, o.kind, x.status, x.origin, x.confidence, x.note, x.source_id
+FROM entity_sources x
+JOIN sources o ON o.id = x.source_id
+LEFT JOIN events e ON e.entity_id = x.entity_id
+LEFT JOIN time_spans s ON s.entity_id = x.entity_id AND e.entity_id IS NULL
+ORDER BY x.status = 'reviewed', x.origin = 'title_match', x.confidence = 'high', coalesce(e.year, s.start_year);
+
 -- ── Change tracking ─────────────────────────────────────────────────────────
 
 CREATE TRIGGER IF NOT EXISTS events_touch AFTER UPDATE ON events BEGIN

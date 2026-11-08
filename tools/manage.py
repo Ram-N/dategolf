@@ -12,6 +12,7 @@ import exporter
 import identity
 import links
 import reconcile
+import sources
 import validate
 from datetime import datetime
 
@@ -218,6 +219,29 @@ def main():
     p = sub.add_parser("suggest-part-of", help="Write part_of candidates to a draft file (loads nothing)")
     p.add_argument("--out", help="Output path (default data/drafts/<date>_part_of_suggestions.json)")
     p.set_defaults(fn=lambda a: links.suggest_part_of(a.out))
+
+    sub.add_parser("import-csv-sources", help="Copy the CSV's Wikipedia URLs onto their events (reviewed)"
+                   ).set_defaults(fn=lambda a: sources.import_csv())
+
+    p = sub.add_parser("suggest-sources", help="Check Wikipedia titles for unsourced entities; write a draft file")
+    p.add_argument("--picks", help="JSON of {entity id: article title} to try instead of the name")
+    p.add_argument("--out", help="Output path (default data/drafts/<date>_sources_suggestions.json)")
+    p.set_defaults(fn=lambda a: sources.suggest(a.picks, a.out))
+
+    p = sub.add_parser("load-sources", help="Load a sources batch as proposed (all-or-nothing)")
+    p.add_argument("path")
+    p.set_defaults(fn=lambda a: sources.load(a.path))
+
+    p = sub.add_parser("approve-sources", help="Mark an entity's proposed sources reviewed")
+    p.add_argument("ids", nargs="*", help="Entity ids")
+    p.add_argument("--title-matches", action="store_true", help="Approve every high-confidence name match")
+    p.set_defaults(fn=lambda a: sources.approve(a.ids, title_matches=a.title_matches)
+                   if (a.ids or a.title_matches) else sys.exit("Give entity ids or --title-matches"))
+
+    p = sub.add_parser("reject-sources", help="Delete an entity's proposed sources (logged, with a reason)")
+    p.add_argument("ids", nargs="+")
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: sources.reject(a.ids, a.reason))
 
     p = sub.add_parser("load-countries", help="Load drafted country tags as proposed")
     p.add_argument("path")

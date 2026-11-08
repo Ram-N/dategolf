@@ -3,15 +3,17 @@
 Draft file shape (JSON):
   {"origin": "ai_drafted_from_csv",
    "events": [{id, name, year, categories, region, aliases, description, difficulty,
-               importance, csv_event_id?, note?,
+               importance, csv_event_id?, note?, source?,
                is_approximate?, date_display?, date_precision?}, ...],
    "csv_triage": [{csv_event_id, outcome, related_entity_id?, note?}, ...]}
+`source` is a Wikipedia URL. It loads as a proposed source and is approved with its draft.
 """
 
 import json
 import sqlite3
 from pathlib import Path
 
+import sources
 from common import connect, ensure_schema, log
 
 
@@ -37,6 +39,11 @@ def load(path):
                              [(e["id"], i, c) for i, c in enumerate(e["categories"])])
             ins("INSERT INTO entity_provenance VALUES (?, ?, ?, ?)",
                 (e["id"], origin, e.get("csv_event_id"), e.get("note")))
+            if e.get("source"):
+                if not e["source"].startswith("https://"):
+                    raise sqlite3.IntegrityError(f"{e['id']}: source must be an https URL")
+                sources.attach(conn, e["id"], sources.title_from_url(e["source"]), e["source"],
+                               "proposed", "ai_drafted")
 
         # A re-draft of an already-drafted CSV row keeps its existing triage row.
         drafted = {e["csv_event_id"] for e in batch["events"] if e.get("csv_event_id") is not None}
@@ -64,6 +71,7 @@ def approve(ids, via="cli"):
         cur = conn.execute("UPDATE entities SET editorial_status = 'reviewed', updated_at = datetime('now') "
                            "WHERE id = ? AND editorial_status = 'proposed'", (entity_id,))
         if cur.rowcount:
+            conn.execute("UPDATE entity_sources SET status = 'reviewed' WHERE entity_id = ?", (entity_id,))
             log(conn, "approve-draft", entity_id, via=via)
         ok = ok and bool(cur.rowcount)
         print(f"  {'✓ approved' if cur.rowcount else '✗ not a proposed entity:'} {entity_id}")
@@ -99,6 +107,7 @@ def reject(ids, reason, via="cli"):
                              "WHERE csv_event_id = ? AND outcome = 'drafted'", (csv_id,))
         log(conn, "reject-draft", entity_id, reason.strip(), via=via)
         print(f"  ✓ rejected {entity_id}")
+    sources.drop_orphans(conn)
     conn.commit()
     conn.close()
     return 0 if ok else 1
