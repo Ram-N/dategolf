@@ -122,6 +122,17 @@ class TestRename(unittest.TestCase):
         self.assertEqual(quiet(edit.set_span_years, "no-such-id", 1, 2, via="test"), 1)
 
 
+    def test_set_event_date(self):
+        self.assertEqual(quiet(edit.set_event_date, "egyptian-pyramids-built", None, True, "c. 2600–2560 BCE",
+                               via="test"), 0)
+        self.assertEqual(db().execute("SELECT year, is_approximate, date_display FROM events "
+                                      "WHERE entity_id = 'egyptian-pyramids-built'").fetchone(),
+                         (-2560, 1, "c. 2600–2560 BCE"))
+        self.assertEqual(log_rows("egyptian-pyramids-built")[-1][0], "set-event-date")
+        self.assertEqual(quiet(edit.set_event_date, "egyptian-pyramids-built", 0, via="test"), 1)
+        self.assertEqual(quiet(edit.set_event_date, "no-such-id", 5, via="test"), 1)
+
+
 class TestCountries(unittest.TestCase):
     def test_set_tags_replaces_and_logs(self):
         self.assertEqual(quiet(countries.set_tags, "battle-of-zama", "TN, IT/actor", via="test"), 0)

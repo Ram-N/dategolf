@@ -199,6 +199,15 @@ def main():
     g.add_argument("--exact", action="store_const", const=False, dest="approximate", help="Clear c.")
     p.set_defaults(fn=lambda a: edit.set_span_years(a.id, a.start, a.end, a.approximate))
 
+    p = sub.add_parser("set-event-date", help="Change an event's year, 'c.' flag or displayed range")
+    p.add_argument("id")
+    p.add_argument("--year", type=int, help="Signed year; -2560 = 2560 BCE")
+    g = p.add_mutually_exclusive_group()
+    g.add_argument("--approximate", action="store_const", const=True, dest="approximate", help="Mark as c.")
+    g.add_argument("--exact", action="store_const", const=False, dest="approximate", help="Clear c.")
+    p.add_argument("--display", help='The true range, e.g. "c. 2600–2560 BCE" ("" clears it)')
+    p.set_defaults(fn=lambda a: edit.set_event_date(a.id, a.year, a.approximate, a.display))
+
     p = sub.add_parser("set-countries", help='Replace an entity\'s country tags, e.g. "IN, PK/actor"')
     p.add_argument("id")
     p.add_argument("spec")

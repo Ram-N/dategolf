@@ -69,3 +69,30 @@ def set_span_years(entity_id, start, end, approximate=None, via="cli"):
     conn.close()
     print(f"  ✓ {entity_id}: {detail}")
     return 0
+
+
+def set_event_date(entity_id, year=None, approximate=None, display=None, via="cli"):
+    """Change an event's year, its 'c.' flag and/or its date_display (the true range). None leaves a field."""
+    if year == 0:
+        print("  ✗ there is no year 0 (-1 = 1 BCE)")
+        return 1
+    conn = connect()
+    ensure_schema(conn)
+    row = conn.execute("SELECT year, is_approximate, date_display FROM events WHERE entity_id = ?",
+                       (entity_id,)).fetchone()
+    if row is None:
+        print(f"  ✗ no event with id {entity_id}")
+        conn.close()
+        return 1
+    new = (row["year"] if year is None else year,
+           row["is_approximate"] if approximate is None else (1 if approximate else None),
+           row["date_display"] if display is None else (display.strip() or None))
+    conn.execute("UPDATE events SET year = ?, is_approximate = ?, date_display = ? WHERE entity_id = ?",
+                 (*new, entity_id))
+    show = lambda y, a, d: f"{'c. ' if a else ''}{y}" + (f" ({d})" if d else "")
+    detail = f"{show(*row)} → {show(*new)}"
+    log(conn, "set-event-date", entity_id, detail, via=via)
+    conn.commit()
+    conn.close()
+    print(f"  ✓ {entity_id}: {detail}")
+    return 0
