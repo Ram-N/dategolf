@@ -120,6 +120,10 @@ class TestValidation(unittest.TestCase):
 class TestSuggest(unittest.TestCase):
     def test_suggests_without_loading(self):
         out = TMP / "suggest.json"
+        conn = db()  # already-linked pairs are skipped, so unlink the one this test expects
+        conn.execute("DELETE FROM relationships WHERE source_entity_id = 'battle-of-zama' "
+                     "AND target_entity_id = 'punic-wars'")
+        conn.commit()
         before = db().execute("SELECT COUNT(*) FROM relationships").fetchone()[0]
         self.assertEqual(quiet(links.suggest_part_of, out), 0)
         data = json.loads(out.read_text())
