@@ -205,7 +205,7 @@
   {
     "id": "construction-great-wall",
     "name": "Construction of the Great Wall of China",
-    "startYear": -221,
+    "startYear": -215,
     "endYear": -206,
     "description": "Qin Dynasty unified and extended earlier walls into a massive defensive fortification",
     "categories": [
@@ -213,7 +213,8 @@
     ],
     "region": "East Asia",
     "importance": 5,
-    "kind": "period"
+    "kind": "period",
+    "approximate": true
   },
   {
     "id": "han-dynasty",

@@ -12,7 +12,7 @@
 
 ## ▶ Your next actions (updated 2026-11-08)
 
-1. **Review the first link batch: 142 `part_of` links (109 left).** On the dashboard, go to **Review → Links**. The step-by-step guide is **doc 12 §4.6c**. The 9 medium-confidence links are the ones that need real judgement. *2026-11-08:* the 30 "event starts the span" links are approved. Four of their events were renamed to say "Begins", with the old names kept as aliases, and the span `meiji-restoration` is now named **Meiji Era** (`manage.py rename`).
+1. **Review the first link batch: 142 `part_of` links (108 left).** On the dashboard, go to **Review → Links**. The step-by-step guide is **doc 12 §4.6c**. The 9 medium-confidence links are the ones that need real judgement. *2026-11-08:* the 30 "event starts the span" links are approved. Four of their events were renamed to say "Begins", with the old names kept as aliases, and the span `meiji-restoration` is now named **Meiji Era** (`manage.py rename`).
 2. **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project` and `arab-spring` (all "one subject"). Change any with `manage.py identity <id> --one|--split|--drop-span|--drop-event`.
 3. **Then tell Claude to continue.** The next link batch is **sequences** (`preceded`, e.g. the Mughal succession), then **causal** links, then **3c** (export `relationships.json`).
 

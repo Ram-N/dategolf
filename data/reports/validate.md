@@ -35,7 +35,7 @@
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 1 |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 106 |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 105 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -113,7 +113,6 @@
 ## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
 
 - `6` — egyptian-pyramids-built part_of construction-great-pyramid — The completion of the building work on the Great Pyramid.
-- `7` — great-wall-china part_of construction-great-wall — The start of building under the Qin.
 - `18` — first-world-war-ends part_of world-war-1 — The armistice that ends the First World War.
 - `20` — end-world-war-two part_of world-war-2 — The end of the Second World War.
 - `21` — battle-of-zama part_of punic-wars — The battle that ends the Second Punic War.

@@ -383,15 +383,11 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 106,
+      "count": 105,
       "rows": [
         [
           6,
           "egyptian-pyramids-built part_of construction-great-pyramid — The completion of the building work on the Great Pyramid."
-        ],
-        [
-          7,
-          "great-wall-china part_of construction-great-wall — The start of building under the Qin."
         ],
         [
           18,

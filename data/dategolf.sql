@@ -2015,7 +2015,7 @@ INSERT INTO "entities" VALUES('ashoka-becomes-emperor','event','imported',NULL,N
 INSERT INTO "entities" VALUES('punic-wars','event','reviewed',NULL,'2026-11-07 21:12:22');
 INSERT INTO "entities" VALUES('ashoka-converts-to-buddhism','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('eratosthenes-measures-earth','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('qin-unification-china','event','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('qin-unification-china','event','imported',NULL,'2026-11-08 21:55:00');
 INSERT INTO "entities" VALUES('great-wall-china','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('silk-road-opens','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('first-triumvirate','event','imported',NULL,NULL);
@@ -2340,7 +2340,7 @@ INSERT INTO "entities" VALUES('persian-wars','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('peloponnesian-war','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('alexanders-conquests','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('maurya-empire','empire','imported',NULL,'2026-11-06 23:21:15');
-INSERT INTO "entities" VALUES('construction-great-wall','period','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('construction-great-wall','period','imported',NULL,'2026-11-08 21:55:00');
 INSERT INTO "entities" VALUES('han-dynasty','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('fall-of-roman-republic','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('roman-empire','empire','imported',NULL,NULL);
@@ -6163,7 +6163,7 @@ INSERT INTO "events" VALUES('ashoka-becomes-emperor','Ashoka Becomes Mauryan Emp
 INSERT INTO "events" VALUES('punic-wars','Punic Wars Between Rome and Carthage',-264,'Europe','Rome and the North African city-state of Carthage fight three devastating wars over more than a century for dominance of the western Mediterranean. The wars culminate in the complete destruction of Carthage and establish Rome as the unchallenged master of the Mediterranean world.','medium',4,NULL,NULL,NULL,28);
 INSERT INTO "events" VALUES('ashoka-converts-to-buddhism','Ashoka Converts to Buddhism',-260,'South Asia','Horrified by the devastation caused by the Kalinga War, Ashoka embraces Buddhism and adopts a policy of nonviolence and dharma. He erects pillars and edicts across his empire promoting Buddhist values, transforming Indian governance.','medium',5,NULL,NULL,NULL,29);
 INSERT INTO "events" VALUES('eratosthenes-measures-earth','Eratosthenes Measures the Earth''s Circumference',-240,'Africa','The Greek mathematician and librarian Eratosthenes calculates the circumference of the Earth by measuring the difference in the angle of the sun''s shadow between Alexandria and Syene at the summer solstice, deducing that the two cities are separated by about one-fiftieth of the full circle. His result of approximately 40,000 kilometers is remarkably close to the modern measurement. The achievement stands as one of antiquity''s greatest scientific accomplishments, demonstrating the power of mathematical reasoning applied to physical observation.','hard',6,NULL,NULL,NULL,30);
-INSERT INTO "events" VALUES('qin-unification-china','Qin Dynasty Unifies China',-221,'East Asia','Qin Shi Huangdi defeats all rival Warring States and unifies China for the first time under a single emperor, establishing the Qin dynasty. He standardizes weights, measures, writing, and currency across the empire and begins construction of the Great Wall of China.','medium',5,NULL,NULL,NULL,31);
+INSERT INTO "events" VALUES('qin-unification-china','Qin Dynasty Unifies China',-221,'East Asia','Qin Shi Huangdi defeats all rival Warring States and unifies China for the first time under a single emperor, establishing the Qin dynasty. He standardizes weights, measures, writing, and currency across the empire.','medium',5,NULL,NULL,NULL,31);
 INSERT INTO "events" VALUES('great-wall-china','Construction of the Great Wall of China Begins',-215,'East Asia','Emperor Qin Shi Huangdi orders the connection and extension of existing northern walls to create a unified defensive barrier against nomadic invasions. The Great Wall, extended and rebuilt by successive dynasties especially the Ming, becomes one of history''s greatest engineering achievements.','easy',4,NULL,NULL,NULL,32);
 INSERT INTO "events" VALUES('silk-road-opens','Silk Road Trade Route Opens',-130,'East Asia','Han dynasty emperor Wudi sends envoy Zhang Qian westward, opening sustained trade connections between China, Central Asia, and eventually the Mediterranean world. The Silk Road carries not only silk and spices but ideas, religions, technologies, and diseases across continents for centuries.','medium',5,NULL,NULL,NULL,33);
 INSERT INTO "events" VALUES('first-triumvirate','First Triumvirate Formed',-60,'Europe','Julius Caesar, Pompey the Great, and Marcus Crassus form an informal political alliance known as the First Triumvirate, effectively dominating Roman politics and marginalizing the Senate. The alliance allows Caesar to secure the consulship and a military command in Gaul, where he spends the next decade building the veteran army that will carry him to supreme power. The Triumvirate marks the beginning of the end for the Roman Republic, setting in motion the events that lead to civil war and the age of emperors.','hard',6,NULL,NULL,NULL,34);
@@ -9054,7 +9054,7 @@ INSERT INTO "relationships" VALUES(3,'human-genome-project','part_of','human-gen
 INSERT INTO "relationships" VALUES(4,'maya-classic-period','part_of','classic-maya','The start of the Classic period of Maya civilization.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(5,'black-death-europe','part_of','black-death','The plague''s arrival in Europe, the core of the pandemic.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(6,'egyptian-pyramids-built','part_of','construction-great-pyramid','The completion of the building work on the Great Pyramid.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(7,'great-wall-china','part_of','construction-great-wall','The start of building under the Qin.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(7,'great-wall-china','part_of','construction-great-wall','The start of building under the Qin.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(8,'taj-mahal-construction-begins','part_of','construction-taj-mahal','The start of the Taj Mahal''s construction.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(9,'fall-of-roman-empire-west','part_of','fall-western-roman-empire','476, the final moment of the western empire''s long decline.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(10,'alexander-conquests','part_of','alexanders-conquests','The start of Alexander''s campaign.','high','reviewed','suggested','2026-11-07 21:41:29');
@@ -9335,6 +9335,9 @@ INSERT INTO "review_log" VALUES(131,'2026-11-08 21:52:41','rename-event','iran-i
 INSERT INTO "review_log" VALUES(132,'2026-11-08 21:52:41','rename-event','fall-of-roman-empire-west','''Fall of the Western Roman Empire'' → ''Last Western Roman Emperor Deposed''','cli');
 INSERT INTO "review_log" VALUES(133,'2026-11-08 21:52:41','approve-link','fall-of-roman-empire-west','link #9: fall-of-roman-empire-west part_of fall-western-roman-empire','cli');
 INSERT INTO "review_log" VALUES(134,'2026-11-08 21:52:41','approve-link','iran-islamic-revolution','link #15: iran-islamic-revolution part_of iranian-revolution','cli');
+INSERT INTO "review_log" VALUES(135,'2026-11-08 21:55:00','set-span-years','construction-great-wall','-221 to -206 → c. -215 to -206','cli');
+INSERT INTO "review_log" VALUES(136,'2026-11-08 21:55:00','rename-event','qin-unification-china','''Qin Dynasty Unifies China'' → ''Qin Dynasty Unifies China''; new description','cli');
+INSERT INTO "review_log" VALUES(137,'2026-11-08 21:55:00','approve-link','great-wall-china','link #7: great-wall-china part_of construction-great-wall','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -9426,7 +9429,7 @@ INSERT INTO "time_spans" VALUES('peloponnesian-war','period','Peloponnesian War'
 INSERT INTO "time_spans" VALUES('alexanders-conquests','period','Conquests of Alexander the Great',-334,-323,'Military campaigns that created one of the largest empires of the ancient world','Europe',5,NULL,11);
 INSERT INTO "time_spans" VALUES('maurya-empire','empire','Maurya Empire',-320,-185,'Founded by Chandragupta Maurya; under Ashoka it covered most of the Indian subcontinent and spread Buddhism.','South Asia',8,NULL,12);
 INSERT INTO "time_spans" VALUES('punic-wars','period','Punic Wars',-264,-146,'Three wars between Rome and Carthage for control of the western Mediterranean','Europe',5,NULL,13);
-INSERT INTO "time_spans" VALUES('construction-great-wall','period','Construction of the Great Wall of China',-221,-206,'Qin Dynasty unified and extended earlier walls into a massive defensive fortification','East Asia',5,NULL,14);
+INSERT INTO "time_spans" VALUES('construction-great-wall','period','Construction of the Great Wall of China',-215,-206,'Qin Dynasty unified and extended earlier walls into a massive defensive fortification','East Asia',5,1,14);
 INSERT INTO "time_spans" VALUES('han-dynasty','empire','Han Dynasty',-206,220,'A golden age that gave the Chinese people their name, opened the Silk Road and invented paper.','East Asia',8,NULL,15);
 INSERT INTO "time_spans" VALUES('fall-of-roman-republic','period','Fall of the Roman Republic',-133,-27,'Period of political upheaval leading to the end of the Roman Republic and rise of the Empire','Europe',5,NULL,16);
 INSERT INTO "time_spans" VALUES('pax-romana-period','period','Pax Romana',-27,180,'Period of relative peace and stability across the Roman Empire','Europe',5,NULL,17);
