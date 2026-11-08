@@ -1345,7 +1345,7 @@
     },
     {
       "id": "black-death-europe",
-      "name": "Black Death Strikes Europe",
+      "name": "Black Death Begins in Europe",
       "year": 1347,
       "title": "Black Death",
       "url": "https://en.wikipedia.org/wiki/Black_Death",
@@ -2203,7 +2203,7 @@
     },
     {
       "id": "industrial-revolution-textile",
-      "name": "Industrial Revolution Transforms Britain",
+      "name": "Industrial Revolution Begins in Britain",
       "year": 1760,
       "title": "Industrial Revolution",
       "url": "https://en.wikipedia.org/wiki/Industrial_Revolution",
@@ -2676,13 +2676,13 @@
     },
     {
       "id": "meiji-restoration",
-      "name": "Meiji Restoration",
+      "name": "Meiji Era",
       "year": 1868,
-      "title": "Meiji Restoration",
-      "url": "https://en.wikipedia.org/wiki/Meiji_Restoration",
+      "title": "Meiji era",
+      "url": "https://en.wikipedia.org/wiki/Meiji_era",
       "origin": "title_match",
       "confidence": "high",
-      "asked": "Meiji Restoration",
+      "asked": "Meiji Era",
       "note": null
     },
     {
@@ -3347,13 +3347,13 @@
     },
     {
       "id": "holocaust",
-      "name": "Holocaust",
+      "name": "Holocaust Begins",
       "year": 1941,
       "title": "The Holocaust",
       "url": "https://en.wikipedia.org/wiki/The_Holocaust",
-      "origin": "title_match",
-      "confidence": "medium",
-      "asked": "Holocaust",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "The Holocaust",
       "note": null
     },
     {
@@ -3996,13 +3996,13 @@
     },
     {
       "id": "chinese-cultural-revolution",
-      "name": "Chinese Cultural Revolution",
+      "name": "Chinese Cultural Revolution Begins",
       "year": 1966,
       "title": "Cultural Revolution",
       "url": "https://en.wikipedia.org/wiki/Cultural_Revolution",
-      "origin": "title_match",
-      "confidence": "medium",
-      "asked": "Chinese Cultural Revolution",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Cultural Revolution",
       "note": null
     },
     {

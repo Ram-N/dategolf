@@ -383,16 +383,8 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 142,
+      "count": 111,
       "rows": [
-        [
-          4,
-          "maya-classic-period part_of classic-maya — The start of the Classic period of Maya civilization."
-        ],
-        [
-          5,
-          "black-death-europe part_of black-death — The plague's arrival in Europe, the core of the pandemic."
-        ],
         [
           6,
           "egyptian-pyramids-built part_of construction-great-pyramid — The completion of the building work on the Great Pyramid."
@@ -402,52 +394,16 @@
           "great-wall-china part_of construction-great-wall — The start of building under the Qin."
         ],
         [
-          8,
-          "taj-mahal-construction-begins part_of construction-taj-mahal — The start of the Taj Mahal's construction."
-        ],
-        [
           9,
           "fall-of-roman-empire-west part_of fall-western-roman-empire — 476, the final moment of the western empire's long decline."
-        ],
-        [
-          10,
-          "alexander-conquests part_of alexanders-conquests — The start of Alexander's campaign."
-        ],
-        [
-          11,
-          "indus-valley-begins part_of indus-valley-mature — The start of the civilization's mature phase."
-        ],
-        [
-          12,
-          "holocaust part_of the-holocaust — The same genocide; the event marks its systematic phase."
-        ],
-        [
-          13,
-          "chinese-cultural-revolution part_of cultural-revolution — The launch of the Cultural Revolution."
-        ],
-        [
-          14,
-          "meiji-restoration-japan part_of meiji-restoration — The restoration of imperial rule that opens the Meiji era."
         ],
         [
           15,
           "iran-islamic-revolution part_of iranian-revolution — The revolution's victory, the climax of the span."
         ],
         [
-          16,
-          "birth-of-buddha part_of life-of-the-buddha — The start of the Buddha's life."
-        ],
-        [
-          17,
-          "world-war-one part_of world-war-1 — The outbreak of the First World War."
-        ],
-        [
           18,
           "first-world-war-ends part_of world-war-1 — The armistice that ends the First World War."
-        ],
-        [
-          19,
-          "world-war-two part_of world-war-2 — The outbreak of the Second World War."
         ],
         [
           20,
@@ -518,10 +474,6 @@
           "chinese-communist-revolution part_of chinese-civil-war — The Communist victory that ends the civil war."
         ],
         [
-          37,
-          "opium-wars-china part_of opium-wars — The First Opium War."
-        ],
-        [
           38,
           "opium-war-second part_of opium-wars — The Second Opium War."
         ],
@@ -570,14 +522,6 @@
           "augustus-first-emperor part_of fall-of-roman-republic — Augustus's rule, which ends the republic."
         ],
         [
-          50,
-          "augustus-first-emperor part_of roman-empire — The founding of the empire under its first emperor."
-        ],
-        [
-          51,
-          "roman-republic-founded part_of roman-republic — The founding of the republic."
-        ],
-        [
           52,
           "fall-of-roman-republic part_of roman-republic — The republic's final century."
         ],
@@ -606,10 +550,6 @@
           "attila-hun-invasions part_of fall-western-roman-empire — The Hun invasions that weakened the western empire."
         ],
         [
-          59,
-          "charlemagne-crowned-emperor part_of holy-roman-empire — Charlemagne's coronation, from which the empire's line is traced."
-        ],
-        [
           60,
           "fall-of-constantinople part_of byzantine-empire — The fall of Constantinople ends the Byzantine Empire."
         ],
@@ -622,14 +562,6 @@
           "ottoman-empire-falls part_of ottoman-empire — The end of the Ottoman Empire."
         ],
         [
-          63,
-          "cyrus-founds-persian-empire part_of achaemenid-empire — Cyrus founds the Achaemenid Empire."
-        ],
-        [
-          64,
-          "maurya-empire-founded part_of maurya-empire — Chandragupta Maurya founds the empire."
-        ],
-        [
           65,
           "ashoka-becomes-emperor part_of maurya-empire — Ashoka becomes the Mauryan emperor."
         ],
@@ -638,20 +570,12 @@
           "ashoka-converts-to-buddhism part_of maurya-empire — The Mauryan emperor's conversion after Kalinga."
         ],
         [
-          67,
-          "gupta-empire-founded part_of gupta-empire — The founding of the Gupta Empire."
-        ],
-        [
           68,
           "chandragupta-ii-vikramaditya part_of gupta-empire — The accession of the Gupta emperor Chandragupta II."
         ],
         [
           69,
           "chola-rajaraja-peak part_of chola-empire — Rajaraja I's reign, the empire's height."
-        ],
-        [
-          70,
-          "qutb-ud-din-aibak-delhi part_of delhi-sultanate — The founding of the sultanate."
         ],
         [
           71,
@@ -672,18 +596,6 @@
         [
           75,
           "first-battle-of-panipat part_of delhi-sultanate — Babur's victory, which ends the sultanate."
-        ],
-        [
-          76,
-          "vijayanagara-empire-founded part_of vijayanagara-empire — The founding of the empire."
-        ],
-        [
-          77,
-          "babur-founds-mughal-empire part_of mughal-empire — The founding of the Mughal Empire."
-        ],
-        [
-          78,
-          "first-battle-of-panipat part_of mughal-empire — The founding battle of Mughal rule."
         ],
         [
           79,
@@ -738,10 +650,6 @@
           "mughal-empire-zenith-aurangzeb part_of mughal-empire — The empire at its largest, at Aurangzeb's death."
         ],
         [
-          92,
-          "shivaji-crowned-chhatrapati part_of maratha-empire — Shivaji's coronation founds the Maratha kingdom."
-        ],
-        [
           93,
           "death-of-shivaji part_of maratha-empire — The founder's death."
         ],
@@ -756,10 +664,6 @@
         [
           96,
           "indian-independence part_of british-raj — Independence ends British rule."
-        ],
-        [
-          97,
-          "non-cooperation-movement part_of indian-independence-movement — Gandhi's first mass campaign."
         ],
         [
           98,
@@ -790,20 +694,12 @@
           "invention-of-compass part_of song-dynasty — The magnetic compass under the Song."
         ],
         [
-          105,
-          "ming-dynasty-founded part_of ming-dynasty — The founding of the Ming."
-        ],
-        [
           106,
           "zheng-he-voyages part_of ming-dynasty — The Ming treasure-fleet voyages."
         ],
         [
           107,
           "fall-of-qing-dynasty part_of qing-dynasty — The end of the Qing."
-        ],
-        [
-          108,
-          "genghis-khan-unifies-mongols part_of mongol-conquests — The unification that launches the conquests."
         ],
         [
           109,
@@ -826,10 +722,6 @@
           "moors-invade-spain part_of umayyad-caliphate — The Umayyad conquest of Iberia."
         ],
         [
-          114,
-          "viking-raids-begin part_of viking-age — The Lindisfarne raid that opens the Viking Age."
-        ],
-        [
           115,
           "renaissance-begins-florence part_of italian-renaissance — The Renaissance's beginnings in Florence."
         ],
@@ -840,10 +732,6 @@
         [
           117,
           "renaissance-michelangelo part_of italian-renaissance — The Sistine Chapel ceiling."
-        ],
-        [
-          118,
-          "copernicus-heliocentric part_of scientific-revolution — The book usually taken as the revolution's start."
         ],
         [
           119,
@@ -860,10 +748,6 @@
         [
           122,
           "newton-laws-of-motion part_of scientific-revolution — Newton's Principia, the revolution's culmination."
-        ],
-        [
-          123,
-          "industrial-revolution-textile part_of industrial-revolution — Mechanised textiles, the revolution's first industry."
         ],
         [
           124,
@@ -906,10 +790,6 @@
           "partition-of-africa-colonial part_of scramble-for-africa — Leopold's Congo Free State, a product of the scramble."
         ],
         [
-          134,
-          "mandela-freed part_of apartheid-end — Mandela's release opens the negotiations."
-        ],
-        [
           135,
           "collapse-apartheid-negotiations part_of apartheid-end — The first democratic election."
         ],
@@ -928,10 +808,6 @@
         [
           139,
           "civil-rights-act-us part_of civil-rights-movement — The movement's legislative victory."
-        ],
-        [
-          140,
-          "sputnik-launch part_of space-race — The first satellite starts the space race."
         ],
         [
           141,

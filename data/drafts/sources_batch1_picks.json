@@ -904,6 +904,12 @@
   "discovery-of-pluto": {
    "title": "Pluto",
    "note": "The name redirected to Planets beyond Neptune"
+  },
+  "holocaust": {
+   "title": "The Holocaust"
+  },
+  "chinese-cultural-revolution": {
+   "title": "Cultural Revolution"
   }
  }
 }

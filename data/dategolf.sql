@@ -2069,7 +2069,7 @@ INSERT INTO "entities" VALUES('battle-of-bannockburn','event','imported',NULL,'2
 INSERT INTO "entities" VALUES('black-death-arrives-china','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('vijayanagara-empire-founded','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('hundred-years-war','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('black-death-europe','event','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('black-death-europe','event','imported',NULL,'2026-11-08 21:47:27');
 INSERT INTO "entities" VALUES('ming-dynasty-founded','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('timur-sacks-delhi','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('renaissance-begins-florence','event','imported',NULL,NULL);
@@ -2122,7 +2122,7 @@ INSERT INTO "entities" VALUES('act-of-union-1707','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('euler-konigsberg-bridges','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('trans-atlantic-slave-trade-peak','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('battle-of-plassey','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('industrial-revolution-textile','event','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('industrial-revolution-textile','event','imported',NULL,'2026-11-08 21:47:28');
 INSERT INTO "entities" VALUES('east-india-company-bengal','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('steam-engine-watt','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('boston-tea-party','event','imported',NULL,NULL);
@@ -2214,7 +2214,7 @@ INSERT INTO "entities" VALUES('rise-of-nazism','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('spanish-civil-war','event','reviewed',NULL,'2026-11-07 20:22:19');
 INSERT INTO "entities" VALUES('world-war-two','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('battle-of-britain','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('holocaust','event','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('holocaust','event','imported',NULL,'2026-11-08 21:47:27');
 INSERT INTO "entities" VALUES('japanese-pearl-harbor','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('quit-india-movement','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('manhattan-project','event','reviewed',NULL,'2026-11-07 20:22:19');
@@ -2257,7 +2257,7 @@ INSERT INTO "entities" VALUES('green-revolution-india','event','imported',NULL,N
 INSERT INTO "entities" VALUES('vietnam-war','period','reviewed',NULL,'2026-11-07 21:18:28');
 INSERT INTO "entities" VALUES('indo-pak-1965-war','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('us-civil-rights-march-selma','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('chinese-cultural-revolution','event','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('chinese-cultural-revolution','event','imported',NULL,'2026-11-08 21:47:28');
 INSERT INTO "entities" VALUES('six-day-war','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('moon-landing','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('bangladesh-liberation-war','event','imported',NULL,NULL);
@@ -2378,7 +2378,7 @@ INSERT INTO "entities" VALUES('industrial-revolution','period','imported',NULL,N
 INSERT INTO "entities" VALUES('opium-wars','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('california-gold-rush','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('british-raj','empire','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('meiji-restoration','period','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('meiji-restoration','period','imported',NULL,'2026-11-08 21:47:28');
 INSERT INTO "entities" VALUES('scramble-for-africa','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('construction-eiffel-tower','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('boxer-rebellion','period','imported',NULL,NULL);
@@ -4187,6 +4187,72 @@ INSERT INTO "entity_provenance" VALUES('jfk-elected','ai_drafted_from_csv',256,N
 INSERT INTO "entity_provenance" VALUES('reagan-elected','ai_drafted_from_csv',281,NULL);
 INSERT INTO "entity_provenance" VALUES('george-hw-bush-elected','ai_drafted_from_csv',293,NULL);
 INSERT INTO "entity_provenance" VALUES('life-of-the-buddha','ai_drafted_from_csv',21,'Replaces the event draft death-of-the-buddha (user, 2026-11-06): the death date is too disputed for DatePick/DateGolf, so it is a time span, which only DateFlow uses. Traditional dates; approximate.');
+CREATE TABLE entity_sources (
+  entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
+  source_id  INTEGER NOT NULL REFERENCES sources(id) ON DELETE CASCADE,
+  status     TEXT NOT NULL CHECK (status IN ('proposed', 'reviewed')),
+  origin     TEXT NOT NULL,                      -- csv | title_match | ai_drafted
+  confidence TEXT CHECK (confidence IS NULL OR confidence IN ('high', 'medium', 'low')),
+  note       TEXT,
+  PRIMARY KEY (entity_id, source_id)
+);
+INSERT INTO "entity_sources" VALUES('alaska-purchase',1,'reviewed','csv',NULL,'CSV row 201');
+INSERT INTO "entity_sources" VALUES('amundsen-south-pole',2,'reviewed','csv',NULL,'CSV row 218');
+INSERT INTO "entity_sources" VALUES('ashoka-becomes-emperor',3,'reviewed','csv',NULL,'CSV row 38');
+INSERT INTO "entity_sources" VALUES('ashoka-converts-to-buddhism',4,'reviewed','csv',NULL,'CSV row 39');
+INSERT INTO "entity_sources" VALUES('benedictine-order-founded',5,'reviewed','csv',NULL,'CSV row 66');
+INSERT INTO "entity_sources" VALUES('constantinople-founded',6,'reviewed','csv',NULL,'CSV row 61');
+INSERT INTO "entity_sources" VALUES('cosmic-microwave-background',7,'reviewed','csv',NULL,'CSV row 261');
+INSERT INTO "entity_sources" VALUES('crimean-war',8,'reviewed','csv',NULL,'CSV row 192');
+INSERT INTO "entity_sources" VALUES('crucifixion-of-jesus',9,'reviewed','csv',NULL,'CSV row 53');
+INSERT INTO "entity_sources" VALUES('darwin-evolution',10,'reviewed','csv',NULL,'CSV row 193');
+INSERT INTO "entity_sources" VALUES('death-of-elizabeth-i',11,'reviewed','csv',NULL,'CSV row 132');
+INSERT INTO "entity_sources" VALUES('death-of-mao',12,'reviewed','csv',NULL,'CSV row 272');
+INSERT INTO "entity_sources" VALUES('death-of-stalin',13,'reviewed','csv',NULL,'CSV row 245');
+INSERT INTO "entity_sources" VALUES('dolly-sheep-cloned',14,'reviewed','csv',NULL,'CSV row 301');
+INSERT INTO "entity_sources" VALUES('edison-light-bulb',15,'reviewed','csv',NULL,'CSV row 206');
+INSERT INTO "entity_sources" VALUES('eruption-of-vesuvius',16,'reviewed','csv',NULL,'CSV row 55');
+INSERT INTO "entity_sources" VALUES('euler-konigsberg-bridges',17,'reviewed','csv',NULL,'CSV row 159');
+INSERT INTO "entity_sources" VALUES('everest-first-ascent',18,'reviewed','csv',NULL,'CSV row 246');
+INSERT INTO "entity_sources" VALUES('fall-of-roman-empire-west',19,'reviewed','csv',NULL,'CSV row 65');
+INSERT INTO "entity_sources" VALUES('fall-of-troy',20,'reviewed','csv',NULL,'CSV row 6');
+INSERT INTO "entity_sources" VALUES('first-cities-mesopotamia',21,'reviewed','csv',NULL,'CSV row 2');
+INSERT INTO "entity_sources" VALUES('first-crusade',22,'reviewed','csv',NULL,'CSV row 87');
+INSERT INTO "entity_sources" VALUES('first-triumvirate',23,'reviewed','csv',NULL,'CSV row 43');
+INSERT INTO "entity_sources" VALUES('first-use-of-anesthesia',24,'reviewed','csv',NULL,'CSV row 190');
+INSERT INTO "entity_sources" VALUES('first-vaccine-smallpox',25,'reviewed','csv',NULL,'CSV row 176');
+INSERT INTO "entity_sources" VALUES('founding-of-rome',26,'reviewed','csv',NULL,'CSV row 10');
+INSERT INTO "entity_sources" VALUES('great-bengal-famine',27,'reviewed','csv',NULL,'CSV row 166');
+INSERT INTO "entity_sources" VALUES('great-fire-london',28,'reviewed','csv',NULL,'CSV row 149');
+INSERT INTO "entity_sources" VALUES('great-fire-of-rome',29,'reviewed','csv',NULL,'CSV row 54');
+INSERT INTO "entity_sources" VALUES('greek-olympics-ancient',30,'reviewed','csv',NULL,'CSV row 8');
+INSERT INTO "entity_sources" VALUES('hadrians-wall',31,'reviewed','csv',NULL,'CSV row 57');
+INSERT INTO "entity_sources" VALUES('indo-pak-1965-war',32,'reviewed','csv',NULL,'CSV row 264');
+INSERT INTO "entity_sources" VALUES('invention-of-the-wheel',33,'reviewed','csv',NULL,'CSV row 0');
+INSERT INTO "entity_sources" VALUES('kievan-rus-founded',34,'reviewed','csv',NULL,'CSV row 76');
+INSERT INTO "entity_sources" VALUES('krakatoa-erupts',35,'reviewed','csv',NULL,'CSV row 207');
+INSERT INTO "entity_sources" VALUES('lee-surrenders-appomattox',36,'reviewed','csv',NULL,'CSV row 199');
+INSERT INTO "entity_sources" VALUES('lewis-and-clark-expedition',37,'reviewed','csv',NULL,'CSV row 178');
+INSERT INTO "entity_sources" VALUES('marco-polo-china',38,'reviewed','csv',NULL,'CSV row 95');
+INSERT INTO "entity_sources" VALUES('marconi-invents-radio',39,'reviewed','csv',NULL,'CSV row 211');
+INSERT INTO "entity_sources" VALUES('martyrdom-of-guru-arjan',40,'reviewed','csv',NULL,'CSV row 134');
+INSERT INTO "entity_sources" VALUES('moors-invade-spain',41,'reviewed','csv',NULL,'CSV row 71');
+INSERT INTO "entity_sources" VALUES('penicillin-discovered',42,'reviewed','csv',NULL,'CSV row 229');
+INSERT INTO "entity_sources" VALUES('phoenician-alphabet-invented',43,'reviewed','csv',NULL,'CSV row 4');
+INSERT INTO "entity_sources" VALUES('pilgrims-land-plymouth',44,'reviewed','csv',NULL,'CSV row 137');
+INSERT INTO "entity_sources" VALUES('renaissance-da-vinci',45,'reviewed','csv',NULL,'CSV row 110');
+INSERT INTO "entity_sources" VALUES('russo-japanese-war',46,'reviewed','csv',NULL,'CSV row 215');
+INSERT INTO "entity_sources" VALUES('second-battle-of-tarain',47,'reviewed','csv',NULL,'CSV row 89');
+INSERT INTO "entity_sources" VALUES('stanley-finds-livingstone',48,'reviewed','csv',NULL,'CSV row 203');
+INSERT INTO "entity_sources" VALUES('sumerian-writing',49,'reviewed','csv',NULL,'CSV row 1');
+INSERT INTO "entity_sources" VALUES('telephone-invented',50,'reviewed','csv',NULL,'CSV row 204');
+INSERT INTO "entity_sources" VALUES('television-invented',51,'reviewed','csv',NULL,'CSV row 228');
+INSERT INTO "entity_sources" VALUES('tower-of-london-begun',52,'reviewed','csv',NULL,'CSV row 84');
+INSERT INTO "entity_sources" VALUES('university-of-paris-founded',53,'reviewed','csv',NULL,'CSV row 88');
+INSERT INTO "entity_sources" VALUES('viking-1-mars',54,'reviewed','csv',NULL,'CSV row 274');
+INSERT INTO "entity_sources" VALUES('viking-exploration-north-america',55,'reviewed','csv',NULL,'CSV row 79');
+INSERT INTO "entity_sources" VALUES('wealth-of-nations-published',56,'reviewed','csv',NULL,'CSV row 167');
+INSERT INTO "entity_sources" VALUES('wright-brothers-flight',57,'reviewed','csv',NULL,'CSV row 214');
 CREATE TABLE event_aliases (
   entity_id TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   position  INTEGER NOT NULL,
@@ -6047,6 +6113,10 @@ INSERT INTO "event_aliases" VALUES('reagan-elected',2,'Republican landslide');
 INSERT INTO "event_aliases" VALUES('george-hw-bush-elected',0,'Bush defeats Dukakis');
 INSERT INTO "event_aliases" VALUES('george-hw-bush-elected',1,'Read my lips');
 INSERT INTO "event_aliases" VALUES('george-hw-bush-elected',2,'George Bush senior');
+INSERT INTO "event_aliases" VALUES('black-death-europe',4,'Black Death Strikes Europe');
+INSERT INTO "event_aliases" VALUES('holocaust',5,'Holocaust');
+INSERT INTO "event_aliases" VALUES('chinese-cultural-revolution',4,'Chinese Cultural Revolution');
+INSERT INTO "event_aliases" VALUES('industrial-revolution-textile',5,'Industrial Revolution Transforms Britain');
 CREATE TABLE events (
   entity_id      TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   name           TEXT NOT NULL UNIQUE,
@@ -6145,7 +6215,7 @@ INSERT INTO "events" VALUES('battle-of-bannockburn','Battle of Bannockburn',1314
 INSERT INTO "events" VALUES('black-death-arrives-china','Black Death Spreads from Central Asia',1331,'East Asia','Bubonic plague devastates parts of China and Central Asia under Mongol rule before spreading westward along trade routes. The disease, carried by fleas on rats, ultimately reaches Europe via Crimea and kills an estimated 75-200 million people across Eurasia.','hard',4,NULL,NULL,NULL,82);
 INSERT INTO "events" VALUES('vijayanagara-empire-founded','Vijayanagara Empire Founded',1336,'South Asia','Harihara I and Bukka Raya I establish the Vijayanagara Empire in the Deccan, which becomes a major Hindu kingdom resisting the Sultanates of the north. The empire''s capital at Hampi grows into one of the largest cities in the world during its peak.','hard',3,NULL,NULL,NULL,83);
 INSERT INTO "events" VALUES('hundred-years-war','Hundred Years War',1337,'Europe','England and France enter a prolonged series of conflicts over the French throne lasting over a century, featuring legendary battles at Crécy and Agincourt and the emergence of Joan of Arc. The war forges distinct French and English national identities and ends with England''s expulsion from France.','medium',4,NULL,NULL,NULL,84);
-INSERT INTO "events" VALUES('black-death-europe','Black Death Strikes Europe',1347,'Europe','The bubonic plague arrives in Sicily from Crimea and rapidly spreads across Europe, killing an estimated one-third to one-half of the European population within a few years. The catastrophic loss reshapes European society by disrupting feudal systems, labor markets, and the Church''s authority.','easy',5,NULL,NULL,NULL,85);
+INSERT INTO "events" VALUES('black-death-europe','Black Death Begins in Europe',1347,'Europe','The bubonic plague arrives in Sicily from Crimea and rapidly spreads across Europe, killing an estimated one-third to one-half of the European population within a few years. The catastrophic loss reshapes European society by disrupting feudal systems, labor markets, and the Church''s authority.','easy',5,NULL,NULL,NULL,85);
 INSERT INTO "events" VALUES('ming-dynasty-founded','Ming Dynasty Founded in China',1368,'East Asia','Zhu Yuanzhang expels the Mongol Yuan dynasty and establishes the Ming dynasty, restoring Han Chinese rule to China. The Ming period sees the rebuilding of the Great Wall, the construction of the Forbidden City, and the remarkable maritime expeditions of Zheng He across Asia and Africa.','medium',4,NULL,NULL,NULL,86);
 INSERT INTO "events" VALUES('timur-sacks-delhi','Timur Sacks Delhi',1398,'South Asia','Timur, the Central Asian conqueror known in the West as Tamerlane, leads his army into the Indian subcontinent and sacks Delhi, massacring much of its population and stripping the city of its accumulated wealth. The Delhi Sultanate never fully recovers from the blow, plunging northern India into a century of fragmentation and instability. Timur''s campaign represents one of the most destructive military incursions in Indian history and reshapes the subcontinent''s political landscape, indirectly creating the conditions for the later Mughal conquest.','medium',6,NULL,NULL,NULL,87);
 INSERT INTO "events" VALUES('renaissance-begins-florence','Renaissance Begins in Florence',1401,'Europe','A cultural and intellectual movement centered in Florence begins reviving interest in classical Greek and Roman art, philosophy, and science, with patronage from wealthy families like the Medici. The Renaissance produces extraordinary achievements in painting, sculpture, architecture, and literature that fundamentally reshape Western culture.','medium',5,NULL,NULL,NULL,88);
@@ -6198,7 +6268,7 @@ INSERT INTO "events" VALUES('act-of-union-1707','Act of Union Creates Great Brit
 INSERT INTO "events" VALUES('euler-konigsberg-bridges','Euler Solves the Königsberg Bridge Problem',1735,'Europe','The Swiss mathematician Leonhard Euler proves that it is impossible to walk through the city of Königsberg crossing each of its seven bridges exactly once, in the process founding the mathematical field of graph theory. By abstracting the city''s geography into nodes and edges, Euler creates a new framework for analyzing connectivity and networks that has no precedent. The paper is considered the first work in graph theory and topology and becomes foundational to modern network analysis, computer science, logistics, and the study of social networks.','hard',5,NULL,NULL,NULL,135);
 INSERT INTO "events" VALUES('trans-atlantic-slave-trade-peak','Peak of the Transatlantic Slave Trade',1750,'Africa','The transatlantic slave trade reaches its peak volume in the mid-eighteenth century, with over 80,000 Africans forcibly transported to the Americas annually. The trade, which forcibly displaced an estimated 12 million Africans across three centuries, represents one of history''s greatest human catastrophes and shapes the demographic and cultural landscape of the Americas.','medium',5,NULL,NULL,NULL,136);
 INSERT INTO "events" VALUES('battle-of-plassey','Battle of Plassey',1757,'South Asia','Robert Clive of the British East India Company defeats the Nawab of Bengal, Siraj ud-Daulah, at Plassey through a combination of military force and strategic treachery. This decisive battle marks the beginning of British political control over India.','easy',5,NULL,NULL,NULL,137);
-INSERT INTO "events" VALUES('industrial-revolution-textile','Industrial Revolution Transforms Britain',1760,'Europe','Britain leads a transformation from manual craft production to machine-based manufacturing in factories, dramatically increasing industrial output and triggering mass urbanization. The Industrial Revolution creates new social classes, alters working conditions, and sets the template for modern economic development worldwide.','easy',5,NULL,NULL,NULL,138);
+INSERT INTO "events" VALUES('industrial-revolution-textile','Industrial Revolution Begins in Britain',1760,'Europe','Britain begins a transformation from manual craft production to machine-based manufacturing in factories, dramatically increasing industrial output and triggering mass urbanization. The Industrial Revolution creates new social classes, alters working conditions, and sets the template for modern economic development worldwide.','easy',5,NULL,NULL,NULL,138);
 INSERT INTO "events" VALUES('east-india-company-bengal','East India Company Assumes Control of Bengal',1765,'South Asia','The British East India Company receives the Diwani rights — the right to collect revenue from Bengal, Bihar, and Orissa — through the Treaty of Allahabad. This marks a decisive shift from a trading company to a governing power controlling vast territories.','medium',4,NULL,NULL,NULL,139);
 INSERT INTO "events" VALUES('steam-engine-watt','James Watt Improves the Steam Engine',1769,'Europe','James Watt develops a dramatically improved steam engine with a separate condenser, greatly increasing its efficiency and making it practical for widespread industrial use. His invention becomes the driving force of the Industrial Revolution, powering factories, mines, locomotives, and ships.','easy',5,NULL,NULL,NULL,140);
 INSERT INTO "events" VALUES('boston-tea-party','Boston Tea Party',1773,'Americas','American colonists disguised as Mohawk warriors dump 342 chests of British East India Company tea into Boston Harbor in protest of taxation without representation. The dramatic act of defiance galvanizes colonial opposition to British rule and pushes events toward the American Revolution.','easy',4,NULL,NULL,NULL,141);
@@ -6290,7 +6360,7 @@ INSERT INTO "events" VALUES('rise-of-nazism','Nazi Party Seizes Control of Germa
 INSERT INTO "events" VALUES('spanish-civil-war','Spanish Civil War',1936,'Europe','General Francisco Franco leads a military uprising against the elected Republican government of Spain, triggering a brutal three-year civil war that draws foreign intervention from Nazi Germany, Fascist Italy, and the Soviet Union. Franco''s victory establishes a fascist dictatorship and the conflict becomes a rehearsal for World War Two.','medium',4,NULL,NULL,NULL,227);
 INSERT INTO "events" VALUES('world-war-two','World War Two Begins',1939,'Global','Nazi Germany invades Poland, prompting Britain and France to declare war and beginning the most destructive conflict in human history. The war ultimately involves most of the world''s nations, kills an estimated 70-85 million people, and transforms the global political order.','easy',5,NULL,NULL,NULL,228);
 INSERT INTO "events" VALUES('battle-of-britain','Battle of Britain',1940,'Europe','The Royal Air Force fights off a sustained German Luftwaffe campaign to achieve air superiority over Britain, in the first major campaign fought entirely by air forces. Britain''s victory prevents a German invasion and represents a turning point in World War Two, inspiring Churchill''s famous tribute to ''The Few.''','easy',4,NULL,NULL,NULL,229);
-INSERT INTO "events" VALUES('holocaust','Holocaust',1941,'Europe','Nazi Germany implements the systematic genocide of six million Jews and millions of others including Roma, disabled people, and political opponents across occupied Europe. The Holocaust becomes the defining atrocity of the modern era, leading to the Nuremberg trials, the Genocide Convention, and the founding of Israel.','easy',5,NULL,NULL,NULL,230);
+INSERT INTO "events" VALUES('holocaust','Holocaust Begins',1941,'Europe','Nazi Germany begins the systematic genocide of six million Jews and millions of others including Roma, disabled people, and political opponents across occupied Europe. The Holocaust becomes the defining atrocity of the modern era, leading to the Nuremberg trials, the Genocide Convention, and the founding of Israel.','easy',5,NULL,NULL,NULL,230);
 INSERT INTO "events" VALUES('japanese-pearl-harbor','Attack on Pearl Harbor',1941,'East Asia','Japanese naval aircraft launch a surprise attack on the US naval base at Pearl Harbor, Hawaii, sinking or damaging much of the Pacific Fleet. The attack forces the United States to enter World War Two, dramatically altering the global conflict''s outcome.','easy',5,NULL,NULL,NULL,231);
 INSERT INTO "events" VALUES('quit-india-movement','Quit India Movement',1942,'South Asia','Mahatma Gandhi launches the Quit India Movement, demanding an immediate end to British rule during World War II with his rallying cry of ''Do or Die.'' The British arrest Gandhi and thousands of Congress leaders, but the movement signifies the final mass push for independence.','easy',4,NULL,NULL,NULL,232);
 INSERT INTO "events" VALUES('manhattan-project','Manhattan Project Develops Atomic Bomb',1942,'Americas','The United States launches the Manhattan Project, a massive secret scientific and engineering effort employing over 130,000 people to develop the world''s first nuclear weapons. Led by J. Robert Oppenheimer, the project produces the bombs dropped on Hiroshima and Nagasaki and fundamentally changes warfare and geopolitics.','medium',5,NULL,NULL,NULL,233);
@@ -6332,7 +6402,7 @@ INSERT INTO "events" VALUES('civil-rights-act-us','US Civil Rights Act',1964,'Am
 INSERT INTO "events" VALUES('green-revolution-india','Green Revolution in India',1965,'South Asia','India undertakes the Green Revolution, introducing high-yielding crop varieties, chemical fertilizers, and irrigation technology that dramatically increases agricultural output. Led by scientists like M.S. Swaminathan, the program transforms India from a food-deficient nation to one capable of feeding itself.','medium',4,NULL,NULL,NULL,269);
 INSERT INTO "events" VALUES('indo-pak-1965-war','India-Pakistan War over Kashmir',1965,'South Asia','Pakistan launches Operation Gibraltar to infiltrate Jammu and Kashmir, triggering a full-scale war with India that ends in a stalemate and the Tashkent Declaration mediated by the Soviet Union. The war deepens the Kashmir dispute without resolving it.','hard',3,NULL,NULL,NULL,271);
 INSERT INTO "events" VALUES('us-civil-rights-march-selma','Selma to Montgomery Marches',1965,'Americas','Civil rights marchers attempting to walk from Selma to Montgomery, Alabama, are violently beaten by police on the Edmund Pettus Bridge on Bloody Sunday, shocking the nation. The marches contribute directly to the passage of the Voting Rights Act, a cornerstone of American civil rights legislation.','medium',4,NULL,NULL,NULL,272);
-INSERT INTO "events" VALUES('chinese-cultural-revolution','Chinese Cultural Revolution',1966,'East Asia','Mao Zedong launches the Cultural Revolution to reassert ideological purity and his personal authority, unleashing Red Guards who attack intellectuals, destroy cultural heritage, and purge party officials. The decade-long upheaval causes immense suffering and economic disruption, killing hundreds of thousands and sending millions to labor camps.','medium',4,NULL,NULL,NULL,273);
+INSERT INTO "events" VALUES('chinese-cultural-revolution','Chinese Cultural Revolution Begins',1966,'East Asia','Mao Zedong launches the Cultural Revolution to reassert ideological purity and his personal authority, unleashing Red Guards who attack intellectuals, destroy cultural heritage, and purge party officials. The decade-long upheaval causes immense suffering and economic disruption, killing hundreds of thousands and sending millions to labor camps.','medium',4,NULL,NULL,NULL,273);
 INSERT INTO "events" VALUES('six-day-war','Six-Day War',1967,'Middle East','Israel launches preemptive air strikes against Egypt, Jordan, and Syria, destroying their air forces on the ground before seizing the Sinai Peninsula, Gaza Strip, West Bank, and Golan Heights in just six days of fighting. The swift and decisive Israeli victory reshapes the map of the Middle East, creating the territorial situation that defines the Israeli-Palestinian conflict to the present day. The war fundamentally alters the regional balance of power, deepens American and Soviet proxy rivalry in the Middle East, and makes the question of Palestinian statehood a central issue of international politics.','medium',8,NULL,NULL,NULL,274);
 INSERT INTO "events" VALUES('moon-landing','Moon Landing',1969,'Americas','NASA astronauts Neil Armstrong and Buzz Aldrin become the first humans to walk on the Moon during the Apollo 11 mission, with Armstrong''s words ''one small step for man'' broadcast to a global audience. The achievement represents the culmination of the Space Race and a triumph of human exploration.','easy',5,NULL,NULL,NULL,275);
 INSERT INTO "events" VALUES('bangladesh-liberation-war','Bangladesh Liberation War',1971,'South Asia','East Pakistan, supported by India, fights for and wins independence from Pakistan following a brutal military crackdown by the Pakistani army. The conflict results in massive atrocities, a refugee crisis, and the birth of Bangladesh as a new nation.','medium',5,NULL,NULL,NULL,276);
@@ -8979,22 +9049,22 @@ CREATE TABLE relationships (
 INSERT INTO "relationships" VALUES(1,'pax-romana','part_of','pax-romana-period','''Pax Romana Begins'' is a moment within ''Pax Romana'' (created by the split).','high','reviewed','split','2026-11-07 21:33:23');
 INSERT INTO "relationships" VALUES(2,'indian-independence','part_of','indian-independence-movement','''Indian Independence'' is a moment within ''Indian Independence Movement'' (created by the split).','high','reviewed','split','2026-11-07 21:33:23');
 INSERT INTO "relationships" VALUES(3,'human-genome-project','part_of','human-genome-project-period','''Human Genome Project Completed'' is a moment within ''Human Genome Project'' (created by the split).','high','reviewed','split','2026-11-07 21:33:23');
-INSERT INTO "relationships" VALUES(4,'maya-classic-period','part_of','classic-maya','The start of the Classic period of Maya civilization.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(5,'black-death-europe','part_of','black-death','The plague''s arrival in Europe, the core of the pandemic.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(4,'maya-classic-period','part_of','classic-maya','The start of the Classic period of Maya civilization.','high','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(5,'black-death-europe','part_of','black-death','The plague''s arrival in Europe, the core of the pandemic.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(6,'egyptian-pyramids-built','part_of','construction-great-pyramid','The completion of the building work on the Great Pyramid.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(7,'great-wall-china','part_of','construction-great-wall','The start of building under the Qin.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(8,'taj-mahal-construction-begins','part_of','construction-taj-mahal','The start of the Taj Mahal''s construction.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(8,'taj-mahal-construction-begins','part_of','construction-taj-mahal','The start of the Taj Mahal''s construction.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(9,'fall-of-roman-empire-west','part_of','fall-western-roman-empire','476, the final moment of the western empire''s long decline.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(10,'alexander-conquests','part_of','alexanders-conquests','The start of Alexander''s campaign.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(11,'indus-valley-begins','part_of','indus-valley-mature','The start of the civilization''s mature phase.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(12,'holocaust','part_of','the-holocaust','The same genocide; the event marks its systematic phase.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(13,'chinese-cultural-revolution','part_of','cultural-revolution','The launch of the Cultural Revolution.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(14,'meiji-restoration-japan','part_of','meiji-restoration','The restoration of imperial rule that opens the Meiji era.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(10,'alexander-conquests','part_of','alexanders-conquests','The start of Alexander''s campaign.','high','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(11,'indus-valley-begins','part_of','indus-valley-mature','The start of the civilization''s mature phase.','high','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(12,'holocaust','part_of','the-holocaust','The same genocide; the event marks its systematic phase.','high','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(13,'chinese-cultural-revolution','part_of','cultural-revolution','The launch of the Cultural Revolution.','high','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(14,'meiji-restoration-japan','part_of','meiji-restoration','The restoration of imperial rule that opens the Meiji era.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(15,'iran-islamic-revolution','part_of','iranian-revolution','The revolution''s victory, the climax of the span.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(16,'birth-of-buddha','part_of','life-of-the-buddha','The start of the Buddha''s life.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(17,'world-war-one','part_of','world-war-1','The outbreak of the First World War.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(16,'birth-of-buddha','part_of','life-of-the-buddha','The start of the Buddha''s life.','high','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(17,'world-war-one','part_of','world-war-1','The outbreak of the First World War.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(18,'first-world-war-ends','part_of','world-war-1','The armistice that ends the First World War.','high','proposed','ai_drafted','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(19,'world-war-two','part_of','world-war-2','The outbreak of the Second World War.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(19,'world-war-two','part_of','world-war-2','The outbreak of the Second World War.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(20,'end-world-war-two','part_of','world-war-2','The end of the Second World War.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(21,'battle-of-zama','part_of','punic-wars','The battle that ends the Second Punic War.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(22,'battle-of-marathon','part_of','persian-wars','The Athenian victory in the first Persian invasion of Greece.','high','proposed','suggested','2026-11-07 21:41:29');
@@ -9012,7 +9082,7 @@ INSERT INTO "relationships" VALUES(33,'napoleon-defeat-waterloo','part_of','napo
 INSERT INTO "relationships" VALUES(34,'bolshevik-civil-war','part_of','russian-revolution','The civil war that decides the revolution''s outcome.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(35,'long-march-china','part_of','chinese-civil-war','The Communist retreat during the civil war.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(36,'chinese-communist-revolution','part_of','chinese-civil-war','The Communist victory that ends the civil war.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(37,'opium-wars-china','part_of','opium-wars','The First Opium War.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(37,'opium-wars-china','part_of','opium-wars','The First Opium War.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(38,'opium-war-second','part_of','opium-wars','The Second Opium War.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(39,'d-day-normandy','part_of','world-war-2','The Allied landings in Normandy.','high','proposed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(40,'battle-of-britain','part_of','world-war-2','The air war over Britain.','high','proposed','ai_drafted','2026-11-07 21:41:29');
@@ -9025,8 +9095,8 @@ INSERT INTO "relationships" VALUES(46,'caesar-crosses-rubicon','part_of','fall-o
 INSERT INTO "relationships" VALUES(47,'julius-caesar-assassination','part_of','fall-of-roman-republic','The assassination meant to save the republic, which hastened its end.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(48,'second-triumvirate','part_of','fall-of-roman-republic','The triumvirs'' rule in the republic''s last years.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(49,'augustus-first-emperor','part_of','fall-of-roman-republic','Augustus''s rule, which ends the republic.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(50,'augustus-first-emperor','part_of','roman-empire','The founding of the empire under its first emperor.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(51,'roman-republic-founded','part_of','roman-republic','The founding of the republic.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(50,'augustus-first-emperor','part_of','roman-empire','The founding of the empire under its first emperor.','high','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(51,'roman-republic-founded','part_of','roman-republic','The founding of the republic.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(52,'fall-of-roman-republic','part_of','roman-republic','The republic''s final century.','high','proposed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(53,'pax-romana-period','part_of','roman-empire','The empire''s two centuries of relative peace.','high','proposed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(54,'fall-western-roman-empire','part_of','roman-empire','The western empire''s decline and fall.','high','proposed','ai_drafted','2026-11-07 21:41:29');
@@ -9034,26 +9104,26 @@ INSERT INTO "relationships" VALUES(55,'christianity-roman-empire','part_of','rom
 INSERT INTO "relationships" VALUES(56,'constantinople-founded','part_of','roman-empire','Constantine founds the empire''s new capital.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(57,'hadrians-wall','part_of','roman-empire','An imperial frontier project.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(58,'attila-hun-invasions','part_of','fall-western-roman-empire','The Hun invasions that weakened the western empire.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(59,'charlemagne-crowned-emperor','part_of','holy-roman-empire','Charlemagne''s coronation, from which the empire''s line is traced.','medium','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(59,'charlemagne-crowned-emperor','part_of','holy-roman-empire','Charlemagne''s coronation, from which the empire''s line is traced.','medium','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(60,'fall-of-constantinople','part_of','byzantine-empire','The fall of Constantinople ends the Byzantine Empire.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(61,'fall-of-constantinople','part_of','ottoman-empire','The Ottoman conquest of Constantinople.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(62,'ottoman-empire-falls','part_of','ottoman-empire','The end of the Ottoman Empire.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(63,'cyrus-founds-persian-empire','part_of','achaemenid-empire','Cyrus founds the Achaemenid Empire.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(64,'maurya-empire-founded','part_of','maurya-empire','Chandragupta Maurya founds the empire.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(63,'cyrus-founds-persian-empire','part_of','achaemenid-empire','Cyrus founds the Achaemenid Empire.','high','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(64,'maurya-empire-founded','part_of','maurya-empire','Chandragupta Maurya founds the empire.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(65,'ashoka-becomes-emperor','part_of','maurya-empire','Ashoka becomes the Mauryan emperor.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(66,'ashoka-converts-to-buddhism','part_of','maurya-empire','The Mauryan emperor''s conversion after Kalinga.','high','proposed','ai_drafted','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(67,'gupta-empire-founded','part_of','gupta-empire','The founding of the Gupta Empire.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(67,'gupta-empire-founded','part_of','gupta-empire','The founding of the Gupta Empire.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(68,'chandragupta-ii-vikramaditya','part_of','gupta-empire','The accession of the Gupta emperor Chandragupta II.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(69,'chola-rajaraja-peak','part_of','chola-empire','Rajaraja I''s reign, the empire''s height.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(70,'qutb-ud-din-aibak-delhi','part_of','delhi-sultanate','The founding of the sultanate.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(70,'qutb-ud-din-aibak-delhi','part_of','delhi-sultanate','The founding of the sultanate.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(71,'razia-sultana-accession','part_of','delhi-sultanate','A sultan''s accession.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(72,'alauddin-khalji-accession','part_of','delhi-sultanate','A sultan''s accession.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(73,'muhammad-bin-tughlaq-accession','part_of','delhi-sultanate','A sultan''s accession.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(74,'firuz-shah-tughlaq-accession','part_of','delhi-sultanate','A sultan''s accession.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(75,'first-battle-of-panipat','part_of','delhi-sultanate','Babur''s victory, which ends the sultanate.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(76,'vijayanagara-empire-founded','part_of','vijayanagara-empire','The founding of the empire.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(77,'babur-founds-mughal-empire','part_of','mughal-empire','The founding of the Mughal Empire.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(78,'first-battle-of-panipat','part_of','mughal-empire','The founding battle of Mughal rule.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(76,'vijayanagara-empire-founded','part_of','vijayanagara-empire','The founding of the empire.','high','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(77,'babur-founds-mughal-empire','part_of','mughal-empire','The founding of the Mughal Empire.','high','reviewed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(78,'first-battle-of-panipat','part_of','mughal-empire','The founding battle of Mughal rule.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(79,'humayun-succeeds-babur','part_of','mughal-empire','The second Mughal emperor''s accession.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(80,'humayun-defeated-kanauj','part_of','mughal-empire','Humayun''s defeat and exile, a break in Mughal rule.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(81,'humayun-recaptures-delhi','part_of','mughal-empire','The restoration of Mughal rule.','high','proposed','suggested','2026-11-07 21:41:29');
@@ -9067,12 +9137,12 @@ INSERT INTO "relationships" VALUES(88,'death-of-jahangir','part_of','mughal-empi
 INSERT INTO "relationships" VALUES(89,'taj-mahal-construction-begins','part_of','mughal-empire','Shah Jahan''s imperial monument.','medium','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(90,'aurangzeb-becomes-emperor','part_of','mughal-empire','Aurangzeb''s accession.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(91,'mughal-empire-zenith-aurangzeb','part_of','mughal-empire','The empire at its largest, at Aurangzeb''s death.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(92,'shivaji-crowned-chhatrapati','part_of','maratha-empire','Shivaji''s coronation founds the Maratha kingdom.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(92,'shivaji-crowned-chhatrapati','part_of','maratha-empire','Shivaji''s coronation founds the Maratha kingdom.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(93,'death-of-shivaji','part_of','maratha-empire','The founder''s death.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(94,'third-battle-of-panipat','part_of','maratha-empire','The Maratha defeat at Panipat.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(95,'partition-of-bengal','part_of','british-raj','An act of the Raj''s administration.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(96,'indian-independence','part_of','british-raj','Independence ends British rule.','medium','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(97,'non-cooperation-movement','part_of','indian-independence-movement','Gandhi''s first mass campaign.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(97,'non-cooperation-movement','part_of','indian-independence-movement','Gandhi''s first mass campaign.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(98,'gandhi-salt-march','part_of','indian-independence-movement','The civil disobedience campaign against the salt tax.','high','proposed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(99,'quit-india-movement','part_of','indian-independence-movement','The movement''s last great campaign.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(100,'silk-road-opens','part_of','han-dynasty','Opened by the Han envoy Zhang Qian''s missions.','high','proposed','suggested','2026-11-07 21:41:29');
@@ -9080,25 +9150,25 @@ INSERT INTO "relationships" VALUES(101,'paper-invented-china','part_of','han-dyn
 INSERT INTO "relationships" VALUES(102,'woodblock-printing-china','part_of','tang-dynasty','Woodblock printing under the Tang.','medium','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(103,'printing-movable-type-china','part_of','song-dynasty','Bi Sheng''s movable type under the Song.','medium','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(104,'invention-of-compass','part_of','song-dynasty','The magnetic compass under the Song.','medium','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(105,'ming-dynasty-founded','part_of','ming-dynasty','The founding of the Ming.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(105,'ming-dynasty-founded','part_of','ming-dynasty','The founding of the Ming.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(106,'zheng-he-voyages','part_of','ming-dynasty','The Ming treasure-fleet voyages.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(107,'fall-of-qing-dynasty','part_of','qing-dynasty','The end of the Qing.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(108,'genghis-khan-unifies-mongols','part_of','mongol-conquests','The unification that launches the conquests.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(108,'genghis-khan-unifies-mongols','part_of','mongol-conquests','The unification that launches the conquests.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(109,'mongol-empire-peak','part_of','mongol-conquests','The empire at its height, after the conquest of Song China.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(110,'japan-meiji-constitution','part_of','meiji-restoration','The Meiji Constitution.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(111,'meiji-restoration-japan','part_of','tokugawa-shogunate','The restoration that ends the shogunate.','medium','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(112,'death-of-mao','part_of','cultural-revolution','Mao''s death ends the Cultural Revolution.','medium','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(113,'moors-invade-spain','part_of','umayyad-caliphate','The Umayyad conquest of Iberia.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(114,'viking-raids-begin','part_of','viking-age','The Lindisfarne raid that opens the Viking Age.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(114,'viking-raids-begin','part_of','viking-age','The Lindisfarne raid that opens the Viking Age.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(115,'renaissance-begins-florence','part_of','italian-renaissance','The Renaissance''s beginnings in Florence.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(116,'renaissance-da-vinci','part_of','italian-renaissance','Leonardo, a defining figure of the Italian Renaissance.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(117,'renaissance-michelangelo','part_of','italian-renaissance','The Sistine Chapel ceiling.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(118,'copernicus-heliocentric','part_of','scientific-revolution','The book usually taken as the revolution''s start.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(118,'copernicus-heliocentric','part_of','scientific-revolution','The book usually taken as the revolution''s start.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(119,'galileo-telescope','part_of','scientific-revolution','Galileo''s telescope observations.','high','proposed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(120,'kepler-laws-planetary-motion','part_of','scientific-revolution','Kepler''s laws of planetary motion.','high','proposed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(121,'galileo-inquisition','part_of','scientific-revolution','Galileo''s trial over heliocentrism.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(122,'newton-laws-of-motion','part_of','scientific-revolution','Newton''s Principia, the revolution''s culmination.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(123,'industrial-revolution-textile','part_of','industrial-revolution','Mechanised textiles, the revolution''s first industry.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(123,'industrial-revolution-textile','part_of','industrial-revolution','Mechanised textiles, the revolution''s first industry.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(124,'steam-engine-watt','part_of','industrial-revolution','Watt''s improved steam engine.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(125,'first-steam-railway','part_of','industrial-revolution','The first public steam railway.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(126,'french-revolution-storming-bastille','part_of','french-revolution','The storming of the Bastille.','high','proposed','suggested','2026-11-07 21:41:29');
@@ -9109,13 +9179,13 @@ INSERT INTO "relationships" VALUES(130,'spanish-conquest-mexico','part_of','azte
 INSERT INTO "relationships" VALUES(131,'conquest-of-peru-inca','part_of','inca-empire','The Spanish conquest that ends the empire.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(132,'colonial-africa-berlin','part_of','scramble-for-africa','The conference that set rules for partitioning Africa.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(133,'partition-of-africa-colonial','part_of','scramble-for-africa','Leopold''s Congo Free State, a product of the scramble.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(134,'mandela-freed','part_of','apartheid-end','Mandela''s release opens the negotiations.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(134,'mandela-freed','part_of','apartheid-end','Mandela''s release opens the negotiations.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(135,'collapse-apartheid-negotiations','part_of','apartheid-end','The first democratic election.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(136,'independence-south-africa','part_of','apartheid-end','Mandela becomes president.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(137,'us-civil-rights-march-selma','part_of','civil-rights-movement','The Selma to Montgomery marches.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(138,'martin-luther-king-speech','part_of','civil-rights-movement','The March on Washington.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(139,'civil-rights-act-us','part_of','civil-rights-movement','The movement''s legislative victory.','high','proposed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(140,'sputnik-launch','part_of','space-race','The first satellite starts the space race.','high','proposed','ai_drafted','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(140,'sputnik-launch','part_of','space-race','The first satellite starts the space race.','high','reviewed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(141,'space-race-yuri-gagarin','part_of','space-race','The first human in space.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(142,'moon-landing','part_of','space-race','The Moon landing, the race''s culmination.','high','proposed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(143,'death-of-stalin','part_of','soviet-union','The death of the Soviet leader.','high','proposed','suggested','2026-11-07 21:41:29');
@@ -9163,6 +9233,163 @@ INSERT INTO "review_log" VALUES(31,'2026-11-07 21:23:24','identity-split-done','
 INSERT INTO "review_log" VALUES(32,'2026-11-07 21:23:24','identity-split-done','indian-independence-movement','new span id, split from indian-independence','cli');
 INSERT INTO "review_log" VALUES(33,'2026-11-07 21:23:24','identity-split-done','human-genome-project','span moved to human-genome-project-period; part_of link added','cli');
 INSERT INTO "review_log" VALUES(34,'2026-11-07 21:23:24','identity-split-done','human-genome-project-period','new span id, split from human-genome-project','cli');
+INSERT INTO "review_log" VALUES(35,'2026-11-08 21:00:38','approve-link','maya-classic-period','link #4: maya-classic-period part_of classic-maya','dashboard');
+INSERT INTO "review_log" VALUES(36,'2026-11-08 21:31:21','import-csv-source','alaska-purchase','https://en.wikipedia.org/wiki/Alaska_Purchase','cli');
+INSERT INTO "review_log" VALUES(37,'2026-11-08 21:31:21','import-csv-source','amundsen-south-pole','https://en.wikipedia.org/wiki/Amundsen%27s_South_Pole_expedition','cli');
+INSERT INTO "review_log" VALUES(38,'2026-11-08 21:31:21','import-csv-source','ashoka-becomes-emperor','https://en.wikipedia.org/wiki/Ashoka#Date_of_ascension','cli');
+INSERT INTO "review_log" VALUES(39,'2026-11-08 21:31:21','import-csv-source','ashoka-converts-to-buddhism','https://en.wikipedia.org/wiki/Kalinga_War','cli');
+INSERT INTO "review_log" VALUES(40,'2026-11-08 21:31:21','import-csv-source','benedictine-order-founded','https://en.wikipedia.org/wiki/Benedictines','cli');
+INSERT INTO "review_log" VALUES(41,'2026-11-08 21:31:21','import-csv-source','constantinople-founded','https://en.wikipedia.org/wiki/Constantine_the_Great#Foundation_of_Constantinople','cli');
+INSERT INTO "review_log" VALUES(42,'2026-11-08 21:31:21','import-csv-source','cosmic-microwave-background','https://en.wikipedia.org/wiki/Discovery_of_cosmic_microwave_background_radiation','cli');
+INSERT INTO "review_log" VALUES(43,'2026-11-08 21:31:21','import-csv-source','crimean-war','https://en.wikipedia.org/wiki/Crimean_War','cli');
+INSERT INTO "review_log" VALUES(44,'2026-11-08 21:31:21','import-csv-source','crucifixion-of-jesus','https://en.wikipedia.org/wiki/Crucifixion_of_Jesus','cli');
+INSERT INTO "review_log" VALUES(45,'2026-11-08 21:31:21','import-csv-source','darwin-evolution','https://en.wikipedia.org/wiki/On_the_Origin_of_Species','cli');
+INSERT INTO "review_log" VALUES(46,'2026-11-08 21:31:21','import-csv-source','death-of-elizabeth-i','https://en.wikipedia.org/wiki/Elizabeth_I#Death','cli');
+INSERT INTO "review_log" VALUES(47,'2026-11-08 21:31:21','import-csv-source','death-of-mao','https://en.wikipedia.org/wiki/Mao_Zedong#Death_and_aftermath','cli');
+INSERT INTO "review_log" VALUES(48,'2026-11-08 21:31:21','import-csv-source','death-of-stalin','https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Joseph_Stalin','cli');
+INSERT INTO "review_log" VALUES(49,'2026-11-08 21:31:21','import-csv-source','dolly-sheep-cloned','https://en.wikipedia.org/wiki/Dolly_(sheep)','cli');
+INSERT INTO "review_log" VALUES(50,'2026-11-08 21:31:21','import-csv-source','edison-light-bulb','https://en.wikipedia.org/wiki/Edison_light_bulb','cli');
+INSERT INTO "review_log" VALUES(51,'2026-11-08 21:31:21','import-csv-source','eruption-of-vesuvius','https://en.wikipedia.org/wiki/Eruption_of_Mount_Vesuvius_in_79_AD','cli');
+INSERT INTO "review_log" VALUES(52,'2026-11-08 21:31:21','import-csv-source','euler-konigsberg-bridges','https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg','cli');
+INSERT INTO "review_log" VALUES(53,'2026-11-08 21:31:21','import-csv-source','everest-first-ascent','https://en.wikipedia.org/wiki/1953_British_Mount_Everest_expedition','cli');
+INSERT INTO "review_log" VALUES(54,'2026-11-08 21:31:21','import-csv-source','fall-of-roman-empire-west','https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire','cli');
+INSERT INTO "review_log" VALUES(55,'2026-11-08 21:31:21','import-csv-source','fall-of-troy','https://en.wikipedia.org/wiki/Trojan_War','cli');
+INSERT INTO "review_log" VALUES(56,'2026-11-08 21:31:21','import-csv-source','first-cities-mesopotamia','https://en.wikipedia.org/wiki/Sumer#City-states_in_Mesopotamia','cli');
+INSERT INTO "review_log" VALUES(57,'2026-11-08 21:31:21','import-csv-source','first-crusade','https://en.wikipedia.org/wiki/First_Crusade','cli');
+INSERT INTO "review_log" VALUES(58,'2026-11-08 21:31:21','import-csv-source','first-triumvirate','https://en.wikipedia.org/wiki/First_Triumvirate','cli');
+INSERT INTO "review_log" VALUES(59,'2026-11-08 21:31:21','import-csv-source','first-use-of-anesthesia','https://en.wikipedia.org/wiki/Horace_Wells#Career','cli');
+INSERT INTO "review_log" VALUES(60,'2026-11-08 21:31:21','import-csv-source','first-vaccine-smallpox','https://en.wikipedia.org/wiki/Edward_Jenner#Invention_of_the_vaccine','cli');
+INSERT INTO "review_log" VALUES(61,'2026-11-08 21:31:21','import-csv-source','founding-of-rome','https://en.wikipedia.org/wiki/Founding_of_Rome#Date','cli');
+INSERT INTO "review_log" VALUES(62,'2026-11-08 21:31:21','import-csv-source','great-bengal-famine','https://en.wikipedia.org/wiki/Great_Bengal_famine_of_1770','cli');
+INSERT INTO "review_log" VALUES(63,'2026-11-08 21:31:21','import-csv-source','great-fire-london','https://en.wikipedia.org/wiki/Great_Fire_of_London','cli');
+INSERT INTO "review_log" VALUES(64,'2026-11-08 21:31:21','import-csv-source','great-fire-of-rome','https://en.wikipedia.org/wiki/Nero#Great_Fire_of_Rome','cli');
+INSERT INTO "review_log" VALUES(65,'2026-11-08 21:31:21','import-csv-source','greek-olympics-ancient','https://en.wikipedia.org/wiki/Ancient_Olympic_Games#First_games','cli');
+INSERT INTO "review_log" VALUES(66,'2026-11-08 21:31:21','import-csv-source','hadrians-wall','https://en.wikipedia.org/wiki/Hadrian%27s_Wall','cli');
+INSERT INTO "review_log" VALUES(67,'2026-11-08 21:31:21','import-csv-source','indo-pak-1965-war','https://en.wikipedia.org/wiki/Indo-Pakistani_War_of_1965','cli');
+INSERT INTO "review_log" VALUES(68,'2026-11-08 21:31:21','import-csv-source','invention-of-the-wheel','https://en.wikipedia.org/wiki/Plough#History','cli');
+INSERT INTO "review_log" VALUES(69,'2026-11-08 21:31:21','import-csv-source','kievan-rus-founded','https://en.wikipedia.org/wiki/Oleg_of_Novgorod','cli');
+INSERT INTO "review_log" VALUES(70,'2026-11-08 21:31:21','import-csv-source','krakatoa-erupts','https://en.wikipedia.org/wiki/Krakatoa#1883_eruption','cli');
+INSERT INTO "review_log" VALUES(71,'2026-11-08 21:31:21','import-csv-source','lee-surrenders-appomattox','https://en.wikipedia.org/wiki/Battle_of_Appomattox_Court_House#Surrender','cli');
+INSERT INTO "review_log" VALUES(72,'2026-11-08 21:31:21','import-csv-source','lewis-and-clark-expedition','https://en.wikipedia.org/wiki/Lewis_and_Clark_Expedition','cli');
+INSERT INTO "review_log" VALUES(73,'2026-11-08 21:31:21','import-csv-source','marco-polo-china','https://en.wikipedia.org/wiki/Marco_Polo#Early_life_and_Asian_travel','cli');
+INSERT INTO "review_log" VALUES(74,'2026-11-08 21:31:21','import-csv-source','marconi-invents-radio','https://en.wikipedia.org/wiki/Invention_of_radio#Marconi','cli');
+INSERT INTO "review_log" VALUES(75,'2026-11-08 21:31:21','import-csv-source','martyrdom-of-guru-arjan','https://en.wikipedia.org/wiki/Guru_Arjan#Death','cli');
+INSERT INTO "review_log" VALUES(76,'2026-11-08 21:31:21','import-csv-source','moors-invade-spain','https://en.wikipedia.org/wiki/Arabs_in_Europe#Arab_occupation_of_Iberian_Peninsula','cli');
+INSERT INTO "review_log" VALUES(77,'2026-11-08 21:31:21','import-csv-source','penicillin-discovered','https://en.wikipedia.org/wiki/Penicillin#Discovery','cli');
+INSERT INTO "review_log" VALUES(78,'2026-11-08 21:31:21','import-csv-source','phoenician-alphabet-invented','https://en.wikipedia.org/wiki/Alphabet#History','cli');
+INSERT INTO "review_log" VALUES(79,'2026-11-08 21:31:21','import-csv-source','pilgrims-land-plymouth','https://en.wikipedia.org/wiki/Mayflower','cli');
+INSERT INTO "review_log" VALUES(80,'2026-11-08 21:31:21','import-csv-source','renaissance-da-vinci','https://en.wikipedia.org/wiki/Vitruvian_Man','cli');
+INSERT INTO "review_log" VALUES(81,'2026-11-08 21:31:21','import-csv-source','russo-japanese-war','https://en.wikipedia.org/wiki/Russo-Japanese_War','cli');
+INSERT INTO "review_log" VALUES(82,'2026-11-08 21:31:21','import-csv-source','second-battle-of-tarain','https://en.wikipedia.org/wiki/Second_Battle_of_Tarain','cli');
+INSERT INTO "review_log" VALUES(83,'2026-11-08 21:31:21','import-csv-source','stanley-finds-livingstone','https://en.wikipedia.org/wiki/Henry_Morton_Stanley#Finding_David_Livingstone','cli');
+INSERT INTO "review_log" VALUES(84,'2026-11-08 21:31:21','import-csv-source','sumerian-writing','https://en.wikipedia.org/wiki/History_of_writing#Inventions_of_writing','cli');
+INSERT INTO "review_log" VALUES(85,'2026-11-08 21:31:21','import-csv-source','telephone-invented','https://en.wikipedia.org/wiki/Alexander_Graham_Bell#The_race_to_the_patent_office','cli');
+INSERT INTO "review_log" VALUES(86,'2026-11-08 21:31:21','import-csv-source','television-invented','https://en.wikipedia.org/wiki/Television#History','cli');
+INSERT INTO "review_log" VALUES(87,'2026-11-08 21:31:21','import-csv-source','tower-of-london-begun','https://en.wikipedia.org/wiki/Tower_of_London','cli');
+INSERT INTO "review_log" VALUES(88,'2026-11-08 21:31:21','import-csv-source','university-of-paris-founded','https://en.wikipedia.org/wiki/University_of_Paris#Origins','cli');
+INSERT INTO "review_log" VALUES(89,'2026-11-08 21:31:21','import-csv-source','viking-1-mars','https://en.wikipedia.org/wiki/Viking_1','cli');
+INSERT INTO "review_log" VALUES(90,'2026-11-08 21:31:21','import-csv-source','viking-exploration-north-america','https://en.wikipedia.org/wiki/Leif_Erikson','cli');
+INSERT INTO "review_log" VALUES(91,'2026-11-08 21:31:21','import-csv-source','wealth-of-nations-published','https://en.wikipedia.org/wiki/The_Wealth_of_Nations','cli');
+INSERT INTO "review_log" VALUES(92,'2026-11-08 21:31:21','import-csv-source','wright-brothers-flight','https://en.wikipedia.org/wiki/Wright_brothers#First_powered_flight','cli');
+INSERT INTO "review_log" VALUES(93,'2026-11-08 21:47:27','rename-event','black-death-europe','''Black Death Strikes Europe'' → ''Black Death Begins in Europe''','cli');
+INSERT INTO "review_log" VALUES(94,'2026-11-08 21:47:27','rename-event','holocaust','''Holocaust'' → ''Holocaust Begins''; new description','cli');
+INSERT INTO "review_log" VALUES(95,'2026-11-08 21:47:28','rename-event','chinese-cultural-revolution','''Chinese Cultural Revolution'' → ''Chinese Cultural Revolution Begins''','cli');
+INSERT INTO "review_log" VALUES(96,'2026-11-08 21:47:28','rename-event','industrial-revolution-textile','''Industrial Revolution Transforms Britain'' → ''Industrial Revolution Begins in Britain''; new description','cli');
+INSERT INTO "review_log" VALUES(97,'2026-11-08 21:47:28','rename-span','meiji-restoration','''Meiji Restoration'' → ''Meiji Era''','cli');
+INSERT INTO "review_log" VALUES(98,'2026-11-08 21:47:29','approve-link','indus-valley-begins','link #11: indus-valley-begins part_of indus-valley-mature','cli');
+INSERT INTO "review_log" VALUES(99,'2026-11-08 21:47:29','approve-link','birth-of-buddha','link #16: birth-of-buddha part_of life-of-the-buddha','cli');
+INSERT INTO "review_log" VALUES(100,'2026-11-08 21:47:29','approve-link','cyrus-founds-persian-empire','link #63: cyrus-founds-persian-empire part_of achaemenid-empire','cli');
+INSERT INTO "review_log" VALUES(101,'2026-11-08 21:47:29','approve-link','roman-republic-founded','link #51: roman-republic-founded part_of roman-republic','cli');
+INSERT INTO "review_log" VALUES(102,'2026-11-08 21:47:29','approve-link','alexander-conquests','link #10: alexander-conquests part_of alexanders-conquests','cli');
+INSERT INTO "review_log" VALUES(103,'2026-11-08 21:47:29','approve-link','maurya-empire-founded','link #64: maurya-empire-founded part_of maurya-empire','cli');
+INSERT INTO "review_log" VALUES(104,'2026-11-08 21:47:29','approve-link','augustus-first-emperor','link #50: augustus-first-emperor part_of roman-empire','cli');
+INSERT INTO "review_log" VALUES(105,'2026-11-08 21:47:29','approve-link','gupta-empire-founded','link #67: gupta-empire-founded part_of gupta-empire','cli');
+INSERT INTO "review_log" VALUES(106,'2026-11-08 21:47:29','approve-link','viking-raids-begin','link #114: viking-raids-begin part_of viking-age','cli');
+INSERT INTO "review_log" VALUES(107,'2026-11-08 21:47:29','approve-link','charlemagne-crowned-emperor','link #59: charlemagne-crowned-emperor part_of holy-roman-empire','cli');
+INSERT INTO "review_log" VALUES(108,'2026-11-08 21:47:29','approve-link','qutb-ud-din-aibak-delhi','link #70: qutb-ud-din-aibak-delhi part_of delhi-sultanate','cli');
+INSERT INTO "review_log" VALUES(109,'2026-11-08 21:47:29','approve-link','genghis-khan-unifies-mongols','link #108: genghis-khan-unifies-mongols part_of mongol-conquests','cli');
+INSERT INTO "review_log" VALUES(110,'2026-11-08 21:47:29','approve-link','vijayanagara-empire-founded','link #76: vijayanagara-empire-founded part_of vijayanagara-empire','cli');
+INSERT INTO "review_log" VALUES(111,'2026-11-08 21:47:29','approve-link','black-death-europe','link #5: black-death-europe part_of black-death','cli');
+INSERT INTO "review_log" VALUES(112,'2026-11-08 21:47:29','approve-link','ming-dynasty-founded','link #105: ming-dynasty-founded part_of ming-dynasty','cli');
+INSERT INTO "review_log" VALUES(113,'2026-11-08 21:47:29','approve-link','babur-founds-mughal-empire','link #77: babur-founds-mughal-empire part_of mughal-empire','cli');
+INSERT INTO "review_log" VALUES(114,'2026-11-08 21:47:29','approve-link','first-battle-of-panipat','link #78: first-battle-of-panipat part_of mughal-empire','cli');
+INSERT INTO "review_log" VALUES(115,'2026-11-08 21:47:29','approve-link','copernicus-heliocentric','link #118: copernicus-heliocentric part_of scientific-revolution','cli');
+INSERT INTO "review_log" VALUES(116,'2026-11-08 21:47:29','approve-link','taj-mahal-construction-begins','link #8: taj-mahal-construction-begins part_of construction-taj-mahal','cli');
+INSERT INTO "review_log" VALUES(117,'2026-11-08 21:47:29','approve-link','shivaji-crowned-chhatrapati','link #92: shivaji-crowned-chhatrapati part_of maratha-empire','cli');
+INSERT INTO "review_log" VALUES(118,'2026-11-08 21:47:29','approve-link','industrial-revolution-textile','link #123: industrial-revolution-textile part_of industrial-revolution','cli');
+INSERT INTO "review_log" VALUES(119,'2026-11-08 21:47:29','approve-link','opium-wars-china','link #37: opium-wars-china part_of opium-wars','cli');
+INSERT INTO "review_log" VALUES(120,'2026-11-08 21:47:29','approve-link','meiji-restoration-japan','link #14: meiji-restoration-japan part_of meiji-restoration','cli');
+INSERT INTO "review_log" VALUES(121,'2026-11-08 21:47:29','approve-link','world-war-one','link #17: world-war-one part_of world-war-1','cli');
+INSERT INTO "review_log" VALUES(122,'2026-11-08 21:47:29','approve-link','non-cooperation-movement','link #97: non-cooperation-movement part_of indian-independence-movement','cli');
+INSERT INTO "review_log" VALUES(123,'2026-11-08 21:47:29','approve-link','world-war-two','link #19: world-war-two part_of world-war-2','cli');
+INSERT INTO "review_log" VALUES(124,'2026-11-08 21:47:29','approve-link','holocaust','link #12: holocaust part_of the-holocaust','cli');
+INSERT INTO "review_log" VALUES(125,'2026-11-08 21:47:29','approve-link','sputnik-launch','link #140: sputnik-launch part_of space-race','cli');
+INSERT INTO "review_log" VALUES(126,'2026-11-08 21:47:29','approve-link','chinese-cultural-revolution','link #13: chinese-cultural-revolution part_of cultural-revolution','cli');
+INSERT INTO "review_log" VALUES(127,'2026-11-08 21:47:29','approve-link','mandela-freed','link #134: mandela-freed part_of apartheid-end','cli');
+CREATE TABLE sources (
+  id         INTEGER PRIMARY KEY,
+  kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
+  title      TEXT NOT NULL,
+  url        TEXT UNIQUE CHECK (url IS NULL OR url LIKE 'https://%' OR url LIKE 'http://%'),
+  created_at TEXT DEFAULT (datetime('now'))
+);
+INSERT INTO "sources" VALUES(1,'wikipedia','Alaska Purchase','https://en.wikipedia.org/wiki/Alaska_Purchase','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(2,'wikipedia','Amundsen''s South Pole expedition','https://en.wikipedia.org/wiki/Amundsen%27s_South_Pole_expedition','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(3,'wikipedia','Ashoka','https://en.wikipedia.org/wiki/Ashoka#Date_of_ascension','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(4,'wikipedia','Kalinga War','https://en.wikipedia.org/wiki/Kalinga_War','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(5,'wikipedia','Benedictines','https://en.wikipedia.org/wiki/Benedictines','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(6,'wikipedia','Constantine the Great','https://en.wikipedia.org/wiki/Constantine_the_Great#Foundation_of_Constantinople','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(7,'wikipedia','Discovery of cosmic microwave background radiation','https://en.wikipedia.org/wiki/Discovery_of_cosmic_microwave_background_radiation','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(8,'wikipedia','Crimean War','https://en.wikipedia.org/wiki/Crimean_War','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(9,'wikipedia','Crucifixion of Jesus','https://en.wikipedia.org/wiki/Crucifixion_of_Jesus','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(10,'wikipedia','On the Origin of Species','https://en.wikipedia.org/wiki/On_the_Origin_of_Species','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(11,'wikipedia','Elizabeth I','https://en.wikipedia.org/wiki/Elizabeth_I#Death','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(12,'wikipedia','Mao Zedong','https://en.wikipedia.org/wiki/Mao_Zedong#Death_and_aftermath','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(13,'wikipedia','Death and state funeral of Joseph Stalin','https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Joseph_Stalin','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(14,'wikipedia','Dolly (sheep)','https://en.wikipedia.org/wiki/Dolly_(sheep)','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(15,'wikipedia','Edison light bulb','https://en.wikipedia.org/wiki/Edison_light_bulb','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(16,'wikipedia','Eruption of Mount Vesuvius in 79 AD','https://en.wikipedia.org/wiki/Eruption_of_Mount_Vesuvius_in_79_AD','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(17,'wikipedia','Seven Bridges of Königsberg','https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(18,'wikipedia','1953 British Mount Everest expedition','https://en.wikipedia.org/wiki/1953_British_Mount_Everest_expedition','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(19,'wikipedia','Fall of the Western Roman Empire','https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(20,'wikipedia','Trojan War','https://en.wikipedia.org/wiki/Trojan_War','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(21,'wikipedia','Sumer','https://en.wikipedia.org/wiki/Sumer#City-states_in_Mesopotamia','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(22,'wikipedia','First Crusade','https://en.wikipedia.org/wiki/First_Crusade','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(23,'wikipedia','First Triumvirate','https://en.wikipedia.org/wiki/First_Triumvirate','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(24,'wikipedia','Horace Wells','https://en.wikipedia.org/wiki/Horace_Wells#Career','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(25,'wikipedia','Edward Jenner','https://en.wikipedia.org/wiki/Edward_Jenner#Invention_of_the_vaccine','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(26,'wikipedia','Founding of Rome','https://en.wikipedia.org/wiki/Founding_of_Rome#Date','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(27,'wikipedia','Great Bengal famine of 1770','https://en.wikipedia.org/wiki/Great_Bengal_famine_of_1770','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(28,'wikipedia','Great Fire of London','https://en.wikipedia.org/wiki/Great_Fire_of_London','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(29,'wikipedia','Nero','https://en.wikipedia.org/wiki/Nero#Great_Fire_of_Rome','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(30,'wikipedia','Ancient Olympic Games','https://en.wikipedia.org/wiki/Ancient_Olympic_Games#First_games','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(31,'wikipedia','Hadrian''s Wall','https://en.wikipedia.org/wiki/Hadrian%27s_Wall','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(32,'wikipedia','Indo-Pakistani War of 1965','https://en.wikipedia.org/wiki/Indo-Pakistani_War_of_1965','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(33,'wikipedia','Plough','https://en.wikipedia.org/wiki/Plough#History','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(34,'wikipedia','Oleg of Novgorod','https://en.wikipedia.org/wiki/Oleg_of_Novgorod','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(35,'wikipedia','Krakatoa','https://en.wikipedia.org/wiki/Krakatoa#1883_eruption','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(36,'wikipedia','Battle of Appomattox Court House','https://en.wikipedia.org/wiki/Battle_of_Appomattox_Court_House#Surrender','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(37,'wikipedia','Lewis and Clark Expedition','https://en.wikipedia.org/wiki/Lewis_and_Clark_Expedition','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(38,'wikipedia','Marco Polo','https://en.wikipedia.org/wiki/Marco_Polo#Early_life_and_Asian_travel','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(39,'wikipedia','Invention of radio','https://en.wikipedia.org/wiki/Invention_of_radio#Marconi','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(40,'wikipedia','Guru Arjan','https://en.wikipedia.org/wiki/Guru_Arjan#Death','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(41,'wikipedia','Arabs in Europe','https://en.wikipedia.org/wiki/Arabs_in_Europe#Arab_occupation_of_Iberian_Peninsula','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(42,'wikipedia','Penicillin','https://en.wikipedia.org/wiki/Penicillin#Discovery','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(43,'wikipedia','Alphabet','https://en.wikipedia.org/wiki/Alphabet#History','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(44,'wikipedia','Mayflower','https://en.wikipedia.org/wiki/Mayflower','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(45,'wikipedia','Vitruvian Man','https://en.wikipedia.org/wiki/Vitruvian_Man','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(46,'wikipedia','Russo-Japanese War','https://en.wikipedia.org/wiki/Russo-Japanese_War','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(47,'wikipedia','Second Battle of Tarain','https://en.wikipedia.org/wiki/Second_Battle_of_Tarain','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(48,'wikipedia','Henry Morton Stanley','https://en.wikipedia.org/wiki/Henry_Morton_Stanley#Finding_David_Livingstone','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(49,'wikipedia','History of writing','https://en.wikipedia.org/wiki/History_of_writing#Inventions_of_writing','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(50,'wikipedia','Alexander Graham Bell','https://en.wikipedia.org/wiki/Alexander_Graham_Bell#The_race_to_the_patent_office','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(51,'wikipedia','Television','https://en.wikipedia.org/wiki/Television#History','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(52,'wikipedia','Tower of London','https://en.wikipedia.org/wiki/Tower_of_London','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(53,'wikipedia','University of Paris','https://en.wikipedia.org/wiki/University_of_Paris#Origins','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(54,'wikipedia','Viking 1','https://en.wikipedia.org/wiki/Viking_1','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(55,'wikipedia','Leif Erikson','https://en.wikipedia.org/wiki/Leif_Erikson','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(56,'wikipedia','The Wealth of Nations','https://en.wikipedia.org/wiki/The_Wealth_of_Nations','2026-11-08 21:31:21');
+INSERT INTO "sources" VALUES(57,'wikipedia','Wright brothers','https://en.wikipedia.org/wiki/Wright_brothers#First_powered_flight','2026-11-08 21:31:21');
 CREATE TABLE time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json
@@ -9239,7 +9466,7 @@ INSERT INTO "time_spans" VALUES('opium-wars','period','Opium Wars',1839,1860,'Co
 INSERT INTO "time_spans" VALUES('california-gold-rush','period','California Gold Rush',1848,1855,'Mass migration to California after gold was discovered at Sutter''s Mill','Americas',3,NULL,61);
 INSERT INTO "time_spans" VALUES('british-raj','empire','British Raj',1858,1947,'Direct British Crown rule over the Indian subcontinent, from the 1857 rebellion until independence and partition.','South Asia',7,NULL,62);
 INSERT INTO "time_spans" VALUES('american-civil-war','period','American Civil War',1861,1865,'War between the Union and Confederate states over slavery and states'' rights','Americas',8,NULL,63);
-INSERT INTO "time_spans" VALUES('meiji-restoration','period','Meiji Restoration',1868,1912,'Modernization of Japan under Emperor Meiji, transforming it into an industrial power','East Asia',5,NULL,64);
+INSERT INTO "time_spans" VALUES('meiji-restoration','period','Meiji Era',1868,1912,'Modernization of Japan under Emperor Meiji, transforming it into an industrial power','East Asia',5,NULL,64);
 INSERT INTO "time_spans" VALUES('scramble-for-africa','period','Scramble for Africa',1881,1914,'Rapid colonization of the African continent by European powers','Africa',5,NULL,65);
 INSERT INTO "time_spans" VALUES('construction-eiffel-tower','period','Construction of the Eiffel Tower',1887,1889,'Building of the iconic iron lattice tower in Paris for the 1889 World''s Fair','Europe',3,NULL,66);
 INSERT INTO "time_spans" VALUES('boxer-rebellion','period','Boxer Rebellion',1899,1901,'Anti-foreign uprising in China suppressed by an international coalition','East Asia',3,NULL,67);
@@ -9337,4 +9564,14 @@ LEFT JOIN time_spans ss ON ss.entity_id = r.source_entity_id AND se.entity_id IS
 LEFT JOIN events te ON te.entity_id = r.target_entity_id
 LEFT JOIN time_spans ts ON ts.entity_id = r.target_entity_id AND te.entity_id IS NULL
 ORDER BY r.editorial_status = 'reviewed', r.id;
+CREATE VIEW v_source_review AS
+SELECT x.entity_id,
+       coalesce(e.year, s.start_year) AS year,
+       coalesce(e.name, s.name) AS name,
+       o.title, o.url, o.kind, x.status, x.origin, x.confidence, x.note, x.source_id
+FROM entity_sources x
+JOIN sources o ON o.id = x.source_id
+LEFT JOIN events e ON e.entity_id = x.entity_id
+LEFT JOIN time_spans s ON s.entity_id = x.entity_id AND e.entity_id IS NULL
+ORDER BY x.status = 'reviewed', x.origin = 'title_match', x.confidence = 'high', coalesce(e.year, s.start_year);
 COMMIT;

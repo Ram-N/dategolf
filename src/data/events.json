@@ -2065,7 +2065,7 @@
   },
   {
     "id": "black-death-europe",
-    "name": "Black Death Strikes Europe",
+    "name": "Black Death Begins in Europe",
     "year": 1347,
     "categories": [
       "Disasters",
@@ -2076,7 +2076,8 @@
       "bubonic plague Europe",
       "Great Plague",
       "Black Plague",
-      "medieval pandemic"
+      "medieval pandemic",
+      "Black Death Strikes Europe"
     ],
     "description": "The bubonic plague arrives in Sicily from Crimea and rapidly spreads across Europe, killing an estimated one-third to one-half of the European population within a few years. The catastrophic loss reshapes European society by disrupting feudal systems, labor markets, and the Church's authority.",
     "difficulty": "easy",
@@ -3393,7 +3394,7 @@
   },
   {
     "id": "industrial-revolution-textile",
-    "name": "Industrial Revolution Transforms Britain",
+    "name": "Industrial Revolution Begins in Britain",
     "year": 1760,
     "categories": [
       "Technology",
@@ -3407,9 +3408,10 @@
       "textile mills",
       "spinning jenny",
       "coal and iron",
-      "urbanization"
+      "urbanization",
+      "Industrial Revolution Transforms Britain"
     ],
-    "description": "Britain leads a transformation from manual craft production to machine-based manufacturing in factories, dramatically increasing industrial output and triggering mass urbanization. The Industrial Revolution creates new social classes, alters working conditions, and sets the template for modern economic development worldwide.",
+    "description": "Britain begins a transformation from manual craft production to machine-based manufacturing in factories, dramatically increasing industrial output and triggering mass urbanization. The Industrial Revolution creates new social classes, alters working conditions, and sets the template for modern economic development worldwide.",
     "difficulty": "easy",
     "importance": 5
   },
@@ -5488,7 +5490,7 @@
   },
   {
     "id": "holocaust",
-    "name": "Holocaust",
+    "name": "Holocaust Begins",
     "year": 1941,
     "categories": [
       "Social",
@@ -5501,9 +5503,10 @@
       "Final Solution",
       "Auschwitz",
       "Jewish genocide",
-      "Shoah"
+      "Shoah",
+      "Holocaust"
     ],
-    "description": "Nazi Germany implements the systematic genocide of six million Jews and millions of others including Roma, disabled people, and political opponents across occupied Europe. The Holocaust becomes the defining atrocity of the modern era, leading to the Nuremberg trials, the Genocide Convention, and the founding of Israel.",
+    "description": "Nazi Germany begins the systematic genocide of six million Jews and millions of others including Roma, disabled people, and political opponents across occupied Europe. The Holocaust becomes the defining atrocity of the modern era, leading to the Nuremberg trials, the Genocide Convention, and the founding of Israel.",
     "difficulty": "easy",
     "importance": 5
   },
@@ -6587,7 +6590,7 @@
   },
   {
     "id": "chinese-cultural-revolution",
-    "name": "Chinese Cultural Revolution",
+    "name": "Chinese Cultural Revolution Begins",
     "year": 1966,
     "categories": [
       "Politics",
@@ -6599,7 +6602,8 @@
       "Mao Cultural Revolution",
       "Red Guards China",
       "Great Proletarian Cultural Revolution",
-      "Chinese upheaval"
+      "Chinese upheaval",
+      "Chinese Cultural Revolution"
     ],
     "description": "Mao Zedong launches the Cultural Revolution to reassert ideological purity and his personal authority, unleashing Red Guards who attack intellectuals, destroy cultural heritage, and purge party officials. The decade-long upheaval causes immense suffering and economic disruption, killing hundreds of thousands and sending millions to labor camps.",
     "difficulty": "medium",
