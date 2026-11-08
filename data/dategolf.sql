@@ -9077,10 +9077,8 @@ INSERT INTO "relationships" VALUES(24,'battle-of-the-hydaspes','part_of','alexan
 INSERT INTO "relationships" VALUES(25,'alexander-founds-alexandria','part_of','alexanders-conquests','Founded during the conquest of Egypt.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(26,'death-of-alexander','part_of','alexanders-conquests','The death that ends the conquests.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(27,'execution-of-charles-i','part_of','english-civil-war','The king''s execution, the climax of the civil war.','high','reviewed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(28,'lee-surrenders-appomattox','part_of','american-civil-war','The surrender that effectively ends the war.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(29,'emancipation-proclamation','part_of','american-civil-war','Issued by Lincoln as a war measure.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(30,'american-declaration','part_of','american-revolution','The revolution''s founding document.','high','reviewed','ai_drafted','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(31,'american-war-independence-ends','part_of','american-revolution','The treaty that ends the revolutionary war.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(32,'battle-of-trafalgar','part_of','napoleonic-wars','The naval battle that ends Napoleon''s hopes of invading Britain.','high','reviewed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(33,'napoleon-defeat-waterloo','part_of','napoleonic-wars','Napoleon''s final defeat, which ends the wars.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(34,'bolshevik-civil-war','part_of','russian-revolution','The civil war that decides the revolution''s outcome.','high','reviewed','suggested','2026-11-07 21:41:29');
@@ -9194,6 +9192,8 @@ INSERT INTO "relationships" VALUES(142,'moon-landing','part_of','space-race','Th
 INSERT INTO "relationships" VALUES(143,'death-of-stalin','part_of','soviet-union','The death of the Soviet leader.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(144,'gorbachev-becomes-leader','part_of','soviet-union','Gorbachev becomes the Soviet leader.','high','proposed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(145,'dissolution-soviet-union','part_of','soviet-union','The end of the Soviet Union.','high','proposed','suggested','2026-11-07 21:41:29');
+INSERT INTO "relationships" VALUES(146,'lee-surrenders-appomattox','ended','american-civil-war','Lee''s surrender at Appomattox effectively ended the war.','high','reviewed','user','2026-11-08 22:55:58');
+INSERT INTO "relationships" VALUES(147,'american-war-independence-ends','ended','american-revolution','The Treaty of Paris formally ended the revolutionary war.','high','reviewed','user','2026-11-08 22:55:58');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -9365,6 +9365,10 @@ INSERT INTO "review_log" VALUES(160,'2026-11-08 22:44:59','approve-link','long-m
 INSERT INTO "review_log" VALUES(161,'2026-11-08 22:44:59','approve-link','opium-war-second','link #38: opium-war-second part_of opium-wars','dashboard');
 INSERT INTO "review_log" VALUES(162,'2026-11-08 22:54:49','approve-link','battle-of-trafalgar','link #32: battle-of-trafalgar part_of napoleonic-wars','dashboard');
 INSERT INTO "review_log" VALUES(163,'2026-11-08 22:54:49','approve-link','napoleon-defeat-waterloo','link #33: napoleon-defeat-waterloo part_of napoleonic-wars','dashboard');
+INSERT INTO "review_log" VALUES(164,'2026-11-08 22:55:57','reject-link','lee-surrenders-appomattox','link #28: lee-surrenders-appomattox part_of american-civil-war — Should be ended (user, batch 1 review): an ending isn''t part of what it ends','cli');
+INSERT INTO "review_log" VALUES(165,'2026-11-08 22:55:57','reject-link','american-war-independence-ends','link #31: american-war-independence-ends part_of american-revolution — Should be ended (user, batch 1 review): an ending isn''t part of what it ends','cli');
+INSERT INTO "review_log" VALUES(166,'2026-11-08 22:55:58','approve-link','lee-surrenders-appomattox','link #146: lee-surrenders-appomattox ended american-civil-war','cli');
+INSERT INTO "review_log" VALUES(167,'2026-11-08 22:55:58','approve-link','american-war-independence-ends','link #147: american-war-independence-ends ended american-revolution','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),

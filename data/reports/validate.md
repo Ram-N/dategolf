@@ -35,7 +35,7 @@
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 1 |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 83 |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 81 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -114,8 +114,6 @@
 ## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
 
 - `21` — battle-of-zama part_of punic-wars — The battle that ends the Second Punic War.
-- `28` — lee-surrenders-appomattox part_of american-civil-war — The surrender that effectively ends the war.
-- `31` — american-war-independence-ends part_of american-revolution — The treaty that ends the revolutionary war.
 - `36` — chinese-communist-revolution part_of chinese-civil-war — The Communist victory that ends the civil war.
 - `39` — d-day-normandy part_of world-war-2 — The Allied landings in Normandy.
 - `40` — battle-of-britain part_of world-war-2 — The air war over Britain.

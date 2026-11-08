@@ -383,19 +383,11 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 83,
+      "count": 81,
       "rows": [
         [
           21,
           "battle-of-zama part_of punic-wars — The battle that ends the Second Punic War."
-        ],
-        [
-          28,
-          "lee-surrenders-appomattox part_of american-civil-war — The surrender that effectively ends the war."
-        ],
-        [
-          31,
-          "american-war-independence-ends part_of american-revolution — The treaty that ends the revolutionary war."
         ],
         [
           36,

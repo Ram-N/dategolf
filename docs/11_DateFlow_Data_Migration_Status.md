@@ -12,7 +12,7 @@
 
 ## ▶ Your next actions (updated 2026-11-08)
 
-1. **Review the first link batch: 142 `part_of` links (83 left).** On the dashboard, go to **Review → Links**. The step-by-step guide is **doc 12 §4.6c**. The 9 medium-confidence links are the ones that need real judgement. *2026-11-08:* the 30 "event starts the span" links are approved. Four of their events were renamed to say "Begins", with the old names kept as aliases, and the span `meiji-restoration` is now named **Meiji Era** (`manage.py rename`).
+1. **Review the first link batch: 142 `part_of` links (81 left).** On the dashboard, go to **Review → Links**. The step-by-step guide is **doc 12 §4.6c**. The 9 medium-confidence links are the ones that need real judgement. *2026-11-08:* the 30 "event starts the span" links are approved. Four of their events were renamed to say "Begins", with the old names kept as aliases, and the span `meiji-restoration` is now named **Meiji Era** (`manage.py rename`).
 2. **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project` and `arab-spring` (all "one subject"). Change any with `manage.py identity <id> --one|--split|--drop-span|--drop-event`.
 3. **Then tell Claude to continue** (see the roadmap below).
 
@@ -24,7 +24,7 @@ The data work now feeds new DateFlow experiences. **DateFlow comes back straight
 
 | # | Who | What | Notes |
 |---|---|---|---|
-| 1 | You | **Finish the link review** (83 left) | Doc 12 §4.6c |
+| 1 | You | **Finish the link review** (81 left) | Doc 12 §4.6c |
 | 2 | Claude | **Date-precision batch** for the 20 events before 500 BCE (a pre-sorted file) | Mark most `--approximate` with a `date_display` range. Consider making Kurukshetra DateFlow-only (its date is disputed by over 2,000 years). The Great Pyramid was done as the first case. |
 | 3 | Claude | **3c: export `relationships.json`** (reviewed links only) | The first step of Phase 8 |
 | 4 | Claude | **DateFlow Phase 8: Connections** | Plan in **doc 09, Phase 8**. Cards show "part of / includes / ended / followed", and each one can be clicked through. |

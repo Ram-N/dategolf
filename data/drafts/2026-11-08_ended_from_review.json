@@ -1,0 +1,8 @@
+{"origin": "user",
+ "about": "Retyped during the batch 1 review: these endings were proposed as part_of (links #28, #31).",
+ "links": [
+  {"source": "lee-surrenders-appomattox", "type": "ended", "target": "american-civil-war",
+   "why": "Lee's surrender at Appomattox effectively ended the war.", "confidence": "high"},
+  {"source": "american-war-independence-ends", "type": "ended", "target": "american-revolution",
+   "why": "The Treaty of Paris formally ended the revolutionary war.", "confidence": "high"}
+ ]}
