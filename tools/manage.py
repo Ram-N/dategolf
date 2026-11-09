@@ -208,6 +208,23 @@ def main():
     p.add_argument("--display", help='The true range, e.g. "c. 2600–2560 BCE" ("" clears it)')
     p.set_defaults(fn=lambda a: edit.set_event_date(a.id, a.year, a.approximate, a.display))
 
+    p = sub.add_parser("dateflow-only", help="Keep an event out of DatePick and DateGolf (disputed date)")
+    p.add_argument("id")
+    p.add_argument("--reason", help="Why its date can't be guessed fairly")
+    p.add_argument("--remove", action="store_true", help="Put it back in DatePick and DateGolf")
+    p.set_defaults(fn=lambda a: edit.set_dateflow_only(a.id, a.reason, a.remove))
+
+    p = sub.add_parser("set-memory-aid", help="Replace one DateLinks memory-aid item's text")
+    p.add_argument("item_id", type=int)
+    p.add_argument("text")
+    p.set_defaults(fn=lambda a: edit.set_memory_aid(a.item_id, a.text))
+
+    p = sub.add_parser("rename-memory-aid-group", help="Rename a DateLinks group of an entity")
+    p.add_argument("id")
+    p.add_argument("old_label")
+    p.add_argument("new_label")
+    p.set_defaults(fn=lambda a: edit.rename_memory_aid_group(a.id, a.old_label, a.new_label))
+
     p = sub.add_parser("set-countries", help='Replace an entity\'s country tags, e.g. "IN, PK/actor"')
     p.add_argument("id")
     p.add_argument("spec")

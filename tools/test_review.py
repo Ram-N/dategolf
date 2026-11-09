@@ -133,6 +133,28 @@ class TestRename(unittest.TestCase):
         self.assertEqual(quiet(edit.set_event_date, "no-such-id", 5, via="test"), 1)
 
 
+class TestAccuracyTools(unittest.TestCase):
+    def test_dateflow_only(self):
+        self.assertEqual(quiet(edit.set_dateflow_only, "fall-of-troy", "test reason", via="test"), 0)
+        self.assertIsNotNone(db().execute("SELECT 1 FROM dateflow_only_events WHERE entity_id = 'fall-of-troy'"
+                                          ).fetchone())
+        self.assertEqual(quiet(edit.set_dateflow_only, "fall-of-troy", remove=True, via="test"), 0)
+        self.assertIsNone(db().execute("SELECT 1 FROM dateflow_only_events WHERE entity_id = 'fall-of-troy'"
+                                       ).fetchone())
+        self.assertEqual(quiet(edit.set_dateflow_only, "fall-of-troy", " ", via="test"), 1)
+
+    def test_memory_aids(self):
+        item, entity, label = db().execute(
+            "SELECT i.id, g.entity_id, g.label FROM learning_content_items i "
+            "JOIN learning_content_groups g ON g.id = i.group_id ORDER BY i.id LIMIT 1").fetchone()
+        self.assertEqual(quiet(edit.set_memory_aid, item, "New aid text.", via="test"), 0)
+        self.assertEqual(db().execute("SELECT body FROM learning_content_items WHERE id = ?", (item,)).fetchone()[0],
+                         "New aid text.")
+        self.assertEqual(quiet(edit.rename_memory_aid_group, entity, label, "Test label", via="test"), 0)
+        self.assertEqual(quiet(edit.rename_memory_aid_group, entity, "no such", "x", via="test"), 1)
+        self.assertEqual(quiet(edit.set_memory_aid, 999999, "x", via="test"), 1)
+
+
 class TestSpanDrafts(unittest.TestCase):
     def test_span_draft_loads_and_approves(self):
         path = TMP / "span.json"

@@ -96,3 +96,65 @@ def set_event_date(entity_id, year=None, approximate=None, display=None, via="cl
     conn.close()
     print(f"  ✓ {entity_id}: {detail}")
     return 0
+
+
+def set_dateflow_only(entity_id, reason=None, remove=False, via="cli"):
+    """Show an event only in DateFlow (not DatePick or DateGolf): for dates too disputed to guess fairly."""
+    conn = connect()
+    ensure_schema(conn)
+    if not conn.execute("SELECT 1 FROM events WHERE entity_id = ?", (entity_id,)).fetchone():
+        print(f"  ✗ no event with id {entity_id}")
+        conn.close()
+        return 1
+    if remove:
+        conn.execute("DELETE FROM dateflow_only_events WHERE entity_id = ?", (entity_id,))
+        detail = "back in DatePick and DateGolf"
+    else:
+        if not (reason or "").strip():
+            print("  ✗ a reason is required")
+            conn.close()
+            return 1
+        conn.execute("INSERT OR REPLACE INTO dateflow_only_events VALUES (?, ?)", (entity_id, reason.strip()))
+        detail = f"DateFlow only: {reason.strip()}"
+    log(conn, "dateflow-only", entity_id, detail, via=via)
+    conn.commit()
+    conn.close()
+    print(f"  ✓ {entity_id}: {detail}")
+    return 0
+
+
+def set_memory_aid(item_id, body, via="cli"):
+    """Replace one DateLinks memory-aid item's text (learning_content_items)."""
+    if not body.strip():
+        print("  ✗ the text is empty")
+        return 1
+    conn = connect()
+    row = conn.execute("SELECT g.entity_id, i.body FROM learning_content_items i "
+                       "JOIN learning_content_groups g ON g.id = i.group_id WHERE i.id = ?", (item_id,)).fetchone()
+    if row is None:
+        print(f"  ✗ no memory-aid item #{item_id}")
+        conn.close()
+        return 1
+    conn.execute("UPDATE learning_content_items SET body = ? WHERE id = ?", (body.strip(), item_id))
+    log(conn, "set-memory-aid", row["entity_id"], f"item #{item_id}: {row['body'][:60]}… → {body.strip()[:60]}…",
+        via=via)
+    conn.commit()
+    conn.close()
+    print(f"  ✓ item #{item_id} ({row['entity_id']}) updated")
+    return 0
+
+
+def rename_memory_aid_group(entity_id, old_label, new_label, via="cli"):
+    """Rename one of an entity's DateLinks groups, e.g. 'Year of 588 BCE' → 'Year of 587 BCE'."""
+    conn = connect()
+    cur = conn.execute("UPDATE learning_content_groups SET label = ? WHERE entity_id = ? AND label = ?",
+                       (new_label.strip(), entity_id, old_label))
+    if not cur.rowcount:
+        print(f"  ✗ {entity_id} has no group {old_label!r}")
+        conn.close()
+        return 1
+    log(conn, "rename-memory-aid-group", entity_id, f"{old_label!r} → {new_label.strip()!r}", via=via)
+    conn.commit()
+    conn.close()
+    print(f"  ✓ {entity_id}: group {old_label!r} → {new_label.strip()!r}")
+    return 0
