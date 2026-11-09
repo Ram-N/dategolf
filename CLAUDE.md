@@ -11,6 +11,7 @@ npm run dev   # → http://localhost:5173
 
 ## Key Rules — Don't Break These
 
+- **Historical accuracy trumps everything else.** This is an educational game: never show false precision or a misleading claim to students. Mark uncertain dates approximate and show "c." prominently. Fix a wrong date or name even when that breaks memory aids, links or tests (redo those instead). Push back on any request that would make the data less accurate.
 - **No backend** — the app reads static JSON + localStorage; no server
 - **SQLite is the data source of truth** — edit `data/dategolf.db`, then `npm run data:export`; never hand-edit the generated JSON in `src/data/` or `public/data/`
 - **No year 0** — years are signed (`-1` = 1 BCE); the schema rejects 0
