@@ -25,7 +25,7 @@ The data work now feeds new DateFlow experiences. **DateFlow comes back straight
 | # | Who | What | Notes |
 |---|---|---|---|
 | 1 | You | ~~**Finish the link review**~~ ✅ 2026-11-09 | Doc 12 §4.6c |
-| 2 | Claude | **Date-precision batch** for the 20 events before 500 BCE (a pre-sorted file) | Mark most `--approximate` with a `date_display` range. Consider making Kurukshetra DateFlow-only (its date is disputed by over 2,000 years). The Great Pyramid was done as the first case. |
+| 2 | Claude | ~~**Date-precision batch**~~ ✅ 2026-11-09 (`data/drafts/2026-11-09_date_precision.md`). Part 2 ("c." in the UI, a DatePick gap that scales with age) follows. | Mark most `--approximate` with a `date_display` range. Consider making Kurukshetra DateFlow-only (its date is disputed by over 2,000 years). The Great Pyramid was done as the first case. |
 | 3 | Claude | **3c: export `relationships.json`** (reviewed links only) | The first step of Phase 8 |
 | 4 | Claude | **DateFlow Phase 8: Connections** | Plan in **doc 09, Phase 8**. Cards show "part of / includes / ended / followed", and each one can be clicked through. |
 | 5 | Either order | **v3 event editor** (dashboard, doc 13; reuses `tools/edit.py`) · **link batch 2** (sequences `preceded` plus `ended`, e.g. Meiji Restoration → Tokugawa Shogunate) · **link batch 3** (causal) · **Step 4** (new events for the gaps on the Coverage heatmap) · **sources batch 1** (`data/drafts/sources_batch1.json`, already drafted; doc 12 §4.6d) | Each batch appears in DateFlow as soon as it's reviewed and exported. Load one review queue at a time. |

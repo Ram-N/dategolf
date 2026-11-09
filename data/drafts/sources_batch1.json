@@ -169,7 +169,7 @@
     {
       "id": "babylonian-conquest-jerusalem",
       "name": "Babylonian Conquest of Jerusalem",
-      "year": -588,
+      "year": -587,
       "title": "Siege of Jerusalem (587 BC)",
       "url": "https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(587_BC)",
       "origin": "ai_drafted",
@@ -3116,14 +3116,14 @@
     },
     {
       "id": "indian-independence-movement",
-      "name": "Indian Independence Movement",
+      "name": "Gandhian Era of the Independence Movement",
       "year": 1920,
       "title": "Indian independence movement",
       "url": "https://en.wikipedia.org/wiki/Indian_independence_movement",
-      "origin": "title_match",
-      "confidence": "high",
-      "asked": "Indian Independence Movement",
-      "note": null
+      "origin": "ai_drafted",
+      "confidence": "medium",
+      "asked": "Indian independence movement",
+      "note": "The article covers the whole movement; this span is its Gandhian phase."
     },
     {
       "id": "league-of-nations-founded",

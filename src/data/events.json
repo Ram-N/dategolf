@@ -18,7 +18,8 @@
     ],
     "description": "The wheel and plough are developed in Mesopotamia, transforming agriculture, transportation, and trade across the ancient world. The sail appears in Egypt around the same period, enabling maritime commerce along the Nile and beyond. Together these three inventions lay the practical foundation for complex civilization and long-distance exchange.",
     "difficulty": "medium",
-    "importance": 9
+    "importance": 9,
+    "approximate": true
   },
   {
     "id": "sumerian-writing",
@@ -37,7 +38,8 @@
     ],
     "description": "The Sumerians of ancient Mesopotamia develop cuneiform, the world's earliest writing system, initially used for recording trade transactions on clay tablets. This invention enables the transmission of complex knowledge, law, and literature across generations and marks the beginning of recorded history.",
     "difficulty": "easy",
-    "importance": 5
+    "importance": 5,
+    "approximate": true
   },
   {
     "id": "first-cities-mesopotamia",
@@ -58,7 +60,8 @@
     ],
     "description": "The first true cities emerge in Sumer, the southern region of Mesopotamia, with Uruk growing into the world's largest settlement with a population in the tens of thousands. These urban centers develop specialized labor, centralized administration, monumental architecture, and complex trade networks stretching across the ancient Near East. The Sumerian city-state becomes the template for human political and social organization.",
     "difficulty": "medium",
-    "importance": 8
+    "importance": 8,
+    "approximate": true
   },
   {
     "id": "indus-valley-begins",
@@ -77,7 +80,8 @@
     ],
     "description": "One of the world's earliest urban civilizations emerges in the Indus River valley, featuring advanced city planning, drainage systems, and trade networks. Cities like Mohenjo-daro and Harappa flourish with populations in the tens of thousands.",
     "difficulty": "medium",
-    "importance": 5
+    "importance": 5,
+    "approximate": true
   },
   {
     "id": "egyptian-pyramids-built",
@@ -117,28 +121,8 @@
     ],
     "description": "Babylonian king Hammurabi promulgates one of the earliest and most complete written legal codes, covering commerce, property, family, and criminal law. The code, inscribed on a stone stele, introduces the principle of presumption of innocence and establishes the idea of law as a public institution.",
     "difficulty": "medium",
-    "importance": 4
-  },
-  {
-    "id": "phoenician-alphabet-invented",
-    "name": "Phoenician Alphabet Invented",
-    "year": -1600,
-    "categories": [
-      "Culture",
-      "Science"
-    ],
-    "region": "Middle East",
-    "aliases": [
-      "first alphabet",
-      "alphabet invented",
-      "Canaanite alphabet",
-      "Proto-Sinaitic script",
-      "writing system",
-      "consonantal alphabet"
-    ],
-    "description": "The Phoenicians develop the first widely used alphabetic writing system, consisting of 22 consonant letters derived from earlier Semitic scripts used in the Sinai Peninsula. Unlike the complex syllabic systems of Mesopotamia and Egypt, the alphabet's simplicity allows merchants and administrators to learn it rapidly, and it spreads across the Mediterranean world through Phoenician trade networks. Nearly all modern alphabets, including Greek, Latin, Arabic, and Hebrew, descend from this Phoenician innovation.",
-    "difficulty": "hard",
-    "importance": 9
+    "importance": 4,
+    "approximate": true
   },
   {
     "id": "fall-of-troy",
@@ -160,7 +144,30 @@
     ],
     "description": "The city of Troy, located in present-day northwest Turkey, falls to a coalition of Greek forces after a legendary ten-year siege, according to ancient tradition immortalized in Homer's Iliad. The Trojan horse — a giant wooden horse concealing Greek soldiers — becomes one of history's most enduring stories of deception in warfare. Archaeological excavations at Hisarlik confirm a real Bronze Age city was violently destroyed around this period, lending historical weight to the legend.",
     "difficulty": "easy",
-    "importance": 6
+    "importance": 6,
+    "approximate": true
+  },
+  {
+    "id": "phoenician-alphabet-invented",
+    "name": "Phoenician Alphabet Invented",
+    "year": -1050,
+    "categories": [
+      "Culture",
+      "Science"
+    ],
+    "region": "Middle East",
+    "aliases": [
+      "first alphabet",
+      "alphabet invented",
+      "Canaanite alphabet",
+      "Proto-Sinaitic script",
+      "writing system",
+      "consonantal alphabet"
+    ],
+    "description": "The Phoenicians develop the first widely used alphabetic writing system, consisting of 22 consonant letters derived from earlier Semitic scripts used in the Sinai Peninsula. Unlike the complex syllabic systems of Mesopotamia and Egypt, the alphabet's simplicity allows merchants and administrators to learn it rapidly, and it spreads across the Mediterranean world through Phoenician trade networks. Nearly all modern alphabets, including Greek, Latin, Arabic, and Hebrew, descend from this Phoenician innovation.",
+    "difficulty": "hard",
+    "importance": 9,
+    "approximate": true
   },
   {
     "id": "battle-of-mahabharata",
@@ -179,7 +186,9 @@
     ],
     "description": "The legendary war described in the Mahabharata epic, fought between the Pandavas and Kauravas on the plains of Kurukshetra. The conflict forms the backdrop for the Bhagavad Gita and remains central to Hindu philosophy and culture.",
     "difficulty": "hard",
-    "importance": 4
+    "importance": 4,
+    "dateflowOnly": true,
+    "approximate": true
   },
   {
     "id": "david-captures-jerusalem",
@@ -198,7 +207,8 @@
     ],
     "description": "According to biblical tradition, King David captures the Jebusite city of Jerusalem and makes it the capital of a united Israelite kingdom. Jerusalem becomes the political and religious centre of the Israelites, a status that later shapes its importance for Judaism, Christianity and Islam.",
     "difficulty": "medium",
-    "importance": 4
+    "importance": 4,
+    "approximate": true
   },
   {
     "id": "greek-olympics-ancient",
@@ -259,12 +269,14 @@
     ],
     "description": "Iron smelting technology, first developed in Anatolia around 1200 BC, spreads widely across Europe, Asia, and Africa during the early first millennium BC. Iron's abundance and superior hardness compared to bronze democratize the production of agricultural tools and weapons, reshaping economies, armies, and societies across three continents. The Iron Age marks a fundamental turning point in human technological development, enabling more productive farming, more lethal warfare, and larger political structures.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "dateflowOnly": true,
+    "approximate": true
   },
   {
     "id": "babylonian-conquest-jerusalem",
     "name": "Babylonian Conquest of Jerusalem",
-    "year": -588,
+    "year": -587,
     "categories": [
       "War",
       "Religion"
@@ -280,7 +292,8 @@
     ],
     "description": "King Nebuchadnezzar II of Babylon conquers Jerusalem, destroys Solomon's Temple, and deports much of the Jewish population to Babylon in what becomes known as the Babylonian captivity. The exile profoundly reshapes Jewish theology and identity, accelerating the development of strict monotheism and the compilation of the Hebrew Bible. The event is foundational to the history of Judaism, Christianity, and Islam, and the longing to return to Jerusalem becomes a defining element of Jewish culture.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "approximate": true
   },
   {
     "id": "thales-solar-eclipse",
@@ -320,7 +333,8 @@
     "description": "Siddhartha Gautama is born in Lumbini into a royal family of the Shakya clan. He would later renounce his privileged life and attain enlightenment, becoming the Buddha and founding one of the world's major religions.",
     "difficulty": "easy",
     "importance": 5,
-    "dateflowOnly": true
+    "dateflowOnly": true,
+    "approximate": true
   },
   {
     "id": "birth-of-confucius",

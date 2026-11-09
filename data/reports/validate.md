@@ -32,7 +32,7 @@
 | review | Legacy CSV rows with no accepted match and no triage outcome | pass |
 | review | Proposed events awaiting approval (not exported; manage.py approve <id>) | pass |
 | review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 39 |
-| info | DateFlow-only events (excluded from DatePick and DateGolf) | 1 |
+| info | DateFlow-only events (excluded from DatePick and DateGolf) | 3 |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
 | review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
@@ -105,6 +105,8 @@
 ## [info] DateFlow-only events (excluded from DatePick and DateGolf)
 
 - `birth-of-buddha` — -563 · Birth of Siddhartha Gautama — Birth date too disputed for a fair guess (CSV alone gives -576 and -486); user decision 2026-11-06.
+- `battle-of-mahabharata` — -1000 · Battle of Kurukshetra — Dates differ by over 2,000 years (tradition 3102 BCE, scholars c. 1000 BCE); historicity debated. Precision batch 2026-11-09.
+- `ironworking-spreads` — -670 · Ironworking Spreads Across the Old World — A process over seven centuries; no single year to guess. Precision batch 2026-11-09.
 
 ## [info] Entities with an actor but no location (e.g. events on the Moon or Mars)
 

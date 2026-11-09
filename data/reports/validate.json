@@ -351,11 +351,19 @@
     {
       "severity": "info",
       "check": "DateFlow-only events (excluded from DatePick and DateGolf)",
-      "count": 1,
+      "count": 3,
       "rows": [
         [
           "birth-of-buddha",
           "-563 · Birth of Siddhartha Gautama — Birth date too disputed for a fair guess (CSV alone gives -576 and -486); user decision 2026-11-06."
+        ],
+        [
+          "battle-of-mahabharata",
+          "-1000 · Battle of Kurukshetra — Dates differ by over 2,000 years (tradition 3102 BCE, scholars c. 1000 BCE); historicity debated. Precision batch 2026-11-09."
+        ],
+        [
+          "ironworking-spreads",
+          "-670 · Ironworking Spreads Across the Old World — A process over seven centuries; no single year to guess. Precision batch 2026-11-09."
         ]
       ]
     },

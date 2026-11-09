@@ -916,6 +916,11 @@
   },
   "fall-of-roman-empire-west": {
    "title": "Fall of the Western Roman Empire"
+  },
+  "indian-independence-movement": {
+   "title": "Indian independence movement",
+   "confidence": "medium",
+   "note": "The article covers the whole movement; this span is its Gandhian phase."
   }
  }
 }

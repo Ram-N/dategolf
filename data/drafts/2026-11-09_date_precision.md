@@ -1,6 +1,11 @@
 # Date-precision batch: the 20 events before 500 BCE (2026-11-09)
 
-Pre-sorted for review. Nothing is applied yet. Reply "go", or override any row.
+✅ **Applied 2026-11-09** with these changes from the user:
+- **Babylon's year changed to 587 BCE** (range "587 or 586 BCE (siege from 588)"). Its 7 DateLinks aids were rewritten for 587.
+- **The independence-movement span renamed** to *Gandhian Era of the Independence Movement* (1920 to 1947). Non-Cooperation Movement now `began` it and Indian Independence `ended` it.
+- **Part 2** (show "c." and scale the DatePick gap) was approved too.
+
+The user's rule: **historical accuracy trumps everything else.**
 
 **What "approximate" does today:** DatePick keeps wrong answers more than 10 years from the year. Nothing else yet: event cards don't show "c.", and the range (`date_display`) is stored but not exported. Part 2 below would make both visible.
 
