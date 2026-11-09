@@ -195,7 +195,7 @@ def run():
                         "SELECT entity_id, reason FROM accepted_region_exceptions ORDER BY entity_id")]))
 
     # Link date sanity: causes and sequences run earlier → later; part_of sits inside its target;
-    # an ended link's source falls at its target's end.
+    # an ended (began) link's source falls at its target's end (start).
     # An entity's years cover both its facets: a shared id (event 1803 + span 1803-1815) spans 1803-1815.
     years = {}
     for eid, a, b in conn.execute("SELECT entity_id, year, year FROM events UNION ALL "
@@ -212,13 +212,16 @@ def run():
         if rtype == "ended":  # the ender happens during the target, at or near its end
             if s0 < t0 or s0 > t1 + 1:
                 ending.append((lid, f"{src} ({s0}) ended {tgt} ({t0} to {t1}): not at its end"))
+        elif rtype == "began":  # the starter happens at the target's start (a year either side)
+            if s0 < t0 - 1 or s0 > t0 + 1:
+                ending.append((lid, f"{src} ({s0}) began {tgt} ({t0} to {t1}): not at its start"))
         elif (causal or rtype in ("preceded", "evolved_into")) and s0 > t0:
             forward.append((lid, f"{src} ({s0}) {rtype} {tgt} ({t0}): the source starts later"))
         if rtype == "part_of" and (s0 < t0 or s1 > t1):
             outside.append((lid, f"{src} ({s0} to {s1}) part_of {tgt} ({t0} to {t1}): outside its years"))
     results.append(("warning", "Link runs backwards in time (cause or sequence after its target)", forward))
     results.append(("warning", "part_of link outside the target's years", outside))
-    results.append(("warning", "ended link not at the end of what it ended", ending))
+    results.append(("warning", "began / ended link not at the start / end of its target", ending))
 
     manifest_path = LEGACY / "MANIFEST.json"
     baseline = json.loads(manifest_path.read_text())["counts"] if manifest_path.exists() else {}

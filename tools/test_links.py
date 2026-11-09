@@ -132,7 +132,7 @@ class TestTypes(unittest.TestCase):
         if not conn.execute("SELECT 1 FROM relationship_types WHERE type = 'ended'").fetchone():
             quiet(links.add_type, "ended", "was ended by", "Test.", "ender → ended", True, via="test")
         load(("sputnik-launch", "ended", "tokugawa-shogunate", "wrong end"), name="t2")
-        rows = TestValidation.check_rows(self, "ended link not at the end")
+        rows = TestValidation.check_rows(self, "began / ended link not at")
         self.assertTrue(any("sputnik-launch" in r[1] for r in rows))
 
 
