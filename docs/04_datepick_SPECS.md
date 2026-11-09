@@ -1133,3 +1133,27 @@ No unnecessary database.
 No second deployment architecture.
 
 The long-term opportunity is to make the application a small **daily history-game platform**, with DateGolf and DatePick as the first two experiences.
+
+---
+
+# 38. Approximate Dates (2026-11-09)
+
+**Rule: historical accuracy trumps everything else** (CLAUDE.md). A quiz must never teach false precision.
+
+## Built (2026-11-09)
+
+- **"c." everywhere.** An approximate event's year shows as "c. 3500 BCE" on the question and reveal, in the results, and in DateGolf and DateFlow.
+- **Every choice gets "c."** On an approximate question, all four choices carry "c.", so the prefix can't give the answer away. A prominent line above them reads "≈ Approximate date: pick the closest year".
+- **The reveal shows an amber "≈ Approximate date" box** with the historians' range (`dateDisplay`, e.g. "c. 4000–3500 BCE").
+- **The wrong-answer gap scales with age** (`approxMinGap`): more than 10 years after 1 CE, more than 25 years for 1000 BCE to 1 CE, more than 100 years before 1000 BCE.
+
+## Planned: range choices (the user's idea; awaiting a plan "go")
+
+For an approximate event, the choices become **ranges, not years**, and the player picks the range that contains the historians' dates.
+
+> *When was the wheel invented?*  **A.** 4500–4000 BCE · **B.** 4000–3500 BCE ✓ · **C.** 3500–3000 BCE · **D.** 3000–2500 BCE
+
+- **The correct range comes from the event's documented range** (`date_display`, built from multiple sources). That needs a structured `range_start` / `range_end` in the db rather than display text, plus the sources (Step 5) behind it.
+- **The wrong ranges don't overlap the true one** and have the same width, so length gives nothing away. They sit on both sides, so the answer's position isn't a clue.
+- **DateGolf keeps single years.** Its scoring is distance in years, so ranges don't fit (the user's call).
+- **Open questions for the plan:** how wide the choices are (the event's own range width, or a fixed width per era), and whether a partly overlapping pick counts as half-right.
