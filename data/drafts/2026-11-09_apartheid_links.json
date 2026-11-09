@@ -1,0 +1,12 @@
+{"origin": "user",
+ "about": "The apartheid pair from the batch 1 review (option a): a new Apartheid span that these events begin and end.",
+ "links": [
+  {"source": "apartheid-south-africa", "type": "began", "target": "apartheid", "confidence": "high",
+   "why": "The National Party's election victory and its first segregation laws began apartheid."},
+  {"source": "collapse-apartheid-negotiations", "type": "ended", "target": "apartheid", "confidence": "high",
+   "why": "The first election open to all races ended apartheid rule."},
+  {"source": "independence-south-africa", "type": "ended", "target": "apartheid", "confidence": "high",
+   "why": "Mandela's inauguration as the first democratically elected president completed apartheid's end."},
+  {"source": "apartheid-end", "type": "part_of", "target": "apartheid", "confidence": "high",
+   "why": "The negotiated dismantling was apartheid's final phase."}
+ ]}

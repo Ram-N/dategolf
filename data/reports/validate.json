@@ -1,7 +1,7 @@
 {
   "counts": {
     "events": 434,
-    "time_spans": 98,
+    "time_spans": 99,
     "eras": 5,
     "datelinks_keys": 26,
     "datelinks_groups": 83,
@@ -425,7 +425,7 @@
         ],
         [
           "Africa",
-          "africa · 30 records"
+          "africa · 31 records"
         ],
         [
           "Global",
@@ -511,11 +511,15 @@
     {
       "severity": "info",
       "check": "Counts changed since the legacy import",
-      "count": 1,
+      "count": 2,
       "rows": [
         [
           "events",
           "343 at import -> 434 now"
+        ],
+        [
+          "time_spans",
+          "98 at import -> 99 now"
         ]
       ]
     }

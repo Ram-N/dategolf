@@ -1,0 +1,10 @@
+{"origin": "ai_drafted",
+ "events": [],
+ "spans": [{
+   "id": "apartheid", "kind": "period", "name": "Apartheid",
+   "start_year": 1948, "end_year": 1994,
+   "description": "South Africa's system of legally enforced racial segregation and white-minority rule, introduced by the National Party and dismantled through negotiations and the first democratic election.",
+   "region": "Africa", "importance": 7, "categories": ["Politics", "Social"], "countries": ["ZA"],
+   "source": "https://en.wikipedia.org/wiki/Apartheid",
+   "note": "Added 2026-11-09 so the 1994 election and Mandela's presidency can end Apartheid itself, not the 'End of Apartheid' span."
+ }]}

@@ -12,7 +12,7 @@
 
 ## ▶ Your next actions (updated 2026-11-08)
 
-1. ~~**Review the first link batch.**~~ ✅ Done 2026-11-09. Of the 142 proposed `part_of` links, **124 were approved**. From your comments, **12 became `ended`** and **3 became `began`** (a new type). **2 are still to decide** (the apartheid pair, see §4). **1 waits for batch 2** (Meiji Restoration `ended` Tokugawa Shogunate). Events renamed along the way: four "Begins" names, the two that duplicated their span, the Great Pyramid, **Xinhai Revolution Overthrows the Qing** and **Ottoman Sultanate Abolished**.
+1. ~~**Review the first link batch.**~~ ✅ Done 2026-11-09. Final link counts: **97 `part_of`, 35 `began`, 14 `ended`**, all reviewed. **1 waits for batch 2** (Meiji Restoration `ended` Tokugawa Shogunate). A new span, **Apartheid (1948 to 1994)**, was added for the apartheid links (see §4). Events renamed along the way: four "Begins" names, the two that duplicated their span, the Great Pyramid, **Xinhai Revolution Overthrows the Qing** and **Ottoman Sultanate Abolished**.
 2. **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project` and `arab-spring` (all "one subject"). Change any with `manage.py identity <id> --one|--split|--drop-span|--drop-event`.
 3. **Then tell Claude to continue** (see the roadmap below).
 
@@ -417,8 +417,8 @@ Validation then catches links to missing entities, self-links, unknown types and
 
 - **Review the 142 proposed `part_of` links** (see "Your next actions" above).
 - **The 5 Step 3a decisions to double-check** (see above).
-- **The apartheid pair (2026-11-09).** You rejected "First Democratic Election is part of End of Apartheid" and "Mandela Becomes President is part of End of Apartheid", asking for `ended`. But the span is *End of Apartheid* (1990 to 1994), so "the election ended End of Apartheid" doesn't read well. The choice is between an `Apartheid` span (1948 to 1994), which the election ends, or renaming the span *Negotiations to End Apartheid*.
-- **Should the 33 "event starts the span" `part_of` links become `began`?** For example, *Babur Founds the Mughal Empire* would read "began the Mughal Empire". `began` now exists for Florence and the Bastille, so this would make them consistent.
+- ~~**The apartheid pair**~~ ✅ 2026-11-09, option (a). A new span, **Apartheid (1948 to 1994)**. *Apartheid Established* began it, the 1994 election and Mandela's inauguration ended it, and *End of Apartheid* (1990 to 1994) is part of it.
+- ~~**33 "starts the span" links → `began`?**~~ ✅ 2026-11-09. 31 were converted with `retype-link`. **Two stay `part_of`:** *Non-Cooperation Movement → Indian Independence Movement*, because the movement began decades earlier (the span's 1920 start date deserves a look), and *First Opium War → Opium Wars*, because it's the first of two wars, not the start of one.
 - ~~**The Great Pyramid date conflict.**~~ ✅ Resolved 2026-11-08. The CSV's c. 3000 BC is wrong. The event is now **Great Pyramid of Giza Completed, c. 2560 BCE** (approximate, `date_display` "c. 2600–2560 BCE"), and the span `construction-great-pyramid` is **c. 2600 to 2560 BCE**.
 - **The 39 triaged CSV rows** (duplicates or not recommended) are listed in `validate.md`, in case you want to revisit any at low importance.
 - *Done:* the 25 shared ids (Step 3a, 2026-11-07); the importance scale (1–9, 2026-11-06).

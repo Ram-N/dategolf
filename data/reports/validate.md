@@ -46,12 +46,12 @@
 | warning | Link runs backwards in time (cause or sequence after its target) | pass |
 | warning | part_of link outside the target's years | pass |
 | warning | began / ended link not at the start / end of its target | pass |
-| info | Counts changed since the legacy import | 1 |
+| info | Counts changed since the legacy import | 2 |
 
 ## Counts
 
 - events: 434
-- time_spans: 98
+- time_spans: 99
 - eras: 5
 - datelinks_keys: 26
 - datelinks_groups: 83
@@ -118,7 +118,7 @@
 - `Americas` — americas · 64 records
 - `East Asia` — east-asia · 58 records
 - `Middle East` — middle-east · 45 records
-- `Africa` — africa · 30 records
+- `Africa` — africa · 31 records
 - `Global` — global · 29 records
 - `Southeast Asia` — east-asia · 11 records
 - `North America` — americas · 7 records
@@ -135,3 +135,4 @@
 ## [info] Counts changed since the legacy import
 
 - `events` — 343 at import -> 434 now
+- `time_spans` — 98 at import -> 99 now

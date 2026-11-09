@@ -1062,6 +1062,20 @@
     "kind": "period"
   },
   {
+    "id": "apartheid",
+    "name": "Apartheid",
+    "startYear": 1948,
+    "endYear": 1994,
+    "description": "South Africa's system of legally enforced racial segregation and white-minority rule, introduced by the National Party and dismantled through negotiations and the first democratic election.",
+    "categories": [
+      "Politics",
+      "Social"
+    ],
+    "region": "Africa",
+    "importance": 7,
+    "kind": "period"
+  },
+  {
     "id": "korean-war",
     "name": "Korean War",
     "startYear": 1950,
