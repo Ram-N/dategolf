@@ -2,6 +2,8 @@ export interface DatePickQuestion {
   eventId: string
   eventName: string
   eventYear: number
+  eventApproximate?: boolean // show every choice with "c." (so "c." can't give the answer away)
+  eventDateDisplay?: string // the true range, shown on the reveal
   description: string
   categories: string[]
   region: string

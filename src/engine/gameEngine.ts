@@ -68,6 +68,7 @@ export function findBetterAlternatives(
     eventId: e.id,
     eventName: e.name,
     eventYear: e.year,
+    ...(e.approximate ? { eventApproximate: true } : {}),
     penalty: p,
   }))
 }
@@ -120,6 +121,8 @@ export function selectEvent(
     eventId: event.id,
     eventName: event.name,
     eventYear: event.year,
+    ...(event.approximate ? { eventApproximate: true } : {}),
+    ...(event.dateDisplay ? { eventDateDisplay: event.dateDisplay } : {}),
     penalty: holePenalty,
     isOptimal,
     betterAlternatives: betterAlts,

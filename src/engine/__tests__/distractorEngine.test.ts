@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { generateDistractors, APPROX_MIN_GAP } from '../datepick/distractorEngine'
+import { generateDistractors, approxMinGap } from '../datepick/distractorEngine'
 import { mulberry32 } from '../dateflow/games/random'
 import type { Event } from '@/types'
 
@@ -44,7 +44,7 @@ describe('generateDistractors()', () => {
     const approx = make('approx', 380, { approximate: true })
     for (let s = 0; s < 50; s++) {
       for (const y of distractors(approx, s + 1)) {
-        expect(Math.abs(y - 380)).toBeGreaterThan(APPROX_MIN_GAP)
+        expect(Math.abs(y - 380)).toBeGreaterThan(approxMinGap(380))
       }
     }
   })
@@ -62,6 +62,29 @@ describe('generateDistractors()', () => {
     const { choices, correctIndex } = generateDistractors(lonely, [lonely], mulberry32(11))
     const wrong = choices.filter((_, i) => i !== correctIndex)
     expect(wrong).toHaveLength(3)
-    for (const y of wrong) expect(Math.abs(y - 380)).toBeGreaterThan(APPROX_MIN_GAP)
+    for (const y of wrong) expect(Math.abs(y - 380)).toBeGreaterThan(approxMinGap(380))
+  })
+
+  it('widens the gap for older dates', () => {
+    expect(approxMinGap(1850)).toBe(10)
+    expect(approxMinGap(-500)).toBe(25)
+    expect(approxMinGap(-3500)).toBe(100)
+  })
+
+  it('keeps wrong answers 100+ years from an approximate ancient date, even from synthetic years', () => {
+    const ancient = make('ancient', -3500, { approximate: true })
+    const near = make('near', -3450)
+    for (let s = 0; s < 30; s++) {
+      const { choices, correctIndex } = generateDistractors(ancient, [ancient, near], mulberry32(s + 1))
+      const wrong = choices.filter((_, i) => i !== correctIndex)
+      expect(wrong).toHaveLength(3)
+      for (const y of wrong) expect(Math.abs(y + 3500)).toBeGreaterThan(100)
+    }
+  })
+
+  it('never makes up year 0', () => {
+    const early = make('early', 10)
+    const { choices } = generateDistractors(early, [early], mulberry32(3))
+    expect(choices).not.toContain(0)
   })
 })

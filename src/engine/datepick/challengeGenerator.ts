@@ -91,6 +91,8 @@ export function generateDatePickChallenge(dateStr: string, allEvents: Event[]): 
         eventId: event.id,
         eventName: event.name,
         eventYear: event.year,
+        ...(event.approximate ? { eventApproximate: true } : {}),
+        ...(event.dateDisplay ? { eventDateDisplay: event.dateDisplay } : {}),
         description: event.description,
         categories: event.categories,
         region: event.region,

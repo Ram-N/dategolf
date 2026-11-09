@@ -4,6 +4,7 @@ import { laneFor, type LaneId } from '../lanes'
 import { formatSpan } from '../durations'
 import { formatYear } from '@/utils/formatYear'
 import { mulberry32, pickOne, sample, seedFrom, shuffle, type Rng } from './random'
+import { approxMinGap } from '../../datepick/distractorEngine'
 
 // DateFlow games: five question generators sharing one round format. Each round has
 // ROUND_LENGTH questions that get harder (closer dates, nearer distractors) as it goes.
@@ -26,6 +27,7 @@ export interface RevealItem {
   label: string
   start: number
   end: number
+  approximate?: boolean // shown with "c."
   role: 'answer' | 'context' | 'other'
 }
 
@@ -68,6 +70,7 @@ const pointItem = (e: Event, role: RevealItem['role']): RevealItem => ({
   label: e.name,
   start: e.year,
   end: e.year,
+  ...(e.approximate ? { approximate: true } : {}),
   role,
 })
 const spanItem = (d: Duration, role: RevealItem['role']): RevealItem => ({
@@ -75,8 +78,19 @@ const spanItem = (d: Duration, role: RevealItem['role']): RevealItem => ({
   label: d.name,
   start: d.startYear,
   end: d.endYear,
+  ...(d.approximate ? { approximate: true } : {}),
   role,
 })
+
+/**
+ * Can these two be put in order fairly? Not if an approximate date's uncertainty covers the gap:
+ * "which came first?" between two c. dates 20 years apart in 3000 BCE has no honest answer.
+ */
+export function distinguishable(a: Event, b: Event): boolean {
+  if (!a.approximate && !b.approximate) return true
+  const uncertainty = Math.max(a.approximate ? approxMinGap(a.year) : 0, b.approximate ? approxMinGap(b.year) : 0)
+  return Math.abs(a.year - b.year) > uncertainty
+}
 
 /** Earlier questions draw from better-known events. */
 const poolFor = (events: Event[], i: number) => (i < 2 ? events.filter((e) => e.importance >= 5) : events)
@@ -102,7 +116,7 @@ function whichFirst(i: number, events: Event[], rng: Rng, used: Set<string>): Qu
     const a = pickOne(pool, rng)
     const partners = pool.filter((b) => {
       const gap = Math.abs(b.year - a.year)
-      return b.id !== a.id && gap >= lo && gap <= hi
+      return b.id !== a.id && gap >= lo && gap <= hi && distinguishable(a, b)
     })
     if (!partners.length) continue
     const b = pickOne(partners, rng)
@@ -141,7 +155,8 @@ function putInOrder(i: number, events: Event[], rng: Rng, used: Set<string>): Qu
     )
     const chosen: Event[] = []
     const lanes = new Set<LaneId>()
-    const farEnough = (e: Event) => chosen.every((c) => Math.abs(c.year - e.year) >= ORDER_MIN_SEP[i]!)
+    const farEnough = (e: Event) =>
+      chosen.every((c) => Math.abs(c.year - e.year) >= ORDER_MIN_SEP[i]! && distinguishable(c, e))
     // Prefer one event per region, then fill from any region.
     for (const e of windowed) {
       if (chosen.length < count && !lanes.has(laneFor(e.region)) && farEnough(e)) {
@@ -189,10 +204,15 @@ function whatsMissing(i: number, events: Event[], rng: Rng, used: Set<string>): 
     // Consecutive in the region, strictly increasing, and not too long a stretch.
     if (!(prev.year < mid.year && mid.year < next.year)) continue
     if (next.year - prev.year > MISSING_MAX_SPAN[i]!) continue
+    if (!distinguishable(prev, mid) || !distinguishable(mid, next)) continue
 
     // Distractors lie entirely outside the gap, so only one option fits.
     // Early questions use far-off events; later ones the nearest outside the gap.
-    const outside = list.filter((e) => !used.has(e.id) && (e.year < prev.year || e.year > next.year))
+    const outside = list.filter(
+      (e) =>
+        !used.has(e.id) &&
+        ((e.year < prev.year && distinguishable(e, prev)) || (e.year > next.year && distinguishable(e, next))),
+    )
     const distance = (e: Event) => (e.year < prev.year ? prev.year - e.year : e.year - next.year)
     const ranked = [...outside].sort((a, b) => distance(a) - distance(b))
     const candidates = i < 2 ? ranked.filter((e) => distance(e) >= 300) : ranked.slice(0, 8)
@@ -232,7 +252,7 @@ function happeningElsewhere(i: number, events: Event[], rng: Rng, used: Set<stri
     const near = elsewhere.filter((e) => Math.abs(e.year - anchor.year) <= ELSEWHERE_NEAR[i]!)
     // Plausible distractors: just past the "far" line, not absurdly distant.
     const far = elsewhere
-      .filter((e) => Math.abs(e.year - anchor.year) >= ELSEWHERE_FAR[i]!)
+      .filter((e) => Math.abs(e.year - anchor.year) >= ELSEWHERE_FAR[i]! && distinguishable(e, anchor))
       .sort((a, b) => Math.abs(a.year - anchor.year) - Math.abs(b.year - anchor.year))
       .slice(0, 15)
     if (!near.length || far.length < 3) continue

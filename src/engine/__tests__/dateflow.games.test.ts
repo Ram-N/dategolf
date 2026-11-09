@@ -8,6 +8,7 @@ import {
   GAMES,
   ROUND_LENGTH,
   dailyRng,
+  distinguishable,
   generateRound,
   isCorrect,
   rngFromSeed,
@@ -126,5 +127,42 @@ describe('dateflow games — each question has exactly one right answer', () => 
     expect(isCorrect(pick!, 1 - pick!.correct)).toBe(false)
     const [order] = rounds('order')[0] as OrderQuestion[]
     expect(isCorrect(order!, [...order!.answer].reverse())).toBe(false)
+  })
+})
+
+describe('dateflow games — approximate dates', () => {
+  const c = (id: string, year: number, approximate = false) =>
+    ({ id, name: id, year, approximate, categories: [], region: 'Global', aliases: [], description: '',
+       difficulty: 'easy', importance: 5 }) as Event
+
+  it('only orders approximate dates further apart than their uncertainty', () => {
+    expect(distinguishable(c('a', -3000, true), c('b', -2950))).toBe(false) // within 100 years in 3000 BCE
+    expect(distinguishable(c('a', -3000, true), c('b', -2800))).toBe(true)
+    expect(distinguishable(c('a', 1850), c('b', 1851))).toBe(true) // exact dates: any gap
+  })
+
+  it('never asks to order two events closer than an approximate date allows (real data)', () => {
+    const check = (a: Event, b: Event, game: string) =>
+      expect(distinguishable(a, b), `${game}: ${a.name} vs ${b.name}`).toBe(true)
+    for (const game of ['which-first', 'order'] as GameId[]) {
+      for (const round of rounds(game)) {
+        for (const q of round) {
+          const ids = q.kind === 'order' ? q.events.map((e) => e.id) : q.options.map((o) => o.id)
+          const shown = ids.map((id) => eventById.get(id)!)
+          shown.forEach((a, i) => shown.slice(i + 1).forEach((b) => check(a, b, game)))
+        }
+      }
+    }
+    // What's Missing?: the answer against both neighbours; each distractor against the nearer one.
+    for (const round of rounds('missing')) {
+      for (const q of round as PickQuestion[]) {
+        const [prev, next] = q.context as [Event, Event]
+        const options = q.options.map((o) => eventById.get(o.id)!)
+        const answer = options[q.correct]!
+        check(prev, answer, 'missing')
+        check(answer, next, 'missing')
+        for (const d of options.filter((o) => o !== answer)) check(d, d.year < prev.year ? prev : next, 'missing')
+      }
+    }
   })
 })

@@ -10,7 +10,8 @@ export interface Event {
   difficulty: 'easy' | 'medium' | 'hard'
   importance: number // 1–9; higher = more prominent (DateFlow bolds 7+, DatePick weights by it)
   dateflowOnly?: boolean // date too disputed to guess: shown in DateFlow, excluded from DateGolf/DatePick
-  approximate?: boolean // "c." date: DatePick keeps wrong answers more than APPROX_MIN_GAP years away
+  approximate?: boolean // "c." date: shown with "c." everywhere; DatePick keeps wrong answers approxMinGap(year) away
+  dateDisplay?: string // the true range for an approximate date, e.g. "c. 4000–3500 BCE"
 }
 
 // ── Hole Result ────────────────────────────────────────────────────────────────
@@ -18,6 +19,7 @@ export interface BetterAlternative {
   eventId: string
   eventName: string
   eventYear: number
+  eventApproximate?: boolean // show the year with "c."
   penalty: number
 }
 
@@ -27,6 +29,8 @@ export interface HoleResult {
   eventId: string
   eventName: string
   eventYear: number
+  eventApproximate?: boolean // show the year with "c."
+  eventDateDisplay?: string
   penalty: number
   isOptimal: boolean // true if no better unused alternative existed
   betterAlternatives: BetterAlternative[]
