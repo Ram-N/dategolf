@@ -35,7 +35,7 @@
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 1 |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 79 |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -45,7 +45,7 @@
 | info | Accepted region exceptions (region deliberately differs from location) | 3 |
 | warning | Link runs backwards in time (cause or sequence after its target) | pass |
 | warning | part_of link outside the target's years | pass |
-| warning | ended link not at the end of what it ended | pass |
+| warning | began / ended link not at the start / end of its target | pass |
 | info | Counts changed since the legacy import | 1 |
 
 ## Counts
@@ -110,88 +110,6 @@
 
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
-
-## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
-
-- `39` — d-day-normandy part_of world-war-2 — The Allied landings in Normandy.
-- `40` — battle-of-britain part_of world-war-2 — The air war over Britain.
-- `41` — germany-invades-soviet-union part_of world-war-2 — Operation Barbarossa opens the Eastern Front.
-- `42` — japanese-pearl-harbor part_of world-war-2 — Japan's attack that brings the US into the war.
-- `43` — atomic-bomb-hiroshima part_of world-war-2 — The atomic bombing in the war's final weeks.
-- `44` — japan-world-war-two-defeat part_of world-war-2 — Japan's surrender ends the war in the Pacific.
-- `45` — first-triumvirate part_of fall-of-roman-republic — The Pompey-Crassus-Caesar alliance that undermined republican rule.
-- `46` — caesar-crosses-rubicon part_of fall-of-roman-republic — Caesar's move that starts the civil war.
-- `47` — julius-caesar-assassination part_of fall-of-roman-republic — The assassination meant to save the republic, which hastened its end.
-- `48` — second-triumvirate part_of fall-of-roman-republic — The triumvirs' rule in the republic's last years.
-- `49` — augustus-first-emperor part_of fall-of-roman-republic — Augustus's rule, which ends the republic.
-- `52` — fall-of-roman-republic part_of roman-republic — The republic's final century.
-- `53` — pax-romana-period part_of roman-empire — The empire's two centuries of relative peace.
-- `54` — fall-western-roman-empire part_of roman-empire — The western empire's decline and fall.
-- `55` — christianity-roman-empire part_of roman-empire — The Edict of Milan, an imperial act.
-- `56` — constantinople-founded part_of roman-empire — Constantine founds the empire's new capital.
-- `57` — hadrians-wall part_of roman-empire — An imperial frontier project.
-- `58` — attila-hun-invasions part_of fall-western-roman-empire — The Hun invasions that weakened the western empire.
-- `60` — fall-of-constantinople part_of byzantine-empire — The fall of Constantinople ends the Byzantine Empire.
-- `61` — fall-of-constantinople part_of ottoman-empire — The Ottoman conquest of Constantinople.
-- `62` — ottoman-empire-falls part_of ottoman-empire — The end of the Ottoman Empire.
-- `65` — ashoka-becomes-emperor part_of maurya-empire — Ashoka becomes the Mauryan emperor.
-- `66` — ashoka-converts-to-buddhism part_of maurya-empire — The Mauryan emperor's conversion after Kalinga.
-- `68` — chandragupta-ii-vikramaditya part_of gupta-empire — The accession of the Gupta emperor Chandragupta II.
-- `69` — chola-rajaraja-peak part_of chola-empire — Rajaraja I's reign, the empire's height.
-- `71` — razia-sultana-accession part_of delhi-sultanate — A sultan's accession.
-- `72` — alauddin-khalji-accession part_of delhi-sultanate — A sultan's accession.
-- `73` — muhammad-bin-tughlaq-accession part_of delhi-sultanate — A sultan's accession.
-- `74` — firuz-shah-tughlaq-accession part_of delhi-sultanate — A sultan's accession.
-- `75` — first-battle-of-panipat part_of delhi-sultanate — Babur's victory, which ends the sultanate.
-- `79` — humayun-succeeds-babur part_of mughal-empire — The second Mughal emperor's accession.
-- `80` — humayun-defeated-kanauj part_of mughal-empire — Humayun's defeat and exile, a break in Mughal rule.
-- `81` — humayun-recaptures-delhi part_of mughal-empire — The restoration of Mughal rule.
-- `82` — second-battle-of-panipat part_of mughal-empire — The victory that secures Akbar's throne.
-- `83` — mughal-akbar-administration part_of mughal-empire — Akbar's administrative system.
-- `84` — battle-of-haldighati part_of mughal-empire — Akbar's campaign against Mewar.
-- `85` — akbar-din-i-ilahi part_of mughal-empire — Akbar's religious initiative.
-- `86` — death-of-akbar part_of mughal-empire — Akbar's death and Jahangir's succession.
-- `87` — jahangir-marries-nur-jahan part_of mughal-empire — The marriage that makes Nur Jahan a power at court.
-- `88` — death-of-jahangir part_of mughal-empire — Jahangir's death and Shah Jahan's succession.
-- `90` — aurangzeb-becomes-emperor part_of mughal-empire — Aurangzeb's accession.
-- `91` — mughal-empire-zenith-aurangzeb part_of mughal-empire — The empire at its largest, at Aurangzeb's death.
-- `93` — death-of-shivaji part_of maratha-empire — The founder's death.
-- `94` — third-battle-of-panipat part_of maratha-empire — The Maratha defeat at Panipat.
-- `95` — partition-of-bengal part_of british-raj — An act of the Raj's administration.
-- `98` — gandhi-salt-march part_of indian-independence-movement — The civil disobedience campaign against the salt tax.
-- `99` — quit-india-movement part_of indian-independence-movement — The movement's last great campaign.
-- `100` — silk-road-opens part_of han-dynasty — Opened by the Han envoy Zhang Qian's missions.
-- `106` — zheng-he-voyages part_of ming-dynasty — The Ming treasure-fleet voyages.
-- `107` — fall-of-qing-dynasty part_of qing-dynasty — The end of the Qing.
-- `109` — mongol-empire-peak part_of mongol-conquests — The empire at its height, after the conquest of Song China.
-- `110` — japan-meiji-constitution part_of meiji-restoration — The Meiji Constitution.
-- `113` — moors-invade-spain part_of umayyad-caliphate — The Umayyad conquest of Iberia.
-- `115` — renaissance-begins-florence part_of italian-renaissance — The Renaissance's beginnings in Florence.
-- `116` — renaissance-da-vinci part_of italian-renaissance — Leonardo, a defining figure of the Italian Renaissance.
-- `117` — renaissance-michelangelo part_of italian-renaissance — The Sistine Chapel ceiling.
-- `119` — galileo-telescope part_of scientific-revolution — Galileo's telescope observations.
-- `120` — kepler-laws-planetary-motion part_of scientific-revolution — Kepler's laws of planetary motion.
-- `121` — galileo-inquisition part_of scientific-revolution — Galileo's trial over heliocentrism.
-- `122` — newton-laws-of-motion part_of scientific-revolution — Newton's Principia, the revolution's culmination.
-- `124` — steam-engine-watt part_of industrial-revolution — Watt's improved steam engine.
-- `125` — first-steam-railway part_of industrial-revolution — The first public steam railway.
-- `126` — french-revolution-storming-bastille part_of french-revolution — The storming of the Bastille.
-- `127` — french-revolution-declaration part_of french-revolution — The Declaration of the Rights of Man.
-- `128` — abolition-slavery-france part_of french-revolution — Abolition by the revolutionary National Convention.
-- `129` — aztec-empire-peak part_of aztec-empire — The empire at its height.
-- `130` — spanish-conquest-mexico part_of aztec-empire — The Spanish conquest that ends the empire.
-- `131` — conquest-of-peru-inca part_of inca-empire — The Spanish conquest that ends the empire.
-- `132` — colonial-africa-berlin part_of scramble-for-africa — The conference that set rules for partitioning Africa.
-- `133` — partition-of-africa-colonial part_of scramble-for-africa — Leopold's Congo Free State, a product of the scramble.
-- `135` — collapse-apartheid-negotiations part_of apartheid-end — The first democratic election.
-- `136` — independence-south-africa part_of apartheid-end — Mandela becomes president.
-- `137` — us-civil-rights-march-selma part_of civil-rights-movement — The Selma to Montgomery marches.
-- `138` — martin-luther-king-speech part_of civil-rights-movement — The March on Washington.
-- `139` — civil-rights-act-us part_of civil-rights-movement — The movement's legislative victory.
-- `141` — space-race-yuri-gagarin part_of space-race — The first human in space.
-- `142` — moon-landing part_of space-race — The Moon landing, the race's culmination.
-- `144` — gorbachev-becomes-leader part_of soviet-union — Gorbachev becomes the Soviet leader.
-- `145` — dissolution-soviet-union part_of soviet-union — The end of the Soviet Union.
 
 ## [info] Region labels in use, with their DateFlow lane
 

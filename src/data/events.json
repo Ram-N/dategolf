@@ -4934,7 +4934,7 @@
   },
   {
     "id": "fall-of-qing-dynasty",
-    "name": "Fall of the Qing Dynasty",
+    "name": "Xinhai Revolution Overthrows the Qing",
     "year": 1911,
     "categories": [
       "Politics",
@@ -4948,7 +4948,8 @@
       "Republic of China proclaimed",
       "Sun Yat-sen",
       "Qing dynasty ends",
-      "2000 years of empire ends"
+      "2000 years of empire ends",
+      "Fall of the Qing Dynasty"
     ],
     "description": "The Xinhai Revolution sweeps away the Qing dynasty, ending over two thousand years of imperial rule in China and establishing the Republic of China. Led by reformists and nationalists inspired by Sun Yat-sen, the revolution abolishes the imperial examination system, the queue hairstyle enforced by the Manchu rulers, and the monarchy itself. The newly established republic is immediately beset by warlordism and political fragmentation, setting the stage for the decades of conflict between Nationalists and Communists that follow.",
     "difficulty": "medium",
@@ -5185,7 +5186,7 @@
   },
   {
     "id": "ottoman-empire-falls",
-    "name": "Ottoman Empire Falls",
+    "name": "Ottoman Sultanate Abolished",
     "year": 1922,
     "categories": [
       "Politics",
@@ -5197,7 +5198,8 @@
       "Ataturk",
       "Sultanate abolished",
       "Ottoman collapse",
-      "Mustafa Kemal"
+      "Mustafa Kemal",
+      "Ottoman Empire Falls"
     ],
     "description": "The Ottoman Sultanate is formally abolished and Mustafa Kemal Atatürk establishes the Republic of Turkey from the empire's Anatolian heartland. The fall of the Ottoman Empire reshapes the Middle East, creating new nations from former Ottoman territories and giving rise to conflicts that continue today.",
     "difficulty": "medium",

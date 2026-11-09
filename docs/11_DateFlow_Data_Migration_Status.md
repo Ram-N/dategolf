@@ -12,7 +12,7 @@
 
 ## ▶ Your next actions (updated 2026-11-08)
 
-1. **Review the first link batch: 142 `part_of` links (80 left).** On the dashboard, go to **Review → Links**. The step-by-step guide is **doc 12 §4.6c**. The 9 medium-confidence links are the ones that need real judgement. *2026-11-08:* the 30 "event starts the span" links are approved. Four of their events were renamed to say "Begins", with the old names kept as aliases, and the span `meiji-restoration` is now named **Meiji Era** (`manage.py rename`).
+1. ~~**Review the first link batch.**~~ ✅ Done 2026-11-09. Of the 142 proposed `part_of` links, **124 were approved**. From your comments, **12 became `ended`** and **3 became `began`** (a new type). **2 are still to decide** (the apartheid pair, see §4). **1 waits for batch 2** (Meiji Restoration `ended` Tokugawa Shogunate). Events renamed along the way: four "Begins" names, the two that duplicated their span, the Great Pyramid, **Xinhai Revolution Overthrows the Qing** and **Ottoman Sultanate Abolished**.
 2. **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project` and `arab-spring` (all "one subject"). Change any with `manage.py identity <id> --one|--split|--drop-span|--drop-event`.
 3. **Then tell Claude to continue** (see the roadmap below).
 
@@ -24,7 +24,7 @@ The data work now feeds new DateFlow experiences. **DateFlow comes back straight
 
 | # | Who | What | Notes |
 |---|---|---|---|
-| 1 | You | **Finish the link review** (80 left) | Doc 12 §4.6c |
+| 1 | You | ~~**Finish the link review**~~ ✅ 2026-11-09 | Doc 12 §4.6c |
 | 2 | Claude | **Date-precision batch** for the 20 events before 500 BCE (a pre-sorted file) | Mark most `--approximate` with a `date_display` range. Consider making Kurukshetra DateFlow-only (its date is disputed by over 2,000 years). The Great Pyramid was done as the first case. |
 | 3 | Claude | **3c: export `relationships.json`** (reviewed links only) | The first step of Phase 8 |
 | 4 | Claude | **DateFlow Phase 8: Connections** | Plan in **doc 09, Phase 8**. Cards show "part of / includes / ended / followed", and each one can be clicked through. |
@@ -264,6 +264,7 @@ Either end can be an event or a span. Each link carries a **one-line "why"** (th
   | `part_of` | is part of | **includes** |
   | `evolved_into` | evolved into | evolved from |
   | `ended` | ended | **was ended by** |
+  | `began` | began | **began with** |
   | `contemporary_with`, `opposed`, `interacted_with` | *(symmetric: reads the same both ways)* | |
 
   So Kilby's card says "preceded Noyce's chip", and Noyce's card says "followed Kilby's chip": **two-way links, one row.**
@@ -282,6 +283,7 @@ Either end can be an event or a span. Each link carries a **one-line "why"** (th
 | `contributed_to` | the source was one of several factors | Treaty of Versailles → rise of Nazism |
 | `enabled` | the source made the target *possible*, without being its motive | Second Battle of Tarain → founding of the Delhi Sultanate |
 | `influenced` | ideas or culture shaped the target | Enlightenment thinkers → American Declaration |
+| `began` *(added 2026-11-09)* | the source marked or brought about the target's start; it falls at the target's start, a year either side (validate warns otherwise) | Storming of the Bastille → French Revolution |
 | `ended` *(added 2026-11-08)* | the source brought the target to an end; it falls at the target's end (validate warns otherwise) | Meiji Restoration → Tokugawa Shogunate |
 
 - **Non-causal types** (no claim of cause): `part_of`, `preceded`, `contemporary_with`, `evolved_into`, `opposed`, `interacted_with`. **Close in time is not causation** (doc 10 §4.5).
@@ -415,6 +417,8 @@ Validation then catches links to missing entities, self-links, unknown types and
 
 - **Review the 142 proposed `part_of` links** (see "Your next actions" above).
 - **The 5 Step 3a decisions to double-check** (see above).
+- **The apartheid pair (2026-11-09).** You rejected "First Democratic Election is part of End of Apartheid" and "Mandela Becomes President is part of End of Apartheid", asking for `ended`. But the span is *End of Apartheid* (1990 to 1994), so "the election ended End of Apartheid" doesn't read well. The choice is between an `Apartheid` span (1948 to 1994), which the election ends, or renaming the span *Negotiations to End Apartheid*.
+- **Should the 33 "event starts the span" `part_of` links become `began`?** For example, *Babur Founds the Mughal Empire* would read "began the Mughal Empire". `began` now exists for Florence and the Bastille, so this would make them consistent.
 - ~~**The Great Pyramid date conflict.**~~ ✅ Resolved 2026-11-08. The CSV's c. 3000 BC is wrong. The event is now **Great Pyramid of Giza Completed, c. 2560 BCE** (approximate, `date_display` "c. 2600–2560 BCE"), and the span `construction-great-pyramid` is **c. 2600 to 2560 BCE**.
 - **The 39 triaged CSV rows** (duplicates or not recommended) are listed in `validate.md`, in case you want to revisit any at low importance.
 - *Done:* the 25 shared ids (Step 3a, 2026-11-07); the importance scale (1–9, 2026-11-06).
