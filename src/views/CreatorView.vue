@@ -196,7 +196,7 @@
                 :class="row.hasAny ? '' : 'bg-zinc-900/40'"
               >
                 <td class="px-3 py-1.5 text-zinc-300">{{ row.name }}</td>
-                <td class="px-3 py-1.5 text-right font-mono text-zinc-500">{{ formatYear(row.year) }}</td>
+                <td class="px-3 py-1.5 text-right font-mono text-zinc-500">{{ formatEventYear(row.year, row.approximate) }}</td>
                 <td class="px-2 py-1.5 text-center">
                   <span v-if="row.hasBack" class="text-green-400">✓</span>
                   <span v-else class="text-zinc-700">·</span>
@@ -224,7 +224,7 @@
 </template>
 
 <script setup lang="ts">
-import { formatYear } from '@/utils/formatYear'
+import { formatEventYear, formatYear } from '@/utils/formatYear'
 import { ref, computed, onMounted } from 'vue'
 import { generateDatePickChallenge } from '@/engine/datepick/challengeGenerator'
 import { quizEvents } from '@/engine/eventPool'
@@ -352,6 +352,7 @@ const eventCoverage = computed(() => {
         id: e.id,
         name: e.name,
         year: e.year,
+        approximate: e.approximate,
         hasBack,
         hasYearOf,
         hasAhead,

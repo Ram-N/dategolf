@@ -189,7 +189,7 @@ import {
 import { groupFor } from '@/engine/dateflow/categoryGroups'
 import { formatSpan, packBars } from '@/engine/dateflow/durations'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
-import { formatYear } from '@/utils/formatYear'
+import { formatEventYear, formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{
   events: Event[] // already filtered
@@ -428,7 +428,7 @@ function layoutMarkers(t: Track, sectionIds: Set<string>) {
       group: groupFor(c.event.categories),
       radius: 4 + Math.max(0, c.event.importance - 4) * 0.6,
       // Year first: the event is what students are learning to place.
-      tooltip: `${formatYear(c.event.year)} — ${c.event.name}`,
+      tooltip: `${formatEventYear(c.event.year, c.event.approximate)} — ${c.event.name}`,
     }
   })
 }

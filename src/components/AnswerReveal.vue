@@ -17,6 +17,8 @@
         {{ displayEventYear }}
       </div>
 
+      <ApproxNote v-if="result.eventApproximate" :range="result.eventDateDisplay" class="w-full max-w-md mb-3" />
+
       <!-- Target vs event -->
       <div class="flex items-center gap-3 text-sm text-gray-400 mb-3">
         <span>Target: <span class="text-white font-medium">{{ displayTargetYear }}</span></span>
@@ -48,7 +50,7 @@
           >
             <div class="text-left">
               <div class="text-sm font-medium text-white">{{ alt.eventName }}</div>
-              <div class="text-xs text-gray-500">{{ formatYear(alt.eventYear) }}</div>
+              <div class="text-xs text-gray-500">{{ formatEventYear(alt.eventYear, alt.eventApproximate) }}</div>
             </div>
             <div class="text-right">
               <div class="text-lg font-bold text-green-400">+{{ alt.penalty }}</div>
@@ -82,6 +84,8 @@ import type { HoleResult, ScoreStatus, Event } from '@/types'
 import TimelineView from './TimelineView.vue'
 import EventInfoCard from './EventInfoCard.vue'
 import { penaltyTextClass } from '@/utils/penaltyTier'
+import { formatEventYear, formatYear } from '@/utils/formatYear'
+import ApproxNote from './ApproxNote.vue'
 
 const props = defineProps<{
   result: HoleResult
@@ -96,11 +100,7 @@ const emit = defineEmits<{ next: [] }>()
 const openEventId = ref<string | null>(null)
 const openEvent = computed(() => props.events?.find(e => e.id === openEventId.value) ?? null)
 
-function formatYear(y: number) {
-  return y < 0 ? `${Math.abs(y)} BCE` : String(y)
-}
-
-const displayEventYear = computed(() => formatYear(props.result.eventYear))
+const displayEventYear = computed(() => formatEventYear(props.result.eventYear, props.result.eventApproximate))
 const displayTargetYear = computed(() => formatYear(props.result.targetYear))
 
 const penaltyColorClass = computed(() => penaltyTextClass(props.result.penalty))

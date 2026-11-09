@@ -3,11 +3,11 @@
     <section v-if="nearby.before.length || nearby.after.length">
       <h3 class="heading">Before &amp; after in {{ ownLane }}</h3>
       <button v-for="e in nearby.before" :key="e.id" class="row" @click="emit('openEvent', e.id)">
-        <span class="year">{{ formatYear(e.year) }}</span><span>{{ e.name }}</span>
+        <span class="year">{{ formatEventYear(e.year, e.approximate) }}</span><span>{{ e.name }}</span>
       </button>
-      <div class="here">● {{ formatYear(event.year) }} — {{ event.name }}</div>
+      <div class="here">● {{ formatEventYear(event.year, event.approximate) }} — {{ event.name }}</div>
       <button v-for="e in nearby.after" :key="e.id" class="row" @click="emit('openEvent', e.id)">
-        <span class="year">{{ formatYear(e.year) }}</span><span>{{ e.name }}</span>
+        <span class="year">{{ formatEventYear(e.year, e.approximate) }}</span><span>{{ e.name }}</span>
       </button>
     </section>
 
@@ -16,13 +16,13 @@
       <div v-for="l in elsewhere" :key="l.lane" class="mb-1.5">
         <div class="lane">{{ l.label }}</div>
         <button v-for="e in l.events" :key="e.id" class="row" @click="emit('openEvent', e.id)">
-          <span class="year">{{ formatYear(e.year) }}</span><span>{{ e.name }}</span>
+          <span class="year">{{ formatEventYear(e.year, e.approximate) }}</span><span>{{ e.name }}</span>
         </button>
       </div>
     </section>
 
     <section v-if="empires.length">
-      <h3 class="heading">Empires in {{ formatYear(event.year) }}</h3>
+      <h3 class="heading">Empires in {{ formatEventYear(event.year, event.approximate) }}</h3>
       <div class="flex flex-wrap gap-1.5">
         <button v-for="d in empires" :key="d.id" class="chip" @click="emit('openDuration', d.id)">{{ d.name }}</button>
       </div>
@@ -43,7 +43,7 @@ import type { Event } from '@/types'
 import type { Duration } from '@/types/dateflow'
 import { activeDuring, beforeAndAfter, meanwhile } from '@/engine/dateflow/explore'
 import { LANES, laneFor } from '@/engine/dateflow/lanes'
-import { formatYear } from '@/utils/formatYear'
+import { formatEventYear, formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{ event: Event; events: Event[]; durations: Duration[] }>()
 const emit = defineEmits<{ openEvent: [id: string]; openDuration: [id: string]; showSurrounding: [] }>()

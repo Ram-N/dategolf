@@ -4,6 +4,11 @@ export function formatYear(year: number): string {
   return year < 0 ? `${Math.abs(year)} BCE` : String(year)
 }
 
+/** A year with "c." when it's approximate: "c. 3500 BCE". Use this wherever an event's year is shown. */
+export function formatEventYear(year: number, approximate?: boolean): string {
+  return approximate ? `c. ${formatYear(year)}` : formatYear(year)
+}
+
 /** Parse user input like "1453", "500 BC", "500 BCE", "-500", "1066 AD". Returns null if unparseable. */
 export function parseYear(input: string): number | null {
   const s = input.trim().toLowerCase().replace(/\./g, '')

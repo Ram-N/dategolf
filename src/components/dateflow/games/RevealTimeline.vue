@@ -79,7 +79,8 @@ const rows = computed(() =>
     const isSpan = item.end > item.start
     const tone = props.wrongIds?.includes(item.id) ? 'wrong' : item.role
     const mark = tone === 'answer' ? '✓ ' : tone === 'wrong' ? '✗ ' : ''
-    const when = isSpan ? `${formatYear(item.start)}–${formatYear(item.end)}` : formatYear(item.start)
+    const c = item.approximate ? 'c. ' : ''
+    const when = isSpan ? `${c}${formatYear(item.start)}–${formatYear(item.end)}` : `${c}${formatYear(item.start)}`
     // Label goes on whichever side of the mark has more room; if it still doesn't fit
     // (narrow phones), the name is shortened — the full name is on the option buttons.
     const roomRight = width.value - (x2 + 12)
@@ -105,7 +106,9 @@ const rows = computed(() =>
   }),
 )
 
-const ariaLabel = computed(() => sorted.value.map((i) => `${formatYear(i.start)} ${i.label}`).join('; '))
+const ariaLabel = computed(() =>
+  sorted.value.map((i) => `${i.approximate ? 'circa ' : ''}${formatYear(i.start)} ${i.label}`).join('; '),
+)
 </script>
 
 <style scoped>

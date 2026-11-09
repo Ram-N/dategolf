@@ -21,7 +21,7 @@
             <div class="text-left">
               <div class="text-xs text-gray-500">Hole {{ i + 1 }} · Target {{ formatYear(result.targetYear) }}</div>
               <div class="text-sm font-medium text-white">{{ result.eventName }}</div>
-              <div class="text-xs text-gray-600">{{ formatYear(result.eventYear) }}</div>
+              <div class="text-xs text-gray-600">{{ formatEventYear(result.eventYear, result.eventApproximate) }}</div>
             </div>
             <div class="text-right ml-3">
               <div class="text-xl font-bold" :class="holePenaltyClass(result.penalty)">
@@ -85,6 +85,7 @@ import type { HoleResult, PlayerStats, ScoreStatus } from '@/types'
 import type { GameState } from '@/types'
 import { copyResult, shareResult } from '@/services/sharing'
 import { penaltyTextClass } from '@/utils/penaltyTier'
+import { formatEventYear } from '@/utils/formatYear'
 
 const props = defineProps<{
   gameState: GameState

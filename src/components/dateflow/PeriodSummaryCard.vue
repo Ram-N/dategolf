@@ -49,7 +49,7 @@
           <div v-for="l in summary.lanes" :key="l.lane">
             <div class="lane">{{ l.label }}</div>
             <button v-for="e in l.events" :key="e.id" class="row" @click="emit('openEvent', e.id)">
-              <span class="year">{{ formatYear(e.year) }}</span><span>{{ e.name }}</span>
+              <span class="year">{{ formatEventYear(e.year, e.approximate) }}</span><span>{{ e.name }}</span>
             </button>
           </div>
         </div>
@@ -66,7 +66,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
 import type { PeriodSummary } from '@/engine/dateflow/explore'
-import { formatYear } from '@/utils/formatYear'
+import { formatEventYear, formatYear } from '@/utils/formatYear'
 
 defineProps<{ summary: PeriodSummary; filtered: boolean }>()
 const emit = defineEmits<{ close: []; openEvent: [id: string]; openDuration: [id: string]; zoomTo: [] }>()

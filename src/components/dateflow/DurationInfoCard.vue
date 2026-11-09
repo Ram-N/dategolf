@@ -22,9 +22,10 @@
       </div>
 
       <p class="text-sm leading-relaxed mt-4">{{ duration.description }}</p>
-      <p v-if="duration.approximate" class="text-xs mt-2 muted">
-        Dates are approximate — historians give different start and end years.
-      </p>
+      <div v-if="duration.approximate" role="note" class="approx rounded-lg border px-3 py-2 mt-3">
+        <div class="text-xs font-bold uppercase tracking-widest">≈ Approximate dates</div>
+        <p class="text-sm mt-1">Historians give different start and end years. These are conventional estimates.</p>
+      </div>
 
       <div v-if="related.length" class="mt-5">
         <h3 class="text-[11px] font-semibold uppercase tracking-widest secondary mb-2">
@@ -33,7 +34,7 @@
         <ul class="space-y-1">
           <li v-for="e in related" :key="e.id">
             <button class="related w-full text-left text-sm px-2 py-1.5 rounded-lg" @click="emit('openEvent', e.id)">
-              <span class="font-mono tabular-nums secondary mr-2">{{ formatYear(e.year) }}</span>{{ e.name }}
+              <span class="font-mono tabular-nums secondary mr-2">{{ formatEventYear(e.year, e.approximate) }}</span>{{ e.name }}
             </button>
           </li>
         </ul>
@@ -52,7 +53,7 @@ import type { Event } from '@/types'
 import type { Duration } from '@/types/dateflow'
 import { eventsDuring, formatSpan } from '@/engine/dateflow/durations'
 import { groupFor } from '@/engine/dateflow/categoryGroups'
-import { formatYear } from '@/utils/formatYear'
+import { formatEventYear, formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{ duration: Duration; events: Event[] }>()
 const emit = defineEmits<{ close: []; openEvent: [id: string]; showOnTimeline: [] }>()
@@ -74,6 +75,11 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 </script>
 
 <style scoped>
+.approx {
+  color: var(--df-approx);
+  background: var(--df-approx-bg);
+  border-color: var(--df-approx-border);
+}
 .card {
   background: var(--df-surface);
   border-color: var(--df-border);

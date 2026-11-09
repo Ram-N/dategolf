@@ -10,9 +10,11 @@
         {{ isCorrect ? 'Correct!' : 'Not quite' }}
       </div>
       <div class="text-sm text-zinc-300 mt-1">
-        The answer is <span class="font-bold text-white">{{ formatYear(question.eventYear) }}</span>
+        The answer is <span class="font-bold text-white">{{ year(question.eventYear) }}</span>
       </div>
     </div>
+
+    <ApproxNote v-if="question.eventApproximate" :range="question.eventDateDisplay" />
 
     <!-- Event details -->
     <div class="space-y-3">
@@ -23,12 +25,12 @@
     <!-- Choice summary -->
     <div class="grid grid-cols-2 gap-2">
       <div
-        v-for="(year, index) in question.choices"
+        v-for="(choice, index) in question.choices"
         :key="index"
         class="flex items-center gap-2 px-3 py-2 rounded-lg border text-sm"
         :class="choiceRevealClass(index)"
       >
-        <span class="font-mono font-bold">{{ formatYear(year) }}</span>
+        <span class="font-mono font-bold">{{ year(choice) }}</span>
         <span v-if="index === question.correctIndex" class="ml-auto text-green-400 text-xs">✓</span>
         <span v-else-if="index === selectedIndex" class="ml-auto text-red-400 text-xs">✗</span>
       </div>
@@ -51,6 +53,8 @@
 import { computed } from 'vue'
 import type { DatePickQuestion } from '@/types/datepick'
 import DateLinksSection from '@/components/DateLinksSection.vue'
+import ApproxNote from '@/components/ApproxNote.vue'
+import { formatEventYear } from '@/utils/formatYear'
 
 const props = defineProps<{
   question: DatePickQuestion
@@ -64,9 +68,7 @@ const emit = defineEmits<{
 
 const isCorrect = computed(() => props.selectedIndex === props.question.correctIndex)
 
-function formatYear(year: number): string {
-  return year < 0 ? `${Math.abs(year)} BCE` : String(year)
-}
+const year = (y: number) => formatEventYear(y, props.question.eventApproximate)
 
 function choiceRevealClass(index: number): string {
   if (index === props.question.correctIndex) {

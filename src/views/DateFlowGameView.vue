@@ -28,7 +28,7 @@
         <div v-if="q.kind === 'pick' && q.context.length" class="mt-3 grid gap-2" :class="q.context.length > 1 ? 'sm:grid-cols-2' : ''">
           <div v-for="(c, k) in q.context" :key="c.id" class="context rounded-xl border px-4 py-3">
             <div v-if="q.game === 'missing'" class="text-[11px] uppercase tracking-widest muted">{{ k === 0 ? 'Before' : 'After' }}</div>
-            <div class="font-black tabular-nums">{{ formatYear(c.year) }}</div>
+            <div class="font-black tabular-nums">{{ formatEventYear(c.year, c.approximate) }}</div>
             <div class="text-sm">{{ c.name }}</div>
           </div>
         </div>
@@ -132,7 +132,7 @@ import {
 } from '@/engine/dateflow/games/rounds'
 import { buildGameShareText, saveDailyScore, shareGameResult } from '@/services/dateflowGames'
 import RevealTimeline from '@/components/dateflow/games/RevealTimeline.vue'
-import { formatYear } from '@/utils/formatYear'
+import { formatEventYear, formatYear } from '@/utils/formatYear'
 
 const store = useDateFlowStore()
 const route = useRoute()

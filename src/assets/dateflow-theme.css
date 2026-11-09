@@ -18,6 +18,9 @@
   --df-knowledge: #d95926;
   --df-culture: #199e70;
   --df-other: #8b8b94;
+  --df-approx: #fbbf24;
+  --df-approx-bg: rgb(245 158 11 / 0.12);
+  --df-approx-border: #b45309;
 }
 .dateflow[data-theme='light'] {
   --df-bg: #fcfcfb;
@@ -37,6 +40,9 @@
   --df-knowledge: #eb6834;
   --df-culture: #1baf7a;
   --df-other: #8b8b94;
+  --df-approx: #92400e;
+  --df-approx-bg: #fffbeb;
+  --df-approx-border: #f59e0b;
 }
 .dateflow {
   background: var(--df-bg);

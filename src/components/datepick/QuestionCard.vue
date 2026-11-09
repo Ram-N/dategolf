@@ -13,6 +13,11 @@
       </p>
     </div>
 
+    <p v-if="question.eventApproximate" role="note"
+       class="-mb-3 text-center text-sm font-semibold text-amber-400">
+      ≈ Approximate date: pick the closest year
+    </p>
+
     <!-- Choice buttons -->
     <div class="grid grid-cols-2 gap-3">
       <button
@@ -28,14 +33,14 @@
         >
           {{ letters[index] }}
         </span>
-        <span class="text-base font-mono font-bold text-white">{{ formatYear(year) }}</span>
+        <span class="text-base font-mono font-bold text-white">{{ formatEventYear(year, question.eventApproximate) }}</span>
       </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { formatYear } from '@/utils/formatYear'
+import { formatEventYear } from '@/utils/formatYear'
 import type { DatePickQuestion } from '@/types/datepick'
 
 const props = defineProps<{

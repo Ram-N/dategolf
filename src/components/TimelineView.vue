@@ -84,10 +84,11 @@
             <div
               class="absolute text-center font-bold tabular-nums label-bg"
               :style="{
-                left: (m.x - 28) + 'px',
+                left: (m.x - 40) + 'px',
                 top: rowYearY(m) + 'px',
-                width: '56px',
+                width: '80px',
                 fontSize: '12px',
+                whiteSpace: 'nowrap',
                 color: m.labelColor,
               }"
             >{{ m.year }}</div>
@@ -108,10 +109,11 @@
             v-if="m.labelSide === 'below'"
             class="absolute text-center font-bold tabular-nums"
             :style="{
-              left: (m.x - 32) + 'px',
+              left: (m.x - 42) + 'px',
               top: (LINE_Y + m.r + 6) + 'px',
-              width: '64px',
+              width: '84px',
               fontSize: '13px',
+              whiteSpace: 'nowrap',
               color: m.labelColor,
             }"
           >{{ m.year }}</div>
@@ -155,6 +157,7 @@
 import { computed, ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import type { HoleResult, Event } from '@/types'
 import { penaltyTier, TIER_COLORS } from '@/utils/penaltyTier'
+import { formatEventYear } from '@/utils/formatYear'
 
 const props = defineProps<{
   result: HoleResult
@@ -304,7 +307,7 @@ const aboveMarkers = computed<RenderedMarker[]>(() => {
   for (const e of notableNearby.value) {
     above.push({
       id: 'notable-' + e.id, type: 'notable',
-      x: yearToX(e.year), year: formatYear(e.year), name: e.name,
+      x: yearToX(e.year), year: formatEventYear(e.year, e.approximate), name: e.name,
       r: 4, color: '#6b7280', labelColor: '#4b5563', labelSide: 'above',
     })
   }
@@ -312,7 +315,7 @@ const aboveMarkers = computed<RenderedMarker[]>(() => {
   for (const alt of props.result.betterAlternatives.slice(0, 2)) {
     above.push({
       id: alt.eventId, type: 'alt',
-      x: yearToX(alt.eventYear), year: formatYear(alt.eventYear), name: alt.eventName,
+      x: yearToX(alt.eventYear), year: formatEventYear(alt.eventYear, alt.eventApproximate), name: alt.eventName,
       r: 5, color: '#22c55e', labelColor: '#4ade80', labelSide: 'above',
     })
   }
@@ -340,7 +343,7 @@ const renderedMarkers = computed<RenderedMarker[]>(() => {
     {
       id: 'player', type: 'player',
       x: playerX.value,
-      year: formatYear(props.result.eventYear),
+      year: formatEventYear(props.result.eventYear, props.result.eventApproximate),
       name: props.result.eventName,
       r: 8, color: pc, labelColor: pc, labelSide: 'below', row: 0,
     },

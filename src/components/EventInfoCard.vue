@@ -11,7 +11,7 @@
         <!-- Front: mirrors the tapped card -->
         <div class="flip-face bg-gray-900 rounded-2xl border border-gray-700 flex flex-col items-center justify-center p-6">
           <div class="text-lg font-bold text-white">{{ event.name }}</div>
-          <div class="text-3xl font-black text-green-400 tabular-nums mt-2">{{ formatYear(event.year) }}</div>
+          <div class="text-3xl font-black text-green-400 tabular-nums mt-2">{{ formatEventYear(event.year, event.approximate) }}</div>
         </div>
 
         <!-- Back: the details -->
@@ -23,8 +23,9 @@
           >
             ✕
           </button>
-          <div class="text-3xl font-black text-green-400 tabular-nums">{{ formatYear(event.year) }}</div>
+          <div class="text-3xl font-black text-green-400 tabular-nums">{{ formatEventYear(event.year, event.approximate) }}</div>
           <h2 class="text-xl font-bold text-white mt-1 mb-3 pr-8">{{ event.name }}</h2>
+          <ApproxNote v-if="event.approximate" :range="event.dateDisplay" class="mb-3" />
           <p class="text-sm text-gray-300 leading-relaxed mb-4">{{ event.description }}</p>
           <p class="text-xs text-gray-500 mb-4">
             {{ event.categories.join(' · ') }} · {{ event.region }}
@@ -40,10 +41,11 @@
 </template>
 
 <script setup lang="ts">
-import { formatYear } from '@/utils/formatYear'
+import { formatEventYear } from '@/utils/formatYear'
 import { onMounted, onUnmounted, ref } from 'vue'
 import type { Event } from '@/types'
 import DateLinksSection from './DateLinksSection.vue'
+import ApproxNote from './ApproxNote.vue'
 
 defineProps<{ event: Event }>()
 const emit = defineEmits<{ close: [] }>()

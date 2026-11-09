@@ -37,9 +37,9 @@
           <div class="text-sm font-semibold text-white truncate">{{ gameState.questions[i]?.eventName }}</div>
           <div class="text-xs text-zinc-400 mt-0.5">
             <span v-if="!answer.isCorrect" class="text-red-400">
-              You chose {{ formatYear(gameState.questions[i]?.choices[answer.selectedIndex ?? 0] ?? 0) }} ·
+              You chose {{ formatEventYear(gameState.questions[i]?.choices[answer.selectedIndex ?? 0] ?? 0, gameState.questions[i]?.eventApproximate) }} ·
             </span>
-            Correct: <span class="font-bold text-white">{{ formatYear(gameState.questions[i]?.eventYear ?? 0) }}</span>
+            Correct: <span class="font-bold text-white">{{ formatEventYear(gameState.questions[i]?.eventYear ?? 0, gameState.questions[i]?.eventApproximate) }}</span>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-import { formatYear } from '@/utils/formatYear'
+import { formatEventYear } from '@/utils/formatYear'
 import { computed, ref } from 'vue'
 import type { DatePickGameState, DatePickStats } from '@/types/datepick'
 import { copyResult, shareResult } from '@/services/datepickSharing'
