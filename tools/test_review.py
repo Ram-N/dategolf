@@ -133,6 +133,24 @@ class TestRename(unittest.TestCase):
         self.assertEqual(quiet(edit.set_event_date, "no-such-id", 5, via="test"), 1)
 
 
+class TestSpanDrafts(unittest.TestCase):
+    def test_span_draft_loads_and_approves(self):
+        path = TMP / "span.json"
+        path.write_text(json.dumps({"origin": "test", "events": [], "spans": [{
+            "id": "test-span", "kind": "period", "name": "Test Span", "start_year": 1500, "end_year": 1600,
+            "description": "A test span.", "region": "Europe", "importance": 3, "categories": ["Politics"],
+            "countries": ["FR"], "source": "https://en.wikipedia.org/wiki/Test_span"}]}))
+        quiet(drafts.load, path)
+        conn = db()
+        self.assertEqual(conn.execute("SELECT editorial_status, primary_type FROM entities WHERE id = 'test-span'"
+                                      ).fetchone(), ("proposed", "period"))
+        self.assertEqual(conn.execute("SELECT country, status FROM entity_countries WHERE entity_id = 'test-span'"
+                                      ).fetchone(), ("FR", "proposed"))
+        quiet(drafts.approve, ["test-span"], "test")
+        self.assertEqual(db().execute("SELECT editorial_status FROM entities WHERE id = 'test-span'").fetchone()[0],
+                         "reviewed")
+
+
 class TestCountries(unittest.TestCase):
     def test_set_tags_replaces_and_logs(self):
         self.assertEqual(quiet(countries.set_tags, "battle-of-zama", "TN, IT/actor", via="test"), 0)

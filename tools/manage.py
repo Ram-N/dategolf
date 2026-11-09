@@ -243,6 +243,12 @@ def main():
     p.add_argument("--reason", required=True)
     p.set_defaults(fn=lambda a: links.reject(a.ids, a.reason))
 
+    p = sub.add_parser("retype-link", help="Change links' type in place, e.g. part_of → began")
+    p.add_argument("ids", nargs="+", type=int)
+    p.add_argument("--type", required=True, dest="new_type")
+    p.add_argument("--why", help="A new one-line 'why' (only sensible with one id)")
+    p.set_defaults(fn=lambda a: links.retype(a.ids, a.new_type, a.why))
+
     p = sub.add_parser("add-link-type", help="Add a link type, e.g. ended / was ended by")
     p.add_argument("type")
     p.add_argument("--inverse", required=True, help="How it reads from the target, e.g. 'was ended by'")

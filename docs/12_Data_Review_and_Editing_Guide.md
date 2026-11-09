@@ -159,6 +159,10 @@ If anything in the batch is invalid, **nothing** is loaded. The error names the 
 - `UNIQUE constraint failed` means a duplicate ID or name.
 - `CHECK constraint failed` means year 0 or a bad difficulty.
 
+**Spans can be drafted too:** add a `"spans": [...]` list to the draft file (`id, kind, name, start_year, end_year, description, region, importance, categories, countries?, source?`). Spans don't appear in the dashboard's Event drafts tab yet; approve them with `manage.py approve <id>` and `approve-countries <id>`.
+
+**Change a link's type in place** (any status, keeping its id): `manage.py retype-link <ids> --type began [--why "..."]`.
+
 ### 4.5 Remove an event
 
 Delete its row in **`entities`**. Its event row, aliases, categories and draft notes are removed too. DB Browser's *Foreign keys* setting must be on: it's in Edit → Preferences → Database, and it's on by default. Then export.

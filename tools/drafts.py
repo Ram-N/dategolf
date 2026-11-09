@@ -5,8 +5,11 @@ Draft file shape (JSON):
    "events": [{id, name, year, categories, region, aliases, description, difficulty,
                importance, csv_event_id?, note?, source?,
                is_approximate?, date_display?, date_precision?}, ...],
+   "spans": [{id, kind, name, start_year, end_year, description, region, importance,
+              categories, countries?, approximate?, note?, source?}, ...],
    "csv_triage": [{csv_event_id, outcome, related_entity_id?, note?}, ...]}
 `source` is a Wikipedia URL. It loads as a proposed source and is approved with its draft.
+`countries` lists location codes, primary first; they load as proposed tags (approve-countries).
 """
 
 import json
@@ -45,6 +48,23 @@ def load(path):
                 sources.attach(conn, e["id"], sources.title_from_url(e["source"]), e["source"],
                                "proposed", "ai_drafted")
 
+        for t in batch.get("spans", []):
+            ins("INSERT INTO entities (id, primary_type, editorial_status) VALUES (?, ?, 'proposed')",
+                (t["id"], t["kind"]))
+            ins("INSERT INTO time_spans (entity_id, kind, name, start_year, end_year, description, region, "
+                "importance, approximate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                (t["id"], t["kind"], t["name"], t["start_year"], t["end_year"], t["description"], t["region"],
+                 t["importance"], 1 if t.get("approximate") else None))
+            conn.executemany("INSERT INTO entity_categories VALUES (?, 'span', ?, ?)",
+                             [(t["id"], i, c) for i, c in enumerate(t["categories"])])
+            conn.executemany("INSERT INTO entity_countries (entity_id, position, country, confidence, status, role) "
+                             "VALUES (?, ?, ?, 'high', 'proposed', 'location')",
+                             [(t["id"], i, c) for i, c in enumerate(t.get("countries", []))])
+            ins("INSERT INTO entity_provenance VALUES (?, ?, NULL, ?)", (t["id"], origin, t.get("note")))
+            if t.get("source"):
+                sources.attach(conn, t["id"], sources.title_from_url(t["source"]), t["source"],
+                               "proposed", "ai_drafted")
+
         # A re-draft of an already-drafted CSV row keeps its existing triage row.
         drafted = {e["csv_event_id"] for e in batch["events"] if e.get("csv_event_id") is not None}
         conn.executemany("INSERT OR IGNORE INTO legacy_csv_triage VALUES (?, 'drafted', NULL, NULL)",
@@ -57,7 +77,7 @@ def load(path):
         raise SystemExit(f"Nothing loaded: {exc} (while loading {path})")
     conn.commit()
     conn.close()
-    print(f"  Loaded {len(batch['events'])} proposed events "
+    print(f"  Loaded {len(batch['events'])} proposed events, {len(batch.get('spans', []))} proposed spans "
           f"({len(drafted)} source CSV rows, {len(triage)} extra triage rows).")
     print("  They are NOT exported. To publish one, set entities.editorial_status = 'reviewed'.")
     return 0

@@ -136,6 +136,18 @@ class TestTypes(unittest.TestCase):
         self.assertTrue(any("sputnik-launch" in r[1] for r in rows))
 
 
+class TestRetype(unittest.TestCase):
+    def test_retype_keeps_id_and_status(self):
+        load(("battle-of-hastings", "part_of", "kievan-rus-founded", "test link"), name="r1")
+        lid, status, _ = stored("battle-of-hastings", "part_of", "kievan-rus-founded")
+        self.assertEqual(quiet(links.retype, [lid], "influenced", "new why", via="test"), 0)
+        row = db().execute("SELECT relationship_type, editorial_status, description FROM relationships WHERE id = ?",
+                           (lid,)).fetchone()
+        self.assertEqual(row, ("influenced", status, "new why"))
+        self.assertEqual(quiet(links.retype, [lid], "no_such_type", via="test"), 1)
+        self.assertEqual(quiet(links.retype, [999999], "part_of", via="test"), 1)
+
+
 class TestSuggest(unittest.TestCase):
     def test_suggests_without_loading(self):
         out = TMP / "suggest.json"

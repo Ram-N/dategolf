@@ -153,6 +153,38 @@ def add_type(rtype, inverse, definition, direction, causal=False, symmetric=Fals
     return 0
 
 
+def retype(ids, new_type, why=None, via="cli"):
+    """Change links' type in place (any status), keeping id and status; optionally a new 'why'."""
+    conn = connect()
+    ensure_schema(conn)
+    types = {r[0]: r[1] for r in conn.execute("SELECT type, symmetric FROM relationship_types")}
+    if new_type not in types or new_type in WRITTEN_INVERSES:
+        print(f"  ✗ unknown type {new_type}")
+        conn.close()
+        return 1
+    ok = True
+    for link_id in ids:
+        row = conn.execute("SELECT source_entity_id, relationship_type, target_entity_id FROM relationships "
+                           "WHERE id = ?", (link_id,)).fetchone()
+        if row is None:
+            ok = False
+            print(f"  ✗ no link #{link_id}")
+            continue
+        src, old, tgt = row
+        if conn.execute("SELECT 1 FROM relationships WHERE source_entity_id = ? AND relationship_type = ? "
+                        "AND target_entity_id = ?", (src, new_type, tgt)).fetchone():
+            ok = False
+            print(f"  ✗ link #{link_id}: {src} {new_type} {tgt} already exists")
+            continue
+        conn.execute("UPDATE relationships SET relationship_type = ?, description = coalesce(?, description) "
+                     "WHERE id = ?", (new_type, why, link_id))
+        log(conn, "retype-link", src, f"link #{link_id}: {src} {old} → {new_type} {tgt}", via=via)
+        print(f"  ✓ link #{link_id}: {src} {old} → {new_type} {tgt}")
+    conn.commit()
+    conn.close()
+    return 0 if ok else 1
+
+
 # ── part_of candidates ────────────────────────────────────────────────────────
 
 # Words too common in span names to count as evidence on their own.
