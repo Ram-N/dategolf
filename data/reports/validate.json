@@ -369,6 +369,18 @@
     },
     {
       "severity": "warning",
+      "check": "Approximate event with no range (set-event-date --display): students see \"c.\" with nothing to explain it",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "warning",
+      "check": "Event with a range but not marked approximate (the range is then not exported)",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "warning",
       "check": "Published event or span with no country tag",
       "count": 0,
       "rows": []

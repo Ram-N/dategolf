@@ -19,7 +19,8 @@
     "description": "The wheel and plough are developed in Mesopotamia, transforming agriculture, transportation, and trade across the ancient world. The sail appears in Egypt around the same period, enabling maritime commerce along the Nile and beyond. Together these three inventions lay the practical foundation for complex civilization and long-distance exchange.",
     "difficulty": "medium",
     "importance": 9,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 4000–3500 BCE"
   },
   {
     "id": "sumerian-writing",
@@ -39,7 +40,8 @@
     "description": "The Sumerians of ancient Mesopotamia develop cuneiform, the world's earliest writing system, initially used for recording trade transactions on clay tablets. This invention enables the transmission of complex knowledge, law, and literature across generations and marks the beginning of recorded history.",
     "difficulty": "easy",
     "importance": 5,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 3400–3100 BCE"
   },
   {
     "id": "first-cities-mesopotamia",
@@ -61,7 +63,8 @@
     "description": "The first true cities emerge in Sumer, the southern region of Mesopotamia, with Uruk growing into the world's largest settlement with a population in the tens of thousands. These urban centers develop specialized labor, centralized administration, monumental architecture, and complex trade networks stretching across the ancient Near East. The Sumerian city-state becomes the template for human political and social organization.",
     "difficulty": "medium",
     "importance": 8,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 4000–3000 BCE"
   },
   {
     "id": "indus-valley-begins",
@@ -81,7 +84,8 @@
     "description": "One of the world's earliest urban civilizations emerges in the Indus River valley, featuring advanced city planning, drainage systems, and trade networks. Cities like Mohenjo-daro and Harappa flourish with populations in the tens of thousands.",
     "difficulty": "medium",
     "importance": 5,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 2600 BCE (start of the mature Harappan phase)"
   },
   {
     "id": "egyptian-pyramids-built",
@@ -102,7 +106,8 @@
     "description": "The Great Pyramid of Giza is constructed as a tomb for Pharaoh Khufu, requiring an estimated 2.3 million stone blocks and decades of labor. It stands as the tallest man-made structure in the world for nearly four millennia and remains one of the seven wonders of the ancient world.",
     "difficulty": "easy",
     "importance": 5,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 2600–2560 BCE"
   },
   {
     "id": "code-of-hammurabi",
@@ -122,7 +127,8 @@
     "description": "Babylonian king Hammurabi promulgates one of the earliest and most complete written legal codes, covering commerce, property, family, and criminal law. The code, inscribed on a stone stele, introduces the principle of presumption of innocence and establishes the idea of law as a public institution.",
     "difficulty": "medium",
     "importance": 4,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 1755–1750 BCE (middle chronology)"
   },
   {
     "id": "fall-of-troy",
@@ -145,7 +151,8 @@
     "description": "The city of Troy, located in present-day northwest Turkey, falls to a coalition of Greek forces after a legendary ten-year siege, according to ancient tradition immortalized in Homer's Iliad. The Trojan horse — a giant wooden horse concealing Greek soldiers — becomes one of history's most enduring stories of deception in warfare. Archaeological excavations at Hisarlik confirm a real Bronze Age city was violently destroyed around this period, lending historical weight to the legend.",
     "difficulty": "easy",
     "importance": 6,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 1250–1180 BCE (legendary; Troy VIIa destroyed c. 1180)"
   },
   {
     "id": "phoenician-alphabet-invented",
@@ -167,7 +174,8 @@
     "description": "The Phoenicians develop the first widely used alphabetic writing system, consisting of 22 consonant letters derived from earlier Semitic scripts used in the Sinai Peninsula. Unlike the complex syllabic systems of Mesopotamia and Egypt, the alphabet's simplicity allows merchants and administrators to learn it rapidly, and it spreads across the Mediterranean world through Phoenician trade networks. Nearly all modern alphabets, including Greek, Latin, Arabic, and Hebrew, descend from this Phoenician innovation.",
     "difficulty": "hard",
     "importance": 9,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 1100–1050 BCE"
   },
   {
     "id": "battle-of-mahabharata",
@@ -188,7 +196,8 @@
     "difficulty": "hard",
     "importance": 4,
     "dateflowOnly": true,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "Traditionally 3102 BCE; scholars suggest c. 1000 BCE"
   },
   {
     "id": "david-captures-jerusalem",
@@ -208,7 +217,8 @@
     "description": "According to biblical tradition, King David captures the Jebusite city of Jerusalem and makes it the capital of a united Israelite kingdom. Jerusalem becomes the political and religious centre of the Israelites, a status that later shapes its importance for Judaism, Christianity and Islam.",
     "difficulty": "medium",
     "importance": 4,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 1000 BCE (biblical tradition)"
   },
   {
     "id": "greek-olympics-ancient",
@@ -271,7 +281,8 @@
     "difficulty": "medium",
     "importance": 7,
     "dateflowOnly": true,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 1200–500 BCE"
   },
   {
     "id": "babylonian-conquest-jerusalem",
@@ -293,7 +304,8 @@
     "description": "King Nebuchadnezzar II of Babylon conquers Jerusalem, destroys Solomon's Temple, and deports much of the Jewish population to Babylon in what becomes known as the Babylonian captivity. The exile profoundly reshapes Jewish theology and identity, accelerating the development of strict monotheism and the compilation of the Hebrew Bible. The event is foundational to the history of Judaism, Christianity, and Islam, and the longing to return to Jerusalem becomes a defining element of Jewish culture.",
     "difficulty": "medium",
     "importance": 7,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "587 or 586 BCE (siege from 588)"
   },
   {
     "id": "thales-solar-eclipse",
@@ -334,7 +346,8 @@
     "difficulty": "easy",
     "importance": 5,
     "dateflowOnly": true,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 563 or c. 480 BCE (disputed)"
   },
   {
     "id": "birth-of-confucius",
@@ -605,7 +618,8 @@
     "description": "Chandragupta Maurya, guided by his adviser Chanakya, overthrows the Nanda dynasty of Magadha and founds the Maurya Empire, ruling from Pataliputra. He goes on to unite most of the Indian subcontinent for the first time and to push back the Greek successors of Alexander.",
     "difficulty": "medium",
     "importance": 5,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 320 BCE"
   },
   {
     "id": "ptolemaic-dynasty-founded",
@@ -1145,7 +1159,8 @@
     "description": "Chandragupta II, remembered by the title Vikramaditya, becomes emperor of the Gupta Empire. His reign extends Gupta power across northern and western India and is associated with a flowering of Sanskrit literature, art and science.",
     "difficulty": "hard",
     "importance": 4,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 375-380"
   },
   {
     "id": "huns-arrive-in-europe",
@@ -2422,7 +2437,8 @@
     "description": "The Nuremberg locksmith Peter Henlein, traditionally credited as the inventor, builds small timepieces driven by a coiled steel mainspring instead of heavy falling weights. These 'Nuremberg eggs' are worn as pendants or carried in pouches, since pockets are not yet common, and begin the shift towards personal timekeeping.",
     "difficulty": "medium",
     "importance": 3,
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 1505–1510"
   },
   {
     "id": "protestant-reformation",

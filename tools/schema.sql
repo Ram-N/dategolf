@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS events (
   importance     INTEGER NOT NULL,
   date_precision TEXT,                             -- not exported yet
   is_approximate INTEGER,                          -- not exported yet
-  date_display   TEXT,                             -- not exported yet
+  date_display   TEXT,                             -- the true range, exported as dateDisplay when approximate
   position       INTEGER
 );
 

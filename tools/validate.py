@@ -101,6 +101,11 @@ CHECKS = [
     ("info", "DateFlow-only events (excluded from DatePick and DateGolf)",
      "SELECT d.entity_id, e.year || ' · ' || e.name || coalesce(' — ' || d.reason, '') "
      "FROM dateflow_only_events d JOIN events e ON e.entity_id = d.entity_id"),
+    ("warning", "Approximate event with no range (set-event-date --display): students see \"c.\" with nothing to explain it",
+     "SELECT entity_id, year || ' · ' || name FROM events WHERE is_approximate = 1 AND date_display IS NULL"),
+    ("warning", "Event with a range but not marked approximate (the range is then not exported)",
+     "SELECT entity_id, year || ' · ' || name || ' — ' || date_display FROM events "
+     "WHERE date_display IS NOT NULL AND is_approximate IS NOT 1"),
     ("warning", "Published event or span with no country tag",
      "SELECT id, primary_type FROM entities WHERE editorial_status <> 'proposed' "
      "AND primary_type <> 'era' AND id NOT IN (SELECT entity_id FROM entity_countries)"),

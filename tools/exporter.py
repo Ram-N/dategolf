@@ -45,6 +45,8 @@ def render_events(conn):
             rec["dateflowOnly"] = True
         if e["is_approximate"]:
             rec["approximate"] = True
+            if e["date_display"]:
+                rec["dateDisplay"] = e["date_display"]  # the true range, shown with the "c." year
         out.append(rec)
     return dumps(out)
 
