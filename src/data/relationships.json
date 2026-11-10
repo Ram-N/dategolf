@@ -3,42 +3,50 @@
     "began": {
       "label": "began",
       "inverse": "began with",
-      "causal": true
+      "causal": true,
+      "story": "frame"
     },
     "contributed_to": {
       "label": "contributed to",
       "inverse": "had as a contributing factor",
-      "causal": true
+      "causal": true,
+      "story": "cause"
     },
     "enabled": {
       "label": "enabled",
       "inverse": "was made possible by",
-      "causal": true
+      "causal": true,
+      "story": "cause"
     },
     "ended": {
       "label": "ended",
       "inverse": "was ended by",
-      "causal": true
+      "causal": true,
+      "story": "frame"
     },
     "influenced": {
       "label": "influenced",
       "inverse": "was influenced by",
-      "causal": true
+      "causal": true,
+      "story": "cause"
     },
     "part_of": {
       "label": "is part of",
       "inverse": "includes",
-      "causal": false
+      "causal": false,
+      "story": "context"
     },
     "preceded": {
       "label": "preceded",
       "inverse": "followed",
-      "causal": false
+      "causal": false,
+      "story": "sequence"
     },
     "triggered": {
       "label": "triggered",
       "inverse": "was triggered by",
-      "causal": true
+      "causal": true,
+      "story": "cause"
     }
   },
   "links": [
@@ -46,1351 +54,1576 @@
       "source": "pax-romana",
       "type": "began",
       "target": "pax-romana-period",
-      "why": "Augustus's reign opens two centuries of relative peace across the empire."
+      "why": "Augustus's reign opens two centuries of relative peace across the empire.",
+      "confidence": "high"
     },
     {
       "source": "indian-independence",
       "type": "ended",
       "target": "indian-independence-movement",
-      "why": "Independence ended the struggle against British rule."
+      "why": "Independence ended the struggle against British rule.",
+      "confidence": "high"
     },
     {
       "source": "human-genome-project",
       "type": "ended",
       "target": "human-genome-project-period",
-      "why": "The project was completed with a finished sequence of the human genome."
+      "why": "The project was completed with a finished sequence of the human genome.",
+      "confidence": "high"
     },
     {
       "source": "maya-classic-period",
       "type": "began",
       "target": "classic-maya",
-      "why": "The start of the Classic period of Maya civilization."
+      "why": "The start of the Classic period of Maya civilization.",
+      "confidence": "high"
     },
     {
       "source": "black-death-europe",
       "type": "began",
       "target": "black-death",
-      "why": "The plague's arrival in Europe, the core of the pandemic."
+      "why": "The plague's arrival in Europe, the core of the pandemic.",
+      "confidence": "high"
     },
     {
       "source": "egyptian-pyramids-built",
       "type": "ended",
       "target": "construction-great-pyramid",
-      "why": "Completing the building work brought the construction to its end."
+      "why": "Completing the building work brought the construction to its end.",
+      "confidence": "high"
     },
     {
       "source": "great-wall-china",
       "type": "began",
       "target": "construction-great-wall",
-      "why": "The start of building under the Qin."
+      "why": "The start of building under the Qin.",
+      "confidence": "high"
     },
     {
       "source": "taj-mahal-construction-begins",
       "type": "began",
       "target": "construction-taj-mahal",
-      "why": "The start of the Taj Mahal's construction."
+      "why": "The start of the Taj Mahal's construction.",
+      "confidence": "high"
     },
     {
       "source": "fall-of-roman-empire-west",
       "type": "part_of",
       "target": "fall-western-roman-empire",
-      "why": "476, the final moment of the western empire's long decline."
+      "why": "476, the final moment of the western empire's long decline.",
+      "confidence": "high"
     },
     {
       "source": "alexander-conquests",
       "type": "began",
       "target": "alexanders-conquests",
-      "why": "The start of Alexander's campaign."
+      "why": "The start of Alexander's campaign.",
+      "confidence": "high"
     },
     {
       "source": "indus-valley-begins",
       "type": "began",
       "target": "indus-valley-mature",
-      "why": "The start of the civilization's mature phase."
+      "why": "The start of the civilization's mature phase.",
+      "confidence": "high"
     },
     {
       "source": "holocaust",
       "type": "began",
       "target": "the-holocaust",
-      "why": "The same genocide; the event marks its systematic phase."
+      "why": "The same genocide; the event marks its systematic phase.",
+      "confidence": "high"
     },
     {
       "source": "chinese-cultural-revolution",
       "type": "began",
       "target": "cultural-revolution",
-      "why": "The launch of the Cultural Revolution."
+      "why": "The launch of the Cultural Revolution.",
+      "confidence": "high"
     },
     {
       "source": "meiji-restoration-japan",
       "type": "began",
       "target": "meiji-restoration",
-      "why": "The restoration of imperial rule that opens the Meiji era."
+      "why": "The restoration of imperial rule that opens the Meiji era.",
+      "confidence": "high"
     },
     {
       "source": "iran-islamic-revolution",
       "type": "ended",
       "target": "iranian-revolution",
-      "why": "The founding of the Islamic Republic completed the revolution."
+      "why": "The founding of the Islamic Republic completed the revolution.",
+      "confidence": "high"
     },
     {
       "source": "birth-of-buddha",
       "type": "began",
       "target": "life-of-the-buddha",
-      "why": "The start of the Buddha's life."
+      "why": "The start of the Buddha's life.",
+      "confidence": "high"
     },
     {
       "source": "world-war-one",
       "type": "began",
       "target": "world-war-1",
-      "why": "The outbreak of the First World War."
+      "why": "The outbreak of the First World War.",
+      "confidence": "high"
     },
     {
       "source": "first-world-war-ends",
       "type": "ended",
       "target": "world-war-1",
-      "why": "The armistice ended the fighting of the First World War."
+      "why": "The armistice ended the fighting of the First World War.",
+      "confidence": "high"
     },
     {
       "source": "world-war-two",
       "type": "began",
       "target": "world-war-2",
-      "why": "The outbreak of the Second World War."
+      "why": "The outbreak of the Second World War.",
+      "confidence": "high"
     },
     {
       "source": "end-world-war-two",
       "type": "ended",
       "target": "world-war-2",
-      "why": "Germany's surrender in May and Japan's in September concluded the Second World War."
+      "why": "Germany's surrender in May and Japan's in September concluded the Second World War.",
+      "confidence": "high"
     },
     {
       "source": "battle-of-zama",
       "type": "part_of",
       "target": "punic-wars",
-      "why": "The battle that ends the Second Punic War."
+      "why": "The battle that ends the Second Punic War.",
+      "confidence": "high"
     },
     {
       "source": "battle-of-marathon",
       "type": "part_of",
       "target": "persian-wars",
-      "why": "The Athenian victory in the first Persian invasion of Greece."
+      "why": "The Athenian victory in the first Persian invasion of Greece.",
+      "confidence": "high"
     },
     {
       "source": "battle-of-gaugamela",
       "type": "part_of",
       "target": "alexanders-conquests",
-      "why": "Alexander's decisive victory over Darius III."
+      "why": "Alexander's decisive victory over Darius III.",
+      "confidence": "high"
     },
     {
       "source": "battle-of-the-hydaspes",
       "type": "part_of",
       "target": "alexanders-conquests",
-      "why": "The battle at the eastern limit of Alexander's campaign."
+      "why": "The battle at the eastern limit of Alexander's campaign.",
+      "confidence": "high"
     },
     {
       "source": "alexander-founds-alexandria",
       "type": "part_of",
       "target": "alexanders-conquests",
-      "why": "Founded during the conquest of Egypt."
+      "why": "Founded during the conquest of Egypt.",
+      "confidence": "high"
     },
     {
       "source": "death-of-alexander",
       "type": "ended",
       "target": "alexanders-conquests",
-      "why": "Alexander's death in Babylon brought his campaigns to an end."
+      "why": "Alexander's death in Babylon brought his campaigns to an end.",
+      "confidence": "high"
     },
     {
       "source": "execution-of-charles-i",
       "type": "part_of",
       "target": "english-civil-war",
-      "why": "The king's execution, the climax of the civil war."
+      "why": "The king's execution, the climax of the civil war.",
+      "confidence": "high"
     },
     {
       "source": "emancipation-proclamation",
       "type": "part_of",
       "target": "american-civil-war",
-      "why": "Issued by Lincoln as a war measure."
+      "why": "Issued by Lincoln as a war measure.",
+      "confidence": "high"
     },
     {
       "source": "american-declaration",
       "type": "part_of",
       "target": "american-revolution",
-      "why": "The revolution's founding document."
+      "why": "The revolution's founding document.",
+      "confidence": "high"
     },
     {
       "source": "battle-of-trafalgar",
       "type": "part_of",
       "target": "napoleonic-wars",
-      "why": "The naval battle that ends Napoleon's hopes of invading Britain."
+      "why": "The naval battle that ends Napoleon's hopes of invading Britain.",
+      "confidence": "high"
     },
     {
       "source": "napoleon-defeat-waterloo",
       "type": "ended",
       "target": "napoleonic-wars",
-      "why": "Napoleon's final defeat concluded the wars."
+      "why": "Napoleon's final defeat concluded the wars.",
+      "confidence": "high"
     },
     {
       "source": "bolshevik-civil-war",
       "type": "part_of",
       "target": "russian-revolution",
-      "why": "The civil war that decides the revolution's outcome."
+      "why": "The civil war that decides the revolution's outcome.",
+      "confidence": "high"
     },
     {
       "source": "long-march-china",
       "type": "part_of",
       "target": "chinese-civil-war",
-      "why": "The Communist retreat during the civil war."
+      "why": "The Communist retreat during the civil war.",
+      "confidence": "high"
     },
     {
       "source": "opium-wars-china",
       "type": "part_of",
       "target": "opium-wars",
-      "why": "The First Opium War."
+      "why": "The First Opium War.",
+      "confidence": "high"
     },
     {
       "source": "opium-war-second",
       "type": "part_of",
       "target": "opium-wars",
-      "why": "The Second Opium War."
+      "why": "The Second Opium War.",
+      "confidence": "high"
     },
     {
       "source": "d-day-normandy",
       "type": "part_of",
       "target": "world-war-2",
-      "why": "The Allied landings in Normandy."
+      "why": "The Allied landings in Normandy.",
+      "confidence": "high"
     },
     {
       "source": "battle-of-britain",
       "type": "part_of",
       "target": "world-war-2",
-      "why": "The air war over Britain."
+      "why": "The air war over Britain.",
+      "confidence": "high"
     },
     {
       "source": "germany-invades-soviet-union",
       "type": "part_of",
       "target": "world-war-2",
-      "why": "Operation Barbarossa opens the Eastern Front."
+      "why": "Operation Barbarossa opens the Eastern Front.",
+      "confidence": "high"
     },
     {
       "source": "japanese-pearl-harbor",
       "type": "part_of",
       "target": "world-war-2",
-      "why": "Japan's attack that brings the US into the war."
+      "why": "Japan's attack that brings the US into the war.",
+      "confidence": "high"
     },
     {
       "source": "atomic-bomb-hiroshima",
       "type": "part_of",
       "target": "world-war-2",
-      "why": "The atomic bombing in the war's final weeks."
+      "why": "The atomic bombing in the war's final weeks.",
+      "confidence": "high"
     },
     {
       "source": "japan-world-war-two-defeat",
       "type": "ended",
       "target": "world-war-2",
-      "why": "Japan, the last Axis power still fighting, surrendered: the war was over."
+      "why": "Japan, the last Axis power still fighting, surrendered: the war was over.",
+      "confidence": "high"
     },
     {
       "source": "first-triumvirate",
       "type": "part_of",
       "target": "fall-of-roman-republic",
-      "why": "The Pompey-Crassus-Caesar alliance that undermined republican rule."
+      "why": "The Pompey-Crassus-Caesar alliance that undermined republican rule.",
+      "confidence": "high"
     },
     {
       "source": "caesar-crosses-rubicon",
       "type": "part_of",
       "target": "fall-of-roman-republic",
-      "why": "Caesar's move that starts the civil war."
+      "why": "Caesar's move that starts the civil war.",
+      "confidence": "high"
     },
     {
       "source": "julius-caesar-assassination",
       "type": "part_of",
       "target": "fall-of-roman-republic",
-      "why": "The assassination meant to save the republic, which hastened its end."
+      "why": "The assassination meant to save the republic, which hastened its end.",
+      "confidence": "high"
     },
     {
       "source": "second-triumvirate",
       "type": "part_of",
       "target": "fall-of-roman-republic",
-      "why": "The triumvirs' rule in the republic's last years."
+      "why": "The triumvirs' rule in the republic's last years.",
+      "confidence": "high"
     },
     {
       "source": "augustus-first-emperor",
       "type": "began",
       "target": "roman-empire",
-      "why": "The founding of the empire under its first emperor."
+      "why": "The founding of the empire under its first emperor.",
+      "confidence": "high"
     },
     {
       "source": "roman-republic-founded",
       "type": "began",
       "target": "roman-republic",
-      "why": "The founding of the republic."
+      "why": "The founding of the republic.",
+      "confidence": "high"
     },
     {
       "source": "fall-of-roman-republic",
       "type": "part_of",
       "target": "roman-republic",
-      "why": "The republic's final century."
+      "why": "The republic's final century.",
+      "confidence": "high"
     },
     {
       "source": "pax-romana-period",
       "type": "part_of",
       "target": "roman-empire",
-      "why": "The empire's two centuries of relative peace."
+      "why": "The empire's two centuries of relative peace.",
+      "confidence": "high"
     },
     {
       "source": "fall-western-roman-empire",
       "type": "part_of",
       "target": "roman-empire",
-      "why": "The western empire's decline and fall."
+      "why": "The western empire's decline and fall.",
+      "confidence": "high"
     },
     {
       "source": "christianity-roman-empire",
       "type": "part_of",
       "target": "roman-empire",
-      "why": "The Edict of Milan, an imperial act."
+      "why": "The Edict of Milan, an imperial act.",
+      "confidence": "high"
     },
     {
       "source": "constantinople-founded",
       "type": "part_of",
       "target": "roman-empire",
-      "why": "Constantine founds the empire's new capital."
+      "why": "Constantine founds the empire's new capital.",
+      "confidence": "high"
     },
     {
       "source": "hadrians-wall",
       "type": "part_of",
       "target": "roman-empire",
-      "why": "An imperial frontier project."
+      "why": "An imperial frontier project.",
+      "confidence": "high"
     },
     {
       "source": "attila-hun-invasions",
       "type": "part_of",
       "target": "fall-western-roman-empire",
-      "why": "The Hun invasions that weakened the western empire."
+      "why": "The Hun invasions that weakened the western empire.",
+      "confidence": "high"
     },
     {
       "source": "charlemagne-crowned-emperor",
       "type": "began",
       "target": "holy-roman-empire",
-      "why": "Charlemagne's coronation, from which the empire's line is traced."
+      "why": "Charlemagne's coronation, from which the empire's line is traced.",
+      "confidence": "medium"
     },
     {
       "source": "fall-of-constantinople",
       "type": "part_of",
       "target": "ottoman-empire",
-      "why": "The Ottoman conquest of Constantinople."
+      "why": "The Ottoman conquest of Constantinople.",
+      "confidence": "high"
     },
     {
       "source": "cyrus-founds-persian-empire",
       "type": "began",
       "target": "achaemenid-empire",
-      "why": "Cyrus founds the Achaemenid Empire."
+      "why": "Cyrus founds the Achaemenid Empire.",
+      "confidence": "high"
     },
     {
       "source": "maurya-empire-founded",
       "type": "began",
       "target": "maurya-empire",
-      "why": "Chandragupta Maurya founds the empire."
+      "why": "Chandragupta Maurya founds the empire.",
+      "confidence": "high"
     },
     {
       "source": "ashoka-becomes-emperor",
       "type": "part_of",
       "target": "maurya-empire",
-      "why": "Ashoka becomes the Mauryan emperor."
+      "why": "Ashoka becomes the Mauryan emperor.",
+      "confidence": "high"
     },
     {
       "source": "ashoka-converts-to-buddhism",
       "type": "part_of",
       "target": "maurya-empire",
-      "why": "The Mauryan emperor's conversion after Kalinga."
+      "why": "The Mauryan emperor's conversion after Kalinga.",
+      "confidence": "high"
     },
     {
       "source": "gupta-empire-founded",
       "type": "began",
       "target": "gupta-empire",
-      "why": "The founding of the Gupta Empire."
+      "why": "The founding of the Gupta Empire.",
+      "confidence": "high"
     },
     {
       "source": "chandragupta-ii-vikramaditya",
       "type": "part_of",
       "target": "gupta-empire",
-      "why": "The accession of the Gupta emperor Chandragupta II."
+      "why": "The accession of the Gupta emperor Chandragupta II.",
+      "confidence": "high"
     },
     {
       "source": "chola-rajaraja-peak",
       "type": "part_of",
       "target": "chola-empire",
-      "why": "Rajaraja I's reign, the empire's height."
+      "why": "Rajaraja I's reign, the empire's height.",
+      "confidence": "high"
     },
     {
       "source": "qutb-ud-din-aibak-delhi",
       "type": "began",
       "target": "delhi-sultanate",
-      "why": "The founding of the sultanate."
+      "why": "The founding of the sultanate.",
+      "confidence": "high"
     },
     {
       "source": "razia-sultana-accession",
       "type": "part_of",
       "target": "delhi-sultanate",
-      "why": "A sultan's accession."
+      "why": "A sultan's accession.",
+      "confidence": "high"
     },
     {
       "source": "alauddin-khalji-accession",
       "type": "part_of",
       "target": "delhi-sultanate",
-      "why": "A sultan's accession."
+      "why": "A sultan's accession.",
+      "confidence": "high"
     },
     {
       "source": "muhammad-bin-tughlaq-accession",
       "type": "part_of",
       "target": "delhi-sultanate",
-      "why": "A sultan's accession."
+      "why": "A sultan's accession.",
+      "confidence": "high"
     },
     {
       "source": "firuz-shah-tughlaq-accession",
       "type": "part_of",
       "target": "delhi-sultanate",
-      "why": "A sultan's accession."
+      "why": "A sultan's accession.",
+      "confidence": "high"
     },
     {
       "source": "vijayanagara-empire-founded",
       "type": "began",
       "target": "vijayanagara-empire",
-      "why": "The founding of the empire."
+      "why": "The founding of the empire.",
+      "confidence": "high"
     },
     {
       "source": "babur-founds-mughal-empire",
       "type": "began",
       "target": "mughal-empire",
-      "why": "The founding of the Mughal Empire."
+      "why": "The founding of the Mughal Empire.",
+      "confidence": "high"
     },
     {
       "source": "first-battle-of-panipat",
       "type": "began",
       "target": "mughal-empire",
-      "why": "The founding battle of Mughal rule."
+      "why": "The founding battle of Mughal rule.",
+      "confidence": "high"
     },
     {
       "source": "humayun-succeeds-babur",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "The second Mughal emperor's accession."
+      "why": "The second Mughal emperor's accession.",
+      "confidence": "high"
     },
     {
       "source": "humayun-defeated-kanauj",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "Humayun's defeat and exile, a break in Mughal rule."
+      "why": "Humayun's defeat and exile, a break in Mughal rule.",
+      "confidence": "high"
     },
     {
       "source": "humayun-recaptures-delhi",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "The restoration of Mughal rule."
+      "why": "The restoration of Mughal rule.",
+      "confidence": "high"
     },
     {
       "source": "second-battle-of-panipat",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "The victory that secures Akbar's throne."
+      "why": "The victory that secures Akbar's throne.",
+      "confidence": "high"
     },
     {
       "source": "mughal-akbar-administration",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "Akbar's administrative system."
+      "why": "Akbar's administrative system.",
+      "confidence": "high"
     },
     {
       "source": "battle-of-haldighati",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "Akbar's campaign against Mewar."
+      "why": "Akbar's campaign against Mewar.",
+      "confidence": "high"
     },
     {
       "source": "akbar-din-i-ilahi",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "Akbar's religious initiative."
+      "why": "Akbar's religious initiative.",
+      "confidence": "high"
     },
     {
       "source": "death-of-akbar",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "Akbar's death and Jahangir's succession."
+      "why": "Akbar's death and Jahangir's succession.",
+      "confidence": "high"
     },
     {
       "source": "jahangir-marries-nur-jahan",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "The marriage that makes Nur Jahan a power at court."
+      "why": "The marriage that makes Nur Jahan a power at court.",
+      "confidence": "high"
     },
     {
       "source": "death-of-jahangir",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "Jahangir's death and Shah Jahan's succession."
+      "why": "Jahangir's death and Shah Jahan's succession.",
+      "confidence": "high"
     },
     {
       "source": "taj-mahal-construction-begins",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "Shah Jahan's imperial monument."
+      "why": "Shah Jahan's imperial monument.",
+      "confidence": "medium"
     },
     {
       "source": "aurangzeb-becomes-emperor",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "Aurangzeb's accession."
+      "why": "Aurangzeb's accession.",
+      "confidence": "high"
     },
     {
       "source": "mughal-empire-zenith-aurangzeb",
       "type": "part_of",
       "target": "mughal-empire",
-      "why": "The empire at its largest, at Aurangzeb's death."
+      "why": "The empire at its largest, at Aurangzeb's death.",
+      "confidence": "high"
     },
     {
       "source": "shivaji-crowned-chhatrapati",
       "type": "began",
       "target": "maratha-empire",
-      "why": "Shivaji's coronation founds the Maratha kingdom."
+      "why": "Shivaji's coronation founds the Maratha kingdom.",
+      "confidence": "high"
     },
     {
       "source": "death-of-shivaji",
       "type": "part_of",
       "target": "maratha-empire",
-      "why": "The founder's death."
+      "why": "The founder's death.",
+      "confidence": "high"
     },
     {
       "source": "third-battle-of-panipat",
       "type": "part_of",
       "target": "maratha-empire",
-      "why": "The Maratha defeat at Panipat."
+      "why": "The Maratha defeat at Panipat.",
+      "confidence": "high"
     },
     {
       "source": "partition-of-bengal",
       "type": "part_of",
       "target": "british-raj",
-      "why": "An act of the Raj's administration."
+      "why": "An act of the Raj's administration.",
+      "confidence": "high"
     },
     {
       "source": "indian-independence",
       "type": "ended",
       "target": "british-raj",
-      "why": "Independence ended British rule in India."
+      "why": "Independence ended British rule in India.",
+      "confidence": "medium"
     },
     {
       "source": "non-cooperation-movement",
       "type": "began",
       "target": "indian-independence-movement",
-      "why": "Gandhi's first nationwide campaign opened the mass phase of the struggle."
+      "why": "Gandhi's first nationwide campaign opened the mass phase of the struggle.",
+      "confidence": "high"
     },
     {
       "source": "gandhi-salt-march",
       "type": "part_of",
       "target": "indian-independence-movement",
-      "why": "The civil disobedience campaign against the salt tax."
+      "why": "The civil disobedience campaign against the salt tax.",
+      "confidence": "high"
     },
     {
       "source": "quit-india-movement",
       "type": "part_of",
       "target": "indian-independence-movement",
-      "why": "The movement's last great campaign."
+      "why": "The movement's last great campaign.",
+      "confidence": "high"
     },
     {
       "source": "silk-road-opens",
       "type": "part_of",
       "target": "han-dynasty",
-      "why": "Opened by the Han envoy Zhang Qian's missions."
+      "why": "Opened by the Han envoy Zhang Qian's missions.",
+      "confidence": "high"
     },
     {
       "source": "paper-invented-china",
       "type": "part_of",
       "target": "han-dynasty",
-      "why": "Paper-making under the Han."
+      "why": "Paper-making under the Han.",
+      "confidence": "medium"
     },
     {
       "source": "woodblock-printing-china",
       "type": "part_of",
       "target": "tang-dynasty",
-      "why": "Woodblock printing under the Tang."
+      "why": "Woodblock printing under the Tang.",
+      "confidence": "medium"
     },
     {
       "source": "printing-movable-type-china",
       "type": "part_of",
       "target": "song-dynasty",
-      "why": "Bi Sheng's movable type under the Song."
+      "why": "Bi Sheng's movable type under the Song.",
+      "confidence": "medium"
     },
     {
       "source": "invention-of-compass",
       "type": "part_of",
       "target": "song-dynasty",
-      "why": "The magnetic compass under the Song."
+      "why": "The magnetic compass under the Song.",
+      "confidence": "medium"
     },
     {
       "source": "ming-dynasty-founded",
       "type": "began",
       "target": "ming-dynasty",
-      "why": "The founding of the Ming."
+      "why": "The founding of the Ming.",
+      "confidence": "high"
     },
     {
       "source": "zheng-he-voyages",
       "type": "part_of",
       "target": "ming-dynasty",
-      "why": "The Ming treasure-fleet voyages."
+      "why": "The Ming treasure-fleet voyages.",
+      "confidence": "high"
     },
     {
       "source": "genghis-khan-unifies-mongols",
       "type": "began",
       "target": "mongol-conquests",
-      "why": "The unification that launches the conquests."
+      "why": "The unification that launches the conquests.",
+      "confidence": "high"
     },
     {
       "source": "mongol-empire-peak",
       "type": "part_of",
       "target": "mongol-conquests",
-      "why": "The empire at its height, after the conquest of Song China."
+      "why": "The empire at its height, after the conquest of Song China.",
+      "confidence": "high"
     },
     {
       "source": "japan-meiji-constitution",
       "type": "part_of",
       "target": "meiji-restoration",
-      "why": "The Meiji Constitution."
+      "why": "The Meiji Constitution.",
+      "confidence": "high"
     },
     {
       "source": "death-of-mao",
       "type": "ended",
       "target": "cultural-revolution",
-      "why": "Mao's death, and the arrest of the Gang of Four weeks later, brought the Cultural Revolution to a close."
+      "why": "Mao's death, and the arrest of the Gang of Four weeks later, brought the Cultural Revolution to a close.",
+      "confidence": "medium"
     },
     {
       "source": "moors-invade-spain",
       "type": "part_of",
       "target": "umayyad-caliphate",
-      "why": "The Umayyad conquest of Iberia."
+      "why": "The Umayyad conquest of Iberia.",
+      "confidence": "high"
     },
     {
       "source": "viking-raids-begin",
       "type": "began",
       "target": "viking-age",
-      "why": "The Lindisfarne raid that opens the Viking Age."
+      "why": "The Lindisfarne raid that opens the Viking Age.",
+      "confidence": "high"
     },
     {
       "source": "renaissance-da-vinci",
       "type": "part_of",
       "target": "italian-renaissance",
-      "why": "Leonardo, a defining figure of the Italian Renaissance."
+      "why": "Leonardo, a defining figure of the Italian Renaissance.",
+      "confidence": "high"
     },
     {
       "source": "renaissance-michelangelo",
       "type": "part_of",
       "target": "italian-renaissance",
-      "why": "The Sistine Chapel ceiling."
+      "why": "The Sistine Chapel ceiling.",
+      "confidence": "high"
     },
     {
       "source": "copernicus-heliocentric",
       "type": "began",
       "target": "scientific-revolution",
-      "why": "The book usually taken as the revolution's start."
+      "why": "The book usually taken as the revolution's start.",
+      "confidence": "high"
     },
     {
       "source": "galileo-telescope",
       "type": "part_of",
       "target": "scientific-revolution",
-      "why": "Galileo's telescope observations."
+      "why": "Galileo's telescope observations.",
+      "confidence": "high"
     },
     {
       "source": "kepler-laws-planetary-motion",
       "type": "part_of",
       "target": "scientific-revolution",
-      "why": "Kepler's laws of planetary motion."
+      "why": "Kepler's laws of planetary motion.",
+      "confidence": "high"
     },
     {
       "source": "galileo-inquisition",
       "type": "part_of",
       "target": "scientific-revolution",
-      "why": "Galileo's trial over heliocentrism."
+      "why": "Galileo's trial over heliocentrism.",
+      "confidence": "high"
     },
     {
       "source": "industrial-revolution-textile",
       "type": "began",
       "target": "industrial-revolution",
-      "why": "Mechanised textiles, the revolution's first industry."
+      "why": "Mechanised textiles, the revolution's first industry.",
+      "confidence": "high"
     },
     {
       "source": "steam-engine-watt",
       "type": "part_of",
       "target": "industrial-revolution",
-      "why": "Watt's improved steam engine."
+      "why": "Watt's improved steam engine.",
+      "confidence": "high"
     },
     {
       "source": "first-steam-railway",
       "type": "part_of",
       "target": "industrial-revolution",
-      "why": "The first public steam railway."
+      "why": "The first public steam railway.",
+      "confidence": "high"
     },
     {
       "source": "abolition-slavery-france",
       "type": "part_of",
       "target": "french-revolution",
-      "why": "Abolition by the revolutionary National Convention."
+      "why": "Abolition by the revolutionary National Convention.",
+      "confidence": "high"
     },
     {
       "source": "aztec-empire-peak",
       "type": "part_of",
       "target": "aztec-empire",
-      "why": "The empire at its height."
+      "why": "The empire at its height.",
+      "confidence": "high"
     },
     {
       "source": "colonial-africa-berlin",
       "type": "part_of",
       "target": "scramble-for-africa",
-      "why": "The conference that set rules for partitioning Africa."
+      "why": "The conference that set rules for partitioning Africa.",
+      "confidence": "high"
     },
     {
       "source": "partition-of-africa-colonial",
       "type": "part_of",
       "target": "scramble-for-africa",
-      "why": "Leopold's Congo Free State, a product of the scramble."
+      "why": "Leopold's Congo Free State, a product of the scramble.",
+      "confidence": "high"
     },
     {
       "source": "mandela-freed",
       "type": "began",
       "target": "apartheid-end",
-      "why": "Mandela's release opens the negotiations."
+      "why": "Mandela's release opens the negotiations.",
+      "confidence": "high"
     },
     {
       "source": "us-civil-rights-march-selma",
       "type": "part_of",
       "target": "civil-rights-movement",
-      "why": "The Selma to Montgomery marches."
+      "why": "The Selma to Montgomery marches.",
+      "confidence": "high"
     },
     {
       "source": "martin-luther-king-speech",
       "type": "part_of",
       "target": "civil-rights-movement",
-      "why": "The March on Washington."
+      "why": "The March on Washington.",
+      "confidence": "high"
     },
     {
       "source": "civil-rights-act-us",
       "type": "part_of",
       "target": "civil-rights-movement",
-      "why": "The movement's legislative victory."
+      "why": "The movement's legislative victory.",
+      "confidence": "high"
     },
     {
       "source": "sputnik-launch",
       "type": "began",
       "target": "space-race",
-      "why": "The first satellite starts the space race."
+      "why": "The first satellite starts the space race.",
+      "confidence": "high"
     },
     {
       "source": "space-race-yuri-gagarin",
       "type": "part_of",
       "target": "space-race",
-      "why": "The first human in space."
+      "why": "The first human in space.",
+      "confidence": "high"
     },
     {
       "source": "moon-landing",
       "type": "part_of",
       "target": "space-race",
-      "why": "The Moon landing, the race's culmination."
+      "why": "The Moon landing, the race's culmination.",
+      "confidence": "high"
     },
     {
       "source": "death-of-stalin",
       "type": "part_of",
       "target": "soviet-union",
-      "why": "The death of the Soviet leader."
+      "why": "The death of the Soviet leader.",
+      "confidence": "high"
     },
     {
       "source": "gorbachev-becomes-leader",
       "type": "part_of",
       "target": "soviet-union",
-      "why": "Gorbachev becomes the Soviet leader."
+      "why": "Gorbachev becomes the Soviet leader.",
+      "confidence": "high"
     },
     {
       "source": "lee-surrenders-appomattox",
       "type": "ended",
       "target": "american-civil-war",
-      "why": "Lee's surrender at Appomattox effectively ended the war."
+      "why": "Lee's surrender at Appomattox effectively ended the war.",
+      "confidence": "high"
     },
     {
       "source": "american-war-independence-ends",
       "type": "ended",
       "target": "american-revolution",
-      "why": "The Treaty of Paris formally ended the revolutionary war."
+      "why": "The Treaty of Paris formally ended the revolutionary war.",
+      "confidence": "high"
     },
     {
       "source": "chinese-communist-revolution",
       "type": "ended",
       "target": "chinese-civil-war",
-      "why": "The Communist victory and the founding of the People's Republic ended the civil war's main fighting; no peace treaty was ever signed, and the Nationalists held on in Taiwan."
+      "why": "The Communist victory and the founding of the People's Republic ended the civil war's main fighting; no peace treaty was ever signed, and the Nationalists held on in Taiwan.",
+      "confidence": "high"
     },
     {
       "source": "augustus-first-emperor",
       "type": "ended",
       "target": "roman-republic",
-      "why": "Octavian's elevation to Augustus is the conventional end of the Republic and the start of the Empire."
+      "why": "Octavian's elevation to Augustus is the conventional end of the Republic and the start of the Empire.",
+      "confidence": "high"
     },
     {
       "source": "fall-of-constantinople",
       "type": "ended",
       "target": "byzantine-empire",
-      "why": "The Ottoman capture of Constantinople ended the Byzantine Empire."
+      "why": "The Ottoman capture of Constantinople ended the Byzantine Empire.",
+      "confidence": "high"
     },
     {
       "source": "ottoman-empire-falls",
       "type": "ended",
       "target": "ottoman-empire",
-      "why": "Abolishing the sultanate ended six centuries of Ottoman rule; the Republic of Turkey followed."
+      "why": "Abolishing the sultanate ended six centuries of Ottoman rule; the Republic of Turkey followed.",
+      "confidence": "high"
     },
     {
       "source": "first-battle-of-panipat",
       "type": "ended",
       "target": "delhi-sultanate",
-      "why": "Babur's victory over Ibrahim Lodi ended the Delhi Sultanate and opened the Mughal era."
+      "why": "Babur's victory over Ibrahim Lodi ended the Delhi Sultanate and opened the Mughal era.",
+      "confidence": "high"
     },
     {
       "source": "dissolution-soviet-union",
       "type": "ended",
       "target": "soviet-union",
-      "why": "The Soviet Union was formally dissolved, leaving fifteen independent states."
+      "why": "The Soviet Union was formally dissolved, leaving fifteen independent states.",
+      "confidence": "high"
     },
     {
       "source": "fall-of-qing-dynasty",
       "type": "ended",
       "target": "qing-dynasty",
-      "why": "The Xinhai Revolution forced the last emperor's abdication, ending the Qing and imperial China."
+      "why": "The Xinhai Revolution forced the last emperor's abdication, ending the Qing and imperial China.",
+      "confidence": "high"
     },
     {
       "source": "spanish-conquest-mexico",
       "type": "ended",
       "target": "aztec-empire",
-      "why": "Cortés's campaign ended the Aztec Empire with the fall of Tenochtitlan two years later."
+      "why": "Cortés's campaign ended the Aztec Empire with the fall of Tenochtitlan two years later.",
+      "confidence": "high"
     },
     {
       "source": "conquest-of-peru-inca",
       "type": "ended",
       "target": "inca-empire",
-      "why": "Pizarro's capture and execution of Atahualpa ended the Inca Empire as an independent state."
+      "why": "Pizarro's capture and execution of Atahualpa ended the Inca Empire as an independent state.",
+      "confidence": "high"
     },
     {
       "source": "newton-laws-of-motion",
       "type": "ended",
       "target": "scientific-revolution",
-      "why": "Historians treat the Principia as the culmination and conventional endpoint of the Scientific Revolution."
+      "why": "Historians treat the Principia as the culmination and conventional endpoint of the Scientific Revolution.",
+      "confidence": "medium"
     },
     {
       "source": "renaissance-begins-florence",
       "type": "began",
       "target": "italian-renaissance",
-      "why": "Florence's early-1400s flowering is the conventional start of the Italian Renaissance."
+      "why": "Florence's early-1400s flowering is the conventional start of the Italian Renaissance.",
+      "confidence": "high"
     },
     {
       "source": "french-revolution-storming-bastille",
       "type": "began",
       "target": "french-revolution",
-      "why": "The storming of the Bastille is the Revolution's symbolic start."
+      "why": "The storming of the Bastille is the Revolution's symbolic start.",
+      "confidence": "high"
     },
     {
       "source": "french-revolution-declaration",
       "type": "began",
       "target": "french-revolution",
-      "why": "One of the Revolution's founding acts in its first months, setting out its principles."
+      "why": "One of the Revolution's founding acts in its first months, setting out its principles.",
+      "confidence": "medium"
     },
     {
       "source": "apartheid-south-africa",
       "type": "began",
       "target": "apartheid",
-      "why": "The National Party's election victory and its first segregation laws began apartheid."
+      "why": "The National Party's election victory and its first segregation laws began apartheid.",
+      "confidence": "high"
     },
     {
       "source": "collapse-apartheid-negotiations",
       "type": "ended",
       "target": "apartheid",
-      "why": "The first election open to all races ended apartheid rule."
+      "why": "The first election open to all races ended apartheid rule.",
+      "confidence": "high"
     },
     {
       "source": "independence-south-africa",
       "type": "ended",
       "target": "apartheid",
-      "why": "Mandela's inauguration as the first democratically elected president completed apartheid's end."
+      "why": "Mandela's inauguration as the first democratically elected president completed apartheid's end.",
+      "confidence": "high"
     },
     {
       "source": "apartheid-end",
       "type": "part_of",
       "target": "apartheid",
-      "why": "The negotiated dismantling was apartheid's final phase."
+      "why": "The negotiated dismantling was apartheid's final phase.",
+      "confidence": "high"
     },
     {
       "source": "meiji-restoration-japan",
       "type": "ended",
       "target": "tokugawa-shogunate",
-      "why": "The restoration of imperial rule overthrew the shogunate and ended the last shogun's rule."
+      "why": "The restoration of imperial rule overthrew the shogunate and ended the last shogun's rule.",
+      "confidence": "high"
     },
     {
       "source": "qutb-ud-din-aibak-delhi",
       "type": "preceded",
       "target": "razia-sultana-accession",
-      "why": "Delhi's sultans in turn: Razia was the daughter of Iltutmish, Aibak's son-in-law, who took the throne soon after Aibak's death."
+      "why": "Delhi's sultans in turn: Razia was the daughter of Iltutmish, Aibak's son-in-law, who took the throne soon after Aibak's death.",
+      "confidence": "high"
     },
     {
       "source": "razia-sultana-accession",
       "type": "preceded",
       "target": "alauddin-khalji-accession",
-      "why": "Delhi's sultans in turn: the Khalji dynasty replaced the Mamluk line."
+      "why": "Delhi's sultans in turn: the Khalji dynasty replaced the Mamluk line.",
+      "confidence": "high"
     },
     {
       "source": "alauddin-khalji-accession",
       "type": "preceded",
       "target": "muhammad-bin-tughlaq-accession",
-      "why": "Delhi's sultans in turn: the Tughlaqs followed the Khaljis."
+      "why": "Delhi's sultans in turn: the Tughlaqs followed the Khaljis.",
+      "confidence": "high"
     },
     {
       "source": "muhammad-bin-tughlaq-accession",
       "type": "preceded",
       "target": "firuz-shah-tughlaq-accession",
-      "why": "Firuz Shah succeeded his cousin Muhammad bin Tughlaq."
+      "why": "Firuz Shah succeeded his cousin Muhammad bin Tughlaq.",
+      "confidence": "high"
     },
     {
       "source": "firuz-shah-tughlaq-accession",
       "type": "preceded",
       "target": "timur-sacks-delhi",
-      "why": "After Firuz Shah's death the Tughlaqs weakened, and Timur sacked Delhi."
+      "why": "After Firuz Shah's death the Tughlaqs weakened, and Timur sacked Delhi.",
+      "confidence": "medium"
     },
     {
       "source": "babur-ruler-of-ferghana",
       "type": "preceded",
       "target": "babur-founds-mughal-empire",
-      "why": "Babur's path: from ruler of Ferghana in Central Asia to founder of the Mughal Empire."
+      "why": "Babur's path: from ruler of Ferghana in Central Asia to founder of the Mughal Empire.",
+      "confidence": "high"
     },
     {
       "source": "babur-founds-mughal-empire",
       "type": "preceded",
       "target": "humayun-succeeds-babur",
-      "why": "Mughal succession: Humayun succeeded his father Babur."
+      "why": "Mughal succession: Humayun succeeded his father Babur.",
+      "confidence": "high"
     },
     {
       "source": "humayun-succeeds-babur",
       "type": "preceded",
       "target": "humayun-defeated-kanauj",
-      "why": "Humayun's reign: Sher Shah Suri defeated him and drove him into exile."
+      "why": "Humayun's reign: Sher Shah Suri defeated him and drove him into exile.",
+      "confidence": "high"
     },
     {
       "source": "humayun-defeated-kanauj",
       "type": "preceded",
       "target": "humayun-recaptures-delhi",
-      "why": "Humayun's reign: fifteen years after his exile he retook Delhi."
+      "why": "Humayun's reign: fifteen years after his exile he retook Delhi.",
+      "confidence": "high"
     },
     {
       "source": "humayun-recaptures-delhi",
       "type": "preceded",
       "target": "second-battle-of-panipat",
-      "why": "Humayun died months after retaking Delhi; the young Akbar's army then won at Panipat."
+      "why": "Humayun died months after retaking Delhi; the young Akbar's army then won at Panipat.",
+      "confidence": "high"
     },
     {
       "source": "second-battle-of-panipat",
       "type": "preceded",
       "target": "death-of-akbar",
-      "why": "Akbar's reign, from the victory that secured his throne to his death."
+      "why": "Akbar's reign, from the victory that secured his throne to his death.",
+      "confidence": "high"
     },
     {
       "source": "death-of-akbar",
       "type": "preceded",
       "target": "death-of-jahangir",
-      "why": "Mughal succession: Jahangir reigned from Akbar's death to his own."
+      "why": "Mughal succession: Jahangir reigned from Akbar's death to his own.",
+      "confidence": "high"
     },
     {
       "source": "death-of-jahangir",
       "type": "preceded",
       "target": "aurangzeb-becomes-emperor",
-      "why": "Mughal succession: Shah Jahan reigned between them, until Aurangzeb seized the throne."
+      "why": "Mughal succession: Shah Jahan reigned between them, until Aurangzeb seized the throne.",
+      "confidence": "high"
     },
     {
       "source": "aurangzeb-becomes-emperor",
       "type": "preceded",
       "target": "mughal-empire-zenith-aurangzeb",
-      "why": "Aurangzeb's reign, which took the empire to its greatest extent by his death."
+      "why": "Aurangzeb's reign, which took the empire to its greatest extent by his death.",
+      "confidence": "high"
     },
     {
       "source": "mughal-empire-zenith-aurangzeb",
       "type": "preceded",
       "target": "nadir-shah-sacks-delhi",
-      "why": "After Aurangzeb the empire declined, and Nadir Shah sacked Delhi."
+      "why": "After Aurangzeb the empire declined, and Nadir Shah sacked Delhi.",
+      "confidence": "high"
     },
     {
       "source": "birth-of-shivaji",
       "type": "preceded",
       "target": "shivaji-crowned-chhatrapati",
-      "why": "Shivaji's life: his coronation founded the Maratha kingdom."
+      "why": "Shivaji's life: his coronation founded the Maratha kingdom.",
+      "confidence": "high"
     },
     {
       "source": "shivaji-crowned-chhatrapati",
       "type": "preceded",
       "target": "death-of-shivaji",
-      "why": "Shivaji's life: he died six years after his coronation."
+      "why": "Shivaji's life: he died six years after his coronation.",
+      "confidence": "high"
     },
     {
       "source": "guru-nanak-born",
       "type": "preceded",
       "target": "martyrdom-of-guru-arjan",
-      "why": "The Sikh Gurus: Guru Arjan was the fifth Guru in the line founded by Guru Nanak."
+      "why": "The Sikh Gurus: Guru Arjan was the fifth Guru in the line founded by Guru Nanak.",
+      "confidence": "high"
     },
     {
       "source": "martyrdom-of-guru-arjan",
       "type": "preceded",
       "target": "execution-of-guru-tegh-bahadur",
-      "why": "The Sikh Gurus: Guru Tegh Bahadur was the ninth Guru."
+      "why": "The Sikh Gurus: Guru Tegh Bahadur was the ninth Guru.",
+      "confidence": "high"
     },
     {
       "source": "execution-of-guru-tegh-bahadur",
       "type": "preceded",
       "target": "death-of-guru-gobind-singh",
-      "why": "The Sikh Gurus: Guru Gobind Singh, the tenth and last human Guru, succeeded his father Tegh Bahadur."
+      "why": "The Sikh Gurus: Guru Gobind Singh, the tenth and last human Guru, succeeded his father Tegh Bahadur.",
+      "confidence": "high"
     },
     {
       "source": "battle-of-plassey",
       "type": "preceded",
       "target": "battle-of-buxar",
-      "why": "The East India Company's rise in Bengal: Plassey, then Buxar."
+      "why": "The East India Company's rise in Bengal: Plassey, then Buxar.",
+      "confidence": "high"
     },
     {
       "source": "battle-of-buxar",
       "type": "preceded",
       "target": "east-india-company-bengal",
-      "why": "After Buxar, the Treaty of Allahabad gave the Company the right to collect Bengal's revenue."
+      "why": "After Buxar, the Treaty of Allahabad gave the Company the right to collect Bengal's revenue.",
+      "confidence": "high"
     },
     {
       "source": "second-anglo-mysore-war",
       "type": "preceded",
       "target": "tipu-sultan-killed",
-      "why": "The Anglo-Mysore Wars: they ended with Tipu Sultan's death at Seringapatam."
+      "why": "The Anglo-Mysore Wars: they ended with Tipu Sultan's death at Seringapatam.",
+      "confidence": "high"
     },
     {
       "source": "world-war-one",
       "type": "preceded",
       "target": "first-world-war-ends",
-      "why": "The First World War, from its outbreak to the armistice."
+      "why": "The First World War, from its outbreak to the armistice.",
+      "confidence": "high"
     },
     {
       "source": "first-world-war-ends",
       "type": "preceded",
       "target": "treaty-of-versailles",
-      "why": "The armistice stopped the fighting; the treaty set the peace terms with Germany."
+      "why": "The armistice stopped the fighting; the treaty set the peace terms with Germany.",
+      "confidence": "high"
     },
     {
       "source": "hitler-rise-chancellor",
       "type": "preceded",
       "target": "world-war-two",
-      "why": "Six years after Hitler took power, Germany's invasion of Poland began the Second World War."
+      "why": "Six years after Hitler took power, Germany's invasion of Poland began the Second World War.",
+      "confidence": "high"
     },
     {
       "source": "world-war-two",
       "type": "preceded",
       "target": "japanese-pearl-harbor",
-      "why": "The Second World War: Pearl Harbor brought the United States into the war."
+      "why": "The Second World War: Pearl Harbor brought the United States into the war.",
+      "confidence": "high"
     },
     {
       "source": "japanese-pearl-harbor",
       "type": "preceded",
       "target": "d-day-normandy",
-      "why": "The Second World War: the Allied invasion of western Europe."
+      "why": "The Second World War: the Allied invasion of western Europe.",
+      "confidence": "high"
     },
     {
       "source": "d-day-normandy",
       "type": "preceded",
       "target": "atomic-bomb-hiroshima",
-      "why": "The Second World War's final year: Germany surrendered in May, and Hiroshima was bombed in August."
+      "why": "The Second World War's final year: Germany surrendered in May, and Hiroshima was bombed in August.",
+      "confidence": "high"
     },
     {
       "source": "atomic-bomb-hiroshima",
       "type": "preceded",
       "target": "japan-world-war-two-defeat",
-      "why": "Japan surrendered days after the bombings of Hiroshima and Nagasaki."
+      "why": "Japan surrendered days after the bombings of Hiroshima and Nagasaki.",
+      "confidence": "high"
     },
     {
       "source": "sputnik-launch",
       "type": "preceded",
       "target": "space-race-yuri-gagarin",
-      "why": "The Space Race: the first satellite, then the first human in space."
+      "why": "The Space Race: the first satellite, then the first human in space.",
+      "confidence": "high"
     },
     {
       "source": "space-race-yuri-gagarin",
       "type": "preceded",
       "target": "moon-landing",
-      "why": "The Space Race: from the first human in orbit to the first humans on the Moon."
+      "why": "The Space Race: from the first human in orbit to the first humans on the Moon.",
+      "confidence": "high"
     },
     {
       "source": "fall-of-roman-empire-west",
       "type": "ended",
       "target": "roman-empire",
-      "why": "Odoacer deposed Romulus Augustulus, ending Roman rule in the West; the eastern half went on as the Byzantine Empire until 1453."
+      "why": "Odoacer deposed Romulus Augustulus, ending Roman rule in the West; the eastern half went on as the Byzantine Empire until 1453.",
+      "confidence": "high"
     },
     {
       "source": "partition-of-bengal",
       "type": "triggered",
       "target": "swadeshi-movement",
-      "why": "The partition of Bengal sparked the Swadeshi boycott of British goods."
+      "why": "The partition of Bengal sparked the Swadeshi boycott of British goods.",
+      "confidence": "high"
     },
     {
       "source": "jallianwala-bagh-massacre",
       "type": "contributed_to",
       "target": "non-cooperation-movement",
-      "why": "The massacre turned Gandhi against British rule and fed support for non-cooperation."
+      "why": "The massacre turned Gandhi against British rule and fed support for non-cooperation.",
+      "confidence": "high"
     },
     {
       "source": "quit-india-movement",
       "type": "contributed_to",
       "target": "indian-independence",
-      "why": "One of several pressures, with the war's cost to Britain, that led to independence."
+      "why": "One of several pressures, with the war's cost to Britain, that led to independence.",
+      "confidence": "medium"
     },
     {
       "source": "indian-rebellion-1857",
       "type": "contributed_to",
       "target": "british-raj",
-      "why": "The rebellion led Britain to end Company rule and govern India directly from 1858."
+      "why": "The rebellion led Britain to end Company rule and govern India directly from 1858.",
+      "confidence": "high"
     },
     {
       "source": "second-battle-of-tarain",
       "type": "enabled",
       "target": "delhi-sultanate",
-      "why": "Muhammad of Ghor's victory opened northern India; his general Aibak founded the Delhi Sultanate."
+      "why": "Muhammad of Ghor's victory opened northern India; his general Aibak founded the Delhi Sultanate.",
+      "confidence": "high"
     },
     {
       "source": "battle-of-plassey",
       "type": "enabled",
       "target": "east-india-company-bengal",
-      "why": "Victory at Plassey made the Company the real power in Bengal, leading to its control of the revenue."
+      "why": "Victory at Plassey made the Company the real power in Bengal, leading to its control of the revenue.",
+      "confidence": "high"
     },
     {
       "source": "operation-blue-star",
       "type": "triggered",
       "target": "indira-gandhi-assassination",
-      "why": "Her Sikh bodyguards assassinated her months after the army's assault on the Golden Temple."
+      "why": "Her Sikh bodyguards assassinated her months after the army's assault on the Golden Temple.",
+      "confidence": "high"
     },
     {
       "source": "opium-trade-china-east-india",
       "type": "contributed_to",
       "target": "opium-wars-china",
-      "why": "The Company's opium trade built the crisis that led to war."
+      "why": "The Company's opium trade built the crisis that led to war.",
+      "confidence": "high"
     },
     {
       "source": "chinese-opium-ban",
       "type": "triggered",
       "target": "opium-wars-china",
-      "why": "Lin Zexu's destruction of British opium in Canton was the immediate cause of the war."
+      "why": "Lin Zexu's destruction of British opium in Canton was the immediate cause of the war.",
+      "confidence": "high"
     },
     {
       "source": "paper-invented-china",
       "type": "enabled",
       "target": "woodblock-printing-china",
-      "why": "Cheap paper made printing worthwhile."
+      "why": "Cheap paper made printing worthwhile.",
+      "confidence": "high"
     },
     {
       "source": "mongol-conquests",
       "type": "enabled",
       "target": "marco-polo-china",
-      "why": "Mongol rule across Eurasia made overland travel from Europe to China possible."
+      "why": "Mongol rule across Eurasia made overland travel from Europe to China possible.",
+      "confidence": "medium"
     },
     {
       "source": "huns-arrive-in-europe",
       "type": "contributed_to",
       "target": "fall-western-roman-empire",
-      "why": "The Huns drove the Goths into Roman territory, starting the migrations that weakened the West."
+      "why": "The Huns drove the Goths into Roman territory, starting the migrations that weakened the West.",
+      "confidence": "medium"
     },
     {
       "source": "gutenberg-printing-press",
       "type": "enabled",
       "target": "protestant-reformation",
-      "why": "Printing spread Luther's writings across Europe within weeks."
+      "why": "Printing spread Luther's writings across Europe within weeks.",
+      "confidence": "high"
     },
     {
       "source": "protestant-reformation",
       "type": "contributed_to",
       "target": "thirty-years-war",
-      "why": "Catholic-Protestant conflict in the Holy Roman Empire was a main cause of the war."
+      "why": "Catholic-Protestant conflict in the Holy Roman Empire was a main cause of the war.",
+      "confidence": "high"
     },
     {
       "source": "columbus-reaches-americas",
       "type": "enabled",
       "target": "spanish-conquest-mexico",
-      "why": "Columbus's voyages opened the Americas to Spanish conquest."
+      "why": "Columbus's voyages opened the Americas to Spanish conquest.",
+      "confidence": "high"
     },
     {
       "source": "vasco-da-gama-india-route",
       "type": "enabled",
       "target": "portuguese-arrive-japan",
-      "why": "The sea route to India began the Portuguese trading network that reached Japan."
+      "why": "The sea route to India began the Portuguese trading network that reached Japan.",
+      "confidence": "medium"
     },
     {
       "source": "kepler-laws-planetary-motion",
       "type": "influenced",
       "target": "newton-laws-of-motion",
-      "why": "Newton's theory of gravitation explained Kepler's laws of planetary motion."
+      "why": "Newton's theory of gravitation explained Kepler's laws of planetary motion.",
+      "confidence": "high"
     },
     {
       "source": "x-rays-discovered",
       "type": "influenced",
       "target": "curie-radioactivity",
-      "why": "Röntgen's X-rays prompted Becquerel's discovery of radioactivity, which Marie Curie took up."
+      "why": "Röntgen's X-rays prompted Becquerel's discovery of radioactivity, which Marie Curie took up.",
+      "confidence": "medium"
     },
     {
       "source": "first-vaccine-smallpox",
       "type": "enabled",
       "target": "smallpox-eradicated",
-      "why": "Vaccination, begun by Jenner, was the tool that eradicated smallpox."
+      "why": "Vaccination, begun by Jenner, was the tool that eradicated smallpox.",
+      "confidence": "high"
     },
     {
       "source": "dna-structure-discovered",
       "type": "enabled",
       "target": "human-genome-project-period",
-      "why": "Knowing DNA's structure was the foundation for reading the human genome."
+      "why": "Knowing DNA's structure was the foundation for reading the human genome.",
+      "confidence": "high"
     },
     {
       "source": "steam-engine-watt",
       "type": "enabled",
       "target": "first-steam-railway",
-      "why": "Efficient steam engines made steam locomotives possible."
+      "why": "Efficient steam engines made steam locomotives possible.",
+      "confidence": "high"
     },
     {
       "source": "boston-tea-party",
       "type": "contributed_to",
       "target": "american-revolution",
-      "why": "Britain's punishing response, the Intolerable Acts, pushed the colonies toward revolution."
+      "why": "Britain's punishing response, the Intolerable Acts, pushed the colonies toward revolution.",
+      "confidence": "high"
     },
     {
       "source": "american-declaration",
       "type": "influenced",
       "target": "french-revolution-declaration",
-      "why": "The American declaration was a model for France's, drafted with Lafayette's help."
+      "why": "The American declaration was a model for France's, drafted with Lafayette's help.",
+      "confidence": "high"
     },
     {
       "source": "haitian-revolution",
       "type": "contributed_to",
       "target": "abolition-slavery-france",
-      "why": "The slave revolt in Saint-Domingue pushed France to abolish slavery in 1794."
+      "why": "The slave revolt in Saint-Domingue pushed France to abolish slavery in 1794.",
+      "confidence": "high"
     },
     {
       "source": "emancipation-proclamation",
       "type": "contributed_to",
       "target": "abolition-slavery-us",
-      "why": "The proclamation made abolition a war aim; the Thirteenth Amendment made it law."
+      "why": "The proclamation made abolition a war aim; the Thirteenth Amendment made it law.",
+      "confidence": "high"
     },
     {
       "source": "world-war-1",
       "type": "contributed_to",
       "target": "russian-revolution",
-      "why": "The war's losses and hardship destroyed support for the Tsar."
+      "why": "The war's losses and hardship destroyed support for the Tsar.",
+      "confidence": "high"
     },
     {
       "source": "treaty-of-versailles",
       "type": "contributed_to",
       "target": "rise-of-nazism",
-      "why": "Resentment of the treaty's terms fuelled Nazi support."
+      "why": "Resentment of the treaty's terms fuelled Nazi support.",
+      "confidence": "high"
     },
     {
       "source": "great-depression",
       "type": "contributed_to",
       "target": "hitler-rise-chancellor",
-      "why": "Mass unemployment turned voters toward the Nazis."
+      "why": "Mass unemployment turned voters toward the Nazis.",
+      "confidence": "high"
     },
     {
       "source": "manhattan-project",
       "type": "enabled",
       "target": "atomic-bomb-hiroshima",
-      "why": "The project built the bomb dropped on Hiroshima."
+      "why": "The project built the bomb dropped on Hiroshima.",
+      "confidence": "high"
     },
     {
       "source": "atomic-bomb-hiroshima",
       "type": "contributed_to",
       "target": "japan-world-war-two-defeat",
-      "why": "The bombings, with the Soviet declaration of war, led Japan to surrender."
+      "why": "The bombings, with the Soviet declaration of war, led Japan to surrender.",
+      "confidence": "high"
     },
     {
       "source": "world-war-2",
       "type": "contributed_to",
       "target": "united-nations-founded",
-      "why": "The war's destruction led the Allies to found the UN to keep the peace."
+      "why": "The war's destruction led the Allies to found the UN to keep the peace.",
+      "confidence": "high"
     },
     {
       "source": "league-of-nations-founded",
       "type": "influenced",
       "target": "united-nations-founded",
-      "why": "The UN was designed to succeed, and improve on, the failed League."
+      "why": "The UN was designed to succeed, and improve on, the failed League.",
+      "confidence": "high"
     },
     {
       "source": "cuban-revolution",
       "type": "contributed_to",
       "target": "cuban-missile-crisis",
-      "why": "Castro's alliance with the Soviet Union brought Soviet missiles to Cuba."
+      "why": "Castro's alliance with the Soviet Union brought Soviet missiles to Cuba.",
+      "confidence": "high"
     },
     {
       "source": "yom-kippur-war",
       "type": "triggered",
       "target": "oil-crisis-1973",
-      "why": "Arab oil producers imposed an embargo on the war's Western supporters."
+      "why": "Arab oil producers imposed an embargo on the war's Western supporters.",
+      "confidence": "high"
     },
     {
       "source": "iranian-revolution",
       "type": "contributed_to",
       "target": "iran-iraq-war",
-      "why": "Saddam Hussein invaded, hoping to exploit post-revolutionary Iran's weakness."
+      "why": "Saddam Hussein invaded, hoping to exploit post-revolutionary Iran's weakness.",
+      "confidence": "high"
     },
     {
       "source": "martin-luther-king-speech",
       "type": "contributed_to",
       "target": "civil-rights-act-us",
-      "why": "The March on Washington built pressure for the civil rights bill."
+      "why": "The March on Washington built pressure for the civil rights bill.",
+      "confidence": "high"
     },
     {
       "source": "jfk-assassination",
       "type": "contributed_to",
       "target": "civil-rights-act-us",
-      "why": "Johnson pushed the bill through as part of Kennedy's legacy."
+      "why": "Johnson pushed the bill through as part of Kennedy's legacy.",
+      "confidence": "medium"
     },
     {
       "source": "gorbachev-becomes-leader",
       "type": "contributed_to",
       "target": "dissolution-soviet-union",
-      "why": "His reforms loosened central control, and the republics broke away."
+      "why": "His reforms loosened central control, and the republics broke away.",
+      "confidence": "high"
     },
     {
       "source": "soviet-afghan-war",
       "type": "contributed_to",
       "target": "dissolution-soviet-union",
-      "why": "The costly war weakened the Soviet economy and its prestige."
+      "why": "The costly war weakened the Soviet economy and its prestige.",
+      "confidence": "medium"
     },
     {
       "source": "berlin-wall-falls",
       "type": "contributed_to",
       "target": "dissolution-soviet-union",
-      "why": "The collapse of communism in Eastern Europe accelerated the Soviet Union's breakup."
+      "why": "The collapse of communism in Eastern Europe accelerated the Soviet Union's breakup.",
+      "confidence": "medium"
     },
     {
       "source": "chernobyl-disaster",
       "type": "contributed_to",
       "target": "dissolution-soviet-union",
-      "why": "The disaster and its cover-up damaged trust in the Soviet system; Gorbachev later called it a cause of the collapse."
+      "why": "The disaster and its cover-up damaged trust in the Soviet system; Gorbachev later called it a cause of the collapse.",
+      "confidence": "medium"
     },
     {
       "source": "internet-invented",
       "type": "enabled",
       "target": "amazon-founded",
-      "why": "The World Wide Web made online retail possible."
+      "why": "The World Wide Web made online retail possible.",
+      "confidence": "high"
     },
     {
       "source": "internet-invented",
       "type": "enabled",
       "target": "google-founded",
-      "why": "Google was built to search the World Wide Web."
+      "why": "Google was built to search the World Wide Web.",
+      "confidence": "high"
     },
     {
       "source": "september-11-attacks",
       "type": "triggered",
       "target": "war-on-terror",
-      "why": "The attacks led the United States to launch the War on Terror."
+      "why": "The attacks led the United States to launch the War on Terror.",
+      "confidence": "high"
     },
     {
       "source": "covid-19-pandemic",
       "type": "triggered",
       "target": "covid-lockdown-india",
-      "why": "India locked down to slow the pandemic's spread."
+      "why": "India locked down to slow the pandemic's spread.",
+      "confidence": "high"
     }
   ]
 }

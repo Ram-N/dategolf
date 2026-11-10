@@ -142,11 +142,24 @@ FORWARD_LABELS = {"part_of": "is part of", "contributed_to": "contributed to", "
                   "contemporary_with": "was contemporary with", "interacted_with": "interacted with"}
 
 
+# How DateFlow's stories use each type (Phase 9): a sequence is never presented as a cause.
+SEQUENCE_TYPES = {"preceded"}
+FRAME_TYPES = {"began", "ended"}  # open or close a span; causal in the db, but shown as framing
+
+
+def story_role(rtype, is_causal):
+    if rtype in SEQUENCE_TYPES:
+        return "sequence"
+    if rtype in FRAME_TYPES:
+        return "frame"
+    return "cause" if is_causal else "context"
+
+
 def render_relationships(conn):
     """Reviewed links between published entities, for DateFlow's Connections (doc 09, Phase 8)."""
     published = f"NOT IN (SELECT id FROM entities WHERE editorial_status = 'proposed')"
     links = conn.execute(f"""
-        SELECT source_entity_id, relationship_type, target_entity_id, description FROM relationships
+        SELECT source_entity_id, relationship_type, target_entity_id, description, confidence FROM relationships
         WHERE editorial_status = 'reviewed' AND source_entity_id {published} AND target_entity_id {published}
         ORDER BY id""").fetchall()
     used = sorted({r[1] for r in links})
@@ -154,9 +167,15 @@ def render_relationships(conn):
     for t in conn.execute(f"SELECT type, inverse_label, is_causal FROM relationship_types "
                           f"WHERE type IN ({','.join('?' * len(used))}) ORDER BY type", used):
         types[t["type"]] = {"label": FORWARD_LABELS.get(t["type"], t["type"].replace("_", " ")),
-                            "inverse": t["inverse_label"], "causal": bool(t["is_causal"])}
-    return dumps({"types": types,
-                  "links": [{"source": s, "type": t, "target": g, "why": w or ""} for s, t, g, w in links]})
+                            "inverse": t["inverse_label"], "causal": bool(t["is_causal"]),
+                            "story": story_role(t["type"], t["is_causal"])}
+    out = []
+    for s, t, g, w, c in links:
+        link = {"source": s, "type": t, "target": g, "why": w or ""}
+        if c:
+            link["confidence"] = c  # medium/low links are shown as debated
+        out.append(link)
+    return dumps({"types": types, "links": out})
 
 
 RENDERERS = {

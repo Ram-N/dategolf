@@ -21,8 +21,9 @@ console.log(`\nValidating ${links.length} links...\n`)
 // 1. Every type has both readings
 for (const [t, def] of Object.entries(types)) {
   if (!def.label || !def.inverse) fail(`Type ${t} needs a label and an inverse`)
+  if (!['cause', 'sequence', 'frame', 'context'].includes(def.story)) fail(`Type ${t} has no story role`)
 }
-pass('Every type has a label and an inverse')
+pass('Every type has a label, an inverse and a story role')
 
 // 2. Every link: known type, both ends exist, not a self-link, has a why
 const seen = new Set()
@@ -32,6 +33,7 @@ for (const l of links) {
   for (const end of [l.source, l.target]) if (!ids.has(end)) fail(`${where}: ${end} is not in events.json or durations.json`)
   if (l.source === l.target) fail(`${where}: links to itself`)
   if (!l.why) fail(`${where}: no why`)
+  if (l.confidence !== undefined && !['high', 'medium', 'low'].includes(l.confidence)) fail(`${where}: bad confidence`)
   if (seen.has(where)) fail(`${where}: duplicate`)
   seen.add(where)
 }

@@ -21,6 +21,7 @@ export interface RelationshipType {
   label: string // read from the source: "is part of"
   inverse: string // read from the target: "includes"
   causal: boolean
+  story: 'cause' | 'sequence' | 'frame' | 'context' // how stories (Phase 9) use it; a sequence is never a cause
 }
 
 export interface Relationship {
@@ -28,6 +29,7 @@ export interface Relationship {
   type: string
   target: string
   why: string
+  confidence?: 'high' | 'medium' | 'low' // medium/low = debated, shown dashed
 }
 
 export interface RelationshipData {
