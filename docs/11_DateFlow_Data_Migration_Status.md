@@ -34,6 +34,14 @@ The data work now feeds new DateFlow experiences. **DateFlow comes back straight
 | 5 | Either order | **v3 event editor** (dashboard, doc 13; reuses `tools/edit.py`) · **link batch 2** (sequences `preceded` plus `ended`, e.g. Meiji Restoration → Tokugawa Shogunate) · **link batch 3** (causal) · **Step 4** (new events for the gaps on the Coverage heatmap) · **sources batch 1** (`data/drafts/sources_batch1.json`, already drafted; doc 12 §4.6d) | Each batch appears in DateFlow as soon as it's reviewed and exported. Load one review queue at a time. |
 | 6 | Later | **DateFlow Phase 9+:** a "what led to this?" chain explorer (needs batch 3), rise and fall of empires, a map mode, smarter daily challenges | See §5 |
 
+**Parked (noted 2026-11-10), to pick up later:**
+- **DatePick range choices** (doc 04 §38). Choices for approximate events become ranges ("4000–3500 BCE"), not single years. **It needs two decisions from you:**
+  1. How wide are the choices? The event's own documented range, or a fixed width per era (e.g. 500-year bands before 1000 BCE)?
+  2. Does a partly overlapping pick count? Strictly right or wrong, or half credit?
+
+  **It also needs data work:** ranges are display text today (`date_display`), so they'd need structured `range_start` / `range_end` years first, ideally backed by sources.
+- **Dashboard v3: the event editor** (doc 13). One form to edit an event's name, year, description, aliases, categories and countries, validated before saving. It's less urgent now: new events arrive through drafts (gap list → Want → drafts), and fixes have CLI tools (`rename`, `set-event-date`, `set-span-years`, `retype-link`). Its value is letting you make one-off edits without Claude. It should also cover adding or editing a single link.
+
 **Done along the way:** Step 5 sources ✅ (2026-11-08: 57 CSV sources in the db, batch 1 drafted). The `ended` link type was added 2026-11-08, after the user rejected "Meiji Restoration is part of the Tokugawa Shogunate": endings aren't part of what they end.
 
 ---
