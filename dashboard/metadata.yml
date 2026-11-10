@@ -118,6 +118,11 @@ databases:
         columns:
           origin: "csv (from events_master.csv) / title_match (the name is the article title) / ai_drafted (picked by Claude)"
 
+      missing_entities:
+        description: "Events and spans noticed as missing during other work. open → wanted → drafted, or dismissed (Review → Missing)."
+        facets: [status, kind, found_while]
+        sort: year
+
       # ── Review views ──────────────────────────────────────────────
       v_country_review:
         description: One row per entity with its countries; anything still proposed comes first.

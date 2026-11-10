@@ -2,10 +2,11 @@
 
 import hashlib
 
+import pandas as pd
 import streamlit as st
 
 from lib import actions
-from lib.db import has_sources, link_sentence, q, source_links, starts_span
+from lib.db import has_sources, has_table, link_sentence, q, source_links, starts_span
 
 st.header("Review", divider=False)
 
@@ -57,12 +58,44 @@ shared = q("""
     ORDER BY n.editorial_status = 'needs_split', e.year""")
 
 proposed_links = q("SELECT * FROM v_link_review WHERE status = 'proposed'")
+def when_text(r) -> str:
+    """'c. 264–241 BCE', '1556', '?': signed years made readable."""
+    if pd.isna(r["year"]):
+        return "?"
+    fmt = lambda y: f"{-int(y)} BCE" if y < 0 else str(int(y))
+    c = "c. " if r["approximate"] == 1 else ""
+    if pd.isna(r["end_year"]):
+        return c + fmt(r["year"])
+    if r["year"] < 0 and r["end_year"] < 0:
+        return f"{c}{-int(r['year'])}–{-int(r['end_year'])} BCE"
+    return f"{c}{fmt(r['year'])}–{fmt(r['end_year'])}"
+
+
+missing_items = q("""SELECT id, status, kind, year, end_year, approximate, name, region, why, found_while,
+                            related_ids, entity_id, note
+    FROM missing_entities ORDER BY status = 'wanted' DESC, coalesce(year, 9999)""") if has_table("missing_entities") \
+    else q("SELECT NULL AS id, NULL AS status WHERE 0")
+if not missing_items.empty:
+    missing_items["when"] = missing_items.apply(when_text, axis=1)
+n_missing = int(missing_items["status"].isin(["open", "wanted"]).sum())
 proposed_sources = (q("SELECT * FROM v_source_review WHERE status = 'proposed'") if has_sources()
                     else q("SELECT NULL AS entity_id WHERE 0"))
 
-t_drafts, t_tags, t_identity, t_links, t_sources, t_fix, t_log = st.tabs([
+TAB_LABELS = [
     f"Event drafts ({len(drafts)})", f"Country tags ({len(tags)})", f"Identity, Step 3a ({len(shared)})",
-    f"Links ({len(proposed_links)})", f"Sources ({len(proposed_sources)})", "Fix any country tags", "Decision log"])
+    f"Links ({len(proposed_links)})", f"Sources ({len(proposed_sources)})", f"Missing ({n_missing})",
+    "Fix any country tags", "Decision log"]
+# Stay on the same tab after an action. The counts in the labels change, so remember the name without them,
+# and key the widget on the labels (a changed label is a new widget, opened on the remembered tab).
+tab_name = lambda label: label.split(" (")[0]
+tabs_key = "review_tabs_" + hashlib.sha1("|".join(TAB_LABELS).encode()).hexdigest()[:8]
+# The default is fixed when this widget is first made: changing it on a later run would reset the tab.
+remembered = st.session_state.setdefault(
+    tabs_key + ":default", next((l for l in TAB_LABELS if tab_name(l) == st.session_state.get("review_tab")), None))
+t_drafts, t_tags, t_identity, t_links, t_sources, t_missing, t_fix, t_log = st.tabs(
+    TAB_LABELS, default=remembered, key=tabs_key, on_change="rerun")
+if st.session_state.get(tabs_key):
+    st.session_state["review_tab"] = tab_name(st.session_state[tabs_key])
 
 # ── Event drafts ─────────────────────────────────────────────────────────────
 with t_drafts:
@@ -246,6 +279,41 @@ with t_sources:
                      help="Is this the article about this event or span? Exact name matches are listed last: "
                           "skim them, then approve in bulk. Open a link to check."):
             finish("Approve exact name matches", actions.approve_sources([], True))
+
+# ── Missing events and spans ─────────────────────────────────────────────────
+with t_missing:
+    if missing_items.empty:
+        st.success("Nothing on the list. Claude adds gaps it notices with `load-missing`.")
+    else:
+        c1, c2, c3, f1 = st.columns([1, 1, 1, 3], vertical_alignment="center")
+        view_as = f1.radio("Show", ["To decide", "Wanted", "Done"], horizontal=True, label_visibility="collapsed",
+                           help="Gaps noticed during other work. **Want** = ask Claude to draft it (it then "
+                                "arrives in Event drafts); **Dismiss** = not worth adding, with a reason.")
+        shown = {"To decide": missing_items["status"] == "open", "Wanted": missing_items["status"] == "wanted",
+                 "Done": missing_items["status"].isin(["drafted", "dismissed"])}[view_as]
+        picked = selectable(missing_items[shown], "missing",
+                            ["kind", "when", "name", "region", "why", "note"], id_col="id")
+        if len(picked) == 1:
+            d = picked.iloc[0]
+            with st.container(border=True):
+                st.markdown(f"**{d['name']}** ({d['kind']}, {d['when']}) — {d['why']}")
+                st.caption(f"Would link to: {d['related_ids'] or '—'} · found while {d['found_while'] or '—'}"
+                           + (f" · drafted as `{d['entity_id']}`" if d["entity_id"] else ""))
+        ids = [int(i) for i in picked["id"]]
+        if c1.button(f"Want ({len(ids)})", disabled=not ids, type="primary", key="want_missing", width="stretch"):
+            finish("Marked wanted", actions.set_missing_status(ids, "wanted"))
+
+        @st.dialog("Dismiss")
+        def dismiss_missing_dialog(ids):
+            st.write(f"Take {len(ids)} item(s) off the list.")
+            reason = st.text_input("Reason (recorded)")
+            if st.button("Dismiss", type="primary", disabled=not reason.strip()):
+                finish("Dismissed", actions.set_missing_status(ids, "dismissed", reason))
+
+        if c2.button(f"Dismiss ({len(ids)})…", disabled=not ids, key="dismiss_missing", width="stretch"):
+            dismiss_missing_dialog(ids)
+        if c3.button(f"Back to open ({len(ids)})", disabled=not ids, key="reopen_missing", width="stretch"):
+            finish("Reopened", actions.set_missing_status(ids, "open"))
 
 # ── Fix any country tags ─────────────────────────────────────────────────────
 with t_fix:

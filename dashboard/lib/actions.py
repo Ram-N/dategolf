@@ -18,6 +18,7 @@ import exporter  # noqa: E402
 import identity  # noqa: E402
 import links  # noqa: E402
 import manage  # noqa: E402
+import missing  # noqa: E402
 import sources  # noqa: E402
 import validate  # noqa: E402
 
@@ -88,6 +89,10 @@ def approve_links(ids):
 
 def reject_links(ids, reason):
     return _run(links.reject, ids, reason, "dashboard")
+
+
+def set_missing_status(ids, status, note=None):
+    return _run(missing.set_status, ids, status, note, "dashboard")
 
 
 def approve_sources(ids, title_matches=False):

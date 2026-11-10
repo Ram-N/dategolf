@@ -113,6 +113,10 @@ def bin_label(start: int, size: int) -> str:
     return f"{fmt(start or 1)}–{fmt(end)}"  # no year 0
 
 
+def has_table(name: str) -> bool:
+    return bool(scalar("SELECT count(*) FROM sqlite_master WHERE name = ?", name))
+
+
 def has_sources() -> bool:
     """Step 5's tables exist (any tools/ write, e.g. import-csv-sources, creates them)."""
     return bool(scalar("SELECT count(*) FROM sqlite_master WHERE name = 'v_source_review'"))
