@@ -27,6 +27,7 @@ APP_FILES = {
     "eras.json": "src/data/eras.json",
     "daily_challenges.json": "public/data/daily_challenges.json",
     "regions.json": "src/data/regions.json",
+    "relationships.json": "src/data/relationships.json",  # links (Step 3c); no legacy original
 }
 LEGACY_CSV = "events_master.csv"
 

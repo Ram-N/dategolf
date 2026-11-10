@@ -67,7 +67,8 @@ def compare_export(_args):
         print(f"  ✗ {LEGACY_CSV} does not rebuild identically")
 
     # These check data rules, not export fidelity, so they don't count as differences.
-    for script in ("scripts/validate-events.cjs", "scripts/validate-durations.cjs"):
+    for script in ("scripts/validate-events.cjs", "scripts/validate-durations.cjs",
+                   "scripts/validate-relationships.cjs"):
         proc = subprocess.run(["node", script], cwd=ROOT, capture_output=True, text=True)
         if proc.returncode == 0:
             print(f"  ✓ {script} passes")

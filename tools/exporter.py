@@ -137,6 +137,28 @@ def render_csv(conn):
     return buf.getvalue()
 
 
+# How a link reads from its source; the inverse (from the target) is relationship_types.inverse_label.
+FORWARD_LABELS = {"part_of": "is part of", "contributed_to": "contributed to", "evolved_into": "evolved into",
+                  "contemporary_with": "was contemporary with", "interacted_with": "interacted with"}
+
+
+def render_relationships(conn):
+    """Reviewed links between published entities, for DateFlow's Connections (doc 09, Phase 8)."""
+    published = f"NOT IN (SELECT id FROM entities WHERE editorial_status = 'proposed')"
+    links = conn.execute(f"""
+        SELECT source_entity_id, relationship_type, target_entity_id, description FROM relationships
+        WHERE editorial_status = 'reviewed' AND source_entity_id {published} AND target_entity_id {published}
+        ORDER BY id""").fetchall()
+    used = sorted({r[1] for r in links})
+    types = {}
+    for t in conn.execute(f"SELECT type, inverse_label, is_causal FROM relationship_types "
+                          f"WHERE type IN ({','.join('?' * len(used))}) ORDER BY type", used):
+        types[t["type"]] = {"label": FORWARD_LABELS.get(t["type"], t["type"].replace("_", " ")),
+                            "inverse": t["inverse_label"], "causal": bool(t["is_causal"])}
+    return dumps({"types": types,
+                  "links": [{"source": s, "type": t, "target": g, "why": w or ""} for s, t, g, w in links]})
+
+
 RENDERERS = {
     "events.json": render_events,
     "durations.json": render_durations,
@@ -145,6 +167,7 @@ RENDERERS = {
     "eras.json": render_eras,
     "daily_challenges.json": render_daily,
     "regions.json": render_regions,
+    "relationships.json": render_relationships,
 }
 
 
