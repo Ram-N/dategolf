@@ -327,6 +327,8 @@ git add data && git commit -m "data: review part_of link batch" && git push
 ```
 (Or ask Claude.) Then tell Claude to draft the next batch.
 
+**Approved links reach DateFlow on the next export.** Run `npm run data:export`, which writes `src/data/relationships.json` (reviewed links only), and they appear in the cards' Connections section. No code change is needed for a new link type: its labels come from `relationship_types`.
+
 #### Undo
 
 - **Before committing:** `git checkout -- data/dategolf.db` restores the database to the last commit.

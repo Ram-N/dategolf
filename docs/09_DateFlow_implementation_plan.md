@@ -16,7 +16,7 @@
 | 5 | Category filters + importance control | ✅ Done |
 | 6 | Exploration: "what was happening elsewhere?", period select, density | ✅ Done |
 | 7 | Games built on the timeline | ✅ Done |
-| 8 | Connections: links between events and spans on the cards and the timeline | 📝 Planned 2026-11-08, awaiting "go" |
+| 8 | Connections: links between events and spans on the cards and the timeline | ✅ Done 2026-11-10 |
 
 **Decisions made with Ram (2026-11-01)**
 - Durations come from ChronoLogic's periods (`../ChronoLogic/public/data/events.json`), plus about 25–30 empires and dynasties we add ourselves.
@@ -301,7 +301,16 @@ Decisions with Ram (2026-11-01): a **Play hub inside DateFlow**, **daily + pract
   - edge year labels were clipped
 - **Possible next steps:** streaks and stats per game (like DatePick), a combined "daily five" score, difficulty presets, and putting the order game directly on the big timeline.
 
-## Phase 8 — Connections 📝 (planned 2026-11-08, awaiting "go")
+## Phase 8 — Connections ✅ (planned 2026-11-08, built 2026-11-10)
+
+**As built (differences from the plan below):**
+- **8a:** `relationships.json` has 146 reviewed links (95 `part_of`, 36 `began`, 15 `ended`). `began` and `ended` were added during the review.
+- **8b:** `src/engine/dateflow/connections.ts` (`connectionsFor`, `connectedIds`). The card order is: Is part of → Began → Ended → Began with → Was ended by → sequences → other types → **Includes** last.
+- **8c:** `EventConnections.vue` sits above "Before & after" on the event card and after the description on the span card (which follows the theme). Each row shows the other end's year or span, its name and the "why".
+- **8d, changed:** a highlight *while a card is open* would sit behind the card's dark overlay, so there's a **"Show these connections on the timeline"** button instead. It closes the card, frames the entity and its links, rings them and dims the rest. Highlighted items claim label space first; any still without room show as ringed dots. A banner ("Connections of X are ringed · Clear") stays until Clear or Escape.
+- **Tests:** connections tests on toy data, plus every exported link resolving from both ends. The play-test (Playwright) covered the Mughal Empire, clicking through to Babur, Apartheid in the light theme, Trafalgar's highlight, and a link-less event showing no section, with no console errors.
+
+### Original plan
 
 **Goal:** DateFlow's first use of the links curated in the data work (doc 11, Step 3b). When you open an event or a span, you see what it's connected to and can click through: *"First Battle of Panipat is part of the Mughal Empire"*, and from the empire's side, *"Mughal Empire includes Babur Founds the Mughal Empire, First Battle of Panipat, Humayun Succeeds Babur…"* That turns the timeline from "what happened when" into "how things fit together".
 
