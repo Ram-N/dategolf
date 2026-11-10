@@ -10,12 +10,14 @@ Draft file shape (JSON):
    "csv_triage": [{csv_event_id, outcome, related_entity_id?, note?}, ...]}
 `source` is a Wikipedia URL. It loads as a proposed source and is approved with its draft.
 `countries` lists location codes, primary first; they load as proposed tags (approve-countries).
+`fills_missing` (an id from missing_entities) marks that item drafted, pointing at this draft.
 """
 
 import json
 import sqlite3
 from pathlib import Path
 
+import missing
 import sources
 from common import connect, ensure_schema, log
 
@@ -42,6 +44,8 @@ def load(path):
                              [(e["id"], i, c) for i, c in enumerate(e["categories"])])
             ins("INSERT INTO entity_provenance VALUES (?, ?, ?, ?)",
                 (e["id"], origin, e.get("csv_event_id"), e.get("note")))
+            if e.get("fills_missing"):
+                missing.mark_drafted(conn, e["fills_missing"], e["id"])
             if e.get("source"):
                 if not e["source"].startswith("https://"):
                     raise sqlite3.IntegrityError(f"{e['id']}: source must be an https URL")
@@ -61,6 +65,8 @@ def load(path):
                              "VALUES (?, ?, ?, 'high', 'proposed', 'location')",
                              [(t["id"], i, c) for i, c in enumerate(t.get("countries", []))])
             ins("INSERT INTO entity_provenance VALUES (?, ?, NULL, ?)", (t["id"], origin, t.get("note")))
+            if t.get("fills_missing"):
+                missing.mark_drafted(conn, t["fills_missing"], t["id"])
             if t.get("source"):
                 sources.attach(conn, t["id"], sources.title_from_url(t["source"]), t["source"],
                                "proposed", "ai_drafted")

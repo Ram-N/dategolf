@@ -12,6 +12,7 @@ import edit
 import exporter
 import identity
 import links
+import missing
 import reconcile
 import sources
 import validate
@@ -302,6 +303,16 @@ def main():
     p.add_argument("ids", nargs="+")
     p.add_argument("--reason", required=True)
     p.set_defaults(fn=lambda a: sources.reject(a.ids, a.reason))
+
+    p = sub.add_parser("load-missing", help="Add noticed-but-missing events and spans to the list (all-or-nothing)")
+    p.add_argument("path")
+    p.set_defaults(fn=lambda a: missing.load(a.path))
+
+    p = sub.add_parser("missing-status", help="Mark missing items wanted, dismissed (with --note) or open")
+    p.add_argument("ids", nargs="+", type=int)
+    p.add_argument("--status", required=True, choices=["open", "wanted", "dismissed"])
+    p.add_argument("--note", help="Why (required to dismiss)")
+    p.set_defaults(fn=lambda a: missing.set_status(a.ids, a.status, a.note))
 
     p = sub.add_parser("load-countries", help="Load drafted country tags as proposed")
     p.add_argument("path")

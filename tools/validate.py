@@ -115,6 +115,9 @@ CHECKS = [
     ("review", "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
      "SELECT id, source_id || ' ' || type || ' ' || target_id || coalesce(' — ' || why, '') "
      "FROM v_link_review WHERE status = 'proposed'"),
+    ("review", "Missing events and spans to decide (dashboard Review → Missing)",
+     "SELECT id, kind || ' · ' || name || coalesce(' (' || year || ')', '') || ' · ' || status "
+     "FROM missing_entities WHERE status IN ('open', 'wanted') ORDER BY status DESC, year"),
     ("review", "Shared ids flagged for a split (Step 3a; do the split with Claude)",
      "SELECT id, primary_type FROM entities WHERE editorial_status = 'needs_split'"),
     ("review", "Country tags awaiting review (manage.py approve-countries)",

@@ -371,6 +371,28 @@ LEFT JOIN events e ON e.entity_id = x.entity_id
 LEFT JOIN time_spans s ON s.entity_id = x.entity_id AND e.entity_id IS NULL
 ORDER BY x.status = 'reviewed', x.origin = 'title_match', x.confidence = 'high', coalesce(e.year, s.start_year);
 
+-- ── Missing events and spans (noticed, not yet drafted) ─────────────────────
+
+-- A to-do list of gaps spotted during other work, e.g. "Death of Akbar exists, his accession doesn't".
+-- open → wanted (the user wants it drafted) → drafted (entity_id = the draft), or dismissed (with a note).
+CREATE TABLE IF NOT EXISTS missing_entities (
+  id          INTEGER PRIMARY KEY,
+  kind        TEXT NOT NULL CHECK (kind IN ('event', 'span')),
+  name        TEXT NOT NULL,
+  year        INTEGER CHECK (year IS NULL OR year <> 0),          -- the event's year, or the span's start
+  end_year    INTEGER CHECK (end_year IS NULL OR end_year <> 0),  -- spans only
+  approximate INTEGER CHECK (approximate IS NULL OR approximate = 1),
+  region      TEXT,
+  why         TEXT NOT NULL,                                       -- why it matters, what it would link to
+  found_while TEXT,                                                -- e.g. "link batch 2"
+  related_ids TEXT,                                                -- existing ids it would link to, space-separated
+  status      TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open', 'wanted', 'drafted', 'dismissed')),
+  entity_id   TEXT REFERENCES entities(id) ON DELETE SET NULL,     -- the draft that filled it
+  note        TEXT,
+  created_at  TEXT DEFAULT (datetime('now')),
+  UNIQUE (kind, name)
+);
+
 -- ── Change tracking ─────────────────────────────────────────────────────────
 
 CREATE TRIGGER IF NOT EXISTS events_touch AFTER UPDATE ON events BEGIN

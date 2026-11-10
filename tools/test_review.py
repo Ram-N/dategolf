@@ -26,6 +26,7 @@ import countries  # noqa: E402
 import drafts  # noqa: E402
 import edit  # noqa: E402
 import identity  # noqa: E402
+import missing  # noqa: E402
 
 
 def quiet(fn, *args, **kwargs):
@@ -153,6 +154,37 @@ class TestAccuracyTools(unittest.TestCase):
         self.assertEqual(quiet(edit.rename_memory_aid_group, entity, label, "Test label", via="test"), 0)
         self.assertEqual(quiet(edit.rename_memory_aid_group, entity, "no such", "x", via="test"), 1)
         self.assertEqual(quiet(edit.set_memory_aid, 999999, "x", via="test"), 1)
+
+
+class TestMissing(unittest.TestCase):
+    def batch(self, *items, name="missing"):
+        path = TMP / f"{name}.json"
+        path.write_text(json.dumps({"found_while": "test", "items": list(items)}))
+        return path
+
+    def test_load_status_and_fill(self):
+        item = {"kind": "event", "name": "Test Akbar Accession", "year": 1556, "why": "Pairs with Death of Akbar.",
+                "related_ids": ["death-of-akbar"]}
+        self.assertEqual(quiet(missing.load, self.batch(item, name="m1")), 0)
+        item_id = db().execute("SELECT id FROM missing_entities WHERE name = 'Test Akbar Accession'").fetchone()[0]
+        self.assertEqual(quiet(missing.load, self.batch(item, name="m2")), 1)  # already listed
+        self.assertEqual(quiet(missing.set_status, [item_id], "wanted", via="test"), 0)
+        self.assertEqual(quiet(missing.set_status, [item_id], "dismissed", via="test"), 1)  # needs a reason
+        path = TMP / "fill.json"
+        path.write_text(json.dumps({"origin": "test", "events": [{
+            "id": "test-akbar-accession", "name": "Test Akbar Accession", "year": 1556, "categories": ["Politics"],
+            "region": "South Asia", "aliases": [], "description": "A test.", "difficulty": "hard", "importance": 1,
+            "fills_missing": item_id}]}))
+        quiet(drafts.load, path)
+        self.assertEqual(db().execute("SELECT status, entity_id FROM missing_entities WHERE id = ?", (item_id,)
+                                      ).fetchone(), ("drafted", "test-akbar-accession"))
+
+    def test_refuses_bad_items(self):
+        existing = db().execute("SELECT name FROM events LIMIT 1").fetchone()[0]
+        self.assertEqual(quiet(missing.load, self.batch({"kind": "event", "name": existing, "why": "x"}, name="m3")), 1)
+        self.assertEqual(quiet(missing.load, self.batch({"kind": "battle", "name": "X", "why": "x"}, name="m4")), 1)
+        self.assertEqual(quiet(missing.load, self.batch({"kind": "event", "name": "Y", "year": 0, "why": "x"},
+                                                        name="m5")), 1)
 
 
 class TestSpanDrafts(unittest.TestCase):
