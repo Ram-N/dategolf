@@ -13,3 +13,24 @@ export interface Duration {
   kind: 'empire' | 'period'
   approximate?: boolean // start/end are traditional or disputed dates
 }
+
+// ── Relationships ─────────────────────────────────────────────────────────────
+// Reviewed links between events and spans. Source: src/data/relationships.json
+// (generated from the db; validate with scripts/validate-relationships.cjs).
+export interface RelationshipType {
+  label: string // read from the source: "is part of"
+  inverse: string // read from the target: "includes"
+  causal: boolean
+}
+
+export interface Relationship {
+  source: string
+  type: string
+  target: string
+  why: string
+}
+
+export interface RelationshipData {
+  types: Record<string, RelationshipType>
+  links: Relationship[]
+}
