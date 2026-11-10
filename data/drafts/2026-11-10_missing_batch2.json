@@ -1,0 +1,21 @@
+{"found_while": "2026-11-10: drafting causal link batch 3",
+ "items": [
+  {"kind": "event", "name": "Assassination of Archduke Franz Ferdinand", "year": 1914, "region": "Europe",
+   "why": "The immediate trigger of the First World War; nothing can 'trigger' WWI now (World War One Begins only mentions it).",
+   "related_ids": ["world-war-one", "world-war-1"]},
+  {"kind": "span", "name": "Thirty Years' War", "year": 1618, "end_year": 1648, "region": "Europe",
+   "why": "Exists only as the 1618 event 'Thirty Years War Begins', so the Peace of Westphalia can't 'end' it and the Reformation's link points at a single year.",
+   "related_ids": ["thirty-years-war", "signing-of-treaty-westphalia", "protestant-reformation"]},
+  {"kind": "span", "name": "Hundred Years' War", "year": 1337, "end_year": 1453, "region": "Europe",
+   "why": "Exists only as the 1337 event, so Joan of Arc can't be 'part of' it. (Could be a Step 3a-style shared id with the event.)",
+   "related_ids": ["hundred-years-war", "joan-of-arc-burned"]},
+  {"kind": "event", "name": "Intolerable Acts", "year": 1774, "region": "Americas",
+   "why": "Britain's response to the Boston Tea Party, the real link between it and the Revolution.",
+   "related_ids": ["boston-tea-party", "american-revolution"]},
+  {"kind": "event", "name": "Voting Rights Act of 1965", "year": 1965, "region": "Americas",
+   "why": "The Selma marches led to it; the civil rights story stops at the 1964 Act now.",
+   "related_ids": ["us-civil-rights-march-selma", "civil-rights-act-us", "civil-rights-movement"]},
+  {"kind": "event", "name": "Greek Alphabet Adapted from Phoenician", "year": -800, "approximate": true, "region": "Europe",
+   "why": "Would let the Phoenician alphabet 'influence' the Greek one, and through it the Latin alphabet.",
+   "related_ids": ["phoenician-alphabet-invented"]}
+ ]}

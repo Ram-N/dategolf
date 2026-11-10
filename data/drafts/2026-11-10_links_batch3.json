@@ -1,0 +1,321 @@
+{
+ "origin": "ai_drafted",
+ "about": "Link batch 3 (2026-11-10): causal links. triggered = immediate spark; contributed_to = one factor of several; enabled = made possible, not the motive; influenced = ideas. Medium = debated or one view among several.",
+ "links": [
+  {
+   "source": "partition-of-bengal",
+   "type": "triggered",
+   "target": "swadeshi-movement",
+   "confidence": "high",
+   "why": "The partition of Bengal sparked the Swadeshi boycott of British goods."
+  },
+  {
+   "source": "jallianwala-bagh-massacre",
+   "type": "contributed_to",
+   "target": "non-cooperation-movement",
+   "confidence": "high",
+   "why": "The massacre turned Gandhi against British rule and fed support for non-cooperation."
+  },
+  {
+   "source": "quit-india-movement",
+   "type": "contributed_to",
+   "target": "indian-independence",
+   "confidence": "medium",
+   "why": "One of several pressures, with the war's cost to Britain, that led to independence."
+  },
+  {
+   "source": "indian-rebellion-1857",
+   "type": "contributed_to",
+   "target": "british-raj",
+   "confidence": "high",
+   "why": "The rebellion led Britain to end Company rule and govern India directly from 1858."
+  },
+  {
+   "source": "second-battle-of-tarain",
+   "type": "enabled",
+   "target": "delhi-sultanate",
+   "confidence": "high",
+   "why": "Muhammad of Ghor's victory opened northern India; his general Aibak founded the Delhi Sultanate."
+  },
+  {
+   "source": "battle-of-plassey",
+   "type": "enabled",
+   "target": "east-india-company-bengal",
+   "confidence": "high",
+   "why": "Victory at Plassey made the Company the real power in Bengal, leading to its control of the revenue."
+  },
+  {
+   "source": "operation-blue-star",
+   "type": "triggered",
+   "target": "indira-gandhi-assassination",
+   "confidence": "high",
+   "why": "Her Sikh bodyguards assassinated her months after the army's assault on the Golden Temple."
+  },
+  {
+   "source": "opium-trade-china-east-india",
+   "type": "contributed_to",
+   "target": "opium-wars-china",
+   "confidence": "high",
+   "why": "The Company's opium trade built the crisis that led to war."
+  },
+  {
+   "source": "chinese-opium-ban",
+   "type": "triggered",
+   "target": "opium-wars-china",
+   "confidence": "high",
+   "why": "Lin Zexu's destruction of British opium in Canton was the immediate cause of the war."
+  },
+  {
+   "source": "paper-invented-china",
+   "type": "enabled",
+   "target": "woodblock-printing-china",
+   "confidence": "high",
+   "why": "Cheap paper made printing worthwhile."
+  },
+  {
+   "source": "mongol-conquests",
+   "type": "enabled",
+   "target": "marco-polo-china",
+   "confidence": "medium",
+   "why": "Mongol rule across Eurasia made overland travel from Europe to China possible."
+  },
+  {
+   "source": "huns-arrive-in-europe",
+   "type": "contributed_to",
+   "target": "fall-western-roman-empire",
+   "confidence": "medium",
+   "why": "The Huns drove the Goths into Roman territory, starting the migrations that weakened the West."
+  },
+  {
+   "source": "gutenberg-printing-press",
+   "type": "enabled",
+   "target": "protestant-reformation",
+   "confidence": "high",
+   "why": "Printing spread Luther's writings across Europe within weeks."
+  },
+  {
+   "source": "protestant-reformation",
+   "type": "contributed_to",
+   "target": "thirty-years-war",
+   "confidence": "high",
+   "why": "Catholic-Protestant conflict in the Holy Roman Empire was a main cause of the war."
+  },
+  {
+   "source": "columbus-reaches-americas",
+   "type": "enabled",
+   "target": "spanish-conquest-mexico",
+   "confidence": "high",
+   "why": "Columbus's voyages opened the Americas to Spanish conquest."
+  },
+  {
+   "source": "vasco-da-gama-india-route",
+   "type": "enabled",
+   "target": "portuguese-arrive-japan",
+   "confidence": "medium",
+   "why": "The sea route to India began the Portuguese trading network that reached Japan."
+  },
+  {
+   "source": "kepler-laws-planetary-motion",
+   "type": "influenced",
+   "target": "newton-laws-of-motion",
+   "confidence": "high",
+   "why": "Newton's theory of gravitation explained Kepler's laws of planetary motion."
+  },
+  {
+   "source": "x-rays-discovered",
+   "type": "influenced",
+   "target": "curie-radioactivity",
+   "confidence": "medium",
+   "why": "Röntgen's X-rays prompted Becquerel's discovery of radioactivity, which Marie Curie took up."
+  },
+  {
+   "source": "first-vaccine-smallpox",
+   "type": "enabled",
+   "target": "smallpox-eradicated",
+   "confidence": "high",
+   "why": "Vaccination, begun by Jenner, was the tool that eradicated smallpox."
+  },
+  {
+   "source": "dna-structure-discovered",
+   "type": "enabled",
+   "target": "human-genome-project-period",
+   "confidence": "high",
+   "why": "Knowing DNA's structure was the foundation for reading the human genome."
+  },
+  {
+   "source": "steam-engine-watt",
+   "type": "enabled",
+   "target": "first-steam-railway",
+   "confidence": "high",
+   "why": "Efficient steam engines made steam locomotives possible."
+  },
+  {
+   "source": "boston-tea-party",
+   "type": "contributed_to",
+   "target": "american-revolution",
+   "confidence": "high",
+   "why": "Britain's punishing response, the Intolerable Acts, pushed the colonies toward revolution."
+  },
+  {
+   "source": "american-declaration",
+   "type": "influenced",
+   "target": "french-revolution-declaration",
+   "confidence": "high",
+   "why": "The American declaration was a model for France's, drafted with Lafayette's help."
+  },
+  {
+   "source": "haitian-revolution",
+   "type": "contributed_to",
+   "target": "abolition-slavery-france",
+   "confidence": "high",
+   "why": "The slave revolt in Saint-Domingue pushed France to abolish slavery in 1794."
+  },
+  {
+   "source": "emancipation-proclamation",
+   "type": "contributed_to",
+   "target": "abolition-slavery-us",
+   "confidence": "high",
+   "why": "The proclamation made abolition a war aim; the Thirteenth Amendment made it law."
+  },
+  {
+   "source": "world-war-1",
+   "type": "contributed_to",
+   "target": "russian-revolution",
+   "confidence": "high",
+   "why": "The war's losses and hardship destroyed support for the Tsar."
+  },
+  {
+   "source": "treaty-of-versailles",
+   "type": "contributed_to",
+   "target": "rise-of-nazism",
+   "confidence": "high",
+   "why": "Resentment of the treaty's terms fuelled Nazi support."
+  },
+  {
+   "source": "great-depression",
+   "type": "contributed_to",
+   "target": "hitler-rise-chancellor",
+   "confidence": "high",
+   "why": "Mass unemployment turned voters toward the Nazis."
+  },
+  {
+   "source": "manhattan-project",
+   "type": "enabled",
+   "target": "atomic-bomb-hiroshima",
+   "confidence": "high",
+   "why": "The project built the bomb dropped on Hiroshima."
+  },
+  {
+   "source": "atomic-bomb-hiroshima",
+   "type": "contributed_to",
+   "target": "japan-world-war-two-defeat",
+   "confidence": "high",
+   "why": "The bombings, with the Soviet declaration of war, led Japan to surrender."
+  },
+  {
+   "source": "world-war-2",
+   "type": "contributed_to",
+   "target": "united-nations-founded",
+   "confidence": "high",
+   "why": "The war's destruction led the Allies to found the UN to keep the peace."
+  },
+  {
+   "source": "league-of-nations-founded",
+   "type": "influenced",
+   "target": "united-nations-founded",
+   "confidence": "high",
+   "why": "The UN was designed to succeed, and improve on, the failed League."
+  },
+  {
+   "source": "cuban-revolution",
+   "type": "contributed_to",
+   "target": "cuban-missile-crisis",
+   "confidence": "high",
+   "why": "Castro's alliance with the Soviet Union brought Soviet missiles to Cuba."
+  },
+  {
+   "source": "yom-kippur-war",
+   "type": "triggered",
+   "target": "oil-crisis-1973",
+   "confidence": "high",
+   "why": "Arab oil producers imposed an embargo on the war's Western supporters."
+  },
+  {
+   "source": "iranian-revolution",
+   "type": "contributed_to",
+   "target": "iran-iraq-war",
+   "confidence": "high",
+   "why": "Saddam Hussein invaded, hoping to exploit post-revolutionary Iran's weakness."
+  },
+  {
+   "source": "martin-luther-king-speech",
+   "type": "contributed_to",
+   "target": "civil-rights-act-us",
+   "confidence": "high",
+   "why": "The March on Washington built pressure for the civil rights bill."
+  },
+  {
+   "source": "jfk-assassination",
+   "type": "contributed_to",
+   "target": "civil-rights-act-us",
+   "confidence": "medium",
+   "why": "Johnson pushed the bill through as part of Kennedy's legacy."
+  },
+  {
+   "source": "gorbachev-becomes-leader",
+   "type": "contributed_to",
+   "target": "dissolution-soviet-union",
+   "confidence": "high",
+   "why": "His reforms loosened central control, and the republics broke away."
+  },
+  {
+   "source": "soviet-afghan-war",
+   "type": "contributed_to",
+   "target": "dissolution-soviet-union",
+   "confidence": "medium",
+   "why": "The costly war weakened the Soviet economy and its prestige."
+  },
+  {
+   "source": "berlin-wall-falls",
+   "type": "contributed_to",
+   "target": "dissolution-soviet-union",
+   "confidence": "medium",
+   "why": "The collapse of communism in Eastern Europe accelerated the Soviet Union's breakup."
+  },
+  {
+   "source": "chernobyl-disaster",
+   "type": "contributed_to",
+   "target": "dissolution-soviet-union",
+   "confidence": "medium",
+   "why": "The disaster and its cover-up damaged trust in the Soviet system; Gorbachev later called it a cause of the collapse."
+  },
+  {
+   "source": "internet-invented",
+   "type": "enabled",
+   "target": "amazon-founded",
+   "confidence": "high",
+   "why": "The World Wide Web made online retail possible."
+  },
+  {
+   "source": "internet-invented",
+   "type": "enabled",
+   "target": "google-founded",
+   "confidence": "high",
+   "why": "Google was built to search the World Wide Web."
+  },
+  {
+   "source": "september-11-attacks",
+   "type": "triggered",
+   "target": "war-on-terror",
+   "confidence": "high",
+   "why": "The attacks led the United States to launch the War on Terror."
+  },
+  {
+   "source": "covid-19-pandemic",
+   "type": "triggered",
+   "target": "covid-lockdown-india",
+   "confidence": "high",
+   "why": "India locked down to slow the pandemic's spread."
+  }
+ ]
+}
