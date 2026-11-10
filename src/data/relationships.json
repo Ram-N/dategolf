@@ -14,6 +14,11 @@
       "label": "is part of",
       "inverse": "includes",
       "causal": false
+    },
+    "preceded": {
+      "label": "preceded",
+      "inverse": "followed",
+      "causal": false
     }
   },
   "links": [
@@ -31,9 +36,9 @@
     },
     {
       "source": "human-genome-project",
-      "type": "part_of",
+      "type": "ended",
       "target": "human-genome-project-period",
-      "why": "'Human Genome Project Completed' is a moment within 'Human Genome Project' (created by the split)."
+      "why": "The project was completed with a finished sequence of the human genome."
     },
     {
       "source": "maya-classic-period",
@@ -49,9 +54,9 @@
     },
     {
       "source": "egyptian-pyramids-built",
-      "type": "part_of",
+      "type": "ended",
       "target": "construction-great-pyramid",
-      "why": "The completion of the building work on the Great Pyramid."
+      "why": "Completing the building work brought the construction to its end."
     },
     {
       "source": "great-wall-china",
@@ -103,9 +108,9 @@
     },
     {
       "source": "iran-islamic-revolution",
-      "type": "part_of",
+      "type": "ended",
       "target": "iranian-revolution",
-      "why": "The revolution's victory, the climax of the span."
+      "why": "The founding of the Islamic Republic completed the revolution."
     },
     {
       "source": "birth-of-buddha",
@@ -121,9 +126,9 @@
     },
     {
       "source": "first-world-war-ends",
-      "type": "part_of",
+      "type": "ended",
       "target": "world-war-1",
-      "why": "The armistice that ends the First World War."
+      "why": "The armistice ended the fighting of the First World War."
     },
     {
       "source": "world-war-two",
@@ -133,9 +138,9 @@
     },
     {
       "source": "end-world-war-two",
-      "type": "part_of",
+      "type": "ended",
       "target": "world-war-2",
-      "why": "The end of the Second World War."
+      "why": "Germany's surrender in May and Japan's in September concluded the Second World War."
     },
     {
       "source": "battle-of-zama",
@@ -169,9 +174,9 @@
     },
     {
       "source": "death-of-alexander",
-      "type": "part_of",
+      "type": "ended",
       "target": "alexanders-conquests",
-      "why": "The death that ends the conquests."
+      "why": "Alexander's death in Babylon brought his campaigns to an end."
     },
     {
       "source": "execution-of-charles-i",
@@ -199,9 +204,9 @@
     },
     {
       "source": "napoleon-defeat-waterloo",
-      "type": "part_of",
+      "type": "ended",
       "target": "napoleonic-wars",
-      "why": "Napoleon's final defeat, which ends the wars."
+      "why": "Napoleon's final defeat concluded the wars."
     },
     {
       "source": "bolshevik-civil-war",
@@ -259,9 +264,9 @@
     },
     {
       "source": "japan-world-war-two-defeat",
-      "type": "part_of",
+      "type": "ended",
       "target": "world-war-2",
-      "why": "Japan's surrender ends the war in the Pacific."
+      "why": "Japan, the last Axis power still fighting, surrendered: the war was over."
     },
     {
       "source": "first-triumvirate",
@@ -547,9 +552,9 @@
     },
     {
       "source": "indian-independence",
-      "type": "part_of",
+      "type": "ended",
       "target": "british-raj",
-      "why": "Independence ends British rule."
+      "why": "Independence ended British rule in India."
     },
     {
       "source": "non-cooperation-movement",
@@ -631,9 +636,9 @@
     },
     {
       "source": "death-of-mao",
-      "type": "part_of",
+      "type": "ended",
       "target": "cultural-revolution",
-      "why": "Mao's death ends the Cultural Revolution."
+      "why": "Mao's death, and the arrest of the Gang of Four weeks later, brought the Cultural Revolution to a close."
     },
     {
       "source": "moors-invade-spain",
@@ -892,6 +897,162 @@
       "type": "part_of",
       "target": "apartheid",
       "why": "The negotiated dismantling was apartheid's final phase."
+    },
+    {
+      "source": "meiji-restoration-japan",
+      "type": "ended",
+      "target": "tokugawa-shogunate",
+      "why": "The restoration of imperial rule overthrew the shogunate and ended the last shogun's rule."
+    },
+    {
+      "source": "qutb-ud-din-aibak-delhi",
+      "type": "preceded",
+      "target": "razia-sultana-accession",
+      "why": "Delhi's sultans in turn: Razia was the daughter of Iltutmish, Aibak's son-in-law, who took the throne soon after Aibak's death."
+    },
+    {
+      "source": "razia-sultana-accession",
+      "type": "preceded",
+      "target": "alauddin-khalji-accession",
+      "why": "Delhi's sultans in turn: the Khalji dynasty replaced the Mamluk line."
+    },
+    {
+      "source": "alauddin-khalji-accession",
+      "type": "preceded",
+      "target": "muhammad-bin-tughlaq-accession",
+      "why": "Delhi's sultans in turn: the Tughlaqs followed the Khaljis."
+    },
+    {
+      "source": "muhammad-bin-tughlaq-accession",
+      "type": "preceded",
+      "target": "firuz-shah-tughlaq-accession",
+      "why": "Firuz Shah succeeded his cousin Muhammad bin Tughlaq."
+    },
+    {
+      "source": "firuz-shah-tughlaq-accession",
+      "type": "preceded",
+      "target": "timur-sacks-delhi",
+      "why": "After Firuz Shah's death the Tughlaqs weakened, and Timur sacked Delhi."
+    },
+    {
+      "source": "babur-ruler-of-ferghana",
+      "type": "preceded",
+      "target": "babur-founds-mughal-empire",
+      "why": "Babur's path: from ruler of Ferghana in Central Asia to founder of the Mughal Empire."
+    },
+    {
+      "source": "babur-founds-mughal-empire",
+      "type": "preceded",
+      "target": "humayun-succeeds-babur",
+      "why": "Mughal succession: Humayun succeeded his father Babur."
+    },
+    {
+      "source": "humayun-succeeds-babur",
+      "type": "preceded",
+      "target": "humayun-defeated-kanauj",
+      "why": "Humayun's reign: Sher Shah Suri defeated him and drove him into exile."
+    },
+    {
+      "source": "humayun-defeated-kanauj",
+      "type": "preceded",
+      "target": "humayun-recaptures-delhi",
+      "why": "Humayun's reign: fifteen years after his exile he retook Delhi."
+    },
+    {
+      "source": "humayun-recaptures-delhi",
+      "type": "preceded",
+      "target": "second-battle-of-panipat",
+      "why": "Humayun died months after retaking Delhi; the young Akbar's army then won at Panipat."
+    },
+    {
+      "source": "second-battle-of-panipat",
+      "type": "preceded",
+      "target": "death-of-akbar",
+      "why": "Akbar's reign, from the victory that secured his throne to his death."
+    },
+    {
+      "source": "death-of-akbar",
+      "type": "preceded",
+      "target": "death-of-jahangir",
+      "why": "Mughal succession: Jahangir reigned from Akbar's death to his own."
+    },
+    {
+      "source": "death-of-jahangir",
+      "type": "preceded",
+      "target": "aurangzeb-becomes-emperor",
+      "why": "Mughal succession: Shah Jahan reigned between them, until Aurangzeb seized the throne."
+    },
+    {
+      "source": "aurangzeb-becomes-emperor",
+      "type": "preceded",
+      "target": "mughal-empire-zenith-aurangzeb",
+      "why": "Aurangzeb's reign, which took the empire to its greatest extent by his death."
+    },
+    {
+      "source": "mughal-empire-zenith-aurangzeb",
+      "type": "preceded",
+      "target": "nadir-shah-sacks-delhi",
+      "why": "After Aurangzeb the empire declined, and Nadir Shah sacked Delhi."
+    },
+    {
+      "source": "birth-of-shivaji",
+      "type": "preceded",
+      "target": "shivaji-crowned-chhatrapati",
+      "why": "Shivaji's life: his coronation founded the Maratha kingdom."
+    },
+    {
+      "source": "shivaji-crowned-chhatrapati",
+      "type": "preceded",
+      "target": "death-of-shivaji",
+      "why": "Shivaji's life: he died six years after his coronation."
+    },
+    {
+      "source": "guru-nanak-born",
+      "type": "preceded",
+      "target": "martyrdom-of-guru-arjan",
+      "why": "The Sikh Gurus: Guru Arjan was the fifth Guru in the line founded by Guru Nanak."
+    },
+    {
+      "source": "martyrdom-of-guru-arjan",
+      "type": "preceded",
+      "target": "execution-of-guru-tegh-bahadur",
+      "why": "The Sikh Gurus: Guru Tegh Bahadur was the ninth Guru."
+    },
+    {
+      "source": "execution-of-guru-tegh-bahadur",
+      "type": "preceded",
+      "target": "death-of-guru-gobind-singh",
+      "why": "The Sikh Gurus: Guru Gobind Singh, the tenth and last human Guru, succeeded his father Tegh Bahadur."
+    },
+    {
+      "source": "battle-of-plassey",
+      "type": "preceded",
+      "target": "battle-of-buxar",
+      "why": "The East India Company's rise in Bengal: Plassey, then Buxar."
+    },
+    {
+      "source": "battle-of-buxar",
+      "type": "preceded",
+      "target": "east-india-company-bengal",
+      "why": "After Buxar, the Treaty of Allahabad gave the Company the right to collect Bengal's revenue."
+    },
+    {
+      "source": "second-anglo-mysore-war",
+      "type": "preceded",
+      "target": "tipu-sultan-killed",
+      "why": "The Anglo-Mysore Wars: they ended with Tipu Sultan's death at Seringapatam."
+    },
+    {
+      "source": "world-war-one",
+      "type": "preceded",
+      "target": "first-world-war-ends",
+      "why": "The First World War, from its outbreak to the armistice."
+    },
+    {
+      "source": "first-world-war-ends",
+      "type": "preceded",
+      "target": "treaty-of-versailles",
+      "why": "The armistice stopped the fighting; the treaty set the peace terms with Germany."
     }
   ]
 }
