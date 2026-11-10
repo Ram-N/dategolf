@@ -2391,7 +2391,7 @@ INSERT INTO "entities" VALUES('world-war-2','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('the-holocaust','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('cuban-revolution','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('civil-rights-movement','period','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('space-race','period','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('space-race','period','imported',NULL,'2026-11-10 22:20:57');
 INSERT INTO "entities" VALUES('construction-sydney-opera','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('cultural-revolution','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('watergate-scandal','period','imported',NULL,NULL);
@@ -9240,6 +9240,7 @@ INSERT INTO "relationships" VALUES(194,'d-day-normandy','preceded','atomic-bomb-
 INSERT INTO "relationships" VALUES(195,'atomic-bomb-hiroshima','preceded','japan-world-war-two-defeat','Japan surrendered days after the bombings of Hiroshima and Nagasaki.','high','proposed','ai_drafted','2026-11-10 22:02:15');
 INSERT INTO "relationships" VALUES(196,'sputnik-launch','preceded','space-race-yuri-gagarin','The Space Race: the first satellite, then the first human in space.','high','proposed','ai_drafted','2026-11-10 22:02:15');
 INSERT INTO "relationships" VALUES(197,'space-race-yuri-gagarin','preceded','moon-landing','The Space Race: from the first human in orbit to the first humans on the Moon.','high','proposed','ai_drafted','2026-11-10 22:02:15');
+INSERT INTO "relationships" VALUES(198,'fall-of-roman-empire-west','ended','roman-empire','Odoacer deposed Romulus Augustulus, ending Roman rule in the West; the eastern half went on as the Byzantine Empire until 1453.','high','reviewed','user','2026-11-10 22:20:57');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -9610,6 +9611,8 @@ INSERT INTO "review_log" VALUES(359,'2026-11-10 22:16:44','retype-link','japan-w
 INSERT INTO "review_log" VALUES(360,'2026-11-10 22:16:44','retype-link','death-of-mao','link #112: death-of-mao part_of → ended cultural-revolution','cli');
 INSERT INTO "review_log" VALUES(361,'2026-11-10 22:16:45','retype-link','iran-islamic-revolution','link #15: iran-islamic-revolution part_of → ended iranian-revolution','cli');
 INSERT INTO "review_log" VALUES(362,'2026-11-10 22:16:45','retype-link','human-genome-project','link #3: human-genome-project part_of → ended human-genome-project-period','cli');
+INSERT INTO "review_log" VALUES(363,'2026-11-10 22:20:57','approve-link','fall-of-roman-empire-west','link #198: fall-of-roman-empire-west ended roman-empire','cli');
+INSERT INTO "review_log" VALUES(364,'2026-11-10 22:20:57','set-span-years','space-race','1957 to 1969 → c. 1957 to 1969','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -9771,7 +9774,7 @@ INSERT INTO "time_spans" VALUES('korean-war','period','Korean War',1950,1953,'Wa
 INSERT INTO "time_spans" VALUES('cuban-revolution','period','Cuban Revolution',1953,1959,'Armed revolt led by Fidel Castro that overthrew the Batista regime','Americas',5,NULL,81);
 INSERT INTO "time_spans" VALUES('civil-rights-movement','period','American Civil Rights Movement',1954,1968,'Movement to end racial segregation and discrimination in the United States','Americas',8,NULL,82);
 INSERT INTO "time_spans" VALUES('vietnam-war','period','Vietnam War',1955,1975,'Prolonged conflict between communist North Vietnam and US-backed South Vietnam','Southeast Asia',5,NULL,83);
-INSERT INTO "time_spans" VALUES('space-race','period','Space Race',1957,1969,'Competition between the USA and USSR for spaceflight supremacy','Global',5,NULL,84);
+INSERT INTO "time_spans" VALUES('space-race','period','Space Race',1957,1969,'Competition between the USA and USSR for spaceflight supremacy','Global',5,1,84);
 INSERT INTO "time_spans" VALUES('construction-sydney-opera','period','Construction of the Sydney Opera House',1959,1973,'Building of the iconic performing arts center in Sydney, Australia','Oceania',3,NULL,85);
 INSERT INTO "time_spans" VALUES('cultural-revolution','period','Chinese Cultural Revolution',1966,1976,'Sociopolitical movement launched by Mao Zedong to enforce communism','East Asia',5,NULL,86);
 INSERT INTO "time_spans" VALUES('watergate-scandal','period','Watergate Scandal',1972,1974,'Political scandal that led to the resignation of US President Richard Nixon','Americas',5,NULL,87);

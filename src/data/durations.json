@@ -1138,7 +1138,8 @@
     ],
     "region": "Global",
     "importance": 5,
-    "kind": "period"
+    "kind": "period",
+    "approximate": true
   },
   {
     "id": "construction-sydney-opera",

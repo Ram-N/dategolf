@@ -1053,6 +1053,12 @@
       "type": "preceded",
       "target": "treaty-of-versailles",
       "why": "The armistice stopped the fighting; the treaty set the peace terms with Germany."
+    },
+    {
+      "source": "fall-of-roman-empire-west",
+      "type": "ended",
+      "target": "roman-empire",
+      "why": "Odoacer deposed Romulus Augustulus, ending Roman rule in the West; the eastern half went on as the Byzantine Empire until 1453."
     }
   ]
 }

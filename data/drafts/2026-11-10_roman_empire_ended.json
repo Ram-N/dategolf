@@ -1,0 +1,6 @@
+{"origin": "user",
+ "about": "The user's call (2026-11-10): the deposition of the last western emperor ended the (western) Roman Empire itself, not just its 'fall'.",
+ "links": [
+  {"source": "fall-of-roman-empire-west", "type": "ended", "target": "roman-empire", "confidence": "high",
+   "why": "Odoacer deposed Romulus Augustulus, ending Roman rule in the West; the eastern half went on as the Byzantine Empire until 1453."}
+ ]}
