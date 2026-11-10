@@ -62,9 +62,10 @@ class TestLoad(unittest.TestCase):
         self.assertIsNone(stored("noyce-silicon-chip", "followed", "kilby-first-integrated-circuit"))
 
     def test_same_link_written_both_ways_is_a_duplicate(self):
-        self.assertEqual(load(("death-of-akbar", "preceded", "death-of-jahangir", "x"),
-                              ("death-of-jahangir", "followed", "death-of-akbar", "x")), 1)
-        self.assertIsNone(stored("death-of-akbar", "preceded", "death-of-jahangir"))  # all-or-nothing
+        # A pair that will never be a real link, so the test doesn't depend on the data.
+        self.assertEqual(load(("fall-of-troy", "preceded", "sputnik-launch", "x"),
+                              ("sputnik-launch", "followed", "fall-of-troy", "x")), 1)
+        self.assertIsNone(stored("fall-of-troy", "preceded", "sputnik-launch"))  # all-or-nothing
 
     def test_symmetric_links_are_stored_in_order(self):
         self.assertEqual(load(("moon-landing", "contemporary_with", "jfk-assassination", "same decade")), 0)
