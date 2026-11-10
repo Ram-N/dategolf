@@ -4,6 +4,12 @@ import streamlit as st
 
 st.set_page_config(page_title="DateGolf admin", page_icon="🗺️", layout="wide")
 
+# Compact layout: Streamlit's default top padding pushes the review buttons below the fold.
+st.markdown("""<style>
+  .block-container, [data-testid="stMainBlockContainer"] { padding-top: 2.25rem; padding-bottom: 1rem; }
+  h1, h2 { padding-top: 0 !important; padding-bottom: 0.25rem !important; }
+</style>""", unsafe_allow_html=True)
+
 from lib import actions  # noqa: E402
 
 

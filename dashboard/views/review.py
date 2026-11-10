@@ -7,7 +7,7 @@ import streamlit as st
 from lib import actions
 from lib.db import has_sources, link_sentence, q, source_links, starts_span
 
-st.title("Review")
+st.header("Review", divider=False)
 
 
 def finish(label, result):
@@ -27,6 +27,9 @@ if "review_result" in st.session_state:
         st.info("The game JSON now differs from the db: **Export** on the Overview page when you're done reviewing.")
 
 
+TABLE_H = 388  # about 10 rows: with the buttons above, a whole queue fits on one screen
+
+
 def selectable(df, key, columns=None, id_col="entity_id", column_config=None):
     """A table with tickable rows; returns the selected rows as a DataFrame.
 
@@ -37,8 +40,8 @@ def selectable(df, key, columns=None, id_col="entity_id", column_config=None):
     ids = "|".join(df[id_col].astype(str))
     widget_key = f"{key}-{hashlib.sha1(ids.encode()).hexdigest()[:10]}"
     shown = df[columns] if columns else df
-    event = st.dataframe(shown, hide_index=True, width="stretch", key=widget_key, column_config=column_config,
-                         on_select="rerun", selection_mode="multi-row")
+    event = st.dataframe(shown, hide_index=True, width="stretch", height=min(TABLE_H, 38 + 35 * len(df)),
+                         key=widget_key, column_config=column_config, on_select="rerun", selection_mode="multi-row")
     rows = [r for r in event.selection.rows if r < len(df)]  # belt and braces
     return df.iloc[rows]
 
@@ -66,6 +69,7 @@ with t_drafts:
     if drafts.empty:
         st.success("No event drafts waiting. New batches arrive with `load-drafts`.")
     else:
+        bar = st.container()  # buttons go above the table (filled once the selection is known)
         picked = selectable(drafts, "drafts", ["year", "name", "region", "categories", "importance", "review_note"])
         if len(picked) == 1:
             d = picked.iloc[0]
@@ -81,7 +85,7 @@ with t_drafts:
                 if (wiki := source_links(d["entity_id"])):
                     st.markdown(wiki)
         ids = picked["entity_id"].tolist()
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = bar.columns([1, 1, 4])
         if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary"):
             finish("Approve drafts", actions.approve_drafts(ids))
 
@@ -100,9 +104,10 @@ with t_tags:
     if tags.empty:
         st.success("No country tags waiting. Use **Fix any country tags** to change a reviewed one.")
     else:
+        bar = st.container()
         picked = selectable(tags, "tags", ["year", "name", "region", "countries", "confidence", "note"])
         ids = picked["entity_id"].tolist()
-        c1, c2, _ = st.columns([1, 2, 3])
+        c1, c2, _ = bar.columns([1, 2, 3])
         if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary"):
             finish("Approve country tags", actions.approve_country_tags(ids))
         n_high = int((tags["confidence"] == "high").sum())
@@ -114,8 +119,7 @@ with t_identity:
     if shared.empty:
         st.success("Every shared event/span id has been decided.")
     else:
-        st.caption("Each id exists both as an event (the key moment) and as a span (the whole period). "
-                   "**One subject** is the usual answer (doc 11, Step 3a).")
+        bar = st.container()
         picked = selectable(shared, "identity", ["event_year", "event_name", "span_years", "span_name", "status"])
         if len(picked) == 1:
             d = picked.iloc[0]
@@ -128,8 +132,10 @@ with t_identity:
                 st.write(d["span_description"])
         ids = picked["entity_id"].tolist()
         undecided = shared.loc[shared["status"] == "needs_review_identity", "entity_id"].tolist()
-        c1, c2, c3, c4, c5 = st.columns([1, 1, 1, 1, 2])
-        if c1.button(f"One subject ({len(ids)})", disabled=not ids, type="primary"):
+        c1, c2, c3, c4, c5 = bar.columns([1, 1, 1, 1, 2])
+        if c1.button(f"One subject ({len(ids)})", disabled=not ids, type="primary",
+                     help="Each id is both an event (the key moment) and a span (the whole period). "
+                          "One subject is the usual answer (doc 11, Step 3a)."):
             finish("Identity: one subject", actions.decide_identity(ids, "one"))
 
         @st.dialog("Flag for a split")
@@ -174,28 +180,27 @@ with t_links:
     if proposed_links.empty:
         st.success("No links waiting. New batches arrive with `load-links` (doc 11, 3b).")
     else:
-        st.caption("Each link reads as a sentence. Sequences are shown from the later side "
-                   "(\"B followed A\"); they're stored once and read both ways.")
         view = proposed_links.assign(link=proposed_links.apply(link_sentence, axis=1),
                                      starts=proposed_links.apply(starts_span, axis=1))
         n_starts = int(view["starts"].sum())
-        show = st.radio("Show", ["All", f"Event starts the span ({n_starts})", "The rest"], horizontal=True,
-                        help="'Starts the span': the event is in the span's first year, often the same subject "
-                             "(Black Death Strikes Europe → The Black Death). Decide them as a group: tick the "
-                             "header box to select all shown.")
+        # Buttons on the left: the table's hover toolbar appears at its top-right and would cover them.
+        c1, c2, f1 = st.columns([1, 1, 4], vertical_alignment="center")
+        show = f1.radio("Show", ["All", f"Event starts the span ({n_starts})", "The rest"], horizontal=True,
+                        label_visibility="collapsed",
+                        help="Each link reads as a sentence; sequences show from the later side (\"B followed A\"). "
+                             "'Starts the span': the event is in the span's first year. Tick the header box to "
+                             "select all shown.")
         if show != "All":
             view = view[view["starts"] == show.startswith("Event starts")]
         picked = selectable(view, "links", ["link", "why", "confidence", "origin"], id_col="id")
         if len(picked) == 1:
             d = picked.iloc[0]
             with st.container(border=True):
-                st.markdown(f"**{d['link']}**")
-                st.write(d["why"] or "—")
+                st.markdown(f"**{d['link']}** — {d['why'] or '—'}")
                 st.caption(f"Stored as `{d['source_id']}` {d['type']} `{d['target_id']}` · "
                            f"{'causal' if d['is_causal'] else 'not causal'} · confidence {d['confidence'] or '—'}")
         ids = [int(i) for i in picked["id"]]
-        c1, c2, _ = st.columns([1, 1, 4])
-        if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary", key="approve_links"):
+        if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary", key="approve_links", width="stretch"):
             finish("Approve links", actions.approve_links(ids))
 
         @st.dialog("Reject links")
@@ -205,7 +210,7 @@ with t_links:
             if st.button("Reject", type="primary", disabled=not reason.strip()):
                 finish("Reject links", actions.reject_links(ids, reason))
 
-        if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_links"):
+        if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_links", width="stretch"):
             reject_links_dialog(ids)
 
 # ── Sources ──────────────────────────────────────────────────────────────────
@@ -213,9 +218,8 @@ with t_sources:
     if proposed_sources.empty:
         st.success("No sources waiting. New batches arrive with `load-sources` (doc 11, Step 5).")
     else:
-        st.caption("Is this the article about this event or span? Exact name matches (high) are listed last: "
-                   "skim them and approve in bulk. Open a link to check.")
         exact = proposed_sources[(proposed_sources["origin"] == "title_match") & (proposed_sources["confidence"] == "high")]
+        bar = st.container()
         picked = selectable(proposed_sources, "sources",
                             ["year", "name", "title", "url", "origin", "confidence", "note"],
                             column_config={"url": st.column_config.LinkColumn("article", display_text="open")})
@@ -225,7 +229,7 @@ with t_sources:
                 st.markdown(f"**{d['name']}** ({d['year']}) → 📖 [{d['title']}]({d['url']})")
                 st.caption(f"`{d['entity_id']}` · {d['origin']} · confidence {d['confidence'] or '—'}")
         ids = list(dict.fromkeys(picked["entity_id"]))
-        c1, c2, c3, _ = st.columns([1, 1, 2, 2])
+        c1, c2, c3, _ = bar.columns([1, 1, 2, 2])
         if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary", key="approve_sources"):
             finish("Approve sources", actions.approve_sources(ids))
 
@@ -238,7 +242,9 @@ with t_sources:
 
         if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_sources"):
             reject_sources_dialog(ids)
-        if c3.button(f"Approve all exact name matches ({len(exact)})", disabled=exact.empty):
+        if c3.button(f"Approve all exact name matches ({len(exact)})", disabled=exact.empty,
+                     help="Is this the article about this event or span? Exact name matches are listed last: "
+                          "skim them, then approve in bulk. Open a link to check."):
             finish("Approve exact name matches", actions.approve_sources([], True))
 
 # ── Fix any country tags ─────────────────────────────────────────────────────
