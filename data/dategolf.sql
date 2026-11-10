@@ -9233,13 +9233,13 @@ INSERT INTO "relationships" VALUES(187,'battle-of-buxar','preceded','east-india-
 INSERT INTO "relationships" VALUES(188,'second-anglo-mysore-war','preceded','tipu-sultan-killed','The Anglo-Mysore Wars: they ended with Tipu Sultan''s death at Seringapatam.','high','reviewed','ai_drafted','2026-11-10 22:02:15');
 INSERT INTO "relationships" VALUES(189,'world-war-one','preceded','first-world-war-ends','The First World War, from its outbreak to the armistice.','high','reviewed','ai_drafted','2026-11-10 22:02:15');
 INSERT INTO "relationships" VALUES(190,'first-world-war-ends','preceded','treaty-of-versailles','The armistice stopped the fighting; the treaty set the peace terms with Germany.','high','reviewed','ai_drafted','2026-11-10 22:02:15');
-INSERT INTO "relationships" VALUES(191,'hitler-rise-chancellor','preceded','world-war-two','Six years after Hitler took power, Germany''s invasion of Poland began the Second World War.','high','proposed','ai_drafted','2026-11-10 22:02:15');
-INSERT INTO "relationships" VALUES(192,'world-war-two','preceded','japanese-pearl-harbor','The Second World War: Pearl Harbor brought the United States into the war.','high','proposed','ai_drafted','2026-11-10 22:02:15');
-INSERT INTO "relationships" VALUES(193,'japanese-pearl-harbor','preceded','d-day-normandy','The Second World War: the Allied invasion of western Europe.','high','proposed','ai_drafted','2026-11-10 22:02:15');
-INSERT INTO "relationships" VALUES(194,'d-day-normandy','preceded','atomic-bomb-hiroshima','The Second World War''s final year: Germany surrendered in May, and Hiroshima was bombed in August.','high','proposed','ai_drafted','2026-11-10 22:02:15');
-INSERT INTO "relationships" VALUES(195,'atomic-bomb-hiroshima','preceded','japan-world-war-two-defeat','Japan surrendered days after the bombings of Hiroshima and Nagasaki.','high','proposed','ai_drafted','2026-11-10 22:02:15');
-INSERT INTO "relationships" VALUES(196,'sputnik-launch','preceded','space-race-yuri-gagarin','The Space Race: the first satellite, then the first human in space.','high','proposed','ai_drafted','2026-11-10 22:02:15');
-INSERT INTO "relationships" VALUES(197,'space-race-yuri-gagarin','preceded','moon-landing','The Space Race: from the first human in orbit to the first humans on the Moon.','high','proposed','ai_drafted','2026-11-10 22:02:15');
+INSERT INTO "relationships" VALUES(191,'hitler-rise-chancellor','preceded','world-war-two','Six years after Hitler took power, Germany''s invasion of Poland began the Second World War.','high','reviewed','ai_drafted','2026-11-10 22:02:15');
+INSERT INTO "relationships" VALUES(192,'world-war-two','preceded','japanese-pearl-harbor','The Second World War: Pearl Harbor brought the United States into the war.','high','reviewed','ai_drafted','2026-11-10 22:02:15');
+INSERT INTO "relationships" VALUES(193,'japanese-pearl-harbor','preceded','d-day-normandy','The Second World War: the Allied invasion of western Europe.','high','reviewed','ai_drafted','2026-11-10 22:02:15');
+INSERT INTO "relationships" VALUES(194,'d-day-normandy','preceded','atomic-bomb-hiroshima','The Second World War''s final year: Germany surrendered in May, and Hiroshima was bombed in August.','high','reviewed','ai_drafted','2026-11-10 22:02:15');
+INSERT INTO "relationships" VALUES(195,'atomic-bomb-hiroshima','preceded','japan-world-war-two-defeat','Japan surrendered days after the bombings of Hiroshima and Nagasaki.','high','reviewed','ai_drafted','2026-11-10 22:02:15');
+INSERT INTO "relationships" VALUES(196,'sputnik-launch','preceded','space-race-yuri-gagarin','The Space Race: the first satellite, then the first human in space.','high','reviewed','ai_drafted','2026-11-10 22:02:15');
+INSERT INTO "relationships" VALUES(197,'space-race-yuri-gagarin','preceded','moon-landing','The Space Race: from the first human in orbit to the first humans on the Moon.','high','reviewed','ai_drafted','2026-11-10 22:02:15');
 INSERT INTO "relationships" VALUES(198,'fall-of-roman-empire-west','ended','roman-empire','Odoacer deposed Romulus Augustulus, ending Roman rule in the West; the eastern half went on as the Byzantine Empire until 1453.','high','reviewed','user','2026-11-10 22:20:57');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
@@ -9613,6 +9613,13 @@ INSERT INTO "review_log" VALUES(361,'2026-11-10 22:16:45','retype-link','iran-is
 INSERT INTO "review_log" VALUES(362,'2026-11-10 22:16:45','retype-link','human-genome-project','link #3: human-genome-project part_of → ended human-genome-project-period','cli');
 INSERT INTO "review_log" VALUES(363,'2026-11-10 22:20:57','approve-link','fall-of-roman-empire-west','link #198: fall-of-roman-empire-west ended roman-empire','cli');
 INSERT INTO "review_log" VALUES(364,'2026-11-10 22:20:57','set-span-years','space-race','1957 to 1969 → c. 1957 to 1969','cli');
+INSERT INTO "review_log" VALUES(365,'2026-11-10 22:23:55','approve-link','hitler-rise-chancellor','link #191: hitler-rise-chancellor preceded world-war-two','dashboard');
+INSERT INTO "review_log" VALUES(366,'2026-11-10 22:23:55','approve-link','world-war-two','link #192: world-war-two preceded japanese-pearl-harbor','dashboard');
+INSERT INTO "review_log" VALUES(367,'2026-11-10 22:23:55','approve-link','japanese-pearl-harbor','link #193: japanese-pearl-harbor preceded d-day-normandy','dashboard');
+INSERT INTO "review_log" VALUES(368,'2026-11-10 22:23:55','approve-link','d-day-normandy','link #194: d-day-normandy preceded atomic-bomb-hiroshima','dashboard');
+INSERT INTO "review_log" VALUES(369,'2026-11-10 22:23:55','approve-link','atomic-bomb-hiroshima','link #195: atomic-bomb-hiroshima preceded japan-world-war-two-defeat','dashboard');
+INSERT INTO "review_log" VALUES(370,'2026-11-10 22:23:55','approve-link','sputnik-launch','link #196: sputnik-launch preceded space-race-yuri-gagarin','dashboard');
+INSERT INTO "review_log" VALUES(371,'2026-11-10 22:23:55','approve-link','space-race-yuri-gagarin','link #197: space-race-yuri-gagarin preceded moon-landing','dashboard');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),

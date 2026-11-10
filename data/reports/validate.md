@@ -37,7 +37,7 @@
 | warning | Event with a range but not marked approximate (the range is then not exported) | pass |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 7 |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -114,16 +114,6 @@
 
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
-
-## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
-
-- `191` — hitler-rise-chancellor preceded world-war-two — Six years after Hitler took power, Germany's invasion of Poland began the Second World War.
-- `192` — world-war-two preceded japanese-pearl-harbor — The Second World War: Pearl Harbor brought the United States into the war.
-- `193` — japanese-pearl-harbor preceded d-day-normandy — The Second World War: the Allied invasion of western Europe.
-- `194` — d-day-normandy preceded atomic-bomb-hiroshima — The Second World War's final year: Germany surrendered in May, and Hiroshima was bombed in August.
-- `195` — atomic-bomb-hiroshima preceded japan-world-war-two-defeat — Japan surrendered days after the bombings of Hiroshima and Nagasaki.
-- `196` — sputnik-launch preceded space-race-yuri-gagarin — The Space Race: the first satellite, then the first human in space.
-- `197` — space-race-yuri-gagarin preceded moon-landing — The Space Race: from the first human in orbit to the first humans on the Moon.
 
 ## [info] Region labels in use, with their DateFlow lane
 
