@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateflow'
+import type { Duration, RelationshipData } from '@/types/dateflow'
+import { connectedIds, connectionsFor } from '@/engine/dateflow/connections'
 import {
   FULL_VIEW,
   centerOn,
@@ -98,6 +99,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   // ── State ──────────────────────────────────────────────────────────────────
   const events = ref<Event[]>([])
   const durations = ref<Duration[]>([])
+  const relationships = ref<RelationshipData>({ types: {}, links: [] })
   const isLoading = ref(true)
   const view = ref<View>(loadView())
   const selectedEventId = ref<string | null>(null)
@@ -114,6 +116,15 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   )
   const selectedDuration = computed(
     () => durations.value.find((d) => d.id === selectedDurationId.value) ?? null,
+  )
+  /** The open card's entity: an event or a span (Connections work the same for both). */
+  const openId = computed(() => selectedEventId.value ?? selectedDurationId.value)
+  const connections = computed(() =>
+    openId.value ? connectionsFor(openId.value, relationships.value, events.value, durations.value) : [],
+  )
+  /** Ids to ring on the timeline while a card is open. */
+  const relatedIds = computed(() =>
+    openId.value ? connectedIds(openId.value, relationships.value) : new Set<string>(),
   )
   const viewSpan = computed(() => span(view.value))
   const lanes = computed(() => visibleLanes(laneState.value))
@@ -150,12 +161,14 @@ export const useDateFlowStore = defineStore('dateflow', () => {
 
   // ── Actions ────────────────────────────────────────────────────────────────
   async function load() {
-    const [eventsModule, durationsModule] = await Promise.all([
+    const [eventsModule, durationsModule, relationshipsModule] = await Promise.all([
       import('@/data/events.json'),
       import('@/data/durations.json'),
+      import('@/data/relationships.json'),
     ])
     events.value = eventsModule.default as Event[]
     durations.value = durationsModule.default as Duration[]
+    relationships.value = relationshipsModule.default as RelationshipData
     isLoading.value = false
   }
 
@@ -314,6 +327,9 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   return {
     events,
     durations,
+    relationships,
+    connections,
+    relatedIds,
     isLoading,
     view,
     viewSpan,

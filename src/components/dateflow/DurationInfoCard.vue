@@ -27,6 +27,9 @@
         <p class="text-sm mt-1">Historians give different start and end years. These are conventional estimates.</p>
       </div>
 
+      <EventConnections themed :groups="connections" @open-event="(id) => emit('openEvent', id)"
+                        @open-duration="(id) => emit('openDuration', id)" />
+
       <div v-if="related.length" class="mt-5">
         <h3 class="text-[11px] font-semibold uppercase tracking-widest secondary mb-2">
           Meanwhile in {{ duration.region }}
@@ -53,10 +56,12 @@ import type { Event } from '@/types'
 import type { Duration } from '@/types/dateflow'
 import { eventsDuring, formatSpan } from '@/engine/dateflow/durations'
 import { groupFor } from '@/engine/dateflow/categoryGroups'
+import type { ConnectionGroup } from '@/engine/dateflow/connections'
+import EventConnections from './EventConnections.vue'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
 
-const props = defineProps<{ duration: Duration; events: Event[] }>()
-const emit = defineEmits<{ close: []; openEvent: [id: string]; showOnTimeline: [] }>()
+const props = defineProps<{ duration: Duration; events: Event[]; connections: ConnectionGroup[] }>()
+const emit = defineEmits<{ close: []; openEvent: [id: string]; openDuration: [id: string]; showOnTimeline: [] }>()
 
 const group = computed(() => groupFor(props.duration.categories))
 const related = computed(() => eventsDuring(props.events, props.duration))

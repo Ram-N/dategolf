@@ -69,6 +69,11 @@
     </div>
 
     <EventInfoCard v-if="store.selectedEvent" :event="store.selectedEvent" @close="store.select(null)">
+      <EventConnections
+        :groups="store.connections"
+        @open-event="store.goToEvent"
+        @open-duration="store.selectDuration"
+      />
       <EventMeanwhile
         :event="store.selectedEvent"
         :events="store.filteredEvents"
@@ -91,8 +96,10 @@
       v-if="store.selectedDuration"
       :duration="store.selectedDuration"
       :events="store.events"
+      :connections="store.connections"
       @close="store.selectDuration(null)"
       @open-event="store.goToEvent"
+      @open-duration="store.selectDuration"
       @show-on-timeline="showSelectedDuration"
     />
   </div>
@@ -108,6 +115,7 @@ import DateFlowTimeline from '@/components/dateflow/DateFlowTimeline.vue'
 import DateFlowMinimap from '@/components/dateflow/DateFlowMinimap.vue'
 import '@/assets/dateflow-theme.css'
 import EventInfoCard from '@/components/EventInfoCard.vue'
+import EventConnections from '@/components/dateflow/EventConnections.vue'
 import DurationInfoCard from '@/components/dateflow/DurationInfoCard.vue'
 import EventMeanwhile from '@/components/dateflow/EventMeanwhile.vue'
 import PeriodSummaryCard from '@/components/dateflow/PeriodSummaryCard.vue'
