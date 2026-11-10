@@ -58,6 +58,7 @@
           :y2="m.leaderEnd"
           :stroke="`var(--df-${m.group})`"
           stroke-opacity="0.55"
+          :class="{ dimmed: dimming && !lit(m.event.id) }"
           pointer-events="none"
         />
 
@@ -76,7 +77,15 @@
         </template>
 
         <!-- Hidden events: faint dots hint that zooming reveals more -->
-        <circle v-for="h in t.hiddenDots" :key="h.id" :cx="h.x" :cy="t.axisY" r="2" class="hidden-dot" />
+        <circle
+          v-for="h in t.hiddenDots"
+          :key="h.id"
+          :cx="h.x"
+          :cy="t.axisY"
+          :r="lit(h.id) ? 4 : 2"
+          class="hidden-dot"
+          :class="{ lit: lit(h.id), dimmed: dimming && !lit(h.id) }"
+        />
 
         <!-- Visible events -->
         <circle
@@ -86,9 +95,10 @@
           :cy="t.axisY"
           :r="m.radius"
           :fill="`var(--df-${m.group})`"
-          :stroke="m.event.id === selectedId ? 'var(--df-text)' : 'var(--df-bg)'"
-          stroke-width="2"
+          :stroke="m.event.id === selectedId || lit(m.event.id) ? 'var(--df-text)' : 'var(--df-bg)'"
+          :stroke-width="lit(m.event.id) ? 3 : 2"
           class="cursor-pointer"
+          :class="{ dimmed: dimming && !lit(m.event.id) }"
           @click="onMarkerClick(m.event.id)"
         >
           <title>{{ m.tooltip }}</title>
@@ -97,7 +107,7 @@
           v-for="m in t.markers"
           :key="m.event.id"
           class="cursor-pointer marker"
-          :class="{ selected: m.event.id === selectedId }"
+          :class="{ selected: m.event.id === selectedId, lit: lit(m.event.id), dimmed: dimming && !lit(m.event.id) }"
           @click="onMarkerClick(m.event.id)"
         >
           <title>{{ m.tooltip }}</title>
@@ -128,7 +138,7 @@
           v-for="b in t.bars"
           :key="b.d.id"
           class="cursor-pointer bar"
-          :class="[b.d.kind, { selected: b.d.id === selectedDurationId }]"
+          :class="[b.d.kind, { selected: b.d.id === selectedDurationId, lit: lit(b.d.id), dimmed: dimming && !lit(b.d.id) }]"
           @click="onBarClick(b.d.id)"
         >
           <title>{{ b.tooltip }}</title>
@@ -201,6 +211,7 @@ const props = defineProps<{
   lanes: LaneId[]
   selectedId: string | null
   selectedDurationId: string | null
+  highlightIds?: Set<string> | null // "Show connections": ring these, dim the rest
 }>()
 const emit = defineEmits<{
   zoomAt: [anchorYear: number, factor: number]
@@ -227,6 +238,7 @@ const TICK_STRIP = 20 // Lanes mode: shared year labels along the bottom
 const LANE_HEADER = 18 // room for the lane name
 const MILESTONE_GAP_PX = 48
 const MILESTONE_PRIORITY = 100 // milestones claim label space before everything else
+const HIGHLIGHT_PRIORITY = 200 // highlighted connections claim it before milestones
 
 // Duration bars. World mode has two sub-bands so long empires can't crowd out periods;
 // each lane gets one row per kind (or just empires when the lane is short).
@@ -385,18 +397,21 @@ function boxPosition(t: Track, side: Side, level: number, boxH: number) {
   return { boxTop: top, leaderEnd: top }
 }
 
+const lit = (id: string) => !!props.highlightIds?.has(id)
+const dimming = computed(() => !!props.highlightIds?.size)
+
 function layoutMarkers(t: Track, sectionIds: Set<string>) {
   const minImp = importanceThreshold(span(props.view), props.detail)
   const candidates = t.events
-    .filter((e) => e.importance >= minImp || sectionIds.has(e.id))
+    .filter((e) => e.importance >= minImp || sectionIds.has(e.id) || lit(e.id))
     .map((e) => {
       const x = yearToX(e.year, props.view, width.value)
-      const bold = e.importance >= ANCHOR_IMPORTANCE || sectionIds.has(e.id)
+      const bold = e.importance >= ANCHOR_IMPORTANCE || sectionIds.has(e.id) || lit(e.id)
       const lines = wrapLabel(e.name, LINE_CHARS, MAX_LINES)
       const longest = Math.max(...lines.map((l) => l.length))
       const labelWidth = longest * (bold ? CHAR_W_BOLD : CHAR_W) + 12
       const boxH = lines.length * LINE_H + BOX_PAD * 2
-      const priority = sectionIds.has(e.id) ? MILESTONE_PRIORITY : e.importance
+      const priority = lit(e.id) ? HIGHLIGHT_PRIORITY : sectionIds.has(e.id) ? MILESTONE_PRIORITY : e.importance
       return { event: e, x, lines, labelWidth, boxH, bold, priority }
     })
   const byId = new Map(candidates.map((c) => [c.event.id, c]))
@@ -454,7 +469,7 @@ function layoutBars(t: Track) {
           // Clamp so off-screen ends don't stop other bars sharing the row.
           x1: Math.max(c.x1, -10),
           x2: Math.max(Math.min(c.x2, width.value + 10), Math.max(c.x1, -10) + 3),
-          priority: c.d.importance,
+          priority: lit(c.d.id) ? HIGHLIGHT_PRIORITY : c.d.importance,
         })),
       r.rows,
     ).map((p) => ({ ...p, top: r.top })),
@@ -670,6 +685,13 @@ function onBarClick(id: string) {
   fill: var(--df-muted);
   opacity: 0.6;
 }
+/* A highlighted connection with no room for a label still shows, as a ringed dot */
+.hidden-dot.lit {
+  fill: var(--df-text-2);
+  stroke: var(--df-text);
+  stroke-width: 2;
+  opacity: 1;
+}
 .label-bg {
   fill: var(--df-surface);
   stroke: var(--df-border);
@@ -724,5 +746,14 @@ function onBarClick(id: string) {
 .marker.selected .label-bg {
   stroke: var(--df-text);
   stroke-width: 1.5;
+}
+/* "Show connections": the focus and its links stand out, everything else steps back */
+.marker.lit .label-bg,
+.bar.lit .bar-rect {
+  stroke: var(--df-text);
+  stroke-width: 2;
+}
+.dimmed {
+  opacity: 0.25;
 }
 </style>

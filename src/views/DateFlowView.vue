@@ -40,6 +40,7 @@
         :lanes="store.lanes"
         :selected-id="store.selectedEvent?.id ?? null"
         :selected-duration-id="store.selectedDuration?.id ?? null"
+        :highlight-ids="store.focusIds"
         @zoom-at="store.zoomAt"
         @pan-by="store.panBy"
         @select="store.select"
@@ -48,6 +49,10 @@
       />
     </div>
 
+    <div v-if="store.focusName" class="focus flex items-center justify-center gap-3 px-4 py-1.5 border-t text-sm">
+      <span>Connections of <strong>{{ store.focusName }}</strong> are ringed</span>
+      <button class="underline font-semibold" @click="store.clearFocus()">Clear</button>
+    </div>
     <div class="flex flex-wrap items-center gap-x-5 gap-y-1 px-4 py-2 border-t text-[11px] footer">
       <span v-for="g in CATEGORY_GROUPS" :key="g.id" class="flex items-center gap-1.5 secondary">
         <span class="inline-block w-2.5 h-2.5 rounded-full" :style="{ background: `var(--df-${g.id})` }" />
@@ -73,6 +78,7 @@
         :groups="store.connections"
         @open-event="store.goToEvent"
         @open-duration="store.selectDuration"
+        @show-on-timeline="store.showConnections(store.selectedEvent.id)"
       />
       <EventMeanwhile
         :event="store.selectedEvent"
@@ -101,6 +107,7 @@
       @open-event="store.goToEvent"
       @open-duration="store.selectDuration"
       @show-on-timeline="showSelectedDuration"
+      @show-connections="store.showConnections(store.selectedDuration.id)"
     />
   </div>
 </template>
@@ -139,6 +146,7 @@ const filterSummary = computed(() => {
 
 function onKey(e: KeyboardEvent) {
   if (e.target instanceof HTMLInputElement || store.selectedEvent || store.selectedDuration || store.summaryRange) return
+  if (e.key === 'Escape' && store.focusId) return store.clearFocus()
   if (e.key === 'ArrowLeft') store.panBy(-store.viewSpan * 0.1)
   else if (e.key === 'ArrowRight') store.panBy(store.viewSpan * 0.1)
   else if (e.key === '+' || e.key === '=') store.zoomIn()

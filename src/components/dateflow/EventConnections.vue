@@ -21,6 +21,7 @@
         + {{ g.items.length - LIMIT }} more
       </button>
     </div>
+    <button class="show" @click="emit('showOnTimeline')">Show these connections on the timeline</button>
   </section>
 </template>
 
@@ -33,7 +34,7 @@ defineProps<{
   groups: ConnectionGroup[]
   themed?: boolean // true on the span card (follows the light/dark theme); the event card is always dark
 }>()
-const emit = defineEmits<{ openEvent: [id: string]; openDuration: [id: string] }>()
+const emit = defineEmits<{ openEvent: [id: string]; openDuration: [id: string]; showOnTimeline: [] }>()
 
 const LIMIT = 5
 const open = reactive(new Set<string>())
@@ -82,6 +83,18 @@ function when(c: Connection): string {
   font-size: 0.75rem;
   line-height: 1.3;
 }
+.show {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.dark .show { background: rgb(31 41 55); color: rgb(229 231 235); }
+.dark .show:hover { background: rgb(55 65 81); }
+.themed .show { background: var(--df-btn); color: var(--df-text); }
+.themed .show:hover { background: var(--df-btn-hover); }
 .more {
   font-size: 0.75rem;
   font-weight: 600;

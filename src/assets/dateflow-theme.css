@@ -51,6 +51,10 @@
 .dateflow .footer {
   border-color: var(--df-border-soft);
 }
+.dateflow .focus {
+  border-color: var(--df-border-soft);
+  background: var(--df-btn);
+}
 .dateflow .secondary {
   color: var(--df-text-2);
 }

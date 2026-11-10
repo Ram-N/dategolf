@@ -28,7 +28,8 @@
       </div>
 
       <EventConnections themed :groups="connections" @open-event="(id) => emit('openEvent', id)"
-                        @open-duration="(id) => emit('openDuration', id)" />
+                        @open-duration="(id) => emit('openDuration', id)"
+                        @show-on-timeline="emit('showConnections')" />
 
       <div v-if="related.length" class="mt-5">
         <h3 class="text-[11px] font-semibold uppercase tracking-widest secondary mb-2">
@@ -61,7 +62,7 @@ import EventConnections from './EventConnections.vue'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{ duration: Duration; events: Event[]; connections: ConnectionGroup[] }>()
-const emit = defineEmits<{ close: []; openEvent: [id: string]; openDuration: [id: string]; showOnTimeline: [] }>()
+const emit = defineEmits<{ close: []; openEvent: [id: string]; openDuration: [id: string]; showOnTimeline: []; showConnections: [] }>()
 
 const group = computed(() => groupFor(props.duration.categories))
 const related = computed(() => eventsDuring(props.events, props.duration))

@@ -105,6 +105,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const selectedEventId = ref<string | null>(null)
   const selectedDurationId = ref<string | null>(null)
   const summaryRange = ref<{ start: number; end: number } | null>(null)
+  const focusId = ref<string | null>(null) // whose connections are highlighted on the timeline
   const theme = ref<Theme>(loadTheme())
   const mode = ref<ViewMode>(loadJson<ViewMode>(MODE_KEY) === 'lanes' ? 'lanes' : 'world')
   const laneState = ref<LaneState>(sanitizeLanes(loadJson<LaneState>(LANES_KEY)))
@@ -126,6 +127,15 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const relatedIds = computed(() =>
     openId.value ? connectedIds(openId.value, relationships.value) : new Set<string>(),
   )
+  /** The focused entity and everything linked to it, ringed on the timeline (empty = no highlight). */
+  const focusIds = computed(() =>
+    focusId.value ? new Set([focusId.value, ...connectedIds(focusId.value, relationships.value)]) : null,
+  )
+  const focusName = computed(() => {
+    const id = focusId.value
+    if (!id) return null
+    return durations.value.find((d) => d.id === id)?.name ?? events.value.find((e) => e.id === id)?.name ?? id
+  })
   const viewSpan = computed(() => span(view.value))
   const lanes = computed(() => visibleLanes(laneState.value))
 
@@ -282,6 +292,22 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     centerAt(e.year, true)
   }
 
+  /** Close the card, frame the entity and everything linked to it, and ring them on the timeline. */
+  function showConnections(id: string) {
+    const ids = new Set([id, ...connectedIds(id, relationships.value)])
+    const years: number[] = []
+    for (const e of events.value) if (ids.has(e.id)) years.push(e.year)
+    for (const d of durations.value) if (ids.has(d.id)) years.push(d.startYear, d.endYear)
+    select(null)
+    selectDuration(null)
+    focusId.value = id
+    if (years.length) showSpan(Math.min(...years), Math.max(...years))
+  }
+
+  function clearFocus() {
+    focusId.value = null
+  }
+
   /** Close the card and frame the century around a year. */
   function showSurrounding(year: number) {
     select(null)
@@ -330,6 +356,11 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     relationships,
     connections,
     relatedIds,
+    focusId,
+    focusIds,
+    focusName,
+    showConnections,
+    clearFocus,
     isLoading,
     view,
     viewSpan,
