@@ -1,4 +1,4 @@
-# DateGolf + DatePick — Quick Start
+# DateGolf, DatePick and DateFlow — Quick Start
 
 > Run this file when returning after a gap: `cat QUICKSTART.md`
 
@@ -6,13 +6,17 @@
 
 ## What is this?
 
-Two daily browser-based history games in one app:
+Three daily browser-based history games in one app, sharing one dataset:
 
-**DateGolf** — Given 5 target years, pick historical events to land as close as possible to each — lowest total penalty wins (like golf).
+**DateGolf**: given 5 target years, pick historical events that land as close as possible to each. Lowest total penalty wins (like golf).
 
-**DatePick** — Given 8 historical events, pick the correct year from 4 choices. Score out of 8.
+**DatePick**: given 8 historical events, pick the correct year from 4 choices. Score out of 8.
 
-Both games share the same event dataset and are seeded by date (same date = same challenge for everyone).
+**DateFlow**: an interactive world timeline (3500 BCE to today), with six timeline games, **Connections** between events, and **Stories** ("How did we get here?") drawn across the timeline.
+
+All are seeded by date (same date = same challenge for everyone). The data lives in SQLite and is exported to static JSON, edited through review tools and a Streamlit dashboard.
+
+> **What exists and what's next: [`docs/14_Product_Overview_and_Roadmap.md`](docs/14_Product_Overview_and_Roadmap.md).** Start there after a gap.
 
 - **Live site**: https://dategolf.vercel.app
 - **GitHub**: https://github.com/Ram-N/dategolf
@@ -38,7 +42,7 @@ That's it. No backend, no environment variables needed. (Game data is edited in 
 npm run dev          # Dev server with hot reload
 npm run build        # Production build (type-check + vite build)
 npm run preview      # Preview the production build locally
-npm run test:unit    # Run unit tests (Vitest) — 26 tests
+npm run test:unit    # Run unit tests (Vitest): 119 tests, many against the real data
 npm run type-check   # TypeScript check only (vue-tsc)
 npm run lint         # Lint + auto-fix (oxlint + eslint)
 npm run format       # Format src/ with Prettier
@@ -49,7 +53,8 @@ npm run data:compare   # Verify export matches committed JSON
 npm run data:backup    # Monthly local db snapshot → data/backup/ (gitignored)
 npm run data:browse    # Datasette: browse the db at http://localhost:8001 (read-only; docs/13)
 npm run data:dashboard # Streamlit dashboard at http://localhost:8501 (health, review, coverage, map; docs/13)
-npm run data:test      # Tests for the review tools (run on a temporary copy of the db)
+npm run data:test      # Tests for the data tools (49, run on a temporary copy of the db)
+npm run data:dashboard:test  # Headless smoke test of every dashboard page
 node scripts/validate-events.cjs   # Legacy events.json rule checks
 ```
 
@@ -62,7 +67,7 @@ src/
   types/
     index.ts                  ← DateGolf interfaces (Event, GameState, etc.)
     datepick.ts               ← DatePick interfaces (DatePickQuestion, etc.)
-  data/events.json            ← 269 historical events (shared by both games)
+  data/                       ← GENERATED from SQLite (never hand-edit): events (434), durations, relationships (links), datelinks…
   engine/
     gameEngine.ts             ← DateGolf pure game logic, zero Vue deps
     challengeGenerator.ts     ← DateGolf seeded daily target-year generation
@@ -94,13 +99,21 @@ src/
       QuestionCard.vue        ← DatePick: event name + 4 choice buttons
       QuestionReveal.vue      ← DatePick: correct/wrong + explanation
       DatePickResults.vue     ← DatePick: final score, answer review, share
-  router/index.ts             ← / → /datepick, /dategolf, /datepick routes
-  App.vue                     ← Minimal nav bar (DateGolf | DatePick)
+  engine/dateflow/            ← DateFlow: timeScale, lanes, filters, connections.ts, stories.ts, games/rounds.ts
+  stores/dateflow.ts          ← DateFlow Pinia store (view, filters, cards, focus, stories)
+  views/DateFlow*.vue         ← DateFlow timeline, games list, one game
+  components/dateflow/        ← Timeline, cards, Connections, StoryArcs, StoryPanel, StoriesMenu…
+  router/index.ts             ← /dategolf, /datepick, /dateflow, /dateflow/play/:game
+  App.vue                     ← Nav bar (DateGolf | DatePick | DateFlow)
+data/dategolf.db              ← SQLite: the source of truth for all game data
+tools/                        ← Python data tools (manage.py CLI: export, validate, drafts, links, sources, gap list…)
+dashboard/                    ← Streamlit admin dashboard + Datasette metadata
 docs/
-  01_dategolf_GAME_SPEC.md      ← DateGolf design spec
-  02_dategolf_TECHNICAL_PLAN.md ← Technical architecture
-  03_dategolf_DATA_AND_CHALLENGES.md ← Event data design + challenge rules
-  04_datepick_SPECS.md          ← DatePick design spec
+  01–03                         ← DateGolf spec, technical plan, data and challenges
+  04–06                         ← DatePick spec, memory aids (DateLinks)
+  07–09                         ← DateFlow brainstorm, specs, implementation phases (as built)
+  10–13                         ← Data: SQLite audit, migration log, review guide, admin tools
+  14_Product_Overview_and_Roadmap.md ← What exists + what's next (start here)
 scripts/
   validate-events.cjs         ← Run after editing events.json
 ```
@@ -124,6 +137,12 @@ scripts/
 4. **Player picks** → reveal shows ✓/✗ + the correct year + full description
 5. After **8 questions**, results screen shows score out of 8 with per-question breakdown and share text
 
+### DateFlow
+1. **Loads** `events.json`, `durations.json` and `relationships.json` (reviewed links only).
+2. **The timeline** places events and spans by year (World view, or one lane per region); filters and detail level choose what shows.
+3. **Cards** show an event's or span's context and its **Connections**. **Stories** (`engine/dateflow/stories.ts`) walk the links back or forward (earlier → later; a sequence is never shown as a cause) and draw them as threads.
+4. **Games** (`/dateflow/play`) are generated per date from the same data: `engine/dateflow/games/rounds.ts`.
+
 ---
 
 ## Deployment
@@ -139,59 +158,9 @@ Inspect deployments: https://vercel.com/ram-ns-projects/dategolf
 
 ---
 
-## What's done
+## What's done, and what's left
 
-| Area | Status |
-|---|---|
-| DateGolf game engine + tests | ✅ Complete |
-| 269 historical events | ✅ Complete |
-| DateGolf daily challenge generator | ✅ Deterministic seeded PRNG |
-| Fuzzy event search | ✅ Fuse.js, year never leaked |
-| DateGolf full 5-hole game UI | ✅ Mobile-first |
-| Answer reveal + alternatives | ✅ Educational reveal |
-| DateGolf localStorage persistence | ✅ Resume mid-game on reload |
-| Streak + personal best (DateGolf) | ✅ Tracked in localStorage |
-| Spoiler-free sharing (DateGolf) | ✅ Web Share API + clipboard |
-| **DatePick game mode** | ✅ Complete |
-| DatePick challenge generator | ✅ 8 questions, 6 era bands, seeded |
-| DatePick distractor engine | ✅ Proximity-ranked distractors |
-| DatePick UI (4 phases) | ✅ Mobile-first |
-| DatePick localStorage persistence | ✅ Resume + streak + best score |
-| DatePick sharing | ✅ ✅/❌ emoji grid |
-| Game nav bar (DateGolf ↔ DatePick) | ✅ Top nav with active state |
-| Vercel deployment | ✅ Live at dategolf.vercel.app |
-
----
-
-## What's left to do
-
-### High value, not yet done
-
-- **More events** — currently 269, spec calls for up to 500. Priority: more India/South Asia depth, more Africa, more pre-1500 world
-- **Timezone edge case** — the "today" date uses the browser's local time. A player in UTC+5:30 at 11pm gets a different date than someone in UTC-8. Decide: accept this, or force UTC?
-- **OG image** — meta tags exist but there's no actual preview image for link sharing
-- **Custom domain** — `dategolf.vercel.app` works but a real domain would be better
-
-### Polish / UX
-
-- **Transition animations** between holes (currently instant phase switches)
-- **Keyboard shortcut** to advance from reveal to next hole (currently tap/click only)
-- **Empty state** for search with no results (currently just plain text)
-- **Loading skeleton** instead of pulse text while events load
-
-### Testing gaps
-
-- Cross-browser: iPhone Safari, Android Chrome, desktop Safari
-- Slow 3G simulation
-- Multi-day streak logic (needs to be played on consecutive days to verify)
-- Share button on mobile (Web Share API requires real device)
-
-### Stretch / future
-
-- Category/region filters shown as count badges
-- "Today's stats" screen showing how other target years compare to the event database
-- Historical difficulty rating based on how far the nearest events are
-- Expand to 500 events with a proper data pipeline
+Both live in **[`docs/14_Product_Overview_and_Roadmap.md`](docs/14_Product_Overview_and_Roadmap.md)**: §1 for what exists today (games, data, tools) and §2 for what's next (waiting on you, Claude's queue, housekeeping). This file sticks to running the project.
 
 ---
 

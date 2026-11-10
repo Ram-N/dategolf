@@ -10,15 +10,11 @@
 
 ---
 
-## ▶ Your next actions (updated 2026-11-08)
+## ▶ What's next: see doc 14
 
-1. ~~**Review the first link batch.**~~ ✅ Done 2026-11-09. Final link counts: **97 `part_of`, 35 `began`, 14 `ended`**, all reviewed. **1 waits for batch 2** (Meiji Restoration `ended` Tokugawa Shogunate). A new span, **Apartheid (1948 to 1994)**, was added for the apartheid links (see §4). Events renamed along the way: four "Begins" names, the two that duplicated their span, the Great Pyramid, **Xinhai Revolution Overthrows the Qing** and **Ottoman Sultanate Abolished**.
-2. **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project` and `arab-spring` (all "one subject"). Change any with `manage.py identity <id> --one|--split|--drop-span|--drop-event`.
-3. **Then tell Claude to continue** (see the roadmap below).
+**The live roadmap moved to [`docs/14_Product_Overview_and_Roadmap.md`](14_Product_Overview_and_Roadmap.md)** (2026-11-10): what exists, what's waiting on you, Claude's queue, and housekeeping. The table below is kept as a record of the 2026-11-08 → 11-10 work and its decisions.
 
-Before reviewing, restart the dashboard (`npm run data:dashboard`) so it has the latest code.
-
-### 🗺 Roadmap (agreed 2026-11-08)
+### Roadmap history (agreed 2026-11-08; done items through 2026-11-10)
 
 The data work now feeds new DateFlow experiences. **DateFlow comes back straight after 3c**, rather than waiting for all the data work: the links are already good enough to build on.
 
@@ -35,13 +31,7 @@ The data work now feeds new DateFlow experiences. **DateFlow comes back straight
 | 5b | Claude | ~~**DateFlow Phase 9: Stories**~~ ✅ 2026-11-10 | Doc 09, Phase 9: threads on the timeline, a story panel with playback, shareable stories, the Cause & Effect game. |
 | 6 | Later | **DateFlow Phase 10+:** a Stories gallery, story-of-the-day, rise and fall of empires, map mode, smarter daily challenges | See doc 09 "Ideas for later" and §5 |
 
-**Parked (noted 2026-11-10), to pick up later:**
-- **DatePick range choices** (doc 04 §38). Choices for approximate events become ranges ("4000–3500 BCE"), not single years. **It needs two decisions from you:**
-  1. How wide are the choices? The event's own documented range, or a fixed width per era (e.g. 500-year bands before 1000 BCE)?
-  2. Does a partly overlapping pick count? Strictly right or wrong, or half credit?
-
-  **It also needs data work:** ranges are display text today (`date_display`), so they'd need structured `range_start` / `range_end` years first, ideally backed by sources.
-- **Dashboard v3: the event editor** (doc 13). One form to edit an event's name, year, description, aliases, categories and countries, validated before saving. It's less urgent now: new events arrive through drafts (gap list → Want → drafts), and fixes have CLI tools (`rename`, `set-event-date`, `set-span-years`, `retype-link`). Its value is letting you make one-off edits without Claude. It should also cover adding or editing a single link.
+**Parked items** (DatePick range choices, the v3 event editor) are now in doc 14 §2.
 
 **Done along the way:** Step 5 sources ✅ (2026-11-08: 57 CSV sources in the db, batch 1 drafted). The `ended` link type was added 2026-11-08, after the user rejected "Meiji Restoration is part of the Tokugawa Shogunate": endings aren't part of what they end.
 
