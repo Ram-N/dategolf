@@ -1,0 +1,663 @@
+{
+ "found_while": "2026-11-10: link batches 1-2 and the precision review",
+ "items": [
+  {
+   "kind": "event",
+   "name": "Birth of Akbar",
+   "year": 1542,
+   "region": "South Asia",
+   "why": "Death of Akbar exists but not his birth; his life could become a span.",
+   "related_ids": [
+    "death-of-akbar"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Akbar Becomes Mughal Emperor",
+   "year": 1556,
+   "region": "South Asia",
+   "why": "Akbar's accession is missing; it would follow Humayun Recaptures Delhi and begin his reign.",
+   "related_ids": [
+    "humayun-recaptures-delhi",
+    "second-battle-of-panipat",
+    "death-of-akbar"
+   ]
+  },
+  {
+   "kind": "span",
+   "name": "Reign of Akbar",
+   "year": 1556,
+   "region": "South Asia",
+   "why": "Would hold the Mansabdari system, Haldighati and Din-i-Ilahi as part_of, instead of linking them only to the whole empire.",
+   "related_ids": [
+    "mughal-akbar-administration",
+    "battle-of-haldighati",
+    "akbar-din-i-ilahi",
+    "death-of-akbar"
+   ],
+   "end_year": 1605
+  },
+  {
+   "kind": "event",
+   "name": "Shah Jahan Becomes Mughal Emperor",
+   "year": 1628,
+   "region": "South Asia",
+   "why": "The Mughal succession chain skips Shah Jahan (Death of Jahangir → Aurangzeb); the Taj Mahal is his.",
+   "related_ids": [
+    "death-of-jahangir",
+    "aurangzeb-becomes-emperor",
+    "taj-mahal-construction-begins"
+   ]
+  },
+  {
+   "kind": "span",
+   "name": "Reign of Shah Jahan",
+   "year": 1628,
+   "region": "South Asia",
+   "why": "The Taj Mahal's patron has no span or event of his own.",
+   "related_ids": [
+    "taj-mahal-construction-begins",
+    "construction-taj-mahal"
+   ],
+   "end_year": 1658
+  },
+  {
+   "kind": "event",
+   "name": "Death of Aurangzeb",
+   "year": 1707,
+   "region": "South Asia",
+   "why": "The usual marker of the start of Mughal decline; 'Mughal Empire Reaches Maximum Extent' (1707) stands in for it now.",
+   "related_ids": [
+    "mughal-empire-zenith-aurangzeb",
+    "nadir-shah-sacks-delhi"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Battle of Khanwa",
+   "year": 1527,
+   "region": "South Asia",
+   "why": "Babur's victory over Rana Sanga, which secured Mughal rule after Panipat.",
+   "related_ids": [
+    "first-battle-of-panipat",
+    "babur-founds-mughal-empire"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Battle of Chausa",
+   "year": 1539,
+   "region": "South Asia",
+   "why": "Sher Shah Suri's first defeat of Humayun, a year before Kanauj.",
+   "related_ids": [
+    "humayun-defeated-kanauj"
+   ]
+  },
+  {
+   "kind": "span",
+   "name": "Sur Empire",
+   "year": 1540,
+   "region": "South Asia",
+   "why": "Sher Shah Suri's empire between Humayun's exile and return; the Mughal story has a gap here.",
+   "related_ids": [
+    "humayun-defeated-kanauj",
+    "humayun-recaptures-delhi"
+   ],
+   "end_year": 1556
+  },
+  {
+   "kind": "event",
+   "name": "Iltutmish Becomes Sultan of Delhi",
+   "year": 1211,
+   "region": "South Asia",
+   "why": "The Delhi sultans chain jumps from Aibak to Razia; Iltutmish was between them.",
+   "related_ids": [
+    "qutb-ud-din-aibak-delhi",
+    "razia-sultana-accession"
+   ]
+  },
+  {
+   "kind": "span",
+   "name": "Mamluk Dynasty of Delhi",
+   "year": 1206,
+   "region": "South Asia",
+   "why": "The Delhi Sultanate's five dynasties have no spans, so the sultans can't be grouped by dynasty.",
+   "related_ids": [
+    "delhi-sultanate",
+    "qutb-ud-din-aibak-delhi",
+    "razia-sultana-accession"
+   ],
+   "end_year": 1290
+  },
+  {
+   "kind": "span",
+   "name": "Khalji Dynasty",
+   "year": 1290,
+   "region": "South Asia",
+   "why": "Second Delhi Sultanate dynasty.",
+   "related_ids": [
+    "delhi-sultanate",
+    "alauddin-khalji-accession"
+   ],
+   "end_year": 1320
+  },
+  {
+   "kind": "span",
+   "name": "Tughlaq Dynasty",
+   "year": 1320,
+   "region": "South Asia",
+   "why": "Third Delhi Sultanate dynasty.",
+   "related_ids": [
+    "delhi-sultanate",
+    "muhammad-bin-tughlaq-accession",
+    "firuz-shah-tughlaq-accession",
+    "timur-sacks-delhi"
+   ],
+   "end_year": 1414
+  },
+  {
+   "kind": "span",
+   "name": "Sayyid Dynasty",
+   "year": 1414,
+   "region": "South Asia",
+   "why": "Fourth Delhi Sultanate dynasty; nothing covers 1414-1451 in South Asia.",
+   "related_ids": [
+    "delhi-sultanate"
+   ],
+   "end_year": 1451
+  },
+  {
+   "kind": "span",
+   "name": "Lodi Dynasty",
+   "year": 1451,
+   "region": "South Asia",
+   "why": "Last Delhi Sultanate dynasty, ended at Panipat.",
+   "related_ids": [
+    "delhi-sultanate",
+    "first-battle-of-panipat"
+   ],
+   "end_year": 1526
+  },
+  {
+   "kind": "span",
+   "name": "Company Rule in India",
+   "year": 1757,
+   "region": "South Asia",
+   "why": "The East India Company's rule between Plassey and the British Raj has no span.",
+   "related_ids": [
+    "battle-of-plassey",
+    "battle-of-buxar",
+    "east-india-company-bengal",
+    "indian-rebellion-1857",
+    "british-raj"
+   ],
+   "end_year": 1858
+  },
+  {
+   "kind": "event",
+   "name": "Government of India Act 1858",
+   "year": 1858,
+   "region": "South Asia",
+   "why": "Transferred rule from the Company to the Crown: the start of the British Raj (would 'begin' it).",
+   "related_ids": [
+    "british-raj",
+    "indian-rebellion-1857"
+   ]
+  },
+  {
+   "kind": "span",
+   "name": "Indian Independence Movement",
+   "year": 1885,
+   "region": "South Asia",
+   "why": "The whole movement (from the Congress's founding, or 1857). The current span covers only its Gandhian era (1920-1947).",
+   "related_ids": [
+    "indian-national-congress-founded",
+    "indian-independence-movement",
+    "indian-independence"
+   ],
+   "end_year": 1947,
+   "approximate": true
+  },
+  {
+   "kind": "event",
+   "name": "Gandhi Returns to India",
+   "year": 1915,
+   "region": "South Asia",
+   "why": "Gandhi's return from South Africa opened his role in the movement.",
+   "related_ids": [
+    "gandhi-born",
+    "non-cooperation-movement"
+   ]
+  },
+  {
+   "kind": "span",
+   "name": "Anglo-Mysore Wars",
+   "year": 1767,
+   "region": "South Asia",
+   "why": "Four wars; only the second has an event, and nothing groups them.",
+   "related_ids": [
+    "second-anglo-mysore-war",
+    "tipu-sultan-killed"
+   ],
+   "end_year": 1799
+  },
+  {
+   "kind": "event",
+   "name": "Founding of the Khalsa",
+   "year": 1699,
+   "region": "South Asia",
+   "why": "Guru Gobind Singh's founding of the Khalsa, a defining moment of Sikhism.",
+   "related_ids": [
+    "death-of-guru-gobind-singh"
+   ]
+  },
+  {
+   "kind": "span",
+   "name": "Sikh Empire",
+   "year": 1799,
+   "region": "South Asia",
+   "why": "Ranjit Singh's empire in the Punjab has no span.",
+   "related_ids": [],
+   "end_year": 1849
+  },
+  {
+   "kind": "event",
+   "name": "Kalinga War",
+   "year": -261,
+   "region": "South Asia",
+   "why": "The war that led to Ashoka's conversion; it would 'contribute to' Ashoka Converts to Buddhism. (Ashoka Converts to Buddhism mentions it.)",
+   "related_ids": [],
+   "approximate": true
+  },
+  {
+   "kind": "span",
+   "name": "Reign of Ashoka",
+   "year": -268,
+   "region": "South Asia",
+   "why": "Ashoka's accession and conversion exist as events, but not his reign.",
+   "related_ids": [
+    "maurya-empire"
+   ],
+   "end_year": -232,
+   "approximate": true
+  },
+  {
+   "kind": "event",
+   "name": "Battle of Sekigahara",
+   "year": 1600,
+   "region": "East Asia",
+   "why": "The victory that gave Tokugawa Ieyasu power; it would precede the Tokugawa Shogunate.",
+   "related_ids": [
+    "tokugawa-shogunate"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Tokugawa Ieyasu Becomes Shogun",
+   "year": 1603,
+   "region": "East Asia",
+   "why": "Would 'begin' the Tokugawa Shogunate (the Meiji Restoration already ends it).",
+   "related_ids": [
+    "tokugawa-shogunate",
+    "meiji-restoration-japan"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Commodore Perry Arrives in Japan",
+   "year": 1853,
+   "region": "East Asia",
+   "why": "Opened Japan to the West, leading to the Meiji Restoration.",
+   "related_ids": [
+    "tokugawa-shogunate",
+    "meiji-restoration-japan"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Qing Capture of Beijing",
+   "year": 1644,
+   "region": "East Asia",
+   "why": "Would 'end' the Ming Dynasty and 'begin' the Qing.",
+   "related_ids": [
+    "ming-dynasty",
+    "qing-dynasty"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Treaty of Nanking",
+   "year": 1842,
+   "region": "East Asia",
+   "why": "Ended the First Opium War and ceded Hong Kong; links to the 1997 handover. (The First Opium War event lists it as an alias.)",
+   "related_ids": [
+    "opium-wars-china",
+    "hong-kong-handover"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Fall of the Ming Dynasty",
+   "year": 1644,
+   "region": "East Asia",
+   "why": "Li Zicheng's capture of Beijing and the last Ming emperor's suicide.",
+   "related_ids": [
+    "ming-dynasty"
+   ]
+  },
+  {
+   "kind": "span",
+   "name": "First Punic War",
+   "year": -264,
+   "region": "Europe",
+   "why": "The Punic Wars have no sub-spans: Zama can't be linked to the war it ended.",
+   "related_ids": [
+    "punic-wars"
+   ],
+   "end_year": -241
+  },
+  {
+   "kind": "span",
+   "name": "Second Punic War",
+   "year": -218,
+   "region": "Europe",
+   "why": "Hannibal's war; Zama 'ended' it (it can't end the Punic Wars as a whole).",
+   "related_ids": [
+    "punic-wars",
+    "battle-of-zama"
+   ],
+   "end_year": -201
+  },
+  {
+   "kind": "span",
+   "name": "Third Punic War",
+   "year": -149,
+   "region": "Europe",
+   "why": "The war that destroyed Carthage.",
+   "related_ids": [
+    "punic-wars"
+   ],
+   "end_year": -146
+  },
+  {
+   "kind": "event",
+   "name": "Destruction of Carthage",
+   "year": -146,
+   "region": "Europe",
+   "why": "Would 'end' the Punic Wars.",
+   "related_ids": [
+    "punic-wars"
+   ]
+  },
+  {
+   "kind": "span",
+   "name": "War of the Third Coalition",
+   "year": 1803,
+   "region": "Europe",
+   "why": "Trafalgar's own war, between the Napoleonic Wars and the battle.",
+   "related_ids": [
+    "napoleonic-wars",
+    "battle-of-trafalgar"
+   ],
+   "end_year": 1806
+  },
+  {
+   "kind": "event",
+   "name": "Napoleon Crowned Emperor",
+   "year": 1804,
+   "region": "Europe",
+   "why": "A central Napoleonic moment, missing.",
+   "related_ids": [
+    "napoleonic-wars"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Coup of 18 Brumaire",
+   "year": 1799,
+   "region": "Europe",
+   "why": "Napoleon's seizure of power: would 'end' the French Revolution, which has no ender now.",
+   "related_ids": [
+    "french-revolution"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Execution of Louis XVI",
+   "year": 1793,
+   "region": "Europe",
+   "why": "A defining event of the French Revolution.",
+   "related_ids": [
+    "french-revolution"
+   ]
+  },
+  {
+   "kind": "span",
+   "name": "Reign of Terror",
+   "year": 1793,
+   "region": "Europe",
+   "why": "The Revolution's most violent phase has no span.",
+   "related_ids": [
+    "french-revolution"
+   ],
+   "end_year": 1794
+  },
+  {
+   "kind": "event",
+   "name": "Division of the Roman Empire",
+   "year": 395,
+   "region": "Europe",
+   "why": "The split into East and West at Theodosius's death: would 'begin' the Fall of the Western Roman Empire.",
+   "related_ids": [
+    "fall-western-roman-empire",
+    "roman-empire",
+    "byzantine-empire"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Visigoths Sack Rome",
+   "year": 410,
+   "region": "Europe",
+   "why": "The first sack of Rome in 800 years, part of the Western Empire's fall.",
+   "related_ids": [
+    "fall-western-roman-empire"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Battle of the Somme",
+   "year": 1916,
+   "region": "Europe",
+   "why": "One of the First World War's defining battles.",
+   "related_ids": [
+    "world-war-1"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "United States Enters World War I",
+   "year": 1917,
+   "region": "Americas",
+   "why": "Turned the First World War; missing from the WWI sequence.",
+   "related_ids": [
+    "world-war-1",
+    "first-world-war-ends"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Battle of Stalingrad",
+   "year": 1942,
+   "region": "Europe",
+   "why": "The Eastern Front's turning point; the WWII sequence jumps from Pearl Harbor to D-Day.",
+   "related_ids": [
+    "world-war-2",
+    "germany-invades-soviet-union"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Battle of Midway",
+   "year": 1942,
+   "region": "Global",
+   "why": "The Pacific War's turning point.",
+   "related_ids": [
+    "world-war-2",
+    "japanese-pearl-harbor"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Germany Surrenders (V-E Day)",
+   "year": 1945,
+   "region": "Europe",
+   "why": "The end of the war in Europe; the WWII sequence goes from D-Day to Hiroshima without it. (\"World War Two Ends\" covers both surrenders in one event.)",
+   "related_ids": [
+    "world-war-2",
+    "d-day-normandy",
+    "atomic-bomb-hiroshima"
+   ]
+  },
+  {
+   "kind": "span",
+   "name": "Cold War",
+   "year": 1947,
+   "region": "Global",
+   "why": "A major span with no bar: Cold War Begins and the Berlin Wall's fall exist only as events.",
+   "related_ids": [
+    "cold-war-begins",
+    "berlin-wall-falls",
+    "dissolution-soviet-union",
+    "cuban-missile-crisis",
+    "space-race"
+   ],
+   "end_year": 1991
+  },
+  {
+   "kind": "event",
+   "name": "Apollo-Soyuz Test Project",
+   "year": 1975,
+   "region": "Global",
+   "why": "The joint US-Soviet flight some historians take as the Space Race's end.",
+   "related_ids": [
+    "space-race",
+    "moon-landing"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Korean Armistice Agreement",
+   "year": 1953,
+   "region": "East Asia",
+   "why": "Would 'end' the Korean War.",
+   "related_ids": [
+    "korean-war"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Fall of Saigon",
+   "year": 1975,
+   "region": "Southeast Asia",
+   "why": "Would 'end' the Vietnam War, which has no ender.",
+   "related_ids": [
+    "vietnam-war"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Battles of Lexington and Concord",
+   "year": 1775,
+   "region": "Americas",
+   "why": "Would 'begin' the American Revolution.",
+   "related_ids": [
+    "american-revolution"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Battle of Fort Sumter",
+   "year": 1861,
+   "region": "Americas",
+   "why": "Would 'begin' the American Civil War.",
+   "related_ids": [
+    "american-civil-war",
+    "lee-surrenders-appomattox"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Fall of Tenochtitlan",
+   "year": 1521,
+   "region": "Americas",
+   "why": "The more exact end of the Aztec Empire than the 1519 start of the conquest (which 'ends' it now).",
+   "related_ids": [
+    "aztec-empire",
+    "spanish-conquest-mexico"
+   ]
+  },
+  {
+   "kind": "event",
+   "name": "Mansa Musa's Pilgrimage to Mecca",
+   "year": 1324,
+   "region": "Africa",
+   "why": "Africa before 1500 is thin; the Mali Empire's most famous moment is missing.",
+   "related_ids": [
+    "mali-empire"
+   ]
+  },
+  {
+   "kind": "span",
+   "name": "Kingdom of Aksum",
+   "year": 100,
+   "region": "Africa",
+   "why": "A major African state with no span (Africa before 1500 is thin).",
+   "related_ids": [],
+   "end_year": 940,
+   "approximate": true
+  },
+  {
+   "kind": "span",
+   "name": "Great Zimbabwe",
+   "year": 1100,
+   "region": "Africa",
+   "why": "Southern Africa's great medieval city has no span.",
+   "related_ids": [],
+   "end_year": 1450,
+   "approximate": true
+  },
+  {
+   "kind": "span",
+   "name": "Songhai Empire",
+   "year": 1464,
+   "region": "Africa",
+   "why": "West Africa's largest empire after Mali has no span.",
+   "related_ids": [
+    "mali-empire"
+   ],
+   "end_year": 1591
+  },
+  {
+   "kind": "span",
+   "name": "Olmec Civilization",
+   "year": -1200,
+   "region": "Americas",
+   "why": "Mesoamerica before the Maya is empty.",
+   "related_ids": [],
+   "end_year": -400,
+   "approximate": true
+  },
+  {
+   "kind": "event",
+   "name": "Unification of Egypt",
+   "year": -3100,
+   "region": "Africa",
+   "why": "Narmer's unification, the start of Pharaonic Egypt; nothing marks it.",
+   "related_ids": [
+    "old-kingdom-egypt"
+   ],
+   "approximate": true
+  }
+ ]
+}

@@ -357,6 +357,19 @@ Each event and span gets a Wikipedia article, so drafted content can be checked.
 
 Sources aren't exported to the game yet, so `compare-export` is unaffected. **New drafts** can carry `"source": "https://en.wikipedia.org/wiki/..."` in `load-drafts`. That source is approved or removed together with its draft.
 
+### 4.6e Missing events and spans (the gap list)
+
+Whenever Claude notices a gap while doing other work, it goes on a list in the `missing_entities` table. For example, *Death of Akbar* exists but his birth and accession don't, and the Cold War has no span.
+
+1. **Review:** on the dashboard, **Review → Missing**, *To decide*. Each row shows what's missing, when, where, and **why it matters** (often: what it would link to). Tick one to see the ids it would link to.
+2. **Decide:**
+   - **Want:** you'd like it created. Tell Claude "draft the wanted missing items": they arrive as normal drafts in **Event drafts**, and each item becomes *Drafted* automatically.
+   - **Dismiss…:** not worth adding (a reason is required and recorded).
+   - **Back to open:** undo either of those.
+3. **Done** shows drafted and dismissed items.
+
+**CLI:** `manage.py load-missing <file>` (Claude adds batches, all-or-nothing; refuses names that already exist) and `manage.py missing-status <ids> --status wanted|dismissed|open [--note "..."]`. A draft fills an item with `"fills_missing": <id>` in its `load-drafts` entry.
+
 ### 4.7 Preview in the game
 
 ```bash

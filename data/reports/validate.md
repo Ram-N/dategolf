@@ -38,6 +38,7 @@
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
 | review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
+| review | Missing events and spans to decide (dashboard Review → Missing) | 59 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -114,6 +115,68 @@
 
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
+
+## [review] Missing events and spans to decide (dashboard Review → Missing)
+
+- `59` — event · Unification of Egypt (-3100) · open
+- `58` — span · Olmec Civilization (-1200) · open
+- `24` — span · Reign of Ashoka (-268) · open
+- `31` — span · First Punic War (-264) · open
+- `23` — event · Kalinga War (-261) · open
+- `32` — span · Second Punic War (-218) · open
+- `33` — span · Third Punic War (-149) · open
+- `34` — event · Destruction of Carthage (-146) · open
+- `55` — span · Kingdom of Aksum (100) · open
+- `40` — event · Division of the Roman Empire (395) · open
+- `41` — event · Visigoths Sack Rome (410) · open
+- `56` — span · Great Zimbabwe (1100) · open
+- `11` — span · Mamluk Dynasty of Delhi (1206) · open
+- `10` — event · Iltutmish Becomes Sultan of Delhi (1211) · open
+- `12` — span · Khalji Dynasty (1290) · open
+- `13` — span · Tughlaq Dynasty (1320) · open
+- `54` — event · Mansa Musa's Pilgrimage to Mecca (1324) · open
+- `14` — span · Sayyid Dynasty (1414) · open
+- `15` — span · Lodi Dynasty (1451) · open
+- `57` — span · Songhai Empire (1464) · open
+- `53` — event · Fall of Tenochtitlan (1521) · open
+- `7` — event · Battle of Khanwa (1527) · open
+- `8` — event · Battle of Chausa (1539) · open
+- `9` — span · Sur Empire (1540) · open
+- `1` — event · Birth of Akbar (1542) · open
+- `2` — event · Akbar Becomes Mughal Emperor (1556) · open
+- `3` — span · Reign of Akbar (1556) · open
+- `25` — event · Battle of Sekigahara (1600) · open
+- `26` — event · Tokugawa Ieyasu Becomes Shogun (1603) · open
+- `4` — event · Shah Jahan Becomes Mughal Emperor (1628) · open
+- `5` — span · Reign of Shah Jahan (1628) · open
+- `28` — event · Qing Capture of Beijing (1644) · open
+- `30` — event · Fall of the Ming Dynasty (1644) · open
+- `21` — event · Founding of the Khalsa (1699) · open
+- `6` — event · Death of Aurangzeb (1707) · open
+- `16` — span · Company Rule in India (1757) · open
+- `20` — span · Anglo-Mysore Wars (1767) · open
+- `51` — event · Battles of Lexington and Concord (1775) · open
+- `38` — event · Execution of Louis XVI (1793) · open
+- `39` — span · Reign of Terror (1793) · open
+- `22` — span · Sikh Empire (1799) · open
+- `37` — event · Coup of 18 Brumaire (1799) · open
+- `35` — span · War of the Third Coalition (1803) · open
+- `36` — event · Napoleon Crowned Emperor (1804) · open
+- `29` — event · Treaty of Nanking (1842) · open
+- `27` — event · Commodore Perry Arrives in Japan (1853) · open
+- `17` — event · Government of India Act 1858 (1858) · open
+- `52` — event · Battle of Fort Sumter (1861) · open
+- `18` — span · Indian Independence Movement (1885) · open
+- `19` — event · Gandhi Returns to India (1915) · open
+- `42` — event · Battle of the Somme (1916) · open
+- `43` — event · United States Enters World War I (1917) · open
+- `44` — event · Battle of Stalingrad (1942) · open
+- `45` — event · Battle of Midway (1942) · open
+- `46` — event · Germany Surrenders (V-E Day) (1945) · open
+- `47` — span · Cold War (1947) · open
+- `49` — event · Korean Armistice Agreement (1953) · open
+- `48` — event · Apollo-Soyuz Test Project (1975) · open
+- `50` — event · Fall of Saigon (1975) · open
 
 ## [info] Region labels in use, with their DateFlow lane
 
