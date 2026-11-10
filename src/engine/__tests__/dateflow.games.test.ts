@@ -3,6 +3,9 @@ import type { Event } from '@/types'
 import type { Duration } from '@/types/dateflow'
 import eventsJson from '@/data/events.json'
 import durationsJson from '@/data/durations.json'
+import relationshipsJson from '@/data/relationships.json'
+import { buildStory } from '../dateflow/stories'
+import type { RelationshipData } from '@/types/dateflow'
 import { laneFor } from '../dateflow/lanes'
 import {
   GAMES,
@@ -20,18 +23,19 @@ import {
 // Real data on purpose: these tests also prove the data can supply every game.
 const events = eventsJson as Event[]
 const durations = durationsJson as Duration[]
+const relationships = relationshipsJson as RelationshipData
 const eventById = new Map(events.map((e) => [e.id, e]))
 const durationById = new Map(durations.map((d) => [d.id, d]))
 const SEEDS = Array.from({ length: 40 }, (_, i) => i * 7919 + 1)
 
-const rounds = (game: GameId) => SEEDS.map((s) => generateRound(game, events, durations, rngFromSeed(s)))
+const rounds = (game: GameId) => SEEDS.map((s) => generateRound(game, events, durations, rngFromSeed(s), relationships))
 
 describe('dateflow games — rounds', () => {
   it('daily rounds depend only on the date and game', () => {
     for (const { id } of GAMES) {
-      const a = generateRound(id, events, durations, dailyRng(id, '2026-11-01'))
-      const b = generateRound(id, events, durations, dailyRng(id, '2026-11-01'))
-      const c = generateRound(id, events, durations, dailyRng(id, '2026-11-02'))
+      const a = generateRound(id, events, durations, dailyRng(id, '2026-11-01'), relationships)
+      const b = generateRound(id, events, durations, dailyRng(id, '2026-11-01'), relationships)
+      const c = generateRound(id, events, durations, dailyRng(id, '2026-11-02'), relationships)
       expect(a).toEqual(b)
       expect(a).not.toEqual(c)
     }
@@ -166,3 +170,51 @@ describe('dateflow games — approximate dates', () => {
     }
   })
 })
+
+describe('dateflow games — Cause & Effect is fair', () => {
+  const linked = (id: string) => {
+    const ids = new Set([id])
+    for (const direction of ['back', 'forward'] as const)
+      for (const n of buildStory(id, relationships, events, durations, { direction, depth: 50, max: 1000 })?.nodes ?? []) ids.add(n.id)
+    return ids
+  }
+  // A pair can have both a sequence and a cause link (Hiroshima → Japan's surrender): find the cause.
+  const link = (a: string, b: string) =>
+    relationships.links.find((l) => l.source === a && l.target === b && relationships.types[l.type]?.story === 'cause')
+
+  it('the answer is a high-confidence cause link; wrong options have no path and come from other regions', () => {
+    for (const round of rounds('cause-effect'))
+      for (const q of round) {
+        if (q.kind !== 'pick') continue
+        const subject = q.context[0]!
+        const answer = eventById.get(q.options[q.correct]!.id)!
+        const l = link(answer.id, subject.id) ?? link(subject.id, answer.id)
+        expect(l, `${subject.name} / ${answer.name}`).toBeDefined()
+        expect(relationships.types[l!.type]!.story).toBe('cause')
+        expect(l!.confidence ?? 'high').toBe('high')
+        expect(q.explain).toBe(l!.why)
+        const off = new Set([...linked(subject.id), ...linked(answer.id)])
+        q.options.forEach((o, k) => {
+          if (k === q.correct) return
+          const d = eventById.get(o.id)!
+          expect(off.has(d.id), `${d.name} is linked to ${subject.name} or ${answer.name}`).toBe(false)
+          expect(laneFor(d.region)).not.toBe(laneFor(subject.region))
+          expect(laneFor(d.region)).not.toBe(laneFor(answer.region))
+        })
+      }
+  })
+
+  it('ends with a story to put in order, all steps far enough apart', () => {
+    let orders = 0
+    for (const round of rounds('cause-effect'))
+      for (const q of round) {
+        if (q.kind !== 'order') continue
+        orders++
+        const years = q.answer.map((id) => eventById.get(id)!.year)
+        years.slice(1).forEach((y, k) => expect(y).toBeGreaterThan(years[k]!))
+        expect(isCorrect(q, q.answer)).toBe(true)
+      }
+    expect(orders).toBeGreaterThan(SEEDS.length / 2)
+  })
+})
+

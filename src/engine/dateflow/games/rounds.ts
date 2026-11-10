@@ -1,5 +1,6 @@
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateflow'
+import type { Duration, RelationshipData } from '@/types/dateflow'
+import { buildStory } from '../stories'
 import { laneFor, type LaneId } from '../lanes'
 import { formatSpan } from '../durations'
 import { formatYear } from '@/utils/formatYear'
@@ -9,7 +10,7 @@ import { approxMinGap } from '../../datepick/distractorEngine'
 // DateFlow games: five question generators sharing one round format. Each round has
 // ROUND_LENGTH questions that get harder (closer dates, nearer distractors) as it goes.
 
-export type GameId = 'which-first' | 'order' | 'missing' | 'elsewhere' | 'duration'
+export type GameId = 'which-first' | 'order' | 'missing' | 'elsewhere' | 'duration' | 'cause-effect'
 
 export const GAMES: { id: GameId; title: string; blurb: string }[] = [
   { id: 'which-first', title: 'Which Came First?', blurb: 'Two events — pick the earlier one. They get closer together as you go.' },
@@ -17,6 +18,7 @@ export const GAMES: { id: GameId; title: string; blurb: string }[] = [
   { id: 'missing', title: "What's Missing?", blurb: 'Two events from one region. Which event happened in between?' },
   { id: 'elsewhere', title: "What's Happening Elsewhere?", blurb: 'One event. Which of these happened elsewhere at about the same time?' },
   { id: 'duration', title: 'Find the Duration', blurb: 'Given where and when it ruled, name the empire or dynasty.' },
+  { id: 'cause-effect', title: 'Cause & Effect', blurb: 'What led to what? Pick the cause, the result, and put a story in order.' },
 ]
 
 export const ROUND_LENGTH = 5
@@ -40,6 +42,8 @@ interface QuestionBase {
   game: GameId
   prompt: string
   reveal: RevealItem[]
+  explain?: string // Cause & Effect: the link's "why", shown on the reveal
+  story?: { id: string; direction: 'back' | 'forward' } // "Explore this story"
 }
 
 export interface PickQuestion extends QuestionBase {
@@ -328,7 +332,114 @@ function findDuration(i: number, durations: Duration[], rng: Rng, used: Set<stri
 }
 
 // ── Rounds ───────────────────────────────────────────────────────────────────
-type Generator = (i: number, events: Event[], durations: Duration[], rng: Rng, used: Set<string>) => Question | null
+// ── Cause & Effect ───────────────────────────────────────────────────────────
+// Fair by construction (accuracy first):
+// - only high-confidence cause links become questions (a sequence is order, not cause);
+// - wrong options come from a different region than both the question and the answer, and have no
+//   path at all (cause, sequence, beginning or ending, either way) to either of them;
+// - "put this story in order" uses events far enough apart to tell apart (approximate dates included).
+const CAUSE_PROMPT: Record<string, [cause: string, effect: string]> = {
+  triggered: ['What triggered {x}?', 'What did {x} trigger?'],
+  caused: ['What caused {x}?', 'What did {x} cause?'],
+  contributed_to: ['Which of these contributed to {x}?', 'What did {x} contribute to?'],
+  enabled: ['What made {x} possible?', 'What did {x} make possible?'],
+  influenced: ['What influenced {x}?', 'What did {x} influence?'],
+}
+
+function causeEffect(i: number, events: Event[], _d: Duration[], rng: Rng, used: Set<string>, rel?: RelationshipData,
+                     durations: Duration[] = []): Question | null {
+  if (!rel) return null
+  const byId = new Map(events.map((e) => [e.id, e]))
+  const spans = new Set(durations.map((d) => d.id))
+  // Everything a story could connect to an entity, in either direction.
+  const linked = (id: string) => {
+    const ids = new Set<string>([id])
+    for (const direction of ['back', 'forward'] as const) {
+      for (const n of buildStory(id, rel, events, durations, { direction, depth: 50, max: 1000 })?.nodes ?? []) ids.add(n.id)
+    }
+    return ids
+  }
+
+  if (i === ROUND_LENGTH - 1) return storyInOrder(events, durations, rng, used, rel)
+
+  const asCause = i < 2 // early questions: "What caused X?"; then "What did X lead to?"
+  const candidates = rel.links.filter((l) => {
+    const t = rel.types[l.type]
+    return t?.story === 'cause' && CAUSE_PROMPT[l.type] && (l.confidence ?? 'high') === 'high' &&
+      byId.has(l.source) && byId.has(l.target) && !spans.has(l.source) && !spans.has(l.target) &&
+      !used.has(l.source) && !used.has(l.target)
+  })
+  for (let t = 0; t < TRIES && candidates.length; t++) {
+    const link = pickOne(candidates, rng)
+    const cause = byId.get(link.source)!
+    const effect = byId.get(link.target)!
+    const [subject, answer] = asCause ? [effect, cause] : [cause, effect]
+    const off = new Set([...linked(subject.id), ...linked(answer.id)])
+    const lanes = new Set([laneFor(subject.region), laneFor(answer.region)])
+    // Plausible in time: before the effect when asking for a cause, after the cause when asking for a result.
+    const window = i < 1 ? 400 : 200
+    const pool = events.filter((e) => !off.has(e.id) && !used.has(e.id) && !lanes.has(laneFor(e.region)) &&
+      (asCause ? e.year <= effect.year && e.year >= effect.year - window : e.year >= cause.year && e.year <= cause.year + window))
+    if (pool.length < 3) continue
+    const distractors = sample(pool, 3, rng)
+    const { options, correct } = pickOptions(
+      { id: answer.id, label: answer.name },
+      distractors.map((e) => ({ id: e.id, label: e.name })),
+      rng,
+    )
+    ;[subject, answer, ...distractors].forEach((e) => used.add(e.id))
+    return {
+      kind: 'pick',
+      game: 'cause-effect',
+      prompt: CAUSE_PROMPT[link.type]![asCause ? 0 : 1].replace('{x}', subject.name),
+      context: [subject],
+      options,
+      correct,
+      explain: link.why,
+      story: { id: subject.id, direction: asCause ? 'back' : 'forward' },
+      reveal: [pointItem(cause, asCause ? 'answer' : 'context'), pointItem(effect, asCause ? 'context' : 'answer'),
+               ...distractors.map((e) => pointItem(e, 'other'))],
+    }
+  }
+  return null
+}
+
+/** The round's last question: four steps of one real story, to put in order. */
+function storyInOrder(events: Event[], durations: Duration[], rng: Rng, used: Set<string>, rel: RelationshipData):
+  Question | null {
+  const byId = new Map(events.map((e) => [e.id, e]))
+  const spans = new Set(durations.map((d) => d.id))
+  const roots = [...new Set(rel.links.map((l) => l.target))].filter((id) => byId.has(id))
+  for (let t = 0; t < TRIES && roots.length; t++) {
+    const root = pickOne(roots, rng)
+    const story = buildStory(root, rel, events, durations, { direction: 'back', depth: 6 })
+    const steps = (story?.nodes ?? [])
+      .filter((n) => n.kind === 'event' && !spans.has(n.id) && !used.has(n.id))
+      .map((n) => byId.get(n.id)!)
+    // Keep events that can be told apart from every one already kept.
+    const kept: Event[] = []
+    for (const e of steps) if (kept.every((k) => k.year !== e.year && distinguishable(k, e))) kept.push(e)
+    if (kept.length < 4) continue
+    const chosen = kept.slice(-4) // the four steps nearest the story's end
+    const sorted = [...chosen].sort((a, b) => a.year - b.year)
+    let shown = shuffle(chosen, rng)
+    if (shown.every((e, k) => e.id === sorted[k]!.id)) shown = [...shown].reverse()
+    chosen.forEach((e) => used.add(e.id))
+    return {
+      kind: 'order',
+      game: 'cause-effect',
+      prompt: `Put this story in order, earliest first: the road to ${byId.get(root)!.name}.`,
+      events: shown,
+      answer: sorted.map((e) => e.id),
+      story: { id: root, direction: 'back' },
+      reveal: sorted.map((e) => pointItem(e, 'answer')),
+    }
+  }
+  return null
+}
+
+type Generator = (i: number, events: Event[], durations: Duration[], rng: Rng, used: Set<string>,
+                  rel?: RelationshipData) => Question | null
 
 const GENERATORS: Record<GameId, Generator> = {
   'which-first': (i, ev, _d, rng, used) => whichFirst(i, ev, rng, used),
@@ -336,15 +447,22 @@ const GENERATORS: Record<GameId, Generator> = {
   missing: (i, ev, _d, rng, used) => whatsMissing(i, ev, rng, used),
   elsewhere: (i, ev, _d, rng, used) => happeningElsewhere(i, ev, rng, used),
   duration: (i, _ev, d, rng, used) => findDuration(i, d, rng, used),
+  'cause-effect': (i, ev, d, rng, used, rel) => causeEffect(i, ev, d, rng, used, rel, d),
 }
 
 /** A full round. If a hard question can't be built, it falls back to an easier setting. */
-export function generateRound(game: GameId, events: Event[], durations: Duration[], rng: Rng): Question[] {
+export function generateRound(
+  game: GameId,
+  events: Event[],
+  durations: Duration[],
+  rng: Rng,
+  relationships?: RelationshipData, // needed by Cause & Effect; the other games ignore it
+): Question[] {
   const used = new Set<string>()
   const round: Question[] = []
   for (let i = 0; i < ROUND_LENGTH; i++) {
     let q: Question | null = null
-    for (let level = i; level >= 0 && !q; level--) q = GENERATORS[game](level, events, durations, rng, used)
+    for (let level = i; level >= 0 && !q; level--) q = GENERATORS[game](level, events, durations, rng, used, relationships)
     if (!q) throw new Error(`Could not build question ${i + 1} for ${game}`)
     round.push(q)
   }

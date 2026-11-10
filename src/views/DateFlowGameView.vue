@@ -87,12 +87,14 @@
           <p v-if="q.kind === 'order' && !lastRight" class="text-sm secondary mt-1">
             ✗ marks events in the wrong position — the number shows where each belongs.
           </p>
+          <p v-if="q.explain" class="explain text-sm mt-2"><strong>Why:</strong> {{ q.explain }}</p>
           <RevealTimeline class="mt-3" :items="q.reveal" :wrong-ids="wrongIds" />
           <div class="flex flex-wrap gap-2 mt-4">
             <button class="btn primary" @click="next">
               {{ index < ROUND_LENGTH - 1 ? 'Next question →' : 'See results' }}
             </button>
-            <button class="btn" @click="explore(q.reveal)">Explore on the timeline</button>
+            <button v-if="q.story" class="btn" @click="exploreStory(q.story)">Explore this story</button>
+            <button v-else class="btn" @click="explore(q.reveal)">Explore on the timeline</button>
           </div>
         </div>
       </section>
@@ -183,7 +185,7 @@ async function start() {
   if (store.isLoading) await store.load()
   // Daily rounds come from the date only; practice rounds are random.
   const rng = practice.value ? rngFromSeed(Math.floor(Math.random() * 2 ** 31)) : dailyRng(game.value.id, today)
-  questions.value = generateRound(game.value.id, store.events, store.durations, rng)
+  questions.value = generateRound(game.value.id, store.events, store.durations, rng, store.relationships)
   index.value = 0
   results.value = []
   phase.value = 'question'
@@ -231,6 +233,11 @@ function next() {
   }
   phase.value = 'done'
   if (!practice.value && game.value) saveDailyScore(game.value.id, today, score.value)
+}
+
+/** Cause & Effect: open the question's story ("How did we get here?") on the timeline. */
+function exploreStory(s: { id: string; direction: 'back' | 'forward' }) {
+  router.push({ path: '/dateflow', query: { story: s.id, dir: s.direction } })
 }
 
 /** Frame this question's events on the main timeline. */
