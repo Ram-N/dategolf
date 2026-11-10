@@ -37,7 +37,7 @@
 | warning | Event with a range but not marked approximate (the range is then not exported) | pass |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 45 |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
 | review | Missing events and spans to decide (dashboard Review → Missing) | 65 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
@@ -115,54 +115,6 @@
 
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
-
-## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
-
-- `199` — partition-of-bengal triggered swadeshi-movement — The partition of Bengal sparked the Swadeshi boycott of British goods.
-- `200` — jallianwala-bagh-massacre contributed_to non-cooperation-movement — The massacre turned Gandhi against British rule and fed support for non-cooperation.
-- `201` — quit-india-movement contributed_to indian-independence — One of several pressures, with the war's cost to Britain, that led to independence.
-- `202` — indian-rebellion-1857 contributed_to british-raj — The rebellion led Britain to end Company rule and govern India directly from 1858.
-- `203` — second-battle-of-tarain enabled delhi-sultanate — Muhammad of Ghor's victory opened northern India; his general Aibak founded the Delhi Sultanate.
-- `204` — battle-of-plassey enabled east-india-company-bengal — Victory at Plassey made the Company the real power in Bengal, leading to its control of the revenue.
-- `205` — operation-blue-star triggered indira-gandhi-assassination — Her Sikh bodyguards assassinated her months after the army's assault on the Golden Temple.
-- `206` — opium-trade-china-east-india contributed_to opium-wars-china — The Company's opium trade built the crisis that led to war.
-- `207` — chinese-opium-ban triggered opium-wars-china — Lin Zexu's destruction of British opium in Canton was the immediate cause of the war.
-- `208` — paper-invented-china enabled woodblock-printing-china — Cheap paper made printing worthwhile.
-- `209` — mongol-conquests enabled marco-polo-china — Mongol rule across Eurasia made overland travel from Europe to China possible.
-- `210` — huns-arrive-in-europe contributed_to fall-western-roman-empire — The Huns drove the Goths into Roman territory, starting the migrations that weakened the West.
-- `211` — gutenberg-printing-press enabled protestant-reformation — Printing spread Luther's writings across Europe within weeks.
-- `212` — protestant-reformation contributed_to thirty-years-war — Catholic-Protestant conflict in the Holy Roman Empire was a main cause of the war.
-- `213` — columbus-reaches-americas enabled spanish-conquest-mexico — Columbus's voyages opened the Americas to Spanish conquest.
-- `214` — vasco-da-gama-india-route enabled portuguese-arrive-japan — The sea route to India began the Portuguese trading network that reached Japan.
-- `215` — kepler-laws-planetary-motion influenced newton-laws-of-motion — Newton's theory of gravitation explained Kepler's laws of planetary motion.
-- `216` — x-rays-discovered influenced curie-radioactivity — Röntgen's X-rays prompted Becquerel's discovery of radioactivity, which Marie Curie took up.
-- `217` — first-vaccine-smallpox enabled smallpox-eradicated — Vaccination, begun by Jenner, was the tool that eradicated smallpox.
-- `218` — dna-structure-discovered enabled human-genome-project-period — Knowing DNA's structure was the foundation for reading the human genome.
-- `219` — steam-engine-watt enabled first-steam-railway — Efficient steam engines made steam locomotives possible.
-- `220` — boston-tea-party contributed_to american-revolution — Britain's punishing response, the Intolerable Acts, pushed the colonies toward revolution.
-- `221` — american-declaration influenced french-revolution-declaration — The American declaration was a model for France's, drafted with Lafayette's help.
-- `222` — haitian-revolution contributed_to abolition-slavery-france — The slave revolt in Saint-Domingue pushed France to abolish slavery in 1794.
-- `223` — emancipation-proclamation contributed_to abolition-slavery-us — The proclamation made abolition a war aim; the Thirteenth Amendment made it law.
-- `224` — world-war-1 contributed_to russian-revolution — The war's losses and hardship destroyed support for the Tsar.
-- `225` — treaty-of-versailles contributed_to rise-of-nazism — Resentment of the treaty's terms fuelled Nazi support.
-- `226` — great-depression contributed_to hitler-rise-chancellor — Mass unemployment turned voters toward the Nazis.
-- `227` — manhattan-project enabled atomic-bomb-hiroshima — The project built the bomb dropped on Hiroshima.
-- `228` — atomic-bomb-hiroshima contributed_to japan-world-war-two-defeat — The bombings, with the Soviet declaration of war, led Japan to surrender.
-- `229` — world-war-2 contributed_to united-nations-founded — The war's destruction led the Allies to found the UN to keep the peace.
-- `230` — league-of-nations-founded influenced united-nations-founded — The UN was designed to succeed, and improve on, the failed League.
-- `231` — cuban-revolution contributed_to cuban-missile-crisis — Castro's alliance with the Soviet Union brought Soviet missiles to Cuba.
-- `232` — yom-kippur-war triggered oil-crisis-1973 — Arab oil producers imposed an embargo on the war's Western supporters.
-- `233` — iranian-revolution contributed_to iran-iraq-war — Saddam Hussein invaded, hoping to exploit post-revolutionary Iran's weakness.
-- `234` — martin-luther-king-speech contributed_to civil-rights-act-us — The March on Washington built pressure for the civil rights bill.
-- `235` — jfk-assassination contributed_to civil-rights-act-us — Johnson pushed the bill through as part of Kennedy's legacy.
-- `236` — gorbachev-becomes-leader contributed_to dissolution-soviet-union — His reforms loosened central control, and the republics broke away.
-- `237` — soviet-afghan-war contributed_to dissolution-soviet-union — The costly war weakened the Soviet economy and its prestige.
-- `238` — berlin-wall-falls contributed_to dissolution-soviet-union — The collapse of communism in Eastern Europe accelerated the Soviet Union's breakup.
-- `239` — chernobyl-disaster contributed_to dissolution-soviet-union — The disaster and its cover-up damaged trust in the Soviet system; Gorbachev later called it a cause of the collapse.
-- `240` — internet-invented enabled amazon-founded — The World Wide Web made online retail possible.
-- `241` — internet-invented enabled google-founded — Google was built to search the World Wide Web.
-- `242` — september-11-attacks triggered war-on-terror — The attacks led the United States to launch the War on Terror.
-- `243` — covid-19-pandemic triggered covid-lockdown-india — India locked down to slow the pandemic's spread.
 
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 
