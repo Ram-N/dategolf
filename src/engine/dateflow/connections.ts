@@ -12,6 +12,7 @@ export interface Connection {
   year: number // the event's year, or the span's start
   endYear?: number // spans only
   approximate?: boolean
+  region: string
   why: string
 }
 
@@ -37,14 +38,17 @@ function rank(type: string, forward: boolean): number {
  * Resolve a link end to something showable. A shared id (an event and a span, one subject)
  * shows as its span: "Napoleonic Wars, 1803–1815", not its event "Napoleonic Wars Begin".
  */
-function resolve(id: string, events: Map<string, Event>, spans: Map<string, Duration>) {
+export function resolve(id: string, events: Map<string, Event>, spans: Map<string, Duration>) {
   const s = spans.get(id)
   if (s) {
-    return { kind: 'span' as const, name: s.name, year: s.startYear, endYear: s.endYear,
+    return { kind: 'span' as const, name: s.name, year: s.startYear, endYear: s.endYear, region: s.region,
              ...(s.approximate ? { approximate: true } : {}) }
   }
   const e = events.get(id)
-  if (e) return { kind: 'event' as const, name: e.name, year: e.year, ...(e.approximate ? { approximate: true } : {}) }
+  if (e) {
+    return { kind: 'event' as const, name: e.name, year: e.year, region: e.region,
+             ...(e.approximate ? { approximate: true } : {}) }
+  }
   return null
 }
 

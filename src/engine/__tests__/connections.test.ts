@@ -17,8 +17,8 @@ const span = (id: string, startYear: number, endYear: number, name = id) =>
   ({ id, name, startYear, endYear, description: '', categories: [], region: 'Global', importance: 5,
      kind: 'period' }) as Duration
 const types = {
-  part_of: { label: 'is part of', inverse: 'includes', causal: false },
-  ended: { label: 'ended', inverse: 'was ended by', causal: true },
+  part_of: { label: 'is part of', inverse: 'includes', causal: false, story: 'context' as const },
+  ended: { label: 'ended', inverse: 'was ended by', causal: true, story: 'frame' as const },
 }
 
 describe('dateflow connections', () => {
@@ -35,7 +35,8 @@ describe('dateflow connections', () => {
   it('reads a link forwards on its source and with the inverse on its target', () => {
     expect(connectionsFor('battle', small, evs, spans)).toEqual([
       { relation: 'is part of', type: 'part_of', forward: true,
-        items: [{ otherId: 'war', kind: 'span', name: 'War', year: 1803, endYear: 1815, why: 'A battle of the war.' }] },
+        items: [{ otherId: 'war', kind: 'span', name: 'War', year: 1803, endYear: 1815, region: 'Global',
+                 why: 'A battle of the war.' }] },
     ])
     const war = connectionsFor('war', small, evs, spans)
     expect(war.map((g) => g.relation)).toEqual(['was ended by', 'includes']) // "includes" last
