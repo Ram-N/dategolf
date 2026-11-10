@@ -56,6 +56,7 @@
       <button class="btn w-9" aria-label="Zoom out" @click="emit('zoomOut')">−</button>
       <button class="btn w-9" aria-label="Zoom in" @click="emit('zoomIn')">+</button>
       <button class="btn" @click="emit('reset')">Reset</button>
+      <StoriesMenu :stories="stories" @open="(id) => emit('openStory', id)" />
       <button class="btn" title="Summarise the period in view (or shift-drag across the timeline)" @click="emit('summarize')">
         What happened?
       </button>
@@ -80,6 +81,8 @@ import type { Theme, ViewMode } from '@/stores/dateflow'
 import type { LaneId, LaneState } from '@/engine/dateflow/lanes'
 import DateFlowLanePicker from './DateFlowLanePicker.vue'
 import DateFlowFilters from './DateFlowFilters.vue'
+import StoriesMenu from './StoriesMenu.vue'
+import type { FeaturedStory } from '@/engine/dateflow/stories'
 import type { Filters } from '@/engine/dateflow/filters'
 import { formatYear, parseYear } from '@/utils/formatYear'
 
@@ -90,6 +93,7 @@ defineProps<{
   laneState: LaneState
   filters: Filters
   categories: string[]
+  stories: FeaturedStory[]
 }>()
 const emit = defineEmits<{
   zoomIn: []
@@ -106,6 +110,7 @@ const emit = defineEmits<{
   setDetail: [detail: number]
   clearFilters: []
   summarize: []
+  openStory: [id: string]
 }>()
 
 const MODES: { id: ViewMode; label: string }[] = [

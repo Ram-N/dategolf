@@ -3,6 +3,7 @@ import { ref, computed, watch } from 'vue'
 import type { Event } from '@/types'
 import type { Duration, RelationshipData } from '@/types/dateflow'
 import { connectedIds, connectionsFor } from '@/engine/dateflow/connections'
+import { buildStory, featuredStories, frameYears, storyCounts, storyStops, type Direction } from '@/engine/dateflow/stories'
 import {
   FULL_VIEW,
   centerOn,
@@ -106,6 +107,10 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const selectedDurationId = ref<string | null>(null)
   const summaryRange = ref<{ start: number; end: number } | null>(null)
   const focusId = ref<string | null>(null) // whose connections are highlighted on the timeline
+  // Phase 9: the open story ("How did we get here?" / "What happened next?") and its playback.
+  const story = ref<{ rootId: string; direction: Direction; depth: number } | null>(null)
+  const storyStep = ref<number | null>(null) // index into storyStops during playback; null = the overview
+  const playing = ref(false)
   const theme = ref<Theme>(loadTheme())
   const mode = ref<ViewMode>(loadJson<ViewMode>(MODE_KEY) === 'lanes' ? 'lanes' : 'world')
   const laneState = ref<LaneState>(sanitizeLanes(loadJson<LaneState>(LANES_KEY)))
@@ -136,6 +141,24 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     if (!id) return null
     return durations.value.find((d) => d.id === id)?.name ?? events.value.find((e) => e.id === id)?.name ?? id
   })
+  const currentStory = computed(() =>
+    story.value
+      ? buildStory(story.value.rootId, relationships.value, events.value, durations.value, {
+          direction: story.value.direction,
+          depth: story.value.depth,
+        })
+      : null,
+  )
+  const currentStops = computed(() => (currentStory.value ? storyStops(currentStory.value) : []))
+  /** Story steps to ring on the timeline (the story replaces any "show connections" highlight). */
+  const storyIds = computed(() => (currentStory.value ? new Set(currentStory.value.nodes.map((n) => n.id)) : null))
+  const featured = computed(() =>
+    relationships.value.links.length ? featuredStories(relationships.value, events.value, durations.value) : [],
+  )
+  /** Story sizes for the open card's buttons ("How did we get here? (7)"). */
+  const openStoryCounts = computed(() =>
+    openId.value ? storyCounts(openId.value, relationships.value, events.value, durations.value) : { back: 0, forward: 0 },
+  )
   const viewSpan = computed(() => span(view.value))
   const lanes = computed(() => visibleLanes(laneState.value))
 
@@ -308,6 +331,71 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     focusId.value = null
   }
 
+  // ── Stories ──────────────────────────────────────────────────────────────
+  function frameStory() {
+    const s = currentStory.value
+    if (!s) return
+    const [a, b] = frameYears(s)
+    showSpan(a, b)
+  }
+
+  function openStory(id: string, direction: Direction = 'back') {
+    select(null)
+    selectDuration(null)
+    summaryRange.value = null
+    focusId.value = null
+    playing.value = false
+    storyStep.value = null
+    story.value = { rootId: id, direction, depth: 4 }
+    frameStory()
+  }
+
+  function closeStory() {
+    story.value = null
+    storyStep.value = null
+    playing.value = false
+  }
+
+  function setStoryDirection(direction: Direction) {
+    if (story.value) openStory(story.value.rootId, direction)
+  }
+
+  function extendStory() {
+    if (!story.value) return
+    story.value = { ...story.value, depth: story.value.depth + 4 }
+    frameStory()
+  }
+
+  /** Go to one stop: frame it with the threads that lead into it, so the link being told is on screen. */
+  function goToStep(i: number) {
+    const stop = currentStops.value[i]
+    const s = currentStory.value
+    if (!stop || !s) return
+    storyStep.value = i
+    const [a, b] = frameYears(s, stop.node.id)
+    const pad = Math.max(10, (b - a) * 0.15)
+    showSpan(a - pad, b + pad)
+  }
+
+  /** Step through the story; past the last stop, back to the overview. */
+  function stepStory(delta: 1 | -1) {
+    const last = currentStops.value.length - 1
+    const at = storyStep.value
+    const next = at === null ? (delta > 0 ? 0 : last) : at + delta
+    if (next < 0 || next > last) {
+      storyStep.value = null
+      playing.value = false
+      frameStory()
+      return
+    }
+    goToStep(next)
+  }
+
+  function togglePlay() {
+    playing.value = !playing.value
+    if (playing.value && storyStep.value === null) goToStep(0)
+  }
+
   /** Close the card and frame the century around a year. */
   function showSurrounding(year: number) {
     select(null)
@@ -358,6 +446,21 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     relatedIds,
     focusId,
     focusIds,
+    story,
+    storyStep,
+    playing,
+    currentStory,
+    currentStops,
+    storyIds,
+    featured,
+    openStoryCounts,
+    openStory,
+    closeStory,
+    setStoryDirection,
+    extendStory,
+    goToStep,
+    stepStory,
+    togglePlay,
     focusName,
     showConnections,
     clearFocus,

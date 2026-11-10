@@ -27,7 +27,8 @@
         <p class="text-sm mt-1">Historians give different start and end years. These are conventional estimates.</p>
       </div>
 
-      <EventConnections themed :groups="connections" @open-event="(id) => emit('openEvent', id)"
+      <EventConnections themed :groups="connections" :counts="storyCounts" @story="(d) => emit('story', d)"
+                        @open-event="(id) => emit('openEvent', id)"
                         @open-duration="(id) => emit('openDuration', id)"
                         @show-on-timeline="emit('showConnections')" />
 
@@ -61,8 +62,20 @@ import type { ConnectionGroup } from '@/engine/dateflow/connections'
 import EventConnections from './EventConnections.vue'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
 
-const props = defineProps<{ duration: Duration; events: Event[]; connections: ConnectionGroup[] }>()
-const emit = defineEmits<{ close: []; openEvent: [id: string]; openDuration: [id: string]; showOnTimeline: []; showConnections: [] }>()
+const props = defineProps<{
+  duration: Duration
+  events: Event[]
+  connections: ConnectionGroup[]
+  storyCounts?: { back: number; forward: number }
+}>()
+const emit = defineEmits<{
+  close: []
+  openEvent: [id: string]
+  openDuration: [id: string]
+  showOnTimeline: []
+  showConnections: []
+  story: [direction: 'back' | 'forward']
+}>()
 
 const group = computed(() => groupFor(props.duration.categories))
 const related = computed(() => eventsDuring(props.events, props.duration))

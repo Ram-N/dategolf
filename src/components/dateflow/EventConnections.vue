@@ -21,6 +21,14 @@
         + {{ g.items.length - LIMIT }} more
       </button>
     </div>
+    <div v-if="counts && (counts.back || counts.forward)" class="stories">
+      <button v-if="counts.back" class="story" @click="emit('story', 'back')">
+        How did we get here? <span class="n">{{ counts.back }} step{{ counts.back === 1 ? '' : 's' }}</span>
+      </button>
+      <button v-if="counts.forward" class="story" @click="emit('story', 'forward')">
+        What happened next? <span class="n">{{ counts.forward }}</span>
+      </button>
+    </div>
     <button class="show" @click="emit('showOnTimeline')">Show these connections on the timeline</button>
   </section>
 </template>
@@ -33,8 +41,14 @@ import { formatEventYear, formatYear } from '@/utils/formatYear'
 defineProps<{
   groups: ConnectionGroup[]
   themed?: boolean // true on the span card (follows the light/dark theme); the event card is always dark
+  counts?: { back: number; forward: number } // story sizes (Phase 9)
 }>()
-const emit = defineEmits<{ openEvent: [id: string]; openDuration: [id: string]; showOnTimeline: [] }>()
+const emit = defineEmits<{
+  openEvent: [id: string]
+  openDuration: [id: string]
+  showOnTimeline: []
+  story: [direction: 'back' | 'forward']
+}>()
 
 const LIMIT = 5
 const open = reactive(new Set<string>())
@@ -83,6 +97,28 @@ function when(c: Connection): string {
   font-size: 0.75rem;
   line-height: 1.3;
 }
+.stories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.story {
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-align: left;
+}
+.story .n {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.75;
+}
+.dark .story { background: rgb(234 179 8 / 0.15); color: rgb(253 224 71); box-shadow: inset 0 0 0 1px rgb(234 179 8 / 0.4); }
+.dark .story:hover { background: rgb(234 179 8 / 0.25); }
+.themed .story { background: var(--df-approx-bg); color: var(--df-approx); box-shadow: inset 0 0 0 1px var(--df-approx-border); }
 .show {
   width: 100%;
   margin-top: 0.5rem;

@@ -4,7 +4,7 @@ import type { Duration, RelationshipData } from '@/types/dateflow'
 import eventsJson from '@/data/events.json'
 import durationsJson from '@/data/durations.json'
 import relationshipsJson from '@/data/relationships.json'
-import { buildStory, featuredStories, gapText, narrate, storyCounts, storyStops, yearGap } from '../dateflow/stories'
+import { buildStory, featuredStories, frameYears, gapText, narrate, storyCounts, storyStops, yearGap } from '../dateflow/stories'
 
 const events = eventsJson as Event[]
 const durations = durationsJson as Duration[]
@@ -95,6 +95,31 @@ describe('dateflow stories — rules', () => {
     expect(gapText(1933, 1939)).toBe('6 years later')
     expect(gapText(1945, 1945)).toBe('the same year')
     expect(gapText(-2600, -2300, true)).toBe('about 300 years later')
+  })
+})
+
+describe('dateflow stories — framing and fans', () => {
+  const t = types
+  const fan: RelationshipData = {
+    types: t,
+    links: [
+      { source: 'a', type: 'contributed_to', target: 'fall', why: 'x' },
+      { source: 'b', type: 'contributed_to', target: 'fall', why: 'y', confidence: 'medium' },
+      { source: 'fall', type: 'ended', target: 'empire', why: 'z' }, // stored ender → span
+    ],
+  }
+  const evs = [ev('a', 1985), ev('b', 1986), ev('fall', 1991)]
+  const spans = [span('empire', 1922, 1991)]
+
+  it('frames on where threads join, not on a long span\'s whole length', () => {
+    const s = buildStory('fall', fan, evs, spans)!
+    expect([s.start, s.end]).toEqual([1922, 1991]) // the story's true extent
+    expect(frameYears(s)).toEqual([1985, 1991]) // what's worth showing
+    expect(frameYears(s, 'fall')).toEqual([1985, 1991])
+  })
+
+  it('tells a fan of causes in one sentence', () => {
+    expect(narrate(buildStory('fall', fan, evs, spans)!)).toBe('a and b contributed to fall (some debated).')
   })
 })
 

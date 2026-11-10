@@ -41,6 +41,12 @@
         pointer-events="none"
       />
 
+      <!-- Story backdrops: the spans that hold a story's steps (World War II behind the WWII chain) -->
+      <g v-for="b in storyBackdrops" :key="b.id" pointer-events="none" aria-hidden="true">
+        <rect :x="b.x" :y="ERA_SPACE" :width="b.w" :height="b.h" class="backdrop" />
+        <text :x="b.x + 6" :y="ERA_SPACE + 14" class="backdrop-label">{{ b.name }}</text>
+      </g>
+
       <!-- One track in World mode, one per visible lane in Lanes mode -->
       <g v-for="t in layouts" :key="t.id">
         <template v-if="t.label">
@@ -156,6 +162,8 @@
         </g>
       </g>
 
+      <StoryArcs v-if="story" :arcs="storyArcs" :spans="storySpanMarks" :pulse="storyPulse" :step-edge-keys="stepEdgeKeys" />
+
       <!-- Shift-drag period selection -->
       <g v-if="selection" pointer-events="none">
         <rect :x="selection.x" y="0" :width="selection.w" :height="height" class="selection" />
@@ -200,6 +208,8 @@ import { groupFor } from '@/engine/dateflow/categoryGroups'
 import { formatSpan, packBars } from '@/engine/dateflow/durations'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
+import { joinFrom, joinTo, yearGap, type Story, type StoryEdge, type StoryNode } from '@/engine/dateflow/stories'
+import StoryArcs, { type Arc } from './StoryArcs.vue'
 
 const props = defineProps<{
   events: Event[] // already filtered
@@ -212,6 +222,8 @@ const props = defineProps<{
   selectedId: string | null
   selectedDurationId: string | null
   highlightIds?: Set<string> | null // "Show connections": ring these, dim the rest
+  story?: Story | null // Phase 9: draw this story's threads
+  stepId?: string | null // the stop being played
 }>()
 const emit = defineEmits<{
   zoomAt: [anchorYear: number, factor: number]
@@ -507,6 +519,97 @@ const layouts = computed(() => {
   })
 })
 
+// ── Story threads (Phase 9) ──────────────────────────────────────────────────
+const ARC_KIND: Record<string, Arc['kind']> = {
+  triggered: 'trigger', caused: 'trigger', contributed_to: 'contrib', enabled: 'enable', influenced: 'influence',
+  began: 'frame', ended: 'frame', preceded: 'then',
+}
+const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi)
+
+/** The axis a story node sits on: the World track, or its lane's track (null if that lane is hidden). */
+function axisFor(n: StoryNode): number | null {
+  if (props.mode === 'world') return layouts.value[0]?.axisY ?? null
+  return layouts.value.find((t) => t.id === n.lane)?.axisY ?? null
+}
+
+
+function shortGap(e: StoryEdge, a: StoryNode, b: StoryNode): string {
+  const n = Math.abs(yearGap(joinFrom(a, b), joinTo(b, a)))
+  if (n < 2) return ''
+  return `${a.approximate || b.approximate ? '~' : '+'}${n.toLocaleString()} yrs`
+}
+
+const storyArcs = computed<Arc[]>(() => {
+  const s = props.story
+  if (!s) return []
+  const byId = new Map(s.nodes.map((n) => [n.id, n]))
+  const arcs: Arc[] = []
+  const ordered = [...s.edges].sort((p, q) => byId.get(p.to)!.year - byId.get(q.to)!.year)
+  ordered.forEach((e, order) => {
+    const a = byId.get(e.from)
+    const b = byId.get(e.to)
+    if (!a || !b) return
+    const ya = axisFor(a)
+    const yb = axisFor(b)
+    if (ya === null || yb === null) return
+    const x1 = yearToX(joinFrom(a, b), props.view, width.value)
+    const x2 = yearToX(joinTo(b, a), props.view, width.value)
+    const dx = Math.abs(x2 - x1)
+    const lift = clamp(dx * 0.35, 22, Math.max(30, Math.min(ya, yb) - ERA_SPACE - 8))
+    // Same year (a beginning, or two events in one year): a small loop, so the thread still shows.
+    const d = dx < 8 && ya === yb
+      ? `M ${x1} ${ya} C ${x1 - 18} ${ya - 34}, ${x2 + 18} ${yb - 34}, ${x2 + 1} ${yb}`
+      : ya === yb
+        ? `M ${x1} ${ya} C ${x1} ${ya - lift}, ${x2} ${yb - lift}, ${x2} ${yb}`
+        : `M ${x1} ${ya} C ${x1} ${ya - lift}, ${x2} ${yb - lift * 0.6}, ${x2} ${yb}`
+    const label = dx > 90 ? shortGap(e, a, b) : ''
+    arcs.push({
+      key: `${e.from}>${e.to}`, d, kind: ARC_KIND[e.type] ?? 'then', debated: e.debated, order,
+      label, labelX: (x1 + x2) / 2, labelY: Math.min(ya, yb) - lift * 0.75 - 4,
+    })
+  })
+  return arcs
+})
+
+const storyBackdrops = computed(() => {
+  const s = props.story
+  if (!s) return []
+  const h = (layouts.value[0]?.bandTop ?? height.value) - ERA_SPACE
+  return s.backdrops.map((b) => {
+    const x = yearToX(b.year, props.view, width.value)
+    const x2 = yearToX(b.endYear ?? b.year, props.view, width.value)
+    return { id: b.id, name: b.name, x, w: Math.max(2, x2 - x), h: props.mode === 'world' ? h : height.value - ERA_SPACE }
+  })
+})
+
+/** Span stops have no marker on the axis, so each gets a small square where its threads join. */
+const storySpanMarks = computed(() => {
+  const s = props.story
+  if (!s) return []
+  return s.nodes
+    .filter((n) => n.kind === 'span')
+    .map((n) => {
+      const y = axisFor(n)
+      const x1 = yearToX(n.year, props.view, width.value)
+      const x2 = yearToX(n.endYear ?? n.year, props.view, width.value)
+      return y === null ? null : { id: n.id, name: n.name, x1, x2, y }
+    })
+    .filter((m): m is NonNullable<typeof m> => !!m)
+})
+
+const storyPulse = computed(() => {
+  const s = props.story
+  const n = s && props.stepId ? s.nodes.find((x) => x.id === props.stepId) : null
+  const y = n ? axisFor(n) : null
+  return n && y !== null ? { x: yearToX(n.year, props.view, width.value), y } : null
+})
+
+/** During playback: the arcs leading into the current stop stay bright, the rest step back. */
+const stepEdgeKeys = computed(() => {
+  if (!props.story || !props.stepId) return null
+  return new Set(props.story.edges.filter((e) => e.to === props.stepId).map((e) => `${e.from}>${e.to}`))
+})
+
 defineExpose({
   hiddenCount: computed(() => layouts.value.reduce((n, t) => n + t.hiddenDots.length, 0)),
 })
@@ -755,5 +858,15 @@ function onBarClick(id: string) {
 }
 .dimmed {
   opacity: 0.25;
+}
+.backdrop {
+  fill: var(--df-backdrop);
+}
+.backdrop-label {
+  fill: var(--df-text-2);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 </style>

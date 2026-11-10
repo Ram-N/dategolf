@@ -182,6 +182,39 @@ function chronological(nodes: StoryNode[], edges: StoryEdge[]): StoryNode[] {
   return [...nodes].sort((a, b) => a.year - b.year || (before.has(`${a.id}>${b.id}`) ? -1 : before.has(`${b.id}>${a.id}`) ? 1 : 0))
 }
 
+/**
+ * Where a thread leaves its earlier end: an event at its year; a span at its start, or at its end
+ * when the later end comes after it ("World War II was ended by Japan's surrender" leaves from 1945).
+ */
+export function joinFrom(a: StoryNode, b: StoryNode): number {
+  if (a.endYear === undefined) return a.year
+  return b.year >= a.endYear ? a.endYear : a.year
+}
+
+/** Where it arrives: an event at its year; a span at the point nearest the thread's start. */
+export function joinTo(b: StoryNode, a: StoryNode): number {
+  return b.endYear === undefined ? b.year : Math.min(Math.max(joinFrom(a, b), b.year), b.endYear)
+}
+
+/**
+ * The years worth showing: where the threads join, and the events. A long span (the Soviet Union,
+ * 1922–1991) only counts where its threads touch it, so its four 1985–1991 causes aren't squashed.
+ */
+export function frameYears(story: Story, onlyInto?: string): [number, number] {
+  const byId = new Map(story.nodes.map((n) => [n.id, n]))
+  const years: number[] = []
+  for (const e of story.edges) {
+    if (onlyInto && e.to !== onlyInto) continue
+    const a = byId.get(e.from)
+    const b = byId.get(e.to)
+    if (a && b) years.push(joinFrom(a, b), joinTo(b, a))
+  }
+  const focus = onlyInto ? byId.get(onlyInto) : null
+  if (focus) years.push(focus.year)
+  if (!onlyInto) for (const n of story.nodes) if (n.kind === 'event') years.push(n.year)
+  return years.length ? [Math.min(...years), Math.max(...years)] : [story.start, story.end]
+}
+
 /** Each stop with the story edges that lead into it (several = a fan of causes). */
 export function storyStops(story: Story): { node: StoryNode; incoming: StoryEdge[] }[] {
   return story.nodes.map((node) => ({
@@ -213,14 +246,23 @@ export function narrate(story: Story, maxSentences = 6): string {
   const sentences: string[] = []
   for (const { node, incoming } of storyStops(story)) {
     // Framing edges ("World War Two Begins began World War II") stay in the panel but would repeat here.
-    const e = incoming.find((x) => x.role !== 'frame')
+    const causes = incoming.filter((x) => x.role === 'cause')
+    if (causes.length) {
+      // A fan of causes reads as one sentence per kind: "A, B and C contributed to D."
+      const byLabel = new Map<string, StoryEdge[]>()
+      for (const c of causes) byLabel.set(c.label, [...(byLabel.get(c.label) ?? []), c])
+      for (const [label, group] of byLabel) {
+        const names = group.map((c) => byId.get(c.from)!.name)
+        const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}` : names[0]
+        const debated = group.some((c) => c.debated) ? (group.length > 1 ? ' (some debated)' : ' (debated)') : ''
+        sentences.push(`${list} ${label} ${node.name}${debated}.`)
+      }
+      continue
+    }
+    const e = incoming.find((x) => x.role === 'sequence')
     if (!e) continue
     const from = byId.get(e.from)!
-    if (e.role === 'sequence') {
-      sentences.push(`${capitalise(gapText(from.year, node.year, !!(from.approximate || node.approximate)))}: ${node.name}.`)
-    } else {
-      sentences.push(`${from.name} ${e.label} ${node.name}${e.debated ? ' (debated)' : ''}.`)
-    }
+    sentences.push(`${capitalise(gapText(from.year, node.year, !!(from.approximate || node.approximate)))}: ${node.name}.`)
   }
   const extra = sentences.length - maxSentences
   return sentences.slice(0, maxSentences).join(' ') + (extra > 0 ? ` …and ${extra} more step${extra === 1 ? '' : 's'}.` : '')

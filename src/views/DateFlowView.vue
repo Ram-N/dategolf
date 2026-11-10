@@ -7,6 +7,8 @@
       :lane-state="store.laneState"
       :filters="store.filters"
       :categories="store.categories"
+      :stories="store.featured"
+      @open-story="(id) => store.openStory(id)"
       @zoom-in="store.zoomIn()"
       @zoom-out="store.zoomOut()"
       @reset="store.reset()"
@@ -28,7 +30,8 @@
     <div v-if="store.isLoading" class="flex-1 flex items-center justify-center text-sm muted">
       Loading…
     </div>
-    <div v-else class="flex-1 min-h-[320px]">
+    <div v-else class="flex-1 min-h-[320px] flex">
+      <div class="flex-1 min-w-0">
       <DateFlowTimeline
         ref="timeline"
         :events="store.filteredEvents"
@@ -40,12 +43,30 @@
         :lanes="store.lanes"
         :selected-id="store.selectedEvent?.id ?? null"
         :selected-duration-id="store.selectedDuration?.id ?? null"
-        :highlight-ids="store.focusIds"
+        :highlight-ids="store.storyIds ?? store.focusIds"
+        :story="store.currentStory"
+        :step-id="store.storyStep === null ? null : (store.currentStops[store.storyStep]?.node.id ?? null)"
         @zoom-at="store.zoomAt"
         @pan-by="store.panBy"
         @select="store.select"
         @select-duration="store.selectDuration"
         @select-range="store.openSummary"
+      />
+      </div>
+      <StoryPanel
+        v-if="store.currentStory"
+        :story="store.currentStory"
+        :stops="store.currentStops"
+        :step="store.storyStep"
+        :playing="store.playing"
+        @close="store.closeStory()"
+        @direction="store.setStoryDirection"
+        @play="store.togglePlay()"
+        @step="store.stepStory"
+        @go-to="store.goToStep"
+        @open="(id, kind) => (kind === 'span' ? store.selectDuration(id) : store.select(id))"
+        @reroot="(id) => store.openStory(id, store.story?.direction ?? 'back')"
+        @extend="store.extendStory()"
       />
     </div>
 
@@ -79,6 +100,8 @@
         @open-event="store.goToEvent"
         @open-duration="store.selectDuration"
         @show-on-timeline="store.showConnections(store.selectedEvent.id)"
+        :counts="store.openStoryCounts"
+        @story="(d) => store.openStory(store.selectedEvent!.id, d)"
       />
       <EventMeanwhile
         :event="store.selectedEvent"
@@ -108,12 +131,15 @@
       @open-duration="store.selectDuration"
       @show-on-timeline="showSelectedDuration"
       @show-connections="store.showConnections(store.selectedDuration.id)"
+      :story-counts="store.openStoryCounts"
+      @story="(d) => store.openStory(store.selectedDuration!.id, d)"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, useTemplateRef } from 'vue'
+import { computed, onMounted, onUnmounted, useTemplateRef, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useDateFlowStore } from '@/stores/dateflow'
 import { CATEGORY_GROUPS } from '@/engine/dateflow/categoryGroups'
 import { LANES } from '@/engine/dateflow/lanes'
@@ -123,6 +149,7 @@ import DateFlowMinimap from '@/components/dateflow/DateFlowMinimap.vue'
 import '@/assets/dateflow-theme.css'
 import EventInfoCard from '@/components/EventInfoCard.vue'
 import EventConnections from '@/components/dateflow/EventConnections.vue'
+import StoryPanel from '@/components/dateflow/StoryPanel.vue'
 import DurationInfoCard from '@/components/dateflow/DurationInfoCard.vue'
 import EventMeanwhile from '@/components/dateflow/EventMeanwhile.vue'
 import PeriodSummaryCard from '@/components/dateflow/PeriodSummaryCard.vue'
@@ -147,6 +174,15 @@ const filterSummary = computed(() => {
 function onKey(e: KeyboardEvent) {
   if (e.target instanceof HTMLInputElement || store.selectedEvent || store.selectedDuration || store.summaryRange) return
   if (e.key === 'Escape' && store.focusId) return store.clearFocus()
+  if (store.currentStory) {
+    if (e.key === 'Escape') return store.closeStory()
+    if (e.key === 'ArrowRight') return store.stepStory(1)
+    if (e.key === 'ArrowLeft') return store.stepStory(-1)
+    if (e.key === ' ') {
+      e.preventDefault()
+      return store.togglePlay()
+    }
+  }
   if (e.key === 'ArrowLeft') store.panBy(-store.viewSpan * 0.1)
   else if (e.key === 'ArrowRight') store.panBy(store.viewSpan * 0.1)
   else if (e.key === '+' || e.key === '=') store.zoomIn()
@@ -172,9 +208,26 @@ function showSelectedDuration() {
   store.showSpan(d.startYear, d.endYear)
 }
 
-onMounted(() => {
-  if (store.isLoading) store.load()
+// Shareable stories: /dateflow?story=<id>&dir=back|forward opens one, and the URL follows the open story.
+const route = useRoute()
+const router = useRouter()
+function openFromUrl() {
+  const id = typeof route.query.story === 'string' ? route.query.story : null
+  if (id && id !== store.story?.rootId) store.openStory(id, route.query.dir === 'forward' ? 'forward' : 'back')
+}
+watch(
+  () => store.story && `${store.story.rootId}|${store.story.direction}`,
+  (key) => {
+    const [story, dir] = key ? key.split('|') : []
+    if (route.query.story === story && (route.query.dir ?? 'back') === dir) return
+    router.replace({ query: story ? { ...route.query, story, dir } : (({ story: _s, dir: _d, ...rest }) => rest)(route.query) })
+  },
+)
+
+onMounted(async () => {
   window.addEventListener('keydown', onKey)
+  if (store.isLoading) await store.load()
+  openFromUrl()
 })
 onUnmounted(() => window.removeEventListener('keydown', onKey))
 </script>

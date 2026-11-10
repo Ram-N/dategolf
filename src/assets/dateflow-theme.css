@@ -21,6 +21,14 @@
   --df-approx: #fbbf24;
   --df-approx-bg: rgb(245 158 11 / 0.12);
   --df-approx-border: #b45309;
+  /* Story threads (Phase 9): one colour per kind of link; line style differs too */
+  --df-arc-trigger: #fb923c;
+  --df-arc-contrib: #fbbf24;
+  --df-arc-enable: #60a5fa;
+  --df-arc-influence: #c084fc;
+  --df-arc-frame: #2dd4bf;
+  --df-arc-then: #a1a1aa;
+  --df-backdrop: rgb(255 255 255 / 0.045);
 }
 .dateflow[data-theme='light'] {
   --df-bg: #fcfcfb;
@@ -43,6 +51,13 @@
   --df-approx: #92400e;
   --df-approx-bg: #fffbeb;
   --df-approx-border: #f59e0b;
+  --df-arc-trigger: #c2410c;
+  --df-arc-contrib: #b45309;
+  --df-arc-enable: #1d4ed8;
+  --df-arc-influence: #7e22ce;
+  --df-arc-frame: #0f766e;
+  --df-arc-then: #71717a;
+  --df-backdrop: rgb(0 0 0 / 0.045);
 }
 .dateflow {
   background: var(--df-bg);
