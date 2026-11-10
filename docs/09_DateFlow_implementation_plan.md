@@ -17,6 +17,7 @@
 | 6 | Exploration: "what was happening elsewhere?", period select, density | ✅ Done |
 | 7 | Games built on the timeline | ✅ Done |
 | 8 | Connections: links between events and spans on the cards and the timeline | ✅ Done 2026-11-10 |
+| 9 | Stories: "How did we get here?" threads on the timeline, a story panel with playback, and a Cause & Effect game | ✅ Done 2026-11-10 |
 
 **Decisions made with Ram (2026-11-01)**
 - Durations come from ChronoLogic's periods (`../ChronoLogic/public/data/events.json`), plus about 25–30 empires and dynasties we add ourselves.
@@ -300,6 +301,46 @@ Decisions with Ram (2026-11-01): a **Play hub inside DateFlow**, **daily + pract
   - reveal labels collided or overflowed on phones; they now go on the roomier side and shorten with "…" if needed
   - edge year labels were clipped
 - **Possible next steps:** streaks and stats per game (like DatePick), a combined "daily five" score, difficulty presets, and putting the order game directly on the big timeline.
+
+## Phase 9 — Stories ✅ (planned and built 2026-11-10)
+
+**Goal:** turn the 225 reviewed links into stories a student can follow. *"How did we get here?"* walks back through causes and predecessors, *"What happened next?"* walks forward, and the timeline draws the threads. The full plan is in `~/.claude/plans/go-ahead-with-the-sequential-dawn.md`.
+
+**Accuracy rules, built in:**
+- **A sequence is never shown as a cause:** it's a thin grey "then" thread, and reads "6 years after X".
+- **Debated (medium-confidence) links are dashed** and tagged "debated".
+- **Approximate dates show "c."**, and their gaps read "about".
+- **No year 0** in any gap.
+
+### As built
+- **9a, data:** `relationships.json` gains each link's `confidence` and each type's `story` role (cause / sequence / frame / context). The role is derived in `tools/exporter.py`: `preceded` is a sequence, `began` and `ended` are frames, other causal types are causes. That's simpler than the planned new column.
+- **9b, engine (`src/engine/dateflow/stories.ts`, pure):**
+  - **Edges always point earlier → later.** For an ending, the span comes first: "World War II was ended by Japan's surrender".
+  - **`buildStory`** works in either direction, with depth and size caps and one edge per pair (a cause beats a sequence). It flags debated and cross-region links and finds backdrop spans.
+  - **Helpers:** `storyStops` (fans of causes), `narrate` (one sentence per kind of cause, e.g. "A, B and C contributed to D (some debated)."; framing edges stay out), `yearGap` / `gapText`, `joinFrom` / `joinTo` (where threads meet spans), `frameYears` (frames on where threads join, so the Soviet Union's 1922–1991 span doesn't squash its 1985–1991 causes), `storyCounts` and `featuredStories` (deep, cross-regional, no near-duplicates).
+- **9c/9d, UI:**
+  - **Entry points:** "How did we get here? (n steps)" and "What happened next? (n)" on every linked card; a **Stories** menu in the toolbar (8 featured); shareable `?story=<id>&dir=back|forward`.
+  - **The timeline:** threads coloured by type (`--df-arc-*` tokens for both themes), each with an arrowhead and a gap label ("+6 yrs", "~300 yrs"). They draw in chronologically, cross lanes for cross-region causes, and loop for same-year links. Spans in a story get square end-markers; backdrop bands show spans that hold several steps.
+  - **`StoryPanel.vue`** (right side; a bottom sheet on phones):
+    - **Direction toggle**, the year range, and counts of stops and regions.
+    - **The narration**, and a **legend** of only the thread types the story uses.
+    - **A subway line of stops,** each with connectors that read into it (verb, debated and region tags, the "why"), a "Story from here ↺" button, and "Go further back (+4)" when trimmed.
+    - **Playback:** ▶ auto-advances every 4 s; ← → step; Space plays; Esc closes. Each step frames the threads leading into it, pulses the stop, and fades the other threads.
+- **9e, the Cause & Effect game** (`/dateflow/play/cause-effect`):
+  - **Rounds:** 2 "what caused X?" questions, 2 "what did X lead to?" questions, then a 4-step story to put in order.
+  - **Fair by construction:** only high-confidence cause links are used, and wrong options come from other regions with no path to either the question or the answer. The reveal shows the "why" and **Explore this story**.
+- **Tests:** 14 stories tests (toy rules, framing, fans, and real data: the WWII and Mughal orders, featured stories, no time travel) and 2 Cause & Effect fairness tests over 40 seeded rounds. 119 tests in all.
+- **Play-tested (Playwright):**
+  - the WWII story by URL: 9 threads, 9 stops, narration, playback 3 / 9 with pulse and fading
+  - the Soviet story in Lanes mode: cross-lane dashed threads, a 4-cause fan, a one-sentence narration
+  - light and dark themes; phone bottom sheet; story from a card; Esc; the game round and Explore. No console errors.
+
+### Ideas for later
+- **A Stories gallery page:** cards with a mini-thread preview.
+- **Combine stories:** "Show where these two stories meet".
+- **Story-of-the-day** on the DateFlow landing page.
+- **Narration that uses each event's own description.**
+- **Richer stories as the gap list is drafted:** Franz Ferdinand would trigger WWI; Perry would lead to Meiji.
 
 ## Phase 8 — Connections ✅ (planned 2026-11-08, built 2026-11-10)
 
