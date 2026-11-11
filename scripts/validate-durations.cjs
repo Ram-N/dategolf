@@ -52,6 +52,8 @@ durations.forEach((d) => {
   if (!['empire', 'period'].includes(d.kind)) fail(`Invalid kind: ${d.id} → ${d.kind}`)
   if (!Number.isInteger(d.importance) || d.importance < 1 || d.importance > 9) fail(`Invalid importance: ${d.id} → ${d.importance}`)
   if (d.approximate !== undefined && typeof d.approximate !== 'boolean') fail(`approximate must be boolean: ${d.id}`)
+  if (d.significance !== undefined && (typeof d.significance !== 'string' || !d.significance.trim()))
+    fail(`Empty or non-text significance on: ${d.id}`)
 })
 pass('Kind / importance checks passed')
 

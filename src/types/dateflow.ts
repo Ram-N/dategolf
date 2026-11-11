@@ -7,6 +7,7 @@ export interface Duration {
   startYear: number // BCE years are negative, like Event.year
   endYear: number
   description: string
+  significance?: string // "Why it matters" (reviewed); absent until one is written
   categories: string[]
   region: string
   importance: number // 1–9, same scale as events

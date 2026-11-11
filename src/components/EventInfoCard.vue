@@ -27,6 +27,10 @@
           <h2 class="text-xl font-bold text-white mt-1 mb-3 pr-8">{{ event.name }}</h2>
           <ApproxNote v-if="event.approximate" :range="event.dateDisplay" class="mb-3" />
           <p class="text-sm text-gray-300 leading-relaxed mb-4">{{ event.description }}</p>
+          <section v-if="event.significance" class="mb-4 rounded-lg border-l-4 border-green-700 bg-gray-800/70 px-3 py-2">
+            <h3 class="text-[11px] font-bold uppercase tracking-widest text-green-400 mb-1">Why it matters</h3>
+            <p class="text-sm text-gray-200 leading-relaxed">{{ event.significance }}</p>
+          </section>
           <p class="text-xs text-gray-500 mb-4">
             {{ event.categories.join(' · ') }} · {{ event.region }}
           </p>

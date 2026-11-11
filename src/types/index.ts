@@ -6,7 +6,8 @@ export interface Event {
   categories: string[]
   region: string
   aliases: string[]
-  description: string
+  description: string // what happened; DatePick shows it before the guess, so it never gives the year
+  significance?: string // "Why it matters" (reviewed); shown only after the guess, so it may name years
   difficulty: 'easy' | 'medium' | 'hard'
   importance: number // 1–9; higher = more prominent (DateFlow bolds 7+, DatePick weights by it)
   dateflowOnly?: boolean // date too disputed to guess: shown in DateFlow, excluded from DateGolf/DatePick

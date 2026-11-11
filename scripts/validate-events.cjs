@@ -106,6 +106,13 @@ events.forEach(e => {
 })
 pass('Non-empty name/id check passed')
 
+// 7b. Optional "Why it matters": a non-empty string when present
+events.forEach(e => {
+  if (e.significance !== undefined && (typeof e.significance !== 'string' || !e.significance.trim()))
+    fail(`Empty or non-text significance on: ${e.id}`)
+})
+pass('Significance check passed')
+
 // 8. date-LINKS keys match event IDs (otherwise the entry never displays)
 const datelinks = JSON.parse(fs.readFileSync(path.join(__dirname, '../src/data/datelinks.json'), 'utf8'))
 const orphanKeys = Object.keys(datelinks).filter(k => !uniqueIds.has(k))

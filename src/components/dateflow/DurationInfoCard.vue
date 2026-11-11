@@ -22,6 +22,10 @@
       </div>
 
       <p class="text-sm leading-relaxed mt-4">{{ duration.description }}</p>
+      <section v-if="duration.significance" class="why rounded-lg px-3 py-2 mt-3">
+        <h3 class="text-[11px] font-bold uppercase tracking-widest secondary mb-1">Why it matters</h3>
+        <p class="text-sm leading-relaxed">{{ duration.significance }}</p>
+      </section>
       <div v-if="duration.approximate" role="note" class="approx rounded-lg border px-3 py-2 mt-3">
         <div class="text-xs font-bold uppercase tracking-widest">≈ Approximate dates</div>
         <p class="text-sm mt-1">Historians give different start and end years. These are conventional estimates.</p>
@@ -113,6 +117,10 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   color: var(--df-approx);
   background: var(--df-approx-bg);
   border-color: var(--df-approx-border);
+}
+.why {
+  background: var(--df-btn);
+  border-left: 3px solid var(--df-text-2);
 }
 .card {
   background: var(--df-surface);
