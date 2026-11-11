@@ -38,7 +38,7 @@
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
 | review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
-| review | Missing events and spans to decide (dashboard Review → Missing) | 65 |
+| review | Missing events and spans to decide (dashboard Review → Missing) | 80 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -128,15 +128,30 @@
 - `33` — span · Third Punic War (-149) · open
 - `34` — event · Destruction of Carthage (-146) · open
 - `55` — span · Kingdom of Aksum (100) · open
+- `79` — span · Ghana Empire (300) · open
 - `40` — event · Division of the Roman Empire (395) · open
 - `41` — event · Visigoths Sack Rome (410) · open
+- `78` — span · Srivijaya (650) · open
+- `76` — span · Heian Period (794) · open
+- `77` — span · Khmer Empire (802) · open
+- `74` — span · Kievan Rus' (882) · open
+- `70` — span · Fatimid Caliphate (909) · open
+- `71` — span · Seljuk Empire (1037) · open
 - `56` — span · Great Zimbabwe (1100) · open
+- `69` — span · Ayyubid Sultanate (1171) · open
+- `75` — span · Kamakura Shogunate (1185) · open
 - `11` — span · Mamluk Dynasty of Delhi (1206) · open
 - `10` — event · Iltutmish Becomes Sultan of Delhi (1211) · open
+- `73` — span · Golden Horde (1242) · open
+- `68` — span · Mamluk Sultanate (1250) · open
+- `72` — span · Ilkhanate (1256) · open
+- `67` — event · Mongols Sack Baghdad (1258) · open
+- `66` — span · Yuan Dynasty (1271) · open
 - `12` — span · Khalji Dynasty (1290) · open
 - `13` — span · Tughlaq Dynasty (1320) · open
 - `54` — event · Mansa Musa's Pilgrimage to Mecca (1324) · open
 - `62` — span · Hundred Years' War (1337) · open
+- `80` — span · Kingdom of Kongo (1390) · open
 - `14` — span · Sayyid Dynasty (1414) · open
 - `15` — span · Lodi Dynasty (1451) · open
 - `57` — span · Songhai Empire (1464) · open

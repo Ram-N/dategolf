@@ -18,7 +18,7 @@
 | 7 | Games built on the timeline | ✅ Done |
 | 8 | Connections: links between events and spans on the cards and the timeline | ✅ Done 2026-11-10 |
 | 9 | Stories: "How did we get here?" threads on the timeline, a story panel with playback, and a Cause & Effect game | ✅ Done 2026-11-10 |
-| 10 | Contemporaries: the Time Machine (the world in a year; compare two years), the Overlap and Distance explorers | 📝 Planned 2026-11-11, awaiting "go" |
+| 10 | Contemporaries: the Time Machine (the world in a year; compare two years), the Overlap and Distance explorers | ✅ Done 2026-11-11 |
 
 **Decisions made with Ram (2026-11-01)**
 - Durations come from ChronoLogic's periods (`../ChronoLogic/public/data/events.json`), plus about 25–30 empires and dynasties we add ourselves.
@@ -303,7 +303,24 @@ Decisions with Ram (2026-11-01): a **Play hub inside DateFlow**, **daily + pract
   - edge year labels were clipped
 - **Possible next steps:** streaks and stats per game (like DatePick), a combined "daily five" score, difficulty presets, and putting the order game directly on the big timeline.
 
-## Phase 10 — Contemporaries 📝 (planned 2026-11-11, awaiting "go")
+## Phase 10 — Contemporaries ✅ (planned and built 2026-11-11)
+
+**As built (differences from the plan below):**
+- **The engine** (`contemporaries.ts`) as planned, plus two additions:
+  - **"Came and went":** a fourth compare group, for spans that began *and* ended between the two years (1250 → 1500: the Black Death).
+  - **A stricter surprise rule:** the third event comes from the **16 milestones first** (then importance 8+), and it's the *farthest* one that is still closer. For example: *"Caesar is closer in time to the World Wide Web (2,034 years) than to the Great Pyramid (about 2,516)."* A first try picked "Hong Kong Handed Back to China": true, but not landmark enough.
+- **The panel** has four tabs as planned. In the year tab, chips read "since 960 · ends 1279", "its last 8 years (ends 1258)" or "founded 25 years ago", and "dates uncertain" fires near approximate edges (e.g. Life of the Buddha in 500 BCE). The year steppers skip year 0 (from 5 CE, −10 lands on 6 BCE).
+- **Entry points:**
+  - the toolbar's **Time Machine**
+  - **"What else was happening then?"** on event cards (next to "Show the surrounding century") and span cards
+  - **"Compare with…"** on span cards
+  - links: `?year=`, `?year=&compare=`, `?tm=overlap&a=&b=`, `?tm=distance&a=&b=`
+- **One URL sync** now covers both stories and the Time Machine. Two separate watchers had each rewritten the URL from a stale copy.
+- **The "What happened?" summary** now counts its years without a year 0.
+- **Gaps it revealed** (added to the gap list): the Yuan dynasty (China goes from the Song straight to the Ming), the Mongol sack of Baghdad, and the Mamluk, Ayyubid, Fatimid, Seljuk, Ilkhanate, Golden Horde, Kievan Rus', Kamakura, Heian, Khmer, Srivijaya, Ghana and Kongo spans.
+- **Tests:** 10 contemporaries tests on real data (129 in all). The Playwright run covered every tab, ±10 and ←, compare, Rome ∩ Han shading, Pyramid ↔ Caesar, "Compare with…", stories closing the panel, the phone bottom sheet and the light theme. No console errors.
+
+### Original plan
 
 **Goal:** doc 16's favourite idea, *"What was happening elsewhere in the world at the same time?"*, built from the data we already have. History is taught region by region; this shows it happening simultaneously. Doc 16 calls it "a time machine that lets students inspect the world at any moment".
 

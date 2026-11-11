@@ -30,6 +30,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
   - **On the timeline:** threads drawn across it, coloured by link type, dashed when debated, crossing regional lanes.
   - **The story panel:** a narration, the stops as a subway line, fans of causes, and **▶ playback**.
   - **Sharing:** `?story=<id>&dir=back|forward` links.
+- **The Time Machine** (Phase 10): the world in any year, region by region; two years compared (gone / new / still there / came and went); two empires' shared years; two events' distance, with a "Did you know?". Shareable `?year=` and `?tm=` links.
 - **Honest dates everywhere:** "c." plus an "≈ Approximate date" box with the historians' range. Disputed events are DateFlow-only (they stay out of DatePick and DateGolf).
 
 ### The data behind it
@@ -42,7 +43,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | Sources | **58** reviewed | 57 from the CSV, plus Apartheid. **460 more are drafted, not loaded** (`data/drafts/sources_batch1.json`) |
 | Country tags | 100 countries | Location and actor roles; the dashboard Map |
 | DateLinks memory aids | 26 events | doc 05, 06 |
-| Gap list | **65 open** | Missing events and spans, waiting for Want / Dismiss |
+| Gap list | **80 open** | Missing events and spans, waiting for Want / Dismiss |
 | Daily challenges | 366 dates | DateGolf target years |
 
 ### The tools behind the data
@@ -65,7 +66,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 
 | # | What | Where | Why it matters |
 |---|---|---|---|
-| 1 | **The gap list: Want or Dismiss the 65 items**, or have outside AIs draft them (doc 15) | Dashboard → Review → **Missing** (doc 12 §4.6e) | Claude drafts the wanted ones. They also deepen the Stories (e.g. Franz Ferdinand would trigger WWI, Commodore Perry would lead to Meiji, the Thirty Years' War span) |
+| 1 | **The gap list: Want or Dismiss the 80 items**, or have outside AIs draft them (doc 15) | Dashboard → Review → **Missing** (doc 12 §4.6e) | Claude drafts the wanted ones. They also deepen the Stories (e.g. Franz Ferdinand would trigger WWI, Commodore Perry would lead to Meiji, the Thirty Years' War span) |
 | 2 | **Load and review sources batch 1** (460 Wikipedia articles) | Ask Claude to load it, then Review → Sources (doc 12 §4.6d) | Every event gets a checkable source. 128 are exact name matches (one-click approve) |
 | 3 | **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project`, `arab-spring` | `manage.py identity <id> --one\|--split\|…` | An old loose end from doc 11 |
 | 4 | **Two design calls for DatePick range choices** | doc 04 §38 | They unblock Claude's item 4 below |
@@ -81,7 +82,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | 4 | **DatePick range choices:** ranges instead of single years for approximate events | Your 2 decisions, plus structured `range_start` / `range_end` | doc 04 §38 |
 | 5 | **Dashboard v3: the event editor**, including adding or editing a single link | — | doc 13. Less urgent (new events come through drafts), but it lets you edit without Claude |
 | 6 | **DateFlow phases from the doc 16 vision** (recommended order; full table in doc 16, "Assessment"): | | |
-| 6a | **Phase 10: Contemporaries** (detailed plan in doc 09, awaiting go). A Time Machine (pick a year → a world snapshot by region; compare two years), an Overlap explorer (two spans), a Distance explorer (two events) | No new data | Medium |
+| 6a | ~~**Phase 10: Contemporaries**~~ ✅ 2026-11-11 (doc 09). A Time Machine (pick a year → a world snapshot by region; compare two years), an Overlap explorer (two spans), a Distance explorer (two events) | No new data | Medium |
 | 6b | **Phase 11: Living Timeline polish.** 8 category families as shapes, focus mode, colour by region, distinct milestone landmarks, spans revealing their sub-spans when zoomed, a Historical Currents layer | A few new spans (Axial Age, Enlightenment, Decolonization) | Medium |
 | 6c | **Phase 12: Empire life cycles.** `entity_phases` (rise / zenith / fragmentation…), drafted through doc 15 and reviewed, drawn as phase segments on the bars | Curated phases, with sources | Large |
 | 6d | **Phase 13: People.** Person entities with lifespans and reigns; contemporaries; lifespan overlap (Akbar and Elizabeth I) | People drafted through doc 15 | Large |
