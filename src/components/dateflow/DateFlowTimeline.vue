@@ -186,7 +186,8 @@
         </g>
       </g>
 
-      <StoryArcs v-if="story" :arcs="storyArcs" :spans="storySpanMarks" :pulse="storyPulse" :step-edge-keys="stepEdgeKeys" />
+      <StoryArcs v-if="story" :arcs="storyArcs" :spans="storySpanMarks" :pulse="storyPulse" :step-edge-keys="stepEdgeKeys"
+                 @pick="onArcClick" />
 
       <!-- Shift-drag period selection -->
       <g v-if="selection" pointer-events="none">
@@ -257,6 +258,7 @@ const emit = defineEmits<{
   select: [id: string]
   selectDuration: [id: string]
   selectRange: [startYear: number, endYear: number]
+  selectStop: [id: string] // a story thread was clicked: the stop it leads into
 }>()
 
 // Label geometry. Vertical space on each side of an axis is cut into LEVEL_H levels;
@@ -589,9 +591,11 @@ const storyArcs = computed<Arc[]>(() => {
         ? `M ${x1} ${ya} C ${x1} ${ya - lift}, ${x2} ${yb - lift}, ${x2} ${yb}`
         : `M ${x1} ${ya} C ${x1} ${ya - lift}, ${x2} ${yb - lift * 0.6}, ${x2} ${yb}`
     const label = dx > 90 ? shortGap(e, a, b) : ''
+    const title = `${a.name} ${e.label} ${b.name}` + (e.why ? `: ${e.why}` : '')
+      + (e.debated ? ' (debated: one view among several)' : '')
     arcs.push({
       key: `${e.from}>${e.to}`, d, kind: ARC_KIND[e.type] ?? 'then', debated: e.debated, order,
-      label, labelX: (x1 + x2) / 2, labelY: Math.min(ya, yb) - lift * 0.75 - 4,
+      label, labelX: (x1 + x2) / 2, labelY: Math.min(ya, yb) - lift * 0.75 - 4, to: e.to, title,
     })
   })
   return arcs
@@ -776,6 +780,11 @@ function onMarkerClick(id: string) {
 function onBarClick(id: string) {
   if (justDragged) return
   emit('selectDuration', id)
+}
+
+function onArcClick(toId: string) {
+  if (justDragged) return
+  emit('selectStop', toId)
 }
 </script>
 

@@ -53,6 +53,7 @@
         @select="store.select"
         @select-duration="store.selectDuration"
         @select-range="store.openSummary"
+        @select-stop="(id) => store.goToStep(store.currentStops.findIndex((s) => s.node.id === id), false)"
       />
       </div>
       <TimeMachinePanel

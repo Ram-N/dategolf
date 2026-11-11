@@ -443,11 +443,13 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   }
 
   /** Go to one stop: frame it with the threads that lead into it, so the link being told is on screen. */
-  function goToStep(i: number) {
+  /** Make stop i current; frame = also move the view to it (a clicked thread is already on screen). */
+  function goToStep(i: number, frame = true) {
     const stop = currentStops.value[i]
     const s = currentStory.value
     if (!stop || !s) return
     storyStep.value = i
+    if (!frame) return
     const [a, b] = frameYears(s, stop.node.id)
     const pad = Math.max(10, (b - a) * 0.15)
     showSpan(a - pad, b + pad)
