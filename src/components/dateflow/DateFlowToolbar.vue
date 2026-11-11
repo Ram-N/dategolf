@@ -56,6 +56,9 @@
       <button class="btn w-9" aria-label="Zoom out" @click="emit('zoomOut')">−</button>
       <button class="btn w-9" aria-label="Zoom in" @click="emit('zoomIn')">+</button>
       <button class="btn" @click="emit('reset')">Reset</button>
+      <button class="btn" title="See the whole world in one year, compare two years, or two empires" @click="emit('timeMachine')">
+        Time Machine
+      </button>
       <StoriesMenu :stories="stories" @open="(id) => emit('openStory', id)" />
       <button class="btn" title="Summarise the period in view (or shift-drag across the timeline)" @click="emit('summarize')">
         What happened?
@@ -111,6 +114,7 @@ const emit = defineEmits<{
   clearFilters: []
   summarize: []
   openStory: [id: string]
+  timeMachine: []
 }>()
 
 const MODES: { id: ViewMode; label: string }[] = [
@@ -156,6 +160,7 @@ function submitJump() {
   border-color: #e66767;
 }
 .btn {
+  white-space: nowrap;
   height: 2.25rem;
   padding: 0 0.75rem;
   border-radius: 0.5rem;

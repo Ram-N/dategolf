@@ -9,6 +9,7 @@
       :categories="store.categories"
       :stories="store.featured"
       @open-story="(id) => store.openStory(id)"
+      @time-machine="store.openTimeMachine()"
       @zoom-in="store.zoomIn()"
       @zoom-out="store.zoomOut()"
       @reset="store.reset()"
@@ -43,7 +44,8 @@
         :lanes="store.lanes"
         :selected-id="store.selectedEvent?.id ?? null"
         :selected-duration-id="store.selectedDuration?.id ?? null"
-        :highlight-ids="store.storyIds ?? store.focusIds"
+        :highlight-ids="store.storyIds ?? store.tmIds ?? store.focusIds"
+        :marks="store.tmMarks"
         :story="store.currentStory"
         :step-id="store.storyStep === null ? null : (store.currentStops[store.storyStep]?.node.id ?? null)"
         @zoom-at="store.zoomAt"
@@ -53,6 +55,22 @@
         @select-range="store.openSummary"
       />
       </div>
+      <TimeMachinePanel
+        v-if="store.timeMachine && store.tmWorld"
+        :tm="store.timeMachine"
+        :world="store.tmWorld"
+        :compare="store.tmCompare"
+        :overlap-result="store.tmOverlap"
+        :spans="store.tmSpans"
+        :distance-result="store.tmDistance"
+        :events="store.events"
+        :durations="store.durations"
+        :range="yearRange"
+        @close="store.closeTimeMachine()"
+        @set="(patch, frame) => store.setTimeMachine(patch, frame)"
+        @step="store.stepYear"
+        @open="(id, kind) => (kind === 'span' ? store.selectDuration(id) : store.select(id))"
+      />
       <StoryPanel
         v-if="store.currentStory"
         :story="store.currentStory"
@@ -110,6 +128,7 @@
         @open-event="store.goToEvent"
         @open-duration="store.selectDuration"
         @show-surrounding="store.showSurrounding(store.selectedEvent.year)"
+        @time-machine="store.openTimeMachine({ mode: 'year', year: store.selectedEvent!.year })"
       />
     </EventInfoCard>
     <PeriodSummaryCard
@@ -131,6 +150,8 @@
       @open-duration="store.selectDuration"
       @show-on-timeline="showSelectedDuration"
       @show-connections="store.showConnections(store.selectedDuration.id)"
+      @time-machine="store.openTimeMachine({ mode: 'year', year: store.selectedDuration!.startYear })"
+      @compare-with="store.openTimeMachine({ mode: 'overlap', spanA: store.selectedDuration!.id, spanB: null })"
       :story-counts="store.openStoryCounts"
       @story="(d) => store.openStory(store.selectedDuration!.id, d)"
     />
@@ -150,6 +171,7 @@ import '@/assets/dateflow-theme.css'
 import EventInfoCard from '@/components/EventInfoCard.vue'
 import EventConnections from '@/components/dateflow/EventConnections.vue'
 import StoryPanel from '@/components/dateflow/StoryPanel.vue'
+import TimeMachinePanel from '@/components/dateflow/TimeMachinePanel.vue'
 import DurationInfoCard from '@/components/dateflow/DurationInfoCard.vue'
 import EventMeanwhile from '@/components/dateflow/EventMeanwhile.vue'
 import PeriodSummaryCard from '@/components/dateflow/PeriodSummaryCard.vue'
@@ -174,6 +196,13 @@ const filterSummary = computed(() => {
 function onKey(e: KeyboardEvent) {
   if (e.target instanceof HTMLInputElement || store.selectedEvent || store.selectedDuration || store.summaryRange) return
   if (e.key === 'Escape' && store.focusId) return store.clearFocus()
+  if (store.timeMachine) {
+    if (e.key === 'Escape') return store.closeTimeMachine()
+    if (store.timeMachine.mode === 'year' && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+      const step = (e.shiftKey ? 10 : 1) * (e.key === 'ArrowRight' ? 1 : -1)
+      return store.stepYear(step)
+    }
+  }
   if (store.currentStory) {
     if (e.key === 'Escape') return store.closeStory()
     if (e.key === 'ArrowRight') return store.stepStory(1)
@@ -208,6 +237,34 @@ function showSelectedDuration() {
   store.showSpan(d.startYear, d.endYear)
 }
 
+/** The slider's range: the data's first to last year. */
+const yearRange = computed<[number, number]>(() => {
+  const ys = store.events.map((e) => e.year)
+  return ys.length ? [Math.min(...ys), Math.max(...ys)] : [-3500, 2025]
+})
+
+// Shareable Time Machine links: ?year=1250[&compare=1500], ?tm=overlap&a=<span>&b=<span>, ?tm=distance&a=<event>&b=<event>
+const TM_KEYS = ['year', 'compare', 'tm', 'a', 'b'] as const
+function tmQuery(): Record<string, string> {
+  const t = store.timeMachine
+  if (!t) return {}
+  if (t.mode === 'year') return { year: String(t.year) }
+  if (t.mode === 'compare') return { year: String(t.year), compare: String(t.compare) }
+  const [a, b] = t.mode === 'overlap' ? [t.spanA, t.spanB] : [t.eventA, t.eventB]
+  return { tm: t.mode, ...(a ? { a } : {}), ...(b ? { b } : {}) }
+}
+function openTimeMachineFromUrl() {
+  const q = route.query
+  const num = (v: unknown) => (typeof v === 'string' && /^-?\d+$/.test(v) && Number(v) !== 0 ? Number(v) : null)
+  const str = (v: unknown) => (typeof v === 'string' ? v : null)
+  if (q.tm === 'overlap') store.openTimeMachine({ mode: 'overlap', spanA: str(q.a), spanB: str(q.b) })
+  else if (q.tm === 'distance') store.openTimeMachine({ mode: 'distance', eventA: str(q.a), eventB: str(q.b) })
+  else if (num(q.year) !== null) {
+    const compare = num(q.compare)
+    store.openTimeMachine(compare !== null ? { mode: 'compare', year: num(q.year)!, compare } : { mode: 'year', year: num(q.year)! })
+  }
+}
+
 // Shareable stories: /dateflow?story=<id>&dir=back|forward opens one, and the URL follows the open story.
 const route = useRoute()
 const router = useRouter()
@@ -215,12 +272,17 @@ function openFromUrl() {
   const id = typeof route.query.story === 'string' ? route.query.story : null
   if (id && id !== store.story?.rootId) store.openStory(id, route.query.dir === 'forward' ? 'forward' : 'back')
 }
+// One sync for the whole URL, built from the current state: two separate watchers each rewrote it
+// from a stale copy and left the other's keys behind.
+const OWN_KEYS = [...TM_KEYS, 'story', 'dir']
+const storyQuery = (): Record<string, string> =>
+  store.story ? { story: store.story.rootId, dir: store.story.direction } : {}
 watch(
-  () => store.story && `${store.story.rootId}|${store.story.direction}`,
-  (key) => {
-    const [story, dir] = key ? key.split('|') : []
-    if (route.query.story === story && (route.query.dir ?? 'back') === dir) return
-    router.replace({ query: story ? { ...route.query, story, dir } : (({ story: _s, dir: _d, ...rest }) => rest)(route.query) })
+  () => JSON.stringify({ ...storyQuery(), ...tmQuery() }),
+  (q) => {
+    const rest = Object.fromEntries(Object.entries(route.query).filter(([k]) => !OWN_KEYS.includes(k)))
+    const next = { ...rest, ...JSON.parse(q) }
+    if (JSON.stringify(next) !== JSON.stringify(route.query)) router.replace({ query: next })
   },
 )
 
@@ -228,6 +290,7 @@ onMounted(async () => {
   window.addEventListener('keydown', onKey)
   if (store.isLoading) await store.load()
   openFromUrl()
+  openTimeMachineFromUrl()
 })
 onUnmounted(() => window.removeEventListener('keydown', onKey))
 </script>

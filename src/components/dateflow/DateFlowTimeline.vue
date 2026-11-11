@@ -162,6 +162,30 @@
         </g>
       </g>
 
+      <!-- Time Machine marks -->
+      <g v-if="marks" pointer-events="none" aria-hidden="true" class="tm">
+        <template v-if="marks.band">
+          <rect :x="yearToX(marks.band[0], view, width)" :y="ERA_SPACE"
+                :width="Math.max(2, yearToX(marks.band[1], view, width) - yearToX(marks.band[0], view, width))"
+                :height="height - ERA_SPACE" class="tm-band" />
+          <text :x="(yearToX(marks.band[0], view, width) + yearToX(marks.band[1], view, width)) / 2" :y="ERA_SPACE + 16"
+                text-anchor="middle" class="tm-label">{{ marks.label }}</text>
+        </template>
+        <g v-for="y in marks.lines" :key="y">
+          <line :x1="yearToX(y, view, width)" :x2="yearToX(y, view, width)" :y1="ERA_SPACE" :y2="height" class="tm-line" />
+          <rect :x="yearToX(y, view, width) - 34" :y="ERA_SPACE + 2" width="68" height="18" rx="9" class="tm-pill" />
+          <text :x="yearToX(y, view, width)" :y="ERA_SPACE + 15" text-anchor="middle" class="tm-pill-text">{{ formatYear(y) }}</text>
+        </g>
+        <g v-if="marks.bracket">
+          <line :x1="yearToX(marks.bracket[0], view, width)" :x2="yearToX(marks.bracket[1], view, width)"
+                :y1="ERA_SPACE + 12" :y2="ERA_SPACE + 12" class="tm-bracket" />
+          <line v-for="y in marks.bracket" :key="y" :x1="yearToX(y, view, width)" :x2="yearToX(y, view, width)"
+                :y1="ERA_SPACE + 4" :y2="height" class="tm-tick" />
+          <text :x="(yearToX(marks.bracket[0], view, width) + yearToX(marks.bracket[1], view, width)) / 2" :y="ERA_SPACE + 8"
+                text-anchor="middle" class="tm-label">{{ marks.label }}</text>
+        </g>
+      </g>
+
       <StoryArcs v-if="story" :arcs="storyArcs" :spans="storySpanMarks" :pulse="storyPulse" :step-edge-keys="stepEdgeKeys" />
 
       <!-- Shift-drag period selection -->
@@ -224,6 +248,8 @@ const props = defineProps<{
   highlightIds?: Set<string> | null // "Show connections": ring these, dim the rest
   story?: Story | null // Phase 9: draw this story's threads
   stepId?: string | null // the stop being played
+  // Phase 10, the Time Machine: year lines, a shaded band (two spans' shared years), a bracket (two events)
+  marks?: { lines: number[]; band: [number, number] | null; bracket: [number, number] | null; label: string } | null
 }>()
 const emit = defineEmits<{
   zoomAt: [anchorYear: number, factor: number]
@@ -858,6 +884,39 @@ function onBarClick(id: string) {
 }
 .dimmed {
   opacity: 0.25;
+}
+.tm-line {
+  stroke: var(--df-approx-border);
+  stroke-width: 2;
+}
+.tm-pill {
+  fill: var(--df-approx-border);
+}
+.tm-pill-text {
+  fill: var(--df-bg);
+  font-size: 11px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.tm-band {
+  fill: var(--df-approx-bg);
+}
+.tm-bracket {
+  stroke: var(--df-approx-border);
+  stroke-width: 2;
+}
+.tm-tick {
+  stroke: var(--df-approx-border);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+.tm-label {
+  fill: var(--df-approx);
+  font-size: 12px;
+  font-weight: 800;
+  paint-order: stroke;
+  stroke: var(--df-bg);
+  stroke-width: 4px;
 }
 .backdrop {
   fill: var(--df-backdrop);

@@ -28,12 +28,20 @@
       </div>
     </section>
 
-    <button
-      class="w-full py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-sm font-semibold text-gray-200"
-      @click="emit('showSurrounding')"
-    >
-      Show the surrounding century
-    </button>
+    <div class="grid gap-2 sm:grid-cols-2">
+      <button
+        class="w-full py-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-sm font-semibold text-amber-200 ring-1 ring-amber-500/40"
+        @click="emit('timeMachine')"
+      >
+        What else was happening then?
+      </button>
+      <button
+        class="w-full py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-sm font-semibold text-gray-200"
+        @click="emit('showSurrounding')"
+      >
+        Show the surrounding century
+      </button>
+    </div>
   </div>
 </template>
 
@@ -46,7 +54,7 @@ import { LANES, laneFor } from '@/engine/dateflow/lanes'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{ event: Event; events: Event[]; durations: Duration[] }>()
-const emit = defineEmits<{ openEvent: [id: string]; openDuration: [id: string]; showSurrounding: [] }>()
+const emit = defineEmits<{ openEvent: [id: string]; openDuration: [id: string]; showSurrounding: []; timeMachine: [] }>()
 
 const WINDOW = 50
 const MAX_EMPIRES = 8

@@ -4,6 +4,8 @@ import type { Event } from '@/types'
 import type { Duration, RelationshipData } from '@/types/dateflow'
 import { connectedIds, connectionsFor } from '@/engine/dateflow/connections'
 import { buildStory, featuredStories, frameYears, storyCounts, storyStops, type Direction } from '@/engine/dateflow/stories'
+import { compareYears, distance, overlap, worldAt } from '@/engine/dateflow/contemporaries'
+import milestoneIds from '@/data/milestones.json'
 import {
   FULL_VIEW,
   centerOn,
@@ -52,6 +54,18 @@ function loadView(): View {
   } catch {
     return FULL_VIEW
   }
+}
+
+export type TimeMachineMode = 'year' | 'compare' | 'overlap' | 'distance'
+export interface TimeMachine {
+  mode: TimeMachineMode
+  year: number
+  compare: number
+  window: number // years either side for "events nearby"
+  spanA: string | null
+  spanB: string | null
+  eventA: string | null
+  eventB: string | null
 }
 
 export type Theme = 'light' | 'dark'
@@ -111,6 +125,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const story = ref<{ rootId: string; direction: Direction; depth: number } | null>(null)
   const storyStep = ref<number | null>(null) // index into storyStops during playback; null = the overview
   const playing = ref(false)
+  // Phase 10: the Time Machine ("what was happening elsewhere at the same time?").
+  const timeMachine = ref<TimeMachine | null>(null)
   const theme = ref<Theme>(loadTheme())
   const mode = ref<ViewMode>(loadJson<ViewMode>(MODE_KEY) === 'lanes' ? 'lanes' : 'world')
   const laneState = ref<LaneState>(sanitizeLanes(loadJson<LaneState>(LANES_KEY)))
@@ -159,6 +175,65 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const openStoryCounts = computed(() =>
     openId.value ? storyCounts(openId.value, relationships.value, events.value, durations.value) : { back: 0, forward: 0 },
   )
+  // ── Time Machine (Phase 10) ──
+  const tmWorld = computed(() =>
+    timeMachine.value ? worldAt(timeMachine.value.year, events.value, durations.value, timeMachine.value.window) : null,
+  )
+  const tmCompare = computed(() =>
+    timeMachine.value?.mode === 'compare' ? compareYears(timeMachine.value.year, timeMachine.value.compare, durations.value) : null,
+  )
+  const tmSpans = computed(() => {
+    const tm = timeMachine.value
+    const find = (id: string | null) => (id ? (durations.value.find((d) => d.id === id) ?? null) : null)
+    return { a: find(tm?.spanA ?? null), b: find(tm?.spanB ?? null) }
+  })
+  const tmOverlap = computed(() => {
+    const { a, b } = tmSpans.value
+    return timeMachine.value?.mode === 'overlap' && a && b ? overlap(a, b) : null
+  })
+  const tmEvents = computed(() => {
+    const tm = timeMachine.value
+    const find = (id: string | null) => (id ? (events.value.find((e) => e.id === id) ?? null) : null)
+    return { a: find(tm?.eventA ?? null), b: find(tm?.eventB ?? null) }
+  })
+  const tmDistance = computed(() => {
+    const { a, b } = tmEvents.value
+    return timeMachine.value?.mode === 'distance' && a && b ? distance(a, b, events.value, milestoneIds as string[]) : null
+  })
+  /** What the Time Machine rings on the timeline. */
+  const tmIds = computed(() => {
+    const tm = timeMachine.value
+    if (!tm) return null
+    if (tm.mode === 'year') {
+      return new Set(tmWorld.value!.regions.flatMap((r) => [...r.spans.map((s) => s.span.id), ...r.events.map((e) => e.id)]))
+    }
+    if (tm.mode === 'compare') {
+      return new Set(tmCompare.value!.regions.flatMap((r) => [...r.gone, ...r.new, ...r.continuing].map((d) => d.id)))
+    }
+    if (tm.mode === 'overlap') return new Set([tm.spanA, tm.spanB].filter((x): x is string => !!x))
+    const d = tmDistance.value
+    return new Set([tm.eventA, tm.eventB, d?.surprise?.near.id].filter((x): x is string => !!x))
+  })
+  /** Year lines, a shaded band or a bracket for the timeline. */
+  const tmMarks = computed(() => {
+    const tm = timeMachine.value
+    if (!tm) return null
+    const about = (approx: boolean) => (approx ? 'about ' : '')
+    if (tm.mode === 'year') return { lines: [tm.year], band: null, bracket: null, label: '' }
+    if (tm.mode === 'compare') return { lines: [tm.year, tm.compare], band: null, bracket: null, label: '' }
+    const o = tmOverlap.value
+    if (tm.mode === 'overlap') {
+      return o?.kind === 'overlap'
+        ? { lines: [], band: [o.start, o.end] as [number, number], bracket: null,
+            label: `together ${about(o.approximate)}${o.years.toLocaleString()} years` }
+        : { lines: [], band: null, bracket: null, label: '' }
+    }
+    const d = tmDistance.value
+    return d
+      ? { lines: [], band: null, bracket: [d.earlier.year, d.later.year] as [number, number],
+          label: `${about(d.approximate)}${d.years.toLocaleString()} years apart` }
+      : { lines: [], band: null, bracket: null, label: '' }
+  })
   const viewSpan = computed(() => span(view.value))
   const lanes = computed(() => visibleLanes(laneState.value))
 
@@ -340,6 +415,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   }
 
   function openStory(id: string, direction: Direction = 'back') {
+    timeMachine.value = null
     select(null)
     selectDuration(null)
     summaryRange.value = null
@@ -389,6 +465,64 @@ export const useDateFlowStore = defineStore('dateflow', () => {
       return
     }
     goToStep(next)
+  }
+
+  // ── Time Machine ───────────────────────────────────────────────────────────
+  function frameTimeMachine() {
+    const tm = timeMachine.value
+    if (!tm) return
+    if (tm.mode === 'year') showSpan(tm.year - 150, tm.year + 150)
+    else if (tm.mode === 'compare') {
+      const [a, b] = tm.year <= tm.compare ? [tm.year, tm.compare] : [tm.compare, tm.year]
+      showSpan(a - 40, b + 40)
+    } else if (tm.mode === 'overlap') {
+      const { a, b } = tmSpans.value
+      const ends = [a, b].filter((x): x is Duration => !!x).flatMap((d) => [d.startYear, d.endYear])
+      if (ends.length) showSpan(Math.min(...ends), Math.max(...ends))
+    } else {
+      const d = tmDistance.value
+      if (d) showSpan(d.earlier.year, d.later.year)
+    }
+  }
+
+  /** Open the Time Machine (closing any card or story); by default on the year at the view's centre. */
+  function openTimeMachine(patch: Partial<TimeMachine> = {}) {
+    closeStory()
+    select(null)
+    selectDuration(null)
+    summaryRange.value = null
+    focusId.value = null
+    const centre = Math.round((view.value.start + view.value.end) / 2) || 1 // never year 0
+    const year = (patch.year ?? centre) || 1
+    timeMachine.value = {
+      mode: 'year', year, compare: year + 250, window: 25, spanA: null, spanB: null, eventA: null, eventB: null,
+      ...timeMachine.value, ...patch, ...(patch.year !== undefined ? { year } : {}),
+    }
+    frameTimeMachine()
+  }
+
+  function closeTimeMachine() {
+    timeMachine.value = null
+  }
+
+  /** Change the Time Machine; years skip 0 (from 1 CE, one step back is 1 BCE). */
+  function setTimeMachine(patch: Partial<TimeMachine>, frame = true) {
+    if (!timeMachine.value) return
+    const fix = (y: number | undefined) => (y === 0 ? 1 : y)
+    timeMachine.value = { ...timeMachine.value, ...patch,
+      ...(patch.year !== undefined ? { year: fix(patch.year)! } : {}),
+      ...(patch.compare !== undefined ? { compare: fix(patch.compare)! } : {}) }
+    if (frame) frameTimeMachine()
+  }
+
+  /** Step the year, skipping year 0 both ways. */
+  function stepYear(delta: number) {
+    const tm = timeMachine.value
+    if (!tm) return
+    let y = tm.year + delta
+    if (tm.year > 0 && y <= 0) y -= 1
+    else if (tm.year < 0 && y >= 0) y += 1
+    setTimeMachine({ year: y })
   }
 
   function togglePlay() {
@@ -446,6 +580,19 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     relatedIds,
     focusId,
     focusIds,
+    timeMachine,
+    tmWorld,
+    tmCompare,
+    tmSpans,
+    tmOverlap,
+    tmEvents,
+    tmDistance,
+    tmIds,
+    tmMarks,
+    openTimeMachine,
+    closeTimeMachine,
+    setTimeMachine,
+    stepYear,
     story,
     storyStep,
     playing,

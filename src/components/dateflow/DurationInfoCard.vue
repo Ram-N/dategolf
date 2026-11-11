@@ -45,7 +45,15 @@
         </ul>
       </div>
 
-      <button class="show w-full mt-5 py-2.5 rounded-xl font-semibold text-sm" @click="emit('showOnTimeline')">
+      <div class="grid grid-cols-2 gap-2 mt-5">
+        <button class="tm w-full py-2.5 rounded-xl font-semibold text-sm" @click="emit('timeMachine')">
+          What else was happening then?
+        </button>
+        <button class="tm w-full py-2.5 rounded-xl font-semibold text-sm" @click="emit('compareWith')">
+          Compare with…
+        </button>
+      </div>
+      <button class="show w-full mt-2 py-2.5 rounded-xl font-semibold text-sm" @click="emit('showOnTimeline')">
         Show on timeline
       </button>
     </div>
@@ -75,6 +83,8 @@ const emit = defineEmits<{
   showOnTimeline: []
   showConnections: []
   story: [direction: 'back' | 'forward']
+  timeMachine: []
+  compareWith: []
 }>()
 
 const group = computed(() => groupFor(props.duration.categories))
@@ -94,6 +104,11 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 </script>
 
 <style scoped>
+.tm {
+  color: var(--df-approx);
+  background: var(--df-approx-bg);
+  box-shadow: inset 0 0 0 1px var(--df-approx-border);
+}
 .approx {
   color: var(--df-approx);
   background: var(--df-approx-bg);
