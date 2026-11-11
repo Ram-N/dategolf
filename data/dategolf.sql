@@ -4203,6 +4203,8 @@ CREATE TABLE entity_significance (
   created_at TEXT DEFAULT (datetime('now')),
   updated_at TEXT
 );
+INSERT INTO "entity_significance" VALUES('mughal-empire','At their height the Mughals ruled most of South Asia. Their revenue and ranking systems shaped later states, including British India; their courts blended Persian, Central Asian and Indian traditions in art, language and buildings such as the Taj Mahal; and their decline in the 1700s opened the way for regional powers and, in time, British rule.','proposed','claude','Doc 17 seed example. Check: the revenue-system continuity into British India is a standard textbook claim.','2026-11-11 22:47:22',NULL);
+INSERT INTO "entity_significance" VALUES('chernobyl-disaster','The authorities'' slow, secretive response damaged trust in the Soviet system and gave weight to Gorbachev''s push for glasnost (openness). It was one pressure among several on the late Soviet Union, not the cause of its collapse, and it reshaped nuclear safety rules and public attitudes to nuclear power worldwide.','proposed','claude','Doc 17 seed example: deliberately a contributing factor, not a sole cause.','2026-11-11 22:47:22',NULL);
 CREATE TABLE entity_sources (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   source_id  INTEGER NOT NULL REFERENCES sources(id) ON DELETE CASCADE,
@@ -9816,6 +9818,8 @@ INSERT INTO "review_log" VALUES(413,'2026-11-10 22:53:32','approve-link','cherno
 INSERT INTO "review_log" VALUES(414,'2026-11-10 22:53:32','approve-link','internet-invented','link #240: internet-invented enabled amazon-founded','dashboard');
 INSERT INTO "review_log" VALUES(415,'2026-11-10 22:53:32','approve-link','internet-invented','link #241: internet-invented enabled google-founded','dashboard');
 INSERT INTO "review_log" VALUES(416,'2026-11-10 22:53:32','approve-link','september-11-attacks','link #242: september-11-attacks triggered war-on-terror','dashboard');
+INSERT INTO "review_log" VALUES(417,'2026-11-11 22:47:22','set-significance','mughal-empire','new','cli');
+INSERT INTO "review_log" VALUES(418,'2026-11-11 22:47:22','set-significance','chernobyl-disaster','new','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),

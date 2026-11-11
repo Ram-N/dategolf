@@ -165,6 +165,7 @@ Run it with `npm run data:dashboard` → `streamlit run dashboard/app.py --serve
 | **Country tags** | 0 | Entity, its countries with roles, confidence, note | **Approve** · **Approve all high-confidence** · **Fix tags** (type e.g. `IN, PK/actor`; checked before saving) |
 | **Identity (3a)** | **25** | The event and the span side by side: names, years, descriptions | **One subject** (the recommended default) · **Needs a split** (flags it; the split itself is done with Claude, since it renames a span id) |
 | *Links (v4)* | — | *Added with Step 3b* | — |
+| **Significance** (doc 17, 2026-11-11) | proposed texts | Name, year, description beside the proposed "Why it matters", origin, review note, source links; `item` = proposed for a draft's text (also approved with the draft) | **Approve** · **Reject** (with a reason) · **Write or replace** (an expander: saves as proposed; replacing a reviewed text takes it out of the games until approved) |
 
 Each tab has a **table with selectable rows** (pick one or many), a **detail card** for a single selection, and **action buttons** that apply to every selected row. Destructive actions (Reject, Needs a split) ask for confirmation in a dialog. After any action, the page refreshes, and a note reminds you to **Export** (Overview) when the game JSON is affected.
 

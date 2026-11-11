@@ -21,6 +21,7 @@
    - **Links:** Review → Links
    - **Country tags:** Review → Country tags
    - **Sources:** Review → Sources
+   - **"Why it matters"** (significance): Review → Significance. A new draft's text is also approved with its draft.
    - **Gap list:** filled items are marked *drafted* automatically.
    - **Spans** don't show in a dashboard queue yet. Ask Claude to approve them, or run `manage.py approve <id>`.
 6. **Approve, export** (`npm run data:export`) and they're in the games. New links show up in DateFlow's Connections and Stories straight away.
@@ -59,9 +60,10 @@ Shape:
   "about": "<one line: what this batch covers>",
   "events": [ ... ],
   "spans":  [ ... ],
-  "links":  [ ... ]
+  "links":  [ ... ],
+  "significance": [ ... ]     (optional: for existing items, see SIGNIFICANCE)
 }
-At most 20 events + spans per reply.
+At most 20 events + spans (or 20 significance texts) per reply.
 
 EVENT (something that happened in one year):
   id            REQUIRED. See IDS below.
@@ -96,10 +98,11 @@ EVENT (something that happened in one year):
                 It must be a real article.
   note          REQUIRED. For the reviewer, not players: the exact date if known, where sources
                 disagree, and anything to double-check.
+  significance  RECOMMENDED. "Why it matters": 20 to 60 words, plain text. See SIGNIFICANCE below.
   fills_missing OPTIONAL. The gap-list number this draft fills (from the reference).
 
 SPAN (something that lasted: an empire, dynasty, reign, war or movement):
-  id, name, region, categories, importance, countries, source, note, fills_missing: as above.
+  id, name, region, categories, importance, countries, source, note, significance, fills_missing: as above.
   kind          REQUIRED. "empire" (a state, empire or dynasty) or "period" (a war, reign,
                 movement or age).
   name          A noun phrase, e.g. "Reign of Akbar", "Sur Empire", "Second Punic War".
@@ -116,9 +119,30 @@ IDS:
 - Must NOT match any id in the reference. An event and a span never share an id.
 - An id is permanent, so choose it carefully.
 
+SIGNIFICANCE ("Why it matters"; shown on the item's card, after any guess):
+- The description says WHAT happened. The significance says WHY IT MATTERS: its consequences,
+  influence or lasting importance. Don't retell the description.
+- Never make one item the whole cause of a big change. Say "helped", "was one of several
+  pressures", "opened the way for"; say where historians disagree.
+- Say whose history it matters to when that's regional ("for South Asia", "in West Africa"),
+  rather than assuming world importance.
+- Years and centuries ARE allowed here (it is never shown before a guess).
+- If you're not sure of the consequences, leave it out and say so in the note. A missing
+  significance is fine; an invented one is not.
+- To add one to an EXISTING item (the reference shows which have none), use the top-level list
+  "significance": [{"id": <existing id>, "text": <20 to 60 words>, "note": <for the reviewer>}]
+  Never write one for an item the reference marks ✓.
+
 LINKS (how items connect; this is what makes DateFlow's stories):
   { "source": <id>, "type": <type>, "target": <id>, "why": <one factual sentence, max 25 words>,
     "confidence": "high" | "medium" }
+- The "why" is shown when a student hovers the thread, so give the MECHANISM, not a restatement:
+  good: "Hunnic pressure pushed the Goths across Roman borders, destabilising the empire."
+  good: "OPEC members embargoed oil to nations supporting Israel during the war."
+  weak: "The Huns contributed to the fall of Rome."
+- Match the wording to the type: a contributed_to "why" names a factor, not THE cause.
+- Never infer a cause from timing alone: two events close in time are not linked unless
+  historians link them.
 - source and target are ids from the reference or from this batch.
 - "medium" means historians debate it, or it is one view among several.
 - Every new event or span should have at least one link.
@@ -155,6 +179,9 @@ BEFORE YOU ANSWER, CHECK EVERY ITEM:
 [ ] countries are ISO codes (location first, /actor for actors)
 [ ] the source is one real English Wikipedia article
 [ ] it has at least one link; each link's direction and type follow the rules above
+[ ] each significance says why it matters (not what happened), names no sole cause, and is
+    20 to 60 words; none is written for an item the reference marks ✓
+[ ] each link's "why" gives the mechanism and fits its type
 [ ] fills_missing matches the gap number, where one applies
 [ ] the reply is ONLY the JSON object
 
@@ -177,6 +204,7 @@ EXAMPLE (for the task "Draft gap items 2 and 3: Akbar's accession and his reign"
       "countries": ["IN"],
       "source": "https://en.wikipedia.org/wiki/Akbar",
       "note": "Enthroned 14 February 1556 (some sources give his formal coronation slightly later). Humayun died in January 1556.",
+      "significance": "Akbar's reign turned a fragile, newly restored dynasty into the dominant power of the subcontinent. His conquests, his mansabdari system of ranked officers and his policy of religious accommodation, including ending the jizya tax on non-Muslims, gave the Mughal state a structure his successors built on for a century.",
       "fills_missing": 2
     }
   ],
@@ -228,5 +256,7 @@ EXAMPLE (for the task "Draft gap items 2 and 3: Akbar's accession and his reign"
 - *"Draft 10 events for Africa before 1500 that are missing from the reference: well-known, datable, importance 3–6."*
 - *"For the span 'Cold War' (gap item 47), draft the span and up to 8 links to existing events."*
 - *"Here is another AI's batch. Check it strictly against the rules and return a corrected JSON."*
+- *"Write the significance (\"Why it matters\") for these 15 existing ids: … Only the ones you're sure of."* (Backfill: the reference marks which items already have one.)
+- *"Here is another AI's significance batch. Flag any sentence that overclaims a cause or repeats the description."*
 
 **Why JSON, not CSV:** events carry lists (aliases, categories, countries) and links to other items. JSON holds those directly, it's exactly what our loaders read (`load-drafts` and `load-links` read the same file), and the checker can validate it field by field.

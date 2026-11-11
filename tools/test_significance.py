@@ -59,8 +59,9 @@ def batch(rows, name="batch", **extra):
     return path
 
 
-with contextlib.closing(common.connect()) as _conn:  # the copy gets the new table, as the live db will
+with contextlib.closing(common.connect()) as _conn:  # the copy gets the table, emptied: tests own its rows
     common.ensure_schema(_conn)
+    _conn.execute("DELETE FROM entity_significance")
     _conn.commit()
 
 

@@ -1,6 +1,6 @@
 # Product Overview and Roadmap
 
-> **The one place for "what exists" and "what's next".** Updated 2026-11-10. The long-term DateFlow vision is **doc 16**.
+> **The one place for "what exists" and "what's next".** Updated 2026-11-11. The long-term DateFlow vision is **doc 16**.
 > Details live in the linked docs; this page doesn't repeat them. When work finishes, update the roadmap here (not in doc 11 or QUICKSTART).
 
 **Rule zero (CLAUDE.md): historical accuracy trumps everything else.** No false precision, "c." shown prominently, a sequence never shown as a cause, debated links marked as debated.
@@ -23,11 +23,11 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 ### What DateFlow can do
 
 - **Explore:** the timeline with event markers and duration bars (empires, periods), a minimap, eras, milestones, category and region filters, detail level, "Jump to year", "What happened?" (a period summary), and light and dark themes. (Phases 2–6)
-- **Event and span cards:** a description, "Before & after" in the region, "Meanwhile around the world", empires of the time, and DateLinks memory aids.
+- **Event and span cards:** a description, **"Why it matters"** (when a reviewed significance exists; doc 17), "Before & after" in the region, "Meanwhile around the world", empires of the time, and DateLinks memory aids.
 - **Connections** (Phase 8): every reviewed link, read from the card's side ("is part of", "includes", "was ended by", "followed"…), clickable, with "Show these connections on the timeline".
 - **Stories** (Phase 9):
   - **How to start one:** "How did we get here?" / "What happened next?" on any linked card, or the **Stories** menu (8 featured).
-  - **On the timeline:** threads drawn across it, coloured by link type, dashed when debated, crossing regional lanes.
+  - **On the timeline:** threads drawn across it, coloured by link type, dashed when debated, crossing regional lanes. **Hover a thread** to read its "why"; **click it** to pick the stop it leads into (doc 17).
   - **The story panel:** a narration, the stops as a subway line, fans of causes, and **▶ playback**.
   - **Sharing:** `?story=<id>&dir=back|forward` links.
 - **The Time Machine** (Phase 10): the world in any year, region by region; two years compared (gone / new / still there / came and went); two empires' shared years; two events' distance, with a "Did you know?". Shareable `?year=` and `?tm=` links.
@@ -42,6 +42,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | Links | **225**, all reviewed | 85 part_of · 36 began · 27 ended · 32 preceded · 22 contributed_to · 13 enabled · 6 triggered · 4 influenced (20 medium confidence = "debated") |
 | Sources | **58** reviewed | 57 from the CSV, plus Apartheid. **460 more are drafted, not loaded** (`data/drafts/sources_batch1.json`) |
 | Country tags | 100 countries | Location and actor roles; the dashboard Map |
+| Significance ("Why it matters") | **0 reviewed**, 2 proposed | New (doc 17): `entity_significance`, reviewed before export. Seeds: Mughal Empire, Chernobyl |
 | DateLinks memory aids | 26 events | doc 05, 06 |
 | Gap list | **80 open** | Missing events and spans, waiting for Want / Dismiss |
 | Daily challenges | 366 dates | DateGolf target years |
@@ -49,14 +50,14 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 ### The tools behind the data
 
 - **SQLite is the source of truth** (`data/dategolf.db`). `npm run data:export` writes the game JSON; `data:validate` and `data:compare` guard it. → doc 10, 11, 12
-- **Every write goes through `tools/`** (a CLI command, logged in `review_log`, tested on a db copy): drafts, links (`load-links`, `retype-link`, `add-link-type`), dates (`set-event-date`, `set-span-years`), `rename`, sources, the gap list (`load-missing`), memory aids, `dateflow-only`. → doc 12 §7
+- **Every write goes through `tools/`** (a CLI command, logged in `review_log`, tested on a db copy): drafts, links (`load-links`, `retype-link`, `add-link-type`), significance (`set-significance`, `load-significance`, `approve-` / `reject-significance`), dates (`set-event-date`, `set-span-years`), `rename`, sources, the gap list (`load-missing`), memory aids, `dateflow-only`. → doc 12 §7
 - **Streamlit dashboard** (`npm run data:dashboard`):
-  - **Review queues:** Event drafts, Country tags, Identity, Links, Sources, **Missing**, and a decision log. Each fits on one screen and stays on its tab after an action.
+  - **Review queues:** Event drafts, Country tags, Identity, Links, Sources, **Significance** (with a write/replace box), **Missing**, and a decision log. Each fits on one screen and stays on its tab after an action.
   - **Other pages:** Overview, Connections, Coverage heatmap, Map.
   - → doc 13
 - **Datasette** (`npm run data:browse`): read-only browsing, with canned queries. → doc 13
 - **Drafting with outside AIs** (doc 15): a system prompt for any AI; `manage.py ai-reference` (the file to attach: allowed values, the gap list, every id); `manage.py check-drafts <file>` (every rule, plus a trial load on a db copy). Their files go in `data/drafts/incoming/` and load as proposed.
-- **Tests:** 119 game and engine tests (Vitest, many run against the real data) and 49 data-tool tests (`npm run data:test`), plus a dashboard smoke test.
+- **Tests:** 129 game and engine tests (Vitest, many run against the real data) and 65 data-tool tests (`npm run data:test`), plus a dashboard smoke test.
 
 ---
 
@@ -66,6 +67,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 
 | # | What | Where | Why it matters |
 |---|---|---|---|
+| 0 | **Review the 2 seed "Why it matters" texts**, and say whether to backfill more (see Claude's item 0) | Dashboard → Review → **Significance** | Checks the tone before a backfill: consequences, no sole causes |
 | 1 | **The gap list: Want or Dismiss the 80 items**, or have outside AIs draft them (doc 15) | Dashboard → Review → **Missing** (doc 12 §4.6e) | Claude drafts the wanted ones. They also deepen the Stories (e.g. Franz Ferdinand would trigger WWI, Commodore Perry would lead to Meiji, the Thirty Years' War span) |
 | 2 | **Load and review sources batch 1** (460 Wikipedia articles) | Ask Claude to load it, then Review → Sources (doc 12 §4.6d) | Every event gets a checkable source. 128 are exact name matches (one-click approve) |
 | 3 | **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project`, `arab-spring` | `manage.py identity <id> --one\|--split\|…` | An old loose end from doc 11 |
@@ -76,6 +78,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 
 | # | What | Needs | Details |
 |---|---|---|---|
+| 0 | **Backfill significance** for the most important items (importance 7+ first), through doc 15 or Claude, in batches of 20, all proposed | Your OK on the seeds | doc 17. New drafts already carry one (doc 15) |
 | 1 | **Draft the wanted gap-list items** as events and spans, then link them (link batch 4) | Your Wants | Uses `fills_missing`. New links make the stories richer straight away |
 | 2 | **Date precision for spans before 500 BCE** (a pre-sorted file) | — | The same false-precision issue the events had (Old Kingdom, the Indus mature phase, Shang…) |
 | 3 | **Step 4: fill the thin periods** (about 40 events for pre-500 CE, Africa and the Americas before 1500, Southeast Asia and Oceania) | Overlaps item 1 | doc 11 Step 4; the Coverage heatmap shows the gaps |

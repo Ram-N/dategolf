@@ -65,7 +65,7 @@
 - daily_challenge_dates: 366
 - csv_rows: 310
 - significance_reviewed: 0
-- significance_proposed: 0
+- significance_proposed: 2
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 
