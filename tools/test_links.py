@@ -52,8 +52,9 @@ class TestLoad(unittest.TestCase):
         self.assertEqual(common.DB_PATH, TEST_DB)
 
     def test_loads_as_proposed(self):
-        self.assertEqual(load(("partition-of-bengal", "triggered", "swadeshi-movement", "the spark")), 0)
-        row = stored("partition-of-bengal", "triggered", "swadeshi-movement")
+        # Sample links are deliberately absurd: a real one would break the test once a batch adds it.
+        self.assertEqual(load(("thales-solar-eclipse", "triggered", "iphone-launched", "test only")), 0)
+        row = stored("thales-solar-eclipse", "triggered", "iphone-launched")
         self.assertEqual(row[1:], ("proposed", "test"))
 
     def test_followed_is_stored_as_preceded(self):
@@ -87,20 +88,20 @@ class TestLoad(unittest.TestCase):
 
 class TestReview(unittest.TestCase):
     def test_approve_and_reject_are_logged(self):
-        load(("jallianwala-bagh-massacre", "contributed_to", "non-cooperation-movement", "outrage"),
+        load(("fall-of-troy", "contributed_to", "google-founded", "test only"),
              ("salt-march-placeholder", "part_of", "x", "x"), name="rv")  # whole batch refused: unknown ids
-        self.assertIsNone(stored("jallianwala-bagh-massacre", "contributed_to", "non-cooperation-movement"))
-        load(("jallianwala-bagh-massacre", "contributed_to", "non-cooperation-movement", "outrage"), name="rv2")
-        lid = stored("jallianwala-bagh-massacre", "contributed_to", "non-cooperation-movement")[0]
+        self.assertIsNone(stored("fall-of-troy", "contributed_to", "google-founded"))
+        load(("fall-of-troy", "contributed_to", "google-founded", "test only"), name="rv2")
+        lid = stored("fall-of-troy", "contributed_to", "google-founded")[0]
         self.assertEqual(quiet(links.approve, [lid], via="test"), 0)
-        self.assertEqual(stored("jallianwala-bagh-massacre", "contributed_to", "non-cooperation-movement")[1], "reviewed")
+        self.assertEqual(stored("fall-of-troy", "contributed_to", "google-founded")[1], "reviewed")
         self.assertEqual(quiet(links.approve, [lid]), 1)  # no longer proposed
 
-        load(("battle-of-plassey", "enabled", "east-india-company-bengal", "won Bengal"), name="rv3")
-        lid2 = stored("battle-of-plassey", "enabled", "east-india-company-bengal")[0]
+        load(("eruption-of-vesuvius", "enabled", "amazon-founded", "test only"), name="rv3")
+        lid2 = stored("eruption-of-vesuvius", "enabled", "amazon-founded")[0]
         self.assertEqual(quiet(links.reject, [lid2], "  "), 1)  # reason required
         self.assertEqual(quiet(links.reject, [lid2], "duplicate idea", via="test"), 0)
-        self.assertIsNone(stored("battle-of-plassey", "enabled", "east-india-company-bengal"))
+        self.assertIsNone(stored("eruption-of-vesuvius", "enabled", "amazon-founded"))
         actions = [r[0] for r in db().execute("SELECT action FROM review_log WHERE via = 'test'")]
         self.assertIn("approve-link", actions)
         self.assertIn("reject-link", actions)
