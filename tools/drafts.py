@@ -3,13 +3,14 @@
 Draft file shape (JSON):
   {"origin": "ai_drafted_from_csv",
    "events": [{id, name, year, categories, region, aliases, description, difficulty,
-               importance, csv_event_id?, note?, source?,
-               is_approximate?, date_display?, date_precision?}, ...],
+               importance, csv_event_id?, note?, source?, countries?, fills_missing?,
+               approximate? (or is_approximate), date_display?, date_precision?}, ...],
    "spans": [{id, kind, name, start_year, end_year, description, region, importance,
               categories, countries?, approximate?, note?, source?}, ...],
    "csv_triage": [{csv_event_id, outcome, related_entity_id?, note?}, ...]}
 `source` is a Wikipedia URL. It loads as a proposed source and is approved with its draft.
-`countries` lists location codes, primary first; they load as proposed tags (approve-countries).
+`countries` lists ISO codes, primary first, with "/actor" for an actor (e.g. ["IN", "AF/actor"]);
+they load as proposed tags (approve-countries).
 `fills_missing` (an id from missing_entities) marks that item drafted, pointing at this draft.
 """
 
@@ -20,6 +21,15 @@ from pathlib import Path
 import missing
 import sources
 from common import connect, ensure_schema, log
+
+
+def country_rows(entity_id, codes):
+    """["IN", "AF/actor"] → entity_countries rows (proposed, high confidence)."""
+    rows = []
+    for i, code in enumerate(codes):
+        c, _, role = code.strip().partition("/")
+        rows.append((entity_id, i, c.strip().upper(), "actor" if role.strip() == "actor" else "location"))
+    return rows
 
 
 def load(path):
@@ -36,8 +46,10 @@ def load(path):
                 "importance, is_approximate, date_display, date_precision) "
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (e["id"], e["name"], e["year"], e["region"], e["description"],
-                 e["difficulty"], e["importance"], 1 if e.get("is_approximate") else None,
+                 e["difficulty"], e["importance"], 1 if (e.get("is_approximate") or e.get("approximate")) else None,
                  e.get("date_display"), e.get("date_precision")))
+            conn.executemany("INSERT INTO entity_countries (entity_id, position, country, confidence, status, role) "
+                             "VALUES (?, ?, ?, 'high', 'proposed', ?)", country_rows(e["id"], e.get("countries", [])))
             conn.executemany("INSERT INTO event_aliases VALUES (?, ?, ?)",
                              [(e["id"], i, a) for i, a in enumerate(e["aliases"])])
             conn.executemany("INSERT INTO entity_categories VALUES (?, 'event', ?, ?)",
@@ -62,8 +74,7 @@ def load(path):
             conn.executemany("INSERT INTO entity_categories VALUES (?, 'span', ?, ?)",
                              [(t["id"], i, c) for i, c in enumerate(t["categories"])])
             conn.executemany("INSERT INTO entity_countries (entity_id, position, country, confidence, status, role) "
-                             "VALUES (?, ?, ?, 'high', 'proposed', 'location')",
-                             [(t["id"], i, c) for i, c in enumerate(t.get("countries", []))])
+                             "VALUES (?, ?, ?, 'high', 'proposed', ?)", country_rows(t["id"], t.get("countries", [])))
             ins("INSERT INTO entity_provenance VALUES (?, ?, NULL, ?)", (t["id"], origin, t.get("note")))
             if t.get("fills_missing"):
                 missing.mark_drafted(conn, t["fills_missing"], t["id"])

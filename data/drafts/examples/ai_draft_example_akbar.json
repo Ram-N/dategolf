@@ -1,0 +1,58 @@
+{
+  "origin": "ai_drafted:example",
+  "about": "Worked example for docs/15: Akbar's accession and his reign, filling gap-list items 2 and 3.",
+  "events": [
+    {
+      "id": "akbar-becomes-mughal-emperor",
+      "name": "Akbar Becomes Mughal Emperor",
+      "year": 1556,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": ["Politics"],
+      "aliases": ["Accession of Akbar", "Akbar enthroned at Kalanaur", "Akbar the Great takes the throne", "Bairam Khan's regency"],
+      "description": "The thirteen-year-old Akbar is proclaimed Mughal emperor at Kalanaur in the Punjab after his father Humayun dies from a fall. With his guardian Bairam Khan as regent, his army defeats Hemu at Panipat months later, securing the throne and opening a reign that would expand and transform the Mughal Empire.",
+      "difficulty": "medium",
+      "importance": 6,
+      "countries": ["IN"],
+      "source": "https://en.wikipedia.org/wiki/Akbar",
+      "note": "Enthroned 14 February 1556 (some sources give his formal coronation slightly later). Humayun died in January 1556.",
+      "fills_missing": 2
+    }
+  ],
+  "spans": [
+    {
+      "id": "reign-of-akbar",
+      "kind": "period",
+      "name": "Reign of Akbar",
+      "start_year": 1556,
+      "end_year": 1605,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": ["Politics"],
+      "description": "Akbar's half-century as Mughal emperor, when conquest, a reformed administration and religious tolerance made the empire the dominant power of the subcontinent.",
+      "importance": 6,
+      "countries": ["IN", "PK", "BD", "AF"],
+      "source": "https://en.wikipedia.org/wiki/Akbar",
+      "note": "Ends with his death in October 1605.",
+      "fills_missing": 3
+    }
+  ],
+  "links": [
+    {"source": "humayun-recaptures-delhi", "type": "preceded", "target": "akbar-becomes-mughal-emperor", "confidence": "high",
+     "why": "Humayun died months after retaking Delhi, and his son Akbar succeeded him."},
+    {"source": "akbar-becomes-mughal-emperor", "type": "preceded", "target": "second-battle-of-panipat", "confidence": "high",
+     "why": "Months after Akbar's accession, his army defeated Hemu and secured the throne."},
+    {"source": "akbar-becomes-mughal-emperor", "type": "began", "target": "reign-of-akbar", "confidence": "high",
+     "why": "His accession began his reign."},
+    {"source": "death-of-akbar", "type": "ended", "target": "reign-of-akbar", "confidence": "high",
+     "why": "Akbar's death ended his reign; Jahangir succeeded him."},
+    {"source": "reign-of-akbar", "type": "part_of", "target": "mughal-empire", "confidence": "high",
+     "why": "Akbar's reign was the Mughal Empire's great age of expansion."},
+    {"source": "mughal-akbar-administration", "type": "part_of", "target": "reign-of-akbar", "confidence": "high",
+     "why": "The mansabdari system was one of Akbar's main reforms."},
+    {"source": "battle-of-haldighati", "type": "part_of", "target": "reign-of-akbar", "confidence": "high",
+     "why": "Akbar's campaign against Maharana Pratap of Mewar."},
+    {"source": "akbar-din-i-ilahi", "type": "part_of", "target": "reign-of-akbar", "confidence": "high",
+     "why": "Akbar's own religious movement, late in his reign."}
+  ]
+}

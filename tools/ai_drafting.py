@@ -1,0 +1,258 @@
+"""Drafting with outside AIs (doc 15): a reference file to give them, and a checker for what they send back.
+
+  ai-reference [--out PATH]   writes the reference: allowed values, the gap list, every existing id
+  check-drafts <file>         checks an AI's batch against the rules, then does a trial load on a db copy
+
+The batch format is the one load-drafts and load-links already read: one JSON file with
+"events", "spans" and "links". Nothing here writes to the real db.
+"""
+
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+from datetime import date
+from pathlib import Path
+
+from common import DATA, DB_PATH, ROOT, connect
+from reconcile import tokens
+
+ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+KINDS = ("period", "empire")
+DIFFICULTIES = ("easy", "medium", "hard")
+WIKI = "https://en.wikipedia.org/wiki/"
+YEAR_NOW = date.today().year
+
+
+# ── The reference file ───────────────────────────────────────────────────────
+
+def reference(out_path=None):
+    conn = connect()  # read only: no ensure_schema, which would rewrite the db file
+    q = lambda sql: conn.execute(sql).fetchall()
+    regions = [r[0] for r in q("SELECT label FROM regions ORDER BY lane, label")]
+    categories = [r[0] for r in q("SELECT label FROM categories ORDER BY label")]
+    types = q("SELECT type, inverse_label, is_causal, definition FROM relationship_types "
+              "WHERE type <> 'followed' ORDER BY is_causal, type")
+    gaps = q("SELECT id, kind, name, year, end_year, approximate, why, status FROM missing_entities "
+             "WHERE status IN ('open', 'wanted') ORDER BY status = 'wanted' DESC, coalesce(year, 9999)")
+    events = q("SELECT e.entity_id, e.name, e.year, e.is_approximate FROM events e JOIN entities n ON n.id = e.entity_id "
+               "WHERE n.editorial_status <> 'proposed' ORDER BY e.year, e.entity_id")
+    spans = q("SELECT entity_id, name, start_year, end_year, kind FROM time_spans WHERE kind <> 'era' "
+              "ORDER BY start_year, entity_id")
+    conn.close()
+
+    yr = lambda y: f"{-y} BCE" if y < 0 else str(y)
+    lines = [
+        "# DateGolf reference for AI drafting",
+        "",
+        f"Generated {date.today():%Y-%m-%d} by `manage.py ai-reference`. Give this file to the AI together with the",
+        "prompt in docs/15. It lists what already exists (don't duplicate it; link to it by id) and the gap list.",
+        "",
+        "## Allowed values",
+        "",
+        f"- **region** (exactly one): {', '.join(regions)}",
+        f"- **categories** (1 to 3, primary first): {', '.join(categories)}",
+        f"- **difficulty**: {', '.join(DIFFICULTIES)}",
+        "- **importance**: 1 to 9 (see the prompt)",
+        f"- **span kind**: {', '.join(KINDS)}",
+        "",
+        "## Link types",
+        "",
+        "| type | reads from the source | reads from the target | causal | use when |",
+        "|---|---|---|---|---|",
+    ]
+    for t, inverse, causal, definition in types:
+        lines.append(f"| `{t}` | {t.replace('_', ' ')} | {inverse} | {'yes' if causal else 'no'} | {definition or ''} |")
+    lines += ["", "## The gap list: missing events and spans worth drafting", "",
+              "Set `fills_missing` to the number when your draft fills one.", "",
+              "| # | kind | name | when | why | status |", "|---|---|---|---|---|---|"]
+    for gid, kind, name, y, end, approx, why, status in gaps:
+        when = "?" if y is None else (("c. " if approx else "") + yr(y) + (f" to {yr(end)}" if end else ""))
+        lines.append(f"| {gid} | {kind} | {name} | {when} | {why} | {status} |")
+    lines += ["", f"## Existing events ({len(events)}): use these ids in links; don't draft them again", "",
+              "| id | name | year |", "|---|---|---|"]
+    lines += [f"| {i} | {n} | {'c. ' if a else ''}{yr(y)} |" for i, n, y, a in events]
+    lines += ["", f"## Existing spans ({len(spans)})", "", "| id | name | years | kind |", "|---|---|---|---|"]
+    lines += [f"| {i} | {n} | {yr(a)} to {yr(b)} | {k} |" for i, n, a, b, k in spans]
+    out = Path(out_path) if out_path else DATA / "drafts" / "ai_reference.md"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"  Wrote {out} ({len(events)} events, {len(spans)} spans, {len(gaps)} gap items)")
+    return 0
+
+
+# ── Checking a batch ─────────────────────────────────────────────────────────
+
+def _read_batch(path):
+    """The JSON, forgiving the code fences chat AIs like to add."""
+    text = Path(path).read_text(encoding="utf-8").strip()
+    text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
+    return json.loads(text)
+
+
+def _year_leaks(text, year):
+    plain = re.sub(r"\d{1,3}(?:,\d{3})+|\d+\.\d+", " ", text)
+    return [n for n in re.findall(r"\b\d{3,4}\b", plain) if abs(int(n) - abs(year)) <= 50]
+
+
+def check(path, trial=True):
+    """Report errors (must fix) and warnings (please check) for an AI-drafted batch. Returns 1 on errors."""
+    errors, warnings = [], []
+    try:
+        batch = _read_batch(path)
+    except (json.JSONDecodeError, OSError) as exc:
+        print(f"  ✗ Not readable JSON: {exc}")
+        return 1
+    conn = connect()  # read only: no ensure_schema, which would rewrite the db file
+    ids = {r[0] for r in conn.execute("SELECT id FROM entities")}
+    names = {r[0].casefold(): r[1] for r in conn.execute(
+        "SELECT name, entity_id FROM events UNION SELECT name, entity_id FROM time_spans")}
+    existing = [(r[0], r[1], r[2]) for r in conn.execute(
+        "SELECT entity_id, name, year FROM events UNION ALL SELECT entity_id, name, start_year FROM time_spans")]
+    regions = {r[0] for r in conn.execute("SELECT label FROM regions")}
+    categories = {r[0] for r in conn.execute("SELECT label FROM categories")}
+    countries = {r[0] for r in conn.execute("SELECT code FROM countries")}
+    gaps = {r[0]: (r[1], r[2], r[3]) for r in conn.execute("SELECT id, kind, name, status FROM missing_entities")}
+    conn.close()
+
+    unknown = set(batch) - {"origin", "about", "events", "spans", "links"}
+    if unknown:
+        errors.append(f"unknown top-level keys: {', '.join(sorted(unknown))}")
+    if not str(batch.get("origin", "")).startswith("ai_drafted"):
+        warnings.append('origin should be "ai_drafted:<model name>", so the review knows who drafted it')
+
+    seen_ids, seen_names = set(), set()
+
+    def common_checks(where, x, kind, year):
+        i, name = x.get("id", ""), (x.get("name") or "").strip()
+        if not ID_RE.match(i) or not 3 <= len(i) <= 60:
+            errors.append(f"{where}: id must be lowercase-words-with-hyphens, 3 to 60 characters")
+        if i in ids:
+            errors.append(f"{where}: id {i} already exists")
+        if i in seen_ids:
+            errors.append(f"{where}: id {i} is used twice in this batch")
+        seen_ids.add(i)
+        if not name:
+            errors.append(f"{where}: needs a name")
+        elif name.casefold() in names:
+            errors.append(f"{where}: an entity called {name!r} already exists ({names[name.casefold()]})")
+        elif name.casefold() in seen_names:
+            errors.append(f"{where}: the name {name!r} is used twice in this batch")
+        seen_names.add(name.casefold())
+        if re.search(r"\b\d{3,4}\b", name):
+            warnings.append(f"{where}: the name contains a number that may give away the year")
+        if x.get("region") not in regions:
+            errors.append(f"{where}: region {x.get('region')!r} is not one of the allowed regions")
+        cats = x.get("categories") or []
+        if not cats or len(cats) > 3 or any(c not in categories for c in cats):
+            errors.append(f"{where}: categories must be 1 to 3 of the allowed labels (got {cats})")
+        if not isinstance(x.get("importance"), int) or not 1 <= x["importance"] <= 9:
+            errors.append(f"{where}: importance must be a whole number from 1 to 9")
+        desc = (x.get("description") or "").strip()
+        words = len(desc.split())
+        if not desc:
+            errors.append(f"{where}: needs a description")
+        elif not 12 <= words <= 90:
+            warnings.append(f"{where}: description is {words} words (aim for 25 to 70)")
+        if re.search(r"<[a-z]|\*\*|\[.+\]\(", desc):
+            errors.append(f"{where}: the description must be plain text (no HTML or Markdown)")
+        for code in x.get("countries") or []:
+            c, _, role = str(code).partition("/")
+            if c.strip().upper() not in countries or role.strip() not in ("", "actor"):
+                errors.append(f"{where}: country {code!r} is not a known ISO code (or not CODE/actor)")
+        if not x.get("countries"):
+            warnings.append(f"{where}: no countries (location first, '/actor' for actors)")
+        src = x.get("source") or ""
+        if not src.startswith(WIKI):
+            errors.append(f"{where}: source must be one English Wikipedia article URL ({WIKI}...)")
+        if x.get("fills_missing") is not None:
+            gap = gaps.get(x["fills_missing"])
+            if gap is None:
+                errors.append(f"{where}: fills_missing #{x['fills_missing']} is not on the gap list")
+            elif gap[0] != kind:
+                errors.append(f"{where}: gap #{x['fills_missing']} is a {gap[0]}, not a {kind}")
+            elif gap[2] not in ("open", "wanted"):
+                errors.append(f"{where}: gap #{x['fills_missing']} is already {gap[2]}")
+        # A possible duplicate: same distinctive words, a nearby year.
+        words_x = tokens(name) - set(tokens("the of and a in empire dynasty battle war becomes founded"))
+        if words_x and year is not None:
+            for eid, ename, eyear in existing:
+                if abs(eyear - year) <= 15 and len(words_x & tokens(ename)) >= max(2, len(words_x) - 1):
+                    warnings.append(f"{where}: may duplicate {eid} ({ename}, {eyear})")
+                    break
+
+    for n, e in enumerate(batch.get("events") or [], start=1):
+        where = f"event {n} ({e.get('id', '?')})"
+        year = e.get("year")
+        if not isinstance(year, int) or year == 0 or not -10000 <= year <= YEAR_NOW:
+            errors.append(f"{where}: year must be a whole number (negative = BCE), never 0")
+            year = None
+        common_checks(where, e, "event", year)
+        if e.get("difficulty") not in DIFFICULTIES:
+            errors.append(f"{where}: difficulty must be easy, medium or hard")
+        approx = e.get("approximate", e.get("is_approximate", False))
+        if approx and not e.get("date_display"):
+            errors.append(f"{where}: an approximate date needs date_display, e.g. \"c. 4000–3500 BCE\"")
+        if e.get("date_display") and not approx:
+            warnings.append(f"{where}: date_display given but approximate is false")
+        aliases = e.get("aliases") or []
+        if not 1 <= len(aliases) <= 8:
+            warnings.append(f"{where}: give 2 to 6 aliases")
+        if year is not None:
+            if _year_leaks(e.get("description") or "", year):
+                errors.append(f"{where}: the description mentions a year near the answer "
+                              f"({', '.join(_year_leaks(e['description'], year))}): DatePick shows it before the guess")
+            for a in aliases:
+                if _year_leaks(a, year):
+                    errors.append(f"{where}: alias {a!r} gives away the year")
+        if re.search(r"\b(\d{1,2}(st|nd|rd|th)|[a-z]+(teenth|tieth|th)) century\b", (e.get("description") or "").lower()):
+            warnings.append(f"{where}: the description names a century, a strong hint at the answer")
+
+    for n, s in enumerate(batch.get("spans") or [], start=1):
+        where = f"span {n} ({s.get('id', '?')})"
+        a, b = s.get("start_year"), s.get("end_year")
+        if not all(isinstance(v, int) and v != 0 for v in (a, b)) or a > b:
+            errors.append(f"{where}: start_year and end_year must be whole numbers, never 0, start not after end")
+            a = None
+        if s.get("kind") not in KINDS:
+            errors.append(f"{where}: kind must be period or empire")
+        common_checks(where, s, "span", a)
+
+    if not errors and trial:
+        _trial_load(path, batch, errors)
+
+    print(f"\n  Checked {len(batch.get('events') or [])} events, {len(batch.get('spans') or [])} spans, "
+          f"{len(batch.get('links') or [])} links from {path}")
+    for e in errors:
+        print(f"  ✗ {e}")
+    for w in warnings:
+        print(f"  ! {w}")
+    if not errors:
+        print("  ✓ Ready to load: `manage.py load-drafts <file>`, then `manage.py load-links <file>`."
+              + (" (Look at the warnings first.)" if warnings else ""))
+    return 1 if errors else 0
+
+
+def _trial_load(path, batch, errors):
+    """Load the batch into a copy of the db with the real loaders, so their checks run too."""
+    tmp = Path(tempfile.mkdtemp(prefix="dategolf-check-"))
+    try:
+        shutil.copy(DB_PATH, tmp / "dategolf.db")
+        clean = tmp / "batch.json"
+        clean.write_text(json.dumps({**batch, "origin": batch.get("origin") or "ai_drafted"}), encoding="utf-8")
+        env = {**os.environ, "DATEGOLF_DB": str(tmp / "dategolf.db")}
+        steps = [["load-drafts", str(clean)]] if (batch.get("events") or batch.get("spans")) else []
+        if batch.get("links"):
+            steps.append(["load-links", str(clean)])
+        for step in steps:
+            proc = subprocess.run([sys.executable, str(ROOT / "tools" / "manage.py"), *step], env=env,
+                                  capture_output=True, text=True)
+            if proc.returncode != 0:
+                detail = (proc.stdout + proc.stderr).strip().replace("\n", "\n      ")
+                errors.append(f"trial {step[0]} failed:\n      {detail}")
+                break
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)

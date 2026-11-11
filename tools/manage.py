@@ -6,6 +6,7 @@ import sqlite3
 import subprocess
 import sys
 
+import ai_drafting
 import countries
 import drafts
 import edit
@@ -303,6 +304,14 @@ def main():
     p.add_argument("ids", nargs="+")
     p.add_argument("--reason", required=True)
     p.set_defaults(fn=lambda a: sources.reject(a.ids, a.reason))
+
+    p = sub.add_parser("ai-reference", help="Write the reference file to give outside AIs (doc 15)")
+    p.add_argument("--out", help="Output path (default data/drafts/ai_reference.md)")
+    p.set_defaults(fn=lambda a: ai_drafting.reference(a.out))
+
+    p = sub.add_parser("check-drafts", help="Check an AI-drafted batch, with a trial load on a db copy (doc 15)")
+    p.add_argument("path")
+    p.set_defaults(fn=lambda a: ai_drafting.check(a.path))
 
     p = sub.add_parser("load-missing", help="Add noticed-but-missing events and spans to the list (all-or-nothing)")
     p.add_argument("path")

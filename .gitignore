@@ -50,3 +50,4 @@ data/backup/
 
 # Python virtualenvs (uv)
 .venv/
+data/drafts/ai_reference.md
