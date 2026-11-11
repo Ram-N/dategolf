@@ -54,6 +54,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
   - **Other pages:** Overview, Connections, Coverage heatmap, Map.
   - → doc 13
 - **Datasette** (`npm run data:browse`): read-only browsing, with canned queries. → doc 13
+- **Drafting with outside AIs** (doc 15): a system prompt for any AI; `manage.py ai-reference` (the file to attach: allowed values, the gap list, every id); `manage.py check-drafts <file>` (every rule, plus a trial load on a db copy). Their files go in `data/drafts/incoming/` and load as proposed.
 - **Tests:** 119 game and engine tests (Vitest, many run against the real data) and 49 data-tool tests (`npm run data:test`), plus a dashboard smoke test.
 
 ---
@@ -64,7 +65,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 
 | # | What | Where | Why it matters |
 |---|---|---|---|
-| 1 | **The gap list: Want or Dismiss the 65 items** | Dashboard → Review → **Missing** (doc 12 §4.6e) | Claude drafts the wanted ones. They also deepen the Stories (e.g. Franz Ferdinand would trigger WWI, Commodore Perry would lead to Meiji, the Thirty Years' War span) |
+| 1 | **The gap list: Want or Dismiss the 65 items**, or have outside AIs draft them (doc 15) | Dashboard → Review → **Missing** (doc 12 §4.6e) | Claude drafts the wanted ones. They also deepen the Stories (e.g. Franz Ferdinand would trigger WWI, Commodore Perry would lead to Meiji, the Thirty Years' War span) |
 | 2 | **Load and review sources batch 1** (460 Wikipedia articles) | Ask Claude to load it, then Review → Sources (doc 12 §4.6d) | Every event gets a checkable source. 128 are exact name matches (one-click approve) |
 | 3 | **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project`, `arab-spring` | `manage.py identity <id> --one\|--split\|…` | An old loose end from doc 11 |
 | 4 | **Two design calls for DatePick range choices** | doc 04 §38 | They unblock Claude's item 4 below |

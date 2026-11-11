@@ -370,6 +370,10 @@ Whenever Claude notices a gap while doing other work, it goes on a list in the `
 
 **CLI:** `manage.py load-missing <file>` (Claude adds batches, all-or-nothing; refuses names that already exist) and `manage.py missing-status <ids> --status wanted|dismissed|open [--note "..."]`. A draft fills an item with `"fills_missing": <id>` in its `load-drafts` entry.
 
+### 4.6f Drafts from outside AIs
+
+Other AIs can draft events, spans and links with the prompt in **doc 15**. Run `manage.py ai-reference` and attach its output, save their JSON in `data/drafts/incoming/`, and run `manage.py check-drafts <file>`. Then load it as usual (`load-drafts`, then `load-links`, on the same file) and review on the dashboard.
+
 ### 4.7 Preview in the game
 
 ```bash
