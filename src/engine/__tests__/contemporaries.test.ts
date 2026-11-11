@@ -70,9 +70,8 @@ describe('contemporaries — overlap and distance', () => {
   })
 
   it('says how far apart two spans that never met were', () => {
-    const o = overlap(span('han-dynasty'), span('ming-dynasty'))
-    expect(o).toMatchObject({ kind: 'apart', years: 1368 - 220 })
-    if (o.kind === 'apart') expect(o.first.id).toBe('han-dynasty')
+    const o = overlap(span('ming-dynasty'), span('han-dynasty')) // either order
+    expect(o).toMatchObject({ kind: 'apart', years: 1368 - 220, first: { id: 'han-dynasty' } })
   })
 
   it('Pyramid ↔ Caesar: about 2,516 years, and Caesar is closer to a famous later event', () => {
