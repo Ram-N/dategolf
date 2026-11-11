@@ -13,7 +13,7 @@
             {{ formatYear(Math.round(summary.start)) }} – {{ formatYear(Math.round(summary.end)) }}
           </h2>
           <p class="text-xs mt-1 secondary">
-            {{ Math.round(summary.end - summary.start).toLocaleString() }} years ·
+            {{ Math.abs(yearGap(Math.round(summary.start), Math.round(summary.end))).toLocaleString() }} years ·
             {{ summary.total }} event{{ summary.total === 1 ? '' : 's' }}{{ filtered ? ' matching your filters' : '' }}
           </p>
         </div>
@@ -67,6 +67,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import type { PeriodSummary } from '@/engine/dateflow/explore'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
+import { yearGap } from '@/engine/dateflow/stories' // no year 0 in the count
 
 defineProps<{ summary: PeriodSummary; filtered: boolean }>()
 const emit = defineEmits<{ close: []; openEvent: [id: string]; openDuration: [id: string]; zoomTo: [] }>()
