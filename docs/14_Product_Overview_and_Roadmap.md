@@ -1,6 +1,6 @@
 # Product Overview and Roadmap
 
-> **The one place for "what exists" and "what's next".** Updated 2026-11-10.
+> **The one place for "what exists" and "what's next".** Updated 2026-11-10. The long-term DateFlow vision is **doc 16**.
 > Details live in the linked docs; this page doesn't repeat them. When work finishes, update the roadmap here (not in doc 11 or QUICKSTART).
 
 **Rule zero (CLAUDE.md): historical accuracy trumps everything else.** No false precision, "c." shown prominently, a sequence never shown as a cause, debated links marked as debated.
@@ -69,6 +69,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | 2 | **Load and review sources batch 1** (460 Wikipedia articles) | Ask Claude to load it, then Review → Sources (doc 12 §4.6d) | Every event gets a checkable source. 128 are exact name matches (one-click approve) |
 | 3 | **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project`, `arab-spring` | `manage.py identity <id> --one\|--split\|…` | An old loose end from doc 11 |
 | 4 | **Two design calls for DatePick range choices** | doc 04 §38 | They unblock Claude's item 4 below |
+| 5 | **Pick the next DateFlow phase** (10–14 below), and approve the **colour approach**: keep 3 colourblind-safe hues, add 8 category families as shapes, plus a "focus" mode that fades rather than hides | doc 16, "Assessment" | Doc 16's vision, mapped against what's built |
 
 ### Claude's queue (pick work that doesn't pile onto your review queues)
 
@@ -79,7 +80,13 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | 3 | **Step 4: fill the thin periods** (about 40 events for pre-500 CE, Africa and the Americas before 1500, Southeast Asia and Oceania) | Overlaps item 1 | doc 11 Step 4; the Coverage heatmap shows the gaps |
 | 4 | **DatePick range choices:** ranges instead of single years for approximate events | Your 2 decisions, plus structured `range_start` / `range_end` | doc 04 §38 |
 | 5 | **Dashboard v3: the event editor**, including adding or editing a single link | — | doc 13. Less urgent (new events come through drafts), but it lets you edit without Claude |
-| 6 | **DateFlow Phase 10 ideas:** a Stories gallery page, story-of-the-day on the DateFlow landing, "where two stories meet", rise and fall of empires, map mode, smarter daily challenges driven by coverage and links | — | doc 09 "Ideas for later", doc 11 §5 |
+| 6 | **DateFlow phases from the doc 16 vision** (recommended order; full table in doc 16, "Assessment"): | | |
+| 6a | **Phase 10: Contemporaries.** A Time Machine (pick a year → a world snapshot by region; compare two years), an Overlap explorer (two spans), a Distance explorer (two events) | No new data | Medium |
+| 6b | **Phase 11: Living Timeline polish.** 8 category families as shapes, focus mode, colour by region, distinct milestone landmarks, spans revealing their sub-spans when zoomed, a Historical Currents layer | A few new spans (Axial Age, Enlightenment, Decolonization) | Medium |
+| 6c | **Phase 12: Empire life cycles.** `entity_phases` (rise / zenith / fragmentation…), drafted through doc 15 and reviewed, drawn as phase segments on the bars | Curated phases, with sources | Large |
+| 6d | **Phase 13: People.** Person entities with lifespans and reigns; contemporaries; lifespan overlap (Akbar and Elizabeth I) | People drafted through doc 15 | Large |
+| 6e | **Phase 14: Journeys and a game.** Curated journeys played in the Story panel; a "Find events during X" game | Journey scripts | Medium |
+| 6f | **Later:** images (Wikimedia, with licensing), a DateFlow map view, regional significance, AI questions (needs a backend decision), a Stories gallery and story-of-the-day, the Immersive experience (parked) | — | — |
 
 ### Housekeeping (from the old QUICKSTART list, still true)
 

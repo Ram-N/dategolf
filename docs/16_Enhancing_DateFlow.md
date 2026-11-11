@@ -1594,5 +1594,80 @@ So, for now, our scope is clear: **make the timeline intelligent, make history d
 
 I suggest we next move from brainstorming the experience to examining the existing timeline and identifying what needs to evolve.
 
-====
+---
 
+# Assessment (2026-11-10): built, not built, and fit
+
+*Added by Claude after reading the brainstorm above, which is unchanged. It compares the vision with what exists (doc 09 for DateFlow phases, doc 14 for the product overview) and proposes an order of work. The phases are carried into doc 14's roadmap.*
+
+### How well it fits our direction: very well
+
+The document's main ideas are things we already chose, often in the same words:
+- **A knowledge graph of typed relationships.** Its relationship taxonomy is almost exactly our 12 types. We added `began` and `ended` during your review.
+- **"Distinguish chronological succession from causation."** That's built into Stories (a grey "then", never a cause).
+- **"AI should query the structured database rather than invent relationships"**, plus sources and review status. That's our accuracy-first rule, the review queues and the sources table.
+- **"Separate the data from the visualization."** We have SQLite → JSON → a pure TypeScript engine.
+- **"Don't rush into changing the technical stack."** Vue + SVG + our own time scale handle ~530 items well. Canvas or Pixi only matter at thousands of items.
+- **Immersion parked; Living Timeline and Discovery first.** That matches the roadmap.
+
+**Two points where we should adapt the document rather than follow it:**
+1. **Eight category colours.** Today's 3 colourblind-safe hues are deliberate (`src/engine/dateflow/categoryGroups.ts`). Eight hues on small dots can't be told apart, and the document itself warns that colour shouldn't be the only encoding. **Recommendation:** keep the 3 hues, add **8 category families shown as shapes or icons**, and add a **"focus" mode** (one family vivid, the rest faded, *not hidden*). That's exactly the document's "Political history: everything else fades".
+2. **AI questions ("What was happening in India when Rome peaked?").** A live AI needs a backend, which breaks the "no backend" rule. **Recommendation:** answer the common questions with structured tools first (the Time Machine, Overlap and Distance explorers below), and park AI Q&A until a backend is decided.
+
+### What's built vs. not
+
+#### Living Timeline
+
+| Doc 16 idea | Status | What exists / what's missing |
+|---|---|---|
+| Significance levels drive size, labels and zoom | ✅ mostly | Importance 1–9 sets marker size, bold labels (7+) and the zoom threshold (`importanceThreshold`). **Missing:** regional vs. global significance (a regional event can vanish at world zoom) |
+| Category taxonomy, primary + secondary | ✅ | 14 categories; the first is primary. The document's 8 families are just a grouping of them |
+| Category colours | ⚠️ partial | 3 safe hues. **Missing:** 8 families (as shapes), focus mode, colour-by-region toggle |
+| Density layer | ✅ | Minimap histogram (Phase 6) and the dashboard Coverage heatmap |
+| Milestones as landmarks | ✅ | 16 milestone lines with labels; could get a more distinctive marker |
+| Semantic zoom / progressive disclosure | ✅ partial | Importance thresholds by zoom. **Missing:** spans revealing their sub-spans as you zoom in (Roman Empire → Republic, Pax Romana… via `part_of`), and smooth fade-ins |
+| Empire life cycles (rise, zenith, decline) | ❌ | Planned in doc 10 (`entity_phases`) but not built. Needs curated data |
+| Historical Currents (Axial Age, Enlightenment…) | ⚠️ partial | Some exist as period spans (Scientific Revolution, Industrial Revolution, Age of Exploration, Islamic Golden Age). **Missing:** a "currents" layer (translucent background bands), and spans for the Axial Age, Enlightenment and Decolonization |
+| Transformation markers (e.g. Mughal fragmentation) | ❌ | Would come with life cycles |
+| Card front and back | ✅ | The flip card. **Missing:** images; tabs on mobile |
+
+#### Discovery
+
+| Doc 16 idea | Status | What exists / what's missing |
+|---|---|---|
+| Historical connections, typed vocabulary, clickable | ✅✅ | Phase 8 Connections; Phase 9 Stories, threads, playback, `?story=` links. 225 reviewed links |
+| Printing press → … → Scientific Revolution chains | ✅ | Stories walk them. They get longer as the gap list is drafted |
+| Contemporaries ("what was happening at the same time") | ⚠️ partial | "Meanwhile around the world" (±50 years), "Empires in [year]", "What happened?" for a range. **Missing:** the **Time Machine**: pick a year and see a world snapshot by region; compare two years (what appeared, ended, continued) |
+| Overlap explorer (Rome vs. Han) | ❌ (cheap) | Spans exist; it needs a two-span compare view |
+| Historical distance explorer | ❌ (cheap, a "wow") | Two events → the years between them, plus a surprising comparison |
+| Historical journeys (curated) | ⚠️ partial | Stories plus 8 auto-featured stories. **Missing:** curated journeys with an intro, chosen stops and questions ("Rise and Fall of Empires") |
+| People explorer (Akbar's life, contemporaries) | ❌ | No person entities. Lifespans and reigns can be spans (like "Life of the Buddha" or the drafted "Reign of Akbar") |
+| Civilization explorer | ⚠️ partial | A span card with Connections and Stories. **Missing:** a dedicated view (rulers, phases, successors) |
+| Geographic discovery and a synced map | ⚠️ data only | 674 country tags and the dashboard Map (admin only). **Missing:** a map in DateFlow; places, cities, trade routes |
+| AI questions | ❌ (parked) | Needs a backend (see above). AI as a *research assistant* is already done: doc 15 drafting |
+| "Find five events during the Roman Empire" game | ❌ | Six games exist (What's Missing? covers the missing-event idea) |
+
+#### Data model
+
+| Doc 16 idea | Status |
+|---|---|
+| Entities and typed relationships | ✅ `entities` + facets + `relationships` (with confidence and review) |
+| Multiple categories, sources and references | ✅ categories, sources (58 reviewed, 460 drafted) |
+| People, places, trade networks, movements as entity types | ❌ people and places; movements fit as period spans |
+| Images (Wikimedia, licensing) | ❌. It would mirror the `sources` pattern |
+| Significance: global, regional and national | ⚠️ global only (one importance score) |
+
+#### Immersive: parked, as the document itself says.
+
+### Proposed phases (for doc 14), in recommended order
+
+The order puts the most "wow" first, using data we already have. Data-heavy work comes once the drafting pipeline (doc 15) is feeding it.
+
+| Phase | What | Data needed | Size |
+|---|---|---|---|
+| **10: Contemporaries** | **Time Machine:** a year slider freezes the timeline and opens a world snapshot by region (active empires and periods via `activeDuring`, nearby events via `meanwhile`/`summarizePeriod`). **Compare two years** (appeared / ended / continued). **Overlap explorer** (two spans). **Distance explorer** (two events, with a "surprising distance" line). | None new | Medium |
+| **11: Living Timeline polish** | 8 category families as marker shapes plus a legend; **focus mode** (fade, don't hide); **colour by region** toggle; milestones as distinct landmarks; **spans reveal their sub-spans when zoomed** (via `part_of`); smooth label fades; a **Historical Currents** background layer | A "current" flag on some spans; a few new spans (Axial Age, Enlightenment, Decolonization) via the gap list | Medium |
+| **12: Empire life cycles** | An `entity_phases` table (`tools/`), drafted through doc 15 with phases, then a review queue. Bars render phase segments; transition markers for major turns. Start with ~10 major empires | Curated phases with sources (accuracy-sensitive: not every empire has neat phases) | Large |
+| **13: People** | Person entities with lifespan and reign spans; a person card; "Contemporaries of Akbar"; lifespan overlap (Akbar and Elizabeth I) | People drafted through doc 15 | Large |
+| **14: Journeys and a game** | Curated journeys (title, intro, stops, questions) played in the Story panel; a "Find events during X" game | Journey scripts, drafted and reviewed | Medium |
+| **Later** | Images (a media table, Wikimedia licensing); a DateFlow map view; regional significance; AI Q&A (needs a backend decision); Immersive | — | — |
