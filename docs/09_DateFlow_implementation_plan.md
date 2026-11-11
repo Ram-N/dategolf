@@ -18,6 +18,7 @@
 | 7 | Games built on the timeline | ✅ Done |
 | 8 | Connections: links between events and spans on the cards and the timeline | ✅ Done 2026-11-10 |
 | 9 | Stories: "How did we get here?" threads on the timeline, a story panel with playback, and a Cause & Effect game | ✅ Done 2026-11-10 |
+| 10 | Contemporaries: the Time Machine (the world in a year; compare two years), the Overlap and Distance explorers | 📝 Planned 2026-11-11, awaiting "go" |
 
 **Decisions made with Ram (2026-11-01)**
 - Durations come from ChronoLogic's periods (`../ChronoLogic/public/data/events.json`), plus about 25–30 empires and dynasties we add ourselves.
@@ -301,6 +302,73 @@ Decisions with Ram (2026-11-01): a **Play hub inside DateFlow**, **daily + pract
   - reveal labels collided or overflowed on phones; they now go on the roomier side and shorten with "…" if needed
   - edge year labels were clipped
 - **Possible next steps:** streaks and stats per game (like DatePick), a combined "daily five" score, difficulty presets, and putting the order game directly on the big timeline.
+
+## Phase 10 — Contemporaries 📝 (planned 2026-11-11, awaiting "go")
+
+**Goal:** doc 16's favourite idea, *"What was happening elsewhere in the world at the same time?"*, built from the data we already have. History is taught region by region; this shows it happening simultaneously. Doc 16 calls it "a time machine that lets students inspect the world at any moment".
+
+**Accuracy rules:**
+- **The panel says what it shows:** "what's in DateFlow, not everything that happened". A region with nothing says so ("Nothing in DateFlow yet"), rather than looking empty of history. Gaps it reveals go on the gap list.
+- **Approximate dates show "c."** A span with an approximate start or end, near the chosen year, is flagged "dates uncertain: may not have begun / ended yet".
+- **Every year count goes through `yearGap`** (no year 0). This also fixes the existing "What happened?" summary, which counts 1000 BCE–500 CE as 1,500 years instead of 1,499.
+
+### 10a. Engine: `src/engine/dateflow/contemporaries.ts` (pure, no Vue)
+Reuses `activeDuring` and `summarizePeriod` (`explore.ts`), `yearGap` and `gapText` (`stories.ts`), `laneFor` and `LANES`, and `approxMinGap`.
+- **`worldAt(year, events, durations, window = 25)`** returns, per region (lane):
+  - the **spans active** that year, each with its years since starting and until ending (so the panel can say "since 1206 · in its 44th year" or "ends in 1279")
+  - an `uncertain` flag when an approximate edge is within `approxMinGap(year)`
+  - the **events within ±window**, ordered by importance then closeness, up to 4
+  - lanes with nothing, kept and marked empty
+- **`compareYears(a, b, durations)`:** per region, spans **gone** (active at a, not at b), **new** (at b, not at a) and **continuing**, plus counts.
+- **`overlap(spanA, spanB)`:** the shared years `{start, end, years}`; or, if they never met, which ended first and how many years separate them.
+- **`distance(a, b, events)`:** the years between (with "about" if either is approximate), plus **`surprise(a, b, events)`**.
+  - It finds a well-known third event C (importance ≥ 7, or a milestone) such that the later of A/B is closer to C than to the earlier one. For example: *"Julius Caesar's assassination is closer in time to the Moon landing (about 2,012 years) than to the Great Pyramid (about 2,516)."*
+  - It's deterministic, uses only events in the data, and says "about" when a date is approximate. When no clean comparison exists, it's omitted.
+
+### 10b. The Time Machine (UI)
+- **Entry points:**
+  - a **"Time Machine"** button in the toolbar (it opens at the centre of the current view, rounded)
+  - **"What else was happening then?"** on every event card (its year) and span card (its start)
+  - a shareable **`?year=1250`** link (and `&compare=1500`), with Copy link
+- **`TimeMachinePanel.vue`** uses the same side-panel slot as the Story panel (a bottom sheet on phones); one panel is open at a time. It has four tabs:
+  1. **A year:** "The world in 1250". Year controls: type a year, ±1 / ±10 / ±100, and a slider over the data's range. Then a **card per region**:
+     - **empires and periods** as chips: "Song dynasty · since 960 · ends 1279"; "Abbasid Caliphate · its last 8 years"
+     - **events nearby**, with a window chooser (±10 / ±25 / ±50 / ±100)
+     - **empty regions** marked "Nothing in DateFlow yet"
+     - every chip opens its card, as elsewhere
+  2. **Two years:** 1250 → 1500, with **Gone · New · Still there** per region and a one-line summary ("7 empires and periods ended, 9 began, 3 continued").
+- **On the timeline:** a vertical **year line**, labelled (two lines when comparing). Active spans and the listed events are ringed (the existing `highlightIds` path), and the rest dims. The view centres on the year and keeps its zoom; a "Frame it" button fits the century around it.
+
+### 10c. The Overlap and Distance explorers (same panel)
+3. **Two empires or periods:** two searchable pickers (by name).
+   - **On the timeline:** both spans are ringed, with their shared years shaded (the Stories backdrop style).
+   - **In the panel:** *"The Roman Empire and the Han dynasty coexisted for about 246 years (27 BCE – 220 CE)"*, or *"never coexisted: X ended 120 years before Y began"*; then events from each one's region during the overlap.
+   - A shortcut on span cards: **"Compare with…"**.
+4. **Two events:** two pickers. *"2,516 years apart (about)"*, the **surprise line**, and "k DateFlow events in between". On the timeline, both are framed with a bracket and the gap labelled, in the Stories thread style.
+
+### Store and URL
+- **State:** `timeMachine` (`{ mode, year, compare?, spanA?, spanB?, eventA?, eventB?, window } | null`), with actions `openTimeMachine(year?)`, `closeTimeMachine`, `setYear`, `setMode`.
+- **Exclusive with stories:** opening one closes the other.
+- **URL sync:** `year` / `compare` / `a` / `b`, the same pattern as `?story=`.
+
+### Files
+- **New:** `src/engine/dateflow/contemporaries.ts` and its tests; `src/components/dateflow/TimeMachinePanel.vue`; a small `EntityPicker.vue` (search by name).
+- **Edited:**
+  - `src/stores/dateflow.ts`, `src/views/DateFlowView.vue` (the panel slot, keys, URL)
+  - `DateFlowToolbar.vue` (the button), `EventInfoCard` / `DurationInfoCard` slots (the card buttons)
+  - `DateFlowTimeline.vue` (a `cursorYears` prop: year lines and an overlap band)
+  - `PeriodSummaryCard.vue` (the `yearGap` fix)
+
+### Tests
+- **Unit tests:**
+  - **`worldAt(1250)`:** includes the Delhi Sultanate, Song, Mongol conquests, Mali and Abbasids; excludes the Ming
+  - **`compareYears(1250, 1500)`:** Song gone, Ming new, the Delhi Sultanate continuing
+  - **`overlap`:** Rome and Han = 246 years; a non-overlap case
+  - **`distance`:** Pyramid → Caesar ≈ 2,516; the surprise uses a later famous event; no-year-0 cases; approximate gives "about"
+  - **every lane** gets an entry
+- **Playwright:** the toolbar button and `?year=1250`; ±10 moves the year line; compare mode; Rome vs. Han shading; Pyramid ↔ Caesar; a phone bottom sheet; light and dark themes; no console errors.
+
+**Build order:** 10a, 10b, 10c, then docs. Each is a commit that passes its tests on its own. No new data and no review work.
 
 ## Phase 9 — Stories ✅ (planned and built 2026-11-10)
 

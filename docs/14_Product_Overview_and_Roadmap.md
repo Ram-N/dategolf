@@ -81,7 +81,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | 4 | **DatePick range choices:** ranges instead of single years for approximate events | Your 2 decisions, plus structured `range_start` / `range_end` | doc 04 §38 |
 | 5 | **Dashboard v3: the event editor**, including adding or editing a single link | — | doc 13. Less urgent (new events come through drafts), but it lets you edit without Claude |
 | 6 | **DateFlow phases from the doc 16 vision** (recommended order; full table in doc 16, "Assessment"): | | |
-| 6a | **Phase 10: Contemporaries.** A Time Machine (pick a year → a world snapshot by region; compare two years), an Overlap explorer (two spans), a Distance explorer (two events) | No new data | Medium |
+| 6a | **Phase 10: Contemporaries** (detailed plan in doc 09, awaiting go). A Time Machine (pick a year → a world snapshot by region; compare two years), an Overlap explorer (two spans), a Distance explorer (two events) | No new data | Medium |
 | 6b | **Phase 11: Living Timeline polish.** 8 category families as shapes, focus mode, colour by region, distinct milestone landmarks, spans revealing their sub-spans when zoomed, a Historical Currents layer | A few new spans (Axial Age, Enlightenment, Decolonization) | Medium |
 | 6c | **Phase 12: Empire life cycles.** `entity_phases` (rise / zenith / fragmentation…), drafted through doc 15 and reviewed, drawn as phase segments on the bars | Curated phases, with sources | Large |
 | 6d | **Phase 13: People.** Person entities with lifespans and reigns; contemporaries; lifespan overlap (Akbar and Elizabeth I) | People drafted through doc 15 | Large |
