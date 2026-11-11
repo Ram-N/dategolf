@@ -75,6 +75,17 @@ ok, output = actions.approve_sources(["noyce-silicon-chip"])
 if not ok:
     problems.append(f"approve_sources failed: {output}")
 
+# Significance: a proposed text shows in its queue; approving through the dashboard works.
+ok, output = actions.set_significance("mughal-empire", "Its revenue system, courtly culture and architecture "
+                                      "shaped South Asia for centuries, and its decline opened the way for "
+                                      "regional powers.")
+if not ok:
+    problems.append(f"set_significance failed: {output}")
+problems += check("views/review.py")
+ok, output = actions.approve_significance(["mughal-empire"])
+if not ok:
+    problems.append(f"approve_significance failed: {output}")
+
 shutil.rmtree(TMP, ignore_errors=True)
 if problems:
     print("FAIL\n" + "\n".join(problems))

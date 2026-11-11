@@ -15,6 +15,7 @@ import identity
 import links
 import missing
 import reconcile
+import significance
 import sources
 import validate
 from datetime import datetime
@@ -304,6 +305,26 @@ def main():
     p.add_argument("ids", nargs="+")
     p.add_argument("--reason", required=True)
     p.set_defaults(fn=lambda a: sources.reject(a.ids, a.reason))
+
+    p = sub.add_parser("load-significance", help="Load a batch's 'significance' texts as proposed (all-or-nothing)")
+    p.add_argument("path")
+    p.set_defaults(fn=lambda a: significance.load(a.path))
+
+    p = sub.add_parser("set-significance", help="Write or replace one item's 'Why it matters' (as proposed)")
+    p.add_argument("id")
+    p.add_argument("text")
+    p.add_argument("--origin", default="ram", help="Who wrote it (default ram)")
+    p.add_argument("--note", help="For the reviewer: what to check")
+    p.set_defaults(fn=lambda a: significance.set_text(a.id, a.text, a.origin, a.note))
+
+    p = sub.add_parser("approve-significance", help="Mark proposed significance texts reviewed so they export")
+    p.add_argument("ids", nargs="+")
+    p.set_defaults(fn=lambda a: significance.approve(a.ids))
+
+    p = sub.add_parser("reject-significance", help="Delete proposed significance texts (logged, with a reason)")
+    p.add_argument("ids", nargs="+")
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: significance.reject(a.ids, a.reason))
 
     p = sub.add_parser("ai-reference", help="Write the reference file to give outside AIs (doc 15)")
     p.add_argument("--out", help="Output path (default data/drafts/ai_reference.md)")

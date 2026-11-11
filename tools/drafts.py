@@ -4,14 +4,17 @@ Draft file shape (JSON):
   {"origin": "ai_drafted_from_csv",
    "events": [{id, name, year, categories, region, aliases, description, difficulty,
                importance, csv_event_id?, note?, source?, countries?, fills_missing?,
-               approximate? (or is_approximate), date_display?, date_precision?}, ...],
+               approximate? (or is_approximate), date_display?, date_precision?, significance?}, ...],
    "spans": [{id, kind, name, start_year, end_year, description, region, importance,
-              categories, countries?, approximate?, note?, source?}, ...],
+              categories, countries?, approximate?, note?, source?, significance?}, ...],
+   "significance": [{id, text, note?}, ...],
    "csv_triage": [{csv_event_id, outcome, related_entity_id?, note?}, ...]}
 `source` is a Wikipedia URL. It loads as a proposed source and is approved with its draft.
 `countries` lists ISO codes, primary first, with "/actor" for an actor (e.g. ["IN", "AF/actor"]);
 they load as proposed tags (approve-countries).
 `fills_missing` (an id from missing_entities) marks that item drafted, pointing at this draft.
+`significance` ("Why it matters") loads as proposed and is approved with its draft. The top-level
+"significance" list adds texts to existing items (or this batch's); those are reviewed on their own.
 """
 
 import json
@@ -19,6 +22,7 @@ import sqlite3
 from pathlib import Path
 
 import missing
+import significance
 import sources
 from common import connect, ensure_schema, log
 
@@ -39,7 +43,7 @@ def load(path):
     ensure_schema(conn)
     ins = conn.execute
     try:
-        for e in batch["events"]:
+        for e in batch.get("events", []):
             ins("INSERT INTO entities (id, primary_type, editorial_status) "
                 "VALUES (?, 'event', 'proposed')", (e["id"],))
             ins("INSERT INTO events (entity_id, name, year, region, description, difficulty, "
@@ -63,6 +67,8 @@ def load(path):
                     raise sqlite3.IntegrityError(f"{e['id']}: source must be an https URL")
                 sources.attach(conn, e["id"], sources.title_from_url(e["source"]), e["source"],
                                "proposed", "ai_drafted")
+            if e.get("significance"):
+                significance.add(conn, e["id"], e["significance"], origin)
 
         for t in batch.get("spans", []):
             ins("INSERT INTO entities (id, primary_type, editorial_status) VALUES (?, ?, 'proposed')",
@@ -81,9 +87,12 @@ def load(path):
             if t.get("source"):
                 sources.attach(conn, t["id"], sources.title_from_url(t["source"]), t["source"],
                                "proposed", "ai_drafted")
+            if t.get("significance"):
+                significance.add(conn, t["id"], t["significance"], origin)
+        significance.load_rows(conn, batch.get("significance", []), origin)
 
         # A re-draft of an already-drafted CSV row keeps its existing triage row.
-        drafted = {e["csv_event_id"] for e in batch["events"] if e.get("csv_event_id") is not None}
+        drafted = {e["csv_event_id"] for e in batch.get("events", []) if e.get("csv_event_id") is not None}
         conn.executemany("INSERT OR IGNORE INTO legacy_csv_triage VALUES (?, 'drafted', NULL, NULL)",
                          [(i,) for i in sorted(drafted)])
         triage = [(t["csv_event_id"], t["outcome"], t.get("related_entity_id"), t.get("note"))
@@ -94,7 +103,8 @@ def load(path):
         raise SystemExit(f"Nothing loaded: {exc} (while loading {path})")
     conn.commit()
     conn.close()
-    print(f"  Loaded {len(batch['events'])} proposed events, {len(batch.get('spans', []))} proposed spans "
+    print(f"  Loaded {len(batch.get('events', []))} proposed events, {len(batch.get('spans', []))} proposed spans, "
+          f"{len(batch.get('significance', []))} significance texts "
           f"({len(drafted)} source CSV rows, {len(triage)} extra triage rows).")
     print("  They are NOT exported. To publish one, set entities.editorial_status = 'reviewed'.")
     return 0
@@ -109,6 +119,8 @@ def approve(ids, via="cli"):
                            "WHERE id = ? AND editorial_status = 'proposed'", (entity_id,))
         if cur.rowcount:
             conn.execute("UPDATE entity_sources SET status = 'reviewed' WHERE entity_id = ?", (entity_id,))
+            conn.execute("UPDATE entity_significance SET status = 'reviewed', updated_at = datetime('now') "
+                         "WHERE entity_id = ?", (entity_id,))
             log(conn, "approve-draft", entity_id, via=via)
         ok = ok and bool(cur.rowcount)
         print(f"  {'✓ approved' if cur.rowcount else '✗ not a proposed entity:'} {entity_id}")

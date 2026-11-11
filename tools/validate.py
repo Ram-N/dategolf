@@ -50,6 +50,12 @@ CHECKS = [
      "(SELECT id FROM entities WHERE editorial_status = 'proposed') UNION "
      "SELECT entity_id, 'datelinks' FROM learning_content_groups WHERE entity_id IN "
      "(SELECT id FROM entities WHERE editorial_status = 'proposed')"),
+    ("error", "Significance on an era (eras have no card to show it)",
+     "SELECT entity_id, 'era' FROM entity_significance WHERE entity_id IN "
+     "(SELECT entity_id FROM time_spans WHERE kind = 'era') AND entity_id NOT IN (SELECT entity_id FROM events)"),
+    ("error", "Significance with an unknown status or empty text",
+     "SELECT entity_id, status FROM entity_significance "
+     "WHERE status NOT IN ('proposed', 'reviewed') OR trim(text) = ''"),
     ("warning", "Event name contains a 4-digit year (gives the answer away)",
      "SELECT entity_id, name FROM events WHERE name GLOB '*[0-9][0-9][0-9][0-9]*'"),
     ("error", "Link with an unknown status (use proposed or reviewed)",
@@ -139,6 +145,8 @@ COUNT_SQL = {
     "milestones": "SELECT COUNT(*) FROM milestone_designations WHERE active = 1",
     "daily_challenge_dates": "SELECT COUNT(DISTINCT date_key) FROM daily_challenges",
     "csv_rows": "SELECT COUNT(*) FROM legacy_csv_rows",
+    "significance_reviewed": "SELECT COUNT(*) FROM entity_significance WHERE status = 'reviewed'",
+    "significance_proposed": "SELECT COUNT(*) FROM entity_significance WHERE status = 'proposed'",
 }
 
 

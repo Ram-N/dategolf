@@ -371,6 +371,33 @@ LEFT JOIN events e ON e.entity_id = x.entity_id
 LEFT JOIN time_spans s ON s.entity_id = x.entity_id AND e.entity_id IS NULL
 ORDER BY x.status = 'reviewed', x.origin = 'title_match', x.confidence = 'high', coalesce(e.year, s.start_year);
 
+-- ── Significance: "Why it matters" (doc 17) ─────────────────────────────────
+
+-- Why an event or span matters historically: interpretive prose, so it is reviewed before export.
+-- One row per entity (not eras). Editing a reviewed text makes it proposed again (tools/significance.py).
+CREATE TABLE IF NOT EXISTS entity_significance (
+  entity_id  TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
+  text       TEXT NOT NULL CHECK (trim(text) <> ''),
+  status     TEXT NOT NULL DEFAULT 'proposed' CHECK (status IN ('proposed', 'reviewed')),
+  origin     TEXT NOT NULL,                      -- ai_drafted:<model> | claude | ram
+  note       TEXT,                               -- for the reviewer: what to check
+  created_at TEXT DEFAULT (datetime('now')),
+  updated_at TEXT
+);
+
+-- Significance beside its entity's name, year and description, proposed first.
+CREATE VIEW IF NOT EXISTS v_significance_review AS
+SELECT x.entity_id,
+       coalesce(e.year, s.start_year) AS year,
+       coalesce(e.name, s.name) AS name,
+       coalesce(e.description, s.description) AS description,
+       x.text AS significance, x.status, x.origin, x.note, n.editorial_status AS entity_status
+FROM entity_significance x
+JOIN entities n ON n.id = x.entity_id
+LEFT JOIN events e ON e.entity_id = x.entity_id
+LEFT JOIN time_spans s ON s.entity_id = x.entity_id AND e.entity_id IS NULL
+ORDER BY x.status = 'reviewed', coalesce(e.year, s.start_year);
+
 -- ── Missing events and spans (noticed, not yet drafted) ─────────────────────
 
 -- A to-do list of gaps spotted during other work, e.g. "Death of Akbar exists, his accession doesn't".

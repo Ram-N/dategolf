@@ -19,6 +19,7 @@ import identity  # noqa: E402
 import links  # noqa: E402
 import manage  # noqa: E402
 import missing  # noqa: E402
+import significance  # noqa: E402
 import sources  # noqa: E402
 import validate  # noqa: E402
 
@@ -101,6 +102,18 @@ def approve_sources(ids, title_matches=False):
 
 def reject_sources(ids, reason):
     return _run(sources.reject, ids, reason, "dashboard")
+
+
+def approve_significance(ids):
+    return _run(significance.approve, ids, "dashboard")
+
+
+def reject_significance(ids, reason):
+    return _run(significance.reject, ids, reason, "dashboard")
+
+
+def set_significance(entity_id, text, note=None):
+    return _run(significance.set_text, entity_id, text, "ram", note, "dashboard")
 
 
 # ── Status checks (read-only) ─────────────────────────────────────────────────

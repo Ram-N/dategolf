@@ -73,6 +73,23 @@ class TestCheck(unittest.TestCase):
             self.assertEqual(code, 1, name)
             self.assertIn(expected, out, name)
 
+    def test_checks_significance(self):
+        text = "Its reforms and conquests shaped the empire for a century and gave it a durable structure."
+        cases = {
+            "markup": (variant(significance="<b>Big</b> " + text), "plain text"),
+            "unknown": ({"origin": "ai_drafted:test", "significance": [{"id": "no-such-id", "text": text}]},
+                        "not an existing event or span"),
+            "twice": ({"origin": "ai_drafted:test", "significance": [{"id": "death-of-akbar", "text": text}] * 2},
+                      "two significance texts"),
+        }
+        for name, (batch, expected) in cases.items():
+            code, out = check(batch, name)
+            self.assertEqual(code, 1, name)
+            self.assertIn(expected, out, name)
+        code, out = check({"origin": "ai_drafted:test", "significance": [{"id": "death-of-akbar", "text": text}]},
+                          "backfill", trial=True)
+        self.assertEqual(code, 0, out)
+
     def test_trial_load_catches_a_bad_link(self):
         b = copy.deepcopy(EXAMPLE)
         b["links"].append({"source": "reign-of-akbar", "type": "part_of", "target": "no-such-id", "why": "x"})

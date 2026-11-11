@@ -8,7 +8,9 @@
     "datelinks_items": 198,
     "milestones": 16,
     "daily_challenge_dates": 366,
-    "csv_rows": 310
+    "csv_rows": 310,
+    "significance_reviewed": 0,
+    "significance_proposed": 0
   },
   "checks": [
     {
@@ -104,6 +106,18 @@
     {
       "severity": "error",
       "check": "Milestone or DateLinks content on a proposed (unexported) entity",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "error",
+      "check": "Significance on an era (eras have no card to show it)",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "error",
+      "check": "Significance with an unknown status or empty text",
       "count": 0,
       "rows": []
     },

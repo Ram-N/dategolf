@@ -19,6 +19,7 @@ from pathlib import Path
 
 from common import DATA, DB_PATH, ROOT, connect
 from reconcile import tokens
+from significance import text_problems
 
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 KINDS = ("period", "empire")
@@ -42,6 +43,8 @@ def reference(out_path=None):
                "WHERE n.editorial_status <> 'proposed' ORDER BY e.year, e.entity_id")
     spans = q("SELECT entity_id, name, start_year, end_year, kind FROM time_spans WHERE kind <> 'era' "
               "ORDER BY start_year, entity_id")
+    has_why = {r[0] for r in q("SELECT entity_id FROM entity_significance")} if q(
+        "SELECT 1 FROM sqlite_master WHERE name = 'entity_significance'") else set()
     conn.close()
 
     yr = lambda y: f"{-y} BCE" if y < 0 else str(y)
@@ -73,10 +76,14 @@ def reference(out_path=None):
         when = "?" if y is None else (("c. " if approx else "") + yr(y) + (f" to {yr(end)}" if end else ""))
         lines.append(f"| {gid} | {kind} | {name} | {when} | {why} | {status} |")
     lines += ["", f"## Existing events ({len(events)}): use these ids in links; don't draft them again", "",
-              "| id | name | year |", "|---|---|---|"]
-    lines += [f"| {i} | {n} | {'c. ' if a else ''}{yr(y)} |" for i, n, y, a in events]
-    lines += ["", f"## Existing spans ({len(spans)})", "", "| id | name | years | kind |", "|---|---|---|---|"]
-    lines += [f"| {i} | {n} | {yr(a)} to {yr(b)} | {k} |" for i, n, a, b, k in spans]
+              "A ✓ in the last column means it already has a significance (\"Why it matters\"); "
+              "an empty cell means you may write one in the batch's \"significance\" list.", "",
+              "| id | name | year | why it matters |", "|---|---|---|---|"]
+    tick = lambda i: "✓" if i in has_why else ""
+    lines += [f"| {i} | {n} | {'c. ' if a else ''}{yr(y)} | {tick(i)} |" for i, n, y, a in events]
+    lines += ["", f"## Existing spans ({len(spans)})", "",
+              "| id | name | years | kind | why it matters |", "|---|---|---|---|---|"]
+    lines += [f"| {i} | {n} | {yr(a)} to {yr(b)} | {k} | {tick(i)} |" for i, n, a, b, k in spans]
     out = Path(out_path) if out_path else DATA / "drafts" / "ai_reference.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -116,9 +123,13 @@ def check(path, trial=True):
     categories = {r[0] for r in conn.execute("SELECT label FROM categories")}
     countries = {r[0] for r in conn.execute("SELECT code FROM countries")}
     gaps = {r[0]: (r[1], r[2], r[3]) for r in conn.execute("SELECT id, kind, name, status FROM missing_entities")}
+    descriptions = dict(conn.execute("SELECT entity_id, description FROM events UNION ALL "
+                                     "SELECT entity_id, description FROM time_spans WHERE kind <> 'era'"))
+    has_why = {r[0] for r in conn.execute("SELECT entity_id FROM entity_significance")} if conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE name = 'entity_significance'").fetchone() else set()
     conn.close()
 
-    unknown = set(batch) - {"origin", "about", "events", "spans", "links"}
+    unknown = set(batch) - {"origin", "about", "events", "spans", "links", "significance"}
     if unknown:
         errors.append(f"unknown top-level keys: {', '.join(sorted(unknown))}")
     if not str(batch.get("origin", "")).startswith("ai_drafted"):
@@ -165,6 +176,10 @@ def check(path, trial=True):
                 errors.append(f"{where}: country {code!r} is not a known ISO code (or not CODE/actor)")
         if not x.get("countries"):
             warnings.append(f"{where}: no countries (location first, '/actor' for actors)")
+        if x.get("significance") is not None:
+            errs, warns = text_problems(x["significance"], desc)
+            errors.extend(f"{where}: {m}" for m in errs)
+            warnings.extend(f"{where}: {m}" for m in warns)
         src = x.get("source") or ""
         if not src.startswith(WIKI):
             errors.append(f"{where}: source must be one English Wikipedia article URL ({WIKI}...)")
@@ -221,11 +236,29 @@ def check(path, trial=True):
             errors.append(f"{where}: kind must be period or empire")
         common_checks(where, s, "span", a)
 
+    # Significance for existing items (or this batch's): one per item, never replacing one.
+    seen_why = {x["id"] for x in (batch.get("events") or []) + (batch.get("spans") or [])
+                if x.get("significance") is not None and "id" in x}
+    for n, s in enumerate(batch.get("significance") or [], start=1):
+        sid = s.get("id", "")
+        where = f"significance {n} ({sid or '?'})"
+        if sid not in descriptions and sid not in seen_ids:
+            errors.append(f"{where}: {sid!r} is not an existing event or span, or one in this batch")
+        if sid in has_why:
+            errors.append(f"{where}: {sid} already has a significance (leave it out, or say why in a note to Ram)")
+        if sid in seen_why:
+            errors.append(f"{where}: {sid} has two significance texts in this batch")
+        seen_why.add(sid)
+        errs, warns = text_problems(s.get("text"), descriptions.get(sid))
+        errors.extend(f"{where}: {m}" for m in errs)
+        warnings.extend(f"{where}: {m}" for m in warns)
+
     if not errors and trial:
         _trial_load(path, batch, errors)
 
     print(f"\n  Checked {len(batch.get('events') or [])} events, {len(batch.get('spans') or [])} spans, "
-          f"{len(batch.get('links') or [])} links from {path}")
+          f"{len(batch.get('links') or [])} links, {len(batch.get('significance') or [])} significance texts "
+          f"from {path}")
     for e in errors:
         print(f"  ✗ {e}")
     for w in warnings:
@@ -244,7 +277,8 @@ def _trial_load(path, batch, errors):
         clean = tmp / "batch.json"
         clean.write_text(json.dumps({**batch, "origin": batch.get("origin") or "ai_drafted"}), encoding="utf-8")
         env = {**os.environ, "DATEGOLF_DB": str(tmp / "dategolf.db")}
-        steps = [["load-drafts", str(clean)]] if (batch.get("events") or batch.get("spans")) else []
+        steps = ([["load-drafts", str(clean)]]
+                 if (batch.get("events") or batch.get("spans") or batch.get("significance")) else [])
         if batch.get("links"):
             steps.append(["load-links", str(clean)])
         for step in steps:

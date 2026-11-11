@@ -18,6 +18,8 @@
 | error | Daily challenge date without exactly 5 years | pass |
 | error | Empty event name or description | pass |
 | error | Milestone or DateLinks content on a proposed (unexported) entity | pass |
+| error | Significance on an era (eras have no card to show it) | pass |
+| error | Significance with an unknown status or empty text | pass |
 | warning | Event name contains a 4-digit year (gives the answer away) | pass |
 | error | Link with an unknown status (use proposed or reviewed) | pass |
 | error | Link stored as 'followed' (should be stored as the inverse 'preceded') | pass |
@@ -62,6 +64,8 @@
 - milestones: 16
 - daily_challenge_dates: 366
 - csv_rows: 310
+- significance_reviewed: 0
+- significance_proposed: 0
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 

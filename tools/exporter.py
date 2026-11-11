@@ -22,8 +22,16 @@ def categories(conn, entity_id, facet):
         "ORDER BY position", (entity_id, facet))]
 
 
+def significance(conn):
+    """Reviewed "Why it matters" texts by entity id. Proposed ones stay out of the app."""
+    if not conn.execute("SELECT 1 FROM sqlite_master WHERE name = 'entity_significance'").fetchone():
+        return {}
+    return dict(conn.execute("SELECT entity_id, text FROM entity_significance WHERE status = 'reviewed'"))
+
+
 def render_events(conn):
     out = []
+    why = significance(conn)
     dateflow_only = {r[0] for r in conn.execute("SELECT entity_id FROM dateflow_only_events")}
     for e in conn.execute(f"SELECT * FROM events WHERE {PUBLISHED} "
                           f"ORDER BY year, {NULLS_LAST}, entity_id"):
@@ -41,6 +49,8 @@ def render_events(conn):
             "difficulty": e["difficulty"],
             "importance": e["importance"],
         }
+        if e["entity_id"] in why:
+            rec["significance"] = why[e["entity_id"]]
         if e["entity_id"] in dateflow_only:
             rec["dateflowOnly"] = True
         if e["is_approximate"]:
@@ -53,6 +63,7 @@ def render_events(conn):
 
 def render_durations(conn):
     out = []
+    why = significance(conn)
     for s in conn.execute(f"SELECT * FROM time_spans WHERE kind <> 'era' AND {PUBLISHED} "
                           f"ORDER BY start_year, {NULLS_LAST}, entity_id"):
         rec = {
@@ -66,6 +77,8 @@ def render_durations(conn):
             "importance": s["importance"],
             "kind": s["kind"],
         }
+        if s["entity_id"] in why:
+            rec["significance"] = why[s["entity_id"]]
         if s["approximate"]:
             rec["approximate"] = True
         out.append(rec)
