@@ -88,6 +88,13 @@ def reference(out_path=None):
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"  Wrote {out} ({len(events)} events, {len(spans)} spans, {len(gaps)} gap items)")
+    # The system prompt itself, copied out of doc 15 Part B (the doc stays its only source).
+    doc = (ROOT / "docs" / "15_AI_Drafting_Prompt.md").read_text(encoding="utf-8")
+    m = re.search(r"^````text\n(.*?)^````$", doc, re.S | re.M)
+    if m:
+        prompt = out.parent / "ai_prompt.txt"
+        prompt.write_text(m.group(1), encoding="utf-8")
+        print(f"  Wrote {prompt} (the doc 15 Part B prompt)")
     return 0
 
 
