@@ -265,7 +265,9 @@
     ],
     "description": "According to Roman tradition, the city of Rome is founded by Romulus on the Palatine Hill, marking the beginning of a civilization that will shape Western history for over a millennium. The city grows from a small settlement of Latin and Sabine peoples into the heart of a vast empire.",
     "difficulty": "easy",
-    "importance": 5
+    "importance": 5,
+    "approximate": true,
+    "dateDisplay": "753 BCE (traditional date for a legendary founding)"
   },
   {
     "id": "ironworking-spreads",
@@ -379,7 +381,9 @@
     "description": "Kong Qiu, known to the world as Confucius, is born in the state of Lu in present-day Shandong, China. His teachings on ethics, social harmony, filial piety, and good governance — collected by his disciples in the Analects — shape Chinese civilization for over two millennia. Confucianism becomes the dominant philosophical and political framework across East Asia, profoundly influencing law, education, family structure, and governance from China to Korea, Japan, and Vietnam.",
     "difficulty": "easy",
     "importance": 8,
-    "significance": "Gave rise to Confucianism, whose emphasis on social harmony, filial piety, and moral governance shaped East Asian society, education, and statecraft for over two millennia."
+    "significance": "Gave rise to Confucianism, whose emphasis on social harmony, filial piety, and moral governance shaped East Asian society, education, and statecraft for over two millennia.",
+    "approximate": true,
+    "dateDisplay": "551 BCE (traditional; some sources give 552 BCE)"
   },
   {
     "id": "cyrus-founds-persian-empire",
@@ -418,7 +422,9 @@
     ],
     "description": "The Romans expel their last king Tarquin the Proud and establish a republic governed by elected consuls and the Senate. The Roman Republic's system of checks and balances and mixed constitution becomes an enduring model for later democracies and republican governments.",
     "difficulty": "medium",
-    "importance": 4
+    "importance": 4,
+    "approximate": true,
+    "dateDisplay": "509 BCE (traditional date)"
   },
   {
     "id": "greek-democracy-athens",
@@ -956,14 +962,16 @@
       "Bethlehem birth",
       "founder of Christianity"
     ],
-    "description": "Jesus of Nazareth is born in the Roman province of Judea, an event that marks year one of the Christian calendar and the origin point of the world's largest religion. His teachings of love, forgiveness, and salvation would transform the spiritual and cultural landscape of human civilization.",
+    "description": "Jesus of Nazareth is born in the Roman province of Judea, a few years before the point from which the Christian calendar was later counted and the origin point of the world's largest religion. His teachings of love, forgiveness, and salvation would transform the spiritual and cultural landscape of human civilization.",
     "difficulty": "easy",
-    "importance": 5
+    "importance": 5,
+    "approximate": true,
+    "dateDisplay": "c. 6–4 BCE"
   },
   {
     "id": "crucifixion-of-jesus",
     "name": "Crucifixion of Jesus",
-    "year": 29,
+    "year": 30,
     "categories": [
       "Religion"
     ],
@@ -980,7 +988,9 @@
     "description": "Jesus of Nazareth is executed by crucifixion under the Roman prefect Pontius Pilate in Jerusalem, an event recorded in both Christian scripture and Roman historical sources. His followers' belief in his subsequent resurrection becomes the central doctrine of Christianity, transforming a small Jewish sect into a religion that spreads across the Roman Empire and eventually to every corner of the world. The crucifixion and its theological interpretation remain the defining moment of the Christian faith, observed by over two billion people today.",
     "difficulty": "easy",
     "importance": 9,
-    "significance": "Belief in his death and resurrection became the core of Christianity, which spread through the Roman Empire, became its official religion in 380, and shaped European art, law, calendars and moral thought for centuries."
+    "significance": "Belief in his death and resurrection became the core of Christianity, which spread through the Roman Empire, became its official religion in 380, and shaped European art, law, calendars and moral thought for centuries.",
+    "approximate": true,
+    "dateDisplay": "c. 30–33 CE (most scholars favour 30 or 33)"
   },
   {
     "id": "great-fire-of-rome",
@@ -1222,7 +1232,9 @@
     ],
     "description": "Nalanda is established as one of the world's first residential universities in Bihar, attracting scholars from across Asia. At its peak, it housed thousands of students and monks studying a curriculum spanning Buddhist philosophy, logic, grammar, and medicine.",
     "difficulty": "medium",
-    "importance": 4
+    "importance": 4,
+    "approximate": true,
+    "dateDisplay": "5th century CE (traditionally c. 427)"
   },
   {
     "id": "attila-hun-invasions",
@@ -1414,7 +1426,9 @@
     ],
     "description": "Arab traders establish early Muslim communities on the Malabar Coast, initiating a long history of Islamic influence in Kerala. According to tradition, the Cheraman Perumal mosque built during this period is one of the oldest mosques in Asia.",
     "difficulty": "hard",
-    "importance": 3
+    "importance": 3,
+    "approximate": true,
+    "dateDisplay": "629 by tradition; Arab trade with the Malabar Coast is older"
   },
   {
     "id": "islamic-caliphate-expands",
@@ -1516,7 +1530,9 @@
     ],
     "description": "Woodblock printing is developed in Tang dynasty China, enabling text and images carved in relief on wooden blocks to be reproduced cheaply and repeatedly on paper. The technology enables the mass production of Buddhist texts, government documents, and eventually paper money, dramatically increasing access to information and accelerating literacy. Woodblock printing spreads across East Asia before Bi Sheng's invention of movable type three centuries later further refines the process.",
     "difficulty": "hard",
-    "importance": 6
+    "importance": 6,
+    "approximate": true,
+    "dateDisplay": "c. 650–750 CE (Tang dynasty; the earliest dated print is from 868)"
   },
   {
     "id": "battle-of-tours",
@@ -1633,7 +1649,9 @@
     ],
     "description": "Chinese alchemists experimenting with elixirs of immortality discover the explosive properties of a mixture of sulfur, charcoal, and saltpeter, inventing gunpowder. The discovery revolutionizes warfare when it reaches Europe centuries later, making medieval fortifications obsolete and transforming military tactics worldwide.",
     "difficulty": "medium",
-    "importance": 5
+    "importance": 5,
+    "approximate": true,
+    "dateDisplay": "9th century CE (the first written formula dates from 1044)"
   },
   {
     "id": "kievan-rus-founded",
@@ -1710,7 +1728,9 @@
     ],
     "description": "Leif Erikson leads a Norse expedition that establishes a settlement at L'Anse aux Meadows in what is now Newfoundland, Canada, nearly five centuries before Columbus. Archaeological evidence confirms this as the first known European contact with the Americas.",
     "difficulty": "medium",
-    "importance": 3
+    "importance": 3,
+    "approximate": true,
+    "dateDisplay": "c. 1000 (tree rings date Norse woodcutting at L'Anse aux Meadows to 1021)"
   },
   {
     "id": "mahmud-ghazni-somnath",
@@ -2087,9 +2107,11 @@
       "pandemic spreads east west",
       "Mongol plague"
     ],
-    "description": "Bubonic plague devastates parts of China and Central Asia under Mongol rule before spreading westward along trade routes. The disease, carried by fleas on rats, ultimately reaches Europe via Crimea and kills an estimated 75-200 million people across Eurasia.",
+    "description": "Plague, probably originating in Central Asia, spreads across the Mongol world; Chinese records of a great epidemic may mark its early toll, though historians debate this. Carried by fleas on rodents, it travels westward along trade routes, reaches Europe via Crimea and kills an estimated 75-200 million people across Eurasia.",
     "difficulty": "hard",
-    "importance": 4
+    "importance": 4,
+    "approximate": true,
+    "dateDisplay": "c. 1331–1346 (where the plague began is debated)"
   },
   {
     "id": "vijayanagara-empire-founded",
@@ -3437,26 +3459,6 @@
     "importance": 5
   },
   {
-    "id": "trans-atlantic-slave-trade-peak",
-    "name": "Peak of the Transatlantic Slave Trade",
-    "year": 1750,
-    "categories": [
-      "Social",
-      "Culture",
-      "Economy"
-    ],
-    "region": "Africa",
-    "aliases": [
-      "Middle Passage",
-      "African slavery Americas",
-      "slave ships",
-      "triangular trade"
-    ],
-    "description": "The transatlantic slave trade reaches its peak volume in the mid-eighteenth century, with over 80,000 Africans forcibly transported to the Americas annually. The trade, which forcibly displaced an estimated 12 million Africans across three centuries, represents one of history's greatest human catastrophes and shapes the demographic and cultural landscape of the Americas.",
-    "difficulty": "medium",
-    "importance": 5
-  },
-  {
     "id": "battle-of-plassey",
     "name": "Battle of Plassey",
     "year": 1757,
@@ -3731,6 +3733,28 @@
     "description": "Britain signs the Treaty of Paris recognizing American independence and ceding vast territories east of the Mississippi River to the new United States. The treaty marks the successful conclusion of the American Revolution and creates the foundation for American westward expansion.",
     "difficulty": "medium",
     "importance": 4
+  },
+  {
+    "id": "trans-atlantic-slave-trade-peak",
+    "name": "Peak of the Transatlantic Slave Trade",
+    "year": 1785,
+    "categories": [
+      "Social",
+      "Culture",
+      "Economy"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Middle Passage",
+      "African slavery Americas",
+      "slave ships",
+      "triangular trade"
+    ],
+    "description": "The transatlantic slave trade reaches its peak volume, with around 80,000 Africans forcibly transported to the Americas each year. The trade, which forcibly displaced more than 12 million Africans over nearly four centuries, represents one of history's greatest human catastrophes and shapes the demographic and cultural landscape of the Americas.",
+    "difficulty": "medium",
+    "importance": 5,
+    "approximate": true,
+    "dateDisplay": "c. 1780s (the trade's busiest decade)"
   },
   {
     "id": "founding-of-united-states",
@@ -5624,7 +5648,7 @@
       "Shoah",
       "Holocaust"
     ],
-    "description": "Nazi Germany begins the systematic genocide of six million Jews and millions of others including Roma, disabled people, and political opponents across occupied Europe. The Holocaust becomes the defining atrocity of the modern era, leading to the Nuremberg trials, the Genocide Convention, and the founding of Israel.",
+    "description": "After invading the Soviet Union, Nazi Germany moves from persecution to the systematic murder of Europe's Jews, first by mass shootings and then in death camps. About six million Jews are killed, along with Roma, disabled people, Soviet prisoners of war and others. The genocide shapes the Nuremberg trials and the Genocide Convention, and adds urgency to the case for a Jewish state.",
     "difficulty": "easy",
     "importance": 5
   },

@@ -37,7 +37,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 
 | | Count | Notes |
 |---|---:|---|
-| Events | **434** | 3500 BCE – 2023; 16 approximate (with ranges), 3 DateFlow-only |
+| Events | **434** | 3500 BCE – 2023; 28 approximate (with ranges), 3 DateFlow-only |
 | Spans | **99** | 34 empires, 65 periods (plus 5 eras) |
 | Links | **225**, all reviewed | 85 part_of · 36 began · 27 ended · 32 preceded · 22 contributed_to · 13 enabled · 6 triggered · 4 influenced (20 medium confidence = "debated") |
 | Sources | **58** reviewed | 57 from the CSV, plus Apartheid. **460 more are drafted, not loaded** (`data/drafts/sources_batch1.json`) |

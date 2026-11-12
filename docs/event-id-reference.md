@@ -83,7 +83,7 @@ For use when authoring date-LINKS entries. Always copy the ID exactly.
 | covid-lockdown-india | COVID Lockdown in India | 2020 |
 | cricket-test-first | First Test Cricket Match | 1877 |
 | crimean-war | Crimean War Begins | 1853 |
-| crucifixion-of-jesus | Crucifixion of Jesus | 29 |
+| crucifixion-of-jesus | Crucifixion of Jesus | 30 |
 | cuban-missile-crisis | Cuban Missile Crisis | 1962 |
 | curie-radioactivity | Curies Discover Polonium and Radium | 1898 |
 | cyrus-founds-persian-empire | Cyrus the Great Founds the Persian Empire | 550 BCE |
@@ -322,7 +322,7 @@ For use when authoring date-LINKS entries. Always copy the ID exactly.
 | tiananmen-square | Tiananmen Square Protests | 1989 |
 | timur-sacks-delhi | Timur Sacks Delhi | 1398 |
 | tipu-sultan-killed | Tipu Sultan Falls at Seringapatam | 1799 |
-| trans-atlantic-slave-trade-peak | Peak of the Transatlantic Slave Trade | 1750 |
+| trans-atlantic-slave-trade-peak | Peak of the Transatlantic Slave Trade | 1785 |
 | treaty-of-versailles | Treaty of Versailles Signed | 1919 |
 | turkish-republic-founded | Turkish Republic Founded | 1923 |
 | unification-germany | German Empire Proclaimed | 1871 |
