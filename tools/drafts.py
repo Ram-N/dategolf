@@ -106,7 +106,10 @@ def load(path):
     print(f"  Loaded {len(batch.get('events', []))} proposed events, {len(batch.get('spans', []))} proposed spans, "
           f"{len(batch.get('significance', []))} significance texts "
           f"({len(drafted)} source CSV rows, {len(triage)} extra triage rows).")
-    print("  They are NOT exported. To publish one, set entities.editorial_status = 'reviewed'.")
+    if batch.get("events") or batch.get("spans"):
+        print("  They are NOT exported until approved: Review → Event drafts, or `manage.py approve <id>`.")
+    if batch.get("significance"):
+        print("  Significance texts are NOT exported until approved: Review → Significance.")
     return 0
 
 

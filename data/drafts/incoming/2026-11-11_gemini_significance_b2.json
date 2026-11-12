@@ -1,0 +1,106 @@
+{
+  "origin": "ai_drafted:gemini",
+  "about": "Significance statements ('Why it matters') for 20 existing medieval and early modern history events and spans. Twelve texts edited by Claude at review (see each note).",
+  "significance": [
+    {
+      "id": "constantinople-founded",
+      "text": "Shifting the Roman capital east to the Bosporus placed imperial administration closer to wealthy eastern provinces and trade routes, helping the eastern half survive the political collapse that later overtook western Europe.",
+      "note": "Consecrated in 330 CE; distinct from the wider span of the Byzantine Empire."
+    },
+    {
+      "id": "byzantine-empire",
+      "text": "For a thousand years the empire preserved Roman law and Greek learning in the eastern Mediterranean, and its missionaries, such as Cyril and Methodius, carried Orthodox Christianity and a written Slavic language to the Slavic world, shaping Russia and the Balkans.",
+      "note": "Edited by Claude at review: 'Shielded southeastern Europe from early conquests' was vague; Cyrillic was created by Cyril and Methodius's followers, so credit the missions."
+    },
+    {
+      "id": "fall-western-roman-empire",
+      "text": "Replaced centralized imperial authority across Western Europe with competing Germanic kingdoms, fragmenting long-distance trade and urban administration while leaving the Catholic Church as the region's main unifying institution.",
+      "note": "Span 395 to 476 CE; emphasizes institutional fragmentation in Western Europe."
+    },
+    {
+      "id": "birth-of-muhammad",
+      "text": "Began the life of the religious and political leader whose teachings unified the tribes of the Arabian Peninsula and gave rise to Islam, reshaping the spiritual and political map of the Middle East and beyond.",
+      "note": "Traditional date c. 570 CE; distinct from the Hijra's community-building focus."
+    },
+    {
+      "id": "tang-dynasty",
+      "text": "Expanded Chinese influence deep into Central Asia, widened the civil service examinations, and fostered cosmopolitan trade and poetry that deeply shaped neighboring Korea, Japan, and Vietnam.",
+      "note": "Edited by Claude at review: The exams began under the Sui; the Tang expanded them ('revitalized' implied a lapse)."
+    },
+    {
+      "id": "hijra",
+      "text": "Transformed early Muslims from a persecuted Meccan minority into an organized political and religious community in Medina, establishing the social model and calendar starting point for the Islamic world.",
+      "note": "622 CE; focuses on institutional community formation and the Islamic calendar."
+    },
+    {
+      "id": "moors-invade-spain",
+      "text": "Brought most of the Iberian Peninsula into the Islamic world for centuries, fostering an influential center of agriculture, architecture, and scholarship that helped transmit Arabic science and classical texts into Western Europe.",
+      "note": "711 CE; highlights long-term cultural and intellectual exchange in Iberia and Western Europe."
+    },
+    {
+      "id": "abbasid-caliphate",
+      "text": "Moved the center of Islamic governance from Syria to Iraq, integrating non-Arab converts into administration and patronizing translations and research in Baghdad that advanced mathematics, medicine, and philosophy across the Islamic world.",
+      "note": "Span 750 to 1258 CE; focuses on administrative integration and Baghdad's intellectual institutions."
+    },
+    {
+      "id": "song-dynasty",
+      "text": "Transformed China's economy with paper money, booming maritime trade and widespread printing. The Song saw the first use of the magnetic compass at sea and of gunpowder weapons in war, while Neo-Confucian thought shaped East Asian education for centuries.",
+      "note": "Edited by Claude at review: Gunpowder was discovered under the Tang (our own event); credit the Song with its first military use. Dropped 'reshaped global navigation'."
+    },
+    {
+      "id": "great-schism",
+      "text": "Became the symbolic moment of the lasting split between Roman Catholicism in Western Europe and Eastern Orthodoxy in the Byzantine and Slavic worlds, though the churches had been drifting apart for centuries and the break hardened only later.",
+      "note": "Edited by Claude at review: 1054 is the conventional date of a gradual split; 'formalized' overstated it."
+    },
+    {
+      "id": "delhi-sultanate",
+      "text": "Established lasting Muslim rule across northern India, introducing Persianate administration, new architectural styles and an Indo-Islamic cultural synthesis, while repelling Mongol invasions of the subcontinent.",
+      "note": "Edited by Claude at review: Small wording fix: 'defending South Asia' became 'repelling Mongol invasions'."
+    },
+    {
+      "id": "ottoman-empire",
+      "text": "For more than six centuries the Ottomans ruled a multi-ethnic, multi-faith empire that at its height joined southeastern Europe, the Middle East and North Africa, shaping Mediterranean trade, Islamic law and politics, and the borders of the modern Middle East and Balkans.",
+      "note": "Edited by Claude at review: Removed 'prompting Western Europeans to seek oceanic routes to Asia': the idea that the Ottomans blocked the spice trade is largely a myth."
+    },
+    {
+      "id": "ming-dynasty",
+      "text": "Restored native Han rule in China after Mongol domination, rebuilt the Great Wall and Grand Canal, and drew global silver into East Asia through porcelain and silk exports even after curbing state-sponsored ocean voyages.",
+      "note": "Span 1368 to 1644 CE; highlights restoration, infrastructure, and global silver trade."
+    },
+    {
+      "id": "shakespeare-born",
+      "text": "Gave the world a playwright and poet whose works are still performed everywhere. He popularized many lasting English words and phrases and set a standard for complex dramatic characters that shaped European literature and global theater.",
+      "note": "Edited by Claude at review: He did not 'standardize thousands of words'; he is the first recorded user of many, and estimates are debated."
+    },
+    {
+      "id": "east-india-company-founded",
+      "text": "Created a chartered trading monopoly that grew from a commercial venture into a territorial ruler, laying the administrative and military groundwork for British colonial dominance across South Asia.",
+      "note": "Edited by Claude at review: The Company was not a permanent joint-stock company until 1657."
+    },
+    {
+      "id": "qing-dynasty",
+      "text": "Roughly doubled the territory ruled from Beijing by bringing Mongolia, Xinjiang, Tibet and Taiwan under Manchu rule, the basis of China's modern borders, before rebellions and foreign pressure in its last century eroded imperial authority.",
+      "note": "Edited by Claude at review: Softened 'establishing the modern geographic borders' (Outer Mongolia is independent; borders are still contested)."
+    },
+    {
+      "id": "industrial-revolution",
+      "text": "Replaced handicraft production with machine factories powered by water, coal and steam, accelerating urbanization and global trade. It brought long-run growth in living standards, though early factory workers often faced harsh conditions, and began the large-scale coal burning behind today's climate change.",
+      "note": "Edited by Claude at review: Early living standards are debated by historians; reworded so the gains are long-run."
+    },
+    {
+      "id": "american-revolution",
+      "text": "Created an independent republic founded on popular sovereignty and, soon after, a written federal constitution. Its example helped inspire revolutions in France, Haiti and Latin America.",
+      "note": "Edited by Claude at review: Removed 'deepening Britain's imperial pivot toward Asia': a debated thesis, not a settled consequence."
+    },
+    {
+      "id": "wealth-of-nations-published",
+      "text": "Systematized classical economics by arguing that division of labor, competition, and free markets generate national prosperity more effectively than mercantilist tariffs, shaping economic policy across Europe and North America.",
+      "note": "Published 1776 by Scottish philosopher Adam Smith; distinct from the physical Industrial Revolution."
+    },
+    {
+      "id": "french-revolution",
+      "text": "Abolished absolute monarchy and feudal privilege in France and spread ideals of citizenship, legal equality and nationalism across Europe, while igniting more than two decades of European war.",
+      "note": "Edited by Claude at review: It overthrew monarchy and feudalism in France, not 'in continental Europe'; the wars ran from 1792 to 1815."
+    }
+  ]
+}
