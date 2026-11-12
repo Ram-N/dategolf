@@ -264,7 +264,8 @@ def check(path, trial=True):
     for w in warnings:
         print(f"  ! {w}")
     if not errors:
-        print("  ✓ Ready to load: `manage.py load-drafts <file>`, then `manage.py load-links <file>`."
+        print("  ✓ Ready to load: `manage.py load-drafts <file>`"
+              + (", then `manage.py load-links <file>`." if batch.get("links") else ".")
               + (" (Look at the warnings first.)" if warnings else ""))
     return 1 if errors else 0
 
