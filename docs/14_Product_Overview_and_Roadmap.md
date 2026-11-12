@@ -42,7 +42,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | Links | **225**, all reviewed | 85 part_of · 36 began · 27 ended · 32 preceded · 22 contributed_to · 13 enabled · 6 triggered · 4 influenced (20 medium confidence = "debated") |
 | Sources | **58** reviewed | 57 from the CSV, plus Apartheid. **460 more are drafted, not loaded** (`data/drafts/sources_batch1.json`) |
 | Country tags | 100 countries | Location and actor roles; the dashboard Map |
-| Significance ("Why it matters") | **22 reviewed** | New (doc 17): `entity_significance`, reviewed before export. The 2 seeds plus backfill batch 1 (importance 7+, 3500 BCE–550 CE) |
+| Significance ("Why it matters") | **42 reviewed**, 20 proposed | New (doc 17): `entity_significance`, reviewed before export. The 2 seeds plus backfill batches 1–2 (importance 7+, to 1799); batch 3 in review |
 | DateLinks memory aids | 26 events | doc 05, 06 |
 | Gap list | **80 open** | Missing events and spans, waiting for Want / Dismiss |
 | Daily challenges | 366 dates | DateGolf target years |
@@ -67,7 +67,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 
 | # | What | Where | Why it matters |
 |---|---|---|---|
-| 0 | **Significance backfill, batches 2–4** (importance 7+; 56 items left; batch 1 ✅ 2026-11-11). Task lists in the 2026-11-11 session; ask Claude to regenerate them | doc 15 → check-drafts → Review → **Significance** | Run one at a time; ask for the key `text` and 30–50 words |
+| 0 | **Significance backfill, batches 2–4** (importance 7+; batches 1–2 ✅, batch 3 in review, batch 4 left). Task lists in the 2026-11-11 session; ask Claude to regenerate them | doc 15 → check-drafts → Review → **Significance** | Run one at a time; ask for the key `text` and 30–50 words |
 | 1 | **The gap list: Want or Dismiss the 80 items**, or have outside AIs draft them (doc 15) | Dashboard → Review → **Missing** (doc 12 §4.6e) | Claude drafts the wanted ones. They also deepen the Stories (e.g. Franz Ferdinand would trigger WWI, Commodore Perry would lead to Meiji, the Thirty Years' War span) |
 | 2 | **Load and review sources batch 1** (460 Wikipedia articles) | Ask Claude to load it, then Review → Sources (doc 12 §4.6d) | Every event gets a checkable source. 128 are exact name matches (one-click approve) |
 | 3 | **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project`, `arab-spring` | `manage.py identity <id> --one\|--split\|…` | An old loose end from doc 11 |
