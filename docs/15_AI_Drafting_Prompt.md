@@ -154,6 +154,10 @@ LESSONS FROM REVIEWED BATCHES (each was a real mistake; check every text against
 - A gradual change has no single moment: a conventional date is "the symbolic moment" of it
   (the Great Schism).
 - A debated thesis is not a settled consequence: leave it out, or say "some historians argue".
+- Check every number, especially deaths and victims, against the source: "millions" of Roma were
+  not murdered in the Holocaust (estimates are 200,000 to 500,000). Round honestly ("about").
+- Don't attach a person's later policy to an event as its effect (Johnson's Vietnam escalation
+  was not caused by Kennedy's assassination).
 - Don't contradict the other items in the reference: if gunpowder's event is under the Tang,
   the Song did not discover it (they first used it in war).
 - Linked items (a founding and its empire, a birth and a later turning point, two revolutions)

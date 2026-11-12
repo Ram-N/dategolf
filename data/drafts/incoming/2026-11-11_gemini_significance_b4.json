@@ -1,0 +1,89 @@
+{
+  "origin": "ai_drafted:gemini",
+  "about": "Significance statements ('Why it matters') for 16 existing twentieth- and twenty-first-century events and spans. Nine texts edited by Claude at review (see each note).",
+  "events": [],
+  "spans": [],
+  "links": [],
+  "significance": [
+    {
+      "id": "world-war-2",
+      "text": "Resulted in an estimated seventy to eighty-five million fatalities, dismantled German and Japanese hegemony, weakened European colonial empires, and left the United States and Soviet Union as rival superpowers, prompting the creation of the United Nations.",
+      "note": "Span 1939 to 1945; focuses on geopolitical restructuring, decolonization, and international institutions, distinct from the Holocaust."
+    },
+    {
+      "id": "the-holocaust",
+      "text": "The murder of about six million Jews, along with Roma, Soviet prisoners of war, disabled people and others, became the defining example of genocide. It led to genocide becoming a crime in international law, shaped human rights law, and strengthened the case for a Jewish state.",
+      "note": "Edited by Claude at review: Error: Roma victims are estimated at 200,000 to 500,000, not 'millions'. Reworded so it doesn't read as 'resulted in' the murder it was."
+    },
+    {
+      "id": "apartheid",
+      "text": "Turned racial segregation into a complete legal system of white minority rule: every South African was classified by race, the remaining non-white voters lost the vote, and millions were forced from their homes. It provoked decades of resistance, international sanctions and boycotts.",
+      "note": "Edited by Claude at review: Black South Africans had already lost most rights and land before 1948 (e.g. the 1913 Land Act); apartheid extended and hardened this."
+    },
+    {
+      "id": "death-of-stalin",
+      "text": "Ended a quarter-century of one-man rule and mass terror in the Soviet Union. Under Khrushchev, millions were released from the Gulag, political killings fell sharply, and a brief thaw opened in culture and in Cold War diplomacy.",
+      "note": "Edited by Claude at review: Stalin's sole rule ran from about 1929, so 'nearly three decades' overstated it; Gulag releases added as the concrete change."
+    },
+    {
+      "id": "civil-rights-movement",
+      "text": "Dismantled legal racial segregation and disenfranchisement across the American South through mass nonviolent protest and legal challenges, securing federal protections for voting and equal access that inspired broader rights movements in the United States and abroad.",
+      "note": "Span 1954 to 1968; focuses on legal and political transformation in the United States."
+    },
+    {
+      "id": "contraceptive-pill-approved",
+      "text": "Gave women a highly reliable contraceptive they controlled themselves, helping reshape family planning, delay marriage and childbirth, and expand women's participation in higher education and paid careers across Western societies.",
+      "note": "Edited by Claude at review: Not the first contraception women controlled (the diaphragm is older); the new thing was reliability."
+    },
+    {
+      "id": "jfk-assassination",
+      "text": "Made Lyndon B. Johnson president; he used the national mood to pass the Civil Rights Act and Great Society laws, and later escalated the Vietnam War. Doubts about the official investigation also fed a lasting distrust of government.",
+      "note": "Edited by Claude at review: Vietnam escalation is Johnson's policy, not a direct effect of the assassination; reworded so it doesn't imply cause."
+    },
+    {
+      "id": "six-day-war",
+      "text": "Redrew the map of the Middle East as Israel captured the Sinai Peninsula, Gaza Strip, West Bank, East Jerusalem and Golan Heights, placing about a million Palestinians under Israeli military occupation and shaping the region's diplomacy and conflict for decades.",
+      "note": "Edited by Claude at review: 'Over a million' tightened to 'about a million' (the 1967 population of the West Bank and Gaza)."
+    },
+    {
+      "id": "death-of-mao",
+      "text": "Closed the era of Maoist mass mobilization and the Cultural Revolution in China, enabling pragmatic leaders led by Deng Xiaoping to shift policy toward market-oriented economic reforms and international trade.",
+      "note": "9 September 1976; focuses on the transition from Maoist campaigns to post-1978 economic opening."
+    },
+    {
+      "id": "thatcher-becomes-pm",
+      "text": "Initiated a decisive shift away from Britain's postwar economic consensus toward deregulation, privatization of state industries, and weakened trade union power, policies credited by supporters with revitalizing growth and criticized by opponents for deepening inequality and deindustrialization.",
+      "note": "4 May 1979; explicitly presents both sides of the economic legacy debate."
+    },
+    {
+      "id": "iran-iraq-war",
+      "text": "Inflicted hundreds of thousands of casualties and devastated both economies without altering borders, while consolidating the revolutionary regime in Iran, entrenching Saddam Hussein's militarized rule in Iraq, and leaving debts that helped trigger Iraq's invasion of Kuwait.",
+      "note": "Span 1980 to 1988; covers human, political, and subsequent regional consequences."
+    },
+    {
+      "id": "gorbachev-becomes-leader",
+      "text": "Introduced glasnost and perestroika to revive the stagnant Soviet system, but unintentionally helped unleash the nationalist movements and democratic demands that ended Communist rule in Eastern Europe and broke up the Soviet Union.",
+      "note": "Edited by Claude at review: One cause among several (consistent with our links); 'unintendedly' corrected."
+    },
+    {
+      "id": "apartheid-end",
+      "text": "Ended white minority rule through negotiation rather than full-scale civil war, leading to South Africa's first democratic elections with all races voting, and to the Truth and Reconciliation Commission, a widely studied model for confronting past abuses.",
+      "note": "Edited by Claude at review: The TRC was set up in 1995, after the span; 'a model for post-conflict justice' softened to 'widely studied'."
+    },
+    {
+      "id": "dolly-sheep-cloned",
+      "text": "Proved that an adult mammalian cell could be reprogrammed to create a genetically identical organism, transforming stem cell and genetic research while sparking global ethical and legal debates over human cloning.",
+      "note": "Born 5 July 1996, announced February 1997; focuses on scientific implications and bioethical debates."
+    },
+    {
+      "id": "hong-kong-handover",
+      "text": "Ended over a century and a half of British colonial rule in Hong Kong and placed the territory under Chinese sovereignty under the one country, two systems framework, testing the coexistence of local civil liberties and Beijing's political authority.",
+      "note": "1 July 1997; neutrally describes the sovereignty transfer and governance framework."
+    },
+    {
+      "id": "covid-19-pandemic",
+      "text": "Caused millions of deaths and severe global economic disruption, brought the first approved mRNA vaccines, and accelerated remote work and digital commerce, while straining health systems and deepening debates over public health mandates and supply chains.",
+      "note": "Edited by Claude at review: mRNA vaccines were first approved during the pandemic, so 'brought the first', not 'accelerated the adoption of'."
+    }
+  ]
+}
