@@ -26,6 +26,7 @@
     "region": "South Asia",
     "importance": 8,
     "kind": "empire",
+    "significance": "Demonstrated advanced Bronze Age urban planning, standardized weights and measures, and sanitation systems across one of the ancient world's largest civilizations.",
     "approximate": true
   },
   {
@@ -123,7 +124,8 @@
     ],
     "region": "Middle East",
     "importance": 8,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "Connected diverse regions from the Balkans to the Indus Valley through road networks, a postal system, and satrapy administration, setting the template for imperial rule in the Near East."
   },
   {
     "id": "roman-republic",
@@ -136,7 +138,8 @@
     ],
     "region": "Europe",
     "importance": 7,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "Developed elected magistrates, a powerful Senate and the written Twelve Tables of law, ideas later admired by modern republics, while expanding Roman rule across the Mediterranean basin."
   },
   {
     "id": "persian-wars",
@@ -188,7 +191,8 @@
     ],
     "region": "South Asia",
     "importance": 8,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "Unified most of the Indian subcontinent under one centralized administration for the first time, and under Ashoka sent Buddhist missions beyond India, notably to Sri Lanka, helping Buddhism grow into a major Asian religion."
   },
   {
     "id": "punic-wars",
@@ -228,7 +232,8 @@
     ],
     "region": "East Asia",
     "importance": 8,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "Consolidated Chinese imperial institutions, made Confucianism the basis of state ideology and official training, pushed trade routes into Central Asia that became part of the Silk Road, and gave its name to the Han Chinese people."
   },
   {
     "id": "fall-of-roman-republic",
@@ -267,7 +272,8 @@
     ],
     "region": "Europe",
     "importance": 9,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "United the Mediterranean world under Roman law, Latin language, and extensive infrastructure, leaving an enduring legacy in Western governance, architecture, and religion."
   },
   {
     "id": "classic-maya",
@@ -296,6 +302,7 @@
     "region": "South Asia",
     "importance": 8,
     "kind": "empire",
+    "significance": "Presided over what is often called a classical age of northern India, with major advances in mathematics, astronomy, Sanskrit literature, and Hindu and Buddhist art.",
     "approximate": true
   },
   {
@@ -624,7 +631,8 @@
     ],
     "region": "South Asia",
     "importance": 8,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "At their height the Mughals ruled most of South Asia. Their revenue and ranking systems shaped later states, including British India; their courts blended Persian, Central Asian and Indian traditions in art, language and buildings such as the Taj Mahal; and their decline in the 1700s opened the way for regional powers and, in time, British rule."
   },
   {
     "id": "scientific-revolution",

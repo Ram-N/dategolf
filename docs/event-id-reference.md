@@ -253,7 +253,7 @@ For use when authoring date-LINKS entries. Always copy the ID exactly.
 | ottoman-empire-falls | Ottoman Empire Falls | 1922 |
 | palestine-israel-state | State of Israel Established | 1948 |
 | panama-canal-opens | Panama Canal Opens | 1914 |
-| paper-invented-china | Paper Invented in China | 105 |
+| paper-invented-china | Cai Lun Improves Papermaking | 105 |
 | paris-climate-agreement | Paris Climate Agreement Signed | 2015 |
 | partition-india-pakistan | Partition of India and Pakistan | 1947 |
 | partition-of-africa-colonial | Congo Free State Atrocities | 1885 |

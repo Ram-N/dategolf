@@ -19,6 +19,7 @@
     "description": "The wheel and plough are developed in Mesopotamia, transforming agriculture, transportation, and trade across the ancient world. The sail appears in Egypt around the same period, enabling maritime commerce along the Nile and beyond. Together these three inventions lay the practical foundation for complex civilization and long-distance exchange.",
     "difficulty": "medium",
     "importance": 9,
+    "significance": "Transformed pottery production and overland transport, laying the mechanical foundation for wheeled vehicles, heavy trade, and later machinery.",
     "approximate": true,
     "dateDisplay": "c. 4000–3500 BCE"
   },
@@ -63,6 +64,7 @@
     "description": "The first true cities emerge in Sumer, the southern region of Mesopotamia, with Uruk growing into the world's largest settlement with a population in the tens of thousands. These urban centers develop specialized labor, centralized administration, monumental architecture, and complex trade networks stretching across the ancient Near East. The Sumerian city-state becomes the template for human political and social organization.",
     "difficulty": "medium",
     "importance": 8,
+    "significance": "Marked the shift from small agricultural villages to complex urban societies with specialized labor, monumental architecture, and organized government.",
     "approximate": true,
     "dateDisplay": "c. 4000–3000 BCE"
   },
@@ -174,6 +176,7 @@
     "description": "The Phoenicians develop the first widely used alphabetic writing system, consisting of 22 consonant letters derived from earlier Semitic scripts used in the Sinai Peninsula. Unlike the complex syllabic systems of Mesopotamia and Egypt, the alphabet's simplicity allows merchants and administrators to learn it rapidly, and it spreads across the Mediterranean world through Phoenician trade networks. Nearly all modern alphabets, including Greek, Latin, Arabic, and Hebrew, descend from this Phoenician innovation.",
     "difficulty": "hard",
     "importance": 9,
+    "significance": "Introduced a phonetic writing system based on consonants that was far easier to learn than cuneiform or hieroglyphs, becoming the ancestor of the Greek, Latin, Arabic, and Hebrew alphabets.",
     "approximate": true,
     "dateDisplay": "c. 1100–1050 BCE"
   },
@@ -280,6 +283,7 @@
     "description": "Iron smelting technology, first developed in Anatolia around 1200 BC, spreads widely across Europe, Asia, and Africa during the early first millennium BC. Iron's abundance and superior hardness compared to bronze democratize the production of agricultural tools and weapons, reshaping economies, armies, and societies across three continents. The Iron Age marks a fundamental turning point in human technological development, enabling more productive farming, more lethal warfare, and larger political structures.",
     "difficulty": "medium",
     "importance": 7,
+    "significance": "Replaced scarce bronze with iron, whose ore is far more abundant, putting durable farming tools and weapons within reach of many more people across Eurasia and Africa.",
     "dateflowOnly": true,
     "approximate": true,
     "dateDisplay": "c. 1200–500 BCE"
@@ -304,6 +308,7 @@
     "description": "King Nebuchadnezzar II of Babylon conquers Jerusalem, destroys Solomon's Temple, and deports much of the Jewish population to Babylon in what becomes known as the Babylonian captivity. The exile profoundly reshapes Jewish theology and identity, accelerating the development of strict monotheism and the compilation of the Hebrew Bible. The event is foundational to the history of Judaism, Christianity, and Islam, and the longing to return to Jerusalem becomes a defining element of Jewish culture.",
     "difficulty": "medium",
     "importance": 7,
+    "significance": "Ended the Kingdom of Judah and destroyed the First Temple (traditionally Solomon's). It deepened the Babylonian Exile, which had begun with deportations a decade earlier, a pivotal period in the development of Jewish scripture and identity.",
     "approximate": true,
     "dateDisplay": "587 or 586 BCE (siege from 588)"
   },
@@ -368,7 +373,8 @@
     ],
     "description": "Kong Qiu, known to the world as Confucius, is born in the state of Lu in present-day Shandong, China. His teachings on ethics, social harmony, filial piety, and good governance — collected by his disciples in the Analects — shape Chinese civilization for over two millennia. Confucianism becomes the dominant philosophical and political framework across East Asia, profoundly influencing law, education, family structure, and governance from China to Korea, Japan, and Vietnam.",
     "difficulty": "easy",
-    "importance": 8
+    "importance": 8,
+    "significance": "Gave rise to Confucianism, whose emphasis on social harmony, filial piety, and moral governance shaped East Asian society, education, and statecraft for over two millennia."
   },
   {
     "id": "cyrus-founds-persian-empire",
@@ -388,7 +394,8 @@
     ],
     "description": "Cyrus II of Persia defeats the Median, Lydian, and Babylonian kingdoms in quick succession to establish the Achaemenid Empire, the largest empire the world had yet seen, stretching from the Aegean Sea to the Indus River. Renowned for tolerating the customs and religions of conquered peoples, Cyrus permits the Jewish exiles in Babylon to return to their homeland and rebuild their temple, an act celebrated in the Hebrew Bible. The Cyrus Cylinder, recording his policies, is often cited as one of humanity's earliest declarations of human rights.",
     "difficulty": "medium",
-    "importance": 8
+    "importance": 8,
+    "significance": "United the Medes and Persians and began the conquests that built the Achaemenid Empire, soon the largest the world had yet seen. His rule became known for working through local customs and religions, though later accounts may idealise it."
   },
   {
     "id": "roman-republic-founded",
@@ -541,7 +548,8 @@
     ],
     "description": "After conquering Egypt from the Persians, Alexander the Great founds the city of Alexandria on the Mediterranean coast, envisioning a great center of Hellenistic culture and commerce linking Greece with Egypt. The city grows into one of the ancient world's largest metropolises and home to the legendary Library of Alexandria, an institution that attracts scholars from across the known world and preserves the accumulated knowledge of antiquity. Alexandria remains the intellectual capital of the Mediterranean world for centuries after Alexander's death.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Created the foremost intellectual and commercial hub of the Hellenistic world, home to the Great Library and a thriving center of Greek, Egyptian, and Jewish scholarship."
   },
   {
     "id": "battle-of-gaugamela",
@@ -560,7 +568,8 @@
     ],
     "description": "Alexander the Great decisively defeats the Persian King Darius III at Gaugamela in present-day Iraq, effectively ending the Achaemenid Persian Empire despite being significantly outnumbered. Alexander's oblique advance and the disciplined Macedonian phalanx shatter the Persian army, opening the road to Babylon, Persepolis, and the East. The battle marks the decisive replacement of Persian hegemony in the Near East with Hellenistic Greek culture, reshaping the civilizations of three continents.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Decisively broke the military power of Darius III and the Achaemenid Empire, opening the Persian heartland to Macedonian rule."
   },
   {
     "id": "battle-of-the-hydaspes",
@@ -598,7 +607,8 @@
     ],
     "description": "Alexander the Great dies in Babylon at the age of 32, possibly from typhoid fever compounded by heavy drinking, though the cause remains debated. Having built the largest empire the world had yet seen — stretching from Greece to the borders of India — he leaves no clear successor, reportedly saying the empire should go 'to the strongest.' His death triggers the Wars of the Diadochi, in which his generals carve up the empire into rival Hellenistic kingdoms and spread Greek culture from Egypt to Central Asia.",
     "difficulty": "easy",
-    "importance": 8
+    "importance": 8,
+    "significance": "Without an heir, his empire broke into kingdoms ruled by his generals' dynasties, such as the Ptolemies in Egypt and the Seleucids in Asia. For three centuries these Hellenistic states spread Greek language, cities and learning, until Rome and Parthia absorbed them."
   },
   {
     "id": "maurya-empire-founded",
@@ -846,7 +856,8 @@
     ],
     "description": "Julius Caesar leads his battle-hardened army across the Rubicon river into Italy, violating Roman law that forbade generals from bringing troops into the Republic's heartland. The act, accompanied by the famous phrase 'the die is cast,' triggers a civil war that will ultimately destroy the Roman Republic. Caesar's crossing has become a lasting metaphor for any irrevocable decision that commits one fully to a course of action.",
     "difficulty": "easy",
-    "importance": 7
+    "importance": 7,
+    "significance": "Committed Julius Caesar to civil war against the Roman Senate, accelerating the collapse of the Roman Republic and the rise of autocratic imperial rule."
   },
   {
     "id": "julius-caesar-assassination",
@@ -959,7 +970,8 @@
     ],
     "description": "Jesus of Nazareth is executed by crucifixion under the Roman prefect Pontius Pilate in Jerusalem, an event recorded in both Christian scripture and Roman historical sources. His followers' belief in his subsequent resurrection becomes the central doctrine of Christianity, transforming a small Jewish sect into a religion that spreads across the Roman Empire and eventually to every corner of the world. The crucifixion and its theological interpretation remain the defining moment of the Christian faith, observed by over two billion people today.",
     "difficulty": "easy",
-    "importance": 9
+    "importance": 9,
+    "significance": "Belief in his death and resurrection became the core of Christianity, which spread through the Roman Empire, became its official religion in 380, and shaped European art, law, calendars and moral thought for centuries."
   },
   {
     "id": "great-fire-of-rome",
@@ -1004,7 +1016,7 @@
   },
   {
     "id": "paper-invented-china",
-    "name": "Paper Invented in China",
+    "name": "Cai Lun Improves Papermaking",
     "year": 105,
     "categories": [
       "Science",
@@ -1017,11 +1029,13 @@
       "papermaking",
       "invention of paper",
       "Han dynasty paper",
-      "paper production"
+      "paper production",
+      "Paper Invented in China"
     ],
-    "description": "Cai Lun, a court official of the Eastern Han dynasty, refines and standardizes the process of making paper from bark, hemp, rags, and fishing nets, presenting his improved method to the emperor. Paper rapidly replaces more expensive and cumbersome writing materials such as silk and bamboo strips. The invention spreads westward via the Silk Road over subsequent centuries, transforming record-keeping, administration, literature, and communication across Eurasia.",
+    "description": "Cai Lun, a court official of the Eastern Han dynasty, refines and standardizes the process of making paper from bark, hemp, rags, and fishing nets, presenting his improved method to the emperor. Paper rapidly replaces more expensive and cumbersome writing materials such as silk and bamboo strips. Papermaking spreads westward via the Silk Road over subsequent centuries, transforming record-keeping, administration, literature, and communication across Eurasia.",
     "difficulty": "medium",
-    "importance": 8
+    "importance": 8,
+    "significance": "Provided a lightweight, affordable writing medium that replaced bamboo strips and silk, revolutionizing record-keeping, bureaucracy, and the preservation of knowledge worldwide."
   },
   {
     "id": "hadrians-wall",
@@ -7212,7 +7226,8 @@
     ],
     "description": "A reactor at the Chernobyl nuclear power plant in Soviet Ukraine explodes and catches fire, releasing radioactive contamination across much of Europe in the worst nuclear accident in history. The disaster kills dozens directly and exposes millions to radiation, accelerates the decline of the Soviet Union, and reshapes global attitudes toward nuclear power.",
     "difficulty": "easy",
-    "importance": 4
+    "importance": 4,
+    "significance": "The authorities' slow, secretive response damaged trust in the Soviet system and gave weight to Gorbachev's push for glasnost (openness). It was one pressure among several on the late Soviet Union, not the cause of its collapse, and it reshaped nuclear safety rules and public attitudes to nuclear power worldwide."
   },
   {
     "id": "george-hw-bush-elected",

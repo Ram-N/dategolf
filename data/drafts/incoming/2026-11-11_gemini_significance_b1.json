@@ -1,0 +1,95 @@
+{
+  "origin": "ai_drafted:gemini",
+  "about": "Significance statements ('Why it matters') for 20 existing ancient and classical history events and spans. Nine texts edited by Claude at review (see each note).",
+  "significance": [
+    {
+      "id": "invention-of-the-wheel",
+      "text": "Transformed pottery production and overland transport, laying the mechanical foundation for wheeled vehicles, heavy trade, and later machinery."
+    },
+    {
+      "id": "first-cities-mesopotamia",
+      "text": "Marked the shift from small agricultural villages to complex urban societies with specialized labor, monumental architecture, and organized government."
+    },
+    {
+      "id": "indus-valley-mature",
+      "text": "Demonstrated advanced Bronze Age urban planning, standardized weights and measures, and sanitation systems across one of the ancient world's largest civilizations."
+    },
+    {
+      "id": "phoenician-alphabet-invented",
+      "text": "Introduced a phonetic writing system based on consonants that was far easier to learn than cuneiform or hieroglyphs, becoming the ancestor of the Greek, Latin, Arabic, and Hebrew alphabets."
+    },
+    {
+      "id": "ironworking-spreads",
+      "text": "Replaced scarce bronze with iron, whose ore is far more abundant, putting durable farming tools and weapons within reach of many more people across Eurasia and Africa.",
+      "note": "Edited by Claude at review: Removed 'harder': early iron was usually no harder than good bronze."
+    },
+    {
+      "id": "babylonian-conquest-jerusalem",
+      "text": "Ended the Kingdom of Judah and destroyed the First Temple (traditionally Solomon's). It deepened the Babylonian Exile, which had begun with deportations a decade earlier, a pivotal period in the development of Jewish scripture and identity.",
+      "note": "Edited by Claude at review: First deportations were in 597 BCE, so the exile did not begin here."
+    },
+    {
+      "id": "birth-of-confucius",
+      "text": "Gave rise to Confucianism, whose emphasis on social harmony, filial piety, and moral governance shaped East Asian society, education, and statecraft for over two millennia."
+    },
+    {
+      "id": "cyrus-founds-persian-empire",
+      "text": "United the Medes and Persians and began the conquests that built the Achaemenid Empire, soon the largest the world had yet seen. His rule became known for working through local customs and religions, though later accounts may idealise it.",
+      "note": "Edited by Claude at review: Largest only after his conquests; 'tolerance' softened (partly a modern gloss)."
+    },
+    {
+      "id": "achaemenid-empire",
+      "text": "Connected diverse regions from the Balkans to the Indus Valley through road networks, a postal system, and satrapy administration, setting the template for imperial rule in the Near East."
+    },
+    {
+      "id": "roman-republic",
+      "text": "Developed elected magistrates, a powerful Senate and the written Twelve Tables of law, ideas later admired by modern republics, while expanding Roman rule across the Mediterranean basin.",
+      "note": "Edited by Claude at review: Softened modern framing ('representative institutions', 'checks and balances')."
+    },
+    {
+      "id": "alexander-founds-alexandria",
+      "text": "Created the foremost intellectual and commercial hub of the Hellenistic world, home to the Great Library and a thriving center of Greek, Egyptian, and Jewish scholarship."
+    },
+    {
+      "id": "battle-of-gaugamela",
+      "text": "Decisively broke the military power of Darius III and the Achaemenid Empire, opening the Persian heartland to Macedonian rule."
+    },
+    {
+      "id": "death-of-alexander",
+      "text": "Without an heir, his empire broke into kingdoms ruled by his generals' dynasties, such as the Ptolemies in Egypt and the Seleucids in Asia. For three centuries these Hellenistic states spread Greek language, cities and learning, until Rome and Parthia absorbed them.",
+      "note": "Edited by Claude at review: Rewritten: the draft repeated the description."
+    },
+    {
+      "id": "maurya-empire",
+      "text": "Unified most of the Indian subcontinent under one centralized administration for the first time, and under Ashoka sent Buddhist missions beyond India, notably to Sri Lanka, helping Buddhism grow into a major Asian religion.",
+      "note": "Edited by Claude at review: 'Across Asia under Ashoka' overstated; missions beyond India."
+    },
+    {
+      "id": "han-dynasty",
+      "text": "Consolidated Chinese imperial institutions, made Confucianism the basis of state ideology and official training, pushed trade routes into Central Asia that became part of the Silk Road, and gave its name to the Han Chinese people.",
+      "note": "Edited by Claude at review: 'Opened the Silk Road' simplified a longer process."
+    },
+    {
+      "id": "caesar-crosses-rubicon",
+      "text": "Committed Julius Caesar to civil war against the Roman Senate, accelerating the collapse of the Roman Republic and the rise of autocratic imperial rule."
+    },
+    {
+      "id": "roman-empire",
+      "text": "United the Mediterranean world under Roman law, Latin language, and extensive infrastructure, leaving an enduring legacy in Western governance, architecture, and religion."
+    },
+    {
+      "id": "crucifixion-of-jesus",
+      "text": "Belief in his death and resurrection became the core of Christianity, which spread through the Roman Empire, became its official religion in 380, and shaped European art, law, calendars and moral thought for centuries.",
+      "note": "Edited by Claude at review: Rewritten: the draft repeated the description. 380 = Edict of Thessalonica."
+    },
+    {
+      "id": "paper-invented-china",
+      "text": "Provided a lightweight, affordable writing medium that replaced bamboo strips and silk, revolutionizing record-keeping, bureaucracy, and the preservation of knowledge worldwide."
+    },
+    {
+      "id": "gupta-empire",
+      "text": "Presided over what is often called a classical age of northern India, with major advances in mathematics, astronomy, Sanskrit literature, and Hindu and Buddhist art.",
+      "note": "Edited by Claude at review: 'Golden age' is a contested label."
+    }
+  ]
+}
