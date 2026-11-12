@@ -34,7 +34,7 @@ def text_problems(text, description=None):
         errors.append("significance must be plain text (no HTML or Markdown)")
     words = len(t.split())
     if not 15 <= words <= 70:
-        warnings.append(f"significance is {words} words (aim for 20 to 60)")
+        warnings.append(f"significance is {words} words (aim for 30 to 50)")
     m = SOLE_CAUSE.search(t)
     if m:
         warnings.append(f"significance may present one cause as the whole story ({m.group(0)!r})")

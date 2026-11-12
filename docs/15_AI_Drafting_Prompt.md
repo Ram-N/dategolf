@@ -98,7 +98,7 @@ EVENT (something that happened in one year):
                 It must be a real article.
   note          REQUIRED. For the reviewer, not players: the exact date if known, where sources
                 disagree, and anything to double-check.
-  significance  RECOMMENDED. "Why it matters": 20 to 60 words, plain text. See SIGNIFICANCE below.
+  significance  RECOMMENDED. "Why it matters": 30 to 50 words, plain text. See SIGNIFICANCE below.
   fills_missing OPTIONAL. The gap-list number this draft fills (from the reference).
 
 SPAN (something that lasted: an empire, dynasty, reign, war or movement):
@@ -120,18 +120,45 @@ IDS:
 - An id is permanent, so choose it carefully.
 
 SIGNIFICANCE ("Why it matters"; shown on the item's card, after any guess):
-- The description says WHAT happened. The significance says WHY IT MATTERS: its consequences,
-  influence or lasting importance. Don't retell the description.
-- Never make one item the whole cause of a big change. Say "helped", "was one of several
-  pressures", "opened the way for"; say where historians disagree.
-- Say whose history it matters to when that's regional ("for South Asia", "in West Africa"),
-  rather than assuming world importance.
-- Years and centuries ARE allowed here (it is never shown before a guess).
-- If you're not sure of the consequences, leave it out and say so in the note. A missing
-  significance is fine; an invented one is not.
-- To add one to an EXISTING item (the reference shows which have none), use the top-level list
-  "significance": [{"id": <existing id>, "text": <20 to 60 words>, "note": <for the reviewer>}]
+- The description says WHAT happened. The significance says WHY IT MATTERS: what changed
+  BECAUSE of it (consequences, influence, lasting importance). Never retell the description;
+  assume the student has just read it.
+- 30 to 50 words, plain text. Years and centuries ARE allowed (it is never shown before a guess).
+- To add one to an EXISTING item (the reference marks with ✓ the items that already have one), use the
+  top-level list, and use the key "text" (not "significance"):
+  "significance": [{"id": <existing id>, "text": <30 to 50 words>, "note": <for the reviewer>}]
   Never write one for an item the reference marks ✓.
+- If you're not sure of the consequences, leave the item out and say why in "about". A missing
+  significance is fine; an invented one is not.
+
+LESSONS FROM REVIEWED BATCHES (each was a real mistake; check every text against them):
+- No sole causes. Say "helped", "one of several pressures", "opened the way for"; never
+  "single-handedly" or "the cause of" a big change.
+- Don't repeat popular myths. Check them; common ones we have caught:
+    "invented X" when it was improved, first recorded or first used (zero, paper, gunpowder);
+    the Ottomans "blocking trade routes" and so forcing Europeans to sail to Asia;
+    Magellan "proving the Earth is round"; Shakespeare "standardizing thousands of words";
+    early iron being "harder" than bronze; the Magna Carta or the Declaration of
+    Independence being "signed" on the famous day.
+- Superlatives and firsts ("the largest", "the first", "the foundation of") only where
+  historians broadly agree, and only for the right moment (an empire was not the largest
+  yet in the year it was founded).
+- Keep the right scope: what happened in France is not "in continental Europe"; a missionary
+  tradition is not one emperor's achievement. Credit the right people (Cyril and Methodius's
+  followers, not "the Byzantines", created the Cyrillic alphabet).
+- No modern framing of old institutions ("checks and balances", "representative democracy"
+  for Rome). Contested labels are labelled: "what is often called a golden age".
+- A gradual change has no single moment: a conventional date is "the symbolic moment" of it
+  (the Great Schism).
+- A debated thesis is not a settled consequence: leave it out, or say "some historians argue".
+- Don't contradict the other items in the reference: if gunpowder's event is under the Tang,
+  the Song did not discover it (they first used it in war).
+- Linked items (a founding and its empire, a birth and a later turning point, two revolutions)
+  each need their own angle. Don't say the same thing twice.
+- Say whose history it matters to when that's regional ("for South Asia", "across the Islamic
+  world"), rather than assuming world importance.
+- Name sensitive subjects (religions, genocides, colonial rule) neutrally and precisely: the
+  historical effects, not religious claims or political judgements.
 
 LINKS (how items connect; this is what makes DateFlow's stories):
   { "source": <id>, "type": <type>, "target": <id>, "why": <one factual sentence, max 25 words>,
@@ -167,6 +194,7 @@ NEVER:
 - put a year, decade or century in a description or alias
 - use year 0, or invent dates, quotes, people, sources or URLs
 - state opinions, modern political judgements or speculation as fact
+- repeat a popular myth or a "fun fact" you have not checked (see LESSONS)
 - use HTML or Markdown inside any text
 - change or delete existing items. You can only add, and link to them.
 
@@ -179,8 +207,9 @@ BEFORE YOU ANSWER, CHECK EVERY ITEM:
 [ ] countries are ISO codes (location first, /actor for actors)
 [ ] the source is one real English Wikipedia article
 [ ] it has at least one link; each link's direction and type follow the rules above
-[ ] each significance says why it matters (not what happened), names no sole cause, and is
-    20 to 60 words; none is written for an item the reference marks ✓
+[ ] each significance says what changed because of it (not what happened), is 30 to 50 words,
+    names no sole cause, repeats no myth from LESSONS, and uses the key "text" in the top-level list;
+    none is written for an item the reference marks ✓
 [ ] each link's "why" gives the mechanism and fits its type
 [ ] fills_missing matches the gap number, where one applies
 [ ] the reply is ONLY the JSON object
@@ -256,7 +285,7 @@ EXAMPLE (for the task "Draft gap items 2 and 3: Akbar's accession and his reign"
 - *"Draft 10 events for Africa before 1500 that are missing from the reference: well-known, datable, importance 3–6."*
 - *"For the span 'Cold War' (gap item 47), draft the span and up to 8 links to existing events."*
 - *"Here is another AI's batch. Check it strictly against the rules and return a corrected JSON."*
-- *"Write the significance (\"Why it matters\") for these 15 existing ids: … Only the ones you're sure of."* (Backfill: the reference marks which items already have one.)
+- *"Write the significance (\"Why it matters\") for these 20 existing ids, as the top-level \"significance\" list with the key \"text\", 30 to 50 words each. Follow LESSONS FROM REVIEWED BATCHES. Only the ones you're sure of: …"* (Backfill: the reference marks which items already have one. Give linked pairs in the batch their own angles, e.g. "these pairs are linked: a / b, c / d".)
 - *"Here is another AI's significance batch. Flag any sentence that overclaims a cause or repeats the description."*
 
 **Why JSON, not CSV:** events carry lists (aliases, categories, countries) and links to other items. JSON holds those directly, it's exactly what our loaders read (`load-drafts` and `load-links` read the same file), and the checker can validate it field by field.
