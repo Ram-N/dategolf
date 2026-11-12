@@ -19,7 +19,7 @@ from pathlib import Path
 
 from common import DATA, DB_PATH, ROOT, connect
 from reconcile import tokens
-from significance import text_problems
+from significance import row_text, text_problems
 
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 KINDS = ("period", "empire")
@@ -249,7 +249,7 @@ def check(path, trial=True):
         if sid in seen_why:
             errors.append(f"{where}: {sid} has two significance texts in this batch")
         seen_why.add(sid)
-        errs, warns = text_problems(s.get("text"), descriptions.get(sid))
+        errs, warns = text_problems(row_text(s), descriptions.get(sid))
         errors.extend(f"{where}: {m}" for m in errs)
         warnings.extend(f"{where}: {m}" for m in warns)
 

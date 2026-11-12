@@ -6,6 +6,7 @@ once reviewed. One row per entity (eras have none); set_text replaces a text and
 Batch shape (JSON), alone or inside a load-drafts batch:
   {"origin": "ai_drafted:<model>",
    "significance": [{"id": <existing or same-batch id>, "text": ..., "note"?: ...}, ...]}
+  ("significance" is accepted in place of "text".)
 A new event or span in a draft batch may instead carry its own "significance" field (tools/drafts.py).
 """
 
@@ -44,6 +45,11 @@ def text_problems(text, description=None):
     return errors, warnings
 
 
+def row_text(s):
+    """A backfill row's text. "significance" is accepted too: AIs reuse the field name from events."""
+    return s.get("text") or s.get("significance") or ""
+
+
 def eligible_ids(conn):
     """Ids that can carry a significance: events, periods and empires (not eras)."""
     return {r[0] for r in conn.execute(
@@ -69,7 +75,7 @@ def load_rows(conn, rows, origin):
         if conn.execute("SELECT 1 FROM entity_significance WHERE entity_id = ?", (entity_id,)).fetchone():
             raise sqlite3.IntegrityError(f"significance {n}: {entity_id} already has one "
                                          "(replace it with set-significance)")
-        add(conn, entity_id, s.get("text") or "", origin, s.get("note"))
+        add(conn, entity_id, row_text(s), origin, s.get("note"))
 
 
 def load(path):

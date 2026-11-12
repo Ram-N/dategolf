@@ -133,6 +133,10 @@ class TestDrafts(unittest.TestCase):
         quiet(drafts.load, batch([{"id": "soviet-afghan-war", "text": TEXT}], "only"))
         self.assertEqual(row("soviet-afghan-war")[1], "proposed")
 
+    def test_accepts_significance_as_the_key(self):
+        quiet(significance.load, batch([{"id": "ottoman-empire", "significance": TEXT}], "key"))
+        self.assertEqual(row("ottoman-empire")[0], TEXT)
+
 
 class TestValidate(unittest.TestCase):
     def test_still_no_errors(self):
