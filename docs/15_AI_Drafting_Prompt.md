@@ -139,7 +139,10 @@ LESSONS FROM REVIEWED BATCHES (each was a real mistake; check every text against
     the Ottomans "blocking trade routes" and so forcing Europeans to sail to Asia;
     Magellan "proving the Earth is round"; Shakespeare "standardizing thousands of words";
     early iron being "harder" than bronze; the Magna Carta or the Declaration of
-    Independence being "signed" on the famous day.
+    Independence being "signed" on the famous day; Trafalgar "ending Napoleon's invasion
+    plans" (already abandoned); the First World War "introducing" trench warfare (older;
+    the scale was new); Drake's well as "the first commercial oil well" (Baku, Poland and
+    Ontario were earlier).
 - Superlatives and firsts ("the largest", "the first", "the foundation of") only where
   historians broadly agree, and only for the right moment (an empire was not the largest
   yet in the year it was founded).
