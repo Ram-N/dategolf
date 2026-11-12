@@ -64,8 +64,8 @@
 - milestones: 16
 - daily_challenge_dates: 366
 - csv_rows: 310
-- significance_reviewed: 22
-- significance_proposed: 0
+- significance_reviewed: 42
+- significance_proposed: 20
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 

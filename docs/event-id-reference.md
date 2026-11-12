@@ -122,7 +122,7 @@ For use when authoring date-LINKS entries. Always copy the ID exactly.
 | first-cities-mesopotamia | First Cities Founded in Mesopotamia | 3000 BCE |
 | first-crusade | First Crusade Launched | 1096 |
 | first-football-world-cup | First FIFA World Cup | 1930 |
-| first-oil-well | First Commercial Oil Well Drilled | 1859 |
+| first-oil-well | Drake Strikes Oil in Pennsylvania | 1859 |
 | first-steam-railway | First Public Steam Railway Opens | 1825 |
 | first-triumvirate | First Triumvirate Formed | 60 BCE |
 | first-use-of-anesthesia | Horace Wells Pioneers Anesthesia with Nitrous Oxide | 1844 |

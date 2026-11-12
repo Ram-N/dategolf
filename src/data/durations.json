@@ -316,7 +316,8 @@
     ],
     "region": "Europe",
     "importance": 8,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "For a thousand years the empire preserved Roman law and Greek learning in the eastern Mediterranean, and its missionaries, such as Cyril and Methodius, carried Orthodox Christianity and a written Slavic language to the Slavic world, shaping Russia and the Balkans."
   },
   {
     "id": "fall-western-roman-empire",
@@ -329,7 +330,8 @@
     ],
     "region": "Europe",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Replaced centralized imperial authority across Western Europe with competing Germanic kingdoms, fragmenting long-distance trade and urban administration while leaving the Catholic Church as the region's main unifying institution."
   },
   {
     "id": "tang-dynasty",
@@ -342,7 +344,8 @@
     ],
     "region": "East Asia",
     "importance": 7,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "Expanded Chinese influence deep into Central Asia, widened the civil service examinations, and fostered cosmopolitan trade and poetry that deeply shaped neighboring Korea, Japan, and Vietnam."
   },
   {
     "id": "umayyad-caliphate",
@@ -381,7 +384,8 @@
     ],
     "region": "Middle East",
     "importance": 7,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "Moved the center of Islamic governance from Syria to Iraq, integrating non-Arab converts into administration and patronizing translations and research in Baghdad that advanced mathematics, medicine, and philosophy across the Islamic world."
   },
   {
     "id": "viking-age",
@@ -434,7 +438,8 @@
     ],
     "region": "East Asia",
     "importance": 7,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "Transformed China's economy with paper money, booming maritime trade and widespread printing. The Song saw the first use of the magnetic compass at sea and of gunpowder weapons in war, while Neo-Confucian thought shaped East Asian education for centuries."
   },
   {
     "id": "crusades",
@@ -473,7 +478,8 @@
     ],
     "region": "South Asia",
     "importance": 7,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "Established lasting Muslim rule across northern India, introducing Persianate administration, new architectural styles and an Indo-Islamic cultural synthesis, while repelling Mongol invasions of the subcontinent."
   },
   {
     "id": "mali-empire",
@@ -500,7 +506,8 @@
     ],
     "region": "Middle East",
     "importance": 8,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "For more than six centuries the Ottomans ruled a multi-ethnic, multi-faith empire that at its height joined southeastern Europe, the Middle East and North Africa, shaping Mediterranean trade, Islamic law and politics, and the borders of the modern Middle East and Balkans."
   },
   {
     "id": "vijayanagara-empire",
@@ -539,7 +546,8 @@
     ],
     "region": "East Asia",
     "importance": 8,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "Restored native Han rule in China after Mongol domination, rebuilt the Great Wall and Grand Canal, and drew global silver into East Asia through porcelain and silk exports even after curbing state-sponsored ocean voyages."
   },
   {
     "id": "italian-renaissance",
@@ -698,7 +706,8 @@
     ],
     "region": "East Asia",
     "importance": 8,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "Roughly doubled the territory ruled from Beijing by bringing Mongolia, Xinjiang, Tibet and Taiwan under Manchu rule, the basis of China's modern borders, before rebellions and foreign pressure in its last century eroded imperial authority."
   },
   {
     "id": "maratha-empire",
@@ -738,7 +747,8 @@
     ],
     "region": "Europe",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Replaced handicraft production with machine factories powered by water, coal and steam, accelerating urbanization and global trade. It brought long-run growth in living standards, though early factory workers often faced harsh conditions, and began the large-scale coal burning behind today's climate change."
   },
   {
     "id": "american-revolution",
@@ -752,7 +762,8 @@
     ],
     "region": "Americas",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Created an independent republic founded on popular sovereignty and, soon after, a written federal constitution. Its example helped inspire revolutions in France, Haiti and Latin America."
   },
   {
     "id": "french-revolution",
@@ -765,7 +776,8 @@
     ],
     "region": "Europe",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Abolished absolute monarchy and feudal privilege in France and spread ideals of citizenship, legal equality and nationalism across Europe, while igniting more than two decades of European war."
   },
   {
     "id": "haitian-revolution",

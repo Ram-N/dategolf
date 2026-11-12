@@ -1175,7 +1175,8 @@
     ],
     "description": "Emperor Constantine the Great dedicates his new capital at the ancient Greek city of Byzantium, renaming it Constantinople in his own honor and investing it with the institutions and architectural splendor of a new Rome. Strategically positioned at the crossroads of Europe and Asia controlling the Bosphorus strait, the city becomes the wealthiest and most powerful city in the Christian world for over a thousand years. As the capital of the Byzantine Empire, Constantinople preserves Roman law and Greek learning through the medieval period until its fall to the Ottoman Turks in 1453.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Shifting the Roman capital east to the Bosporus placed imperial administration closer to wealthy eastern provinces and trade routes, helping the eastern half survive the political collapse that later overtook western Europe."
   },
   {
     "id": "chandragupta-ii-vikramaditya",
@@ -1330,7 +1331,8 @@
     ],
     "description": "Muhammad ibn Abdullah is born in Mecca, in the Arabian Peninsula, into the Quraysh tribe, the guardians of the Kaaba. He would receive his first divine revelation at the age of forty, beginning the delivery of the message that becomes the Quran. As the founder of Islam, Muhammad's life and teachings shape one of the world's largest religions and transform the political, cultural, and spiritual landscape of the Middle East, Africa, and far beyond.",
     "difficulty": "easy",
-    "importance": 9
+    "importance": 9,
+    "significance": "Began the life of the religious and political leader whose teachings unified the tribes of the Arabian Peninsula and gave rise to Islam, reshaping the spiritual and political map of the Middle East and beyond."
   },
   {
     "id": "harsha-reign-begins",
@@ -1387,7 +1389,8 @@
     ],
     "description": "Facing persecution from the Quraysh in Mecca, Muhammad and his followers migrate to the city of Medina in an event known as the Hijra. In Medina, Muhammad establishes the first Muslim community, drafts the Constitution of Medina creating a political-religious framework for governance, and begins building the mosque that becomes the model for Islamic worship. The year of the Hijra is taken as Year One of the Islamic lunar calendar, marking it as the defining moment in the founding of Islam as both a faith and a political community.",
     "difficulty": "medium",
-    "importance": 8
+    "importance": 8,
+    "significance": "Transformed early Muslims from a persecuted Meccan minority into an organized political and religious community in Medina, establishing the social model and calendar starting point for the Islamic world."
   },
   {
     "id": "invention-of-zero",
@@ -1490,7 +1493,8 @@
     ],
     "description": "A Muslim army under Tariq ibn Ziyad crosses the Strait of Gibraltar — a name derived from 'Jabal al-Tariq,' or 'Rock of Tariq' — and defeats the Visigothic King Roderic, rapidly overrunning most of the Iberian Peninsula. The resulting Muslim territory of Al-Andalus becomes a center of Islamic culture, science, and philosophy, transmitting Greek and Arabic knowledge to medieval Europe through translations in Toledo and Cordoba. The Moorish presence in Spain lasts nearly eight centuries until the final Reconquista in 1492.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Brought most of the Iberian Peninsula into the Islamic world for centuries, fostering an influential center of agriculture, architecture, and scholarship that helped transmit Arabic science and classical texts into Western Europe."
   },
   {
     "id": "arab-conquest-of-sindh",
@@ -1787,7 +1791,8 @@
     ],
     "description": "The Pope in Rome and the Patriarch of Constantinople mutually excommunicate each other, formalizing the split of Christianity into the Roman Catholic and Eastern Orthodox churches. The division, rooted in centuries of theological disagreements over papal authority, the nature of the Holy Spirit, and the use of images in worship, proves permanent and is never healed. It reshapes the religious map of Europe and contributes to the divergent political and cultural development of Western and Eastern European civilizations.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Became the symbolic moment of the lasting split between Roman Catholicism in Western Europe and Eastern Orthodoxy in the Byzantine and Slavic worlds, though the churches had been drifting apart for centuries and the break hardened only later."
   },
   {
     "id": "battle-of-hastings",
@@ -2751,7 +2756,8 @@
     ],
     "description": "William Shakespeare is born in Stratford-upon-Avon, England, in the same year that Michelangelo dies, as if the torch of Renaissance genius passes between them. Over his career he writes 37 plays and 154 sonnets that explore the full range of human experience — ambition, jealousy, love, power, and mortality — with unprecedented psychological depth and linguistic brilliance. His works, from Hamlet and King Lear to A Midsummer Night's Dream and The Tempest, remain the most performed and studied literary works in history.",
     "difficulty": "easy",
-    "importance": 7
+    "importance": 7,
+    "significance": "Gave the world a playwright and poet whose works are still performed everywhere. He popularized many lasting English words and phrases and set a standard for complex dramatic characters that shaped European literature and global theater."
   },
   {
     "id": "mughal-akbar-administration",
@@ -2869,7 +2875,8 @@
     ],
     "description": "Queen Elizabeth I grants a royal charter to the East India Company, giving it a monopoly on English trade with the East Indies and the power to wage war and make treaties. Initially focused on spices and textiles, the company gradually transforms into a political and military power, eventually governing large swaths of South Asia directly on behalf of the British Crown. The East India Company becomes the world's most powerful private enterprise and the primary instrument of British colonialism in Asia, ruling India for over 250 years.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Created a chartered trading monopoly that grew from a commercial venture into a territorial ruler, laying the administrative and military groundwork for British colonial dominance across South Asia."
   },
   {
     "id": "death-of-elizabeth-i",
@@ -3653,7 +3660,8 @@
     ],
     "description": "The thirteen American colonies declare independence from British rule and fight a revolutionary war, producing the Declaration of Independence and a new republican government. The revolution establishes the United States and becomes a model for democratic revolutions worldwide.",
     "difficulty": "easy",
-    "importance": 5
+    "importance": 5,
+    "significance": "Created an independent republic founded on popular sovereignty and, soon after, a written federal constitution. Its example helped inspire revolutions in France, Haiti and Latin America."
   },
   {
     "id": "american-declaration",
@@ -3695,7 +3703,8 @@
     ],
     "description": "Scottish economist Adam Smith publishes An Inquiry into the Nature and Causes of the Wealth of Nations on the same day the American colonies declare independence, laying the foundations of modern economic theory. Smith argues that free markets, driven by individual self-interest and coordinated by the 'invisible hand' of price signals, generate prosperity more efficiently than state direction of the economy. The book becomes the foundational text of classical economics, its ideas shaping capitalist policy from the Industrial Revolution to the present day.",
     "difficulty": "medium",
-    "importance": 8
+    "importance": 8,
+    "significance": "Systematized classical economics by arguing that division of labor, competition, and free markets generate national prosperity more effectively than mercantilist tariffs, shaping economic policy across Europe and North America."
   },
   {
     "id": "second-anglo-mysore-war",
@@ -3793,7 +3802,8 @@
     ],
     "description": "The French monarchy is overthrown in a sweeping revolution driven by Enlightenment ideals of liberty and equality, leading to radical political transformation, the execution of the king, and a Reign of Terror. The revolution reverberates across Europe and reshapes modern political thought around liberty, nationalism, and democracy.",
     "difficulty": "easy",
-    "importance": 5
+    "importance": 5,
+    "significance": "Abolished absolute monarchy and feudal privilege in France and spread ideals of citizenship, legal equality and nationalism across Europe, while igniting more than two decades of European war."
   },
   {
     "id": "french-revolution-storming-bastille",
@@ -4312,7 +4322,7 @@
   },
   {
     "id": "first-oil-well",
-    "name": "First Commercial Oil Well Drilled",
+    "name": "Drake Strikes Oil in Pennsylvania",
     "year": 1859,
     "categories": [
       "Economy",
@@ -4325,9 +4335,10 @@
       "petroleum industry begins",
       "Edwin Drake",
       "fossil fuel age begins",
-      "oil discovery"
+      "oil discovery",
+      "First Commercial Oil Well Drilled"
     ],
-    "description": "Edwin Drake successfully drills the first commercial oil well near Titusville, Pennsylvania, striking oil at a depth of 21 meters and triggering an oil rush across the region. The discovery marks the beginning of the modern petroleum industry, enabling oil to be extracted, refined, and sold at scale for the first time. Cheap petroleum powers the second Industrial Revolution, fuels the age of automobiles and aviation, and makes oil the central commodity of the global economy and of geopolitics throughout the twentieth century.",
+    "description": "Edwin Drake strikes oil near Titusville, Pennsylvania, at a depth of 21 meters, setting off an oil rush across the region. Oil had already been drilled or dug commercially in Baku, Poland and Ontario, but Drake's success launches the American oil boom that grows into the modern petroleum industry. Cheap petroleum powers the second Industrial Revolution, fuels the age of automobiles and aviation, and makes oil the central commodity of the global economy and of geopolitics throughout the twentieth century.",
     "difficulty": "medium",
     "importance": 8
   },

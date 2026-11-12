@@ -1,0 +1,109 @@
+{
+  "origin": "ai_drafted:gemini",
+  "about": "Significance statements ('Why it matters') for 20 existing nineteenth- and twentieth-century events and spans. Thirteen texts edited by Claude at review (see each note).",
+  "events": [],
+  "spans": [],
+  "links": [],
+  "significance": [
+    {
+      "id": "napoleonic-wars",
+      "text": "Redrew European borders, dissolved the Holy Roman Empire, and spread the Napoleonic Code across the lands France conquered, while helping stir the German, Italian and Spanish nationalism that reshaped nineteenth-century politics.",
+      "note": "Edited by Claude at review: The Code spread to conquered lands, not all of continental Europe; 'awakening' nationalism softened to 'helping stir'."
+    },
+    {
+      "id": "battle-of-trafalgar",
+      "text": "Confirmed British command of the sea for a century. Napoleon had already called off his invasion of Britain, but after Trafalgar France could not challenge the Royal Navy, leaving Britain free to protect its trade and expand its empire.",
+      "note": "Edited by Claude at review: Myth: Trafalgar did not end the invasion plan; Napoleon had abandoned it two months earlier and marched east."
+    },
+    {
+      "id": "first-steam-railway",
+      "text": "Showed that steam locomotives could haul goods on a public railway, starting a railway age that slashed overland transport costs, connected inland markets and, as networks spread, standardized clock time across whole countries.",
+      "note": "Edited by Claude at review: Most passengers on this line were horse-drawn at first; standard railway time came in the 1840s, so it is now a later consequence."
+    },
+    {
+      "id": "first-use-of-anesthesia",
+      "text": "Showed that inhaled gases could prevent pain during operations, transforming surgery from rapid, agonizing last resorts into deliberate procedures and opening the way for complex internal operations.",
+      "note": "Edited by Claude at review: 'Internal medicine' is a different field; the effect was on surgery."
+    },
+    {
+      "id": "revolutions-of-1848",
+      "text": "Although most uprisings were quickly suppressed, they ended serfdom in the Austrian Empire, forced constitutional concessions in several monarchies, and pushed nationalist movements toward building unified states in Italy and Germany.",
+      "note": "Edited by Claude at review: Serfdom ended in the Austrian Empire; much of Central Europe had abolished it earlier."
+    },
+    {
+      "id": "british-raj",
+      "text": "Placed the Indian subcontinent under direct British Crown rule, expanding railways, telegraphs and a unified legal bureaucracy while extracting wealth and restructuring farming, and it fuelled the nationalist movement that ended British rule.",
+      "note": "Edited by Claude at review: Railways began under the Company (1853), so 'expanding'; 'provoking the movements that ended empire' softened."
+    },
+    {
+      "id": "first-oil-well",
+      "text": "Drake's success set off the Pennsylvania oil rush that grew into the modern petroleum industry: kerosene soon replaced whale oil for lighting, and oil later fuelled cars, aircraft and twentieth-century geopolitics.",
+      "note": "Edited by Claude at review: Myth: not the first commercial well (Baku, Poland and Ontario were earlier). Event renamed and its description fixed to match."
+    },
+    {
+      "id": "american-civil-war",
+      "text": "Preserved the United States as a single nation, strengthened federal authority over individual states, and accelerated Northern industrialization while leaving deep regional divisions and unresolved struggles over racial equality.",
+      "note": "Span 1861 to 1865; focuses on federal union and political economy, distinct from the Emancipation Proclamation."
+    },
+    {
+      "id": "emancipation-proclamation",
+      "text": "Transformed the Union war effort into an explicit struggle against slavery, authorized Black soldiers to serve in the Union military, and paved the way for the Thirteenth Amendment's nationwide abolition.",
+      "note": "Issued 1 January 1863 by President Abraham Lincoln; distinct from the wider Civil War span."
+    },
+    {
+      "id": "lincoln-assassination",
+      "text": "Removed the president who had guided the Union through civil war at the start of Reconstruction, handing postwar policy to Andrew Johnson and sharpening conflicts over Southern readmission and freedpeople's rights.",
+      "note": "14 April 1865 (died 15 April); focuses on impact on Reconstruction."
+    },
+    {
+      "id": "marconi-invents-radio",
+      "text": "Demonstrated practical long-distance wireless signalling with radio waves, bringing ship-to-shore communication and maritime safety, and laying the groundwork for broadcast radio and modern wireless communications.",
+      "note": "Edited by Claude at review: Dropped radar: it grew from radio physics generally, not from Marconi's telegraphy."
+    },
+    {
+      "id": "x-rays-discovered",
+      "text": "Allowed physicians to view bones and foreign objects inside the living body without surgery, revolutionizing medical diagnostics while helping spark atomic physics research into radiation and subatomic structure.",
+      "note": "Wilhelm Röntgen, November 1895."
+    },
+    {
+      "id": "russo-japanese-war",
+      "text": "Marked the first modern victory of an Asian power over a major European empire, establishing Japan as the leading power in East Asia, helping fuel the 1905 revolution in Russia, and inspiring anticolonial movements across Asia.",
+      "note": "Edited by Claude at review: 'Fueling' the 1905 revolution softened to 'helping fuel'; one cause among several."
+    },
+    {
+      "id": "fall-of-qing-dynasty",
+      "text": "Ended more than two millennia of imperial dynastic rule in China and established the Republic of China, opening decades of political fragmentation, warlordism, and ideological struggle over China's modernization.",
+      "note": "Xinhai Revolution 1911 (abdication February 1912)."
+    },
+    {
+      "id": "world-war-1",
+      "text": "Shattered the German, Austro-Hungarian, Russian and Ottoman empires, redrew borders across Europe and the Middle East, brought industrialized warfare on an unprecedented scale, and left unstable settlements that helped set the stage for World War II.",
+      "note": "Edited by Claude at review: Myth: trench warfare was not new (the American Civil War and Russo-Japanese War used it); the scale was."
+    },
+    {
+      "id": "russian-revolution",
+      "text": "Overthrew the Romanov autocracy and brought the Bolsheviks to power, creating the world's first socialist state and launching a global ideological struggle between communism and capitalism that shaped the twentieth century.",
+      "note": "Span 1917 to 1923; focuses on the overthrow of tsarism and birth of Bolshevik rule, distinct from the Soviet Union span."
+    },
+    {
+      "id": "indian-independence-movement",
+      "text": "Turned Indian nationalism into a mass movement through nonviolent civil disobedience, one of the main pressures, with the cost of the Second World War, that ended British rule in 1947. Its methods inspired civil rights and anticolonial movements worldwide.",
+      "note": "Edited by Claude at review: It did not 'establish the world's largest democracy' (the constitution did, in 1950); matches our link: one pressure among several."
+    },
+    {
+      "id": "soviet-union",
+      "text": "Transformed a mostly agrarian empire into a nuclear superpower through state-planned industrialization at immense human cost, bore the heaviest share of the land war against Nazi Germany, and defined Cold War geopolitics until its collapse in 1991.",
+      "note": "Edited by Claude at review: 'The decisive land role' softened to 'the heaviest share of the land war', which historians broadly accept."
+    },
+    {
+      "id": "television-invented",
+      "text": "Showed that moving images could be sent electrically, spurring the race to build television, a mass medium that reshaped twentieth-century politics, advertising, news and shared popular culture worldwide.",
+      "note": "Edited by Claude at review: Baird's mechanical system was soon replaced by electronic TV, so it 'spurred the race' rather than 'launching' the medium."
+    },
+    {
+      "id": "great-depression",
+      "text": "Devastated global trade, industrial output, and employment throughout the 1930s, prompting governments to expand welfare states and economic regulation while deepening political extremism that helped bring authoritarian regimes to power.",
+      "note": "Span 1929 to 1939; covers economic policy shifts and rise of extremism."
+    }
+  ]
+}
