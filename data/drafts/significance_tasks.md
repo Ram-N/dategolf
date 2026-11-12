@@ -7,7 +7,7 @@ How to run a batch (doc 15, Part A):
 3. Save the reply as `data/drafts/incoming/<date>_<ai>_significance_b<N>.json` and tell Claude. Claude checks it, fixes it, loads it as proposed.
 4. Review → Significance on the dashboard; tell Claude when it's approved (Claude exports and commits).
 
-Done: batches 1 and 2 (published 2026-11-11); batches 3 and 4 loaded 2026-11-11, awaiting review. The importance 7+ backfill is then complete.
+Done: all four batches published 2026-11-11. Every importance 7+ event and span has a reviewed significance (78 texts with the seeds).
 
 ## Batch 3: 1803 to 1939
 

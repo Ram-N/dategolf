@@ -803,7 +803,8 @@
     ],
     "region": "Europe",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Redrew European borders, dissolved the Holy Roman Empire, and spread the Napoleonic Code across the lands France conquered, while helping stir the German, Italian and Spanish nationalism that reshaped nineteenth-century politics."
   },
   {
     "id": "latin-american-independence",
@@ -856,7 +857,8 @@
     ],
     "region": "South Asia",
     "importance": 7,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "Placed the Indian subcontinent under direct British Crown rule, expanding railways, telegraphs and a unified legal bureaucracy while extracting wealth and restructuring farming, and it fuelled the nationalist movement that ended British rule."
   },
   {
     "id": "american-civil-war",
@@ -869,7 +871,8 @@
     ],
     "region": "Americas",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Preserved the United States as a single nation, strengthened federal authority over individual states, and accelerated Northern industrialization while leaving deep regional divisions and unresolved struggles over racial equality."
   },
   {
     "id": "meiji-restoration",
@@ -935,7 +938,8 @@
     ],
     "region": "East Asia",
     "importance": 5,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Marked the first modern victory of an Asian power over a major European empire, establishing Japan as the leading power in East Asia, helping fuel the 1905 revolution in Russia, and inspiring anticolonial movements across Asia."
   },
   {
     "id": "world-war-1",
@@ -948,7 +952,8 @@
     ],
     "region": "Global",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Shattered the German, Austro-Hungarian, Russian and Ottoman empires, redrew borders across Europe and the Middle East, brought industrialized warfare on an unprecedented scale, and left unstable settlements that helped set the stage for World War II."
   },
   {
     "id": "russian-revolution",
@@ -961,7 +966,8 @@
     ],
     "region": "Europe",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Overthrew the Romanov autocracy and brought the Bolsheviks to power, creating the world's first socialist state and launching a global ideological struggle between communism and capitalism that shaped the twentieth century."
   },
   {
     "id": "spanish-flu",
@@ -987,7 +993,8 @@
     ],
     "region": "South Asia",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Turned Indian nationalism into a mass movement through nonviolent civil disobedience, one of the main pressures, with the cost of the Second World War, that ended British rule in 1947. Its methods inspired civil rights and anticolonial movements worldwide."
   },
   {
     "id": "soviet-union",
@@ -1000,7 +1007,8 @@
     ],
     "region": "Europe",
     "importance": 8,
-    "kind": "empire"
+    "kind": "empire",
+    "significance": "Transformed a mostly agrarian empire into a nuclear superpower through state-planned industrialization at immense human cost, bore the heaviest share of the land war against Nazi Germany, and defined Cold War geopolitics until its collapse in 1991."
   },
   {
     "id": "chinese-civil-war",
@@ -1027,7 +1035,8 @@
     ],
     "region": "Global",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Devastated global trade, industrial output, and employment throughout the 1930s, prompting governments to expand welfare states and economic regulation while deepening political extremism that helped bring authoritarian regimes to power."
   },
   {
     "id": "spanish-civil-war",
@@ -1053,7 +1062,8 @@
     ],
     "region": "Global",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Resulted in an estimated seventy to eighty-five million fatalities, dismantled German and Japanese hegemony, weakened European colonial empires, and left the United States and Soviet Union as rival superpowers, prompting the creation of the United Nations."
   },
   {
     "id": "the-holocaust",
@@ -1066,7 +1076,8 @@
     ],
     "region": "Europe",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "The murder of about six million Jews, along with Roma, Soviet prisoners of war, disabled people and others, became the defining example of genocide. It led to genocide becoming a crime in international law, shaped human rights law, and strengthened the case for a Jewish state."
   },
   {
     "id": "manhattan-project",
@@ -1093,7 +1104,8 @@
     ],
     "region": "Africa",
     "importance": 7,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Turned racial segregation into a complete legal system of white minority rule: every South African was classified by race, the remaining non-white voters lost the vote, and millions were forced from their homes. It provoked decades of resistance, international sanctions and boycotts."
   },
   {
     "id": "korean-war",
@@ -1132,7 +1144,8 @@
     ],
     "region": "Americas",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Dismantled legal racial segregation and disenfranchisement across the American South through mass nonviolent protest and legal challenges, securing federal protections for voting and equal access that inspired broader rights movements in the United States and abroad."
   },
   {
     "id": "vietnam-war",
@@ -1237,7 +1250,8 @@
     ],
     "region": "Africa",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Ended white minority rule through negotiation rather than full-scale civil war, leading to South Africa's first democratic elections with all races voting, and to the Truth and Reconciliation Commission, a widely studied model for confronting past abuses."
   },
   {
     "id": "human-genome-project-period",
@@ -1328,6 +1342,7 @@
     ],
     "region": "Global",
     "importance": 8,
-    "kind": "period"
+    "kind": "period",
+    "significance": "Caused millions of deaths and severe global economic disruption, brought the first approved mRNA vaccines, and accelerated remote work and digital commerce, while straining health systems and deepening debates over public health mandates and supply chains."
   }
 ]

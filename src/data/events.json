@@ -3940,7 +3940,8 @@
     ],
     "description": "Napoleon Bonaparte wages a series of military campaigns that bring most of Europe under French control and permanently reshape the continent's political map. The wars spread revolutionary ideals across Europe, stimulate nationalism, and cause unprecedented destruction before Napoleon's final defeat at Waterloo.",
     "difficulty": "easy",
-    "importance": 5
+    "importance": 5,
+    "significance": "Redrew European borders, dissolved the Holy Roman Empire, and spread the Napoleonic Code across the lands France conquered, while helping stir the German, Italian and Spanish nationalism that reshaped nineteenth-century politics."
   },
   {
     "id": "lewis-and-clark-expedition",
@@ -3980,7 +3981,8 @@
     ],
     "description": "The British Royal Navy under Admiral Horatio Nelson defeats the combined French and Spanish fleets off Cape Trafalgar in southern Spain, securing British naval supremacy for over a century. Nelson is mortally wounded aboard his flagship HMS Victory at the moment of his greatest triumph, dying with the words 'Thank God I have done my duty' and becoming one of Britain's most celebrated national heroes. The battle ensures Napoleon can never invade Britain and establishes the maritime foundation for the British Empire's global reach.",
     "difficulty": "easy",
-    "importance": 7
+    "importance": 7,
+    "significance": "Confirmed British command of the sea for a century. Napoleon had already called off his invasion of Britain, but after Trafalgar France could not challenge the Royal Navy, leaving Britain free to protect its trade and expand its empire."
   },
   {
     "id": "abolition-slavery-britain",
@@ -4097,7 +4099,8 @@
     ],
     "description": "George Stephenson's Stockton and Darlington Railway opens in northern England, becoming the first public railway to use steam locomotives to carry passengers and freight on a regular commercial service. The success of the line launches the railway age, with networks expanding rapidly across Britain and then the world, transforming the cost and speed of overland transport beyond anything previously imaginable. Cheap, fast railways reshape economies, settlement patterns, and the conduct of warfare, accelerating the Industrial Revolution and binding global trade together.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Showed that steam locomotives could haul goods on a public railway, starting a railway age that slashed overland transport costs, connected inland markets and, as networks spread, standardized clock time across whole countries."
   },
   {
     "id": "indian-removal-act",
@@ -4216,7 +4219,8 @@
     ],
     "description": "American dentist Horace Wells pioneers the use of nitrous oxide for tooth extraction without pain, and within two years William Morton's public demonstration of ether anesthesia at Massachusetts General Hospital confirms and spreads the breakthrough worldwide. The ability to render patients unconscious during operations transforms surgery from an ordeal of conscious agony — endured as briefly as possible — into a methodical, precise discipline. Anesthesia is widely regarded as one of the greatest gifts of medicine, enabling procedures that save countless millions of lives.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Showed that inhaled gases could prevent pain during operations, transforming surgery from rapid, agonizing last resorts into deliberate procedures and opening the way for complex internal operations."
   },
   {
     "id": "revolutions-of-1848",
@@ -4237,7 +4241,8 @@
     ],
     "description": "A wave of liberal and nationalist revolutions erupts across Europe, toppling or threatening governments in France, the German states, the Austrian Empire, Italy, and beyond in the space of weeks. Driven by demands for constitutional government, national self-determination, and economic reform, the uprisings briefly overthrow many ancien régime governments before being crushed by conservative military force. The revolutions accelerate nationalist movements across Europe, hasten the decline of the old dynastic order, and are accompanied by Marx and Engels's Communist Manifesto, published the same year.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Although most uprisings were quickly suppressed, they ended serfdom in the Austrian Empire, forced constitutional concessions in several monarchies, and pushed nationalist movements toward building unified states in Italy and Germany."
   },
   {
     "id": "crimean-war",
@@ -4340,7 +4345,8 @@
     ],
     "description": "Edwin Drake strikes oil near Titusville, Pennsylvania, at a depth of 21 meters, setting off an oil rush across the region. Oil had already been drilled or dug commercially in Baku, Poland and Ontario, but Drake's success launches the American oil boom that grows into the modern petroleum industry. Cheap petroleum powers the second Industrial Revolution, fuels the age of automobiles and aviation, and makes oil the central commodity of the global economy and of geopolitics throughout the twentieth century.",
     "difficulty": "medium",
-    "importance": 8
+    "importance": 8,
+    "significance": "Drake's success set off the Pennsylvania oil rush that grew into the modern petroleum industry: kerosene soon replaced whale oil for lighting, and oil later fuelled cars, aircraft and twentieth-century geopolitics."
   },
   {
     "id": "american-civil-war",
@@ -4362,7 +4368,8 @@
     ],
     "description": "The United States erupts into civil war when eleven Southern states secede over the issue of slavery and form the Confederate States of America. After four years of devastating conflict, the Union is preserved, slavery is abolished through the Thirteenth Amendment, and the nation's social order is fundamentally transformed.",
     "difficulty": "easy",
-    "importance": 5
+    "importance": 5,
+    "significance": "Preserved the United States as a single nation, strengthened federal authority over individual states, and accelerated Northern industrialization while leaving deep regional divisions and unresolved struggles over racial equality."
   },
   {
     "id": "emancipation-proclamation",
@@ -4382,7 +4389,8 @@
     ],
     "description": "President Abraham Lincoln issues the Emancipation Proclamation, declaring all enslaved people in states in rebellion against the Union to be free. Though initially limited in immediate practical effect — applying only to areas not yet under Union control — the proclamation fundamentally transforms the Civil War from a conflict to preserve the Union into a war for human freedom, giving it a powerful moral dimension. It paves the way for the Thirteenth Amendment, which permanently abolished slavery throughout the United States two years later.",
     "difficulty": "easy",
-    "importance": 8
+    "importance": 8,
+    "significance": "Transformed the Union war effort into an explicit struggle against slavery, authorized Black soldiers to serve in the Union military, and paved the way for the Thirteenth Amendment's nationwide abolition."
   },
   {
     "id": "abolition-slavery-us",
@@ -4423,7 +4431,8 @@
     ],
     "description": "President Abraham Lincoln is shot by Confederate sympathizer John Wilkes Booth at Ford's Theatre in Washington, D.C., dying the following morning just days after the Confederate surrender ends the Civil War. Lincoln's death robs the nation of the leader best positioned to pursue a reconciliatory Reconstruction of the defeated South. The assassination leaves reunification in less capable hands, with consequences — particularly for the rights of newly freed Black Americans — that shape American society for generations.",
     "difficulty": "easy",
-    "importance": 7
+    "importance": 7,
+    "significance": "Removed the president who had guided the Union through civil war at the start of Reconstruction, handing postwar policy to Andrew Johnson and sharpening conflicts over Southern readmission and freedpeople's rights."
   },
   {
     "id": "lee-surrenders-appomattox",
@@ -4840,7 +4849,8 @@
     ],
     "description": "Italian inventor Guglielmo Marconi successfully demonstrates wireless telegraphy over increasing distances, building on the theoretical foundations of Maxwell and Hertz to create the first practical radio communication system. Within years he sends signals across the Atlantic Ocean, and the technology is rapidly adopted for maritime communication, military operations, and eventually mass broadcasting. Radio transforms how information is transmitted, making possible the broadcast media that define twentieth-century public life and culture.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Demonstrated practical long-distance wireless signalling with radio waves, bringing ship-to-shore communication and maritime safety, and laying the groundwork for broadcast radio and modern wireless communications."
   },
   {
     "id": "x-rays-discovered",
@@ -4859,7 +4869,8 @@
     ],
     "description": "German physicist Wilhelm Röntgen discovers X-rays while experimenting with cathode ray tubes, producing the first X-ray image — a photograph of his wife's hand with her wedding ring clearly visible — and publishing his findings to astonished scientific and public audiences. The discovery spreads around the world within months and is immediately applied in hospitals for diagnosing fractures and internal conditions previously invisible to physicians. X-rays revolutionize medicine and open the field of radiation physics that leads to further discoveries including radioactivity, the atomic nucleus, and the foundations of quantum mechanics.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Allowed physicians to view bones and foreign objects inside the living body without surgery, revolutionizing medical diagnostics while helping spark atomic physics research into radiation and subatomic structure."
   },
   {
     "id": "modern-olympics-founded",
@@ -5014,7 +5025,8 @@
     ],
     "description": "Japan launches a surprise attack on the Russian naval base at Port Arthur, beginning a war that shocks the world when Japan decisively defeats the Russian Empire on both land and sea. The Japanese victory at the Battle of Tsushima — the most decisive naval battle since Trafalgar — is the first major defeat of a European great power by an Asian nation in the modern era. The war accelerates the Russian domestic unrest that erupts in revolution during the war and signals Japan's emergence as a major world power, reshaping the balance of power in Asia.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Marked the first modern victory of an Asian power over a major European empire, establishing Japan as the leading power in East Asia, helping fuel the 1905 revolution in Russia, and inspiring anticolonial movements across Asia."
   },
   {
     "id": "partition-of-bengal",
@@ -5094,7 +5106,8 @@
     ],
     "description": "The Xinhai Revolution sweeps away the Qing dynasty, ending over two thousand years of imperial rule in China and establishing the Republic of China. Led by reformists and nationalists inspired by Sun Yat-sen, the revolution abolishes the imperial examination system, the queue hairstyle enforced by the Manchu rulers, and the monarchy itself. The newly established republic is immediately beset by warlordism and political fragmentation, setting the stage for the decades of conflict between Nationalists and Communists that follow.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Ended more than two millennia of imperial dynastic rule in China and established the Republic of China, opening decades of political fragmentation, warlordism, and ideological struggle over China's modernization."
   },
   {
     "id": "amundsen-south-pole",
@@ -5190,7 +5203,8 @@
     ],
     "description": "Lenin's Bolshevik party seizes power in Russia in October, overthrowing the Provisional Government and establishing the world's first communist state. The revolution leads to a brutal civil war, the murder of the Tsar's family, and the eventual formation of the Soviet Union.",
     "difficulty": "easy",
-    "importance": 5
+    "importance": 5,
+    "significance": "Overthrew the Romanov autocracy and brought the Bolsheviks to power, creating the world's first socialist state and launching a global ideological struggle between communism and capitalism that shaped the twentieth century."
   },
   {
     "id": "first-world-war-ends",
@@ -5388,7 +5402,8 @@
     ],
     "description": "Scottish inventor John Logie Baird gives the first public demonstration of a working television system in London, transmitting moving images of human faces using a mechanical scanning system. Though Baird's mechanical approach is soon superseded by all-electronic television developed by Philo Farnsworth and others, his demonstration proves the concept and launches the race to develop broadcasting. Television becomes the dominant mass medium of the twentieth century, reshaping politics, culture, advertising, and daily life across the world.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Showed that moving images could be sent electrically, spurring the race to build television, a mass medium that reshaped twentieth-century politics, advertising, news and shared popular culture worldwide."
   },
   {
     "id": "chinese-civil-war",
@@ -5447,7 +5462,8 @@
     ],
     "description": "The New York Stock Exchange crashes in October, triggering a global economic depression that causes mass unemployment, widespread poverty, and banking failures across the world. The Great Depression reshapes economic thought, expands the role of government in economies, and creates conditions for the rise of fascism in Europe.",
     "difficulty": "easy",
-    "importance": 5
+    "importance": 5,
+    "significance": "Devastated global trade, industrial output, and employment throughout the 1930s, prompting governments to expand welfare states and economic regulation while deepening political extremism that helped bring authoritarian regimes to power."
   },
   {
     "id": "gandhi-salt-march",
@@ -6157,7 +6173,8 @@
     ],
     "description": "Joseph Stalin, the Soviet dictator who transformed the USSR through forced collectivization, industrial crash programs, the Gulag labor camp system, and purges that killed millions, dies of a stroke after nearly three decades in power. His death triggers a power struggle within the Soviet leadership eventually won by Nikita Khrushchev, who denounces Stalin's crimes in his 'Secret Speech' three years later and initiates a cautious political 'thaw.' Stalin's death marks a significant shift in the Cold War, reducing the acute tensions of his final paranoid years and beginning a gradual, halting reassessment of Soviet policy.",
     "difficulty": "easy",
-    "importance": 7
+    "importance": 7,
+    "significance": "Ended a quarter-century of one-man rule and mass terror in the Soviet Union. Under Khrushchev, millions were released from the Gulag, political killings fell sharply, and a brief thaw opened in culture and in Cold War diplomacy."
   },
   {
     "id": "everest-first-ascent",
@@ -6432,7 +6449,8 @@
     ],
     "description": "The US Food and Drug Administration approves Enovid, the first oral contraceptive pill, developed from the research of Carl Djerassi and others, for contraceptive use. The Pill gives women unprecedented control over their reproductive choices, separating sex from reproduction in a way that transforms gender roles, family planning, and sexual norms across the developed world. It is widely regarded as one of the most socially transformative innovations of the twentieth century, directly enabling the women's liberation movement of the 1960s.",
     "difficulty": "medium",
-    "importance": 8
+    "importance": 8,
+    "significance": "Gave women a highly reliable contraceptive they controlled themselves, helping reshape family planning, delay marriage and childbirth, and expand women's participation in higher education and paid careers across Western societies."
   },
   {
     "id": "france-first-nuclear-test",
@@ -6587,7 +6605,8 @@
     ],
     "description": "President John F. Kennedy is shot and killed while riding in a motorcade through Dealey Plaza in Dallas, Texas, on November 22. The Warren Commission concludes that Lee Harvey Oswald acted alone, though the assassination generates enduring conspiracy theories that have never fully been resolved. Kennedy's death shocks the world and marks the end of a period of post-war American optimism, transforming American political culture and leaving an indelible mark on the collective memory of a generation.",
     "difficulty": "easy",
-    "importance": 8
+    "importance": 8,
+    "significance": "Made Lyndon B. Johnson president; he used the national mood to pass the Civil Rights Act and Great Society laws, and later escalated the Vietnam War. Doubts about the official investigation also fed a lasting distrust of government."
   },
   {
     "id": "formation-of-malaysia",
@@ -6791,7 +6810,8 @@
     ],
     "description": "Israel launches preemptive air strikes against Egypt, Jordan, and Syria, destroying their air forces on the ground before seizing the Sinai Peninsula, Gaza Strip, West Bank, and Golan Heights in just six days of fighting. The swift and decisive Israeli victory reshapes the map of the Middle East, creating the territorial situation that defines the Israeli-Palestinian conflict to the present day. The war fundamentally alters the regional balance of power, deepens American and Soviet proxy rivalry in the Middle East, and makes the question of Palestinian statehood a central issue of international politics.",
     "difficulty": "medium",
-    "importance": 8
+    "importance": 8,
+    "significance": "Redrew the map of the Middle East as Israel captured the Sinai Peninsula, Gaza Strip, West Bank, East Jerusalem and Golan Heights, placing about a million Palestinians under Israeli military occupation and shaping the region's diplomacy and conflict for decades."
   },
   {
     "id": "moon-landing",
@@ -6949,7 +6969,8 @@
     ],
     "description": "Mao Zedong, the founder and supreme leader of the People's Republic of China since its founding, dies after three decades of rule that included the Great Leap Forward, the Cultural Revolution, and China's emergence as a nuclear power. His death triggers a brief power struggle ending in the arrest of the radical Gang of Four and the gradual rise of pragmatist Deng Xiaoping. Mao's death is pivotal in world history, marking the beginning of China's transformation from Maoist ideology toward the market-oriented reforms that make it the economic superpower of the twenty-first century.",
     "difficulty": "easy",
-    "importance": 8
+    "importance": 8,
+    "significance": "Closed the era of Maoist mass mobilization and the Cultural Revolution in China, enabling pragmatic leaders led by Deng Xiaoping to shift policy toward market-oriented economic reforms and international trade."
   },
   {
     "id": "viking-1-mars",
@@ -7065,7 +7086,8 @@
     ],
     "description": "Margaret Thatcher becomes the United Kingdom's first female Prime Minister following a decisive Conservative Party victory in the general election, beginning an eleven-year tenure that transforms British politics and economics. Thatcher dismantles much of Britain's post-war consensus, privatizing state industries, curbing trade union power, and promoting free-market economic policies under the banner of Thatcherism. Her ideological alignment with Ronald Reagan's parallel program in the United States defines the political economy of the English-speaking world in the 1980s and shifts the center of gravity of Western politics.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Initiated a decisive shift away from Britain's postwar economic consensus toward deregulation, privatization of state industries, and weakened trade union power, policies credited by supporters with revitalizing growth and criticized by opponents for deepening inequality and deindustrialization."
   },
   {
     "id": "bhutto-executed",
@@ -7139,7 +7161,8 @@
     ],
     "description": "Iraq, led by Saddam Hussein, invades Iran in a dispute over the Shatt al-Arab waterway and in an attempt to exploit the instability created by Iran's Islamic Revolution. The resulting war lasts eight years, kills between 500,000 and one million people, and ends in a stalemate with no significant territorial change for either side. The conflict devastates both economies, sees chemical weapons used on a large scale for the first time since World War One, and deepens the Sunni-Shia sectarian fault lines that define Middle Eastern geopolitics.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Inflicted hundreds of thousands of casualties and devastated both economies without altering borders, while consolidating the revolutionary regime in Iran, entrenching Saddam Hussein's militarized rule in Iraq, and leaving debts that helped trigger Iraq's invasion of Kuwait."
   },
   {
     "id": "reagan-elected",
@@ -7328,7 +7351,8 @@
     ],
     "description": "Mikhail Gorbachev becomes General Secretary of the Communist Party of the Soviet Union following the death of Konstantin Chernenko, becoming at 54 the youngest Soviet leader since Stalin. His policies of glasnost (openness) and perestroika (restructuring) are intended to revitalize the stagnating Soviet system but instead unleash forces far beyond his control, leading to the fall of communist governments across Eastern Europe within a few years and ultimately the dissolution of the Soviet Union itself. Gorbachev's accession is one of the pivotal moments of the Cold War.",
     "difficulty": "medium",
-    "importance": 8
+    "importance": 8,
+    "significance": "Introduced glasnost and perestroika to revive the stagnant Soviet system, but unintentionally helped unleash the nationalist movements and democratic demands that ended Communist rule in Eastern Europe and broke up the Soviet Union."
   },
   {
     "id": "chernobyl-disaster",
@@ -7744,7 +7768,8 @@
     ],
     "description": "Scientists at the Roslin Institute in Edinburgh successfully clone Dolly the sheep from a single adult mammary cell, making her the first mammal ever cloned from an adult somatic cell rather than an embryo. The achievement overturns decades of biological assumptions about cell differentiation and demonstrates that the DNA of a fully specialized adult cell retains the information needed to produce a complete organism. Dolly's creation ignites intense ethical debate about human cloning and accelerates research into stem cells, regenerative medicine, and the fundamental mechanisms of genetics.",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Proved that an adult mammalian cell could be reprogrammed to create a genetically identical organism, transforming stem cell and genetic research while sparking global ethical and legal debates over human cloning."
   },
   {
     "id": "taliban-capture-kabul",
@@ -7835,7 +7860,8 @@
     ],
     "description": "The United Kingdom transfers sovereignty over Hong Kong to the People's Republic of China on July 1, ending 156 years of British colonial rule over the territory. Under the principle of 'one country, two systems' negotiated by Deng Xiaoping and Margaret Thatcher, Hong Kong is to retain its capitalist economy, independent judiciary, and civil liberties for fifty years. The handover marks the symbolic end of the British Empire's presence in Asia and is a defining moment in China's national narrative of recovering territories lost during what it calls the 'century of humiliation.'",
     "difficulty": "medium",
-    "importance": 7
+    "importance": 7,
+    "significance": "Ended over a century and a half of British colonial rule in Hong Kong and placed the territory under Chinese sovereignty under the one country, two systems framework, testing the coexistence of local civil liberties and Beijing's political authority."
   },
   {
     "id": "pokhran-nuclear-tests",
@@ -8447,7 +8473,8 @@
     ],
     "description": "A novel coronavirus identified in Wuhan, China spreads globally to become a devastating pandemic that kills millions, halts economies, and transforms daily life worldwide. The crisis accelerates vaccine development using mRNA technology and triggers profound debates about public health, inequality, and global preparedness.",
     "difficulty": "easy",
-    "importance": 5
+    "importance": 5,
+    "significance": "Caused millions of deaths and severe global economic disruption, brought the first approved mRNA vaccines, and accelerated remote work and digital commerce, while straining health systems and deepening debates over public health mandates and supply chains."
   },
   {
     "id": "chandrayaan-3-lunar-landing",
