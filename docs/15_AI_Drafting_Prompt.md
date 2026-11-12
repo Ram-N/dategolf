@@ -6,11 +6,11 @@
 
 ## Part A: how you use it (Ram)
 
-1. **Make the reference file:** `uv run python tools/manage.py ai-reference`. It writes `data/drafts/ai_reference.md`: the allowed values, the **gap list** (with numbers), and every existing event and span id. Regenerate it before each session, because it changes as data is added.
+1. **Make the files:** `uv run python tools/manage.py ai-reference`. It writes `data/drafts/ai_prompt.txt` (Part B below, ready to paste) and `data/drafts/ai_reference.md`: the allowed values, the **gap list** (with numbers), and every existing event and span id. Regenerate it before each session, because it changes as data is added.
 2. **Brief the AI:**
-   - Paste **Part B** as its system prompt (or as the first message).
+   - Paste **`ai_prompt.txt`** (Part B) as its system prompt (or as the first message).
    - **Attach `ai_reference.md`**.
-   - Give it a task (examples in Part C), e.g. *"Draft gap items 1, 2 and 3."*
+   - Give it a task (examples in Part C; the significance backfill tasks are in `data/drafts/significance_tasks.md`), e.g. *"Draft gap items 1, 2 and 3."*
 3. **Save its reply** as `data/drafts/incoming/<date>_<ai>_<topic>.json`, e.g. `2026-11-11_gemini_mughals.json`. Code fences in the reply are fine; the checker strips them.
 4. **Check it:** `uv run python tools/manage.py check-drafts <file>` (or ask Claude).
    - **✗ errors** must be fixed. Paste them back to the AI ("fix these and resend the whole JSON").
