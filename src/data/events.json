@@ -25,7 +25,7 @@
   },
   {
     "id": "sumerian-writing",
-    "name": "Invention of Sumerian Writing",
+    "name": "Cuneiform Writing Emerges in Sumer",
     "year": -3200,
     "categories": [
       "Culture",
@@ -36,9 +36,10 @@
       "cuneiform writing",
       "Mesopotamia writing",
       "oldest writing system",
-      "Uruk tablets"
+      "Uruk tablets",
+      "Invention of Sumerian Writing"
     ],
-    "description": "The Sumerians of ancient Mesopotamia develop cuneiform, the world's earliest writing system, initially used for recording trade transactions on clay tablets. This invention enables the transmission of complex knowledge, law, and literature across generations and marks the beginning of recorded history.",
+    "description": "The Sumerians of ancient Mesopotamia develop cuneiform, one of the world's earliest writing systems, initially used for recording trade transactions on clay tablets. This invention enables the transmission of complex knowledge, law, and literature across generations and marks the beginning of recorded history.",
     "difficulty": "easy",
     "importance": 5,
     "approximate": true,
@@ -70,7 +71,7 @@
   },
   {
     "id": "indus-valley-begins",
-    "name": "Indus Valley Civilization Begins",
+    "name": "Indus Valley Cities Enter Their Mature Phase",
     "year": -2600,
     "categories": [
       "Culture",
@@ -81,9 +82,10 @@
       "Harappan civilization",
       "Mohenjo-daro",
       "Harappa",
-      "IVC"
+      "IVC",
+      "Indus Valley Civilization Begins"
     ],
-    "description": "One of the world's earliest urban civilizations emerges in the Indus River valley, featuring advanced city planning, drainage systems, and trade networks. Cities like Mohenjo-daro and Harappa flourish with populations in the tens of thousands.",
+    "description": "One of the world's earliest urban civilizations reaches its mature phase in the Indus River valley, featuring advanced city planning, drainage systems, and trade networks. Cities like Mohenjo-daro and Harappa flourish with populations in the tens of thousands.",
     "difficulty": "medium",
     "importance": 5,
     "approximate": true,
@@ -113,7 +115,7 @@
   },
   {
     "id": "code-of-hammurabi",
-    "name": "Code of Hammurabi Established",
+    "name": "Hammurabi Issues His Law Code",
     "year": -1754,
     "categories": [
       "Politics",
@@ -124,9 +126,10 @@
       "Babylonian law",
       "Hammurabi laws",
       "eye for an eye",
-      "ancient law code"
+      "ancient law code",
+      "Code of Hammurabi Established"
     ],
-    "description": "Babylonian king Hammurabi promulgates one of the earliest and most complete written legal codes, covering commerce, property, family, and criminal law. The code, inscribed on a stone stele, introduces the principle of presumption of innocence and establishes the idea of law as a public institution.",
+    "description": "Babylonian king Hammurabi promulgates one of the earliest and most complete written legal codes, covering commerce, property, family, and criminal law. Inscribed on stone stelae for all to see, it presents law as a public standard set by the king.",
     "difficulty": "medium",
     "importance": 4,
     "approximate": true,
@@ -158,7 +161,7 @@
   },
   {
     "id": "phoenician-alphabet-invented",
-    "name": "Phoenician Alphabet Invented",
+    "name": "Phoenician Alphabet Emerges",
     "year": -1050,
     "categories": [
       "Culture",
@@ -171,7 +174,8 @@
       "Canaanite alphabet",
       "Proto-Sinaitic script",
       "writing system",
-      "consonantal alphabet"
+      "consonantal alphabet",
+      "Phoenician Alphabet Invented"
     ],
     "description": "The Phoenicians develop the first widely used alphabetic writing system, consisting of 22 consonant letters derived from earlier Semitic scripts used in the Sinai Peninsula. Unlike the complex syllabic systems of Mesopotamia and Egypt, the alphabet's simplicity allows merchants and administrators to learn it rapidly, and it spreads across the Mediterranean world through Phoenician trade networks. Nearly all modern alphabets, including Greek, Latin, Arabic, and Hebrew, descend from this Phoenician innovation.",
     "difficulty": "hard",
@@ -225,7 +229,7 @@
   },
   {
     "id": "greek-olympics-ancient",
-    "name": "Ancient Olympic Games Established",
+    "name": "First Recorded Olympic Games",
     "year": -776,
     "categories": [
       "Sports",
@@ -237,9 +241,10 @@
       "Olympia games",
       "Greek athletics",
       "ancient Greece sports",
-      "Zeus festival"
+      "Zeus festival",
+      "Ancient Olympic Games Established"
     ],
-    "description": "The ancient Olympic Games are held for the first time at Olympia in ancient Greece as a religious festival honoring Zeus, featuring athletic and chariot racing competitions. The games are held every four years for over a millennium and become the inspiration for the modern Olympic movement.",
+    "description": "The first recorded Olympic Games are held at Olympia in ancient Greece as a religious festival honoring Zeus, featuring athletic and chariot racing competitions. The games are held every four years for over a millennium and become the inspiration for the modern Olympic movement.",
     "difficulty": "easy",
     "importance": 4
   },
@@ -454,7 +459,7 @@
   },
   {
     "id": "hippocrates-medicine",
-    "name": "Hippocrates Founds Rational Medicine",
+    "name": "Hippocratic Medicine Emerges in Greece",
     "year": -400,
     "categories": [
       "Medicine",
@@ -465,9 +470,10 @@
       "Father of Medicine",
       "Greek medicine",
       "Hippocratic oath",
-      "scientific medicine begins"
+      "scientific medicine begins",
+      "Hippocrates Founds Rational Medicine"
     ],
-    "description": "Hippocrates of Kos establishes medicine as a rational discipline separate from superstition and religion, emphasizing observation, diagnosis, and prognosis. His approach, recorded in the Hippocratic Corpus, forms the foundation of Western medical practice, and the Hippocratic Oath remains a touchstone of medical ethics.",
+    "description": "Hippocrates of Kos and his followers establish medicine as a rational discipline separate from superstition and religion, emphasizing observation, diagnosis, and prognosis. His approach, recorded in the Hippocratic Corpus, forms the foundation of Western medical practice, and the Hippocratic Oath remains a touchstone of medical ethics.",
     "difficulty": "medium",
     "importance": 4
   },
@@ -668,7 +674,7 @@
   },
   {
     "id": "punic-wars",
-    "name": "Punic Wars Between Rome and Carthage",
+    "name": "First Punic War Begins",
     "year": -264,
     "categories": [
       "War",
@@ -679,7 +685,8 @@
       "Hannibal Alps",
       "Carthage Rome war",
       "Third Punic War",
-      "Scipio Africanus"
+      "Scipio Africanus",
+      "Punic Wars Between Rome and Carthage"
     ],
     "description": "Rome and the North African city-state of Carthage fight three devastating wars over more than a century for dominance of the western Mediterranean. The wars culminate in the complete destruction of Carthage and establish Rome as the unchallenged master of the Mediterranean world.",
     "difficulty": "medium",
@@ -744,7 +751,7 @@
   },
   {
     "id": "great-wall-china",
-    "name": "Construction of the Great Wall of China Begins",
+    "name": "Qin Shi Huang Links the Great Wall",
     "year": -215,
     "categories": [
       "Technology",
@@ -756,7 +763,8 @@
       "Chinese wall built",
       "Qin wall",
       "northern frontier wall",
-      "world's longest wall"
+      "world's longest wall",
+      "Construction of the Great Wall of China Begins"
     ],
     "description": "Emperor Qin Shi Huangdi orders the connection and extension of existing northern walls to create a unified defensive barrier against nomadic invasions. The Great Wall, extended and rebuilt by successive dynasties especially the Ming, becomes one of history's greatest engineering achievements.",
     "difficulty": "easy",
@@ -782,7 +790,7 @@
   },
   {
     "id": "silk-road-opens",
-    "name": "Silk Road Trade Route Opens",
+    "name": "Han China Opens Trade Routes to Central Asia",
     "year": -130,
     "categories": [
       "Economy",
@@ -794,7 +802,8 @@
       "Han dynasty trade",
       "China trade routes",
       "spice route",
-      "Zhang Qian expedition"
+      "Zhang Qian expedition",
+      "Silk Road Trade Route Opens"
     ],
     "description": "Han dynasty emperor Wudi sends envoy Zhang Qian westward, opening sustained trade connections between China, Central Asia, and eventually the Mediterranean world. The Silk Road carries not only silk and spices but ideas, religions, technologies, and diseases across continents for centuries.",
     "difficulty": "medium",
@@ -1060,7 +1069,7 @@
   },
   {
     "id": "maya-classic-period",
-    "name": "Maya Classic Period",
+    "name": "Maya Classic Period Begins",
     "year": 250,
     "categories": [
       "Culture",
@@ -1073,7 +1082,8 @@
       "Mayan pyramids",
       "Mayan calendar",
       "Tikal Palenque",
-      "Mesoamerica"
+      "Mesoamerica",
+      "Maya Classic Period"
     ],
     "description": "The Maya civilization enters its Classic Period, building monumental city-states like Tikal and Palenque with sophisticated writing, calendars, and astronomical observations. Maya mathematics independently develops the concept of zero and their calendar system achieves remarkable precision.",
     "difficulty": "medium",
@@ -1099,7 +1109,7 @@
   },
   {
     "id": "christianity-roman-empire",
-    "name": "Edict of Milan: Christianity Legalized",
+    "name": "Edict of Milan Grants Christians Toleration",
     "year": 313,
     "categories": [
       "Religion",
@@ -1110,7 +1120,8 @@
       "Constantine Christianity",
       "Edict of Milan",
       "Roman Christianity",
-      "persecution ends Christians"
+      "persecution ends Christians",
+      "Edict of Milan: Christianity Legalized"
     ],
     "description": "Emperor Constantine issues the Edict of Milan, legalizing Christianity throughout the Roman Empire and ending decades of persecution of Christians. Constantine's personal conversion and this decree set in motion the transformation of the Roman Empire into a Christian state.",
     "difficulty": "medium",
@@ -1272,7 +1283,7 @@
   },
   {
     "id": "benedictine-order-founded",
-    "name": "Founding of the Benedictine Order",
+    "name": "Benedict Founds Monte Cassino",
     "year": 529,
     "categories": [
       "Religion"
@@ -1282,7 +1293,8 @@
       "Monte Cassino",
       "Rule of Saint Benedict",
       "Benedict of Nursia",
-      "Western monasticism"
+      "Western monasticism",
+      "Founding of the Benedictine Order"
     ],
     "description": "Benedict of Nursia establishes the monastery of Monte Cassino in Italy, where he writes the Rule that becomes the model for Western monastic life. Benedictine monasteries go on to preserve learning and shape religious life across medieval Europe.",
     "difficulty": "hard",
@@ -1367,7 +1379,7 @@
   },
   {
     "id": "invention-of-zero",
-    "name": "Invention of Zero in India",
+    "name": "Brahmagupta Sets Out the Rules for Zero",
     "year": 628,
     "categories": [
       "Science"
@@ -1377,7 +1389,8 @@
       "Brahmagupta zero",
       "Indian mathematics zero",
       "numeral system zero",
-      "place value system"
+      "place value system",
+      "Invention of Zero in India"
     ],
     "description": "Indian mathematician Brahmagupta formalizes the rules for arithmetic operations involving zero in his work Brahmasphutasiddhanta, treating zero as a number in its own right for the first time. This revolutionary concept, combined with the Hindu-Arabic numeral system, becomes foundational to all of modern mathematics and computing.",
     "difficulty": "medium",
@@ -1405,7 +1418,7 @@
   },
   {
     "id": "islamic-caliphate-expands",
-    "name": "Islamic Caliphate Expands Across Arabia",
+    "name": "Abu Bakr Becomes the First Caliph",
     "year": 632,
     "categories": [
       "Politics",
@@ -1417,7 +1430,8 @@
       "Rashidun Caliphate",
       "Muslim conquests",
       "early Islamic empire",
-      "Abu Bakr caliph"
+      "Abu Bakr caliph",
+      "Islamic Caliphate Expands Across Arabia"
     ],
     "description": "Following the death of the Prophet Muhammad, Abu Bakr becomes the first caliph and launches military campaigns that rapidly expand Islamic rule across Arabia and beyond. Within a century, the Caliphate stretches from Spain to Central Asia, one of the fastest imperial expansions in history.",
     "difficulty": "medium",
@@ -1443,7 +1457,7 @@
   },
   {
     "id": "moors-invade-spain",
-    "name": "Moors Invade Spain",
+    "name": "Umayyad Conquest of Hispania Begins",
     "year": 711,
     "categories": [
       "War",
@@ -1457,7 +1471,8 @@
       "Muslim conquest Iberia",
       "Al-Andalus",
       "Reconquista begins",
-      "Gibraltar name origin"
+      "Gibraltar name origin",
+      "Moors Invade Spain"
     ],
     "description": "A Muslim army under Tariq ibn Ziyad crosses the Strait of Gibraltar — a name derived from 'Jabal al-Tariq,' or 'Rock of Tariq' — and defeats the Visigothic King Roderic, rapidly overrunning most of the Iberian Peninsula. The resulting Muslim territory of Al-Andalus becomes a center of Islamic culture, science, and philosophy, transmitting Greek and Arabic knowledge to medieval Europe through translations in Toledo and Cordoba. The Moorish presence in Spain lasts nearly eight centuries until the final Reconquista in 1492.",
     "difficulty": "medium",
@@ -1544,7 +1559,7 @@
   },
   {
     "id": "viking-raids-begin",
-    "name": "Viking Age Begins",
+    "name": "Vikings Raid Lindisfarne",
     "year": 793,
     "categories": [
       "War",
@@ -1555,7 +1570,8 @@
       "Norse raids",
       "Lindisfarne raid",
       "Viking expansion",
-      "Norsemen"
+      "Norsemen",
+      "Viking Age Begins"
     ],
     "description": "Norse warriors raid the monastery of Lindisfarne on the English coast in one of the first recorded Viking attacks, inaugurating the Viking Age. Over the following centuries, Norsemen range from Newfoundland to Russia, Constantinople to North Africa, as traders, settlers, and raiders reshaping European history.",
     "difficulty": "medium",
@@ -1563,7 +1579,7 @@
   },
   {
     "id": "charlemagne-crowned-emperor",
-    "name": "Charlemagne Crowned Holy Roman Emperor",
+    "name": "Charlemagne Crowned Emperor in Rome",
     "year": 800,
     "categories": [
       "Politics",
@@ -1574,9 +1590,10 @@
       "Charles the Great",
       "Pope Leo III",
       "Frankish empire",
-      "Carolingian empire"
+      "Carolingian empire",
+      "Charlemagne Crowned Holy Roman Emperor"
     ],
-    "description": "Pope Leo III crowns Charlemagne, King of the Franks, as Holy Roman Emperor on Christmas Day in St. Peter's Basilica, creating a new imperial power in Western Europe. Charlemagne's reign unites much of Western Europe, promotes literacy and education, and shapes the political and cultural identity of medieval Europe.",
+    "description": "Pope Leo III crowns Charlemagne, King of the Franks, as Emperor of the Romans on Christmas Day in St. Peter's Basilica, creating a new imperial power in Western Europe. Charlemagne's reign unites much of Western Europe, promotes literacy and education, and shapes the political and cultural identity of medieval Europe.",
     "difficulty": "medium",
     "importance": 4
   },
@@ -1642,7 +1659,7 @@
   },
   {
     "id": "chola-rajaraja-peak",
-    "name": "Chola Dynasty Reaches Its Peak",
+    "name": "Rajaraja I Becomes Chola King",
     "year": 985,
     "categories": [
       "Politics",
@@ -1653,7 +1670,8 @@
       "Rajaraja Chola",
       "Chola empire",
       "Brihadeeswarar temple",
-      "Tamil kingdoms"
+      "Tamil kingdoms",
+      "Chola Dynasty Reaches Its Peak"
     ],
     "description": "Rajaraja I ascends to the Chola throne and expands the dynasty into a maritime empire dominating South India and parts of Southeast Asia. He commissions the great Brihadeeswarar temple at Thanjavur, a masterpiece of Dravidian architecture.",
     "difficulty": "medium",
@@ -1923,7 +1941,7 @@
   },
   {
     "id": "magna-carta",
-    "name": "Magna Carta Signed",
+    "name": "King John Seals Magna Carta",
     "year": 1215,
     "categories": [
       "Politics",
@@ -1934,7 +1952,8 @@
       "King John Magna Carta",
       "Great Charter",
       "English barons rights",
-      "rule of law origin"
+      "rule of law origin",
+      "Magna Carta Signed"
     ],
     "description": "English King John is forced by rebellious barons to seal the Magna Carta at Runnymede, establishing for the first time that the king was subject to the rule of law. The document becomes a cornerstone of constitutional governance and influences legal systems around the world.",
     "difficulty": "easy",
@@ -2037,7 +2056,7 @@
   },
   {
     "id": "muhammad-bin-tughlaq-accession",
-    "name": "Muhammad bin Tughlaq Becomes Sultan",
+    "name": "Muhammad bin Tughlaq Becomes Sultan of Delhi",
     "year": 1325,
     "categories": [
       "Politics"
@@ -2046,7 +2065,8 @@
     "aliases": [
       "Tughlaq dynasty",
       "token currency",
-      "capital moved to Daulatabad"
+      "capital moved to Daulatabad",
+      "Muhammad bin Tughlaq Becomes Sultan"
     ],
     "description": "Muhammad bin Tughlaq becomes sultan of Delhi. A learned but erratic ruler, he is remembered for ambitious schemes that failed, including moving the capital to Daulatabad in the Deccan and issuing a token copper currency.",
     "difficulty": "hard",
@@ -2092,7 +2112,7 @@
   },
   {
     "id": "hundred-years-war",
-    "name": "Hundred Years War",
+    "name": "Hundred Years' War Begins",
     "year": 1337,
     "categories": [
       "War",
@@ -2103,7 +2123,8 @@
       "England France war",
       "Joan of Arc",
       "Agincourt",
-      "Crécy battle"
+      "Crécy battle",
+      "Hundred Years War"
     ],
     "description": "England and France enter a prolonged series of conflicts over the French throne lasting over a century, featuring legendary battles at Crécy and Agincourt and the emergence of Joan of Arc. The war forges distinct French and English national identities and ends with England's expulsion from France.",
     "difficulty": "medium",
@@ -2131,7 +2152,7 @@
   },
   {
     "id": "firuz-shah-tughlaq-accession",
-    "name": "Firuz Shah Tughlaq Becomes Sultan",
+    "name": "Firuz Shah Tughlaq Becomes Sultan of Delhi",
     "year": 1351,
     "categories": [
       "Politics"
@@ -2141,7 +2162,8 @@
       "Feroz Shah",
       "Firoz Shah Tughlaq",
       "Feroz Shah Kotla",
-      "canals of Firuz Shah"
+      "canals of Firuz Shah",
+      "Firuz Shah Tughlaq Becomes Sultan"
     ],
     "description": "Firuz Shah Tughlaq succeeds his cousin Muhammad bin Tughlaq as sultan of Delhi. His long reign is remembered for public works such as canals, new towns and the Feroz Shah Kotla citadel, even as the sultanate's power declines.",
     "difficulty": "hard",
@@ -2207,7 +2229,7 @@
   },
   {
     "id": "zheng-he-voyages",
-    "name": "Zheng He's Great Maritime Voyages",
+    "name": "Zheng He's Treasure Fleet First Sets Sail",
     "year": 1405,
     "categories": [
       "Exploration",
@@ -2218,7 +2240,8 @@
       "Treasure Fleet China",
       "Zheng He admiral",
       "Ming maritime expeditions",
-      "Chinese exploration"
+      "Chinese exploration",
+      "Zheng He's Great Maritime Voyages"
     ],
     "description": "Chinese admiral Zheng He leads the first of seven massive naval expeditions visiting Southeast Asia, India, the Persian Gulf, and the East African coast with a fleet dwarfing contemporary European ships. The voyages showcase Ming China's power and facilitate diplomatic and trade relations across the Indian Ocean world.",
     "difficulty": "medium",
@@ -2226,7 +2249,7 @@
   },
   {
     "id": "age-of-exploration-portugal",
-    "name": "Portugal Opens African Coastal Trade",
+    "name": "Portugal Captures Ceuta",
     "year": 1415,
     "categories": [
       "Exploration",
@@ -2238,7 +2261,8 @@
       "Prince Henry Navigator",
       "Portuguese exploration Africa",
       "Ceuta conquest",
-      "maritime exploration begins"
+      "maritime exploration begins",
+      "Portugal Opens African Coastal Trade"
     ],
     "description": "Portugal's conquest of Ceuta and Prince Henry the Navigator's systematic sponsorship of African coastal exploration launches the European Age of Exploration. Portuguese navigators gradually map the West African coast, establishing trade posts and introducing European maritime expansion that will reshape global history.",
     "difficulty": "medium",
@@ -2266,7 +2290,7 @@
   },
   {
     "id": "gutenberg-printing-press",
-    "name": "Gutenberg Invents Printing Press",
+    "name": "Gutenberg Develops His Printing Press",
     "year": 1440,
     "categories": [
       "Technology",
@@ -2277,7 +2301,8 @@
       "movable type printing",
       "Johannes Gutenberg",
       "Gutenberg Bible",
-      "printing revolution"
+      "printing revolution",
+      "Gutenberg Invents Printing Press"
     ],
     "description": "Johannes Gutenberg develops the movable-type printing press in Mainz, Germany, enabling the mass production of books for the first time in Europe. The invention revolutionizes the spread of knowledge, fuels the Renaissance and Reformation, and is considered one of the most transformative technologies in history.",
     "difficulty": "easy",
@@ -2285,7 +2310,7 @@
   },
   {
     "id": "aztec-empire-peak",
-    "name": "Aztec Empire Reaches Its Peak",
+    "name": "Moctezuma I Becomes Aztec Ruler",
     "year": 1440,
     "categories": [
       "Politics",
@@ -2296,7 +2321,8 @@
       "Tenochtitlan",
       "Mexica empire",
       "Moctezuma",
-      "triple alliance Aztec"
+      "triple alliance Aztec",
+      "Aztec Empire Reaches Its Peak"
     ],
     "description": "Under Moctezuma I, the Aztec Triple Alliance expands rapidly to control much of Mesoamerica, extracting tribute from hundreds of subject peoples. Tenochtitlan, built on an island in Lake Texcoco, becomes one of the largest cities in the world with a population rivaling contemporary European capitals.",
     "difficulty": "medium",
@@ -2341,7 +2367,7 @@
   },
   {
     "id": "renaissance-da-vinci",
-    "name": "Leonardo da Vinci Active",
+    "name": "Leonardo da Vinci's Milan Years",
     "year": 1490,
     "categories": [
       "Arts",
@@ -2353,7 +2379,8 @@
       "da Vinci genius",
       "Vitruvian Man",
       "flying machines Leonardo",
-      "Renaissance man"
+      "Renaissance man",
+      "Leonardo da Vinci Active"
     ],
     "description": "Leonardo da Vinci produces his most celebrated works and notebooks during this period, combining mastery of painting with scientific investigation of anatomy, engineering, and natural phenomena. His breadth of genius — from the Last Supper to designs for flying machines — epitomizes the Renaissance ideal of the universal man.",
     "difficulty": "easy",
@@ -2416,7 +2443,7 @@
   },
   {
     "id": "renaissance-michelangelo",
-    "name": "Michelangelo Paints the Sistine Chapel",
+    "name": "Michelangelo Begins the Sistine Chapel Ceiling",
     "year": 1508,
     "categories": [
       "Arts",
@@ -2427,7 +2454,8 @@
       "Sistine Chapel ceiling",
       "Michelangelo Rome",
       "Vatican art",
-      "Renaissance masterpiece"
+      "Renaissance masterpiece",
+      "Michelangelo Paints the Sistine Chapel"
     ],
     "description": "Michelangelo spends four years painting the iconic ceiling of the Sistine Chapel in the Vatican, depicting scenes from Genesis in an unprecedented display of artistic mastery and physical endurance. The work, including the famous 'Creation of Adam,' stands as one of the supreme achievements of Western art.",
     "difficulty": "easy",
@@ -2476,7 +2504,7 @@
   },
   {
     "id": "magellan-circumnavigation",
-    "name": "First Circumnavigation of the Globe",
+    "name": "Magellan Expedition Sets Sail",
     "year": 1519,
     "categories": [
       "Exploration",
@@ -2487,9 +2515,10 @@
       "Magellan circumnavigation",
       "Ferdinand Magellan",
       "round the world voyage",
-      "Sebastian Elcano"
+      "Sebastian Elcano",
+      "First Circumnavigation of the Globe"
     ],
-    "description": "Ferdinand Magellan leads an expedition that becomes the first to circumnavigate the globe, though Magellan himself is killed in the Philippines. The voyage, completed by Sebastian Elcano, definitively proves the spherical nature of Earth and vastly expands European geographic knowledge.",
+    "description": "Ferdinand Magellan leads an expedition that becomes the first to circumnavigate the globe, though Magellan himself is killed in the Philippines. The voyage, completed by Sebastian Elcano, reveals the vast size of the Pacific and expands European geographic knowledge.",
     "difficulty": "easy",
     "importance": 5
   },
@@ -2567,7 +2596,7 @@
   },
   {
     "id": "conquest-of-peru-inca",
-    "name": "Spanish Conquest of the Inca Empire",
+    "name": "Pizarro Captures Atahualpa",
     "year": 1532,
     "categories": [
       "War",
@@ -2579,7 +2608,8 @@
       "Pizarro conquers Inca",
       "Francisco Pizarro",
       "Atahualpa captured",
-      "fall of Cusco"
+      "fall of Cusco",
+      "Spanish Conquest of the Inca Empire"
     ],
     "description": "Francisco Pizarro and a small band of Spanish conquistadors capture and eventually execute the Inca emperor Atahualpa, initiating the conquest of the Inca Empire in South America. Disease and internal divisions help the Spanish rapidly dismantle one of history's largest and most sophisticated empires.",
     "difficulty": "medium",
@@ -2777,7 +2807,7 @@
   },
   {
     "id": "renaissance-shakespeare",
-    "name": "Shakespeare Writes His Greatest Works",
+    "name": "Shakespeare Writes Hamlet",
     "year": 1600,
     "categories": [
       "Arts",
@@ -2788,7 +2818,8 @@
       "Hamlet Macbeth Othello",
       "Globe Theatre",
       "Elizabethan drama",
-      "English literature peak"
+      "English literature peak",
+      "Shakespeare Writes His Greatest Works"
     ],
     "description": "William Shakespeare writes his greatest tragedies including Hamlet, Othello, King Lear, and Macbeth during the height of his creative powers. His works explore the full range of human experience with unparalleled psychological depth and linguistic richness, shaping the English language and world literature.",
     "difficulty": "easy",
@@ -2796,7 +2827,7 @@
   },
   {
     "id": "east-india-company-founded",
-    "name": "East India Company Founded",
+    "name": "English East India Company Founded",
     "year": 1600,
     "categories": [
       "Economy",
@@ -2811,7 +2842,8 @@
       "English East India Company",
       "royal charter",
       "colonial trade company",
-      "Company Raj"
+      "Company Raj",
+      "East India Company Founded"
     ],
     "description": "Queen Elizabeth I grants a royal charter to the East India Company, giving it a monopoly on English trade with the East Indies and the power to wage war and make treaties. Initially focused on spices and textiles, the company gradually transforms into a political and military power, eventually governing large swaths of South Asia directly on behalf of the British Crown. The East India Company becomes the world's most powerful private enterprise and the primary instrument of British colonialism in Asia, ruling India for over 250 years.",
     "difficulty": "medium",
@@ -2892,7 +2924,7 @@
   },
   {
     "id": "kepler-laws-planetary-motion",
-    "name": "Kepler Publishes His Laws of Planetary Motion",
+    "name": "Kepler Publishes His First Laws of Planetary Motion",
     "year": 1609,
     "categories": [
       "Science"
@@ -2902,7 +2934,8 @@
       "Johannes Kepler",
       "Astronomia nova",
       "elliptical orbits",
-      "planetary motion laws"
+      "planetary motion laws",
+      "Kepler Publishes His Laws of Planetary Motion"
     ],
     "description": "Johannes Kepler publishes Astronomia nova, showing that the planets move in ellipses rather than perfect circles and sweep out equal areas in equal times. His laws, completed by a third a decade later, lay the foundation for Newton's theory of gravity.",
     "difficulty": "medium",
@@ -2929,7 +2962,7 @@
   },
   {
     "id": "thirty-years-war",
-    "name": "Thirty Years War Begins",
+    "name": "Thirty Years' War Begins",
     "year": 1618,
     "categories": [
       "War",
@@ -2941,7 +2974,8 @@
       "European religious war",
       "Westphalia",
       "Habsburg conflict",
-      "German war"
+      "German war",
+      "Thirty Years War Begins"
     ],
     "description": "A conflict beginning with a Protestant rebellion in Bohemia draws most of Europe's major powers into a devastating war fought primarily on German soil. The war, ending three decades later with the Peace of Westphalia, reshapes the European political order, establishes state sovereignty, and kills millions.",
     "difficulty": "hard",
@@ -3040,7 +3074,7 @@
   },
   {
     "id": "english-civil-war",
-    "name": "English Civil War",
+    "name": "English Civil War Begins",
     "year": 1642,
     "categories": [
       "War",
@@ -3051,7 +3085,8 @@
       "Cromwell Parliament",
       "Royalists Roundheads",
       "Charles I war",
-      "Parliamentarians"
+      "Parliamentarians",
+      "English Civil War"
     ],
     "description": "Conflict between King Charles I and Parliament erupts into civil war, with Oliver Cromwell's New Model Army defeating royalist forces. The war leads to the execution of Charles I, the short-lived Commonwealth republic, and ultimately establishes the principle of parliamentary sovereignty in England.",
     "difficulty": "medium",
@@ -3252,7 +3287,7 @@
   },
   {
     "id": "newton-laws-of-motion",
-    "name": "Newton Publishes Laws of Motion",
+    "name": "Newton Publishes the Principia",
     "year": 1687,
     "categories": [
       "Science"
@@ -3262,7 +3297,8 @@
       "Principia Mathematica",
       "Isaac Newton",
       "gravity law",
-      "classical mechanics"
+      "classical mechanics",
+      "Newton Publishes Laws of Motion"
     ],
     "description": "Isaac Newton publishes Principia Mathematica, laying out his three laws of motion and universal law of gravitation, unifying terrestrial and celestial mechanics. This monumental work forms the foundation of classical physics and remains one of the most influential scientific texts ever written.",
     "difficulty": "easy",
@@ -3307,7 +3343,7 @@
   },
   {
     "id": "mughal-empire-zenith-aurangzeb",
-    "name": "Mughal Empire Reaches Maximum Extent",
+    "name": "Death of Aurangzeb",
     "year": 1707,
     "categories": [
       "Politics",
@@ -3318,7 +3354,8 @@
       "Aurangzeb Mughal",
       "Mughal peak territory",
       "Deccan campaigns",
-      "Mughal decline begins"
+      "Mughal decline begins",
+      "Mughal Empire Reaches Maximum Extent"
     ],
     "description": "Emperor Aurangzeb's death marks both the maximum territorial extent of the Mughal Empire and the beginning of its rapid decline. His costly Deccan campaigns, religious intolerance, and the power of regional rulers exhaust the empire's resources and trigger the fragmentation that allows the British East India Company to expand.",
     "difficulty": "hard",
@@ -3501,7 +3538,7 @@
   },
   {
     "id": "east-india-company-bengal",
-    "name": "East India Company Assumes Control of Bengal",
+    "name": "East India Company Gains the Diwani of Bengal",
     "year": 1765,
     "categories": [
       "Politics",
@@ -3512,7 +3549,8 @@
       "Diwani rights",
       "British Bengal",
       "Company Raj",
-      "Treaty of Allahabad"
+      "Treaty of Allahabad",
+      "East India Company Assumes Control of Bengal"
     ],
     "description": "The British East India Company receives the Diwani rights — the right to collect revenue from Bengal, Bihar, and Orissa — through the Treaty of Allahabad. This marks a decisive shift from a trading company to a governing power controlling vast territories.",
     "difficulty": "medium",
@@ -3576,7 +3614,7 @@
   },
   {
     "id": "opium-trade-china-east-india",
-    "name": "British East India Company Begins Opium Trade",
+    "name": "East India Company Takes Over Bengal's Opium",
     "year": 1773,
     "categories": [
       "Economy",
@@ -3588,7 +3626,8 @@
       "Bengal opium China",
       "British opium trade",
       "drug trade imperialism",
-      "China opium import"
+      "China opium import",
+      "British East India Company Begins Opium Trade"
     ],
     "description": "The British East India Company establishes a monopoly on opium production in Bengal and begins exporting it to China, creating a highly profitable trade that generates millions of addicts. The resulting trade imbalance and Chinese attempts to suppress the trade lead to the Opium Wars.",
     "difficulty": "hard",
@@ -3616,7 +3655,7 @@
   },
   {
     "id": "american-declaration",
-    "name": "Declaration of Independence Signed",
+    "name": "Declaration of Independence Adopted",
     "year": 1776,
     "categories": [
       "Politics",
@@ -3627,7 +3666,8 @@
       "US independence",
       "Thomas Jefferson",
       "Fourth of July",
-      "Philadelphia declaration"
+      "Philadelphia declaration",
+      "Declaration of Independence Signed"
     ],
     "description": "The Continental Congress adopts the Declaration of Independence, drafted primarily by Thomas Jefferson, proclaiming the thirteen colonies' separation from Britain and articulating the Enlightenment principles of natural rights and government by consent. The document becomes one of history's most influential political texts.",
     "difficulty": "easy",
@@ -3712,7 +3752,7 @@
   },
   {
     "id": "french-revolution",
-    "name": "French Revolution",
+    "name": "French Revolution Begins",
     "year": 1789,
     "categories": [
       "Politics",
@@ -3724,7 +3764,8 @@
       "Bastille stormed",
       "Liberty Equality Fraternity",
       "Reign of Terror",
-      "Louis XVI overthrown"
+      "Louis XVI overthrown",
+      "French Revolution"
     ],
     "description": "The French monarchy is overthrown in a sweeping revolution driven by Enlightenment ideals of liberty and equality, leading to radical political transformation, the execution of the king, and a Reign of Terror. The revolution reverberates across Europe and reshapes modern political thought around liberty, nationalism, and democracy.",
     "difficulty": "easy",
@@ -3810,7 +3851,7 @@
   },
   {
     "id": "first-vaccine-smallpox",
-    "name": "Smallpox Vaccine Invented",
+    "name": "Jenner Tests the First Smallpox Vaccine",
     "year": 1796,
     "categories": [
       "Medicine",
@@ -3821,7 +3862,8 @@
       "Edward Jenner vaccine",
       "cowpox vaccine",
       "first vaccination",
-      "immunity against smallpox"
+      "immunity against smallpox",
+      "Smallpox Vaccine Invented"
     ],
     "description": "Edward Jenner demonstrates that inoculation with cowpox material protects against smallpox, developing the world's first vaccine. His discovery saves hundreds of millions of lives and establishes the principle of vaccination that underlies all modern immunology.",
     "difficulty": "easy",
@@ -3868,7 +3910,7 @@
   },
   {
     "id": "lewis-and-clark-expedition",
-    "name": "Lewis and Clark Expedition",
+    "name": "Lewis and Clark Expedition Sets Out",
     "year": 1804,
     "categories": [
       "Exploration"
@@ -3879,7 +3921,8 @@
       "Meriwether Lewis",
       "William Clark",
       "Sacagawea",
-      "exploring the Louisiana Purchase"
+      "exploring the Louisiana Purchase",
+      "Lewis and Clark Expedition"
     ],
     "description": "Meriwether Lewis and William Clark lead the Corps of Discovery up the Missouri River and across the Rocky Mountains to the Pacific coast, guided in part by the Shoshone woman Sacagawea. The expedition maps newly acquired western lands and strengthens American claims to the Pacific Northwest.",
     "difficulty": "easy",
@@ -3926,7 +3969,7 @@
   },
   {
     "id": "latin-american-independence",
-    "name": "Latin American Independence Movements",
+    "name": "Latin American Wars of Independence Begin",
     "year": 1810,
     "categories": [
       "Politics",
@@ -3938,7 +3981,8 @@
       "Simon Bolivar",
       "independence Latin America",
       "Spanish colonies independence",
-      "Jose de San Martin"
+      "Jose de San Martin",
+      "Latin American Independence Movements"
     ],
     "description": "Inspired by the American and French revolutions and weakened Spanish imperial control, independence movements erupt across Latin America. Led by figures like Simón Bolívar and José de San Martín, most of Spanish America achieves independence over the following two decades, fundamentally redrawing the political map.",
     "difficulty": "medium",
@@ -3965,7 +4009,7 @@
   },
   {
     "id": "greek-independence",
-    "name": "Greek War of Independence",
+    "name": "Greek War of Independence Begins",
     "year": 1821,
     "categories": [
       "War",
@@ -3976,7 +4020,8 @@
       "Greece vs Ottoman",
       "Greek revolution",
       "Lord Byron Greece",
-      "Hellenic independence"
+      "Hellenic independence",
+      "Greek War of Independence"
     ],
     "description": "Greek patriots launch a war of independence against Ottoman rule, drawing romanticist support from Europe and eventually winning international recognition for an independent Greek state. The struggle inspires nationalist movements across Europe and marks the beginning of the Ottoman Empire's long decline.",
     "difficulty": "medium",
@@ -4022,7 +4067,7 @@
   },
   {
     "id": "indian-removal-act",
-    "name": "Indian Removal Act",
+    "name": "Indian Removal Act Signed into Law",
     "year": 1830,
     "categories": [
       "Politics",
@@ -4033,7 +4078,8 @@
       "Trail of Tears",
       "Andrew Jackson removal policy",
       "forced relocation of Native Americans",
-      "Cherokee removal"
+      "Cherokee removal",
+      "Indian Removal Act"
     ],
     "description": "President Andrew Jackson signs the Indian Removal Act, authorising the forced relocation of Native American nations from the southeastern United States to lands west of the Mississippi. The removals that follow, including the Cherokee 'Trail of Tears', cost thousands of lives.",
     "difficulty": "hard",
@@ -4080,7 +4126,7 @@
   },
   {
     "id": "opium-wars-china",
-    "name": "First Opium War",
+    "name": "First Opium War Begins",
     "year": 1839,
     "categories": [
       "War",
@@ -4091,7 +4137,8 @@
       "China Britain war opium",
       "Canton trade conflict",
       "Treaty of Nanking",
-      "unequal treaties China"
+      "unequal treaties China",
+      "First Opium War"
     ],
     "description": "Britain goes to war against China after the Chinese government attempts to stop the lucrative British opium trade, decisively defeating the Qing forces. The resulting Treaty of Nanking forces China to cede Hong Kong and open ports to trade, beginning a century of humiliation for China.",
     "difficulty": "medium",
@@ -4118,7 +4165,7 @@
   },
   {
     "id": "first-use-of-anesthesia",
-    "name": "First Use of Surgical Anesthesia",
+    "name": "Horace Wells Pioneers Anesthesia with Nitrous Oxide",
     "year": 1844,
     "categories": [
       "Science"
@@ -4130,7 +4177,8 @@
       "Crawford Long ether",
       "painless surgery",
       "anesthetic invented",
-      "surgical revolution"
+      "surgical revolution",
+      "First Use of Surgical Anesthesia"
     ],
     "description": "American dentist Horace Wells pioneers the use of nitrous oxide for tooth extraction without pain, and within two years William Morton's public demonstration of ether anesthesia at Massachusetts General Hospital confirms and spreads the breakthrough worldwide. The ability to render patients unconscious during operations transforms surgery from an ordeal of conscious agony — endured as briefly as possible — into a methodical, precise discipline. Anesthesia is widely regarded as one of the greatest gifts of medicine, enabling procedures that save countless millions of lives.",
     "difficulty": "medium",
@@ -4159,7 +4207,7 @@
   },
   {
     "id": "crimean-war",
-    "name": "Crimean War",
+    "name": "Crimean War Begins",
     "year": 1853,
     "categories": [
       "War"
@@ -4170,7 +4218,8 @@
       "Florence Nightingale",
       "Charge of the Light Brigade",
       "Crimea war",
-      "siege of Sevastopol"
+      "siege of Sevastopol",
+      "Crimean War"
     ],
     "description": "Russia goes to war with the Ottoman Empire over influence in the Holy Land and access to the Black Sea, drawing in Britain, France, and Sardinia on the Ottoman side in the first major European conflict since the Napoleonic Wars. The Crimean War becomes notable for the nursing reforms of Florence Nightingale, which lay the foundations of modern professional nursing, and for the catastrophic Charge of the Light Brigade, immortalized by Tennyson. The war ends Russian expansion toward the Mediterranean and marks the beginning of modern military logistics, journalism, and battlefield medicine.",
     "difficulty": "medium",
@@ -4178,7 +4227,7 @@
   },
   {
     "id": "opium-war-second",
-    "name": "Second Opium War",
+    "name": "Second Opium War Begins",
     "year": 1856,
     "categories": [
       "War",
@@ -4189,7 +4238,8 @@
       "Arrow War",
       "China Britain France war",
       "Peking sacked",
-      "Summer Palace burned"
+      "Summer Palace burned",
+      "Second Opium War"
     ],
     "description": "Britain and France wage a second war against China, ultimately sacking Beijing and burning the Summer Palace, forcing China to sign the Convention of Peking granting further trading concessions. The conflict deepens China's century of humiliation and further weakens the Qing dynasty.",
     "difficulty": "hard",
@@ -4197,7 +4247,7 @@
   },
   {
     "id": "indian-rebellion-1857",
-    "name": "First Indian War of Independence",
+    "name": "Indian Rebellion Against Company Rule Begins",
     "year": 1857,
     "categories": [
       "War",
@@ -4210,7 +4260,8 @@
       "Indian Rebellion",
       "Sepoy uprising",
       "Mangal Pandey",
-      "Rani Laxmibai"
+      "Rani Laxmibai",
+      "First Indian War of Independence"
     ],
     "description": "Indian soldiers in the British East India Company's army mutiny at Meerut, sparking a widespread uprising across northern and central India against British rule. Though the rebellion is eventually suppressed, it leads to the dissolution of the East India Company and direct Crown rule over India.",
     "difficulty": "easy",
@@ -4218,7 +4269,7 @@
   },
   {
     "id": "darwin-evolution",
-    "name": "Darwin Publishes Theory of Evolution",
+    "name": "Darwin Publishes On the Origin of Species",
     "year": 1859,
     "categories": [
       "Science"
@@ -4228,7 +4279,8 @@
       "On the Origin of Species",
       "natural selection",
       "Charles Darwin",
-      "evolution theory"
+      "evolution theory",
+      "Darwin Publishes Theory of Evolution"
     ],
     "description": "Charles Darwin publishes On the Origin of Species, introducing the theory of evolution by natural selection and explaining the diversity of life on Earth through common ancestry. The theory revolutionizes biology and profoundly challenges religious accounts of creation, sparking debate that continues to this day.",
     "difficulty": "easy",
@@ -4257,7 +4309,7 @@
   },
   {
     "id": "american-civil-war",
-    "name": "American Civil War",
+    "name": "American Civil War Begins",
     "year": 1861,
     "categories": [
       "War",
@@ -4270,7 +4322,8 @@
       "US Civil War",
       "Lincoln war",
       "slavery abolition war",
-      "Confederate states"
+      "Confederate states",
+      "American Civil War"
     ],
     "description": "The United States erupts into civil war when eleven Southern states secede over the issue of slavery and form the Confederate States of America. After four years of devastating conflict, the Union is preserved, slavery is abolished through the Thirteenth Amendment, and the nation's social order is fundamentally transformed.",
     "difficulty": "easy",
@@ -4298,7 +4351,7 @@
   },
   {
     "id": "abolition-slavery-us",
-    "name": "Abolition of Slavery in the United States",
+    "name": "Thirteenth Amendment Abolishes US Slavery",
     "year": 1865,
     "categories": [
       "Politics",
@@ -4309,7 +4362,8 @@
       "13th Amendment",
       "Emancipation Proclamation",
       "Lincoln abolish slavery",
-      "end of slavery USA"
+      "end of slavery USA",
+      "Abolition of Slavery in the United States"
     ],
     "description": "The Thirteenth Amendment to the US Constitution is ratified, formally abolishing slavery throughout the United States at the end of the Civil War. The amendment liberates approximately four million enslaved people and begins the complex and often violent process of Reconstruction in the American South.",
     "difficulty": "easy",
@@ -4433,7 +4487,7 @@
   },
   {
     "id": "unification-germany",
-    "name": "German Unification",
+    "name": "German Empire Proclaimed",
     "year": 1871,
     "categories": [
       "Politics",
@@ -4444,7 +4498,8 @@
       "Otto von Bismarck",
       "Franco-Prussian War",
       "Second Reich",
-      "German Empire proclaimed"
+      "German Empire proclaimed",
+      "German Unification"
     ],
     "description": "Otto von Bismarck orchestrates the unification of the German states under Prussian leadership following victory in the Franco-Prussian War, creating the German Empire. The new power fundamentally alters the balance of power in Europe and sets in motion forces that will lead to two world wars.",
     "difficulty": "medium",
@@ -4470,7 +4525,7 @@
   },
   {
     "id": "telephone-invented",
-    "name": "Telephone Invented",
+    "name": "Bell Makes the First Telephone Call",
     "year": 1876,
     "categories": [
       "Technology"
@@ -4480,7 +4535,8 @@
       "Alexander Graham Bell",
       "first telephone call",
       "voice communication technology",
-      "Bell patent"
+      "Bell patent",
+      "Telephone Invented"
     ],
     "description": "Alexander Graham Bell makes the first successful voice telephone call, opening an era of instant long-distance communication. His invention rapidly transforms business, society, and personal relationships across the globe and lays the groundwork for all modern telecommunications.",
     "difficulty": "easy",
@@ -4620,7 +4676,7 @@
   },
   {
     "id": "partition-of-africa-colonial",
-    "name": "Congo Free State Atrocities",
+    "name": "Congo Free State Founded",
     "year": 1885,
     "categories": [
       "Social",
@@ -4632,7 +4688,8 @@
       "Leopold Congo",
       "Belgian Congo atrocities",
       "rubber terror Africa",
-      "Conrad Heart of Darkness"
+      "Conrad Heart of Darkness",
+      "Congo Free State Atrocities"
     ],
     "description": "King Leopold II of Belgium claims the Congo as his personal property and institutes a brutal forced labor system to harvest rubber and ivory, killing an estimated ten million Congolese. The atrocities, exposed by journalists and activists, spark one of history's first international human rights campaigns.",
     "difficulty": "hard",
@@ -4790,7 +4847,7 @@
   },
   {
     "id": "curie-radioactivity",
-    "name": "Marie Curie Discovers Radioactivity Properties",
+    "name": "Curies Discover Polonium and Radium",
     "year": 1898,
     "categories": [
       "Science",
@@ -4801,9 +4858,10 @@
       "Curie radium polonium",
       "radioactivity research",
       "Marie Pierre Curie",
-      "Nobel physics chemistry"
+      "Nobel physics chemistry",
+      "Marie Curie Discovers Radioactivity Properties"
     ],
-    "description": "Marie Curie and her husband Pierre isolate the radioactive elements polonium and radium, pioneering the study of radioactivity and its medical applications. Marie Curie becomes the first woman to win a Nobel Prize and the only person to win it in two different sciences, transforming physics and medicine.",
+    "description": "Marie Curie and her husband Pierre discover the radioactive elements polonium and radium, pioneering the study of radioactivity and its medical applications. Marie Curie becomes the first woman to win a Nobel Prize and the only person to win it in two different sciences, transforming physics and medicine.",
     "difficulty": "easy",
     "importance": 4
   },
@@ -4827,7 +4885,7 @@
   },
   {
     "id": "south-african-boer-war",
-    "name": "South African Boer War",
+    "name": "Second Boer War Begins",
     "year": 1899,
     "categories": [
       "War",
@@ -4838,7 +4896,8 @@
       "Anglo-Boer War",
       "British South Africa war",
       "concentration camps Boers",
-      "Transvaal war"
+      "Transvaal war",
+      "South African Boer War"
     ],
     "description": "Britain goes to war against the Boer republics of the Transvaal and Orange Free State in South Africa to secure control of the gold and diamond fields. The conflict introduces concentration camps to the modern lexicon and results in British annexation of the Boer republics, eventually leading to the Union of South Africa.",
     "difficulty": "medium",
@@ -4883,7 +4942,7 @@
   },
   {
     "id": "suffragette-emmeline-pankhurst",
-    "name": "Women's Suffrage Movement Founded in Britain",
+    "name": "Pankhurst Founds the Women's Social and Political Union",
     "year": 1903,
     "categories": [
       "Social",
@@ -4894,7 +4953,8 @@
       "Emmeline Pankhurst WSPU",
       "Suffragettes Britain",
       "votes for women UK",
-      "women's suffrage movement"
+      "women's suffrage movement",
+      "Women's Suffrage Movement Founded in Britain"
     ],
     "description": "Emmeline Pankhurst founds the Women's Social and Political Union in Britain, pioneering militant tactics including hunger strikes, demonstrations, and property damage in the campaign for women's right to vote. The movement's pressure contributes to women over 30 gaining the vote in Britain fifteen years later.",
     "difficulty": "medium",
@@ -4902,7 +4962,7 @@
   },
   {
     "id": "russo-japanese-war",
-    "name": "Russo-Japanese War",
+    "name": "Russo-Japanese War Begins",
     "year": 1904,
     "categories": [
       "War"
@@ -4914,7 +4974,8 @@
       "Port Arthur siege",
       "Manchuria war",
       "Asian power defeats European",
-      "Japanese victory over Russia"
+      "Japanese victory over Russia",
+      "Russo-Japanese War"
     ],
     "description": "Japan launches a surprise attack on the Russian naval base at Port Arthur, beginning a war that shocks the world when Japan decisively defeats the Russian Empire on both land and sea. The Japanese victory at the Battle of Tsushima — the most decisive naval battle since Trafalgar — is the first major defeat of a European great power by an Asian nation in the modern era. The war accelerates the Russian domestic unrest that erupts in revolution during the war and signals Japan's emergence as a major world power, reshaping the balance of power in Asia.",
     "difficulty": "medium",
@@ -4959,7 +5020,7 @@
   },
   {
     "id": "einstein-relativity",
-    "name": "Einstein Publishes Theory of Relativity",
+    "name": "Einstein Publishes Special Relativity",
     "year": 1905,
     "categories": [
       "Science"
@@ -4970,7 +5031,8 @@
       "special relativity",
       "E=mc2",
       "annus mirabilis",
-      "space time"
+      "space time",
+      "Einstein Publishes Theory of Relativity"
     ],
     "description": "Albert Einstein publishes his Special Theory of Relativity along with three other groundbreaking papers, introducing the famous equation E=mc² and revolutionizing our understanding of space, time, mass, and energy. This miracle year produces discoveries that transform physics and underpin technologies from nuclear energy to GPS.",
     "difficulty": "easy",
@@ -5116,7 +5178,7 @@
   },
   {
     "id": "bolshevik-civil-war",
-    "name": "Russian Civil War",
+    "name": "Russian Civil War Begins",
     "year": 1918,
     "categories": [
       "War",
@@ -5127,7 +5189,8 @@
       "Reds vs Whites",
       "Bolshevik civil war",
       "Soviet consolidation",
-      "Red Army White Army"
+      "Red Army White Army",
+      "Russian Civil War"
     ],
     "description": "Following the Bolshevik Revolution, Russia erupts in a devastating civil war between the Bolshevik Red Army and the anti-Bolshevik White forces supported by foreign interventions. The Bolshevik victory consolidates communist rule and leads to the formation of the Soviet Union a few years later.",
     "difficulty": "medium",
@@ -5174,7 +5237,7 @@
   },
   {
     "id": "non-cooperation-movement",
-    "name": "Non-Cooperation Movement",
+    "name": "Non-Cooperation Movement Launched",
     "year": 1920,
     "categories": [
       "Politics",
@@ -5185,7 +5248,8 @@
       "Gandhi non-cooperation",
       "civil disobedience India",
       "khilafat movement",
-      "satyagraha"
+      "satyagraha",
+      "Non-Cooperation Movement"
     ],
     "description": "Mahatma Gandhi launches the Non-Cooperation Movement, calling on Indians to withdraw from British institutions, return honors, and boycott British goods and courts. It marks the first mass nationalist campaign under Gandhi's leadership and draws millions into the independence struggle.",
     "difficulty": "medium",
@@ -5271,7 +5335,7 @@
   },
   {
     "id": "television-invented",
-    "name": "Television Invented",
+    "name": "Baird Demonstrates Television",
     "year": 1926,
     "categories": [
       "Science",
@@ -5284,7 +5348,8 @@
       "first television demonstration",
       "mechanical television",
       "broadcast television history",
-      "moving image transmission"
+      "moving image transmission",
+      "Television Invented"
     ],
     "description": "Scottish inventor John Logie Baird gives the first public demonstration of a working television system in London, transmitting moving images of human faces using a mechanical scanning system. Though Baird's mechanical approach is soon superseded by all-electronic television developed by Philo Farnsworth and others, his demonstration proves the concept and launches the race to develop broadcasting. Television becomes the dominant mass medium of the twentieth century, reshaping politics, culture, advertising, and daily life across the world.",
     "difficulty": "medium",
@@ -5292,7 +5357,7 @@
   },
   {
     "id": "chinese-civil-war",
-    "name": "Chinese Civil War",
+    "name": "Chinese Civil War Begins",
     "year": 1927,
     "categories": [
       "War",
@@ -5303,7 +5368,8 @@
       "Communists Nationalists China",
       "KMT CCP war",
       "Chiang Kai-shek Mao war",
-      "Taiwan mainland split"
+      "Taiwan mainland split",
+      "Chinese Civil War"
     ],
     "description": "Conflict between Chiang Kai-shek's Nationalist Party and Mao's Communist Party erupts into civil war, interrupted by Japanese invasion before resuming after World War Two. The Communist victory drives the Nationalists to Taiwan and establishes the People's Republic of China.",
     "difficulty": "medium",
@@ -5444,7 +5510,7 @@
   },
   {
     "id": "long-march-china",
-    "name": "The Long March",
+    "name": "Long March Begins",
     "year": 1934,
     "categories": [
       "War",
@@ -5455,7 +5521,8 @@
       "Mao Long March",
       "Chinese Communist retreat",
       "Red Army march",
-      "Yan'an"
+      "Yan'an",
+      "The Long March"
     ],
     "description": "The Chinese Communist Red Army embarks on a strategic retreat of over 6,000 miles through mountainous terrain to escape Nationalist forces, with Mao Zedong emerging as the dominant leader. The Long March becomes a foundational myth of the Chinese Communist Party and a symbol of revolutionary endurance.",
     "difficulty": "medium",
@@ -5463,7 +5530,7 @@
   },
   {
     "id": "rise-of-nazism",
-    "name": "Nazi Party Seizes Control of Germany",
+    "name": "Hitler Becomes Führer",
     "year": 1934,
     "categories": [
       "Politics",
@@ -5474,7 +5541,8 @@
       "Night of Long Knives",
       "Hitler becomes Fuhrer",
       "Third Reich consolidated",
-      "Hindenburg death"
+      "Hindenburg death",
+      "Nazi Party Seizes Control of Germany"
     ],
     "description": "Following President Hindenburg's death, Hitler merges the offices of Chancellor and President to become absolute ruler, or Fuhrer, of Germany, completing the Nazi seizure of power. The consolidation of totalitarian control enables the subsequent persecution of Jews, political opponents, and minorities.",
     "difficulty": "medium",
@@ -5482,7 +5550,7 @@
   },
   {
     "id": "spanish-civil-war",
-    "name": "Spanish Civil War",
+    "name": "Spanish Civil War Begins",
     "year": 1936,
     "categories": [
       "War",
@@ -5493,7 +5561,8 @@
       "Franco Spain",
       "Republicans Nationalists",
       "Guernica bombing",
-      "International Brigades"
+      "International Brigades",
+      "Spanish Civil War"
     ],
     "description": "General Francisco Franco leads a military uprising against the elected Republican government of Spain, triggering a brutal three-year civil war that draws foreign intervention from Nazi Germany, Fascist Italy, and the Soviet Union. Franco's victory establishes a fascist dictatorship and the conflict becomes a rehearsal for World War Two.",
     "difficulty": "medium",
@@ -5617,7 +5686,7 @@
   },
   {
     "id": "manhattan-project",
-    "name": "Manhattan Project Develops Atomic Bomb",
+    "name": "Manhattan Project Begins",
     "year": 1942,
     "categories": [
       "Science",
@@ -5629,7 +5698,8 @@
       "nuclear weapon development",
       "Oppenheimer bomb",
       "Trinity test",
-      "Los Alamos"
+      "Los Alamos",
+      "Manhattan Project Develops Atomic Bomb"
     ],
     "description": "The United States launches the Manhattan Project, a massive secret scientific and engineering effort employing over 130,000 people to develop the world's first nuclear weapons. Led by J. Robert Oppenheimer, the project produces the bombs dropped on Hiroshima and Nagasaki and fundamentally changes warfare and geopolitics.",
     "difficulty": "medium",
@@ -5714,7 +5784,7 @@
   },
   {
     "id": "nuremberg-trials",
-    "name": "Nuremberg Trials",
+    "name": "Nuremberg Trials Begin",
     "year": 1945,
     "categories": [
       "Politics",
@@ -5725,7 +5795,8 @@
       "Nazi war crimes trial",
       "international military tribunal",
       "crimes against humanity",
-      "war crimes court"
+      "war crimes court",
+      "Nuremberg Trials"
     ],
     "description": "Allied powers conduct the Nuremberg Trials, prosecuting Nazi leaders for war crimes, crimes against humanity, and crimes against peace, establishing that individuals can be held accountable under international law. The trials create the legal precedent for subsequent international criminal tribunals and the concept of universal human rights.",
     "difficulty": "medium",
@@ -5770,7 +5841,7 @@
   },
   {
     "id": "indian-independence",
-    "name": "Indian Independence",
+    "name": "India Gains Independence",
     "year": 1947,
     "categories": [
       "Politics",
@@ -5781,7 +5852,8 @@
       "India free",
       "15 August independence",
       "Nehru tryst with destiny",
-      "end of British Raj"
+      "end of British Raj",
+      "Indian Independence"
     ],
     "description": "India gains independence from British rule at midnight on August 15th, with Jawaharlal Nehru delivering his iconic 'Tryst with Destiny' speech. The moment ends nearly two centuries of colonial rule and creates the world's largest democracy.",
     "difficulty": "easy",
@@ -5921,7 +5993,7 @@
   },
   {
     "id": "chinese-communist-revolution",
-    "name": "Chinese Communist Revolution",
+    "name": "People's Republic of China Proclaimed",
     "year": 1949,
     "categories": [
       "Politics",
@@ -5932,7 +6004,8 @@
       "Mao Zedong China",
       "People's Republic of China",
       "Chiang Kai-shek defeated",
-      "Long March outcome"
+      "Long March outcome",
+      "Chinese Communist Revolution"
     ],
     "description": "Mao Zedong proclaims the establishment of the People's Republic of China after the Communist Party defeats Nationalist forces in the civil war. The revolution transforms the world's most populous nation, creating a communist state that becomes a major power and reshapes global geopolitics.",
     "difficulty": "easy",
@@ -5978,7 +6051,7 @@
   },
   {
     "id": "korean-war",
-    "name": "Korean War",
+    "name": "Korean War Begins",
     "year": 1950,
     "categories": [
       "War",
@@ -5989,7 +6062,8 @@
       "North Korea South Korea war",
       "UN forces Korea",
       "forgotten war",
-      "Korean peninsula conflict"
+      "Korean peninsula conflict",
+      "Korean War"
     ],
     "description": "North Korea invades South Korea, drawing in US-led UN forces and later Chinese troops in a conflict that kills millions and ends in a stalemate along the original border. The Korean War establishes the enduring division of the peninsula and becomes the first hot war of the Cold War era.",
     "difficulty": "medium",
@@ -6091,7 +6165,7 @@
   },
   {
     "id": "french-colonial-algeria",
-    "name": "Algerian War of Independence",
+    "name": "Algerian War of Independence Begins",
     "year": 1954,
     "categories": [
       "War",
@@ -6103,7 +6177,8 @@
       "Algeria vs France",
       "FLN independence",
       "French Algeria war",
-      "Algerian revolution"
+      "Algerian revolution",
+      "Algerian War of Independence"
     ],
     "description": "The Algerian National Liberation Front launches an armed insurgency against French colonial rule, beginning an eight-year war that costs an estimated 300,000-1.5 million Algerian lives. Algeria's eventual independence becomes a landmark moment in the global anti-colonial struggle.",
     "difficulty": "medium",
@@ -6187,7 +6262,7 @@
   },
   {
     "id": "mao-great-leap-forward",
-    "name": "Great Leap Forward in China",
+    "name": "Great Leap Forward Launched",
     "year": 1958,
     "categories": [
       "Politics",
@@ -6199,7 +6274,8 @@
       "Mao industrialization",
       "China famine",
       "Steel furnaces China",
-      "collective farming China"
+      "collective farming China",
+      "Great Leap Forward in China"
     ],
     "description": "Mao Zedong launches the Great Leap Forward, a disastrous campaign to rapidly transform China into a communist industrial state through forced collectivization and backyard steel production. The resulting famine kills between 15 and 55 million people, making it the deadliest famine in history.",
     "difficulty": "medium",
@@ -6244,7 +6320,7 @@
   },
   {
     "id": "noyce-silicon-chip",
-    "name": "Noyce Invents the Silicon Chip",
+    "name": "Noyce Invents the Silicon Integrated Circuit",
     "year": 1959,
     "categories": [
       "Technology"
@@ -6255,7 +6331,8 @@
       "monolithic integrated circuit",
       "planar process",
       "Fairchild Semiconductor",
-      "Jean Hoerni"
+      "Jean Hoerni",
+      "Noyce Invents the Silicon Chip"
     ],
     "description": "Robert Noyce of Fairchild Semiconductor independently invents the monolithic integrated circuit in silicon, using Jean Hoerni's planar process to build and connect all the components within one flat chip. The design can be mass-produced and becomes the basis of virtually every microchip since, powering the computer age.",
     "difficulty": "medium",
@@ -6263,7 +6340,7 @@
   },
   {
     "id": "decolonization-africa",
-    "name": "African Decolonization Wave",
+    "name": "Year of Africa: Seventeen Nations Win Independence",
     "year": 1960,
     "categories": [
       "Politics",
@@ -6274,7 +6351,8 @@
       "Year of Africa",
       "African independence",
       "colonialism ends Africa",
-      "17 nations independence"
+      "17 nations independence",
+      "African Decolonization Wave"
     ],
     "description": "Seventeen African nations gain independence from European colonial powers in a single year, accelerating a broader wave of decolonization across the continent. The independence movements reshape the global political order, giving voice to newly sovereign nations in international forums like the United Nations.",
     "difficulty": "medium",
@@ -6417,7 +6495,7 @@
   },
   {
     "id": "south-korea-economic-miracle",
-    "name": "South Korean Economic Miracle",
+    "name": "South Korea Launches Its First Five-Year Plan",
     "year": 1962,
     "categories": [
       "Economy",
@@ -6429,7 +6507,8 @@
       "Han River miracle",
       "Korean industrialization",
       "chaebols South Korea",
-      "Park Chung-hee development"
+      "Park Chung-hee development",
+      "South Korean Economic Miracle"
     ],
     "description": "South Korea launches its first Five-Year Economic Development Plan under President Park Chung-hee, beginning a remarkable transformation from one of the world's poorest countries into a major industrial power within a generation. The 'Miracle on the Han River' becomes a model for rapid export-led development.",
     "difficulty": "hard",
@@ -6437,7 +6516,7 @@
   },
   {
     "id": "martin-luther-king-speech",
-    "name": "Martin Luther King's March on Washington",
+    "name": "King Gives His 'I Have a Dream' Speech",
     "year": 1963,
     "categories": [
       "Social",
@@ -6448,7 +6527,8 @@
       "I Have a Dream speech",
       "MLK Washington march",
       "civil rights march",
-      "Lincoln Memorial speech"
+      "Lincoln Memorial speech",
+      "Martin Luther King's March on Washington"
     ],
     "description": "Martin Luther King Jr. delivers his iconic 'I Have a Dream' speech to 250,000 people at the Lincoln Memorial during the March on Washington for Jobs and Freedom. The speech becomes one of history's most celebrated orations and galvanizes support for the Civil Rights Act.",
     "difficulty": "easy",
@@ -6511,7 +6591,7 @@
   },
   {
     "id": "civil-rights-act-us",
-    "name": "US Civil Rights Act",
+    "name": "US Civil Rights Act Signed",
     "year": 1964,
     "categories": [
       "Politics",
@@ -6522,7 +6602,8 @@
       "Martin Luther King",
       "racial equality US",
       "segregation ended",
-      "Lyndon Johnson civil rights"
+      "Lyndon Johnson civil rights",
+      "US Civil Rights Act"
     ],
     "description": "President Lyndon B. Johnson signs the Civil Rights Act into law, prohibiting discrimination based on race, color, religion, sex, or national origin in the United States. The landmark legislation, championed by the civil rights movement led by Martin Luther King Jr., dismantles the legal infrastructure of racial segregation.",
     "difficulty": "easy",
@@ -6548,7 +6629,7 @@
   },
   {
     "id": "green-revolution-india",
-    "name": "Green Revolution in India",
+    "name": "Green Revolution Begins in India",
     "year": 1965,
     "categories": [
       "Science",
@@ -6560,7 +6641,8 @@
       "M.S. Swaminathan",
       "wheat revolution India",
       "food self-sufficiency India",
-      "high-yield crops"
+      "high-yield crops",
+      "Green Revolution in India"
     ],
     "description": "India undertakes the Green Revolution, introducing high-yielding crop varieties, chemical fertilizers, and irrigation technology that dramatically increases agricultural output. Led by scientists like M.S. Swaminathan, the program transforms India from a food-deficient nation to one capable of feeding itself.",
     "difficulty": "medium",
@@ -6678,7 +6760,7 @@
   },
   {
     "id": "moon-landing",
-    "name": "Moon Landing",
+    "name": "Apollo 11 Lands on the Moon",
     "year": 1969,
     "categories": [
       "Science",
@@ -6691,7 +6773,8 @@
       "Neil Armstrong Moon",
       "one small step",
       "lunar landing",
-      "NASA Moon mission"
+      "NASA Moon mission",
+      "Moon Landing"
     ],
     "description": "NASA astronauts Neil Armstrong and Buzz Aldrin become the first humans to walk on the Moon during the Apollo 11 mission, with Armstrong's words 'one small step for man' broadcast to a global audience. The achievement represents the culmination of the Space Race and a triumph of human exploration.",
     "difficulty": "easy",
@@ -6719,7 +6802,7 @@
   },
   {
     "id": "world-wide-web-invention",
-    "name": "First Email Sent",
+    "name": "First Networked Email Sent",
     "year": 1971,
     "categories": [
       "Technology"
@@ -6729,7 +6812,8 @@
       "Ray Tomlinson email",
       "ARPANET email",
       "first electronic mail",
-      "@ symbol email"
+      "@ symbol email",
+      "First Email Sent"
     ],
     "description": "Ray Tomlinson sends the first networked email between two computers on ARPANET, using the @ symbol to distinguish the user from the host machine. This invention creates one of the world's most widely used forms of communication, transforming business, personal communication, and the flow of information.",
     "difficulty": "hard",
@@ -6737,7 +6821,7 @@
   },
   {
     "id": "oil-crisis-1973",
-    "name": "Oil Crisis of the Middle East",
+    "name": "Arab Oil Embargo Triggers Oil Crisis",
     "year": 1973,
     "categories": [
       "Economy",
@@ -6749,7 +6833,8 @@
       "OPEC oil embargo",
       "Arab oil embargo",
       "energy crisis",
-      "oil shock"
+      "oil shock",
+      "Oil Crisis of the Middle East"
     ],
     "description": "Arab members of OPEC impose an oil embargo on countries supporting Israel in the Yom Kippur War, causing oil prices to quadruple and triggering a global economic crisis. The shock reveals Western economies' vulnerability to Middle Eastern oil and permanently accelerates interest in energy conservation and alternatives.",
     "difficulty": "medium",
@@ -7040,7 +7125,7 @@
   },
   {
     "id": "aids-epidemic",
-    "name": "AIDS Epidemic Identified",
+    "name": "First AIDS Cases Reported",
     "year": 1981,
     "categories": [
       "Medicine",
@@ -7052,7 +7137,8 @@
       "HIV AIDS crisis",
       "gay plague",
       "AIDS pandemic",
-      "immune deficiency disease"
+      "immune deficiency disease",
+      "AIDS Epidemic Identified"
     ],
     "description": "The US Centers for Disease Control identifies a mysterious immune deficiency syndrome among gay men, marking the official recognition of the AIDS epidemic. The disease goes on to kill over 35 million people worldwide and transforms global public health, sexuality politics, and medical research.",
     "difficulty": "easy",
@@ -7450,7 +7536,7 @@
   },
   {
     "id": "internet-invented",
-    "name": "World Wide Web Invented",
+    "name": "World Wide Web Goes Public",
     "year": 1991,
     "categories": [
       "Technology",
@@ -7462,7 +7548,8 @@
       "Tim Berners-Lee web",
       "HTTP HTML",
       "CERN internet",
-      "WWW created"
+      "WWW created",
+      "World Wide Web Invented"
     ],
     "description": "Tim Berners-Lee at CERN makes the World Wide Web publicly available, creating the system of linked hypertext documents that makes the internet accessible to ordinary users. The web transforms commerce, communication, entertainment, and virtually every aspect of modern civilization.",
     "difficulty": "easy",
@@ -7884,7 +7971,7 @@
   },
   {
     "id": "brahmos-missile-india",
-    "name": "BrahMos Missile Developed",
+    "name": "BrahMos Missile First Tested",
     "year": 2001,
     "categories": [
       "Technology",
@@ -7895,9 +7982,10 @@
       "India Russia missile",
       "supersonic cruise missile",
       "BrahMos joint venture",
-      "Indian defense technology"
+      "Indian defense technology",
+      "BrahMos Missile Developed"
     ],
-    "description": "India and Russia jointly develop and deploy the BrahMos, the world's fastest supersonic cruise missile, representing a landmark in India's defense technology capabilities. The missile, named after the Brahmaputra and Moskva rivers, becomes a cornerstone of Indian military modernization.",
+    "description": "India carries out the first test of the BrahMos, a supersonic cruise missile developed jointly with Russia, representing a landmark in India's defense technology capabilities. The missile, named after the Brahmaputra and Moskva rivers, becomes a cornerstone of Indian military modernization.",
     "difficulty": "hard",
     "importance": 2
   },
@@ -8266,7 +8354,7 @@
   },
   {
     "id": "black-holes-confirmed",
-    "name": "First Black Hole Image Captured",
+    "name": "First Image of a Black Hole Released",
     "year": 2019,
     "categories": [
       "Science",
@@ -8277,7 +8365,8 @@
       "Event Horizon Telescope",
       "M87 black hole",
       "black hole photograph",
-      "astrophysics breakthrough"
+      "astrophysics breakthrough",
+      "First Black Hole Image Captured"
     ],
     "description": "The Event Horizon Telescope Collaboration releases the first direct image of a black hole's event horizon in galaxy M87, providing visual confirmation of one of physics' most extraordinary theoretical predictions. The image, produced by linking radio telescopes across the globe, marks a triumph of international scientific cooperation.",
     "difficulty": "medium",
@@ -8305,7 +8394,7 @@
   },
   {
     "id": "covid-19-pandemic",
-    "name": "COVID-19 Global Pandemic",
+    "name": "WHO Declares COVID-19 a Pandemic",
     "year": 2020,
     "categories": [
       "Disasters",
@@ -8318,7 +8407,8 @@
       "COVID pandemic",
       "SARS-CoV-2",
       "pandemic lockdown",
-      "vaccine rollout"
+      "vaccine rollout",
+      "COVID-19 Global Pandemic"
     ],
     "description": "A novel coronavirus identified in Wuhan, China spreads globally to become a devastating pandemic that kills millions, halts economies, and transforms daily life worldwide. The crisis accelerates vaccine development using mRNA technology and triggers profound debates about public health, inequality, and global preparedness.",
     "difficulty": "easy",
