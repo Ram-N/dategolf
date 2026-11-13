@@ -699,6 +699,26 @@
     "importance": 4
   },
   {
+    "id": "kalinga-war",
+    "name": "Kalinga War",
+    "year": -261,
+    "categories": [
+      "War",
+      "Religion"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Ashoka conquers Kalinga",
+      "Invasion of Kalinga"
+    ],
+    "description": "Mauryan Emperor Ashoka invades and annexes the independent coastal kingdom of Kalinga in eastern India in a campaign that, by Ashoka's own account, kills a hundred thousand people and deports a hundred and fifty thousand. Shocked by the scale of human suffering recorded in his rock edicts, Ashoka renounces aggressive warfare and embraces Buddhist principles.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Brought almost all of the subcontinent except the far south under Mauryan rule, and prompted Ashoka's turn toward nonviolence and royal patronage of Buddhism, which his missions carried beyond India.",
+    "approximate": true,
+    "dateDisplay": "c. 262–261 BCE"
+  },
+  {
     "id": "ashoka-converts-to-buddhism",
     "name": "Ashoka Converts to Buddhism",
     "year": -260,
@@ -1965,6 +1985,23 @@
     "importance": 4
   },
   {
+    "id": "iltutmish-becomes-sultan-of-delhi",
+    "name": "Iltutmish Becomes Sultan of Delhi",
+    "year": 1211,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Accession of Iltutmish",
+      "Shams-ud-din Iltutmish takes the throne"
+    ],
+    "description": "Shams-ud-din Iltutmish, a former enslaved Turkic commander and son-in-law of Qutb ud-Din Aibak, defeats rival claimants to seize the throne of Delhi. He makes Delhi his permanent capital, secures investiture from the Abbasid caliph, and organizes the administrative foundations of the fledgling sultanate.",
+    "difficulty": "hard",
+    "importance": 5,
+    "significance": "Consolidated the fragile conquests of Qutb ud-Din Aibak into a durable state by introducing the iqta land-revenue system, standardizing silver tanka coinage, and keeping the sultanate out of Genghis Khan's Mongol invasions."
+  },
+  {
     "id": "magna-carta",
     "name": "King John Seals Magna Carta",
     "year": 1215,
@@ -2605,6 +2642,24 @@
     "importance": 5
   },
   {
+    "id": "battle-of-khanwa",
+    "name": "Battle of Khanwa",
+    "year": 1527,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Babur defeats Rana Sanga",
+      "Battle of Khanua"
+    ],
+    "description": "Mughal founder Babur defeats a large Rajput confederacy led by Rana Sanga of Mewar near Khanwa, west of Agra. Using entrenched matchlock gunners, field artillery, and flanking cavalry tactics, Babur overcomes numerical inferiority and breaks the strongest indigenous coalition challenging Mughal control in northern India.",
+    "difficulty": "hard",
+    "importance": 5,
+    "significance": "Secured the fledgling Mughal foothold in northern India after Panipat, proving the decisive power of gunpowder tactics against traditional Rajput cavalry and ending Mewar's bid for paramountcy."
+  },
+  {
     "id": "humayun-succeeds-babur",
     "name": "Humayun Succeeds Babur",
     "year": 1530,
@@ -2643,6 +2698,23 @@
     "importance": 4
   },
   {
+    "id": "battle-of-chausa",
+    "name": "Battle of Chausa",
+    "year": 1539,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Sher Khan defeats Humayun at Chausa"
+    ],
+    "description": "Afghan commander Sher Khan launches a surprise dawn attack on the encamped Mughal army of Emperor Humayun at Chausa on the banks of the Ganges in Bihar. Humayun barely escapes across the river, while Sher Khan assumes the royal title Sher Shah and prepares to expel the Mughals from India.",
+    "difficulty": "hard",
+    "importance": 4,
+    "significance": "Shattered Mughal military prestige in eastern India, enabled Sher Shah Suri to proclaim himself sovereign ruler, and set up the decisive Mughal defeat at Kanauj the following year."
+  },
+  {
     "id": "humayun-defeated-kanauj",
     "name": "Humayun Defeated at Kanauj",
     "year": 1540,
@@ -2660,6 +2732,23 @@
     "description": "The Afghan chieftain Sher Shah Suri defeats Mughal emperor Humayun at the Battle of Kanauj, forcing him into a fifteen-year exile. Sher Shah's brief reign introduces administrative and revenue reforms that would later be adopted and expanded by Akbar.",
     "difficulty": "hard",
     "importance": 3
+  },
+  {
+    "id": "birth-of-akbar",
+    "name": "Birth of Akbar",
+    "year": 1542,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Akbar born at Umerkot",
+      "Birth of Jalal-ud-din Muhammad Akbar"
+    ],
+    "description": "Jalal-ud-din Muhammad Akbar is born in the Rajput fortress of Umerkot in Sindh while his father, the deposed Mughal emperor Humayun, is fleeing Sher Shah Suri. Raised largely in exile in Afghanistan, Akbar inherits a fragile restored empire in his teens and goes on to consolidate Mughal rule across northern and central India.",
+    "difficulty": "medium",
+    "importance": 4,
+    "significance": "Began the life of the ruler whose military expansion, mansabdari administrative system, and policy of religious accommodation transformed a tenuous restoration into the dominant empire of early modern South Asia."
   },
   {
     "id": "copernicus-heliocentric",
@@ -2735,6 +2824,24 @@
     "description": "The young Mughal emperor Akbar, guided by regent Bairam Khan, defeats the Hindu general Hemu at Panipat, consolidating Mughal control over northern India. This battle ensures the survival of the Mughal Empire after the tumultuous reign of Humayun.",
     "difficulty": "medium",
     "importance": 4
+  },
+  {
+    "id": "akbar-becomes-mughal-emperor",
+    "name": "Akbar Becomes Mughal Emperor",
+    "year": 1556,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Accession of Akbar",
+      "Akbar enthroned at Kalanaur",
+      "Bairam Khan regency begins"
+    ],
+    "description": "The thirteen-year-old Akbar is enthroned as Mughal emperor at Kalanaur in the Punjab after his father Humayun dies from a fall in Delhi. Months later his army, led by his regent Bairam Khan, defeats Hemu at Panipat, securing the dynasty's hold on northern India.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Placed the young Akbar on a contested throne and initiated a nearly half-century reign that centralized Mughal governance, reformed revenue collection, and reshaped relations between rulers and subjects across northern India."
   },
   {
     "id": "shakespeare-born",
@@ -3047,6 +3154,23 @@
     "importance": 3
   },
   {
+    "id": "shah-jahan-becomes-mughal-emperor",
+    "name": "Shah Jahan Becomes Mughal Emperor",
+    "year": 1628,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Accession of Shah Jahan",
+      "Prince Khurram crowned emperor"
+    ],
+    "description": "Prince Khurram ascends the Mughal throne in Agra under the regnal title Shah Jahan following the death of his father Jahangir and a brief succession struggle. Backed by his father-in-law Asaf Khan, he eliminates rival claimants and launches a reign noted for Deccan campaigns and monumental court architecture.",
+    "difficulty": "medium",
+    "importance": 5,
+    "significance": "Brought to power the patron of the Taj Mahal, the Red Fort, and Shahjahanabad, ushering in the height of Mughal imperial architecture while committing heavy resources to campaigns in the Deccan and Central Asia."
+  },
+  {
     "id": "birth-of-shivaji",
     "name": "Birth of Shivaji",
     "year": 1630,
@@ -3351,6 +3475,25 @@
     "description": "King James II of England is overthrown and replaced by William of Orange in a largely bloodless coup that establishes constitutional monarchy and parliamentary supremacy. The subsequent Bill of Rights limits royal power and guarantees parliamentary privileges, shaping the British democratic tradition.",
     "difficulty": "medium",
     "importance": 4
+  },
+  {
+    "id": "founding-of-the-khalsa",
+    "name": "Founding of the Khalsa",
+    "year": 1699,
+    "categories": [
+      "Religion",
+      "Social"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Creation of the Khalsa",
+      "Guru Gobind Singh establishes the Khalsa",
+      "Vaisakhi at Anandpur Sahib"
+    ],
+    "description": "At Anandpur Sahib in the Punjab during Vaisakhi, the tenth Sikh Guru, Gobind Singh, initiates the first five members into the Khalsa, a collective order of committed Sikhs. He establishes distinct articles of faith, shared surnames of Singh and Kaur, and a martial-spiritual discipline to resist religious persecution.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Gave Sikhism a distinct corporate identity and egalitarian code that rejected caste hierarchy, empowering a community that later challenged Mughal authority and built an independent state in the Punjab."
   },
   {
     "id": "battle-of-blenheim",
@@ -4305,6 +4448,24 @@
     "description": "Indian soldiers in the British East India Company's army mutiny at Meerut, sparking a widespread uprising across northern and central India against British rule. Though the rebellion is eventually suppressed, it leads to the dissolution of the East India Company and direct Crown rule over India.",
     "difficulty": "easy",
     "importance": 5
+  },
+  {
+    "id": "crown-takes-over-government-of-india",
+    "name": "Crown Takes Over the Government of India",
+    "year": 1858,
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Government of India Act",
+      "End of East India Company rule",
+      "British Raj begins"
+    ],
+    "description": "Following the widespread rebellion across northern India, the British Parliament passes legislation stripping the East India Company of its powers and transferring its territories, army, and administration directly to the British Crown. Queen Victoria's proclamation promises religious non-interference, and the Governor-General also takes the title of Viceroy.",
+    "difficulty": "medium",
+    "importance": 7,
+    "significance": "Ended a century of corporate rule by the East India Company and inaugurated nearly ninety years of direct British imperial governance, reorganizing the Indian army, civil service, and relations with princely states."
   },
   {
     "id": "darwin-evolution",

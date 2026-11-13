@@ -482,6 +482,20 @@
     "significance": "Established lasting Muslim rule across northern India, introducing Persianate administration, new architectural styles and an Indo-Islamic cultural synthesis, while repelling Mongol invasions of the subcontinent."
   },
   {
+    "id": "mamluk-dynasty-delhi",
+    "name": "Mamluk Dynasty of Delhi",
+    "startYear": 1206,
+    "endYear": 1290,
+    "description": "The first ruling house of the Delhi Sultanate, founded by Qutb ud-Din Aibak and led by former Turkic military slaves and their descendants.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 5,
+    "kind": "empire",
+    "significance": "Established permanent Muslim sultanate rule in northern India, built early Indo-Islamic landmarks such as the Qutb Minar complex, and defended the Indus frontier against Mongol raids."
+  },
+  {
     "id": "mali-empire",
     "name": "Mali Empire",
     "startYear": 1235,
@@ -496,6 +510,21 @@
     "approximate": true
   },
   {
+    "id": "khalji-dynasty",
+    "name": "Khalji Dynasty",
+    "startYear": 1290,
+    "endYear": 1320,
+    "description": "The second dynasty of the Delhi Sultanate, known for sweeping military campaigns into southern India and strict market and price controls under Alauddin Khalji.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "South Asia",
+    "importance": 5,
+    "kind": "empire",
+    "significance": "Broadened the social base of Delhi's ruling elite beyond Turkic nobles, repelled major Chagatai Mongol invasions, and carried sultanate armies deep into the Deccan and southern India for the first time."
+  },
+  {
     "id": "ottoman-empire",
     "name": "Ottoman Empire",
     "startYear": 1299,
@@ -508,6 +537,20 @@
     "importance": 8,
     "kind": "empire",
     "significance": "For more than six centuries the Ottomans ruled a multi-ethnic, multi-faith empire that at its height joined southeastern Europe, the Middle East and North Africa, shaping Mediterranean trade, Islamic law and politics, and the borders of the modern Middle East and Balkans."
+  },
+  {
+    "id": "tughlaq-dynasty",
+    "name": "Tughlaq Dynasty",
+    "startYear": 1320,
+    "endYear": 1414,
+    "description": "The third dynasty of the Delhi Sultanate, which expanded imperial control across most of the subcontinent before administrative overreach and Timur's invasion shattered its authority.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 5,
+    "kind": "empire",
+    "significance": "Reached the widest territorial extent of the Delhi Sultanate before failed experiments like token copper currency and a forced capital shift to Daulatabad helped trigger regional breakaway states such as Vijayanagara and the Bahmani Sultanate."
   },
   {
     "id": "vijayanagara-empire",
@@ -563,6 +606,20 @@
     "kind": "period"
   },
   {
+    "id": "sayyid-dynasty",
+    "name": "Sayyid Dynasty",
+    "startYear": 1414,
+    "endYear": 1451,
+    "description": "The fourth dynasty of the Delhi Sultanate, founded by Khizr Khan after Timur's sack of Delhi reduced the sultanate to a regional power around the capital.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 3,
+    "kind": "empire",
+    "significance": "Maintained nominal continuity of the Delhi Sultanate during a period of regional fragmentation in northern India before peacefully ceding power to the Afghan Lodi dynasty."
+  },
+  {
     "id": "aztec-empire",
     "name": "Aztec Empire",
     "startYear": 1428,
@@ -587,6 +644,20 @@
     "region": "Americas",
     "importance": 6,
     "kind": "empire"
+  },
+  {
+    "id": "lodi-dynasty",
+    "name": "Lodi Dynasty",
+    "startYear": 1451,
+    "endYear": 1526,
+    "description": "The fifth and final dynasty of the Delhi Sultanate, an Afghan ruling house that revived the sultanate's power across northern India before falling to Babur at the First Battle of Panipat.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 4,
+    "kind": "empire",
+    "significance": "Rebuilt sultanate control over Jaunpur and much of the Gangetic plain and founded Agra as a major imperial center, though friction between Sultan Ibrahim Lodi and Afghan nobles invited Babur's invasion."
   },
   {
     "id": "age-of-exploration",
@@ -643,6 +714,20 @@
     "significance": "At their height the Mughals ruled most of South Asia. Their revenue and ranking systems shaped later states, including British India; their courts blended Persian, Central Asian and Indian traditions in art, language and buildings such as the Taj Mahal; and their decline in the 1700s opened the way for regional powers and, in time, British rule."
   },
   {
+    "id": "sur-empire",
+    "name": "Sur Empire",
+    "startYear": 1540,
+    "endYear": 1556,
+    "description": "The Afghan dynasty founded by Sher Shah Suri after expelling Emperor Humayun, briefly ruling northern India until the Mughals restored their empire.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 5,
+    "kind": "empire",
+    "significance": "Introduced standardized silver rupiya currency, upgraded the Grand Trunk Road, and created land-measurement and revenue systems that Akbar later adopted as the backbone of Mughal administration."
+  },
+  {
     "id": "scientific-revolution",
     "name": "Scientific Revolution",
     "startYear": 1543,
@@ -656,6 +741,20 @@
     "kind": "period"
   },
   {
+    "id": "reign-of-akbar",
+    "name": "Reign of Akbar",
+    "startYear": 1556,
+    "endYear": 1605,
+    "description": "The nearly fifty-year rule of Mughal Emperor Akbar, who expanded imperial borders across northern and central India while reforming taxation, administration, and interfaith relations.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 6,
+    "kind": "period",
+    "significance": "Institutionalized Mughal governance through the mansabdari ranking system and zabt revenue assessment, while his alliances with Rajput rulers and abolition of the jizya tax anchored imperial stability for generations."
+  },
+  {
     "id": "tokugawa-shogunate",
     "name": "Tokugawa Shogunate",
     "startYear": 1603,
@@ -667,6 +766,21 @@
     "region": "East Asia",
     "importance": 6,
     "kind": "empire"
+  },
+  {
+    "id": "reign-of-shah-jahan",
+    "name": "Reign of Shah Jahan",
+    "startYear": 1628,
+    "endYear": 1658,
+    "description": "The thirty-year rule of Mughal Emperor Shah Jahan, marked by Deccan expansion, courtly splendor, and landmark marble architecture before his sons fought a war of succession.",
+    "categories": [
+      "Politics",
+      "Arts"
+    ],
+    "region": "South Asia",
+    "importance": 5,
+    "kind": "period",
+    "significance": "Produced the defining monuments of Indo-Islamic architecture, including the Taj Mahal and Jama Masjid, though costly military campaigns and building projects strained imperial finances and ended in a bitter fratricidal war."
   },
   {
     "id": "construction-taj-mahal",
@@ -736,6 +850,21 @@
     "kind": "period"
   },
   {
+    "id": "company-rule-in-india",
+    "name": "Company Rule in India",
+    "startYear": 1757,
+    "endYear": 1858,
+    "description": "The century in which the British East India Company evolved from a commercial monopoly into the territorial ruler of most of the Indian subcontinent following the Battle of Plassey.",
+    "categories": [
+      "Politics",
+      "Economy"
+    ],
+    "region": "South Asia",
+    "importance": 7,
+    "kind": "period",
+    "significance": "Reshaped South Asia's economy and politics by conquering or subordinating Indian states, redirecting land revenue and trade toward Britain and introducing English-language administration, while its grievances helped spark the 1857 rebellion that ended Company rule."
+  },
+  {
     "id": "industrial-revolution",
     "name": "Industrial Revolution",
     "startYear": 1760,
@@ -749,6 +878,21 @@
     "importance": 8,
     "kind": "period",
     "significance": "Replaced handicraft production with machine factories powered by water, coal and steam, accelerating urbanization and global trade. It brought long-run growth in living standards, though early factory workers often faced harsh conditions, and began the large-scale coal burning behind today's climate change."
+  },
+  {
+    "id": "anglo-mysore-wars",
+    "name": "Anglo-Mysore Wars",
+    "startYear": 1767,
+    "endYear": 1799,
+    "description": "Four wars fought in southern India between the Kingdom of Mysore under Hyder Ali and Tipu Sultan and the British East India Company and its allies.",
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 5,
+    "kind": "period",
+    "significance": "Eliminated the East India Company's most formidable military rival in southern India, showcased Mysorean iron-cased war rockets, and secured British supremacy in southern India."
   },
   {
     "id": "american-revolution",
@@ -791,6 +935,21 @@
     "region": "Americas",
     "importance": 5,
     "kind": "period"
+  },
+  {
+    "id": "sikh-empire",
+    "name": "Sikh Empire",
+    "startYear": 1799,
+    "endYear": 1849,
+    "description": "The sovereign state in northwestern South Asia forged by Maharaja Ranjit Singh after capturing Lahore, uniting the Sikh confederacies across the Punjab until British annexation.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "South Asia",
+    "importance": 5,
+    "kind": "empire",
+    "significance": "Unified the Punjab into a modernized, religiously pluralistic kingdom that halted Afghan invasions from the northwest and was one of the last major Indian powers annexed by Britain."
   },
   {
     "id": "napoleonic-wars",

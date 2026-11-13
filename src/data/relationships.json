@@ -1080,13 +1080,6 @@
       "confidence": "high"
     },
     {
-      "source": "qutb-ud-din-aibak-delhi",
-      "type": "preceded",
-      "target": "razia-sultana-accession",
-      "why": "Delhi's sultans in turn: Razia was the daughter of Iltutmish, Aibak's son-in-law, who took the throne soon after Aibak's death.",
-      "confidence": "high"
-    },
-    {
       "source": "razia-sultana-accession",
       "type": "preceded",
       "target": "alauddin-khalji-accession",
@@ -1129,24 +1122,10 @@
       "confidence": "high"
     },
     {
-      "source": "humayun-succeeds-babur",
-      "type": "preceded",
-      "target": "humayun-defeated-kanauj",
-      "why": "Humayun's reign: Sher Shah Suri defeated him and drove him into exile.",
-      "confidence": "high"
-    },
-    {
       "source": "humayun-defeated-kanauj",
       "type": "preceded",
       "target": "humayun-recaptures-delhi",
       "why": "Humayun's reign: fifteen years after his exile he retook Delhi.",
-      "confidence": "high"
-    },
-    {
-      "source": "humayun-recaptures-delhi",
-      "type": "preceded",
-      "target": "second-battle-of-panipat",
-      "why": "Humayun died months after retaking Delhi; the young Akbar's army then won at Panipat.",
       "confidence": "high"
     },
     {
@@ -1161,13 +1140,6 @@
       "type": "preceded",
       "target": "death-of-jahangir",
       "why": "Mughal succession: Jahangir reigned from Akbar's death to his own.",
-      "confidence": "high"
-    },
-    {
-      "source": "death-of-jahangir",
-      "type": "preceded",
-      "target": "aurangzeb-becomes-emperor",
-      "why": "Mughal succession: Shah Jahan reigned between them, until Aurangzeb seized the throne.",
       "confidence": "high"
     },
     {
@@ -1210,13 +1182,6 @@
       "type": "preceded",
       "target": "execution-of-guru-tegh-bahadur",
       "why": "The Sikh Gurus: Guru Tegh Bahadur was the ninth Guru.",
-      "confidence": "high"
-    },
-    {
-      "source": "execution-of-guru-tegh-bahadur",
-      "type": "preceded",
-      "target": "death-of-guru-gobind-singh",
-      "why": "The Sikh Gurus: Guru Gobind Singh, the tenth and last human Guru, succeeded his father Tegh Bahadur.",
       "confidence": "high"
     },
     {
@@ -1623,6 +1588,370 @@
       "type": "triggered",
       "target": "covid-lockdown-india",
       "why": "India locked down to slow the pandemic's spread.",
+      "confidence": "high"
+    },
+    {
+      "source": "birth-of-akbar",
+      "type": "preceded",
+      "target": "akbar-becomes-mughal-emperor",
+      "why": "Born during Humayun's exile in Sindh, Akbar grew up to claim the Mughal throne fourteen years later.",
+      "confidence": "high"
+    },
+    {
+      "source": "humayun-recaptures-delhi",
+      "type": "preceded",
+      "target": "akbar-becomes-mughal-emperor",
+      "why": "Humayun died months after retaking Delhi, leaving the restored throne to his son Akbar.",
+      "confidence": "high"
+    },
+    {
+      "source": "akbar-becomes-mughal-emperor",
+      "type": "preceded",
+      "target": "second-battle-of-panipat",
+      "why": "Months after Akbar's enthronement, his regent Bairam Khan defeated Hemu to secure Delhi.",
+      "confidence": "high"
+    },
+    {
+      "source": "akbar-becomes-mughal-emperor",
+      "type": "began",
+      "target": "reign-of-akbar",
+      "why": "Akbar's enthronement at Kalanaur opened his nearly fifty-year reign.",
+      "confidence": "high"
+    },
+    {
+      "source": "death-of-akbar",
+      "type": "ended",
+      "target": "reign-of-akbar",
+      "why": "Akbar's death in Agra ended his reign and passed the throne to Jahangir.",
+      "confidence": "high"
+    },
+    {
+      "source": "reign-of-akbar",
+      "type": "part_of",
+      "target": "mughal-empire",
+      "why": "Akbar's reign consolidated and expanded the Mughal Empire across northern and central India.",
+      "confidence": "high"
+    },
+    {
+      "source": "mughal-akbar-administration",
+      "type": "part_of",
+      "target": "reign-of-akbar",
+      "why": "Akbar introduced the mansabdari system to organize military and civil officers during his reign.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-haldighati",
+      "type": "part_of",
+      "target": "reign-of-akbar",
+      "why": "Mughal forces fought Maharana Pratap of Mewar during Akbar's campaigns in Rajasthan.",
+      "confidence": "high"
+    },
+    {
+      "source": "akbar-din-i-ilahi",
+      "type": "part_of",
+      "target": "reign-of-akbar",
+      "why": "Akbar promulgated Din-i-Ilahi at his court late in his reign.",
+      "confidence": "high"
+    },
+    {
+      "source": "death-of-jahangir",
+      "type": "preceded",
+      "target": "shah-jahan-becomes-mughal-emperor",
+      "why": "Jahangir's death triggered a brief succession struggle won by his son Shah Jahan.",
+      "confidence": "high"
+    },
+    {
+      "source": "shah-jahan-becomes-mughal-emperor",
+      "type": "began",
+      "target": "reign-of-shah-jahan",
+      "why": "Shah Jahan's coronation in Agra opened his thirty-year reign.",
+      "confidence": "high"
+    },
+    {
+      "source": "aurangzeb-becomes-emperor",
+      "type": "ended",
+      "target": "reign-of-shah-jahan",
+      "why": "Aurangzeb deposed and imprisoned his father Shah Jahan after winning the war of succession.",
+      "confidence": "high"
+    },
+    {
+      "source": "reign-of-shah-jahan",
+      "type": "part_of",
+      "target": "mughal-empire",
+      "why": "Shah Jahan's reign marked the architectural height of the Mughal Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "construction-taj-mahal",
+      "type": "part_of",
+      "target": "reign-of-shah-jahan",
+      "why": "Shah Jahan commissioned the Taj Mahal in Agra during his reign.",
+      "confidence": "high"
+    },
+    {
+      "source": "first-battle-of-panipat",
+      "type": "preceded",
+      "target": "battle-of-khanwa",
+      "why": "After defeating Ibrahim Lodi at Panipat, Babur faced Rana Sanga's Rajput coalition at Khanwa.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-khanwa",
+      "type": "part_of",
+      "target": "mughal-empire",
+      "why": "Babur's victory at Khanwa secured Mughal survival in northern India.",
+      "confidence": "high"
+    },
+    {
+      "source": "humayun-succeeds-babur",
+      "type": "preceded",
+      "target": "battle-of-chausa",
+      "why": "After succeeding Babur, Humayun marched east to confront Sher Khan and was routed at Chausa.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-chausa",
+      "type": "preceded",
+      "target": "humayun-defeated-kanauj",
+      "why": "A year after Chausa, Sher Shah defeated Humayun decisively at Kanauj.",
+      "confidence": "high"
+    },
+    {
+      "source": "humayun-defeated-kanauj",
+      "type": "began",
+      "target": "sur-empire",
+      "why": "Defeating Humayun at Kanauj allowed Sher Shah Suri to establish the Sur Empire across northern India.",
+      "confidence": "high"
+    },
+    {
+      "source": "second-battle-of-panipat",
+      "type": "ended",
+      "target": "sur-empire",
+      "why": "Mughal victory at the Second Battle of Panipat extinguished the last Sur claim to Delhi.",
+      "confidence": "high"
+    },
+    {
+      "source": "qutb-ud-din-aibak-delhi",
+      "type": "preceded",
+      "target": "iltutmish-becomes-sultan-of-delhi",
+      "why": "After Qutb ud-Din Aibak's death, his son-in-law Iltutmish seized the throne of Delhi.",
+      "confidence": "high"
+    },
+    {
+      "source": "iltutmish-becomes-sultan-of-delhi",
+      "type": "preceded",
+      "target": "razia-sultana-accession",
+      "why": "Iltutmish designated his daughter Razia as successor, who took the throne after his death.",
+      "confidence": "high"
+    },
+    {
+      "source": "iltutmish-becomes-sultan-of-delhi",
+      "type": "part_of",
+      "target": "mamluk-dynasty-delhi",
+      "why": "Iltutmish consolidated the Mamluk dynasty as the Delhi Sultanate's third ruler.",
+      "confidence": "high"
+    },
+    {
+      "source": "qutb-ud-din-aibak-delhi",
+      "type": "began",
+      "target": "mamluk-dynasty-delhi",
+      "why": "Qutb ud-Din Aibak founded both the Delhi Sultanate and its ruling Mamluk house.",
+      "confidence": "high"
+    },
+    {
+      "source": "razia-sultana-accession",
+      "type": "part_of",
+      "target": "mamluk-dynasty-delhi",
+      "why": "Razia Sultana ruled Delhi as a member of the Mamluk dynasty.",
+      "confidence": "high"
+    },
+    {
+      "source": "mamluk-dynasty-delhi",
+      "type": "part_of",
+      "target": "delhi-sultanate",
+      "why": "The Mamluk dynasty was the first of the five ruling houses of the Delhi Sultanate.",
+      "confidence": "high"
+    },
+    {
+      "source": "mamluk-dynasty-delhi",
+      "type": "preceded",
+      "target": "khalji-dynasty",
+      "why": "Jalal-ud-din Khalji overthrew the last Mamluk sultan to establish the Khalji dynasty.",
+      "confidence": "high"
+    },
+    {
+      "source": "alauddin-khalji-accession",
+      "type": "part_of",
+      "target": "khalji-dynasty",
+      "why": "Alauddin Khalji was the most powerful ruler of the Khalji dynasty.",
+      "confidence": "high"
+    },
+    {
+      "source": "khalji-dynasty",
+      "type": "part_of",
+      "target": "delhi-sultanate",
+      "why": "The Khalji dynasty was the second ruling house of the Delhi Sultanate.",
+      "confidence": "high"
+    },
+    {
+      "source": "khalji-dynasty",
+      "type": "preceded",
+      "target": "tughlaq-dynasty",
+      "why": "Ghiyath al-Din Tughluq founded the Tughlaq dynasty after the collapse of Khalji rule.",
+      "confidence": "high"
+    },
+    {
+      "source": "muhammad-bin-tughlaq-accession",
+      "type": "part_of",
+      "target": "tughlaq-dynasty",
+      "why": "Muhammad bin Tughlaq ruled at the territorial height of the Tughlaq dynasty.",
+      "confidence": "high"
+    },
+    {
+      "source": "firuz-shah-tughlaq-accession",
+      "type": "part_of",
+      "target": "tughlaq-dynasty",
+      "why": "Firuz Shah Tughlaq succeeded his cousin Muhammad bin Tughlaq as a Tughlaq sultan.",
+      "confidence": "high"
+    },
+    {
+      "source": "tughlaq-dynasty",
+      "type": "part_of",
+      "target": "delhi-sultanate",
+      "why": "The Tughlaq dynasty was the third ruling house of the Delhi Sultanate.",
+      "confidence": "high"
+    },
+    {
+      "source": "tughlaq-dynasty",
+      "type": "preceded",
+      "target": "sayyid-dynasty",
+      "why": "Khizr Khan took Delhi after the end of the Tughlaq line, inaugurating the Sayyid dynasty.",
+      "confidence": "high"
+    },
+    {
+      "source": "sayyid-dynasty",
+      "type": "part_of",
+      "target": "delhi-sultanate",
+      "why": "The Sayyid dynasty was the fourth ruling house of the Delhi Sultanate.",
+      "confidence": "high"
+    },
+    {
+      "source": "sayyid-dynasty",
+      "type": "preceded",
+      "target": "lodi-dynasty",
+      "why": "The last Sayyid ruler abdicated in favor of Bahlul Lodi, starting the Lodi dynasty.",
+      "confidence": "high"
+    },
+    {
+      "source": "lodi-dynasty",
+      "type": "part_of",
+      "target": "delhi-sultanate",
+      "why": "The Afghan Lodi dynasty was the fifth and final ruling house of the Delhi Sultanate.",
+      "confidence": "high"
+    },
+    {
+      "source": "first-battle-of-panipat",
+      "type": "ended",
+      "target": "lodi-dynasty",
+      "why": "Babur defeated and killed Sultan Ibrahim Lodi at Panipat, ending the Lodi dynasty.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-plassey",
+      "type": "began",
+      "target": "company-rule-in-india",
+      "why": "Victory at Plassey gave the East India Company political control over Bengal, starting Company rule.",
+      "confidence": "high"
+    },
+    {
+      "source": "indian-rebellion-1857",
+      "type": "contributed_to",
+      "target": "crown-takes-over-government-of-india",
+      "why": "The scale of the rebellion convinced Parliament to abolish East India Company governance.",
+      "confidence": "high"
+    },
+    {
+      "source": "crown-takes-over-government-of-india",
+      "type": "ended",
+      "target": "company-rule-in-india",
+      "why": "The Government of India Act transferred all Company territories and powers to the British Crown.",
+      "confidence": "high"
+    },
+    {
+      "source": "crown-takes-over-government-of-india",
+      "type": "began",
+      "target": "british-raj",
+      "why": "Direct Crown administration established by the Act inaugurated the British Raj.",
+      "confidence": "high"
+    },
+    {
+      "source": "second-anglo-mysore-war",
+      "type": "part_of",
+      "target": "anglo-mysore-wars",
+      "why": "The second conflict was one of four wars between Mysore and the East India Company.",
+      "confidence": "high"
+    },
+    {
+      "source": "tipu-sultan-killed",
+      "type": "ended",
+      "target": "anglo-mysore-wars",
+      "why": "Tipu Sultan's death at Seringapatam ended the fourth and final Anglo-Mysore War.",
+      "confidence": "high"
+    },
+    {
+      "source": "anglo-mysore-wars",
+      "type": "part_of",
+      "target": "company-rule-in-india",
+      "why": "Defeating Mysore removed a major southern rival during the expansion of Company rule.",
+      "confidence": "high"
+    },
+    {
+      "source": "execution-of-guru-tegh-bahadur",
+      "type": "contributed_to",
+      "target": "founding-of-the-khalsa",
+      "why": "Mughal persecution, including his father's execution, helped lead Guru Gobind Singh to found the Khalsa.",
+      "confidence": "high"
+    },
+    {
+      "source": "founding-of-the-khalsa",
+      "type": "preceded",
+      "target": "death-of-guru-gobind-singh",
+      "why": "Guru Gobind Singh led the newly formed Khalsa for nine years until his assassination in Nanded.",
+      "confidence": "high"
+    },
+    {
+      "source": "founding-of-the-khalsa",
+      "type": "contributed_to",
+      "target": "sikh-empire",
+      "why": "The Khalsa's cohesion and martial organization laid the social groundwork for later Sikh sovereignty in Punjab.",
+      "confidence": "medium"
+    },
+    {
+      "source": "ashoka-becomes-emperor",
+      "type": "preceded",
+      "target": "kalinga-war",
+      "why": "Several years after taking the Mauryan throne, Ashoka launched a campaign to conquer Kalinga.",
+      "confidence": "high"
+    },
+    {
+      "source": "kalinga-war",
+      "type": "contributed_to",
+      "target": "ashoka-converts-to-buddhism",
+      "why": "Remorse over the carnage at Kalinga led Ashoka to embrace Buddhism and nonviolence.",
+      "confidence": "high"
+    },
+    {
+      "source": "kalinga-war",
+      "type": "part_of",
+      "target": "maurya-empire",
+      "why": "The conquest of Kalinga brought eastern coastal India into the Maurya Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "shah-jahan-becomes-mughal-emperor",
+      "type": "preceded",
+      "target": "aurangzeb-becomes-emperor",
+      "why": "Shah Jahan's sons fought a war of succession, won by Aurangzeb, who deposed his father.",
       "confidence": "high"
     }
   ]
