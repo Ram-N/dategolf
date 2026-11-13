@@ -66,11 +66,11 @@ Notes:
   (the Gandhian era) is part_of it.
 ```
 
-Batch 4, part 2 (8). Send it after part 1 is loaded (the prompt allows 20 items per reply). These were added
+Batch 4, part 2 (10). Send it after part 1 is loaded (the prompt allows 20 items per reply). These were added
 2026-11-13 so that four batch 2 spans get the links they lack:
 
 ```
-Draft gap items 81, 82, 83, 84, 85, 86, 89, 90 from the reference, each with "fills_missing", a "significance",
+Draft gap items 81, 82, 83, 84, 85, 86, 87, 88, 89, 90 from the reference, each with "fills_missing", a "significance",
 and at least one link.
 Notes:
 - Item 81 (Ezana's conversion, c. 330s): part_of the existing "kingdom-of-aksum".
@@ -86,6 +86,8 @@ Notes:
   90 Pacific War (1941-1945): "japanese-pearl-harbor" began it; "japan-world-war-two-defeat" ended it;
      "battle-of-midway" and "atomic-bomb-hiroshima" are part_of it.
   Don't link the two theatres to each other with "preceded": they ran side by side.
+- Items 87 and 88 are part_of the existing "kingdom-of-kongo". Item 87 (Diogo Cao reaches the Congo
+  River) preceded item 88 (Afonso I's accession).
 ```
 
 Item 6 (Death of Aurangzeb) is left out: the event exists now (renamed 2026-11-11), so it should be dismissed.
