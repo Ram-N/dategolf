@@ -102,6 +102,13 @@ class TestReview(unittest.TestCase):
         self.assertEqual(quiet(links.reject, [lid2], "  "), 1)  # reason required
         self.assertEqual(quiet(links.reject, [lid2], "duplicate idea", via="test"), 0)
         self.assertIsNone(stored("eruption-of-vesuvius", "enabled", "amazon-founded"))
+        load(("eruption-of-vesuvius", "enabled", "amazon-founded", "test only"), name="rv4")
+        lid3 = stored("eruption-of-vesuvius", "enabled", "amazon-founded")[0]
+        self.assertEqual(quiet(links.remove, [lid3], "skips a step"), 1)  # proposed: reject it instead
+        self.assertEqual(quiet(links.remove, [lid], " "), 1)  # reason required
+        self.assertEqual(quiet(links.remove, [lid], "now skips a step", via="test"), 0)
+        self.assertIsNone(stored("fall-of-troy", "contributed_to", "google-founded"))
+        self.assertIn("remove-link", [r[0] for r in db().execute("SELECT action FROM review_log WHERE via = 'test'")])
         actions = [r[0] for r in db().execute("SELECT action FROM review_log WHERE via = 'test'")]
         self.assertIn("approve-link", actions)
         self.assertIn("reject-link", actions)

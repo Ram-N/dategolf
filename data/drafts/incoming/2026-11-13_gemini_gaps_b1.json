@@ -1,0 +1,852 @@
+{
+  "origin": "ai_drafted:gemini",
+  "about": "Batch 1: South Asia gap-list items 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20, 21, 22, 23. Pre-sorted by Claude: sources fixed, ten text fixes (see notes), two weak links dropped, one added.",
+  "events": [
+    {
+      "id": "birth-of-akbar",
+      "name": "Birth of Akbar",
+      "year": 1542,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "aliases": [
+        "Akbar born at Umerkot",
+        "Birth of Jalal-ud-din Muhammad Akbar"
+      ],
+      "description": "Jalal-ud-din Muhammad Akbar is born in the Rajput fortress of Umerkot in Sindh while his father, the deposed Mughal emperor Humayun, is fleeing Sher Shah Suri. Raised largely in exile in Afghanistan, Akbar inherits a fragile restored empire in his teens and goes on to consolidate Mughal rule across northern and central India.",
+      "difficulty": "medium",
+      "importance": 4,
+      "countries": [
+        "PK"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Akbar",
+      "note": "Born 15 October 1542 (some sources give 23 November 1542 due to calendar conversion) at Umerkot in modern Sindh, Pakistan.",
+      "significance": "Began the life of the ruler whose military expansion, mansabdari administrative system, and policy of religious accommodation transformed a tenuous restoration into the dominant empire of early modern South Asia.",
+      "fills_missing": 1
+    },
+    {
+      "id": "akbar-becomes-mughal-emperor",
+      "name": "Akbar Becomes Mughal Emperor",
+      "year": 1556,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "aliases": [
+        "Accession of Akbar",
+        "Akbar enthroned at Kalanaur",
+        "Bairam Khan regency begins"
+      ],
+      "description": "The thirteen-year-old Akbar is enthroned as Mughal emperor at Kalanaur in the Punjab after his father Humayun dies from a fall in Delhi. Months later his army, led by his regent Bairam Khan, defeats Hemu at Panipat, securing the dynasty's hold on northern India.",
+      "difficulty": "medium",
+      "importance": 6,
+      "countries": [
+        "IN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Akbar",
+      "note": "Enthroned 14 February 1556; Humayun died in late January 1556. [Claude at review: Bairam Khan commanded at Panipat; Akbar was kept behind the lines.]",
+      "significance": "Placed the young Akbar on a contested throne and initiated a nearly half-century reign that centralized Mughal governance, reformed revenue collection, and reshaped relations between rulers and subjects across northern India.",
+      "fills_missing": 2
+    },
+    {
+      "id": "shah-jahan-becomes-mughal-emperor",
+      "name": "Shah Jahan Becomes Mughal Emperor",
+      "year": 1628,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "aliases": [
+        "Accession of Shah Jahan",
+        "Prince Khurram crowned emperor"
+      ],
+      "description": "Prince Khurram ascends the Mughal throne in Agra under the regnal title Shah Jahan following the death of his father Jahangir and a brief succession struggle. Backed by his father-in-law Asaf Khan, he eliminates rival claimants and launches a reign noted for Deccan campaigns and monumental court architecture.",
+      "difficulty": "medium",
+      "importance": 5,
+      "countries": [
+        "IN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Shah_Jahan",
+      "note": "Jahangir died in October 1627; Shah Jahan was formally crowned in Agra in February 1628.",
+      "significance": "Brought to power the patron of the Taj Mahal, the Red Fort, and Shahjahanabad, ushering in the height of Mughal imperial architecture while committing heavy resources to campaigns in the Deccan and Central Asia.",
+      "fills_missing": 4
+    },
+    {
+      "id": "battle-of-khanwa",
+      "name": "Battle of Khanwa",
+      "year": 1527,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "aliases": [
+        "Babur defeats Rana Sanga",
+        "Battle of Khanua"
+      ],
+      "description": "Mughal founder Babur defeats a large Rajput confederacy led by Rana Sanga of Mewar near Khanwa, west of Agra. Using entrenched matchlock gunners, field artillery, and flanking cavalry tactics, Babur overcomes numerical inferiority and breaks the strongest indigenous coalition challenging Mughal control in northern India.",
+      "difficulty": "hard",
+      "importance": 5,
+      "countries": [
+        "IN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Battle_of_Khanwa",
+      "note": "Fought 16 March 1527 (some sources give 17 March).",
+      "significance": "Secured the fledgling Mughal foothold in northern India after Panipat, proving the decisive power of gunpowder tactics against traditional Rajput cavalry and ending Mewar's bid for paramountcy.",
+      "fills_missing": 7
+    },
+    {
+      "id": "battle-of-chausa",
+      "name": "Battle of Chausa",
+      "year": 1539,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "aliases": [
+        "Sher Khan defeats Humayun at Chausa"
+      ],
+      "description": "Afghan commander Sher Khan launches a surprise dawn attack on the encamped Mughal army of Emperor Humayun at Chausa on the banks of the Ganges in Bihar. Humayun barely escapes across the river, while Sher Khan assumes the royal title Sher Shah and prepares to expel the Mughals from India.",
+      "difficulty": "hard",
+      "importance": 4,
+      "countries": [
+        "IN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Battle_of_Chausa",
+      "note": "Fought 26 June 1539.",
+      "significance": "Shattered Mughal military prestige in eastern India, enabled Sher Shah Suri to proclaim himself sovereign ruler, and set up the decisive Mughal defeat at Kanauj the following year.",
+      "fills_missing": 8
+    },
+    {
+      "id": "iltutmish-becomes-sultan-of-delhi",
+      "name": "Iltutmish Becomes Sultan of Delhi",
+      "year": 1211,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "aliases": [
+        "Accession of Iltutmish",
+        "Shams-ud-din Iltutmish takes the throne"
+      ],
+      "description": "Shams-ud-din Iltutmish, a former enslaved Turkic commander and son-in-law of Qutb ud-Din Aibak, defeats rival claimants to seize the throne of Delhi. He makes Delhi his permanent capital, secures investiture from the Abbasid caliph, and organizes the administrative foundations of the fledgling sultanate.",
+      "difficulty": "hard",
+      "importance": 5,
+      "countries": [
+        "IN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Iltutmish",
+      "note": "Took power in 1211 after deposing Aram Shah; reigned until 1236.",
+      "significance": "Consolidated the fragile conquests of Qutb ud-Din Aibak into a durable state by introducing the iqta land-revenue system, standardizing silver tanka coinage, and keeping the sultanate out of Genghis Khan's Mongol invasions.",
+      "fills_missing": 10
+    },
+    {
+      "id": "crown-takes-over-government-of-india",
+      "name": "Crown Takes Over the Government of India",
+      "year": 1858,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "aliases": [
+        "Government of India Act",
+        "End of East India Company rule",
+        "British Raj begins"
+      ],
+      "description": "Following the widespread rebellion across northern India, the British Parliament passes legislation stripping the East India Company of its powers and transferring its territories, army, and administration directly to the British Crown. Queen Victoria's proclamation promises religious non-interference, and the Governor-General also takes the title of Viceroy.",
+      "difficulty": "medium",
+      "importance": 7,
+      "countries": [
+        "IN",
+        "GB/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Government_of_India_Act_1858",
+      "note": "Royal assent 2 August 1858; Queen Victoria's proclamation issued 1 November 1858. Title omits year per prompt rules. [Claude at review: The Company was not wound up until 1874; the Viceroy was the Governor-General's added title, not a new office.]",
+      "significance": "Ended a century of corporate rule by the East India Company and inaugurated nearly ninety years of direct British imperial governance, reorganizing the Indian army, civil service, and relations with princely states.",
+      "fills_missing": 17
+    },
+    {
+      "id": "founding-of-the-khalsa",
+      "name": "Founding of the Khalsa",
+      "year": 1699,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Religion",
+        "Social"
+      ],
+      "aliases": [
+        "Creation of the Khalsa",
+        "Guru Gobind Singh establishes the Khalsa",
+        "Vaisakhi at Anandpur Sahib"
+      ],
+      "description": "At Anandpur Sahib in the Punjab during Vaisakhi, the tenth Sikh Guru, Gobind Singh, initiates the first five members into the Khalsa, a collective order of committed Sikhs. He establishes distinct articles of faith, shared surnames of Singh and Kaur, and a martial-spiritual discipline to resist religious persecution.",
+      "difficulty": "medium",
+      "importance": 6,
+      "countries": [
+        "IN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Khalsa",
+      "note": "Traditional date Vaisakhi 1699 (30 March 1699 in the Julian calendar, or 13/14 April in modern reckoning).",
+      "significance": "Gave Sikhism a distinct corporate identity and egalitarian code that rejected caste hierarchy, empowering a community that later challenged Mughal authority and built an independent state in the Punjab.",
+      "fills_missing": 21
+    },
+    {
+      "id": "kalinga-war",
+      "name": "Kalinga War",
+      "year": -261,
+      "approximate": true,
+      "date_display": "c. 262–261 BCE",
+      "region": "South Asia",
+      "categories": [
+        "War",
+        "Religion"
+      ],
+      "aliases": [
+        "Ashoka conquers Kalinga",
+        "Invasion of Kalinga"
+      ],
+      "description": "Mauryan Emperor Ashoka invades and annexes the independent coastal kingdom of Kalinga in eastern India in a campaign that, by Ashoka's own account, kills a hundred thousand people and deports a hundred and fifty thousand. Shocked by the scale of human suffering recorded in his rock edicts, Ashoka renounces aggressive warfare and embraces Buddhist principles.",
+      "difficulty": "medium",
+      "importance": 6,
+      "countries": [
+        "IN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Kalinga_War",
+      "note": "Dated to the eighth regnal year of Ashoka, commonly placed c. 261 BCE (or 262–261 BCE). [Claude at review: Use the figures from Ashoka's Rock Edict XIII rather than a vaguer estimate.] [Claude at review: The far south stayed independent; 'across Central Asia' overstated Ashoka's reach.]",
+      "significance": "Brought almost all of the subcontinent except the far south under Mauryan rule, and prompted Ashoka's turn toward nonviolence and royal patronage of Buddhism, which his missions carried beyond India.",
+      "fills_missing": 23
+    }
+  ],
+  "spans": [
+    {
+      "id": "reign-of-akbar",
+      "kind": "period",
+      "name": "Reign of Akbar",
+      "start_year": 1556,
+      "end_year": 1605,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "description": "The nearly fifty-year rule of Mughal Emperor Akbar, who expanded imperial borders across northern and central India while reforming taxation, administration, and interfaith relations.",
+      "importance": 6,
+      "countries": [
+        "IN",
+        "PK",
+        "BD",
+        "AF"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Akbar",
+      "note": "From enthronement in February 1556 to his death in October 1605.",
+      "significance": "Institutionalized Mughal governance through the mansabdari ranking system and zabt revenue assessment, while his alliances with Rajput rulers and abolition of the jizya tax anchored imperial stability for generations.",
+      "fills_missing": 3
+    },
+    {
+      "id": "reign-of-shah-jahan",
+      "kind": "period",
+      "name": "Reign of Shah Jahan",
+      "start_year": 1628,
+      "end_year": 1658,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics",
+        "Arts"
+      ],
+      "description": "The thirty-year rule of Mughal Emperor Shah Jahan, marked by Deccan expansion, courtly splendor, and landmark marble architecture before his sons fought a war of succession.",
+      "importance": 5,
+      "countries": [
+        "IN",
+        "PK",
+        "BD",
+        "AF"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Shah_Jahan",
+      "note": "Crowned February 1628; deposed and imprisoned by Aurangzeb in 1658 (died 1666).",
+      "significance": "Produced the defining monuments of Indo-Islamic architecture, including the Taj Mahal and Jama Masjid, though costly military campaigns and building projects strained imperial finances and ended in a bitter fratricidal war.",
+      "fills_missing": 5
+    },
+    {
+      "id": "sur-empire",
+      "kind": "empire",
+      "name": "Sur Empire",
+      "start_year": 1540,
+      "end_year": 1556,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "description": "The Afghan dynasty founded by Sher Shah Suri after expelling Emperor Humayun, briefly ruling northern India until the Mughals restored their empire.",
+      "importance": 5,
+      "countries": [
+        "IN",
+        "PK",
+        "BD"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Sur_Empire",
+      "note": "Began after Kanauj in 1540; ended when Humayun and Akbar defeated Sikandar Shah Suri and Hemu in 1555–1556.",
+      "significance": "Introduced standardized silver rupiya currency, upgraded the Grand Trunk Road, and created land-measurement and revenue systems that Akbar later adopted as the backbone of Mughal administration.",
+      "fills_missing": 9
+    },
+    {
+      "id": "mamluk-dynasty-delhi",
+      "kind": "empire",
+      "name": "Mamluk Dynasty of Delhi",
+      "start_year": 1206,
+      "end_year": 1290,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "description": "The first ruling house of the Delhi Sultanate, founded by Qutb ud-Din Aibak and led by former Turkic military slaves and their descendants.",
+      "importance": 5,
+      "countries": [
+        "IN",
+        "PK"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Mamluk_dynasty_(Delhi)",
+      "note": "Also known as the Slave Dynasty; ended when Jalal-ud-din Khalji overthrew Muiz-ud-din Qaiqabad in 1290.",
+      "significance": "Established permanent Muslim sultanate rule in northern India, built early Indo-Islamic landmarks such as the Qutb Minar complex, and defended the Indus frontier against Mongol raids.",
+      "fills_missing": 11
+    },
+    {
+      "id": "khalji-dynasty",
+      "kind": "empire",
+      "name": "Khalji Dynasty",
+      "start_year": 1290,
+      "end_year": 1320,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics",
+        "War"
+      ],
+      "description": "The second dynasty of the Delhi Sultanate, known for sweeping military campaigns into southern India and strict market and price controls under Alauddin Khalji.",
+      "importance": 5,
+      "countries": [
+        "IN",
+        "PK"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Khalji_dynasty",
+      "note": "Began with Jalal-ud-din Khalji in 1290; ended with the overthrow of Khusrau Khan in 1320.",
+      "significance": "Broadened the social base of Delhi's ruling elite beyond Turkic nobles, repelled major Chagatai Mongol invasions, and carried sultanate armies deep into the Deccan and southern India for the first time.",
+      "fills_missing": 12
+    },
+    {
+      "id": "tughlaq-dynasty",
+      "kind": "empire",
+      "name": "Tughlaq Dynasty",
+      "start_year": 1320,
+      "end_year": 1414,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "description": "The third dynasty of the Delhi Sultanate, which expanded imperial control across most of the subcontinent before administrative overreach and Timur's invasion shattered its authority.",
+      "importance": 5,
+      "countries": [
+        "IN",
+        "PK",
+        "BD"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Tughlaq_dynasty",
+      "note": "Began with Ghiyath al-Din Tughluq in 1320; last ruler Nasir-ud-Din Mahmud Shah died in 1413, and Khizr Khan took Delhi in 1414. [Claude at review: Most, not almost all, of the subcontinent.] [Claude at review: One cause among several.]",
+      "significance": "Reached the widest territorial extent of the Delhi Sultanate before failed experiments like token copper currency and a forced capital shift to Daulatabad helped trigger regional breakaway states such as Vijayanagara and the Bahmani Sultanate.",
+      "fills_missing": 13
+    },
+    {
+      "id": "sayyid-dynasty",
+      "kind": "empire",
+      "name": "Sayyid Dynasty",
+      "start_year": 1414,
+      "end_year": 1451,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "description": "The fourth dynasty of the Delhi Sultanate, founded by Khizr Khan after Timur's sack of Delhi reduced the sultanate to a regional power around the capital.",
+      "importance": 3,
+      "countries": [
+        "IN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Sayyid_dynasty",
+      "note": "Ended in 1451 when Alam Shah abdicated in favor of Bahlul Lodi.",
+      "significance": "Maintained nominal continuity of the Delhi Sultanate during a period of regional fragmentation in northern India before peacefully ceding power to the Afghan Lodi dynasty.",
+      "fills_missing": 14
+    },
+    {
+      "id": "lodi-dynasty",
+      "kind": "empire",
+      "name": "Lodi Dynasty",
+      "start_year": 1451,
+      "end_year": 1526,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "description": "The fifth and final dynasty of the Delhi Sultanate, an Afghan ruling house that revived the sultanate's power across northern India before falling to Babur at the First Battle of Panipat.",
+      "importance": 4,
+      "countries": [
+        "IN",
+        "PK"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Lodi_dynasty",
+      "note": "Began with Bahlul Lodi in 1451; ended with Ibrahim Lodi's defeat and death at Panipat in April 1526. [Claude at review: Wording.]",
+      "significance": "Rebuilt sultanate control over Jaunpur and much of the Gangetic plain and founded Agra as a major imperial center, though friction between Sultan Ibrahim Lodi and Afghan nobles invited Babur's invasion.",
+      "fills_missing": 15
+    },
+    {
+      "id": "company-rule-in-india",
+      "kind": "period",
+      "name": "Company Rule in India",
+      "start_year": 1757,
+      "end_year": 1858,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics",
+        "Economy"
+      ],
+      "description": "The century in which the British East India Company evolved from a commercial monopoly into the territorial ruler of most of the Indian subcontinent following the Battle of Plassey.",
+      "importance": 7,
+      "countries": [
+        "IN",
+        "PK",
+        "BD",
+        "GB/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Company_rule_in_India",
+      "note": "Conventionally dated from Plassey (1757) to the Government of India Act 1858. [Claude at review: Hundreds of princely states survived; the rebellion had several causes.]",
+      "significance": "Reshaped South Asia's economy and politics by conquering or subordinating Indian states, redirecting land revenue and trade toward Britain and introducing English-language administration, while its grievances helped spark the 1857 rebellion that ended Company rule.",
+      "fills_missing": 16
+    },
+    {
+      "id": "anglo-mysore-wars",
+      "kind": "period",
+      "name": "Anglo-Mysore Wars",
+      "start_year": 1767,
+      "end_year": 1799,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "description": "Four wars fought in southern India between the Kingdom of Mysore under Hyder Ali and Tipu Sultan and the British East India Company and its allies.",
+      "importance": 5,
+      "countries": [
+        "IN",
+        "GB/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Anglo-Mysore_Wars",
+      "note": "Four conflicts between 1767 and the fall of Seringapatam in May 1799. [Claude at review: The Marathas still contested the Deccan until 1818.]",
+      "significance": "Eliminated the East India Company's most formidable military rival in southern India, showcased Mysorean iron-cased war rockets, and secured British supremacy in southern India.",
+      "fills_missing": 20
+    },
+    {
+      "id": "sikh-empire",
+      "kind": "empire",
+      "name": "Sikh Empire",
+      "start_year": 1799,
+      "end_year": 1849,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics",
+        "War"
+      ],
+      "description": "The sovereign state in northwestern South Asia forged by Maharaja Ranjit Singh after capturing Lahore, uniting the Sikh confederacies across the Punjab until British annexation.",
+      "importance": 5,
+      "countries": [
+        "IN",
+        "PK"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Sikh_Empire",
+      "note": "Dated from Ranjit Singh's capture of Lahore in July 1799 (crowned Maharaja in 1801) to annexation after the Second Anglo-Sikh War in March 1849. [Claude at review: Awadh (1856) was annexed after the Punjab (1849).]",
+      "significance": "Unified the Punjab into a modernized, religiously pluralistic kingdom that halted Afghan invasions from the northwest and was one of the last major Indian powers annexed by Britain.",
+      "fills_missing": 22
+    }
+  ],
+  "links": [
+    {
+      "source": "birth-of-akbar",
+      "type": "preceded",
+      "target": "akbar-becomes-mughal-emperor",
+      "confidence": "high",
+      "why": "Born during Humayun's exile in Sindh, Akbar grew up to claim the Mughal throne fourteen years later."
+    },
+    {
+      "source": "humayun-recaptures-delhi",
+      "type": "preceded",
+      "target": "akbar-becomes-mughal-emperor",
+      "confidence": "high",
+      "why": "Humayun died months after retaking Delhi, leaving the restored throne to his son Akbar."
+    },
+    {
+      "source": "akbar-becomes-mughal-emperor",
+      "type": "preceded",
+      "target": "second-battle-of-panipat",
+      "confidence": "high",
+      "why": "Months after Akbar's enthronement, his regent Bairam Khan defeated Hemu to secure Delhi."
+    },
+    {
+      "source": "akbar-becomes-mughal-emperor",
+      "type": "began",
+      "target": "reign-of-akbar",
+      "confidence": "high",
+      "why": "Akbar's enthronement at Kalanaur opened his nearly fifty-year reign."
+    },
+    {
+      "source": "death-of-akbar",
+      "type": "ended",
+      "target": "reign-of-akbar",
+      "confidence": "high",
+      "why": "Akbar's death in Agra ended his reign and passed the throne to Jahangir."
+    },
+    {
+      "source": "reign-of-akbar",
+      "type": "part_of",
+      "target": "mughal-empire",
+      "confidence": "high",
+      "why": "Akbar's reign consolidated and expanded the Mughal Empire across northern and central India."
+    },
+    {
+      "source": "mughal-akbar-administration",
+      "type": "part_of",
+      "target": "reign-of-akbar",
+      "confidence": "high",
+      "why": "Akbar introduced the mansabdari system to organize military and civil officers during his reign."
+    },
+    {
+      "source": "battle-of-haldighati",
+      "type": "part_of",
+      "target": "reign-of-akbar",
+      "confidence": "high",
+      "why": "Mughal forces fought Maharana Pratap of Mewar during Akbar's campaigns in Rajasthan."
+    },
+    {
+      "source": "akbar-din-i-ilahi",
+      "type": "part_of",
+      "target": "reign-of-akbar",
+      "confidence": "high",
+      "why": "Akbar promulgated Din-i-Ilahi at his court late in his reign."
+    },
+    {
+      "source": "death-of-jahangir",
+      "type": "preceded",
+      "target": "shah-jahan-becomes-mughal-emperor",
+      "confidence": "high",
+      "why": "Jahangir's death triggered a brief succession struggle won by his son Shah Jahan."
+    },
+    {
+      "source": "shah-jahan-becomes-mughal-emperor",
+      "type": "began",
+      "target": "reign-of-shah-jahan",
+      "confidence": "high",
+      "why": "Shah Jahan's coronation in Agra opened his thirty-year reign."
+    },
+    {
+      "source": "aurangzeb-becomes-emperor",
+      "type": "ended",
+      "target": "reign-of-shah-jahan",
+      "confidence": "high",
+      "why": "Aurangzeb deposed and imprisoned his father Shah Jahan after winning the war of succession."
+    },
+    {
+      "source": "reign-of-shah-jahan",
+      "type": "part_of",
+      "target": "mughal-empire",
+      "confidence": "high",
+      "why": "Shah Jahan's reign marked the architectural height of the Mughal Empire."
+    },
+    {
+      "source": "construction-taj-mahal",
+      "type": "part_of",
+      "target": "reign-of-shah-jahan",
+      "confidence": "high",
+      "why": "Shah Jahan commissioned the Taj Mahal in Agra during his reign."
+    },
+    {
+      "source": "first-battle-of-panipat",
+      "type": "preceded",
+      "target": "battle-of-khanwa",
+      "confidence": "high",
+      "why": "After defeating Ibrahim Lodi at Panipat, Babur faced Rana Sanga's Rajput coalition at Khanwa."
+    },
+    {
+      "source": "battle-of-khanwa",
+      "type": "part_of",
+      "target": "mughal-empire",
+      "confidence": "high",
+      "why": "Babur's victory at Khanwa secured Mughal survival in northern India."
+    },
+    {
+      "source": "humayun-succeeds-babur",
+      "type": "preceded",
+      "target": "battle-of-chausa",
+      "confidence": "high",
+      "why": "After succeeding Babur, Humayun marched east to confront Sher Khan and was routed at Chausa."
+    },
+    {
+      "source": "battle-of-chausa",
+      "type": "preceded",
+      "target": "humayun-defeated-kanauj",
+      "confidence": "high",
+      "why": "A year after Chausa, Sher Shah defeated Humayun decisively at Kanauj."
+    },
+    {
+      "source": "humayun-defeated-kanauj",
+      "type": "began",
+      "target": "sur-empire",
+      "confidence": "high",
+      "why": "Defeating Humayun at Kanauj allowed Sher Shah Suri to establish the Sur Empire across northern India."
+    },
+    {
+      "source": "second-battle-of-panipat",
+      "type": "ended",
+      "target": "sur-empire",
+      "confidence": "high",
+      "why": "Mughal victory at the Second Battle of Panipat extinguished the last Sur claim to Delhi."
+    },
+    {
+      "source": "qutb-ud-din-aibak-delhi",
+      "type": "preceded",
+      "target": "iltutmish-becomes-sultan-of-delhi",
+      "confidence": "high",
+      "why": "After Qutb ud-Din Aibak's death, his son-in-law Iltutmish seized the throne of Delhi."
+    },
+    {
+      "source": "iltutmish-becomes-sultan-of-delhi",
+      "type": "preceded",
+      "target": "razia-sultana-accession",
+      "confidence": "high",
+      "why": "Iltutmish designated his daughter Razia as successor, who took the throne after his death."
+    },
+    {
+      "source": "iltutmish-becomes-sultan-of-delhi",
+      "type": "part_of",
+      "target": "mamluk-dynasty-delhi",
+      "confidence": "high",
+      "why": "Iltutmish consolidated the Mamluk dynasty as the Delhi Sultanate's third ruler."
+    },
+    {
+      "source": "qutb-ud-din-aibak-delhi",
+      "type": "began",
+      "target": "mamluk-dynasty-delhi",
+      "confidence": "high",
+      "why": "Qutb ud-Din Aibak founded both the Delhi Sultanate and its ruling Mamluk house."
+    },
+    {
+      "source": "razia-sultana-accession",
+      "type": "part_of",
+      "target": "mamluk-dynasty-delhi",
+      "confidence": "high",
+      "why": "Razia Sultana ruled Delhi as a member of the Mamluk dynasty."
+    },
+    {
+      "source": "mamluk-dynasty-delhi",
+      "type": "part_of",
+      "target": "delhi-sultanate",
+      "confidence": "high",
+      "why": "The Mamluk dynasty was the first of the five ruling houses of the Delhi Sultanate."
+    },
+    {
+      "source": "mamluk-dynasty-delhi",
+      "type": "preceded",
+      "target": "khalji-dynasty",
+      "confidence": "high",
+      "why": "Jalal-ud-din Khalji overthrew the last Mamluk sultan to establish the Khalji dynasty."
+    },
+    {
+      "source": "alauddin-khalji-accession",
+      "type": "part_of",
+      "target": "khalji-dynasty",
+      "confidence": "high",
+      "why": "Alauddin Khalji was the most powerful ruler of the Khalji dynasty."
+    },
+    {
+      "source": "khalji-dynasty",
+      "type": "part_of",
+      "target": "delhi-sultanate",
+      "confidence": "high",
+      "why": "The Khalji dynasty was the second ruling house of the Delhi Sultanate."
+    },
+    {
+      "source": "khalji-dynasty",
+      "type": "preceded",
+      "target": "tughlaq-dynasty",
+      "confidence": "high",
+      "why": "Ghiyath al-Din Tughluq founded the Tughlaq dynasty after the collapse of Khalji rule."
+    },
+    {
+      "source": "muhammad-bin-tughlaq-accession",
+      "type": "part_of",
+      "target": "tughlaq-dynasty",
+      "confidence": "high",
+      "why": "Muhammad bin Tughlaq ruled at the territorial height of the Tughlaq dynasty."
+    },
+    {
+      "source": "firuz-shah-tughlaq-accession",
+      "type": "part_of",
+      "target": "tughlaq-dynasty",
+      "confidence": "high",
+      "why": "Firuz Shah Tughlaq succeeded his cousin Muhammad bin Tughlaq as a Tughlaq sultan."
+    },
+    {
+      "source": "tughlaq-dynasty",
+      "type": "part_of",
+      "target": "delhi-sultanate",
+      "confidence": "high",
+      "why": "The Tughlaq dynasty was the third ruling house of the Delhi Sultanate."
+    },
+    {
+      "source": "tughlaq-dynasty",
+      "type": "preceded",
+      "target": "sayyid-dynasty",
+      "confidence": "high",
+      "why": "Khizr Khan took Delhi after the end of the Tughlaq line, inaugurating the Sayyid dynasty."
+    },
+    {
+      "source": "sayyid-dynasty",
+      "type": "part_of",
+      "target": "delhi-sultanate",
+      "confidence": "high",
+      "why": "The Sayyid dynasty was the fourth ruling house of the Delhi Sultanate."
+    },
+    {
+      "source": "sayyid-dynasty",
+      "type": "preceded",
+      "target": "lodi-dynasty",
+      "confidence": "high",
+      "why": "The last Sayyid ruler abdicated in favor of Bahlul Lodi, starting the Lodi dynasty."
+    },
+    {
+      "source": "lodi-dynasty",
+      "type": "part_of",
+      "target": "delhi-sultanate",
+      "confidence": "high",
+      "why": "The Afghan Lodi dynasty was the fifth and final ruling house of the Delhi Sultanate."
+    },
+    {
+      "source": "first-battle-of-panipat",
+      "type": "ended",
+      "target": "lodi-dynasty",
+      "confidence": "high",
+      "why": "Babur defeated and killed Sultan Ibrahim Lodi at Panipat, ending the Lodi dynasty."
+    },
+    {
+      "source": "battle-of-plassey",
+      "type": "began",
+      "target": "company-rule-in-india",
+      "confidence": "high",
+      "why": "Victory at Plassey gave the East India Company political control over Bengal, starting Company rule."
+    },
+    {
+      "source": "indian-rebellion-1857",
+      "type": "contributed_to",
+      "target": "crown-takes-over-government-of-india",
+      "confidence": "high",
+      "why": "The scale of the rebellion convinced Parliament to abolish East India Company governance."
+    },
+    {
+      "source": "crown-takes-over-government-of-india",
+      "type": "ended",
+      "target": "company-rule-in-india",
+      "confidence": "high",
+      "why": "The Government of India Act transferred all Company territories and powers to the British Crown."
+    },
+    {
+      "source": "crown-takes-over-government-of-india",
+      "type": "began",
+      "target": "british-raj",
+      "confidence": "high",
+      "why": "Direct Crown administration established by the Act inaugurated the British Raj."
+    },
+    {
+      "source": "second-anglo-mysore-war",
+      "type": "part_of",
+      "target": "anglo-mysore-wars",
+      "confidence": "high",
+      "why": "The second conflict was one of four wars between Mysore and the East India Company."
+    },
+    {
+      "source": "tipu-sultan-killed",
+      "type": "ended",
+      "target": "anglo-mysore-wars",
+      "confidence": "high",
+      "why": "Tipu Sultan's death at Seringapatam ended the fourth and final Anglo-Mysore War."
+    },
+    {
+      "source": "anglo-mysore-wars",
+      "type": "part_of",
+      "target": "company-rule-in-india",
+      "confidence": "high",
+      "why": "Defeating Mysore removed a major southern rival during the expansion of Company rule."
+    },
+    {
+      "source": "execution-of-guru-tegh-bahadur",
+      "type": "contributed_to",
+      "target": "founding-of-the-khalsa",
+      "confidence": "high",
+      "why": "Mughal persecution, including his father's execution, helped lead Guru Gobind Singh to found the Khalsa."
+    },
+    {
+      "source": "founding-of-the-khalsa",
+      "type": "preceded",
+      "target": "death-of-guru-gobind-singh",
+      "confidence": "high",
+      "why": "Guru Gobind Singh led the newly formed Khalsa for nine years until his assassination in Nanded."
+    },
+    {
+      "source": "founding-of-the-khalsa",
+      "type": "contributed_to",
+      "target": "sikh-empire",
+      "confidence": "medium",
+      "why": "The Khalsa's cohesion and martial organization laid the social groundwork for later Sikh sovereignty in Punjab."
+    },
+    {
+      "source": "ashoka-becomes-emperor",
+      "type": "preceded",
+      "target": "kalinga-war",
+      "confidence": "high",
+      "why": "Several years after taking the Mauryan throne, Ashoka launched a campaign to conquer Kalinga."
+    },
+    {
+      "source": "kalinga-war",
+      "type": "contributed_to",
+      "target": "ashoka-converts-to-buddhism",
+      "confidence": "high",
+      "why": "Remorse over the carnage at Kalinga led Ashoka to embrace Buddhism and nonviolence."
+    },
+    {
+      "source": "kalinga-war",
+      "type": "part_of",
+      "target": "maurya-empire",
+      "confidence": "high",
+      "why": "The conquest of Kalinga brought eastern coastal India into the Maurya Empire."
+    },
+    {
+      "source": "shah-jahan-becomes-mughal-emperor",
+      "type": "preceded",
+      "target": "aurangzeb-becomes-emperor",
+      "confidence": "high",
+      "why": "Shah Jahan's sons fought a war of succession, won by Aurangzeb, who deposed his father."
+    }
+  ]
+}

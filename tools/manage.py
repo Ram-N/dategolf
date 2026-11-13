@@ -264,6 +264,11 @@ def main():
     p.add_argument("--reason", required=True)
     p.set_defaults(fn=lambda a: links.reject(a.ids, a.reason))
 
+    p = sub.add_parser("remove-links", help="Delete reviewed links, e.g. one a new step makes redundant (logged)")
+    p.add_argument("ids", nargs="+", type=int)
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: links.remove(a.ids, a.reason))
+
     p = sub.add_parser("retype-link", help="Change links' type in place, e.g. part_of → began")
     p.add_argument("ids", nargs="+", type=int)
     p.add_argument("--type", required=True, dest="new_type")

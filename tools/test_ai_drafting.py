@@ -26,6 +26,13 @@ import common  # noqa: E402
 
 EXAMPLE = json.loads((HERE.parent / "data" / "drafts" / "examples" / "ai_draft_example_akbar.json").read_text())
 
+# The example drafts real gap items; once those are drafted in the live db, take them out of the copy again.
+with __import__("sqlite3").connect(TEST_DB) as _db:
+    _db.execute("PRAGMA foreign_keys = ON")
+    _ids = [x["id"] for x in EXAMPLE["events"] + EXAMPLE["spans"]]
+    _db.execute(f"DELETE FROM entities WHERE id IN ({','.join('?' * len(_ids))})", _ids)
+    _db.execute("UPDATE missing_entities SET status = 'wanted', entity_id = NULL WHERE id IN (2, 3)")
+
 
 def check(batch, name, fenced=False, trial=False):
     path = TMP / f"{name}.json"

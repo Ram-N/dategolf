@@ -129,6 +129,29 @@ def reject(ids, reason, via="cli"):
     return 0 if ok else 1
 
 
+def remove(ids, reason, via="cli"):
+    """Delete reviewed links, e.g. a "preceded" that now skips a newly added step. Logged with the reason."""
+    if not reason or not reason.strip():
+        print("  ✗ a reason is required")
+        return 1
+    conn = connect()
+    ok = True
+    for link_id in ids:
+        row = conn.execute("SELECT source_entity_id FROM relationships WHERE id = ? AND editorial_status = 'reviewed'",
+                           (link_id,)).fetchone()
+        if row is None:
+            ok = False
+            print(f"  ✗ not a reviewed link: #{link_id} (use reject-links for proposed ones)")
+            continue
+        what = _sentence(conn, link_id)
+        conn.execute("DELETE FROM relationships WHERE id = ?", (link_id,))
+        log(conn, "remove-link", row[0], f"{what} — {reason.strip()}", via=via)
+        print(f"  ✓ removed {what}")
+    conn.commit()
+    conn.close()
+    return 0 if ok else 1
+
+
 def add_type(rtype, inverse, definition, direction, causal=False, symmetric=False, via="cli"):
     """Add a link type (e.g. ended / was ended by). Existing types are never changed."""
     if not rtype.replace("_", "").isalpha() or rtype != rtype.lower():
