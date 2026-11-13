@@ -128,6 +128,9 @@ class TestSkipLinks(unittest.TestCase):
         old = stored + [(3, "preceded", "a", "b"), (4, "preceded", "b", "c")]
         self.assertEqual(links.skip_links(old), [(1, "a", "b", "c")])
         self.assertEqual(links.skip_links(old, [("preceded", "x", "z")]), [])
+        # two new events between A and C (Pearl Harbor → Midway → Stalingrad → D-Day)
+        self.assertEqual(links.skip_links(stored, [("preceded", "a", "b"), ("preceded", "b", "b2"),
+                                                   ("preceded", "b2", "c")]), [(1, "a", "b", "c")])
         # only 'preceded' shortcuts are flagged: a cause can act across a gap
         self.assertEqual(links.skip_links([(5, "contributed_to", "a", "c")], new), [])
 

@@ -242,7 +242,7 @@ def run():
                     "(a succession the bars contradict)",
                     [(lid, f"{a} → {b}: {n} years of overlap")
                      for lid, a, b, n in links.overlapping_sequences(stored, spans)]))
-    results.append(("warning", "'preceded' link that skips a step (A→C while A→B→C exists): remove it",
+    results.append(("warning", "'preceded' link that skips a step (A→C while A→B→…→C exists): remove it",
                     [(lid, f"{a} → {c} skips {b}") for lid, a, b, c in links.skip_links(stored)]))
     results.append(("warning", "Link runs backwards in time (cause or sequence after its target)", forward))
     results.append(("warning", "part_of link outside the target's years", outside))

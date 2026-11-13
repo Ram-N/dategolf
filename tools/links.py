@@ -35,29 +35,48 @@ def normalize(source, rtype, target, symmetric_types):
 STEP_TYPES = ("preceded", "triggered", "caused", "contributed_to", "enabled", "influenced")
 
 
-def skip_links(stored, new=()):
-    """'preceded' links that skip a step: A preceded C, while A→B and B→C also exist.
+def skip_links(stored, new=(), max_steps=6):
+    """'preceded' links that skip a step: A preceded C, while a longer path A→B→…→C also exists.
 
     stored: [(id, type, a, c)] existing links; new: [(type, a, c)] links about to be added.
-    A→B and B→C may be any step type (a cause moves a story on as a sequence does).
-    Returns [(id, a, b, c)] for each stored 'preceded' link with such a path around it, using at
-    least one new link when `new` is given. Neighbouring steps only (doc 15): A→B, B→C, never A→C.
+    The path's steps may be any step type (a cause moves a story on as a sequence does), and it may
+    be up to max_steps long (two new events can land between A and C). With `new` given, the path
+    must use at least one new link. Returns [(id, a, b, c)], b being the first stop after A.
+    Neighbouring steps only (doc 15): A→B, B→C, never A→C.
     """
     after = {}
-    for _, t, a, c in stored:
+    for lid, t, a, c in stored:
         if t in STEP_TYPES:
-            after.setdefault(a, set()).add((c, False))
+            after.setdefault(a, set()).add((c, False, lid))
     for t, a, c in new:
         if t in STEP_TYPES:
-            after.setdefault(a, set()).add((c, True))
+            after.setdefault(a, set()).add((c, True, None))
     found = []
     for lid, t, a, c in stored:
         if t != "preceded":
             continue
-        for b, new1 in after.get(a, ()):
-            if b != c and any(c2 == c and (new1 or new2 or not new) for c2, new2 in after.get(b, ())):
-                found.append((lid, a, b, c))
+        # Breadth-first over (node, first stop, used a new link), never taking the A→C link itself.
+        frontier = [(b, b, is_new) for b, is_new, l2 in after.get(a, ()) if l2 != lid and b != c]
+        seen = {(n, u) for n, _, u in frontier}
+        hit = None
+        for _ in range(max_steps - 1):
+            nxt = []
+            for node, first, used in frontier:
+                for d, is_new, _ in after.get(node, ()):
+                    u = used or is_new
+                    if d == c and (u or not new):
+                        hit = first
+                        break
+                    if d != a and (d, u) not in seen:
+                        seen.add((d, u))
+                        nxt.append((d, first, u))
+                if hit:
+                    break
+            if hit or not nxt:
                 break
+            frontier = nxt
+        if hit:
+            found.append((lid, a, hit, c))
     return found
 
 
