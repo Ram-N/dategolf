@@ -79,7 +79,8 @@ missing_items = q("""SELECT id, status, kind, year, end_year, approximate, name,
     else q("SELECT NULL AS id, NULL AS status WHERE 0")
 if not missing_items.empty:
     missing_items["when"] = missing_items.apply(when_text, axis=1)
-n_missing = int(missing_items["status"].isin(["open", "wanted"]).sum())
+# The tab counts what needs a decision ("To decide"); wanted items wait on drafting, not on the reviewer.
+n_missing = int((missing_items["status"] == "open").sum())
 proposed_sources = (q("SELECT * FROM v_source_review WHERE status = 'proposed'") if has_sources()
                     else q("SELECT NULL AS entity_id WHERE 0"))
 has_why = has_table("entity_significance")
