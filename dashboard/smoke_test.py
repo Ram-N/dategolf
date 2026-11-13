@@ -75,6 +75,18 @@ ok, output = actions.approve_sources(["noyce-silicon-chip"])
 if not ok:
     problems.append(f"approve_sources failed: {output}")
 
+# A draft with country tags fills two queues at once (Event drafts and Country tags). Their buttons
+# share labels such as "Approve (0)", which crashed the page until every button had its own key.
+import drafts  # noqa: E402
+
+draft = TMP / "draft.json"
+draft.write_text(json.dumps({"origin": "test", "events": [{
+    "id": "smoke-test-draft", "name": "Smoke Test Draft", "year": 1234, "categories": ["Politics"],
+    "region": "Europe", "aliases": ["smoke"], "description": "A test event.", "difficulty": "hard",
+    "importance": 1, "countries": ["FR"]}]}))
+drafts.load(draft)
+problems += check("views/review.py")
+
 # Significance: a proposed text shows in its queue; approving through the dashboard works.
 ok, output = actions.set_significance("mughal-empire", "Its revenue system, courtly culture and architecture "
                                       "shaped South Asia for centuries, and its decline opened the way for "

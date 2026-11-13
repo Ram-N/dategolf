@@ -126,17 +126,17 @@ with t_drafts:
                     st.markdown(f"**Why it matters** (approved with the draft): {why.iloc[0]}")
         ids = picked["entity_id"].tolist()
         c1, c2, _ = bar.columns([1, 1, 4])
-        if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary"):
+        if c1.button(f"Approve ({len(ids)})", key="approve_drafts", disabled=not ids, type="primary"):
             finish("Approve drafts", actions.approve_drafts(ids))
 
         @st.dialog("Reject drafts")
         def reject_dialog(ids):
             st.write(f"Delete {len(ids)} draft(s): " + ", ".join(f"`{i}`" for i in ids))
             reason = st.text_input("Reason (recorded in the log)")
-            if st.button("Reject", type="primary", disabled=not reason.strip()):
+            if st.button("Reject", key="confirm_reject_drafts", type="primary", disabled=not reason.strip()):
                 finish("Reject drafts", actions.reject_drafts(ids, reason))
 
-        if c2.button(f"Reject ({len(ids)})…", disabled=not ids):
+        if c2.button(f"Reject ({len(ids)})…", key="reject_drafts", disabled=not ids):
             reject_dialog(ids)
 
 # ── Country tags ─────────────────────────────────────────────────────────────
@@ -148,10 +148,10 @@ with t_tags:
         picked = selectable(tags, "tags", ["year", "name", "region", "countries", "confidence", "note"])
         ids = picked["entity_id"].tolist()
         c1, c2, _ = bar.columns([1, 2, 3])
-        if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary"):
+        if c1.button(f"Approve ({len(ids)})", key="approve_tags", disabled=not ids, type="primary"):
             finish("Approve country tags", actions.approve_country_tags(ids))
         n_high = int((tags["confidence"] == "high").sum())
-        if c2.button(f"Approve all high-confidence ({n_high})", disabled=not n_high):
+        if c2.button(f"Approve all high-confidence ({n_high})", key="approve_tags_high", disabled=not n_high):
             finish("Approve high-confidence tags", actions.approve_country_tags([], high=True))
 
 # ── Identity (Step 3a) ───────────────────────────────────────────────────────
@@ -173,7 +173,7 @@ with t_identity:
         ids = picked["entity_id"].tolist()
         undecided = shared.loc[shared["status"] == "needs_review_identity", "entity_id"].tolist()
         c1, c2, c3, c4, c5 = bar.columns([1, 1, 1, 1, 2])
-        if c1.button(f"One subject ({len(ids)})", disabled=not ids, type="primary",
+        if c1.button(f"One subject ({len(ids)})", key="identity_one", disabled=not ids, type="primary",
                      help="Each id is both an event (the key moment) and a span (the whole period). "
                           "One subject is the usual answer (doc 11, Step 3a)."):
             finish("Identity: one subject", actions.decide_identity(ids, "one"))
@@ -182,37 +182,37 @@ with t_identity:
         def split_dialog(ids):
             st.write("These ids will be flagged `needs_split`. The split itself (a new span id) "
                      "is done with Claude: " + ", ".join(f"`{i}`" for i in ids))
-            if st.button("Flag for a split", type="primary"):
+            if st.button("Flag for a split", key="confirm_split", type="primary"):
                 finish("Identity: flagged for split", actions.decide_identity(ids, "split"))
 
         @st.dialog("All one subject")
         def all_one_dialog(ids):
             st.write(f"Mark all {len(ids)} undecided ids as **one subject**?")
-            if st.button("Confirm all", type="primary"):
+            if st.button("Confirm all", key="confirm_all_one", type="primary"):
                 finish("Identity: one subject (all)", actions.decide_identity(ids, "one"))
 
         @st.dialog("Keep the event only")
         def drop_span_dialog(ids):
             st.write("The **span** (and its span categories) will be deleted; the **event** stays. "
                      "DateFlow will no longer show these as bars: " + ", ".join(f"`{i}`" for i in ids))
-            if st.button("Delete the spans", type="primary"):
+            if st.button("Delete the spans", key="confirm_drop_span", type="primary"):
                 finish("Identity: span dropped", actions.decide_identity(ids, "drop-span"))
 
-        if c2.button(f"Needs a split ({len(ids)})…", disabled=not ids):
+        if c2.button(f"Needs a split ({len(ids)})…", key="identity_split", disabled=not ids):
             split_dialog(ids)
-        if c3.button(f"Keep event only ({len(ids)})…", disabled=not ids):
+        if c3.button(f"Keep event only ({len(ids)})…", key="identity_keep_event", disabled=not ids):
             drop_span_dialog(ids)
         @st.dialog("Keep the span only")
         def drop_event_dialog(ids):
             st.write("The **event** (with its aliases and event categories) will be deleted; the **span** stays. "
                      "DatePick and DateGolf will no longer use it: " + ", ".join(f"`{i}`" for i in ids))
             st.caption("Refused for milestones or events with DateLinks content, which hang off the event.")
-            if st.button("Delete the events", type="primary"):
+            if st.button("Delete the events", key="confirm_drop_event", type="primary"):
                 finish("Identity: event dropped", actions.decide_identity(ids, "drop-event"))
 
-        if c4.button(f"Keep span only ({len(ids)})…", disabled=not ids):
+        if c4.button(f"Keep span only ({len(ids)})…", key="identity_keep_span", disabled=not ids):
             drop_event_dialog(ids)
-        if c5.button(f"All undecided are one subject ({len(undecided)})…", disabled=not undecided):
+        if c5.button(f"All undecided are one subject ({len(undecided)})…", key="identity_all_one", disabled=not undecided):
             all_one_dialog(undecided)
 
 # ── Links ────────────────────────────────────────────────────────────────────
@@ -247,7 +247,7 @@ with t_links:
         def reject_links_dialog(ids):
             st.write(f"Delete {len(ids)} proposed link(s).")
             reason = st.text_input("Reason (recorded in the log)")
-            if st.button("Reject", type="primary", disabled=not reason.strip()):
+            if st.button("Reject", key="confirm_reject_links", type="primary", disabled=not reason.strip()):
                 finish("Reject links", actions.reject_links(ids, reason))
 
         if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_links", width="stretch"):
@@ -277,12 +277,12 @@ with t_sources:
         def reject_sources_dialog(ids):
             st.write(f"Remove the proposed source from {len(ids)} entity(s). They'll show as unsourced again.")
             reason = st.text_input("Reason (recorded in the log)")
-            if st.button("Reject", type="primary", disabled=not reason.strip()):
+            if st.button("Reject", key="confirm_reject_sources", type="primary", disabled=not reason.strip()):
                 finish("Reject sources", actions.reject_sources(ids, reason))
 
         if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_sources"):
             reject_sources_dialog(ids)
-        if c3.button(f"Approve all exact name matches ({len(exact)})", disabled=exact.empty,
+        if c3.button(f"Approve all exact name matches ({len(exact)})", key="approve_exact_sources", disabled=exact.empty,
                      help="Is this the article about this event or span? Exact name matches are listed last: "
                           "skim them, then approve in bulk. Open a link to check."):
             finish("Approve exact name matches", actions.approve_sources([], True))
@@ -319,7 +319,7 @@ with t_why:
         def reject_why_dialog(ids):
             st.write(f"Delete the proposed text of {len(ids)} item(s). The items themselves stay.")
             reason = st.text_input("Reason (recorded in the log)")
-            if st.button("Reject", type="primary", disabled=not reason.strip()):
+            if st.button("Reject", key="confirm_reject_why", type="primary", disabled=not reason.strip()):
                 finish("Reject significance", actions.reject_significance(ids, reason))
 
         if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_why"):
@@ -372,7 +372,7 @@ with t_missing:
         def dismiss_missing_dialog(ids):
             st.write(f"Take {len(ids)} item(s) off the list.")
             reason = st.text_input("Reason (recorded)")
-            if st.button("Dismiss", type="primary", disabled=not reason.strip()):
+            if st.button("Dismiss", key="confirm_dismiss_missing", type="primary", disabled=not reason.strip()):
                 finish("Dismissed", actions.set_missing_status(ids, "dismissed", reason))
 
         if c2.button(f"Dismiss ({len(ids)})…", disabled=not ids, key="dismiss_missing", width="stretch"):
