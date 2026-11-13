@@ -1,0 +1,436 @@
+{
+  "origin": "ai_drafted:gemini",
+  "about": "Batch 4 part 2: 10 events and spans linking Aksum, Srivijaya, Khmer Empire, Kievan Rus', Great Zimbabwe, Kingdom of Kongo, and the European and Pacific theatres of World War II. Pre-sorted by Claude: three text fixes; the raids' 'contributed_to srivijaya' (it read as causing the empire) became Cholas opposed Srivijaya.",
+  "events": [
+    {
+      "id": "ezana-of-aksum-adopts-christianity",
+      "name": "Ezana of Aksum Adopts Christianity",
+      "year": 330,
+      "approximate": true,
+      "date_display": "c. 330–340 CE",
+      "region": "Africa",
+      "categories": [
+        "Religion",
+        "Politics"
+      ],
+      "aliases": [
+        "King Ezana converts to Christianity",
+        "Christianity becomes state religion of Aksum",
+        "Conversion of Ezana"
+      ],
+      "description": "King Ezana of the Kingdom of Aksum converts to Christianity under the influence of his Syrian tutor Frumentius, replacing pagan sun-and-moon emblems with the cross on Aksumite coins and establishing Christianity as the royal faith.",
+      "difficulty": "medium",
+      "importance": 6,
+      "countries": [
+        "ET",
+        "ER"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Ezana_of_Axum",
+      "note": "Exact year is uncertain, generally dated to c. 330–340 CE (Frumentius was consecrated bishop by Athanasius of Alexandria after 328). Aksum was one of the earliest states to adopt Christianity, alongside Armenia and the Roman Empire.",
+      "significance": "Ezana's conversion made Aksum one of the world's first Christian states and anchored the Ethiopian Orthodox Tewahedo Church. Christianity became central to highland Ethiopian royal identity, literacy in Ge'ez and monastic scholarship for more than sixteen centuries.",
+      "fills_missing": 81
+    },
+    {
+      "id": "chola-raids-on-srivijaya",
+      "name": "Chola Raids on Srivijaya",
+      "year": 1025,
+      "approximate": false,
+      "region": "Southeast Asia",
+      "categories": [
+        "War",
+        "Economy"
+      ],
+      "aliases": [
+        "Rajendra Chola invades Srivijaya",
+        "Chola naval expedition against Srivijaya",
+        "Chola invasion of Srivijaya"
+      ],
+      "description": "Emperor Rajendra Chola I of southern India launches a major naval expedition across the Bay of Bengal, raiding Palembang, Kedah and other ports of the Srivijaya Empire and capturing King Sangrama Vijayatunggavarman.",
+      "difficulty": "hard",
+      "importance": 5,
+      "countries": [
+        "ID",
+        "MY",
+        "IN/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Chola_invasion_of_Srivijaya",
+      "note": "1025 CE, recorded in Rajendra Chola I's Thanjavur inscriptions. The Cholas did not establish permanent territorial rule in Sumatra or Malaya, but broke Srivijaya's maritime monopoly. [Claude at review: 'Monopoly' overstated Srivijaya's control; 'hold' is the usual reading.]",
+      "significance": "The raids broke Srivijaya's hold over the Strait of Malacca, allowing Tamil merchant guilds to trade more freely across Southeast Asia and southern China. Weakened politically and commercially, Srivijaya gradually lost authority over its vassal ports.",
+      "fills_missing": 82
+    },
+    {
+      "id": "angkor-wat-built",
+      "name": "Angkor Wat Built",
+      "year": 1113,
+      "approximate": true,
+      "date_display": "c. 1113–1150",
+      "region": "Southeast Asia",
+      "categories": [
+        "Arts",
+        "Religion",
+        "Culture"
+      ],
+      "aliases": [
+        "Construction of Angkor Wat",
+        "Suryavarman II builds Angkor Wat"
+      ],
+      "description": "Khmer Emperor Suryavarman II begins building Angkor Wat near Yasodharapura in present-day Cambodia as a vast sandstone temple complex dedicated to the Hindu god Vishnu and intended as his state temple and mausoleum.",
+      "difficulty": "easy",
+      "importance": 7,
+      "countries": [
+        "KH"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Angkor_Wat",
+      "note": "Begun around the start of Suryavarman II's reign (1113–c. 1150). Later transitioned into a Theravada Buddhist monastery.",
+      "significance": "Covering more than four hundred acres, Angkor Wat stands as the largest religious monument in the world and the pinnacle of classical Khmer architecture. Later adapted to Theravada Buddhism, it remained an active spiritual center and became Cambodia's enduring national symbol.",
+      "fills_missing": 83
+    },
+    {
+      "id": "mongols-sack-kyiv",
+      "name": "Mongols Sack Kyiv",
+      "year": 1240,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "aliases": [
+        "Siege of Kyiv",
+        "Fall of Kyiv to the Mongols",
+        "Batu Khan sacks Kyiv"
+      ],
+      "description": "Mongol armies led by Batu Khan and general Subutai besiege and storm Kyiv after its defenders refuse to surrender, destroying much of the city and slaughtering or enslaving most of its population.",
+      "difficulty": "medium",
+      "importance": 7,
+      "countries": [
+        "UA",
+        "MN/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Siege_of_Kiev_(1240)",
+      "note": "December 1240 (city fell on 6 December 1240).",
+      "significance": "The destruction of Kyiv brought the era of Kievan Rus' to an end and subjected the East Slavic principalities to Golden Horde tribute and overlordship. Political gravity gradually shifted northward toward Vladimir, Moscow and Lithuania.",
+      "fills_missing": 85
+    },
+    {
+      "id": "ayutthaya-sacks-angkor",
+      "name": "Ayutthaya Sacks Angkor",
+      "year": 1431,
+      "approximate": false,
+      "region": "Southeast Asia",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "aliases": [
+        "Fall of Angkor",
+        "Siamese capture of Angkor",
+        "End of the Khmer Empire"
+      ],
+      "description": "Forces of the Siamese Kingdom of Ayutthaya besiege and capture Angkor Thom, the capital of the weakened Khmer Empire, looting royal regalia, deporting thousands of artisans and officials, and forcing the Khmer court to abandon the city.",
+      "difficulty": "hard",
+      "importance": 6,
+      "countries": [
+        "KH",
+        "TH/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Khmer_Empire",
+      "note": "1431 CE. While Angkor Wat remained inhabited as a Buddhist pilgrimage site, the Khmer royal court relocated southward to the Phnom Penh and Lovek region.",
+      "significance": "The capture of Angkor marks the conventional end of the classical Khmer Empire. Relocating their capital southward toward the Mekong-Tonle Sap junction, Cambodian monarchs oriented the kingdom more toward maritime trade while contending with stronger Siamese and Vietnamese neighbors.",
+      "fills_missing": 84
+    },
+    {
+      "id": "portuguese-reach-the-kingdom-of-kongo",
+      "name": "Portuguese Reach the Kingdom of Kongo",
+      "year": 1483,
+      "approximate": false,
+      "region": "Africa",
+      "categories": [
+        "Exploration",
+        "Politics",
+        "Economy"
+      ],
+      "aliases": [
+        "Diogo Cao reaches the Congo River",
+        "First Portuguese contact with Kongo"
+      ],
+      "description": "Portuguese navigator Diogo Cao sails into the mouth of the Congo River, establishing the first European contact with the Kingdom of Kongo and exchanging hostages with King Nzinga a Nkuwu to open diplomatic relations.",
+      "difficulty": "medium",
+      "importance": 6,
+      "countries": [
+        "AO",
+        "CD",
+        "PT/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Diogo_C%C3%A3o",
+      "note": "1483 CE (some older accounts gave 1482; 1483 is the consensus date).",
+      "significance": "Cao's voyage initiated direct diplomatic, religious and commercial ties between Kongo and Portugal, leading to the baptism of Kongo's royal family in 1491. Over the following decades, Portuguese demand for captives to work Atlantic sugar plantations drew Kongo into the transatlantic slave trade.",
+      "fills_missing": 87
+    },
+    {
+      "id": "afonso-i-becomes-king-of-kongo",
+      "name": "Afonso I Becomes King of Kongo",
+      "year": 1509,
+      "approximate": false,
+      "region": "Africa",
+      "categories": [
+        "Politics",
+        "Religion"
+      ],
+      "aliases": [
+        "Mvemba a Nzinga takes the throne",
+        "Accession of Afonso I of Kongo"
+      ],
+      "description": "Mvemba a Nzinga, baptized as Afonso I, defeats his non-Christian half-brother Mpanzu a Kitima to become Manikongo of the Kingdom of Kongo, establishing Roman Catholicism as the royal religion and expanding literacy and diplomatic ties with Europe.",
+      "difficulty": "hard",
+      "importance": 5,
+      "countries": [
+        "AO",
+        "CD"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Afonso_I_of_Kongo",
+      "note": "1509 CE (some sources cite 1506 following Joao I's death, while 1509 is the standard date for Afonso securing the throne; he ruled until c. 1542–1543). [Claude at review: He protested the uncontrolled trade and the enslavement of his own free subjects, not 'illegal raiding'.]",
+      "significance": "Afonso I sent Kongolese youths to study in Europe, built churches and schools, and corresponded directly with Portuguese kings and the pope. His famous letters protesting the Portuguese enslavement of free Kongolese remain vital primary sources on early Afro-European relations.",
+      "fills_missing": 88
+    }
+  ],
+  "spans": [
+    {
+      "id": "mutapa-empire",
+      "kind": "empire",
+      "name": "Mutapa Empire",
+      "start_year": 1430,
+      "end_year": 1760,
+      "approximate": true,
+      "date_display": "c. 1430–1760",
+      "region": "Africa",
+      "categories": [
+        "Politics",
+        "Economy"
+      ],
+      "description": "A Shona kingdom founded by Nyatsimba Mutota in northern Zimbabwe and central Mozambique that succeeded Great Zimbabwe as the dominant gold-and-ivory trading power between the southern African interior and Swahili coast ports.",
+      "importance": 5,
+      "countries": [
+        "ZW",
+        "MZ"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Kingdom_of_Mutapa",
+      "note": "Conventional dates c. 1430 to 1760 (a diminished successor polity survived in Chidima until the late nineteenth century). [Claude at review: 'King Solomon's Mines' is Haggard's 1885 novel; the Portuguese linked Mutapa's gold to Ophir.]",
+      "significance": "Controlling goldfields across the Zimbabwe plateau and trade routes down the Zambezi River, Mutapa drew both Swahili and Portuguese merchants into southern Africa. Its gold led the Portuguese to identify it with the biblical land of Ophir and led to centuries of diplomatic and military entanglement with Portugal.",
+      "fills_missing": 86
+    },
+    {
+      "id": "european-theatre-of-world-war-ii",
+      "kind": "period",
+      "name": "European Theatre of World War II",
+      "start_year": 1939,
+      "end_year": 1945,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "War"
+      ],
+      "description": "The European conflict of World War II, beginning with Germany's invasion of Poland and spanning the fall of France, the Battle of Britain, the German-Soviet war and the Allied liberation of Western Europe until Germany's surrender.",
+      "importance": 8,
+      "countries": [
+        "DE",
+        "RU",
+        "GB",
+        "FR",
+        "PL"
+      ],
+      "source": "https://en.wikipedia.org/wiki/European_theatre_of_World_War_II",
+      "note": "1 September 1939 to 8 May 1945 (V-E Day).",
+      "significance": "The European theatre saw the largest land battles in history on the Eastern Front alongside the Nazi Holocaust, killing tens of millions of soldiers and civilians. Germany's defeat left Europe devastated and divided between American-allied and Soviet spheres of influence.",
+      "fills_missing": 89
+    },
+    {
+      "id": "pacific-war",
+      "kind": "period",
+      "name": "Pacific War",
+      "start_year": 1941,
+      "end_year": 1945,
+      "approximate": false,
+      "region": "Global",
+      "categories": [
+        "War"
+      ],
+      "description": "The theater of World War II fought across the Pacific Ocean, East Asia and Southeast Asia between the Empire of Japan and the Allied powers, from Japan's attack on Pearl Harbor to its formal surrender.",
+      "importance": 8,
+      "countries": [
+        "JP",
+        "US",
+        "CN",
+        "AU",
+        "PH"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Pacific_War",
+      "note": "7–8 December 1941 (Pearl Harbor and simultaneous attacks across Malaya, Hong Kong and the Philippines) to 2 September 1945 (formal surrender in Tokyo Bay; Emperor Hirohito announced surrender on 15 August 1945). Fighting between Japan and China had already been underway since 1937.",
+      "significance": "The Pacific War transformed naval warfare through aircraft carrier battles and amphibious island campaigns, culminating in the atomic bombings of Hiroshima and Nagasaki. Japan's defeat dismantled its overseas empire, led to the Allied occupation of Japan and accelerated decolonization across Asia.",
+      "fills_missing": 90
+    }
+  ],
+  "links": [
+    {
+      "source": "ezana-of-aksum-adopts-christianity",
+      "type": "part_of",
+      "target": "kingdom-of-aksum",
+      "why": "King Ezana's conversion made Christianity the official religion of the Kingdom of Aksum.",
+      "confidence": "high"
+    },
+    {
+      "source": "chola-raids-on-srivijaya",
+      "type": "part_of",
+      "target": "chola-empire",
+      "why": "Rajendra Chola I launched the naval expedition across the Bay of Bengal at the height of the Chola Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "chola-empire",
+      "type": "opposed",
+      "target": "srivijaya",
+      "why": "Once trading partners, the Cholas turned on Srivijaya with naval raids on its ports, peaking in 1025.",
+      "confidence": "high"
+    },
+    {
+      "source": "angkor-wat-built",
+      "type": "part_of",
+      "target": "khmer-empire",
+      "why": "Suryavarman II built Angkor Wat as the state temple of the Khmer Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "ayutthaya-sacks-angkor",
+      "type": "ended",
+      "target": "khmer-empire",
+      "why": "The Siamese capture of Angkor forced the Khmer court to abandon its capital and ended the Angkorian era.",
+      "confidence": "high"
+    },
+    {
+      "source": "mongols-sack-kyiv",
+      "type": "part_of",
+      "target": "mongol-conquests",
+      "why": "Batu Khan's siege and destruction of Kyiv was a major campaign of the Mongol invasion of Europe.",
+      "confidence": "high"
+    },
+    {
+      "source": "mongols-sack-kyiv",
+      "type": "ended",
+      "target": "kievan-rus",
+      "why": "The destruction of Kyiv ended Kievan Rus' and brought the East Slavic principalities under Golden Horde rule.",
+      "confidence": "high"
+    },
+    {
+      "source": "great-zimbabwe",
+      "type": "preceded",
+      "target": "mutapa-empire",
+      "why": "As Great Zimbabwe declined in the fifteenth century, the Mutapa Empire rose to control the plateau's gold trade.",
+      "confidence": "high"
+    },
+    {
+      "source": "portuguese-reach-the-kingdom-of-kongo",
+      "type": "part_of",
+      "target": "kingdom-of-kongo",
+      "why": "Diogo Cao's arrival at the Congo River began Kongo's diplomatic and commercial ties with Portugal.",
+      "confidence": "high"
+    },
+    {
+      "source": "portuguese-reach-the-kingdom-of-kongo",
+      "type": "preceded",
+      "target": "afonso-i-becomes-king-of-kongo",
+      "why": "Early Portuguese contact and royal baptisms set the stage for the Christian ruler Afonso I's accession.",
+      "confidence": "high"
+    },
+    {
+      "source": "afonso-i-becomes-king-of-kongo",
+      "type": "part_of",
+      "target": "kingdom-of-kongo",
+      "why": "Afonso I ruled the Kingdom of Kongo and promoted Catholicism and literacy across his realm.",
+      "confidence": "high"
+    },
+    {
+      "source": "european-theatre-of-world-war-ii",
+      "type": "part_of",
+      "target": "world-war-2",
+      "why": "The European theatre was the primary European conflict of World War II.",
+      "confidence": "high"
+    },
+    {
+      "source": "world-war-two",
+      "type": "began",
+      "target": "european-theatre-of-world-war-ii",
+      "why": "Germany's invasion of Poland opened both World War II and its European theatre.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-britain",
+      "type": "part_of",
+      "target": "european-theatre-of-world-war-ii",
+      "why": "The Luftwaffe's air campaign against Britain was a major battle of the European theatre.",
+      "confidence": "high"
+    },
+    {
+      "source": "germany-invades-soviet-union",
+      "type": "part_of",
+      "target": "european-theatre-of-world-war-ii",
+      "why": "Operation Barbarossa opened the Eastern Front of the European theatre.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-stalingrad",
+      "type": "part_of",
+      "target": "european-theatre-of-world-war-ii",
+      "why": "Stalingrad was the decisive turning-point battle on the Eastern Front of the European theatre.",
+      "confidence": "high"
+    },
+    {
+      "source": "d-day-normandy",
+      "type": "part_of",
+      "target": "european-theatre-of-world-war-ii",
+      "why": "The Allied Normandy landings opened the Western Front liberation campaign in Europe.",
+      "confidence": "high"
+    },
+    {
+      "source": "germany-surrenders-ve-day",
+      "type": "ended",
+      "target": "european-theatre-of-world-war-ii",
+      "why": "Nazi Germany's unconditional surrender concluded the European theatre of World War II.",
+      "confidence": "high"
+    },
+    {
+      "source": "pacific-war",
+      "type": "part_of",
+      "target": "world-war-2",
+      "why": "The Pacific War was the Asia-Pacific conflict of World War II.",
+      "confidence": "high"
+    },
+    {
+      "source": "japanese-pearl-harbor",
+      "type": "began",
+      "target": "pacific-war",
+      "why": "Japan's attack on Pearl Harbor and simultaneous offensives across Southeast Asia opened the Pacific War.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-midway",
+      "type": "part_of",
+      "target": "pacific-war",
+      "why": "The carrier battle off Midway Atoll was the turning point of the Pacific War.",
+      "confidence": "high"
+    },
+    {
+      "source": "atomic-bomb-hiroshima",
+      "type": "part_of",
+      "target": "pacific-war",
+      "why": "The atomic bombing of Hiroshima took place in the final days of the Pacific War.",
+      "confidence": "high"
+    },
+    {
+      "source": "japan-world-war-two-defeat",
+      "type": "ended",
+      "target": "pacific-war",
+      "why": "Japan's formal surrender in September 1945 brought the Pacific War to an end.",
+      "confidence": "high"
+    }
+  ]
+}
