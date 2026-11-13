@@ -30,6 +30,12 @@
       "causal": true,
       "story": "cause"
     },
+    "opposed": {
+      "label": "opposed",
+      "inverse": "opposed",
+      "causal": false,
+      "story": "context"
+    },
     "part_of": {
       "label": "is part of",
       "inverse": "includes",
@@ -1952,6 +1958,167 @@
       "type": "preceded",
       "target": "aurangzeb-becomes-emperor",
       "why": "Shah Jahan's sons fought a war of succession, won by Aurangzeb, who deposed his father.",
+      "confidence": "high"
+    },
+    {
+      "source": "unification-of-egypt",
+      "type": "preceded",
+      "target": "old-kingdom-egypt",
+      "why": "Unification under the Early Dynastic pharaohs laid the political foundation for Egypt's Old Kingdom.",
+      "confidence": "high"
+    },
+    {
+      "source": "olmec-civilization",
+      "type": "influenced",
+      "target": "classic-maya",
+      "why": "Olmec art, ceremonial centres and ritual traditions influenced later Mesoamerican societies, including the Maya; how directly is debated.",
+      "confidence": "medium"
+    },
+    {
+      "source": "phoenician-alphabet-invented",
+      "type": "influenced",
+      "target": "greek-alphabet-adapted-from-phoenician",
+      "why": "Greek scribes adapted Phoenician consonant letters and added dedicated signs for vowels.",
+      "confidence": "high"
+    },
+    {
+      "source": "first-punic-war",
+      "type": "part_of",
+      "target": "punic-wars",
+      "why": "The First Punic War was the opening conflict of the three Punic Wars between Rome and Carthage.",
+      "confidence": "high"
+    },
+    {
+      "source": "first-punic-war",
+      "type": "contributed_to",
+      "target": "second-punic-war",
+      "why": "Carthage's loss of Sicily and heavy war indemnity drove Barcid expansion in Spain, sparking renewed conflict.",
+      "confidence": "high"
+    },
+    {
+      "source": "second-punic-war",
+      "type": "part_of",
+      "target": "punic-wars",
+      "why": "The Second Punic War was the second major war fought between Rome and Carthage.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-zama",
+      "type": "ended",
+      "target": "second-punic-war",
+      "why": "Scipio's victory over Hannibal at Zama forced Carthage to sue for peace and end the war.",
+      "confidence": "high"
+    },
+    {
+      "source": "second-punic-war",
+      "type": "preceded",
+      "target": "third-punic-war",
+      "why": "Fifty years after the Second Punic War, Rome launched a final war to eliminate Carthage.",
+      "confidence": "high"
+    },
+    {
+      "source": "third-punic-war",
+      "type": "part_of",
+      "target": "punic-wars",
+      "why": "The Third Punic War was the final conflict of the Punic Wars.",
+      "confidence": "high"
+    },
+    {
+      "source": "destruction-of-carthage",
+      "type": "ended",
+      "target": "third-punic-war",
+      "why": "Rome's siege and destruction of Carthage concluded the Third Punic War.",
+      "confidence": "high"
+    },
+    {
+      "source": "destruction-of-carthage",
+      "type": "ended",
+      "target": "punic-wars",
+      "why": "Carthage's annihilation ended over a century of Punic Wars between Rome and Carthage.",
+      "confidence": "high"
+    },
+    {
+      "source": "ghana-empire",
+      "type": "preceded",
+      "target": "mali-empire",
+      "why": "As the Ghana Empire declined, the Mali Empire rose to dominate West African gold and salt trade.",
+      "confidence": "high"
+    },
+    {
+      "source": "division-of-the-roman-empire",
+      "type": "began",
+      "target": "fall-western-roman-empire",
+      "why": "The permanent East-West split at Theodosius's death opened the final century of the Western Roman Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "division-of-the-roman-empire",
+      "type": "part_of",
+      "target": "roman-empire",
+      "why": "The division split the Roman Empire into permanent Western and Eastern imperial courts.",
+      "confidence": "high"
+    },
+    {
+      "source": "visigoths-sack-rome",
+      "type": "part_of",
+      "target": "fall-western-roman-empire",
+      "why": "Alaric's sack of Rome was a major blow during the collapse of Western Roman authority.",
+      "confidence": "high"
+    },
+    {
+      "source": "visigoths-sack-rome",
+      "type": "preceded",
+      "target": "fall-of-roman-empire-west",
+      "why": "The Visigothic sack exposed Western imperial weakness decades before the last Western emperor was deposed.",
+      "confidence": "high"
+    },
+    {
+      "source": "heian-period",
+      "type": "preceded",
+      "target": "kamakura-shogunate",
+      "why": "Aristocratic court rule in the Heian period gave way to samurai military rule under the Kamakura shogunate.",
+      "confidence": "high"
+    },
+    {
+      "source": "kievan-rus-founded",
+      "type": "began",
+      "target": "kievan-rus",
+      "why": "Oleg's capture of Kyiv united northern and southern East Slavic lands into Kievan Rus'.",
+      "confidence": "high"
+    },
+    {
+      "source": "abbasid-caliphate",
+      "type": "opposed",
+      "target": "fatimid-caliphate",
+      "why": "The Ismaili Shia Fatimid caliphs claimed supreme Islamic leadership in direct rivalry with the Sunni Abbasids.",
+      "confidence": "high"
+    },
+    {
+      "source": "fatimid-caliphate",
+      "type": "preceded",
+      "target": "ayyubid-sultanate",
+      "why": "Saladin abolished the Fatimid Caliphate in Egypt and established the Sunni Ayyubid Sultanate.",
+      "confidence": "high"
+    },
+    {
+      "source": "seljuk-empire",
+      "type": "contributed_to",
+      "target": "first-crusade",
+      "why": "Seljuk conquests in Anatolia and the Levant prompted Byzantine appeals to Europe that helped spark the First Crusade.",
+      "confidence": "high"
+    },
+    {
+      "source": "byzantine-empire",
+      "type": "opposed",
+      "target": "seljuk-empire",
+      "why": "The Seljuks defeated Byzantine forces at Manzikert and conquered much of Anatolia.",
+      "confidence": "high"
+    },
+    {
+      "source": "kamakura-shogunate",
+      "type": "opposed",
+      "target": "mongol-conquests",
+      "why": "Kamakura samurai forces repelled two Mongol naval invasions of Japan.",
       "confidence": "high"
     }
   ]

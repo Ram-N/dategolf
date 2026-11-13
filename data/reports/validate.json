@@ -1,7 +1,7 @@
 {
   "counts": {
-    "events": 443,
-    "time_spans": 110,
+    "events": 448,
+    "time_spans": 125,
     "eras": 5,
     "datelinks_keys": 26,
     "datelinks_groups": 83,
@@ -9,7 +9,7 @@
     "milestones": 16,
     "daily_challenge_dates": 366,
     "csv_rows": 310,
-    "significance_reviewed": 98,
+    "significance_reviewed": 118,
     "significance_proposed": 0
   },
   "checks": [
@@ -423,91 +423,27 @@
     {
       "severity": "review",
       "check": "Missing events and spans to decide (dashboard Review → Missing)",
-      "count": 59,
+      "count": 45,
       "rows": [
-        [
-          59,
-          "event · Unification of Egypt (-3100) · wanted"
-        ],
-        [
-          58,
-          "span · Olmec Civilization (-1200) · wanted"
-        ],
-        [
-          65,
-          "event · Greek Alphabet Adapted from Phoenician (-800) · wanted"
-        ],
         [
           24,
           "span · Reign of Ashoka (-268) · wanted"
         ],
         [
-          31,
-          "span · First Punic War (-264) · wanted"
+          81,
+          "event · Ezana of Aksum Adopts Christianity (330) · wanted"
         ],
         [
-          32,
-          "span · Second Punic War (-218) · wanted"
+          82,
+          "event · Chola Raids on Srivijaya (1025) · wanted"
         ],
         [
-          33,
-          "span · Third Punic War (-149) · wanted"
+          83,
+          "event · Angkor Wat Built (1113) · wanted"
         ],
         [
-          34,
-          "event · Destruction of Carthage (-146) · wanted"
-        ],
-        [
-          55,
-          "span · Kingdom of Aksum (100) · wanted"
-        ],
-        [
-          79,
-          "span · Ghana Empire (300) · wanted"
-        ],
-        [
-          40,
-          "event · Division of the Roman Empire (395) · wanted"
-        ],
-        [
-          41,
-          "event · Visigoths Sack Rome (410) · wanted"
-        ],
-        [
-          78,
-          "span · Srivijaya (650) · wanted"
-        ],
-        [
-          76,
-          "span · Heian Period (794) · wanted"
-        ],
-        [
-          77,
-          "span · Khmer Empire (802) · wanted"
-        ],
-        [
-          74,
-          "span · Kievan Rus' (882) · wanted"
-        ],
-        [
-          70,
-          "span · Fatimid Caliphate (909) · wanted"
-        ],
-        [
-          71,
-          "span · Seljuk Empire (1037) · wanted"
-        ],
-        [
-          56,
-          "span · Great Zimbabwe (1100) · wanted"
-        ],
-        [
-          69,
-          "span · Ayyubid Sultanate (1171) · wanted"
-        ],
-        [
-          75,
-          "span · Kamakura Shogunate (1185) · wanted"
+          85,
+          "event · Mongols Sack Kyiv (1240) · wanted"
         ],
         [
           73,
@@ -540,6 +476,14 @@
         [
           80,
           "span · Kingdom of Kongo (1390) · wanted"
+        ],
+        [
+          86,
+          "span · Mutapa Empire (1430) · wanted"
+        ],
+        [
+          84,
+          "event · Ayutthaya Sacks Angkor (1431) · wanted"
         ],
         [
           57,
@@ -682,7 +626,7 @@
       "rows": [
         [
           "Europe",
-          "europe · 157 records"
+          "europe · 163 records"
         ],
         [
           "South Asia",
@@ -690,19 +634,19 @@
         ],
         [
           "Americas",
-          "americas · 64 records"
+          "americas · 65 records"
         ],
         [
           "East Asia",
-          "east-asia · 58 records"
+          "east-asia · 60 records"
         ],
         [
           "Middle East",
-          "middle-east · 45 records"
+          "middle-east · 48 records"
         ],
         [
           "Africa",
-          "africa · 31 records"
+          "africa · 37 records"
         ],
         [
           "Global",
@@ -710,7 +654,7 @@
         ],
         [
           "Southeast Asia",
-          "east-asia · 11 records"
+          "east-asia · 13 records"
         ],
         [
           "North America",
@@ -798,11 +742,11 @@
       "rows": [
         [
           "events",
-          "343 at import -> 443 now"
+          "343 at import -> 448 now"
         ],
         [
           "time_spans",
-          "98 at import -> 110 now"
+          "98 at import -> 125 now"
         ]
       ]
     }

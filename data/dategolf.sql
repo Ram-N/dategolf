@@ -136,6 +136,13 @@ INSERT INTO "countries" VALUES('ZZ','Worldwide (no single country)','Global',NUL
 INSERT INTO "countries" VALUES('BR','Brazil','South America',NULL,'BRA');
 INSERT INTO "countries" VALUES('AO','Angola','Africa',NULL,'AGO');
 INSERT INTO "countries" VALUES('EC','Ecuador','South America',NULL,'ECU');
+INSERT INTO "countries" VALUES('ER','Eritrea','Africa',NULL,'ERI');
+INSERT INTO "countries" VALUES('MR','Mauritania','Africa',NULL,'MRT');
+INSERT INTO "countries" VALUES('TH','Thailand','Southeast Asia',NULL,'THA');
+INSERT INTO "countries" VALUES('LA','Laos','Southeast Asia',NULL,'LAO');
+INSERT INTO "countries" VALUES('TM','Turkmenistan','Central Asia',NULL,'TKM');
+INSERT INTO "countries" VALUES('ZW','Zimbabwe','Africa',NULL,'ZWE');
+INSERT INTO "countries" VALUES('YE','Yemen','Middle East',NULL,'YEM');
 CREATE TABLE daily_challenges (
   date_key TEXT NOT NULL,
   position INTEGER NOT NULL,
@@ -2524,6 +2531,26 @@ INSERT INTO "entities" VALUES('lodi-dynasty','empire','reviewed','2026-11-13 22:
 INSERT INTO "entities" VALUES('company-rule-in-india','period','reviewed','2026-11-13 22:12:22','2026-11-13 22:16:04');
 INSERT INTO "entities" VALUES('anglo-mysore-wars','period','reviewed','2026-11-13 22:12:22','2026-11-13 22:16:04');
 INSERT INTO "entities" VALUES('sikh-empire','empire','reviewed','2026-11-13 22:12:22','2026-11-13 22:16:04');
+INSERT INTO "entities" VALUES('unification-of-egypt','event','reviewed','2026-11-13 22:29:14','2026-11-13 22:32:49');
+INSERT INTO "entities" VALUES('greek-alphabet-adapted-from-phoenician','event','reviewed','2026-11-13 22:29:14','2026-11-13 22:32:49');
+INSERT INTO "entities" VALUES('destruction-of-carthage','event','reviewed','2026-11-13 22:29:14','2026-11-13 22:32:49');
+INSERT INTO "entities" VALUES('division-of-the-roman-empire','event','reviewed','2026-11-13 22:29:14','2026-11-13 22:32:49');
+INSERT INTO "entities" VALUES('visigoths-sack-rome','event','reviewed','2026-11-13 22:29:14','2026-11-13 22:32:49');
+INSERT INTO "entities" VALUES('olmec-civilization','period','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('first-punic-war','period','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('second-punic-war','period','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('third-punic-war','period','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('kingdom-of-aksum','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('ghana-empire','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('srivijaya','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('heian-period','period','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('khmer-empire','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('kievan-rus','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('fatimid-caliphate','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('seljuk-empire','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('great-zimbabwe','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('ayyubid-sultanate','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('kamakura-shogunate','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
 CREATE TABLE entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   facet     TEXT NOT NULL CHECK (facet IN ('event', 'span')),
@@ -3459,6 +3486,48 @@ INSERT INTO "entity_categories" VALUES('anglo-mysore-wars','span',0,'War');
 INSERT INTO "entity_categories" VALUES('anglo-mysore-wars','span',1,'Politics');
 INSERT INTO "entity_categories" VALUES('sikh-empire','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('sikh-empire','span',1,'War');
+INSERT INTO "entity_categories" VALUES('unification-of-egypt','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('greek-alphabet-adapted-from-phoenician','event',0,'Culture');
+INSERT INTO "entity_categories" VALUES('greek-alphabet-adapted-from-phoenician','event',1,'Technology');
+INSERT INTO "entity_categories" VALUES('destruction-of-carthage','event',0,'War');
+INSERT INTO "entity_categories" VALUES('destruction-of-carthage','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('division-of-the-roman-empire','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('visigoths-sack-rome','event',0,'War');
+INSERT INTO "entity_categories" VALUES('visigoths-sack-rome','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('olmec-civilization','span',0,'Culture');
+INSERT INTO "entity_categories" VALUES('olmec-civilization','span',1,'Arts');
+INSERT INTO "entity_categories" VALUES('olmec-civilization','span',2,'Politics');
+INSERT INTO "entity_categories" VALUES('first-punic-war','span',0,'War');
+INSERT INTO "entity_categories" VALUES('second-punic-war','span',0,'War');
+INSERT INTO "entity_categories" VALUES('third-punic-war','span',0,'War');
+INSERT INTO "entity_categories" VALUES('kingdom-of-aksum','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('kingdom-of-aksum','span',1,'Economy');
+INSERT INTO "entity_categories" VALUES('kingdom-of-aksum','span',2,'Religion');
+INSERT INTO "entity_categories" VALUES('ghana-empire','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('ghana-empire','span',1,'Economy');
+INSERT INTO "entity_categories" VALUES('srivijaya','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('srivijaya','span',1,'Economy');
+INSERT INTO "entity_categories" VALUES('srivijaya','span',2,'Religion');
+INSERT INTO "entity_categories" VALUES('heian-period','span',0,'Culture');
+INSERT INTO "entity_categories" VALUES('heian-period','span',1,'Arts');
+INSERT INTO "entity_categories" VALUES('heian-period','span',2,'Politics');
+INSERT INTO "entity_categories" VALUES('khmer-empire','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('khmer-empire','span',1,'Arts');
+INSERT INTO "entity_categories" VALUES('khmer-empire','span',2,'Culture');
+INSERT INTO "entity_categories" VALUES('kievan-rus','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('kievan-rus','span',1,'Culture');
+INSERT INTO "entity_categories" VALUES('kievan-rus','span',2,'Religion');
+INSERT INTO "entity_categories" VALUES('fatimid-caliphate','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('fatimid-caliphate','span',1,'Religion');
+INSERT INTO "entity_categories" VALUES('seljuk-empire','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('seljuk-empire','span',1,'War');
+INSERT INTO "entity_categories" VALUES('great-zimbabwe','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('great-zimbabwe','span',1,'Economy');
+INSERT INTO "entity_categories" VALUES('great-zimbabwe','span',2,'Arts');
+INSERT INTO "entity_categories" VALUES('ayyubid-sultanate','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('ayyubid-sultanate','span',1,'War');
+INSERT INTO "entity_categories" VALUES('kamakura-shogunate','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('kamakura-shogunate','span',1,'War');
 CREATE TABLE entity_countries (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   position   INTEGER NOT NULL,
@@ -4182,6 +4251,49 @@ INSERT INTO "entity_countries" VALUES('anglo-mysore-wars',0,'IN','high','reviewe
 INSERT INTO "entity_countries" VALUES('anglo-mysore-wars',1,'GB','high','reviewed',NULL,'actor');
 INSERT INTO "entity_countries" VALUES('sikh-empire',0,'IN','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('sikh-empire',1,'PK','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('unification-of-egypt',0,'EG','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('greek-alphabet-adapted-from-phoenician',0,'GR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('destruction-of-carthage',0,'TN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('destruction-of-carthage',1,'IT','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('division-of-the-roman-empire',0,'IT','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('division-of-the-roman-empire',1,'TR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('visigoths-sack-rome',0,'IT','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('olmec-civilization',0,'MX','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('first-punic-war',0,'IT','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('first-punic-war',1,'TN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('second-punic-war',0,'IT','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('second-punic-war',1,'ES','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('second-punic-war',2,'TN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('third-punic-war',0,'TN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('third-punic-war',1,'IT','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('kingdom-of-aksum',0,'ET','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('kingdom-of-aksum',1,'ER','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ghana-empire',0,'MR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ghana-empire',1,'ML','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('srivijaya',0,'ID','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('srivijaya',1,'MY','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('heian-period',0,'JP','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('khmer-empire',0,'KH','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('khmer-empire',1,'TH','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('khmer-empire',2,'LA','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('khmer-empire',3,'VN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('kievan-rus',0,'UA','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('kievan-rus',1,'RU','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('kievan-rus',2,'BY','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('fatimid-caliphate',0,'EG','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('fatimid-caliphate',1,'TN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('fatimid-caliphate',2,'LY','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('fatimid-caliphate',3,'SY','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('seljuk-empire',0,'IR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('seljuk-empire',1,'IQ','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('seljuk-empire',2,'TR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('seljuk-empire',3,'TM','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('great-zimbabwe',0,'ZW','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ayyubid-sultanate',0,'EG','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ayyubid-sultanate',1,'SY','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ayyubid-sultanate',2,'JO','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ayyubid-sultanate',3,'YE','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('kamakura-shogunate',0,'JP','high','reviewed',NULL,'location');
 CREATE TABLE entity_provenance (
   entity_id    TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   origin       TEXT NOT NULL,                      -- e.g. ai_drafted_from_csv
@@ -4302,6 +4414,26 @@ INSERT INTO "entity_provenance" VALUES('lodi-dynasty','ai_drafted:gemini',NULL,'
 INSERT INTO "entity_provenance" VALUES('company-rule-in-india','ai_drafted:gemini',NULL,'Conventionally dated from Plassey (1757) to the Government of India Act 1858. [Claude at review: Hundreds of princely states survived; the rebellion had several causes.]');
 INSERT INTO "entity_provenance" VALUES('anglo-mysore-wars','ai_drafted:gemini',NULL,'Four conflicts between 1767 and the fall of Seringapatam in May 1799. [Claude at review: The Marathas still contested the Deccan until 1818.]');
 INSERT INTO "entity_provenance" VALUES('sikh-empire','ai_drafted:gemini',NULL,'Dated from Ranjit Singh''s capture of Lahore in July 1799 (crowned Maharaja in 1801) to annexation after the Second Anglo-Sikh War in March 1849. [Claude at review: Awadh (1856) was annexed after the Punjab (1849).]');
+INSERT INTO "entity_provenance" VALUES('unification-of-egypt','ai_drafted:gemini',NULL,'Conventional date c. 3100 BCE (radiocarbon and archaeological estimates range from c. 3150 to 3050 BCE). Narmer is widely identified with the traditional Menes, though scholars debate whether unification was a single conquest or a multi-generation process.');
+INSERT INTO "entity_provenance" VALUES('greek-alphabet-adapted-from-phoenician','ai_drafted:gemini',NULL,'Dated conventionally to c. 800 BCE (scholarly estimates span late 9th to early 8th century BCE; earliest surviving inscriptions such as the Dipylon oinochoe and Nestor''s Cup date to c. 740–720 BCE). Avoid claiming ''invented the first alphabet'' since Phoenician was an abjad.');
+INSERT INTO "entity_provenance" VALUES('destruction-of-carthage','ai_drafted:gemini',NULL,'Spring 146 BCE. Note: the popular story that Romans sowed the soil with salt is a modern legend not found in ancient sources, so omit it.');
+INSERT INTO "entity_provenance" VALUES('division-of-the-roman-empire','ai_drafted:gemini',NULL,'January 395 CE. Earlier emperors such as Diocletian had divided administration, so frame this as the permanent division rather than the first administrative split.');
+INSERT INTO "entity_provenance" VALUES('visigoths-sack-rome','ai_drafted:gemini',NULL,'24 August 410 CE. First time Rome fell to a foreign enemy since the Gallic sack of 390/387 BCE (nearly 800 years earlier). Ravenna, not Rome, was the Western imperial capital at the time.');
+INSERT INTO "entity_provenance" VALUES('olmec-civilization','ai_drafted:gemini',NULL,'Conventional dates c. 1200 to 400 BCE (early formative precursors date back to c. 1500 BCE). Avoid calling it the sole ''mother culture'' without nuance, as scholars debate Olmec primacy versus sister-culture exchange. [Claude at review: a culture, not a state, so kind ''period''; region ''Americas'' as on the gap list.]');
+INSERT INTO "entity_provenance" VALUES('first-punic-war','ai_drafted:gemini',NULL,'264–241 BCE, ending with the Battle of the Aegates and the Treaty of Lutatius.');
+INSERT INTO "entity_provenance" VALUES('second-punic-war','ai_drafted:gemini',NULL,'218–201 BCE (Battle of Zama was in 202 BCE; peace treaty ratified in 201 BCE). [Claude at review: The war''s effect on Italian farming is a debated thesis, so it is marked as an argument.]');
+INSERT INTO "entity_provenance" VALUES('third-punic-war','ai_drafted:gemini',NULL,'149–146 BCE.');
+INSERT INTO "entity_provenance" VALUES('kingdom-of-aksum','ai_drafted:gemini',NULL,'Conventional dates c. 100 to c. 940 CE (proto-Aksumite state existed earlier; decline began in the 7th century and traditional end is linked to Queen Gudit c. 940–960). King Ezana adopted Christianity in the 330s.');
+INSERT INTO "entity_provenance" VALUES('ghana-empire','ai_drafted:gemini',NULL,'Conventional dates c. 300 to c. 1100 (archaeological evidence of complex settlement by c. 300–500 CE; documented by Arab geographers from the 8th century; weakened in the late 11th century and absorbed by Sosso and Mali in the 13th). Note: Almoravid ''conquest'' in 1076 is debated by modern historians.');
+INSERT INTO "entity_provenance" VALUES('srivijaya','ai_drafted:gemini',NULL,'Conventional dates c. 650 to 1377 (earliest inscriptions date to the 680s; raided by the Chola Empire in 1025; final remnants extinguished by Majapahit in 1377).');
+INSERT INTO "entity_provenance" VALUES('heian-period','ai_drafted:gemini',NULL,'794 (move of capital to Heian-kyo) to 1185 (end of the Genpei War and rise of the Kamakura shogunate).');
+INSERT INTO "entity_provenance" VALUES('khmer-empire','ai_drafted:gemini',NULL,'Conventional dates 802 (Jayavarman II''s consecration on Phnom Kulen) to 1431 (Ayutthaya''s sack of Angkor, after which the capital shifted south toward Phnom Penh).');
+INSERT INTO "entity_provenance" VALUES('kievan-rus','ai_drafted:gemini',NULL,'Conventional dates c. 882 (Oleg''s capture of Kyiv) to 1240 (Mongol sack of Kyiv).');
+INSERT INTO "entity_provenance" VALUES('fatimid-caliphate','ai_drafted:gemini',NULL,'909 (proclamation of al-Mahdi Billah in Ifriqiya) to 1171 (Saladin abolishes the Fatimid caliphate in Egypt).');
+INSERT INTO "entity_provenance" VALUES('seljuk-empire','ai_drafted:gemini',NULL,'1037 (Tughril Beg''s proclamation in Nishapur) to 1194 (death of Tughril III at the hands of the Khwarazmian Shah).');
+INSERT INTO "entity_provenance" VALUES('great-zimbabwe','ai_drafted:gemini',NULL,'Conventional dates c. 1100 to c. 1450 (earlier Iron Age occupation predates 1100; peak stone construction 13th–14th centuries; abandoned around 1450 as power shifted to Mutapa and Torwa).');
+INSERT INTO "entity_provenance" VALUES('ayyubid-sultanate','ai_drafted:gemini',NULL,'1171 (Saladin ends the Fatimid Caliphate) to 1260 (Mongol conquest of Syria and Mamluk victory at Ain Jalut; note that Mamluks took Egypt in 1250, while Ayyubid branches lingered in Syria until 1260 and in Hasankeyf longer).');
+INSERT INTO "entity_provenance" VALUES('kamakura-shogunate','ai_drafted:gemini',NULL,'1185 (victory in the Genpei War and establishment of shugo/jito system; Yoritomo was formally appointed seii taishogun in 1192) to 1333 (fall of Kamakura during the Kenmu Restoration). [Claude at review: One cause among several; says why the strain mattered (no spoils to reward vassals).]');
 CREATE TABLE entity_significance (
   entity_id  TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   text       TEXT NOT NULL CHECK (trim(text) <> ''),
@@ -4409,6 +4541,26 @@ INSERT INTO "entity_significance" VALUES('lodi-dynasty','Rebuilt sultanate contr
 INSERT INTO "entity_significance" VALUES('company-rule-in-india','Reshaped South Asia''s economy and politics by conquering or subordinating Indian states, redirecting land revenue and trade toward Britain and introducing English-language administration, while its grievances helped spark the 1857 rebellion that ended Company rule.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:12:22','2026-11-13 22:16:04');
 INSERT INTO "entity_significance" VALUES('anglo-mysore-wars','Eliminated the East India Company''s most formidable military rival in southern India, showcased Mysorean iron-cased war rockets, and secured British supremacy in southern India.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:12:22','2026-11-13 22:16:04');
 INSERT INTO "entity_significance" VALUES('sikh-empire','Unified the Punjab into a modernized, religiously pluralistic kingdom that halted Afghan invasions from the northwest and was one of the last major Indian powers annexed by Britain.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:12:22','2026-11-13 22:16:04');
+INSERT INTO "entity_significance" VALUES('unification-of-egypt','Unification created one of the world''s earliest large territorial states, giving pharaohs centralized control over Nile floodplains, taxation and writing. That administrative model endured for nearly three millennia across thirty dynasties, shaping ancient Mediterranean and Northeast African civilization.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:32:49');
+INSERT INTO "entity_significance" VALUES('greek-alphabet-adapted-from-phoenician','By assigning distinct letters to vowels as well as consonants, the Greek alphabet made reading and writing easier to learn across a wider public. It preserved Greek literature and philosophy and later gave rise to both the Latin and Cyrillic scripts.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:32:49');
+INSERT INTO "entity_significance" VALUES('destruction-of-carthage','Carthage''s annihilation ended over a century of Punic Wars and eliminated Rome''s last major naval and commercial rival in the western Mediterranean. Rome gained direct provincial rule in North Africa and undisputed mastery over the western sea.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:32:49');
+INSERT INTO "entity_significance" VALUES('division-of-the-roman-empire','Although Romans still viewed the empire as one commonwealth in theory, separate courts and rival ministers weakened mutual military support. The wealthier Eastern Empire weathered fifth-century invasions and became the Byzantine Empire, while the Western Empire fragmented within a century.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:32:49');
+INSERT INTO "entity_significance" VALUES('visigoths-sack-rome','Even though Ravenna was already the imperial capital, the fall of the ancient city shocked the Mediterranean world and shattered Rome''s aura of invincibility. It inspired Augustine of Hippo to write The City of God and exposed the Western Empire''s military fragility.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:32:49');
+INSERT INTO "entity_significance" VALUES('olmec-civilization','Olmec centers pioneered monumental stone sculpture, ceremonial plaza planning, long-distance jade and obsidian trade, and early Mesoamerican ballgame and ritual traditions. Later societies across Mesoamerica, including the Maya, built upon artistic and religious motifs first developed along the Gulf Coast.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('first-punic-war','Victory forced Rome to build a major war fleet for the first time and gave it Sicily, its first overseas province. Carthage''s defeat and heavy war indemnity sparked a mercenary revolt and pushed Carthaginian leaders to expand into Spain, setting up the next conflict.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('second-punic-war','Carthage lost its fleet, its Spanish empire and its status as a great power, leaving Rome dominant in the western Mediterranean. Many historians also argue that sixteen years of fighting in Italy sped up the concentration of land and wealth in the hands of Rome''s elite.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('third-punic-war','The war permanently removed Carthage from the Mediterranean map and annexed its heartland as a Roman province. Alongside the sack of Corinth in the same year, it demonstrated Rome''s willingness to destroy rival cities outright rather than accept subordinate allies.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('kingdom-of-aksum','Aksum linked inland Northeast Africa to Red Sea and Indian Ocean trade networks, minting its own gold coinage and erecting monumental stelae. King Ezana''s adoption of Christianity in the fourth century established the enduring roots of the Ethiopian Orthodox Church.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('ghana-empire','By mediating trade between West African goldfields and North African salt and merchant caravans, Ghana anchored the trans-Saharan commercial network. Its administrative traditions and control of trade routes laid the groundwork for the later Mali and Songhai empires.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('srivijaya','Controlling the sea lanes between India and Tang and Song China, Srivijaya became an indispensable hub of Indian Ocean trade and Vajrayana Buddhist learning, visited by Chinese pilgrims like Yijing. Its maritime network helped spread Malay as the regional lingua franca.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('heian-period','During the Heian period, Japan adapted continental Chinese models into distinctly Japanese cultural forms, including the kana phonetic scripts and court literature such as Murasaki Shikibu''s The Tale of Genji. Meanwhile, the decline of central taxation allowed provincial warrior bands to rise to power.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('khmer-empire','At its twelfth-century height, the Khmer Empire ruled much of mainland Southeast Asia and built Angkor Wat, the largest religious monument in the world. Its reservoirs, canals and stone temples left an enduring architectural and cultural legacy across Cambodia and neighboring states.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('kievan-rus','Vladimir the Great''s adoption of Byzantine Christianity in 988 brought Kievan Rus'' into the Orthodox Christian world, introducing Cyrillic literacy, church architecture and legal codes. Today, Belarus, Russia and Ukraine all trace key cultural and historical roots to this medieval federation.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('fatimid-caliphate','The Fatimids founded Cairo and Al-Azhar Mosque, turning Egypt into a major center of Mediterranean trade, science and Islamic scholarship. As the only major Shia caliphate, they reshaped medieval Islamic politics before Saladin restored Sunni rule in Egypt.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('seljuk-empire','Seljuk victories in Anatolia permanently weakened Byzantine control over Asia Minor, opened the region to Turkic settlement and prompted the Byzantine emperor to appeal to Western Europe for military aid, helping trigger the First Crusade.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('great-zimbabwe','Constructed without mortar from granite blocks, Great Zimbabwe''s Hill Complex and Great Enclosure stand as the largest pre-colonial stone structures in sub-Saharan Africa. Its trade links connected southern African goldfields to Indian Ocean merchants as far away as Persia and China.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('ayyubid-sultanate','By uniting Egypt and Syria under Sunni rule, Saladin broke the Crusader states'' strategic advantage and restored Muslim control over Jerusalem. The Ayyubids also revitalized Sunni madrasas and trade with Italian maritime republics before being supplanted by their own Mamluk slave soldiers.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('kamakura-shogunate','The Kamakura shogunate shifted real political power from the Kyoto imperial court to the samurai class, inaugurating nearly seven centuries of military rule in Japan. Although it repelled Kublai Khan''s invasion fleets in 1274 and 1281, the cost of the defence, with no conquered land to reward its vassals, weakened their loyalty and helped bring about its fall.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
 CREATE TABLE entity_sources (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   source_id  INTEGER NOT NULL REFERENCES sources(id) ON DELETE CASCADE,
@@ -4496,6 +4648,26 @@ INSERT INTO "entity_sources" VALUES('lodi-dynasty',71,'reviewed','ai_drafted',NU
 INSERT INTO "entity_sources" VALUES('company-rule-in-india',72,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('anglo-mysore-wars',73,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('sikh-empire',74,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('unification-of-egypt',75,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('greek-alphabet-adapted-from-phoenician',76,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('destruction-of-carthage',77,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('division-of-the-roman-empire',78,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('visigoths-sack-rome',79,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('olmec-civilization',80,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('first-punic-war',81,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('second-punic-war',82,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('third-punic-war',83,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('kingdom-of-aksum',84,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('ghana-empire',85,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('srivijaya',86,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('heian-period',87,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('khmer-empire',88,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('kievan-rus',89,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('fatimid-caliphate',90,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('seljuk-empire',91,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('great-zimbabwe',92,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('ayyubid-sultanate',93,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('kamakura-shogunate',94,'reviewed','ai_drafted',NULL,NULL);
 CREATE TABLE event_aliases (
   entity_id TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   position  INTEGER NOT NULL,
@@ -6477,6 +6649,21 @@ INSERT INTO "event_aliases" VALUES('founding-of-the-khalsa',1,'Guru Gobind Singh
 INSERT INTO "event_aliases" VALUES('founding-of-the-khalsa',2,'Vaisakhi at Anandpur Sahib');
 INSERT INTO "event_aliases" VALUES('kalinga-war',0,'Ashoka conquers Kalinga');
 INSERT INTO "event_aliases" VALUES('kalinga-war',1,'Invasion of Kalinga');
+INSERT INTO "event_aliases" VALUES('unification-of-egypt',0,'Narmer unifies Egypt');
+INSERT INTO "event_aliases" VALUES('unification-of-egypt',1,'Unification of Upper and Lower Egypt');
+INSERT INTO "event_aliases" VALUES('unification-of-egypt',2,'First Dynasty of Egypt begins');
+INSERT INTO "event_aliases" VALUES('greek-alphabet-adapted-from-phoenician',0,'Invention of the Greek alphabet');
+INSERT INTO "event_aliases" VALUES('greek-alphabet-adapted-from-phoenician',1,'Greeks adopt Phoenician script');
+INSERT INTO "event_aliases" VALUES('greek-alphabet-adapted-from-phoenician',2,'Earliest Greek alphabetic writing');
+INSERT INTO "event_aliases" VALUES('destruction-of-carthage',0,'Sack of Carthage');
+INSERT INTO "event_aliases" VALUES('destruction-of-carthage',1,'Fall of Carthage');
+INSERT INTO "event_aliases" VALUES('destruction-of-carthage',2,'Rome destroys Carthage');
+INSERT INTO "event_aliases" VALUES('division-of-the-roman-empire',0,'Death of Theodosius I');
+INSERT INTO "event_aliases" VALUES('division-of-the-roman-empire',1,'Permanent split of the Roman Empire');
+INSERT INTO "event_aliases" VALUES('division-of-the-roman-empire',2,'East-West division of Rome');
+INSERT INTO "event_aliases" VALUES('visigoths-sack-rome',0,'Sack of Rome by Alaric');
+INSERT INTO "event_aliases" VALUES('visigoths-sack-rome',1,'Alaric sacks Rome');
+INSERT INTO "event_aliases" VALUES('visigoths-sack-rome',2,'Visigothic sack of Rome');
 CREATE TABLE events (
   entity_id      TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   name           TEXT NOT NULL UNIQUE,
@@ -6933,6 +7120,11 @@ INSERT INTO "events" VALUES('iltutmish-becomes-sultan-of-delhi','Iltutmish Becom
 INSERT INTO "events" VALUES('crown-takes-over-government-of-india','Crown Takes Over the Government of India',1858,'South Asia','Following the widespread rebellion across northern India, the British Parliament passes legislation stripping the East India Company of its powers and transferring its territories, army, and administration directly to the British Crown. Queen Victoria''s proclamation promises religious non-interference, and the Governor-General also takes the title of Viceroy.','medium',7,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('founding-of-the-khalsa','Founding of the Khalsa',1699,'South Asia','At Anandpur Sahib in the Punjab during Vaisakhi, the tenth Sikh Guru, Gobind Singh, initiates the first five members into the Khalsa, a collective order of committed Sikhs. He establishes distinct articles of faith, shared surnames of Singh and Kaur, and a martial-spiritual discipline to resist religious persecution.','medium',6,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('kalinga-war','Kalinga War',-261,'South Asia','Mauryan Emperor Ashoka invades and annexes the independent coastal kingdom of Kalinga in eastern India in a campaign that, by Ashoka''s own account, kills a hundred thousand people and deports a hundred and fifty thousand. Shocked by the scale of human suffering recorded in his rock edicts, Ashoka renounces aggressive warfare and embraces Buddhist principles.','medium',6,NULL,1,'c. 262–261 BCE',NULL);
+INSERT INTO "events" VALUES('unification-of-egypt','Unification of Egypt',-3100,'Africa','King Narmer of Upper Egypt brings Upper and Lower Egypt under a single crown, inaugurating the First Dynasty and uniting the Nile Valley from the Delta to the First Cataract into one territorial kingdom.','medium',7,NULL,1,'c. 3150–3100 BCE',NULL);
+INSERT INTO "events" VALUES('greek-alphabet-adapted-from-phoenician','Greek Alphabet Adapted from Phoenician',-800,'Europe','Greek traders and scribes adapt the Phoenician consonantal script to write the Greek language, repurposing several Phoenician signs to represent vowel sounds systematically for the first time.','medium',7,NULL,1,'c. 800 BCE',NULL);
+INSERT INTO "events" VALUES('destruction-of-carthage','Destruction of Carthage',-146,'Africa','Roman forces commanded by Scipio Aemilianus breach the walls of Carthage after a three-year siege, systematically burn the North African city, enslave its surviving inhabitants and annex its territory as the Roman province of Africa.','medium',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('division-of-the-roman-empire','Division of the Roman Empire',395,'Europe','Upon the death of Emperor Theodosius I in Milan, the Roman Empire is divided permanently between his two young sons, Honorius in the West and Arcadius in the East, creating two separate imperial courts that never reunite.','medium',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('visigoths-sack-rome','Visigoths Sack Rome',410,'Europe','Visigothic forces led by King Alaric breach the Salarian Gate and plunder Rome for three days after negotiations with Western Emperor Honorius over land and grain supplies collapse.','medium',6,NULL,NULL,NULL,NULL);
 CREATE TABLE import_records (
   source_file TEXT NOT NULL,
   source_key  TEXT NOT NULL,                       -- id, MM-DD, or CSV eventID
@@ -9416,17 +9608,17 @@ INSERT INTO "missing_entities" VALUES(27,'event','Commodore Perry Arrives in Jap
 INSERT INTO "missing_entities" VALUES(28,'event','Qing Capture of Beijing',1644,NULL,NULL,'East Asia','Would ''end'' the Ming Dynasty and ''begin'' the Qing.','2026-11-10: link batches 1-2 and the precision review','ming-dynasty qing-dynasty','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(29,'event','Treaty of Nanking',1842,NULL,NULL,'East Asia','Ended the First Opium War and ceded Hong Kong; links to the 1997 handover. (The First Opium War event lists it as an alias.)','2026-11-10: link batches 1-2 and the precision review','opium-wars-china hong-kong-handover','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(30,'event','Fall of the Ming Dynasty',1644,NULL,NULL,'East Asia','Li Zicheng''s capture of Beijing and the last Ming emperor''s suicide.','2026-11-10: link batches 1-2 and the precision review','ming-dynasty','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(31,'span','First Punic War',-264,-241,NULL,'Europe','The Punic Wars have no sub-spans: Zama can''t be linked to the war it ended.','2026-11-10: link batches 1-2 and the precision review','punic-wars','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(32,'span','Second Punic War',-218,-201,NULL,'Europe','Hannibal''s war; Zama ''ended'' it (it can''t end the Punic Wars as a whole).','2026-11-10: link batches 1-2 and the precision review','punic-wars battle-of-zama','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(33,'span','Third Punic War',-149,-146,NULL,'Europe','The war that destroyed Carthage.','2026-11-10: link batches 1-2 and the precision review','punic-wars','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(34,'event','Destruction of Carthage',-146,NULL,NULL,'Europe','Would ''end'' the Punic Wars.','2026-11-10: link batches 1-2 and the precision review','punic-wars','wanted',NULL,NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(31,'span','First Punic War',-264,-241,NULL,'Europe','The Punic Wars have no sub-spans: Zama can''t be linked to the war it ended.','2026-11-10: link batches 1-2 and the precision review','punic-wars','drafted','first-punic-war',NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(32,'span','Second Punic War',-218,-201,NULL,'Europe','Hannibal''s war; Zama ''ended'' it (it can''t end the Punic Wars as a whole).','2026-11-10: link batches 1-2 and the precision review','punic-wars battle-of-zama','drafted','second-punic-war',NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(33,'span','Third Punic War',-149,-146,NULL,'Europe','The war that destroyed Carthage.','2026-11-10: link batches 1-2 and the precision review','punic-wars','drafted','third-punic-war',NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(34,'event','Destruction of Carthage',-146,NULL,NULL,'Europe','Would ''end'' the Punic Wars.','2026-11-10: link batches 1-2 and the precision review','punic-wars','drafted','destruction-of-carthage',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(35,'span','War of the Third Coalition',1803,1806,NULL,'Europe','Trafalgar''s own war, between the Napoleonic Wars and the battle.','2026-11-10: link batches 1-2 and the precision review','napoleonic-wars battle-of-trafalgar','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(36,'event','Napoleon Crowned Emperor',1804,NULL,NULL,'Europe','A central Napoleonic moment, missing.','2026-11-10: link batches 1-2 and the precision review','napoleonic-wars','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(37,'event','Coup of 18 Brumaire',1799,NULL,NULL,'Europe','Napoleon''s seizure of power: would ''end'' the French Revolution, which has no ender now.','2026-11-10: link batches 1-2 and the precision review','french-revolution','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(38,'event','Execution of Louis XVI',1793,NULL,NULL,'Europe','A defining event of the French Revolution.','2026-11-10: link batches 1-2 and the precision review','french-revolution','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(39,'span','Reign of Terror',1793,1794,NULL,'Europe','The Revolution''s most violent phase has no span.','2026-11-10: link batches 1-2 and the precision review','french-revolution','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(40,'event','Division of the Roman Empire',395,NULL,NULL,'Europe','The split into East and West at Theodosius''s death: would ''begin'' the Fall of the Western Roman Empire.','2026-11-10: link batches 1-2 and the precision review','fall-western-roman-empire roman-empire byzantine-empire','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(41,'event','Visigoths Sack Rome',410,NULL,NULL,'Europe','The first sack of Rome in 800 years, part of the Western Empire''s fall.','2026-11-10: link batches 1-2 and the precision review','fall-western-roman-empire','wanted',NULL,NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(40,'event','Division of the Roman Empire',395,NULL,NULL,'Europe','The split into East and West at Theodosius''s death: would ''begin'' the Fall of the Western Roman Empire.','2026-11-10: link batches 1-2 and the precision review','fall-western-roman-empire roman-empire byzantine-empire','drafted','division-of-the-roman-empire',NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(41,'event','Visigoths Sack Rome',410,NULL,NULL,'Europe','The first sack of Rome in 800 years, part of the Western Empire''s fall.','2026-11-10: link batches 1-2 and the precision review','fall-western-roman-empire','drafted','visigoths-sack-rome',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(42,'event','Battle of the Somme',1916,NULL,NULL,'Europe','One of the First World War''s defining battles.','2026-11-10: link batches 1-2 and the precision review','world-war-1','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(43,'event','United States Enters World War I',1917,NULL,NULL,'Americas','Turned the First World War; missing from the WWI sequence.','2026-11-10: link batches 1-2 and the precision review','world-war-1 first-world-war-ends','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(44,'event','Battle of Stalingrad',1942,NULL,NULL,'Europe','The Eastern Front''s turning point; the WWII sequence jumps from Pearl Harbor to D-Day.','2026-11-10: link batches 1-2 and the precision review','world-war-2 germany-invades-soviet-union','wanted',NULL,NULL,'2026-11-10 22:29:02');
@@ -9440,32 +9632,38 @@ INSERT INTO "missing_entities" VALUES(51,'event','Battles of Lexington and Conco
 INSERT INTO "missing_entities" VALUES(52,'event','Battle of Fort Sumter',1861,NULL,NULL,'Americas','Would ''begin'' the American Civil War.','2026-11-10: link batches 1-2 and the precision review','american-civil-war lee-surrenders-appomattox','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(53,'event','Fall of Tenochtitlan',1521,NULL,NULL,'Americas','The more exact end of the Aztec Empire than the 1519 start of the conquest (which ''ends'' it now).','2026-11-10: link batches 1-2 and the precision review','aztec-empire spanish-conquest-mexico','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(54,'event','Mansa Musa''s Pilgrimage to Mecca',1324,NULL,NULL,'Africa','Africa before 1500 is thin; the Mali Empire''s most famous moment is missing.','2026-11-10: link batches 1-2 and the precision review','mali-empire','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(55,'span','Kingdom of Aksum',100,940,1,'Africa','A major African state with no span (Africa before 1500 is thin).','2026-11-10: link batches 1-2 and the precision review',NULL,'wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(56,'span','Great Zimbabwe',1100,1450,1,'Africa','Southern Africa''s great medieval city has no span.','2026-11-10: link batches 1-2 and the precision review',NULL,'wanted',NULL,NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(55,'span','Kingdom of Aksum',100,940,1,'Africa','A major African state with no span (Africa before 1500 is thin).','2026-11-10: link batches 1-2 and the precision review',NULL,'drafted','kingdom-of-aksum',NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(56,'span','Great Zimbabwe',1100,1450,1,'Africa','Southern Africa''s great medieval city has no span.','2026-11-10: link batches 1-2 and the precision review',NULL,'drafted','great-zimbabwe',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(57,'span','Songhai Empire',1464,1591,NULL,'Africa','West Africa''s largest empire after Mali has no span.','2026-11-10: link batches 1-2 and the precision review','mali-empire','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(58,'span','Olmec Civilization',-1200,-400,1,'Americas','Mesoamerica before the Maya is empty.','2026-11-10: link batches 1-2 and the precision review',NULL,'wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(59,'event','Unification of Egypt',-3100,NULL,1,'Africa','Narmer''s unification, the start of Pharaonic Egypt; nothing marks it.','2026-11-10: link batches 1-2 and the precision review','old-kingdom-egypt','wanted',NULL,NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(58,'span','Olmec Civilization',-1200,-400,1,'Americas','Mesoamerica before the Maya is empty.','2026-11-10: link batches 1-2 and the precision review',NULL,'drafted','olmec-civilization',NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(59,'event','Unification of Egypt',-3100,NULL,1,'Africa','Narmer''s unification, the start of Pharaonic Egypt; nothing marks it.','2026-11-10: link batches 1-2 and the precision review','old-kingdom-egypt','drafted','unification-of-egypt',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(60,'event','Assassination of Archduke Franz Ferdinand',1914,NULL,NULL,'Europe','The immediate trigger of the First World War; nothing can ''trigger'' WWI now (World War One Begins only mentions it).','2026-11-10: drafting causal link batch 3','world-war-one world-war-1','wanted',NULL,NULL,'2026-11-10 22:39:48');
 INSERT INTO "missing_entities" VALUES(61,'span','Thirty Years'' War',1618,1648,NULL,'Europe','Exists only as the 1618 event ''Thirty Years War Begins'', so the Peace of Westphalia can''t ''end'' it and the Reformation''s link points at a single year.','2026-11-10: drafting causal link batch 3','thirty-years-war signing-of-treaty-westphalia protestant-reformation','wanted',NULL,NULL,'2026-11-10 22:39:48');
 INSERT INTO "missing_entities" VALUES(62,'span','Hundred Years'' War',1337,1453,NULL,'Europe','Exists only as the 1337 event, so Joan of Arc can''t be ''part of'' it. (Could be a Step 3a-style shared id with the event.)','2026-11-10: drafting causal link batch 3','hundred-years-war joan-of-arc-burned','wanted',NULL,NULL,'2026-11-10 22:39:48');
 INSERT INTO "missing_entities" VALUES(63,'event','Intolerable Acts',1774,NULL,NULL,'Americas','Britain''s response to the Boston Tea Party, the real link between it and the Revolution.','2026-11-10: drafting causal link batch 3','boston-tea-party american-revolution','wanted',NULL,NULL,'2026-11-10 22:39:48');
 INSERT INTO "missing_entities" VALUES(64,'event','Voting Rights Act of 1965',1965,NULL,NULL,'Americas','The Selma marches led to it; the civil rights story stops at the 1964 Act now.','2026-11-10: drafting causal link batch 3','us-civil-rights-march-selma civil-rights-act-us civil-rights-movement','wanted',NULL,NULL,'2026-11-10 22:39:48');
-INSERT INTO "missing_entities" VALUES(65,'event','Greek Alphabet Adapted from Phoenician',-800,NULL,1,'Europe','Would let the Phoenician alphabet ''influence'' the Greek one, and through it the Latin alphabet.','2026-11-10: drafting causal link batch 3','phoenician-alphabet-invented','wanted',NULL,NULL,'2026-11-10 22:39:48');
+INSERT INTO "missing_entities" VALUES(65,'event','Greek Alphabet Adapted from Phoenician',-800,NULL,1,'Europe','Would let the Phoenician alphabet ''influence'' the Greek one, and through it the Latin alphabet.','2026-11-10: drafting causal link batch 3','phoenician-alphabet-invented','drafted','greek-alphabet-adapted-from-phoenician',NULL,'2026-11-10 22:39:48');
 INSERT INTO "missing_entities" VALUES(66,'span','Yuan Dynasty',1271,1368,NULL,'East Asia','China jumps from the Song (ends 1279) to the Ming (1368): the Mongol Yuan dynasty under Kublai Khan is missing.','2026-11-11: building the Time Machine (gaps it shows around 1250)','song-dynasty ming-dynasty mongol-conquests marco-polo-china','wanted',NULL,NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(67,'event','Mongols Sack Baghdad',1258,NULL,NULL,'Middle East','Would ''end'' the Abbasid Caliphate and the Islamic Golden Age, which both stop in 1258 with nothing to end them.','2026-11-11: building the Time Machine (gaps it shows around 1250)','abbasid-caliphate islamic-golden-age mongol-conquests','wanted',NULL,NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(68,'span','Mamluk Sultanate',1250,1517,NULL,'Middle East','Egypt and Syria''s rulers for 250 years (they stopped the Mongols at Ain Jalut) have no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','ottoman-empire crusades','wanted',NULL,NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(69,'span','Ayyubid Sultanate',1171,1260,1,'Middle East','Saladin''s dynasty, central to the Crusades, has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','crusades','wanted',NULL,NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(70,'span','Fatimid Caliphate',909,1171,NULL,'Middle East','The caliphate that founded Cairo has no span; the Middle East lane is thin before the Crusades.','2026-11-11: building the Time Machine (gaps it shows around 1250)','abbasid-caliphate','wanted',NULL,NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(71,'span','Seljuk Empire',1037,1194,NULL,'Middle East','Its victory at Manzikert helped set off the Crusades.','2026-11-11: building the Time Machine (gaps it shows around 1250)','crusades byzantine-empire','wanted',NULL,NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(69,'span','Ayyubid Sultanate',1171,1260,1,'Middle East','Saladin''s dynasty, central to the Crusades, has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','crusades','drafted','ayyubid-sultanate',NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(70,'span','Fatimid Caliphate',909,1171,NULL,'Middle East','The caliphate that founded Cairo has no span; the Middle East lane is thin before the Crusades.','2026-11-11: building the Time Machine (gaps it shows around 1250)','abbasid-caliphate','drafted','fatimid-caliphate',NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(71,'span','Seljuk Empire',1037,1194,NULL,'Middle East','Its victory at Manzikert helped set off the Crusades.','2026-11-11: building the Time Machine (gaps it shows around 1250)','crusades byzantine-empire','drafted','seljuk-empire',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(72,'span','Ilkhanate',1256,1335,1,'Middle East','The Mongol state in Persia that sacked Baghdad.','2026-11-11: building the Time Machine (gaps it shows around 1250)','mongol-conquests abbasid-caliphate','wanted',NULL,NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(73,'span','Golden Horde',1242,1502,NULL,'Central Asia','The Mongol state that ruled the Russian principalities for two centuries.','2026-11-11: building the Time Machine (gaps it shows around 1250)','mongol-conquests kievan-rus-founded','wanted',NULL,NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(74,'span','Kievan Rus''',882,1240,1,'Europe','Exists only as its founding event; the state itself, ended by the Mongol invasion, has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','kievan-rus-founded mongol-conquests','wanted',NULL,NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(75,'span','Kamakura Shogunate',1185,1333,1,'East Asia','Japan has nothing between ancient times and the Tokugawa; the first shogunate (which repelled the Mongol invasions) is missing.','2026-11-11: building the Time Machine (gaps it shows around 1250)','tokugawa-shogunate','wanted',NULL,NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(76,'span','Heian Period',794,1185,NULL,'East Asia','Classical Japan (The Tale of Genji) has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)',NULL,'wanted',NULL,NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(77,'span','Khmer Empire',802,1431,1,'Southeast Asia','The builders of Angkor; Southeast Asia has almost nothing before 1500.','2026-11-11: building the Time Machine (gaps it shows around 1250)',NULL,'wanted',NULL,NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(78,'span','Srivijaya',650,1377,1,'Southeast Asia','The maritime trading empire of Sumatra, a major Buddhist centre; Southeast Asia is thin.','2026-11-11: building the Time Machine (gaps it shows around 1250)',NULL,'wanted',NULL,NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(79,'span','Ghana Empire',300,1100,1,'Africa','West Africa''s first great empire, before Mali; Africa before 1500 is thin.','2026-11-11: building the Time Machine (gaps it shows around 1250)','mali-empire','wanted',NULL,NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(74,'span','Kievan Rus''',882,1240,1,'Europe','Exists only as its founding event; the state itself, ended by the Mongol invasion, has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','kievan-rus-founded mongol-conquests','drafted','kievan-rus',NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(75,'span','Kamakura Shogunate',1185,1333,1,'East Asia','Japan has nothing between ancient times and the Tokugawa; the first shogunate (which repelled the Mongol invasions) is missing.','2026-11-11: building the Time Machine (gaps it shows around 1250)','tokugawa-shogunate','drafted','kamakura-shogunate',NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(76,'span','Heian Period',794,1185,NULL,'East Asia','Classical Japan (The Tale of Genji) has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)',NULL,'drafted','heian-period',NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(77,'span','Khmer Empire',802,1431,1,'Southeast Asia','The builders of Angkor; Southeast Asia has almost nothing before 1500.','2026-11-11: building the Time Machine (gaps it shows around 1250)',NULL,'drafted','khmer-empire',NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(78,'span','Srivijaya',650,1377,1,'Southeast Asia','The maritime trading empire of Sumatra, a major Buddhist centre; Southeast Asia is thin.','2026-11-11: building the Time Machine (gaps it shows around 1250)',NULL,'drafted','srivijaya',NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(79,'span','Ghana Empire',300,1100,1,'Africa','West Africa''s first great empire, before Mali; Africa before 1500 is thin.','2026-11-11: building the Time Machine (gaps it shows around 1250)','mali-empire','drafted','ghana-empire',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(80,'span','Kingdom of Kongo',1390,1914,1,'Africa','Central Africa''s major kingdom, in contact with Portugal from the 1480s, has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','age-of-exploration-portugal','wanted',NULL,NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(81,'event','Ezana of Aksum Adopts Christianity',330,NULL,1,'Africa','Aksum has no links: its king''s conversion (c. 330s) began Ethiopian Christianity and would be part_of the Kingdom of Aksum.','2026-11-13: gap batch 2 (spans left with no links)','kingdom-of-aksum','wanted',NULL,NULL,'2026-11-13 22:29:15');
+INSERT INTO "missing_entities" VALUES(82,'event','Chola Raids on Srivijaya',1025,NULL,NULL,'Southeast Asia','Srivijaya has no links: Rajendra Chola''s naval raid weakened its hold on the Malacca Strait; would link the Cholas to Srivijaya.','2026-11-13: gap batch 2 (spans left with no links)','srivijaya chola-empire','wanted',NULL,NULL,'2026-11-13 22:29:15');
+INSERT INTO "missing_entities" VALUES(83,'event','Angkor Wat Built',1113,NULL,1,'Southeast Asia','The Khmer Empire has no links: Angkor Wat (begun under Suryavarman II, c. 1113-1150) would be part_of it.','2026-11-13: gap batch 2 (spans left with no links)','khmer-empire','wanted',NULL,NULL,'2026-11-13 22:29:15');
+INSERT INTO "missing_entities" VALUES(84,'event','Ayutthaya Sacks Angkor',1431,NULL,NULL,'Southeast Asia','Would ''end'' the Khmer Empire, which has no ender.','2026-11-13: gap batch 2 (spans left with no links)','khmer-empire','wanted',NULL,NULL,'2026-11-13 22:29:15');
+INSERT INTO "missing_entities" VALUES(85,'event','Mongols Sack Kyiv',1240,NULL,NULL,'Europe','Would ''end'' Kievan Rus'', which has no ender, and be part_of the Mongol conquests.','2026-11-13: gap batch 2 (spans left with no links)','kievan-rus mongol-conquests','wanted',NULL,NULL,'2026-11-13 22:29:15');
+INSERT INTO "missing_entities" VALUES(86,'span','Mutapa Empire',1430,1760,1,'Africa','Great Zimbabwe has no links: Mutapa succeeded it as the gold-trading power of the Zimbabwe plateau.','2026-11-13: gap batch 2 (spans left with no links)','great-zimbabwe','wanted',NULL,NULL,'2026-11-13 22:29:15');
 CREATE TABLE regions (
   label TEXT PRIMARY KEY,
   lane  TEXT NOT NULL CHECK (lane IN
@@ -9786,6 +9984,29 @@ INSERT INTO "relationships" VALUES(292,'ashoka-becomes-emperor','preceded','kali
 INSERT INTO "relationships" VALUES(293,'kalinga-war','contributed_to','ashoka-converts-to-buddhism','Remorse over the carnage at Kalinga led Ashoka to embrace Buddhism and nonviolence.','high','reviewed','ai_drafted:gemini','2026-11-13 22:12:22');
 INSERT INTO "relationships" VALUES(294,'kalinga-war','part_of','maurya-empire','The conquest of Kalinga brought eastern coastal India into the Maurya Empire.','high','reviewed','ai_drafted:gemini','2026-11-13 22:12:22');
 INSERT INTO "relationships" VALUES(295,'shah-jahan-becomes-mughal-emperor','preceded','aurangzeb-becomes-emperor','Shah Jahan''s sons fought a war of succession, won by Aurangzeb, who deposed his father.','high','reviewed','ai_drafted:gemini','2026-11-13 22:12:22');
+INSERT INTO "relationships" VALUES(296,'unification-of-egypt','preceded','old-kingdom-egypt','Unification under the Early Dynastic pharaohs laid the political foundation for Egypt''s Old Kingdom.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(297,'olmec-civilization','influenced','classic-maya','Olmec art, ceremonial centres and ritual traditions influenced later Mesoamerican societies, including the Maya; how directly is debated.','medium','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(298,'phoenician-alphabet-invented','influenced','greek-alphabet-adapted-from-phoenician','Greek scribes adapted Phoenician consonant letters and added dedicated signs for vowels.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(299,'first-punic-war','part_of','punic-wars','The First Punic War was the opening conflict of the three Punic Wars between Rome and Carthage.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(300,'first-punic-war','contributed_to','second-punic-war','Carthage''s loss of Sicily and heavy war indemnity drove Barcid expansion in Spain, sparking renewed conflict.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(301,'second-punic-war','part_of','punic-wars','The Second Punic War was the second major war fought between Rome and Carthage.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(302,'battle-of-zama','ended','second-punic-war','Scipio''s victory over Hannibal at Zama forced Carthage to sue for peace and end the war.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(303,'second-punic-war','preceded','third-punic-war','Fifty years after the Second Punic War, Rome launched a final war to eliminate Carthage.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(304,'third-punic-war','part_of','punic-wars','The Third Punic War was the final conflict of the Punic Wars.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(305,'destruction-of-carthage','ended','third-punic-war','Rome''s siege and destruction of Carthage concluded the Third Punic War.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(306,'destruction-of-carthage','ended','punic-wars','Carthage''s annihilation ended over a century of Punic Wars between Rome and Carthage.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(307,'ghana-empire','preceded','mali-empire','As the Ghana Empire declined, the Mali Empire rose to dominate West African gold and salt trade.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(308,'division-of-the-roman-empire','began','fall-western-roman-empire','The permanent East-West split at Theodosius''s death opened the final century of the Western Roman Empire.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(309,'division-of-the-roman-empire','part_of','roman-empire','The division split the Roman Empire into permanent Western and Eastern imperial courts.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(310,'visigoths-sack-rome','part_of','fall-western-roman-empire','Alaric''s sack of Rome was a major blow during the collapse of Western Roman authority.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(311,'visigoths-sack-rome','preceded','fall-of-roman-empire-west','The Visigothic sack exposed Western imperial weakness decades before the last Western emperor was deposed.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(312,'heian-period','preceded','kamakura-shogunate','Aristocratic court rule in the Heian period gave way to samurai military rule under the Kamakura shogunate.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(313,'kievan-rus-founded','began','kievan-rus','Oleg''s capture of Kyiv united northern and southern East Slavic lands into Kievan Rus''.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(314,'abbasid-caliphate','opposed','fatimid-caliphate','The Ismaili Shia Fatimid caliphs claimed supreme Islamic leadership in direct rivalry with the Sunni Abbasids.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(315,'fatimid-caliphate','preceded','ayyubid-sultanate','Saladin abolished the Fatimid Caliphate in Egypt and established the Sunni Ayyubid Sultanate.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(316,'seljuk-empire','contributed_to','first-crusade','Seljuk conquests in Anatolia and the Levant prompted Byzantine appeals to Europe that helped spark the First Crusade.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(317,'byzantine-empire','opposed','seljuk-empire','The Seljuks defeated Byzantine forces at Manzikert and conquered much of Anatolia.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(318,'kamakura-shogunate','opposed','mongol-conquests','Kamakura samurai forces repelled two Mongol naval invasions of Japan.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -10582,6 +10803,111 @@ INSERT INTO "review_log" VALUES(785,'2026-11-13 22:16:08','remove-link','death-o
 INSERT INTO "review_log" VALUES(786,'2026-11-13 22:16:08','remove-link','humayun-succeeds-babur','link #173: humayun-succeeds-babur preceded humayun-defeated-kanauj — Skips a step: a gap-batch-1 event now sits between (Akbar''s accession, Shah Jahan''s accession, Chausa, Iltutmish, the Khalsa)','cli');
 INSERT INTO "review_log" VALUES(787,'2026-11-13 22:16:08','remove-link','qutb-ud-din-aibak-delhi','link #166: qutb-ud-din-aibak-delhi preceded razia-sultana-accession — Skips a step: a gap-batch-1 event now sits between (Akbar''s accession, Shah Jahan''s accession, Chausa, Iltutmish, the Khalsa)','cli');
 INSERT INTO "review_log" VALUES(788,'2026-11-13 22:16:08','remove-link','execution-of-guru-tegh-bahadur','link #185: execution-of-guru-tegh-bahadur preceded death-of-guru-gobind-singh — Skips a step: a gap-batch-1 event now sits between (Akbar''s accession, Shah Jahan''s accession, Chausa, Iltutmish, the Khalsa)','cli');
+INSERT INTO "review_log" VALUES(789,'2026-11-13 22:27:43','add-country','country:ER','Eritrea (ERI), Africa','cli');
+INSERT INTO "review_log" VALUES(790,'2026-11-13 22:27:43','add-country','country:MR','Mauritania (MRT), Africa','cli');
+INSERT INTO "review_log" VALUES(791,'2026-11-13 22:27:43','add-country','country:TH','Thailand (THA), Southeast Asia','cli');
+INSERT INTO "review_log" VALUES(792,'2026-11-13 22:27:44','add-country','country:LA','Laos (LAO), Southeast Asia','cli');
+INSERT INTO "review_log" VALUES(793,'2026-11-13 22:27:44','add-country','country:TM','Turkmenistan (TKM), Central Asia','cli');
+INSERT INTO "review_log" VALUES(794,'2026-11-13 22:27:44','add-country','country:ZW','Zimbabwe (ZWE), Africa','cli');
+INSERT INTO "review_log" VALUES(795,'2026-11-13 22:27:45','add-country','country:YE','Yemen (YEM), Middle East','cli');
+INSERT INTO "review_log" VALUES(796,'2026-11-13 22:29:15','missing-wanted','missing:81','Ezana of Aksum Adopts Christianity','cli');
+INSERT INTO "review_log" VALUES(797,'2026-11-13 22:29:15','missing-wanted','missing:82','Chola Raids on Srivijaya','cli');
+INSERT INTO "review_log" VALUES(798,'2026-11-13 22:29:15','missing-wanted','missing:83','Angkor Wat Built','cli');
+INSERT INTO "review_log" VALUES(799,'2026-11-13 22:29:15','missing-wanted','missing:84','Ayutthaya Sacks Angkor','cli');
+INSERT INTO "review_log" VALUES(800,'2026-11-13 22:29:15','missing-wanted','missing:85','Mongols Sack Kyiv','cli');
+INSERT INTO "review_log" VALUES(801,'2026-11-13 22:29:15','missing-wanted','missing:86','Mutapa Empire','cli');
+INSERT INTO "review_log" VALUES(802,'2026-11-13 22:29:23','missing-open','missing:81','Ezana of Aksum Adopts Christianity','cli');
+INSERT INTO "review_log" VALUES(803,'2026-11-13 22:29:23','missing-open','missing:82','Chola Raids on Srivijaya','cli');
+INSERT INTO "review_log" VALUES(804,'2026-11-13 22:29:23','missing-open','missing:83','Angkor Wat Built','cli');
+INSERT INTO "review_log" VALUES(805,'2026-11-13 22:29:23','missing-open','missing:84','Ayutthaya Sacks Angkor','cli');
+INSERT INTO "review_log" VALUES(806,'2026-11-13 22:29:23','missing-open','missing:85','Mongols Sack Kyiv','cli');
+INSERT INTO "review_log" VALUES(807,'2026-11-13 22:29:23','missing-open','missing:86','Mutapa Empire','cli');
+INSERT INTO "review_log" VALUES(808,'2026-11-13 22:32:49','approve-draft','unification-of-egypt',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(809,'2026-11-13 22:32:49','approve-draft','greek-alphabet-adapted-from-phoenician',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(810,'2026-11-13 22:32:49','approve-draft','destruction-of-carthage',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(811,'2026-11-13 22:32:49','approve-draft','division-of-the-roman-empire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(812,'2026-11-13 22:32:49','approve-draft','visigoths-sack-rome',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(813,'2026-11-13 22:33:27','approve-countries','unification-of-egypt',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(814,'2026-11-13 22:33:27','approve-countries','olmec-civilization',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(815,'2026-11-13 22:33:27','approve-countries','greek-alphabet-adapted-from-phoenician',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(816,'2026-11-13 22:33:27','approve-countries','first-punic-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(817,'2026-11-13 22:33:27','approve-countries','second-punic-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(818,'2026-11-13 22:33:27','approve-countries','third-punic-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(819,'2026-11-13 22:33:27','approve-countries','destruction-of-carthage',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(820,'2026-11-13 22:33:27','approve-countries','kingdom-of-aksum',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(821,'2026-11-13 22:33:27','approve-countries','division-of-the-roman-empire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(822,'2026-11-13 22:33:55','approve-countries','visigoths-sack-rome',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(823,'2026-11-13 22:33:55','approve-countries','srivijaya',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(824,'2026-11-13 22:33:55','approve-countries','heian-period',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(825,'2026-11-13 22:33:55','approve-countries','khmer-empire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(826,'2026-11-13 22:33:55','approve-countries','kievan-rus',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(827,'2026-11-13 22:33:55','approve-countries','fatimid-caliphate',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(828,'2026-11-13 22:33:55','approve-countries','seljuk-empire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(829,'2026-11-13 22:33:55','approve-countries','great-zimbabwe',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(830,'2026-11-13 22:33:55','approve-countries','ayyubid-sultanate',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(831,'2026-11-13 22:34:01','approve-countries','kamakura-shogunate',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(832,'2026-11-13 22:35:39','approve-countries','ghana-empire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(833,'2026-11-13 22:36:26','approve-link','unification-of-egypt','link #296: unification-of-egypt preceded old-kingdom-egypt','dashboard');
+INSERT INTO "review_log" VALUES(834,'2026-11-13 22:36:26','approve-link','olmec-civilization','link #297: olmec-civilization influenced classic-maya','dashboard');
+INSERT INTO "review_log" VALUES(835,'2026-11-13 22:36:26','approve-link','phoenician-alphabet-invented','link #298: phoenician-alphabet-invented influenced greek-alphabet-adapted-from-phoenician','dashboard');
+INSERT INTO "review_log" VALUES(836,'2026-11-13 22:36:26','approve-link','first-punic-war','link #299: first-punic-war part_of punic-wars','dashboard');
+INSERT INTO "review_log" VALUES(837,'2026-11-13 22:36:26','approve-link','first-punic-war','link #300: first-punic-war contributed_to second-punic-war','dashboard');
+INSERT INTO "review_log" VALUES(838,'2026-11-13 22:36:26','approve-link','second-punic-war','link #301: second-punic-war part_of punic-wars','dashboard');
+INSERT INTO "review_log" VALUES(839,'2026-11-13 22:36:26','approve-link','battle-of-zama','link #302: battle-of-zama ended second-punic-war','dashboard');
+INSERT INTO "review_log" VALUES(840,'2026-11-13 22:36:26','approve-link','second-punic-war','link #303: second-punic-war preceded third-punic-war','dashboard');
+INSERT INTO "review_log" VALUES(841,'2026-11-13 22:36:26','approve-link','third-punic-war','link #304: third-punic-war part_of punic-wars','dashboard');
+INSERT INTO "review_log" VALUES(842,'2026-11-13 22:36:26','approve-link','destruction-of-carthage','link #305: destruction-of-carthage ended third-punic-war','dashboard');
+INSERT INTO "review_log" VALUES(843,'2026-11-13 22:37:07','approve-link','destruction-of-carthage','link #306: destruction-of-carthage ended punic-wars','dashboard');
+INSERT INTO "review_log" VALUES(844,'2026-11-13 22:37:07','approve-link','ghana-empire','link #307: ghana-empire preceded mali-empire','dashboard');
+INSERT INTO "review_log" VALUES(845,'2026-11-13 22:37:07','approve-link','division-of-the-roman-empire','link #308: division-of-the-roman-empire began fall-western-roman-empire','dashboard');
+INSERT INTO "review_log" VALUES(846,'2026-11-13 22:37:07','approve-link','division-of-the-roman-empire','link #309: division-of-the-roman-empire part_of roman-empire','dashboard');
+INSERT INTO "review_log" VALUES(847,'2026-11-13 22:37:07','approve-link','visigoths-sack-rome','link #310: visigoths-sack-rome part_of fall-western-roman-empire','dashboard');
+INSERT INTO "review_log" VALUES(848,'2026-11-13 22:37:07','approve-link','visigoths-sack-rome','link #311: visigoths-sack-rome preceded fall-of-roman-empire-west','dashboard');
+INSERT INTO "review_log" VALUES(849,'2026-11-13 22:37:07','approve-link','heian-period','link #312: heian-period preceded kamakura-shogunate','dashboard');
+INSERT INTO "review_log" VALUES(850,'2026-11-13 22:37:07','approve-link','kievan-rus-founded','link #313: kievan-rus-founded began kievan-rus','dashboard');
+INSERT INTO "review_log" VALUES(851,'2026-11-13 22:37:07','approve-link','abbasid-caliphate','link #314: abbasid-caliphate opposed fatimid-caliphate','dashboard');
+INSERT INTO "review_log" VALUES(852,'2026-11-13 22:37:07','approve-link','fatimid-caliphate','link #315: fatimid-caliphate preceded ayyubid-sultanate','dashboard');
+INSERT INTO "review_log" VALUES(853,'2026-11-13 22:37:29','approve-link','seljuk-empire','link #316: seljuk-empire contributed_to first-crusade','dashboard');
+INSERT INTO "review_log" VALUES(854,'2026-11-13 22:37:29','approve-link','byzantine-empire','link #317: byzantine-empire opposed seljuk-empire','dashboard');
+INSERT INTO "review_log" VALUES(855,'2026-11-13 22:37:29','approve-link','kamakura-shogunate','link #318: kamakura-shogunate opposed mongol-conquests','dashboard');
+INSERT INTO "review_log" VALUES(856,'2026-11-13 22:38:03','approve-significance','olmec-civilization',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(857,'2026-11-13 22:38:03','approve-significance','first-punic-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(858,'2026-11-13 22:38:03','approve-significance','second-punic-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(859,'2026-11-13 22:38:03','approve-significance','third-punic-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(860,'2026-11-13 22:38:03','approve-significance','kingdom-of-aksum',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(861,'2026-11-13 22:38:03','approve-significance','ghana-empire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(862,'2026-11-13 22:38:03','approve-significance','srivijaya',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(863,'2026-11-13 22:38:03','approve-significance','heian-period',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(864,'2026-11-13 22:38:03','approve-significance','khmer-empire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(865,'2026-11-13 22:38:03','approve-significance','kievan-rus',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(866,'2026-11-13 22:38:21','approve-significance','fatimid-caliphate',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(867,'2026-11-13 22:38:21','approve-significance','seljuk-empire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(868,'2026-11-13 22:38:21','approve-significance','great-zimbabwe',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(869,'2026-11-13 22:38:21','approve-significance','ayyubid-sultanate',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(870,'2026-11-13 22:38:21','approve-significance','kamakura-shogunate',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(871,'2026-11-13 22:40:08','rename-span','ghana-empire','''Ghana Empire'' → ''Ghana Empire''; new description','cli');
+INSERT INTO "review_log" VALUES(872,'2026-11-13 22:40:15','rename-span','ghana-empire','''Ghana Empire'' → ''Ghana Empire''; new description','cli');
+INSERT INTO "review_log" VALUES(873,'2026-11-13 22:40:15','approve-draft','olmec-civilization',NULL,'cli');
+INSERT INTO "review_log" VALUES(874,'2026-11-13 22:40:15','approve-draft','first-punic-war',NULL,'cli');
+INSERT INTO "review_log" VALUES(875,'2026-11-13 22:40:15','approve-draft','second-punic-war',NULL,'cli');
+INSERT INTO "review_log" VALUES(876,'2026-11-13 22:40:15','approve-draft','third-punic-war',NULL,'cli');
+INSERT INTO "review_log" VALUES(877,'2026-11-13 22:40:15','approve-draft','kingdom-of-aksum',NULL,'cli');
+INSERT INTO "review_log" VALUES(878,'2026-11-13 22:40:15','approve-draft','ghana-empire',NULL,'cli');
+INSERT INTO "review_log" VALUES(879,'2026-11-13 22:40:15','approve-draft','srivijaya',NULL,'cli');
+INSERT INTO "review_log" VALUES(880,'2026-11-13 22:40:15','approve-draft','heian-period',NULL,'cli');
+INSERT INTO "review_log" VALUES(881,'2026-11-13 22:40:15','approve-draft','khmer-empire',NULL,'cli');
+INSERT INTO "review_log" VALUES(882,'2026-11-13 22:40:15','approve-draft','kievan-rus',NULL,'cli');
+INSERT INTO "review_log" VALUES(883,'2026-11-13 22:40:15','approve-draft','fatimid-caliphate',NULL,'cli');
+INSERT INTO "review_log" VALUES(884,'2026-11-13 22:40:15','approve-draft','seljuk-empire',NULL,'cli');
+INSERT INTO "review_log" VALUES(885,'2026-11-13 22:40:15','approve-draft','great-zimbabwe',NULL,'cli');
+INSERT INTO "review_log" VALUES(886,'2026-11-13 22:40:15','approve-draft','ayyubid-sultanate',NULL,'cli');
+INSERT INTO "review_log" VALUES(887,'2026-11-13 22:40:15','approve-draft','kamakura-shogunate',NULL,'cli');
+INSERT INTO "review_log" VALUES(888,'2026-11-13 22:40:20','missing-wanted','missing:81','Ezana of Aksum Adopts Christianity','cli');
+INSERT INTO "review_log" VALUES(889,'2026-11-13 22:40:20','missing-wanted','missing:82','Chola Raids on Srivijaya','cli');
+INSERT INTO "review_log" VALUES(890,'2026-11-13 22:40:20','missing-wanted','missing:83','Angkor Wat Built','cli');
+INSERT INTO "review_log" VALUES(891,'2026-11-13 22:40:20','missing-wanted','missing:84','Ayutthaya Sacks Angkor','cli');
+INSERT INTO "review_log" VALUES(892,'2026-11-13 22:40:20','missing-wanted','missing:85','Mongols Sack Kyiv','cli');
+INSERT INTO "review_log" VALUES(893,'2026-11-13 22:40:20','missing-wanted','missing:86','Mutapa Empire','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -10663,6 +10989,26 @@ INSERT INTO "sources" VALUES(71,'wikipedia','Lodi dynasty','https://en.wikipedia
 INSERT INTO "sources" VALUES(72,'wikipedia','Company rule in India','https://en.wikipedia.org/wiki/Company_rule_in_India','2026-11-13 22:12:22');
 INSERT INTO "sources" VALUES(73,'wikipedia','Anglo-Mysore Wars','https://en.wikipedia.org/wiki/Anglo-Mysore_Wars','2026-11-13 22:12:22');
 INSERT INTO "sources" VALUES(74,'wikipedia','Sikh Empire','https://en.wikipedia.org/wiki/Sikh_Empire','2026-11-13 22:12:22');
+INSERT INTO "sources" VALUES(75,'wikipedia','Narmer','https://en.wikipedia.org/wiki/Narmer','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(76,'wikipedia','Greek alphabet','https://en.wikipedia.org/wiki/Greek_alphabet','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(77,'wikipedia','Battle of Carthage (c. 149 BC)','https://en.wikipedia.org/wiki/Battle_of_Carthage_(c._149_BC)','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(78,'wikipedia','Theodosius I','https://en.wikipedia.org/wiki/Theodosius_I','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(79,'wikipedia','Sack of Rome (410)','https://en.wikipedia.org/wiki/Sack_of_Rome_(410)','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(80,'wikipedia','Olmecs','https://en.wikipedia.org/wiki/Olmecs','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(81,'wikipedia','First Punic War','https://en.wikipedia.org/wiki/First_Punic_War','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(82,'wikipedia','Second Punic War','https://en.wikipedia.org/wiki/Second_Punic_War','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(83,'wikipedia','Third Punic War','https://en.wikipedia.org/wiki/Third_Punic_War','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(84,'wikipedia','Kingdom of Aksum','https://en.wikipedia.org/wiki/Kingdom_of_Aksum','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(85,'wikipedia','Ghana Empire','https://en.wikipedia.org/wiki/Ghana_Empire','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(86,'wikipedia','Srivijaya','https://en.wikipedia.org/wiki/Srivijaya','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(87,'wikipedia','Heian period','https://en.wikipedia.org/wiki/Heian_period','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(88,'wikipedia','Khmer Empire','https://en.wikipedia.org/wiki/Khmer_Empire','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(89,'wikipedia','Kievan Rus''','https://en.wikipedia.org/wiki/Kievan_Rus%27','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(90,'wikipedia','Fatimid Caliphate','https://en.wikipedia.org/wiki/Fatimid_Caliphate','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(91,'wikipedia','Seljuk Empire','https://en.wikipedia.org/wiki/Seljuk_Empire','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(92,'wikipedia','Great Zimbabwe','https://en.wikipedia.org/wiki/Great_Zimbabwe','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(93,'wikipedia','Ayyubid dynasty','https://en.wikipedia.org/wiki/Ayyubid_dynasty','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(94,'wikipedia','Kamakura shogunate','https://en.wikipedia.org/wiki/Kamakura_shogunate','2026-11-13 22:29:14');
 CREATE TABLE time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json
@@ -10791,6 +11137,21 @@ INSERT INTO "time_spans" VALUES('lodi-dynasty','empire','Lodi Dynasty',1451,1526
 INSERT INTO "time_spans" VALUES('company-rule-in-india','period','Company Rule in India',1757,1858,'The century in which the British East India Company evolved from a commercial monopoly into the territorial ruler of most of the Indian subcontinent following the Battle of Plassey.','South Asia',7,NULL,NULL);
 INSERT INTO "time_spans" VALUES('anglo-mysore-wars','period','Anglo-Mysore Wars',1767,1799,'Four wars fought in southern India between the Kingdom of Mysore under Hyder Ali and Tipu Sultan and the British East India Company and its allies.','South Asia',5,NULL,NULL);
 INSERT INTO "time_spans" VALUES('sikh-empire','empire','Sikh Empire',1799,1849,'The sovereign state in northwestern South Asia forged by Maharaja Ranjit Singh after capturing Lahore, uniting the Sikh confederacies across the Punjab until British annexation.','South Asia',5,NULL,NULL);
+INSERT INTO "time_spans" VALUES('olmec-civilization','period','Olmec Civilization',-1200,-400,'Mesoamerica''s earliest major complex society, centered in the Gulf Coast lowlands of southern Mexico at sites such as San Lorenzo and La Venta and famed for monumental basalt heads.','Americas',6,1,NULL);
+INSERT INTO "time_spans" VALUES('first-punic-war','period','First Punic War',-264,-241,'The first of three wars between Rome and Carthage, fought primarily over control of Sicily and decided by massive naval battles across the central Mediterranean.','Europe',5,NULL,NULL);
+INSERT INTO "time_spans" VALUES('second-punic-war','period','Second Punic War',-218,-201,'The second conflict between Rome and Carthage, marked by Hannibal Barca''s crossing of the Alps into Italy, devastating Roman defeats at Cannae and Rome''s eventual counterinvasion of North Africa.','Europe',6,NULL,NULL);
+INSERT INTO "time_spans" VALUES('third-punic-war','period','Third Punic War',-149,-146,'The final war between Rome and Carthage, consisting largely of a prolonged Roman siege of Carthage in North Africa that ended with the city''s complete destruction.','Africa',5,NULL,NULL);
+INSERT INTO "time_spans" VALUES('kingdom-of-aksum','empire','Kingdom of Aksum',100,940,'A major trading empire centered in northern Ethiopia and Eritrea that controlled Red Sea commerce between the Roman world and India and became one of the earliest states to adopt Christianity.','Africa',6,1,NULL);
+INSERT INTO "time_spans" VALUES('ghana-empire','empire','Ghana Empire',300,1100,'West Africa''s earliest large savanna empire, known locally as Wagadu and centered in modern southeastern Mauritania and western Mali (not modern Ghana, which took the empire''s name at independence). It grew wealthy taxing trans-Saharan trade in gold and salt.','Africa',6,1,NULL);
+INSERT INTO "time_spans" VALUES('srivijaya','empire','Srivijaya',650,1377,'A maritime thalassocracy centered at Palembang in southern Sumatra that dominated the Strait of Malacca and served as a major center of Buddhist scholarship across maritime Southeast Asia.','Southeast Asia',6,1,NULL);
+INSERT INTO "time_spans" VALUES('heian-period','period','Heian Period',794,1185,'The classical era of Japanese history, named after the imperial capital Heian-kyo (modern Kyoto), marked by aristocratic court rule under the Fujiwara clan and a flowering of native literature and art.','East Asia',6,NULL,NULL);
+INSERT INTO "time_spans" VALUES('khmer-empire','empire','Khmer Empire',802,1431,'The dominant mainland Southeast Asian empire, centered at Angkor in modern Cambodia, renowned for its monumental Hindu and Buddhist temple complexes, extensive hydraulic engineering and control over the Mekong basin.','Southeast Asia',6,1,NULL);
+INSERT INTO "time_spans" VALUES('kievan-rus','empire','Kievan Rus''',882,1240,'A loose federation of East Slavic principalities centered on Kyiv, ruled by the Rurikid dynasty and spanning river trade routes from the Baltic Sea to the Black Sea.','Europe',6,1,NULL);
+INSERT INTO "time_spans" VALUES('fatimid-caliphate','empire','Fatimid Caliphate',909,1171,'An Ismaili Shia caliphate that originated in North Africa and expanded to rule Egypt, the Levant and the Hejaz, founding Cairo as its imperial capital and challenging Abbasid authority.','Middle East',6,NULL,NULL);
+INSERT INTO "time_spans" VALUES('seljuk-empire','empire','Seljuk Empire',1037,1194,'A Sunni Turko-Persian empire founded by the Oghuz Turkic Seljuk dynasty that conquered Persia, Mesopotamia and much of Anatolia, defeating the Byzantines at Manzikert in 1071.','Middle East',6,NULL,NULL);
+INSERT INTO "time_spans" VALUES('great-zimbabwe','empire','Great Zimbabwe',1100,1450,'A medieval Shona stone city and kingdom capital on the Zimbabwean plateau that prospered from cattle herding, gold mining and long-distance trade with Swahili coast ports.','Africa',6,1,NULL);
+INSERT INTO "time_spans" VALUES('ayyubid-sultanate','empire','Ayyubid Sultanate',1171,1260,'A Sunni Muslim dynasty of Kurdish origin founded by Saladin that united Egypt, Syria, Upper Mesopotamia and Yemen, recaptured Jerusalem from the Crusaders in 1187 and fought the Third Crusade.','Middle East',6,1,NULL);
+INSERT INTO "time_spans" VALUES('kamakura-shogunate','empire','Kamakura Shogunate',1185,1333,'Japan''s first feudal military government, established by Minamoto no Yoritomo at Kamakura after the Genpei War, which governed through samurai vassals and repelled two Mongol invasions.','East Asia',6,1,NULL);
 CREATE TRIGGER events_touch AFTER UPDATE ON events BEGIN
   UPDATE entities SET updated_at = datetime('now') WHERE id = NEW.entity_id;
 END;

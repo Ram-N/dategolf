@@ -9,7 +9,7 @@ How to run a batch (doc 15, Part A):
 
 Run the batches one at a time, and rerun step 1 before each (the gap list and ids change).
 
-Done: batch 1 (published 2026-11-13).
+Done: batches 1 and 2 (published 2026-11-13).
 
 ## Batch 1: South Asia (20)
 
@@ -64,6 +64,22 @@ Notes:
 - Item 47 (Cold War): the existing "cold-war-begins" began it and "dissolution-soviet-union" ended it.
 - Item 18 is the whole independence movement; the existing "indian-independence-movement" span
   (the Gandhian era) is part_of it.
+```
+
+Batch 4, part 2 (6). Send it after part 1 is loaded (the prompt allows 20 items per reply). These were added
+2026-11-13 so that four batch 2 spans get the links they lack:
+
+```
+Draft gap items 81, 82, 83, 84, 85, 86 from the reference, each with "fills_missing", a "significance",
+and at least one link.
+Notes:
+- Item 81 (Ezana's conversion, c. 330s): part_of the existing "kingdom-of-aksum".
+- Item 82 (Chola raids on Srivijaya): part_of the existing "chola-empire"; it weakened "srivijaya"
+  (contributed_to its decline only if your source says so; otherwise just link it to both spans).
+- Item 83 (Angkor Wat, begun c. 1113-1150 under Suryavarman II): part_of the existing "khmer-empire".
+- Item 84 (Ayutthaya sacks Angkor): ended the existing "khmer-empire".
+- Item 85 (Mongols sack Kyiv): ended the existing "kievan-rus" and is part_of "mongol-conquests".
+- Item 86 (Mutapa Empire): link it to the existing "great-zimbabwe" (Mutapa rose as Great Zimbabwe declined).
 ```
 
 Item 6 (Death of Aurangzeb) is left out: the event exists now (renamed 2026-11-11), so it should be dismissed.

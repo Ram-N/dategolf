@@ -46,6 +46,26 @@
     "dateDisplay": "c. 3400–3100 BCE"
   },
   {
+    "id": "unification-of-egypt",
+    "name": "Unification of Egypt",
+    "year": -3100,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Narmer unifies Egypt",
+      "Unification of Upper and Lower Egypt",
+      "First Dynasty of Egypt begins"
+    ],
+    "description": "King Narmer of Upper Egypt brings Upper and Lower Egypt under a single crown, inaugurating the First Dynasty and uniting the Nile Valley from the Delta to the First Cataract into one territorial kingdom.",
+    "difficulty": "medium",
+    "importance": 7,
+    "significance": "Unification created one of the world's earliest large territorial states, giving pharaohs centralized control over Nile floodplains, taxation and writing. That administrative model endured for nearly three millennia across thirty dynasties, shaping ancient Mediterranean and Northeast African civilization.",
+    "approximate": true,
+    "dateDisplay": "c. 3150–3100 BCE"
+  },
+  {
     "id": "first-cities-mesopotamia",
     "name": "First Cities Founded in Mesopotamia",
     "year": -3000,
@@ -226,6 +246,27 @@
     "importance": 4,
     "approximate": true,
     "dateDisplay": "c. 1000 BCE (biblical tradition)"
+  },
+  {
+    "id": "greek-alphabet-adapted-from-phoenician",
+    "name": "Greek Alphabet Adapted from Phoenician",
+    "year": -800,
+    "categories": [
+      "Culture",
+      "Technology"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Invention of the Greek alphabet",
+      "Greeks adopt Phoenician script",
+      "Earliest Greek alphabetic writing"
+    ],
+    "description": "Greek traders and scribes adapt the Phoenician consonantal script to write the Greek language, repurposing several Phoenician signs to represent vowel sounds systematically for the first time.",
+    "difficulty": "medium",
+    "importance": 7,
+    "significance": "By assigning distinct letters to vowels as well as consonants, the Greek alphabet made reading and writing easier to learn across a wider public. It preserved Greek literature and philosophy and later gave rise to both the Latin and Cyrillic scripts.",
+    "approximate": true,
+    "dateDisplay": "c. 800 BCE"
   },
   {
     "id": "greek-olympics-ancient",
@@ -815,6 +856,25 @@
     "importance": 5
   },
   {
+    "id": "destruction-of-carthage",
+    "name": "Destruction of Carthage",
+    "year": -146,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Sack of Carthage",
+      "Fall of Carthage",
+      "Rome destroys Carthage"
+    ],
+    "description": "Roman forces commanded by Scipio Aemilianus breach the walls of Carthage after a three-year siege, systematically burn the North African city, enslave its surviving inhabitants and annex its territory as the Roman province of Africa.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Carthage's annihilation ended over a century of Punic Wars and eliminated Rome's last major naval and commercial rival in the western Mediterranean. Rome gained direct provincial rule in North Africa and undisputed mastery over the western sea."
+  },
+  {
     "id": "silk-road-opens",
     "name": "Han China Opens Trade Routes to Central Asia",
     "year": -130,
@@ -1235,6 +1295,43 @@
     "description": "The Huns, nomadic horsemen from the steppes, overwhelm the Ostrogoths and drive the Visigoths across the Danube into the Roman Empire. The upheaval sets off the great migrations that help bring down the Western Roman Empire.",
     "difficulty": "hard",
     "importance": 5
+  },
+  {
+    "id": "division-of-the-roman-empire",
+    "name": "Division of the Roman Empire",
+    "year": 395,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Death of Theodosius I",
+      "Permanent split of the Roman Empire",
+      "East-West division of Rome"
+    ],
+    "description": "Upon the death of Emperor Theodosius I in Milan, the Roman Empire is divided permanently between his two young sons, Honorius in the West and Arcadius in the East, creating two separate imperial courts that never reunite.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Although Romans still viewed the empire as one commonwealth in theory, separate courts and rival ministers weakened mutual military support. The wealthier Eastern Empire weathered fifth-century invasions and became the Byzantine Empire, while the Western Empire fragmented within a century."
+  },
+  {
+    "id": "visigoths-sack-rome",
+    "name": "Visigoths Sack Rome",
+    "year": 410,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Sack of Rome by Alaric",
+      "Alaric sacks Rome",
+      "Visigothic sack of Rome"
+    ],
+    "description": "Visigothic forces led by King Alaric breach the Salarian Gate and plunder Rome for three days after negotiations with Western Emperor Honorius over land and grain supplies collapse.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Even though Ravenna was already the imperial capital, the fall of the ancient city shocked the Mediterranean world and shattered Rome's aura of invincibility. It inspired Augustine of Hippo to write The City of God and exposed the Western Empire's military fragility."
   },
   {
     "id": "nalanda-university-founded",

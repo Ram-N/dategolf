@@ -40,7 +40,7 @@
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
 | review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
-| review | Missing events and spans to decide (dashboard Review → Missing) | 59 |
+| review | Missing events and spans to decide (dashboard Review → Missing) | 45 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -56,8 +56,8 @@
 
 ## Counts
 
-- events: 443
-- time_spans: 110
+- events: 448
+- time_spans: 125
 - eras: 5
 - datelinks_keys: 26
 - datelinks_groups: 83
@@ -65,7 +65,7 @@
 - milestones: 16
 - daily_challenge_dates: 366
 - csv_rows: 310
-- significance_reviewed: 98
+- significance_reviewed: 118
 - significance_proposed: 0
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
@@ -123,27 +123,11 @@
 
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 
-- `59` — event · Unification of Egypt (-3100) · wanted
-- `58` — span · Olmec Civilization (-1200) · wanted
-- `65` — event · Greek Alphabet Adapted from Phoenician (-800) · wanted
 - `24` — span · Reign of Ashoka (-268) · wanted
-- `31` — span · First Punic War (-264) · wanted
-- `32` — span · Second Punic War (-218) · wanted
-- `33` — span · Third Punic War (-149) · wanted
-- `34` — event · Destruction of Carthage (-146) · wanted
-- `55` — span · Kingdom of Aksum (100) · wanted
-- `79` — span · Ghana Empire (300) · wanted
-- `40` — event · Division of the Roman Empire (395) · wanted
-- `41` — event · Visigoths Sack Rome (410) · wanted
-- `78` — span · Srivijaya (650) · wanted
-- `76` — span · Heian Period (794) · wanted
-- `77` — span · Khmer Empire (802) · wanted
-- `74` — span · Kievan Rus' (882) · wanted
-- `70` — span · Fatimid Caliphate (909) · wanted
-- `71` — span · Seljuk Empire (1037) · wanted
-- `56` — span · Great Zimbabwe (1100) · wanted
-- `69` — span · Ayyubid Sultanate (1171) · wanted
-- `75` — span · Kamakura Shogunate (1185) · wanted
+- `81` — event · Ezana of Aksum Adopts Christianity (330) · wanted
+- `82` — event · Chola Raids on Srivijaya (1025) · wanted
+- `83` — event · Angkor Wat Built (1113) · wanted
+- `85` — event · Mongols Sack Kyiv (1240) · wanted
 - `73` — span · Golden Horde (1242) · wanted
 - `68` — span · Mamluk Sultanate (1250) · wanted
 - `72` — span · Ilkhanate (1256) · wanted
@@ -152,6 +136,8 @@
 - `54` — event · Mansa Musa's Pilgrimage to Mecca (1324) · wanted
 - `62` — span · Hundred Years' War (1337) · wanted
 - `80` — span · Kingdom of Kongo (1390) · wanted
+- `86` — span · Mutapa Empire (1430) · wanted
+- `84` — event · Ayutthaya Sacks Angkor (1431) · wanted
 - `57` — span · Songhai Empire (1464) · wanted
 - `53` — event · Fall of Tenochtitlan (1521) · wanted
 - `25` — event · Battle of Sekigahara (1600) · wanted
@@ -185,14 +171,14 @@
 
 ## [info] Region labels in use, with their DateFlow lane
 
-- `Europe` — europe · 157 records
+- `Europe` — europe · 163 records
 - `South Asia` — south-asia · 145 records
-- `Americas` — americas · 64 records
-- `East Asia` — east-asia · 58 records
-- `Middle East` — middle-east · 45 records
-- `Africa` — africa · 31 records
+- `Americas` — americas · 65 records
+- `East Asia` — east-asia · 60 records
+- `Middle East` — middle-east · 48 records
+- `Africa` — africa · 37 records
 - `Global` — global · 29 records
-- `Southeast Asia` — east-asia · 11 records
+- `Southeast Asia` — east-asia · 13 records
 - `North America` — americas · 7 records
 - `Oceania` — global · 4 records
 - `South America` — americas · 1 records
@@ -206,5 +192,5 @@
 
 ## [info] Counts changed since the legacy import
 
-- `events` — 343 at import -> 443 now
-- `time_spans` — 98 at import -> 110 now
+- `events` — 343 at import -> 448 now
+- `time_spans` — 98 at import -> 125 now

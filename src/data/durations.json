@@ -86,6 +86,23 @@
     "approximate": true
   },
   {
+    "id": "olmec-civilization",
+    "name": "Olmec Civilization",
+    "startYear": -1200,
+    "endYear": -400,
+    "description": "Mesoamerica's earliest major complex society, centered in the Gulf Coast lowlands of southern Mexico at sites such as San Lorenzo and La Venta and famed for monumental basalt heads.",
+    "categories": [
+      "Culture",
+      "Arts",
+      "Politics"
+    ],
+    "region": "Americas",
+    "importance": 6,
+    "kind": "period",
+    "significance": "Olmec centers pioneered monumental stone sculpture, ceremonial plaza planning, long-distance jade and obsidian trade, and early Mesoamerican ballgame and ritual traditions. Later societies across Mesoamerica, including the Maya, built upon artistic and religious motifs first developed along the Gulf Coast.",
+    "approximate": true
+  },
+  {
     "id": "zhou-dynasty",
     "name": "Zhou Dynasty",
     "startYear": -1046,
@@ -208,6 +225,34 @@
     "kind": "period"
   },
   {
+    "id": "first-punic-war",
+    "name": "First Punic War",
+    "startYear": -264,
+    "endYear": -241,
+    "description": "The first of three wars between Rome and Carthage, fought primarily over control of Sicily and decided by massive naval battles across the central Mediterranean.",
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 5,
+    "kind": "period",
+    "significance": "Victory forced Rome to build a major war fleet for the first time and gave it Sicily, its first overseas province. Carthage's defeat and heavy war indemnity sparked a mercenary revolt and pushed Carthaginian leaders to expand into Spain, setting up the next conflict."
+  },
+  {
+    "id": "second-punic-war",
+    "name": "Second Punic War",
+    "startYear": -218,
+    "endYear": -201,
+    "description": "The second conflict between Rome and Carthage, marked by Hannibal Barca's crossing of the Alps into Italy, devastating Roman defeats at Cannae and Rome's eventual counterinvasion of North Africa.",
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "period",
+    "significance": "Carthage lost its fleet, its Spanish empire and its status as a great power, leaving Rome dominant in the western Mediterranean. Many historians also argue that sixteen years of fighting in Italy sped up the concentration of land and wealth in the hands of Rome's elite."
+  },
+  {
     "id": "construction-great-wall",
     "name": "Construction of the Great Wall of China",
     "startYear": -215,
@@ -234,6 +279,20 @@
     "importance": 8,
     "kind": "empire",
     "significance": "Consolidated Chinese imperial institutions, made Confucianism the basis of state ideology and official training, pushed trade routes into Central Asia that became part of the Silk Road, and gave its name to the Han Chinese people."
+  },
+  {
+    "id": "third-punic-war",
+    "name": "Third Punic War",
+    "startYear": -149,
+    "endYear": -146,
+    "description": "The final war between Rome and Carthage, consisting largely of a prolonged Roman siege of Carthage in North Africa that ended with the city's complete destruction.",
+    "categories": [
+      "War"
+    ],
+    "region": "Africa",
+    "importance": 5,
+    "kind": "period",
+    "significance": "The war permanently removed Carthage from the Mediterranean map and annexed its heartland as a Roman province. Alongside the sack of Corinth in the same year, it demonstrated Rome's willingness to destroy rival cities outright rather than accept subordinate allies."
   },
   {
     "id": "fall-of-roman-republic",
@@ -276,6 +335,23 @@
     "significance": "United the Mediterranean world under Roman law, Latin language, and extensive infrastructure, leaving an enduring legacy in Western governance, architecture, and religion."
   },
   {
+    "id": "kingdom-of-aksum",
+    "name": "Kingdom of Aksum",
+    "startYear": 100,
+    "endYear": 940,
+    "description": "A major trading empire centered in northern Ethiopia and Eritrea that controlled Red Sea commerce between the Roman world and India and became one of the earliest states to adopt Christianity.",
+    "categories": [
+      "Politics",
+      "Economy",
+      "Religion"
+    ],
+    "region": "Africa",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Aksum linked inland Northeast Africa to Red Sea and Indian Ocean trade networks, minting its own gold coinage and erecting monumental stelae. King Ezana's adoption of Christianity in the fourth century established the enduring roots of the Ethiopian Orthodox Church.",
+    "approximate": true
+  },
+  {
     "id": "classic-maya",
     "name": "Classic Maya",
     "startYear": 250,
@@ -288,6 +364,22 @@
     "region": "Americas",
     "importance": 6,
     "kind": "empire",
+    "approximate": true
+  },
+  {
+    "id": "ghana-empire",
+    "name": "Ghana Empire",
+    "startYear": 300,
+    "endYear": 1100,
+    "description": "West Africa's earliest large savanna empire, known locally as Wagadu and centered in modern southeastern Mauritania and western Mali (not modern Ghana, which took the empire's name at independence). It grew wealthy taxing trans-Saharan trade in gold and salt.",
+    "categories": [
+      "Politics",
+      "Economy"
+    ],
+    "region": "Africa",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "By mediating trade between West African goldfields and North African salt and merchant caravans, Ghana anchored the trans-Saharan commercial network. Its administrative traditions and control of trade routes laid the groundwork for the later Mali and Songhai empires.",
     "approximate": true
   },
   {
@@ -348,6 +440,23 @@
     "significance": "Expanded Chinese influence deep into Central Asia, widened the civil service examinations, and fostered cosmopolitan trade and poetry that deeply shaped neighboring Korea, Japan, and Vietnam."
   },
   {
+    "id": "srivijaya",
+    "name": "Srivijaya",
+    "startYear": 650,
+    "endYear": 1377,
+    "description": "A maritime thalassocracy centered at Palembang in southern Sumatra that dominated the Strait of Malacca and served as a major center of Buddhist scholarship across maritime Southeast Asia.",
+    "categories": [
+      "Politics",
+      "Economy",
+      "Religion"
+    ],
+    "region": "Southeast Asia",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Controlling the sea lanes between India and Tang and Song China, Srivijaya became an indispensable hub of Indian Ocean trade and Vajrayana Buddhist learning, visited by Chinese pilgrims like Yijing. Its maritime network helped spread Malay as the regional lingua franca.",
+    "approximate": true
+  },
+  {
     "id": "umayyad-caliphate",
     "name": "Umayyad Caliphate",
     "startYear": 661,
@@ -401,6 +510,22 @@
     "kind": "period"
   },
   {
+    "id": "heian-period",
+    "name": "Heian Period",
+    "startYear": 794,
+    "endYear": 1185,
+    "description": "The classical era of Japanese history, named after the imperial capital Heian-kyo (modern Kyoto), marked by aristocratic court rule under the Fujiwara clan and a flowering of native literature and art.",
+    "categories": [
+      "Culture",
+      "Arts",
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 6,
+    "kind": "period",
+    "significance": "During the Heian period, Japan adapted continental Chinese models into distinctly Japanese cultural forms, including the kana phonetic scripts and court literature such as Murasaki Shikibu's The Tale of Genji. Meanwhile, the decline of central taxation allowed provincial warrior bands to rise to power."
+  },
+  {
     "id": "holy-roman-empire",
     "name": "Holy Roman Empire",
     "startYear": 800,
@@ -412,6 +537,23 @@
     "region": "Europe",
     "importance": 6,
     "kind": "empire"
+  },
+  {
+    "id": "khmer-empire",
+    "name": "Khmer Empire",
+    "startYear": 802,
+    "endYear": 1431,
+    "description": "The dominant mainland Southeast Asian empire, centered at Angkor in modern Cambodia, renowned for its monumental Hindu and Buddhist temple complexes, extensive hydraulic engineering and control over the Mekong basin.",
+    "categories": [
+      "Politics",
+      "Arts",
+      "Culture"
+    ],
+    "region": "Southeast Asia",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "At its twelfth-century height, the Khmer Empire ruled much of mainland Southeast Asia and built Angkor Wat, the largest religious monument in the world. Its reservoirs, canals and stone temples left an enduring architectural and cultural legacy across Cambodia and neighboring states.",
+    "approximate": true
   },
   {
     "id": "chola-empire",
@@ -428,6 +570,38 @@
     "approximate": true
   },
   {
+    "id": "kievan-rus",
+    "name": "Kievan Rus'",
+    "startYear": 882,
+    "endYear": 1240,
+    "description": "A loose federation of East Slavic principalities centered on Kyiv, ruled by the Rurikid dynasty and spanning river trade routes from the Baltic Sea to the Black Sea.",
+    "categories": [
+      "Politics",
+      "Culture",
+      "Religion"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Vladimir the Great's adoption of Byzantine Christianity in 988 brought Kievan Rus' into the Orthodox Christian world, introducing Cyrillic literacy, church architecture and legal codes. Today, Belarus, Russia and Ukraine all trace key cultural and historical roots to this medieval federation.",
+    "approximate": true
+  },
+  {
+    "id": "fatimid-caliphate",
+    "name": "Fatimid Caliphate",
+    "startYear": 909,
+    "endYear": 1171,
+    "description": "An Ismaili Shia caliphate that originated in North Africa and expanded to rule Egypt, the Levant and the Hejaz, founding Cairo as its imperial capital and challenging Abbasid authority.",
+    "categories": [
+      "Politics",
+      "Religion"
+    ],
+    "region": "Middle East",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "The Fatimids founded Cairo and Al-Azhar Mosque, turning Egypt into a major center of Mediterranean trade, science and Islamic scholarship. As the only major Shia caliphate, they reshaped medieval Islamic politics before Saladin restored Sunni rule in Egypt."
+  },
+  {
     "id": "song-dynasty",
     "name": "Song Dynasty",
     "startYear": 960,
@@ -442,6 +616,21 @@
     "significance": "Transformed China's economy with paper money, booming maritime trade and widespread printing. The Song saw the first use of the magnetic compass at sea and of gunpowder weapons in war, while Neo-Confucian thought shaped East Asian education for centuries."
   },
   {
+    "id": "seljuk-empire",
+    "name": "Seljuk Empire",
+    "startYear": 1037,
+    "endYear": 1194,
+    "description": "A Sunni Turko-Persian empire founded by the Oghuz Turkic Seljuk dynasty that conquered Persia, Mesopotamia and much of Anatolia, defeating the Byzantines at Manzikert in 1071.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Middle East",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Seljuk victories in Anatolia permanently weakened Byzantine control over Asia Minor, opened the region to Turkic settlement and prompted the Byzantine emperor to appeal to Western Europe for military aid, helping trigger the First Crusade."
+  },
+  {
     "id": "crusades",
     "name": "The Crusades",
     "startYear": 1096,
@@ -453,6 +642,55 @@
     "region": "Middle East",
     "importance": 5,
     "kind": "period"
+  },
+  {
+    "id": "great-zimbabwe",
+    "name": "Great Zimbabwe",
+    "startYear": 1100,
+    "endYear": 1450,
+    "description": "A medieval Shona stone city and kingdom capital on the Zimbabwean plateau that prospered from cattle herding, gold mining and long-distance trade with Swahili coast ports.",
+    "categories": [
+      "Politics",
+      "Economy",
+      "Arts"
+    ],
+    "region": "Africa",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Constructed without mortar from granite blocks, Great Zimbabwe's Hill Complex and Great Enclosure stand as the largest pre-colonial stone structures in sub-Saharan Africa. Its trade links connected southern African goldfields to Indian Ocean merchants as far away as Persia and China.",
+    "approximate": true
+  },
+  {
+    "id": "ayyubid-sultanate",
+    "name": "Ayyubid Sultanate",
+    "startYear": 1171,
+    "endYear": 1260,
+    "description": "A Sunni Muslim dynasty of Kurdish origin founded by Saladin that united Egypt, Syria, Upper Mesopotamia and Yemen, recaptured Jerusalem from the Crusaders in 1187 and fought the Third Crusade.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Middle East",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "By uniting Egypt and Syria under Sunni rule, Saladin broke the Crusader states' strategic advantage and restored Muslim control over Jerusalem. The Ayyubids also revitalized Sunni madrasas and trade with Italian maritime republics before being supplanted by their own Mamluk slave soldiers.",
+    "approximate": true
+  },
+  {
+    "id": "kamakura-shogunate",
+    "name": "Kamakura Shogunate",
+    "startYear": 1185,
+    "endYear": 1333,
+    "description": "Japan's first feudal military government, established by Minamoto no Yoritomo at Kamakura after the Genpei War, which governed through samurai vassals and repelled two Mongol invasions.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "East Asia",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "The Kamakura shogunate shifted real political power from the Kyoto imperial court to the samurai class, inaugurating nearly seven centuries of military rule in Japan. Although it repelled Kublai Khan's invasion fleets in 1274 and 1281, the cost of the defence, with no conquered land to reward its vassals, weakened their loyalty and helped bring about its fall.",
+    "approximate": true
   },
   {
     "id": "mongol-conquests",
