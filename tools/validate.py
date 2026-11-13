@@ -3,6 +3,7 @@
 import json
 import re
 
+import links
 from common import LEGACY, REPORTS, connect, ensure_schema
 
 # (severity, check, SQL returning offending rows as (key, detail))
@@ -235,6 +236,9 @@ def run():
             forward.append((lid, f"{src} ({s0}) {rtype} {tgt} ({t0}): the source starts later"))
         if rtype == "part_of" and (s0 < t0 or s1 > t1):
             outside.append((lid, f"{src} ({s0} to {s1}) part_of {tgt} ({t0} to {t1}): outside its years"))
+    stored = conn.execute("SELECT id, relationship_type, source_entity_id, target_entity_id FROM relationships").fetchall()
+    results.append(("warning", "'preceded' link that skips a step (A→C while A→B→C exists): remove it",
+                    [(lid, f"{a} → {c} skips {b}") for lid, a, b, c in links.skip_links(stored)]))
     results.append(("warning", "Link runs backwards in time (cause or sequence after its target)", forward))
     results.append(("warning", "part_of link outside the target's years", outside))
     results.append(("warning", "began / ended link not at the start / end of its target", ending))

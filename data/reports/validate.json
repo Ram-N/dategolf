@@ -769,6 +769,12 @@
     },
     {
       "severity": "warning",
+      "check": "'preceded' link that skips a step (A→C while A→B→C exists): remove it",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "warning",
       "check": "Link runs backwards in time (cause or sequence after its target)",
       "count": 0,
       "rows": []

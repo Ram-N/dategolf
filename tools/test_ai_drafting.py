@@ -97,6 +97,16 @@ class TestCheck(unittest.TestCase):
                           "backfill", trial=True)
         self.assertEqual(code, 0, out)
 
+    def test_warns_when_new_links_make_an_old_one_skip_a_step(self):
+        # second-battle-of-panipat preceded death-of-akbar exists; put Din-i-Ilahi between them
+        batch = {"origin": "ai_drafted:test", "links": [
+            {"source": "second-battle-of-panipat", "type": "preceded", "target": "akbar-din-i-ilahi", "why": "x"},
+            {"source": "akbar-din-i-ilahi", "type": "preceded", "target": "death-of-akbar", "why": "x"}]}
+        code, out = check(batch, "skip")
+        self.assertEqual(code, 0, out)
+        self.assertIn("will skip the new step akbar-din-i-ilahi", out)
+        self.assertIn("remove-links", out)
+
     def test_trial_load_catches_a_bad_link(self):
         b = copy.deepcopy(EXAMPLE)
         b["links"].append({"source": "reign-of-akbar", "type": "part_of", "target": "no-such-id", "why": "x"})

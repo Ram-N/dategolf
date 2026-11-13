@@ -114,6 +114,24 @@ class TestReview(unittest.TestCase):
         self.assertIn("reject-link", actions)
 
 
+class TestSkipLinks(unittest.TestCase):
+    def test_finds_a_shortcut_around_a_new_step(self):
+        stored = [(1, "preceded", "a", "c"), (2, "preceded", "x", "y")]
+        new = [("preceded", "a", "b"), ("preceded", "b", "c")]
+        self.assertEqual(links.skip_links(stored, new), [(1, "a", "b", "c")])
+        self.assertEqual(links.skip_links(stored, new[:1]), [])  # no way on from b to c
+        # a cause is a step too (Tegh Bahadur contributed_to the Khalsa, which preceded Gobind Singh's death)
+        self.assertEqual(links.skip_links(stored, [("contributed_to", "a", "b"), ("preceded", "b", "c")]),
+                         [(1, "a", "b", "c")])
+        self.assertEqual(links.skip_links(stored, [("part_of", "a", "b"), ("preceded", "b", "c")]), [])
+        # stored paths count when no batch is given (validate), not when one is
+        old = stored + [(3, "preceded", "a", "b"), (4, "preceded", "b", "c")]
+        self.assertEqual(links.skip_links(old), [(1, "a", "b", "c")])
+        self.assertEqual(links.skip_links(old, [("preceded", "x", "z")]), [])
+        # only 'preceded' shortcuts are flagged: a cause can act across a gap
+        self.assertEqual(links.skip_links([(5, "contributed_to", "a", "c")], new), [])
+
+
 class TestValidation(unittest.TestCase):
     def check_rows(self, name):
         quiet(validate.run)

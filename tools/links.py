@@ -31,6 +31,36 @@ def normalize(source, rtype, target, symmetric_types):
     return source, rtype, target
 
 
+# Links a story walks from one step to the next: the sequence, and the causal types.
+STEP_TYPES = ("preceded", "triggered", "caused", "contributed_to", "enabled", "influenced")
+
+
+def skip_links(stored, new=()):
+    """'preceded' links that skip a step: A preceded C, while A→B and B→C also exist.
+
+    stored: [(id, type, a, c)] existing links; new: [(type, a, c)] links about to be added.
+    A→B and B→C may be any step type (a cause moves a story on as a sequence does).
+    Returns [(id, a, b, c)] for each stored 'preceded' link with such a path around it, using at
+    least one new link when `new` is given. Neighbouring steps only (doc 15): A→B, B→C, never A→C.
+    """
+    after = {}
+    for _, t, a, c in stored:
+        if t in STEP_TYPES:
+            after.setdefault(a, set()).add((c, False))
+    for t, a, c in new:
+        if t in STEP_TYPES:
+            after.setdefault(a, set()).add((c, True))
+    found = []
+    for lid, t, a, c in stored:
+        if t != "preceded":
+            continue
+        for b, new1 in after.get(a, ()):
+            if b != c and any(c2 == c and (new1 or new2 or not new) for c2, new2 in after.get(b, ())):
+                found.append((lid, a, b, c))
+                break
+    return found
+
+
 def _sentence(conn, link_id):
     r = conn.execute("SELECT source_id, type, target_id FROM v_link_review WHERE id = ?", (link_id,)).fetchone()
     return f"link #{link_id}: {r[0]} {r[1]} {r[2]}" if r else f"link #{link_id}"

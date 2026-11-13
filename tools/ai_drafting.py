@@ -19,6 +19,7 @@ from pathlib import Path
 
 from common import DATA, DB_PATH, ROOT, connect
 from reconcile import tokens
+from links import skip_links
 from significance import row_text, text_problems
 
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -259,6 +260,16 @@ def check(path, trial=True):
         errs, warns = text_problems(row_text(s), descriptions.get(sid))
         errors.extend(f"{where}: {m}" for m in errs)
         warnings.extend(f"{where}: {m}" for m in warns)
+
+    # New 'preceded' links can turn an existing one into a shortcut that skips the new step.
+    conn = connect()
+    stored = conn.execute("SELECT id, relationship_type, source_entity_id, target_entity_id FROM relationships").fetchall()
+    conn.close()
+    new = [("preceded", l.get("target"), l.get("source")) if l.get("type") == "followed"
+           else (l.get("type"), l.get("source"), l.get("target")) for l in batch.get("links") or []]
+    for lid, a, b, c in skip_links(stored, new):
+        warnings.append(f"existing link #{lid} ({a} preceded {c}) will skip the new step {b}: "
+                        f"after approval, `manage.py remove-links {lid}`")
 
     if not errors and trial:
         _trial_load(path, batch, errors)

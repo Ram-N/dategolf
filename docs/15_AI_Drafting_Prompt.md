@@ -14,7 +14,7 @@
 3. **Save its reply** as `data/drafts/incoming/<date>_<ai>_<topic>.json`, e.g. `2026-11-11_gemini_mughals.json`. Code fences in the reply are fine; the checker strips them.
 4. **Check it:** `uv run python tools/manage.py check-drafts <file>` (or ask Claude).
    - **✗ errors** must be fixed. Paste them back to the AI ("fix these and resend the whole JSON").
-   - **! warnings** are worth a look (possible duplicates, missing countries, a century named in a description).
+   - **! warnings** are worth a look (possible duplicates, missing countries, a century named in a description). One kind is a to-do for after approval: *"existing link #N will skip the new step B"*. When a new event B lands between A and C, the old `A preceded C` becomes a shortcut, so it's removed with `manage.py remove-links N` once the batch is approved. `data:validate` keeps flagging any such shortcut until it's gone.
    - The check ends with a **trial load on a copy of the db**, so a clean check means it will load.
 5. **Load it** (ask Claude, or run `load-drafts <file>`, then `load-links <file>`). It all arrives as **proposed**:
    - **Events:** Review → Event drafts

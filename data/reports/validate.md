@@ -48,6 +48,7 @@
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
 | warning | No tagged country fits the event's region lane (fix the tags, add an actor, or accept it) | pass |
 | info | Accepted region exceptions (region deliberately differs from location) | 3 |
+| warning | 'preceded' link that skips a step (A→C while A→B→C exists): remove it | pass |
 | warning | Link runs backwards in time (cause or sequence after its target) | pass |
 | warning | part_of link outside the target's years | pass |
 | warning | began / ended link not at the start / end of its target | pass |
