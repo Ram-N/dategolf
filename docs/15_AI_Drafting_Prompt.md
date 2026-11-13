@@ -95,7 +95,8 @@ EVENT (something that happened in one year):
                 but where it did not happen: e.g. ["US", "JP/actor"] for Pearl Harbor.
   source        REQUIRED. ONE English Wikipedia article URL that supports the event: its own
                 article if one exists, else the most specific person or topic article.
-                It must be a real article.
+                It must be a real article. Write the bare URL, never a Markdown link
+                like [url](url).
   note          REQUIRED. For the reviewer, not players: the exact date if known, where sources
                 disagree, and anything to double-check.
   significance  RECOMMENDED. "Why it matters": 30 to 50 words, plain text. See SIGNIFICANCE below.
