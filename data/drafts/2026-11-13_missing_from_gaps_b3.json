@@ -1,0 +1,9 @@
+{"found_while": "2026-11-13: gap batch 3 (spans left with no links)",
+ "items": [
+  {"kind": "event", "name": "Portuguese Reach the Kingdom of Kongo", "year": 1483, "region": "Africa",
+   "why": "The Kingdom of Kongo has no links: Diogo Cao's arrival at the Congo River began its ties with Portugal (and the slave trade); would be part_of kingdom-of-kongo and link to the Portuguese voyages.",
+   "related_ids": ["kingdom-of-kongo", "age-of-exploration-portugal"]},
+  {"kind": "event", "name": "Afonso I Becomes King of Kongo", "year": 1509, "region": "Africa",
+   "why": "Kongo's best-known king, whose letters to Portugal protested the slave trade; part_of kingdom-of-kongo.",
+   "related_ids": ["kingdom-of-kongo"]}
+ ]}

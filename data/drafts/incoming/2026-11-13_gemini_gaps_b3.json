@@ -1,0 +1,706 @@
+{
+  "origin": "ai_drafted:gemini",
+  "about": "Batch 3: 20 medieval and early modern events and spans covering the Mongol successor states, Mamluks, Mali, Songhai, Kongo, Hundred Years' War, Aztec fall, Tokugawa Japan, Thirty Years' War, Ming-Qing transition, American Revolution, and French Revolution. Pre-sorted by Claude: five text fixes (incl. the Westphalian-sovereignty myth), Ilkhanate not approximate, two links dropped (Golden Horde 'part of' a span it outlasted; a vague interacted_with).",
+  "events": [
+    {
+      "id": "mongols-sack-baghdad",
+      "name": "Mongols Sack Baghdad",
+      "year": 1258,
+      "approximate": false,
+      "region": "Middle East",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "aliases": [
+        "Siege of Baghdad",
+        "Fall of Baghdad to the Mongols",
+        "Hulagu sacks Baghdad"
+      ],
+      "description": "Mongol forces commanded by Hulagu Khan besiege and capture the Abbasid capital of Baghdad after Caliph al-Mustasim refuses to submit, executing the caliph and destroying palaces, mosques and libraries across the city.",
+      "difficulty": "medium",
+      "importance": 7,
+      "countries": [
+        "IQ",
+        "MN/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Siege_of_Baghdad",
+      "note": "February 1258. Avoid exaggerations such as 'the Tigris ran black with ink for months' as literal fact; frame the destruction of libraries and irrigation infrastructure accurately. [Claude at review: The caliphate began in 750, Baghdad was founded in 762: 'five centuries of rule in Baghdad' was slightly over.]",
+      "significance": "The sack ended the Abbasid Caliphate's five centuries of rule, nearly all of them from Baghdad, and shattered the historic political center of the Islamic world. Although a shadow Abbasid caliphate later survived under Mamluk protection in Cairo, Baghdad never regained its former imperial prominence.",
+      "fills_missing": 67
+    },
+    {
+      "id": "mansa-musas-pilgrimage-to-mecca",
+      "name": "Mansa Musa's Pilgrimage to Mecca",
+      "year": 1324,
+      "approximate": false,
+      "region": "Africa",
+      "categories": [
+        "Religion",
+        "Economy",
+        "Culture"
+      ],
+      "aliases": [
+        "Mansa Musa's Hajj",
+        "Mansa Musa visits Cairo",
+        "Mali emperor's pilgrimage"
+      ],
+      "description": "Mansa Musa, ruler of the West African Mali Empire, travels across the Sahara to Mecca with a vast entourage and immense quantities of gold, distributing lavish gifts in Cairo that temporarily depress gold prices across Egypt.",
+      "difficulty": "easy",
+      "importance": 6,
+      "countries": [
+        "SA",
+        "EG",
+        "ML/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Mansa_Musa",
+      "note": "Departed Mali in 1324 and arrived in Cairo in July 1324, completing the Hajj in 1324–1325.",
+      "significance": "Mansa Musa's journey broadcast the Mali Empire's wealth across the Mediterranean and Islamic worlds, earning Mali a prominent place on European maps such as the Catalan Atlas. Returning scholars and architects, including Abu Ishaq al-Sahili, also enriched Islamic learning and building in Timbuktu and Gao.",
+      "fills_missing": 54
+    },
+    {
+      "id": "fall-of-tenochtitlan",
+      "name": "Fall of Tenochtitlan",
+      "year": 1521,
+      "approximate": false,
+      "region": "North America",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "aliases": [
+        "Siege of Tenochtitlan",
+        "Capture of Tenochtitlan",
+        "Cuauhtemoc surrenders to Cortes"
+      ],
+      "description": "Spanish conquistadors led by Hernan Cortes, backed by tens of thousands of Indigenous allies from Tlaxcala and other rival states, capture the Aztec island capital of Tenochtitlan after a prolonged siege and devastating smallpox outbreak.",
+      "difficulty": "medium",
+      "importance": 7,
+      "countries": [
+        "MX",
+        "ES/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Fall_of_Tenochtitlan",
+      "note": "13 August 1521, with the capture of Emperor Cuauhtemoc.",
+      "significance": "Tenochtitlan's fall extinguished the Aztec Empire and gave Spain control over central Mesoamerica. On the ruins of the Aztec capital, the Spanish built Mexico City as the administrative seat of the Viceroyalty of New Spain, anchoring centuries of colonial rule.",
+      "fills_missing": 53
+    },
+    {
+      "id": "battle-of-sekigahara",
+      "name": "Battle of Sekigahara",
+      "year": 1600,
+      "approximate": false,
+      "region": "East Asia",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "aliases": [
+        "Sekigahara campaign",
+        "Tokugawa Ieyasu wins at Sekigahara"
+      ],
+      "description": "Forces loyal to Tokugawa Ieyasu defeat a rival western coalition led by Ishida Mitsunari in central Japan after key commanders defect mid-battle, deciding the struggle for supremacy following Toyotomi Hideyoshi's death.",
+      "difficulty": "medium",
+      "importance": 6,
+      "countries": [
+        "JP"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Battle_of_Sekigahara",
+      "note": "21 October 1600.",
+      "significance": "Victory at Sekigahara made Tokugawa Ieyasu the undisputed master of Japan, allowing him to redistribute domains among loyal and defeated feudal lords. Three years later he received the title of shogun, inaugurating more than two and a half centuries of Tokugawa rule.",
+      "fills_missing": 25
+    },
+    {
+      "id": "tokugawa-ieyasu-becomes-shogun",
+      "name": "Tokugawa Ieyasu Becomes Shogun",
+      "year": 1603,
+      "approximate": false,
+      "region": "East Asia",
+      "categories": [
+        "Politics"
+      ],
+      "aliases": [
+        "Establishment of the Tokugawa Shogunate",
+        "Tokugawa Ieyasu appointed shogun",
+        "Edo shogunate founded"
+      ],
+      "description": "Emperor Go-Yozei formally appoints Tokugawa Ieyasu as shogun, enabling him to establish his military government at Edo and consolidate unified rule over Japan's feudal domains.",
+      "difficulty": "medium",
+      "importance": 7,
+      "countries": [
+        "JP"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Tokugawa_Ieyasu",
+      "note": "24 March 1603. Ieyasu abdicated in 1605 in favor of his son Hidetada to secure dynastic succession while retaining real power until his death in 1616.",
+      "significance": "Ieyasu's appointment launched the Tokugawa Shogunate and the Edo period, ending over a century of Warring States civil conflict. The regime's strict social hierarchy, domain controls and maritime restrictions preserved internal peace and fostered urban growth until the Meiji Restoration.",
+      "fills_missing": 26
+    },
+    {
+      "id": "fall-of-the-ming-dynasty",
+      "name": "Fall of the Ming Dynasty",
+      "year": 1644,
+      "approximate": false,
+      "region": "East Asia",
+      "categories": [
+        "Politics",
+        "War"
+      ],
+      "aliases": [
+        "Chongzhen Emperor dies",
+        "Li Zicheng captures Beijing",
+        "Collapse of the Ming Dynasty"
+      ],
+      "description": "Peasant rebel leader Li Zicheng's army breaches Beijing amid famine, fiscal collapse and epidemic disease, prompting the Chongzhen Emperor to hang himself on Jingshan Hill behind the Forbidden City and ending Ming rule in the capital.",
+      "difficulty": "medium",
+      "importance": 6,
+      "countries": [
+        "CN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Transition_from_Ming_to_Qing",
+      "note": "25 April 1644. Southern Ming loyalist courts continued resisting in southern China until 1662, so note that this ended Ming rule in Beijing and the dynasty's central government.",
+      "significance": "The collapse of the Ming central government created a power vacuum in northern China. Within weeks, Ming frontier general Wu Sangui allied with the Manchu Qing forces at Shanhai Pass to defeat Li Zicheng, opening the gates of Beijing to a new dynasty.",
+      "fills_missing": 30
+    },
+    {
+      "id": "qing-capture-of-beijing",
+      "name": "Qing Capture of Beijing",
+      "year": 1644,
+      "approximate": false,
+      "region": "East Asia",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "aliases": [
+        "Manchus enter Beijing",
+        "Qing conquest of Beijing",
+        "Shunzhi Emperor enthroned in Beijing"
+      ],
+      "description": "After defeating rebel leader Li Zicheng at Shanhai Pass alongside former Ming general Wu Sangui, Manchu Qing forces under regent Dorgon enter Beijing, where the young Shunzhi Emperor, already Qing emperor, is enthroned as ruler of China.",
+      "difficulty": "medium",
+      "importance": 7,
+      "countries": [
+        "CN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Transition_from_Ming_to_Qing",
+      "note": "June 1644 (Qing forces entered Beijing on 5–6 June 1644; Shunzhi enthroned in Beijing in October 1644). Note that full Qing conquest of southern China took several more decades. [Claude at review: Shunzhi had been Qing emperor since 1643; Beijing was where he was enthroned as ruler of China.]",
+      "significance": "Capturing Beijing established the Manchu-led Qing Dynasty as the successor to the Ming, though subduing southern loyalists took decades longer. Qing rulers preserved Chinese bureaucratic institutions while expanding imperial borders into Inner Asia, shaping the territorial footprint of modern China.",
+      "fills_missing": 28
+    },
+    {
+      "id": "intolerable-acts",
+      "name": "Intolerable Acts",
+      "year": 1774,
+      "approximate": false,
+      "region": "North America",
+      "categories": [
+        "Politics"
+      ],
+      "aliases": [
+        "Coercive Acts",
+        "Boston Port Act",
+        "Parliament passes Coercive Acts"
+      ],
+      "description": "The British Parliament passes a series of punitive laws, known in the colonies as the Intolerable Acts, closing Boston Harbor, curtailing Massachusetts self-government and expanding troop quartering in retaliation for the Boston Tea Party.",
+      "difficulty": "medium",
+      "importance": 6,
+      "countries": [
+        "US",
+        "GB/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Intolerable_Acts",
+      "note": "Passed between March and June 1774 (often grouped with the Quebec Act by colonists).",
+      "significance": "Rather than isolating Massachusetts as London intended, the punitive laws alarmed the other twelve colonies, which feared Parliament would strip their charters next. Colonial leaders convened the First Continental Congress in Philadelphia later that year to coordinate resistance and economic boycotts.",
+      "fills_missing": 63
+    },
+    {
+      "id": "battles-of-lexington-and-concord",
+      "name": "Battles of Lexington and Concord",
+      "year": 1775,
+      "approximate": false,
+      "region": "North America",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "aliases": [
+        "Lexington and Concord",
+        "Shot heard round the world",
+        "Outbreak of the American Revolutionary War"
+      ],
+      "description": "British regulars marching from Boston to seize colonial militia munitions and arrest Patriot leaders clash with local minutemen at Lexington and Concord in Massachusetts, suffering heavy losses during their fighting retreat to Boston.",
+      "difficulty": "easy",
+      "importance": 7,
+      "countries": [
+        "US",
+        "GB/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Battles_of_Lexington_and_Concord",
+      "note": "19 April 1775.",
+      "significance": "The skirmishes turned political protest into open armed conflict, opening the American Revolutionary War. Within days, thousands of New England militiamen besieged British forces in Boston, and the Second Continental Congress soon organized a Continental Army under George Washington.",
+      "fills_missing": 51
+    },
+    {
+      "id": "execution-of-louis-xvi",
+      "name": "Execution of Louis XVI",
+      "year": 1793,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "Politics"
+      ],
+      "aliases": [
+        "Louis XVI guillotined",
+        "Trial and execution of Louis XVI",
+        "King Louis XVI executed"
+      ],
+      "description": "Following his conviction for high treason by the National Convention after the abolition of the French monarchy, deposed King Louis XVI is executed by guillotine in Paris at the Place de la Revolution.",
+      "difficulty": "easy",
+      "importance": 6,
+      "countries": [
+        "FR"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Execution_of_Louis_XVI",
+      "note": "21 January 1793. [Claude at review: France itself declared war on Britain and the Dutch; the execution was one cause of the widening war, not the prompt.]",
+      "significance": "Executing an anointed monarch by republican decree shocked Europe's royal courts, and within weeks Britain, the Dutch Republic and Spain were at war with France. Inside France, the regicide deepened divisions between Jacobins, Girondins and royalist provinces, accelerating revolutionary radicalization.",
+      "fills_missing": 38
+    },
+    {
+      "id": "coup-of-18-brumaire",
+      "name": "Coup of 18 Brumaire",
+      "year": 1799,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "Politics"
+      ],
+      "aliases": [
+        "18 Brumaire",
+        "Napoleon seizes power",
+        "Overthrow of the French Directory"
+      ],
+      "description": "General Napoleon Bonaparte and political allies including Emmanuel-Joseph Sieyes overthrow the unpopular French Directory in a bloodless military coup, replacing it with the three-man Consulate led by Bonaparte as First Consul.",
+      "difficulty": "medium",
+      "importance": 7,
+      "countries": [
+        "FR"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Coup_of_18_Brumaire",
+      "note": "9–10 November 1799 (18–19 Brumaire, Year VIII in the French Republican calendar).",
+      "significance": "Historians widely treat the coup as the end of the French Revolution, replacing unstable parliamentary rule with an authoritarian regime. As First Consul, Napoleon centralized administration, enacted the Napoleonic Code and soon crowned himself emperor.",
+      "fills_missing": 37
+    }
+  ],
+  "spans": [
+    {
+      "id": "golden-horde",
+      "kind": "empire",
+      "name": "Golden Horde",
+      "start_year": 1242,
+      "end_year": 1502,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "Politics",
+        "War"
+      ],
+      "description": "The northwestern khanate of the Mongol Empire, founded by Batu Khan on the Pontic-Caspian steppe, which exacted tribute from the Russian principalities and controlled steppe trade routes.",
+      "importance": 6,
+      "countries": [
+        "RU",
+        "UA",
+        "KZ"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Golden_Horde",
+      "note": "1242 (Batu Khan establishes Sarai after the European campaign) to 1502 (Crimean Khanate destroys the Great Horde remnant; Muscovy had already ended tribute at the Great Stand on the Ugra River in 1480).",
+      "significance": "For over two centuries, the Golden Horde's tribute system and yarlik patents reshaped Russian politics, inadvertently helping the princes of Moscow consolidate power as chief tax collectors. Its later fragmentation gave rise to the Crimean, Kazan and Astrakhan khanates.",
+      "fills_missing": 73
+    },
+    {
+      "id": "mamluk-sultanate",
+      "kind": "empire",
+      "name": "Mamluk Sultanate",
+      "start_year": 1250,
+      "end_year": 1517,
+      "approximate": false,
+      "region": "Middle East",
+      "categories": [
+        "Politics",
+        "War"
+      ],
+      "description": "A medieval state ruling Egypt, the Levant and the Hejaz, governed by a military caste of manumitted slave-soldiers who overthrew the Ayyubids and halted Mongol expansion at Ain Jalut.",
+      "importance": 6,
+      "countries": [
+        "EG",
+        "SY",
+        "JO",
+        "SA"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Mamluk_Sultanate",
+      "note": "1250 (rise of Shajar al-Durr and Aybak in Cairo) to 1517 (Ottoman Sultan Selim I conquers Cairo).",
+      "significance": "By defeating the Mongols at Ain Jalut in 1260 and expelling the last Crusader strongholds from the Levant by 1291, the Mamluks preserved Egypt and Syria from conquest. Cairo flourished under Mamluk patronage as the foremost cultural and commercial hub of the Arab world until the Ottoman conquest.",
+      "fills_missing": 68
+    },
+    {
+      "id": "ilkhanate",
+      "kind": "empire",
+      "name": "Ilkhanate",
+      "start_year": 1256,
+      "end_year": 1335,
+      "approximate": false,
+      "region": "Middle East",
+      "categories": [
+        "Politics",
+        "War",
+        "Culture"
+      ],
+      "description": "The southwestern division of the Mongol Empire, founded by Hulagu Khan and centered in Persia, which destroyed the Abbasid Caliphate in Baghdad and later converted to Islam under Ghazan Khan.",
+      "importance": 6,
+      "countries": [
+        "IR",
+        "IQ",
+        "AZ",
+        "TR"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Ilkhanate",
+      "note": "1256 (Hulagu's campaign against the Nizari Ismailis and establishment of rule in Persia) to 1335 (death of Abu Sa'id Bahadur Khan without an heir, leading to rapid fragmentation). [Claude at review: the years are not in doubt, so not approximate.]",
+      "significance": "Initially devastating cities and irrigation works, the Ilkhanate later fostered a revival of Persian literature, historical writing and astronomy under scholars like Rashid al-Din and Nasir al-Din al-Tusi. Its integration into the Pax Mongolica linked Iranian artisans and merchants directly to Yuan China.",
+      "fills_missing": 72
+    },
+    {
+      "id": "yuan-dynasty",
+      "kind": "empire",
+      "name": "Yuan Dynasty",
+      "start_year": 1271,
+      "end_year": 1368,
+      "approximate": false,
+      "region": "East Asia",
+      "categories": [
+        "Politics",
+        "Culture"
+      ],
+      "description": "The Mongol-led imperial dynasty of China proclaimed by Kublai Khan, which conquered the Southern Song to unify all of China under non-Han rule for the first time.",
+      "importance": 7,
+      "countries": [
+        "CN",
+        "MN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Yuan_dynasty",
+      "note": "1271 (Kublai Khan proclaims the dynastic name Da Yuan; Southern Song falls in 1279) to 1368 (Ming forces capture Dadu/Beijing and the Yuan court retreats north as the Northern Yuan).",
+      "significance": "The Yuan unified China after centuries of division, made Dadu (modern Beijing) the imperial capital and expanded paper currency and Grand Canal transport. Open overland and maritime routes brought foreign merchants and travelers such as Marco Polo to China before rebellions ushered in the Ming.",
+      "fills_missing": 66
+    },
+    {
+      "id": "hundred-years-war-period",
+      "kind": "period",
+      "name": "Hundred Years' War",
+      "start_year": 1337,
+      "end_year": 1453,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "description": "A series of intermittent conflicts between the kingdoms of England and France over English territorial claims in France and the French royal succession, spanning five generations.",
+      "importance": 7,
+      "countries": [
+        "FR",
+        "GB"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Hundred_Years%27_War",
+      "note": "1337 (Edward III claims the French throne and Philip VI confiscates Gascony) to 1453 (French victory at Castillon leaves England with only Calais).",
+      "significance": "The prolonged conflict ended English territorial ambitions on the French mainland, strengthened royal taxation and standing armies on both sides, and fostered distinct French and English national identities. Battlefield innovations such as the English longbow and French siege artillery also transformed medieval warfare.",
+      "fills_missing": 62
+    },
+    {
+      "id": "kingdom-of-kongo",
+      "kind": "empire",
+      "name": "Kingdom of Kongo",
+      "start_year": 1390,
+      "end_year": 1914,
+      "approximate": true,
+      "date_display": "c. 1390–1914",
+      "region": "Africa",
+      "categories": [
+        "Politics",
+        "Economy",
+        "Religion"
+      ],
+      "description": "A centralized West Central African kingdom centered at M'banza-Kongo in modern northern Angola and the Democratic Republic of the Congo, which established diplomatic and Catholic ties with Portugal.",
+      "importance": 6,
+      "countries": [
+        "AO",
+        "CD",
+        "CG"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Kingdom_of_Kongo",
+      "note": "Conventional founding c. 1390 by Lukeni lua Nimi; Portuguese contact began in 1483 and King Nzinga a Nkuwu was baptized in 1491; formally abolished by Portugal in 1914 after a revolt.",
+      "significance": "Under rulers like Afonso I, Kongo adopted Catholicism, literacy and diplomatic relations with Europe while initially attempting to regulate Portuguese trade. Over time, however, the transatlantic slave trade and succession wars undermined royal authority, leaving Kongo vulnerable to Portuguese colonial subjugation.",
+      "fills_missing": 80
+    },
+    {
+      "id": "songhai-empire",
+      "kind": "empire",
+      "name": "Songhai Empire",
+      "start_year": 1464,
+      "end_year": 1591,
+      "approximate": false,
+      "region": "Africa",
+      "categories": [
+        "Politics",
+        "Economy"
+      ],
+      "description": "A West African empire centered at Gao along the Niger River bend that succeeded Mali as the dominant power in the Sahel, controlling Timbuktu, Djenne and trans-Saharan trade routes.",
+      "importance": 6,
+      "countries": [
+        "ML",
+        "NE",
+        "NG"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Songhai_Empire",
+      "note": "1464 (accession of Sonni Ali) to 1591 (defeat by Moroccan Saadi forces armed with firearms at the Battle of Tondibi).",
+      "significance": "Under Sonni Ali and Askia Muhammad, Songhai became the largest empire in West African history, administering provinces along the Niger and patronizing Islamic scholarship in Timbuktu. Its defeat by a firearm-equipped Moroccan army in 1591 fractured imperial rule across the western Sahel.",
+      "fills_missing": 57
+    },
+    {
+      "id": "thirty-years-war-period",
+      "kind": "period",
+      "name": "Thirty Years' War",
+      "start_year": 1618,
+      "end_year": 1648,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "War",
+        "Religion",
+        "Politics"
+      ],
+      "description": "A devastating European conflict fought mainly in the Holy Roman Empire, beginning as a religious struggle between Protestant and Catholic states and widening into a Habsburg-Bourbon power struggle.",
+      "importance": 7,
+      "countries": [
+        "DE",
+        "CZ",
+        "AT",
+        "SE",
+        "FR"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Thirty_Years%27_War",
+      "note": "1618 (Bohemian Revolt and Defenestration of Prague) to 1648 (Peace of Westphalia). [Claude at review: Myth: modern historians doubt that Westphalia 'established' state sovereignty; it is the conventional story, marked as such.]",
+      "significance": "Famine, disease and warfare killed roughly a quarter to a third of the population in many German lands. The concluding Peace of Westphalia curbed Habsburg imperial authority, confirmed religious pluralism within the Holy Roman Empire, and is often, if loosely, credited with founding the modern system of sovereign states.",
+      "fills_missing": 61
+    },
+    {
+      "id": "reign-of-terror",
+      "kind": "period",
+      "name": "Reign of Terror",
+      "start_year": 1793,
+      "end_year": 1794,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "Politics"
+      ],
+      "description": "The most radical phase of the French Revolution, during which the Committee of Public Safety led by Maximilien Robespierre crushed internal rebellions and executed tens of thousands of suspected counterrevolutionaries.",
+      "importance": 6,
+      "countries": [
+        "FR"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Reign_of_Terror",
+      "note": "September 1793 to 27–28 July 1794 (9 Thermidor, execution of Robespierre). Around 17,000 people were officially executed and roughly 10,000 or more died in prison without trial. [Claude at review: The Directory was moderate, not 'conservative'.]",
+      "significance": "Through mass conscription, price controls and harsh repression, the revolutionary government defeated internal royalist revolts and repelled foreign invasion armies. However, escalating executions alienated lawmakers and the public, triggering the Thermidorian Reaction that overthrew Robespierre and paved the way for the more moderate Directory.",
+      "fills_missing": 39
+    }
+  ],
+  "links": [
+    {
+      "source": "mongol-conquests",
+      "type": "contributed_to",
+      "target": "golden-horde",
+      "why": "Batu Khan's western campaigns carved out the Golden Horde as the northwestern khanate of the Mongol Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "mamluk-sultanate",
+      "type": "opposed",
+      "target": "mongol-conquests",
+      "why": "Mamluk forces halted Mongol westward expansion into Syria and Egypt at the Battle of Ain Jalut.",
+      "confidence": "high"
+    },
+    {
+      "source": "mongols-sack-baghdad",
+      "type": "part_of",
+      "target": "ilkhanate",
+      "why": "Hulagu Khan's capture of Baghdad was the major conquest establishing Ilkhanid power in Mesopotamia.",
+      "confidence": "high"
+    },
+    {
+      "source": "mongols-sack-baghdad",
+      "type": "ended",
+      "target": "abbasid-caliphate",
+      "why": "Hulagu Khan's capture of Baghdad and execution of Caliph al-Mustasim ended the Abbasid Caliphate there.",
+      "confidence": "high"
+    },
+    {
+      "source": "mongols-sack-baghdad",
+      "type": "ended",
+      "target": "islamic-golden-age",
+      "why": "The destruction of Baghdad's palaces, libraries and scholarly institutions conventionally marks the end of the Islamic Golden Age.",
+      "confidence": "high"
+    },
+    {
+      "source": "yuan-dynasty",
+      "type": "preceded",
+      "target": "ming-dynasty",
+      "why": "Peasant rebellions overthrew Mongol Yuan rule in China, leading to the founding of the Ming Dynasty.",
+      "confidence": "high"
+    },
+    {
+      "source": "mansa-musas-pilgrimage-to-mecca",
+      "type": "part_of",
+      "target": "mali-empire",
+      "why": "Mansa Musa's pilgrimage showcased the Mali Empire's gold wealth across North Africa and the Middle East.",
+      "confidence": "high"
+    },
+    {
+      "source": "hundred-years-war",
+      "type": "began",
+      "target": "hundred-years-war-period",
+      "why": "Competing claims to the French crown and Gascony opened the Hundred Years' War in 1337.",
+      "confidence": "high"
+    },
+    {
+      "source": "joan-of-arc-burned",
+      "type": "part_of",
+      "target": "hundred-years-war-period",
+      "why": "Joan of Arc's campaigns and execution occurred during the later phase of the Hundred Years' War.",
+      "confidence": "high"
+    },
+    {
+      "source": "mali-empire",
+      "type": "preceded",
+      "target": "songhai-empire",
+      "why": "As Mali weakened in the fifteenth century, the Songhai Empire expanded from Gao to dominate the western Sahel.",
+      "confidence": "high"
+    },
+    {
+      "source": "spanish-conquest-mexico",
+      "type": "preceded",
+      "target": "fall-of-tenochtitlan",
+      "why": "Cortes's expedition into Mexico culminated two years later in the siege and capture of Tenochtitlan.",
+      "confidence": "high"
+    },
+    {
+      "source": "fall-of-tenochtitlan",
+      "type": "ended",
+      "target": "aztec-empire",
+      "why": "The capture of Tenochtitlan and Emperor Cuauhtemoc ended the Aztec Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-sekigahara",
+      "type": "preceded",
+      "target": "tokugawa-ieyasu-becomes-shogun",
+      "why": "Victory at Sekigahara gave Tokugawa Ieyasu the supremacy needed to claim the title of shogun.",
+      "confidence": "high"
+    },
+    {
+      "source": "tokugawa-ieyasu-becomes-shogun",
+      "type": "began",
+      "target": "tokugawa-shogunate",
+      "why": "Ieyasu's appointment as shogun inaugurated the Tokugawa Shogunate.",
+      "confidence": "high"
+    },
+    {
+      "source": "thirty-years-war",
+      "type": "began",
+      "target": "thirty-years-war-period",
+      "why": "The Bohemian Revolt against Habsburg rule opened the Thirty Years' War.",
+      "confidence": "high"
+    },
+    {
+      "source": "signing-of-treaty-westphalia",
+      "type": "ended",
+      "target": "thirty-years-war-period",
+      "why": "The Peace of Westphalia concluded the Thirty Years' War in the Holy Roman Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "protestant-reformation",
+      "type": "contributed_to",
+      "target": "thirty-years-war-period",
+      "why": "Unresolved Catholic-Protestant divisions in the Holy Roman Empire helped fuel the Thirty Years' War.",
+      "confidence": "high"
+    },
+    {
+      "source": "fall-of-the-ming-dynasty",
+      "type": "preceded",
+      "target": "qing-capture-of-beijing",
+      "why": "Weeks after Li Zicheng took Beijing and the last Ming emperor died, Qing forces entered the city.",
+      "confidence": "high"
+    },
+    {
+      "source": "fall-of-the-ming-dynasty",
+      "type": "ended",
+      "target": "ming-dynasty",
+      "why": "The fall of Beijing and suicide of the last Ming emperor ended Ming central rule.",
+      "confidence": "high"
+    },
+    {
+      "source": "qing-capture-of-beijing",
+      "type": "began",
+      "target": "qing-dynasty",
+      "why": "Capturing Beijing established the Qing Dynasty as the ruling dynasty of China.",
+      "confidence": "high"
+    },
+    {
+      "source": "boston-tea-party",
+      "type": "triggered",
+      "target": "intolerable-acts",
+      "why": "Parliament passed the Intolerable Acts specifically to punish Massachusetts for the Boston Tea Party.",
+      "confidence": "high"
+    },
+    {
+      "source": "intolerable-acts",
+      "type": "contributed_to",
+      "target": "battles-of-lexington-and-concord",
+      "why": "Colonial resistance to the Intolerable Acts led militias to stockpile arms, prompting British raids on Lexington and Concord.",
+      "confidence": "high"
+    },
+    {
+      "source": "battles-of-lexington-and-concord",
+      "type": "began",
+      "target": "american-revolution",
+      "why": "The clashes at Lexington and Concord opened the armed conflict of the American Revolutionary War.",
+      "confidence": "high"
+    },
+    {
+      "source": "execution-of-louis-xvi",
+      "type": "part_of",
+      "target": "french-revolution",
+      "why": "The trial and execution of King Louis XVI marked a radical turning point of the French Revolution.",
+      "confidence": "high"
+    },
+    {
+      "source": "execution-of-louis-xvi",
+      "type": "contributed_to",
+      "target": "reign-of-terror",
+      "why": "The king's execution widened foreign war and internal revolt, helping push the republic toward the Reign of Terror.",
+      "confidence": "high"
+    },
+    {
+      "source": "reign-of-terror",
+      "type": "part_of",
+      "target": "french-revolution",
+      "why": "The Reign of Terror was the most violent phase of the French Revolution.",
+      "confidence": "high"
+    },
+    {
+      "source": "coup-of-18-brumaire",
+      "type": "ended",
+      "target": "french-revolution",
+      "why": "Napoleon's overthrow of the Directory brought the French Revolution to an end.",
+      "confidence": "high"
+    }
+  ]
+}
