@@ -1259,6 +1259,27 @@
     "significance": "Shifting the Roman capital east to the Bosporus placed imperial administration closer to wealthy eastern provinces and trade routes, helping the eastern half survive the political collapse that later overtook western Europe."
   },
   {
+    "id": "ezana-of-aksum-adopts-christianity",
+    "name": "Ezana of Aksum Adopts Christianity",
+    "year": 330,
+    "categories": [
+      "Religion",
+      "Politics"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "King Ezana converts to Christianity",
+      "Christianity becomes state religion of Aksum",
+      "Conversion of Ezana"
+    ],
+    "description": "King Ezana of the Kingdom of Aksum converts to Christianity under the influence of his Syrian tutor Frumentius, replacing pagan sun-and-moon emblems with the cross on Aksumite coins and establishing Christianity as the royal faith.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Ezana's conversion made Aksum one of the world's first Christian states and anchored the Ethiopian Orthodox Tewahedo Church. Christianity became central to highland Ethiopian royal identity, literacy in Ge'ez and monastic scholarship for more than sixteen centuries.",
+    "approximate": true,
+    "dateDisplay": "c. 330–340 CE"
+  },
+  {
     "id": "chandragupta-ii-vikramaditya",
     "name": "Chandragupta II Vikramaditya Takes the Throne",
     "year": 375,
@@ -1854,6 +1875,25 @@
     "dateDisplay": "c. 1000 (tree rings date Norse woodcutting at L'Anse aux Meadows to 1021)"
   },
   {
+    "id": "chola-raids-on-srivijaya",
+    "name": "Chola Raids on Srivijaya",
+    "year": 1025,
+    "categories": [
+      "War",
+      "Economy"
+    ],
+    "region": "Southeast Asia",
+    "aliases": [
+      "Rajendra Chola invades Srivijaya",
+      "Chola naval expedition against Srivijaya",
+      "Chola invasion of Srivijaya"
+    ],
+    "description": "Emperor Rajendra Chola I of southern India launches a major naval expedition across the Bay of Bengal, raiding Palembang, Kedah and other ports of the Srivijaya Empire and capturing King Sangrama Vijayatunggavarman.",
+    "difficulty": "hard",
+    "importance": 5,
+    "significance": "The raids broke Srivijaya's hold over the Strait of Malacca, allowing Tamil merchant guilds to trade more freely across Southeast Asia and southern China. Weakened politically and commercially, Srivijaya gradually lost authority over its vassal ports."
+  },
+  {
     "id": "mahmud-ghazni-somnath",
     "name": "Mahmud of Ghazni Raids Somnath",
     "year": 1026,
@@ -2009,6 +2049,27 @@
     "importance": 5
   },
   {
+    "id": "angkor-wat-built",
+    "name": "Angkor Wat Built",
+    "year": 1113,
+    "categories": [
+      "Arts",
+      "Religion",
+      "Culture"
+    ],
+    "region": "Southeast Asia",
+    "aliases": [
+      "Construction of Angkor Wat",
+      "Suryavarman II builds Angkor Wat"
+    ],
+    "description": "Khmer Emperor Suryavarman II begins building Angkor Wat near Yasodharapura in present-day Cambodia as a vast sandstone temple complex dedicated to the Hindu god Vishnu and intended as his state temple and mausoleum.",
+    "difficulty": "easy",
+    "importance": 7,
+    "significance": "Covering more than four hundred acres, Angkor Wat stands as the largest religious monument in the world and the pinnacle of classical Khmer architecture. Later adapted to Theravada Buddhism, it remained an active spiritual center and became Cambodia's enduring national symbol.",
+    "approximate": true,
+    "dateDisplay": "c. 1113–1150"
+  },
+  {
     "id": "second-battle-of-tarain",
     "name": "Second Battle of Tarain",
     "year": 1192,
@@ -2134,6 +2195,25 @@
     "description": "Razia, daughter of Sultan Iltutmish, becomes ruler of the Delhi Sultanate, the only woman ever to hold its throne. She governs actively and appears in public in male dress, but opposition from the Turkic nobility leads to her overthrow and death within four years.",
     "difficulty": "hard",
     "importance": 4
+  },
+  {
+    "id": "mongols-sack-kyiv",
+    "name": "Mongols Sack Kyiv",
+    "year": 1240,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Siege of Kyiv",
+      "Fall of Kyiv to the Mongols",
+      "Batu Khan sacks Kyiv"
+    ],
+    "description": "Mongol armies led by Batu Khan and general Subutai besiege and storm Kyiv after its defenders refuse to surrender, destroying much of the city and slaughtering or enslaving most of its population.",
+    "difficulty": "medium",
+    "importance": 7,
+    "significance": "The destruction of Kyiv brought the era of Kievan Rus' to an end and subjected the East Slavic principalities to Golden Horde tribute and overlordship. Political gravity gradually shifted northward toward Vladimir, Moscow and Lithuania."
   },
   {
     "id": "mongols-sack-baghdad",
@@ -2489,6 +2569,25 @@
     "importance": 4
   },
   {
+    "id": "ayutthaya-sacks-angkor",
+    "name": "Ayutthaya Sacks Angkor",
+    "year": 1431,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Southeast Asia",
+    "aliases": [
+      "Fall of Angkor",
+      "Siamese capture of Angkor",
+      "End of the Khmer Empire"
+    ],
+    "description": "Forces of the Siamese Kingdom of Ayutthaya besiege and capture Angkor Thom, the capital of the weakened Khmer Empire, looting royal regalia, deporting thousands of artisans and officials, and forcing the Khmer court to abandon the city.",
+    "difficulty": "hard",
+    "importance": 6,
+    "significance": "The capture of Angkor marks the conventional end of the classical Khmer Empire. Relocating their capital southward toward the Mekong-Tonle Sap junction, Cambodian monarchs oriented the kingdom more toward maritime trade while contending with stronger Siamese and Vietnamese neighbors."
+  },
+  {
     "id": "gutenberg-printing-press",
     "name": "Gutenberg Develops His Printing Press",
     "year": 1440,
@@ -2564,6 +2663,25 @@
     "description": "Guru Nanak, the founder of Sikhism, is born in the Punjab region. His teachings emphasizing equality, monotheism, and service to humanity attract followers from both Hindu and Muslim communities and give rise to a new religious tradition.",
     "difficulty": "easy",
     "importance": 4
+  },
+  {
+    "id": "portuguese-reach-the-kingdom-of-kongo",
+    "name": "Portuguese Reach the Kingdom of Kongo",
+    "year": 1483,
+    "categories": [
+      "Exploration",
+      "Politics",
+      "Economy"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Diogo Cao reaches the Congo River",
+      "First Portuguese contact with Kongo"
+    ],
+    "description": "Portuguese navigator Diogo Cao sails into the mouth of the Congo River, establishing the first European contact with the Kingdom of Kongo and exchanging hostages with King Nzinga a Nkuwu to open diplomatic relations.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Cao's voyage initiated direct diplomatic, religious and commercial ties between Kongo and Portugal, leading to the baptism of Kongo's royal family in 1491. Over the following decades, Portuguese demand for captives to work Atlantic sugar plantations drew Kongo into the transatlantic slave trade."
   },
   {
     "id": "renaissance-da-vinci",
@@ -2681,6 +2799,24 @@
     "importance": 3,
     "approximate": true,
     "dateDisplay": "c. 1505–1510"
+  },
+  {
+    "id": "afonso-i-becomes-king-of-kongo",
+    "name": "Afonso I Becomes King of Kongo",
+    "year": 1509,
+    "categories": [
+      "Politics",
+      "Religion"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Mvemba a Nzinga takes the throne",
+      "Accession of Afonso I of Kongo"
+    ],
+    "description": "Mvemba a Nzinga, baptized as Afonso I, defeats his non-Christian half-brother Mpanzu a Kitima to become Manikongo of the Kingdom of Kongo, establishing Roman Catholicism as the royal religion and expanding literacy and diplomatic ties with Europe.",
+    "difficulty": "hard",
+    "importance": 5,
+    "significance": "Afonso I sent Kongolese youths to study in Europe, built churches and schools, and corresponded directly with Portuguese kings and the pope. His famous letters protesting the Portuguese enslavement of free Kongolese remain vital primary sources on early Afro-European relations."
   },
   {
     "id": "protestant-reformation",

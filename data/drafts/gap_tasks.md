@@ -9,7 +9,7 @@ How to run a batch (doc 15, Part A):
 
 Run the batches one at a time, and rerun step 1 before each (the gap list and ids change).
 
-Done: batches 1, 2, 3 and 4 part 1 (published 2026-11-13).
+Done: all batches published 2026-11-13. The gap list is complete (89 drafted, 1 dismissed).
 
 ## Batch 1: South Asia (20)
 

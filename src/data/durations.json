@@ -980,6 +980,22 @@
     "kind": "empire"
   },
   {
+    "id": "mutapa-empire",
+    "name": "Mutapa Empire",
+    "startYear": 1430,
+    "endYear": 1760,
+    "description": "A Shona kingdom founded by Nyatsimba Mutota in northern Zimbabwe and central Mozambique that succeeded Great Zimbabwe as the dominant gold-and-ivory trading power between the southern African interior and Swahili coast ports.",
+    "categories": [
+      "Politics",
+      "Economy"
+    ],
+    "region": "Africa",
+    "importance": 5,
+    "kind": "empire",
+    "significance": "Controlling goldfields across the Zimbabwe plateau and trade routes down the Zambezi River, Mutapa drew both Swahili and Portuguese merchants into southern Africa. Its gold led the Portuguese to identify it with the biblical land of Ophir and led to centuries of diplomatic and military entanglement with Portugal.",
+    "approximate": true
+  },
+  {
     "id": "inca-empire",
     "name": "Inca Empire",
     "startYear": 1438,
@@ -1648,6 +1664,20 @@
     "significance": "Resulted in an estimated seventy to eighty-five million fatalities, dismantled German and Japanese hegemony, weakened European colonial empires, and left the United States and Soviet Union as rival superpowers, prompting the creation of the United Nations."
   },
   {
+    "id": "european-theatre-of-world-war-ii",
+    "name": "European Theatre of World War II",
+    "startYear": 1939,
+    "endYear": 1945,
+    "description": "The European conflict of World War II, beginning with Germany's invasion of Poland and spanning the fall of France, the Battle of Britain, the German-Soviet war and the Allied liberation of Western Europe until Germany's surrender.",
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 8,
+    "kind": "period",
+    "significance": "The European theatre saw the largest land battles in history on the Eastern Front alongside the Nazi Holocaust, killing tens of millions of soldiers and civilians. Germany's defeat left Europe devastated and divided between American-allied and Soviet spheres of influence."
+  },
+  {
     "id": "the-holocaust",
     "name": "The Holocaust",
     "startYear": 1941,
@@ -1660,6 +1690,20 @@
     "importance": 8,
     "kind": "period",
     "significance": "The murder of about six million Jews, along with Roma, Soviet prisoners of war, disabled people and others, became the defining example of genocide. It led to genocide becoming a crime in international law, shaped human rights law, and strengthened the case for a Jewish state."
+  },
+  {
+    "id": "pacific-war",
+    "name": "Pacific War (World War II)",
+    "startYear": 1941,
+    "endYear": 1945,
+    "description": "The theater of World War II fought across the Pacific Ocean, East Asia and Southeast Asia between the Empire of Japan and the Allied powers, from Japan's attack on Pearl Harbor to its formal surrender.",
+    "categories": [
+      "War"
+    ],
+    "region": "Global",
+    "importance": 8,
+    "kind": "period",
+    "significance": "The Pacific War transformed naval warfare through aircraft carrier battles and amphibious island campaigns, culminating in the atomic bombings of Hiroshima and Nagasaki. Japan's defeat dismantled its overseas empire, led to the Allied occupation of Japan and accelerated decolonization across Asia."
   },
   {
     "id": "manhattan-project",

@@ -1,7 +1,7 @@
 {
   "counts": {
-    "events": 474,
-    "time_spans": 138,
+    "events": 481,
+    "time_spans": 141,
     "eras": 5,
     "datelinks_keys": 26,
     "datelinks_groups": 83,
@@ -9,7 +9,7 @@
     "milestones": 16,
     "daily_challenge_dates": 366,
     "csv_rows": 310,
-    "significance_reviewed": 157,
+    "significance_reviewed": 167,
     "significance_proposed": 0
   },
   "checks": [
@@ -427,49 +427,8 @@
     {
       "severity": "review",
       "check": "Missing events and spans to decide (dashboard Review → Missing)",
-      "count": 10,
-      "rows": [
-        [
-          81,
-          "event · Ezana of Aksum Adopts Christianity (330) · wanted"
-        ],
-        [
-          82,
-          "event · Chola Raids on Srivijaya (1025) · wanted"
-        ],
-        [
-          83,
-          "event · Angkor Wat Built (1113) · wanted"
-        ],
-        [
-          85,
-          "event · Mongols Sack Kyiv (1240) · wanted"
-        ],
-        [
-          86,
-          "span · Mutapa Empire (1430) · wanted"
-        ],
-        [
-          84,
-          "event · Ayutthaya Sacks Angkor (1431) · wanted"
-        ],
-        [
-          89,
-          "span · European Theatre of World War II (1939) · wanted"
-        ],
-        [
-          90,
-          "span · Pacific War (1941) · wanted"
-        ],
-        [
-          87,
-          "event · Portuguese Reach the Kingdom of Kongo (1483) · open"
-        ],
-        [
-          88,
-          "event · Afonso I Becomes King of Kongo (1509) · open"
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "review",
@@ -490,7 +449,7 @@
       "rows": [
         [
           "Europe",
-          "europe · 175 records"
+          "europe · 177 records"
         ],
         [
           "South Asia",
@@ -510,15 +469,15 @@
         ],
         [
           "Africa",
-          "africa · 40 records"
+          "africa · 44 records"
         ],
         [
           "Global",
-          "global · 32 records"
+          "global · 33 records"
         ],
         [
           "Southeast Asia",
-          "east-asia · 14 records"
+          "east-asia · 17 records"
         ],
         [
           "North America",
@@ -612,11 +571,11 @@
       "rows": [
         [
           "events",
-          "343 at import -> 474 now"
+          "343 at import -> 481 now"
         ],
         [
           "time_spans",
-          "98 at import -> 138 now"
+          "98 at import -> 141 now"
         ]
       ]
     }

@@ -1,6 +1,6 @@
 # Product Overview and Roadmap
 
-> **The one place for "what exists" and "what's next".** Updated 2026-11-11. The long-term DateFlow vision is **doc 16**.
+> **The one place for "what exists" and "what's next".** Updated 2026-11-13. The long-term DateFlow vision is **doc 16**.
 > Details live in the linked docs; this page doesn't repeat them. When work finishes, update the roadmap here (not in doc 11 or QUICKSTART).
 
 **Rule zero (CLAUDE.md): historical accuracy trumps everything else.** No false precision, "c." shown prominently, a sequence never shown as a cause, debated links marked as debated.
@@ -37,14 +37,14 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 
 | | Count | Notes |
 |---|---:|---|
-| Events | **474** | 3500 BCE – 2023; 31 approximate (with ranges), 3 DateFlow-only |
-| Spans | **138** | 57 empires, 81 periods (plus 5 eras) |
-| Links | **355**, all reviewed | 130 part_of · 62 preceded · 53 began · 45 ended · 34 contributed_to · 13 enabled · 8 triggered · 6 influenced · 4 opposed (22 medium confidence = "debated") |
+| Events | **481** | 3500 BCE – 2023; 33 approximate (with ranges), 3 DateFlow-only |
+| Spans | **141** | 58 empires, 83 periods (plus 5 eras) |
+| Links | **378**, all reviewed | 144 part_of · 64 preceded · 55 began · 49 ended · 34 contributed_to · 13 enabled · 8 triggered · 6 influenced · 5 opposed (22 medium confidence = "debated") |
 | Sources | **58** reviewed | 57 from the CSV, plus Apartheid. **460 more are drafted, not loaded** (`data/drafts/sources_batch1.json`) |
-| Country tags | 100 countries | Location and actor roles; the dashboard Map |
-| Significance ("Why it matters") | **157 reviewed** | doc 17: `entity_significance`, reviewed before export. Every importance 7+ item has one (4 Gemini batches, pre-sorted by Claude), plus 2 seeds |
+| Country tags | 111 countries | Location and actor roles; the dashboard Map |
+| Significance ("Why it matters") | **167 reviewed** | doc 17: `entity_significance`, reviewed before export. Every importance 7+ item has one (4 Gemini batches, pre-sorted by Claude), plus 2 seeds |
 | DateLinks memory aids | 26 events | doc 05, 06 |
-| Gap list | **10 to go** | Batches 1–4 (part 1) published 2026-11-13; part 2 and the WWII theatre spans in data/drafts/gap_tasks.md |
+| Gap list | **done** (89 drafted, 1 dismissed) | Four themed batches, 2026-11-13: Gemini drafts, pre-sorted by Claude (data/drafts/gap_tasks.md). Add new gaps with `load-missing` as they're noticed |
 | Daily challenges | 366 dates | DateGolf target years |
 
 ### The tools behind the data
@@ -68,7 +68,6 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | # | What | Where | Why it matters |
 |---|---|---|---|
 | 0 | **Significance for importance 5–6?** The 7+ backfill is done (78 texts). Say whether to continue down the importance scale | — | Same process: data/drafts/significance_tasks.md |
-| 1 | **The gap list: Want or Dismiss the 80 items**, or have outside AIs draft them (doc 15) | Dashboard → Review → **Missing** (doc 12 §4.6e) | Claude drafts the wanted ones. They also deepen the Stories (e.g. Franz Ferdinand would trigger WWI, Commodore Perry would lead to Meiji, the Thirty Years' War span) |
 | 2 | **Load and review sources batch 1** (460 Wikipedia articles) | Ask Claude to load it, then Review → Sources (doc 12 §4.6d) | Every event gets a checkable source. 128 are exact name matches (one-click approve) |
 | 3 | **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project`, `arab-spring` | `manage.py identity <id> --one\|--split\|…` | An old loose end from doc 11 |
 | 4 | **Two design calls for DatePick range choices** | doc 04 §38 | They unblock Claude's item 4 below |
@@ -79,7 +78,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | # | What | Needs | Details |
 |---|---|---|---|
 | 0 | **Pre-sort each significance batch** before it loads: fix accuracy slips, rewrite texts that repeat the description, soften overstatements (as done for batch 1) | Each incoming batch | doc 17. New drafts already carry one (doc 15) |
-| 1 | **Draft the wanted gap-list items** as events and spans, then link them (link batch 4) | Your Wants | Uses `fills_missing`. New links make the stories richer straight away |
+| 1 | ~~**Draft the gap list**~~ ✅ 2026-11-13: 89 events and spans in four batches; WWII now one chain per theatre | — | New checks from it: skip-a-step and overlapping-span links (validate + check-drafts) |
 | 2 | **Date precision for spans before 500 BCE** (a pre-sorted file) | — | The same false-precision issue the events had (Old Kingdom, the Indus mature phase, Shang…) |
 | 3 | **Step 4: fill the thin periods** (about 40 events for pre-500 CE, Africa and the Americas before 1500, Southeast Asia and Oceania) | Overlaps item 1 | doc 11 Step 4; the Coverage heatmap shows the gaps |
 | 4 | **DatePick range choices:** ranges instead of single years for approximate events | Your 2 decisions, plus structured `range_start` / `range_end` | doc 04 §38 |

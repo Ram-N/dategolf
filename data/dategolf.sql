@@ -146,6 +146,7 @@ INSERT INTO "countries" VALUES('YE','Yemen','Middle East',NULL,'YEM');
 INSERT INTO "countries" VALUES('AZ','Azerbaijan','Middle East','Europe','AZE');
 INSERT INTO "countries" VALUES('CG','Republic of the Congo','Africa',NULL,'COG');
 INSERT INTO "countries" VALUES('NE','Niger','Africa',NULL,'NER');
+INSERT INTO "countries" VALUES('MZ','Mozambique','Africa',NULL,'MOZ');
 CREATE TABLE daily_challenges (
   date_key TEXT NOT NULL,
   position INTEGER NOT NULL,
@@ -2593,6 +2594,16 @@ INSERT INTO "entities" VALUES('reign-of-ashoka','period','reviewed','2026-11-13 
 INSERT INTO "entities" VALUES('war-of-the-third-coalition','period','reviewed','2026-11-13 23:03:17','2026-11-13 23:05:56');
 INSERT INTO "entities" VALUES('indian-nationalist-movement','period','reviewed','2026-11-13 23:03:17','2026-11-13 23:05:56');
 INSERT INTO "entities" VALUES('cold-war','period','reviewed','2026-11-13 23:03:17','2026-11-13 23:05:56');
+INSERT INTO "entities" VALUES('ezana-of-aksum-adopts-christianity','event','reviewed','2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entities" VALUES('chola-raids-on-srivijaya','event','reviewed','2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entities" VALUES('angkor-wat-built','event','reviewed','2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entities" VALUES('mongols-sack-kyiv','event','reviewed','2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entities" VALUES('ayutthaya-sacks-angkor','event','reviewed','2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entities" VALUES('portuguese-reach-the-kingdom-of-kongo','event','reviewed','2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entities" VALUES('afonso-i-becomes-king-of-kongo','event','reviewed','2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entities" VALUES('mutapa-empire','empire','reviewed','2026-11-13 23:19:23','2026-11-13 23:22:15');
+INSERT INTO "entities" VALUES('european-theatre-of-world-war-ii','period','reviewed','2026-11-13 23:19:23','2026-11-13 23:22:15');
+INSERT INTO "entities" VALUES('pacific-war','period','reviewed','2026-11-13 23:19:23','2026-11-13 23:22:57');
 CREATE TABLE entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   facet     TEXT NOT NULL CHECK (facet IN ('event', 'span')),
@@ -3645,6 +3656,26 @@ INSERT INTO "entity_categories" VALUES('indian-nationalist-movement','span',0,'P
 INSERT INTO "entity_categories" VALUES('indian-nationalist-movement','span',1,'Social');
 INSERT INTO "entity_categories" VALUES('cold-war','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('cold-war','span',1,'War');
+INSERT INTO "entity_categories" VALUES('ezana-of-aksum-adopts-christianity','event',0,'Religion');
+INSERT INTO "entity_categories" VALUES('ezana-of-aksum-adopts-christianity','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('chola-raids-on-srivijaya','event',0,'War');
+INSERT INTO "entity_categories" VALUES('chola-raids-on-srivijaya','event',1,'Economy');
+INSERT INTO "entity_categories" VALUES('angkor-wat-built','event',0,'Arts');
+INSERT INTO "entity_categories" VALUES('angkor-wat-built','event',1,'Religion');
+INSERT INTO "entity_categories" VALUES('angkor-wat-built','event',2,'Culture');
+INSERT INTO "entity_categories" VALUES('mongols-sack-kyiv','event',0,'War');
+INSERT INTO "entity_categories" VALUES('mongols-sack-kyiv','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('ayutthaya-sacks-angkor','event',0,'War');
+INSERT INTO "entity_categories" VALUES('ayutthaya-sacks-angkor','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('portuguese-reach-the-kingdom-of-kongo','event',0,'Exploration');
+INSERT INTO "entity_categories" VALUES('portuguese-reach-the-kingdom-of-kongo','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('portuguese-reach-the-kingdom-of-kongo','event',2,'Economy');
+INSERT INTO "entity_categories" VALUES('afonso-i-becomes-king-of-kongo','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('afonso-i-becomes-king-of-kongo','event',1,'Religion');
+INSERT INTO "entity_categories" VALUES('mutapa-empire','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('mutapa-empire','span',1,'Economy');
+INSERT INTO "entity_categories" VALUES('european-theatre-of-world-war-ii','span',0,'War');
+INSERT INTO "entity_categories" VALUES('pacific-war','span',0,'War');
 CREATE TABLE entity_countries (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   position   INTEGER NOT NULL,
@@ -4505,6 +4536,33 @@ INSERT INTO "entity_countries" VALUES('cold-war',1,'RU','high','reviewed',NULL,'
 INSERT INTO "entity_countries" VALUES('cold-war',2,'DE','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('cold-war',3,'CU','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('cold-war',4,'VN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ezana-of-aksum-adopts-christianity',0,'ET','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ezana-of-aksum-adopts-christianity',1,'ER','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('chola-raids-on-srivijaya',0,'ID','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('chola-raids-on-srivijaya',1,'MY','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('chola-raids-on-srivijaya',2,'IN','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('angkor-wat-built',0,'KH','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mongols-sack-kyiv',0,'UA','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mongols-sack-kyiv',1,'MN','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('ayutthaya-sacks-angkor',0,'KH','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ayutthaya-sacks-angkor',1,'TH','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('portuguese-reach-the-kingdom-of-kongo',0,'AO','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('portuguese-reach-the-kingdom-of-kongo',1,'CD','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('portuguese-reach-the-kingdom-of-kongo',2,'PT','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('afonso-i-becomes-king-of-kongo',0,'AO','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('afonso-i-becomes-king-of-kongo',1,'CD','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mutapa-empire',0,'ZW','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mutapa-empire',1,'MZ','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('european-theatre-of-world-war-ii',0,'DE','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('european-theatre-of-world-war-ii',1,'RU','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('european-theatre-of-world-war-ii',2,'GB','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('european-theatre-of-world-war-ii',3,'FR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('european-theatre-of-world-war-ii',4,'PL','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('pacific-war',0,'JP','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('pacific-war',1,'US','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('pacific-war',2,'CN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('pacific-war',3,'AU','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('pacific-war',4,'PH','high','reviewed',NULL,'location');
 CREATE TABLE entity_provenance (
   entity_id    TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   origin       TEXT NOT NULL,                      -- e.g. ai_drafted_from_csv
@@ -4684,6 +4742,16 @@ INSERT INTO "entity_provenance" VALUES('reign-of-ashoka','ai_drafted:gemini',NUL
 INSERT INTO "entity_provenance" VALUES('war-of-the-third-coalition','ai_drafted:gemini',NULL,'1803 (Britain declares war on France in May 1803; Austria and Russia join the coalition in 1805) to 1806 (Treaty of Pressburg signed December 1805; fighting in Naples and Dalmatia continues into 1806).');
 INSERT INTO "entity_provenance" VALUES('indian-nationalist-movement','ai_drafted:gemini',NULL,'Dated from the founding of the Indian National Congress in 1885 (some historians begin with the 1857 Rebellion) to independence and Partition in August 1947. Uses id ''indian-nationalist-movement'' because ''indian-independence-movement'' already exists for the 1920–1947 Gandhian era. [Claude at review: id changed from ''-full'' to describe the subject.]');
 INSERT INTO "entity_provenance" VALUES('cold-war','ai_drafted:gemini',NULL,'1947 (Truman Doctrine and Marshall Plan) to 1991 (dissolution of the Soviet Union). [Claude at review: importance 8, level with World War II.] [Claude at review: Afghanistan and Central America were not decolonization conflicts.]');
+INSERT INTO "entity_provenance" VALUES('ezana-of-aksum-adopts-christianity','ai_drafted:gemini',NULL,'Exact year is uncertain, generally dated to c. 330–340 CE (Frumentius was consecrated bishop by Athanasius of Alexandria after 328). Aksum was one of the earliest states to adopt Christianity, alongside Armenia and the Roman Empire.');
+INSERT INTO "entity_provenance" VALUES('chola-raids-on-srivijaya','ai_drafted:gemini',NULL,'1025 CE, recorded in Rajendra Chola I''s Thanjavur inscriptions. The Cholas did not establish permanent territorial rule in Sumatra or Malaya, but broke Srivijaya''s maritime monopoly. [Claude at review: ''Monopoly'' overstated Srivijaya''s control; ''hold'' is the usual reading.]');
+INSERT INTO "entity_provenance" VALUES('angkor-wat-built','ai_drafted:gemini',NULL,'Begun around the start of Suryavarman II''s reign (1113–c. 1150). Later transitioned into a Theravada Buddhist monastery.');
+INSERT INTO "entity_provenance" VALUES('mongols-sack-kyiv','ai_drafted:gemini',NULL,'December 1240 (city fell on 6 December 1240).');
+INSERT INTO "entity_provenance" VALUES('ayutthaya-sacks-angkor','ai_drafted:gemini',NULL,'1431 CE. While Angkor Wat remained inhabited as a Buddhist pilgrimage site, the Khmer royal court relocated southward to the Phnom Penh and Lovek region.');
+INSERT INTO "entity_provenance" VALUES('portuguese-reach-the-kingdom-of-kongo','ai_drafted:gemini',NULL,'1483 CE (some older accounts gave 1482; 1483 is the consensus date).');
+INSERT INTO "entity_provenance" VALUES('afonso-i-becomes-king-of-kongo','ai_drafted:gemini',NULL,'1509 CE (some sources cite 1506 following Joao I''s death, while 1509 is the standard date for Afonso securing the throne; he ruled until c. 1542–1543). [Claude at review: He protested the uncontrolled trade and the enslavement of his own free subjects, not ''illegal raiding''.]');
+INSERT INTO "entity_provenance" VALUES('mutapa-empire','ai_drafted:gemini',NULL,'Conventional dates c. 1430 to 1760 (a diminished successor polity survived in Chidima until the late nineteenth century). [Claude at review: ''King Solomon''s Mines'' is Haggard''s 1885 novel; the Portuguese linked Mutapa''s gold to Ophir.]');
+INSERT INTO "entity_provenance" VALUES('european-theatre-of-world-war-ii','ai_drafted:gemini',NULL,'1 September 1939 to 8 May 1945 (V-E Day).');
+INSERT INTO "entity_provenance" VALUES('pacific-war','ai_drafted:gemini',NULL,'7–8 December 1941 (Pearl Harbor and simultaneous attacks across Malaya, Hong Kong and the Philippines) to 2 September 1945 (formal surrender in Tokyo Bay; Emperor Hirohito announced surrender on 15 August 1945). Fighting between Japan and China had already been underway since 1937.');
 CREATE TABLE entity_significance (
   entity_id  TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   text       TEXT NOT NULL CHECK (trim(text) <> ''),
@@ -4850,6 +4918,16 @@ INSERT INTO "entity_significance" VALUES('reign-of-ashoka','Ashoka''s rock and p
 INSERT INTO "entity_significance" VALUES('war-of-the-third-coalition','While Britain''s naval victory at Trafalgar secured British mastery of the seas, Napoleon''s decisive triumphs at Ulm and Austerlitz shattered the Third Coalition on land. The resulting Peace of Pressburg led directly to the dissolution of the thousand-year-old Holy Roman Empire in 1806.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:03:17','2026-11-13 23:05:56');
 INSERT INTO "entity_significance" VALUES('indian-nationalist-movement','Culminating in the end of the British Raj and the creation of India and Pakistan, the movement pioneered mass nonviolent civil disobedience as a political force. Its success inspired anticolonial movements across Asia and Africa and accelerated the postwar dismantling of European empires.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:03:17','2026-11-13 23:05:56');
 INSERT INTO "entity_significance" VALUES('cold-war','The Cold War divided Europe with the Iron Curtain, drove nuclear deterrence and space exploration, and turned conflicts from Korea and Vietnam to Afghanistan and Central America into proxy wars. Its end left the United States as the sole superpower and reshaped international institutions worldwide.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:03:17','2026-11-13 23:05:56');
+INSERT INTO "entity_significance" VALUES('ezana-of-aksum-adopts-christianity','Ezana''s conversion made Aksum one of the world''s first Christian states and anchored the Ethiopian Orthodox Tewahedo Church. Christianity became central to highland Ethiopian royal identity, literacy in Ge''ez and monastic scholarship for more than sixteen centuries.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entity_significance" VALUES('chola-raids-on-srivijaya','The raids broke Srivijaya''s hold over the Strait of Malacca, allowing Tamil merchant guilds to trade more freely across Southeast Asia and southern China. Weakened politically and commercially, Srivijaya gradually lost authority over its vassal ports.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entity_significance" VALUES('angkor-wat-built','Covering more than four hundred acres, Angkor Wat stands as the largest religious monument in the world and the pinnacle of classical Khmer architecture. Later adapted to Theravada Buddhism, it remained an active spiritual center and became Cambodia''s enduring national symbol.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entity_significance" VALUES('mongols-sack-kyiv','The destruction of Kyiv brought the era of Kievan Rus'' to an end and subjected the East Slavic principalities to Golden Horde tribute and overlordship. Political gravity gradually shifted northward toward Vladimir, Moscow and Lithuania.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entity_significance" VALUES('ayutthaya-sacks-angkor','The capture of Angkor marks the conventional end of the classical Khmer Empire. Relocating their capital southward toward the Mekong-Tonle Sap junction, Cambodian monarchs oriented the kingdom more toward maritime trade while contending with stronger Siamese and Vietnamese neighbors.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entity_significance" VALUES('portuguese-reach-the-kingdom-of-kongo','Cao''s voyage initiated direct diplomatic, religious and commercial ties between Kongo and Portugal, leading to the baptism of Kongo''s royal family in 1491. Over the following decades, Portuguese demand for captives to work Atlantic sugar plantations drew Kongo into the transatlantic slave trade.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entity_significance" VALUES('afonso-i-becomes-king-of-kongo','Afonso I sent Kongolese youths to study in Europe, built churches and schools, and corresponded directly with Portuguese kings and the pope. His famous letters protesting the Portuguese enslavement of free Kongolese remain vital primary sources on early Afro-European relations.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:21:54');
+INSERT INTO "entity_significance" VALUES('mutapa-empire','Controlling goldfields across the Zimbabwe plateau and trade routes down the Zambezi River, Mutapa drew both Swahili and Portuguese merchants into southern Africa. Its gold led the Portuguese to identify it with the biblical land of Ophir and led to centuries of diplomatic and military entanglement with Portugal.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:22:15');
+INSERT INTO "entity_significance" VALUES('european-theatre-of-world-war-ii','The European theatre saw the largest land battles in history on the Eastern Front alongside the Nazi Holocaust, killing tens of millions of soldiers and civilians. Germany''s defeat left Europe devastated and divided between American-allied and Soviet spheres of influence.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:22:15');
+INSERT INTO "entity_significance" VALUES('pacific-war','The Pacific War transformed naval warfare through aircraft carrier battles and amphibious island campaigns, culminating in the atomic bombings of Hiroshima and Nagasaki. Japan''s defeat dismantled its overseas empire, led to the Allied occupation of Japan and accelerated decolonization across Asia.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:22:15');
 CREATE TABLE entity_sources (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   source_id  INTEGER NOT NULL REFERENCES sources(id) ON DELETE CASCADE,
@@ -4996,6 +5074,16 @@ INSERT INTO "entity_sources" VALUES('reign-of-ashoka',129,'reviewed','ai_drafted
 INSERT INTO "entity_sources" VALUES('war-of-the-third-coalition',130,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('indian-nationalist-movement',131,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('cold-war',132,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('ezana-of-aksum-adopts-christianity',133,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('chola-raids-on-srivijaya',134,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('angkor-wat-built',135,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('mongols-sack-kyiv',136,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('ayutthaya-sacks-angkor',88,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('portuguese-reach-the-kingdom-of-kongo',137,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('afonso-i-becomes-king-of-kongo',138,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('mutapa-empire',139,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('european-theatre-of-world-war-ii',140,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('pacific-war',141,'reviewed','ai_drafted',NULL,NULL);
 CREATE TABLE event_aliases (
   entity_id TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   position  INTEGER NOT NULL,
@@ -7064,6 +7152,24 @@ INSERT INTO "event_aliases" VALUES('apollo-soyuz-test-project',2,'Handshake in s
 INSERT INTO "event_aliases" VALUES('fall-of-saigon',0,'Capture of Saigon');
 INSERT INTO "event_aliases" VALUES('fall-of-saigon',1,'Liberation of Saigon');
 INSERT INTO "event_aliases" VALUES('fall-of-saigon',2,'End of the Vietnam War');
+INSERT INTO "event_aliases" VALUES('ezana-of-aksum-adopts-christianity',0,'King Ezana converts to Christianity');
+INSERT INTO "event_aliases" VALUES('ezana-of-aksum-adopts-christianity',1,'Christianity becomes state religion of Aksum');
+INSERT INTO "event_aliases" VALUES('ezana-of-aksum-adopts-christianity',2,'Conversion of Ezana');
+INSERT INTO "event_aliases" VALUES('chola-raids-on-srivijaya',0,'Rajendra Chola invades Srivijaya');
+INSERT INTO "event_aliases" VALUES('chola-raids-on-srivijaya',1,'Chola naval expedition against Srivijaya');
+INSERT INTO "event_aliases" VALUES('chola-raids-on-srivijaya',2,'Chola invasion of Srivijaya');
+INSERT INTO "event_aliases" VALUES('angkor-wat-built',0,'Construction of Angkor Wat');
+INSERT INTO "event_aliases" VALUES('angkor-wat-built',1,'Suryavarman II builds Angkor Wat');
+INSERT INTO "event_aliases" VALUES('mongols-sack-kyiv',0,'Siege of Kyiv');
+INSERT INTO "event_aliases" VALUES('mongols-sack-kyiv',1,'Fall of Kyiv to the Mongols');
+INSERT INTO "event_aliases" VALUES('mongols-sack-kyiv',2,'Batu Khan sacks Kyiv');
+INSERT INTO "event_aliases" VALUES('ayutthaya-sacks-angkor',0,'Fall of Angkor');
+INSERT INTO "event_aliases" VALUES('ayutthaya-sacks-angkor',1,'Siamese capture of Angkor');
+INSERT INTO "event_aliases" VALUES('ayutthaya-sacks-angkor',2,'End of the Khmer Empire');
+INSERT INTO "event_aliases" VALUES('portuguese-reach-the-kingdom-of-kongo',0,'Diogo Cao reaches the Congo River');
+INSERT INTO "event_aliases" VALUES('portuguese-reach-the-kingdom-of-kongo',1,'First Portuguese contact with Kongo');
+INSERT INTO "event_aliases" VALUES('afonso-i-becomes-king-of-kongo',0,'Mvemba a Nzinga takes the throne');
+INSERT INTO "event_aliases" VALUES('afonso-i-becomes-king-of-kongo',1,'Accession of Afonso I of Kongo');
 CREATE TABLE events (
   entity_id      TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   name           TEXT NOT NULL UNIQUE,
@@ -7551,6 +7657,13 @@ INSERT INTO "events" VALUES('korean-armistice-agreement','Korean Armistice Agree
 INSERT INTO "events" VALUES('voting-rights-act-signed','Voting Rights Act Signed',1965,'North America','President Lyndon B. Johnson signs landmark federal civil rights legislation outlawing literacy tests and other discriminatory barriers that disenfranchised African American voters, while authorizing federal oversight of voter registration in jurisdictions with histories of discrimination.','easy',7,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('apollo-soyuz-test-project','Apollo-Soyuz Test Project',1975,'Global','An American Apollo spacecraft and a Soviet Soyuz capsule dock in Earth orbit, allowing astronauts Thomas Stafford, Vance Brand and Deke Slayton to shake hands and conduct joint experiments with cosmonauts Alexei Leonov and Valeri Kubasov.','medium',5,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('fall-of-saigon','Fall of Saigon',1975,'Southeast Asia','North Vietnamese and Viet Cong forces capture Saigon, the capital of South Vietnam, as American helicopters complete the emergency evacuation of remaining US personnel and thousands of South Vietnamese allies from the city.','easy',7,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('ezana-of-aksum-adopts-christianity','Ezana of Aksum Adopts Christianity',330,'Africa','King Ezana of the Kingdom of Aksum converts to Christianity under the influence of his Syrian tutor Frumentius, replacing pagan sun-and-moon emblems with the cross on Aksumite coins and establishing Christianity as the royal faith.','medium',6,NULL,1,'c. 330–340 CE',NULL);
+INSERT INTO "events" VALUES('chola-raids-on-srivijaya','Chola Raids on Srivijaya',1025,'Southeast Asia','Emperor Rajendra Chola I of southern India launches a major naval expedition across the Bay of Bengal, raiding Palembang, Kedah and other ports of the Srivijaya Empire and capturing King Sangrama Vijayatunggavarman.','hard',5,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('angkor-wat-built','Angkor Wat Built',1113,'Southeast Asia','Khmer Emperor Suryavarman II begins building Angkor Wat near Yasodharapura in present-day Cambodia as a vast sandstone temple complex dedicated to the Hindu god Vishnu and intended as his state temple and mausoleum.','easy',7,NULL,1,'c. 1113–1150',NULL);
+INSERT INTO "events" VALUES('mongols-sack-kyiv','Mongols Sack Kyiv',1240,'Europe','Mongol armies led by Batu Khan and general Subutai besiege and storm Kyiv after its defenders refuse to surrender, destroying much of the city and slaughtering or enslaving most of its population.','medium',7,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('ayutthaya-sacks-angkor','Ayutthaya Sacks Angkor',1431,'Southeast Asia','Forces of the Siamese Kingdom of Ayutthaya besiege and capture Angkor Thom, the capital of the weakened Khmer Empire, looting royal regalia, deporting thousands of artisans and officials, and forcing the Khmer court to abandon the city.','hard',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('portuguese-reach-the-kingdom-of-kongo','Portuguese Reach the Kingdom of Kongo',1483,'Africa','Portuguese navigator Diogo Cao sails into the mouth of the Congo River, establishing the first European contact with the Kingdom of Kongo and exchanging hostages with King Nzinga a Nkuwu to open diplomatic relations.','medium',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('afonso-i-becomes-king-of-kongo','Afonso I Becomes King of Kongo',1509,'Africa','Mvemba a Nzinga, baptized as Afonso I, defeats his non-Christian half-brother Mpanzu a Kitima to become Manikongo of the Kingdom of Kongo, establishing Roman Catholicism as the royal religion and expanding literacy and diplomatic ties with Europe.','hard',5,NULL,NULL,NULL,NULL);
 CREATE TABLE import_records (
   source_file TEXT NOT NULL,
   source_key  TEXT NOT NULL,                       -- id, MM-DD, or CSV eventID
@@ -10084,16 +10197,16 @@ INSERT INTO "missing_entities" VALUES(77,'span','Khmer Empire',802,1431,1,'South
 INSERT INTO "missing_entities" VALUES(78,'span','Srivijaya',650,1377,1,'Southeast Asia','The maritime trading empire of Sumatra, a major Buddhist centre; Southeast Asia is thin.','2026-11-11: building the Time Machine (gaps it shows around 1250)',NULL,'drafted','srivijaya',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(79,'span','Ghana Empire',300,1100,1,'Africa','West Africa''s first great empire, before Mali; Africa before 1500 is thin.','2026-11-11: building the Time Machine (gaps it shows around 1250)','mali-empire','drafted','ghana-empire',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(80,'span','Kingdom of Kongo',1390,1914,1,'Africa','Central Africa''s major kingdom, in contact with Portugal from the 1480s, has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','age-of-exploration-portugal','drafted','kingdom-of-kongo',NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(81,'event','Ezana of Aksum Adopts Christianity',330,NULL,1,'Africa','Aksum has no links: its king''s conversion (c. 330s) began Ethiopian Christianity and would be part_of the Kingdom of Aksum.','2026-11-13: gap batch 2 (spans left with no links)','kingdom-of-aksum','wanted',NULL,NULL,'2026-11-13 22:29:15');
-INSERT INTO "missing_entities" VALUES(82,'event','Chola Raids on Srivijaya',1025,NULL,NULL,'Southeast Asia','Srivijaya has no links: Rajendra Chola''s naval raid weakened its hold on the Malacca Strait; would link the Cholas to Srivijaya.','2026-11-13: gap batch 2 (spans left with no links)','srivijaya chola-empire','wanted',NULL,NULL,'2026-11-13 22:29:15');
-INSERT INTO "missing_entities" VALUES(83,'event','Angkor Wat Built',1113,NULL,1,'Southeast Asia','The Khmer Empire has no links: Angkor Wat (begun under Suryavarman II, c. 1113-1150) would be part_of it.','2026-11-13: gap batch 2 (spans left with no links)','khmer-empire','wanted',NULL,NULL,'2026-11-13 22:29:15');
-INSERT INTO "missing_entities" VALUES(84,'event','Ayutthaya Sacks Angkor',1431,NULL,NULL,'Southeast Asia','Would ''end'' the Khmer Empire, which has no ender.','2026-11-13: gap batch 2 (spans left with no links)','khmer-empire','wanted',NULL,NULL,'2026-11-13 22:29:15');
-INSERT INTO "missing_entities" VALUES(85,'event','Mongols Sack Kyiv',1240,NULL,NULL,'Europe','Would ''end'' Kievan Rus'', which has no ender, and be part_of the Mongol conquests.','2026-11-13: gap batch 2 (spans left with no links)','kievan-rus mongol-conquests','wanted',NULL,NULL,'2026-11-13 22:29:15');
-INSERT INTO "missing_entities" VALUES(86,'span','Mutapa Empire',1430,1760,1,'Africa','Great Zimbabwe has no links: Mutapa succeeded it as the gold-trading power of the Zimbabwe plateau.','2026-11-13: gap batch 2 (spans left with no links)','great-zimbabwe','wanted',NULL,NULL,'2026-11-13 22:29:15');
-INSERT INTO "missing_entities" VALUES(87,'event','Portuguese Reach the Kingdom of Kongo',1483,NULL,NULL,'Africa','The Kingdom of Kongo has no links: Diogo Cao''s arrival at the Congo River began its ties with Portugal (and the slave trade); would be part_of kingdom-of-kongo and link to the Portuguese voyages.','2026-11-13: gap batch 3 (spans left with no links)','kingdom-of-kongo age-of-exploration-portugal','open',NULL,NULL,'2026-11-13 22:49:15');
-INSERT INTO "missing_entities" VALUES(88,'event','Afonso I Becomes King of Kongo',1509,NULL,NULL,'Africa','Kongo''s best-known king, whose letters to Portugal protested the slave trade; part_of kingdom-of-kongo.','2026-11-13: gap batch 3 (spans left with no links)','kingdom-of-kongo','open',NULL,NULL,'2026-11-13 22:49:15');
-INSERT INTO "missing_entities" VALUES(89,'span','European Theatre of World War II',1939,1945,NULL,'Europe','V-E Day ended the war in Europe, not the whole war: this span lets it ''end'' something true. Part_of world-war-2; Stalingrad, D-Day, the Battle of Britain and the invasion of the Soviet Union are part_of it.','2026-11-13: gap batch 4 review (WWII split into theatres)','world-war-2 germany-surrenders-ve-day battle-of-stalingrad d-day-normandy battle-of-britain germany-invades-soviet-union','wanted',NULL,NULL,'2026-11-13 23:13:14');
-INSERT INTO "missing_entities" VALUES(90,'span','Pacific War',1941,1945,NULL,'Global','The existing ''Japan''s Surrender Ends the Pacific War'' has no Pacific War to end. Part_of world-war-2; Pearl Harbor began it; Midway and Hiroshima are part_of it.','2026-11-13: gap batch 4 review (WWII split into theatres)','world-war-2 japanese-pearl-harbor battle-of-midway atomic-bomb-hiroshima japan-world-war-two-defeat','wanted',NULL,NULL,'2026-11-13 23:13:14');
+INSERT INTO "missing_entities" VALUES(81,'event','Ezana of Aksum Adopts Christianity',330,NULL,1,'Africa','Aksum has no links: its king''s conversion (c. 330s) began Ethiopian Christianity and would be part_of the Kingdom of Aksum.','2026-11-13: gap batch 2 (spans left with no links)','kingdom-of-aksum','drafted','ezana-of-aksum-adopts-christianity',NULL,'2026-11-13 22:29:15');
+INSERT INTO "missing_entities" VALUES(82,'event','Chola Raids on Srivijaya',1025,NULL,NULL,'Southeast Asia','Srivijaya has no links: Rajendra Chola''s naval raid weakened its hold on the Malacca Strait; would link the Cholas to Srivijaya.','2026-11-13: gap batch 2 (spans left with no links)','srivijaya chola-empire','drafted','chola-raids-on-srivijaya',NULL,'2026-11-13 22:29:15');
+INSERT INTO "missing_entities" VALUES(83,'event','Angkor Wat Built',1113,NULL,1,'Southeast Asia','The Khmer Empire has no links: Angkor Wat (begun under Suryavarman II, c. 1113-1150) would be part_of it.','2026-11-13: gap batch 2 (spans left with no links)','khmer-empire','drafted','angkor-wat-built',NULL,'2026-11-13 22:29:15');
+INSERT INTO "missing_entities" VALUES(84,'event','Ayutthaya Sacks Angkor',1431,NULL,NULL,'Southeast Asia','Would ''end'' the Khmer Empire, which has no ender.','2026-11-13: gap batch 2 (spans left with no links)','khmer-empire','drafted','ayutthaya-sacks-angkor',NULL,'2026-11-13 22:29:15');
+INSERT INTO "missing_entities" VALUES(85,'event','Mongols Sack Kyiv',1240,NULL,NULL,'Europe','Would ''end'' Kievan Rus'', which has no ender, and be part_of the Mongol conquests.','2026-11-13: gap batch 2 (spans left with no links)','kievan-rus mongol-conquests','drafted','mongols-sack-kyiv',NULL,'2026-11-13 22:29:15');
+INSERT INTO "missing_entities" VALUES(86,'span','Mutapa Empire',1430,1760,1,'Africa','Great Zimbabwe has no links: Mutapa succeeded it as the gold-trading power of the Zimbabwe plateau.','2026-11-13: gap batch 2 (spans left with no links)','great-zimbabwe','drafted','mutapa-empire',NULL,'2026-11-13 22:29:15');
+INSERT INTO "missing_entities" VALUES(87,'event','Portuguese Reach the Kingdom of Kongo',1483,NULL,NULL,'Africa','The Kingdom of Kongo has no links: Diogo Cao''s arrival at the Congo River began its ties with Portugal (and the slave trade); would be part_of kingdom-of-kongo and link to the Portuguese voyages.','2026-11-13: gap batch 3 (spans left with no links)','kingdom-of-kongo age-of-exploration-portugal','drafted','portuguese-reach-the-kingdom-of-kongo',NULL,'2026-11-13 22:49:15');
+INSERT INTO "missing_entities" VALUES(88,'event','Afonso I Becomes King of Kongo',1509,NULL,NULL,'Africa','Kongo''s best-known king, whose letters to Portugal protested the slave trade; part_of kingdom-of-kongo.','2026-11-13: gap batch 3 (spans left with no links)','kingdom-of-kongo','drafted','afonso-i-becomes-king-of-kongo',NULL,'2026-11-13 22:49:15');
+INSERT INTO "missing_entities" VALUES(89,'span','European Theatre of World War II',1939,1945,NULL,'Europe','V-E Day ended the war in Europe, not the whole war: this span lets it ''end'' something true. Part_of world-war-2; Stalingrad, D-Day, the Battle of Britain and the invasion of the Soviet Union are part_of it.','2026-11-13: gap batch 4 review (WWII split into theatres)','world-war-2 germany-surrenders-ve-day battle-of-stalingrad d-day-normandy battle-of-britain germany-invades-soviet-union','drafted','european-theatre-of-world-war-ii',NULL,'2026-11-13 23:13:14');
+INSERT INTO "missing_entities" VALUES(90,'span','Pacific War',1941,1945,NULL,'Global','The existing ''Japan''s Surrender Ends the Pacific War'' has no Pacific War to end. Part_of world-war-2; Pearl Harbor began it; Midway and Hiroshima are part_of it.','2026-11-13: gap batch 4 review (WWII split into theatres)','world-war-2 japanese-pearl-harbor battle-of-midway atomic-bomb-hiroshima japan-world-war-two-defeat','drafted','pacific-war',NULL,'2026-11-13 23:13:14');
 CREATE TABLE regions (
   label TEXT PRIMARY KEY,
   lane  TEXT NOT NULL CHECK (lane IN
@@ -10497,6 +10610,29 @@ INSERT INTO "relationships" VALUES(382,'d-day-normandy','preceded','germany-surr
 INSERT INTO "relationships" VALUES(383,'world-war-two','preceded','germany-invades-soviet-union','Two years into the war, Germany turned east and invaded the Soviet Union.','high','reviewed','claude','2026-11-13 23:13:03');
 INSERT INTO "relationships" VALUES(384,'germany-invades-soviet-union','preceded','battle-of-stalingrad','A year after invading the Soviet Union, Germany''s summer offensive reached Stalingrad.','high','reviewed','claude','2026-11-13 23:13:03');
 INSERT INTO "relationships" VALUES(385,'battle-of-midway','preceded','atomic-bomb-hiroshima','After Midway, the United States fought its way across the Pacific toward Japan; three years later it bombed Hiroshima.','high','reviewed','claude','2026-11-13 23:13:03');
+INSERT INTO "relationships" VALUES(386,'ezana-of-aksum-adopts-christianity','part_of','kingdom-of-aksum','King Ezana''s conversion made Christianity the official religion of the Kingdom of Aksum.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(387,'chola-raids-on-srivijaya','part_of','chola-empire','Rajendra Chola I launched the naval expedition across the Bay of Bengal at the height of the Chola Empire.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(388,'chola-empire','opposed','srivijaya','Once trading partners, the Cholas turned on Srivijaya with naval raids on its ports, peaking in 1025.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(389,'angkor-wat-built','part_of','khmer-empire','Suryavarman II built Angkor Wat as the state temple of the Khmer Empire.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(390,'ayutthaya-sacks-angkor','ended','khmer-empire','The Siamese capture of Angkor forced the Khmer court to abandon its capital and ended the Angkorian era.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(391,'mongols-sack-kyiv','part_of','mongol-conquests','Batu Khan''s siege and destruction of Kyiv was a major campaign of the Mongol invasion of Europe.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(392,'mongols-sack-kyiv','ended','kievan-rus','The destruction of Kyiv ended Kievan Rus'' and brought the East Slavic principalities under Golden Horde rule.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(393,'great-zimbabwe','preceded','mutapa-empire','As Great Zimbabwe declined in the fifteenth century, the Mutapa Empire rose to control the plateau''s gold trade.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(394,'portuguese-reach-the-kingdom-of-kongo','part_of','kingdom-of-kongo','Diogo Cao''s arrival at the Congo River began Kongo''s diplomatic and commercial ties with Portugal.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(395,'portuguese-reach-the-kingdom-of-kongo','preceded','afonso-i-becomes-king-of-kongo','Early Portuguese contact and royal baptisms set the stage for the Christian ruler Afonso I''s accession.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(396,'afonso-i-becomes-king-of-kongo','part_of','kingdom-of-kongo','Afonso I ruled the Kingdom of Kongo and promoted Catholicism and literacy across his realm.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(397,'european-theatre-of-world-war-ii','part_of','world-war-2','The European theatre was the primary European conflict of World War II.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(398,'world-war-two','began','european-theatre-of-world-war-ii','Germany''s invasion of Poland opened both World War II and its European theatre.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(399,'battle-of-britain','part_of','european-theatre-of-world-war-ii','The Luftwaffe''s air campaign against Britain was a major battle of the European theatre.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(400,'germany-invades-soviet-union','part_of','european-theatre-of-world-war-ii','Operation Barbarossa opened the Eastern Front of the European theatre.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(401,'battle-of-stalingrad','part_of','european-theatre-of-world-war-ii','Stalingrad was the decisive turning-point battle on the Eastern Front of the European theatre.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(402,'d-day-normandy','part_of','european-theatre-of-world-war-ii','The Allied Normandy landings opened the Western Front liberation campaign in Europe.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(403,'germany-surrenders-ve-day','ended','european-theatre-of-world-war-ii','Nazi Germany''s unconditional surrender concluded the European theatre of World War II.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(404,'pacific-war','part_of','world-war-2','The Pacific War was the Asia-Pacific conflict of World War II.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(405,'japanese-pearl-harbor','began','pacific-war','Japan''s attack on Pearl Harbor and simultaneous offensives across Southeast Asia opened the Pacific War.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(406,'battle-of-midway','part_of','pacific-war','The carrier battle off Midway Atoll was the turning point of the Pacific War.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(407,'atomic-bomb-hiroshima','part_of','pacific-war','The atomic bombing of Hiroshima took place in the final days of the Pacific War.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(408,'japan-world-war-two-defeat','ended','pacific-war','Japan''s formal surrender in September 1945 brought the Pacific War to an end.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -11555,6 +11691,53 @@ INSERT INTO "review_log" VALUES(1047,'2026-11-13 23:13:03','approve-link','battl
 INSERT INTO "review_log" VALUES(1048,'2026-11-13 23:13:14','missing-wanted','missing:89','European Theatre of World War II','cli');
 INSERT INTO "review_log" VALUES(1049,'2026-11-13 23:13:14','missing-wanted','missing:90','Pacific War','cli');
 INSERT INTO "review_log" VALUES(1050,'2026-11-13 23:13:20','remove-link','world-war-one','link #189: world-war-one preceded first-world-war-ends — Skips a step: the Somme and the US entry now sit between (gap batch 4)','cli');
+INSERT INTO "review_log" VALUES(1051,'2026-11-13 23:14:34','missing-wanted','missing:87','Portuguese Reach the Kingdom of Kongo','cli');
+INSERT INTO "review_log" VALUES(1052,'2026-11-13 23:14:34','missing-wanted','missing:88','Afonso I Becomes King of Kongo','cli');
+INSERT INTO "review_log" VALUES(1053,'2026-11-13 23:18:54','add-country','country:MZ','Mozambique (MOZ), Africa','cli');
+INSERT INTO "review_log" VALUES(1054,'2026-11-13 23:21:54','approve-draft','ezana-of-aksum-adopts-christianity',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1055,'2026-11-13 23:21:54','approve-draft','chola-raids-on-srivijaya',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1056,'2026-11-13 23:21:54','approve-draft','angkor-wat-built',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1057,'2026-11-13 23:21:54','approve-draft','mongols-sack-kyiv',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1058,'2026-11-13 23:21:54','approve-draft','ayutthaya-sacks-angkor',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1059,'2026-11-13 23:21:54','approve-draft','portuguese-reach-the-kingdom-of-kongo',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1060,'2026-11-13 23:21:54','approve-draft','afonso-i-becomes-king-of-kongo',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1061,'2026-11-13 23:22:15','approve-draft','mutapa-empire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1062,'2026-11-13 23:22:15','approve-draft','european-theatre-of-world-war-ii',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1063,'2026-11-13 23:22:15','approve-draft','pacific-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1064,'2026-11-13 23:22:57','rename-span','pacific-war','''Pacific War'' → ''Pacific War (World War II)''','cli');
+INSERT INTO "review_log" VALUES(1065,'2026-11-13 23:23:50','approve-countries','ezana-of-aksum-adopts-christianity',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1066,'2026-11-13 23:23:50','approve-countries','chola-raids-on-srivijaya',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1067,'2026-11-13 23:23:50','approve-countries','angkor-wat-built',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1068,'2026-11-13 23:23:50','approve-countries','mongols-sack-kyiv',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1069,'2026-11-13 23:23:50','approve-countries','mutapa-empire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1070,'2026-11-13 23:23:50','approve-countries','ayutthaya-sacks-angkor',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1071,'2026-11-13 23:23:50','approve-countries','portuguese-reach-the-kingdom-of-kongo',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1072,'2026-11-13 23:23:50','approve-countries','afonso-i-becomes-king-of-kongo',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1073,'2026-11-13 23:23:50','approve-countries','european-theatre-of-world-war-ii',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1074,'2026-11-13 23:23:50','approve-countries','pacific-war',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1075,'2026-11-13 23:24:49','approve-link','ezana-of-aksum-adopts-christianity','link #386: ezana-of-aksum-adopts-christianity part_of kingdom-of-aksum','dashboard');
+INSERT INTO "review_log" VALUES(1076,'2026-11-13 23:24:49','approve-link','chola-raids-on-srivijaya','link #387: chola-raids-on-srivijaya part_of chola-empire','dashboard');
+INSERT INTO "review_log" VALUES(1077,'2026-11-13 23:24:49','approve-link','chola-empire','link #388: chola-empire opposed srivijaya','dashboard');
+INSERT INTO "review_log" VALUES(1078,'2026-11-13 23:24:49','approve-link','angkor-wat-built','link #389: angkor-wat-built part_of khmer-empire','dashboard');
+INSERT INTO "review_log" VALUES(1079,'2026-11-13 23:24:49','approve-link','ayutthaya-sacks-angkor','link #390: ayutthaya-sacks-angkor ended khmer-empire','dashboard');
+INSERT INTO "review_log" VALUES(1080,'2026-11-13 23:24:49','approve-link','mongols-sack-kyiv','link #391: mongols-sack-kyiv part_of mongol-conquests','dashboard');
+INSERT INTO "review_log" VALUES(1081,'2026-11-13 23:24:49','approve-link','mongols-sack-kyiv','link #392: mongols-sack-kyiv ended kievan-rus','dashboard');
+INSERT INTO "review_log" VALUES(1082,'2026-11-13 23:24:49','approve-link','great-zimbabwe','link #393: great-zimbabwe preceded mutapa-empire','dashboard');
+INSERT INTO "review_log" VALUES(1083,'2026-11-13 23:24:49','approve-link','portuguese-reach-the-kingdom-of-kongo','link #394: portuguese-reach-the-kingdom-of-kongo part_of kingdom-of-kongo','dashboard');
+INSERT INTO "review_log" VALUES(1084,'2026-11-13 23:24:49','approve-link','portuguese-reach-the-kingdom-of-kongo','link #395: portuguese-reach-the-kingdom-of-kongo preceded afonso-i-becomes-king-of-kongo','dashboard');
+INSERT INTO "review_log" VALUES(1085,'2026-11-13 23:25:12','approve-link','afonso-i-becomes-king-of-kongo','link #396: afonso-i-becomes-king-of-kongo part_of kingdom-of-kongo','dashboard');
+INSERT INTO "review_log" VALUES(1086,'2026-11-13 23:25:12','approve-link','european-theatre-of-world-war-ii','link #397: european-theatre-of-world-war-ii part_of world-war-2','dashboard');
+INSERT INTO "review_log" VALUES(1087,'2026-11-13 23:25:12','approve-link','world-war-two','link #398: world-war-two began european-theatre-of-world-war-ii','dashboard');
+INSERT INTO "review_log" VALUES(1088,'2026-11-13 23:25:12','approve-link','battle-of-britain','link #399: battle-of-britain part_of european-theatre-of-world-war-ii','dashboard');
+INSERT INTO "review_log" VALUES(1089,'2026-11-13 23:25:12','approve-link','germany-invades-soviet-union','link #400: germany-invades-soviet-union part_of european-theatre-of-world-war-ii','dashboard');
+INSERT INTO "review_log" VALUES(1090,'2026-11-13 23:25:12','approve-link','battle-of-stalingrad','link #401: battle-of-stalingrad part_of european-theatre-of-world-war-ii','dashboard');
+INSERT INTO "review_log" VALUES(1091,'2026-11-13 23:25:12','approve-link','d-day-normandy','link #402: d-day-normandy part_of european-theatre-of-world-war-ii','dashboard');
+INSERT INTO "review_log" VALUES(1092,'2026-11-13 23:25:12','approve-link','germany-surrenders-ve-day','link #403: germany-surrenders-ve-day ended european-theatre-of-world-war-ii','dashboard');
+INSERT INTO "review_log" VALUES(1093,'2026-11-13 23:25:12','approve-link','pacific-war','link #404: pacific-war part_of world-war-2','dashboard');
+INSERT INTO "review_log" VALUES(1094,'2026-11-13 23:25:12','approve-link','japanese-pearl-harbor','link #405: japanese-pearl-harbor began pacific-war','dashboard');
+INSERT INTO "review_log" VALUES(1095,'2026-11-13 23:25:21','approve-link','battle-of-midway','link #406: battle-of-midway part_of pacific-war','dashboard');
+INSERT INTO "review_log" VALUES(1096,'2026-11-13 23:25:21','approve-link','atomic-bomb-hiroshima','link #407: atomic-bomb-hiroshima part_of pacific-war','dashboard');
+INSERT INTO "review_log" VALUES(1097,'2026-11-13 23:25:21','approve-link','japan-world-war-two-defeat','link #408: japan-world-war-two-defeat ended pacific-war','dashboard');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -11694,6 +11877,15 @@ INSERT INTO "sources" VALUES(129,'wikipedia','Ashoka','https://en.wikipedia.org/
 INSERT INTO "sources" VALUES(130,'wikipedia','War of the Third Coalition','https://en.wikipedia.org/wiki/War_of_the_Third_Coalition','2026-11-13 23:03:17');
 INSERT INTO "sources" VALUES(131,'wikipedia','Indian independence movement','https://en.wikipedia.org/wiki/Indian_independence_movement','2026-11-13 23:03:17');
 INSERT INTO "sources" VALUES(132,'wikipedia','Cold War','https://en.wikipedia.org/wiki/Cold_War','2026-11-13 23:03:17');
+INSERT INTO "sources" VALUES(133,'wikipedia','Ezana of Axum','https://en.wikipedia.org/wiki/Ezana_of_Axum','2026-11-13 23:19:23');
+INSERT INTO "sources" VALUES(134,'wikipedia','Chola invasion of Srivijaya','https://en.wikipedia.org/wiki/Chola_invasion_of_Srivijaya','2026-11-13 23:19:23');
+INSERT INTO "sources" VALUES(135,'wikipedia','Angkor Wat','https://en.wikipedia.org/wiki/Angkor_Wat','2026-11-13 23:19:23');
+INSERT INTO "sources" VALUES(136,'wikipedia','Siege of Kiev (1240)','https://en.wikipedia.org/wiki/Siege_of_Kiev_(1240)','2026-11-13 23:19:23');
+INSERT INTO "sources" VALUES(137,'wikipedia','Diogo Cão','https://en.wikipedia.org/wiki/Diogo_C%C3%A3o','2026-11-13 23:19:23');
+INSERT INTO "sources" VALUES(138,'wikipedia','Afonso I of Kongo','https://en.wikipedia.org/wiki/Afonso_I_of_Kongo','2026-11-13 23:19:23');
+INSERT INTO "sources" VALUES(139,'wikipedia','Kingdom of Mutapa','https://en.wikipedia.org/wiki/Kingdom_of_Mutapa','2026-11-13 23:19:23');
+INSERT INTO "sources" VALUES(140,'wikipedia','European theatre of World War II','https://en.wikipedia.org/wiki/European_theatre_of_World_War_II','2026-11-13 23:19:23');
+INSERT INTO "sources" VALUES(141,'wikipedia','Pacific War','https://en.wikipedia.org/wiki/Pacific_War','2026-11-13 23:19:23');
 CREATE TABLE time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json
@@ -11850,6 +12042,9 @@ INSERT INTO "time_spans" VALUES('reign-of-ashoka','period','Reign of Ashoka',-26
 INSERT INTO "time_spans" VALUES('war-of-the-third-coalition','period','War of the Third Coalition',1803,1806,'The opening conflict of the Napoleonic Wars, pitting Napoleon''s French Empire against Britain, Austria, Russia, Naples and Sweden across naval battles at Trafalgar and land campaigns at Ulm and Austerlitz.','Europe',6,NULL,NULL);
 INSERT INTO "time_spans" VALUES('indian-nationalist-movement','period','Indian Independence Movement',1885,1947,'The decades-long political, mass-mobilization and revolutionary struggle against British colonial rule in India, spanning early constitutional agitation, the Swadeshi campaign, Gandhian civil disobedience and final negotiations for independence.','South Asia',8,1,NULL);
 INSERT INTO "time_spans" VALUES('cold-war','period','Cold War',1947,1991,'The decades-long geopolitical, ideological and nuclear rivalry between the United States and its allies and the Soviet Union and its allies, waged through proxy wars, alliance blocs, espionage and arms and space races without direct superpower combat.','Global',8,NULL,NULL);
+INSERT INTO "time_spans" VALUES('mutapa-empire','empire','Mutapa Empire',1430,1760,'A Shona kingdom founded by Nyatsimba Mutota in northern Zimbabwe and central Mozambique that succeeded Great Zimbabwe as the dominant gold-and-ivory trading power between the southern African interior and Swahili coast ports.','Africa',5,1,NULL);
+INSERT INTO "time_spans" VALUES('european-theatre-of-world-war-ii','period','European Theatre of World War II',1939,1945,'The European conflict of World War II, beginning with Germany''s invasion of Poland and spanning the fall of France, the Battle of Britain, the German-Soviet war and the Allied liberation of Western Europe until Germany''s surrender.','Europe',8,NULL,NULL);
+INSERT INTO "time_spans" VALUES('pacific-war','period','Pacific War (World War II)',1941,1945,'The theater of World War II fought across the Pacific Ocean, East Asia and Southeast Asia between the Empire of Japan and the Allied powers, from Japan''s attack on Pearl Harbor to its formal surrender.','Global',8,NULL,NULL);
 CREATE TRIGGER events_touch AFTER UPDATE ON events BEGIN
   UPDATE entities SET updated_at = datetime('now') WHERE id = NEW.entity_id;
 END;

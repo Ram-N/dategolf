@@ -40,7 +40,7 @@
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 3 |
 | review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
-| review | Missing events and spans to decide (dashboard Review → Missing) | 10 |
+| review | Missing events and spans to decide (dashboard Review → Missing) | pass |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -57,8 +57,8 @@
 
 ## Counts
 
-- events: 474
-- time_spans: 138
+- events: 481
+- time_spans: 141
 - eras: 5
 - datelinks_keys: 26
 - datelinks_groups: 83
@@ -66,7 +66,7 @@
 - milestones: 16
 - daily_challenge_dates: 366
 - csv_rows: 310
-- significance_reviewed: 157
+- significance_reviewed: 167
 - significance_proposed: 0
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
@@ -123,29 +123,16 @@
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
 
-## [review] Missing events and spans to decide (dashboard Review → Missing)
-
-- `81` — event · Ezana of Aksum Adopts Christianity (330) · wanted
-- `82` — event · Chola Raids on Srivijaya (1025) · wanted
-- `83` — event · Angkor Wat Built (1113) · wanted
-- `85` — event · Mongols Sack Kyiv (1240) · wanted
-- `86` — span · Mutapa Empire (1430) · wanted
-- `84` — event · Ayutthaya Sacks Angkor (1431) · wanted
-- `89` — span · European Theatre of World War II (1939) · wanted
-- `90` — span · Pacific War (1941) · wanted
-- `87` — event · Portuguese Reach the Kingdom of Kongo (1483) · open
-- `88` — event · Afonso I Becomes King of Kongo (1509) · open
-
 ## [info] Region labels in use, with their DateFlow lane
 
-- `Europe` — europe · 175 records
+- `Europe` — europe · 177 records
 - `South Asia` — south-asia · 148 records
 - `East Asia` — east-asia · 68 records
 - `Americas` — americas · 65 records
 - `Middle East` — middle-east · 51 records
-- `Africa` — africa · 40 records
-- `Global` — global · 32 records
-- `Southeast Asia` — east-asia · 14 records
+- `Africa` — africa · 44 records
+- `Global` — global · 33 records
+- `Southeast Asia` — east-asia · 17 records
 - `North America` — americas · 12 records
 - `Oceania` — global · 5 records
 - `South America` — americas · 1 records
@@ -159,5 +146,5 @@
 
 ## [info] Counts changed since the legacy import
 
-- `events` — 343 at import -> 474 now
-- `time_spans` — 98 at import -> 138 now
+- `events` — 343 at import -> 481 now
+- `time_spans` — 98 at import -> 141 now

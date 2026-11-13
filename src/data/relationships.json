@@ -2540,6 +2540,167 @@
       "target": "atomic-bomb-hiroshima",
       "why": "After Midway, the United States fought its way across the Pacific toward Japan; three years later it bombed Hiroshima.",
       "confidence": "high"
+    },
+    {
+      "source": "ezana-of-aksum-adopts-christianity",
+      "type": "part_of",
+      "target": "kingdom-of-aksum",
+      "why": "King Ezana's conversion made Christianity the official religion of the Kingdom of Aksum.",
+      "confidence": "high"
+    },
+    {
+      "source": "chola-raids-on-srivijaya",
+      "type": "part_of",
+      "target": "chola-empire",
+      "why": "Rajendra Chola I launched the naval expedition across the Bay of Bengal at the height of the Chola Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "chola-empire",
+      "type": "opposed",
+      "target": "srivijaya",
+      "why": "Once trading partners, the Cholas turned on Srivijaya with naval raids on its ports, peaking in 1025.",
+      "confidence": "high"
+    },
+    {
+      "source": "angkor-wat-built",
+      "type": "part_of",
+      "target": "khmer-empire",
+      "why": "Suryavarman II built Angkor Wat as the state temple of the Khmer Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "ayutthaya-sacks-angkor",
+      "type": "ended",
+      "target": "khmer-empire",
+      "why": "The Siamese capture of Angkor forced the Khmer court to abandon its capital and ended the Angkorian era.",
+      "confidence": "high"
+    },
+    {
+      "source": "mongols-sack-kyiv",
+      "type": "part_of",
+      "target": "mongol-conquests",
+      "why": "Batu Khan's siege and destruction of Kyiv was a major campaign of the Mongol invasion of Europe.",
+      "confidence": "high"
+    },
+    {
+      "source": "mongols-sack-kyiv",
+      "type": "ended",
+      "target": "kievan-rus",
+      "why": "The destruction of Kyiv ended Kievan Rus' and brought the East Slavic principalities under Golden Horde rule.",
+      "confidence": "high"
+    },
+    {
+      "source": "great-zimbabwe",
+      "type": "preceded",
+      "target": "mutapa-empire",
+      "why": "As Great Zimbabwe declined in the fifteenth century, the Mutapa Empire rose to control the plateau's gold trade.",
+      "confidence": "high"
+    },
+    {
+      "source": "portuguese-reach-the-kingdom-of-kongo",
+      "type": "part_of",
+      "target": "kingdom-of-kongo",
+      "why": "Diogo Cao's arrival at the Congo River began Kongo's diplomatic and commercial ties with Portugal.",
+      "confidence": "high"
+    },
+    {
+      "source": "portuguese-reach-the-kingdom-of-kongo",
+      "type": "preceded",
+      "target": "afonso-i-becomes-king-of-kongo",
+      "why": "Early Portuguese contact and royal baptisms set the stage for the Christian ruler Afonso I's accession.",
+      "confidence": "high"
+    },
+    {
+      "source": "afonso-i-becomes-king-of-kongo",
+      "type": "part_of",
+      "target": "kingdom-of-kongo",
+      "why": "Afonso I ruled the Kingdom of Kongo and promoted Catholicism and literacy across his realm.",
+      "confidence": "high"
+    },
+    {
+      "source": "european-theatre-of-world-war-ii",
+      "type": "part_of",
+      "target": "world-war-2",
+      "why": "The European theatre was the primary European conflict of World War II.",
+      "confidence": "high"
+    },
+    {
+      "source": "world-war-two",
+      "type": "began",
+      "target": "european-theatre-of-world-war-ii",
+      "why": "Germany's invasion of Poland opened both World War II and its European theatre.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-britain",
+      "type": "part_of",
+      "target": "european-theatre-of-world-war-ii",
+      "why": "The Luftwaffe's air campaign against Britain was a major battle of the European theatre.",
+      "confidence": "high"
+    },
+    {
+      "source": "germany-invades-soviet-union",
+      "type": "part_of",
+      "target": "european-theatre-of-world-war-ii",
+      "why": "Operation Barbarossa opened the Eastern Front of the European theatre.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-stalingrad",
+      "type": "part_of",
+      "target": "european-theatre-of-world-war-ii",
+      "why": "Stalingrad was the decisive turning-point battle on the Eastern Front of the European theatre.",
+      "confidence": "high"
+    },
+    {
+      "source": "d-day-normandy",
+      "type": "part_of",
+      "target": "european-theatre-of-world-war-ii",
+      "why": "The Allied Normandy landings opened the Western Front liberation campaign in Europe.",
+      "confidence": "high"
+    },
+    {
+      "source": "germany-surrenders-ve-day",
+      "type": "ended",
+      "target": "european-theatre-of-world-war-ii",
+      "why": "Nazi Germany's unconditional surrender concluded the European theatre of World War II.",
+      "confidence": "high"
+    },
+    {
+      "source": "pacific-war",
+      "type": "part_of",
+      "target": "world-war-2",
+      "why": "The Pacific War was the Asia-Pacific conflict of World War II.",
+      "confidence": "high"
+    },
+    {
+      "source": "japanese-pearl-harbor",
+      "type": "began",
+      "target": "pacific-war",
+      "why": "Japan's attack on Pearl Harbor and simultaneous offensives across Southeast Asia opened the Pacific War.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-midway",
+      "type": "part_of",
+      "target": "pacific-war",
+      "why": "The carrier battle off Midway Atoll was the turning point of the Pacific War.",
+      "confidence": "high"
+    },
+    {
+      "source": "atomic-bomb-hiroshima",
+      "type": "part_of",
+      "target": "pacific-war",
+      "why": "The atomic bombing of Hiroshima took place in the final days of the Pacific War.",
+      "confidence": "high"
+    },
+    {
+      "source": "japan-world-war-two-defeat",
+      "type": "ended",
+      "target": "pacific-war",
+      "why": "Japan's formal surrender in September 1945 brought the Pacific War to an end.",
+      "confidence": "high"
     }
   ]
 }
