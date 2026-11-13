@@ -19,7 +19,7 @@ from pathlib import Path
 
 from common import DATA, DB_PATH, ROOT, connect
 from reconcile import tokens
-from links import skip_links
+from links import overlapping_sequences, skip_links
 from significance import row_text, text_problems
 
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -283,6 +283,12 @@ def check(path, trial=True):
     conn.close()
     new = [("preceded", l.get("target"), l.get("source")) if l.get("type") == "followed"
            else (l.get("type"), l.get("source"), l.get("target")) for l in batch.get("links") or []]
+    spans = {r[0]: (r[1], r[2]) for r in connect().execute("SELECT entity_id, start_year, end_year FROM time_spans")}
+    spans.update({s.get("id"): (s.get("start_year"), s.get("end_year")) for s in batch.get("spans") or []
+                  if isinstance(s.get("start_year"), int) and isinstance(s.get("end_year"), int)})
+    for _, a, b, n in overlapping_sequences([(i, *x) for i, x in enumerate(new)], spans):
+        warnings.append(f"link {a} preceded {b}: the two spans overlap by {n} years, so 'preceded' (a succession) "
+                        "misleads; drop it or use another type")
     for lid, a, b, c in skip_links(stored, new):
         warnings.append(f"existing link #{lid} ({a} preceded {c}) will skip the new step {b}: "
                         f"after approval, `manage.py remove-links {lid}`")

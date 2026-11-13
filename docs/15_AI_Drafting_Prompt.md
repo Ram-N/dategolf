@@ -187,6 +187,8 @@ LINKS (how items connect; this is what makes DateFlow's stories):
     ended          ender → span:       the death → the reign; the treaty → the war
     preceded       earlier → later, in the same story (a succession, a campaign).
                    Link NEIGHBOURING steps only: A→B and B→C, never A→C.
+                   Between two spans, only when one ends about when the other begins
+                   (Heian → Kamakura); never for spans that overlapped for decades.
                    No claim of cause.
     triggered      the immediate spark of something already building
     contributed_to one cause among several (the usual choice for causes)

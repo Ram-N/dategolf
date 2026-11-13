@@ -237,6 +237,11 @@ def run():
         if rtype == "part_of" and (s0 < t0 or s1 > t1):
             outside.append((lid, f"{src} ({s0} to {s1}) part_of {tgt} ({t0} to {t1}): outside its years"))
     stored = conn.execute("SELECT id, relationship_type, source_entity_id, target_entity_id FROM relationships").fetchall()
+    spans = {r[0]: (r[1], r[2]) for r in conn.execute("SELECT entity_id, start_year, end_year FROM time_spans")}
+    results.append(("warning", f"'preceded' link between spans that overlap by over {links.OVERLAP_YEARS} years "
+                    "(a succession the bars contradict)",
+                    [(lid, f"{a} → {b}: {n} years of overlap")
+                     for lid, a, b, n in links.overlapping_sequences(stored, spans)]))
     results.append(("warning", "'preceded' link that skips a step (A→C while A→B→C exists): remove it",
                     [(lid, f"{a} → {c} skips {b}") for lid, a, b, c in links.skip_links(stored)]))
     results.append(("warning", "Link runs backwards in time (cause or sequence after its target)", forward))

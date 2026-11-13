@@ -40,7 +40,7 @@
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 2 |
 | review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
-| review | Missing events and spans to decide (dashboard Review → Missing) | 45 |
+| review | Missing events and spans to decide (dashboard Review → Missing) | 27 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
@@ -48,6 +48,7 @@
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
 | warning | No tagged country fits the event's region lane (fix the tags, add an actor, or accept it) | pass |
 | info | Accepted region exceptions (region deliberately differs from location) | 3 |
+| warning | 'preceded' link between spans that overlap by over 25 years (a succession the bars contradict) | pass |
 | warning | 'preceded' link that skips a step (A→C while A→B→C exists): remove it | pass |
 | warning | Link runs backwards in time (cause or sequence after its target) | pass |
 | warning | part_of link outside the target's years | pass |
@@ -56,8 +57,8 @@
 
 ## Counts
 
-- events: 448
-- time_spans: 125
+- events: 459
+- time_spans: 134
 - eras: 5
 - datelinks_keys: 26
 - datelinks_groups: 83
@@ -65,7 +66,7 @@
 - milestones: 16
 - daily_challenge_dates: 366
 - csv_rows: 310
-- significance_reviewed: 118
+- significance_reviewed: 138
 - significance_proposed: 0
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
@@ -128,28 +129,8 @@
 - `82` — event · Chola Raids on Srivijaya (1025) · wanted
 - `83` — event · Angkor Wat Built (1113) · wanted
 - `85` — event · Mongols Sack Kyiv (1240) · wanted
-- `73` — span · Golden Horde (1242) · wanted
-- `68` — span · Mamluk Sultanate (1250) · wanted
-- `72` — span · Ilkhanate (1256) · wanted
-- `67` — event · Mongols Sack Baghdad (1258) · wanted
-- `66` — span · Yuan Dynasty (1271) · wanted
-- `54` — event · Mansa Musa's Pilgrimage to Mecca (1324) · wanted
-- `62` — span · Hundred Years' War (1337) · wanted
-- `80` — span · Kingdom of Kongo (1390) · wanted
 - `86` — span · Mutapa Empire (1430) · wanted
 - `84` — event · Ayutthaya Sacks Angkor (1431) · wanted
-- `57` — span · Songhai Empire (1464) · wanted
-- `53` — event · Fall of Tenochtitlan (1521) · wanted
-- `25` — event · Battle of Sekigahara (1600) · wanted
-- `26` — event · Tokugawa Ieyasu Becomes Shogun (1603) · wanted
-- `61` — span · Thirty Years' War (1618) · wanted
-- `28` — event · Qing Capture of Beijing (1644) · wanted
-- `30` — event · Fall of the Ming Dynasty (1644) · wanted
-- `63` — event · Intolerable Acts (1774) · wanted
-- `51` — event · Battles of Lexington and Concord (1775) · wanted
-- `38` — event · Execution of Louis XVI (1793) · wanted
-- `39` — span · Reign of Terror (1793) · wanted
-- `37` — event · Coup of 18 Brumaire (1799) · wanted
 - `35` — span · War of the Third Coalition (1803) · wanted
 - `36` — event · Napoleon Crowned Emperor (1804) · wanted
 - `29` — event · Treaty of Nanking (1842) · wanted
@@ -168,18 +149,20 @@
 - `64` — event · Voting Rights Act of 1965 (1965) · wanted
 - `48` — event · Apollo-Soyuz Test Project (1975) · wanted
 - `50` — event · Fall of Saigon (1975) · wanted
+- `87` — event · Portuguese Reach the Kingdom of Kongo (1483) · open
+- `88` — event · Afonso I Becomes King of Kongo (1509) · open
 
 ## [info] Region labels in use, with their DateFlow lane
 
-- `Europe` — europe · 163 records
+- `Europe` — europe · 169 records
 - `South Asia` — south-asia · 145 records
+- `East Asia` — east-asia · 65 records
 - `Americas` — americas · 65 records
-- `East Asia` — east-asia · 60 records
-- `Middle East` — middle-east · 48 records
-- `Africa` — africa · 37 records
+- `Middle East` — middle-east · 51 records
+- `Africa` — africa · 40 records
 - `Global` — global · 29 records
 - `Southeast Asia` — east-asia · 13 records
-- `North America` — americas · 7 records
+- `North America` — americas · 10 records
 - `Oceania` — global · 4 records
 - `South America` — americas · 1 records
 - `Antarctica` — global · 1 records
@@ -192,5 +175,5 @@
 
 ## [info] Counts changed since the legacy import
 
-- `events` — 343 at import -> 448 now
-- `time_spans` — 98 at import -> 125 now
+- `events` — 343 at import -> 459 now
+- `time_spans` — 98 at import -> 134 now

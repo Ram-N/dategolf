@@ -132,6 +132,14 @@ class TestSkipLinks(unittest.TestCase):
         self.assertEqual(links.skip_links([(5, "contributed_to", "a", "c")], new), [])
 
 
+class TestOverlappingSequences(unittest.TestCase):
+    def test_flags_a_succession_the_spans_contradict(self):
+        spans = {"mali": (1235, 1600), "songhai": (1464, 1591), "heian": (794, 1185), "kamakura": (1185, 1333)}
+        links_ = [(1, "preceded", "mali", "songhai"), (2, "preceded", "heian", "kamakura"),
+                  (3, "contributed_to", "mali", "songhai"), (4, "preceded", "mali", "some-event")]
+        self.assertEqual(links.overlapping_sequences(links_, spans), [(1, "mali", "songhai", 127)])
+
+
 class TestValidation(unittest.TestCase):
     def check_rows(self, name):
         quiet(validate.run)

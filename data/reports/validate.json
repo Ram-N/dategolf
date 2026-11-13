@@ -1,7 +1,7 @@
 {
   "counts": {
-    "events": 448,
-    "time_spans": 125,
+    "events": 459,
+    "time_spans": 134,
     "eras": 5,
     "datelinks_keys": 26,
     "datelinks_groups": 83,
@@ -9,7 +9,7 @@
     "milestones": 16,
     "daily_challenge_dates": 366,
     "csv_rows": 310,
-    "significance_reviewed": 118,
+    "significance_reviewed": 138,
     "significance_proposed": 0
   },
   "checks": [
@@ -423,7 +423,7 @@
     {
       "severity": "review",
       "check": "Missing events and spans to decide (dashboard Review → Missing)",
-      "count": 45,
+      "count": 27,
       "rows": [
         [
           24,
@@ -446,92 +446,12 @@
           "event · Mongols Sack Kyiv (1240) · wanted"
         ],
         [
-          73,
-          "span · Golden Horde (1242) · wanted"
-        ],
-        [
-          68,
-          "span · Mamluk Sultanate (1250) · wanted"
-        ],
-        [
-          72,
-          "span · Ilkhanate (1256) · wanted"
-        ],
-        [
-          67,
-          "event · Mongols Sack Baghdad (1258) · wanted"
-        ],
-        [
-          66,
-          "span · Yuan Dynasty (1271) · wanted"
-        ],
-        [
-          54,
-          "event · Mansa Musa's Pilgrimage to Mecca (1324) · wanted"
-        ],
-        [
-          62,
-          "span · Hundred Years' War (1337) · wanted"
-        ],
-        [
-          80,
-          "span · Kingdom of Kongo (1390) · wanted"
-        ],
-        [
           86,
           "span · Mutapa Empire (1430) · wanted"
         ],
         [
           84,
           "event · Ayutthaya Sacks Angkor (1431) · wanted"
-        ],
-        [
-          57,
-          "span · Songhai Empire (1464) · wanted"
-        ],
-        [
-          53,
-          "event · Fall of Tenochtitlan (1521) · wanted"
-        ],
-        [
-          25,
-          "event · Battle of Sekigahara (1600) · wanted"
-        ],
-        [
-          26,
-          "event · Tokugawa Ieyasu Becomes Shogun (1603) · wanted"
-        ],
-        [
-          61,
-          "span · Thirty Years' War (1618) · wanted"
-        ],
-        [
-          28,
-          "event · Qing Capture of Beijing (1644) · wanted"
-        ],
-        [
-          30,
-          "event · Fall of the Ming Dynasty (1644) · wanted"
-        ],
-        [
-          63,
-          "event · Intolerable Acts (1774) · wanted"
-        ],
-        [
-          51,
-          "event · Battles of Lexington and Concord (1775) · wanted"
-        ],
-        [
-          38,
-          "event · Execution of Louis XVI (1793) · wanted"
-        ],
-        [
-          39,
-          "span · Reign of Terror (1793) · wanted"
-        ],
-        [
-          37,
-          "event · Coup of 18 Brumaire (1799) · wanted"
         ],
         [
           35,
@@ -604,6 +524,14 @@
         [
           50,
           "event · Fall of Saigon (1975) · wanted"
+        ],
+        [
+          87,
+          "event · Portuguese Reach the Kingdom of Kongo (1483) · open"
+        ],
+        [
+          88,
+          "event · Afonso I Becomes King of Kongo (1509) · open"
         ]
       ]
     },
@@ -626,27 +554,27 @@
       "rows": [
         [
           "Europe",
-          "europe · 163 records"
+          "europe · 169 records"
         ],
         [
           "South Asia",
           "south-asia · 145 records"
         ],
         [
+          "East Asia",
+          "east-asia · 65 records"
+        ],
+        [
           "Americas",
           "americas · 65 records"
         ],
         [
-          "East Asia",
-          "east-asia · 60 records"
-        ],
-        [
           "Middle East",
-          "middle-east · 48 records"
+          "middle-east · 51 records"
         ],
         [
           "Africa",
-          "africa · 37 records"
+          "africa · 40 records"
         ],
         [
           "Global",
@@ -658,7 +586,7 @@
         ],
         [
           "North America",
-          "americas · 7 records"
+          "americas · 10 records"
         ],
         [
           "Oceania",
@@ -713,6 +641,12 @@
     },
     {
       "severity": "warning",
+      "check": "'preceded' link between spans that overlap by over 25 years (a succession the bars contradict)",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "warning",
       "check": "'preceded' link that skips a step (A→C while A→B→C exists): remove it",
       "count": 0,
       "rows": []
@@ -742,11 +676,11 @@
       "rows": [
         [
           "events",
-          "343 at import -> 448 now"
+          "343 at import -> 459 now"
         ],
         [
           "time_spans",
-          "98 at import -> 125 now"
+          "98 at import -> 134 now"
         ]
       ]
     }

@@ -61,6 +61,26 @@ def skip_links(stored, new=()):
     return found
 
 
+OVERLAP_YEARS = 25
+
+
+def overlapping_sequences(links_, spans):
+    """'preceded' links between two spans that overlap by more than OVERLAP_YEARS.
+
+    "A preceded B" reads as a succession (B "followed" A), so A should end about when B begins.
+    links_: [(key, type, a, b)]; spans: {id: (start, end)}. Returns [(key, a, b, overlap_years)].
+    """
+    found = []
+    for key, t, a, b in links_:
+        if t != "preceded" or a not in spans or b not in spans:
+            continue
+        (a0, a1), (b0, b1) = spans[a], spans[b]
+        overlap = min(a1, b1) - max(a0, b0)
+        if overlap > OVERLAP_YEARS:
+            found.append((key, a, b, overlap))
+    return found
+
+
 def _sentence(conn, link_id):
     r = conn.execute("SELECT source_id, type, target_id FROM v_link_review WHERE id = ?", (link_id,)).fetchone()
     return f"link #{link_id}: {r[0]} {r[1]} {r[2]}" if r else f"link #{link_id}"

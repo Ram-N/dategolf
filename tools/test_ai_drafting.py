@@ -116,6 +116,12 @@ class TestCheck(unittest.TestCase):
         self.assertIn("rewrote 1 Markdown-linked URL", out)
         self.assertEqual(json.loads((TMP / "mdlink.json").read_text())["events"][0]["source"], url)
 
+    def test_warns_about_preceded_between_overlapping_spans(self):
+        batch = {"origin": "ai_drafted:test", "links": [
+            {"source": "mughal-empire", "type": "preceded", "target": "company-rule-in-india", "why": "x"}]}
+        code, out = check(batch, "overlap")
+        self.assertIn("overlap by", out)
+
     def test_trial_load_catches_a_bad_link(self):
         b = copy.deepcopy(EXAMPLE)
         b["links"].append({"source": "reign-of-akbar", "type": "part_of", "target": "no-such-id", "why": "x"})
