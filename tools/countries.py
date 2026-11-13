@@ -121,3 +121,28 @@ def set_tags(entity_id, spec, note=None, via="cli"):
     print(f"  ✓ {entity_id}: {new}")
     return 0
 
+
+def add_country(code, name, region, iso3, alt_region=None, via="cli"):
+    """Add a country (ISO 3166-1 codes) so entities can be tagged with it. Its region sets its DateFlow lane."""
+    code, iso3 = code.strip().upper(), iso3.strip().upper()
+    conn = connect()
+    ensure_schema(conn)
+    regions = {r[0] for r in conn.execute("SELECT label FROM regions")}
+    problems = []
+    if len(code) != 2 or not code.isalpha() or len(iso3) != 3 or not iso3.isalpha():
+        problems.append("need a 2-letter code and a 3-letter iso3 code")
+    if conn.execute("SELECT 1 FROM countries WHERE code = ? OR iso3 = ? OR name = ?", (code, iso3, name)).fetchone():
+        problems.append(f"{code} / {iso3} / {name} is already in the countries table")
+    problems += [f"unknown region {r!r}" for r in (region, alt_region) if r and r not in regions]
+    if problems:
+        print("  ✗ " + "; ".join(problems))
+        conn.close()
+        return 1
+    conn.execute("INSERT INTO countries (code, name, region, alt_region, iso3) VALUES (?, ?, ?, ?, ?)",
+                 (code, name.strip(), region, alt_region, iso3))
+    log(conn, "add-country", f"country:{code}", f"{name} ({iso3}), {region}" + (f" / {alt_region}" if alt_region else ""),
+        via=via)
+    conn.commit()
+    conn.close()
+    print(f"  ✓ added {code} {name} ({iso3}), {region}")
+    return 0

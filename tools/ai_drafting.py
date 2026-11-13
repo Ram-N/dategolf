@@ -101,11 +101,25 @@ def reference(out_path=None):
 
 # ── Checking a batch ─────────────────────────────────────────────────────────
 
+# A URL pasted from a chat window often arrives as a Markdown link: [url](url).
+# The target (inside the parentheses) is kept: the link text can be cut short at a ")" in the URL.
+MD_LINK = re.compile(r"\[https?://[^\]\s]*\]\((https?://(?:[^()\s]|\([^()\s]*\))*)\)")
+
+
 def _read_batch(path):
     """The JSON, forgiving the code fences chat AIs like to add."""
     text = Path(path).read_text(encoding="utf-8").strip()
     text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
     return json.loads(text)
+
+
+def unwrap_links(path):
+    """Rewrite Markdown-linked URLs in a batch file as bare URLs. Returns how many it fixed."""
+    text = Path(path).read_text(encoding="utf-8")
+    fixed, n = MD_LINK.subn(lambda m: m.group(1), text)
+    if n:
+        Path(path).write_text(fixed, encoding="utf-8")
+    return n
 
 
 def _year_leaks(text, year):
@@ -117,6 +131,8 @@ def check(path, trial=True):
     """Report errors (must fix) and warnings (please check) for an AI-drafted batch. Returns 1 on errors."""
     errors, warnings = [], []
     try:
+        if (n := unwrap_links(path)):
+            warnings.append(f"rewrote {n} Markdown-linked URL(s) in the file as bare URLs")
         batch = _read_batch(path)
     except (json.JSONDecodeError, OSError) as exc:
         print(f"  ✗ Not readable JSON: {exc}")

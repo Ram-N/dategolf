@@ -1,0 +1,20 @@
+{"found_while": "2026-11-13: gap batch 2 (spans left with no links)",
+ "items": [
+  {"kind": "event", "name": "Ezana of Aksum Adopts Christianity", "year": 330, "approximate": 1, "region": "Africa",
+   "why": "Aksum has no links: its king's conversion (c. 330s) began Ethiopian Christianity and would be part_of the Kingdom of Aksum.",
+   "related_ids": ["kingdom-of-aksum"]},
+  {"kind": "event", "name": "Chola Raids on Srivijaya", "year": 1025, "region": "Southeast Asia",
+   "why": "Srivijaya has no links: Rajendra Chola's naval raid weakened its hold on the Malacca Strait; would link the Cholas to Srivijaya.",
+   "related_ids": ["srivijaya", "chola-empire"]},
+  {"kind": "event", "name": "Angkor Wat Built", "year": 1113, "approximate": 1, "region": "Southeast Asia",
+   "why": "The Khmer Empire has no links: Angkor Wat (begun under Suryavarman II, c. 1113-1150) would be part_of it.",
+   "related_ids": ["khmer-empire"]},
+  {"kind": "event", "name": "Ayutthaya Sacks Angkor", "year": 1431, "region": "Southeast Asia",
+   "why": "Would 'end' the Khmer Empire, which has no ender.", "related_ids": ["khmer-empire"]},
+  {"kind": "event", "name": "Mongols Sack Kyiv", "year": 1240, "region": "Europe",
+   "why": "Would 'end' Kievan Rus', which has no ender, and be part_of the Mongol conquests.",
+   "related_ids": ["kievan-rus", "mongol-conquests"]},
+  {"kind": "span", "name": "Mutapa Empire", "year": 1430, "end_year": 1760, "approximate": 1, "region": "Africa",
+   "why": "Great Zimbabwe has no links: Mutapa succeeded it as the gold-trading power of the Zimbabwe plateau.",
+   "related_ids": ["great-zimbabwe"]}
+ ]}

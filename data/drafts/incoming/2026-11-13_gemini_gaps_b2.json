@@ -1,0 +1,667 @@
+{
+  "origin": "ai_drafted:gemini",
+  "about": "Batch 2: 20 ancient and medieval events and spans covering Egypt, Mesoamerica, Greece, Rome, Carthage, Africa, Southeast Asia, Japan, Kievan Rus', and the medieval Middle East. Pre-sorted by Claude: two cut-off sources fixed, Olmec made a period, two texts softened, seven links dropped (vague types, a span 'beginning' its own sub-war, Ayyubids 'part of' the Crusades), Olmec influence marked debated.",
+  "events": [
+    {
+      "id": "unification-of-egypt",
+      "name": "Unification of Egypt",
+      "year": -3100,
+      "approximate": true,
+      "date_display": "c. 3150–3100 BCE",
+      "region": "Africa",
+      "categories": [
+        "Politics"
+      ],
+      "aliases": [
+        "Narmer unifies Egypt",
+        "Unification of Upper and Lower Egypt",
+        "First Dynasty of Egypt begins"
+      ],
+      "description": "King Narmer of Upper Egypt brings Upper and Lower Egypt under a single crown, inaugurating the First Dynasty and uniting the Nile Valley from the Delta to the First Cataract into one territorial kingdom.",
+      "difficulty": "medium",
+      "importance": 7,
+      "countries": [
+        "EG"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Narmer",
+      "note": "Conventional date c. 3100 BCE (radiocarbon and archaeological estimates range from c. 3150 to 3050 BCE). Narmer is widely identified with the traditional Menes, though scholars debate whether unification was a single conquest or a multi-generation process.",
+      "significance": "Unification created one of the world's earliest large territorial states, giving pharaohs centralized control over Nile floodplains, taxation and writing. That administrative model endured for nearly three millennia across thirty dynasties, shaping ancient Mediterranean and Northeast African civilization.",
+      "fills_missing": 59
+    },
+    {
+      "id": "greek-alphabet-adapted-from-phoenician",
+      "name": "Greek Alphabet Adapted from Phoenician",
+      "year": -800,
+      "approximate": true,
+      "date_display": "c. 800 BCE",
+      "region": "Europe",
+      "categories": [
+        "Culture",
+        "Technology"
+      ],
+      "aliases": [
+        "Invention of the Greek alphabet",
+        "Greeks adopt Phoenician script",
+        "Earliest Greek alphabetic writing"
+      ],
+      "description": "Greek traders and scribes adapt the Phoenician consonantal script to write the Greek language, repurposing several Phoenician signs to represent vowel sounds systematically for the first time.",
+      "difficulty": "medium",
+      "importance": 7,
+      "countries": [
+        "GR"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Greek_alphabet",
+      "note": "Dated conventionally to c. 800 BCE (scholarly estimates span late 9th to early 8th century BCE; earliest surviving inscriptions such as the Dipylon oinochoe and Nestor's Cup date to c. 740–720 BCE). Avoid claiming 'invented the first alphabet' since Phoenician was an abjad.",
+      "significance": "By assigning distinct letters to vowels as well as consonants, the Greek alphabet made reading and writing easier to learn across a wider public. It preserved Greek literature and philosophy and later gave rise to both the Latin and Cyrillic scripts.",
+      "fills_missing": 65
+    },
+    {
+      "id": "destruction-of-carthage",
+      "name": "Destruction of Carthage",
+      "year": -146,
+      "approximate": false,
+      "region": "Africa",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "aliases": [
+        "Sack of Carthage",
+        "Fall of Carthage",
+        "Rome destroys Carthage"
+      ],
+      "description": "Roman forces commanded by Scipio Aemilianus breach the walls of Carthage after a three-year siege, systematically burn the North African city, enslave its surviving inhabitants and annex its territory as the Roman province of Africa.",
+      "difficulty": "medium",
+      "importance": 6,
+      "countries": [
+        "TN",
+        "IT/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Battle_of_Carthage_(c._149_BC)",
+      "note": "Spring 146 BCE. Note: the popular story that Romans sowed the soil with salt is a modern legend not found in ancient sources, so omit it.",
+      "significance": "Carthage's annihilation ended over a century of Punic Wars and eliminated Rome's last major naval and commercial rival in the western Mediterranean. Rome gained direct provincial rule in North Africa and undisputed mastery over the western sea.",
+      "fills_missing": 34
+    },
+    {
+      "id": "division-of-the-roman-empire",
+      "name": "Division of the Roman Empire",
+      "year": 395,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "Politics"
+      ],
+      "aliases": [
+        "Death of Theodosius I",
+        "Permanent split of the Roman Empire",
+        "East-West division of Rome"
+      ],
+      "description": "Upon the death of Emperor Theodosius I in Milan, the Roman Empire is divided permanently between his two young sons, Honorius in the West and Arcadius in the East, creating two separate imperial courts that never reunite.",
+      "difficulty": "medium",
+      "importance": 6,
+      "countries": [
+        "IT",
+        "TR"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Theodosius_I",
+      "note": "January 395 CE. Earlier emperors such as Diocletian had divided administration, so frame this as the permanent division rather than the first administrative split.",
+      "significance": "Although Romans still viewed the empire as one commonwealth in theory, separate courts and rival ministers weakened mutual military support. The wealthier Eastern Empire weathered fifth-century invasions and became the Byzantine Empire, while the Western Empire fragmented within a century.",
+      "fills_missing": 40
+    },
+    {
+      "id": "visigoths-sack-rome",
+      "name": "Visigoths Sack Rome",
+      "year": 410,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "aliases": [
+        "Sack of Rome by Alaric",
+        "Alaric sacks Rome",
+        "Visigothic sack of Rome"
+      ],
+      "description": "Visigothic forces led by King Alaric breach the Salarian Gate and plunder Rome for three days after negotiations with Western Emperor Honorius over land and grain supplies collapse.",
+      "difficulty": "medium",
+      "importance": 6,
+      "countries": [
+        "IT"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Sack_of_Rome_(410)",
+      "note": "24 August 410 CE. First time Rome fell to a foreign enemy since the Gallic sack of 390/387 BCE (nearly 800 years earlier). Ravenna, not Rome, was the Western imperial capital at the time.",
+      "significance": "Even though Ravenna was already the imperial capital, the fall of the ancient city shocked the Mediterranean world and shattered Rome's aura of invincibility. It inspired Augustine of Hippo to write The City of God and exposed the Western Empire's military fragility.",
+      "fills_missing": 41
+    }
+  ],
+  "spans": [
+    {
+      "id": "olmec-civilization",
+      "kind": "period",
+      "name": "Olmec Civilization",
+      "start_year": -1200,
+      "end_year": -400,
+      "approximate": true,
+      "date_display": "c. 1200–400 BCE",
+      "region": "Americas",
+      "categories": [
+        "Culture",
+        "Arts",
+        "Politics"
+      ],
+      "description": "Mesoamerica's earliest major complex society, centered in the Gulf Coast lowlands of southern Mexico at sites such as San Lorenzo and La Venta and famed for monumental basalt heads.",
+      "importance": 6,
+      "countries": [
+        "MX"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Olmecs",
+      "note": "Conventional dates c. 1200 to 400 BCE (early formative precursors date back to c. 1500 BCE). Avoid calling it the sole 'mother culture' without nuance, as scholars debate Olmec primacy versus sister-culture exchange. [Claude at review: a culture, not a state, so kind 'period'; region 'Americas' as on the gap list.]",
+      "significance": "Olmec centers pioneered monumental stone sculpture, ceremonial plaza planning, long-distance jade and obsidian trade, and early Mesoamerican ballgame and ritual traditions. Later societies across Mesoamerica, including the Maya, built upon artistic and religious motifs first developed along the Gulf Coast.",
+      "fills_missing": 58
+    },
+    {
+      "id": "first-punic-war",
+      "kind": "period",
+      "name": "First Punic War",
+      "start_year": -264,
+      "end_year": -241,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "War"
+      ],
+      "description": "The first of three wars between Rome and Carthage, fought primarily over control of Sicily and decided by massive naval battles across the central Mediterranean.",
+      "importance": 5,
+      "countries": [
+        "IT",
+        "TN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/First_Punic_War",
+      "note": "264–241 BCE, ending with the Battle of the Aegates and the Treaty of Lutatius.",
+      "significance": "Victory forced Rome to build a major war fleet for the first time and gave it Sicily, its first overseas province. Carthage's defeat and heavy war indemnity sparked a mercenary revolt and pushed Carthaginian leaders to expand into Spain, setting up the next conflict.",
+      "fills_missing": 31
+    },
+    {
+      "id": "second-punic-war",
+      "kind": "period",
+      "name": "Second Punic War",
+      "start_year": -218,
+      "end_year": -201,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "War"
+      ],
+      "description": "The second conflict between Rome and Carthage, marked by Hannibal Barca's crossing of the Alps into Italy, devastating Roman defeats at Cannae and Rome's eventual counterinvasion of North Africa.",
+      "importance": 6,
+      "countries": [
+        "IT",
+        "ES",
+        "TN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Second_Punic_War",
+      "note": "218–201 BCE (Battle of Zama was in 202 BCE; peace treaty ratified in 201 BCE). [Claude at review: The war's effect on Italian farming is a debated thesis, so it is marked as an argument.]",
+      "significance": "Carthage lost its fleet, its Spanish empire and its status as a great power, leaving Rome dominant in the western Mediterranean. Many historians also argue that sixteen years of fighting in Italy sped up the concentration of land and wealth in the hands of Rome's elite.",
+      "fills_missing": 32
+    },
+    {
+      "id": "third-punic-war",
+      "kind": "period",
+      "name": "Third Punic War",
+      "start_year": -149,
+      "end_year": -146,
+      "approximate": false,
+      "region": "Africa",
+      "categories": [
+        "War"
+      ],
+      "description": "The final war between Rome and Carthage, consisting largely of a prolonged Roman siege of Carthage in North Africa that ended with the city's complete destruction.",
+      "importance": 5,
+      "countries": [
+        "TN",
+        "IT/actor"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Third_Punic_War",
+      "note": "149–146 BCE.",
+      "significance": "The war permanently removed Carthage from the Mediterranean map and annexed its heartland as a Roman province. Alongside the sack of Corinth in the same year, it demonstrated Rome's willingness to destroy rival cities outright rather than accept subordinate allies.",
+      "fills_missing": 33
+    },
+    {
+      "id": "kingdom-of-aksum",
+      "kind": "empire",
+      "name": "Kingdom of Aksum",
+      "start_year": 100,
+      "end_year": 940,
+      "approximate": true,
+      "date_display": "c. 100–940 CE",
+      "region": "Africa",
+      "categories": [
+        "Politics",
+        "Economy",
+        "Religion"
+      ],
+      "description": "A major trading empire centered in northern Ethiopia and Eritrea that controlled Red Sea commerce between the Roman world and India and became one of the earliest states to adopt Christianity.",
+      "importance": 6,
+      "countries": [
+        "ET",
+        "ER"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Kingdom_of_Aksum",
+      "note": "Conventional dates c. 100 to c. 940 CE (proto-Aksumite state existed earlier; decline began in the 7th century and traditional end is linked to Queen Gudit c. 940–960). King Ezana adopted Christianity in the 330s.",
+      "significance": "Aksum linked inland Northeast Africa to Red Sea and Indian Ocean trade networks, minting its own gold coinage and erecting monumental stelae. King Ezana's adoption of Christianity in the fourth century established the enduring roots of the Ethiopian Orthodox Church.",
+      "fills_missing": 55
+    },
+    {
+      "id": "ghana-empire",
+      "kind": "empire",
+      "name": "Ghana Empire",
+      "start_year": 300,
+      "end_year": 1100,
+      "approximate": true,
+      "date_display": "c. 300–1100 CE",
+      "region": "Africa",
+      "categories": [
+        "Politics",
+        "Economy"
+      ],
+      "description": "West Africa's earliest large savanna empire, known locally as Wagadu and centered in modern southeastern Mauritania and western Mali, which grew wealthy taxing trans-Saharan trade in gold and salt.",
+      "importance": 6,
+      "countries": [
+        "MR",
+        "ML"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Ghana_Empire",
+      "note": "Conventional dates c. 300 to c. 1100 (archaeological evidence of complex settlement by c. 300–500 CE; documented by Arab geographers from the 8th century; weakened in the late 11th century and absorbed by Sosso and Mali in the 13th). Note: Almoravid 'conquest' in 1076 is debated by modern historians.",
+      "significance": "By mediating trade between West African goldfields and North African salt and merchant caravans, Ghana anchored the trans-Saharan commercial network. Its administrative traditions and control of trade routes laid the groundwork for the later Mali and Songhai empires.",
+      "fills_missing": 79
+    },
+    {
+      "id": "srivijaya",
+      "kind": "empire",
+      "name": "Srivijaya",
+      "start_year": 650,
+      "end_year": 1377,
+      "approximate": true,
+      "date_display": "c. 650–1377 CE",
+      "region": "Southeast Asia",
+      "categories": [
+        "Politics",
+        "Economy",
+        "Religion"
+      ],
+      "description": "A maritime thalassocracy centered at Palembang in southern Sumatra that dominated the Strait of Malacca and served as a major center of Buddhist scholarship across maritime Southeast Asia.",
+      "importance": 6,
+      "countries": [
+        "ID",
+        "MY"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Srivijaya",
+      "note": "Conventional dates c. 650 to 1377 (earliest inscriptions date to the 680s; raided by the Chola Empire in 1025; final remnants extinguished by Majapahit in 1377).",
+      "significance": "Controlling the sea lanes between India and Tang and Song China, Srivijaya became an indispensable hub of Indian Ocean trade and Vajrayana Buddhist learning, visited by Chinese pilgrims like Yijing. Its maritime network helped spread Malay as the regional lingua franca.",
+      "fills_missing": 78
+    },
+    {
+      "id": "heian-period",
+      "kind": "period",
+      "name": "Heian Period",
+      "start_year": 794,
+      "end_year": 1185,
+      "approximate": false,
+      "region": "East Asia",
+      "categories": [
+        "Culture",
+        "Arts",
+        "Politics"
+      ],
+      "description": "The classical era of Japanese history, named after the imperial capital Heian-kyo (modern Kyoto), marked by aristocratic court rule under the Fujiwara clan and a flowering of native literature and art.",
+      "importance": 6,
+      "countries": [
+        "JP"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Heian_period",
+      "note": "794 (move of capital to Heian-kyo) to 1185 (end of the Genpei War and rise of the Kamakura shogunate).",
+      "significance": "During the Heian period, Japan adapted continental Chinese models into distinctly Japanese cultural forms, including the kana phonetic scripts and court literature such as Murasaki Shikibu's The Tale of Genji. Meanwhile, the decline of central taxation allowed provincial warrior bands to rise to power.",
+      "fills_missing": 76
+    },
+    {
+      "id": "khmer-empire",
+      "kind": "empire",
+      "name": "Khmer Empire",
+      "start_year": 802,
+      "end_year": 1431,
+      "approximate": true,
+      "date_display": "c. 802–1431 CE",
+      "region": "Southeast Asia",
+      "categories": [
+        "Politics",
+        "Arts",
+        "Culture"
+      ],
+      "description": "The dominant mainland Southeast Asian empire, centered at Angkor in modern Cambodia, renowned for its monumental Hindu and Buddhist temple complexes, extensive hydraulic engineering and control over the Mekong basin.",
+      "importance": 6,
+      "countries": [
+        "KH",
+        "TH",
+        "LA",
+        "VN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Khmer_Empire",
+      "note": "Conventional dates 802 (Jayavarman II's consecration on Phnom Kulen) to 1431 (Ayutthaya's sack of Angkor, after which the capital shifted south toward Phnom Penh).",
+      "significance": "At its twelfth-century height, the Khmer Empire ruled much of mainland Southeast Asia and built Angkor Wat, the largest religious monument in the world. Its reservoirs, canals and stone temples left an enduring architectural and cultural legacy across Cambodia and neighboring states.",
+      "fills_missing": 77
+    },
+    {
+      "id": "kievan-rus",
+      "kind": "empire",
+      "name": "Kievan Rus'",
+      "start_year": 882,
+      "end_year": 1240,
+      "approximate": true,
+      "date_display": "c. 882–1240 CE",
+      "region": "Europe",
+      "categories": [
+        "Politics",
+        "Culture",
+        "Religion"
+      ],
+      "description": "A loose federation of East Slavic principalities centered on Kyiv, ruled by the Rurikid dynasty and spanning river trade routes from the Baltic Sea to the Black Sea.",
+      "importance": 6,
+      "countries": [
+        "UA",
+        "RU",
+        "BY"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Kievan_Rus%27",
+      "note": "Conventional dates c. 882 (Oleg's capture of Kyiv) to 1240 (Mongol sack of Kyiv).",
+      "significance": "Vladimir the Great's adoption of Byzantine Christianity in 988 brought Kievan Rus' into the Orthodox Christian world, introducing Cyrillic literacy, church architecture and legal codes. Today, Belarus, Russia and Ukraine all trace key cultural and historical roots to this medieval federation.",
+      "fills_missing": 74
+    },
+    {
+      "id": "fatimid-caliphate",
+      "kind": "empire",
+      "name": "Fatimid Caliphate",
+      "start_year": 909,
+      "end_year": 1171,
+      "approximate": false,
+      "region": "Middle East",
+      "categories": [
+        "Politics",
+        "Religion"
+      ],
+      "description": "An Ismaili Shia caliphate that originated in North Africa and expanded to rule Egypt, the Levant and the Hejaz, founding Cairo as its imperial capital and challenging Abbasid authority.",
+      "importance": 6,
+      "countries": [
+        "EG",
+        "TN",
+        "LY",
+        "SY"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Fatimid_Caliphate",
+      "note": "909 (proclamation of al-Mahdi Billah in Ifriqiya) to 1171 (Saladin abolishes the Fatimid caliphate in Egypt).",
+      "significance": "The Fatimids founded Cairo and Al-Azhar Mosque, turning Egypt into a major center of Mediterranean trade, science and Islamic scholarship. As the only major Shia caliphate, they reshaped medieval Islamic politics before Saladin restored Sunni rule in Egypt.",
+      "fills_missing": 70
+    },
+    {
+      "id": "seljuk-empire",
+      "kind": "empire",
+      "name": "Seljuk Empire",
+      "start_year": 1037,
+      "end_year": 1194,
+      "approximate": false,
+      "region": "Middle East",
+      "categories": [
+        "Politics",
+        "War"
+      ],
+      "description": "A Sunni Turko-Persian empire founded by the Oghuz Turkic Seljuk dynasty that conquered Persia, Mesopotamia and much of Anatolia, defeating the Byzantines at Manzikert in 1071.",
+      "importance": 6,
+      "countries": [
+        "IR",
+        "IQ",
+        "TR",
+        "TM"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Seljuk_Empire",
+      "note": "1037 (Tughril Beg's proclamation in Nishapur) to 1194 (death of Tughril III at the hands of the Khwarazmian Shah).",
+      "significance": "Seljuk victories in Anatolia permanently weakened Byzantine control over Asia Minor, opened the region to Turkic settlement and prompted the Byzantine emperor to appeal to Western Europe for military aid, helping trigger the First Crusade.",
+      "fills_missing": 71
+    },
+    {
+      "id": "great-zimbabwe",
+      "kind": "empire",
+      "name": "Great Zimbabwe",
+      "start_year": 1100,
+      "end_year": 1450,
+      "approximate": true,
+      "date_display": "c. 1100–1450 CE",
+      "region": "Africa",
+      "categories": [
+        "Politics",
+        "Economy",
+        "Arts"
+      ],
+      "description": "A medieval Shona stone city and kingdom capital on the Zimbabwean plateau that prospered from cattle herding, gold mining and long-distance trade with Swahili coast ports.",
+      "importance": 6,
+      "countries": [
+        "ZW"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Great_Zimbabwe",
+      "note": "Conventional dates c. 1100 to c. 1450 (earlier Iron Age occupation predates 1100; peak stone construction 13th–14th centuries; abandoned around 1450 as power shifted to Mutapa and Torwa).",
+      "significance": "Constructed without mortar from granite blocks, Great Zimbabwe's Hill Complex and Great Enclosure stand as the largest pre-colonial stone structures in sub-Saharan Africa. Its trade links connected southern African goldfields to Indian Ocean merchants as far away as Persia and China.",
+      "fills_missing": 56
+    },
+    {
+      "id": "ayyubid-sultanate",
+      "kind": "empire",
+      "name": "Ayyubid Sultanate",
+      "start_year": 1171,
+      "end_year": 1260,
+      "approximate": true,
+      "date_display": "c. 1171–1260 CE",
+      "region": "Middle East",
+      "categories": [
+        "Politics",
+        "War"
+      ],
+      "description": "A Sunni Muslim dynasty of Kurdish origin founded by Saladin that united Egypt, Syria, Upper Mesopotamia and Yemen, recaptured Jerusalem from the Crusaders in 1187 and fought the Third Crusade.",
+      "importance": 6,
+      "countries": [
+        "EG",
+        "SY",
+        "JO",
+        "YE"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Ayyubid_dynasty",
+      "note": "1171 (Saladin ends the Fatimid Caliphate) to 1260 (Mongol conquest of Syria and Mamluk victory at Ain Jalut; note that Mamluks took Egypt in 1250, while Ayyubid branches lingered in Syria until 1260 and in Hasankeyf longer).",
+      "significance": "By uniting Egypt and Syria under Sunni rule, Saladin broke the Crusader states' strategic advantage and restored Muslim control over Jerusalem. The Ayyubids also revitalized Sunni madrasas and trade with Italian maritime republics before being supplanted by their own Mamluk slave soldiers.",
+      "fills_missing": 69
+    },
+    {
+      "id": "kamakura-shogunate",
+      "kind": "empire",
+      "name": "Kamakura Shogunate",
+      "start_year": 1185,
+      "end_year": 1333,
+      "approximate": true,
+      "date_display": "c. 1185–1333 CE",
+      "region": "East Asia",
+      "categories": [
+        "Politics",
+        "War"
+      ],
+      "description": "Japan's first feudal military government, established by Minamoto no Yoritomo at Kamakura after the Genpei War, which governed through samurai vassals and repelled two Mongol invasions.",
+      "importance": 6,
+      "countries": [
+        "JP"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Kamakura_shogunate",
+      "note": "1185 (victory in the Genpei War and establishment of shugo/jito system; Yoritomo was formally appointed seii taishogun in 1192) to 1333 (fall of Kamakura during the Kenmu Restoration). [Claude at review: One cause among several; says why the strain mattered (no spoils to reward vassals).]",
+      "significance": "The Kamakura shogunate shifted real political power from the Kyoto imperial court to the samurai class, inaugurating nearly seven centuries of military rule in Japan. Although it repelled Kublai Khan's invasion fleets in 1274 and 1281, the cost of the defence, with no conquered land to reward its vassals, weakened their loyalty and helped bring about its fall.",
+      "fills_missing": 75
+    }
+  ],
+  "links": [
+    {
+      "source": "unification-of-egypt",
+      "type": "preceded",
+      "target": "old-kingdom-egypt",
+      "why": "Unification under the Early Dynastic pharaohs laid the political foundation for Egypt's Old Kingdom.",
+      "confidence": "high"
+    },
+    {
+      "source": "olmec-civilization",
+      "type": "influenced",
+      "target": "classic-maya",
+      "why": "Olmec art, ceremonial centres and ritual traditions influenced later Mesoamerican societies, including the Maya; how directly is debated.",
+      "confidence": "medium"
+    },
+    {
+      "source": "phoenician-alphabet-invented",
+      "type": "influenced",
+      "target": "greek-alphabet-adapted-from-phoenician",
+      "why": "Greek scribes adapted Phoenician consonant letters and added dedicated signs for vowels.",
+      "confidence": "high"
+    },
+    {
+      "source": "first-punic-war",
+      "type": "part_of",
+      "target": "punic-wars",
+      "why": "The First Punic War was the opening conflict of the three Punic Wars between Rome and Carthage.",
+      "confidence": "high"
+    },
+    {
+      "source": "first-punic-war",
+      "type": "contributed_to",
+      "target": "second-punic-war",
+      "why": "Carthage's loss of Sicily and heavy war indemnity drove Barcid expansion in Spain, sparking renewed conflict.",
+      "confidence": "high"
+    },
+    {
+      "source": "second-punic-war",
+      "type": "part_of",
+      "target": "punic-wars",
+      "why": "The Second Punic War was the second major war fought between Rome and Carthage.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-zama",
+      "type": "ended",
+      "target": "second-punic-war",
+      "why": "Scipio's victory over Hannibal at Zama forced Carthage to sue for peace and end the war.",
+      "confidence": "high"
+    },
+    {
+      "source": "second-punic-war",
+      "type": "preceded",
+      "target": "third-punic-war",
+      "why": "Fifty years after the Second Punic War, Rome launched a final war to eliminate Carthage.",
+      "confidence": "high"
+    },
+    {
+      "source": "third-punic-war",
+      "type": "part_of",
+      "target": "punic-wars",
+      "why": "The Third Punic War was the final conflict of the Punic Wars.",
+      "confidence": "high"
+    },
+    {
+      "source": "destruction-of-carthage",
+      "type": "ended",
+      "target": "third-punic-war",
+      "why": "Rome's siege and destruction of Carthage concluded the Third Punic War.",
+      "confidence": "high"
+    },
+    {
+      "source": "destruction-of-carthage",
+      "type": "ended",
+      "target": "punic-wars",
+      "why": "Carthage's annihilation ended over a century of Punic Wars between Rome and Carthage.",
+      "confidence": "high"
+    },
+    {
+      "source": "ghana-empire",
+      "type": "preceded",
+      "target": "mali-empire",
+      "why": "As the Ghana Empire declined, the Mali Empire rose to dominate West African gold and salt trade.",
+      "confidence": "high"
+    },
+    {
+      "source": "division-of-the-roman-empire",
+      "type": "began",
+      "target": "fall-western-roman-empire",
+      "why": "The permanent East-West split at Theodosius's death opened the final century of the Western Roman Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "division-of-the-roman-empire",
+      "type": "part_of",
+      "target": "roman-empire",
+      "why": "The division split the Roman Empire into permanent Western and Eastern imperial courts.",
+      "confidence": "high"
+    },
+    {
+      "source": "visigoths-sack-rome",
+      "type": "part_of",
+      "target": "fall-western-roman-empire",
+      "why": "Alaric's sack of Rome was a major blow during the collapse of Western Roman authority.",
+      "confidence": "high"
+    },
+    {
+      "source": "visigoths-sack-rome",
+      "type": "preceded",
+      "target": "fall-of-roman-empire-west",
+      "why": "The Visigothic sack exposed Western imperial weakness decades before the last Western emperor was deposed.",
+      "confidence": "high"
+    },
+    {
+      "source": "heian-period",
+      "type": "preceded",
+      "target": "kamakura-shogunate",
+      "why": "Aristocratic court rule in the Heian period gave way to samurai military rule under the Kamakura shogunate.",
+      "confidence": "high"
+    },
+    {
+      "source": "kievan-rus-founded",
+      "type": "began",
+      "target": "kievan-rus",
+      "why": "Oleg's capture of Kyiv united northern and southern East Slavic lands into Kievan Rus'.",
+      "confidence": "high"
+    },
+    {
+      "source": "fatimid-caliphate",
+      "type": "opposed",
+      "target": "abbasid-caliphate",
+      "why": "The Ismaili Shia Fatimid caliphs claimed supreme Islamic leadership in direct rivalry with the Sunni Abbasids.",
+      "confidence": "high"
+    },
+    {
+      "source": "fatimid-caliphate",
+      "type": "preceded",
+      "target": "ayyubid-sultanate",
+      "why": "Saladin abolished the Fatimid Caliphate in Egypt and established the Sunni Ayyubid Sultanate.",
+      "confidence": "high"
+    },
+    {
+      "source": "seljuk-empire",
+      "type": "contributed_to",
+      "target": "first-crusade",
+      "why": "Seljuk conquests in Anatolia and the Levant prompted Byzantine appeals to Europe that helped spark the First Crusade.",
+      "confidence": "high"
+    },
+    {
+      "source": "seljuk-empire",
+      "type": "opposed",
+      "target": "byzantine-empire",
+      "why": "The Seljuks defeated Byzantine forces at Manzikert and conquered much of Anatolia.",
+      "confidence": "high"
+    },
+    {
+      "source": "kamakura-shogunate",
+      "type": "opposed",
+      "target": "mongol-conquests",
+      "why": "Kamakura samurai forces repelled two Mongol naval invasions of Japan.",
+      "confidence": "high"
+    }
+  ]
+}

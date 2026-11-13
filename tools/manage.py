@@ -235,6 +235,14 @@ def main():
     p.add_argument("--note")
     p.set_defaults(fn=lambda a: countries.set_tags(a.id, a.spec, a.note))
 
+    p = sub.add_parser("add-country", help="Add a country to the countries table (ISO codes; region sets its lane)")
+    p.add_argument("code", help="ISO 3166-1 alpha-2, e.g. TH")
+    p.add_argument("name")
+    p.add_argument("--region", required=True, help="A region label from the regions table")
+    p.add_argument("--iso3", required=True, help="ISO 3166-1 alpha-3, e.g. THA")
+    p.add_argument("--alt-region", help="A second region whose lane it also belongs to")
+    p.set_defaults(fn=lambda a: countries.add_country(a.code, a.name, a.region, a.iso3, a.alt_region))
+
     p = sub.add_parser("identity", help="Step 3a: decide shared event/span ids")
     p.add_argument("ids", nargs="+")
     g = p.add_mutually_exclusive_group(required=True)

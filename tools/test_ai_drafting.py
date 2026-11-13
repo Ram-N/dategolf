@@ -107,6 +107,15 @@ class TestCheck(unittest.TestCase):
         self.assertIn("will skip the new step akbar-din-i-ilahi", out)
         self.assertIn("remove-links", out)
 
+    def test_unwraps_markdown_linked_sources(self):
+        b = copy.deepcopy(EXAMPLE)
+        url = "https://en.wikipedia.org/wiki/Mamluk_dynasty_(Delhi)"
+        b["events"][0]["source"] = f"[{url[:-1]}]({url})"  # chat copies cut the text at the ")"
+        code, out = check(b, "mdlink")
+        self.assertEqual(code, 0, out)
+        self.assertIn("rewrote 1 Markdown-linked URL", out)
+        self.assertEqual(json.loads((TMP / "mdlink.json").read_text())["events"][0]["source"], url)
+
     def test_trial_load_catches_a_bad_link(self):
         b = copy.deepcopy(EXAMPLE)
         b["links"].append({"source": "reign-of-akbar", "type": "part_of", "target": "no-such-id", "why": "x"})

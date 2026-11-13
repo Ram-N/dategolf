@@ -206,6 +206,13 @@ class TestSpanDrafts(unittest.TestCase):
 
 
 class TestCountries(unittest.TestCase):
+    def test_add_country(self):
+        self.assertEqual(quiet(countries.add_country, "XQ", "Testland", "Africa", "XQT", via="test"), 0)
+        self.assertEqual(db().execute("SELECT region, iso3 FROM countries WHERE code = 'XQ'").fetchone(), ("Africa", "XQT"))
+        self.assertEqual(quiet(countries.add_country, "XQ", "Testland Again", "Africa", "XQU"), 1)  # code taken
+        self.assertEqual(quiet(countries.add_country, "XR", "Nowhere", "Atlantis", "XRR"), 1)  # unknown region
+        self.assertEqual(quiet(countries.add_country, "XRR", "Bad Code", "Africa", "XR"), 1)
+
     def test_set_tags_replaces_and_logs(self):
         self.assertEqual(quiet(countries.set_tags, "battle-of-zama", "TN, IT/actor", via="test"), 0)
         rows = db().execute("SELECT country, role, status FROM entity_countries WHERE entity_id = 'battle-of-zama' "
