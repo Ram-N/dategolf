@@ -9,7 +9,7 @@ How to run a batch (doc 15, Part A):
 
 Run the batches one at a time, and rerun step 1 before each (the gap list and ids change).
 
-Done: batches 1 and 2 (published 2026-11-13).
+Done: batches 1, 2 and 3 (published 2026-11-13).
 
 ## Batch 1: South Asia (20)
 

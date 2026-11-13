@@ -143,6 +143,9 @@ INSERT INTO "countries" VALUES('LA','Laos','Southeast Asia',NULL,'LAO');
 INSERT INTO "countries" VALUES('TM','Turkmenistan','Central Asia',NULL,'TKM');
 INSERT INTO "countries" VALUES('ZW','Zimbabwe','Africa',NULL,'ZWE');
 INSERT INTO "countries" VALUES('YE','Yemen','Middle East',NULL,'YEM');
+INSERT INTO "countries" VALUES('AZ','Azerbaijan','Middle East','Europe','AZE');
+INSERT INTO "countries" VALUES('CG','Republic of the Congo','Africa',NULL,'COG');
+INSERT INTO "countries" VALUES('NE','Niger','Africa',NULL,'NER');
 CREATE TABLE daily_challenges (
   date_key TEXT NOT NULL,
   position INTEGER NOT NULL,
@@ -2551,6 +2554,26 @@ INSERT INTO "entities" VALUES('seljuk-empire','empire','reviewed','2026-11-13 22
 INSERT INTO "entities" VALUES('great-zimbabwe','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
 INSERT INTO "entities" VALUES('ayyubid-sultanate','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
 INSERT INTO "entities" VALUES('kamakura-shogunate','empire','reviewed','2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entities" VALUES('mongols-sack-baghdad','event','reviewed','2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entities" VALUES('mansa-musas-pilgrimage-to-mecca','event','reviewed','2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entities" VALUES('fall-of-tenochtitlan','event','reviewed','2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entities" VALUES('battle-of-sekigahara','event','reviewed','2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entities" VALUES('tokugawa-ieyasu-becomes-shogun','event','reviewed','2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entities" VALUES('fall-of-the-ming-dynasty','event','reviewed','2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entities" VALUES('qing-capture-of-beijing','event','reviewed','2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entities" VALUES('intolerable-acts','event','reviewed','2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entities" VALUES('battles-of-lexington-and-concord','event','reviewed','2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entities" VALUES('execution-of-louis-xvi','event','reviewed','2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entities" VALUES('coup-of-18-brumaire','event','reviewed','2026-11-13 22:49:06','2026-11-13 22:51:47');
+INSERT INTO "entities" VALUES('golden-horde','empire','reviewed','2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entities" VALUES('mamluk-sultanate','empire','reviewed','2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entities" VALUES('ilkhanate','empire','reviewed','2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entities" VALUES('yuan-dynasty','empire','reviewed','2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entities" VALUES('hundred-years-war-period','period','reviewed','2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entities" VALUES('kingdom-of-kongo','empire','reviewed','2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entities" VALUES('songhai-empire','empire','reviewed','2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entities" VALUES('thirty-years-war-period','period','reviewed','2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entities" VALUES('reign-of-terror','period','reviewed','2026-11-13 22:49:06','2026-11-13 22:52:05');
 CREATE TABLE entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   facet     TEXT NOT NULL CHECK (facet IN ('event', 'span')),
@@ -3528,6 +3551,45 @@ INSERT INTO "entity_categories" VALUES('ayyubid-sultanate','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('ayyubid-sultanate','span',1,'War');
 INSERT INTO "entity_categories" VALUES('kamakura-shogunate','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('kamakura-shogunate','span',1,'War');
+INSERT INTO "entity_categories" VALUES('mongols-sack-baghdad','event',0,'War');
+INSERT INTO "entity_categories" VALUES('mongols-sack-baghdad','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('mansa-musas-pilgrimage-to-mecca','event',0,'Religion');
+INSERT INTO "entity_categories" VALUES('mansa-musas-pilgrimage-to-mecca','event',1,'Economy');
+INSERT INTO "entity_categories" VALUES('mansa-musas-pilgrimage-to-mecca','event',2,'Culture');
+INSERT INTO "entity_categories" VALUES('fall-of-tenochtitlan','event',0,'War');
+INSERT INTO "entity_categories" VALUES('fall-of-tenochtitlan','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('battle-of-sekigahara','event',0,'War');
+INSERT INTO "entity_categories" VALUES('battle-of-sekigahara','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('tokugawa-ieyasu-becomes-shogun','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('fall-of-the-ming-dynasty','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('fall-of-the-ming-dynasty','event',1,'War');
+INSERT INTO "entity_categories" VALUES('qing-capture-of-beijing','event',0,'War');
+INSERT INTO "entity_categories" VALUES('qing-capture-of-beijing','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('intolerable-acts','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('battles-of-lexington-and-concord','event',0,'War');
+INSERT INTO "entity_categories" VALUES('battles-of-lexington-and-concord','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('execution-of-louis-xvi','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('coup-of-18-brumaire','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('golden-horde','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('golden-horde','span',1,'War');
+INSERT INTO "entity_categories" VALUES('mamluk-sultanate','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('mamluk-sultanate','span',1,'War');
+INSERT INTO "entity_categories" VALUES('ilkhanate','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('ilkhanate','span',1,'War');
+INSERT INTO "entity_categories" VALUES('ilkhanate','span',2,'Culture');
+INSERT INTO "entity_categories" VALUES('yuan-dynasty','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('yuan-dynasty','span',1,'Culture');
+INSERT INTO "entity_categories" VALUES('hundred-years-war-period','span',0,'War');
+INSERT INTO "entity_categories" VALUES('hundred-years-war-period','span',1,'Politics');
+INSERT INTO "entity_categories" VALUES('kingdom-of-kongo','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('kingdom-of-kongo','span',1,'Economy');
+INSERT INTO "entity_categories" VALUES('kingdom-of-kongo','span',2,'Religion');
+INSERT INTO "entity_categories" VALUES('songhai-empire','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('songhai-empire','span',1,'Economy');
+INSERT INTO "entity_categories" VALUES('thirty-years-war-period','span',0,'War');
+INSERT INTO "entity_categories" VALUES('thirty-years-war-period','span',1,'Religion');
+INSERT INTO "entity_categories" VALUES('thirty-years-war-period','span',2,'Politics');
+INSERT INTO "entity_categories" VALUES('reign-of-terror','span',0,'Politics');
 CREATE TABLE entity_countries (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   position   INTEGER NOT NULL,
@@ -4294,6 +4356,50 @@ INSERT INTO "entity_countries" VALUES('ayyubid-sultanate',1,'SY','high','reviewe
 INSERT INTO "entity_countries" VALUES('ayyubid-sultanate',2,'JO','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('ayyubid-sultanate',3,'YE','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('kamakura-shogunate',0,'JP','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mongols-sack-baghdad',0,'IQ','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mongols-sack-baghdad',1,'MN','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('mansa-musas-pilgrimage-to-mecca',0,'SA','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mansa-musas-pilgrimage-to-mecca',1,'EG','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mansa-musas-pilgrimage-to-mecca',2,'ML','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('fall-of-tenochtitlan',0,'MX','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('fall-of-tenochtitlan',1,'ES','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('battle-of-sekigahara',0,'JP','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('tokugawa-ieyasu-becomes-shogun',0,'JP','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('fall-of-the-ming-dynasty',0,'CN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('qing-capture-of-beijing',0,'CN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('intolerable-acts',0,'US','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('intolerable-acts',1,'GB','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('battles-of-lexington-and-concord',0,'US','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('battles-of-lexington-and-concord',1,'GB','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('execution-of-louis-xvi',0,'FR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('coup-of-18-brumaire',0,'FR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('golden-horde',0,'RU','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('golden-horde',1,'UA','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('golden-horde',2,'KZ','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mamluk-sultanate',0,'EG','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mamluk-sultanate',1,'SY','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mamluk-sultanate',2,'JO','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mamluk-sultanate',3,'SA','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ilkhanate',0,'IR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ilkhanate',1,'IQ','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ilkhanate',2,'AZ','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ilkhanate',3,'TR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('yuan-dynasty',0,'CN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('yuan-dynasty',1,'MN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('hundred-years-war-period',0,'FR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('hundred-years-war-period',1,'GB','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('kingdom-of-kongo',0,'AO','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('kingdom-of-kongo',1,'CD','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('kingdom-of-kongo',2,'CG','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('songhai-empire',0,'ML','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('songhai-empire',1,'NE','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('songhai-empire',2,'NG','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('thirty-years-war-period',0,'DE','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('thirty-years-war-period',1,'CZ','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('thirty-years-war-period',2,'AT','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('thirty-years-war-period',3,'SE','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('thirty-years-war-period',4,'FR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('reign-of-terror',0,'FR','high','reviewed',NULL,'location');
 CREATE TABLE entity_provenance (
   entity_id    TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   origin       TEXT NOT NULL,                      -- e.g. ai_drafted_from_csv
@@ -4434,6 +4540,26 @@ INSERT INTO "entity_provenance" VALUES('seljuk-empire','ai_drafted:gemini',NULL,
 INSERT INTO "entity_provenance" VALUES('great-zimbabwe','ai_drafted:gemini',NULL,'Conventional dates c. 1100 to c. 1450 (earlier Iron Age occupation predates 1100; peak stone construction 13th–14th centuries; abandoned around 1450 as power shifted to Mutapa and Torwa).');
 INSERT INTO "entity_provenance" VALUES('ayyubid-sultanate','ai_drafted:gemini',NULL,'1171 (Saladin ends the Fatimid Caliphate) to 1260 (Mongol conquest of Syria and Mamluk victory at Ain Jalut; note that Mamluks took Egypt in 1250, while Ayyubid branches lingered in Syria until 1260 and in Hasankeyf longer).');
 INSERT INTO "entity_provenance" VALUES('kamakura-shogunate','ai_drafted:gemini',NULL,'1185 (victory in the Genpei War and establishment of shugo/jito system; Yoritomo was formally appointed seii taishogun in 1192) to 1333 (fall of Kamakura during the Kenmu Restoration). [Claude at review: One cause among several; says why the strain mattered (no spoils to reward vassals).]');
+INSERT INTO "entity_provenance" VALUES('mongols-sack-baghdad','ai_drafted:gemini',NULL,'February 1258. Avoid exaggerations such as ''the Tigris ran black with ink for months'' as literal fact; frame the destruction of libraries and irrigation infrastructure accurately. [Claude at review: The caliphate began in 750, Baghdad was founded in 762: ''five centuries of rule in Baghdad'' was slightly over.]');
+INSERT INTO "entity_provenance" VALUES('mansa-musas-pilgrimage-to-mecca','ai_drafted:gemini',NULL,'Departed Mali in 1324 and arrived in Cairo in July 1324, completing the Hajj in 1324–1325.');
+INSERT INTO "entity_provenance" VALUES('fall-of-tenochtitlan','ai_drafted:gemini',NULL,'13 August 1521, with the capture of Emperor Cuauhtemoc.');
+INSERT INTO "entity_provenance" VALUES('battle-of-sekigahara','ai_drafted:gemini',NULL,'21 October 1600.');
+INSERT INTO "entity_provenance" VALUES('tokugawa-ieyasu-becomes-shogun','ai_drafted:gemini',NULL,'24 March 1603. Ieyasu abdicated in 1605 in favor of his son Hidetada to secure dynastic succession while retaining real power until his death in 1616.');
+INSERT INTO "entity_provenance" VALUES('fall-of-the-ming-dynasty','ai_drafted:gemini',NULL,'25 April 1644. Southern Ming loyalist courts continued resisting in southern China until 1662, so note that this ended Ming rule in Beijing and the dynasty''s central government.');
+INSERT INTO "entity_provenance" VALUES('qing-capture-of-beijing','ai_drafted:gemini',NULL,'June 1644 (Qing forces entered Beijing on 5–6 June 1644; Shunzhi enthroned in Beijing in October 1644). Note that full Qing conquest of southern China took several more decades. [Claude at review: Shunzhi had been Qing emperor since 1643; Beijing was where he was enthroned as ruler of China.]');
+INSERT INTO "entity_provenance" VALUES('intolerable-acts','ai_drafted:gemini',NULL,'Passed between March and June 1774 (often grouped with the Quebec Act by colonists).');
+INSERT INTO "entity_provenance" VALUES('battles-of-lexington-and-concord','ai_drafted:gemini',NULL,'19 April 1775.');
+INSERT INTO "entity_provenance" VALUES('execution-of-louis-xvi','ai_drafted:gemini',NULL,'21 January 1793. [Claude at review: France itself declared war on Britain and the Dutch; the execution was one cause of the widening war, not the prompt.]');
+INSERT INTO "entity_provenance" VALUES('coup-of-18-brumaire','ai_drafted:gemini',NULL,'9–10 November 1799 (18–19 Brumaire, Year VIII in the French Republican calendar).');
+INSERT INTO "entity_provenance" VALUES('golden-horde','ai_drafted:gemini',NULL,'1242 (Batu Khan establishes Sarai after the European campaign) to 1502 (Crimean Khanate destroys the Great Horde remnant; Muscovy had already ended tribute at the Great Stand on the Ugra River in 1480).');
+INSERT INTO "entity_provenance" VALUES('mamluk-sultanate','ai_drafted:gemini',NULL,'1250 (rise of Shajar al-Durr and Aybak in Cairo) to 1517 (Ottoman Sultan Selim I conquers Cairo).');
+INSERT INTO "entity_provenance" VALUES('ilkhanate','ai_drafted:gemini',NULL,'1256 (Hulagu''s campaign against the Nizari Ismailis and establishment of rule in Persia) to 1335 (death of Abu Sa''id Bahadur Khan without an heir, leading to rapid fragmentation). [Claude at review: the years are not in doubt, so not approximate.]');
+INSERT INTO "entity_provenance" VALUES('yuan-dynasty','ai_drafted:gemini',NULL,'1271 (Kublai Khan proclaims the dynastic name Da Yuan; Southern Song falls in 1279) to 1368 (Ming forces capture Dadu/Beijing and the Yuan court retreats north as the Northern Yuan).');
+INSERT INTO "entity_provenance" VALUES('hundred-years-war-period','ai_drafted:gemini',NULL,'1337 (Edward III claims the French throne and Philip VI confiscates Gascony) to 1453 (French victory at Castillon leaves England with only Calais).');
+INSERT INTO "entity_provenance" VALUES('kingdom-of-kongo','ai_drafted:gemini',NULL,'Conventional founding c. 1390 by Lukeni lua Nimi; Portuguese contact began in 1483 and King Nzinga a Nkuwu was baptized in 1491; formally abolished by Portugal in 1914 after a revolt.');
+INSERT INTO "entity_provenance" VALUES('songhai-empire','ai_drafted:gemini',NULL,'1464 (accession of Sonni Ali) to 1591 (defeat by Moroccan Saadi forces armed with firearms at the Battle of Tondibi).');
+INSERT INTO "entity_provenance" VALUES('thirty-years-war-period','ai_drafted:gemini',NULL,'1618 (Bohemian Revolt and Defenestration of Prague) to 1648 (Peace of Westphalia). [Claude at review: Myth: modern historians doubt that Westphalia ''established'' state sovereignty; it is the conventional story, marked as such.]');
+INSERT INTO "entity_provenance" VALUES('reign-of-terror','ai_drafted:gemini',NULL,'September 1793 to 27–28 July 1794 (9 Thermidor, execution of Robespierre). Around 17,000 people were officially executed and roughly 10,000 or more died in prison without trial. [Claude at review: The Directory was moderate, not ''conservative''.]');
 CREATE TABLE entity_significance (
   entity_id  TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   text       TEXT NOT NULL CHECK (trim(text) <> ''),
@@ -4561,6 +4687,26 @@ INSERT INTO "entity_significance" VALUES('seljuk-empire','Seljuk victories in An
 INSERT INTO "entity_significance" VALUES('great-zimbabwe','Constructed without mortar from granite blocks, Great Zimbabwe''s Hill Complex and Great Enclosure stand as the largest pre-colonial stone structures in sub-Saharan Africa. Its trade links connected southern African goldfields to Indian Ocean merchants as far away as Persia and China.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
 INSERT INTO "entity_significance" VALUES('ayyubid-sultanate','By uniting Egypt and Syria under Sunni rule, Saladin broke the Crusader states'' strategic advantage and restored Muslim control over Jerusalem. The Ayyubids also revitalized Sunni madrasas and trade with Italian maritime republics before being supplanted by their own Mamluk slave soldiers.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
 INSERT INTO "entity_significance" VALUES('kamakura-shogunate','The Kamakura shogunate shifted real political power from the Kyoto imperial court to the samurai class, inaugurating nearly seven centuries of military rule in Japan. Although it repelled Kublai Khan''s invasion fleets in 1274 and 1281, the cost of the defence, with no conquered land to reward its vassals, weakened their loyalty and helped bring about its fall.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:29:14','2026-11-13 22:40:15');
+INSERT INTO "entity_significance" VALUES('mongols-sack-baghdad','The sack ended the Abbasid Caliphate''s five centuries of rule, nearly all of them from Baghdad, and shattered the historic political center of the Islamic world. Although a shadow Abbasid caliphate later survived under Mamluk protection in Cairo, Baghdad never regained its former imperial prominence.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entity_significance" VALUES('mansa-musas-pilgrimage-to-mecca','Mansa Musa''s journey broadcast the Mali Empire''s wealth across the Mediterranean and Islamic worlds, earning Mali a prominent place on European maps such as the Catalan Atlas. Returning scholars and architects, including Abu Ishaq al-Sahili, also enriched Islamic learning and building in Timbuktu and Gao.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entity_significance" VALUES('fall-of-tenochtitlan','Tenochtitlan''s fall extinguished the Aztec Empire and gave Spain control over central Mesoamerica. On the ruins of the Aztec capital, the Spanish built Mexico City as the administrative seat of the Viceroyalty of New Spain, anchoring centuries of colonial rule.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entity_significance" VALUES('battle-of-sekigahara','Victory at Sekigahara made Tokugawa Ieyasu the undisputed master of Japan, allowing him to redistribute domains among loyal and defeated feudal lords. Three years later he received the title of shogun, inaugurating more than two and a half centuries of Tokugawa rule.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entity_significance" VALUES('tokugawa-ieyasu-becomes-shogun','Ieyasu''s appointment launched the Tokugawa Shogunate and the Edo period, ending over a century of Warring States civil conflict. The regime''s strict social hierarchy, domain controls and maritime restrictions preserved internal peace and fostered urban growth until the Meiji Restoration.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entity_significance" VALUES('fall-of-the-ming-dynasty','The collapse of the Ming central government created a power vacuum in northern China. Within weeks, Ming frontier general Wu Sangui allied with the Manchu Qing forces at Shanhai Pass to defeat Li Zicheng, opening the gates of Beijing to a new dynasty.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entity_significance" VALUES('qing-capture-of-beijing','Capturing Beijing established the Manchu-led Qing Dynasty as the successor to the Ming, though subduing southern loyalists took decades longer. Qing rulers preserved Chinese bureaucratic institutions while expanding imperial borders into Inner Asia, shaping the territorial footprint of modern China.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entity_significance" VALUES('intolerable-acts','Rather than isolating Massachusetts as London intended, the punitive laws alarmed the other twelve colonies, which feared Parliament would strip their charters next. Colonial leaders convened the First Continental Congress in Philadelphia later that year to coordinate resistance and economic boycotts.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entity_significance" VALUES('battles-of-lexington-and-concord','The skirmishes turned political protest into open armed conflict, opening the American Revolutionary War. Within days, thousands of New England militiamen besieged British forces in Boston, and the Second Continental Congress soon organized a Continental Army under George Washington.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entity_significance" VALUES('execution-of-louis-xvi','Executing an anointed monarch by republican decree shocked Europe''s royal courts, and within weeks Britain, the Dutch Republic and Spain were at war with France. Inside France, the regicide deepened divisions between Jacobins, Girondins and royalist provinces, accelerating revolutionary radicalization.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:51:35');
+INSERT INTO "entity_significance" VALUES('coup-of-18-brumaire','Historians widely treat the coup as the end of the French Revolution, replacing unstable parliamentary rule with an authoritarian regime. As First Consul, Napoleon centralized administration, enacted the Napoleonic Code and soon crowned himself emperor.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:51:47');
+INSERT INTO "entity_significance" VALUES('golden-horde','For over two centuries, the Golden Horde''s tribute system and yarlik patents reshaped Russian politics, inadvertently helping the princes of Moscow consolidate power as chief tax collectors. Its later fragmentation gave rise to the Crimean, Kazan and Astrakhan khanates.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entity_significance" VALUES('mamluk-sultanate','By defeating the Mongols at Ain Jalut in 1260 and expelling the last Crusader strongholds from the Levant by 1291, the Mamluks preserved Egypt and Syria from conquest. Cairo flourished under Mamluk patronage as the foremost cultural and commercial hub of the Arab world until the Ottoman conquest.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entity_significance" VALUES('ilkhanate','Initially devastating cities and irrigation works, the Ilkhanate later fostered a revival of Persian literature, historical writing and astronomy under scholars like Rashid al-Din and Nasir al-Din al-Tusi. Its integration into the Pax Mongolica linked Iranian artisans and merchants directly to Yuan China.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entity_significance" VALUES('yuan-dynasty','The Yuan unified China after centuries of division, made Dadu (modern Beijing) the imperial capital and expanded paper currency and Grand Canal transport. Open overland and maritime routes brought foreign merchants and travelers such as Marco Polo to China before rebellions ushered in the Ming.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entity_significance" VALUES('hundred-years-war-period','The prolonged conflict ended English territorial ambitions on the French mainland, strengthened royal taxation and standing armies on both sides, and fostered distinct French and English national identities. Battlefield innovations such as the English longbow and French siege artillery also transformed medieval warfare.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entity_significance" VALUES('kingdom-of-kongo','Under rulers like Afonso I, Kongo adopted Catholicism, literacy and diplomatic relations with Europe while initially attempting to regulate Portuguese trade. Over time, however, the transatlantic slave trade and succession wars undermined royal authority, leaving Kongo vulnerable to Portuguese colonial subjugation.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entity_significance" VALUES('songhai-empire','Under Sonni Ali and Askia Muhammad, Songhai became the largest empire in West African history, administering provinces along the Niger and patronizing Islamic scholarship in Timbuktu. Its defeat by a firearm-equipped Moroccan army in 1591 fractured imperial rule across the western Sahel.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entity_significance" VALUES('thirty-years-war-period','Famine, disease and warfare killed roughly a quarter to a third of the population in many German lands. The concluding Peace of Westphalia curbed Habsburg imperial authority, confirmed religious pluralism within the Holy Roman Empire, and is often, if loosely, credited with founding the modern system of sovereign states.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:52:05');
+INSERT INTO "entity_significance" VALUES('reign-of-terror','Through mass conscription, price controls and harsh repression, the revolutionary government defeated internal royalist revolts and repelled foreign invasion armies. However, escalating executions alienated lawmakers and the public, triggering the Thermidorian Reaction that overthrew Robespierre and paved the way for the more moderate Directory.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 22:49:06','2026-11-13 22:52:05');
 CREATE TABLE entity_sources (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   source_id  INTEGER NOT NULL REFERENCES sources(id) ON DELETE CASCADE,
@@ -4668,6 +4814,26 @@ INSERT INTO "entity_sources" VALUES('seljuk-empire',91,'reviewed','ai_drafted',N
 INSERT INTO "entity_sources" VALUES('great-zimbabwe',92,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('ayyubid-sultanate',93,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('kamakura-shogunate',94,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('mongols-sack-baghdad',95,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('mansa-musas-pilgrimage-to-mecca',96,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('fall-of-tenochtitlan',97,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('battle-of-sekigahara',98,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('tokugawa-ieyasu-becomes-shogun',99,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('fall-of-the-ming-dynasty',100,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('qing-capture-of-beijing',100,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('intolerable-acts',101,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('battles-of-lexington-and-concord',102,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('execution-of-louis-xvi',103,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('coup-of-18-brumaire',104,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('golden-horde',105,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('mamluk-sultanate',106,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('ilkhanate',107,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('yuan-dynasty',108,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('hundred-years-war-period',109,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('kingdom-of-kongo',110,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('songhai-empire',111,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('thirty-years-war-period',112,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('reign-of-terror',113,'reviewed','ai_drafted',NULL,NULL);
 CREATE TABLE event_aliases (
   entity_id TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   position  INTEGER NOT NULL,
@@ -6664,6 +6830,38 @@ INSERT INTO "event_aliases" VALUES('division-of-the-roman-empire',2,'East-West d
 INSERT INTO "event_aliases" VALUES('visigoths-sack-rome',0,'Sack of Rome by Alaric');
 INSERT INTO "event_aliases" VALUES('visigoths-sack-rome',1,'Alaric sacks Rome');
 INSERT INTO "event_aliases" VALUES('visigoths-sack-rome',2,'Visigothic sack of Rome');
+INSERT INTO "event_aliases" VALUES('mongols-sack-baghdad',0,'Siege of Baghdad');
+INSERT INTO "event_aliases" VALUES('mongols-sack-baghdad',1,'Fall of Baghdad to the Mongols');
+INSERT INTO "event_aliases" VALUES('mongols-sack-baghdad',2,'Hulagu sacks Baghdad');
+INSERT INTO "event_aliases" VALUES('mansa-musas-pilgrimage-to-mecca',0,'Mansa Musa''s Hajj');
+INSERT INTO "event_aliases" VALUES('mansa-musas-pilgrimage-to-mecca',1,'Mansa Musa visits Cairo');
+INSERT INTO "event_aliases" VALUES('mansa-musas-pilgrimage-to-mecca',2,'Mali emperor''s pilgrimage');
+INSERT INTO "event_aliases" VALUES('fall-of-tenochtitlan',0,'Siege of Tenochtitlan');
+INSERT INTO "event_aliases" VALUES('fall-of-tenochtitlan',1,'Capture of Tenochtitlan');
+INSERT INTO "event_aliases" VALUES('fall-of-tenochtitlan',2,'Cuauhtemoc surrenders to Cortes');
+INSERT INTO "event_aliases" VALUES('battle-of-sekigahara',0,'Sekigahara campaign');
+INSERT INTO "event_aliases" VALUES('battle-of-sekigahara',1,'Tokugawa Ieyasu wins at Sekigahara');
+INSERT INTO "event_aliases" VALUES('tokugawa-ieyasu-becomes-shogun',0,'Establishment of the Tokugawa Shogunate');
+INSERT INTO "event_aliases" VALUES('tokugawa-ieyasu-becomes-shogun',1,'Tokugawa Ieyasu appointed shogun');
+INSERT INTO "event_aliases" VALUES('tokugawa-ieyasu-becomes-shogun',2,'Edo shogunate founded');
+INSERT INTO "event_aliases" VALUES('fall-of-the-ming-dynasty',0,'Chongzhen Emperor dies');
+INSERT INTO "event_aliases" VALUES('fall-of-the-ming-dynasty',1,'Li Zicheng captures Beijing');
+INSERT INTO "event_aliases" VALUES('fall-of-the-ming-dynasty',2,'Collapse of the Ming Dynasty');
+INSERT INTO "event_aliases" VALUES('qing-capture-of-beijing',0,'Manchus enter Beijing');
+INSERT INTO "event_aliases" VALUES('qing-capture-of-beijing',1,'Qing conquest of Beijing');
+INSERT INTO "event_aliases" VALUES('qing-capture-of-beijing',2,'Shunzhi Emperor enthroned in Beijing');
+INSERT INTO "event_aliases" VALUES('intolerable-acts',0,'Coercive Acts');
+INSERT INTO "event_aliases" VALUES('intolerable-acts',1,'Boston Port Act');
+INSERT INTO "event_aliases" VALUES('intolerable-acts',2,'Parliament passes Coercive Acts');
+INSERT INTO "event_aliases" VALUES('battles-of-lexington-and-concord',0,'Lexington and Concord');
+INSERT INTO "event_aliases" VALUES('battles-of-lexington-and-concord',1,'Shot heard round the world');
+INSERT INTO "event_aliases" VALUES('battles-of-lexington-and-concord',2,'Outbreak of the American Revolutionary War');
+INSERT INTO "event_aliases" VALUES('execution-of-louis-xvi',0,'Louis XVI guillotined');
+INSERT INTO "event_aliases" VALUES('execution-of-louis-xvi',1,'Trial and execution of Louis XVI');
+INSERT INTO "event_aliases" VALUES('execution-of-louis-xvi',2,'King Louis XVI executed');
+INSERT INTO "event_aliases" VALUES('coup-of-18-brumaire',0,'18 Brumaire');
+INSERT INTO "event_aliases" VALUES('coup-of-18-brumaire',1,'Napoleon seizes power');
+INSERT INTO "event_aliases" VALUES('coup-of-18-brumaire',2,'Overthrow of the French Directory');
 CREATE TABLE events (
   entity_id      TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   name           TEXT NOT NULL UNIQUE,
@@ -7125,6 +7323,17 @@ INSERT INTO "events" VALUES('greek-alphabet-adapted-from-phoenician','Greek Alph
 INSERT INTO "events" VALUES('destruction-of-carthage','Destruction of Carthage',-146,'Africa','Roman forces commanded by Scipio Aemilianus breach the walls of Carthage after a three-year siege, systematically burn the North African city, enslave its surviving inhabitants and annex its territory as the Roman province of Africa.','medium',6,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('division-of-the-roman-empire','Division of the Roman Empire',395,'Europe','Upon the death of Emperor Theodosius I in Milan, the Roman Empire is divided permanently between his two young sons, Honorius in the West and Arcadius in the East, creating two separate imperial courts that never reunite.','medium',6,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('visigoths-sack-rome','Visigoths Sack Rome',410,'Europe','Visigothic forces led by King Alaric breach the Salarian Gate and plunder Rome for three days after negotiations with Western Emperor Honorius over land and grain supplies collapse.','medium',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('mongols-sack-baghdad','Mongols Sack Baghdad',1258,'Middle East','Mongol forces commanded by Hulagu Khan besiege and capture the Abbasid capital of Baghdad after Caliph al-Mustasim refuses to submit, executing the caliph and destroying palaces, mosques and libraries across the city.','medium',7,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('mansa-musas-pilgrimage-to-mecca','Mansa Musa''s Pilgrimage to Mecca',1324,'Africa','Mansa Musa, ruler of the West African Mali Empire, travels across the Sahara to Mecca with a vast entourage and immense quantities of gold, distributing lavish gifts in Cairo that temporarily depress gold prices across Egypt.','easy',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('fall-of-tenochtitlan','Fall of Tenochtitlan',1521,'North America','Spanish conquistadors led by Hernan Cortes, backed by tens of thousands of Indigenous allies from Tlaxcala and other rival states, capture the Aztec island capital of Tenochtitlan after a prolonged siege and devastating smallpox outbreak.','medium',7,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('battle-of-sekigahara','Battle of Sekigahara',1600,'East Asia','Forces loyal to Tokugawa Ieyasu defeat a rival western coalition led by Ishida Mitsunari in central Japan after key commanders defect mid-battle, deciding the struggle for supremacy following Toyotomi Hideyoshi''s death.','medium',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('tokugawa-ieyasu-becomes-shogun','Tokugawa Ieyasu Becomes Shogun',1603,'East Asia','Emperor Go-Yozei formally appoints Tokugawa Ieyasu as shogun, enabling him to establish his military government at Edo and consolidate unified rule over Japan''s feudal domains.','medium',7,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('fall-of-the-ming-dynasty','Fall of the Ming Dynasty',1644,'East Asia','Peasant rebel leader Li Zicheng''s army breaches Beijing amid famine, fiscal collapse and epidemic disease, prompting the Chongzhen Emperor to hang himself on Jingshan Hill behind the Forbidden City and ending Ming rule in the capital.','medium',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('qing-capture-of-beijing','Qing Capture of Beijing',1644,'East Asia','After defeating rebel leader Li Zicheng at Shanhai Pass alongside former Ming general Wu Sangui, Manchu Qing forces under regent Dorgon enter Beijing, where the young Shunzhi Emperor, already Qing emperor, is enthroned as ruler of China.','medium',7,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('intolerable-acts','Intolerable Acts',1774,'North America','The British Parliament passes a series of punitive laws, known in the colonies as the Intolerable Acts, closing Boston Harbor, curtailing Massachusetts self-government and expanding troop quartering in retaliation for the Boston Tea Party.','medium',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('battles-of-lexington-and-concord','Battles of Lexington and Concord',1775,'North America','British regulars marching from Boston to seize colonial militia munitions and arrest Patriot leaders clash with local minutemen at Lexington and Concord in Massachusetts, suffering heavy losses during their fighting retreat to Boston.','easy',7,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('execution-of-louis-xvi','Execution of Louis XVI',1793,'Europe','Following his conviction for high treason by the National Convention after the abolition of the French monarchy, deposed King Louis XVI is executed by guillotine in Paris at the Place de la Revolution.','easy',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('coup-of-18-brumaire','Coup of 18 Brumaire',1799,'Europe','General Napoleon Bonaparte and political allies including Emmanuel-Joseph Sieyes overthrow the unpopular French Directory in a bloodless military coup, replacing it with the three-man Consulate led by Bonaparte as First Consul.','medium',7,NULL,NULL,NULL,NULL);
 CREATE TABLE import_records (
   source_file TEXT NOT NULL,
   source_key  TEXT NOT NULL,                       -- id, MM-DD, or CSV eventID
@@ -9602,21 +9811,21 @@ INSERT INTO "missing_entities" VALUES(21,'event','Founding of the Khalsa',1699,N
 INSERT INTO "missing_entities" VALUES(22,'span','Sikh Empire',1799,1849,NULL,'South Asia','Ranjit Singh''s empire in the Punjab has no span.','2026-11-10: link batches 1-2 and the precision review',NULL,'drafted','sikh-empire',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(23,'event','Kalinga War',-261,NULL,1,'South Asia','The war that led to Ashoka''s conversion; it would ''contribute to'' Ashoka Converts to Buddhism. (Ashoka Converts to Buddhism mentions it.)','2026-11-10: link batches 1-2 and the precision review',NULL,'drafted','kalinga-war',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(24,'span','Reign of Ashoka',-268,-232,1,'South Asia','Ashoka''s accession and conversion exist as events, but not his reign.','2026-11-10: link batches 1-2 and the precision review','maurya-empire','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(25,'event','Battle of Sekigahara',1600,NULL,NULL,'East Asia','The victory that gave Tokugawa Ieyasu power; it would precede the Tokugawa Shogunate.','2026-11-10: link batches 1-2 and the precision review','tokugawa-shogunate','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(26,'event','Tokugawa Ieyasu Becomes Shogun',1603,NULL,NULL,'East Asia','Would ''begin'' the Tokugawa Shogunate (the Meiji Restoration already ends it).','2026-11-10: link batches 1-2 and the precision review','tokugawa-shogunate meiji-restoration-japan','wanted',NULL,NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(25,'event','Battle of Sekigahara',1600,NULL,NULL,'East Asia','The victory that gave Tokugawa Ieyasu power; it would precede the Tokugawa Shogunate.','2026-11-10: link batches 1-2 and the precision review','tokugawa-shogunate','drafted','battle-of-sekigahara',NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(26,'event','Tokugawa Ieyasu Becomes Shogun',1603,NULL,NULL,'East Asia','Would ''begin'' the Tokugawa Shogunate (the Meiji Restoration already ends it).','2026-11-10: link batches 1-2 and the precision review','tokugawa-shogunate meiji-restoration-japan','drafted','tokugawa-ieyasu-becomes-shogun',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(27,'event','Commodore Perry Arrives in Japan',1853,NULL,NULL,'East Asia','Opened Japan to the West, leading to the Meiji Restoration.','2026-11-10: link batches 1-2 and the precision review','tokugawa-shogunate meiji-restoration-japan','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(28,'event','Qing Capture of Beijing',1644,NULL,NULL,'East Asia','Would ''end'' the Ming Dynasty and ''begin'' the Qing.','2026-11-10: link batches 1-2 and the precision review','ming-dynasty qing-dynasty','wanted',NULL,NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(28,'event','Qing Capture of Beijing',1644,NULL,NULL,'East Asia','Would ''end'' the Ming Dynasty and ''begin'' the Qing.','2026-11-10: link batches 1-2 and the precision review','ming-dynasty qing-dynasty','drafted','qing-capture-of-beijing',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(29,'event','Treaty of Nanking',1842,NULL,NULL,'East Asia','Ended the First Opium War and ceded Hong Kong; links to the 1997 handover. (The First Opium War event lists it as an alias.)','2026-11-10: link batches 1-2 and the precision review','opium-wars-china hong-kong-handover','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(30,'event','Fall of the Ming Dynasty',1644,NULL,NULL,'East Asia','Li Zicheng''s capture of Beijing and the last Ming emperor''s suicide.','2026-11-10: link batches 1-2 and the precision review','ming-dynasty','wanted',NULL,NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(30,'event','Fall of the Ming Dynasty',1644,NULL,NULL,'East Asia','Li Zicheng''s capture of Beijing and the last Ming emperor''s suicide.','2026-11-10: link batches 1-2 and the precision review','ming-dynasty','drafted','fall-of-the-ming-dynasty',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(31,'span','First Punic War',-264,-241,NULL,'Europe','The Punic Wars have no sub-spans: Zama can''t be linked to the war it ended.','2026-11-10: link batches 1-2 and the precision review','punic-wars','drafted','first-punic-war',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(32,'span','Second Punic War',-218,-201,NULL,'Europe','Hannibal''s war; Zama ''ended'' it (it can''t end the Punic Wars as a whole).','2026-11-10: link batches 1-2 and the precision review','punic-wars battle-of-zama','drafted','second-punic-war',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(33,'span','Third Punic War',-149,-146,NULL,'Europe','The war that destroyed Carthage.','2026-11-10: link batches 1-2 and the precision review','punic-wars','drafted','third-punic-war',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(34,'event','Destruction of Carthage',-146,NULL,NULL,'Europe','Would ''end'' the Punic Wars.','2026-11-10: link batches 1-2 and the precision review','punic-wars','drafted','destruction-of-carthage',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(35,'span','War of the Third Coalition',1803,1806,NULL,'Europe','Trafalgar''s own war, between the Napoleonic Wars and the battle.','2026-11-10: link batches 1-2 and the precision review','napoleonic-wars battle-of-trafalgar','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(36,'event','Napoleon Crowned Emperor',1804,NULL,NULL,'Europe','A central Napoleonic moment, missing.','2026-11-10: link batches 1-2 and the precision review','napoleonic-wars','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(37,'event','Coup of 18 Brumaire',1799,NULL,NULL,'Europe','Napoleon''s seizure of power: would ''end'' the French Revolution, which has no ender now.','2026-11-10: link batches 1-2 and the precision review','french-revolution','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(38,'event','Execution of Louis XVI',1793,NULL,NULL,'Europe','A defining event of the French Revolution.','2026-11-10: link batches 1-2 and the precision review','french-revolution','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(39,'span','Reign of Terror',1793,1794,NULL,'Europe','The Revolution''s most violent phase has no span.','2026-11-10: link batches 1-2 and the precision review','french-revolution','wanted',NULL,NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(37,'event','Coup of 18 Brumaire',1799,NULL,NULL,'Europe','Napoleon''s seizure of power: would ''end'' the French Revolution, which has no ender now.','2026-11-10: link batches 1-2 and the precision review','french-revolution','drafted','coup-of-18-brumaire',NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(38,'event','Execution of Louis XVI',1793,NULL,NULL,'Europe','A defining event of the French Revolution.','2026-11-10: link batches 1-2 and the precision review','french-revolution','drafted','execution-of-louis-xvi',NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(39,'span','Reign of Terror',1793,1794,NULL,'Europe','The Revolution''s most violent phase has no span.','2026-11-10: link batches 1-2 and the precision review','french-revolution','drafted','reign-of-terror',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(40,'event','Division of the Roman Empire',395,NULL,NULL,'Europe','The split into East and West at Theodosius''s death: would ''begin'' the Fall of the Western Roman Empire.','2026-11-10: link batches 1-2 and the precision review','fall-western-roman-empire roman-empire byzantine-empire','drafted','division-of-the-roman-empire',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(41,'event','Visigoths Sack Rome',410,NULL,NULL,'Europe','The first sack of Rome in 800 years, part of the Western Empire''s fall.','2026-11-10: link batches 1-2 and the precision review','fall-western-roman-empire','drafted','visigoths-sack-rome',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(42,'event','Battle of the Somme',1916,NULL,NULL,'Europe','One of the First World War''s defining battles.','2026-11-10: link batches 1-2 and the precision review','world-war-1','wanted',NULL,NULL,'2026-11-10 22:29:02');
@@ -9628,42 +9837,44 @@ INSERT INTO "missing_entities" VALUES(47,'span','Cold War',1947,1991,NULL,'Globa
 INSERT INTO "missing_entities" VALUES(48,'event','Apollo-Soyuz Test Project',1975,NULL,NULL,'Global','The joint US-Soviet flight some historians take as the Space Race''s end.','2026-11-10: link batches 1-2 and the precision review','space-race moon-landing','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(49,'event','Korean Armistice Agreement',1953,NULL,NULL,'East Asia','Would ''end'' the Korean War.','2026-11-10: link batches 1-2 and the precision review','korean-war','wanted',NULL,NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(50,'event','Fall of Saigon',1975,NULL,NULL,'Southeast Asia','Would ''end'' the Vietnam War, which has no ender.','2026-11-10: link batches 1-2 and the precision review','vietnam-war','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(51,'event','Battles of Lexington and Concord',1775,NULL,NULL,'Americas','Would ''begin'' the American Revolution.','2026-11-10: link batches 1-2 and the precision review','american-revolution','wanted',NULL,NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(51,'event','Battles of Lexington and Concord',1775,NULL,NULL,'Americas','Would ''begin'' the American Revolution.','2026-11-10: link batches 1-2 and the precision review','american-revolution','drafted','battles-of-lexington-and-concord',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(52,'event','Battle of Fort Sumter',1861,NULL,NULL,'Americas','Would ''begin'' the American Civil War.','2026-11-10: link batches 1-2 and the precision review','american-civil-war lee-surrenders-appomattox','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(53,'event','Fall of Tenochtitlan',1521,NULL,NULL,'Americas','The more exact end of the Aztec Empire than the 1519 start of the conquest (which ''ends'' it now).','2026-11-10: link batches 1-2 and the precision review','aztec-empire spanish-conquest-mexico','wanted',NULL,NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(54,'event','Mansa Musa''s Pilgrimage to Mecca',1324,NULL,NULL,'Africa','Africa before 1500 is thin; the Mali Empire''s most famous moment is missing.','2026-11-10: link batches 1-2 and the precision review','mali-empire','wanted',NULL,NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(53,'event','Fall of Tenochtitlan',1521,NULL,NULL,'Americas','The more exact end of the Aztec Empire than the 1519 start of the conquest (which ''ends'' it now).','2026-11-10: link batches 1-2 and the precision review','aztec-empire spanish-conquest-mexico','drafted','fall-of-tenochtitlan',NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(54,'event','Mansa Musa''s Pilgrimage to Mecca',1324,NULL,NULL,'Africa','Africa before 1500 is thin; the Mali Empire''s most famous moment is missing.','2026-11-10: link batches 1-2 and the precision review','mali-empire','drafted','mansa-musas-pilgrimage-to-mecca',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(55,'span','Kingdom of Aksum',100,940,1,'Africa','A major African state with no span (Africa before 1500 is thin).','2026-11-10: link batches 1-2 and the precision review',NULL,'drafted','kingdom-of-aksum',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(56,'span','Great Zimbabwe',1100,1450,1,'Africa','Southern Africa''s great medieval city has no span.','2026-11-10: link batches 1-2 and the precision review',NULL,'drafted','great-zimbabwe',NULL,'2026-11-10 22:29:02');
-INSERT INTO "missing_entities" VALUES(57,'span','Songhai Empire',1464,1591,NULL,'Africa','West Africa''s largest empire after Mali has no span.','2026-11-10: link batches 1-2 and the precision review','mali-empire','wanted',NULL,NULL,'2026-11-10 22:29:02');
+INSERT INTO "missing_entities" VALUES(57,'span','Songhai Empire',1464,1591,NULL,'Africa','West Africa''s largest empire after Mali has no span.','2026-11-10: link batches 1-2 and the precision review','mali-empire','drafted','songhai-empire',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(58,'span','Olmec Civilization',-1200,-400,1,'Americas','Mesoamerica before the Maya is empty.','2026-11-10: link batches 1-2 and the precision review',NULL,'drafted','olmec-civilization',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(59,'event','Unification of Egypt',-3100,NULL,1,'Africa','Narmer''s unification, the start of Pharaonic Egypt; nothing marks it.','2026-11-10: link batches 1-2 and the precision review','old-kingdom-egypt','drafted','unification-of-egypt',NULL,'2026-11-10 22:29:02');
 INSERT INTO "missing_entities" VALUES(60,'event','Assassination of Archduke Franz Ferdinand',1914,NULL,NULL,'Europe','The immediate trigger of the First World War; nothing can ''trigger'' WWI now (World War One Begins only mentions it).','2026-11-10: drafting causal link batch 3','world-war-one world-war-1','wanted',NULL,NULL,'2026-11-10 22:39:48');
-INSERT INTO "missing_entities" VALUES(61,'span','Thirty Years'' War',1618,1648,NULL,'Europe','Exists only as the 1618 event ''Thirty Years War Begins'', so the Peace of Westphalia can''t ''end'' it and the Reformation''s link points at a single year.','2026-11-10: drafting causal link batch 3','thirty-years-war signing-of-treaty-westphalia protestant-reformation','wanted',NULL,NULL,'2026-11-10 22:39:48');
-INSERT INTO "missing_entities" VALUES(62,'span','Hundred Years'' War',1337,1453,NULL,'Europe','Exists only as the 1337 event, so Joan of Arc can''t be ''part of'' it. (Could be a Step 3a-style shared id with the event.)','2026-11-10: drafting causal link batch 3','hundred-years-war joan-of-arc-burned','wanted',NULL,NULL,'2026-11-10 22:39:48');
-INSERT INTO "missing_entities" VALUES(63,'event','Intolerable Acts',1774,NULL,NULL,'Americas','Britain''s response to the Boston Tea Party, the real link between it and the Revolution.','2026-11-10: drafting causal link batch 3','boston-tea-party american-revolution','wanted',NULL,NULL,'2026-11-10 22:39:48');
+INSERT INTO "missing_entities" VALUES(61,'span','Thirty Years'' War',1618,1648,NULL,'Europe','Exists only as the 1618 event ''Thirty Years War Begins'', so the Peace of Westphalia can''t ''end'' it and the Reformation''s link points at a single year.','2026-11-10: drafting causal link batch 3','thirty-years-war signing-of-treaty-westphalia protestant-reformation','drafted','thirty-years-war-period',NULL,'2026-11-10 22:39:48');
+INSERT INTO "missing_entities" VALUES(62,'span','Hundred Years'' War',1337,1453,NULL,'Europe','Exists only as the 1337 event, so Joan of Arc can''t be ''part of'' it. (Could be a Step 3a-style shared id with the event.)','2026-11-10: drafting causal link batch 3','hundred-years-war joan-of-arc-burned','drafted','hundred-years-war-period',NULL,'2026-11-10 22:39:48');
+INSERT INTO "missing_entities" VALUES(63,'event','Intolerable Acts',1774,NULL,NULL,'Americas','Britain''s response to the Boston Tea Party, the real link between it and the Revolution.','2026-11-10: drafting causal link batch 3','boston-tea-party american-revolution','drafted','intolerable-acts',NULL,'2026-11-10 22:39:48');
 INSERT INTO "missing_entities" VALUES(64,'event','Voting Rights Act of 1965',1965,NULL,NULL,'Americas','The Selma marches led to it; the civil rights story stops at the 1964 Act now.','2026-11-10: drafting causal link batch 3','us-civil-rights-march-selma civil-rights-act-us civil-rights-movement','wanted',NULL,NULL,'2026-11-10 22:39:48');
 INSERT INTO "missing_entities" VALUES(65,'event','Greek Alphabet Adapted from Phoenician',-800,NULL,1,'Europe','Would let the Phoenician alphabet ''influence'' the Greek one, and through it the Latin alphabet.','2026-11-10: drafting causal link batch 3','phoenician-alphabet-invented','drafted','greek-alphabet-adapted-from-phoenician',NULL,'2026-11-10 22:39:48');
-INSERT INTO "missing_entities" VALUES(66,'span','Yuan Dynasty',1271,1368,NULL,'East Asia','China jumps from the Song (ends 1279) to the Ming (1368): the Mongol Yuan dynasty under Kublai Khan is missing.','2026-11-11: building the Time Machine (gaps it shows around 1250)','song-dynasty ming-dynasty mongol-conquests marco-polo-china','wanted',NULL,NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(67,'event','Mongols Sack Baghdad',1258,NULL,NULL,'Middle East','Would ''end'' the Abbasid Caliphate and the Islamic Golden Age, which both stop in 1258 with nothing to end them.','2026-11-11: building the Time Machine (gaps it shows around 1250)','abbasid-caliphate islamic-golden-age mongol-conquests','wanted',NULL,NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(68,'span','Mamluk Sultanate',1250,1517,NULL,'Middle East','Egypt and Syria''s rulers for 250 years (they stopped the Mongols at Ain Jalut) have no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','ottoman-empire crusades','wanted',NULL,NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(66,'span','Yuan Dynasty',1271,1368,NULL,'East Asia','China jumps from the Song (ends 1279) to the Ming (1368): the Mongol Yuan dynasty under Kublai Khan is missing.','2026-11-11: building the Time Machine (gaps it shows around 1250)','song-dynasty ming-dynasty mongol-conquests marco-polo-china','drafted','yuan-dynasty',NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(67,'event','Mongols Sack Baghdad',1258,NULL,NULL,'Middle East','Would ''end'' the Abbasid Caliphate and the Islamic Golden Age, which both stop in 1258 with nothing to end them.','2026-11-11: building the Time Machine (gaps it shows around 1250)','abbasid-caliphate islamic-golden-age mongol-conquests','drafted','mongols-sack-baghdad',NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(68,'span','Mamluk Sultanate',1250,1517,NULL,'Middle East','Egypt and Syria''s rulers for 250 years (they stopped the Mongols at Ain Jalut) have no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','ottoman-empire crusades','drafted','mamluk-sultanate',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(69,'span','Ayyubid Sultanate',1171,1260,1,'Middle East','Saladin''s dynasty, central to the Crusades, has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','crusades','drafted','ayyubid-sultanate',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(70,'span','Fatimid Caliphate',909,1171,NULL,'Middle East','The caliphate that founded Cairo has no span; the Middle East lane is thin before the Crusades.','2026-11-11: building the Time Machine (gaps it shows around 1250)','abbasid-caliphate','drafted','fatimid-caliphate',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(71,'span','Seljuk Empire',1037,1194,NULL,'Middle East','Its victory at Manzikert helped set off the Crusades.','2026-11-11: building the Time Machine (gaps it shows around 1250)','crusades byzantine-empire','drafted','seljuk-empire',NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(72,'span','Ilkhanate',1256,1335,1,'Middle East','The Mongol state in Persia that sacked Baghdad.','2026-11-11: building the Time Machine (gaps it shows around 1250)','mongol-conquests abbasid-caliphate','wanted',NULL,NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(73,'span','Golden Horde',1242,1502,NULL,'Central Asia','The Mongol state that ruled the Russian principalities for two centuries.','2026-11-11: building the Time Machine (gaps it shows around 1250)','mongol-conquests kievan-rus-founded','wanted',NULL,NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(72,'span','Ilkhanate',1256,1335,1,'Middle East','The Mongol state in Persia that sacked Baghdad.','2026-11-11: building the Time Machine (gaps it shows around 1250)','mongol-conquests abbasid-caliphate','drafted','ilkhanate',NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(73,'span','Golden Horde',1242,1502,NULL,'Central Asia','The Mongol state that ruled the Russian principalities for two centuries.','2026-11-11: building the Time Machine (gaps it shows around 1250)','mongol-conquests kievan-rus-founded','drafted','golden-horde',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(74,'span','Kievan Rus''',882,1240,1,'Europe','Exists only as its founding event; the state itself, ended by the Mongol invasion, has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','kievan-rus-founded mongol-conquests','drafted','kievan-rus',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(75,'span','Kamakura Shogunate',1185,1333,1,'East Asia','Japan has nothing between ancient times and the Tokugawa; the first shogunate (which repelled the Mongol invasions) is missing.','2026-11-11: building the Time Machine (gaps it shows around 1250)','tokugawa-shogunate','drafted','kamakura-shogunate',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(76,'span','Heian Period',794,1185,NULL,'East Asia','Classical Japan (The Tale of Genji) has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)',NULL,'drafted','heian-period',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(77,'span','Khmer Empire',802,1431,1,'Southeast Asia','The builders of Angkor; Southeast Asia has almost nothing before 1500.','2026-11-11: building the Time Machine (gaps it shows around 1250)',NULL,'drafted','khmer-empire',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(78,'span','Srivijaya',650,1377,1,'Southeast Asia','The maritime trading empire of Sumatra, a major Buddhist centre; Southeast Asia is thin.','2026-11-11: building the Time Machine (gaps it shows around 1250)',NULL,'drafted','srivijaya',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(79,'span','Ghana Empire',300,1100,1,'Africa','West Africa''s first great empire, before Mali; Africa before 1500 is thin.','2026-11-11: building the Time Machine (gaps it shows around 1250)','mali-empire','drafted','ghana-empire',NULL,'2026-11-11 06:07:10');
-INSERT INTO "missing_entities" VALUES(80,'span','Kingdom of Kongo',1390,1914,1,'Africa','Central Africa''s major kingdom, in contact with Portugal from the 1480s, has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','age-of-exploration-portugal','wanted',NULL,NULL,'2026-11-11 06:07:10');
+INSERT INTO "missing_entities" VALUES(80,'span','Kingdom of Kongo',1390,1914,1,'Africa','Central Africa''s major kingdom, in contact with Portugal from the 1480s, has no span.','2026-11-11: building the Time Machine (gaps it shows around 1250)','age-of-exploration-portugal','drafted','kingdom-of-kongo',NULL,'2026-11-11 06:07:10');
 INSERT INTO "missing_entities" VALUES(81,'event','Ezana of Aksum Adopts Christianity',330,NULL,1,'Africa','Aksum has no links: its king''s conversion (c. 330s) began Ethiopian Christianity and would be part_of the Kingdom of Aksum.','2026-11-13: gap batch 2 (spans left with no links)','kingdom-of-aksum','wanted',NULL,NULL,'2026-11-13 22:29:15');
 INSERT INTO "missing_entities" VALUES(82,'event','Chola Raids on Srivijaya',1025,NULL,NULL,'Southeast Asia','Srivijaya has no links: Rajendra Chola''s naval raid weakened its hold on the Malacca Strait; would link the Cholas to Srivijaya.','2026-11-13: gap batch 2 (spans left with no links)','srivijaya chola-empire','wanted',NULL,NULL,'2026-11-13 22:29:15');
 INSERT INTO "missing_entities" VALUES(83,'event','Angkor Wat Built',1113,NULL,1,'Southeast Asia','The Khmer Empire has no links: Angkor Wat (begun under Suryavarman II, c. 1113-1150) would be part_of it.','2026-11-13: gap batch 2 (spans left with no links)','khmer-empire','wanted',NULL,NULL,'2026-11-13 22:29:15');
 INSERT INTO "missing_entities" VALUES(84,'event','Ayutthaya Sacks Angkor',1431,NULL,NULL,'Southeast Asia','Would ''end'' the Khmer Empire, which has no ender.','2026-11-13: gap batch 2 (spans left with no links)','khmer-empire','wanted',NULL,NULL,'2026-11-13 22:29:15');
 INSERT INTO "missing_entities" VALUES(85,'event','Mongols Sack Kyiv',1240,NULL,NULL,'Europe','Would ''end'' Kievan Rus'', which has no ender, and be part_of the Mongol conquests.','2026-11-13: gap batch 2 (spans left with no links)','kievan-rus mongol-conquests','wanted',NULL,NULL,'2026-11-13 22:29:15');
 INSERT INTO "missing_entities" VALUES(86,'span','Mutapa Empire',1430,1760,1,'Africa','Great Zimbabwe has no links: Mutapa succeeded it as the gold-trading power of the Zimbabwe plateau.','2026-11-13: gap batch 2 (spans left with no links)','great-zimbabwe','wanted',NULL,NULL,'2026-11-13 22:29:15');
+INSERT INTO "missing_entities" VALUES(87,'event','Portuguese Reach the Kingdom of Kongo',1483,NULL,NULL,'Africa','The Kingdom of Kongo has no links: Diogo Cao''s arrival at the Congo River began its ties with Portugal (and the slave trade); would be part_of kingdom-of-kongo and link to the Portuguese voyages.','2026-11-13: gap batch 3 (spans left with no links)','kingdom-of-kongo age-of-exploration-portugal','open',NULL,NULL,'2026-11-13 22:49:15');
+INSERT INTO "missing_entities" VALUES(88,'event','Afonso I Becomes King of Kongo',1509,NULL,NULL,'Africa','Kongo''s best-known king, whose letters to Portugal protested the slave trade; part_of kingdom-of-kongo.','2026-11-13: gap batch 3 (spans left with no links)','kingdom-of-kongo','open',NULL,NULL,'2026-11-13 22:49:15');
 CREATE TABLE regions (
   label TEXT PRIMARY KEY,
   lane  TEXT NOT NULL CHECK (lane IN
@@ -9848,7 +10059,7 @@ INSERT INTO "relationships" VALUES(151,'ottoman-empire-falls','ended','ottoman-e
 INSERT INTO "relationships" VALUES(152,'first-battle-of-panipat','ended','delhi-sultanate','Babur''s victory over Ibrahim Lodi ended the Delhi Sultanate and opened the Mughal era.','high','reviewed','user','2026-11-09 01:10:53');
 INSERT INTO "relationships" VALUES(153,'dissolution-soviet-union','ended','soviet-union','The Soviet Union was formally dissolved, leaving fifteen independent states.','high','reviewed','user','2026-11-09 01:10:53');
 INSERT INTO "relationships" VALUES(154,'fall-of-qing-dynasty','ended','qing-dynasty','The Xinhai Revolution forced the last emperor''s abdication, ending the Qing and imperial China.','high','reviewed','user','2026-11-09 01:10:53');
-INSERT INTO "relationships" VALUES(155,'spanish-conquest-mexico','ended','aztec-empire','Cortés''s campaign ended the Aztec Empire with the fall of Tenochtitlan two years later.','high','reviewed','user','2026-11-09 01:10:53');
+INSERT INTO "relationships" VALUES(155,'spanish-conquest-mexico','part_of','aztec-empire','The Spanish conquest began in 1519; it ended the Aztec Empire with the fall of Tenochtitlan two years later.','high','reviewed','user','2026-11-09 01:10:53');
 INSERT INTO "relationships" VALUES(156,'conquest-of-peru-inca','ended','inca-empire','Pizarro''s capture and execution of Atahualpa ended the Inca Empire as an independent state.','high','reviewed','user','2026-11-09 01:10:53');
 INSERT INTO "relationships" VALUES(157,'newton-laws-of-motion','ended','scientific-revolution','Historians treat the Principia as the culmination and conventional endpoint of the Scientific Revolution.','medium','reviewed','user','2026-11-09 01:10:53');
 INSERT INTO "relationships" VALUES(158,'renaissance-begins-florence','began','italian-renaissance','Florence''s early-1400s flowering is the conventional start of the Italian Renaissance.','high','reviewed','user','2026-11-09 01:10:53');
@@ -9900,7 +10111,6 @@ INSERT INTO "relationships" VALUES(208,'paper-invented-china','enabled','woodblo
 INSERT INTO "relationships" VALUES(209,'mongol-conquests','enabled','marco-polo-china','Mongol rule across Eurasia made overland travel from Europe to China possible.','medium','reviewed','ai_drafted','2026-11-10 22:39:48');
 INSERT INTO "relationships" VALUES(210,'huns-arrive-in-europe','contributed_to','fall-western-roman-empire','The Huns drove the Goths into Roman territory, starting the migrations that weakened the West.','medium','reviewed','ai_drafted','2026-11-10 22:39:48');
 INSERT INTO "relationships" VALUES(211,'gutenberg-printing-press','enabled','protestant-reformation','Printing spread Luther''s writings across Europe within weeks.','high','reviewed','ai_drafted','2026-11-10 22:39:48');
-INSERT INTO "relationships" VALUES(212,'protestant-reformation','contributed_to','thirty-years-war','Catholic-Protestant conflict in the Holy Roman Empire was a main cause of the war.','high','reviewed','ai_drafted','2026-11-10 22:39:48');
 INSERT INTO "relationships" VALUES(213,'columbus-reaches-americas','enabled','spanish-conquest-mexico','Columbus''s voyages opened the Americas to Spanish conquest.','high','reviewed','ai_drafted','2026-11-10 22:39:48');
 INSERT INTO "relationships" VALUES(214,'vasco-da-gama-india-route','enabled','portuguese-arrive-japan','The sea route to India began the Portuguese trading network that reached Japan.','medium','reviewed','ai_drafted','2026-11-10 22:39:48');
 INSERT INTO "relationships" VALUES(215,'kepler-laws-planetary-motion','influenced','newton-laws-of-motion','Newton''s theory of gravitation explained Kepler''s laws of planetary motion.','high','reviewed','ai_drafted','2026-11-10 22:39:48');
@@ -10007,6 +10217,32 @@ INSERT INTO "relationships" VALUES(315,'fatimid-caliphate','preceded','ayyubid-s
 INSERT INTO "relationships" VALUES(316,'seljuk-empire','contributed_to','first-crusade','Seljuk conquests in Anatolia and the Levant prompted Byzantine appeals to Europe that helped spark the First Crusade.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
 INSERT INTO "relationships" VALUES(317,'byzantine-empire','opposed','seljuk-empire','The Seljuks defeated Byzantine forces at Manzikert and conquered much of Anatolia.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
 INSERT INTO "relationships" VALUES(318,'kamakura-shogunate','opposed','mongol-conquests','Kamakura samurai forces repelled two Mongol naval invasions of Japan.','high','reviewed','ai_drafted:gemini','2026-11-13 22:29:14');
+INSERT INTO "relationships" VALUES(319,'mongol-conquests','contributed_to','golden-horde','Batu Khan''s western campaigns carved out the Golden Horde as the northwestern khanate of the Mongol Empire.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(320,'mamluk-sultanate','opposed','mongol-conquests','Mamluk forces halted Mongol westward expansion into Syria and Egypt at the Battle of Ain Jalut.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(321,'mongols-sack-baghdad','part_of','ilkhanate','Hulagu Khan''s capture of Baghdad was the major conquest establishing Ilkhanid power in Mesopotamia.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(322,'mongols-sack-baghdad','ended','abbasid-caliphate','Hulagu Khan''s capture of Baghdad and execution of Caliph al-Mustasim ended the Abbasid Caliphate there.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(323,'mongols-sack-baghdad','ended','islamic-golden-age','The destruction of Baghdad''s palaces, libraries and scholarly institutions conventionally marks the end of the Islamic Golden Age.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(324,'yuan-dynasty','preceded','ming-dynasty','Peasant rebellions overthrew Mongol Yuan rule in China, leading to the founding of the Ming Dynasty.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(325,'mansa-musas-pilgrimage-to-mecca','part_of','mali-empire','Mansa Musa''s pilgrimage showcased the Mali Empire''s gold wealth across North Africa and the Middle East.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(326,'hundred-years-war','began','hundred-years-war-period','Competing claims to the French crown and Gascony opened the Hundred Years'' War in 1337.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(327,'joan-of-arc-burned','part_of','hundred-years-war-period','Joan of Arc''s campaigns and execution occurred during the later phase of the Hundred Years'' War.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(329,'spanish-conquest-mexico','preceded','fall-of-tenochtitlan','Cortes''s expedition into Mexico culminated two years later in the siege and capture of Tenochtitlan.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(330,'fall-of-tenochtitlan','ended','aztec-empire','The capture of Tenochtitlan and Emperor Cuauhtemoc ended the Aztec Empire.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(331,'battle-of-sekigahara','preceded','tokugawa-ieyasu-becomes-shogun','Victory at Sekigahara gave Tokugawa Ieyasu the supremacy needed to claim the title of shogun.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(332,'tokugawa-ieyasu-becomes-shogun','began','tokugawa-shogunate','Ieyasu''s appointment as shogun inaugurated the Tokugawa Shogunate.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(333,'thirty-years-war','began','thirty-years-war-period','The Bohemian Revolt against Habsburg rule opened the Thirty Years'' War.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(334,'signing-of-treaty-westphalia','ended','thirty-years-war-period','The Peace of Westphalia concluded the Thirty Years'' War in the Holy Roman Empire.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(335,'protestant-reformation','contributed_to','thirty-years-war-period','Unresolved Catholic-Protestant divisions in the Holy Roman Empire helped fuel the Thirty Years'' War.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(336,'fall-of-the-ming-dynasty','preceded','qing-capture-of-beijing','Weeks after Li Zicheng took Beijing and the last Ming emperor died, Qing forces entered the city.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(337,'fall-of-the-ming-dynasty','ended','ming-dynasty','The fall of Beijing and suicide of the last Ming emperor ended Ming central rule.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(338,'qing-capture-of-beijing','began','qing-dynasty','Capturing Beijing established the Qing Dynasty as the ruling dynasty of China.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(339,'boston-tea-party','triggered','intolerable-acts','Parliament passed the Intolerable Acts specifically to punish Massachusetts for the Boston Tea Party.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(340,'intolerable-acts','contributed_to','battles-of-lexington-and-concord','Colonial resistance to the Intolerable Acts led militias to stockpile arms, prompting British raids on Lexington and Concord.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(341,'battles-of-lexington-and-concord','began','american-revolution','The clashes at Lexington and Concord opened the armed conflict of the American Revolutionary War.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(342,'execution-of-louis-xvi','part_of','french-revolution','The trial and execution of King Louis XVI marked a radical turning point of the French Revolution.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(343,'execution-of-louis-xvi','contributed_to','reign-of-terror','The king''s execution widened foreign war and internal revolt, helping push the republic toward the Reign of Terror.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(344,'reign-of-terror','part_of','french-revolution','The Reign of Terror was the most violent phase of the French Revolution.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
+INSERT INTO "relationships" VALUES(345,'coup-of-18-brumaire','ended','french-revolution','Napoleon''s overthrow of the Directory brought the French Revolution to an end.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -10908,6 +11144,78 @@ INSERT INTO "review_log" VALUES(890,'2026-11-13 22:40:20','missing-wanted','miss
 INSERT INTO "review_log" VALUES(891,'2026-11-13 22:40:20','missing-wanted','missing:84','Ayutthaya Sacks Angkor','cli');
 INSERT INTO "review_log" VALUES(892,'2026-11-13 22:40:20','missing-wanted','missing:85','Mongols Sack Kyiv','cli');
 INSERT INTO "review_log" VALUES(893,'2026-11-13 22:40:20','missing-wanted','missing:86','Mutapa Empire','cli');
+INSERT INTO "review_log" VALUES(894,'2026-11-13 22:48:08','add-country','country:AZ','Azerbaijan (AZE), Middle East / Europe','cli');
+INSERT INTO "review_log" VALUES(895,'2026-11-13 22:48:08','add-country','country:CG','Republic of the Congo (COG), Africa','cli');
+INSERT INTO "review_log" VALUES(896,'2026-11-13 22:48:09','add-country','country:NE','Niger (NER), Africa','cli');
+INSERT INTO "review_log" VALUES(897,'2026-11-13 22:51:35','approve-draft','mongols-sack-baghdad',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(898,'2026-11-13 22:51:35','approve-draft','mansa-musas-pilgrimage-to-mecca',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(899,'2026-11-13 22:51:35','approve-draft','fall-of-tenochtitlan',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(900,'2026-11-13 22:51:35','approve-draft','battle-of-sekigahara',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(901,'2026-11-13 22:51:35','approve-draft','tokugawa-ieyasu-becomes-shogun',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(902,'2026-11-13 22:51:35','approve-draft','fall-of-the-ming-dynasty',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(903,'2026-11-13 22:51:35','approve-draft','qing-capture-of-beijing',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(904,'2026-11-13 22:51:35','approve-draft','intolerable-acts',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(905,'2026-11-13 22:51:35','approve-draft','battles-of-lexington-and-concord',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(906,'2026-11-13 22:51:35','approve-draft','execution-of-louis-xvi',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(907,'2026-11-13 22:51:47','approve-draft','coup-of-18-brumaire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(908,'2026-11-13 22:52:05','approve-draft','golden-horde',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(909,'2026-11-13 22:52:05','approve-draft','mamluk-sultanate',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(910,'2026-11-13 22:52:05','approve-draft','ilkhanate',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(911,'2026-11-13 22:52:05','approve-draft','yuan-dynasty',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(912,'2026-11-13 22:52:05','approve-draft','hundred-years-war-period',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(913,'2026-11-13 22:52:05','approve-draft','kingdom-of-kongo',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(914,'2026-11-13 22:52:05','approve-draft','songhai-empire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(915,'2026-11-13 22:52:05','approve-draft','thirty-years-war-period',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(916,'2026-11-13 22:52:05','approve-draft','reign-of-terror',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(917,'2026-11-13 22:52:29','approve-countries','golden-horde',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(918,'2026-11-13 22:52:29','approve-countries','mamluk-sultanate',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(919,'2026-11-13 22:52:29','approve-countries','ilkhanate',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(920,'2026-11-13 22:52:29','approve-countries','mongols-sack-baghdad',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(921,'2026-11-13 22:52:29','approve-countries','yuan-dynasty',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(922,'2026-11-13 22:52:29','approve-countries','mansa-musas-pilgrimage-to-mecca',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(923,'2026-11-13 22:52:29','approve-countries','hundred-years-war-period',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(924,'2026-11-13 22:52:29','approve-countries','kingdom-of-kongo',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(925,'2026-11-13 22:52:29','approve-countries','songhai-empire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(926,'2026-11-13 22:52:29','approve-countries','fall-of-tenochtitlan',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(927,'2026-11-13 22:52:54','approve-countries','battle-of-sekigahara',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(928,'2026-11-13 22:52:54','approve-countries','tokugawa-ieyasu-becomes-shogun',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(929,'2026-11-13 22:52:54','approve-countries','thirty-years-war-period',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(930,'2026-11-13 22:52:54','approve-countries','fall-of-the-ming-dynasty',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(931,'2026-11-13 22:52:54','approve-countries','qing-capture-of-beijing',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(932,'2026-11-13 22:52:54','approve-countries','intolerable-acts',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(933,'2026-11-13 22:52:54','approve-countries','battles-of-lexington-and-concord',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(934,'2026-11-13 22:52:54','approve-countries','execution-of-louis-xvi',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(935,'2026-11-13 22:52:54','approve-countries','reign-of-terror',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(936,'2026-11-13 22:52:54','approve-countries','coup-of-18-brumaire',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(937,'2026-11-13 22:54:08','approve-link','mongol-conquests','link #319: mongol-conquests contributed_to golden-horde','dashboard');
+INSERT INTO "review_log" VALUES(938,'2026-11-13 22:54:08','approve-link','mamluk-sultanate','link #320: mamluk-sultanate opposed mongol-conquests','dashboard');
+INSERT INTO "review_log" VALUES(939,'2026-11-13 22:54:08','approve-link','mongols-sack-baghdad','link #321: mongols-sack-baghdad part_of ilkhanate','dashboard');
+INSERT INTO "review_log" VALUES(940,'2026-11-13 22:54:08','approve-link','mongols-sack-baghdad','link #322: mongols-sack-baghdad ended abbasid-caliphate','dashboard');
+INSERT INTO "review_log" VALUES(941,'2026-11-13 22:54:08','approve-link','mongols-sack-baghdad','link #323: mongols-sack-baghdad ended islamic-golden-age','dashboard');
+INSERT INTO "review_log" VALUES(942,'2026-11-13 22:54:08','approve-link','yuan-dynasty','link #324: yuan-dynasty preceded ming-dynasty','dashboard');
+INSERT INTO "review_log" VALUES(943,'2026-11-13 22:54:08','approve-link','mansa-musas-pilgrimage-to-mecca','link #325: mansa-musas-pilgrimage-to-mecca part_of mali-empire','dashboard');
+INSERT INTO "review_log" VALUES(944,'2026-11-13 22:54:08','approve-link','hundred-years-war','link #326: hundred-years-war began hundred-years-war-period','dashboard');
+INSERT INTO "review_log" VALUES(945,'2026-11-13 22:54:08','approve-link','joan-of-arc-burned','link #327: joan-of-arc-burned part_of hundred-years-war-period','dashboard');
+INSERT INTO "review_log" VALUES(946,'2026-11-13 22:54:42','approve-link','spanish-conquest-mexico','link #329: spanish-conquest-mexico preceded fall-of-tenochtitlan','dashboard');
+INSERT INTO "review_log" VALUES(947,'2026-11-13 22:54:42','approve-link','fall-of-tenochtitlan','link #330: fall-of-tenochtitlan ended aztec-empire','dashboard');
+INSERT INTO "review_log" VALUES(948,'2026-11-13 22:54:42','approve-link','battle-of-sekigahara','link #331: battle-of-sekigahara preceded tokugawa-ieyasu-becomes-shogun','dashboard');
+INSERT INTO "review_log" VALUES(949,'2026-11-13 22:54:42','approve-link','tokugawa-ieyasu-becomes-shogun','link #332: tokugawa-ieyasu-becomes-shogun began tokugawa-shogunate','dashboard');
+INSERT INTO "review_log" VALUES(950,'2026-11-13 22:54:42','approve-link','thirty-years-war','link #333: thirty-years-war began thirty-years-war-period','dashboard');
+INSERT INTO "review_log" VALUES(951,'2026-11-13 22:54:42','approve-link','signing-of-treaty-westphalia','link #334: signing-of-treaty-westphalia ended thirty-years-war-period','dashboard');
+INSERT INTO "review_log" VALUES(952,'2026-11-13 22:54:42','approve-link','protestant-reformation','link #335: protestant-reformation contributed_to thirty-years-war-period','dashboard');
+INSERT INTO "review_log" VALUES(953,'2026-11-13 22:54:42','approve-link','fall-of-the-ming-dynasty','link #336: fall-of-the-ming-dynasty preceded qing-capture-of-beijing','dashboard');
+INSERT INTO "review_log" VALUES(954,'2026-11-13 22:54:42','approve-link','fall-of-the-ming-dynasty','link #337: fall-of-the-ming-dynasty ended ming-dynasty','dashboard');
+INSERT INTO "review_log" VALUES(955,'2026-11-13 22:55:09','approve-link','qing-capture-of-beijing','link #338: qing-capture-of-beijing began qing-dynasty','dashboard');
+INSERT INTO "review_log" VALUES(956,'2026-11-13 22:55:09','approve-link','boston-tea-party','link #339: boston-tea-party triggered intolerable-acts','dashboard');
+INSERT INTO "review_log" VALUES(957,'2026-11-13 22:55:09','approve-link','intolerable-acts','link #340: intolerable-acts contributed_to battles-of-lexington-and-concord','dashboard');
+INSERT INTO "review_log" VALUES(958,'2026-11-13 22:55:09','approve-link','battles-of-lexington-and-concord','link #341: battles-of-lexington-and-concord began american-revolution','dashboard');
+INSERT INTO "review_log" VALUES(959,'2026-11-13 22:55:09','approve-link','execution-of-louis-xvi','link #342: execution-of-louis-xvi part_of french-revolution','dashboard');
+INSERT INTO "review_log" VALUES(960,'2026-11-13 22:55:09','approve-link','execution-of-louis-xvi','link #343: execution-of-louis-xvi contributed_to reign-of-terror','dashboard');
+INSERT INTO "review_log" VALUES(961,'2026-11-13 22:55:09','approve-link','reign-of-terror','link #344: reign-of-terror part_of french-revolution','dashboard');
+INSERT INTO "review_log" VALUES(962,'2026-11-13 22:55:09','approve-link','coup-of-18-brumaire','link #345: coup-of-18-brumaire ended french-revolution','dashboard');
+INSERT INTO "review_log" VALUES(963,'2026-11-13 22:56:47','reject-link','mali-empire','link #328: mali-empire preceded songhai-empire — Mali and Songhai overlap by over a century (Songhai rose as Mali shrank); ''preceded'' presents a succession the spans contradict','cli');
+INSERT INTO "review_log" VALUES(964,'2026-11-13 22:59:06','retype-link','spanish-conquest-mexico','link #155: spanish-conquest-mexico ended → part_of aztec-empire','cli');
+INSERT INTO "review_log" VALUES(965,'2026-11-13 22:59:06','remove-link','protestant-reformation','link #212: protestant-reformation contributed_to thirty-years-war — Duplicate: the same claim now links the Reformation to the Thirty Years'' War span (gap batch 3)','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -11009,6 +11317,25 @@ INSERT INTO "sources" VALUES(91,'wikipedia','Seljuk Empire','https://en.wikipedi
 INSERT INTO "sources" VALUES(92,'wikipedia','Great Zimbabwe','https://en.wikipedia.org/wiki/Great_Zimbabwe','2026-11-13 22:29:14');
 INSERT INTO "sources" VALUES(93,'wikipedia','Ayyubid dynasty','https://en.wikipedia.org/wiki/Ayyubid_dynasty','2026-11-13 22:29:14');
 INSERT INTO "sources" VALUES(94,'wikipedia','Kamakura shogunate','https://en.wikipedia.org/wiki/Kamakura_shogunate','2026-11-13 22:29:14');
+INSERT INTO "sources" VALUES(95,'wikipedia','Siege of Baghdad','https://en.wikipedia.org/wiki/Siege_of_Baghdad','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(96,'wikipedia','Mansa Musa','https://en.wikipedia.org/wiki/Mansa_Musa','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(97,'wikipedia','Fall of Tenochtitlan','https://en.wikipedia.org/wiki/Fall_of_Tenochtitlan','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(98,'wikipedia','Battle of Sekigahara','https://en.wikipedia.org/wiki/Battle_of_Sekigahara','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(99,'wikipedia','Tokugawa Ieyasu','https://en.wikipedia.org/wiki/Tokugawa_Ieyasu','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(100,'wikipedia','Transition from Ming to Qing','https://en.wikipedia.org/wiki/Transition_from_Ming_to_Qing','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(101,'wikipedia','Intolerable Acts','https://en.wikipedia.org/wiki/Intolerable_Acts','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(102,'wikipedia','Battles of Lexington and Concord','https://en.wikipedia.org/wiki/Battles_of_Lexington_and_Concord','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(103,'wikipedia','Execution of Louis XVI','https://en.wikipedia.org/wiki/Execution_of_Louis_XVI','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(104,'wikipedia','Coup of 18 Brumaire','https://en.wikipedia.org/wiki/Coup_of_18_Brumaire','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(105,'wikipedia','Golden Horde','https://en.wikipedia.org/wiki/Golden_Horde','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(106,'wikipedia','Mamluk Sultanate','https://en.wikipedia.org/wiki/Mamluk_Sultanate','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(107,'wikipedia','Ilkhanate','https://en.wikipedia.org/wiki/Ilkhanate','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(108,'wikipedia','Yuan dynasty','https://en.wikipedia.org/wiki/Yuan_dynasty','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(109,'wikipedia','Hundred Years'' War','https://en.wikipedia.org/wiki/Hundred_Years%27_War','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(110,'wikipedia','Kingdom of Kongo','https://en.wikipedia.org/wiki/Kingdom_of_Kongo','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(111,'wikipedia','Songhai Empire','https://en.wikipedia.org/wiki/Songhai_Empire','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(112,'wikipedia','Thirty Years'' War','https://en.wikipedia.org/wiki/Thirty_Years%27_War','2026-11-13 22:49:06');
+INSERT INTO "sources" VALUES(113,'wikipedia','Reign of Terror','https://en.wikipedia.org/wiki/Reign_of_Terror','2026-11-13 22:49:06');
 CREATE TABLE time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json
@@ -11152,6 +11479,15 @@ INSERT INTO "time_spans" VALUES('seljuk-empire','empire','Seljuk Empire',1037,11
 INSERT INTO "time_spans" VALUES('great-zimbabwe','empire','Great Zimbabwe',1100,1450,'A medieval Shona stone city and kingdom capital on the Zimbabwean plateau that prospered from cattle herding, gold mining and long-distance trade with Swahili coast ports.','Africa',6,1,NULL);
 INSERT INTO "time_spans" VALUES('ayyubid-sultanate','empire','Ayyubid Sultanate',1171,1260,'A Sunni Muslim dynasty of Kurdish origin founded by Saladin that united Egypt, Syria, Upper Mesopotamia and Yemen, recaptured Jerusalem from the Crusaders in 1187 and fought the Third Crusade.','Middle East',6,1,NULL);
 INSERT INTO "time_spans" VALUES('kamakura-shogunate','empire','Kamakura Shogunate',1185,1333,'Japan''s first feudal military government, established by Minamoto no Yoritomo at Kamakura after the Genpei War, which governed through samurai vassals and repelled two Mongol invasions.','East Asia',6,1,NULL);
+INSERT INTO "time_spans" VALUES('golden-horde','empire','Golden Horde',1242,1502,'The northwestern khanate of the Mongol Empire, founded by Batu Khan on the Pontic-Caspian steppe, which exacted tribute from the Russian principalities and controlled steppe trade routes.','Europe',6,NULL,NULL);
+INSERT INTO "time_spans" VALUES('mamluk-sultanate','empire','Mamluk Sultanate',1250,1517,'A medieval state ruling Egypt, the Levant and the Hejaz, governed by a military caste of manumitted slave-soldiers who overthrew the Ayyubids and halted Mongol expansion at Ain Jalut.','Middle East',6,NULL,NULL);
+INSERT INTO "time_spans" VALUES('ilkhanate','empire','Ilkhanate',1256,1335,'The southwestern division of the Mongol Empire, founded by Hulagu Khan and centered in Persia, which destroyed the Abbasid Caliphate in Baghdad and later converted to Islam under Ghazan Khan.','Middle East',6,NULL,NULL);
+INSERT INTO "time_spans" VALUES('yuan-dynasty','empire','Yuan Dynasty',1271,1368,'The Mongol-led imperial dynasty of China proclaimed by Kublai Khan, which conquered the Southern Song to unify all of China under non-Han rule for the first time.','East Asia',7,NULL,NULL);
+INSERT INTO "time_spans" VALUES('hundred-years-war-period','period','Hundred Years'' War',1337,1453,'A series of intermittent conflicts between the kingdoms of England and France over English territorial claims in France and the French royal succession, spanning five generations.','Europe',7,NULL,NULL);
+INSERT INTO "time_spans" VALUES('kingdom-of-kongo','empire','Kingdom of Kongo',1390,1914,'A centralized West Central African kingdom centered at M''banza-Kongo in modern northern Angola and the Democratic Republic of the Congo, which established diplomatic and Catholic ties with Portugal.','Africa',6,1,NULL);
+INSERT INTO "time_spans" VALUES('songhai-empire','empire','Songhai Empire',1464,1591,'A West African empire centered at Gao along the Niger River bend that succeeded Mali as the dominant power in the Sahel, controlling Timbuktu, Djenne and trans-Saharan trade routes.','Africa',6,NULL,NULL);
+INSERT INTO "time_spans" VALUES('thirty-years-war-period','period','Thirty Years'' War',1618,1648,'A devastating European conflict fought mainly in the Holy Roman Empire, beginning as a religious struggle between Protestant and Catholic states and widening into a Habsburg-Bourbon power struggle.','Europe',7,NULL,NULL);
+INSERT INTO "time_spans" VALUES('reign-of-terror','period','Reign of Terror',1793,1794,'The most radical phase of the French Revolution, during which the Committee of Public Safety led by Maximilien Robespierre crushed internal rebellions and executed tens of thousands of suspected counterrevolutionaries.','Europe',6,NULL,NULL);
 CREATE TRIGGER events_touch AFTER UPDATE ON events BEGIN
   UPDATE entities SET updated_at = datetime('now') WHERE id = NEW.entity_id;
 END;

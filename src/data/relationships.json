@@ -1010,9 +1010,9 @@
     },
     {
       "source": "spanish-conquest-mexico",
-      "type": "ended",
+      "type": "part_of",
       "target": "aztec-empire",
-      "why": "Cortés's campaign ended the Aztec Empire with the fall of Tenochtitlan two years later.",
+      "why": "The Spanish conquest began in 1519; it ended the Aztec Empire with the fall of Tenochtitlan two years later.",
       "confidence": "high"
     },
     {
@@ -1370,13 +1370,6 @@
       "type": "enabled",
       "target": "protestant-reformation",
       "why": "Printing spread Luther's writings across Europe within weeks.",
-      "confidence": "high"
-    },
-    {
-      "source": "protestant-reformation",
-      "type": "contributed_to",
-      "target": "thirty-years-war",
-      "why": "Catholic-Protestant conflict in the Holy Roman Empire was a main cause of the war.",
       "confidence": "high"
     },
     {
@@ -2119,6 +2112,188 @@
       "type": "opposed",
       "target": "mongol-conquests",
       "why": "Kamakura samurai forces repelled two Mongol naval invasions of Japan.",
+      "confidence": "high"
+    },
+    {
+      "source": "mongol-conquests",
+      "type": "contributed_to",
+      "target": "golden-horde",
+      "why": "Batu Khan's western campaigns carved out the Golden Horde as the northwestern khanate of the Mongol Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "mamluk-sultanate",
+      "type": "opposed",
+      "target": "mongol-conquests",
+      "why": "Mamluk forces halted Mongol westward expansion into Syria and Egypt at the Battle of Ain Jalut.",
+      "confidence": "high"
+    },
+    {
+      "source": "mongols-sack-baghdad",
+      "type": "part_of",
+      "target": "ilkhanate",
+      "why": "Hulagu Khan's capture of Baghdad was the major conquest establishing Ilkhanid power in Mesopotamia.",
+      "confidence": "high"
+    },
+    {
+      "source": "mongols-sack-baghdad",
+      "type": "ended",
+      "target": "abbasid-caliphate",
+      "why": "Hulagu Khan's capture of Baghdad and execution of Caliph al-Mustasim ended the Abbasid Caliphate there.",
+      "confidence": "high"
+    },
+    {
+      "source": "mongols-sack-baghdad",
+      "type": "ended",
+      "target": "islamic-golden-age",
+      "why": "The destruction of Baghdad's palaces, libraries and scholarly institutions conventionally marks the end of the Islamic Golden Age.",
+      "confidence": "high"
+    },
+    {
+      "source": "yuan-dynasty",
+      "type": "preceded",
+      "target": "ming-dynasty",
+      "why": "Peasant rebellions overthrew Mongol Yuan rule in China, leading to the founding of the Ming Dynasty.",
+      "confidence": "high"
+    },
+    {
+      "source": "mansa-musas-pilgrimage-to-mecca",
+      "type": "part_of",
+      "target": "mali-empire",
+      "why": "Mansa Musa's pilgrimage showcased the Mali Empire's gold wealth across North Africa and the Middle East.",
+      "confidence": "high"
+    },
+    {
+      "source": "hundred-years-war",
+      "type": "began",
+      "target": "hundred-years-war-period",
+      "why": "Competing claims to the French crown and Gascony opened the Hundred Years' War in 1337.",
+      "confidence": "high"
+    },
+    {
+      "source": "joan-of-arc-burned",
+      "type": "part_of",
+      "target": "hundred-years-war-period",
+      "why": "Joan of Arc's campaigns and execution occurred during the later phase of the Hundred Years' War.",
+      "confidence": "high"
+    },
+    {
+      "source": "spanish-conquest-mexico",
+      "type": "preceded",
+      "target": "fall-of-tenochtitlan",
+      "why": "Cortes's expedition into Mexico culminated two years later in the siege and capture of Tenochtitlan.",
+      "confidence": "high"
+    },
+    {
+      "source": "fall-of-tenochtitlan",
+      "type": "ended",
+      "target": "aztec-empire",
+      "why": "The capture of Tenochtitlan and Emperor Cuauhtemoc ended the Aztec Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-sekigahara",
+      "type": "preceded",
+      "target": "tokugawa-ieyasu-becomes-shogun",
+      "why": "Victory at Sekigahara gave Tokugawa Ieyasu the supremacy needed to claim the title of shogun.",
+      "confidence": "high"
+    },
+    {
+      "source": "tokugawa-ieyasu-becomes-shogun",
+      "type": "began",
+      "target": "tokugawa-shogunate",
+      "why": "Ieyasu's appointment as shogun inaugurated the Tokugawa Shogunate.",
+      "confidence": "high"
+    },
+    {
+      "source": "thirty-years-war",
+      "type": "began",
+      "target": "thirty-years-war-period",
+      "why": "The Bohemian Revolt against Habsburg rule opened the Thirty Years' War.",
+      "confidence": "high"
+    },
+    {
+      "source": "signing-of-treaty-westphalia",
+      "type": "ended",
+      "target": "thirty-years-war-period",
+      "why": "The Peace of Westphalia concluded the Thirty Years' War in the Holy Roman Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "protestant-reformation",
+      "type": "contributed_to",
+      "target": "thirty-years-war-period",
+      "why": "Unresolved Catholic-Protestant divisions in the Holy Roman Empire helped fuel the Thirty Years' War.",
+      "confidence": "high"
+    },
+    {
+      "source": "fall-of-the-ming-dynasty",
+      "type": "preceded",
+      "target": "qing-capture-of-beijing",
+      "why": "Weeks after Li Zicheng took Beijing and the last Ming emperor died, Qing forces entered the city.",
+      "confidence": "high"
+    },
+    {
+      "source": "fall-of-the-ming-dynasty",
+      "type": "ended",
+      "target": "ming-dynasty",
+      "why": "The fall of Beijing and suicide of the last Ming emperor ended Ming central rule.",
+      "confidence": "high"
+    },
+    {
+      "source": "qing-capture-of-beijing",
+      "type": "began",
+      "target": "qing-dynasty",
+      "why": "Capturing Beijing established the Qing Dynasty as the ruling dynasty of China.",
+      "confidence": "high"
+    },
+    {
+      "source": "boston-tea-party",
+      "type": "triggered",
+      "target": "intolerable-acts",
+      "why": "Parliament passed the Intolerable Acts specifically to punish Massachusetts for the Boston Tea Party.",
+      "confidence": "high"
+    },
+    {
+      "source": "intolerable-acts",
+      "type": "contributed_to",
+      "target": "battles-of-lexington-and-concord",
+      "why": "Colonial resistance to the Intolerable Acts led militias to stockpile arms, prompting British raids on Lexington and Concord.",
+      "confidence": "high"
+    },
+    {
+      "source": "battles-of-lexington-and-concord",
+      "type": "began",
+      "target": "american-revolution",
+      "why": "The clashes at Lexington and Concord opened the armed conflict of the American Revolutionary War.",
+      "confidence": "high"
+    },
+    {
+      "source": "execution-of-louis-xvi",
+      "type": "part_of",
+      "target": "french-revolution",
+      "why": "The trial and execution of King Louis XVI marked a radical turning point of the French Revolution.",
+      "confidence": "high"
+    },
+    {
+      "source": "execution-of-louis-xvi",
+      "type": "contributed_to",
+      "target": "reign-of-terror",
+      "why": "The king's execution widened foreign war and internal revolt, helping push the republic toward the Reign of Terror.",
+      "confidence": "high"
+    },
+    {
+      "source": "reign-of-terror",
+      "type": "part_of",
+      "target": "french-revolution",
+      "why": "The Reign of Terror was the most violent phase of the French Revolution.",
+      "confidence": "high"
+    },
+    {
+      "source": "coup-of-18-brumaire",
+      "type": "ended",
+      "target": "french-revolution",
+      "why": "Napoleon's overthrow of the Directory brought the French Revolution to an end.",
       "confidence": "high"
     }
   ]

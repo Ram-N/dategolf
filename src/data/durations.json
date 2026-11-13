@@ -748,6 +748,67 @@
     "approximate": true
   },
   {
+    "id": "golden-horde",
+    "name": "Golden Horde",
+    "startYear": 1242,
+    "endYear": 1502,
+    "description": "The northwestern khanate of the Mongol Empire, founded by Batu Khan on the Pontic-Caspian steppe, which exacted tribute from the Russian principalities and controlled steppe trade routes.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "For over two centuries, the Golden Horde's tribute system and yarlik patents reshaped Russian politics, inadvertently helping the princes of Moscow consolidate power as chief tax collectors. Its later fragmentation gave rise to the Crimean, Kazan and Astrakhan khanates."
+  },
+  {
+    "id": "mamluk-sultanate",
+    "name": "Mamluk Sultanate",
+    "startYear": 1250,
+    "endYear": 1517,
+    "description": "A medieval state ruling Egypt, the Levant and the Hejaz, governed by a military caste of manumitted slave-soldiers who overthrew the Ayyubids and halted Mongol expansion at Ain Jalut.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Middle East",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "By defeating the Mongols at Ain Jalut in 1260 and expelling the last Crusader strongholds from the Levant by 1291, the Mamluks preserved Egypt and Syria from conquest. Cairo flourished under Mamluk patronage as the foremost cultural and commercial hub of the Arab world until the Ottoman conquest."
+  },
+  {
+    "id": "ilkhanate",
+    "name": "Ilkhanate",
+    "startYear": 1256,
+    "endYear": 1335,
+    "description": "The southwestern division of the Mongol Empire, founded by Hulagu Khan and centered in Persia, which destroyed the Abbasid Caliphate in Baghdad and later converted to Islam under Ghazan Khan.",
+    "categories": [
+      "Politics",
+      "War",
+      "Culture"
+    ],
+    "region": "Middle East",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Initially devastating cities and irrigation works, the Ilkhanate later fostered a revival of Persian literature, historical writing and astronomy under scholars like Rashid al-Din and Nasir al-Din al-Tusi. Its integration into the Pax Mongolica linked Iranian artisans and merchants directly to Yuan China."
+  },
+  {
+    "id": "yuan-dynasty",
+    "name": "Yuan Dynasty",
+    "startYear": 1271,
+    "endYear": 1368,
+    "description": "The Mongol-led imperial dynasty of China proclaimed by Kublai Khan, which conquered the Southern Song to unify all of China under non-Han rule for the first time.",
+    "categories": [
+      "Politics",
+      "Culture"
+    ],
+    "region": "East Asia",
+    "importance": 7,
+    "kind": "empire",
+    "significance": "The Yuan unified China after centuries of division, made Dadu (modern Beijing) the imperial capital and expanded paper currency and Grand Canal transport. Open overland and maritime routes brought foreign merchants and travelers such as Marco Polo to China before rebellions ushered in the Ming."
+  },
+  {
     "id": "khalji-dynasty",
     "name": "Khalji Dynasty",
     "startYear": 1290,
@@ -804,6 +865,21 @@
     "kind": "empire"
   },
   {
+    "id": "hundred-years-war-period",
+    "name": "Hundred Years' War",
+    "startYear": 1337,
+    "endYear": 1453,
+    "description": "A series of intermittent conflicts between the kingdoms of England and France over English territorial claims in France and the French royal succession, spanning five generations.",
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 7,
+    "kind": "period",
+    "significance": "The prolonged conflict ended English territorial ambitions on the French mainland, strengthened royal taxation and standing armies on both sides, and fostered distinct French and English national identities. Battlefield innovations such as the English longbow and French siege artillery also transformed medieval warfare."
+  },
+  {
     "id": "black-death",
     "name": "The Black Death",
     "startYear": 1347,
@@ -829,6 +905,23 @@
     "importance": 8,
     "kind": "empire",
     "significance": "Restored native Han rule in China after Mongol domination, rebuilt the Great Wall and Grand Canal, and drew global silver into East Asia through porcelain and silk exports even after curbing state-sponsored ocean voyages."
+  },
+  {
+    "id": "kingdom-of-kongo",
+    "name": "Kingdom of Kongo",
+    "startYear": 1390,
+    "endYear": 1914,
+    "description": "A centralized West Central African kingdom centered at M'banza-Kongo in modern northern Angola and the Democratic Republic of the Congo, which established diplomatic and Catholic ties with Portugal.",
+    "categories": [
+      "Politics",
+      "Economy",
+      "Religion"
+    ],
+    "region": "Africa",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Under rulers like Afonso I, Kongo adopted Catholicism, literacy and diplomatic relations with Europe while initially attempting to regulate Portuguese trade. Over time, however, the transatlantic slave trade and succession wars undermined royal authority, leaving Kongo vulnerable to Portuguese colonial subjugation.",
+    "approximate": true
   },
   {
     "id": "italian-renaissance",
@@ -896,6 +989,21 @@
     "importance": 4,
     "kind": "empire",
     "significance": "Rebuilt sultanate control over Jaunpur and much of the Gangetic plain and founded Agra as a major imperial center, though friction between Sultan Ibrahim Lodi and Afghan nobles invited Babur's invasion."
+  },
+  {
+    "id": "songhai-empire",
+    "name": "Songhai Empire",
+    "startYear": 1464,
+    "endYear": 1591,
+    "description": "A West African empire centered at Gao along the Niger River bend that succeeded Mali as the dominant power in the Sahel, controlling Timbuktu, Djenne and trans-Saharan trade routes.",
+    "categories": [
+      "Politics",
+      "Economy"
+    ],
+    "region": "Africa",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Under Sonni Ali and Askia Muhammad, Songhai became the largest empire in West African history, administering provinces along the Niger and patronizing Islamic scholarship in Timbuktu. Its defeat by a firearm-equipped Moroccan army in 1591 fractured imperial rule across the western Sahel."
   },
   {
     "id": "age-of-exploration",
@@ -1004,6 +1112,22 @@
     "region": "East Asia",
     "importance": 6,
     "kind": "empire"
+  },
+  {
+    "id": "thirty-years-war-period",
+    "name": "Thirty Years' War",
+    "startYear": 1618,
+    "endYear": 1648,
+    "description": "A devastating European conflict fought mainly in the Holy Roman Empire, beginning as a religious struggle between Protestant and Catholic states and widening into a Habsburg-Bourbon power struggle.",
+    "categories": [
+      "War",
+      "Religion",
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 7,
+    "kind": "period",
+    "significance": "Famine, disease and warfare killed roughly a quarter to a third of the population in many German lands. The concluding Peace of Westphalia curbed Habsburg imperial authority, confirmed religious pluralism within the Holy Roman Empire, and is often, if loosely, credited with founding the modern system of sovereign states."
   },
   {
     "id": "reign-of-shah-jahan",
@@ -1173,6 +1297,20 @@
     "region": "Americas",
     "importance": 5,
     "kind": "period"
+  },
+  {
+    "id": "reign-of-terror",
+    "name": "Reign of Terror",
+    "startYear": 1793,
+    "endYear": 1794,
+    "description": "The most radical phase of the French Revolution, during which the Committee of Public Safety led by Maximilien Robespierre crushed internal rebellions and executed tens of thousands of suspected counterrevolutionaries.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "period",
+    "significance": "Through mass conscription, price controls and harsh repression, the revolutionary government defeated internal royalist revolts and repelled foreign invasion armies. However, escalating executions alienated lawmakers and the public, triggering the Thermidorian Reaction that overthrew Robespierre and paved the way for the more moderate Directory."
   },
   {
     "id": "sikh-empire",
