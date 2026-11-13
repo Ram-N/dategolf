@@ -212,6 +212,22 @@
     "significance": "Unified most of the Indian subcontinent under one centralized administration for the first time, and under Ashoka sent Buddhist missions beyond India, notably to Sri Lanka, helping Buddhism grow into a major Asian religion."
   },
   {
+    "id": "reign-of-ashoka",
+    "name": "Reign of Ashoka",
+    "startYear": -268,
+    "endYear": -232,
+    "description": "The rule of the third Mauryan emperor over almost all of the Indian subcontinent except the far south, marked by the Kalinga War, Ashoka's embrace of Buddhism and his empire-wide rock and pillar edicts promoting dhamma.",
+    "categories": [
+      "Politics",
+      "Religion"
+    ],
+    "region": "South Asia",
+    "importance": 7,
+    "kind": "period",
+    "significance": "Ashoka's rock and pillar edicts provide the earliest decipherable royal inscriptions in South Asia and articulated an ethic of nonviolence, religious tolerance and public welfare. By sending Buddhist envoys to Sri Lanka and, by his own account, to the Hellenistic kingdoms of the west, he helped transform Buddhism into a major world religion.",
+    "approximate": true
+  },
+  {
     "id": "punic-wars",
     "name": "Punic Wars",
     "startYear": -264,
@@ -1342,6 +1358,21 @@
     "significance": "Redrew European borders, dissolved the Holy Roman Empire, and spread the Napoleonic Code across the lands France conquered, while helping stir the German, Italian and Spanish nationalism that reshaped nineteenth-century politics."
   },
   {
+    "id": "war-of-the-third-coalition",
+    "name": "War of the Third Coalition",
+    "startYear": 1803,
+    "endYear": 1806,
+    "description": "The opening conflict of the Napoleonic Wars, pitting Napoleon's French Empire against Britain, Austria, Russia, Naples and Sweden across naval battles at Trafalgar and land campaigns at Ulm and Austerlitz.",
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "period",
+    "significance": "While Britain's naval victory at Trafalgar secured British mastery of the seas, Napoleon's decisive triumphs at Ulm and Austerlitz shattered the Third Coalition on land. The resulting Peace of Pressburg led directly to the dissolution of the thousand-year-old Holy Roman Empire in 1806."
+  },
+  {
     "id": "latin-american-independence",
     "name": "Latin American Wars of Independence",
     "startYear": 1808,
@@ -1434,6 +1465,22 @@
     "region": "Africa",
     "importance": 5,
     "kind": "period"
+  },
+  {
+    "id": "indian-nationalist-movement",
+    "name": "Indian Independence Movement",
+    "startYear": 1885,
+    "endYear": 1947,
+    "description": "The decades-long political, mass-mobilization and revolutionary struggle against British colonial rule in India, spanning early constitutional agitation, the Swadeshi campaign, Gandhian civil disobedience and final negotiations for independence.",
+    "categories": [
+      "Politics",
+      "Social"
+    ],
+    "region": "South Asia",
+    "importance": 8,
+    "kind": "period",
+    "significance": "Culminating in the end of the British Raj and the creation of India and Pakistan, the movement pioneered mass nonviolent civil disobedience as a political force. Its success inspired anticolonial movements across Asia and Africa and accelerated the postwar dismantling of European empires.",
+    "approximate": true
   },
   {
     "id": "construction-eiffel-tower",
@@ -1626,6 +1673,21 @@
     "region": "Americas",
     "importance": 5,
     "kind": "period"
+  },
+  {
+    "id": "cold-war",
+    "name": "Cold War",
+    "startYear": 1947,
+    "endYear": 1991,
+    "description": "The decades-long geopolitical, ideological and nuclear rivalry between the United States and its allies and the Soviet Union and its allies, waged through proxy wars, alliance blocs, espionage and arms and space races without direct superpower combat.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Global",
+    "importance": 8,
+    "kind": "period",
+    "significance": "The Cold War divided Europe with the Iron Curtain, drove nuclear deterrence and space exploration, and turned conflicts from Korea and Vietnam to Afghanistan and Central America into proxy wars. Its end left the United States as the sole superpower and reshaped international institutions worldwide."
   },
   {
     "id": "apartheid",

@@ -1212,13 +1212,6 @@
       "confidence": "high"
     },
     {
-      "source": "world-war-one",
-      "type": "preceded",
-      "target": "first-world-war-ends",
-      "why": "The First World War, from its outbreak to the armistice.",
-      "confidence": "high"
-    },
-    {
       "source": "first-world-war-ends",
       "type": "preceded",
       "target": "treaty-of-versailles",
@@ -1237,20 +1230,6 @@
       "type": "preceded",
       "target": "japanese-pearl-harbor",
       "why": "The Second World War: Pearl Harbor brought the United States into the war.",
-      "confidence": "high"
-    },
-    {
-      "source": "japanese-pearl-harbor",
-      "type": "preceded",
-      "target": "d-day-normandy",
-      "why": "The Second World War: the Allied invasion of western Europe.",
-      "confidence": "high"
-    },
-    {
-      "source": "d-day-normandy",
-      "type": "preceded",
-      "target": "atomic-bomb-hiroshima",
-      "why": "The Second World War's final year: Germany surrendered in May, and Hiroshima was bombed in August.",
       "confidence": "high"
     },
     {
@@ -2294,6 +2273,272 @@
       "type": "ended",
       "target": "french-revolution",
       "why": "Napoleon's overthrow of the Directory brought the French Revolution to an end.",
+      "confidence": "high"
+    },
+    {
+      "source": "ashoka-becomes-emperor",
+      "type": "began",
+      "target": "reign-of-ashoka",
+      "why": "Ashoka's accession to the Mauryan throne inaugurated his reign.",
+      "confidence": "high"
+    },
+    {
+      "source": "kalinga-war",
+      "type": "part_of",
+      "target": "reign-of-ashoka",
+      "why": "Ashoka's conquest of Kalinga was the major military campaign of his reign.",
+      "confidence": "high"
+    },
+    {
+      "source": "ashoka-converts-to-buddhism",
+      "type": "part_of",
+      "target": "reign-of-ashoka",
+      "why": "Ashoka embraced Buddhism during his reign and promoted dhamma across his empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "reign-of-ashoka",
+      "type": "part_of",
+      "target": "maurya-empire",
+      "why": "Ashoka's reign marked the territorial height of the Maurya Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "war-of-the-third-coalition",
+      "type": "part_of",
+      "target": "napoleonic-wars",
+      "why": "The War of the Third Coalition was the first major conflict of the Napoleonic Wars.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-trafalgar",
+      "type": "part_of",
+      "target": "war-of-the-third-coalition",
+      "why": "Nelson's naval victory over the Franco-Spanish fleet took place during the War of the Third Coalition.",
+      "confidence": "high"
+    },
+    {
+      "source": "opium-wars-china",
+      "type": "preceded",
+      "target": "treaty-of-nanking",
+      "why": "British naval victories in the First Opium War forced Qing officials to sign the Treaty of Nanking.",
+      "confidence": "high"
+    },
+    {
+      "source": "treaty-of-nanking",
+      "type": "part_of",
+      "target": "opium-wars",
+      "why": "The Treaty of Nanking concluded the first conflict of the Opium Wars and ceded Hong Kong Island.",
+      "confidence": "high"
+    },
+    {
+      "source": "treaty-of-nanking",
+      "type": "preceded",
+      "target": "hong-kong-handover",
+      "why": "Hong Kong Island, ceded to Britain by this treaty, was returned to China in 1997.",
+      "confidence": "high"
+    },
+    {
+      "source": "commodore-perry-arrives-in-japan",
+      "type": "contributed_to",
+      "target": "meiji-restoration-japan",
+      "why": "Perry's forced opening of Japan weakened the Tokugawa shogunate and helped spark the Meiji Restoration.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-fort-sumter",
+      "type": "began",
+      "target": "american-civil-war",
+      "why": "Confederate artillery fire on Fort Sumter opened the armed conflict of the American Civil War.",
+      "confidence": "high"
+    },
+    {
+      "source": "indian-national-congress-founded",
+      "type": "began",
+      "target": "indian-nationalist-movement",
+      "why": "The founding of the Indian National Congress launched organized nationalist politics in British India.",
+      "confidence": "high"
+    },
+    {
+      "source": "indian-independence-movement",
+      "type": "part_of",
+      "target": "indian-nationalist-movement",
+      "why": "The Gandhian mass-mobilization era formed the climactic phase of the broader independence movement.",
+      "confidence": "high"
+    },
+    {
+      "source": "indian-independence",
+      "type": "ended",
+      "target": "indian-nationalist-movement",
+      "why": "Britain's transfer of power in August 1947 concluded the Indian independence struggle.",
+      "confidence": "high"
+    },
+    {
+      "source": "assassination-of-archduke-franz-ferdinand",
+      "type": "triggered",
+      "target": "world-war-one",
+      "why": "The Sarajevo assassination set off the July Crisis that escalated into World War I.",
+      "confidence": "high"
+    },
+    {
+      "source": "gandhi-returns-to-india",
+      "type": "part_of",
+      "target": "indian-nationalist-movement",
+      "why": "Returning from South Africa, Gandhi entered Indian politics and soon led mass campaigns against British rule.",
+      "confidence": "high"
+    },
+    {
+      "source": "gandhi-returns-to-india",
+      "type": "preceded",
+      "target": "non-cooperation-movement",
+      "why": "After touring India and leading local satyagraha campaigns, Gandhi launched the nationwide Non-Cooperation Movement.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-the-somme",
+      "type": "part_of",
+      "target": "world-war-1",
+      "why": "The Somme offensive was one of the largest and bloodiest battles on the Western Front in World War I.",
+      "confidence": "high"
+    },
+    {
+      "source": "united-states-enters-world-war-i",
+      "type": "part_of",
+      "target": "world-war-1",
+      "why": "The United States joined the Allied powers in 1917 during the final phase of World War I.",
+      "confidence": "high"
+    },
+    {
+      "source": "united-states-enters-world-war-i",
+      "type": "contributed_to",
+      "target": "first-world-war-ends",
+      "why": "American troops, supplies and financing tipped the balance on the Western Front toward the 1918 Armistice.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-stalingrad",
+      "type": "part_of",
+      "target": "world-war-2",
+      "why": "Stalingrad was the decisive turning-point battle on the Eastern Front during World War II.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-midway",
+      "type": "part_of",
+      "target": "world-war-2",
+      "why": "Midway was the pivotal naval carrier battle of the Pacific theater in World War II.",
+      "confidence": "high"
+    },
+    {
+      "source": "cold-war-begins",
+      "type": "began",
+      "target": "cold-war",
+      "why": "Postwar US-Soviet confrontation over Europe and the Truman Doctrine launched the Cold War.",
+      "confidence": "high"
+    },
+    {
+      "source": "dissolution-soviet-union",
+      "type": "ended",
+      "target": "cold-war",
+      "why": "The collapse of the Soviet Union in 1991 ended the superpower Cold War rivalry.",
+      "confidence": "high"
+    },
+    {
+      "source": "korean-armistice-agreement",
+      "type": "ended",
+      "target": "korean-war",
+      "why": "The Panmunjom armistice halted active fighting in the Korean War and created the Demilitarized Zone.",
+      "confidence": "high"
+    },
+    {
+      "source": "us-civil-rights-march-selma",
+      "type": "contributed_to",
+      "target": "voting-rights-act-signed",
+      "why": "National outrage over violence against Selma voting-rights marchers spurred Congress to pass the Voting Rights Act.",
+      "confidence": "high"
+    },
+    {
+      "source": "voting-rights-act-signed",
+      "type": "part_of",
+      "target": "civil-rights-movement",
+      "why": "The Voting Rights Act was a landmark legislative achievement of the American Civil Rights Movement.",
+      "confidence": "high"
+    },
+    {
+      "source": "fall-of-saigon",
+      "type": "ended",
+      "target": "vietnam-war",
+      "why": "North Vietnam's capture of Saigon ended the Vietnam War and led to Vietnam's reunification.",
+      "confidence": "high"
+    },
+    {
+      "source": "coup-of-18-brumaire",
+      "type": "preceded",
+      "target": "napoleon-crowned-emperor",
+      "why": "Five years after seizing power as First Consul, Napoleon crowned himself emperor.",
+      "confidence": "high"
+    },
+    {
+      "source": "apollo-soyuz-test-project",
+      "type": "part_of",
+      "target": "cold-war",
+      "why": "The joint flight was a high point of detente during the Cold War.",
+      "confidence": "high"
+    },
+    {
+      "source": "world-war-one",
+      "type": "preceded",
+      "target": "battle-of-the-somme",
+      "why": "Two years into the war, Britain and France launched the Somme offensive.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-the-somme",
+      "type": "preceded",
+      "target": "united-states-enters-world-war-i",
+      "why": "The year after the Somme, the United States entered the war.",
+      "confidence": "high"
+    },
+    {
+      "source": "japanese-pearl-harbor",
+      "type": "preceded",
+      "target": "battle-of-midway",
+      "why": "Six months after Pearl Harbor, the US Navy sank four Japanese carriers at Midway.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-stalingrad",
+      "type": "preceded",
+      "target": "d-day-normandy",
+      "why": "After Stalingrad turned the Eastern Front, the Western Allies landed in Normandy.",
+      "confidence": "high"
+    },
+    {
+      "source": "d-day-normandy",
+      "type": "preceded",
+      "target": "germany-surrenders-ve-day",
+      "why": "Eleven months after D-Day, Germany surrendered.",
+      "confidence": "high"
+    },
+    {
+      "source": "world-war-two",
+      "type": "preceded",
+      "target": "germany-invades-soviet-union",
+      "why": "Two years into the war, Germany turned east and invaded the Soviet Union.",
+      "confidence": "high"
+    },
+    {
+      "source": "germany-invades-soviet-union",
+      "type": "preceded",
+      "target": "battle-of-stalingrad",
+      "why": "A year after invading the Soviet Union, Germany's summer offensive reached Stalingrad.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-midway",
+      "type": "preceded",
+      "target": "atomic-bomb-hiroshima",
+      "why": "After Midway, the United States fought its way across the Pacific toward Japan; three years later it bombed Hiroshima.",
       "confidence": "high"
     }
   ]

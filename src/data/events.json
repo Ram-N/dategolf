@@ -4409,6 +4409,24 @@
     "importance": 5
   },
   {
+    "id": "napoleon-crowned-emperor",
+    "name": "Napoleon Crowned Emperor",
+    "year": 1804,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Coronation of Napoleon",
+      "Napoleon I becomes Emperor of the French",
+      "Notre-Dame coronation of Napoleon"
+    ],
+    "description": "First Consul Napoleon Bonaparte is crowned Emperor of the French at Notre-Dame Cathedral in Paris in the presence of Pope Pius VII, replacing the French Consulate with the First French Empire.",
+    "difficulty": "easy",
+    "importance": 7,
+    "significance": "The coronation transformed revolutionary France into a hereditary empire and signaled that Napoleon intended to rule as an equal to Europe's established monarchs. Combined with his territorial reorganizations in Italy and Germany, it helped provoke Britain, Austria and Russia to form the Third Coalition."
+  },
+  {
     "id": "battle-of-trafalgar",
     "name": "Battle of Trafalgar",
     "year": 1805,
@@ -4646,6 +4664,26 @@
     "importance": 3
   },
   {
+    "id": "treaty-of-nanking",
+    "name": "Treaty of Nanking",
+    "year": 1842,
+    "categories": [
+      "Politics",
+      "War",
+      "Economy"
+    ],
+    "region": "East Asia",
+    "aliases": [
+      "Treaty of Nanjing",
+      "First Opium War ends",
+      "Cession of Hong Kong to Britain"
+    ],
+    "description": "Qing and British representatives sign a peace treaty aboard HMS Cornwallis at Nanjing, ending the First Opium War, opening five Chinese treaty ports to foreign trade, imposing a silver indemnity and ceding Hong Kong Island to Britain.",
+    "difficulty": "medium",
+    "importance": 7,
+    "significance": "Known in China as the first of the unequal treaties, the agreement dismantled the Canton trade system and, with a supplementary treaty the next year, eroded Qing tariff and judicial sovereignty, and established Hong Kong as a British crown colony until its handover to China in 1997."
+  },
+  {
     "id": "first-use-of-anesthesia",
     "name": "Horace Wells Pioneers Anesthesia with Nitrous Oxide",
     "year": 1844,
@@ -4708,6 +4746,25 @@
     "description": "Russia goes to war with the Ottoman Empire over influence in the Holy Land and access to the Black Sea, drawing in Britain, France, and Sardinia on the Ottoman side in the first major European conflict since the Napoleonic Wars. The Crimean War becomes notable for the nursing reforms of Florence Nightingale, which lay the foundations of modern professional nursing, and for the catastrophic Charge of the Light Brigade, immortalized by Tennyson. The war ends Russian expansion toward the Mediterranean and marks the beginning of modern military logistics, journalism, and battlefield medicine.",
     "difficulty": "medium",
     "importance": 6
+  },
+  {
+    "id": "commodore-perry-arrives-in-japan",
+    "name": "Commodore Perry Arrives in Japan",
+    "year": 1853,
+    "categories": [
+      "Politics",
+      "Exploration"
+    ],
+    "region": "East Asia",
+    "aliases": [
+      "Perry Expedition",
+      "Black Ships arrive in Edo Bay",
+      "Opening of Japan"
+    ],
+    "description": "United States Navy Commodore Matthew Perry steams into Edo Bay with four armed warships, delivering a letter from President Millard Fillmore demanding that the Tokugawa shogunate open Japanese ports to American trade and diplomacy.",
+    "difficulty": "easy",
+    "importance": 7,
+    "significance": "Perry's gunboat diplomacy forced the Tokugawa shogunate to sign the Convention of Kanagawa and unequal commercial treaties with Western powers. The resulting political crisis discredited the shogunate among samurai reformers and helped set off the Meiji Restoration."
   },
   {
     "id": "opium-war-second",
@@ -4833,6 +4890,25 @@
     "difficulty": "easy",
     "importance": 5,
     "significance": "Preserved the United States as a single nation, strengthened federal authority over individual states, and accelerated Northern industrialization while leaving deep regional divisions and unresolved struggles over racial equality."
+  },
+  {
+    "id": "battle-of-fort-sumter",
+    "name": "Battle of Fort Sumter",
+    "year": 1861,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "North America",
+    "aliases": [
+      "Bombardment of Fort Sumter",
+      "Attack on Fort Sumter",
+      "First shots of the American Civil War"
+    ],
+    "description": "Confederate artillery under General P. G. T. Beauregard bombards the federal garrison at Fort Sumter in Charleston Harbor, South Carolina, forcing Major Robert Anderson to surrender the fort after thirty-four hours of shelling.",
+    "difficulty": "easy",
+    "importance": 7,
+    "significance": "The bombardment turned the secession crisis into open warfare, opening the American Civil War. President Abraham Lincoln immediately called for seventy-five thousand state militia volunteers to suppress the rebellion, prompting Virginia, Arkansas, Tennessee and North Carolina to secede and join the Confederacy."
   },
   {
     "id": "emancipation-proclamation",
@@ -5650,6 +5726,60 @@
     "importance": 4
   },
   {
+    "id": "assassination-of-archduke-franz-ferdinand",
+    "name": "Assassination of Archduke Franz Ferdinand",
+    "year": 1914,
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Sarajevo assassination",
+      "Gavrilo Princip assassinates Franz Ferdinand",
+      "Murder of Archduke Franz Ferdinand"
+    ],
+    "description": "Bosnian Serb nationalist Gavrilo Princip shoots and kills Archduke Franz Ferdinand, heir to the Austro-Hungarian throne, and his wife Sophie during an official visit to Sarajevo in Bosnia and Herzegovina.",
+    "difficulty": "easy",
+    "importance": 8,
+    "significance": "The killings set off the July Crisis, during which Austria-Hungary issued an ultimatum to Serbia and declared war a month later. Europe's interlocking alliance systems rapidly drew Germany, Russia, France and Britain into the First World War."
+  },
+  {
+    "id": "gandhi-returns-to-india",
+    "name": "Gandhi Returns to India",
+    "year": 1915,
+    "categories": [
+      "Politics",
+      "Social"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Mahatma Gandhi returns from South Africa",
+      "Gandhi arrives at Apollo Bunder"
+    ],
+    "description": "Mohandas Karamchand Gandhi returns permanently to Bombay after more than two decades practicing law and leading civil rights campaigns in South Africa, touring British India on the advice of Gopal Krishna Gokhale to study conditions firsthand.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Gandhi brought his method of nonviolent mass resistance, satyagraha, from South Africa into Indian nationalist politics. Through early local campaigns in Champaran and Kheda, he forged direct ties with peasants and workers and soon emerged as the central leader of the independence movement."
+  },
+  {
+    "id": "battle-of-the-somme",
+    "name": "Battle of the Somme",
+    "year": 1916,
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Somme offensive",
+      "First Battle of the Somme"
+    ],
+    "description": "British and French armies launch a massive joint offensive against fortified German trenches along the Somme River in northern France, suffering staggering casualties on the opening day and grinding forward for four months.",
+    "difficulty": "easy",
+    "importance": 6,
+    "significance": "Although Allied forces gained only about six miles of territory, the offensive relieved German pressure on the French army at Verdun and severely depleted experienced German infantry units. The Somme also saw the first battlefield deployment of tanks and became a lasting symbol of industrial trench warfare's human cost."
+  },
+  {
     "id": "russian-revolution",
     "name": "Russian Revolution",
     "year": 1917,
@@ -5668,6 +5798,24 @@
     "difficulty": "easy",
     "importance": 5,
     "significance": "Overthrew the Romanov autocracy and brought the Bolsheviks to power, creating the world's first socialist state and launching a global ideological struggle between communism and capitalism that shaped the twentieth century."
+  },
+  {
+    "id": "united-states-enters-world-war-i",
+    "name": "United States Enters World War I",
+    "year": 1917,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Global",
+    "aliases": [
+      "US declares war on Germany",
+      "American entry into World War I"
+    ],
+    "description": "Following Germany's resumption of unrestricted submarine warfare and the interception of the Zimmermann Telegram proposing a German-Mexican alliance, the United States Congress declares war on Germany at President Woodrow Wilson's request.",
+    "difficulty": "easy",
+    "importance": 7,
+    "significance": "American entry supplied the exhausted Allied powers with vital credit, munitions, naval escorts and eventually two million fresh troops in France, helping turn the tide against Germany in 1918. It also positioned President Woodrow Wilson to shape the postwar Versailles settlement and the League of Nations."
   },
   {
     "id": "first-world-war-ends",
@@ -6220,6 +6368,40 @@
     "importance": 5
   },
   {
+    "id": "battle-of-midway",
+    "name": "Battle of Midway",
+    "year": 1942,
+    "categories": [
+      "War"
+    ],
+    "region": "Oceania",
+    "aliases": [
+      "Midway naval battle",
+      "US Navy defeats Japan at Midway"
+    ],
+    "description": "United States Navy carrier forces, forewarned by naval codebreakers of an impending Japanese ambush, sink four Imperial Japanese fleet carriers and a heavy cruiser near Midway Atoll in the central Pacific.",
+    "difficulty": "easy",
+    "importance": 7,
+    "significance": "Midway crippled Japan's offensive naval air power, permanently shifting the strategic balance in the Pacific War. Unable to replace its lost fleet carriers and veteran aircrews at the pace of American industrial production, Japan was forced onto the defensive for the remainder of the war."
+  },
+  {
+    "id": "battle-of-stalingrad",
+    "name": "Battle of Stalingrad",
+    "year": 1942,
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Siege of Stalingrad",
+      "Soviet victory at Stalingrad"
+    ],
+    "description": "German and Axis forces assault the industrial city of Stalingrad on the Volga River, becoming locked in brutal close-quarters urban combat before the Soviet Red Army launches Operation Uranus to encircle and destroy the German Sixth Army.",
+    "difficulty": "easy",
+    "importance": 8,
+    "significance": "Stalingrad is widely seen as the turning point of the war in Europe: it destroyed an entire German field army and ended Germany's drive toward the Caucasus oilfields. After the Soviet victory at Kursk that summer, the Red Army held the initiative all the way to Berlin."
+  },
+  {
     "id": "d-day-normandy",
     "name": "D-Day Normandy Landings",
     "year": 1944,
@@ -6334,6 +6516,25 @@
     "description": "Emperor Hirohito announces Japan's unconditional surrender following the atomic bombings and Soviet declaration of war, ending World War Two in the Pacific. The surrender ceremony aboard the USS Missouri in Tokyo Bay marks the beginning of the American occupation that transforms Japan into a democratic nation.",
     "difficulty": "easy",
     "importance": 5
+  },
+  {
+    "id": "germany-surrenders-ve-day",
+    "name": "Germany Surrenders (V-E Day)",
+    "year": 1945,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Victory in Europe Day",
+      "V-E Day",
+      "Unconditional surrender of Nazi Germany"
+    ],
+    "description": "Following Adolf Hitler's suicide and the Soviet capture of Berlin, German military leaders sign instruments of unconditional surrender at Reims and Berlin, ending World War II in Europe.",
+    "difficulty": "easy",
+    "importance": 8,
+    "significance": "Germany's surrender ended nearly six years of war in Europe, liberated Nazi-occupied nations and halted the Holocaust. Allied armies divided Germany and Austria into occupation zones, setting the geopolitical boundary across central Europe that soon hardened into the Cold War."
   },
   {
     "id": "indonesia-proclaims-independence",
@@ -6658,6 +6859,25 @@
     "description": "New Zealander Edmund Hillary and Nepali Sherpa Tenzing Norgay become the first people confirmed to stand on the summit of Mount Everest, the world's highest peak at 8,849 meters, on May 29. The achievement, announced to the world on the morning of Queen Elizabeth II's coronation, is celebrated across the British Commonwealth as a triumph of human endurance and teamwork. The ascent transforms mountaineering from an elite pursuit into a global aspiration and makes Everest a symbol of the limits of human ambition.",
     "difficulty": "easy",
     "importance": 6
+  },
+  {
+    "id": "korean-armistice-agreement",
+    "name": "Korean Armistice Agreement",
+    "year": 1953,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "East Asia",
+    "aliases": [
+      "Panmunjom armistice",
+      "Korean War ceasefire",
+      "Korean Demilitarized Zone established"
+    ],
+    "description": "Representatives of the United Nations Command, North Korea and China sign an armistice at Panmunjom, halting three years of fighting in the Korean War and establishing the Korean Demilitarized Zone near the thirty-eighth parallel.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "The armistice ended active combat in a war that had killed roughly three million people, while leaving the Korean Peninsula divided along a heavily fortified border. Because no formal peace treaty followed, the Demilitarized Zone remained a permanent Cold War flashpoint."
   },
   {
     "id": "vietnam-partition",
@@ -7237,6 +7457,25 @@
     "importance": 4
   },
   {
+    "id": "voting-rights-act-signed",
+    "name": "Voting Rights Act Signed",
+    "year": 1965,
+    "categories": [
+      "Politics",
+      "Social"
+    ],
+    "region": "North America",
+    "aliases": [
+      "Voting Rights Act signed into law",
+      "Lyndon Johnson signs Voting Rights Act",
+      "Federal voting protections enacted"
+    ],
+    "description": "President Lyndon B. Johnson signs landmark federal civil rights legislation outlawing literacy tests and other discriminatory barriers that disenfranchised African American voters, while authorizing federal oversight of voter registration in jurisdictions with histories of discrimination.",
+    "difficulty": "easy",
+    "importance": 7,
+    "significance": "Within months, federal examiners registered hundreds of thousands of Black voters across the American South, dismantling Jim Crow disenfranchisement in practice. The surge in Black voter registration transformed Southern politics and led to the election of thousands of African American local, state and federal officials."
+  },
+  {
     "id": "chinese-cultural-revolution",
     "name": "Chinese Cultural Revolution Begins",
     "year": 1966,
@@ -7397,6 +7636,26 @@
     "importance": 4
   },
   {
+    "id": "apollo-soyuz-test-project",
+    "name": "Apollo-Soyuz Test Project",
+    "year": 1975,
+    "categories": [
+      "Science",
+      "Technology",
+      "Politics"
+    ],
+    "region": "Global",
+    "aliases": [
+      "Apollo-Soyuz docking",
+      "First joint US-Soviet spaceflight",
+      "Handshake in space"
+    ],
+    "description": "An American Apollo spacecraft and a Soviet Soyuz capsule dock in Earth orbit, allowing astronauts Thomas Stafford, Vance Brand and Deke Slayton to shake hands and conduct joint experiments with cosmonauts Alexei Leonov and Valeri Kubasov.",
+    "difficulty": "medium",
+    "importance": 5,
+    "significance": "As the first international crewed spaceflight, the mission symbolized Cold War detente and is often taken as the symbolic end of the US-Soviet Space Race. Its compatible docking system and joint operational procedures laid technical foundations for later cooperation aboard Mir and the International Space Station."
+  },
+  {
     "id": "assassination-of-sheikh-mujib",
     "name": "Assassination of Sheikh Mujibur Rahman",
     "year": 1975,
@@ -7412,6 +7671,25 @@
     "description": "Sheikh Mujibur Rahman, the founding leader of Bangladesh, is assassinated with most of his family in a military coup in Dhaka. Two of his daughters survive because they are abroad, one of them Sheikh Hasina, who later becomes prime minister.",
     "difficulty": "medium",
     "importance": 4
+  },
+  {
+    "id": "fall-of-saigon",
+    "name": "Fall of Saigon",
+    "year": 1975,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Southeast Asia",
+    "aliases": [
+      "Capture of Saigon",
+      "Liberation of Saigon",
+      "End of the Vietnam War"
+    ],
+    "description": "North Vietnamese and Viet Cong forces capture Saigon, the capital of South Vietnam, as American helicopters complete the emergency evacuation of remaining US personnel and thousands of South Vietnamese allies from the city.",
+    "difficulty": "easy",
+    "importance": 7,
+    "significance": "Saigon's capture ended the Vietnam War and led to the formal reunification of Vietnam under communist rule in 1976. The conflict left millions of Vietnamese dead, triggered a massive refugee exodus across Southeast Asia and reshaped American foreign policy and public trust for decades."
   },
   {
     "id": "death-of-mao",

@@ -1,0 +1,10 @@
+{"origin": "claude",
+ "about": "WWII as two chains, one per theatre (agreed with Ram 2026-11-13).",
+ "links": [
+  {"source": "world-war-two", "type": "preceded", "target": "germany-invades-soviet-union", "confidence": "high",
+   "why": "Two years into the war, Germany turned east and invaded the Soviet Union."},
+  {"source": "germany-invades-soviet-union", "type": "preceded", "target": "battle-of-stalingrad", "confidence": "high",
+   "why": "A year after invading the Soviet Union, Germany's summer offensive reached Stalingrad."},
+  {"source": "battle-of-midway", "type": "preceded", "target": "atomic-bomb-hiroshima", "confidence": "high",
+   "why": "After Midway, the United States fought its way across the Pacific toward Japan; three years later it bombed Hiroshima."}
+ ]}

@@ -25,31 +25,31 @@
 | error | Link stored as 'followed' (should be stored as the inverse 'preceded') | pass |
 | error | Contradictory links (A→B and B→A of the same one-way type) | pass |
 | error | Symmetric link not stored in id order | pass |
-| warning | Link touches a proposed (unpublished) entity | 38 |
+| warning | Link touches a proposed (unpublished) entity | pass |
 | warning | Time spans with the same normalised name | pass |
 | warning | Event names that differ only in case or spacing | pass |
 | warning | Event with no aliases (search falls back to name only) | pass |
 | warning | Imported entity with no import record (provenance lost) | pass |
 | review | Event + time span share one ID (identity decision needed) | pass |
 | review | Legacy CSV rows with no accepted match and no triage outcome | pass |
-| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | 15 |
+| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | pass |
 | review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 39 |
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 3 |
 | warning | Approximate event with no range (set-event-date --display): students see "c." with nothing to explain it | pass |
 | warning | Event with a range but not marked approximate (the range is then not exported) | pass |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 3 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 38 |
-| review | Missing events and spans to decide (dashboard Review → Missing) | 8 |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
+| review | Missing events and spans to decide (dashboard Review → Missing) | 10 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
-| review | Country tags awaiting review (manage.py approve-countries) | 19 |
+| review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
 | warning | Description mentions a year near the answer (DatePick shows it before the guess) | pass |
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
 | warning | No tagged country fits the event's region lane (fix the tags, add an actor, or accept it) | pass |
 | info | Accepted region exceptions (region deliberately differs from location) | 3 |
 | warning | 'preceded' link between spans that overlap by over 25 years (a succession the bars contradict) | pass |
-| warning | 'preceded' link that skips a step (A→C while A→B→C exists): remove it | 3 |
+| warning | 'preceded' link that skips a step (A→C while A→B→…→C exists): remove it | pass |
 | warning | Link runs backwards in time (cause or sequence after its target) | pass |
 | warning | part_of link outside the target's years | pass |
 | warning | began / ended link not at the start / end of its target | pass |
@@ -66,67 +66,8 @@
 - milestones: 16
 - daily_challenge_dates: 366
 - csv_rows: 310
-- significance_reviewed: 138
-- significance_proposed: 19
-
-## [warning] Link touches a proposed (unpublished) entity
-
-- `376` — apollo-soyuz-test-project part_of cold-war
-- `346` — ashoka-becomes-emperor began reign-of-ashoka
-- `348` — ashoka-converts-to-buddhism part_of reign-of-ashoka
-- `360` — assassination-of-archduke-franz-ferdinand triggered world-war-one
-- `356` — battle-of-fort-sumter began american-civil-war
-- `367` — battle-of-midway part_of world-war-2
-- `380` — battle-of-midway preceded battle-of-stalingrad
-- `366` — battle-of-stalingrad part_of world-war-2
-- `381` — battle-of-stalingrad preceded d-day-normandy
-- `363` — battle-of-the-somme part_of world-war-1
-- `378` — battle-of-the-somme preceded united-states-enters-world-war-i
-- `351` — battle-of-trafalgar part_of war-of-the-third-coalition
-- `369` — cold-war-begins began cold-war
-- `355` — commodore-perry-arrives-in-japan contributed_to meiji-restoration-japan
-- `375` — coup-of-18-brumaire preceded napoleon-crowned-emperor
-- `382` — d-day-normandy preceded germany-surrenders-ve-day
-- `370` — dissolution-soviet-union ended cold-war
-- `374` — fall-of-saigon ended vietnam-war
-- `361` — gandhi-returns-to-india part_of indian-nationalist-movement
-- `362` — gandhi-returns-to-india preceded non-cooperation-movement
-- `368` — germany-surrenders-ve-day part_of world-war-2
-- `383` — germany-surrenders-ve-day preceded atomic-bomb-hiroshima
-- `359` — indian-independence ended indian-nationalist-movement
-- `358` — indian-independence-movement part_of indian-nationalist-movement
-- `357` — indian-national-congress-founded began indian-nationalist-movement
-- `379` — japanese-pearl-harbor preceded battle-of-midway
-- `347` — kalinga-war part_of reign-of-ashoka
-- `371` — korean-armistice-agreement ended korean-war
-- `352` — opium-wars-china preceded treaty-of-nanking
-- `349` — reign-of-ashoka part_of maurya-empire
-- `353` — treaty-of-nanking part_of opium-wars
-- `354` — treaty-of-nanking preceded hong-kong-handover
-- `365` — united-states-enters-world-war-i contributed_to first-world-war-ends
-- `364` — united-states-enters-world-war-i part_of world-war-1
-- `372` — us-civil-rights-march-selma contributed_to voting-rights-act-signed
-- `373` — voting-rights-act-signed part_of civil-rights-movement
-- `350` — war-of-the-third-coalition part_of napoleonic-wars
-- `377` — world-war-one preceded battle-of-the-somme
-
-## [review] Proposed events awaiting approval (not exported; manage.py approve <id>)
-
-- `napoleon-crowned-emperor` — 1804 · Napoleon Crowned Emperor — 2 December 1804. Note: Napoleon placed the crown on his own head after Pius VII anointed him, though accounts of whether he took the crown from the pope's hands vary slightly.
-- `treaty-of-nanking` — 1842 · Treaty of Nanking — 29 August 1842. [Claude at review: Extraterritoriality came in the 1843 supplementary treaty (Bogue), not Nanking itself.]
-- `commodore-perry-arrives-in-japan` — 1853 · Commodore Perry Arrives in Japan — 8 July 1853 (first arrival at Uraga; Perry returned in February 1854 to sign the Convention of Kanagawa). Note that Japan maintained limited trade with the Dutch and Chinese at Nagasaki during sakoku, so avoid saying Japan was completely sealed off.
-- `battle-of-fort-sumter` — 1861 · Battle of Fort Sumter — 12–13 April 1861. No soldiers were killed during the bombardment itself, though two Union soldiers died during the surrender salute.
-- `assassination-of-archduke-franz-ferdinand` — 1914 · Assassination of Archduke Franz Ferdinand — 28 June 1914.
-- `gandhi-returns-to-india` — 1915 · Gandhi Returns to India — 9 January 1915 (commemorated in India as Pravasi Bharatiya Divas).
-- `battle-of-the-somme` — 1916 · Battle of the Somme — 1 July to 18 November 1916. Total casualties exceeded one million across all sides, including about 57,470 British casualties on 1 July alone. Tanks were used in combat for the first time during the battle in September 1916.
-- `united-states-enters-world-war-i` — 1917 · United States Enters World War I — 6 April 1917 (declared war on Austria-Hungary on 7 December 1917). [Claude at review: US troops played a modest part in stopping the spring offensives; their weight told later in 1918.]
-- `battle-of-stalingrad` — 1942 · Battle of Stalingrad — 23 August 1942 to 2 February 1943 (filed under 1942 as specified in the gap list). Total military and civilian casualties are estimated at around two million. [Claude at review: Germany counterattacked in early 1943 (Kharkov); the initiative passed for good after Kursk, July 1943.]
-- `battle-of-midway` — 1942 · Battle of Midway — 4–7 June 1942. The US lost the carrier USS Yorktown, while Japan lost Akagi, Kaga, Soryu and Hiryu.
-- `germany-surrenders-ve-day` — 1945 · Germany Surrenders (V-E Day) — Act of surrender signed at Reims on 7 May 1945 and ratified in Berlin late on 8 May (early 9 May Moscow time, hence Victory Day on 9 May in Russia).
-- `korean-armistice-agreement` — 1953 · Korean Armistice Agreement — 27 July 1953. South Korea's Syngman Rhee refused to sign the agreement, and no formal peace treaty was ever concluded, leaving the two Koreas technically at war.
-- `voting-rights-act-signed` — 1965 · Voting Rights Act Signed — 6 August 1965.
-- `apollo-soyuz-test-project` — 1975 · Apollo-Soyuz Test Project — Docking occurred on 17 July 1975 (mission ran 15–24 July 1975). Many historians treat it as the symbolic end of the Cold War Space Race. [Claude at review: A common reading, not a fact: our Space Race span ends with the Moon landing in 1969.]
-- `fall-of-saigon` — 1975 · Fall of Saigon — 30 April 1975. The city was renamed Ho Chi Minh City.
+- significance_reviewed: 157
+- significance_proposed: 0
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 
@@ -182,47 +123,6 @@
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
 
-## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
-
-- `346` — ashoka-becomes-emperor began reign-of-ashoka — Ashoka's accession to the Mauryan throne inaugurated his reign.
-- `347` — kalinga-war part_of reign-of-ashoka — Ashoka's conquest of Kalinga was the major military campaign of his reign.
-- `348` — ashoka-converts-to-buddhism part_of reign-of-ashoka — Ashoka embraced Buddhism during his reign and promoted dhamma across his empire.
-- `349` — reign-of-ashoka part_of maurya-empire — Ashoka's reign marked the territorial height of the Maurya Empire.
-- `350` — war-of-the-third-coalition part_of napoleonic-wars — The War of the Third Coalition was the first major conflict of the Napoleonic Wars.
-- `351` — battle-of-trafalgar part_of war-of-the-third-coalition — Nelson's naval victory over the Franco-Spanish fleet took place during the War of the Third Coalition.
-- `352` — opium-wars-china preceded treaty-of-nanking — British naval victories in the First Opium War forced Qing officials to sign the Treaty of Nanking.
-- `353` — treaty-of-nanking part_of opium-wars — The Treaty of Nanking concluded the first conflict of the Opium Wars and ceded Hong Kong Island.
-- `354` — treaty-of-nanking preceded hong-kong-handover — Hong Kong Island, ceded to Britain by this treaty, was returned to China in 1997.
-- `355` — commodore-perry-arrives-in-japan contributed_to meiji-restoration-japan — Perry's forced opening of Japan weakened the Tokugawa shogunate and helped spark the Meiji Restoration.
-- `356` — battle-of-fort-sumter began american-civil-war — Confederate artillery fire on Fort Sumter opened the armed conflict of the American Civil War.
-- `357` — indian-national-congress-founded began indian-nationalist-movement — The founding of the Indian National Congress launched organized nationalist politics in British India.
-- `358` — indian-independence-movement part_of indian-nationalist-movement — The Gandhian mass-mobilization era formed the climactic phase of the broader independence movement.
-- `359` — indian-independence ended indian-nationalist-movement — Britain's transfer of power in August 1947 concluded the Indian independence struggle.
-- `360` — assassination-of-archduke-franz-ferdinand triggered world-war-one — The Sarajevo assassination set off the July Crisis that escalated into World War I.
-- `361` — gandhi-returns-to-india part_of indian-nationalist-movement — Returning from South Africa, Gandhi entered Indian politics and soon led mass campaigns against British rule.
-- `362` — gandhi-returns-to-india preceded non-cooperation-movement — After touring India and leading local satyagraha campaigns, Gandhi launched the nationwide Non-Cooperation Movement.
-- `363` — battle-of-the-somme part_of world-war-1 — The Somme offensive was one of the largest and bloodiest battles on the Western Front in World War I.
-- `364` — united-states-enters-world-war-i part_of world-war-1 — The United States joined the Allied powers in 1917 during the final phase of World War I.
-- `365` — united-states-enters-world-war-i contributed_to first-world-war-ends — American troops, supplies and financing tipped the balance on the Western Front toward the 1918 Armistice.
-- `366` — battle-of-stalingrad part_of world-war-2 — Stalingrad was the decisive turning-point battle on the Eastern Front during World War II.
-- `367` — battle-of-midway part_of world-war-2 — Midway was the pivotal naval carrier battle of the Pacific theater in World War II.
-- `368` — germany-surrenders-ve-day part_of world-war-2 — Nazi Germany's unconditional surrender ended the European theater of World War II.
-- `369` — cold-war-begins began cold-war — Postwar US-Soviet confrontation over Europe and the Truman Doctrine launched the Cold War.
-- `370` — dissolution-soviet-union ended cold-war — The collapse of the Soviet Union in 1991 ended the superpower Cold War rivalry.
-- `371` — korean-armistice-agreement ended korean-war — The Panmunjom armistice halted active fighting in the Korean War and created the Demilitarized Zone.
-- `372` — us-civil-rights-march-selma contributed_to voting-rights-act-signed — National outrage over violence against Selma voting-rights marchers spurred Congress to pass the Voting Rights Act.
-- `373` — voting-rights-act-signed part_of civil-rights-movement — The Voting Rights Act was a landmark legislative achievement of the American Civil Rights Movement.
-- `374` — fall-of-saigon ended vietnam-war — North Vietnam's capture of Saigon ended the Vietnam War and led to Vietnam's reunification.
-- `375` — coup-of-18-brumaire preceded napoleon-crowned-emperor — Five years after seizing power as First Consul, Napoleon crowned himself emperor.
-- `376` — apollo-soyuz-test-project part_of cold-war — The joint flight was a high point of detente during the Cold War.
-- `377` — world-war-one preceded battle-of-the-somme — Two years into the war, Britain and France launched the Somme offensive.
-- `378` — battle-of-the-somme preceded united-states-enters-world-war-i — The year after the Somme, the United States entered the war.
-- `379` — japanese-pearl-harbor preceded battle-of-midway — Six months after Pearl Harbor, the US Navy sank four Japanese carriers at Midway.
-- `380` — battle-of-midway preceded battle-of-stalingrad — Weeks after Midway, Germany began its assault on Stalingrad.
-- `381` — battle-of-stalingrad preceded d-day-normandy — After Stalingrad turned the Eastern Front, the Western Allies landed in Normandy.
-- `382` — d-day-normandy preceded germany-surrenders-ve-day — Eleven months after D-Day, Germany surrendered.
-- `383` — germany-surrenders-ve-day preceded atomic-bomb-hiroshima — Three months after Germany's surrender, the United States dropped an atomic bomb on Hiroshima.
-
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 
 - `81` — event · Ezana of Aksum Adopts Christianity (330) · wanted
@@ -231,30 +131,10 @@
 - `85` — event · Mongols Sack Kyiv (1240) · wanted
 - `86` — span · Mutapa Empire (1430) · wanted
 - `84` — event · Ayutthaya Sacks Angkor (1431) · wanted
+- `89` — span · European Theatre of World War II (1939) · wanted
+- `90` — span · Pacific War (1941) · wanted
 - `87` — event · Portuguese Reach the Kingdom of Kongo (1483) · open
 - `88` — event · Afonso I Becomes King of Kongo (1509) · open
-
-## [review] Country tags awaiting review (manage.py approve-countries)
-
-- `apollo-soyuz-test-project` — high
-- `assassination-of-archduke-franz-ferdinand` — high
-- `battle-of-fort-sumter` — high
-- `battle-of-midway` — high
-- `battle-of-stalingrad` — high
-- `battle-of-the-somme` — high
-- `cold-war` — high
-- `commodore-perry-arrives-in-japan` — high
-- `fall-of-saigon` — high
-- `gandhi-returns-to-india` — high
-- `germany-surrenders-ve-day` — high
-- `indian-nationalist-movement` — high
-- `korean-armistice-agreement` — high
-- `napoleon-crowned-emperor` — high
-- `reign-of-ashoka` — high
-- `treaty-of-nanking` — high
-- `united-states-enters-world-war-i` — high
-- `voting-rights-act-signed` — high
-- `war-of-the-third-coalition` — high
 
 ## [info] Region labels in use, with their DateFlow lane
 
@@ -276,12 +156,6 @@
 - `babur-ruler-of-ferghana` — Happened in Ferghana (Central Asia), but filed under South Asia: Babur's story is the Mughal one.
 - `colonial-africa-berlin` — Held in Berlin, but filed under Africa: it is about the partition of Africa.
 - `nato-founded` — Signed in Washington, but filed under Europe: a mainly European alliance.
-
-## [warning] 'preceded' link that skips a step (A→C while A→B→C exists): remove it
-
-- `194` — d-day-normandy → atomic-bomb-hiroshima skips germany-surrenders-ve-day
-- `193` — japanese-pearl-harbor → d-day-normandy skips battle-of-midway
-- `189` — world-war-one → first-world-war-ends skips battle-of-the-somme
 
 ## [info] Counts changed since the legacy import
 

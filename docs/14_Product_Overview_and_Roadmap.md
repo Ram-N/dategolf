@@ -37,14 +37,14 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 
 | | Count | Notes |
 |---|---:|---|
-| Events | **459** | 3500 BCE – 2023; 31 approximate (with ranges), 3 DateFlow-only |
-| Spans | **134** | 57 empires, 77 periods (plus 5 eras) |
-| Links | **320**, all reviewed | 116 part_of · 53 preceded · 49 began · 41 ended · 31 contributed_to · 13 enabled · 7 triggered · 6 influenced · 4 opposed (22 medium confidence = "debated") |
+| Events | **474** | 3500 BCE – 2023; 31 approximate (with ranges), 3 DateFlow-only |
+| Spans | **138** | 57 empires, 81 periods (plus 5 eras) |
+| Links | **355**, all reviewed | 130 part_of · 62 preceded · 53 began · 45 ended · 34 contributed_to · 13 enabled · 8 triggered · 6 influenced · 4 opposed (22 medium confidence = "debated") |
 | Sources | **58** reviewed | 57 from the CSV, plus Apartheid. **460 more are drafted, not loaded** (`data/drafts/sources_batch1.json`) |
 | Country tags | 100 countries | Location and actor roles; the dashboard Map |
-| Significance ("Why it matters") | **138 reviewed** | doc 17: `entity_significance`, reviewed before export. Every importance 7+ item has one (4 Gemini batches, pre-sorted by Claude), plus 2 seeds |
+| Significance ("Why it matters") | **157 reviewed** | doc 17: `entity_significance`, reviewed before export. Every importance 7+ item has one (4 Gemini batches, pre-sorted by Claude), plus 2 seeds |
 | DateLinks memory aids | 26 events | doc 05, 06 |
-| Gap list | **27 to go** | Batches 1–3 drafted and published 2026-11-13; batch 4 (two parts) in data/drafts/gap_tasks.md |
+| Gap list | **10 to go** | Batches 1–4 (part 1) published 2026-11-13; part 2 and the WWII theatre spans in data/drafts/gap_tasks.md |
 | Daily challenges | 366 dates | DateGolf target years |
 
 ### The tools behind the data

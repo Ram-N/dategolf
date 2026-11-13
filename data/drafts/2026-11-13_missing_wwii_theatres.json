@@ -1,0 +1,9 @@
+{"found_while": "2026-11-13: gap batch 4 review (WWII split into theatres)",
+ "items": [
+  {"kind": "span", "name": "European Theatre of World War II", "year": 1939, "end_year": 1945, "region": "Europe",
+   "why": "V-E Day ended the war in Europe, not the whole war: this span lets it 'end' something true. Part_of world-war-2; Stalingrad, D-Day, the Battle of Britain and the invasion of the Soviet Union are part_of it.",
+   "related_ids": ["world-war-2", "germany-surrenders-ve-day", "battle-of-stalingrad", "d-day-normandy", "battle-of-britain", "germany-invades-soviet-union"]},
+  {"kind": "span", "name": "Pacific War", "year": 1941, "end_year": 1945, "region": "Global",
+   "why": "The existing 'Japan's Surrender Ends the Pacific War' has no Pacific War to end. Part_of world-war-2; Pearl Harbor began it; Midway and Hiroshima are part_of it.",
+   "related_ids": ["world-war-2", "japanese-pearl-harbor", "battle-of-midway", "atomic-bomb-hiroshima", "japan-world-war-two-defeat"]}
+ ]}

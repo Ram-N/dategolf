@@ -9,7 +9,7 @@ How to run a batch (doc 15, Part A):
 
 Run the batches one at a time, and rerun step 1 before each (the gap list and ids change).
 
-Done: batches 1, 2 and 3 (published 2026-11-13).
+Done: batches 1, 2, 3 and 4 part 1 (published 2026-11-13).
 
 ## Batch 1: South Asia (20)
 
@@ -66,11 +66,11 @@ Notes:
   (the Gandhian era) is part_of it.
 ```
 
-Batch 4, part 2 (6). Send it after part 1 is loaded (the prompt allows 20 items per reply). These were added
+Batch 4, part 2 (8). Send it after part 1 is loaded (the prompt allows 20 items per reply). These were added
 2026-11-13 so that four batch 2 spans get the links they lack:
 
 ```
-Draft gap items 81, 82, 83, 84, 85, 86 from the reference, each with "fills_missing", a "significance",
+Draft gap items 81, 82, 83, 84, 85, 86, 89, 90 from the reference, each with "fills_missing", a "significance",
 and at least one link.
 Notes:
 - Item 81 (Ezana's conversion, c. 330s): part_of the existing "kingdom-of-aksum".
@@ -80,6 +80,12 @@ Notes:
 - Item 84 (Ayutthaya sacks Angkor): ended the existing "khmer-empire".
 - Item 85 (Mongols sack Kyiv): ended the existing "kievan-rus" and is part_of "mongol-conquests".
 - Item 86 (Mutapa Empire): link it to the existing "great-zimbabwe" (Mutapa rose as Great Zimbabwe declined).
+- Items 89 and 90 are the two theatres of the Second World War, each part_of the existing "world-war-2":
+  89 European Theatre (1939-1945): "germany-surrenders-ve-day" ended it; "battle-of-britain",
+     "germany-invades-soviet-union", "battle-of-stalingrad" and "d-day-normandy" are part_of it.
+  90 Pacific War (1941-1945): "japanese-pearl-harbor" began it; "japan-world-war-two-defeat" ended it;
+     "battle-of-midway" and "atomic-bomb-hiroshima" are part_of it.
+  Don't link the two theatres to each other with "preceded": they ran side by side.
 ```
 
 Item 6 (Death of Aurangzeb) is left out: the event exists now (renamed 2026-11-11), so it should be dismissed.
