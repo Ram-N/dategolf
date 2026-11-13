@@ -87,6 +87,21 @@ draft.write_text(json.dumps({"origin": "test", "events": [{
 drafts.load(draft)
 problems += check("views/review.py")
 
+# Span drafts have their own queue; approving one through the dashboard publishes it.
+span = TMP / "span.json"
+span.write_text(json.dumps({"origin": "test", "spans": [{
+    "id": "smoke-test-span", "kind": "period", "name": "Smoke Test Span", "start_year": 1200, "end_year": 1250,
+    "region": "Europe", "categories": ["Politics"], "importance": 1, "description": "A test span.",
+    "countries": ["FR"], "approximate": True}]}))
+drafts.load(span)
+at = AppTest.from_file(str(HERE / "views/review.py"), default_timeout=60).run()
+problems += [f"views/review.py: {e.message}" for e in at.exception]
+if not any(t.label.startswith("Span drafts (") and t.label != "Span drafts (0)" for t in at.tabs):
+    problems.append("the Span drafts tab doesn't list the proposed span")
+ok, output = actions.approve_drafts(["smoke-test-span"])
+if not ok:
+    problems.append(f"approving a span draft failed: {output}")
+
 # Significance: a proposed text shows in its queue; approving through the dashboard works.
 ok, output = actions.set_significance("mughal-empire", "Its revenue system, courtly culture and architecture "
                                       "shaped South Asia for centuries, and its decline opened the way for "

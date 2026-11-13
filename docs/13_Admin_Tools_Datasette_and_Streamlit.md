@@ -162,6 +162,7 @@ Run it with `npm run data:dashboard` → `streamlit run dashboard/app.py --serve
 | Tab | Items today | Shows for each item | Actions |
 |---|---|---|---|
 | **Event drafts** | 0 (more with every batch) | Name, year, region, categories, aliases, description, review note, source CSV text | **Approve** · **Reject** (with a reason) |
+| **Span drafts** (2026-11-13) | proposed spans | Years (with c.), name, kind, region, categories, importance, review note; for one selected: description, countries, "Why it matters", sources | **Approve** · **Reject** (with a reason; deletes the draft and its links) |
 | **Country tags** | 0 | Entity, its countries with roles, confidence, note | **Approve** · **Approve all high-confidence** · **Fix tags** (type e.g. `IN, PK/actor`; checked before saving) |
 | **Identity (3a)** | **25** | The event and the span side by side: names, years, descriptions | **One subject** (the recommended default) · **Needs a split** (flags it; the split itself is done with Claude, since it renames a span id) |
 | *Links (v4)* | — | *Added with Step 3b* | — |

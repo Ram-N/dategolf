@@ -5,7 +5,7 @@ How to run a batch (doc 15, Part A):
 1. `uv run python tools/manage.py ai-reference`: writes `data/drafts/ai_prompt.txt` (the prompt) and `data/drafts/ai_reference.md` (with the gap list and its numbers).
 2. In the AI: paste `ai_prompt.txt` as the system prompt (or first message), **attach** `ai_reference.md`, then paste the batch's task below.
 3. Save the reply as `data/drafts/incoming/<date>_<ai>_gaps_b<N>.json` and tell Claude. Claude checks it, fixes it, and loads the drafts and links as proposed.
-4. Review on the dashboard: **Event drafts**, **Links**, **Country tags**, **Sources**, **Significance**. (Spans have no queue yet: Claude lists them for you to OK in chat.) Tell Claude when done; Claude approves the OK'd spans, exports and commits.
+4. Review on the dashboard: **Event drafts**, **Span drafts**, **Links**, **Country tags**, **Sources**. (A draft's "Why it matters" is approved with it.) Tell Claude when done; Claude exports and commits.
 
 Run the batches one at a time, and rerun step 1 before each (the gap list and ids change).
 

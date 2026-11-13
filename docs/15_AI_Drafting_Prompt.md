@@ -23,7 +23,7 @@
    - **Sources:** Review → Sources
    - **"Why it matters"** (significance): Review → Significance. A new draft's text is also approved with its draft.
    - **Gap list:** filled items are marked *drafted* automatically.
-   - **Spans** don't show in a dashboard queue yet. Ask Claude to approve them, or run `manage.py approve <id>`.
+   - **Spans:** Review → Span drafts
 6. **Approve, export** (`npm run data:export`) and they're in the games. New links show up in DateFlow's Connections and Stories straight away.
 
 **Tips:**

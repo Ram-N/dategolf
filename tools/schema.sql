@@ -287,6 +287,18 @@ LEFT JOIN legacy_csv_rows r ON r.event_id = p.csv_event_id
 WHERE n.editorial_status = 'proposed'
 ORDER BY p.note IS NULL, e.year;
 
+-- Proposed spans (periods and empires) with what a reviewer needs beside them: the Span drafts queue.
+CREATE VIEW IF NOT EXISTS v_proposed_spans AS
+SELECT s.entity_id, s.start_year, s.end_year, s.approximate, s.name, s.kind, s.region, s.importance,
+       (SELECT group_concat(category, ', ') FROM (SELECT category FROM entity_categories c
+        WHERE c.entity_id = s.entity_id AND c.facet = 'span' ORDER BY position)) AS categories,
+       s.description, p.note AS review_note
+FROM time_spans s
+JOIN entities n ON n.id = s.entity_id
+LEFT JOIN entity_provenance p ON p.entity_id = s.entity_id
+WHERE n.editorial_status = 'proposed' AND s.kind <> 'era'
+ORDER BY s.start_year;
+
 -- Country review: one row per entity, low-confidence and unreviewed first.
 -- Fix a tag in entity_countries; approve with `manage.py approve-countries`.
 CREATE VIEW IF NOT EXISTS v_country_review AS

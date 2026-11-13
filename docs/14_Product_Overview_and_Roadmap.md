@@ -52,7 +52,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 - **SQLite is the source of truth** (`data/dategolf.db`). `npm run data:export` writes the game JSON; `data:validate` and `data:compare` guard it. → doc 10, 11, 12
 - **Every write goes through `tools/`** (a CLI command, logged in `review_log`, tested on a db copy): drafts, links (`load-links`, `retype-link`, `add-link-type`), significance (`set-significance`, `load-significance`, `approve-` / `reject-significance`), dates (`set-event-date`, `set-span-years`), `rename`, sources, the gap list (`load-missing`), memory aids, `dateflow-only`. → doc 12 §7
 - **Streamlit dashboard** (`npm run data:dashboard`):
-  - **Review queues:** Event drafts, Country tags, Identity, Links, Sources, **Significance** (with a write/replace box), **Missing**, and a decision log. Each fits on one screen and stays on its tab after an action.
+  - **Review queues:** Event drafts, **Span drafts**, Country tags, Identity, Links, Sources, **Significance** (with a write/replace box), **Missing**, and a decision log. Each fits on one screen and stays on its tab after an action.
   - **Other pages:** Overview, Connections, Coverage heatmap, Map.
   - → doc 13
 - **Datasette** (`npm run data:browse`): read-only browsing, with canned queries. → doc 13

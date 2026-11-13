@@ -11180,6 +11180,16 @@ LEFT JOIN entity_provenance p ON p.entity_id = e.entity_id
 LEFT JOIN legacy_csv_rows r ON r.event_id = p.csv_event_id
 WHERE n.editorial_status = 'proposed'
 ORDER BY p.note IS NULL, e.year;
+CREATE VIEW v_proposed_spans AS
+SELECT s.entity_id, s.start_year, s.end_year, s.approximate, s.name, s.kind, s.region, s.importance,
+       (SELECT group_concat(category, ', ') FROM (SELECT category FROM entity_categories c
+        WHERE c.entity_id = s.entity_id AND c.facet = 'span' ORDER BY position)) AS categories,
+       s.description, p.note AS review_note
+FROM time_spans s
+JOIN entities n ON n.id = s.entity_id
+LEFT JOIN entity_provenance p ON p.entity_id = s.entity_id
+WHERE n.editorial_status = 'proposed' AND s.kind <> 'era'
+ORDER BY s.start_year;
 CREATE VIEW v_country_review AS
 SELECT x.entity_id,
        coalesce(e.year, s.start_year) AS year,

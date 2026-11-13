@@ -48,6 +48,8 @@ def selectable(df, key, columns=None, id_col="entity_id", column_config=None):
 
 
 drafts = q("SELECT * FROM v_proposed_events")
+span_drafts = q("SELECT * FROM v_proposed_spans") if has_table("v_proposed_spans") \
+    else q("SELECT NULL AS entity_id WHERE 0")
 tags = q("SELECT * FROM v_country_review WHERE status = 'proposed'")
 shared = q("""
     SELECT e.entity_id, e.year AS event_year, e.name AS event_name,
@@ -85,7 +87,7 @@ proposed_why = (q("SELECT * FROM v_significance_review WHERE status = 'proposed'
                 else q("SELECT NULL AS entity_id WHERE 0"))
 
 TAB_LABELS = [
-    f"Event drafts ({len(drafts)})", f"Country tags ({len(tags)})", f"Identity, Step 3a ({len(shared)})",
+    f"Event drafts ({len(drafts)})", f"Span drafts ({len(span_drafts)})", f"Country tags ({len(tags)})", f"Identity, Step 3a ({len(shared)})",
     f"Links ({len(proposed_links)})", f"Sources ({len(proposed_sources)})",
     f"Significance ({len(proposed_why)})", f"Missing ({n_missing})",
     "Fix any country tags", "Decision log"]
@@ -96,7 +98,7 @@ tabs_key = "review_tabs_" + hashlib.sha1("|".join(TAB_LABELS).encode()).hexdiges
 # The default is fixed when this widget is first made: changing it on a later run would reset the tab.
 remembered = st.session_state.setdefault(
     tabs_key + ":default", next((l for l in TAB_LABELS if tab_name(l) == st.session_state.get("review_tab")), None))
-t_drafts, t_tags, t_identity, t_links, t_sources, t_why, t_missing, t_fix, t_log = st.tabs(
+t_drafts, t_spans, t_tags, t_identity, t_links, t_sources, t_why, t_missing, t_fix, t_log = st.tabs(
     TAB_LABELS, default=remembered, key=tabs_key, on_change="rerun")
 if st.session_state.get(tabs_key):
     st.session_state["review_tab"] = tab_name(st.session_state[tabs_key])
@@ -138,6 +140,48 @@ with t_drafts:
 
         if c2.button(f"Reject ({len(ids)})…", key="reject_drafts", disabled=not ids):
             reject_dialog(ids)
+
+# ── Span drafts ──────────────────────────────────────────────────────────────
+with t_spans:
+    if span_drafts.empty:
+        st.success("No span drafts waiting. They arrive with `load-drafts`, beside their events.")
+    else:
+        span_drafts["years"] = span_drafts.apply(
+            lambda r: when_text({"year": r["start_year"], "end_year": r["end_year"], "approximate": r["approximate"]}),
+            axis=1)
+        bar = st.container()
+        picked = selectable(span_drafts, "span_drafts", ["years", "name", "kind", "region", "categories", "importance",
+                                                         "review_note"])
+        if len(picked) == 1:
+            d = picked.iloc[0]
+            with st.container(border=True):
+                st.markdown(f"**{d['name']}** · {d['years']} · {d['kind']} · {d['region']} · {d['categories']} · "
+                            f"importance {d['importance']}")
+                st.write(d["description"])
+                tagged = q("SELECT countries FROM v_country_review WHERE entity_id = ?", d["entity_id"])
+                if not tagged.empty:
+                    st.caption(f"Countries: {tagged.iloc[0]['countries']}")
+                why = proposed_why.loc[proposed_why["entity_id"] == d["entity_id"], "significance"]
+                if not why.empty:
+                    st.markdown(f"**Why it matters** (approved with the span): {why.iloc[0]}")
+                if d["review_note"]:
+                    st.warning(f"Review note: {d['review_note']}")
+                if (wiki := source_links(d["entity_id"])):
+                    st.markdown(wiki)
+        ids = picked["entity_id"].tolist()
+        c1, c2, _ = bar.columns([1, 1, 4])
+        if c1.button(f"Approve ({len(ids)})", key="approve_spans", disabled=not ids, type="primary"):
+            finish("Approve spans", actions.approve_drafts(ids))
+
+        @st.dialog("Reject span drafts")
+        def reject_spans_dialog(ids):
+            st.write(f"Delete {len(ids)} span draft(s), with their links: " + ", ".join(f"`{i}`" for i in ids))
+            reason = st.text_input("Reason (recorded in the log)")
+            if st.button("Reject", key="confirm_reject_spans", type="primary", disabled=not reason.strip()):
+                finish("Reject span drafts", actions.reject_drafts(ids, reason))
+
+        if c2.button(f"Reject ({len(ids)})…", key="reject_spans", disabled=not ids):
+            reject_spans_dialog(ids)
 
 # ── Country tags ─────────────────────────────────────────────────────────────
 with t_tags:

@@ -107,7 +107,7 @@ def load(path):
           f"{len(batch.get('significance', []))} significance texts "
           f"({len(drafted)} source CSV rows, {len(triage)} extra triage rows).")
     if batch.get("events") or batch.get("spans"):
-        print("  They are NOT exported until approved: Review → Event drafts, or `manage.py approve <id>`.")
+        print("  They are NOT exported until approved: Review → Event drafts / Span drafts, or `manage.py approve <id>`.")
     if batch.get("significance"):
         print("  Significance texts are NOT exported until approved: Review → Significance.")
     return 0
