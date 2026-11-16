@@ -27,7 +27,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 - **Connections** (Phase 8): every reviewed link, read from the card's side ("is part of", "includes", "was ended by", "followed"…), clickable, with "Show these connections on the timeline".
 - **Stories** (Phase 9):
   - **How to start one:** "How did we get here?" / "What happened next?" on any linked card, or the **Stories** menu (8 featured).
-  - **On the timeline:** threads drawn across it, coloured by link type, dashed when debated, crossing regional lanes. **Hover a thread** to read its "why"; **click it** to pick the stop it leads into (doc 17).
+  - **On the timeline:** threads drawn across it, coloured by link type, dashed when debated, crossing regional lanes. **Hover a thread** for its connection card (the link in words, its "why", the gap in years, "debated" where it is); **click or tap** to pin the card and pick the stop it leads into (doc 17).
   - **The story panel:** a narration, the stops as a subway line, fans of causes, and **▶ playback**.
   - **Sharing:** `?story=<id>&dir=back|forward` links.
 - **The Time Machine** (Phase 10): the world in any year, region by region; two years compared (gone / new / still there / came and went); two empires' shared years; two events' distance, with a "Did you know?". Shareable `?year=` and `?tm=` links.

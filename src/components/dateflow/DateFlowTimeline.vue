@@ -11,6 +11,7 @@
       @pointermove="onPointerMove"
       @pointerup="onPointerUp"
       @pointercancel="onPointerUp"
+      @click="pinned = null"
     >
       <!-- Era bands: alternating faint fills, name pinned to the visible part of the band -->
       <g v-for="era in eraBands" :key="era.id">
@@ -187,7 +188,7 @@
       </g>
 
       <StoryArcs v-if="story" :arcs="storyArcs" :spans="storySpanMarks" :pulse="storyPulse" :step-edge-keys="stepEdgeKeys"
-                 @pick="onArcClick" />
+                 :active-key="cardArc?.arc.key ?? null" @hover="onArcHover" @pick="onArcClick" />
 
       <!-- Shift-drag period selection -->
       <g v-if="selection" pointer-events="none">
@@ -212,11 +213,13 @@
         </text>
       </template>
     </svg>
+    <ConnectionCard v-if="cardArc" :arc="cardArc.arc" :x="cardArc.x" :y="cardArc.y" :bounds="{ width, height }"
+                    :pinned="!!pinned" @close="pinned = null" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import type { Event } from '@/types'
 import type { Duration } from '@/types/dateflow'
 import erasData from '@/data/eras.json'
@@ -233,8 +236,9 @@ import { groupFor } from '@/engine/dateflow/categoryGroups'
 import { formatSpan, packBars } from '@/engine/dateflow/durations'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
-import { joinFrom, joinTo, yearGap, type Story, type StoryEdge, type StoryNode } from '@/engine/dateflow/stories'
+import { gapText, joinFrom, joinTo, yearGap, type Story, type StoryEdge, type StoryNode } from '@/engine/dateflow/stories'
 import StoryArcs, { type Arc } from './StoryArcs.vue'
+import ConnectionCard from './ConnectionCard.vue'
 
 const props = defineProps<{
   events: Event[] // already filtered
@@ -591,11 +595,11 @@ const storyArcs = computed<Arc[]>(() => {
         ? `M ${x1} ${ya} C ${x1} ${ya - lift}, ${x2} ${yb - lift}, ${x2} ${yb}`
         : `M ${x1} ${ya} C ${x1} ${ya - lift}, ${x2} ${yb - lift * 0.6}, ${x2} ${yb}`
     const label = dx > 90 ? shortGap(e, a, b) : ''
-    const title = `${a.name} ${e.label} ${b.name}` + (e.why ? `: ${e.why}` : '')
-      + (e.debated ? ' (debated: one view among several)' : '')
     arcs.push({
       key: `${e.from}>${e.to}`, d, kind: ARC_KIND[e.type] ?? 'then', debated: e.debated, order,
-      label, labelX: (x1 + x2) / 2, labelY: Math.min(ya, yb) - lift * 0.75 - 4, to: e.to, title,
+      label, labelX: (x1 + x2) / 2, labelY: Math.min(ya, yb) - lift * 0.75 - 4, to: e.to,
+      fromName: a.name, toName: b.name, verb: e.label, why: e.why,
+      gap: gapText(joinFrom(a, b), joinTo(b, a), !!(a.approximate || b.approximate)),
     })
   })
   return arcs
@@ -782,9 +786,34 @@ function onBarClick(id: string) {
   emit('selectDuration', id)
 }
 
-function onArcClick(toId: string) {
+// The connection card (doc 17): hovering a thread shows it; a click or tap pins it until closed.
+const hovered = ref<{ key: string; x: number; y: number } | null>(null)
+const pinned = ref<{ key: string; x: number; y: number } | null>(null)
+const cardArc = computed(() => {
+  const at = pinned.value ?? hovered.value
+  const arc = at && storyArcs.value.find((a) => a.key === at.key)
+  return arc ? { arc, x: at.x, y: at.y } : null
+})
+// A new story, or a pan or zoom that moves the threads, closes the card.
+watch([() => props.story, () => props.view], () => {
+  hovered.value = null
+  pinned.value = null
+})
+
+function pointIn(e: MouseEvent) {
+  const box = containerEl.value?.getBoundingClientRect()
+  return { x: e.clientX - (box?.left ?? 0), y: e.clientY - (box?.top ?? 0) }
+}
+
+function onArcHover(key: string | null, e: PointerEvent) {
+  hovered.value = key && !dragging.value ? { key, ...pointIn(e) } : null
+}
+
+function onArcClick(key: string, e: MouseEvent) {
   if (justDragged) return
-  emit('selectStop', toId)
+  pinned.value = { key, ...pointIn(e) }
+  const arc = storyArcs.value.find((a) => a.key === key)
+  if (arc) emit('selectStop', arc.to)
 }
 </script>
 

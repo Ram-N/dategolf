@@ -39,6 +39,7 @@
         <li v-for="k in legend" :key="k.kind"><span class="swatch" :class="k.kind" />{{ k.label }}</li>
         <li v-if="hasDebated"><span class="swatch debated" />debated (one view among several)</li>
       </ul>
+      <p class="tip">Hover or tap a thread on the timeline to see why it's there.</p>
 
       <!-- The stops, in time order: a "subway line" -->
       <ol class="line">
@@ -288,6 +289,11 @@ async function copyLink() {
   padding: 0.625rem 0.75rem;
   border-radius: 0.75rem;
   background: var(--df-btn);
+}
+.tip {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 0.75rem;
+  color: var(--df-text-2);
 }
 .legend {
   display: flex;

@@ -3,7 +3,7 @@
 > **Status: built 2026-11-11.** Decisions made while building it:
 > - **Relationship `explanation` = the existing link `why`** (`relationships.description`). All 225 links already had one, with `confidence`. No schema change; doc 15 now asks for the mechanism.
 > - **Significance lives in `entity_significance`** (one row per event or span, `proposed` → `reviewed`), not in a plain column. It's interpretive prose, so only reviewed text is exported; editing a reviewed text makes it proposed again. A new draft's text is approved with its draft.
-> - **UI:** a "Why it matters" block on event and span cards (after any guess, so years are allowed). Story threads show their "why" on hover and pick their stop on click; the Story panel stays the accessible, touch-friendly version.
+> - **UI:** a "Why it matters" block on event and span cards (after any guess, so years are allowed). Story threads open a **connection card** (2026-11-15): on hover with a mouse, pinned on click or tap (✕, Esc or a click on the timeline closes it; panning closes it too), showing the link's type, both ends, its "why", the gap in years and "debated" where it is. A click also picks the thread's stop in the Story panel, which stays the keyboard-accessible version.
 > - **Not done (out of scope):** per-link sources, a `context` field, global vs regional significance levels.
 > - Roadmap and counts: doc 14. Drafting rules: doc 15. Review: Dashboard → Review → Significance.
 

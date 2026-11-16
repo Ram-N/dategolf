@@ -1,6 +1,6 @@
 <template>
   <!-- Story threads (Phase 9), drawn inside the timeline's <svg>. Decorative: the story panel is the accessible version.
-       Only the invisible hit paths take the pointer: hover shows the link's "why", a click picks its stop. -->
+       Only the invisible hit paths take the pointer: hovering one shows its connection card, a click or tap pins it. -->
   <g aria-hidden="true" pointer-events="none" class="story-arcs">
     <defs>
       <marker
@@ -24,7 +24,8 @@
       :d="a.d"
       pathLength="1"
       class="arc"
-      :class="[a.kind, { debated: a.debated, faded: stepEdgeKeys && !stepEdgeKeys.has(a.key) }]"
+      :class="[a.kind, { debated: a.debated, active: a.key === activeKey,
+                         faded: stepEdgeKeys && !stepEdgeKeys.has(a.key) && a.key !== activeKey }]"
       :style="{ animationDelay: `${a.order * 0.12}s`, stroke: `var(--df-arc-${a.kind})` }"
       :marker-end="`url(#arrow-${a.kind})`"
     />
@@ -34,10 +35,10 @@
       :d="a.d"
       class="hit"
       pointer-events="stroke"
-      @click.stop="emit('pick', a.to)"
-    >
-      <title>{{ a.title }}</title>
-    </path>
+      @pointerenter="(e) => e.pointerType === 'mouse' && emit('hover', a.key, e)"
+      @pointerleave="(e) => e.pointerType === 'mouse' && emit('hover', null, e)"
+      @click.stop="(e) => emit('pick', a.key, e)"
+    />
     <template v-for="a in arcs" :key="`${a.key}-label`">
       <text v-if="a.label" :x="a.labelX" :y="a.labelY" text-anchor="middle" class="gap" :style="{ fill: `var(--df-arc-${a.kind})` }">
         {{ a.label }}
@@ -67,7 +68,12 @@ export interface Arc {
   labelX: number
   labelY: number
   to: string // the stop this thread leads into
-  title: string // hover text: "A contributed to B: why"
+  // For the connection card (doc 17): "fromName verb toName", why, and the gap in years
+  fromName: string
+  toName: string
+  verb: string
+  why: string
+  gap: string
 }
 
 const KINDS = ['trigger', 'contrib', 'enable', 'influence', 'frame', 'then'] as const
@@ -77,8 +83,9 @@ defineProps<{
   spans: { id: string; name: string; x1: number; x2: number; y: number }[]
   pulse: { x: number; y: number } | null
   stepEdgeKeys: Set<string> | null // during playback: the arcs into the current stop stay bright
+  activeKey?: string | null // the thread whose connection card is showing
 }>()
-const emit = defineEmits<{ pick: [toId: string] }>()
+const emit = defineEmits<{ hover: [key: string | null, e: PointerEvent]; pick: [key: string, e: MouseEvent] }>()
 </script>
 
 <style scoped>
@@ -111,6 +118,9 @@ const emit = defineEmits<{ pick: [toId: string] }>()
   stroke-dasharray: 0.03 0.02; /* dashed: a debated link */
   stroke-dashoffset: 0;
   animation: fade 0.6s ease-out both;
+}
+.arc.active {
+  stroke-width: 4;
 }
 .arc.faded {
   opacity: 0.25;
