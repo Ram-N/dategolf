@@ -71,7 +71,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | 2 | **Load and review sources batch 1** (460 Wikipedia articles) | Ask Claude to load it, then Review → Sources (doc 12 §4.6d) | Every event gets a checkable source. 128 are exact name matches (one-click approve) |
 | 3 | **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project`, `arab-spring` | `manage.py identity <id> --one\|--split\|…` | An old loose end from doc 11 |
 | 4 | **Two design calls for DatePick range choices** | doc 04 §38 | They unblock Claude's item 4 below |
-| 5 | **Pick the next DateFlow phase** (10–14 below). ~~Colour approach~~ ✅ decided 2026-11-16: see Phase 11 | doc 16, "Assessment" | Doc 16's vision, mapped against what's built |
+| 5 | ~~**Pick the next DateFlow phase**~~ ✅ 2026-11-16: see "Date Flow build sequence" below. ~~Colour approach~~ ✅ decided 2026-11-16: see Phase 11 | doc 16, "Assessment" | Doc 16's vision, mapped against what's built |
 
 ### Claude's queue (pick work that doesn't pile onto your review queues)
 
@@ -90,6 +90,27 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | 6d | **Phase 13: People.** Person entities with lifespans and reigns; contemporaries; lifespan overlap (Akbar and Elizabeth I) | People drafted through doc 15 | Large |
 | 6e | **Phase 14: Journeys and a game.** Curated journeys played in the Story panel; a "Find events during X" game | Journey scripts | Medium |
 | 6f | **Later:** images (Wikimedia, with licensing), a DateFlow map view, regional significance, AI questions (needs a backend decision), a Stories gallery and story-of-the-day, the Immersive experience (parked) | — | — |
+
+### Date Flow build sequence (decided 2026-11-16)
+
+Ties the GitHub issues (#1–#7, label `dateflow`) to the phases above. Issues carry a `step-N` label.
+
+| Step | What | Issues / phase | Size | Why here |
+|---|---|---|---|---|
+| 1 | **Surprise Me**: a random event opens its card, then the existing "How did we get here?" / "What happened next?" stories carry on | #2 | S | Cheap and visible; reuses Stories |
+| 2 | **Date Constellation v1**, built on the Lanes view: logarithmic dot size by importance, a Y-axis switch (Geography now, Human activity next), one category colour scheme | #7, #6, #5 | M | The biggest "wow" for the effort; Lanes, hover and click already exist |
+| 3 | **Viewing modes plus Phase 11 polish**: Focus / Detailed presets, Colorful (default) / Subtle colour modes, family shapes, sub-spans revealed on zoom, Historical Currents | #1, Phase 11 (6b) | M | Builds on step 2's families and colour decision |
+| 4 | **Shared event navigation**, then **playback** over any filtered set (speed, scrubbing) | #4, #3 | M | #2 and #3 share the navigation; build it once. Story playback already exists |
+| 5 | **Date Constellation as the entry point**; the timeline stays the research view | #6 | S | Only once the data is dense enough (data track, item 2) |
+| 6 | Phases 12 → 13 → 14 | 6c–6e | L each | Need curated data first |
+
+**Data track, alongside (mostly Ram's review time):**
+1. Sources batch 1, the Wikipedia references (Waiting on you, item 2). Show the source link on cards if they don't yet.
+2. Fill the thin periods (Claude's queue, item 3), before step 5, so no tracks look empty.
+3. Span date precision before 500 BCE (Claude's queue, item 2).
+4. Significance for importance 5–6, if Ram says go (Waiting on you, item 0).
+
+**Deferred:** the "Political history" Y-axis (civilizations, empires, kingdoms, republics) needs a polity-type field that doesn't exist yet.
 
 ### Housekeeping (from the old QUICKSTART list, still true)
 
