@@ -71,7 +71,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | 2 | **Load and review sources batch 1** (460 Wikipedia articles) | Ask Claude to load it, then Review → Sources (doc 12 §4.6d) | Every event gets a checkable source. 128 are exact name matches (one-click approve) |
 | 3 | **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project`, `arab-spring` | `manage.py identity <id> --one\|--split\|…` | An old loose end from doc 11 |
 | 4 | **Two design calls for DatePick range choices** | doc 04 §38 | They unblock Claude's item 4 below |
-| 5 | **Pick the next DateFlow phase** (10–14 below), and approve the **colour approach**: keep 3 colourblind-safe hues, add 8 category families as shapes, plus a "focus" mode that fades rather than hides | doc 16, "Assessment" | Doc 16's vision, mapped against what's built |
+| 5 | **Pick the next DateFlow phase** (10–14 below). ~~Colour approach~~ ✅ decided 2026-11-16: see Phase 11 | doc 16, "Assessment" | Doc 16's vision, mapped against what's built |
 
 ### Claude's queue (pick work that doesn't pile onto your review queues)
 
@@ -85,7 +85,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | 5 | **Dashboard v3: the event editor**, including adding or editing a single link | — | doc 13. Less urgent (new events come through drafts), but it lets you edit without Claude |
 | 6 | **DateFlow phases from the doc 16 vision** (recommended order; full table in doc 16, "Assessment"): | | |
 | 6a | ~~**Phase 10: Contemporaries**~~ ✅ 2026-11-11 (doc 09). A Time Machine (pick a year → a world snapshot by region; compare two years), an Overlap explorer (two spans), a Distance explorer (two events) | No new data | Medium |
-| 6b | **Phase 11: Living Timeline polish.** 8 category families as shapes, focus mode, colour by region, distinct milestone landmarks, spans revealing their sub-spans when zoomed, a Historical Currents layer | A few new spans (Axial Age, Enlightenment, Decolonization) | Medium |
+| 6b | **Phase 11: Living Timeline polish.** 8 category families as shapes (in every colour mode, so colour is never the only cue); **two colour modes, a per-viewer setting like the theme: Colorful (8 hues, one per family, as colourblind-friendly as possible) is the default, Subtle (today's 3 colourblind-safe hues) is one click away and remembered** (decided 2026-11-16, issues #1 #7); focus mode (fade, don't hide), colour by region, distinct milestone landmarks, spans revealing their sub-spans when zoomed, a Historical Currents layer | A few new spans (Axial Age, Enlightenment, Decolonization) | Medium |
 | 6c | **Phase 12: Empire life cycles.** `entity_phases` (rise / zenith / fragmentation…), drafted through doc 15 and reviewed, drawn as phase segments on the bars | Curated phases, with sources | Large |
 | 6d | **Phase 13: People.** Person entities with lifespans and reigns; contemporaries; lifespan overlap (Akbar and Elizabeth I) | People drafted through doc 15 | Large |
 | 6e | **Phase 14: Journeys and a game.** Curated journeys played in the Story panel; a "Find events during X" game | Journey scripts | Medium |
