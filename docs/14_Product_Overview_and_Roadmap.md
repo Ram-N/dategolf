@@ -89,7 +89,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | 6c | **Phase 12: Empire life cycles.** `entity_phases` (rise / zenith / fragmentation…), drafted through doc 15 and reviewed, drawn as phase segments on the bars | Curated phases, with sources | Large |
 | 6d | **Phase 13: People.** Person entities with lifespans and reigns; contemporaries; lifespan overlap (Akbar and Elizabeth I) | People drafted through doc 15 | Large |
 | 6e | **Phase 14: Journeys and a game.** Curated journeys played in the Story panel; a "Find events during X" game | Journey scripts | Medium |
-| 6f | **Later:** images (Wikimedia, with licensing), a DateFlow map view, regional significance, AI questions (needs a backend decision), a Stories gallery and story-of-the-day, the Immersive experience (parked) | — | — |
+| 6f | **Later:** a **Polity Y-axis for Date Constellation** (needs a polity-type field on spans; #7), images (Wikimedia, with licensing), a DateFlow map view, regional significance, AI questions (needs a backend decision), a Stories gallery and story-of-the-day, the Immersive experience (parked) | — | — |
 
 ### Date Flow build sequence (decided 2026-11-16)
 
@@ -110,7 +110,7 @@ Ties the GitHub issues (#1–#7, label `dateflow`) to the phases above. Issues c
 3. Span date precision before 500 BCE (Claude's queue, item 2).
 4. Significance for importance 5–6, if Ram says go (Waiting on you, item 0).
 
-**Deferred:** the "Political history" Y-axis (civilizations, empires, kingdoms, republics) needs a polity-type field that doesn't exist yet.
+**Y-axis views (decided 2026-11-16):** Date Constellation ships with **Geography** and **Human activity** only. The **Polity** view (civilizations, empires, kingdoms, republics) is a future item: it needs a polity-type field on spans that doesn't exist yet (see 6f).
 
 ### Housekeeping (from the old QUICKSTART list, still true)
 
