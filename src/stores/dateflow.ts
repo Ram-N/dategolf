@@ -5,6 +5,7 @@ import type { Duration, RelationshipData } from '@/types/dateflow'
 import { connectedIds, connectionsFor } from '@/engine/dateflow/connections'
 import { buildStory, featuredStories, frameYears, storyCounts, storyStops, type Direction } from '@/engine/dateflow/stories'
 import { compareYears, distance, overlap, worldAt } from '@/engine/dateflow/contemporaries'
+import { pickSurprise, rememberPick } from '@/engine/dateflow/surprise'
 import milestoneIds from '@/data/milestones.json'
 import {
   FULL_VIEW,
@@ -43,6 +44,7 @@ const MODE_KEY = 'dateflow:mode'
 const LANES_KEY = 'dateflow:lanes'
 const FILTERS_KEY = 'dateflow:filters'
 const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's default zoom
+const SURPRISE_SPAN = 40 // narrow enough that every importance level shows (visibility.ts)
 const ANIM_MS = 350
 
 function loadView(): View {
@@ -390,6 +392,23 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     centerAt(e.year, true)
   }
 
+  // Surprise Me (issue #2): a random event from what the filters let through, framed and opened.
+  let recentSurprises: string[] = []
+  function surprise() {
+    const hasStory = (id: string) => {
+      const c = storyCounts(id, relationships.value, events.value, durations.value)
+      return c.back + c.forward > 0
+    }
+    const e = pickSurprise(filteredEvents.value, hasStory, Math.random, recentSurprises)
+    if (!e) return
+    recentSurprises = rememberPick(recentSurprises, e.id)
+    closeStory()
+    closeTimeMachine()
+    clearFocus()
+    select(e.id)
+    animateTo(centerOn(e.year, SURPRISE_SPAN))
+  }
+
   /** Close the card, frame the entity and everything linked to it, and ring them on the timeline. */
   function showConnections(id: string) {
     const ids = new Set([id, ...connectedIds(id, relationships.value)])
@@ -641,6 +660,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     openSummary,
     closeSummary,
     goToEvent,
+    surprise,
     showSurrounding,
     toggleTheme,
     setMode,

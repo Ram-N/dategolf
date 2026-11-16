@@ -442,12 +442,14 @@ function boxPosition(t: Track, side: Side, level: number, boxH: number) {
 }
 
 const lit = (id: string) => !!props.highlightIds?.has(id)
+// The open card's event always gets a marker, even below the zoom's importance threshold.
+const kept = (id: string) => lit(id) || id === props.selectedId
 const dimming = computed(() => !!props.highlightIds?.size)
 
 function layoutMarkers(t: Track, sectionIds: Set<string>) {
   const minImp = importanceThreshold(span(props.view), props.detail)
   const candidates = t.events
-    .filter((e) => e.importance >= minImp || sectionIds.has(e.id) || lit(e.id))
+    .filter((e) => e.importance >= minImp || sectionIds.has(e.id) || kept(e.id))
     .map((e) => {
       const x = yearToX(e.year, props.view, width.value)
       const bold = e.importance >= ANCHOR_IMPORTANCE || sectionIds.has(e.id) || lit(e.id)
@@ -455,7 +457,7 @@ function layoutMarkers(t: Track, sectionIds: Set<string>) {
       const longest = Math.max(...lines.map((l) => l.length))
       const labelWidth = longest * (bold ? CHAR_W_BOLD : CHAR_W) + 12
       const boxH = lines.length * LINE_H + BOX_PAD * 2
-      const priority = lit(e.id) ? HIGHLIGHT_PRIORITY : sectionIds.has(e.id) ? MILESTONE_PRIORITY : e.importance
+      const priority = kept(e.id) ? HIGHLIGHT_PRIORITY : sectionIds.has(e.id) ? MILESTONE_PRIORITY : e.importance
       return { event: e, x, lines, labelWidth, boxH, bold, priority }
     })
   const byId = new Map(candidates.map((c) => [c.event.id, c]))

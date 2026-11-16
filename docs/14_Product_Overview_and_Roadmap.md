@@ -22,7 +22,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 
 ### What DateFlow can do
 
-- **Explore:** the timeline with event markers and duration bars (empires, periods), a minimap, eras, milestones, category and region filters, detail level, "Jump to year", "What happened?" (a period summary), and light and dark themes. (Phases 2–6)
+- **Explore:** the timeline with event markers and duration bars (empires, periods), a minimap, eras, milestones, category and region filters, detail level, "Jump to year", "What happened?" (a period summary), light and dark themes (Phases 2–6), and **Surprise Me**: a random event (from what the filters show, preferring ones with a story to follow, no repeats in the last 20) framed and opened (#2)
 - **Event and span cards:** a description, **"Why it matters"** (when a reviewed significance exists; doc 17), "Before & after" in the region, "Meanwhile around the world", empires of the time, and DateLinks memory aids.
 - **Connections** (Phase 8): every reviewed link, read from the card's side ("is part of", "includes", "was ended by", "followed"…), clickable, with "Show these connections on the timeline".
 - **Stories** (Phase 9):
@@ -97,7 +97,7 @@ Ties the GitHub issues (#1–#7, label `dateflow`) to the phases above. Issues c
 
 | Step | What | Issues / phase | Size | Why here |
 |---|---|---|---|---|
-| 1 | **Surprise Me**: a random event opens its card, then the existing "How did we get here?" / "What happened next?" stories carry on | #2 | S | Cheap and visible; reuses Stories |
+| 1 | ~~**Surprise Me**~~ ✅ 2026-11-16: a random event opens its card, then the existing "How did we get here?" / "What happened next?" stories carry on | #2 | S | Cheap and visible; reuses Stories |
 | 2 | **Date Constellation v1**, built on the Lanes view: logarithmic dot size by importance, a Y-axis switch (Geography now, Human activity next), one category colour scheme | #7, #6, #5 | M | The biggest "wow" for the effort; Lanes, hover and click already exist |
 | 3 | **Viewing modes plus Phase 11 polish**: Focus / Detailed presets, Colorful (default) / Subtle colour modes, family shapes, sub-spans revealed on zoom, Historical Currents | #1, Phase 11 (6b) | M | Builds on step 2's families and colour decision |
 | 4 | **Shared event navigation**, then **playback** over any filtered set (speed, scrubbing) | #4, #3 | M | #2 and #3 share the navigation; build it once. Story playback already exists |

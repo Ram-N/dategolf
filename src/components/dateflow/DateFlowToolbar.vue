@@ -59,6 +59,9 @@
       <button class="btn" title="See the whole world in one year, compare two years, or two empires" @click="emit('timeMachine')">
         Time Machine
       </button>
+      <button class="btn" title="Open a random event and explore from there" @click="emit('surprise')">
+        Surprise Me
+      </button>
       <StoriesMenu :stories="stories" @open="(id) => emit('openStory', id)" />
       <button class="btn" title="Summarise the period in view (or shift-drag across the timeline)" @click="emit('summarize')">
         What happened?
@@ -115,6 +118,7 @@ const emit = defineEmits<{
   summarize: []
   openStory: [id: string]
   timeMachine: []
+  surprise: []
 }>()
 
 const MODES: { id: ViewMode; label: string }[] = [

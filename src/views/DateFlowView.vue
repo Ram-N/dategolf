@@ -10,6 +10,7 @@
       :stories="store.featured"
       @open-story="(id) => store.openStory(id)"
       @time-machine="store.openTimeMachine()"
+      @surprise="store.surprise()"
       @zoom-in="store.zoomIn()"
       @zoom-out="store.zoomOut()"
       @reset="store.reset()"
