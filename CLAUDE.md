@@ -5,7 +5,7 @@ See `QUICKSTART.md` for how to run it and the project structure, and **`docs/14_
 ## Quick Start
 
 ```bash
-cd ~/projects/dategolf
+cd ~/projects/EduGames/DateGolf
 npm run dev   # → http://localhost:5173
 ```
 

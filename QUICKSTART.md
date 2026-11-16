@@ -27,7 +27,7 @@ All are seeded by date (same date = same challenge for everyone). The data lives
 ## Run locally
 
 ```bash
-cd ~/projects/dategolf
+cd ~/projects/EduGames/DateGolf
 npm run dev
 # → http://localhost:5173
 ```
