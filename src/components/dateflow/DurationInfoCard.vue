@@ -9,7 +9,7 @@
       <div class="flex items-start justify-between gap-4">
         <div>
           <div class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest secondary">
-            <span class="inline-block w-2.5 h-2.5 rounded-sm" :style="{ background: `var(--df-${group})` }" />
+            <span class="inline-block w-2.5 h-2.5 rounded-sm" :style="{ background: `var(--df-f-${family})` }" />
             {{ duration.kind === 'empire' ? 'Empire / dynasty' : 'Period' }}
           </div>
           <div class="text-2xl font-black tabular-nums mt-2 accent">{{ formatSpan(duration, formatYear) }}</div>
@@ -69,7 +69,7 @@ import { computed, onMounted, onUnmounted } from 'vue'
 import type { Event } from '@/types'
 import type { Duration } from '@/types/dateflow'
 import { eventsDuring, formatSpan } from '@/engine/dateflow/durations'
-import { groupFor } from '@/engine/dateflow/categoryGroups'
+import { familyFor } from '@/engine/dateflow/categoryGroups'
 import type { ConnectionGroup } from '@/engine/dateflow/connections'
 import EventConnections from './EventConnections.vue'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
@@ -91,7 +91,7 @@ const emit = defineEmits<{
   compareWith: []
 }>()
 
-const group = computed(() => groupFor(props.duration.categories))
+const family = computed(() => familyFor(props.duration.categories))
 const related = computed(() => eventsDuring(props.events, props.duration))
 const lengthText = computed(() => {
   // No year 0: a span crossing the BCE/CE boundary is one year shorter than the difference.

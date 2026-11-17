@@ -80,6 +80,14 @@
       </button>
       <RouterLink to="/dateflow/play" class="btn play">▶ Play</RouterLink>
       <button
+        class="btn"
+        :aria-pressed="colorMode === 'colorful'"
+        :title="colorMode === 'colorful' ? 'Switch to subtle colours (3 hues)' : 'Switch to colourful (a hue per family)'"
+        @click="emit('toggleColors')"
+      >
+        {{ colorMode === 'colorful' ? 'Colorful' : 'Subtle' }}
+      </button>
+      <button
         class="btn w-9"
         :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
         :title="theme === 'dark' ? 'Light mode' : 'Dark mode'"
@@ -95,7 +103,7 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import type { View } from '@/engine/dateflow/timeScale'
-import type { Theme, ViewMode } from '@/stores/dateflow'
+import type { ColorMode, Theme, ViewMode } from '@/stores/dateflow'
 import type { LaneId, LaneState } from '@/engine/dateflow/lanes'
 import { TRACK_AXES, type TrackAxis } from '@/engine/dateflow/constellation'
 import DateFlowLanePicker from './DateFlowLanePicker.vue'
@@ -108,6 +116,7 @@ import { formatYear, parseYear } from '@/utils/formatYear'
 defineProps<{
   view: View
   theme: Theme
+  colorMode: ColorMode
   mode: ViewMode
   laneState: LaneState
   trackAxis: TrackAxis
@@ -121,6 +130,7 @@ const emit = defineEmits<{
   reset: []
   jump: [year: number]
   toggleTheme: []
+  toggleColors: []
   setMode: [mode: ViewMode]
   setTrackAxis: [axis: TrackAxis]
   toggleLane: [id: LaneId]

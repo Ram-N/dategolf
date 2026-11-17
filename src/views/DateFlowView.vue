@@ -1,8 +1,9 @@
 <template>
-  <div class="dateflow flex flex-col h-[calc(100dvh-40px)]" :data-theme="store.theme">
+  <div class="dateflow flex flex-col h-[calc(100dvh-40px)]" :data-theme="store.theme" :data-colors="store.colorMode">
     <DateFlowToolbar
       :view="store.view"
       :theme="store.theme"
+      :color-mode="store.colorMode"
       :mode="store.mode"
       :lane-state="store.laneState"
       :track-axis="store.trackAxis"
@@ -17,6 +18,7 @@
       @reset="store.reset()"
       @jump="store.jumpTo"
       @toggle-theme="store.toggleTheme()"
+      @toggle-colors="store.toggleColorMode()"
       @set-mode="store.setMode"
       @set-track-axis="store.setTrackAxis"
       @toggle-lane="store.toggleLane"
@@ -98,9 +100,11 @@
       <button class="underline font-semibold" @click="store.clearFocus()">Clear</button>
     </div>
     <div class="flex flex-wrap items-center gap-x-5 gap-y-1 px-4 py-2 border-t text-[11px] footer">
-      <span v-for="g in CATEGORY_GROUPS" :key="g.id" class="flex items-center gap-1.5 secondary">
-        <span class="inline-block w-2.5 h-2.5 rounded-full" :style="{ background: `var(--df-${g.id})` }" />
-        {{ g.label }}
+      <span v-for="f in FAMILIES" :key="f.id" class="flex items-center gap-1.5 secondary">
+        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+          <path :d="shapePath(f.shape, 6, 6, 4)" :fill="`var(--df-f-${f.id})`" />
+        </svg>
+        {{ f.label }}
       </span>
       <template v-if="store.mode !== 'constellation'">
         <span class="flex items-center gap-1.5 secondary">
@@ -170,7 +174,7 @@
 import { computed, onMounted, onUnmounted, useTemplateRef, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useDateFlowStore } from '@/stores/dateflow'
-import { CATEGORY_GROUPS } from '@/engine/dateflow/categoryGroups'
+import { FAMILIES, shapePath } from '@/engine/dateflow/categoryGroups'
 import { LANES } from '@/engine/dateflow/lanes'
 import DateFlowToolbar from '@/components/dateflow/DateFlowToolbar.vue'
 import DateFlowTimeline from '@/components/dateflow/DateFlowTimeline.vue'

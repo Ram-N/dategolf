@@ -1,5 +1,5 @@
 <template>
-  <div class="dateflow min-h-[calc(100dvh-40px)]" :data-theme="store.theme">
+  <div class="dateflow min-h-[calc(100dvh-40px)]" :data-theme="store.theme" :data-colors="store.colorMode">
     <div class="max-w-2xl mx-auto px-4 py-6">
       <div class="flex items-center justify-between gap-4">
         <div>

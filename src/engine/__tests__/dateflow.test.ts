@@ -24,7 +24,7 @@ import {
   wrapLabel,
   type LayoutItem,
 } from '../dateflow/visibility'
-import { groupFor } from '../dateflow/categoryGroups'
+import { FAMILIES, FAMILY_BY_CATEGORY, familyFor, shapeOf, shapePath } from '../dateflow/categoryGroups'
 import { densityBins } from '../dateflow/density'
 import { activeDuring, beforeAndAfter, meanwhile, summarizePeriod } from '../dateflow/explore'
 import {
@@ -232,16 +232,6 @@ describe('wrapLabel', () => {
     const lines = wrapLabel('one two three four five six seven eight nine ten eleven twelve', 10, 3)
     expect(lines).toHaveLength(3)
     expect(lines[2]!.endsWith('…')).toBe(true)
-  })
-})
-
-describe('categoryGroups', () => {
-  it('groups by primary category, falling back to other', () => {
-    expect(groupFor(['War', 'Science'])).toBe('power')
-    expect(groupFor(['Exploration'])).toBe('knowledge')
-    expect(groupFor(['Religion', 'Politics'])).toBe('culture')
-    expect(groupFor(['Disasters'])).toBe('other')
-    expect(groupFor([])).toBe('other')
   })
 })
 
@@ -519,5 +509,35 @@ describe('constellation', () => {
     expect(Math.min(...vals)).toBeGreaterThanOrEqual(-1)
     expect(Math.max(...vals)).toBeLessThanOrEqual(1)
     expect(new Set(vals.map((v) => Math.round(v * 10))).size).toBeGreaterThan(15) // spread, not clumped
+  })
+})
+
+describe('families', () => {
+  it('puts every category in a family by primary category', () => {
+    expect(familyFor(['War', 'Politics'])).toBe('war')
+    expect(familyFor(['Philosophy'])).toBe('belief')
+    expect(familyFor(['Exploration'])).toBe('earth')
+    expect(familyFor([])).toBe('society')
+    const cats = new Set((eventsData as Event[]).flatMap((e) => e.categories))
+    expect([...cats].filter((c) => !FAMILY_BY_CATEGORY[c])).toEqual([]) // a new category needs a family
+  })
+
+  it('gives each family its own shape', () => {
+    expect(new Set(FAMILIES.map((f) => f.shape)).size).toBe(FAMILIES.length)
+    expect(shapeOf('war')).toBe('triangle')
+  })
+
+  it('draws closed paths centred on the point for every shape', () => {
+    for (const f of FAMILIES) {
+      const d = shapePath(f.shape, 100, 50, 5)
+      expect(d.startsWith('M')).toBe(true)
+      expect(d.endsWith('Z')).toBe(true)
+      const nums = [...d.matchAll(/(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g)].map((m) => [Number(m[1]), Number(m[2])])
+      if (f.shape === 'circle') continue // arcs use relative coordinates
+      const xs = nums.map((n) => n[0]!)
+      const ys = nums.map((n) => n[1]!)
+      expect(Math.abs((Math.min(...xs) + Math.max(...xs)) / 2 - 100)).toBeLessThan(0.5)
+      expect(Math.max(...ys) - Math.min(...ys)).toBeLessThan(5 * 3.2) // stays roughly circle-sized
+    }
   })
 })

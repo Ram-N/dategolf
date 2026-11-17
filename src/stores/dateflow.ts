@@ -45,6 +45,7 @@ const MODE_KEY = 'dateflow:mode'
 const LANES_KEY = 'dateflow:lanes'
 const FILTERS_KEY = 'dateflow:filters'
 const TRACKS_KEY = 'dateflow:tracks'
+const COLORS_KEY = 'dateflow:colors'
 const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's default zoom
 const SURPRISE_SPAN = 40 // narrow enough that every importance level shows (visibility.ts)
 const ANIM_MS = 350
@@ -73,6 +74,7 @@ export interface TimeMachine {
 }
 
 export type Theme = 'light' | 'dark'
+export type ColorMode = 'colorful' | 'subtle'
 export type ViewMode = 'world' | 'lanes' | 'constellation'
 const MODES: ViewMode[] = ['world', 'lanes', 'constellation']
 
@@ -133,6 +135,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   // Phase 10: the Time Machine ("what was happening elsewhere at the same time?").
   const timeMachine = ref<TimeMachine | null>(null)
   const theme = ref<Theme>(loadTheme())
+  // Phase 11: Colorful (8 family hues, the default) or Subtle (the 3 group hues), remembered per viewer
+  const colorMode = ref<ColorMode>(loadJson<ColorMode>(COLORS_KEY) === 'subtle' ? 'subtle' : 'colorful')
   const savedMode = loadJson<ViewMode>(MODE_KEY)
   const mode = ref<ViewMode>(savedMode && MODES.includes(savedMode) ? savedMode : 'world')
   // Date Constellation's Y-axis (issue #7)
@@ -259,6 +263,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   watch(mode, (m) => saveJson(MODE_KEY, m))
   watch(laneState, (l) => saveJson(LANES_KEY, l))
   watch(trackAxis, (t) => saveJson(TRACKS_KEY, t))
+  watch(colorMode, (c) => saveJson(COLORS_KEY, c))
 
   watch(view, (v) => {
     try {
@@ -568,6 +573,10 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     theme.value = theme.value === 'dark' ? 'light' : 'dark'
   }
 
+  function toggleColorMode() {
+    colorMode.value = colorMode.value === 'colorful' ? 'subtle' : 'colorful'
+  }
+
   function setMode(m: ViewMode) {
     mode.value = m
   }
@@ -650,6 +659,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     selectedDuration,
     summaryRange,
     theme,
+    colorMode,
+    toggleColorMode,
     mode,
     laneState,
     lanes,

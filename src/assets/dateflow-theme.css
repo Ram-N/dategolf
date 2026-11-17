@@ -59,6 +59,53 @@
   --df-arc-then: #71717a;
   --df-backdrop: rgb(0 0 0 / 0.045);
 }
+/* Families (Phase 11): Subtle, the default here, folds the 8 families onto the 3 group hues. */
+.dateflow {
+  --df-f-politics: var(--df-power);
+  --df-f-war: var(--df-power);
+  --df-f-science: var(--df-knowledge);
+  --df-f-earth: var(--df-knowledge);
+  --df-f-arts: var(--df-culture);
+  --df-f-belief: var(--df-culture);
+  --df-f-economy: var(--df-culture);
+  --df-f-society: var(--df-culture);
+}
+/* Colorful: one hue per family, bright lines on a navy ground (modelled on issue #8's night-train map).
+   Shapes carry the family too, so no pair of hues has to be told apart by colour alone. */
+.dateflow[data-colors='colorful'][data-theme='dark'] {
+  --df-bg: #0f1b33;
+  --df-surface: #172645;
+  --df-border: #2e4370;
+  --df-border-soft: #1f3055;
+  --df-text: #eef3ff;
+  --df-text-2: #a9b8d6;
+  --df-muted: #7184a8;
+  --df-grid: #15233f;
+  --df-axis: #4a5f8a;
+  --df-milestone: #8597bd;
+  --df-era: rgb(140 170 255 / 0.05);
+  --df-btn: #1f3055;
+  --df-btn-hover: #2e4370;
+  --df-backdrop: rgb(140 170 255 / 0.07);
+  --df-f-politics: #4ea8ff;
+  --df-f-war: #ff5c63;
+  --df-f-science: #b991ff;
+  --df-f-earth: #f2cc4b;
+  --df-f-arts: #ffa24f;
+  --df-f-belief: #2fdcc8;
+  --df-f-economy: #8fdc4f;
+  --df-f-society: #ff74d4;
+}
+.dateflow[data-colors='colorful'][data-theme='light'] {
+  --df-f-politics: #1f6fd1;
+  --df-f-war: #d42f3a;
+  --df-f-science: #7b4ad8;
+  --df-f-earth: #a87a12;
+  --df-f-arts: #e0761a;
+  --df-f-belief: #0d9a8c;
+  --df-f-economy: #46961c;
+  --df-f-society: #c8399c;
+}
 .dateflow {
   background: var(--df-bg);
   color: var(--df-text);

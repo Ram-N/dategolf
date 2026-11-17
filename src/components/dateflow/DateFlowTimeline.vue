@@ -48,13 +48,11 @@
           <rect v-if="t.index % 2 === 1" x="0" :y="t.top" :width="width" :height="t.h" class="track-band" />
           <line v-if="t.index > 0" x1="0" :x2="width" :y1="t.top" :y2="t.top" class="lane-rule" />
         </g>
-        <circle
+        <path
           v-for="d in constellation.dots"
           :key="d.event.id"
-          :cx="d.x"
-          :cy="d.y"
-          :r="d.r"
-          :fill="`var(--df-${d.group})`"
+          :d="shapePath(d.shape, d.x, d.y, d.r)"
+          :fill="`var(--df-f-${d.family})`"
           class="star cursor-pointer"
           :class="{ selected: d.event.id === selectedId, lit: lit(d.event.id), dimmed: dimming && !lit(d.event.id) }"
           @pointerenter="onDotHover(d.event, $event)"
@@ -87,7 +85,7 @@
           :x2="m.leaderX"
           :y1="t.axisY"
           :y2="m.leaderEnd"
-          :stroke="`var(--df-${m.group})`"
+          :stroke="`var(--df-f-${m.family})`"
           stroke-opacity="0.55"
           :class="{ dimmed: dimming && !lit(m.event.id) }"
           pointer-events="none"
@@ -119,13 +117,11 @@
         />
 
         <!-- Visible events -->
-        <circle
+        <path
           v-for="m in t.markers"
           :key="m.event.id"
-          :cx="m.x"
-          :cy="t.axisY"
-          :r="m.radius"
-          :fill="`var(--df-${m.group})`"
+          :d="shapePath(m.shape, m.x, t.axisY, m.radius)"
+          :fill="`var(--df-f-${m.family})`"
           :stroke="m.event.id === selectedId || lit(m.event.id) ? 'var(--df-text)' : 'var(--df-bg)'"
           :stroke-width="lit(m.event.id) ? 3 : 2"
           class="cursor-pointer"
@@ -133,7 +129,7 @@
           @click="onMarkerClick(m.event.id)"
         >
           <title>{{ m.tooltip }}</title>
-        </circle>
+        </path>
         <g
           v-for="m in t.markers"
           :key="m.event.id"
@@ -179,8 +175,8 @@
             :width="b.w"
             :height="BAR_H"
             rx="3"
-            :fill="`var(--df-${b.group})`"
-            :stroke="`var(--df-${b.group})`"
+            :fill="`var(--df-f-${b.family})`"
+            :stroke="`var(--df-f-${b.family})`"
             class="bar-rect"
           />
           <text v-if="b.label" :x="b.labelX" :y="b.y + BAR_H - 3" class="bar-text">{{ b.label }}</text>
@@ -261,7 +257,7 @@ import {
   wrapLabel,
   type Side,
 } from '@/engine/dateflow/visibility'
-import { groupFor } from '@/engine/dateflow/categoryGroups'
+import { familyFor, shapeOf, shapePath } from '@/engine/dateflow/categoryGroups'
 import { formatSpan, packBars } from '@/engine/dateflow/durations'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
 import { constellationThreshold, dotRadius, scatter, trackOf, tracksFor, type TrackAxis } from '@/engine/dateflow/constellation'
@@ -519,8 +515,9 @@ function layoutMarkers(t: Track, sectionIds: Set<string>) {
       labelX: p.labelX,
       leaderX: p.leaderX,
       ...boxPosition(t, p.side, p.level, c.boxH),
-      group: groupFor(c.event.categories),
-      radius: 4 + Math.max(0, c.event.importance - 4) * 0.6,
+      family: familyFor(c.event.categories),
+      shape: shapeOf(familyFor(c.event.categories)),
+      radius: 5 + Math.max(0, c.event.importance - 4) * 0.6, // 5px floor: smaller, the family shapes blur together
       // Year first: the event is what students are learning to place.
       tooltip: `${formatEventYear(c.event.year, c.event.approximate)} — ${c.event.name}`,
     }
@@ -568,7 +565,7 @@ function layoutBars(t: Track) {
       y: p.top + p.row * BAR_ROW,
       label,
       labelX: Math.max(x, 0) + 5,
-      group: groupFor(d.categories),
+      family: familyFor(d.categories),
       tooltip: `${formatSpan(d, formatYear)} — ${d.name}`,
     }
   })
@@ -607,7 +604,8 @@ const constellation = computed(() => {
         x: yearToX(e.year, props.view, width.value),
         y: t.top + t.h / 2 + scatter(e.id) * spread,
         r,
-        group: groupFor(e.categories),
+        family: familyFor(e.categories),
+        shape: shapeOf(familyFor(e.categories)),
       }
     })
     // Big dots underneath, so the small ones near them stay visible and clickable.
