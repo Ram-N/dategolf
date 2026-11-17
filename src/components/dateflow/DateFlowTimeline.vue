@@ -179,7 +179,21 @@
             :stroke="`var(--df-f-${b.family})`"
             class="bar-rect"
           />
-          <text v-if="b.label" :x="b.labelX" :y="b.y + BAR_H - 3" class="bar-text">{{ b.label }}</text>
+          <!-- Sub-spans revealed by zooming in: segments inside the parent's bar (Delhi Sultanate → its dynasties) -->
+          <g
+            v-for="s in b.segments"
+            :key="s.d.id"
+            class="segment"
+            :class="{ selected: s.d.id === selectedDurationId, lit: lit(s.d.id), dimmed: dimming && !lit(s.d.id), faded: fades(s.family, s.d.id) }"
+            @click.stop="onBarClick(s.d.id)"
+          >
+            <title>{{ s.tooltip }}</title>
+            <rect :x="s.x" :y="b.y + s.inset" :width="s.w" :height="BAR_H - 2 * s.inset" rx="2"
+                  :fill="`var(--df-f-${s.family})`" class="segment-rect" />
+            <text v-if="s.label" :x="s.labelX" :y="b.y + BAR_H - 3" class="segment-text">{{ s.label }}</text>
+          </g>
+          <!-- The parent's name goes on top, so a segment starting at the bar's edge can't cover it -->
+          <text v-if="b.label" :x="b.labelX" :y="b.y + BAR_H - 3" class="bar-text" :class="{ halo: b.segments.length }">{{ b.label }}</text>
         </g>
       </g>
 
@@ -258,7 +272,7 @@ import {
   type Side,
 } from '@/engine/dateflow/visibility'
 import { familyFor, shapeOf, shapePath, type Family } from '@/engine/dateflow/categoryGroups'
-import { formatSpan, packBars } from '@/engine/dateflow/durations'
+import { emptyRows, formatSpan, packBars, revealedSubSpans, topLevelSpans } from '@/engine/dateflow/durations'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
 import { constellationThreshold, dotRadius, scatter, trackOf, tracksFor, type TrackAxis } from '@/engine/dateflow/constellation'
 import type { ViewMode } from '@/stores/dateflow'
@@ -271,6 +285,7 @@ const props = defineProps<{
   events: Event[] // already filtered
   allEvents: Event[] // unfiltered: milestone section lines stay put whatever the filters
   durations: Duration[]
+  spanParents: Map<string, string> // sub-span → the span it is part of
   detail: number
   view: View
   mode: ViewMode
@@ -548,38 +563,92 @@ function layoutBars(t: Track) {
     .filter((c) => c.d.importance >= minImp || c.x2 - c.x1 >= BAR_MIN_PX)
   const byId = new Map(candidates.map((c) => [c.d.id, c]))
 
-  const placed = t.barRows.flatMap((r) =>
-    packBars(
-      candidates
-        .filter((c) => c.d.kind === r.kind)
+  // Pack in rounds. A sub-span whose parent is a candidate rides inside the parent's bar
+  // instead of taking a row; if the parent finds no row, its sub-spans compete on their own.
+  const rows = t.barRows.map((r) => emptyRows(r.rows))
+  const placed: { id: string; row: number; top: number }[] = []
+  let pending = candidates.map((c) => c.d.id)
+  while (pending.length) {
+    const round = new Set(topLevelSpans(pending, props.spanParents))
+    if (!round.size) break // only a part_of cycle could leave no top level
+    t.barRows.forEach((r, i) => {
+      const items = candidates
+        .filter((c) => c.d.kind === r.kind && round.has(c.d.id))
         .map((c) => ({
           id: c.d.id,
           // Clamp so off-screen ends don't stop other bars sharing the row.
           x1: Math.max(c.x1, -10),
           x2: Math.max(Math.min(c.x2, width.value + 10), Math.max(c.x1, -10) + 3),
           priority: lit(c.d.id) ? HIGHLIGHT_PRIORITY : c.d.importance,
-        })),
-      r.rows,
-    ).map((p) => ({ ...p, top: r.top })),
-  )
+        }))
+      placed.push(...packBars(items, r.rows, 4, rows[i]).map((p) => ({ ...p, top: r.top })))
+    })
+    // Sub-spans of a placed bar are drawn as its segments; the rest get another round.
+    const shown = new Set(placed.map((p) => p.id))
+    const underShown = (id: string) => {
+      for (let a = props.spanParents.get(id); a; a = props.spanParents.get(a)) if (shown.has(a)) return true
+      return false
+    }
+    pending = pending.filter((id) => !round.has(id) && !underShown(id))
+  }
 
   return placed.map((p) => {
     const { d, x1, x2 } = byId.get(p.id)!
     const x = Math.max(x1, -2)
     const w = Math.max(3, Math.min(x2, width.value + 2) - x)
     // Name sticks to the visible left edge so it stays readable as the bar scrolls.
-    const chars = Math.floor((w - 10) / 5.6)
-    const label = chars >= d.name.length ? d.name : chars >= 4 ? d.name.slice(0, chars - 1) + '…' : ''
+    const label = fitLabel(d.name, w - 10)
+    const labelX = Math.max(x, 0) + 5
     return {
       d,
       x,
       w,
       y: p.top + p.row * BAR_ROW,
       label,
-      labelX: Math.max(x, 0) + 5,
+      labelX,
       family: familyFor(d.categories),
       tooltip: `${formatSpan(d, formatYear)} — ${d.name}`,
+      segments: layoutSegments(t, d.id, x, x + w, label ? labelX + label.length * BAR_CHAR_W : x),
     }
+  })
+}
+
+const BAR_CHAR_W = 5.6 // approx width of a 10px bar-label character
+const SUB_REVEAL_PX = 48 // a sub-span shows inside its parent's bar once it is this wide
+
+function fitLabel(name: string, px: number): string {
+  const chars = Math.floor(px / BAR_CHAR_W)
+  return chars >= name.length ? name : chars >= 4 ? name.slice(0, chars - 1) + '…' : ''
+}
+
+/** Segments for the sub-spans of a bar spanning [barX1, barX2]; their labels start after the bar's own. */
+function layoutSegments(t: Track, barId: string, barX1: number, barX2: number, labelEnd: number) {
+  const inTrack = new Map(t.durations.map((d) => [d.id, d]))
+  const xs = (d: Duration) => [yearToX(d.startYear, props.view, width.value), yearToX(d.endYear, props.view, width.value)] as const
+  const revealed = (id: string) => {
+    const d = inTrack.get(id)
+    if (!d) return false
+    const [a, b] = xs(d)
+    return b - a >= SUB_REVEAL_PX || lit(id)
+  }
+  return revealedSubSpans(barId, props.spanParents, revealed).flatMap(({ id, depth }) => {
+    const d = inTrack.get(id)!
+    const [a, b] = xs(d)
+    const x = Math.max(a, barX1)
+    const w = Math.min(b, barX2) - x
+    if (w < 2) return []
+    const labelX = Math.max(x + 4, labelEnd + 8)
+    const label = depth === 1 ? fitLabel(d.name, x + w - labelX - 2) : ''
+    return [{
+      d,
+      x,
+      w,
+      inset: depth * 2, // nested deeper = thinner
+      label,
+      labelX,
+      family: familyFor(d.categories),
+      tooltip: `${formatSpan(d, formatYear)} — ${d.name} (part of a longer span)`,
+    }]
   })
 }
 
@@ -986,10 +1055,36 @@ function onArcClick(key: string, e: MouseEvent) {
   stroke: var(--df-text);
   stroke-width: 1.5;
 }
+.segment-rect {
+  fill-opacity: 0.85;
+  stroke: var(--df-bg);
+  stroke-width: 1;
+}
+.segment:hover .segment-rect,
+.segment.selected .segment-rect,
+.segment.lit .segment-rect {
+  stroke: var(--df-text);
+  stroke-width: 1.5;
+}
+.segment-text {
+  fill: var(--df-text);
+  font-size: 10px;
+  font-weight: 600;
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: var(--df-bg);
+  stroke-width: 3px;
+}
 .bar-text {
   fill: var(--df-text);
   font-size: 10px;
   pointer-events: none;
+}
+.bar-text.halo {
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: var(--df-bg);
+  stroke-width: 3px;
 }
 .selection {
   fill: var(--df-text);

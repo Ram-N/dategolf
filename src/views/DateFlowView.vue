@@ -45,6 +45,7 @@
         :events="store.filteredEvents"
         :all-events="store.events"
         :durations="store.filteredDurations"
+        :span-parents="store.subSpanParents"
         :detail="store.detailLevel"
         :density="store.density"
         :view="store.view"

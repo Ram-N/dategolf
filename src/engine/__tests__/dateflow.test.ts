@@ -44,12 +44,14 @@ import {
   visibleLanes,
   type LaneId,
 } from '../dateflow/lanes'
-import { eventsDuring, formatSpan, packBars } from '../dateflow/durations'
+import { emptyRows, eventsDuring, formatSpan, packBars, revealedSubSpans, spanParents, topLevelSpans } from '../dateflow/durations'
 import { formatYear, parseYear } from '@/utils/formatYear'
 import type { Event } from '@/types'
 import eventsData from '@/data/events.json'
 import { constellationThreshold, dotRadius, scatter, trackOf, tracksFor } from '../dateflow/constellation'
-import type { Duration } from '@/types/dateflow'
+import type { Duration, RelationshipData } from '@/types/dateflow'
+import durationsData from '@/data/durations.json'
+import relationshipsData from '@/data/relationships.json'
 
 const W = 1000
 
@@ -548,5 +550,55 @@ describe('families', () => {
       expect(Math.abs((Math.min(...xs) + Math.max(...xs)) / 2 - 100)).toBeLessThan(0.5)
       expect(Math.max(...ys) - Math.min(...ys)).toBeLessThan(5 * 3.2) // stays roughly circle-sized
     }
+  })
+})
+
+describe('sub-spans', () => {
+  it('packs in rounds that share rows', () => {
+    const rows = emptyRows(1)
+    expect(packBars([{ id: 'a', x1: 0, x2: 100, priority: 5 }], 1, 4, rows)).toEqual([{ id: 'a', row: 0 }])
+    expect(packBars([{ id: 'b', x1: 50, x2: 150, priority: 9 }], 1, 4, rows)).toEqual([]) // a holds the row
+    expect(packBars([{ id: 'c', x1: 120, x2: 200, priority: 1 }], 1, 4, rows)).toEqual([{ id: 'c', row: 0 }])
+  })
+
+  const span = (id: string): Duration => ({
+    id, name: id, startYear: 1, endYear: 2, description: '', categories: [], region: 'Europe', importance: 5, kind: 'period',
+  })
+  const spans = ['mughal', 'shahjahan', 'taj', 'akbar', 'punic'].map(span)
+  const parents = spanParents(
+    [
+      { source: 'shahjahan', type: 'part_of', target: 'mughal', why: '' },
+      { source: 'taj', type: 'part_of', target: 'shahjahan', why: '' },
+      { source: 'akbar', type: 'part_of', target: 'mughal', why: '' },
+      { source: 'akbar', type: 'preceded', target: 'shahjahan', why: '' }, // not nesting
+      { source: 'punic', type: 'part_of', target: 'some-event', why: '' }, // not a span
+    ],
+    spans,
+  )
+
+  it('maps part_of links between spans only', () => {
+    expect([...parents]).toEqual([['shahjahan', 'mughal'], ['taj', 'shahjahan'], ['akbar', 'mughal']])
+  })
+
+  it('keeps a bar only for spans with no ancestor among the candidates', () => {
+    expect(topLevelSpans(['mughal', 'taj', 'akbar', 'punic'], parents)).toEqual(['mughal', 'punic']) // taj via shahjahan
+    expect(topLevelSpans(['taj', 'akbar'], parents)).toEqual(['taj', 'akbar']) // parents not shown: stand alone
+  })
+
+  it('reveals children that fit, and grandchildren only inside a revealed child', () => {
+    const all = () => true
+    expect(revealedSubSpans('mughal', parents, all)).toEqual([
+      { id: 'shahjahan', depth: 1 },
+      { id: 'taj', depth: 2 },
+      { id: 'akbar', depth: 1 },
+    ])
+    expect(revealedSubSpans('mughal', parents, (id) => id !== 'shahjahan')).toEqual([{ id: 'akbar', depth: 1 }])
+    expect(revealedSubSpans('mughal', parents, all, 1).map((r) => r.id)).toEqual(['shahjahan', 'akbar'])
+  })
+
+  it('finds the nested spans in the real data', () => {
+    const real = spanParents((relationshipsData as RelationshipData).links, durationsData as Duration[])
+    expect(real.get('khalji-dynasty')).toBe('delhi-sultanate')
+    expect(topLevelSpans([...real.keys(), 'delhi-sultanate'], real)).not.toContain('khalji-dynasty')
   })
 })

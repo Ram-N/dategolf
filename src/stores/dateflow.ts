@@ -3,6 +3,7 @@ import { ref, computed, watch } from 'vue'
 import type { Event } from '@/types'
 import type { Duration, RelationshipData } from '@/types/dateflow'
 import { connectedIds, connectionsFor } from '@/engine/dateflow/connections'
+import { spanParents } from '@/engine/dateflow/durations'
 import { buildStory, featuredStories, frameYears, storyCounts, storyStops, type Direction } from '@/engine/dateflow/stories'
 import { compareYears, distance, overlap, worldAt } from '@/engine/dateflow/contemporaries'
 import { pickSurprise, rememberPick } from '@/engine/dateflow/surprise'
@@ -256,6 +257,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
       : { lines: [], band: null, bracket: null, label: '' }
   })
   const viewSpan = computed(() => span(view.value))
+  /** Sub-span → parent span (part_of), for nesting bars on the timeline. */
+  const subSpanParents = computed(() => spanParents(relationships.value.links, durations.value))
   /** The detail level the timeline draws with: the Filters slider shifted by the density preset. */
   const detailLevel = computed(() => effectiveDetail(filters.value.detail, density.value))
   /** Detailed: an open card rings its connections on the timeline, as "Show connections" does. */
@@ -702,6 +705,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     setFocusFamily,
     density,
     setDensity,
+    subSpanParents,
     detailLevel,
     cardIds,
     mode,
