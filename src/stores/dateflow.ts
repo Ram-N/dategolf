@@ -402,6 +402,18 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     }
   }
 
+  /**
+   * Close the event or span card. In Detailed, its connections stay ringed afterwards (the card's
+   * backdrop hides them while it's open) until Esc, Clear, or a click on empty timeline.
+   */
+  function closeCard() {
+    const id = openId.value
+    const keepRings = density.value === 'detailed' && !!id && relatedIds.value.size > 0
+    select(null)
+    selectDuration(null)
+    if (keepRings) focusId.value = id
+  }
+
   function openSummary(start: number, end: number) {
     selectedEventId.value = null
     selectedDurationId.value = null
@@ -712,6 +724,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     showSpan,
     select,
     selectDuration,
+    closeCard,
     openSummary,
     closeSummary,
     goToEvent,

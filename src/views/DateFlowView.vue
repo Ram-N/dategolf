@@ -53,7 +53,7 @@
         :track-axis="store.trackAxis"
         :selected-id="store.selectedEvent?.id ?? null"
         :selected-duration-id="store.selectedDuration?.id ?? null"
-        :highlight-ids="store.storyIds ?? store.tmIds ?? store.focusIds ?? store.cardIds"
+        :highlight-ids="store.storyIds ?? store.tmIds ?? store.cardIds ?? store.focusIds"
         :marks="store.tmMarks"
         :story="store.currentStory"
         :focus-family="store.focusFamily"
@@ -63,6 +63,7 @@
         @select="store.select"
         @select-duration="store.selectDuration"
         @select-range="store.openSummary"
+        @background-click="store.clearFocus()"
         @select-stop="(id) => store.goToStep(store.currentStops.findIndex((s) => s.node.id === id), false)"
       />
       </div>
@@ -137,7 +138,7 @@
       <span class="ml-auto muted hidden sm:inline">Scroll to zoom · drag to move · shift-drag to summarise · ← → pan · + − zoom</span>
     </div>
 
-    <EventInfoCard v-if="store.selectedEvent" :event="store.selectedEvent" @close="store.select(null)">
+    <EventInfoCard v-if="store.selectedEvent" :event="store.selectedEvent" @close="store.closeCard()">
       <EventConnections
         :groups="store.connections"
         @open-event="store.goToEvent"
@@ -170,7 +171,7 @@
       :duration="store.selectedDuration"
       :events="store.events"
       :connections="store.connections"
-      @close="store.selectDuration(null)"
+      @close="store.closeCard()"
       @open-event="store.goToEvent"
       @open-duration="store.selectDuration"
       @show-on-timeline="showSelectedDuration"

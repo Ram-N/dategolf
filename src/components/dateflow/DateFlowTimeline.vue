@@ -11,7 +11,7 @@
       @pointermove="onPointerMove"
       @pointerup="onPointerUp"
       @pointercancel="onPointerUp"
-      @click="pinned = null"
+      @click="onBackgroundClick"
     >
       <!-- Era bands: alternating faint fills, name pinned to the visible part of the band -->
       <g v-for="era in eraBands" :key="era.id">
@@ -293,6 +293,7 @@ const emit = defineEmits<{
   selectDuration: [id: string]
   selectRange: [startYear: number, endYear: number]
   selectStop: [id: string] // a story thread was clicked: the stop it leads into
+  backgroundClick: [] // a click (not a drag) anywhere on the timeline: clears ringed connections
 }>()
 
 // Label geometry. Vertical space on each side of an axis is cut into LEVEL_H levels;
@@ -864,6 +865,11 @@ function onPointerUp(e: PointerEvent) {
     dragging.value = false
     lastPinch = null
   }
+}
+
+function onBackgroundClick() {
+  pinned.value = null
+  if (!justDragged) emit('backgroundClick')
 }
 
 function onMarkerClick(id: string) {
