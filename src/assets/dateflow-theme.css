@@ -131,3 +131,20 @@
 .dateflow .muted {
   color: var(--df-muted);
 }
+/* Legend families double as Focus toggles */
+.dateflow .family {
+  padding: 1px 6px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.dateflow .family:hover {
+  background: var(--df-btn);
+}
+.dateflow .family.on {
+  border-color: var(--df-text-2);
+  color: var(--df-text);
+  font-weight: 700;
+}
+.dateflow .family.off {
+  opacity: 0.5;
+}

@@ -7,6 +7,7 @@ import { buildStory, featuredStories, frameYears, storyCounts, storyStops, type 
 import { compareYears, distance, overlap, worldAt } from '@/engine/dateflow/contemporaries'
 import { pickSurprise, rememberPick } from '@/engine/dateflow/surprise'
 import type { TrackAxis } from '@/engine/dateflow/constellation'
+import type { Family } from '@/engine/dateflow/categoryGroups'
 import milestoneIds from '@/data/milestones.json'
 import {
   FULL_VIEW,
@@ -136,6 +137,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const timeMachine = ref<TimeMachine | null>(null)
   const theme = ref<Theme>(loadTheme())
   // Phase 11: Colorful (8 family hues, the default) or Subtle (the 3 group hues), remembered per viewer
+  // Phase 11 Focus: one family vivid, the rest faded. Per visit, not remembered.
+  const focusFamily = ref<Family | null>(null)
   const colorMode = ref<ColorMode>(loadJson<ColorMode>(COLORS_KEY) === 'subtle' ? 'subtle' : 'colorful')
   const savedMode = loadJson<ViewMode>(MODE_KEY)
   const mode = ref<ViewMode>(savedMode && MODES.includes(savedMode) ? savedMode : 'world')
@@ -573,6 +576,11 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     theme.value = theme.value === 'dark' ? 'light' : 'dark'
   }
 
+  /** Focus a family; focusing the one already focused (or null) clears it. */
+  function setFocusFamily(f: Family | null) {
+    focusFamily.value = f === focusFamily.value ? null : f
+  }
+
   function toggleColorMode() {
     colorMode.value = colorMode.value === 'colorful' ? 'subtle' : 'colorful'
   }
@@ -661,6 +669,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     theme,
     colorMode,
     toggleColorMode,
+    focusFamily,
+    setFocusFamily,
     mode,
     laneState,
     lanes,

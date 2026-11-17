@@ -53,6 +53,7 @@
         :highlight-ids="store.storyIds ?? store.tmIds ?? store.focusIds"
         :marks="store.tmMarks"
         :story="store.currentStory"
+        :focus-family="store.focusFamily"
         :step-id="store.storyStep === null ? null : (store.currentStops[store.storyStep]?.node.id ?? null)"
         @zoom-at="store.zoomAt"
         @pan-by="store.panBy"
@@ -100,12 +101,21 @@
       <button class="underline font-semibold" @click="store.clearFocus()">Clear</button>
     </div>
     <div class="flex flex-wrap items-center gap-x-5 gap-y-1 px-4 py-2 border-t text-[11px] footer">
-      <span v-for="f in FAMILIES" :key="f.id" class="flex items-center gap-1.5 secondary">
+      <button
+        v-for="f in FAMILIES"
+        :key="f.id"
+        class="family flex items-center gap-1.5 secondary"
+        :class="{ on: store.focusFamily === f.id, off: store.focusFamily && store.focusFamily !== f.id }"
+        :aria-pressed="store.focusFamily === f.id"
+        :title="store.focusFamily === f.id ? 'Show all families again (Esc)' : `Focus on ${f.label}: the rest fade`"
+        @click="store.setFocusFamily(f.id)"
+      >
         <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
           <path :d="shapePath(f.shape, 6, 6, 4)" :fill="`var(--df-f-${f.id})`" />
         </svg>
         {{ f.label }}
-      </span>
+      </button>
+      <button v-if="store.focusFamily" class="secondary underline" @click="store.setFocusFamily(null)">Show all</button>
       <template v-if="store.mode !== 'constellation'">
         <span class="flex items-center gap-1.5 secondary">
           <span class="inline-block w-4 h-2.5 rounded-sm kind-empire" /> Empire
@@ -208,6 +218,7 @@ const filterSummary = computed(() => {
 function onKey(e: KeyboardEvent) {
   if (e.target instanceof HTMLInputElement || store.selectedEvent || store.selectedDuration || store.summaryRange) return
   if (e.key === 'Escape' && store.focusId) return store.clearFocus()
+  if (e.key === 'Escape' && store.focusFamily) return store.setFocusFamily(null)
   if (store.timeMachine) {
     if (e.key === 'Escape') return store.closeTimeMachine()
     if (store.timeMachine.mode === 'year' && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {

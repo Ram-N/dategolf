@@ -54,7 +54,7 @@
           :d="shapePath(d.shape, d.x, d.y, d.r)"
           :fill="`var(--df-f-${d.family})`"
           class="star cursor-pointer"
-          :class="{ selected: d.event.id === selectedId, lit: lit(d.event.id), dimmed: dimming && !lit(d.event.id) }"
+          :class="{ selected: d.event.id === selectedId, lit: lit(d.event.id), dimmed: dimming && !lit(d.event.id), faded: fades(d.family, d.event.id) }"
           @pointerenter="onDotHover(d.event, $event)"
           @pointerleave="hoveredDot = null"
           @click="onMarkerClick(d.event.id)"
@@ -87,7 +87,7 @@
           :y2="m.leaderEnd"
           :stroke="`var(--df-f-${m.family})`"
           stroke-opacity="0.55"
-          :class="{ dimmed: dimming && !lit(m.event.id) }"
+          :class="{ dimmed: dimming && !lit(m.event.id), faded: fades(m.family, m.event.id) }"
           pointer-events="none"
         />
 
@@ -125,7 +125,7 @@
           :stroke="m.event.id === selectedId || lit(m.event.id) ? 'var(--df-text)' : 'var(--df-bg)'"
           :stroke-width="lit(m.event.id) ? 3 : 2"
           class="cursor-pointer"
-          :class="{ dimmed: dimming && !lit(m.event.id) }"
+          :class="{ dimmed: dimming && !lit(m.event.id), faded: fades(m.family, m.event.id) }"
           @click="onMarkerClick(m.event.id)"
         >
           <title>{{ m.tooltip }}</title>
@@ -134,7 +134,7 @@
           v-for="m in t.markers"
           :key="m.event.id"
           class="cursor-pointer marker"
-          :class="{ selected: m.event.id === selectedId, lit: lit(m.event.id), dimmed: dimming && !lit(m.event.id) }"
+          :class="{ selected: m.event.id === selectedId, lit: lit(m.event.id), dimmed: dimming && !lit(m.event.id), faded: fades(m.family, m.event.id) }"
           @click="onMarkerClick(m.event.id)"
         >
           <title>{{ m.tooltip }}</title>
@@ -165,7 +165,7 @@
           v-for="b in t.bars"
           :key="b.d.id"
           class="cursor-pointer bar"
-          :class="[b.d.kind, { selected: b.d.id === selectedDurationId, lit: lit(b.d.id), dimmed: dimming && !lit(b.d.id) }]"
+          :class="[b.d.kind, { selected: b.d.id === selectedDurationId, lit: lit(b.d.id), dimmed: dimming && !lit(b.d.id), faded: fades(b.family, b.d.id) }]"
           @click="onBarClick(b.d.id)"
         >
           <title>{{ b.tooltip }}</title>
@@ -257,7 +257,7 @@ import {
   wrapLabel,
   type Side,
 } from '@/engine/dateflow/visibility'
-import { familyFor, shapeOf, shapePath } from '@/engine/dateflow/categoryGroups'
+import { familyFor, shapeOf, shapePath, type Family } from '@/engine/dateflow/categoryGroups'
 import { formatSpan, packBars } from '@/engine/dateflow/durations'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
 import { constellationThreshold, dotRadius, scatter, trackOf, tracksFor, type TrackAxis } from '@/engine/dateflow/constellation'
@@ -281,6 +281,7 @@ const props = defineProps<{
   highlightIds?: Set<string> | null // "Show connections": ring these, dim the rest
   story?: Story | null // Phase 9: draw this story's threads
   stepId?: string | null // the stop being played
+  focusFamily?: Family | null // Phase 11 Focus: this family stays vivid, the rest fade (never hidden)
   // Phase 10, the Time Machine: year lines, a shaded band (two spans' shared years), a bracket (two events)
   marks?: { lines: number[]; band: [number, number] | null; bracket: [number, number] | null; label: string } | null
 }>()
@@ -311,6 +312,7 @@ const LANE_HEADER = 18 // room for the lane name
 const MILESTONE_GAP_PX = 48
 const MILESTONE_PRIORITY = 100 // milestones claim label space before everything else
 const HIGHLIGHT_PRIORITY = 200 // highlighted connections claim it before milestones
+const FOCUS_BOOST = 20 // the focused family's labels beat other events, not milestones
 
 // Duration bars. World mode has two sub-bands so long empires can't crowd out periods;
 // each lane gets one row per kind (or just empires when the lane is short).
@@ -474,6 +476,8 @@ const lit = (id: string) => !!props.highlightIds?.has(id)
 // The open card's event always gets a marker, even below the zoom's importance threshold.
 const kept = (id: string) => lit(id) || id === props.selectedId
 const dimming = computed(() => !!props.highlightIds?.size)
+/** Focus fades every other family; the open card's event and ringed connections stay vivid. */
+const fades = (family: Family, id: string) => !!props.focusFamily && family !== props.focusFamily && !kept(id)
 
 function layoutMarkers(t: Track, sectionIds: Set<string>) {
   const minImp = importanceThreshold(span(props.view), props.detail)
@@ -486,8 +490,10 @@ function layoutMarkers(t: Track, sectionIds: Set<string>) {
       const longest = Math.max(...lines.map((l) => l.length))
       const labelWidth = longest * (bold ? CHAR_W_BOLD : CHAR_W) + 12
       const boxH = lines.length * LINE_H + BOX_PAD * 2
-      const priority = kept(e.id) ? HIGHLIGHT_PRIORITY : sectionIds.has(e.id) ? MILESTONE_PRIORITY : e.importance
-      return { event: e, x, lines, labelWidth, boxH, bold, priority }
+      const family = familyFor(e.categories)
+      const boost = family === props.focusFamily ? FOCUS_BOOST : 0
+      const priority = kept(e.id) ? HIGHLIGHT_PRIORITY : sectionIds.has(e.id) ? MILESTONE_PRIORITY : e.importance + boost
+      return { event: e, x, lines, labelWidth, boxH, bold, priority, family }
     })
   const byId = new Map(candidates.map((c) => [c.event.id, c]))
 
@@ -515,8 +521,7 @@ function layoutMarkers(t: Track, sectionIds: Set<string>) {
       labelX: p.labelX,
       leaderX: p.leaderX,
       ...boxPosition(t, p.side, p.level, c.boxH),
-      family: familyFor(c.event.categories),
-      shape: shapeOf(familyFor(c.event.categories)),
+      shape: shapeOf(c.family),
       radius: 5 + Math.max(0, c.event.importance - 4) * 0.6, // 5px floor: smaller, the family shapes blur together
       // Year first: the event is what students are learning to place.
       tooltip: `${formatEventYear(c.event.year, c.event.approximate)} — ${c.event.name}`,
@@ -1001,6 +1006,9 @@ function onArcClick(key: string, e: MouseEvent) {
 }
 .dimmed {
   opacity: 0.25;
+}
+.faded {
+  opacity: 0.15;
 }
 .track-band {
   fill: var(--df-era);
