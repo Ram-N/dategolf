@@ -35,8 +35,10 @@ import {
   DETAIL_MIN,
   NO_FILTERS,
   categoriesByFrequency,
+  effectiveDetail,
   matchesFilters,
   toggleIn,
+  type Density,
   type Filters,
 } from '@/engine/dateflow/filters'
 
@@ -47,6 +49,7 @@ const LANES_KEY = 'dateflow:lanes'
 const FILTERS_KEY = 'dateflow:filters'
 const TRACKS_KEY = 'dateflow:tracks'
 const COLORS_KEY = 'dateflow:colors'
+const DENSITY_KEY = 'dateflow:density'
 const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's default zoom
 const SURPRISE_SPAN = 40 // narrow enough that every importance level shows (visibility.ts)
 const ANIM_MS = 350
@@ -139,6 +142,9 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   // Phase 11: Colorful (8 family hues, the default) or Subtle (the 3 group hues), remembered per viewer
   // Phase 11 Focus: one family vivid, the rest faded. Per visit, not remembered.
   const focusFamily = ref<Family | null>(null)
+  // Simple / Standard / Detailed (#1), remembered per viewer
+  const savedDensity = loadJson<Density>(DENSITY_KEY)
+  const density = ref<Density>(savedDensity === 'simple' || savedDensity === 'detailed' ? savedDensity : 'standard')
   const colorMode = ref<ColorMode>(loadJson<ColorMode>(COLORS_KEY) === 'subtle' ? 'subtle' : 'colorful')
   const savedMode = loadJson<ViewMode>(MODE_KEY)
   const mode = ref<ViewMode>(savedMode && MODES.includes(savedMode) ? savedMode : 'world')
@@ -250,6 +256,12 @@ export const useDateFlowStore = defineStore('dateflow', () => {
       : { lines: [], band: null, bracket: null, label: '' }
   })
   const viewSpan = computed(() => span(view.value))
+  /** The detail level the timeline draws with: the Filters slider shifted by the density preset. */
+  const detailLevel = computed(() => effectiveDetail(filters.value.detail, density.value))
+  /** Detailed: an open card rings its connections on the timeline, as "Show connections" does. */
+  const cardIds = computed(() =>
+    density.value === 'detailed' && openId.value ? new Set([openId.value, ...relatedIds.value]) : null,
+  )
   const lanes = computed(() => visibleLanes(laneState.value))
 
   // Region filtering is a World / Constellation control; in Lanes mode the lane picker decides regions.
@@ -267,6 +279,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   watch(laneState, (l) => saveJson(LANES_KEY, l))
   watch(trackAxis, (t) => saveJson(TRACKS_KEY, t))
   watch(colorMode, (c) => saveJson(COLORS_KEY, c))
+  watch(density, (d) => saveJson(DENSITY_KEY, d))
 
   watch(view, (v) => {
     try {
@@ -581,6 +594,10 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     focusFamily.value = f === focusFamily.value ? null : f
   }
 
+  function setDensity(d: Density) {
+    density.value = d
+  }
+
   function toggleColorMode() {
     colorMode.value = colorMode.value === 'colorful' ? 'subtle' : 'colorful'
   }
@@ -671,6 +688,10 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     toggleColorMode,
     focusFamily,
     setFocusFamily,
+    density,
+    setDensity,
+    detailLevel,
+    cardIds,
     mode,
     laneState,
     lanes,

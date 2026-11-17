@@ -4,6 +4,7 @@
       :view="store.view"
       :theme="store.theme"
       :color-mode="store.colorMode"
+      :density="store.density"
       :mode="store.mode"
       :lane-state="store.laneState"
       :track-axis="store.trackAxis"
@@ -19,6 +20,7 @@
       @jump="store.jumpTo"
       @toggle-theme="store.toggleTheme()"
       @toggle-colors="store.toggleColorMode()"
+      @set-density="store.setDensity"
       @set-mode="store.setMode"
       @set-track-axis="store.setTrackAxis"
       @toggle-lane="store.toggleLane"
@@ -43,14 +45,15 @@
         :events="store.filteredEvents"
         :all-events="store.events"
         :durations="store.filteredDurations"
-        :detail="store.filters.detail"
+        :detail="store.detailLevel"
+        :density="store.density"
         :view="store.view"
         :mode="store.mode"
         :lanes="store.lanes"
         :track-axis="store.trackAxis"
         :selected-id="store.selectedEvent?.id ?? null"
         :selected-duration-id="store.selectedDuration?.id ?? null"
-        :highlight-ids="store.storyIds ?? store.tmIds ?? store.focusIds"
+        :highlight-ids="store.storyIds ?? store.tmIds ?? store.focusIds ?? store.cardIds"
         :marks="store.tmMarks"
         :story="store.currentStory"
         :focus-family="store.focusFamily"
@@ -116,7 +119,7 @@
         {{ f.label }}
       </button>
       <button v-if="store.focusFamily" class="secondary underline" @click="store.setFocusFamily(null)">Show all</button>
-      <template v-if="store.mode !== 'constellation'">
+      <template v-if="store.mode !== 'constellation' && store.density !== 'simple'">
         <span class="flex items-center gap-1.5 secondary">
           <span class="inline-block w-4 h-2.5 rounded-sm kind-empire" /> Empire
         </span>
@@ -124,7 +127,7 @@
           <span class="inline-block w-4 h-2.5 rounded-sm kind-period" /> Period
         </span>
       </template>
-      <span v-else class="secondary">Bigger dot = more important</span>
+      <span v-else-if="store.mode === 'constellation'" class="secondary">Bigger dot = more important</span>
       <span v-if="filterSummary" class="secondary">
         · Showing: <strong>{{ filterSummary }}</strong>
         <button class="underline ml-1" @click="store.clearFilters()">Clear</button>

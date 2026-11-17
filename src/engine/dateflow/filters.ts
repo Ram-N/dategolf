@@ -43,3 +43,22 @@ export function toggleIn<T>(list: T[], value: T): T[] {
 }
 
 export const isFiltering = (f: Filters) => f.categories.length > 0 || f.regions.length > 0
+
+// ── Density presets (Phase 11, issue #1) ──────────────────────────────────────
+// Simple / Standard / Detailed bundle settings that already exist. The preset shifts the
+// detail level on top of the Filters slider (which stays the viewer's own adjustment).
+
+export type Density = 'simple' | 'standard' | 'detailed'
+
+export const DENSITIES: { id: Density; label: string; hint: string }[] = [
+  { id: 'simple', label: 'Simple', hint: 'Fewer events; no empire bars or milestone lines' },
+  { id: 'standard', label: 'Standard', hint: 'The usual timeline' },
+  { id: 'detailed', label: 'Detailed', hint: 'More events at every zoom; an open card rings its connections' },
+]
+
+const DENSITY_SHIFT: Record<Density, number> = { simple: -1, standard: 0, detailed: 2 }
+
+/** The detail level the timeline uses: the slider plus the preset's shift. */
+export function effectiveDetail(sliderDetail: number, density: Density): number {
+  return sliderDetail + DENSITY_SHIFT[density]
+}

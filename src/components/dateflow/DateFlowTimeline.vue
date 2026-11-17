@@ -157,7 +157,7 @@
         </g>
 
         <!-- Duration bars: empires/dynasties (solid) and periods (dashed) -->
-        <template v-if="!t.label">
+        <template v-if="!t.label && t.barRows.length">
           <line x1="0" :x2="width" :y1="t.bandTop" :y2="t.bandTop" class="lane-rule" />
           <text v-for="r in t.barRows" :key="r.kind" x="8" :y="r.top - 4" class="band-title">{{ r.title }}</text>
         </template>
@@ -250,7 +250,7 @@ import type { Duration } from '@/types/dateflow'
 import erasData from '@/data/eras.json'
 import milestoneIds from '@/data/milestones.json'
 import { formatTick, span, ticks, xToYear, yearToX, type View } from '@/engine/dateflow/timeScale'
-import { importanceThreshold } from '@/engine/dateflow/filters'
+import { importanceThreshold, type Density } from '@/engine/dateflow/filters'
 import {
   layoutLabels,
   spaceMilestones,
@@ -281,6 +281,7 @@ const props = defineProps<{
   highlightIds?: Set<string> | null // "Show connections": ring these, dim the rest
   story?: Story | null // Phase 9: draw this story's threads
   stepId?: string | null // the stop being played
+  density: Density // Simple hides span bars and milestone lines
   focusFamily?: Family | null // Phase 11 Focus: this family stays vivid, the rest fade (never hidden)
   // Phase 10, the Time Machine: year lines, a shaded band (two spans' shared years), a bracket (two events)
   marks?: { lines: number[]; band: [number, number] | null; bracket: [number, number] | null; label: string } | null
@@ -375,6 +376,7 @@ const inView = computed(() =>
 
 // Section lines for the milestones in view, thinned so wide zooms stay uncluttered.
 const milestoneLines = computed(() => {
+  if (props.density === 'simple') return []
   const ranked = props.allEvents
     .filter((e) => e.year >= props.view.start && e.year <= props.view.end)
     .filter((e) => MILESTONE_RANK.has(e.id))
@@ -413,7 +415,8 @@ const tracks = computed<Track[]>(() => {
   )
 
   if (props.mode === 'world') {
-    const bandTop = h - WORLD_BAND_H
+    const bars = props.density !== 'simple'
+    const bandTop = h - (bars ? WORLD_BAND_H : 0)
     const empiresTop = bandTop + SUB_HEADER
     const periodsTop = empiresTop + WORLD_ROWS_PER_KIND * BAR_ROW + SUB_HEADER
     const axisY = Math.round((ERA_SPACE + bandTop) / 2)
@@ -429,10 +432,12 @@ const tracks = computed<Track[]>(() => {
         levelsPerSide: Math.max(2, Math.floor(Math.min(above, below) / LEVEL_H)),
         belowGap: TICK_SPACE,
         bandTop,
-        barRows: [
-          { kind: 'empire', title: 'Empires & dynasties', top: empiresTop, rows: WORLD_ROWS_PER_KIND },
-          { kind: 'period', title: 'Periods', top: periodsTop, rows: WORLD_ROWS_PER_KIND },
-        ],
+        barRows: bars
+          ? [
+              { kind: 'empire', title: 'Empires & dynasties', top: empiresTop, rows: WORLD_ROWS_PER_KIND },
+              { kind: 'period', title: 'Periods', top: periodsTop, rows: WORLD_ROWS_PER_KIND },
+            ]
+          : [],
         events: inView.value,
         durations: durationsInView,
       },
@@ -440,7 +445,8 @@ const tracks = computed<Track[]>(() => {
   }
 
   const laneH = (h - ERA_SPACE - TICK_STRIP) / Math.max(1, props.lanes.length)
-  const kinds: Duration['kind'][] = laneH >= LANE_TWO_ROW_MIN_H ? ['empire', 'period'] : ['empire']
+  const kinds: Duration['kind'][] =
+    props.density === 'simple' ? [] : laneH >= LANE_TWO_ROW_MIN_H ? ['empire', 'period'] : ['empire']
   return props.lanes.map((id, index) => {
     const top = ERA_SPACE + index * laneH
     const bandTop = top + laneH - kinds.length * BAR_ROW - 4

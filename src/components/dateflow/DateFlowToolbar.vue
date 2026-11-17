@@ -33,6 +33,19 @@
           {{ t.label }}
         </button>
       </div>
+      <div class="seg flex rounded-lg p-0.5" role="group" aria-label="Detail preset">
+        <button
+          v-for="d in DENSITIES"
+          :key="d.id"
+          class="seg-btn"
+          :class="{ active: density === d.id }"
+          :aria-pressed="density === d.id"
+          :title="d.hint"
+          @click="emit('setDensity', d.id)"
+        >
+          {{ d.label }}
+        </button>
+      </div>
       <DateFlowFilters
         :filters="filters"
         :categories="categories"
@@ -110,13 +123,14 @@ import DateFlowLanePicker from './DateFlowLanePicker.vue'
 import DateFlowFilters from './DateFlowFilters.vue'
 import StoriesMenu from './StoriesMenu.vue'
 import type { FeaturedStory } from '@/engine/dateflow/stories'
-import type { Filters } from '@/engine/dateflow/filters'
+import { DENSITIES, type Density, type Filters } from '@/engine/dateflow/filters'
 import { formatYear, parseYear } from '@/utils/formatYear'
 
 defineProps<{
   view: View
   theme: Theme
   colorMode: ColorMode
+  density: Density
   mode: ViewMode
   laneState: LaneState
   trackAxis: TrackAxis
@@ -131,6 +145,7 @@ const emit = defineEmits<{
   jump: [year: number]
   toggleTheme: []
   toggleColors: []
+  setDensity: [density: Density]
   setMode: [mode: ViewMode]
   setTrackAxis: [axis: TrackAxis]
   toggleLane: [id: LaneId]
