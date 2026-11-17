@@ -6,6 +6,7 @@ import { connectedIds, connectionsFor } from '@/engine/dateflow/connections'
 import { buildStory, featuredStories, frameYears, storyCounts, storyStops, type Direction } from '@/engine/dateflow/stories'
 import { compareYears, distance, overlap, worldAt } from '@/engine/dateflow/contemporaries'
 import { pickSurprise, rememberPick } from '@/engine/dateflow/surprise'
+import type { TrackAxis } from '@/engine/dateflow/constellation'
 import milestoneIds from '@/data/milestones.json'
 import {
   FULL_VIEW,
@@ -43,6 +44,7 @@ const THEME_KEY = 'dateflow:theme'
 const MODE_KEY = 'dateflow:mode'
 const LANES_KEY = 'dateflow:lanes'
 const FILTERS_KEY = 'dateflow:filters'
+const TRACKS_KEY = 'dateflow:tracks'
 const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's default zoom
 const SURPRISE_SPAN = 40 // narrow enough that every importance level shows (visibility.ts)
 const ANIM_MS = 350
@@ -71,7 +73,8 @@ export interface TimeMachine {
 }
 
 export type Theme = 'light' | 'dark'
-export type ViewMode = 'world' | 'lanes'
+export type ViewMode = 'world' | 'lanes' | 'constellation'
+const MODES: ViewMode[] = ['world', 'lanes', 'constellation']
 
 function loadJson<T>(key: string): T | null {
   try {
@@ -130,7 +133,10 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   // Phase 10: the Time Machine ("what was happening elsewhere at the same time?").
   const timeMachine = ref<TimeMachine | null>(null)
   const theme = ref<Theme>(loadTheme())
-  const mode = ref<ViewMode>(loadJson<ViewMode>(MODE_KEY) === 'lanes' ? 'lanes' : 'world')
+  const savedMode = loadJson<ViewMode>(MODE_KEY)
+  const mode = ref<ViewMode>(savedMode && MODES.includes(savedMode) ? savedMode : 'world')
+  // Date Constellation's Y-axis (issue #7)
+  const trackAxis = ref<TrackAxis>(loadJson<TrackAxis>(TRACKS_KEY) === 'activity' ? 'activity' : 'geography')
   const laneState = ref<LaneState>(sanitizeLanes(loadJson<LaneState>(LANES_KEY)))
   const filters = ref<Filters>(loadFilters())
 
@@ -239,8 +245,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const viewSpan = computed(() => span(view.value))
   const lanes = computed(() => visibleLanes(laneState.value))
 
-  // Region filtering is a World-mode control; in Lanes mode the lane picker decides regions.
-  const applyRegions = computed(() => mode.value === 'world')
+  // Region filtering is a World / Constellation control; in Lanes mode the lane picker decides regions.
+  const applyRegions = computed(() => mode.value !== 'lanes')
   const filteredEvents = computed(() =>
     events.value.filter((e) => matchesFilters(e, filters.value, applyRegions.value)),
   )
@@ -252,6 +258,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   watch(filters, (f) => saveJson(FILTERS_KEY, f), { deep: true })
   watch(mode, (m) => saveJson(MODE_KEY, m))
   watch(laneState, (l) => saveJson(LANES_KEY, l))
+  watch(trackAxis, (t) => saveJson(TRACKS_KEY, t))
 
   watch(view, (v) => {
     try {
@@ -565,6 +572,10 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     mode.value = m
   }
 
+  function setTrackAxis(t: TrackAxis) {
+    trackAxis.value = t
+  }
+
   function toggleLane(id: LaneId) {
     laneState.value = toggleLaneIn(laneState.value, id)
   }
@@ -642,6 +653,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     mode,
     laneState,
     lanes,
+    trackAxis,
+    setTrackAxis,
     filters,
     filteredEvents,
     filteredDurations,

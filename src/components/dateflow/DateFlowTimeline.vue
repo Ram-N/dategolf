@@ -42,6 +42,30 @@
         pointer-events="none"
       />
 
+      <!-- Date Constellation: every event as a dot on its track; no labels or bars -->
+      <g v-if="constellation">
+        <g v-for="t in constellation.tracks" :key="t.id">
+          <rect v-if="t.index % 2 === 1" x="0" :y="t.top" :width="width" :height="t.h" class="track-band" />
+          <line v-if="t.index > 0" x1="0" :x2="width" :y1="t.top" :y2="t.top" class="lane-rule" />
+        </g>
+        <circle
+          v-for="d in constellation.dots"
+          :key="d.event.id"
+          :cx="d.x"
+          :cy="d.y"
+          :r="d.r"
+          :fill="`var(--df-${d.group})`"
+          class="star cursor-pointer"
+          :class="{ selected: d.event.id === selectedId, lit: lit(d.event.id), dimmed: dimming && !lit(d.event.id) }"
+          @pointerenter="onDotHover(d.event, $event)"
+          @pointerleave="hoveredDot = null"
+          @click="onMarkerClick(d.event.id)"
+        />
+        <text v-for="t in constellation.tracks" :key="t.id" x="8" :y="t.top + 14" class="lane-label" pointer-events="none">
+          {{ t.label }}
+        </text>
+      </g>
+
       <!-- Story backdrops: the spans that hold a story's steps (World War II behind the WWII chain) -->
       <g v-for="b in storyBackdrops" :key="b.id" pointer-events="none" aria-hidden="true">
         <rect :x="b.x" :y="ERA_SPACE" :width="b.w" :height="b.h" class="backdrop" />
@@ -198,8 +222,8 @@
         </text>
       </g>
 
-      <!-- Lanes share one row of year labels along the bottom -->
-      <template v-if="mode === 'lanes'">
+      <!-- Lanes and Constellation share one row of year labels along the bottom -->
+      <template v-if="mode !== 'world'">
         <line x1="0" :x2="width" :y1="height - TICK_STRIP" :y2="height - TICK_STRIP" class="lane-rule" />
         <text
           v-for="tk in tickMarks"
@@ -213,6 +237,11 @@
         </text>
       </template>
     </svg>
+    <div v-if="dotCard" class="dot-card" :style="{ left: dotCard.left + 'px', top: dotCard.top + 'px' }" role="tooltip">
+      <div class="dot-card-year">{{ dotCard.year }}</div>
+      <div class="dot-card-name">{{ dotCard.name }}</div>
+      <div v-if="dotCard.text" class="dot-card-text">{{ dotCard.text }}</div>
+    </div>
     <ConnectionCard v-if="cardArc" :arc="cardArc.arc" :x="cardArc.x" :y="cardArc.y" :bounds="{ width, height }"
                     :pinned="!!pinned" @close="pinned = null" />
   </div>
@@ -235,6 +264,8 @@ import {
 import { groupFor } from '@/engine/dateflow/categoryGroups'
 import { formatSpan, packBars } from '@/engine/dateflow/durations'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
+import { constellationThreshold, dotRadius, scatter, trackOf, tracksFor, type TrackAxis } from '@/engine/dateflow/constellation'
+import type { ViewMode } from '@/stores/dateflow'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
 import { gapText, joinFrom, joinTo, yearGap, type Story, type StoryEdge, type StoryNode } from '@/engine/dateflow/stories'
 import StoryArcs, { type Arc } from './StoryArcs.vue'
@@ -246,8 +277,9 @@ const props = defineProps<{
   durations: Duration[]
   detail: number
   view: View
-  mode: 'world' | 'lanes'
+  mode: ViewMode
   lanes: LaneId[]
+  trackAxis: TrackAxis
   selectedId: string | null
   selectedDurationId: string | null
   highlightIds?: Set<string> | null // "Show connections": ring these, dim the rest
@@ -376,6 +408,7 @@ interface Track {
 }
 
 const tracks = computed<Track[]>(() => {
+  if (props.mode === 'constellation') return [] // drawn by its own layer below
   const h = height.value
   const durationsInView = props.durations.filter(
     (d) => d.endYear >= props.view.start && d.startYear <= props.view.end,
@@ -551,6 +584,52 @@ const layouts = computed(() => {
       .map((e) => ({ id: e.id, x: yearToX(e.year, props.view, width.value) }))
     return { ...t, markers, hiddenDots, bars: layoutBars(t) }
   })
+})
+
+// ── Date Constellation (issues #5–#7) ───────────────────────────────────────
+const DOT_MARGIN = 5 // keeps a dot clear of its track's edges
+
+const constellation = computed(() => {
+  if (props.mode !== 'constellation') return null
+  const defs = tracksFor(props.trackAxis)
+  const h = (height.value - ERA_SPACE - TICK_STRIP) / defs.length
+  const tracks = defs.map((t, index) => ({ ...t, index, top: ERA_SPACE + index * h, h }))
+  const byId = new Map(tracks.map((t) => [t.id, t]))
+  const minImp = constellationThreshold(props.detail)
+  const dots = inView.value
+    .filter((e) => e.importance >= minImp || kept(e.id))
+    .map((e) => {
+      const t = byId.get(trackOf(e, props.trackAxis))!
+      const r = dotRadius(e.importance)
+      const spread = Math.max(0, t.h / 2 - DOT_MARGIN - r)
+      return {
+        event: e,
+        x: yearToX(e.year, props.view, width.value),
+        y: t.top + t.h / 2 + scatter(e.id) * spread,
+        r,
+        group: groupFor(e.categories),
+      }
+    })
+    // Big dots underneath, so the small ones near them stay visible and clickable.
+    .sort((a, b) => b.r - a.r)
+  return { tracks, dots }
+})
+
+const hoveredDot = ref<{ event: Event; x: number; y: number } | null>(null)
+function onDotHover(e: Event, ev: PointerEvent) {
+  if (dragging.value || ev.pointerType === 'touch') return
+  hoveredDot.value = { event: e, ...pointIn(ev) }
+}
+watch(() => props.view, () => (hoveredDot.value = null))
+
+const DOT_CARD_W = 240
+const dotCard = computed(() => {
+  const h = hoveredDot.value
+  if (!h || props.mode !== 'constellation') return null
+  const text = h.event.description.length > 140 ? h.event.description.slice(0, 139).trimEnd() + '…' : h.event.description
+  const left = clamp(h.x + 14, 4, Math.max(4, width.value - DOT_CARD_W - 4))
+  const top = h.y > height.value - 130 ? h.y - 120 : h.y + 14
+  return { year: formatEventYear(h.event.year, h.event.approximate), name: h.event.name, text, left, top }
 })
 
 // ── Story threads (Phase 9) ──────────────────────────────────────────────────
@@ -924,6 +1003,50 @@ function onArcClick(key: string, e: MouseEvent) {
 }
 .dimmed {
   opacity: 0.25;
+}
+.track-band {
+  fill: var(--df-era);
+}
+.star {
+  fill-opacity: 0.85;
+  stroke: var(--df-bg);
+  stroke-width: 1;
+}
+.star:hover,
+.star.selected,
+.star.lit {
+  fill-opacity: 1;
+  stroke: var(--df-text);
+  stroke-width: 2;
+}
+.dot-card {
+  position: absolute;
+  width: 240px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--df-border);
+  background: var(--df-surface);
+  color: var(--df-text);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
+  pointer-events: none;
+  z-index: 30;
+}
+.dot-card-year {
+  color: var(--df-text-2);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.dot-card-name {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.dot-card-text {
+  margin-top: 4px;
+  color: var(--df-text-2);
+  font-size: 12px;
+  line-height: 1.35;
 }
 .tm-line {
   stroke: var(--df-approx-border);

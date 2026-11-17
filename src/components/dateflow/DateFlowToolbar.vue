@@ -21,6 +21,18 @@
           {{ m.label }}
         </button>
       </div>
+      <div v-if="mode === 'constellation'" class="seg flex rounded-lg p-0.5" role="group" aria-label="Tracks">
+        <button
+          v-for="t in TRACK_AXES"
+          :key="t.id"
+          class="seg-btn"
+          :class="{ active: trackAxis === t.id }"
+          :aria-pressed="trackAxis === t.id"
+          @click="emit('setTrackAxis', t.id)"
+        >
+          {{ t.label }}
+        </button>
+      </div>
       <DateFlowFilters
         :filters="filters"
         :categories="categories"
@@ -85,6 +97,7 @@ import { RouterLink } from 'vue-router'
 import type { View } from '@/engine/dateflow/timeScale'
 import type { Theme, ViewMode } from '@/stores/dateflow'
 import type { LaneId, LaneState } from '@/engine/dateflow/lanes'
+import { TRACK_AXES, type TrackAxis } from '@/engine/dateflow/constellation'
 import DateFlowLanePicker from './DateFlowLanePicker.vue'
 import DateFlowFilters from './DateFlowFilters.vue'
 import StoriesMenu from './StoriesMenu.vue'
@@ -97,6 +110,7 @@ defineProps<{
   theme: Theme
   mode: ViewMode
   laneState: LaneState
+  trackAxis: TrackAxis
   filters: Filters
   categories: string[]
   stories: FeaturedStory[]
@@ -108,6 +122,7 @@ const emit = defineEmits<{
   jump: [year: number]
   toggleTheme: []
   setMode: [mode: ViewMode]
+  setTrackAxis: [axis: TrackAxis]
   toggleLane: [id: LaneId]
   moveLane: [id: LaneId, dir: -1 | 1]
   resetLanes: []
@@ -124,6 +139,7 @@ const emit = defineEmits<{
 const MODES: { id: ViewMode; label: string }[] = [
   { id: 'world', label: 'World' },
   { id: 'lanes', label: 'Lanes' },
+  { id: 'constellation', label: 'Constellation' },
 ]
 
 const jumpInput = ref('')

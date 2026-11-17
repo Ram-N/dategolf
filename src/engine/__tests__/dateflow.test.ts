@@ -46,6 +46,8 @@ import {
 import { eventsDuring, formatSpan, packBars } from '../dateflow/durations'
 import { formatYear, parseYear } from '@/utils/formatYear'
 import type { Event } from '@/types'
+import eventsData from '@/data/events.json'
+import { constellationThreshold, dotRadius, scatter, trackOf, tracksFor } from '../dateflow/constellation'
 import type { Duration } from '@/types/dateflow'
 
 const W = 1000
@@ -478,5 +480,44 @@ describe('explore', () => {
     expect(s.empires.map((d) => d.id)).toEqual(['ming', 'byzantine', 'ottoman'])
     expect(s.lanes.map((l) => l.lane)).toEqual(['east-asia', 'europe', 'middle-east', 'americas'])
     expect(s.lanes.find((l) => l.lane === 'east-asia')!.events).toHaveLength(3)
+  })
+})
+
+describe('constellation', () => {
+  it('puts events on geography or activity tracks', () => {
+    const e = { region: 'North America', categories: ['Technology', 'War'] }
+    expect(trackOf(e, 'geography')).toBe('americas')
+    expect(trackOf(e, 'activity')).toBe('science') // primary category decides
+    expect(trackOf({ region: 'Mars', categories: [] }, 'activity')).toBe('society')
+  })
+
+  it('has a track for every event', () => {
+    for (const axis of ['geography', 'activity'] as const) {
+      const ids = new Set(tracksFor(axis).map((t) => t.id))
+      for (const e of eventsData as Event[]) expect(ids.has(trackOf(e, axis))).toBe(true)
+    }
+  })
+
+  it('sizes dots logarithmically by importance', () => {
+    const r = [2, 4, 6, 8, 9].map(dotRadius)
+    for (let i = 1; i < r.length; i++) expect(r[i]!).toBeGreaterThan(r[i - 1]!)
+    expect(r[1]! - r[0]!).toBeGreaterThan(r[3]! - r[2]!) // steps shrink as importance grows
+    expect(dotRadius(9)).toBeCloseTo(7)
+    expect(dotRadius(1)).toBe(dotRadius(2)) // clamped
+  })
+
+  it('shows every event by default and thins with less detail', () => {
+    expect(constellationThreshold(0)).toBe(0)
+    expect(constellationThreshold(2)).toBe(0)
+    expect(constellationThreshold(-1)).toBe(5)
+    expect(constellationThreshold(-2)).toBe(6)
+  })
+
+  it('scatters deterministically within [-1, 1]', () => {
+    expect(scatter('magna-carta')).toBe(scatter('magna-carta'))
+    const vals = (eventsData as Event[]).map((e) => scatter(e.id))
+    expect(Math.min(...vals)).toBeGreaterThanOrEqual(-1)
+    expect(Math.max(...vals)).toBeLessThanOrEqual(1)
+    expect(new Set(vals.map((v) => Math.round(v * 10))).size).toBeGreaterThan(15) // spread, not clumped
   })
 })

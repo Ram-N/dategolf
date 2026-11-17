@@ -5,6 +5,7 @@
       :theme="store.theme"
       :mode="store.mode"
       :lane-state="store.laneState"
+      :track-axis="store.trackAxis"
       :filters="store.filters"
       :categories="store.categories"
       :stories="store.featured"
@@ -17,6 +18,7 @@
       @jump="store.jumpTo"
       @toggle-theme="store.toggleTheme()"
       @set-mode="store.setMode"
+      @set-track-axis="store.setTrackAxis"
       @toggle-lane="store.toggleLane"
       @move-lane="store.moveLane"
       @reset-lanes="store.resetLanes()"
@@ -43,6 +45,7 @@
         :view="store.view"
         :mode="store.mode"
         :lanes="store.lanes"
+        :track-axis="store.trackAxis"
         :selected-id="store.selectedEvent?.id ?? null"
         :selected-duration-id="store.selectedDuration?.id ?? null"
         :highlight-ids="store.storyIds ?? store.tmIds ?? store.focusIds"
@@ -99,12 +102,15 @@
         <span class="inline-block w-2.5 h-2.5 rounded-full" :style="{ background: `var(--df-${g.id})` }" />
         {{ g.label }}
       </span>
-      <span class="flex items-center gap-1.5 secondary">
-        <span class="inline-block w-4 h-2.5 rounded-sm kind-empire" /> Empire
-      </span>
-      <span class="flex items-center gap-1.5 secondary">
-        <span class="inline-block w-4 h-2.5 rounded-sm kind-period" /> Period
-      </span>
+      <template v-if="store.mode !== 'constellation'">
+        <span class="flex items-center gap-1.5 secondary">
+          <span class="inline-block w-4 h-2.5 rounded-sm kind-empire" /> Empire
+        </span>
+        <span class="flex items-center gap-1.5 secondary">
+          <span class="inline-block w-4 h-2.5 rounded-sm kind-period" /> Period
+        </span>
+      </template>
+      <span v-else class="secondary">Bigger dot = more important</span>
       <span v-if="filterSummary" class="secondary">
         · Showing: <strong>{{ filterSummary }}</strong>
         <button class="underline ml-1" @click="store.clearFilters()">Clear</button>
@@ -190,7 +196,7 @@ const eventYears = computed(() => store.filteredEvents.map((e) => e.year))
 const filterSummary = computed(() => {
   const f = store.filters
   const parts = [...f.categories]
-  if (store.mode === 'world') parts.push(...f.regions.map((id) => LANES.find((l) => l.id === id)?.label ?? id))
+  if (store.mode !== 'lanes') parts.push(...f.regions.map((id) => LANES.find((l) => l.id === id)?.label ?? id))
   if (f.detail) parts.push(f.detail > 0 ? `more detail (+${f.detail})` : `less detail (${f.detail})`)
   return parts.join(' · ')
 })

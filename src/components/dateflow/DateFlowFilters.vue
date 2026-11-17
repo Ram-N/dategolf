@@ -26,7 +26,7 @@
         </div>
       </section>
 
-      <section v-if="mode === 'world'">
+      <section v-if="mode !== 'lanes'">
         <h3 class="heading">Regions</h3>
         <div class="flex flex-wrap gap-1.5">
           <button
@@ -60,7 +60,9 @@
           <span class="hint">More</span>
         </div>
         <p class="hint mt-1">
-          {{ filters.detail === 0 ? 'Automatic: zoom in to reveal more events.' : 'Adjusts how many events show at each zoom level.' }}
+          {{ mode === 'constellation'
+            ? 'Every event shows; Fewer keeps only the bigger ones.'
+            : filters.detail === 0 ? 'Automatic: zoom in to reveal more events.' : 'Adjusts how many events show at each zoom level.' }}
         </p>
       </section>
 
@@ -90,7 +92,7 @@ const PANEL_W = 320
 const { open, rootEl, panelLeft, toggle } = usePopover(PANEL_W)
 
 const activeCount = computed(
-  () => props.filters.categories.length + (props.mode === 'world' ? props.filters.regions.length : 0),
+  () => props.filters.categories.length + (props.mode !== 'lanes' ? props.filters.regions.length : 0),
 )
 </script>
 
