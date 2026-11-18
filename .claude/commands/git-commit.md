@@ -35,7 +35,7 @@ test(auth): add unit tests for login validation
 
 ### Subject Line (First Line)
 
-- **Length**: Keep under 50 characters
+- **Length**: Aim for ~50 characters; never exceed 72 (GitHub truncates past 72)
 - **Capitalization**: Use lowercase for type and description
 - **Tense**: Use imperative mood ("add" not "added" or "adds")
 - **Punctuation**: No period at the end
