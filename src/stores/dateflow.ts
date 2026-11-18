@@ -9,6 +9,7 @@ import { compareYears, distance, overlap, worldAt } from '@/engine/dateflow/cont
 import { pickSurprise, rememberPick } from '@/engine/dateflow/surprise'
 import type { TrackAxis } from '@/engine/dateflow/constellation'
 import type { Family } from '@/engine/dateflow/categoryGroups'
+import { eventStop, searchStops, sortStops, spanStop, stepIndex, type TourSpeed } from '@/engine/dateflow/tour'
 import milestoneIds from '@/data/milestones.json'
 import {
   FULL_VIEW,
@@ -37,6 +38,7 @@ import {
   NO_FILTERS,
   categoriesByFrequency,
   effectiveDetail,
+  importanceThreshold,
   matchesFilters,
   toggleIn,
   type Density,
@@ -53,6 +55,7 @@ const COLORS_KEY = 'dateflow:colors'
 const DENSITY_KEY = 'dateflow:density'
 const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's default zoom
 const SURPRISE_SPAN = 40 // narrow enough that every importance level shows (visibility.ts)
+const TOUR_SPAN = 100 // a tour frames each event in a century, like "Jump to year"
 const ANIM_MS = 350
 
 function loadView(): View {
@@ -139,6 +142,12 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const playing = ref(false)
   // Phase 10: the Time Machine ("what was happening elsewhere at the same time?").
   const timeMachine = ref<TimeMachine | null>(null)
+  // Step 4 (issues #3, #4, #9): a tour steps or plays through a search's matches, or through what
+  // the filters let through. tourStep indexes tourStops; null = the overview.
+  const tour = ref<{ source: 'search' | 'filters'; query: string } | null>(null)
+  const tourStep = ref<number | null>(null)
+  const tourPlaying = ref(false)
+  const tourSpeed = ref<TourSpeed>('normal')
   const theme = ref<Theme>(loadTheme())
   // Phase 11: Colorful (8 family hues, the default) or Subtle (the 3 group hues), remembered per viewer
   // Phase 11 Focus: one family vivid, the rest faded. Per visit, not remembered.
@@ -276,6 +285,43 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     durations.value.filter((d) => matchesFilters(d, filters.value, applyRegions.value)),
   )
   const categories = computed(() => categoriesByFrequency([...events.value, ...durations.value]))
+
+  // ── Tour (step 4) ──
+  /** Every search match, before the filters. */
+  const tourMatches = computed(() =>
+    tour.value?.source === 'search'
+      ? searchStops(tour.value.query, events.value, durations.value, relationships.value.links)
+      : [],
+  )
+  /** The tour's stops, in time order. Both kinds respect the filters (issue #3). */
+  const tourStops = computed(() => {
+    const t = tour.value
+    if (!t) return []
+    if (t.source === 'search') {
+      const shown = new Set([...filteredEvents.value, ...filteredDurations.value].map((x) => x.id))
+      return tourMatches.value.filter((s) => shown.has(s.id))
+    }
+    // Watching the filters plays what a century-wide view would show at the current detail level.
+    const minImp = importanceThreshold(TOUR_SPAN, detailLevel.value)
+    return sortStops([
+      ...filteredEvents.value.filter((e) => e.importance >= minImp).map((e) => eventStop(e)),
+      ...filteredDurations.value.filter((d) => d.importance >= minImp).map((d) => spanStop(d)),
+    ])
+  })
+  const tourHidden = computed(() => tourMatches.value.length - (tour.value?.source === 'search' ? tourStops.value.length : 0))
+  const tourCurrent = computed(() => (tourStep.value === null ? null : (tourStops.value[tourStep.value] ?? null)))
+  /** A search rings its matches; watching the filters rings nothing (every dot would be lit). */
+  const tourIds = computed(() => (tour.value?.source === 'search' ? new Set(tourStops.value.map((s) => s.id)) : null))
+  // The filters can change under an open tour: don't point past its end.
+  watch(
+    () => tourStops.value.length,
+    (n) => {
+      if (tourStep.value !== null && tourStep.value >= n) {
+        tourStep.value = null
+        tourPlaying.value = false
+      }
+    },
+  )
 
   watch(filters, (f) => saveJson(FILTERS_KEY, f), { deep: true })
   watch(mode, (m) => saveJson(MODE_KEY, m))
@@ -445,6 +491,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     const e = pickSurprise(filteredEvents.value, hasStory, Math.random, recentSurprises)
     if (!e) return
     recentSurprises = rememberPick(recentSurprises, e.id)
+    closeTour()
     closeStory()
     closeTimeMachine()
     clearFocus()
@@ -477,6 +524,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   }
 
   function openStory(id: string, direction: Direction = 'back') {
+    closeTour()
     timeMachine.value = null
     select(null)
     selectDuration(null)
@@ -551,6 +599,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
 
   /** Open the Time Machine (closing any card or story); by default on the year at the view's centre. */
   function openTimeMachine(patch: Partial<TimeMachine> = {}) {
+    closeTour()
     closeStory()
     select(null)
     selectDuration(null)
@@ -587,6 +636,85 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     if (tm.year > 0 && y <= 0) y -= 1
     else if (tm.year < 0 && y >= 0) y += 1
     setTimeMachine({ year: y })
+  }
+
+  // ── Tour (step 4) ────────────────────────────────────────────────────────
+  function startTour(t: { source: 'search' | 'filters'; query: string }) {
+    closeStory()
+    closeTimeMachine()
+    select(null)
+    selectDuration(null)
+    summaryRange.value = null
+    focusId.value = null
+    tour.value = t
+    tourStep.value = null
+    tourPlaying.value = false
+    frameTour()
+  }
+
+  /** Free-text search (issue #9): ring the matches and list them in the tour panel. */
+  const searchFor = (query: string) => startTour({ source: 'search', query: query.trim() })
+  /** Play through what the filters let through (issue #3). */
+  const watchFilters = () => startTour({ source: 'filters', query: '' })
+
+  function closeTour() {
+    tour.value = null
+    tourStep.value = null
+    tourPlaying.value = false
+  }
+
+  /** The overview: frame every stop. */
+  function frameTour() {
+    const ys = tourStops.value.flatMap((s) => [s.year, s.endYear ?? s.year])
+    if (ys.length) showSpan(Math.min(...ys), Math.max(...ys))
+  }
+
+  /** Make stop i current and frame it: an event in a century around it, a span end to end. */
+  function goToTourStop(i: number) {
+    const s = tourStops.value[i]
+    if (!s) return
+    tourStep.value = i
+    if (s.endYear !== undefined) showSpan(s.year, s.endYear)
+    else animateTo(centerOn(s.year, TOUR_SPAN))
+  }
+
+  /** Step through the tour; past either end, back to the overview (and playback stops). */
+  function stepTour(delta: 1 | -1) {
+    const next = stepIndex(tourStep.value, delta, tourStops.value.length)
+    if (next === null) {
+      tourStep.value = null
+      tourPlaying.value = false
+      frameTour()
+      return
+    }
+    goToTourStop(next)
+  }
+
+  /** Stop: pause and go back to the overview. */
+  function stopTour() {
+    tourPlaying.value = false
+    tourStep.value = null
+    frameTour()
+  }
+
+  function toggleTourPlay() {
+    if (!tourStops.value.length) return
+    tourPlaying.value = !tourPlaying.value
+    if (tourPlaying.value && tourStep.value === null) goToTourStop(0)
+  }
+
+  function setTourSpeed(s: TourSpeed) {
+    tourSpeed.value = s
+  }
+
+  /** Open the current stop's full card; playback pauses (the card covers the timeline). */
+  function openTourStop(i: number) {
+    const s = tourStops.value[i]
+    if (!s) return
+    tourPlaying.value = false
+    tourStep.value = i
+    if (s.kind === 'span') selectDuration(s.id)
+    else select(s.id)
   }
 
   function togglePlay() {
@@ -674,6 +802,23 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     closeTimeMachine,
     setTimeMachine,
     stepYear,
+    tour,
+    tourStep,
+    tourPlaying,
+    tourSpeed,
+    tourStops,
+    tourHidden,
+    tourCurrent,
+    tourIds,
+    searchFor,
+    watchFilters,
+    closeTour,
+    goToTourStop,
+    stepTour,
+    stopTour,
+    toggleTourPlay,
+    setTourSpeed,
+    openTourStop,
     story,
     storyStep,
     playing,

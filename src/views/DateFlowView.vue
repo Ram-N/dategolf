@@ -18,6 +18,8 @@
       @zoom-out="store.zoomOut()"
       @reset="store.reset()"
       @jump="store.jumpTo"
+      @search="store.searchFor"
+      @watch="store.watchFilters()"
       @toggle-theme="store.toggleTheme()"
       @toggle-colors="store.toggleColorMode()"
       @set-density="store.setDensity"
@@ -52,9 +54,9 @@
         :mode="store.mode"
         :lanes="store.lanes"
         :track-axis="store.trackAxis"
-        :selected-id="store.selectedEvent?.id ?? null"
-        :selected-duration-id="store.selectedDuration?.id ?? null"
-        :highlight-ids="store.storyIds ?? store.tmIds ?? store.cardIds ?? store.focusIds"
+        :selected-id="store.selectedEvent?.id ?? (store.tourCurrent?.kind === 'event' ? store.tourCurrent.id : null)"
+        :selected-duration-id="store.selectedDuration?.id ?? (store.tourCurrent?.kind === 'span' ? store.tourCurrent.id : null)"
+        :highlight-ids="store.storyIds ?? store.tmIds ?? store.tourIds ?? store.cardIds ?? store.focusIds"
         :marks="store.tmMarks"
         :story="store.currentStory"
         :focus-family="store.focusFamily"
@@ -83,6 +85,23 @@
         @set="(patch, frame) => store.setTimeMachine(patch, frame)"
         @step="store.stepYear"
         @open="(id, kind) => (kind === 'span' ? store.selectDuration(id) : store.select(id))"
+      />
+      <TourPanel
+        v-if="store.tour"
+        :source="store.tour.source"
+        :query="store.tour.query"
+        :stops="store.tourStops"
+        :hidden="store.tourHidden"
+        :step="store.tourStep"
+        :playing="store.tourPlaying"
+        :speed="store.tourSpeed"
+        @close="store.closeTour()"
+        @play="store.toggleTourPlay()"
+        @stop="store.stopTour()"
+        @step="store.stepTour"
+        @go-to="store.goToTourStop"
+        @speed="store.setTourSpeed"
+        @open="store.openTourStop"
       />
       <StoryPanel
         v-if="store.currentStory"
@@ -199,6 +218,7 @@ import EventInfoCard from '@/components/EventInfoCard.vue'
 import EventConnections from '@/components/dateflow/EventConnections.vue'
 import StoryPanel from '@/components/dateflow/StoryPanel.vue'
 import TimeMachinePanel from '@/components/dateflow/TimeMachinePanel.vue'
+import TourPanel from '@/components/dateflow/TourPanel.vue'
 import DurationInfoCard from '@/components/dateflow/DurationInfoCard.vue'
 import EventMeanwhile from '@/components/dateflow/EventMeanwhile.vue'
 import PeriodSummaryCard from '@/components/dateflow/PeriodSummaryCard.vue'
@@ -229,6 +249,15 @@ function onKey(e: KeyboardEvent) {
     if (store.timeMachine.mode === 'year' && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
       const step = (e.shiftKey ? 10 : 1) * (e.key === 'ArrowRight' ? 1 : -1)
       return store.stepYear(step)
+    }
+  }
+  if (store.tour) {
+    if (e.key === 'Escape') return store.closeTour()
+    if (e.key === 'ArrowRight') return store.stepTour(1)
+    if (e.key === 'ArrowLeft') return store.stepTour(-1)
+    if (e.key === ' ' && store.tourStops.length) {
+      e.preventDefault()
+      return store.toggleTourPlay()
     }
   }
   if (store.currentStory) {
@@ -302,11 +331,14 @@ function openFromUrl() {
 }
 // One sync for the whole URL, built from the current state: two separate watchers each rewrote it
 // from a stale copy and left the other's keys behind.
-const OWN_KEYS = [...TM_KEYS, 'story', 'dir']
+// Searches too: /dateflow?q=Mughal (issue #9).
+const OWN_KEYS = [...TM_KEYS, 'story', 'dir', 'q']
 const storyQuery = (): Record<string, string> =>
   store.story ? { story: store.story.rootId, dir: store.story.direction } : {}
+const searchQuery = (): Record<string, string> =>
+  store.tour?.source === 'search' ? { q: store.tour.query } : {}
 watch(
-  () => JSON.stringify({ ...storyQuery(), ...tmQuery() }),
+  () => JSON.stringify({ ...storyQuery(), ...tmQuery(), ...searchQuery() }),
   (q) => {
     const rest = Object.fromEntries(Object.entries(route.query).filter(([k]) => !OWN_KEYS.includes(k)))
     const next = { ...rest, ...JSON.parse(q) }
@@ -319,6 +351,7 @@ onMounted(async () => {
   if (store.isLoading) await store.load()
   openFromUrl()
   openTimeMachineFromUrl()
+  if (typeof route.query.q === 'string' && route.query.q.trim()) store.searchFor(route.query.q)
 })
 onUnmounted(() => window.removeEventListener('keydown', onKey))
 </script>

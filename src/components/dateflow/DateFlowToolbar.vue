@@ -64,15 +64,15 @@
       />
     </div>
 
-    <form class="flex items-center gap-2" @submit.prevent="submitJump">
+    <form class="flex items-center gap-2" role="search" @submit.prevent="submit">
       <input
-        v-model="jumpInput"
-        type="text"
-        placeholder="Jump to year (e.g. 500 BC)"
-        aria-label="Jump to year"
-        class="w-52 px-3 py-1.5 rounded-lg border text-sm outline-none jump"
-        :class="{ error: jumpError }"
-        @input="jumpError = false"
+        v-model="query"
+        type="search"
+        placeholder="Search (Mughal) or a year (500 BC)"
+        aria-label="Search events, or jump to a year"
+        class="w-64 px-3 py-1.5 rounded-lg border text-sm outline-none jump"
+        :class="{ error: queryError }"
+        @input="queryError = false"
       />
       <button type="submit" class="btn">Go</button>
     </form>
@@ -86,6 +86,9 @@
       </button>
       <button class="btn" title="Open a random event and explore from there" @click="emit('surprise')">
         Surprise Me
+      </button>
+      <button class="btn" title="Play through the events your filters show, one at a time" @click="emit('watch')">
+        Watch
       </button>
       <StoriesMenu :stories="stories" @open="(id) => emit('openStory', id)" />
       <button class="btn" title="Summarise the period in view (or shift-drag across the timeline)" @click="emit('summarize')">
@@ -125,6 +128,7 @@ import StoriesMenu from './StoriesMenu.vue'
 import type { FeaturedStory } from '@/engine/dateflow/stories'
 import { DENSITIES, type Density, type Filters } from '@/engine/dateflow/filters'
 import { formatYear, parseYear } from '@/utils/formatYear'
+import { MIN_QUERY } from '@/engine/dateflow/tour'
 
 defineProps<{
   view: View
@@ -143,6 +147,8 @@ const emit = defineEmits<{
   zoomOut: []
   reset: []
   jump: [year: number]
+  search: [query: string]
+  watch: []
   toggleTheme: []
   toggleColors: []
   setDensity: [density: Density]
@@ -167,16 +173,20 @@ const MODES: { id: ViewMode; label: string }[] = [
   { id: 'constellation', label: 'Constellation' },
 ]
 
-const jumpInput = ref('')
-const jumpError = ref(false)
+const query = ref('')
+const queryError = ref(false)
 
-function submitJump() {
-  const year = parseYear(jumpInput.value)
-  if (year === null) {
-    jumpError.value = true
+/** A year jumps (years are never searched); anything else is a search. */
+function submit() {
+  const year = parseYear(query.value)
+  if (year !== null && year !== 0) return emit('jump', year)
+  if (query.value.trim().length < MIN_QUERY || year === 0) {
+    queryError.value = true
     return
   }
-  emit('jump', year)
+  // Leave the box so ← → and Space step and play the matches straight away.
+  if (document.activeElement instanceof HTMLElement) document.activeElement.blur()
+  emit('search', query.value)
 }
 </script>
 
