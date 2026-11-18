@@ -31,7 +31,7 @@
                 <div class="text-xs text-gray-500">Hole {{ i + 1 }} · {{ formatYear(result.targetYear) }}</div>
                 <div class="text-sm text-white truncate max-w-[200px]">{{ result.eventName }}</div>
               </div>
-              <div class="text-lg font-bold ml-3" :class="penaltyClass(result.penalty)">+{{ result.penalty }}</div>
+              <div class="text-lg font-bold ml-3" :class="[penaltyClass(result.penalty), isGolden(result) && 'golden-ring rounded-full px-2']">+{{ result.penalty }}</div>
             </div>
           </div>
 
@@ -159,6 +159,7 @@ import ConfirmSelection from '@/components/ConfirmSelection.vue'
 import AnswerReveal from '@/components/AnswerReveal.vue'
 import FinalScoreView from '@/components/FinalScoreView.vue'
 import { penaltyTextClass } from '@/utils/penaltyTier'
+import { isGolden } from '@/engine/gameEngine'
 
 const store = useGameStore()
 const pendingEvent = ref<Event | null>(null)

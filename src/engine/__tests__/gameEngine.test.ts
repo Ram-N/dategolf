@@ -6,6 +6,8 @@ import {
   createGame,
   selectEvent,
   isComplete,
+  isGoldenPick,
+  isGolden,
 } from '../gameEngine'
 import type { Event, DailyChallenge } from '@/types'
 
@@ -199,5 +201,51 @@ describe('isComplete()', () => {
       state = newState
     }
     expect(isComplete(state)).toBe(true)
+  })
+})
+
+describe('isGoldenPick()', () => {
+  const POOL: Event[] = [
+    makeEvent({ id: 'obscure', year: 1420, importance: 3 }),
+    makeEvent({ id: 'notable', year: 1440, importance: 4 }),
+    makeEvent({ id: 'constantinople', year: 1453, importance: 8 }),
+    makeEvent({ id: 'columbus', year: 1492, importance: 9 }),
+  ]
+
+  it('is golden when nothing closer exists, however large the penalty', () => {
+    const pool = POOL.filter(e => e.id === 'constantinople' || e.id === 'columbus')
+    expect(isGoldenPick(1410, [], pool, 'constantinople')).toBe(true) // +43
+  })
+
+  it('ignores closer events of importance ≤ 3', () => {
+    const pool = POOL.filter(e => e.id !== 'notable')
+    expect(isGoldenPick(1410, [], pool, 'constantinople')).toBe(true)
+  })
+
+  it('is not golden when a closer event of importance ≥ 4 is unused', () => {
+    expect(isGoldenPick(1410, [], POOL, 'constantinople')).toBe(false)
+  })
+
+  it('ignores closer events already used this game', () => {
+    expect(isGoldenPick(1410, ['notable'], POOL, 'constantinople')).toBe(true)
+  })
+
+  it('counts a tie as golden', () => {
+    const pool = [...POOL, makeEvent({ id: 'tie', year: 1367, importance: 9 })]
+    expect(isGoldenPick(1410, [], pool, 'obscure')).toBe(true) // 1420 (+10) beats 1367 (+43)
+    expect(isGoldenPick(1410, ['obscure', 'notable'], pool, 'tie')).toBe(true) // +43 ties 1453
+  })
+
+  it('is set on the hole result by selectEvent', () => {
+    const { result } = selectEvent(createGame(makeChallenge([1410])), 'constantinople', POOL)
+    expect(result.isGolden).toBe(false)
+    expect(result.isOptimal).toBe(false)
+  })
+})
+
+describe('isGolden()', () => {
+  it('falls back to isOptimal for results saved before isGolden existed', () => {
+    expect(isGolden({ isOptimal: true })).toBe(true)
+    expect(isGolden({ isOptimal: true, isGolden: false })).toBe(false)
   })
 })

@@ -52,6 +52,7 @@
 import { computed } from 'vue'
 import type { ScoreStatus, HoleResult } from '@/types'
 import { penaltyTier, TIER_COLORS } from '@/utils/penaltyTier'
+import { isGolden } from '@/engine/gameEngine'
 
 const SCALE_TIERS = [200, 500, 1000, 2000, 5000]
 
@@ -74,7 +75,8 @@ const scoreClass = computed(() => ({
 }))
 
 function holeIndicatorClass(index: number) {
-  if (props.holeResults[index]) return ''
+  const result = props.holeResults[index]
+  if (result) return isGolden(result) ? 'golden-ring' : ''
   if (index === props.currentHole && !props.completed) return 'bg-white ring-1 ring-white ring-offset-1 ring-offset-gray-950'
   return 'bg-gray-700'
 }

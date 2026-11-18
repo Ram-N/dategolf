@@ -34,6 +34,7 @@ export interface HoleResult {
   eventDateDisplay?: string
   penalty: number
   isOptimal: boolean // true if no better unused alternative existed
+  isGolden?: boolean // true if no better unused alternative of importance ≥ 4 existed
   betterAlternatives: BetterAlternative[]
 }
 

@@ -10,6 +10,8 @@ import type {
 // ── Constants ─────────────────────────────────────────────────────────────────
 const HOLES_PER_GAME = 5
 const MAX_ALTERNATIVES = 2
+// Closer events below this importance are too obscure to deny the golden ring
+const GOLDEN_MIN_IMPORTANCE = 4
 
 // Score thresholds per hole (cumulative score / holes played)
 const SCORE_THRESHOLDS = {
@@ -73,6 +75,27 @@ export function findBetterAlternatives(
   }))
 }
 
+// Golden ring: no unused event of real importance would have scored better
+export function isGoldenPick(
+  targetYear: number,
+  usedIds: string[],
+  events: Event[],
+  playerEventId: string,
+): boolean {
+  const playerPenalty = penalty(targetYear, events.find(e => e.id === playerEventId)!.year)
+  return !events.some(e =>
+    e.id !== playerEventId
+    && !usedIds.includes(e.id)
+    && e.importance >= GOLDEN_MIN_IMPORTANCE
+    && penalty(targetYear, e.year) < playerPenalty,
+  )
+}
+
+// Results saved before isGolden existed fall back to isOptimal
+export function isGolden(result: Pick<HoleResult, 'isGolden' | 'isOptimal'>): boolean {
+  return result.isGolden ?? result.isOptimal
+}
+
 // ── Game lifecycle ─────────────────────────────────────────────────────────────
 export function createGame(challenge: DailyChallenge): GameState {
   return {
@@ -114,6 +137,7 @@ export function selectEvent(
   // Find alternatives *before* adding this event to usedIds
   const betterAlts = findBetterAlternatives(targetYear, state.usedEventIds, events, eventId)
   const isOptimal = betterAlts.length === 0
+  const golden = isGoldenPick(targetYear, state.usedEventIds, events, eventId)
 
   const result: HoleResult = {
     holeIndex,
@@ -125,6 +149,7 @@ export function selectEvent(
     ...(event.dateDisplay ? { eventDateDisplay: event.dateDisplay } : {}),
     penalty: holePenalty,
     isOptimal,
+    isGolden: golden,
     betterAlternatives: betterAlts,
   }
 

@@ -24,7 +24,7 @@
               <div class="text-xs text-gray-600">{{ formatEventYear(result.eventYear, result.eventApproximate) }}</div>
             </div>
             <div class="text-right ml-3">
-              <div class="text-xl font-bold" :class="holePenaltyClass(result.penalty)">
+              <div class="text-xl font-bold" :class="[holePenaltyClass(result.penalty), isGolden(result) && 'golden-ring rounded-full px-2']">
                 +{{ result.penalty }}
               </div>
             </div>
@@ -85,6 +85,7 @@ import type { HoleResult, PlayerStats, ScoreStatus } from '@/types'
 import type { GameState } from '@/types'
 import { copyResult, shareResult } from '@/services/sharing'
 import { penaltyTextClass } from '@/utils/penaltyTier'
+import { isGolden } from '@/engine/gameEngine'
 import { formatEventYear } from '@/utils/formatYear'
 
 const props = defineProps<{

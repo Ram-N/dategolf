@@ -13,7 +13,7 @@
 
 | Game | What players do | Route | Details |
 |---|---|---|---|
-| **DateGolf** | Five target years; pick events that land as close as possible. Lowest total penalty wins. | `/dategolf` | doc 01, 02 |
+| **DateGolf** | Five target years; pick events that land as close as possible. Lowest total penalty wins. A **golden ring** marks a hole where no unused event of importance ≥ 4 was closer (the best possible pick). | `/dategolf` | doc 01, 02 |
 | **DatePick** | Eight events; pick each one's year from four choices. Score out of 8. | `/datepick` | doc 04 |
 | **DateFlow** | An interactive world timeline: pan and zoom from 3500 BCE to today, events and spans in World or regional Lanes view, and filters. | `/dateflow` | doc 08, 09 |
 | **DateFlow games** | Six daily or practice games: Which Came First?, Put Them in Order, What's Missing?, What's Happening Elsewhere?, Find the Duration, and **Cause & Effect** | `/dateflow/play` | doc 09, Phases 7 and 9 |

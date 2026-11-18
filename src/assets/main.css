@@ -14,3 +14,8 @@
     @apply min-h-screen;
   }
 }
+
+/* Golden ring: best possible pick for the hole (see isGolden in gameEngine.ts) */
+.golden-ring {
+  box-shadow: 0 0 0 2px #facc15, 0 0 8px 1px rgb(250 204 21 / 0.6);
+}

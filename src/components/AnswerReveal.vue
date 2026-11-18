@@ -23,7 +23,7 @@
       <div class="flex items-center gap-3 text-sm text-gray-400 mb-3">
         <span>Target: <span class="text-white font-medium">{{ displayTargetYear }}</span></span>
         <span class="text-gray-700">·</span>
-        <span>Penalty: <span class="font-bold text-lg" :class="penaltyColorClass">+{{ result.penalty }}</span></span>
+        <span>Penalty: <span class="font-bold text-lg" :class="[penaltyColorClass, golden && 'golden-ring rounded-full px-2']">+{{ result.penalty }}</span></span>
       </div>
 
       <!-- Running score -->
@@ -84,6 +84,7 @@ import type { HoleResult, ScoreStatus, Event } from '@/types'
 import TimelineView from './TimelineView.vue'
 import EventInfoCard from './EventInfoCard.vue'
 import { penaltyTextClass } from '@/utils/penaltyTier'
+import { isGolden } from '@/engine/gameEngine'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
 import ApproxNote from './ApproxNote.vue'
 
@@ -104,6 +105,7 @@ const displayEventYear = computed(() => formatEventYear(props.result.eventYear, 
 const displayTargetYear = computed(() => formatYear(props.result.targetYear))
 
 const penaltyColorClass = computed(() => penaltyTextClass(props.result.penalty))
+const golden = computed(() => isGolden(props.result))
 
 const scoreStatusClass = computed(() => ({
   'score-good': props.scoreStatus === 'good',
