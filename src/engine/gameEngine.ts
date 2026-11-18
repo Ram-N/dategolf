@@ -12,6 +12,8 @@ const HOLES_PER_GAME = 5
 const MAX_ALTERNATIVES = 2
 // Closer events below this importance are too obscure to deny the golden ring
 const GOLDEN_MIN_IMPORTANCE = 4
+// A closer event this important is always called out among the alternatives
+const MAJOR_MIN_IMPORTANCE = 7
 
 // Score thresholds per hole (cumulative score / holes played)
 const SCORE_THRESHOLDS = {
@@ -66,11 +68,24 @@ export function findBetterAlternatives(
     }
   }
 
+  // Never let a missed major event hide behind a closer minor one:
+  // it takes the place of the farthest pick on its side of the target
+  const isMajor = (e: Event) => e.importance >= MAJOR_MIN_IMPORTANCE
+  const major = candidates.find(({ e }) => isMajor(e))
+  if (major && !picked.some(({ e }) => isMajor(e))) {
+    const sameSide = (c: (typeof candidates)[number]) =>
+      (c.e.year <= targetYear) === (major.e.year <= targetYear)
+    // picked always holds the nearest candidate on each side, so a slot exists
+    const slot = picked.map(sameSide).lastIndexOf(true)
+    picked[slot] = major
+  }
+
   return picked.slice(0, MAX_ALTERNATIVES).map(({ e, p }) => ({
     eventId: e.id,
     eventName: e.name,
     eventYear: e.year,
     ...(e.approximate ? { eventApproximate: true } : {}),
+    ...(isMajor(e) ? { major: true } : {}),
     penalty: p,
   }))
 }

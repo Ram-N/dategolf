@@ -80,6 +80,40 @@ describe('getScoreStatus()', () => {
 })
 
 describe('findBetterAlternatives()', () => {
+  it('swaps a missed major event in for the farthest pick on its side', () => {
+    // Target 1410, player chose 1492 (+82). Closest before: minor 1405; after: minor 1415, major 1453
+    const pool = [
+      makeEvent({ id: 'pick', year: 1492, importance: 9 }),
+      makeEvent({ id: 'before', year: 1405 }),
+      makeEvent({ id: 'after', year: 1415 }),
+      makeEvent({ id: 'major', year: 1453, importance: 8 }),
+    ]
+    const alts = findBetterAlternatives(1410, [], pool, 'pick')
+    expect(alts.map(a => a.eventId)).toEqual(['before', 'major'])
+    expect(alts[1]!.major).toBe(true)
+    expect(alts[0]!.major).toBeUndefined()
+  })
+
+  it('leaves the picks alone when a major event is already among them', () => {
+    const pool = [
+      makeEvent({ id: 'pick', year: 1492, importance: 9 }),
+      makeEvent({ id: 'before', year: 1405, importance: 7 }),
+      makeEvent({ id: 'after', year: 1415 }),
+      makeEvent({ id: 'major', year: 1453, importance: 8 }),
+    ]
+    expect(findBetterAlternatives(1410, [], pool, 'pick').map(a => a.eventId)).toEqual(['before', 'after'])
+  })
+
+  it('replaces the farther pick when all candidates are on one side', () => {
+    const pool = [
+      makeEvent({ id: 'pick', year: 1500, importance: 9 }),
+      makeEvent({ id: 'near', year: 1420 }),
+      makeEvent({ id: 'next', year: 1430 }),
+      makeEvent({ id: 'major', year: 1453, importance: 8 }),
+    ]
+    expect(findBetterAlternatives(1410, [], pool, 'pick').map(a => a.eventId)).toEqual(['near', 'major'])
+  })
+
   it('finds alternatives that are closer to target', () => {
     // Target: 1500, player chose 'a' (1000 → penalty 500)
     // Better: 'c' (1400 → 100), 'd' (1600 → 100), 'b' (1200 → 300)

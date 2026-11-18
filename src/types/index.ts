@@ -21,6 +21,7 @@ export interface BetterAlternative {
   eventName: string
   eventYear: number
   eventApproximate?: boolean // show the year with "c."
+  major?: boolean // importance ≥ 7: called out on the card
   penalty: number
 }
 

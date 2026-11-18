@@ -49,7 +49,10 @@
             @click="openEventId = alt.eventId"
           >
             <div class="text-left">
-              <div class="text-sm font-medium text-white">{{ alt.eventName }}</div>
+              <div class="text-sm font-medium text-white">
+                {{ alt.eventName }}
+                <span v-if="alt.major" class="ml-1 align-middle text-[10px] font-semibold uppercase tracking-wider text-sky-300 bg-sky-900/50 border border-sky-700 rounded px-1.5 py-0.5">Major event</span>
+              </div>
               <div class="text-xs text-gray-500">{{ formatEventYear(alt.eventYear, alt.eventApproximate) }}</div>
             </div>
             <div class="text-right">
