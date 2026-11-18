@@ -1,10 +1,14 @@
 import type { GameState } from '@/types'
 import { penaltyTier, TIER_EMOJI } from '@/utils/penaltyTier'
+import { isGolden } from '@/engine/gameEngine'
 
 export const PLAY_URL = 'https://dategolf.genwise.in/dategolf'
 
 export function buildShareText(state: GameState): string {
-  const holes = state.holeResults.map(r => TIER_EMOJI[penaltyTier(r.penalty)]).join(' ')
+  // A golden hole shows a star in place of its colour square
+  const holes = state.holeResults
+    .map(r => (isGolden(r) ? '⭐' : TIER_EMOJI[penaltyTier(r.penalty)]))
+    .join(' ')
   const scores = state.holeResults.map(r => `+${r.penalty}`).join(' / ')
 
   return [
