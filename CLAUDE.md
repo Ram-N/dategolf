@@ -21,6 +21,10 @@ npm run dev   # → http://localhost:5173
 - **Same date = same challenge** — daily PRNG seed comes from date string only; don't add randomness
 - **Used-event rule** — each event can only be picked once per game; enforced in engine
 
+## Talking to Ram
+
+- **Give every GitHub issue number a one-line description** ("#9, free-text search in Date Flow"); issue numbers alone mean nothing to him.
+
 ## Package Management
 
 ```bash
