@@ -2799,6 +2799,55 @@
       "target": "decolonization-of-asia-and-africa",
       "why": "Seventeen African states, mostly former French colonies and trust territories, became independent in one year.",
       "confidence": "high"
+    },
+    {
+      "source": "locke-two-treatises",
+      "type": "part_of",
+      "target": "age-of-enlightenment",
+      "why": "Locke's political and philosophical writing is one of the Enlightenment's founding works.",
+      "confidence": "high"
+    },
+    {
+      "source": "locke-two-treatises",
+      "type": "influenced",
+      "target": "american-declaration",
+      "why": "The Declaration's natural rights and government by the consent of the governed echo Locke's argument.",
+      "confidence": "high"
+    },
+    {
+      "source": "montesquieu-spirit-of-the-laws",
+      "type": "part_of",
+      "target": "age-of-enlightenment",
+      "why": "One of the central works of the French Enlightenment.",
+      "confidence": "high"
+    },
+    {
+      "source": "montesquieu-spirit-of-the-laws",
+      "type": "influenced",
+      "target": "founding-of-united-states",
+      "why": "The Constitution divides power among Congress, the President and the courts; Madison cited Montesquieu in defending it.",
+      "confidence": "high"
+    },
+    {
+      "source": "montesquieu-spirit-of-the-laws",
+      "type": "influenced",
+      "target": "french-revolution-declaration",
+      "why": "Article 16 says a society without the separation of powers has no constitution.",
+      "confidence": "high"
+    },
+    {
+      "source": "rousseau-social-contract",
+      "type": "part_of",
+      "target": "age-of-enlightenment",
+      "why": "One of the most influential works of the French Enlightenment.",
+      "confidence": "high"
+    },
+    {
+      "source": "rousseau-social-contract",
+      "type": "influenced",
+      "target": "french-revolution-declaration",
+      "why": "Article 6 calls law the expression of the general will, Rousseau's phrase.",
+      "confidence": "high"
     }
   ]
 }

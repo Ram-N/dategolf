@@ -3842,6 +3842,26 @@
     "importance": 4
   },
   {
+    "id": "locke-two-treatises",
+    "name": "Locke Publishes Two Treatises of Government",
+    "year": 1689,
+    "categories": [
+      "Philosophy",
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Two Treatises of Government",
+      "Second Treatise of Government",
+      "John Locke's Two Treatises",
+      "Locke on government by consent"
+    ],
+    "description": "The English philosopher John Locke anonymously publishes two essays on government. The second argues that people have natural rights to life, liberty and property, that legitimate government rests on the consent of the governed, and that a people may resist a ruler who breaks that trust.",
+    "difficulty": "hard",
+    "importance": 6,
+    "significance": "Locke's case for natural rights and government by consent became a cornerstone of liberal political thought. American colonists drew on it in arguing against British rule, and its echoes in the Declaration of Independence made it one of the most influential political texts in English."
+  },
+  {
     "id": "founding-of-the-khalsa",
     "name": "Founding of the Khalsa",
     "year": 1699,
@@ -3974,6 +3994,26 @@
     "importance": 5
   },
   {
+    "id": "montesquieu-spirit-of-the-laws",
+    "name": "Montesquieu Publishes The Spirit of the Laws",
+    "year": 1748,
+    "categories": [
+      "Philosophy",
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "The Spirit of the Laws",
+      "De l'esprit des lois",
+      "Montesquieu's separation of powers",
+      "Spirit of Laws"
+    ],
+    "description": "The French philosopher Montesquieu publishes a vast comparative study of laws and governments. Its best-known argument is that liberty is safest when the legislative, executive and judicial powers are held by separate bodies that check one another, a principle he drew from his reading of England's constitution.",
+    "difficulty": "hard",
+    "importance": 5,
+    "significance": "Montesquieu's separation of powers became a standard principle of constitution-making. The framers of the United States Constitution cited him often, and the French Declaration of the Rights of Man stated that a society without separated powers has no constitution."
+  },
+  {
     "id": "battle-of-plassey",
     "name": "Battle of Plassey",
     "year": 1757,
@@ -4033,6 +4073,26 @@
     "description": "The Afghan ruler Ahmad Shah Durrani defeats a large Maratha army at Panipat, in one of the largest and bloodiest battles of its time. The defeat halts Maratha expansion into northern India and leaves a power vacuum that the East India Company later fills.",
     "difficulty": "hard",
     "importance": 5
+  },
+  {
+    "id": "rousseau-social-contract",
+    "name": "Rousseau Publishes The Social Contract",
+    "year": 1762,
+    "categories": [
+      "Philosophy",
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "The Social Contract",
+      "Du contrat social",
+      "Rousseau's general will",
+      "Man is born free"
+    ],
+    "description": "The Geneva-born philosopher Jean-Jacques Rousseau publishes The Social Contract, which famously declares that man is born free yet everywhere is in chains. It argues that legitimate authority comes only from an agreement among citizens, guided by the general will of the people as a whole.",
+    "difficulty": "medium",
+    "importance": 5,
+    "significance": "Rousseau's idea of popular sovereignty, that the people as a whole are the source of legitimate law, inspired French revolutionaries and later democratic movements. His general will has also been read, more critically, as a licence to suppress dissent in the people's name."
   },
   {
     "id": "battle-of-buxar",

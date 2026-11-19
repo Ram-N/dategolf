@@ -2607,6 +2607,9 @@ INSERT INTO "entities" VALUES('pacific-war','period','reviewed','2026-11-13 23:1
 INSERT INTO "entities" VALUES('axial-age','period','reviewed','2026-11-19 00:13:35','2026-11-19 03:41:19');
 INSERT INTO "entities" VALUES('age-of-enlightenment','period','reviewed','2026-11-19 00:13:35','2026-11-19 03:41:19');
 INSERT INTO "entities" VALUES('decolonization-of-asia-and-africa','period','reviewed','2026-11-19 00:13:35','2026-11-19 03:41:19');
+INSERT INTO "entities" VALUES('locke-two-treatises','event','reviewed','2026-11-19 03:47:24','2026-11-19 03:53:24');
+INSERT INTO "entities" VALUES('montesquieu-spirit-of-the-laws','event','reviewed','2026-11-19 03:47:24','2026-11-19 03:53:24');
+INSERT INTO "entities" VALUES('rousseau-social-contract','event','reviewed','2026-11-19 03:47:24','2026-11-19 03:53:24');
 CREATE TABLE entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   facet     TEXT NOT NULL CHECK (facet IN ('event', 'span')),
@@ -3685,6 +3688,12 @@ INSERT INTO "entity_categories" VALUES('age-of-enlightenment','span',0,'Philosop
 INSERT INTO "entity_categories" VALUES('age-of-enlightenment','span',1,'Politics');
 INSERT INTO "entity_categories" VALUES('age-of-enlightenment','span',2,'Science');
 INSERT INTO "entity_categories" VALUES('decolonization-of-asia-and-africa','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('locke-two-treatises','event',0,'Philosophy');
+INSERT INTO "entity_categories" VALUES('locke-two-treatises','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('montesquieu-spirit-of-the-laws','event',0,'Philosophy');
+INSERT INTO "entity_categories" VALUES('montesquieu-spirit-of-the-laws','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('rousseau-social-contract','event',0,'Philosophy');
+INSERT INTO "entity_categories" VALUES('rousseau-social-contract','event',1,'Politics');
 CREATE TABLE entity_countries (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   position   INTEGER NOT NULL,
@@ -4572,20 +4581,24 @@ INSERT INTO "entity_countries" VALUES('pacific-war',1,'US','high','reviewed',NUL
 INSERT INTO "entity_countries" VALUES('pacific-war',2,'CN','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('pacific-war',3,'AU','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('pacific-war',4,'PH','high','reviewed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('axial-age',0,'IN','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('axial-age',1,'NP','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('axial-age',2,'CN','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('axial-age',3,'GR','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('axial-age',4,'IL','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('age-of-enlightenment',0,'FR','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('age-of-enlightenment',1,'GB','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('age-of-enlightenment',2,'DE','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',0,'IN','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',1,'ID','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',2,'GH','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',3,'DZ','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',4,'GB','high','proposed',NULL,'actor');
-INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',5,'FR','high','proposed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('axial-age',0,'IN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('axial-age',1,'NP','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('axial-age',2,'CN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('axial-age',3,'GR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('axial-age',4,'IL','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('age-of-enlightenment',0,'FR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('age-of-enlightenment',1,'GB','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('age-of-enlightenment',2,'DE','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',0,'IN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',1,'ID','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',2,'GH','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',3,'DZ','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',4,'GB','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',5,'FR','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('locke-two-treatises',0,'GB','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('montesquieu-spirit-of-the-laws',0,'FR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('rousseau-social-contract',0,'FR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('rousseau-social-contract',1,'CH','high','reviewed',NULL,'actor');
 CREATE TABLE entity_provenance (
   entity_id    TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   origin       TEXT NOT NULL,                      -- e.g. ai_drafted_from_csv
@@ -4778,6 +4791,9 @@ INSERT INTO "entity_provenance" VALUES('pacific-war','ai_drafted:gemini',NULL,'7
 INSERT INTO "entity_provenance" VALUES('axial-age','ai_drafted:claude-opus-5-5',NULL,'Jaspers coined the term in 1949 and gave 800-200 BCE; others narrow or widen it. The concept itself is contested (some scholars call it a pattern imposed afterwards), so the description and significance say so, and its part_of links are medium confidence. Zoroaster is left out: his dates are too disputed.');
 INSERT INTO "entity_provenance" VALUES('age-of-enlightenment','ai_drafted:claude-opus-5-5',NULL,'No agreed start or end. 1685-1815 is a common broad framing (Newton''s Principia 1687 and Locke''s works around 1689 to the end of the Napoleonic Wars); French historians often use 1715-1789. Approximate for that reason.');
 INSERT INTO "entity_provenance" VALUES('decolonization-of-asia-and-africa','ai_drafted:claude-opus-5-5',NULL,'1945-1975 is the main wave (to the independence of Portugal''s African colonies); some accounts run on to Zimbabwe in 1980 or later. UN membership: 51 founding members in 1945, 144 by the end of 1975. Name keeps the scope honest: the Caribbean and Oceania also decolonized, mostly later.');
+INSERT INTO "entity_provenance" VALUES('locke-two-treatises','ai_drafted:claude-opus-5-5',NULL,'Appeared in London in late 1689; the title page is dated 1690, so some references give 1690. Largely written before the Glorious Revolution (Laslett), so no link to it is claimed.');
+INSERT INTO "entity_provenance" VALUES('montesquieu-spirit-of-the-laws','ai_drafted:claude-opus-5-5',NULL,'Published anonymously in Geneva in 1748; Montesquieu wrote it in France. Placed under FR for that reason.');
+INSERT INTO "entity_provenance" VALUES('rousseau-social-contract','ai_drafted:claude-opus-5-5',NULL,'Printed in Amsterdam in 1762 (the Netherlands isn''t in the countries table); written in France at Montmorency. Banned in Geneva and France the same year.');
 CREATE TABLE entity_significance (
   entity_id  TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   text       TEXT NOT NULL CHECK (trim(text) <> ''),
@@ -4957,6 +4973,9 @@ INSERT INTO "entity_significance" VALUES('pacific-war','The Pacific War transfor
 INSERT INTO "entity_significance" VALUES('axial-age','The idea of an Axial Age points out that Buddhism, Confucianism, Greek philosophy and the teaching of the Hebrew prophets all took shape, largely independently, within a few centuries. Scholars still argue whether that reflects a real shared turning point or a pattern drawn afterwards.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-19 00:13:35','2026-11-19 03:41:19');
 INSERT INTO "entity_significance" VALUES('age-of-enlightenment','Enlightenment ideas of natural rights, religious toleration, the separation of powers and government by consent shaped the American and French revolutions and much later liberal and democratic thought. Critics then and since have questioned its claims to universality and its uneven record on slavery and empire.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-19 00:13:35','2026-11-19 03:41:19');
 INSERT INTO "entity_significance" VALUES('decolonization-of-asia-and-africa','Decolonization ended most European empires within a generation and remade the world map. It shaped the Cold War, as new states chose sides or stayed non-aligned, and left many borders, economies and conflicts that colonial rule had drawn.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-19 00:13:35','2026-11-19 03:41:19');
+INSERT INTO "entity_significance" VALUES('locke-two-treatises','Locke''s case for natural rights and government by consent became a cornerstone of liberal political thought. American colonists drew on it in arguing against British rule, and its echoes in the Declaration of Independence made it one of the most influential political texts in English.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-19 03:47:24','2026-11-19 03:53:24');
+INSERT INTO "entity_significance" VALUES('montesquieu-spirit-of-the-laws','Montesquieu''s separation of powers became a standard principle of constitution-making. The framers of the United States Constitution cited him often, and the French Declaration of the Rights of Man stated that a society without separated powers has no constitution.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-19 03:47:24','2026-11-19 03:53:24');
+INSERT INTO "entity_significance" VALUES('rousseau-social-contract','Rousseau''s idea of popular sovereignty, that the people as a whole are the source of legitimate law, inspired French revolutionaries and later democratic movements. His general will has also been read, more critically, as a licence to suppress dissent in the people''s name.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-19 03:47:24','2026-11-19 03:53:24');
 CREATE TABLE entity_sources (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   source_id  INTEGER NOT NULL REFERENCES sources(id) ON DELETE CASCADE,
@@ -5116,6 +5135,9 @@ INSERT INTO "entity_sources" VALUES('pacific-war',141,'reviewed','ai_drafted',NU
 INSERT INTO "entity_sources" VALUES('axial-age',142,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('age-of-enlightenment',143,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('decolonization-of-asia-and-africa',144,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('locke-two-treatises',145,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('montesquieu-spirit-of-the-laws',146,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('rousseau-social-contract',147,'reviewed','ai_drafted',NULL,NULL);
 CREATE TABLE event_aliases (
   entity_id TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   position  INTEGER NOT NULL,
@@ -7202,6 +7224,18 @@ INSERT INTO "event_aliases" VALUES('portuguese-reach-the-kingdom-of-kongo',0,'Di
 INSERT INTO "event_aliases" VALUES('portuguese-reach-the-kingdom-of-kongo',1,'First Portuguese contact with Kongo');
 INSERT INTO "event_aliases" VALUES('afonso-i-becomes-king-of-kongo',0,'Mvemba a Nzinga takes the throne');
 INSERT INTO "event_aliases" VALUES('afonso-i-becomes-king-of-kongo',1,'Accession of Afonso I of Kongo');
+INSERT INTO "event_aliases" VALUES('locke-two-treatises',0,'Two Treatises of Government');
+INSERT INTO "event_aliases" VALUES('locke-two-treatises',1,'Second Treatise of Government');
+INSERT INTO "event_aliases" VALUES('locke-two-treatises',2,'John Locke''s Two Treatises');
+INSERT INTO "event_aliases" VALUES('locke-two-treatises',3,'Locke on government by consent');
+INSERT INTO "event_aliases" VALUES('montesquieu-spirit-of-the-laws',0,'The Spirit of the Laws');
+INSERT INTO "event_aliases" VALUES('montesquieu-spirit-of-the-laws',1,'De l''esprit des lois');
+INSERT INTO "event_aliases" VALUES('montesquieu-spirit-of-the-laws',2,'Montesquieu''s separation of powers');
+INSERT INTO "event_aliases" VALUES('montesquieu-spirit-of-the-laws',3,'Spirit of Laws');
+INSERT INTO "event_aliases" VALUES('rousseau-social-contract',0,'The Social Contract');
+INSERT INTO "event_aliases" VALUES('rousseau-social-contract',1,'Du contrat social');
+INSERT INTO "event_aliases" VALUES('rousseau-social-contract',2,'Rousseau''s general will');
+INSERT INTO "event_aliases" VALUES('rousseau-social-contract',3,'Man is born free');
 CREATE TABLE events (
   entity_id      TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   name           TEXT NOT NULL UNIQUE,
@@ -7696,6 +7730,9 @@ INSERT INTO "events" VALUES('mongols-sack-kyiv','Mongols Sack Kyiv',1240,'Europe
 INSERT INTO "events" VALUES('ayutthaya-sacks-angkor','Ayutthaya Sacks Angkor',1431,'Southeast Asia','Forces of the Siamese Kingdom of Ayutthaya besiege and capture Angkor Thom, the capital of the weakened Khmer Empire, looting royal regalia, deporting thousands of artisans and officials, and forcing the Khmer court to abandon the city.','hard',6,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('portuguese-reach-the-kingdom-of-kongo','Portuguese Reach the Kingdom of Kongo',1483,'Africa','Portuguese navigator Diogo Cao sails into the mouth of the Congo River, establishing the first European contact with the Kingdom of Kongo and exchanging hostages with King Nzinga a Nkuwu to open diplomatic relations.','medium',6,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('afonso-i-becomes-king-of-kongo','Afonso I Becomes King of Kongo',1509,'Africa','Mvemba a Nzinga, baptized as Afonso I, defeats his non-Christian half-brother Mpanzu a Kitima to become Manikongo of the Kingdom of Kongo, establishing Roman Catholicism as the royal religion and expanding literacy and diplomatic ties with Europe.','hard',5,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('locke-two-treatises','Locke Publishes Two Treatises of Government',1689,'Europe','The English philosopher John Locke anonymously publishes two essays on government. The second argues that people have natural rights to life, liberty and property, that legitimate government rests on the consent of the governed, and that a people may resist a ruler who breaks that trust.','hard',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('montesquieu-spirit-of-the-laws','Montesquieu Publishes The Spirit of the Laws',1748,'Europe','The French philosopher Montesquieu publishes a vast comparative study of laws and governments. Its best-known argument is that liberty is safest when the legislative, executive and judicial powers are held by separate bodies that check one another, a principle he drew from his reading of England''s constitution.','hard',5,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('rousseau-social-contract','Rousseau Publishes The Social Contract',1762,'Europe','The Geneva-born philosopher Jean-Jacques Rousseau publishes The Social Contract, which famously declares that man is born free yet everywhere is in chains. It argues that legitimate authority comes only from an agreement among citizens, guided by the general will of the people as a whole.','medium',5,NULL,NULL,NULL,NULL);
 CREATE TABLE import_records (
   source_file TEXT NOT NULL,
   source_key  TEXT NOT NULL,                       -- id, MM-DD, or CSV eventID
@@ -10242,9 +10279,9 @@ INSERT INTO "missing_entities" VALUES(90,'span','Pacific War',1941,1945,NULL,'Gl
 INSERT INTO "missing_entities" VALUES(91,'span','Axial Age',-800,-200,1,'Global','A current for the Historical Currents layer: the centuries of the Buddha, Confucius, the Hebrew prophets and Greek philosophy (Jaspers'' contested label). Would include life-of-the-buddha, birth-of-confucius, platos-academy-founded.','2026-11-18: Date Flow step 3d, Historical Currents (doc 14, doc 16 §8)','life-of-the-buddha birth-of-confucius platos-academy-founded','drafted','axial-age','Ram in chat 2026-11-18: start the 3d spans','2026-11-19 00:12:25');
 INSERT INTO "missing_entities" VALUES(92,'span','Age of Enlightenment',1685,1815,1,'Europe','A current for the Historical Currents layer; the Scientific Revolution influenced it and it influenced the Declaration of Independence and the Rights of Man.','2026-11-18: Date Flow step 3d, Historical Currents (doc 14, doc 16 §8)','scientific-revolution wealth-of-nations-published american-declaration french-revolution-declaration','drafted','age-of-enlightenment','Ram in chat 2026-11-18: start the 3d spans','2026-11-19 00:12:25');
 INSERT INTO "missing_entities" VALUES(93,'span','Decolonization of Asia and Africa',1945,1975,1,'Global','A current for the Historical Currents layer; would hold India''s, Indonesia''s and Ghana''s independence, the Year of Africa, the Algerian War and Bandung, with World War II as one cause.','2026-11-18: Date Flow step 3d, Historical Currents (doc 14, doc 16 §8)','world-war-2 indian-independence indonesia-proclaims-independence ghana-independence decolonization-africa french-colonial-algeria bandung-conference','drafted','decolonization-of-asia-and-africa','Ram in chat 2026-11-18: start the 3d spans','2026-11-19 00:12:25');
-INSERT INTO "missing_entities" VALUES(94,'event','Locke Publishes Two Treatises of Government',1689,NULL,NULL,'Europe','The specific source of natural rights and government by consent; would influence american-declaration directly and be part_of age-of-enlightenment.','2026-11-18: reviewing the Age of Enlightenment links (Ram asked whether a span should influence events inside it)','age-of-enlightenment american-declaration glorious-revolution','wanted',NULL,NULL,'2026-11-19 03:44:14');
-INSERT INTO "missing_entities" VALUES(95,'event','Montesquieu Publishes The Spirit of the Laws',1748,NULL,NULL,'Europe','The separation of powers; would influence french-revolution-declaration (Article 16) and founding-of-united-states, part_of age-of-enlightenment.','2026-11-18: reviewing the Age of Enlightenment links (Ram asked whether a span should influence events inside it)','age-of-enlightenment french-revolution-declaration founding-of-united-states','wanted',NULL,NULL,'2026-11-19 03:44:14');
-INSERT INTO "missing_entities" VALUES(96,'event','Rousseau Publishes The Social Contract',1762,NULL,NULL,'Europe','The general will and popular sovereignty; would influence french-revolution-declaration (Articles 3 and 6), part_of age-of-enlightenment.','2026-11-18: reviewing the Age of Enlightenment links (Ram asked whether a span should influence events inside it)','age-of-enlightenment french-revolution-declaration','wanted',NULL,NULL,'2026-11-19 03:44:14');
+INSERT INTO "missing_entities" VALUES(94,'event','Locke Publishes Two Treatises of Government',1689,NULL,NULL,'Europe','The specific source of natural rights and government by consent; would influence american-declaration directly and be part_of age-of-enlightenment.','2026-11-18: reviewing the Age of Enlightenment links (Ram asked whether a span should influence events inside it)','age-of-enlightenment american-declaration glorious-revolution','drafted','locke-two-treatises',NULL,'2026-11-19 03:44:14');
+INSERT INTO "missing_entities" VALUES(95,'event','Montesquieu Publishes The Spirit of the Laws',1748,NULL,NULL,'Europe','The separation of powers; would influence french-revolution-declaration (Article 16) and founding-of-united-states, part_of age-of-enlightenment.','2026-11-18: reviewing the Age of Enlightenment links (Ram asked whether a span should influence events inside it)','age-of-enlightenment french-revolution-declaration founding-of-united-states','drafted','montesquieu-spirit-of-the-laws',NULL,'2026-11-19 03:44:14');
+INSERT INTO "missing_entities" VALUES(96,'event','Rousseau Publishes The Social Contract',1762,NULL,NULL,'Europe','The general will and popular sovereignty; would influence french-revolution-declaration (Articles 3 and 6), part_of age-of-enlightenment.','2026-11-18: reviewing the Age of Enlightenment links (Ram asked whether a span should influence events inside it)','age-of-enlightenment french-revolution-declaration','drafted','rousseau-social-contract',NULL,'2026-11-19 03:44:14');
 CREATE TABLE regions (
   label TEXT PRIMARY KEY,
   lane  TEXT NOT NULL CHECK (lane IN
@@ -10685,6 +10722,13 @@ INSERT INTO "relationships" VALUES(419,'bandung-conference','part_of','decoloniz
 INSERT INTO "relationships" VALUES(420,'french-colonial-algeria','part_of','decolonization-of-asia-and-africa','One of the bloodiest wars of independence, fought to end French rule in Algeria.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
 INSERT INTO "relationships" VALUES(421,'ghana-independence','part_of','decolonization-of-asia-and-africa','Ghana''s independence under Kwame Nkrumah became a model for movements across Africa.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
 INSERT INTO "relationships" VALUES(422,'decolonization-africa','part_of','decolonization-of-asia-and-africa','Seventeen African states, mostly former French colonies and trust territories, became independent in one year.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(423,'locke-two-treatises','part_of','age-of-enlightenment','Locke''s political and philosophical writing is one of the Enlightenment''s founding works.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 03:47:25');
+INSERT INTO "relationships" VALUES(424,'locke-two-treatises','influenced','american-declaration','The Declaration''s natural rights and government by the consent of the governed echo Locke''s argument.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 03:47:25');
+INSERT INTO "relationships" VALUES(425,'montesquieu-spirit-of-the-laws','part_of','age-of-enlightenment','One of the central works of the French Enlightenment.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 03:47:25');
+INSERT INTO "relationships" VALUES(426,'montesquieu-spirit-of-the-laws','influenced','founding-of-united-states','The Constitution divides power among Congress, the President and the courts; Madison cited Montesquieu in defending it.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 03:47:25');
+INSERT INTO "relationships" VALUES(427,'montesquieu-spirit-of-the-laws','influenced','french-revolution-declaration','Article 16 says a society without the separation of powers has no constitution.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 03:47:25');
+INSERT INTO "relationships" VALUES(428,'rousseau-social-contract','part_of','age-of-enlightenment','One of the most influential works of the French Enlightenment.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 03:47:25');
+INSERT INTO "relationships" VALUES(429,'rousseau-social-contract','influenced','french-revolution-declaration','Article 6 calls law the expression of the general will, Rousseau''s phrase.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 03:47:25');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -11813,6 +11857,28 @@ INSERT INTO "review_log" VALUES(1117,'2026-11-19 03:45:21','approve-link','indon
 INSERT INTO "review_log" VALUES(1118,'2026-11-19 03:45:37','missing-wanted','missing:94','Locke Publishes Two Treatises of Government','dashboard');
 INSERT INTO "review_log" VALUES(1119,'2026-11-19 03:45:37','missing-wanted','missing:95','Montesquieu Publishes The Spirit of the Laws','dashboard');
 INSERT INTO "review_log" VALUES(1120,'2026-11-19 03:45:37','missing-wanted','missing:96','Rousseau Publishes The Social Contract','dashboard');
+INSERT INTO "review_log" VALUES(1121,'2026-11-19 03:50:58','approve-source','locke-two-treatises','Two Treatises of Government','dashboard');
+INSERT INTO "review_log" VALUES(1122,'2026-11-19 03:50:58','approve-source','montesquieu-spirit-of-the-laws','The Spirit of Law','dashboard');
+INSERT INTO "review_log" VALUES(1123,'2026-11-19 03:50:58','approve-source','rousseau-social-contract','The Social Contract','dashboard');
+INSERT INTO "review_log" VALUES(1124,'2026-11-19 03:51:23','approve-link','locke-two-treatises','link #423: locke-two-treatises part_of age-of-enlightenment','dashboard');
+INSERT INTO "review_log" VALUES(1125,'2026-11-19 03:51:23','approve-link','locke-two-treatises','link #424: locke-two-treatises influenced american-declaration','dashboard');
+INSERT INTO "review_log" VALUES(1126,'2026-11-19 03:51:23','approve-link','montesquieu-spirit-of-the-laws','link #425: montesquieu-spirit-of-the-laws part_of age-of-enlightenment','dashboard');
+INSERT INTO "review_log" VALUES(1127,'2026-11-19 03:51:23','approve-link','montesquieu-spirit-of-the-laws','link #426: montesquieu-spirit-of-the-laws influenced founding-of-united-states','dashboard');
+INSERT INTO "review_log" VALUES(1128,'2026-11-19 03:51:23','approve-link','montesquieu-spirit-of-the-laws','link #427: montesquieu-spirit-of-the-laws influenced french-revolution-declaration','dashboard');
+INSERT INTO "review_log" VALUES(1129,'2026-11-19 03:51:23','approve-link','rousseau-social-contract','link #428: rousseau-social-contract part_of age-of-enlightenment','dashboard');
+INSERT INTO "review_log" VALUES(1130,'2026-11-19 03:51:23','approve-link','rousseau-social-contract','link #429: rousseau-social-contract influenced french-revolution-declaration','dashboard');
+INSERT INTO "review_log" VALUES(1131,'2026-11-19 03:51:36','approve-countries','axial-age',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1132,'2026-11-19 03:51:36','approve-countries','age-of-enlightenment',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1133,'2026-11-19 03:51:36','approve-countries','locke-two-treatises',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1134,'2026-11-19 03:51:36','approve-countries','montesquieu-spirit-of-the-laws',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1135,'2026-11-19 03:51:36','approve-countries','rousseau-social-contract',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1136,'2026-11-19 03:51:36','approve-countries','decolonization-of-asia-and-africa',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1137,'2026-11-19 03:52:49','approve-significance','locke-two-treatises',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1138,'2026-11-19 03:52:49','approve-significance','montesquieu-spirit-of-the-laws',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1139,'2026-11-19 03:52:49','approve-significance','rousseau-social-contract',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1140,'2026-11-19 03:53:24','approve-draft','locke-two-treatises',NULL,'cli');
+INSERT INTO "review_log" VALUES(1141,'2026-11-19 03:53:24','approve-draft','montesquieu-spirit-of-the-laws',NULL,'cli');
+INSERT INTO "review_log" VALUES(1142,'2026-11-19 03:53:24','approve-draft','rousseau-social-contract',NULL,'cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -11964,6 +12030,9 @@ INSERT INTO "sources" VALUES(141,'wikipedia','Pacific War','https://en.wikipedia
 INSERT INTO "sources" VALUES(142,'wikipedia','Axial Age','https://en.wikipedia.org/wiki/Axial_Age','2026-11-19 00:13:35');
 INSERT INTO "sources" VALUES(143,'wikipedia','Age of Enlightenment','https://en.wikipedia.org/wiki/Age_of_Enlightenment','2026-11-19 00:13:35');
 INSERT INTO "sources" VALUES(144,'wikipedia','Decolonization','https://en.wikipedia.org/wiki/Decolonization','2026-11-19 00:13:35');
+INSERT INTO "sources" VALUES(145,'wikipedia','Two Treatises of Government','https://en.wikipedia.org/wiki/Two_Treatises_of_Government','2026-11-19 03:47:24');
+INSERT INTO "sources" VALUES(146,'wikipedia','The Spirit of Law','https://en.wikipedia.org/wiki/The_Spirit_of_Law','2026-11-19 03:47:24');
+INSERT INTO "sources" VALUES(147,'wikipedia','The Social Contract','https://en.wikipedia.org/wiki/The_Social_Contract','2026-11-19 03:47:24');
 CREATE TABLE time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json
