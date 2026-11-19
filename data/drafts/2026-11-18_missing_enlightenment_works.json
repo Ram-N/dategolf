@@ -1,0 +1,14 @@
+{
+  "found_while": "2026-11-18: reviewing the Age of Enlightenment links (Ram asked whether a span should influence events inside it)",
+  "items": [
+    {"kind": "event", "name": "Locke Publishes Two Treatises of Government", "year": 1689, "region": "Europe",
+     "why": "The specific source of natural rights and government by consent; would influence american-declaration directly and be part_of age-of-enlightenment.",
+     "related_ids": ["age-of-enlightenment", "american-declaration", "glorious-revolution"]},
+    {"kind": "event", "name": "Montesquieu Publishes The Spirit of the Laws", "year": 1748, "region": "Europe",
+     "why": "The separation of powers; would influence french-revolution-declaration (Article 16) and founding-of-united-states, part_of age-of-enlightenment.",
+     "related_ids": ["age-of-enlightenment", "french-revolution-declaration", "founding-of-united-states"]},
+    {"kind": "event", "name": "Rousseau Publishes The Social Contract", "year": 1762, "region": "Europe",
+     "why": "The general will and popular sovereignty; would influence french-revolution-declaration (Articles 3 and 6), part_of age-of-enlightenment.",
+     "related_ids": ["age-of-enlightenment", "french-revolution-declaration"]}
+  ]
+}
