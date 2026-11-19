@@ -29,6 +29,10 @@
   --df-arc-frame: #2dd4bf;
   --df-arc-then: #a1a1aa;
   --df-backdrop: rgb(255 255 255 / 0.045);
+  /* Historical Currents (step 3d): a neutral wash, so it never reads as a family or "approximate" */
+  --df-current: rgb(186 200 230 / 0.07);
+  --df-current-edge: rgb(186 200 230 / 0.35);
+  --df-current-text: #b4bfd4;
 }
 .dateflow[data-theme='light'] {
   --df-bg: #fcfcfb;
@@ -58,6 +62,9 @@
   --df-arc-frame: #0f766e;
   --df-arc-then: #71717a;
   --df-backdrop: rgb(0 0 0 / 0.045);
+  --df-current: rgb(71 85 105 / 0.07);
+  --df-current-edge: rgb(71 85 105 / 0.4);
+  --df-current-text: #475569;
 }
 /* Families (Phase 11): Subtle, the default here, folds the 8 families onto the 3 group hues. */
 .dateflow {
@@ -87,6 +94,9 @@
   --df-btn: #1f3055;
   --df-btn-hover: #2e4370;
   --df-backdrop: rgb(140 170 255 / 0.07);
+  --df-current: rgb(180 200 255 / 0.08);
+  --df-current-edge: rgb(180 200 255 / 0.4);
+  --df-current-text: #b8c6e6;
   --df-f-politics: #4ea8ff;
   --df-f-war: #ff5c63;
   --df-f-science: #b991ff;

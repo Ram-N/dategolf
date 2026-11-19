@@ -48,6 +48,7 @@
         :all-events="store.events"
         :durations="store.filteredDurations"
         :span-parents="store.subSpanParents"
+        :currents="store.currentSpans"
         :detail="store.detailLevel"
         :density="store.density"
         :view="store.view"

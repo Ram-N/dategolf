@@ -275,6 +275,15 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     density.value === 'detailed' && openId.value ? new Set([openId.value, ...relatedIds.value]) : null,
   )
   const lanes = computed(() => visibleLanes(laneState.value))
+  /**
+   * Historical Currents (step 3d) are context, like eras: drawn from every span, whatever the filters.
+   * Off in Simple and Constellation, and while a story or the Time Machine draws its own overlay.
+   */
+  const currentSpans = computed(() =>
+    density.value === 'simple' || mode.value === 'constellation' || story.value || timeMachine.value
+      ? []
+      : durations.value.filter((d) => d.current),
+  )
 
   // Region filtering is a World / Constellation control; in Lanes mode the lane picker decides regions.
   const applyRegions = computed(() => mode.value !== 'lanes')
@@ -851,6 +860,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     density,
     setDensity,
     subSpanParents,
+    currentSpans,
     detailLevel,
     cardIds,
     mode,

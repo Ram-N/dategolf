@@ -19,6 +19,21 @@
         <text v-if="era.showLabel" :x="era.labelX" y="20" class="era-label">{{ era.name }}</text>
       </g>
 
+      <!-- Historical Currents (step 3d): long movements as washes behind everything; at most 3 overlap.
+           A dashed edge = an approximate start or end. The name (with its years) opens the span's card. -->
+      <g v-for="c in currentBands" :key="c.id" class="current">
+        <rect :x="c.x1" :y="c.top" :width="c.x2 - c.x1" :height="c.h" class="current-band" pointer-events="none" />
+        <line v-if="c.startIn" :x1="c.x1" :x2="c.x1" :y1="c.top" :y2="c.top + c.h" class="current-edge"
+              :class="{ approx: c.approximate }" pointer-events="none" />
+        <line v-if="c.endIn" :x1="c.x2" :x2="c.x2" :y1="c.top" :y2="c.top + c.h" class="current-edge"
+              :class="{ approx: c.approximate }" pointer-events="none" />
+        <text v-if="c.label" :x="c.labelX" :y="c.top + 12 + c.row * 13" class="current-label"
+              role="button" @click.stop="onBarClick(c.id)">
+          <title>{{ c.name }}, {{ c.years }}: a Historical Current. Click for its card.</title>
+          {{ c.label }}
+        </text>
+      </g>
+
       <!-- Grid -->
       <line
         v-for="t in tickMarks"
@@ -273,6 +288,7 @@ import {
 } from '@/engine/dateflow/visibility'
 import { familyFor, shapeOf, shapePath, type Family } from '@/engine/dateflow/categoryGroups'
 import { emptyRows, formatSpan, packBars, revealedSubSpans, topLevelSpans } from '@/engine/dateflow/durations'
+import { pickCurrents } from '@/engine/dateflow/currents'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
 import { constellationThreshold, dotRadius, scatter, trackOf, tracksFor, type TrackAxis } from '@/engine/dateflow/constellation'
 import type { ViewMode } from '@/stores/dateflow'
@@ -298,6 +314,7 @@ const props = defineProps<{
   stepId?: string | null // the stop being played
   density: Density // Simple hides span bars and milestone lines
   focusFamily?: Family | null // Phase 11 Focus: this family stays vivid, the rest fade (never hidden)
+  currents?: Duration[] | null // step 3d: spans that may be drawn as Historical Currents (empty = layer off)
   // Phase 10, the Time Machine: year lines, a shaded band (two spans' shared years), a bracket (two events)
   marks?: { lines: number[]; band: [number, number] | null; bracket: [number, number] | null; label: string } | null
 }>()
@@ -326,6 +343,7 @@ const AXIS_GAP = 10 // gap between an axis and the nearest label
 const TICK_SPACE = 24 // World mode: room under the axis for year labels
 const TICK_STRIP = 20 // Lanes mode: shared year labels along the bottom
 const LANE_HEADER = 18 // room for the lane name
+const LANE_NAME_W = 120 // the widest lane name ("SOUTHEAST ASIA"), so a current's label can start after it
 const MILESTONE_GAP_PX = 48
 const MILESTONE_PRIORITY = 100 // milestones claim label space before everything else
 const HIGHLIGHT_PRIORITY = 200 // highlighted connections claim it before milestones
@@ -765,6 +783,40 @@ const storyArcs = computed<Arc[]>(() => {
   return arcs
 })
 
+/**
+ * Where a current is drawn. World: one band above the span bars (like story backdrops). Lanes: a regional
+ * current stays in its own lane (the Renaissance never washes over East Asia); a Global one spans them all.
+ */
+function currentArea(region: string): { top: number; h: number } | null {
+  if (props.mode === 'world') return { top: ERA_SPACE, h: (layouts.value[0]?.bandTop ?? height.value) - ERA_SPACE }
+  const lane = laneFor(region)
+  if (lane === 'global') return { top: ERA_SPACE, h: height.value - TICK_STRIP - ERA_SPACE }
+  const i = layouts.value.findIndex((t) => t.id === lane)
+  if (i === -1) return null // its lane is hidden
+  const next = layouts.value[i + 1]?.top ?? height.value - TICK_STRIP
+  return { top: layouts.value[i]!.top, h: next - layouts.value[i]!.top }
+}
+
+const currentBands = computed(() => {
+  if (!props.currents?.length) return []
+  const drawable = props.currents.filter((d) => currentArea(d.region))
+  const byId = new Map(drawable.map((d) => [d.id, d]))
+  return pickCurrents(drawable, props.view.start, props.view.end).map((c) => {
+    const { top, h } = currentArea(c.region)!
+    const x1 = Math.max(0, yearToX(c.startYear, props.view, width.value))
+    const x2 = Math.min(width.value, yearToX(c.endYear, props.view, width.value))
+    const years = formatSpan(byId.get(c.id)!, formatYear)
+    // Name and years when they fit, the name alone when only it fits, nothing when neither does.
+    // In Lanes, keep clear of the first lane's name at the left edge.
+    const labelX = Math.max(x1, props.mode === 'lanes' ? LANE_NAME_W : 0) + 6
+    const room = x2 - labelX - 6
+    const full = `${c.name} · ${years}`
+    const label = full.length * 6.4 <= room ? full : c.name.length * 6.4 <= room ? c.name : ''
+    return { ...c, x1, x2, top, h, years, label, labelX,
+             startIn: c.startYear >= props.view.start, endIn: c.endYear <= props.view.end }
+  })
+})
+
 const storyBackdrops = computed(() => {
   const s = props.story
   if (!s) return []
@@ -983,6 +1035,29 @@ function onArcClick(key: string, e: MouseEvent) {
 </script>
 
 <style scoped>
+.current-band {
+  fill: var(--df-current);
+}
+.current-edge {
+  stroke: var(--df-current-edge);
+  stroke-width: 1;
+}
+.current-edge.approx {
+  stroke-dasharray: 3 3;
+}
+.current-label {
+  fill: var(--df-current-text);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  paint-order: stroke;
+  stroke: var(--df-bg);
+  stroke-width: 3px;
+}
+.current-label:hover {
+  text-decoration: underline;
+}
 .era-label {
   fill: var(--df-muted);
   font-size: 11px;
