@@ -2701,6 +2701,104 @@
       "target": "pacific-war",
       "why": "Japan's formal surrender in September 1945 brought the Pacific War to an end.",
       "confidence": "high"
+    },
+    {
+      "source": "life-of-the-buddha",
+      "type": "part_of",
+      "target": "axial-age",
+      "why": "The Buddha's teaching is one of the traditions Jaspers grouped into the Axial Age.",
+      "confidence": "medium"
+    },
+    {
+      "source": "birth-of-confucius",
+      "type": "part_of",
+      "target": "axial-age",
+      "why": "Confucius is one of the thinkers Jaspers placed at the heart of the Axial Age.",
+      "confidence": "medium"
+    },
+    {
+      "source": "platos-academy-founded",
+      "type": "part_of",
+      "target": "axial-age",
+      "why": "Greek philosophy, from Thales to Plato and Aristotle, is one of the Axial Age's main strands.",
+      "confidence": "medium"
+    },
+    {
+      "source": "scientific-revolution",
+      "type": "influenced",
+      "target": "age-of-enlightenment",
+      "why": "Explaining nature by reason and experiment inspired thinkers to apply the same methods to society and government.",
+      "confidence": "high"
+    },
+    {
+      "source": "wealth-of-nations-published",
+      "type": "part_of",
+      "target": "age-of-enlightenment",
+      "why": "Adam Smith was a leading figure of the Scottish Enlightenment.",
+      "confidence": "high"
+    },
+    {
+      "source": "age-of-enlightenment",
+      "type": "influenced",
+      "target": "american-declaration",
+      "why": "Jefferson drew on Locke's ideas of natural rights and government by the consent of the governed.",
+      "confidence": "high"
+    },
+    {
+      "source": "age-of-enlightenment",
+      "type": "influenced",
+      "target": "french-revolution-declaration",
+      "why": "Its articles on natural rights, popular sovereignty and the separation of powers echo Rousseau and Montesquieu.",
+      "confidence": "high"
+    },
+    {
+      "source": "world-war-2",
+      "type": "contributed_to",
+      "target": "decolonization-of-asia-and-africa",
+      "why": "The war drained the European powers and weakened colonial rule's prestige, strengthening independence movements.",
+      "confidence": "high"
+    },
+    {
+      "source": "indonesia-proclaims-independence",
+      "type": "part_of",
+      "target": "decolonization-of-asia-and-africa",
+      "why": "Indonesia declared independence days after Japan's surrender, then fought the Dutch until 1949.",
+      "confidence": "high"
+    },
+    {
+      "source": "indian-independence",
+      "type": "part_of",
+      "target": "decolonization-of-asia-and-africa",
+      "why": "India's independence was the largest of the post-war transfers of colonial power.",
+      "confidence": "high"
+    },
+    {
+      "source": "bandung-conference",
+      "type": "part_of",
+      "target": "decolonization-of-asia-and-africa",
+      "why": "Twenty-nine Asian and African states, many newly independent, met to oppose colonialism and Cold War pressure.",
+      "confidence": "high"
+    },
+    {
+      "source": "french-colonial-algeria",
+      "type": "part_of",
+      "target": "decolonization-of-asia-and-africa",
+      "why": "One of the bloodiest wars of independence, fought to end French rule in Algeria.",
+      "confidence": "high"
+    },
+    {
+      "source": "ghana-independence",
+      "type": "part_of",
+      "target": "decolonization-of-asia-and-africa",
+      "why": "Ghana's independence under Kwame Nkrumah became a model for movements across Africa.",
+      "confidence": "high"
+    },
+    {
+      "source": "decolonization-africa",
+      "type": "part_of",
+      "target": "decolonization-of-asia-and-africa",
+      "why": "Seventeen African states, mostly former French colonies and trust territories, became independent in one year.",
+      "confidence": "high"
     }
   ]
 }

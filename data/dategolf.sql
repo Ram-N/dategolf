@@ -2604,6 +2604,9 @@ INSERT INTO "entities" VALUES('afonso-i-becomes-king-of-kongo','event','reviewed
 INSERT INTO "entities" VALUES('mutapa-empire','empire','reviewed','2026-11-13 23:19:23','2026-11-13 23:22:15');
 INSERT INTO "entities" VALUES('european-theatre-of-world-war-ii','period','reviewed','2026-11-13 23:19:23','2026-11-13 23:22:15');
 INSERT INTO "entities" VALUES('pacific-war','period','reviewed','2026-11-13 23:19:23','2026-11-13 23:22:57');
+INSERT INTO "entities" VALUES('axial-age','period','reviewed','2026-11-19 00:13:35','2026-11-19 03:41:19');
+INSERT INTO "entities" VALUES('age-of-enlightenment','period','reviewed','2026-11-19 00:13:35','2026-11-19 03:41:19');
+INSERT INTO "entities" VALUES('decolonization-of-asia-and-africa','period','reviewed','2026-11-19 00:13:35','2026-11-19 03:41:19');
 CREATE TABLE entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   facet     TEXT NOT NULL CHECK (facet IN ('event', 'span')),
@@ -3676,6 +3679,12 @@ INSERT INTO "entity_categories" VALUES('mutapa-empire','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('mutapa-empire','span',1,'Economy');
 INSERT INTO "entity_categories" VALUES('european-theatre-of-world-war-ii','span',0,'War');
 INSERT INTO "entity_categories" VALUES('pacific-war','span',0,'War');
+INSERT INTO "entity_categories" VALUES('axial-age','span',0,'Philosophy');
+INSERT INTO "entity_categories" VALUES('axial-age','span',1,'Religion');
+INSERT INTO "entity_categories" VALUES('age-of-enlightenment','span',0,'Philosophy');
+INSERT INTO "entity_categories" VALUES('age-of-enlightenment','span',1,'Politics');
+INSERT INTO "entity_categories" VALUES('age-of-enlightenment','span',2,'Science');
+INSERT INTO "entity_categories" VALUES('decolonization-of-asia-and-africa','span',0,'Politics');
 CREATE TABLE entity_countries (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   position   INTEGER NOT NULL,
@@ -4563,6 +4572,20 @@ INSERT INTO "entity_countries" VALUES('pacific-war',1,'US','high','reviewed',NUL
 INSERT INTO "entity_countries" VALUES('pacific-war',2,'CN','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('pacific-war',3,'AU','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('pacific-war',4,'PH','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('axial-age',0,'IN','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('axial-age',1,'NP','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('axial-age',2,'CN','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('axial-age',3,'GR','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('axial-age',4,'IL','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('age-of-enlightenment',0,'FR','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('age-of-enlightenment',1,'GB','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('age-of-enlightenment',2,'DE','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',0,'IN','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',1,'ID','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',2,'GH','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',3,'DZ','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',4,'GB','high','proposed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('decolonization-of-asia-and-africa',5,'FR','high','proposed',NULL,'actor');
 CREATE TABLE entity_provenance (
   entity_id    TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   origin       TEXT NOT NULL,                      -- e.g. ai_drafted_from_csv
@@ -4752,6 +4775,9 @@ INSERT INTO "entity_provenance" VALUES('afonso-i-becomes-king-of-kongo','ai_draf
 INSERT INTO "entity_provenance" VALUES('mutapa-empire','ai_drafted:gemini',NULL,'Conventional dates c. 1430 to 1760 (a diminished successor polity survived in Chidima until the late nineteenth century). [Claude at review: ''King Solomon''s Mines'' is Haggard''s 1885 novel; the Portuguese linked Mutapa''s gold to Ophir.]');
 INSERT INTO "entity_provenance" VALUES('european-theatre-of-world-war-ii','ai_drafted:gemini',NULL,'1 September 1939 to 8 May 1945 (V-E Day).');
 INSERT INTO "entity_provenance" VALUES('pacific-war','ai_drafted:gemini',NULL,'7–8 December 1941 (Pearl Harbor and simultaneous attacks across Malaya, Hong Kong and the Philippines) to 2 September 1945 (formal surrender in Tokyo Bay; Emperor Hirohito announced surrender on 15 August 1945). Fighting between Japan and China had already been underway since 1937.');
+INSERT INTO "entity_provenance" VALUES('axial-age','ai_drafted:claude-opus-5-5',NULL,'Jaspers coined the term in 1949 and gave 800-200 BCE; others narrow or widen it. The concept itself is contested (some scholars call it a pattern imposed afterwards), so the description and significance say so, and its part_of links are medium confidence. Zoroaster is left out: his dates are too disputed.');
+INSERT INTO "entity_provenance" VALUES('age-of-enlightenment','ai_drafted:claude-opus-5-5',NULL,'No agreed start or end. 1685-1815 is a common broad framing (Newton''s Principia 1687 and Locke''s works around 1689 to the end of the Napoleonic Wars); French historians often use 1715-1789. Approximate for that reason.');
+INSERT INTO "entity_provenance" VALUES('decolonization-of-asia-and-africa','ai_drafted:claude-opus-5-5',NULL,'1945-1975 is the main wave (to the independence of Portugal''s African colonies); some accounts run on to Zimbabwe in 1980 or later. UN membership: 51 founding members in 1945, 144 by the end of 1975. Name keeps the scope honest: the Caribbean and Oceania also decolonized, mostly later.');
 CREATE TABLE entity_significance (
   entity_id  TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   text       TEXT NOT NULL CHECK (trim(text) <> ''),
@@ -4928,6 +4954,9 @@ INSERT INTO "entity_significance" VALUES('afonso-i-becomes-king-of-kongo','Afons
 INSERT INTO "entity_significance" VALUES('mutapa-empire','Controlling goldfields across the Zimbabwe plateau and trade routes down the Zambezi River, Mutapa drew both Swahili and Portuguese merchants into southern Africa. Its gold led the Portuguese to identify it with the biblical land of Ophir and led to centuries of diplomatic and military entanglement with Portugal.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:22:15');
 INSERT INTO "entity_significance" VALUES('european-theatre-of-world-war-ii','The European theatre saw the largest land battles in history on the Eastern Front alongside the Nazi Holocaust, killing tens of millions of soldiers and civilians. Germany''s defeat left Europe devastated and divided between American-allied and Soviet spheres of influence.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:22:15');
 INSERT INTO "entity_significance" VALUES('pacific-war','The Pacific War transformed naval warfare through aircraft carrier battles and amphibious island campaigns, culminating in the atomic bombings of Hiroshima and Nagasaki. Japan''s defeat dismantled its overseas empire, led to the Allied occupation of Japan and accelerated decolonization across Asia.','reviewed','ai_drafted:gemini',NULL,'2026-11-13 23:19:23','2026-11-13 23:22:15');
+INSERT INTO "entity_significance" VALUES('axial-age','The idea of an Axial Age points out that Buddhism, Confucianism, Greek philosophy and the teaching of the Hebrew prophets all took shape, largely independently, within a few centuries. Scholars still argue whether that reflects a real shared turning point or a pattern drawn afterwards.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-19 00:13:35','2026-11-19 03:41:19');
+INSERT INTO "entity_significance" VALUES('age-of-enlightenment','Enlightenment ideas of natural rights, religious toleration, the separation of powers and government by consent shaped the American and French revolutions and much later liberal and democratic thought. Critics then and since have questioned its claims to universality and its uneven record on slavery and empire.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-19 00:13:35','2026-11-19 03:41:19');
+INSERT INTO "entity_significance" VALUES('decolonization-of-asia-and-africa','Decolonization ended most European empires within a generation and remade the world map. It shaped the Cold War, as new states chose sides or stayed non-aligned, and left many borders, economies and conflicts that colonial rule had drawn.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-19 00:13:35','2026-11-19 03:41:19');
 CREATE TABLE entity_sources (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   source_id  INTEGER NOT NULL REFERENCES sources(id) ON DELETE CASCADE,
@@ -5084,6 +5113,9 @@ INSERT INTO "entity_sources" VALUES('afonso-i-becomes-king-of-kongo',138,'review
 INSERT INTO "entity_sources" VALUES('mutapa-empire',139,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('european-theatre-of-world-war-ii',140,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('pacific-war',141,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('axial-age',142,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('age-of-enlightenment',143,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('decolonization-of-asia-and-africa',144,'reviewed','ai_drafted',NULL,NULL);
 CREATE TABLE event_aliases (
   entity_id TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   position  INTEGER NOT NULL,
@@ -10207,6 +10239,12 @@ INSERT INTO "missing_entities" VALUES(87,'event','Portuguese Reach the Kingdom o
 INSERT INTO "missing_entities" VALUES(88,'event','Afonso I Becomes King of Kongo',1509,NULL,NULL,'Africa','Kongo''s best-known king, whose letters to Portugal protested the slave trade; part_of kingdom-of-kongo.','2026-11-13: gap batch 3 (spans left with no links)','kingdom-of-kongo','drafted','afonso-i-becomes-king-of-kongo',NULL,'2026-11-13 22:49:15');
 INSERT INTO "missing_entities" VALUES(89,'span','European Theatre of World War II',1939,1945,NULL,'Europe','V-E Day ended the war in Europe, not the whole war: this span lets it ''end'' something true. Part_of world-war-2; Stalingrad, D-Day, the Battle of Britain and the invasion of the Soviet Union are part_of it.','2026-11-13: gap batch 4 review (WWII split into theatres)','world-war-2 germany-surrenders-ve-day battle-of-stalingrad d-day-normandy battle-of-britain germany-invades-soviet-union','drafted','european-theatre-of-world-war-ii',NULL,'2026-11-13 23:13:14');
 INSERT INTO "missing_entities" VALUES(90,'span','Pacific War',1941,1945,NULL,'Global','The existing ''Japan''s Surrender Ends the Pacific War'' has no Pacific War to end. Part_of world-war-2; Pearl Harbor began it; Midway and Hiroshima are part_of it.','2026-11-13: gap batch 4 review (WWII split into theatres)','world-war-2 japanese-pearl-harbor battle-of-midway atomic-bomb-hiroshima japan-world-war-two-defeat','drafted','pacific-war',NULL,'2026-11-13 23:13:14');
+INSERT INTO "missing_entities" VALUES(91,'span','Axial Age',-800,-200,1,'Global','A current for the Historical Currents layer: the centuries of the Buddha, Confucius, the Hebrew prophets and Greek philosophy (Jaspers'' contested label). Would include life-of-the-buddha, birth-of-confucius, platos-academy-founded.','2026-11-18: Date Flow step 3d, Historical Currents (doc 14, doc 16 §8)','life-of-the-buddha birth-of-confucius platos-academy-founded','drafted','axial-age','Ram in chat 2026-11-18: start the 3d spans','2026-11-19 00:12:25');
+INSERT INTO "missing_entities" VALUES(92,'span','Age of Enlightenment',1685,1815,1,'Europe','A current for the Historical Currents layer; the Scientific Revolution influenced it and it influenced the Declaration of Independence and the Rights of Man.','2026-11-18: Date Flow step 3d, Historical Currents (doc 14, doc 16 §8)','scientific-revolution wealth-of-nations-published american-declaration french-revolution-declaration','drafted','age-of-enlightenment','Ram in chat 2026-11-18: start the 3d spans','2026-11-19 00:12:25');
+INSERT INTO "missing_entities" VALUES(93,'span','Decolonization of Asia and Africa',1945,1975,1,'Global','A current for the Historical Currents layer; would hold India''s, Indonesia''s and Ghana''s independence, the Year of Africa, the Algerian War and Bandung, with World War II as one cause.','2026-11-18: Date Flow step 3d, Historical Currents (doc 14, doc 16 §8)','world-war-2 indian-independence indonesia-proclaims-independence ghana-independence decolonization-africa french-colonial-algeria bandung-conference','drafted','decolonization-of-asia-and-africa','Ram in chat 2026-11-18: start the 3d spans','2026-11-19 00:12:25');
+INSERT INTO "missing_entities" VALUES(94,'event','Locke Publishes Two Treatises of Government',1689,NULL,NULL,'Europe','The specific source of natural rights and government by consent; would influence american-declaration directly and be part_of age-of-enlightenment.','2026-11-18: reviewing the Age of Enlightenment links (Ram asked whether a span should influence events inside it)','age-of-enlightenment american-declaration glorious-revolution','wanted',NULL,NULL,'2026-11-19 03:44:14');
+INSERT INTO "missing_entities" VALUES(95,'event','Montesquieu Publishes The Spirit of the Laws',1748,NULL,NULL,'Europe','The separation of powers; would influence french-revolution-declaration (Article 16) and founding-of-united-states, part_of age-of-enlightenment.','2026-11-18: reviewing the Age of Enlightenment links (Ram asked whether a span should influence events inside it)','age-of-enlightenment french-revolution-declaration founding-of-united-states','wanted',NULL,NULL,'2026-11-19 03:44:14');
+INSERT INTO "missing_entities" VALUES(96,'event','Rousseau Publishes The Social Contract',1762,NULL,NULL,'Europe','The general will and popular sovereignty; would influence french-revolution-declaration (Articles 3 and 6), part_of age-of-enlightenment.','2026-11-18: reviewing the Age of Enlightenment links (Ram asked whether a span should influence events inside it)','age-of-enlightenment french-revolution-declaration','wanted',NULL,NULL,'2026-11-19 03:44:14');
 CREATE TABLE regions (
   label TEXT PRIMARY KEY,
   lane  TEXT NOT NULL CHECK (lane IN
@@ -10633,6 +10671,20 @@ INSERT INTO "relationships" VALUES(405,'japanese-pearl-harbor','began','pacific-
 INSERT INTO "relationships" VALUES(406,'battle-of-midway','part_of','pacific-war','The carrier battle off Midway Atoll was the turning point of the Pacific War.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
 INSERT INTO "relationships" VALUES(407,'atomic-bomb-hiroshima','part_of','pacific-war','The atomic bombing of Hiroshima took place in the final days of the Pacific War.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
 INSERT INTO "relationships" VALUES(408,'japan-world-war-two-defeat','ended','pacific-war','Japan''s formal surrender in September 1945 brought the Pacific War to an end.','high','reviewed','ai_drafted:gemini','2026-11-13 23:19:24');
+INSERT INTO "relationships" VALUES(409,'life-of-the-buddha','part_of','axial-age','The Buddha''s teaching is one of the traditions Jaspers grouped into the Axial Age.','medium','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(410,'birth-of-confucius','part_of','axial-age','Confucius is one of the thinkers Jaspers placed at the heart of the Axial Age.','medium','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(411,'platos-academy-founded','part_of','axial-age','Greek philosophy, from Thales to Plato and Aristotle, is one of the Axial Age''s main strands.','medium','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(412,'scientific-revolution','influenced','age-of-enlightenment','Explaining nature by reason and experiment inspired thinkers to apply the same methods to society and government.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(413,'wealth-of-nations-published','part_of','age-of-enlightenment','Adam Smith was a leading figure of the Scottish Enlightenment.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(414,'age-of-enlightenment','influenced','american-declaration','Jefferson drew on Locke''s ideas of natural rights and government by the consent of the governed.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(415,'age-of-enlightenment','influenced','french-revolution-declaration','Its articles on natural rights, popular sovereignty and the separation of powers echo Rousseau and Montesquieu.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(416,'world-war-2','contributed_to','decolonization-of-asia-and-africa','The war drained the European powers and weakened colonial rule''s prestige, strengthening independence movements.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(417,'indonesia-proclaims-independence','part_of','decolonization-of-asia-and-africa','Indonesia declared independence days after Japan''s surrender, then fought the Dutch until 1949.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(418,'indian-independence','part_of','decolonization-of-asia-and-africa','India''s independence was the largest of the post-war transfers of colonial power.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(419,'bandung-conference','part_of','decolonization-of-asia-and-africa','Twenty-nine Asian and African states, many newly independent, met to oppose colonialism and Cold War pressure.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(420,'french-colonial-algeria','part_of','decolonization-of-asia-and-africa','One of the bloodiest wars of independence, fought to end French rule in Algeria.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(421,'ghana-independence','part_of','decolonization-of-asia-and-africa','Ghana''s independence under Kwame Nkrumah became a model for movements across Africa.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
+INSERT INTO "relationships" VALUES(422,'decolonization-africa','part_of','decolonization-of-asia-and-africa','Seventeen African states, mostly former French colonies and trust territories, became independent in one year.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-19 00:13:36');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -11738,6 +11790,29 @@ INSERT INTO "review_log" VALUES(1094,'2026-11-13 23:25:12','approve-link','japan
 INSERT INTO "review_log" VALUES(1095,'2026-11-13 23:25:21','approve-link','battle-of-midway','link #406: battle-of-midway part_of pacific-war','dashboard');
 INSERT INTO "review_log" VALUES(1096,'2026-11-13 23:25:21','approve-link','atomic-bomb-hiroshima','link #407: atomic-bomb-hiroshima part_of pacific-war','dashboard');
 INSERT INTO "review_log" VALUES(1097,'2026-11-13 23:25:21','approve-link','japan-world-war-two-defeat','link #408: japan-world-war-two-defeat ended pacific-war','dashboard');
+INSERT INTO "review_log" VALUES(1098,'2026-11-19 00:12:29','missing-wanted','missing:91','Axial Age — Ram in chat 2026-11-18: start the 3d spans','cli');
+INSERT INTO "review_log" VALUES(1099,'2026-11-19 00:12:29','missing-wanted','missing:92','Age of Enlightenment — Ram in chat 2026-11-18: start the 3d spans','cli');
+INSERT INTO "review_log" VALUES(1100,'2026-11-19 00:12:29','missing-wanted','missing:93','Decolonization of Asia and Africa — Ram in chat 2026-11-18: start the 3d spans','cli');
+INSERT INTO "review_log" VALUES(1101,'2026-11-19 03:41:19','approve-draft','axial-age',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1102,'2026-11-19 03:41:19','approve-draft','age-of-enlightenment',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1103,'2026-11-19 03:41:19','approve-draft','decolonization-of-asia-and-africa',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1104,'2026-11-19 03:42:33','approve-link','life-of-the-buddha','link #409: life-of-the-buddha part_of axial-age','dashboard');
+INSERT INTO "review_log" VALUES(1105,'2026-11-19 03:42:33','approve-link','birth-of-confucius','link #410: birth-of-confucius part_of axial-age','dashboard');
+INSERT INTO "review_log" VALUES(1106,'2026-11-19 03:42:33','approve-link','platos-academy-founded','link #411: platos-academy-founded part_of axial-age','dashboard');
+INSERT INTO "review_log" VALUES(1107,'2026-11-19 03:42:33','approve-link','scientific-revolution','link #412: scientific-revolution influenced age-of-enlightenment','dashboard');
+INSERT INTO "review_log" VALUES(1108,'2026-11-19 03:42:33','approve-link','wealth-of-nations-published','link #413: wealth-of-nations-published part_of age-of-enlightenment','dashboard');
+INSERT INTO "review_log" VALUES(1109,'2026-11-19 03:42:33','approve-link','world-war-2','link #416: world-war-2 contributed_to decolonization-of-asia-and-africa','dashboard');
+INSERT INTO "review_log" VALUES(1110,'2026-11-19 03:42:33','approve-link','indian-independence','link #418: indian-independence part_of decolonization-of-asia-and-africa','dashboard');
+INSERT INTO "review_log" VALUES(1111,'2026-11-19 03:42:56','approve-link','bandung-conference','link #419: bandung-conference part_of decolonization-of-asia-and-africa','dashboard');
+INSERT INTO "review_log" VALUES(1112,'2026-11-19 03:42:56','approve-link','french-colonial-algeria','link #420: french-colonial-algeria part_of decolonization-of-asia-and-africa','dashboard');
+INSERT INTO "review_log" VALUES(1113,'2026-11-19 03:42:56','approve-link','ghana-independence','link #421: ghana-independence part_of decolonization-of-asia-and-africa','dashboard');
+INSERT INTO "review_log" VALUES(1114,'2026-11-19 03:42:56','approve-link','decolonization-africa','link #422: decolonization-africa part_of decolonization-of-asia-and-africa','dashboard');
+INSERT INTO "review_log" VALUES(1115,'2026-11-19 03:45:21','approve-link','age-of-enlightenment','link #414: age-of-enlightenment influenced american-declaration','dashboard');
+INSERT INTO "review_log" VALUES(1116,'2026-11-19 03:45:21','approve-link','age-of-enlightenment','link #415: age-of-enlightenment influenced french-revolution-declaration','dashboard');
+INSERT INTO "review_log" VALUES(1117,'2026-11-19 03:45:21','approve-link','indonesia-proclaims-independence','link #417: indonesia-proclaims-independence part_of decolonization-of-asia-and-africa','dashboard');
+INSERT INTO "review_log" VALUES(1118,'2026-11-19 03:45:37','missing-wanted','missing:94','Locke Publishes Two Treatises of Government','dashboard');
+INSERT INTO "review_log" VALUES(1119,'2026-11-19 03:45:37','missing-wanted','missing:95','Montesquieu Publishes The Spirit of the Laws','dashboard');
+INSERT INTO "review_log" VALUES(1120,'2026-11-19 03:45:37','missing-wanted','missing:96','Rousseau Publishes The Social Contract','dashboard');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -11886,6 +11961,9 @@ INSERT INTO "sources" VALUES(138,'wikipedia','Afonso I of Kongo','https://en.wik
 INSERT INTO "sources" VALUES(139,'wikipedia','Kingdom of Mutapa','https://en.wikipedia.org/wiki/Kingdom_of_Mutapa','2026-11-13 23:19:23');
 INSERT INTO "sources" VALUES(140,'wikipedia','European theatre of World War II','https://en.wikipedia.org/wiki/European_theatre_of_World_War_II','2026-11-13 23:19:23');
 INSERT INTO "sources" VALUES(141,'wikipedia','Pacific War','https://en.wikipedia.org/wiki/Pacific_War','2026-11-13 23:19:23');
+INSERT INTO "sources" VALUES(142,'wikipedia','Axial Age','https://en.wikipedia.org/wiki/Axial_Age','2026-11-19 00:13:35');
+INSERT INTO "sources" VALUES(143,'wikipedia','Age of Enlightenment','https://en.wikipedia.org/wiki/Age_of_Enlightenment','2026-11-19 00:13:35');
+INSERT INTO "sources" VALUES(144,'wikipedia','Decolonization','https://en.wikipedia.org/wiki/Decolonization','2026-11-19 00:13:35');
 CREATE TABLE time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json
@@ -12045,6 +12123,9 @@ INSERT INTO "time_spans" VALUES('cold-war','period','Cold War',1947,1991,'The de
 INSERT INTO "time_spans" VALUES('mutapa-empire','empire','Mutapa Empire',1430,1760,'A Shona kingdom founded by Nyatsimba Mutota in northern Zimbabwe and central Mozambique that succeeded Great Zimbabwe as the dominant gold-and-ivory trading power between the southern African interior and Swahili coast ports.','Africa',5,1,NULL);
 INSERT INTO "time_spans" VALUES('european-theatre-of-world-war-ii','period','European Theatre of World War II',1939,1945,'The European conflict of World War II, beginning with Germany''s invasion of Poland and spanning the fall of France, the Battle of Britain, the German-Soviet war and the Allied liberation of Western Europe until Germany''s surrender.','Europe',8,NULL,NULL);
 INSERT INTO "time_spans" VALUES('pacific-war','period','Pacific War (World War II)',1941,1945,'The theater of World War II fought across the Pacific Ocean, East Asia and Southeast Asia between the Empire of Japan and the Allied powers, from Japan''s attack on Pearl Harbor to its formal surrender.','Global',8,NULL,NULL);
+INSERT INTO "time_spans" VALUES('axial-age','period','Axial Age',-800,-200,'The name the philosopher Karl Jaspers gave to the centuries when, in several regions at once, the Buddha, Confucius, the Hebrew prophets and the Greek philosophers set out ideas that shaped later religions and philosophies. Historians debate whether it was one shared turning point.','Global',5,1,NULL);
+INSERT INTO "time_spans" VALUES('age-of-enlightenment','period','Age of Enlightenment',1685,1815,'An intellectual movement in Europe and its colonies that put reason, evidence and open debate at the centre of thinking about nature, religion and government. Writers such as Locke, Voltaire, Montesquieu, Rousseau and Kant argued over liberty, toleration and the limits of royal and church authority.','Europe',7,1,NULL);
+INSERT INTO "time_spans" VALUES('decolonization-of-asia-and-africa','period','Decolonization of Asia and Africa',1945,1975,'The decades after the Second World War in which most colonies in Asia and Africa became independent states, some through negotiation and others through long wars of independence. Membership of the United Nations nearly tripled.','Global',7,1,NULL);
 CREATE TRIGGER events_touch AFTER UPDATE ON events BEGIN
   UPDATE entities SET updated_at = datetime('now') WHERE id = NEW.entity_id;
 END;

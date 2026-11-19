@@ -117,6 +117,22 @@
     "approximate": true
   },
   {
+    "id": "axial-age",
+    "name": "Axial Age",
+    "startYear": -800,
+    "endYear": -200,
+    "description": "The name the philosopher Karl Jaspers gave to the centuries when, in several regions at once, the Buddha, Confucius, the Hebrew prophets and the Greek philosophers set out ideas that shaped later religions and philosophies. Historians debate whether it was one shared turning point.",
+    "categories": [
+      "Philosophy",
+      "Religion"
+    ],
+    "region": "Global",
+    "importance": 5,
+    "kind": "period",
+    "significance": "The idea of an Axial Age points out that Buddhism, Confucianism, Greek philosophy and the teaching of the Hebrew prophets all took shape, largely independently, within a few centuries. Scholars still argue whether that reflects a real shared turning point or a pattern drawn afterwards.",
+    "approximate": true
+  },
+  {
     "id": "life-of-the-buddha",
     "name": "Life of the Buddha",
     "startYear": -563,
@@ -1231,6 +1247,23 @@
     "kind": "empire"
   },
   {
+    "id": "age-of-enlightenment",
+    "name": "Age of Enlightenment",
+    "startYear": 1685,
+    "endYear": 1815,
+    "description": "An intellectual movement in Europe and its colonies that put reason, evidence and open debate at the centre of thinking about nature, religion and government. Writers such as Locke, Voltaire, Montesquieu, Rousseau and Kant argued over liberty, toleration and the limits of royal and church authority.",
+    "categories": [
+      "Philosophy",
+      "Politics",
+      "Science"
+    ],
+    "region": "Europe",
+    "importance": 7,
+    "kind": "period",
+    "significance": "Enlightenment ideas of natural rights, religious toleration, the separation of powers and government by consent shaped the American and French revolutions and much later liberal and democratic thought. Critics then and since have questioned its claims to universality and its uneven record on slavery and empire.",
+    "approximate": true
+  },
+  {
     "id": "glorious-revolution",
     "name": "Glorious Revolution",
     "startYear": 1688,
@@ -1717,6 +1750,21 @@
     "region": "Americas",
     "importance": 5,
     "kind": "period"
+  },
+  {
+    "id": "decolonization-of-asia-and-africa",
+    "name": "Decolonization of Asia and Africa",
+    "startYear": 1945,
+    "endYear": 1975,
+    "description": "The decades after the Second World War in which most colonies in Asia and Africa became independent states, some through negotiation and others through long wars of independence. Membership of the United Nations nearly tripled.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Global",
+    "importance": 7,
+    "kind": "period",
+    "significance": "Decolonization ended most European empires within a generation and remade the world map. It shaped the Cold War, as new states chose sides or stayed non-aligned, and left many borders, economies and conflicts that colonial rule had drawn.",
+    "approximate": true
   },
   {
     "id": "cold-war",
