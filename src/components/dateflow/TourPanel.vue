@@ -284,8 +284,9 @@ onUnmounted(() => {
   margin-top: 0.375rem;
   padding: 0.125rem 0.5rem;
   border-radius: 0.375rem;
-  border: 1px solid rgb(217 119 6 / 0.6);
-  color: #d97706;
+  border: 1px solid var(--df-approx-border);
+  background: var(--df-approx-bg);
+  color: var(--df-approx);
   font-size: 12px;
   font-weight: 700;
 }
