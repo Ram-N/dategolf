@@ -1,0 +1,35 @@
+{
+  "found_while": "2026-11-18: Date Flow step 3d, Historical Currents (doc 14, doc 16 §8)",
+  "items": [
+    {
+      "kind": "span",
+      "name": "Axial Age",
+      "year": -800,
+      "end_year": -200,
+      "approximate": true,
+      "region": "Global",
+      "why": "A current for the Historical Currents layer: the centuries of the Buddha, Confucius, the Hebrew prophets and Greek philosophy (Jaspers' contested label). Would include life-of-the-buddha, birth-of-confucius, platos-academy-founded.",
+      "related_ids": ["life-of-the-buddha", "birth-of-confucius", "platos-academy-founded"]
+    },
+    {
+      "kind": "span",
+      "name": "Age of Enlightenment",
+      "year": 1685,
+      "end_year": 1815,
+      "approximate": true,
+      "region": "Europe",
+      "why": "A current for the Historical Currents layer; the Scientific Revolution influenced it and it influenced the Declaration of Independence and the Rights of Man.",
+      "related_ids": ["scientific-revolution", "wealth-of-nations-published", "american-declaration", "french-revolution-declaration"]
+    },
+    {
+      "kind": "span",
+      "name": "Decolonization of Asia and Africa",
+      "year": 1945,
+      "end_year": 1975,
+      "approximate": true,
+      "region": "Global",
+      "why": "A current for the Historical Currents layer; would hold India's, Indonesia's and Ghana's independence, the Year of Africa, the Algerian War and Bandung, with World War II as one cause.",
+      "related_ids": ["world-war-2", "indian-independence", "indonesia-proclaims-independence", "ghana-independence", "decolonization-africa", "french-colonial-algeria", "bandung-conference"]
+    }
+  ]
+}
