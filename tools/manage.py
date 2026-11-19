@@ -218,6 +218,11 @@ def main():
     p.add_argument("--remove", action="store_true", help="Put it back in DatePick and DateGolf")
     p.set_defaults(fn=lambda a: edit.set_dateflow_only(a.id, a.reason, a.remove))
 
+    p = sub.add_parser("current", help="Mark spans as Historical Currents (DateFlow's background bands)")
+    p.add_argument("ids", nargs="+")
+    p.add_argument("--remove", action="store_true", help="Stop drawing them as currents")
+    p.set_defaults(fn=lambda a: edit.set_current(a.ids, a.remove))
+
     p = sub.add_parser("set-memory-aid", help="Replace one DateLinks memory-aid item's text")
     p.add_argument("item_id", type=int)
     p.add_argument("text")

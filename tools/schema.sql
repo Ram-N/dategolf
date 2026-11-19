@@ -228,6 +228,12 @@ CREATE TABLE IF NOT EXISTS dateflow_only_events (
   reason    TEXT
 );
 
+-- Spans drawn as "Historical Currents" in DateFlow: long movements shown as background bands
+-- (exported as current: true). Set with `manage.py current`.
+CREATE TABLE IF NOT EXISTS historical_currents (
+  entity_id TEXT PRIMARY KEY REFERENCES time_spans(entity_id) ON DELETE CASCADE
+);
+
 -- Candidate CSV-row ↔ event pairs from `manage.py reconcile-events`.
 -- Many-to-many: one CSV row can bundle several events, one event can appear in several rows.
 -- Set `decision` in a GUI; re-running reconcile never touches decided rows.

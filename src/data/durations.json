@@ -130,7 +130,8 @@
     "importance": 5,
     "kind": "period",
     "significance": "The idea of an Axial Age points out that Buddhism, Confucianism, Greek philosophy and the teaching of the Hebrew prophets all took shape, largely independently, within a few centuries. Scholars still argue whether that reflects a real shared turning point or a pattern drawn afterwards.",
-    "approximate": true
+    "approximate": true,
+    "current": true
   },
   {
     "id": "life-of-the-buddha",
@@ -512,7 +513,8 @@
     ],
     "region": "Middle East",
     "importance": 5,
-    "kind": "period"
+    "kind": "period",
+    "current": true
   },
   {
     "id": "abbasid-caliphate",
@@ -966,7 +968,8 @@
     ],
     "region": "Europe",
     "importance": 5,
-    "kind": "period"
+    "kind": "period",
+    "current": true
   },
   {
     "id": "sayyid-dynasty",
@@ -1064,7 +1067,8 @@
     ],
     "region": "Global",
     "importance": 5,
-    "kind": "period"
+    "kind": "period",
+    "current": true
   },
   {
     "id": "safavid-empire",
@@ -1091,7 +1095,8 @@
     ],
     "region": "Europe",
     "importance": 5,
-    "kind": "period"
+    "kind": "period",
+    "current": true
   },
   {
     "id": "mughal-empire",
@@ -1132,7 +1137,8 @@
     ],
     "region": "Europe",
     "importance": 5,
-    "kind": "period"
+    "kind": "period",
+    "current": true
   },
   {
     "id": "reign-of-akbar",
@@ -1261,7 +1267,8 @@
     "importance": 7,
     "kind": "period",
     "significance": "Enlightenment ideas of natural rights, religious toleration, the separation of powers and government by consent shaped the American and French revolutions and much later liberal and democratic thought. Critics then and since have questioned its claims to universality and its uneven record on slavery and empire.",
-    "approximate": true
+    "approximate": true,
+    "current": true
   },
   {
     "id": "glorious-revolution",
@@ -1304,7 +1311,8 @@
     "region": "Europe",
     "importance": 8,
     "kind": "period",
-    "significance": "Replaced handicraft production with machine factories powered by water, coal and steam, accelerating urbanization and global trade. It brought long-run growth in living standards, though early factory workers often faced harsh conditions, and began the large-scale coal burning behind today's climate change."
+    "significance": "Replaced handicraft production with machine factories powered by water, coal and steam, accelerating urbanization and global trade. It brought long-run growth in living standards, though early factory workers often faced harsh conditions, and began the large-scale coal burning behind today's climate change.",
+    "current": true
   },
   {
     "id": "anglo-mysore-wars",
@@ -1764,7 +1772,8 @@
     "importance": 7,
     "kind": "period",
     "significance": "Decolonization ended most European empires within a generation and remade the world map. It shaped the Cold War, as new states chose sides or stayed non-aligned, and left many borders, economies and conflicts that colonial rule had drawn.",
-    "approximate": true
+    "approximate": true,
+    "current": true
   },
   {
     "id": "cold-war",

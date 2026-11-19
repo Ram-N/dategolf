@@ -7733,6 +7733,18 @@ INSERT INTO "events" VALUES('afonso-i-becomes-king-of-kongo','Afonso I Becomes K
 INSERT INTO "events" VALUES('locke-two-treatises','Locke Publishes Two Treatises of Government',1689,'Europe','The English philosopher John Locke anonymously publishes two essays on government. The second argues that people have natural rights to life, liberty and property, that legitimate government rests on the consent of the governed, and that a people may resist a ruler who breaks that trust.','hard',6,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('montesquieu-spirit-of-the-laws','Montesquieu Publishes The Spirit of the Laws',1748,'Europe','The French philosopher Montesquieu publishes a vast comparative study of laws and governments. Its best-known argument is that liberty is safest when the legislative, executive and judicial powers are held by separate bodies that check one another, a principle he drew from his reading of England''s constitution.','hard',5,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('rousseau-social-contract','Rousseau Publishes The Social Contract',1762,'Europe','The Geneva-born philosopher Jean-Jacques Rousseau publishes The Social Contract, which famously declares that man is born free yet everywhere is in chains. It argues that legitimate authority comes only from an agreement among citizens, guided by the general will of the people as a whole.','medium',5,NULL,NULL,NULL,NULL);
+CREATE TABLE historical_currents (
+  entity_id TEXT PRIMARY KEY REFERENCES time_spans(entity_id) ON DELETE CASCADE
+);
+INSERT INTO "historical_currents" VALUES('axial-age');
+INSERT INTO "historical_currents" VALUES('islamic-golden-age');
+INSERT INTO "historical_currents" VALUES('italian-renaissance');
+INSERT INTO "historical_currents" VALUES('age-of-exploration');
+INSERT INTO "historical_currents" VALUES('protestant-reformation');
+INSERT INTO "historical_currents" VALUES('scientific-revolution');
+INSERT INTO "historical_currents" VALUES('age-of-enlightenment');
+INSERT INTO "historical_currents" VALUES('industrial-revolution');
+INSERT INTO "historical_currents" VALUES('decolonization-of-asia-and-africa');
 CREATE TABLE import_records (
   source_file TEXT NOT NULL,
   source_key  TEXT NOT NULL,                       -- id, MM-DD, or CSV eventID
@@ -11879,6 +11891,15 @@ INSERT INTO "review_log" VALUES(1139,'2026-11-19 03:52:49','approve-significance
 INSERT INTO "review_log" VALUES(1140,'2026-11-19 03:53:24','approve-draft','locke-two-treatises',NULL,'cli');
 INSERT INTO "review_log" VALUES(1141,'2026-11-19 03:53:24','approve-draft','montesquieu-spirit-of-the-laws',NULL,'cli');
 INSERT INTO "review_log" VALUES(1142,'2026-11-19 03:53:24','approve-draft','rousseau-social-contract',NULL,'cli');
+INSERT INTO "review_log" VALUES(1143,'2026-11-19 04:00:22','current','axial-age','a Historical Current','cli');
+INSERT INTO "review_log" VALUES(1144,'2026-11-19 04:00:22','current','islamic-golden-age','a Historical Current','cli');
+INSERT INTO "review_log" VALUES(1145,'2026-11-19 04:00:22','current','italian-renaissance','a Historical Current','cli');
+INSERT INTO "review_log" VALUES(1146,'2026-11-19 04:00:22','current','age-of-exploration','a Historical Current','cli');
+INSERT INTO "review_log" VALUES(1147,'2026-11-19 04:00:22','current','protestant-reformation','a Historical Current','cli');
+INSERT INTO "review_log" VALUES(1148,'2026-11-19 04:00:22','current','scientific-revolution','a Historical Current','cli');
+INSERT INTO "review_log" VALUES(1149,'2026-11-19 04:00:22','current','age-of-enlightenment','a Historical Current','cli');
+INSERT INTO "review_log" VALUES(1150,'2026-11-19 04:00:22','current','industrial-revolution','a Historical Current','cli');
+INSERT INTO "review_log" VALUES(1151,'2026-11-19 04:00:22','current','decolonization-of-asia-and-africa','a Historical Current','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),

@@ -64,6 +64,8 @@ def render_events(conn):
 def render_durations(conn):
     out = []
     why = significance(conn)
+    has_currents = conn.execute("SELECT 1 FROM sqlite_master WHERE name = 'historical_currents'").fetchone()
+    currents = {r[0] for r in conn.execute("SELECT entity_id FROM historical_currents")} if has_currents else set()
     for s in conn.execute(f"SELECT * FROM time_spans WHERE kind <> 'era' AND {PUBLISHED} "
                           f"ORDER BY start_year, {NULLS_LAST}, entity_id"):
         rec = {
@@ -81,6 +83,8 @@ def render_durations(conn):
             rec["significance"] = why[s["entity_id"]]
         if s["approximate"]:
             rec["approximate"] = True
+        if s["entity_id"] in currents:
+            rec["current"] = True
         out.append(rec)
     return dumps(out)
 

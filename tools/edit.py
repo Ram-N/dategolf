@@ -98,6 +98,28 @@ def set_event_date(entity_id, year=None, approximate=None, display=None, via="cl
     return 0
 
 
+def set_current(ids, remove=False, via="cli"):
+    """Mark spans as Historical Currents (DateFlow's background bands), or unmark them."""
+    conn = connect()
+    ensure_schema(conn)
+    ok = True
+    for entity_id in ids:
+        if not conn.execute("SELECT 1 FROM time_spans WHERE entity_id = ? AND kind <> 'era'", (entity_id,)).fetchone():
+            print(f"  ✗ no span with id {entity_id}")
+            ok = False
+            continue
+        if remove:
+            conn.execute("DELETE FROM historical_currents WHERE entity_id = ?", (entity_id,))
+        else:
+            conn.execute("INSERT OR IGNORE INTO historical_currents VALUES (?)", (entity_id,))
+        detail = "not a current" if remove else "a Historical Current"
+        log(conn, "current", entity_id, detail, via=via)
+        print(f"  ✓ {entity_id}: {detail}")
+    conn.commit()
+    conn.close()
+    return 0 if ok else 1
+
+
 def set_dateflow_only(entity_id, reason=None, remove=False, via="cli"):
     """Show an event only in DateFlow (not DatePick or DateGolf): for dates too disputed to guess fairly."""
     conn = connect()

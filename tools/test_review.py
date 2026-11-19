@@ -144,6 +144,15 @@ class TestAccuracyTools(unittest.TestCase):
                                        ).fetchone())
         self.assertEqual(quiet(edit.set_dateflow_only, "fall-of-troy", " ", via="test"), 1)
 
+    def test_current(self):
+        self.assertEqual(quiet(edit.set_current, ["industrial-revolution"], via="test"), 0)
+        current = "SELECT 1 FROM historical_currents WHERE entity_id = 'industrial-revolution'"
+        self.assertIsNotNone(db().execute(current).fetchone())
+        self.assertEqual(log_rows("industrial-revolution")[-1][0], "current")
+        self.assertEqual(quiet(edit.set_current, ["industrial-revolution"], remove=True, via="test"), 0)
+        self.assertIsNone(db().execute(current).fetchone())
+        self.assertEqual(quiet(edit.set_current, ["fall-of-troy"], via="test"), 1)  # an event, not a span
+
     def test_memory_aids(self):
         item, entity, label = db().execute(
             "SELECT i.id, g.entity_id, g.label FROM learning_content_items i "
