@@ -104,7 +104,7 @@
    "title": "Nativity of Jesus"
   },
   "paper-invented-china": {
-   "title": "History of paper"
+   "title": "Cai Lun"
   },
   "jin-reunifies-china": {
    "title": "Jin dynasty (266–420)"
@@ -154,7 +154,7 @@
    "title": "Death of Muhammad"
   },
   "islamic-caliphate-expands": {
-   "title": "Early Muslim conquests"
+   "title": "Abu Bakr"
   },
   "arab-conquest-of-sindh": {
    "title": "Umayyad conquest of Sindh"
@@ -246,13 +246,13 @@
    "title": "Ming treasure voyages"
   },
   "age-of-exploration-portugal": {
-   "title": "Portuguese discoveries"
+   "title": "Portuguese conquest of Ceuta"
   },
   "joan-of-arc-burned": {
    "title": "Trial of Joan of Arc"
   },
   "aztec-empire-peak": {
-   "title": "Aztec Empire"
+   "title": "Moctezuma I"
   },
   "gutenberg-printing-press": {
    "title": "Printing press"
@@ -319,7 +319,7 @@
    "title": "East India Company"
   },
   "renaissance-shakespeare": {
-   "title": "William Shakespeare"
+   "title": "Hamlet"
   },
   "death-of-akbar": {
    "title": "Akbar"
@@ -382,7 +382,7 @@
    "title": "Acts of Union 1707"
   },
   "mughal-empire-zenith-aurangzeb": {
-   "title": "Mughal Empire"
+   "title": "Aurangzeb"
   },
   "death-of-guru-gobind-singh": {
    "title": "Guru Gobind Singh"
@@ -483,7 +483,7 @@
    "title": "Indian National Congress"
   },
   "partition-of-africa-colonial": {
-   "title": "Atrocities in the Congo Free State"
+   "title": "Congo Free State"
   },
   "construction-eiffel-tower": {
    "title": "Eiffel Tower"
@@ -662,7 +662,7 @@
    "title": "Combined oral contraceptive pill"
   },
   "decolonization-africa": {
-   "title": "Decolonisation of Africa"
+   "title": "Year of Africa"
   },
   "france-first-nuclear-test": {
    "title": "Gerboise Bleue"
@@ -683,7 +683,7 @@
    "title": "Malaysia Agreement"
   },
   "martin-luther-king-speech": {
-   "title": "March on Washington for Jobs and Freedom"
+   "title": "I Have a Dream"
   },
   "partial-test-ban-treaty": {
    "title": "Partial Nuclear Test Ban Treaty"
@@ -921,6 +921,9 @@
    "title": "Indian independence movement",
    "confidence": "medium",
    "note": "The article covers the whole movement; this span is its Gandhian phase."
+  },
+  "unification-germany": {
+   "title": "Proclamation of the German Empire"
   }
  }
 }

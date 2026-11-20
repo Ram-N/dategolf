@@ -1,0 +1,116 @@
+{
+  "about": "From suggest-sources. Every title was checked against Wikipedia. 'unresolved' entities need a pick (suggest-sources --picks). load-sources loads 'sources' only.",
+  "sources": [
+    {
+      "id": "paper-invented-china",
+      "name": "Cai Lun Improves Papermaking",
+      "year": 105,
+      "title": "Cai Lun",
+      "url": "https://en.wikipedia.org/wiki/Cai_Lun",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Cai Lun",
+      "note": null
+    },
+    {
+      "id": "islamic-caliphate-expands",
+      "name": "Abu Bakr Becomes the First Caliph",
+      "year": 632,
+      "title": "Abu Bakr",
+      "url": "https://en.wikipedia.org/wiki/Abu_Bakr",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Abu Bakr",
+      "note": null
+    },
+    {
+      "id": "age-of-exploration-portugal",
+      "name": "Portugal Captures Ceuta",
+      "year": 1415,
+      "title": "Portuguese conquest of Ceuta",
+      "url": "https://en.wikipedia.org/wiki/Portuguese_conquest_of_Ceuta",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Portuguese conquest of Ceuta",
+      "note": null
+    },
+    {
+      "id": "aztec-empire-peak",
+      "name": "Moctezuma I Becomes Aztec Ruler",
+      "year": 1440,
+      "title": "Moctezuma I",
+      "url": "https://en.wikipedia.org/wiki/Moctezuma_I",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Moctezuma I",
+      "note": null
+    },
+    {
+      "id": "renaissance-shakespeare",
+      "name": "Shakespeare Writes Hamlet",
+      "year": 1600,
+      "title": "Hamlet",
+      "url": "https://en.wikipedia.org/wiki/Hamlet",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Hamlet",
+      "note": null
+    },
+    {
+      "id": "mughal-empire-zenith-aurangzeb",
+      "name": "Death of Aurangzeb",
+      "year": 1707,
+      "title": "Aurangzeb",
+      "url": "https://en.wikipedia.org/wiki/Aurangzeb",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Aurangzeb",
+      "note": null
+    },
+    {
+      "id": "unification-germany",
+      "name": "German Empire Proclaimed",
+      "year": 1871,
+      "title": "Proclamation of the German Empire",
+      "url": "https://en.wikipedia.org/wiki/Proclamation_of_the_German_Empire",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Proclamation of the German Empire",
+      "note": null
+    },
+    {
+      "id": "partition-of-africa-colonial",
+      "name": "Congo Free State Founded",
+      "year": 1885,
+      "title": "Congo Free State",
+      "url": "https://en.wikipedia.org/wiki/Congo_Free_State",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Congo Free State",
+      "note": null
+    },
+    {
+      "id": "decolonization-africa",
+      "name": "Year of Africa: Seventeen Nations Win Independence",
+      "year": 1960,
+      "title": "Year of Africa",
+      "url": "https://en.wikipedia.org/wiki/Year_of_Africa",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Year of Africa",
+      "note": null
+    },
+    {
+      "id": "martin-luther-king-speech",
+      "name": "King Gives His 'I Have a Dream' Speech",
+      "year": 1963,
+      "title": "I Have a Dream",
+      "url": "https://en.wikipedia.org/wiki/I_Have_a_Dream",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "I Have a Dream",
+      "note": null
+    }
+  ],
+  "unresolved": []
+}
