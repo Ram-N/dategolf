@@ -70,7 +70,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | # | What | Where | Why it matters |
 |---|---|---|---|
 | 0 | **Significance for importance 5–6?** The 7+ backfill is done (78 texts). Say whether to continue down the importance scale | — | Same process: data/drafts/significance_tasks.md |
-| 2 | **Load and review sources batch 1** (460 Wikipedia articles) | Ask Claude to load it, then Review → Sources (doc 12 §4.6d) | Every event gets a checkable source. 128 are exact name matches (one-click approve) |
+| 2 | **Review sources batch 1** (460 Wikipedia articles; loaded as proposed 2026-11-19) | Review → Sources (doc 12 §4.6d) | Every event gets a checkable source. 128 are exact name matches (one-click approve) |
 | 3 | **Double-check 5 Step 3a decisions** made before the selection fix: `chinese-civil-war`, `great-depression`, `spanish-civil-war`, `manhattan-project`, `arab-spring` | `manage.py identity <id> --one\|--split\|…` | An old loose end from doc 11 |
 | 4 | **Two design calls for DatePick range choices** | doc 04 §38 | They unblock Claude's item 4 below |
 | 5 | ~~**Pick the next DateFlow phase**~~ ✅ 2026-11-16: see "Date Flow build sequence" below. ~~Colour approach~~ ✅ decided 2026-11-16: see Phase 11 | doc 16, "Assessment" | Doc 16's vision, mapped against what's built |
