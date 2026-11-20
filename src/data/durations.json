@@ -2,8 +2,8 @@
   {
     "id": "old-kingdom-egypt",
     "name": "Old Kingdom of Egypt",
-    "startYear": -2686,
-    "endYear": -2181,
+    "startYear": -2700,
+    "endYear": -2200,
     "description": "The age of the pyramid builders, when pharaohs ruled a unified Egypt from Memphis.",
     "categories": [
       "Politics"
@@ -11,7 +11,8 @@
     "region": "Africa",
     "importance": 6,
     "kind": "empire",
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 2700–2200 BCE (often given as 2686–2181 BCE)"
   },
   {
     "id": "indus-valley-mature",
@@ -46,8 +47,8 @@
   {
     "id": "akkadian-empire",
     "name": "Akkadian Empire",
-    "startYear": -2334,
-    "endYear": -2154,
+    "startYear": -2350,
+    "endYear": -2150,
     "description": "Founded by Sargon of Akkad, often called the first empire, uniting the city-states of Mesopotamia.",
     "categories": [
       "Politics"
@@ -55,13 +56,14 @@
     "region": "Middle East",
     "importance": 5,
     "kind": "empire",
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 2334–2154 BCE in the middle chronology; 64 years later in the short chronology"
   },
   {
     "id": "shang-dynasty",
     "name": "Shang Dynasty",
     "startYear": -1600,
-    "endYear": -1046,
+    "endYear": -1050,
     "description": "The first Chinese dynasty with written records, known for bronze work and oracle-bone inscriptions.",
     "categories": [
       "Politics"
@@ -69,7 +71,8 @@
     "region": "East Asia",
     "importance": 6,
     "kind": "empire",
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 1600–1046 BCE; the Zhou conquest is dated anywhere from 1122 to 1027 BCE"
   },
   {
     "id": "new-kingdom-egypt",
@@ -105,7 +108,7 @@
   {
     "id": "zhou-dynasty",
     "name": "Zhou Dynasty",
-    "startYear": -1046,
+    "startYear": -1050,
     "endYear": -256,
     "description": "China's longest dynasty; its later years saw Confucius, Laozi and the Warring States.",
     "categories": [
@@ -114,7 +117,8 @@
     "region": "East Asia",
     "importance": 6,
     "kind": "empire",
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "c. 1046–256 BCE; the start is disputed (1122–1027 BCE), the end is fixed"
   },
   {
     "id": "axial-age",
@@ -145,7 +149,8 @@
     "region": "South Asia",
     "importance": 4,
     "kind": "period",
-    "approximate": true
+    "approximate": true,
+    "dateDisplay": "traditionally 563–483 BCE; many scholars c. 480–400 BCE"
   },
   {
     "id": "achaemenid-empire",

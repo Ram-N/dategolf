@@ -1,6 +1,6 @@
 # Span date precision: the spans before 500 BCE (2026-11-19)
 
-Proposed, not applied. Follows the event batch (`2026-11-09_date_precision.md`).
+✅ **Applied 2026-11-19**, both section A and Part 2, as proposed. Follows the event batch (`2026-11-09_date_precision.md`).
 
 **Where things stand:** 11 of the 13 spans are already marked approximate, so the app shows "c." and dashed edges on them. The false precision left is in the years themselves: "c. 2686–2181 BCE" reads as if historians knew the year. Spans have no `date_display` field (events do), so a range or a dispute can't be stated on the card yet; see **Part 2**.
 

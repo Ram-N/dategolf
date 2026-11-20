@@ -395,6 +395,12 @@
     },
     {
       "severity": "warning",
+      "check": "Span with a date note but not marked approximate (the note is then not exported)",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "warning",
       "check": "Published event or span with no country tag",
       "count": 0,
       "rows": []

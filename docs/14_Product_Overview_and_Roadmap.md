@@ -52,7 +52,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 ### The tools behind the data
 
 - **SQLite is the source of truth** (`data/dategolf.db`). `npm run data:export` writes the game JSON; `data:validate` and `data:compare` guard it. → doc 10, 11, 12
-- **Every write goes through `tools/`** (a CLI command, logged in `review_log`, tested on a db copy): drafts, links (`load-links`, `retype-link`, `add-link-type`), significance (`set-significance`, `load-significance`, `approve-` / `reject-significance`), dates (`set-event-date`, `set-span-years`), `rename`, sources, the gap list (`load-missing`), memory aids, `dateflow-only`. → doc 12 §7
+- **Every write goes through `tools/`** (a CLI command, logged in `review_log`, tested on a db copy): drafts, links (`load-links`, `retype-link`, `add-link-type`), significance (`set-significance`, `load-significance`, `approve-` / `reject-significance`), dates (`set-event-date`, `set-span-years`, both with `--display` for the historians' dates), `rename`, sources, the gap list (`load-missing`), memory aids, `dateflow-only`. → doc 12 §7
 - **Streamlit dashboard** (`npm run data:dashboard`):
   - **Review queues:** Event drafts, **Span drafts**, Country tags, Identity, Links, Sources, **Significance** (with a write/replace box), **Missing**, and a decision log. Each fits on one screen and stays on its tab after an action.
   - **Other pages:** Overview, Connections, Coverage heatmap, Map.
@@ -81,7 +81,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 |---|---|---|---|
 | 0 | **Pre-sort each significance batch** before it loads: fix accuracy slips, rewrite texts that repeat the description, soften overstatements (as done for batch 1) | Each incoming batch | doc 17. New drafts already carry one (doc 15) |
 | 1 | ~~**Draft the gap list**~~ ✅ 2026-11-13: 89 events and spans in four batches; WWII now one chain per theatre | — | New checks from it: skip-a-step and overlapping-span links (validate + check-drafts) |
-| 2 | **Date precision for spans before 500 BCE** (a pre-sorted file) | — | The same false-precision issue the events had (Old Kingdom, the Indus mature phase, Shang…) |
+| 2 | ~~**Date precision for spans before 500 BCE**~~ ✅ 2026-11-19 (`data/drafts/2026-11-19_span_precision.md`): Old Kingdom, Akkadian, Shang and Zhou rounded; spans gained `date_display`, shown on the span card and in tours (Buddha, Shang, Zhou, Akkadian, Old Kingdom) | — | |
 | 3 | **Step 4: fill the thin periods** (about 40 events for pre-500 CE, Africa and the Americas before 1500, Southeast Asia and Oceania) | Overlaps item 1 | doc 11 Step 4; the Coverage heatmap shows the gaps |
 | 4 | **DatePick range choices:** ranges instead of single years for approximate events | Your 2 decisions, plus structured `range_start` / `range_end` | doc 04 §38 |
 | 5 | **Dashboard v3: the event editor**, including adding or editing a single link | — | doc 13. Less urgent (new events come through drafts), but it lets you edit without Claude |
@@ -109,7 +109,7 @@ Ties the GitHub issues (#1–#7, label `dateflow`) to the phases above. Issues c
 **Data track, alongside (mostly Ram's review time):**
 1. Sources batch 1, the Wikipedia references (Waiting on you, item 2). Show the source link on cards if they don't yet.
 2. Fill the thin periods (Claude's queue, item 3), before step 5, so no tracks look empty.
-3. Span date precision before 500 BCE (Claude's queue, item 2).
+3. ~~Span date precision before 500 BCE (Claude's queue, item 2).~~ ✅ 2026-11-19
 4. Significance for importance 5–6, if Ram says go (Waiting on you, item 0).
 
 **Y-axis views (decided 2026-11-16):** Date Constellation ships with **Geography** and **Human activity** only. The **Polity** view (civilizations, empires, kingdoms, republics) is a future item: it needs a polity-type field on spans that doesn't exist yet (see 6f).

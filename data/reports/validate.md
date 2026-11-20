@@ -37,6 +37,7 @@
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 3 |
 | warning | Approximate event with no range (set-event-date --display): students see "c." with nothing to explain it | pass |
 | warning | Event with a range but not marked approximate (the range is then not exported) | pass |
+| warning | Span with a date note but not marked approximate (the note is then not exported) | pass |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 3 |
 | review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
