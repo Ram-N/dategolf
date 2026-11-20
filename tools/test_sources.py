@@ -54,8 +54,14 @@ def entity_sources(entity_id):
 
 
 def some_event():
-    """A published event with no source yet."""
-    return db().execute("SELECT e.entity_id FROM events e JOIN entities n ON n.id = e.entity_id "
+    """Two published events with no source yet (unsourcing the first two in this copy if needed:
+    the real db sources nearly everything)."""
+    conn = db()
+    conn.execute("DELETE FROM entity_sources WHERE entity_id IN (SELECT e.entity_id FROM events e "
+                 "JOIN entities n ON n.id = e.entity_id WHERE n.editorial_status <> 'proposed' "
+                 "ORDER BY e.entity_id LIMIT 2)")
+    conn.commit()
+    return conn.execute("SELECT e.entity_id FROM events e JOIN entities n ON n.id = e.entity_id "
                         "WHERE n.editorial_status <> 'proposed' AND e.entity_id NOT IN "
                         "(SELECT entity_id FROM entity_sources) ORDER BY e.entity_id LIMIT 2").fetchall()
 
