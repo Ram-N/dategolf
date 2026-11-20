@@ -1,7 +1,7 @@
 {
   "counts": {
-    "events": 481,
-    "time_spans": 141,
+    "events": 484,
+    "time_spans": 144,
     "eras": 5,
     "datelinks_keys": 26,
     "datelinks_groups": 83,
@@ -9,7 +9,7 @@
     "milestones": 16,
     "daily_challenge_dates": 366,
     "csv_rows": 310,
-    "significance_reviewed": 167,
+    "significance_reviewed": 173,
     "significance_proposed": 0
   },
   "checks": [
@@ -449,7 +449,7 @@
       "rows": [
         [
           "Europe",
-          "europe · 177 records"
+          "europe · 181 records"
         ],
         [
           "South Asia",
@@ -473,7 +473,7 @@
         ],
         [
           "Global",
-          "global · 33 records"
+          "global · 35 records"
         ],
         [
           "Southeast Asia",
@@ -571,11 +571,11 @@
       "rows": [
         [
           "events",
-          "343 at import -> 481 now"
+          "343 at import -> 484 now"
         ],
         [
           "time_spans",
-          "98 at import -> 141 now"
+          "98 at import -> 144 now"
         ]
       ]
     }

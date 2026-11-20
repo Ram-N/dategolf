@@ -57,8 +57,8 @@
 
 ## Counts
 
-- events: 481
-- time_spans: 141
+- events: 484
+- time_spans: 144
 - eras: 5
 - datelinks_keys: 26
 - datelinks_groups: 83
@@ -66,7 +66,7 @@
 - milestones: 16
 - daily_challenge_dates: 366
 - csv_rows: 310
-- significance_reviewed: 167
+- significance_reviewed: 173
 - significance_proposed: 0
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
@@ -125,13 +125,13 @@
 
 ## [info] Region labels in use, with their DateFlow lane
 
-- `Europe` — europe · 177 records
+- `Europe` — europe · 181 records
 - `South Asia` — south-asia · 148 records
 - `East Asia` — east-asia · 68 records
 - `Americas` — americas · 65 records
 - `Middle East` — middle-east · 51 records
 - `Africa` — africa · 44 records
-- `Global` — global · 33 records
+- `Global` — global · 35 records
 - `Southeast Asia` — east-asia · 17 records
 - `North America` — americas · 12 records
 - `Oceania` — global · 5 records
@@ -146,5 +146,5 @@
 
 ## [info] Counts changed since the legacy import
 
-- `events` — 343 at import -> 481 now
-- `time_spans` — 98 at import -> 141 now
+- `events` — 343 at import -> 484 now
+- `time_spans` — 98 at import -> 144 now
