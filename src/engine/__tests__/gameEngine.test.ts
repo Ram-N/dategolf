@@ -185,7 +185,7 @@ describe('selectEvent()', () => {
     const { newState } = selectEvent(state, 'a', EVENTS)
     state = newState
 
-    expect(() => selectEvent(state, 'a', EVENTS)).toThrow()
+    expect(() => selectEvent(state, 'a', EVENTS)).toThrow('already been used')
   })
 
   it('marks game as complete after 5 holes', () => {
@@ -208,7 +208,7 @@ describe('selectEvent()', () => {
       const { newState } = selectEvent(state, id, EVENTS)
       state = newState
     }
-    expect(() => selectEvent(state, 'f', EVENTS)).toThrow()
+    expect(() => selectEvent(state, 'f', EVENTS)).toThrow('already complete')
   })
 
   it('accumulates total score across holes', () => {

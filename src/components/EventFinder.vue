@@ -82,7 +82,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import type { Event } from '@/types'
 import { search, getCategories } from '@/services/eventSearch'
 

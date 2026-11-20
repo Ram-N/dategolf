@@ -46,16 +46,17 @@ describe('dateflow games — rounds', () => {
       for (const round of rounds(id)) {
         expect(round).toHaveLength(ROUND_LENGTH)
         const seen = new Set<string>()
+        const repeated: string[] = []
         for (const q of round) {
           const ids = q.kind === 'pick' ? q.options.map((o) => o.id) : q.events.map((e) => e.id)
           expect(new Set(ids).size).toBe(ids.length)
-          if (q.kind === 'pick') expect(q.options[q.correct]).toBeDefined()
-          if (id !== 'duration') {
-            const answerId = q.kind === 'pick' ? q.options[q.correct]!.id : q.answer[0]!
-            expect(seen.has(answerId)).toBe(false)
-            ids.forEach((x) => seen.add(x))
-          }
+          const answerId = q.kind === 'pick' ? q.options[q.correct]?.id : q.answer[0]
+          expect(answerId).toBeDefined()
+          if (id === 'duration') continue // empires may come back as distractors
+          if (seen.has(answerId!)) repeated.push(answerId!)
+          ids.forEach((x) => seen.add(x))
         }
+        expect(repeated).toEqual([])
       }
     }
   })
@@ -99,13 +100,11 @@ describe('dateflow games — each question has exactly one right answer', () => 
     for (const round of rounds('elsewhere'))
       for (const q of round as PickQuestion[]) {
         const anchor = q.context[0]!
-        q.options.forEach((o, k) => {
-          const e = eventById.get(o.id)!
-          expect(laneFor(e.region)).not.toBe(laneFor(anchor.region))
-          const gap = Math.abs(e.year - anchor.year)
-          if (k === q.correct) expect(gap).toBeLessThanOrEqual(40)
-          else expect(gap).toBeGreaterThanOrEqual(100)
-        })
+        const options = q.options.map((o) => eventById.get(o.id)!)
+        options.forEach((e) => expect(laneFor(e.region)).not.toBe(laneFor(anchor.region)))
+        const gaps = options.map((e) => Math.abs(e.year - anchor.year))
+        expect(gaps[q.correct]).toBeLessThanOrEqual(40)
+        gaps.filter((_, k) => k !== q.correct).forEach((gap) => expect(gap).toBeGreaterThanOrEqual(100))
       }
   })
 

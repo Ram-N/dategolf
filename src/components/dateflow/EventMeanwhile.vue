@@ -51,7 +51,7 @@ import type { Event } from '@/types'
 import type { Duration } from '@/types/dateflow'
 import { activeDuring, beforeAndAfter, meanwhile } from '@/engine/dateflow/explore'
 import { LANES, laneFor } from '@/engine/dateflow/lanes'
-import { formatEventYear, formatYear } from '@/utils/formatYear'
+import { formatEventYear } from '@/utils/formatYear'
 
 const props = defineProps<{ event: Event; events: Event[]; durations: Duration[] }>()
 const emit = defineEmits<{ openEvent: [id: string]; openDuration: [id: string]; showSurrounding: []; timeMachine: [] }>()

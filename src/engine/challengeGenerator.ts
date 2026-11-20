@@ -55,10 +55,6 @@ function pickYearFromBand(band: EraBand, rand: () => number): number {
 }
 
 // ── Quality filter ─────────────────────────────────────────────────────────────
-function sameCentury(a: number, b: number): boolean {
-  return Math.floor(a / 100) === Math.floor(b / 100)
-}
-
 function targetsPassQuality(years: number[]): boolean {
   // Reject if 3+ targets fall in the same century
   const centuryCounts = new Map<number, number>()

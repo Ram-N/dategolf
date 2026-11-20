@@ -134,7 +134,7 @@ import {
 } from '@/engine/dateflow/games/rounds'
 import { buildGameShareText, saveDailyScore, shareGameResult } from '@/services/dateflowGames'
 import RevealTimeline from '@/components/dateflow/games/RevealTimeline.vue'
-import { formatEventYear, formatYear } from '@/utils/formatYear'
+import { formatEventYear } from '@/utils/formatYear'
 
 const store = useDateFlowStore()
 const route = useRoute()
