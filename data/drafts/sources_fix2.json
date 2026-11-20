@@ -1,0 +1,50 @@
+{
+  "about": "From suggest-sources. Every title was checked against Wikipedia. 'unresolved' entities need a pick (suggest-sources --picks). load-sources loads 'sources' only.",
+  "sources": [
+    {
+      "id": "maurya-empire-founded",
+      "name": "Chandragupta Maurya Founds the Maurya Empire",
+      "year": -320,
+      "title": "Chandragupta Maurya",
+      "url": "https://en.wikipedia.org/wiki/Chandragupta_Maurya#Empire",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Chandragupta Maurya#Empire",
+      "note": null
+    },
+    {
+      "id": "classic-maya",
+      "name": "Classic Maya",
+      "year": 250,
+      "title": "Maya civilization",
+      "url": "https://en.wikipedia.org/wiki/Maya_civilization#Classic_period_(c._250%E2%80%93900_AD)",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Maya civilization#Classic period (c. 250–900 AD)",
+      "note": null
+    },
+    {
+      "id": "maya-classic-period",
+      "name": "Maya Classic Period Begins",
+      "year": 250,
+      "title": "Maya civilization",
+      "url": "https://en.wikipedia.org/wiki/Maya_civilization#Classic_period_(c._250%E2%80%93900_AD)",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Maya civilization#Classic period (c. 250–900 AD)",
+      "note": null
+    },
+    {
+      "id": "birth-of-muhammad",
+      "name": "Birth of Muhammad",
+      "year": 570,
+      "title": "Muhammad",
+      "url": "https://en.wikipedia.org/wiki/Muhammad",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Muhammad",
+      "note": null
+    }
+  ],
+  "unresolved": []
+}

@@ -59,7 +59,7 @@
    "title": "History of Alexandria"
   },
   "maurya-empire-founded": {
-   "title": "Chandragupta Maurya"
+   "title": "Chandragupta Maurya#Empire"
   },
   "ptolemaic-dynasty-founded": {
    "title": "Ptolemy I Soter"
@@ -131,8 +131,7 @@
    "title": "Aryabhata"
   },
   "birth-of-muhammad": {
-   "title": "Mawlid",
-   "confidence": "medium"
+   "title": "Muhammad"
   },
   "harsha-reign-begins": {
    "title": "Harsha"
@@ -894,12 +893,10 @@
    "title": "Chandrayaan-3"
   },
   "classic-maya": {
-   "title": "Maya civilization",
-   "note": "The name redirected to Classic Maya language"
+   "title": "Maya civilization#Classic period (c. 250–900 AD)"
   },
   "maya-classic-period": {
-   "title": "Maya civilization",
-   "note": "The name redirected to Mesoamerican chronology"
+   "title": "Maya civilization#Classic period (c. 250–900 AD)"
   },
   "discovery-of-pluto": {
    "title": "Pluto",
