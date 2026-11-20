@@ -113,6 +113,17 @@ class TestSuggest(unittest.TestCase):
         self.assertIn("disambiguation", bad[b]["problem"])
         self.assertTrue(all(u["problem"] for u in result["unresolved"]))
 
+    def test_pick_with_section(self):
+        (a,), (b,) = some_event()
+        picks = TMP / "section.json"
+        picks.write_text(json.dumps({"picks": {a: "Battle of Hastings#Aftermath", b: "Fall of Rome#Late empire"}}))
+        out = TMP / "section_out.json"
+        quiet(sources.suggest, picks, out)
+        found = {s["id"]: s for s in json.loads(out.read_text())["sources"]}
+        self.assertEqual(found[a]["url"], "https://en.wikipedia.org/wiki/Battle_of_Hastings#Aftermath")
+        self.assertEqual((found[a]["title"], found[a]["confidence"]), ("Battle of Hastings", "high"))
+        self.assertEqual(found[b]["url"], "https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire#Late_empire")
+
     def test_null_pick_skips(self):
         (a,), _ = some_event()
         picks = TMP / "skip.json"

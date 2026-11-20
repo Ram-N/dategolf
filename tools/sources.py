@@ -151,7 +151,9 @@ def suggest(picks_path=None, out_path=None):
         if entity_id not in picks:
             asks[entity_id] = {"title": name, "_name": True}  # try the name itself
         elif picks[entity_id] is not None:
-            asks[entity_id] = picks[entity_id]
+            # "Page#Section" checks the page and links straight to the section (not itself checked)
+            title, _, section = picks[entity_id]["title"].partition("#")
+            asks[entity_id] = {**picks[entity_id], "title": title.strip(), "_section": section.strip() or None}
     answers = resolve([a["title"] for a in asks.values()]) if asks else {}
 
     found, unresolved, skipped = [], [], 0
@@ -167,12 +169,13 @@ def suggest(picks_path=None, out_path=None):
             continue
         by_name = pick.get("_name", False)
         exact = answer["title"].casefold() == pick["title"].casefold() and not answer["fragment"]
+        section = pick.get("_section") or answer["fragment"]
         found.append({
             "id": entity_id, "name": name, "year": year, "title": answer["title"],
-            "url": wiki_url(answer["title"], answer["fragment"]),
+            "url": wiki_url(answer["title"], section),
             "origin": "title_match" if by_name else "ai_drafted",
             "confidence": pick.get("confidence") or ("high" if exact else "medium"),
-            "asked": pick["title"], "note": pick.get("note"),
+            "asked": pick["title"] + (f"#{pick['_section']}" if pick.get("_section") else ""), "note": pick.get("note"),
         })
     out = Path(out_path) if out_path else DATA / "drafts" / f"{date.today():%Y-%m-%d}_sources_suggestions.json"
     out.parent.mkdir(parents=True, exist_ok=True)
