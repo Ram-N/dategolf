@@ -1,6 +1,6 @@
 # Product Overview and Roadmap
 
-> **The one place for "what exists" and "what's next".** Updated 2026-11-18. The long-term DateFlow vision is **doc 16**.
+> **The one place for "what exists" and "what's next".** Updated 2026-11-19. The long-term DateFlow vision is **doc 16**.
 > Details live in the linked docs; this page doesn't repeat them. When work finishes, update the roadmap here (not in doc 11 or QUICKSTART).
 
 **Rule zero (CLAUDE.md): historical accuracy trumps everything else.** No false precision, "c." shown prominently, a sequence never shown as a cause, debated links marked as debated.
@@ -119,7 +119,7 @@ Ties the GitHub issues (#1–#7, label `dateflow`) to the phases above. Issues c
 - **Timezone:** "today" uses the browser's local time, so players far apart can get different dates. Decide: accept it, or use UTC.
 - **Sharing polish:** an OG preview image; a custom domain.
 - **Cross-browser checks:** iPhone Safari, Android Chrome, desktop Safari; the share button on a real device; multi-day streaks.
-- **Lint:** 7 old errors (in `gameEngine.test.ts`, `dateflow.games.test.ts`, and an unused `sameCentury` in `challengeGenerator.ts`). New code adds none.
+- **Lint:** clean (2026-11-19). `npm run lint` runs oxlint, then eslint; keep both at zero.
 - **Small UX items:** transitions between DateGolf holes, an empty state for search, a loading skeleton.
 
 ---
