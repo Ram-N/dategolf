@@ -83,6 +83,8 @@ def render_durations(conn):
             rec["significance"] = why[s["entity_id"]]
         if s["approximate"]:
             rec["approximate"] = True
+            if s["date_display"]:
+                rec["dateDisplay"] = s["date_display"]  # historians' dates or the dispute, on the span card
         if s["entity_id"] in currents:
             rec["current"] = True
         out.append(rec)

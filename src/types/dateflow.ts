@@ -13,6 +13,7 @@ export interface Duration {
   importance: number // 1–9, same scale as events
   kind: 'empire' | 'period'
   approximate?: boolean // start/end are traditional or disputed dates
+  dateDisplay?: string // historians' dates or the dispute, e.g. "traditionally 563–483 BCE; many scholars c. 480–400 BCE"
   current?: boolean // a Historical Current: drawn as a background band (step 3d)
 }
 

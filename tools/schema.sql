@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS time_spans (
   importance  INTEGER,
   approximate INTEGER CHECK (approximate IS NULL OR approximate = 1),
   position    INTEGER,
+  date_display TEXT,                               -- historians' dates or a dispute, exported as dateDisplay when approximate
   CHECK (start_year <= end_year)
 );
 

@@ -118,6 +118,13 @@ class TestRename(unittest.TestCase):
         self.assertEqual(db().execute("SELECT start_year, end_year, approximate FROM time_spans "
                                       "WHERE entity_id = 'construction-great-wall'").fetchone(), (-215, -206, 1))
         self.assertEqual(log_rows("construction-great-wall")[-1][0], "set-span-years")
+        self.assertEqual(quiet(edit.set_span_years, "construction-great-wall", -215, -206, None, "c. 215–206 BCE",
+                               via="test"), 0)
+        self.assertEqual(db().execute("SELECT approximate, date_display FROM time_spans "
+                                      "WHERE entity_id = 'construction-great-wall'").fetchone(), (1, "c. 215–206 BCE"))
+        quiet(edit.set_span_years, "construction-great-wall", -215, -206, None, "", via="test")
+        self.assertIsNone(db().execute("SELECT date_display FROM time_spans "
+                                       "WHERE entity_id = 'construction-great-wall'").fetchone()[0])
         self.assertEqual(quiet(edit.set_span_years, "construction-great-wall", -200, -206, via="test"), 1)
         self.assertEqual(quiet(edit.set_span_years, "construction-great-wall", -1, 0, via="test"), 1)
         self.assertEqual(quiet(edit.set_span_years, "no-such-id", 1, 2, via="test"), 1)

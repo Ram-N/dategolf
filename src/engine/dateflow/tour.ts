@@ -12,7 +12,7 @@ export interface TourStop {
   year: number // an event's year, a span's start
   endYear?: number // spans only
   approximate?: boolean
-  dateDisplay?: string // an approximate event's true range
+  dateDisplay?: string // an approximate event's true range, or a span's historians' dates
   description: string
   significance?: string
   region: string
@@ -55,7 +55,7 @@ export function eventStop(e: Event, via?: string): TourStop {
 export function spanStop(d: Duration, via?: string): TourStop {
   return {
     id: d.id, kind: 'span', name: d.name, year: d.startYear, endYear: d.endYear, approximate: d.approximate,
-    description: d.description, significance: d.significance, region: d.region, importance: d.importance,
+    dateDisplay: d.dateDisplay, description: d.description, significance: d.significance, region: d.region, importance: d.importance,
     ...(via ? { via } : {}),
   }
 }

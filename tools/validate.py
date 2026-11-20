@@ -113,6 +113,9 @@ CHECKS = [
     ("warning", "Event with a range but not marked approximate (the range is then not exported)",
      "SELECT entity_id, year || ' · ' || name || ' — ' || date_display FROM events "
      "WHERE date_display IS NOT NULL AND is_approximate IS NOT 1"),
+    ("warning", "Span with a date note but not marked approximate (the note is then not exported)",
+     "SELECT entity_id, start_year || ' to ' || end_year || ' · ' || name || ' — ' || date_display "
+     "FROM time_spans WHERE date_display IS NOT NULL AND approximate IS NOT 1"),
     ("warning", "Published event or span with no country tag",
      "SELECT id, primary_type FROM entities WHERE editorial_status <> 'proposed' "
      "AND primary_type <> 'era' AND id NOT IN (SELECT entity_id FROM entity_countries)"),

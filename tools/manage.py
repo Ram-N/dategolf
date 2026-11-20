@@ -201,7 +201,9 @@ def main():
     g = p.add_mutually_exclusive_group()
     g.add_argument("--approximate", action="store_const", const=True, dest="approximate", help="Mark as c.")
     g.add_argument("--exact", action="store_const", const=False, dest="approximate", help="Clear c.")
-    p.set_defaults(fn=lambda a: edit.set_span_years(a.id, a.start, a.end, a.approximate))
+    p.add_argument("--display", help='Historians\' dates or the dispute, e.g. "traditionally 563–483 BCE; '
+                                      'many scholars c. 480–400 BCE" ("" clears it)')
+    p.set_defaults(fn=lambda a: edit.set_span_years(a.id, a.start, a.end, a.approximate, a.display))
 
     p = sub.add_parser("set-event-date", help="Change an event's year, 'c.' flag or displayed range")
     p.add_argument("id")

@@ -50,7 +50,7 @@
         <p class="now-when">{{ when(current) }} · {{ current.region }}</p>
         <h3 class="now-name">{{ current.name }}</h3>
         <p v-if="current.approximate" class="approx">
-          ≈ Approximate date<template v-if="current.dateDisplay">: historians give {{ current.dateDisplay }}</template>
+          ≈ Approximate date<template v-if="current.dateDisplay"> · historians' dates: {{ current.dateDisplay }}</template>
         </p>
         <p class="now-text">{{ current.description }}</p>
         <p v-if="current.significance" class="now-why"><strong>Why it matters:</strong> {{ current.significance }}</p>

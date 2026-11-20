@@ -47,6 +47,7 @@ databases:
         columns:
           kind: period, empire or era
           approximate: 1 = traditional or disputed dates (shown with "c.")
+          date_display: "Historians' dates or the dispute, shown on the span card when approximate"
       entity_categories:
         description: Categories per event or span. Position 0 is the primary category, which sets the DateFlow colour.
         facets: [category, facet]

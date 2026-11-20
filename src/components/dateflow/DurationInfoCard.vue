@@ -28,7 +28,12 @@
       </section>
       <div v-if="duration.approximate" role="note" class="approx rounded-lg border px-3 py-2 mt-3">
         <div class="text-xs font-bold uppercase tracking-widest">≈ Approximate dates</div>
-        <p class="text-sm mt-1">Historians give different start and end years. These are conventional estimates.</p>
+        <p class="text-sm mt-1">
+          <template v-if="duration.dateDisplay">
+            Historians' dates: <span class="font-semibold">{{ duration.dateDisplay }}</span>. The years shown are conventional estimates.
+          </template>
+          <template v-else>Historians give different start and end years. These are conventional estimates.</template>
+        </p>
       </div>
 
       <EventConnections themed :groups="connections" :counts="storyCounts" @story="(d) => emit('story', d)"
