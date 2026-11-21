@@ -21,6 +21,8 @@
           {{ m.label }}
         </button>
       </div>
+      <!-- On phones these fold behind "More" (the timeline needs the room) -->
+      <div class="fold fold-sm" :class="{ open: moreOpen }">
       <div v-if="mode === 'constellation'" class="seg flex rounded-lg p-0.5" role="group" aria-label="Tracks">
         <button
           v-for="t in TRACK_AXES"
@@ -62,6 +64,7 @@
         @move="(id, dir) => emit('moveLane', id, dir)"
         @reset="emit('resetLanes')"
       />
+      </div>
     </div>
 
     <form class="flex items-center gap-2" role="search" @submit.prevent="submit">
@@ -102,6 +105,23 @@
           All
         </button>
       </div>
+      <button
+        class="btn more"
+        :aria-expanded="moreOpen"
+        aria-controls="dateflow-more"
+        @click="moreOpen = !moreOpen"
+      >
+        {{ moreOpen ? 'Less ▴' : 'More ▾' }}
+      </button>
+    </div>
+
+    <!-- Below 1440px these fold behind "More"; choosing one closes it again (Stories stays open to pick) -->
+    <div
+      id="dateflow-more"
+      class="fold fold-lg flex flex-wrap items-center gap-1"
+      :class="{ open: moreOpen }"
+      @click="closeAfterAction"
+    >
       <button class="btn" title="See the whole world in one year, compare two years, or two empires" @click="emit('timeMachine')">
         Time Machine
       </button>
@@ -111,7 +131,7 @@
       <button class="btn" title="Play through the events your filters show, one at a time" @click="emit('watch')">
         Watch
       </button>
-      <StoriesMenu :stories="stories" @open="(id) => emit('openStory', id)" />
+      <StoriesMenu data-keep-open :stories="stories" @open="(id) => { moreOpen = false; emit('openStory', id) }" />
       <button class="btn" title="Summarise the period in view (or shift-drag across the timeline)" @click="emit('summarize')">
         What happened?
       </button>
@@ -197,6 +217,12 @@ const MODES: { id: ViewMode; label: string }[] = [
   { id: 'constellation', label: 'Constellation' },
 ]
 
+const moreOpen = ref(false)
+function closeAfterAction(e: MouseEvent) {
+  const target = e.target as HTMLElement
+  if (target.closest('button, a') && !target.closest('[data-keep-open]')) moreOpen.value = false
+}
+
 const query = ref('')
 const queryError = ref(false)
 
@@ -271,6 +297,27 @@ function submit() {
   color: var(--df-text-2);
   font-size: 0.875rem;
   font-weight: 600;
+}
+/* Folding (small screens): "More" shows on narrow screens only, and opens the folded groups in place */
+.fold-sm {
+  display: contents;
+}
+.more {
+  display: none;
+}
+@media (max-width: 1439px) {
+  .more {
+    display: inline-flex;
+    align-items: center;
+  }
+  .fold-lg:not(.open) {
+    display: none;
+  }
+}
+@media (max-width: 639px) {
+  .fold-sm:not(.open) {
+    display: none;
+  }
 }
 .seg-btn.era {
   padding: 0 0.5rem; /* six chips: keeps the toolbar to two rows on a laptop screen */
