@@ -1,6 +1,6 @@
 {
   "counts": {
-    "events": 510,
+    "events": 522,
     "time_spans": 157,
     "eras": 5,
     "datelinks_keys": 28,
@@ -10,7 +10,7 @@
     "daily_challenge_dates": 366,
     "csv_rows": 310,
     "significance_reviewed": 212,
-    "significance_proposed": 0
+    "significance_proposed": 12
   },
   "checks": [
     {
@@ -160,8 +160,69 @@
     {
       "severity": "warning",
       "check": "Link touches a proposed (unpublished) entity",
-      "count": 0,
-      "rows": []
+      "count": 15,
+      "rows": [
+        [
+          471,
+          "death-of-marcus-aurelius ended pax-romana-period"
+        ],
+        [
+          473,
+          "diocletian-becomes-emperor part_of roman-empire"
+        ],
+        [
+          483,
+          "ottoman-empire-enters-world-war-i part_of world-war-1"
+        ],
+        [
+          484,
+          "ottoman-empire-enters-world-war-i preceded ottoman-empire-falls"
+        ],
+        [
+          478,
+          "ottoman-siege-of-vienna-fails part_of ottoman-empire"
+        ],
+        [
+          479,
+          "ottoman-siege-of-vienna-fails preceded treaty-of-karlowitz"
+        ],
+        [
+          475,
+          "ottomans-capture-bursa part_of ottoman-empire"
+        ],
+        [
+          476,
+          "ottomans-conquer-egypt part_of ottoman-empire"
+        ],
+        [
+          469,
+          "roman-empire-greatest-extent part_of pax-romana-period"
+        ],
+        [
+          470,
+          "roman-empire-greatest-extent preceded hadrians-wall"
+        ],
+        [
+          481,
+          "selim-iii-becomes-sultan part_of ottoman-empire"
+        ],
+        [
+          472,
+          "severus-alexander-murdered part_of roman-empire"
+        ],
+        [
+          477,
+          "suleiman-becomes-sultan part_of ottoman-empire"
+        ],
+        [
+          482,
+          "tanzimat-edict part_of ottoman-empire"
+        ],
+        [
+          480,
+          "treaty-of-karlowitz part_of ottoman-empire"
+        ]
+      ]
     },
     {
       "severity": "warning",
@@ -202,8 +263,57 @@
     {
       "severity": "review",
       "check": "Proposed events awaiting approval (not exported; manage.py approve <id>)",
-      "count": 0,
-      "rows": []
+      "count": 12,
+      "rows": [
+        [
+          "roman-empire-greatest-extent",
+          "117 · Roman Empire Reaches Its Greatest Extent — The empire's extent peaked in 116–117; Trajan died in August 117 and Hadrian withdrew from Mesopotamia soon after."
+        ],
+        [
+          "death-of-marcus-aurelius",
+          "180 · Death of Marcus Aurelius — Died 17 March 180, at Vindobona (Vienna) or Sirmium; sources differ. AT chosen for Vindobona."
+        ],
+        [
+          "severus-alexander-murdered",
+          "235 · Severus Alexander Murdered by His Own Troops — Killed in March 235 near Mogontiacum (Mainz). Name avoids 'Crisis of the Third Century' because it names the century."
+        ],
+        [
+          "diocletian-becomes-emperor",
+          "284 · Diocletian Becomes Roman Emperor — Proclaimed at Nicomedia (Izmit, Turkey) in November 284. The tetrarchy itself dates from 293; the description doesn't tie it to the accession year."
+        ],
+        [
+          "ottomans-capture-bursa",
+          "1326 · Ottomans Capture Bursa — Bursa (Byzantine Prusa) fell in April 1326 after a siege of several years."
+        ],
+        [
+          "ottomans-conquer-egypt",
+          "1517 · Ottomans Conquer Mamluk Egypt — Ridaniya was fought in January 1517; Syria fell after Marj Dabiq (August 1516)."
+        ],
+        [
+          "suleiman-becomes-sultan",
+          "1520 · Suleiman the Magnificent Becomes Sultan — Acceded September 1520; died 1566 at the siege of Szigetvár."
+        ],
+        [
+          "ottoman-siege-of-vienna-fails",
+          "1683 · Ottoman Siege of Vienna Fails — The siege began in July; the relief battle was fought on 12 September 1683."
+        ],
+        [
+          "treaty-of-karlowitz",
+          "1699 · Treaty of Karlowitz Signed — Signed 26 January 1699 at Sremski Karlovci."
+        ],
+        [
+          "selim-iii-becomes-sultan",
+          "1789 · Selim III Becomes Sultan — Acceded April 1789; the New Order army dates from 1792–93; deposed 1807, killed 1808. The phase boundary is his accession (the source document's 1792 would be the army, not the reign)."
+        ],
+        [
+          "tanzimat-edict",
+          "1839 · Edict of Gülhane Launches the Tanzimat Reforms — Proclaimed 3 November 1839."
+        ],
+        [
+          "ottoman-empire-enters-world-war-i",
+          "1914 · Ottoman Empire Enters World War I — Black Sea raid 29 October 1914; Russia, Britain and France declared war in early November."
+        ]
+      ]
     },
     {
       "severity": "review",
@@ -449,6 +559,96 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
+      "count": 16,
+      "rows": [
+        [
+          469,
+          "roman-empire-greatest-extent part_of pax-romana-period — Trajan's conquests came during the long internal peace of the Pax Romana."
+        ],
+        [
+          470,
+          "roman-empire-greatest-extent preceded hadrians-wall — Trajan's successor Hadrian gave up the new eastern lands and fortified the frontiers, including his wall in Britain."
+        ],
+        [
+          471,
+          "death-of-marcus-aurelius ended pax-romana-period — His death and Commodus's troubled reign are the conventional end of the Pax Romana."
+        ],
+        [
+          472,
+          "severus-alexander-murdered part_of roman-empire — The murder opened the Roman Empire's third-century crisis."
+        ],
+        [
+          473,
+          "diocletian-becomes-emperor part_of roman-empire — Diocletian's reign ended the crisis and reshaped the late Roman state."
+        ],
+        [
+          474,
+          "roman-empire evolved_into byzantine-empire — The eastern half of the Roman Empire, ruled from Constantinople, carried on as the Byzantine Empire."
+        ],
+        [
+          475,
+          "ottomans-capture-bursa part_of ottoman-empire — Bursa became the first Ottoman capital."
+        ],
+        [
+          476,
+          "ottomans-conquer-egypt part_of ottoman-empire — Selim I's conquest added Egypt and the holy cities to the empire."
+        ],
+        [
+          477,
+          "suleiman-becomes-sultan part_of ottoman-empire — Suleiman's long reign is one of the best-known periods of Ottoman history."
+        ],
+        [
+          478,
+          "ottoman-siege-of-vienna-fails part_of ottoman-empire — The failed siege ended Ottoman expansion into central Europe."
+        ],
+        [
+          479,
+          "ottoman-siege-of-vienna-fails preceded treaty-of-karlowitz — The defeat at Vienna began the sixteen-year war that Karlowitz ended."
+        ],
+        [
+          480,
+          "treaty-of-karlowitz part_of ottoman-empire — The treaty gave up most of Ottoman Hungary."
+        ],
+        [
+          481,
+          "selim-iii-becomes-sultan part_of ottoman-empire — Selim III began the empire's first systematic military reforms."
+        ],
+        [
+          482,
+          "tanzimat-edict part_of ottoman-empire — The edict opened the Tanzimat, the empire's great reform era."
+        ],
+        [
+          483,
+          "ottoman-empire-enters-world-war-i part_of world-war-1 — The Ottoman Empire fought in the war as Germany's ally."
+        ],
+        [
+          484,
+          "ottoman-empire-enters-world-war-i preceded ottoman-empire-falls — Defeat in the war led to occupation, the Turkish War of Independence and the abolition of the sultanate."
+        ]
+      ]
+    },
+    {
+      "severity": "review",
+      "check": "Life-cycle phases awaiting approval (not exported; dashboard Review → Life cycles)",
+      "count": 3,
+      "rows": [
+        [
+          "mughal-empire",
+          "8 phase(s)"
+        ],
+        [
+          "ottoman-empire",
+          "8 phase(s)"
+        ],
+        [
+          "roman-empire",
+          "7 phase(s)"
+        ]
+      ]
+    },
+    {
+      "severity": "warning",
+      "check": "Life-cycle phases no longer cover their span (its years changed): fix with remove-phases + load-phases",
       "count": 0,
       "rows": []
     },
@@ -482,8 +682,57 @@
     {
       "severity": "review",
       "check": "Country tags awaiting review (manage.py approve-countries)",
-      "count": 0,
-      "rows": []
+      "count": 12,
+      "rows": [
+        [
+          "death-of-marcus-aurelius",
+          "high"
+        ],
+        [
+          "diocletian-becomes-emperor",
+          "high"
+        ],
+        [
+          "ottoman-empire-enters-world-war-i",
+          "high"
+        ],
+        [
+          "ottoman-siege-of-vienna-fails",
+          "high"
+        ],
+        [
+          "ottomans-capture-bursa",
+          "high"
+        ],
+        [
+          "ottomans-conquer-egypt",
+          "high"
+        ],
+        [
+          "roman-empire-greatest-extent",
+          "high"
+        ],
+        [
+          "selim-iii-becomes-sultan",
+          "high"
+        ],
+        [
+          "severus-alexander-murdered",
+          "high"
+        ],
+        [
+          "suleiman-becomes-sultan",
+          "high"
+        ],
+        [
+          "tanzimat-edict",
+          "high"
+        ],
+        [
+          "treaty-of-karlowitz",
+          "high"
+        ]
+      ]
     },
     {
       "severity": "info",
@@ -492,7 +741,7 @@
       "rows": [
         [
           "Europe",
-          "europe · 183 records"
+          "europe · 189 records"
         ],
         [
           "South Asia",
@@ -508,11 +757,11 @@
         ],
         [
           "Middle East",
-          "middle-east · 55 records"
+          "middle-east · 60 records"
         ],
         [
           "Africa",
-          "africa · 55 records"
+          "africa · 56 records"
         ],
         [
           "Global",
@@ -614,7 +863,7 @@
       "rows": [
         [
           "events",
-          "343 at import -> 510 now"
+          "343 at import -> 522 now"
         ],
         [
           "time_spans",

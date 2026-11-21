@@ -26,14 +26,14 @@
 | error | Contradictory links (A→B and B→A of the same one-way type) | pass |
 | error | Symmetric link not stored in id order | pass |
 | warning | DateLinks 'Year of' label doesn't match the event's year (rename-memory-aid-group) | pass |
-| warning | Link touches a proposed (unpublished) entity | pass |
+| warning | Link touches a proposed (unpublished) entity | 15 |
 | warning | Time spans with the same normalised name | pass |
 | warning | Event names that differ only in case or spacing | pass |
 | warning | Event with no aliases (search falls back to name only) | pass |
 | warning | Imported entity with no import record (provenance lost) | pass |
 | review | Event + time span share one ID (identity decision needed) | pass |
 | review | Legacy CSV rows with no accepted match and no triage outcome | pass |
-| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | pass |
+| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | 12 |
 | review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 39 |
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 7 |
 | warning | Approximate event with no range (set-event-date --display): students see "c." with nothing to explain it | pass |
@@ -41,11 +41,13 @@
 | warning | Span with a date note but not marked approximate (the note is then not exported) | pass |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 3 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 16 |
+| review | Life-cycle phases awaiting approval (not exported; dashboard Review → Life cycles) | 3 |
+| warning | Life-cycle phases no longer cover their span (its years changed): fix with remove-phases + load-phases | pass |
 | review | Memory aids awaiting approval (not exported; dashboard Review → Memory aids) | pass |
 | review | Missing events and spans to decide (dashboard Review → Missing) | 2 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
-| review | Country tags awaiting review (manage.py approve-countries) | pass |
+| review | Country tags awaiting review (manage.py approve-countries) | 12 |
 | info | Region labels in use, with their DateFlow lane | 12 |
 | warning | Description mentions a year near the answer (DatePick shows it before the guess) | pass |
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
@@ -60,7 +62,7 @@
 
 ## Counts
 
-- events: 510
+- events: 522
 - time_spans: 157
 - eras: 5
 - datelinks_keys: 28
@@ -70,7 +72,40 @@
 - daily_challenge_dates: 366
 - csv_rows: 310
 - significance_reviewed: 212
-- significance_proposed: 0
+- significance_proposed: 12
+
+## [warning] Link touches a proposed (unpublished) entity
+
+- `471` — death-of-marcus-aurelius ended pax-romana-period
+- `473` — diocletian-becomes-emperor part_of roman-empire
+- `483` — ottoman-empire-enters-world-war-i part_of world-war-1
+- `484` — ottoman-empire-enters-world-war-i preceded ottoman-empire-falls
+- `478` — ottoman-siege-of-vienna-fails part_of ottoman-empire
+- `479` — ottoman-siege-of-vienna-fails preceded treaty-of-karlowitz
+- `475` — ottomans-capture-bursa part_of ottoman-empire
+- `476` — ottomans-conquer-egypt part_of ottoman-empire
+- `469` — roman-empire-greatest-extent part_of pax-romana-period
+- `470` — roman-empire-greatest-extent preceded hadrians-wall
+- `481` — selim-iii-becomes-sultan part_of ottoman-empire
+- `472` — severus-alexander-murdered part_of roman-empire
+- `477` — suleiman-becomes-sultan part_of ottoman-empire
+- `482` — tanzimat-edict part_of ottoman-empire
+- `480` — treaty-of-karlowitz part_of ottoman-empire
+
+## [review] Proposed events awaiting approval (not exported; manage.py approve <id>)
+
+- `roman-empire-greatest-extent` — 117 · Roman Empire Reaches Its Greatest Extent — The empire's extent peaked in 116–117; Trajan died in August 117 and Hadrian withdrew from Mesopotamia soon after.
+- `death-of-marcus-aurelius` — 180 · Death of Marcus Aurelius — Died 17 March 180, at Vindobona (Vienna) or Sirmium; sources differ. AT chosen for Vindobona.
+- `severus-alexander-murdered` — 235 · Severus Alexander Murdered by His Own Troops — Killed in March 235 near Mogontiacum (Mainz). Name avoids 'Crisis of the Third Century' because it names the century.
+- `diocletian-becomes-emperor` — 284 · Diocletian Becomes Roman Emperor — Proclaimed at Nicomedia (Izmit, Turkey) in November 284. The tetrarchy itself dates from 293; the description doesn't tie it to the accession year.
+- `ottomans-capture-bursa` — 1326 · Ottomans Capture Bursa — Bursa (Byzantine Prusa) fell in April 1326 after a siege of several years.
+- `ottomans-conquer-egypt` — 1517 · Ottomans Conquer Mamluk Egypt — Ridaniya was fought in January 1517; Syria fell after Marj Dabiq (August 1516).
+- `suleiman-becomes-sultan` — 1520 · Suleiman the Magnificent Becomes Sultan — Acceded September 1520; died 1566 at the siege of Szigetvár.
+- `ottoman-siege-of-vienna-fails` — 1683 · Ottoman Siege of Vienna Fails — The siege began in July; the relief battle was fought on 12 September 1683.
+- `treaty-of-karlowitz` — 1699 · Treaty of Karlowitz Signed — Signed 26 January 1699 at Sremski Karlovci.
+- `selim-iii-becomes-sultan` — 1789 · Selim III Becomes Sultan — Acceded April 1789; the New Order army dates from 1792–93; deposed 1807, killed 1808. The phase boundary is his accession (the source document's 1792 would be the army, not the reign).
+- `tanzimat-edict` — 1839 · Edict of Gülhane Launches the Tanzimat Reforms — Proclaimed 3 November 1839.
+- `ottoman-empire-enters-world-war-i` — 1914 · Ottoman Empire Enters World War I — Black Sea raid 29 October 1914; Russia, Britain and France declared war in early November.
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 
@@ -130,19 +165,59 @@
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
 
+## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
+
+- `469` — roman-empire-greatest-extent part_of pax-romana-period — Trajan's conquests came during the long internal peace of the Pax Romana.
+- `470` — roman-empire-greatest-extent preceded hadrians-wall — Trajan's successor Hadrian gave up the new eastern lands and fortified the frontiers, including his wall in Britain.
+- `471` — death-of-marcus-aurelius ended pax-romana-period — His death and Commodus's troubled reign are the conventional end of the Pax Romana.
+- `472` — severus-alexander-murdered part_of roman-empire — The murder opened the Roman Empire's third-century crisis.
+- `473` — diocletian-becomes-emperor part_of roman-empire — Diocletian's reign ended the crisis and reshaped the late Roman state.
+- `474` — roman-empire evolved_into byzantine-empire — The eastern half of the Roman Empire, ruled from Constantinople, carried on as the Byzantine Empire.
+- `475` — ottomans-capture-bursa part_of ottoman-empire — Bursa became the first Ottoman capital.
+- `476` — ottomans-conquer-egypt part_of ottoman-empire — Selim I's conquest added Egypt and the holy cities to the empire.
+- `477` — suleiman-becomes-sultan part_of ottoman-empire — Suleiman's long reign is one of the best-known periods of Ottoman history.
+- `478` — ottoman-siege-of-vienna-fails part_of ottoman-empire — The failed siege ended Ottoman expansion into central Europe.
+- `479` — ottoman-siege-of-vienna-fails preceded treaty-of-karlowitz — The defeat at Vienna began the sixteen-year war that Karlowitz ended.
+- `480` — treaty-of-karlowitz part_of ottoman-empire — The treaty gave up most of Ottoman Hungary.
+- `481` — selim-iii-becomes-sultan part_of ottoman-empire — Selim III began the empire's first systematic military reforms.
+- `482` — tanzimat-edict part_of ottoman-empire — The edict opened the Tanzimat, the empire's great reform era.
+- `483` — ottoman-empire-enters-world-war-i part_of world-war-1 — The Ottoman Empire fought in the war as Germany's ally.
+- `484` — ottoman-empire-enters-world-war-i preceded ottoman-empire-falls — Defeat in the war led to occupation, the Turkish War of Independence and the abolition of the sultanate.
+
+## [review] Life-cycle phases awaiting approval (not exported; dashboard Review → Life cycles)
+
+- `mughal-empire` — 8 phase(s)
+- `ottoman-empire` — 8 phase(s)
+- `roman-empire` — 7 phase(s)
+
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 
 - `149` — event · Egyptian–Hittite Peace Treaty (-1259) · wanted
 - `148` — event · Fall of Nineveh (-612) · wanted
 
+## [review] Country tags awaiting review (manage.py approve-countries)
+
+- `death-of-marcus-aurelius` — high
+- `diocletian-becomes-emperor` — high
+- `ottoman-empire-enters-world-war-i` — high
+- `ottoman-siege-of-vienna-fails` — high
+- `ottomans-capture-bursa` — high
+- `ottomans-conquer-egypt` — high
+- `roman-empire-greatest-extent` — high
+- `selim-iii-becomes-sultan` — high
+- `severus-alexander-murdered` — high
+- `suleiman-becomes-sultan` — high
+- `tanzimat-edict` — high
+- `treaty-of-karlowitz` — high
+
 ## [info] Region labels in use, with their DateFlow lane
 
-- `Europe` — europe · 183 records
+- `Europe` — europe · 189 records
 - `South Asia` — south-asia · 149 records
 - `East Asia` — east-asia · 72 records
 - `Americas` — americas · 69 records
-- `Middle East` — middle-east · 55 records
-- `Africa` — africa · 55 records
+- `Middle East` — middle-east · 60 records
+- `Africa` — africa · 56 records
 - `Global` — global · 35 records
 - `Southeast Asia` — east-asia · 21 records
 - `North America` — americas · 13 records
@@ -158,7 +233,7 @@
 
 ## [info] Counts changed since the legacy import
 
-- `events` — 343 at import -> 510 now
+- `events` — 343 at import -> 522 now
 - `time_spans` — 98 at import -> 157 now
 - `datelinks_keys` — 26 at import -> 28 now
 - `datelinks_groups` — 83 at import -> 91 now
