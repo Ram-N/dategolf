@@ -1,7 +1,7 @@
 {
   "counts": {
-    "events": 484,
-    "time_spans": 144,
+    "events": 514,
+    "time_spans": 153,
     "eras": 5,
     "datelinks_keys": 26,
     "datelinks_groups": 83,
@@ -10,7 +10,7 @@
     "daily_challenge_dates": 366,
     "csv_rows": 310,
     "significance_reviewed": 173,
-    "significance_proposed": 0
+    "significance_proposed": 39
   },
   "checks": [
     {
@@ -154,8 +154,137 @@
     {
       "severity": "warning",
       "check": "Link touches a proposed (unpublished) entity",
-      "count": 0,
-      "rows": []
+      "count": 32,
+      "rows": [
+        [
+          432,
+          "akhenaten-elevates-the-aten part_of new-kingdom-egypt"
+        ],
+        [
+          450,
+          "arabs-conquer-egypt preceded moors-invade-spain"
+        ],
+        [
+          458,
+          "ayutthaya-founded preceded ayutthaya-sacks-angkor"
+        ],
+        [
+          433,
+          "battle-of-kadesh part_of new-kingdom-egypt"
+        ],
+        [
+          454,
+          "battle-of-kirina began mali-empire"
+        ],
+        [
+          437,
+          "carthage-founded preceded punic-wars"
+        ],
+        [
+          430,
+          "code-of-ur-nammu influenced code-of-hammurabi"
+        ],
+        [
+          453,
+          "ezana-of-aksum-adopts-christianity influenced lalibela-rock-hewn-churches"
+        ],
+        [
+          435,
+          "fall-of-troy part_of late-bronze-age-collapse"
+        ],
+        [
+          452,
+          "great-zimbabwe interacted_with swahili-coast-trading-cities"
+        ],
+        [
+          440,
+          "han-dynasty opposed trung-sisters-revolt"
+        ],
+        [
+          444,
+          "han-dynasty preceded three-kingdoms-china"
+        ],
+        [
+          431,
+          "hatshepsut-becomes-pharaoh part_of new-kingdom-egypt"
+        ],
+        [
+          446,
+          "himiko-sends-envoy-to-wei interacted_with three-kingdoms-china"
+        ],
+        [
+          447,
+          "himiko-sends-envoy-to-wei preceded kofun-period"
+        ],
+        [
+          455,
+          "ibn-battuta-visits-mali part_of mali-empire"
+        ],
+        [
+          449,
+          "islamic-caliphate-expands preceded arabs-conquer-egypt"
+        ],
+        [
+          445,
+          "jin-reunifies-china ended three-kingdoms-china"
+        ],
+        [
+          461,
+          "lapita-voyagers-settle-remote-oceania preceded polynesians-settle-hawaii"
+        ],
+        [
+          436,
+          "late-bronze-age-collapse contributed_to ironworking-spreads"
+        ],
+        [
+          439,
+          "library-of-alexandria-founded enabled eratosthenes-measures-earth"
+        ],
+        [
+          460,
+          "machu-picchu-built part_of inca-empire"
+        ],
+        [
+          456,
+          "majapahit-founded opposed yuan-dynasty"
+        ],
+        [
+          434,
+          "oracle-bone-writing part_of shang-dynasty"
+        ],
+        [
+          459,
+          "pachacuti-begins-inca-expansion began inca-empire"
+        ],
+        [
+          448,
+          "pakal-becomes-ruler-of-palenque part_of classic-maya"
+        ],
+        [
+          438,
+          "ptolemaic-dynasty-founded enabled library-of-alexandria-founded"
+        ],
+        [
+          441,
+          "pyramid-of-the-sun-built part_of teotihuacan"
+        ],
+        [
+          457,
+          "tenochtitlan-founded preceded aztec-empire"
+        ],
+        [
+          443,
+          "teotihuacan influenced aztec-empire"
+        ],
+        [
+          442,
+          "teotihuacan influenced classic-maya"
+        ],
+        [
+          451,
+          "trung-sisters-revolt preceded battle-of-bach-dang-938"
+        ]
+      ]
     },
     {
       "severity": "warning",
@@ -196,8 +325,129 @@
     {
       "severity": "review",
       "check": "Proposed events awaiting approval (not exported; manage.py approve <id>)",
-      "count": 0,
-      "rows": []
+      "count": 30,
+      "rows": [
+        [
+          "stonehenge-sarsen-circle-raised",
+          "-2500 · Stonehenge's Sarsen Circle Raised — English Heritage dates the sarsen phase to c. 2500 BCE; the ditch and bank are c. 3000 BCE. Sarsen source (West Woods, ~25 km) from Nash et al. 2020."
+        ],
+        [
+          "code-of-ur-nammu",
+          "-2100 · Code of Ur-Nammu Issued in Sumer — Ur-Nammu reigned c. 2112–2095 BCE (middle chronology); some scholars credit the code to his son Shulgi, so the name says 'Code of Ur-Nammu' (its conventional name) rather than 'Ur-Nammu issues'. Renamed from the gap-list wording for that reason."
+        ],
+        [
+          "first-palace-at-knossos",
+          "-1900 · First Palace Built at Knossos — Protopalatial period begins c. 1900 BCE; the visible ruins are mostly from the rebuilt palace. The labyrinth legend is left out (only a suggested connection)."
+        ],
+        [
+          "hatshepsut-becomes-pharaoh",
+          "-1473 · Hatshepsut Becomes Pharaoh — The gap list said c. 1479, but that is the start of her regency; she was crowned c. 1473 (Shaw: reign c. 1473–1458). Year moved to 1473 for accuracy."
+        ],
+        [
+          "rigveda-composed",
+          "-1400 · Rigveda Composed — A process over centuries, not one year (some scholars say c. 1700–1100 BCE). Recommend DateFlow-only (manage.py dateflow-only) so it isn't a guessing question."
+        ],
+        [
+          "akhenaten-elevates-the-aten",
+          "-1350 · Akhenaten Elevates the Aten Above Egypt's Gods — Renamed from the gap-list 'Introduces the Worship of the Aten': the Aten was worshipped before him; he raised it above all other gods. Whether this was true monotheism is debated."
+        ],
+        [
+          "battle-of-kadesh",
+          "-1274 · Battle of Kadesh — Year 5 of Ramesses II, c. 1274 BCE in the usual chronology. The Egyptian accounts are royal propaganda; the result was a stalemate."
+        ],
+        [
+          "oracle-bone-writing",
+          "-1250 · Oracle-Bone Writing Appears in Shang China — Earliest securely dated inscriptions from Wu Ding's reign (c. 1250–1192 BCE); a mature script, so writing may be older. First recognised in 1899."
+        ],
+        [
+          "lapita-voyagers-settle-remote-oceania",
+          "-1000 · Lapita Voyagers Settle Remote Oceania — A process over two or three centuries (radiocarbon). Recommend DateFlow-only. Countries VU, FJ, TO, WS, PG are new to the countries table (add-country before loading)."
+        ],
+        [
+          "carthage-founded",
+          "-814 · Carthage Founded — 814 BCE is from the Greek historian Timaeus; archaeology supports a foundation in the late 9th century BCE. The Dido story is legend, and the description says so."
+        ],
+        [
+          "library-of-alexandria-founded",
+          "-285 · Library of Alexandria Founded — Founding credited to Ptolemy I (advised by Demetrius of Phalerum) or Ptolemy II. Its end was a gradual decline, not one fire: the significance avoids the myth."
+        ],
+        [
+          "trung-sisters-revolt",
+          "40 · Trung Sisters Lead a Revolt Against Han Rule — The revolt ran 40–43 CE."
+        ],
+        [
+          "pyramid-of-the-sun-built",
+          "200 · Teotihuacan's Pyramid of the Sun Built — Construction is usually dated c. 200 CE. The tunnel beneath was long thought to be a natural cave."
+        ],
+        [
+          "himiko-sends-envoy-to-wei",
+          "239 · Queen Himiko Sends an Envoy to Wei China — Recorded in the Wei zhi section of the Records of the Three Kingdoms. The text gives the second year of Jingchu (238); many historians correct it to 239."
+        ],
+        [
+          "pakal-becomes-ruler-of-palenque",
+          "615 · Pakal the Great Becomes Ruler of Palenque — Accession on 29 July 615, from Palenque's inscriptions; died 683."
+        ],
+        [
+          "arabs-conquer-egypt",
+          "641 · Arabs Conquer Egypt — The story that Amr burned the Library of Alexandria is a later legend: left out."
+        ],
+        [
+          "borobudur-completed",
+          "825 · Borobudur Completed — Completion usually placed c. 825, in the reign of Samaratungga. Why it was abandoned is uncertain, so the significance doesn't give a reason."
+        ],
+        [
+          "battle-of-bach-dang-938",
+          "938 · Battle of Bạch Đằng Ends Chinese Rule in Vietnam — Late 938. Ngô Quyền proclaimed himself king in 939."
+        ],
+        [
+          "cahokia-grows-into-a-city",
+          "1050 · Cahokia Grows into a City — Archaeologists call the sudden growth around 1050 Cahokia's 'Big Bang'. Population estimates vary widely."
+        ],
+        [
+          "polynesians-settle-hawaii",
+          "1100 · Polynesians Settle Hawaii — The settlement date is debated (Kirch; Wilmshurst et al. 2011). Recommend DateFlow-only: a range of over two centuries."
+        ],
+        [
+          "lalibela-rock-hewn-churches",
+          "1200 · Lalibela's Rock-Hewn Churches Carved — Tradition credits all eleven to King Lalibela; archaeologists think some may be older or later."
+        ],
+        [
+          "polynesians-reach-rapa-nui",
+          "1200 · Polynesians Reach Rapa Nui — Older estimates went as early as 300–800; current radiocarbon work favours c. 1150–1250. The 'ecocide' story is debated, so the significance presents it as debate. Recommend DateFlow-only."
+        ],
+        [
+          "battle-of-kirina",
+          "1235 · Sundiata Keita Wins the Battle of Kirina — Known mainly from oral tradition and later Arabic sources; c. 1235 is conventional."
+        ],
+        [
+          "polynesians-settle-new-zealand",
+          "1280 · Polynesian Voyagers Settle New Zealand — Wilmshurst et al. date first settlement to c. 1250–1300."
+        ],
+        [
+          "majapahit-founded",
+          "1293 · Majapahit Founded — Raden Wijaya was crowned in November 1293. The flag connection in the significance is hedged ('often linked')."
+        ],
+        [
+          "tenochtitlan-founded",
+          "1325 · Tenochtitlan Founded — 1325 is the date in Mexica tradition, widely used."
+        ],
+        [
+          "ayutthaya-founded",
+          "1351 · Kingdom of Ayutthaya Founded — Traditional date 4 March 1351, used everywhere."
+        ],
+        [
+          "ibn-battuta-visits-mali",
+          "1352 · Ibn Battuta Visits the Mali Empire — Left Sijilmasa in early 1352; back in Morocco by early 1354."
+        ],
+        [
+          "pachacuti-begins-inca-expansion",
+          "1438 · Pachacuti Begins the Inca Expansion — 1438 is Rowe's chronology, from Spanish-era sources; radiocarbon work (Marsh et al. 2017) suggests Inca expansion started around 1400."
+        ],
+        [
+          "machu-picchu-built",
+          "1450 · Machu Picchu Built — Burger et al. (Antiquity, 2021) date occupation from c. 1420. 'Lost city' is a popular label; local farmers always knew it."
+        ]
+      ]
     },
     {
       "severity": "review",
@@ -427,219 +677,143 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 0,
-      "rows": []
+      "count": 32,
+      "rows": [
+        [
+          430,
+          "code-of-ur-nammu influenced code-of-hammurabi — Hammurabi's laws continued the Mesopotamian tradition of written codes with set penalties seen first at Ur."
+        ],
+        [
+          431,
+          "hatshepsut-becomes-pharaoh part_of new-kingdom-egypt — Hatshepsut ruled in the New Kingdom's Eighteenth Dynasty."
+        ],
+        [
+          432,
+          "akhenaten-elevates-the-aten part_of new-kingdom-egypt — Akhenaten's Amarna period fell within the New Kingdom's Eighteenth Dynasty."
+        ],
+        [
+          433,
+          "battle-of-kadesh part_of new-kingdom-egypt — Ramesses II fought at Kadesh to defend Egypt's empire in the Levant."
+        ],
+        [
+          434,
+          "oracle-bone-writing part_of shang-dynasty — The inscriptions record the divinations of Shang kings, beginning with Wu Ding."
+        ],
+        [
+          435,
+          "fall-of-troy part_of late-bronze-age-collapse — The destruction of Troy VIIa is usually counted among the Late Bronze Age destructions; the legend is harder to date."
+        ],
+        [
+          436,
+          "late-bronze-age-collapse contributed_to ironworking-spreads — With bronze trade networks broken, iron, smelted from more common ores, came into wider use; historians debate how much."
+        ],
+        [
+          437,
+          "carthage-founded preceded punic-wars — Carthage grew into the western Mediterranean power that later fought Rome in the Punic Wars."
+        ],
+        [
+          438,
+          "ptolemaic-dynasty-founded enabled library-of-alexandria-founded — The Ptolemies' patronage funded the Mouseion and its library in their new capital."
+        ],
+        [
+          439,
+          "library-of-alexandria-founded enabled eratosthenes-measures-earth — As the library's chief librarian, Eratosthenes worked with its records and scholarship."
+        ],
+        [
+          440,
+          "han-dynasty opposed trung-sisters-revolt — The sisters rose against the Han governor of Jiaozhi and drove his forces out."
+        ],
+        [
+          441,
+          "pyramid-of-the-sun-built part_of teotihuacan — The pyramid was Teotihuacan's largest monument, on its main avenue."
+        ],
+        [
+          442,
+          "teotihuacan influenced classic-maya — Teotihuacan's trade and styles reached the Maya, and in 378 it backed a new dynasty at Tikal."
+        ],
+        [
+          443,
+          "teotihuacan influenced aztec-empire — The Aztecs revered its ruins as sacred and borrowed its imagery and objects."
+        ],
+        [
+          444,
+          "han-dynasty preceded three-kingdoms-china — When Cao Pi deposed the last Han emperor, China split among Wei, Shu and Wu."
+        ],
+        [
+          445,
+          "jin-reunifies-china ended three-kingdoms-china — Jin's conquest of Wu ended the division and reunified China."
+        ],
+        [
+          446,
+          "himiko-sends-envoy-to-wei interacted_with three-kingdoms-china — Himiko sent envoys and tribute to Wei, one of the Three Kingdoms, and received a royal title."
+        ],
+        [
+          447,
+          "himiko-sends-envoy-to-wei preceded kofun-period — Himiko's reign came just before the great keyhole mounds; some link her to the early Hashihaka tomb."
+        ],
+        [
+          448,
+          "pakal-becomes-ruler-of-palenque part_of classic-maya — Pakal ruled Palenque at the height of the Classic Maya period."
+        ],
+        [
+          449,
+          "islamic-caliphate-expands preceded arabs-conquer-egypt — After Abu Bakr united Arabia, his successors' armies moved into Byzantine Syria and then Egypt."
+        ],
+        [
+          450,
+          "arabs-conquer-egypt preceded moors-invade-spain — From Egypt the Arab armies pushed west across North Africa, crossing into Spain seventy years later."
+        ],
+        [
+          451,
+          "trung-sisters-revolt preceded battle-of-bach-dang-938 — Both were Vietnamese risings against Chinese rule; the second, nine centuries later, finally won independence."
+        ],
+        [
+          452,
+          "great-zimbabwe interacted_with swahili-coast-trading-cities — Gold from the Zimbabwe plateau reached the coast and was shipped out through Kilwa."
+        ],
+        [
+          453,
+          "ezana-of-aksum-adopts-christianity influenced lalibela-rock-hewn-churches — Aksum's conversion founded the Ethiopian church whose faith Lalibela's churches were carved to serve."
+        ],
+        [
+          454,
+          "battle-of-kirina began mali-empire — The victory at Kirina is the traditional founding of the Mali Empire under Sundiata."
+        ],
+        [
+          455,
+          "ibn-battuta-visits-mali part_of mali-empire — Ibn Battuta saw Mali at its height, under Mansa Musa's brother Sulayman."
+        ],
+        [
+          456,
+          "majapahit-founded opposed yuan-dynasty — Raden Wijaya turned on the Yuan fleet sent by Kublai Khan and drove it from Java."
+        ],
+        [
+          457,
+          "tenochtitlan-founded preceded aztec-empire — The Mexica of Tenochtitlan later formed the Triple Alliance that created the Aztec Empire."
+        ],
+        [
+          458,
+          "ayutthaya-founded preceded ayutthaya-sacks-angkor — Ayutthaya grew into the regional power that sacked the Khmer capital."
+        ],
+        [
+          459,
+          "pachacuti-begins-inca-expansion began inca-empire — Pachacuti's accession and conquests are the traditional start of the Inca Empire."
+        ],
+        [
+          460,
+          "machu-picchu-built part_of inca-empire — Machu Picchu was built as an Inca royal estate, probably for Pachacuti."
+        ],
+        [
+          461,
+          "lapita-voyagers-settle-remote-oceania preceded polynesians-settle-hawaii — The Lapita settlers of Tonga and Samoa were the ancestors of the Polynesians who later voyaged to Hawaii."
+        ]
+      ]
     },
     {
       "severity": "review",
       "check": "Missing events and spans to decide (dashboard Review → Missing)",
-      "count": 51,
-      "rows": [
-        [
-          97,
-          "span · Norte Chico Civilization (-3000) · open"
-        ],
-        [
-          98,
-          "event · Caral Becomes a Monumental City (-2600) · open"
-        ],
-        [
-          137,
-          "event · Stonehenge's Sarsen Circle Raised (-2500) · open"
-        ],
-        [
-          138,
-          "event · Ur-Nammu Issues the Earliest Surviving Law Code (-2100) · open"
-        ],
-        [
-          139,
-          "event · Palace of Knossos Built (-1900) · open"
-        ],
-        [
-          115,
-          "span · Nok Culture (-1500) · open"
-        ],
-        [
-          110,
-          "event · Hatshepsut Becomes Pharaoh (-1479) · open"
-        ],
-        [
-          140,
-          "event · Rigveda Composed (-1400) · open"
-        ],
-        [
-          111,
-          "event · Akhenaten Introduces the Worship of the Aten (-1350) · open"
-        ],
-        [
-          112,
-          "event · Battle of Kadesh (-1274) · open"
-        ],
-        [
-          141,
-          "event · Oracle-Bone Writing Appears in Shang China (-1250) · open"
-        ],
-        [
-          142,
-          "span · Late Bronze Age Collapse (-1200) · open"
-        ],
-        [
-          116,
-          "span · Bantu Expansion (-1000) · open"
-        ],
-        [
-          132,
-          "event · Lapita Voyagers Settle Remote Oceania (-1000) · open"
-        ],
-        [
-          143,
-          "span · Neo-Assyrian Empire (-911) · open"
-        ],
-        [
-          99,
-          "span · Chavín Culture (-900) · open"
-        ],
-        [
-          113,
-          "event · Carthage Founded (-814) · open"
-        ],
-        [
-          114,
-          "event · Kushite King Piye Conquers Egypt (-728) · open"
-        ],
-        [
-          117,
-          "event · Library of Alexandria Founded (-285) · open"
-        ],
-        [
-          100,
-          "span · Teotihuacan (-100) · open"
-        ],
-        [
-          123,
-          "event · Trung Sisters Lead a Revolt Against Han Rule (40) · open"
-        ],
-        [
-          124,
-          "span · Funan (50) · open"
-        ],
-        [
-          144,
-          "event · Buddhism Reaches Han China (65) · open"
-        ],
-        [
-          104,
-          "span · Moche Culture (100) · open"
-        ],
-        [
-          101,
-          "event · Teotihuacan's Pyramid of the Sun Built (200) · open"
-        ],
-        [
-          145,
-          "span · Three Kingdoms of China (220) · open"
-        ],
-        [
-          146,
-          "event · Queen Himiko Sends an Envoy to Wei China (239) · open"
-        ],
-        [
-          147,
-          "span · Kofun Period (250) · open"
-        ],
-        [
-          102,
-          "event · Siyaj K'ak' Arrives at Tikal (378) · open"
-        ],
-        [
-          103,
-          "event · Pakal the Great Becomes Ruler of Palenque (615) · open"
-        ],
-        [
-          118,
-          "event · Arabs Conquer Egypt (641) · open"
-        ],
-        [
-          125,
-          "event · Earliest Srivijaya Inscription Carved (682) · open"
-        ],
-        [
-          126,
-          "event · Borobudur Completed (825) · open"
-        ],
-        [
-          105,
-          "span · Chaco Canyon Culture (850) · open"
-        ],
-        [
-          127,
-          "event · Battle of Bach Dang Ends Chinese Rule in Vietnam (938) · open"
-        ],
-        [
-          122,
-          "span · Swahili Coast Trading Cities (1000) · open"
-        ],
-        [
-          128,
-          "event · Anawrahta Founds the Pagan Empire (1044) · open"
-        ],
-        [
-          106,
-          "event · Cahokia Grows into a City (1050) · open"
-        ],
-        [
-          133,
-          "event · Polynesians Settle Hawaii (1100) · open"
-        ],
-        [
-          134,
-          "event · Nan Madol Built on Pohnpei (1180) · open"
-        ],
-        [
-          119,
-          "event · Lalibela's Rock-Hewn Churches Carved (1200) · open"
-        ],
-        [
-          135,
-          "event · Polynesians Reach Rapa Nui (1200) · open"
-        ],
-        [
-          120,
-          "event · Sundiata Keita Wins the Battle of Kirina (1235) · open"
-        ],
-        [
-          136,
-          "event · Polynesian Voyagers Settle New Zealand (1280) · open"
-        ],
-        [
-          129,
-          "event · Majapahit Founded (1293) · open"
-        ],
-        [
-          107,
-          "event · Tenochtitlan Founded (1325) · open"
-        ],
-        [
-          130,
-          "event · Kingdom of Ayutthaya Founded (1351) · open"
-        ],
-        [
-          121,
-          "event · Ibn Battuta Visits the Mali Empire (1352) · open"
-        ],
-        [
-          131,
-          "event · Malacca Sultanate Founded (1400) · open"
-        ],
-        [
-          108,
-          "event · Pachacuti Begins the Inca Expansion (1438) · open"
-        ],
-        [
-          109,
-          "event · Machu Picchu Built (1450) · open"
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "review",
@@ -650,8 +824,165 @@
     {
       "severity": "review",
       "check": "Country tags awaiting review (manage.py approve-countries)",
-      "count": 0,
-      "rows": []
+      "count": 39,
+      "rows": [
+        [
+          "akhenaten-elevates-the-aten",
+          "high"
+        ],
+        [
+          "arabs-conquer-egypt",
+          "high"
+        ],
+        [
+          "ayutthaya-founded",
+          "high"
+        ],
+        [
+          "bantu-expansion",
+          "high"
+        ],
+        [
+          "battle-of-bach-dang-938",
+          "high"
+        ],
+        [
+          "battle-of-kadesh",
+          "high"
+        ],
+        [
+          "battle-of-kirina",
+          "high"
+        ],
+        [
+          "borobudur-completed",
+          "high"
+        ],
+        [
+          "cahokia-grows-into-a-city",
+          "high"
+        ],
+        [
+          "caral-supe-civilization",
+          "high"
+        ],
+        [
+          "carthage-founded",
+          "high"
+        ],
+        [
+          "code-of-ur-nammu",
+          "high"
+        ],
+        [
+          "first-palace-at-knossos",
+          "high"
+        ],
+        [
+          "hatshepsut-becomes-pharaoh",
+          "high"
+        ],
+        [
+          "himiko-sends-envoy-to-wei",
+          "high"
+        ],
+        [
+          "ibn-battuta-visits-mali",
+          "high"
+        ],
+        [
+          "kofun-period",
+          "high"
+        ],
+        [
+          "lalibela-rock-hewn-churches",
+          "high"
+        ],
+        [
+          "lapita-voyagers-settle-remote-oceania",
+          "high"
+        ],
+        [
+          "late-bronze-age-collapse",
+          "high"
+        ],
+        [
+          "library-of-alexandria-founded",
+          "high"
+        ],
+        [
+          "machu-picchu-built",
+          "high"
+        ],
+        [
+          "majapahit-founded",
+          "high"
+        ],
+        [
+          "neo-assyrian-empire",
+          "high"
+        ],
+        [
+          "nok-culture",
+          "high"
+        ],
+        [
+          "oracle-bone-writing",
+          "high"
+        ],
+        [
+          "pachacuti-begins-inca-expansion",
+          "high"
+        ],
+        [
+          "pakal-becomes-ruler-of-palenque",
+          "high"
+        ],
+        [
+          "polynesians-reach-rapa-nui",
+          "high"
+        ],
+        [
+          "polynesians-settle-hawaii",
+          "high"
+        ],
+        [
+          "polynesians-settle-new-zealand",
+          "high"
+        ],
+        [
+          "pyramid-of-the-sun-built",
+          "high"
+        ],
+        [
+          "rigveda-composed",
+          "high"
+        ],
+        [
+          "stonehenge-sarsen-circle-raised",
+          "high"
+        ],
+        [
+          "swahili-coast-trading-cities",
+          "high"
+        ],
+        [
+          "tenochtitlan-founded",
+          "high"
+        ],
+        [
+          "teotihuacan",
+          "high"
+        ],
+        [
+          "three-kingdoms-china",
+          "high"
+        ],
+        [
+          "trung-sisters-revolt",
+          "high"
+        ]
+      ]
     },
     {
       "severity": "info",
@@ -660,27 +991,27 @@
       "rows": [
         [
           "Europe",
-          "europe · 181 records"
+          "europe · 183 records"
         ],
         [
           "South Asia",
-          "south-asia · 148 records"
+          "south-asia · 149 records"
         ],
         [
           "East Asia",
-          "east-asia · 68 records"
+          "east-asia · 72 records"
         ],
         [
           "Americas",
-          "americas · 65 records"
+          "americas · 69 records"
         ],
         [
           "Middle East",
-          "middle-east · 51 records"
+          "middle-east · 55 records"
         ],
         [
           "Africa",
-          "africa · 44 records"
+          "africa · 55 records"
         ],
         [
           "Global",
@@ -688,19 +1019,19 @@
         ],
         [
           "Southeast Asia",
-          "east-asia · 17 records"
+          "east-asia · 22 records"
         ],
         [
           "North America",
-          "americas · 12 records"
+          "americas · 13 records"
         ],
         [
           "Oceania",
-          "global · 5 records"
+          "global · 9 records"
         ],
         [
           "South America",
-          "americas · 1 records"
+          "americas · 4 records"
         ],
         [
           "Antarctica",
@@ -782,11 +1113,11 @@
       "rows": [
         [
           "events",
-          "343 at import -> 484 now"
+          "343 at import -> 514 now"
         ],
         [
           "time_spans",
-          "98 at import -> 144 now"
+          "98 at import -> 153 now"
         ]
       ]
     }
