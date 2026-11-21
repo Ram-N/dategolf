@@ -1,0 +1,61 @@
+{
+  "about": "From suggest-sources. Every title was checked against Wikipedia. 'unresolved' entities need a pick (suggest-sources --picks). load-sources loads 'sources' only.",
+  "sources": [
+    {
+      "id": "arab-traders-kerala",
+      "name": "Arab Traders Arrive in Kerala",
+      "year": 629,
+      "title": "Islam in Kerala",
+      "url": "https://en.wikipedia.org/wiki/Islam_in_Kerala",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Islam in Kerala",
+      "note": null
+    },
+    {
+      "id": "invention-of-compass",
+      "name": "Magnetic Compass Developed in China",
+      "year": 1100,
+      "title": "History of the compass",
+      "url": "https://en.wikipedia.org/wiki/History_of_the_compass#Early_navigational_compass",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "History of the compass#Early navigational compass",
+      "note": null
+    },
+    {
+      "id": "death-of-jahangir",
+      "name": "Death of Jahangir",
+      "year": 1627,
+      "title": "Jahangir",
+      "url": "https://en.wikipedia.org/wiki/Jahangir#Death",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Jahangir#Death",
+      "note": null
+    },
+    {
+      "id": "smallpox-eradicated",
+      "name": "Smallpox Eradicated Globally",
+      "year": 1980,
+      "title": "History of smallpox",
+      "url": "https://en.wikipedia.org/wiki/History_of_smallpox#Eradication",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "History of smallpox#Eradication",
+      "note": null
+    },
+    {
+      "id": "namibia-independence-process",
+      "name": "Namibia Becomes Independent",
+      "year": 1990,
+      "title": "History of Namibia",
+      "url": "https://en.wikipedia.org/wiki/History_of_Namibia#Independence",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "History of Namibia#Independence",
+      "note": null
+    }
+  ],
+  "unresolved": []
+}
