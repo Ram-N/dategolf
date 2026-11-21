@@ -184,6 +184,12 @@
           @click="onBarClick(b.d.id)"
         >
           <title>{{ b.tooltip }}</title>
+          <!-- Life-cycle phases (Phase 12): the bar's family colour, filled more or less strongly by kind -->
+          <g v-for="p in b.phases" :key="p.phase.start" class="phase" :class="`kind-${p.phase.kind}`">
+            <title>{{ p.tooltip }}</title>
+            <rect :x="p.x" :y="b.y" :width="p.w" :height="BAR_H" :fill="`var(--df-f-${b.family})`" class="phase-rect" />
+          </g>
+          <!-- Drawn over the phases (outline only, then) so the selected / lit outline stays visible -->
           <rect
             :x="b.x"
             :y="b.y"
@@ -193,6 +199,7 @@
             :fill="`var(--df-f-${b.family})`"
             :stroke="`var(--df-f-${b.family})`"
             class="bar-rect"
+            :class="{ phased: b.phases.length }"
           />
           <!-- Sub-spans revealed by zooming in: segments inside the parent's bar (Delhi Sultanate → its dynasties) -->
           <g
@@ -287,7 +294,16 @@ import {
   type Side,
 } from '@/engine/dateflow/visibility'
 import { familyFor, shapeOf, shapePath, type Family } from '@/engine/dateflow/categoryGroups'
-import { emptyRows, formatSpan, packBars, revealedSubSpans, topLevelSpans } from '@/engine/dateflow/durations'
+import {
+  PHASE_KIND_LABEL,
+  emptyRows,
+  formatPhase,
+  formatSpan,
+  packBars,
+  phaseSegments,
+  revealedSubSpans,
+  topLevelSpans,
+} from '@/engine/dateflow/durations'
 import { pickCurrents } from '@/engine/dateflow/currents'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
 import { constellationThreshold, dotRadius, scatter, trackOf, tracksFor, type TrackAxis } from '@/engine/dateflow/constellation'
@@ -626,12 +642,18 @@ function layoutBars(t: Track) {
       labelX,
       family: familyFor(d.categories),
       tooltip: `${formatSpan(d, formatYear)} — ${d.name}`,
-      segments: layoutSegments(t, d.id, x, x + w, label ? labelX + label.length * BAR_CHAR_W : x),
+      phases: phaseSegments(d.phases ?? [], (y) => yearToX(y, props.view, width.value), x, x + w).map((s) => ({
+        ...s,
+        tooltip: `${d.name} · ${PHASE_KIND_LABEL[s.phase.kind]}, ${formatPhase(s.phase, formatYear)}: ${s.phase.title}`,
+      })),
+      // With segments the name is bold (wider), so its end is measured with the bold width
+      segments: layoutSegments(t, d.id, x, x + w, label ? labelX + label.length * BAR_BOLD_CHAR_W : x),
     }
   })
 }
 
 const BAR_CHAR_W = 5.6 // approx width of a 10px bar-label character
+const BAR_BOLD_CHAR_W = 6.5 // the same in semibold (a bar's name when sub-spans ride inside it)
 const SUB_REVEAL_PX = 48 // a sub-span shows inside its parent's bar once it is this wide
 
 function fitLabel(name: string, px: number): string {
@@ -1129,6 +1151,32 @@ function onArcClick(key: string, e: MouseEvent) {
 .bar.selected .bar-rect {
   stroke: var(--df-text);
   stroke-width: 1.5;
+}
+/* Phases: the bar's own fill steps aside, and each phase fills by kind (strongest at its height) */
+.bar-rect.phased {
+  fill-opacity: 0;
+  pointer-events: none; /* hovering reaches the phase underneath (its own tooltip) */
+}
+.phase-rect {
+  stroke: var(--df-bg);
+  stroke-width: 1;
+}
+.phase.kind-foundation .phase-rect,
+.phase.kind-end .phase-rect {
+  fill-opacity: 0.18;
+}
+.phase.kind-contraction .phase-rect {
+  fill-opacity: 0.3;
+}
+.phase.kind-transformation .phase-rect {
+  fill-opacity: 0.45;
+}
+.phase.kind-expansion .phase-rect,
+.phase.kind-consolidation .phase-rect {
+  fill-opacity: 0.6;
+}
+.phase.kind-height .phase-rect {
+  fill-opacity: 0.85;
 }
 .segment-rect {
   fill-opacity: 0.85;

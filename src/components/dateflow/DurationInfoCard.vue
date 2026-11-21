@@ -36,6 +36,30 @@
         </p>
       </div>
 
+      <!-- Life cycle (Phase 12): the bar's segments, each in the same shade -->
+      <section v-if="duration.phases?.length" class="mt-4" aria-label="Life cycle">
+        <h3 class="text-[11px] font-semibold uppercase tracking-widest secondary mb-2">Life cycle</h3>
+        <ol class="space-y-2">
+          <li v-for="p in duration.phases" :key="p.start" class="flex gap-2">
+            <span class="swatch mt-1 shrink-0 rounded-sm" :class="`kind-${p.kind}`"
+                  :style="{ background: `var(--df-f-${family})` }" aria-hidden="true" />
+            <div class="min-w-0">
+              <div class="text-xs secondary">
+                <span class="font-semibold">{{ PHASE_KIND_LABEL[p.kind] }}</span>
+                · <span class="tabular-nums">{{ formatPhase(p, formatYear) }}</span>
+              </div>
+              <div class="text-sm font-semibold">{{ p.title }}</div>
+              <p class="text-sm leading-snug mt-0.5">{{ p.description }}</p>
+              <p v-if="p.dateDisplay" class="text-xs secondary mt-0.5">≈ Historians' dates: {{ p.dateDisplay }}</p>
+              <button v-if="p.startEvent && eventName(p.startEvent)" class="opens text-xs mt-0.5"
+                      @click="emit('openEvent', p.startEvent)">
+                Opens with: {{ eventName(p.startEvent) }}
+              </button>
+            </div>
+          </li>
+        </ol>
+      </section>
+
       <EventConnections themed :groups="connections" :counts="storyCounts" @story="(d) => emit('story', d)"
                         @open-event="(id) => emit('openEvent', id)"
                         @open-duration="(id) => emit('openDuration', id)"
@@ -73,7 +97,7 @@
 import { computed, onMounted, onUnmounted } from 'vue'
 import type { Event } from '@/types'
 import type { Duration } from '@/types/dateflow'
-import { eventsDuring, formatSpan } from '@/engine/dateflow/durations'
+import { PHASE_KIND_LABEL, eventsDuring, formatPhase, formatSpan } from '@/engine/dateflow/durations'
 import { familyFor } from '@/engine/dateflow/categoryGroups'
 import type { ConnectionGroup } from '@/engine/dateflow/connections'
 import EventConnections from './EventConnections.vue'
@@ -97,6 +121,7 @@ const emit = defineEmits<{
 }>()
 
 const family = computed(() => familyFor(props.duration.categories))
+const eventName = (id: string) => props.events.find((e) => e.id === id)?.name
 const related = computed(() => eventsDuring(props.events, props.duration))
 const lengthText = computed(() => {
   // No year 0: a span crossing the BCE/CE boundary is one year shorter than the difference.
@@ -113,6 +138,33 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 </script>
 
 <style scoped>
+/* Phase swatches: the same fill strength per kind as the bar's segments */
+.swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.swatch.kind-foundation,
+.swatch.kind-end {
+  opacity: 0.18;
+}
+.swatch.kind-contraction {
+  opacity: 0.3;
+}
+.swatch.kind-transformation {
+  opacity: 0.45;
+}
+.swatch.kind-expansion,
+.swatch.kind-consolidation {
+  opacity: 0.6;
+}
+.swatch.kind-height {
+  opacity: 0.85;
+}
+.opens {
+  color: var(--df-text-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 .tm {
   color: var(--df-approx);
   background: var(--df-approx-bg);

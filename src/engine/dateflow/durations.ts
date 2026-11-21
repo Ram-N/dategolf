@@ -1,5 +1,5 @@
 import type { Event } from '@/types'
-import type { Duration, Relationship } from '@/types/dateflow'
+import type { Duration, Phase, PhaseKind, Relationship } from '@/types/dateflow'
 
 export interface BarItem {
   id: string
@@ -42,6 +42,40 @@ export function eventsDuring(events: Event[], d: Duration, limit = 8): Event[] {
 export function formatSpan(d: Duration, formatYear: (y: number) => string): string {
   const c = d.approximate ? 'c. ' : ''
   return `${c}${formatYear(d.startYear)} – ${c}${formatYear(d.endYear)}`
+}
+
+// ── Life-cycle phases (Phase 12): segments of an empire's bar ──────────────────────────
+export const PHASE_KIND_LABEL: Record<PhaseKind, string> = {
+  foundation: 'Foundation',
+  expansion: 'Expansion',
+  consolidation: 'Consolidation',
+  height: 'Height',
+  transformation: 'Transformation',
+  contraction: 'Contraction',
+  end: 'End',
+}
+
+/** A phase's years as students should read them: "c. 1299 – 1326" when it is approximate. */
+export function formatPhase(p: Phase, formatYear: (y: number) => string): string {
+  const c = p.approximate ? 'c. ' : ''
+  return `${c}${formatYear(p.start)} – ${formatYear(p.end)}`
+}
+
+/**
+ * Where each phase falls within a bar drawn from barX1 to barX2, given a year → x function.
+ * Phases outside the bar (or under a pixel wide) are dropped.
+ */
+export function phaseSegments(
+  phases: Phase[],
+  toX: (year: number) => number,
+  barX1: number,
+  barX2: number,
+): { phase: Phase; x: number; w: number }[] {
+  return phases.flatMap((phase) => {
+    const x = Math.max(toX(phase.start), barX1)
+    const w = Math.min(toX(phase.end), barX2) - x
+    return w >= 1 ? [{ phase, x, w }] : []
+  })
 }
 
 // ── Sub-spans (Phase 11): spans `part_of` another span nest inside its bar ─────────────

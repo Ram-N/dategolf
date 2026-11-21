@@ -46,7 +46,17 @@ import {
   visibleLanes,
   type LaneId,
 } from '../dateflow/lanes'
-import { emptyRows, eventsDuring, formatSpan, packBars, revealedSubSpans, spanParents, topLevelSpans } from '../dateflow/durations'
+import {
+  emptyRows,
+  eventsDuring,
+  formatPhase,
+  formatSpan,
+  packBars,
+  phaseSegments,
+  revealedSubSpans,
+  spanParents,
+  topLevelSpans,
+} from '../dateflow/durations'
 import { formatYear, parseYear } from '@/utils/formatYear'
 import type { Event } from '@/types'
 import eventsData from '@/data/events.json'
@@ -57,6 +67,26 @@ import erasData from '@/data/eras.json'
 import relationshipsData from '@/data/relationships.json'
 
 const W = 1000
+
+describe('life-cycle phases (Phase 12)', () => {
+  const phases = [
+    { kind: 'foundation' as const, title: 'A', start: 1299, end: 1326, description: 'x', approximate: true },
+    { kind: 'expansion' as const, title: 'B', start: 1326, end: 1453, description: 'y' },
+    { kind: 'end' as const, title: 'C', start: 1453, end: 1922, description: 'z' },
+  ]
+  const toX = (y: number) => y - 1299 // one pixel per year, from 1299
+
+  it('lays phases end to end inside the bar, clipped to what is drawn', () => {
+    expect(phaseSegments(phases, toX, 0, 623).map((s) => [s.x, s.w])).toEqual([[0, 27], [27, 127], [154, 469]])
+    // A bar cut off by the screen edge clips its phases; ones wholly outside are dropped
+    expect(phaseSegments(phases, toX, 100, 200).map((s) => [s.phase.title, s.x, s.w])).toEqual([['B', 100, 54], ['C', 154, 46]])
+  })
+
+  it('writes an approximate phase with c.', () => {
+    expect(formatPhase(phases[0]!, formatYear)).toBe('c. 1299 – 1326')
+    expect(formatPhase(phases[1]!, formatYear)).toBe('1326 – 1453')
+  })
+})
 
 describe('timeScale', () => {
   it('era chips open an era exactly, and light up only when the view matches one', () => {
