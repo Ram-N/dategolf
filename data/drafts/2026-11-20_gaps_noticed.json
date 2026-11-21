@@ -1,0 +1,11 @@
+{"found_while": "2026-11-20: drafting the thin-period batches",
+ "items": [
+  {"kind": "event", "name": "Fall of Nineveh", "year": -612, "region": "Middle East",
+   "why": "Babylonians and Medes sack the Assyrian capital: the event that effectively ended the Neo-Assyrian Empire (just drafted, which currently has no ending event).",
+   "related_ids": [], "url": "https://en.wikipedia.org/wiki/Battle_of_Nineveh_(612_BC)"},
+  {"kind": "event", "name": "Egyptian–Hittite Peace Treaty", "year": -1259, "approximate": true, "region": "Middle East",
+   "why": "Ramesses II and Hattusili III make peace after Kadesh: one of the earliest peace treaties whose text survives, in both Egyptian and Akkadian versions. Would follow Battle of Kadesh.",
+   "related_ids": ["new-kingdom-egypt"], "url": "https://en.wikipedia.org/wiki/Egyptian%E2%80%93Hittite_peace_treaty"},
+  {"kind": "span", "name": "Polynesian Settlement of the Pacific", "year": -1000, "end_year": 1300, "approximate": true, "region": "Oceania",
+   "why": "A frame for the Lapita, Hawaii, Rapa Nui and New Zealand items just drafted, so they could be part_of one story instead of loose events."}
+ ]}
