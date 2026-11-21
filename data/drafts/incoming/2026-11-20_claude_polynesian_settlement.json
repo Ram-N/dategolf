@@ -1,0 +1,35 @@
+{
+  "origin": "ai_drafted:claude-opus-5-5",
+  "about": "Gap item 150 (Ram, 2026-11-20): a span that ties the Lapita, Hawaii, Rapa Nui and New Zealand drafts into one story.",
+  "events": [],
+  "spans": [
+    {
+      "id": "polynesian-settlement-of-the-pacific",
+      "kind": "period",
+      "name": "Polynesian Settlement of the Pacific",
+      "start_year": -1000,
+      "end_year": 1300,
+      "approximate": true,
+      "date_display": "c. 1000 BCE–1300 CE: from the Lapita voyages to the settlement of New Zealand",
+      "region": "Oceania",
+      "categories": ["Exploration", "Culture"],
+      "description": "The long settlement of the remote Pacific by seafaring peoples. Lapita voyagers reached Fiji, Tonga and Samoa, where Polynesian culture took shape; after a long pause their descendants sailed on to settle the islands from Hawaii to Rapa Nui and New Zealand.",
+      "importance": 6,
+      "countries": ["TO", "WS", "FJ", "US", "CL", "NZ"],
+      "source": "https://en.wikipedia.org/wiki/Polynesian_navigation",
+      "note": "The Lapita settlers were the ancestors of the Polynesians rather than Polynesians themselves; the description says Polynesian culture took shape in Tonga and Samoa. The 'long pause' in West Polynesia lasted over a thousand years. The Chatham Islands were settled from New Zealand later (c. 1500), after this span's end.",
+      "significance": "Without metal tools, writing or navigational instruments, Pacific voyagers found and settled nearly every habitable island across a vast stretch of ocean. Their wayfinding by stars, swells and birds ranks among the great achievements of human exploration, and modern canoes such as Hōkūleʻa have revived it.",
+      "fills_missing": 150
+    }
+  ],
+  "links": [
+    {"source": "lapita-voyagers-settle-remote-oceania", "type": "began", "target": "polynesian-settlement-of-the-pacific", "confidence": "high",
+     "why": "The Lapita crossing into Remote Oceania opened the settlement of the far Pacific."},
+    {"source": "polynesians-settle-hawaii", "type": "part_of", "target": "polynesian-settlement-of-the-pacific", "confidence": "high",
+     "why": "Hawaii, the northern corner of the Polynesian triangle, was settled from East Polynesia."},
+    {"source": "polynesians-reach-rapa-nui", "type": "part_of", "target": "polynesian-settlement-of-the-pacific", "confidence": "high",
+     "why": "Rapa Nui, the eastern corner of the triangle, was among the last islands reached."},
+    {"source": "polynesians-settle-new-zealand", "type": "part_of", "target": "polynesian-settlement-of-the-pacific", "confidence": "high",
+     "why": "New Zealand, the southern corner of the triangle, was the last large land mass settled."}
+  ]
+}

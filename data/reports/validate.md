@@ -25,7 +25,7 @@
 | error | Link stored as 'followed' (should be stored as the inverse 'preceded') | pass |
 | error | Contradictory links (A→B and B→A of the same one-way type) | pass |
 | error | Symmetric link not stored in id order | pass |
-| warning | Link touches a proposed (unpublished) entity | 32 |
+| warning | Link touches a proposed (unpublished) entity | 36 |
 | warning | Time spans with the same normalised name | pass |
 | warning | Event names that differ only in case or spacing | pass |
 | warning | Event with no aliases (search falls back to name only) | pass |
@@ -34,16 +34,16 @@
 | review | Legacy CSV rows with no accepted match and no triage outcome | pass |
 | review | Proposed events awaiting approval (not exported; manage.py approve <id>) | 30 |
 | review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 39 |
-| info | DateFlow-only events (excluded from DatePick and DateGolf) | 3 |
+| info | DateFlow-only events (excluded from DatePick and DateGolf) | 8 |
 | warning | Approximate event with no range (set-event-date --display): students see "c." with nothing to explain it | pass |
 | warning | Event with a range but not marked approximate (the range is then not exported) | pass |
 | warning | Span with a date note but not marked approximate (the note is then not exported) | pass |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 3 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 32 |
-| review | Missing events and spans to decide (dashboard Review → Missing) | pass |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 36 |
+| review | Missing events and spans to decide (dashboard Review → Missing) | 2 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
-| review | Country tags awaiting review (manage.py approve-countries) | 39 |
+| review | Country tags awaiting review (manage.py approve-countries) | 40 |
 | info | Region labels in use, with their DateFlow lane | 12 |
 | warning | Description mentions a year near the answer (DatePick shows it before the guess) | pass |
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
@@ -59,7 +59,7 @@
 ## Counts
 
 - events: 514
-- time_spans: 153
+- time_spans: 154
 - eras: 5
 - datelinks_keys: 26
 - datelinks_groups: 83
@@ -68,7 +68,7 @@
 - daily_challenge_dates: 366
 - csv_rows: 310
 - significance_reviewed: 173
-- significance_proposed: 39
+- significance_proposed: 40
 
 ## [warning] Link touches a proposed (unpublished) entity
 
@@ -90,6 +90,7 @@
 - `455` — ibn-battuta-visits-mali part_of mali-empire
 - `449` — islamic-caliphate-expands preceded arabs-conquer-egypt
 - `445` — jin-reunifies-china ended three-kingdoms-china
+- `462` — lapita-voyagers-settle-remote-oceania began polynesian-settlement-of-the-pacific
 - `461` — lapita-voyagers-settle-remote-oceania preceded polynesians-settle-hawaii
 - `436` — late-bronze-age-collapse contributed_to ironworking-spreads
 - `439` — library-of-alexandria-founded enabled eratosthenes-measures-earth
@@ -98,6 +99,9 @@
 - `434` — oracle-bone-writing part_of shang-dynasty
 - `459` — pachacuti-begins-inca-expansion began inca-empire
 - `448` — pakal-becomes-ruler-of-palenque part_of classic-maya
+- `464` — polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific
+- `463` — polynesians-settle-hawaii part_of polynesian-settlement-of-the-pacific
+- `465` — polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific
 - `438` — ptolemaic-dynasty-founded enabled library-of-alexandria-founded
 - `441` — pyramid-of-the-sun-built part_of teotihuacan
 - `457` — tenochtitlan-founded preceded aztec-empire
@@ -185,6 +189,11 @@
 - `birth-of-buddha` — -563 · Birth of Siddhartha Gautama — Birth date too disputed for a fair guess (CSV alone gives -576 and -486); user decision 2026-11-06.
 - `battle-of-mahabharata` — -1000 · Battle of Kurukshetra — Dates differ by over 2,000 years (tradition 3102 BCE, scholars c. 1000 BCE); historicity debated. Precision batch 2026-11-09.
 - `ironworking-spreads` — -670 · Ironworking Spreads Across the Old World — A process over seven centuries; no single year to guess. Precision batch 2026-11-09.
+- `rigveda-composed` — -1400 · Rigveda Composed — Composed over centuries (c. 1500–1200 BCE); no single year to guess
+- `lapita-voyagers-settle-remote-oceania` — -1000 · Lapita Voyagers Settle Remote Oceania — A process over two or three centuries (c. 1100–800 BCE)
+- `polynesians-settle-hawaii` — 1100 · Polynesians Settle Hawaii — Settlement date debated (c. 1000–1250; older estimates 300–800)
+- `polynesians-reach-rapa-nui` — 1200 · Polynesians Reach Rapa Nui — Radiocarbon range c. 1150–1250; no single year
+- `stonehenge-sarsen-circle-raised` — -2500 · Stonehenge's Sarsen Circle Raised — Sarsen phase c. 2600–2400 BCE; no single year
 
 ## [info] Entities with an actor but no location (e.g. events on the Moon or Mars)
 
@@ -226,6 +235,15 @@
 - `459` — pachacuti-begins-inca-expansion began inca-empire — Pachacuti's accession and conquests are the traditional start of the Inca Empire.
 - `460` — machu-picchu-built part_of inca-empire — Machu Picchu was built as an Inca royal estate, probably for Pachacuti.
 - `461` — lapita-voyagers-settle-remote-oceania preceded polynesians-settle-hawaii — The Lapita settlers of Tonga and Samoa were the ancestors of the Polynesians who later voyaged to Hawaii.
+- `462` — lapita-voyagers-settle-remote-oceania began polynesian-settlement-of-the-pacific — The Lapita crossing into Remote Oceania opened the settlement of the far Pacific.
+- `463` — polynesians-settle-hawaii part_of polynesian-settlement-of-the-pacific — Hawaii, the northern corner of the Polynesian triangle, was settled from East Polynesia.
+- `464` — polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific — Rapa Nui, the eastern corner of the triangle, was among the last islands reached.
+- `465` — polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific — New Zealand, the southern corner of the triangle, was the last large land mass settled.
+
+## [review] Missing events and spans to decide (dashboard Review → Missing)
+
+- `149` — event · Egyptian–Hittite Peace Treaty (-1259) · open
+- `148` — event · Fall of Nineveh (-612) · open
 
 ## [review] Country tags awaiting review (manage.py approve-countries)
 
@@ -257,6 +275,7 @@
 - `oracle-bone-writing` — high
 - `pachacuti-begins-inca-expansion` — high
 - `pakal-becomes-ruler-of-palenque` — high
+- `polynesian-settlement-of-the-pacific` — high
 - `polynesians-reach-rapa-nui` — high
 - `polynesians-settle-hawaii` — high
 - `polynesians-settle-new-zealand` — high
@@ -280,7 +299,7 @@
 - `Global` — global · 35 records
 - `Southeast Asia` — east-asia · 22 records
 - `North America` — americas · 13 records
-- `Oceania` — global · 9 records
+- `Oceania` — global · 10 records
 - `South America` — americas · 4 records
 - `Antarctica` — global · 1 records
 
@@ -293,4 +312,4 @@
 ## [info] Counts changed since the legacy import
 
 - `events` — 343 at import -> 514 now
-- `time_spans` — 98 at import -> 153 now
+- `time_spans` — 98 at import -> 154 now

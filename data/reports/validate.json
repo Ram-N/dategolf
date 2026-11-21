@@ -1,7 +1,7 @@
 {
   "counts": {
     "events": 514,
-    "time_spans": 153,
+    "time_spans": 154,
     "eras": 5,
     "datelinks_keys": 26,
     "datelinks_groups": 83,
@@ -10,7 +10,7 @@
     "daily_challenge_dates": 366,
     "csv_rows": 310,
     "significance_reviewed": 173,
-    "significance_proposed": 39
+    "significance_proposed": 40
   },
   "checks": [
     {
@@ -154,7 +154,7 @@
     {
       "severity": "warning",
       "check": "Link touches a proposed (unpublished) entity",
-      "count": 32,
+      "count": 36,
       "rows": [
         [
           432,
@@ -229,6 +229,10 @@
           "jin-reunifies-china ended three-kingdoms-china"
         ],
         [
+          462,
+          "lapita-voyagers-settle-remote-oceania began polynesian-settlement-of-the-pacific"
+        ],
+        [
           461,
           "lapita-voyagers-settle-remote-oceania preceded polynesians-settle-hawaii"
         ],
@@ -259,6 +263,18 @@
         [
           448,
           "pakal-becomes-ruler-of-palenque part_of classic-maya"
+        ],
+        [
+          464,
+          "polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific"
+        ],
+        [
+          463,
+          "polynesians-settle-hawaii part_of polynesian-settlement-of-the-pacific"
+        ],
+        [
+          465,
+          "polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific"
         ],
         [
           438,
@@ -615,7 +631,7 @@
     {
       "severity": "info",
       "check": "DateFlow-only events (excluded from DatePick and DateGolf)",
-      "count": 3,
+      "count": 8,
       "rows": [
         [
           "birth-of-buddha",
@@ -628,6 +644,26 @@
         [
           "ironworking-spreads",
           "-670 · Ironworking Spreads Across the Old World — A process over seven centuries; no single year to guess. Precision batch 2026-11-09."
+        ],
+        [
+          "rigveda-composed",
+          "-1400 · Rigveda Composed — Composed over centuries (c. 1500–1200 BCE); no single year to guess"
+        ],
+        [
+          "lapita-voyagers-settle-remote-oceania",
+          "-1000 · Lapita Voyagers Settle Remote Oceania — A process over two or three centuries (c. 1100–800 BCE)"
+        ],
+        [
+          "polynesians-settle-hawaii",
+          "1100 · Polynesians Settle Hawaii — Settlement date debated (c. 1000–1250; older estimates 300–800)"
+        ],
+        [
+          "polynesians-reach-rapa-nui",
+          "1200 · Polynesians Reach Rapa Nui — Radiocarbon range c. 1150–1250; no single year"
+        ],
+        [
+          "stonehenge-sarsen-circle-raised",
+          "-2500 · Stonehenge's Sarsen Circle Raised — Sarsen phase c. 2600–2400 BCE; no single year"
         ]
       ]
     },
@@ -677,7 +713,7 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 32,
+      "count": 36,
       "rows": [
         [
           430,
@@ -806,14 +842,39 @@
         [
           461,
           "lapita-voyagers-settle-remote-oceania preceded polynesians-settle-hawaii — The Lapita settlers of Tonga and Samoa were the ancestors of the Polynesians who later voyaged to Hawaii."
+        ],
+        [
+          462,
+          "lapita-voyagers-settle-remote-oceania began polynesian-settlement-of-the-pacific — The Lapita crossing into Remote Oceania opened the settlement of the far Pacific."
+        ],
+        [
+          463,
+          "polynesians-settle-hawaii part_of polynesian-settlement-of-the-pacific — Hawaii, the northern corner of the Polynesian triangle, was settled from East Polynesia."
+        ],
+        [
+          464,
+          "polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific — Rapa Nui, the eastern corner of the triangle, was among the last islands reached."
+        ],
+        [
+          465,
+          "polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific — New Zealand, the southern corner of the triangle, was the last large land mass settled."
         ]
       ]
     },
     {
       "severity": "review",
       "check": "Missing events and spans to decide (dashboard Review → Missing)",
-      "count": 0,
-      "rows": []
+      "count": 2,
+      "rows": [
+        [
+          149,
+          "event · Egyptian–Hittite Peace Treaty (-1259) · open"
+        ],
+        [
+          148,
+          "event · Fall of Nineveh (-612) · open"
+        ]
+      ]
     },
     {
       "severity": "review",
@@ -824,7 +885,7 @@
     {
       "severity": "review",
       "check": "Country tags awaiting review (manage.py approve-countries)",
-      "count": 39,
+      "count": 40,
       "rows": [
         [
           "akhenaten-elevates-the-aten",
@@ -939,6 +1000,10 @@
           "high"
         ],
         [
+          "polynesian-settlement-of-the-pacific",
+          "high"
+        ],
+        [
           "polynesians-reach-rapa-nui",
           "high"
         ],
@@ -1027,7 +1092,7 @@
         ],
         [
           "Oceania",
-          "global · 9 records"
+          "global · 10 records"
         ],
         [
           "South America",
@@ -1117,7 +1182,7 @@
         ],
         [
           "time_spans",
-          "98 at import -> 153 now"
+          "98 at import -> 154 now"
         ]
       ]
     }
