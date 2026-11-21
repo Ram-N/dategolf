@@ -1,0 +1,73 @@
+{
+  "origin": "ai_drafted:claude-opus-5-5",
+  "aids": {
+    "kievan-rus-founded": {
+      "groups": [
+        {
+          "label": "Look Back",
+          "items": [
+            "Charlemagne was crowned emperor in Rome in 800. Add 82 years → 882: in the far east of Europe, another new power was taking shape around Kiev.",
+            "The Viking Age opened with the raid on Lindisfarne in 793. The Norse traders who sailed down Russia's rivers were part of the same wave; about ninety years later, one of their princes held Kiev → 882."
+          ]
+        },
+        {
+          "label": "Year of 882",
+          "items": [
+            "Think 8-8-2: the 800s were the Vikings' century, and the two eights are the two cities Oleg joined, Novgorod in the north and Kiev in the south."
+          ]
+        },
+        {
+          "label": "Look Ahead",
+          "items": [
+            "Prince Vladimir of Kiev converted to Christianity in 988, the famous 'Baptism of Rus'. Subtract about a century (106 years) → 882, when Kiev first became the Rus capital.",
+            "Kievan Rus lasted until the Mongols sacked Kyiv in 1240. If you remember it fell in the 1200s after more than three and a half centuries, count back → the late 800s."
+          ]
+        },
+        {
+          "label": "Event Timeline",
+          "items": [
+            "862 — Rurik's rule at Novgorod begins (the Primary Chronicle's date)",
+            "882 — His successor Oleg takes Kiev and makes it the capital",
+            "988 — Vladimir's conversion: Christianity becomes the Rus faith",
+            "1240 — The Mongols sack Kyiv, ending the Kievan state's power"
+          ]
+        }
+      ]
+    },
+    "tokugawa-ieyasu-becomes-shogun": {
+      "groups": [
+        {
+          "label": "Look Back",
+          "items": [
+            "Ieyasu won the Battle of Sekigahara in 1600, the round-number year. The emperor made him shogun three years later → 1603."
+          ]
+        },
+        {
+          "label": "Year of 1603",
+          "items": [
+            "1603 is also the year Elizabeth I died and James VI of Scotland became James I of England. One island nation got a new dynasty in London, the other a new shogunate in Edo, in the same year.",
+            "1603 is the first year of Japan's Edo period, named after Ieyasu's capital, Edo, which is today's Tokyo."
+          ]
+        },
+        {
+          "label": "Look Ahead",
+          "items": [
+            "Commodore Perry's warships arrived in Edo Bay in 1853, exactly 250 years later. Subtract 250 → 1603.",
+            "The Tokugawa shogunate ended with the Meiji Restoration in 1868. It lasted 265 years: 1868 − 265 → 1603.",
+            "Not 1605 or 1607: Akbar died in 1605 and Jamestown was founded in 1607. Ieyasu came first, in 1603."
+          ]
+        },
+        {
+          "label": "Event Timeline",
+          "items": [
+            "1600 — Victory at Sekigahara",
+            "1603 — Named shogun by Emperor Go-Yōzei; rules from Edo",
+            "1605 — Hands the title to his son Hidetada but keeps real power",
+            "1615 — Siege of Osaka destroys the rival Toyotomi family",
+            "1616 — Ieyasu dies"
+          ]
+        }
+      ]
+    }
+  }
+}
