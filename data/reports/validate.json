@@ -1,7 +1,7 @@
 {
   "counts": {
-    "events": 505,
-    "time_spans": 154,
+    "events": 510,
+    "time_spans": 157,
     "eras": 5,
     "datelinks_keys": 26,
     "datelinks_groups": 83,
@@ -10,7 +10,7 @@
     "daily_challenge_dates": 366,
     "csv_rows": 310,
     "significance_reviewed": 204,
-    "significance_proposed": 0
+    "significance_proposed": 8
   },
   "checks": [
     {
@@ -160,8 +160,33 @@
     {
       "severity": "warning",
       "check": "Link touches a proposed (unpublished) entity",
-      "count": 0,
-      "rows": []
+      "count": 6,
+      "rows": [
+        [
+          463,
+          "battle-of-kirina began mali-empire"
+        ],
+        [
+          468,
+          "construction-of-the-pyramid-of-the-sun part_of teotihuacan"
+        ],
+        [
+          464,
+          "machu-picchu-built part_of inca-empire"
+        ],
+        [
+          467,
+          "polynesian-settlement-of-hawaii part_of polynesian-settlement-of-the-pacific"
+        ],
+        [
+          465,
+          "polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific"
+        ],
+        [
+          466,
+          "polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific"
+        ]
+      ]
     },
     {
       "severity": "warning",
@@ -202,8 +227,29 @@
     {
       "severity": "review",
       "check": "Proposed events awaiting approval (not exported; manage.py approve <id>)",
-      "count": 0,
-      "rows": []
+      "count": 5,
+      "rows": [
+        [
+          "lalibela-rock-hewn-churches",
+          "1200 · Lalibela's Rock-Hewn Churches Carved — Tradition credits all eleven to King Lalibela; archaeologists think some may be older or later."
+        ],
+        [
+          "polynesians-reach-rapa-nui",
+          "1200 · Polynesians Reach Rapa Nui — Older estimates went as early as 300–800; current radiocarbon work favours c. 1150–1250. The 'ecocide' story is debated, so the significance presents it as debate. Recommend DateFlow-only."
+        ],
+        [
+          "battle-of-kirina",
+          "1235 · Sundiata Keita Wins the Battle of Kirina — Known mainly from oral tradition and later Arabic sources; c. 1235 is conventional."
+        ],
+        [
+          "polynesians-settle-new-zealand",
+          "1280 · Polynesian Voyagers Settle New Zealand — Wilmshurst et al. date first settlement to c. 1250–1300."
+        ],
+        [
+          "machu-picchu-built",
+          "1450 · Machu Picchu Built — Burger et al. (Antiquity, 2021) date occupation from c. 1420. 'Lost city' is a popular label; local farmers always knew it."
+        ]
+      ]
     },
     {
       "severity": "review",
@@ -371,7 +417,7 @@
     {
       "severity": "info",
       "check": "DateFlow-only events (excluded from DatePick and DateGolf)",
-      "count": 6,
+      "count": 7,
       "rows": [
         [
           "birth-of-buddha",
@@ -396,6 +442,10 @@
         [
           "stonehenge-sarsen-circle-raised",
           "-2500 · Stonehenge's Sarsen Circle Raised — Sarsen phase c. 2600–2400 BCE; no single year"
+        ],
+        [
+          "polynesians-reach-rapa-nui",
+          "1200 · Polynesians Reach Rapa Nui — Radiocarbon range c. 1150–1250; no single year"
         ]
       ]
     },
@@ -445,8 +495,33 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 0,
-      "rows": []
+      "count": 6,
+      "rows": [
+        [
+          463,
+          "battle-of-kirina began mali-empire — The victory at Kirina is the traditional founding of the Mali Empire under Sundiata."
+        ],
+        [
+          464,
+          "machu-picchu-built part_of inca-empire — Machu Picchu was built as an Inca royal estate, probably for Pachacuti."
+        ],
+        [
+          465,
+          "polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific — Rapa Nui, the eastern corner of the Polynesian triangle, was among the last islands reached."
+        ],
+        [
+          466,
+          "polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific — New Zealand, the southern corner of the triangle, was the last large land mass settled."
+        ],
+        [
+          467,
+          "polynesian-settlement-of-hawaii part_of polynesian-settlement-of-the-pacific — Hawaii, the northern corner of the triangle, was settled from East Polynesia."
+        ],
+        [
+          468,
+          "construction-of-the-pyramid-of-the-sun part_of teotihuacan — The pyramid was Teotihuacan's largest monument, on its main avenue."
+        ]
+      ]
     },
     {
       "severity": "review",
@@ -478,8 +553,41 @@
     {
       "severity": "review",
       "check": "Country tags awaiting review (manage.py approve-countries)",
-      "count": 0,
-      "rows": []
+      "count": 8,
+      "rows": [
+        [
+          "battle-of-kirina",
+          "high"
+        ],
+        [
+          "cahokia",
+          "high"
+        ],
+        [
+          "construction-of-the-pyramid-of-the-sun",
+          "high"
+        ],
+        [
+          "lalibela-rock-hewn-churches",
+          "high"
+        ],
+        [
+          "machu-picchu-built",
+          "high"
+        ],
+        [
+          "polynesian-settlement-of-hawaii",
+          "high"
+        ],
+        [
+          "polynesians-reach-rapa-nui",
+          "high"
+        ],
+        [
+          "polynesians-settle-new-zealand",
+          "high"
+        ]
+      ]
     },
     {
       "severity": "info",
@@ -500,7 +608,7 @@
         ],
         [
           "Americas",
-          "americas · 68 records"
+          "americas · 69 records"
         ],
         [
           "Middle East",
@@ -508,7 +616,7 @@
         ],
         [
           "Africa",
-          "africa · 53 records"
+          "africa · 55 records"
         ],
         [
           "Global",
@@ -520,15 +628,15 @@
         ],
         [
           "North America",
-          "americas · 12 records"
+          "americas · 13 records"
         ],
         [
           "Oceania",
-          "global · 7 records"
+          "global · 10 records"
         ],
         [
           "South America",
-          "americas · 3 records"
+          "americas · 4 records"
         ],
         [
           "Antarctica",
@@ -610,11 +718,11 @@
       "rows": [
         [
           "events",
-          "343 at import -> 505 now"
+          "343 at import -> 510 now"
         ],
         [
           "time_spans",
-          "98 at import -> 154 now"
+          "98 at import -> 157 now"
         ]
       ]
     }

@@ -1,0 +1,13 @@
+{"found_while": "2026-11-21: Ram rejected these as events ('more spans than concrete events') and asked for spans",
+ "items": [
+  {"kind": "span", "name": "Construction of the Pyramid of the Sun", "year": 100, "end_year": 250, "approximate": true, "region": "Americas",
+   "why": "Replaces the rejected event (gap #101): built in phases, so a span.", "related_ids": ["teotihuacan"],
+   "url": "https://en.wikipedia.org/wiki/Pyramid_of_the_Sun"},
+  {"kind": "span", "name": "Cahokia", "year": 1050, "end_year": 1350, "approximate": true, "region": "North America",
+   "why": "Replaces the rejected event (gap #106): the city's rise and abandonment as a span.",
+   "url": "https://en.wikipedia.org/wiki/Cahokia"},
+  {"kind": "span", "name": "Polynesian Settlement of Hawaii", "year": 1000, "end_year": 1250, "approximate": true, "region": "Oceania",
+   "why": "Replaces the rejected event (gap #133): the settlement window as a span, part of the Polynesian Settlement of the Pacific.",
+   "related_ids": ["polynesian-settlement-of-the-pacific"],
+   "url": "https://en.wikipedia.org/wiki/History_of_Hawaii#Polynesian_migration_and_arrival"}
+ ]}

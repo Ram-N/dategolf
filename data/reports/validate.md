@@ -26,26 +26,26 @@
 | error | Contradictory links (A→B and B→A of the same one-way type) | pass |
 | error | Symmetric link not stored in id order | pass |
 | warning | DateLinks 'Year of' label doesn't match the event's year (rename-memory-aid-group) | pass |
-| warning | Link touches a proposed (unpublished) entity | pass |
+| warning | Link touches a proposed (unpublished) entity | 6 |
 | warning | Time spans with the same normalised name | pass |
 | warning | Event names that differ only in case or spacing | pass |
 | warning | Event with no aliases (search falls back to name only) | pass |
 | warning | Imported entity with no import record (provenance lost) | pass |
 | review | Event + time span share one ID (identity decision needed) | pass |
 | review | Legacy CSV rows with no accepted match and no triage outcome | pass |
-| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | pass |
+| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | 5 |
 | review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 39 |
-| info | DateFlow-only events (excluded from DatePick and DateGolf) | 6 |
+| info | DateFlow-only events (excluded from DatePick and DateGolf) | 7 |
 | warning | Approximate event with no range (set-event-date --display): students see "c." with nothing to explain it | pass |
 | warning | Event with a range but not marked approximate (the range is then not exported) | pass |
 | warning | Span with a date note but not marked approximate (the note is then not exported) | pass |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 3 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 6 |
 | review | Memory aids awaiting approval (not exported; dashboard Review → Memory aids) | pass |
 | review | Missing events and spans to decide (dashboard Review → Missing) | 2 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
-| review | Country tags awaiting review (manage.py approve-countries) | pass |
+| review | Country tags awaiting review (manage.py approve-countries) | 8 |
 | info | Region labels in use, with their DateFlow lane | 12 |
 | warning | Description mentions a year near the answer (DatePick shows it before the guess) | pass |
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
@@ -60,8 +60,8 @@
 
 ## Counts
 
-- events: 505
-- time_spans: 154
+- events: 510
+- time_spans: 157
 - eras: 5
 - datelinks_keys: 26
 - datelinks_groups: 83
@@ -70,7 +70,24 @@
 - daily_challenge_dates: 366
 - csv_rows: 310
 - significance_reviewed: 204
-- significance_proposed: 0
+- significance_proposed: 8
+
+## [warning] Link touches a proposed (unpublished) entity
+
+- `463` — battle-of-kirina began mali-empire
+- `468` — construction-of-the-pyramid-of-the-sun part_of teotihuacan
+- `464` — machu-picchu-built part_of inca-empire
+- `467` — polynesian-settlement-of-hawaii part_of polynesian-settlement-of-the-pacific
+- `465` — polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific
+- `466` — polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific
+
+## [review] Proposed events awaiting approval (not exported; manage.py approve <id>)
+
+- `lalibela-rock-hewn-churches` — 1200 · Lalibela's Rock-Hewn Churches Carved — Tradition credits all eleven to King Lalibela; archaeologists think some may be older or later.
+- `polynesians-reach-rapa-nui` — 1200 · Polynesians Reach Rapa Nui — Older estimates went as early as 300–800; current radiocarbon work favours c. 1150–1250. The 'ecocide' story is debated, so the significance presents it as debate. Recommend DateFlow-only.
+- `battle-of-kirina` — 1235 · Sundiata Keita Wins the Battle of Kirina — Known mainly from oral tradition and later Arabic sources; c. 1235 is conventional.
+- `polynesians-settle-new-zealand` — 1280 · Polynesian Voyagers Settle New Zealand — Wilmshurst et al. date first settlement to c. 1250–1300.
+- `machu-picchu-built` — 1450 · Machu Picchu Built — Burger et al. (Antiquity, 2021) date occupation from c. 1420. 'Lost city' is a popular label; local farmers always knew it.
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 
@@ -122,6 +139,7 @@
 - `rigveda-composed` — -1400 · Rigveda Composed — Composed over centuries (c. 1500–1200 BCE); no single year to guess
 - `lapita-voyagers-settle-remote-oceania` — -1000 · Lapita Voyagers Settle Remote Oceania — A process over two or three centuries (c. 1100–800 BCE)
 - `stonehenge-sarsen-circle-raised` — -2500 · Stonehenge's Sarsen Circle Raised — Sarsen phase c. 2600–2400 BCE; no single year
+- `polynesians-reach-rapa-nui` — 1200 · Polynesians Reach Rapa Nui — Radiocarbon range c. 1150–1250; no single year
 
 ## [info] Entities with an actor but no location (e.g. events on the Moon or Mars)
 
@@ -129,24 +147,44 @@
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
 
+## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
+
+- `463` — battle-of-kirina began mali-empire — The victory at Kirina is the traditional founding of the Mali Empire under Sundiata.
+- `464` — machu-picchu-built part_of inca-empire — Machu Picchu was built as an Inca royal estate, probably for Pachacuti.
+- `465` — polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific — Rapa Nui, the eastern corner of the Polynesian triangle, was among the last islands reached.
+- `466` — polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific — New Zealand, the southern corner of the triangle, was the last large land mass settled.
+- `467` — polynesian-settlement-of-hawaii part_of polynesian-settlement-of-the-pacific — Hawaii, the northern corner of the triangle, was settled from East Polynesia.
+- `468` — construction-of-the-pyramid-of-the-sun part_of teotihuacan — The pyramid was Teotihuacan's largest monument, on its main avenue.
+
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 
 - `149` — event · Egyptian–Hittite Peace Treaty (-1259) · open
 - `148` — event · Fall of Nineveh (-612) · open
+
+## [review] Country tags awaiting review (manage.py approve-countries)
+
+- `battle-of-kirina` — high
+- `cahokia` — high
+- `construction-of-the-pyramid-of-the-sun` — high
+- `lalibela-rock-hewn-churches` — high
+- `machu-picchu-built` — high
+- `polynesian-settlement-of-hawaii` — high
+- `polynesians-reach-rapa-nui` — high
+- `polynesians-settle-new-zealand` — high
 
 ## [info] Region labels in use, with their DateFlow lane
 
 - `Europe` — europe · 183 records
 - `South Asia` — south-asia · 149 records
 - `East Asia` — east-asia · 72 records
-- `Americas` — americas · 68 records
+- `Americas` — americas · 69 records
 - `Middle East` — middle-east · 55 records
-- `Africa` — africa · 53 records
+- `Africa` — africa · 55 records
 - `Global` — global · 35 records
 - `Southeast Asia` — east-asia · 21 records
-- `North America` — americas · 12 records
-- `Oceania` — global · 7 records
-- `South America` — americas · 3 records
+- `North America` — americas · 13 records
+- `Oceania` — global · 10 records
+- `South America` — americas · 4 records
 - `Antarctica` — global · 1 records
 
 ## [info] Accepted region exceptions (region deliberately differs from location)
@@ -157,5 +195,5 @@
 
 ## [info] Counts changed since the legacy import
 
-- `events` — 343 at import -> 505 now
-- `time_spans` — 98 at import -> 154 now
+- `events` — 343 at import -> 510 now
+- `time_spans` — 98 at import -> 157 now
