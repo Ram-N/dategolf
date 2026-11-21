@@ -39,12 +39,12 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 
 | | Count | Notes |
 |---|---:|---|
-| Events | **505** | 3500 BCE – 2023; 49 approximate (with ranges), 6 DateFlow-only |
-| Spans | **154** | 60 empires, 94 periods (plus 5 eras); approximate spans can carry a `date_display` |
+| Events | **510** | 3500 BCE – 2023; 54 approximate (with ranges), 7 DateFlow-only |
+| Spans | **157** | 60 empires, 97 periods (plus 5 eras); approximate spans can carry a `date_display` |
 | Links | **423**, all reviewed | 164 part_of · 71 preceded · 57 began · 50 ended · 35 contributed_to · 15 influenced · 15 enabled · 8 triggered · 6 opposed · 2 interacted_with (30 medium confidence = "debated") |
-| Sources | **371** reviewed, 273 proposed | Every event and span has one; Ram is reviewing batch 1 (Review → Sources) |
+| Sources | **379** reviewed, 273 proposed | Every event and span has one; Ram is reviewing batch 1 (Review → Sources) |
 | Country tags | 116 countries | Location and actor roles; the dashboard Map |
-| Significance ("Why it matters") | **204 reviewed** | doc 17: `entity_significance`, reviewed before export. Every importance 7+ item has one (4 Gemini batches, pre-sorted by Claude), plus 2 seeds |
+| Significance ("Why it matters") | **212 reviewed** | doc 17: `entity_significance`, reviewed before export. Every importance 7+ item has one (4 Gemini batches, pre-sorted by Claude), plus 2 seeds |
 | DateLinks memory aids | 26 events | doc 05, 06. New aids: `/add-memory-aid` → `load-memory-aids` (proposed) → Review → Memory aids |
 | Gap list | **done** (89 drafted, 1 dismissed) | Four themed batches, 2026-11-13: Gemini drafts, pre-sorted by Claude (data/drafts/gap_tasks.md). Add new gaps with `load-missing` as they're noticed |
 | Daily challenges | 366 dates | DateGolf target years |
@@ -82,7 +82,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 | 0 | **Pre-sort each significance batch** before it loads: fix accuracy slips, rewrite texts that repeat the description, soften overstatements (as done for batch 1) | Each incoming batch | doc 17. New drafts already carry one (doc 15) |
 | 1 | ~~**Draft the gap list**~~ ✅ 2026-11-13: 89 events and spans in four batches; WWII now one chain per theatre | — | New checks from it: skip-a-step and overlapping-span links (validate + check-drafts) |
 | 2 | ~~**Date precision for spans before 500 BCE**~~ ✅ 2026-11-19 (`data/drafts/2026-11-19_span_precision.md`): Old Kingdom, Akkadian, Shang and Zhou rounded; spans gained `date_display`, shown on the span card and in tours (Buddha, Shang, Zhou, Akkadian, Old Kingdom) | — | |
-| 3 | ~~**Step 4: fill the thin periods**~~ ✅ 2026-11-20 (first pass): 51 candidates on the gap list → Ram wanted 40 → 31 approved (21 events, 10 spans incl. Polynesian Settlement of the Pacific). 9 rejected, mostly for looking falsely precise; see Open below | — | `data/drafts/incoming/2026-11-20_claude_*` |
+| 3 | ~~**Step 4: fill the thin periods**~~ ✅ 2026-11-20 (first pass): 51 candidates on the gap list → Ram wanted 40 → 39 published (26 events, 13 spans incl. Polynesian Settlement of the Pacific) after a second pass on 2026-11-21: five reloaded once the dashboard showed their "c.", and Pyramid of the Sun, Cahokia and Hawaii redrafted as spans. Majapahit left out | — | `data/drafts/incoming/2026-11-20_claude_*` |
 | 4 | **DatePick range choices:** ranges instead of single years for approximate events | Your 2 decisions, plus structured `range_start` / `range_end` | doc 04 §38 |
 | 5 | **Dashboard v3: the event editor**, including adding or editing a single link | — | doc 13. Less urgent (new events come through drafts), but it lets you edit without Claude |
 | 6 | **DateFlow phases from the doc 16 vision** (recommended order; full table in doc 16, "Assessment"): | | |

@@ -26,14 +26,14 @@
 | error | Contradictory links (A→B and B→A of the same one-way type) | pass |
 | error | Symmetric link not stored in id order | pass |
 | warning | DateLinks 'Year of' label doesn't match the event's year (rename-memory-aid-group) | pass |
-| warning | Link touches a proposed (unpublished) entity | 6 |
+| warning | Link touches a proposed (unpublished) entity | pass |
 | warning | Time spans with the same normalised name | pass |
 | warning | Event names that differ only in case or spacing | pass |
 | warning | Event with no aliases (search falls back to name only) | pass |
 | warning | Imported entity with no import record (provenance lost) | pass |
 | review | Event + time span share one ID (identity decision needed) | pass |
 | review | Legacy CSV rows with no accepted match and no triage outcome | pass |
-| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | 5 |
+| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | pass |
 | review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 39 |
 | info | DateFlow-only events (excluded from DatePick and DateGolf) | 7 |
 | warning | Approximate event with no range (set-event-date --display): students see "c." with nothing to explain it | pass |
@@ -45,7 +45,7 @@
 | review | Memory aids awaiting approval (not exported; dashboard Review → Memory aids) | pass |
 | review | Missing events and spans to decide (dashboard Review → Missing) | 2 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
-| review | Country tags awaiting review (manage.py approve-countries) | 8 |
+| review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
 | warning | Description mentions a year near the answer (DatePick shows it before the guess) | pass |
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
@@ -69,25 +69,8 @@
 - milestones: 16
 - daily_challenge_dates: 366
 - csv_rows: 310
-- significance_reviewed: 204
-- significance_proposed: 8
-
-## [warning] Link touches a proposed (unpublished) entity
-
-- `463` — battle-of-kirina began mali-empire
-- `468` — construction-of-the-pyramid-of-the-sun part_of teotihuacan
-- `464` — machu-picchu-built part_of inca-empire
-- `467` — polynesian-settlement-of-hawaii part_of polynesian-settlement-of-the-pacific
-- `465` — polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific
-- `466` — polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific
-
-## [review] Proposed events awaiting approval (not exported; manage.py approve <id>)
-
-- `lalibela-rock-hewn-churches` — 1200 · Lalibela's Rock-Hewn Churches Carved — Tradition credits all eleven to King Lalibela; archaeologists think some may be older or later.
-- `polynesians-reach-rapa-nui` — 1200 · Polynesians Reach Rapa Nui — Older estimates went as early as 300–800; current radiocarbon work favours c. 1150–1250. The 'ecocide' story is debated, so the significance presents it as debate. Recommend DateFlow-only.
-- `battle-of-kirina` — 1235 · Sundiata Keita Wins the Battle of Kirina — Known mainly from oral tradition and later Arabic sources; c. 1235 is conventional.
-- `polynesians-settle-new-zealand` — 1280 · Polynesian Voyagers Settle New Zealand — Wilmshurst et al. date first settlement to c. 1250–1300.
-- `machu-picchu-built` — 1450 · Machu Picchu Built — Burger et al. (Antiquity, 2021) date occupation from c. 1420. 'Lost city' is a popular label; local farmers always knew it.
+- significance_reviewed: 212
+- significance_proposed: 0
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 
@@ -158,19 +141,8 @@
 
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 
-- `149` — event · Egyptian–Hittite Peace Treaty (-1259) · open
-- `148` — event · Fall of Nineveh (-612) · open
-
-## [review] Country tags awaiting review (manage.py approve-countries)
-
-- `battle-of-kirina` — high
-- `cahokia` — high
-- `construction-of-the-pyramid-of-the-sun` — high
-- `lalibela-rock-hewn-churches` — high
-- `machu-picchu-built` — high
-- `polynesian-settlement-of-hawaii` — high
-- `polynesians-reach-rapa-nui` — high
-- `polynesians-settle-new-zealand` — high
+- `149` — event · Egyptian–Hittite Peace Treaty (-1259) · wanted
+- `148` — event · Fall of Nineveh (-612) · wanted
 
 ## [info] Region labels in use, with their DateFlow lane
 

@@ -9,8 +9,8 @@
     "milestones": 16,
     "daily_challenge_dates": 366,
     "csv_rows": 310,
-    "significance_reviewed": 204,
-    "significance_proposed": 8
+    "significance_reviewed": 212,
+    "significance_proposed": 0
   },
   "checks": [
     {
@@ -160,33 +160,8 @@
     {
       "severity": "warning",
       "check": "Link touches a proposed (unpublished) entity",
-      "count": 6,
-      "rows": [
-        [
-          463,
-          "battle-of-kirina began mali-empire"
-        ],
-        [
-          468,
-          "construction-of-the-pyramid-of-the-sun part_of teotihuacan"
-        ],
-        [
-          464,
-          "machu-picchu-built part_of inca-empire"
-        ],
-        [
-          467,
-          "polynesian-settlement-of-hawaii part_of polynesian-settlement-of-the-pacific"
-        ],
-        [
-          465,
-          "polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific"
-        ],
-        [
-          466,
-          "polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific"
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "warning",
@@ -227,29 +202,8 @@
     {
       "severity": "review",
       "check": "Proposed events awaiting approval (not exported; manage.py approve <id>)",
-      "count": 5,
-      "rows": [
-        [
-          "lalibela-rock-hewn-churches",
-          "1200 · Lalibela's Rock-Hewn Churches Carved — Tradition credits all eleven to King Lalibela; archaeologists think some may be older or later."
-        ],
-        [
-          "polynesians-reach-rapa-nui",
-          "1200 · Polynesians Reach Rapa Nui — Older estimates went as early as 300–800; current radiocarbon work favours c. 1150–1250. The 'ecocide' story is debated, so the significance presents it as debate. Recommend DateFlow-only."
-        ],
-        [
-          "battle-of-kirina",
-          "1235 · Sundiata Keita Wins the Battle of Kirina — Known mainly from oral tradition and later Arabic sources; c. 1235 is conventional."
-        ],
-        [
-          "polynesians-settle-new-zealand",
-          "1280 · Polynesian Voyagers Settle New Zealand — Wilmshurst et al. date first settlement to c. 1250–1300."
-        ],
-        [
-          "machu-picchu-built",
-          "1450 · Machu Picchu Built — Burger et al. (Antiquity, 2021) date occupation from c. 1420. 'Lost city' is a popular label; local farmers always knew it."
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "review",
@@ -536,11 +490,11 @@
       "rows": [
         [
           149,
-          "event · Egyptian–Hittite Peace Treaty (-1259) · open"
+          "event · Egyptian–Hittite Peace Treaty (-1259) · wanted"
         ],
         [
           148,
-          "event · Fall of Nineveh (-612) · open"
+          "event · Fall of Nineveh (-612) · wanted"
         ]
       ]
     },
@@ -553,41 +507,8 @@
     {
       "severity": "review",
       "check": "Country tags awaiting review (manage.py approve-countries)",
-      "count": 8,
-      "rows": [
-        [
-          "battle-of-kirina",
-          "high"
-        ],
-        [
-          "cahokia",
-          "high"
-        ],
-        [
-          "construction-of-the-pyramid-of-the-sun",
-          "high"
-        ],
-        [
-          "lalibela-rock-hewn-churches",
-          "high"
-        ],
-        [
-          "machu-picchu-built",
-          "high"
-        ],
-        [
-          "polynesian-settlement-of-hawaii",
-          "high"
-        ],
-        [
-          "polynesians-reach-rapa-nui",
-          "high"
-        ],
-        [
-          "polynesians-settle-new-zealand",
-          "high"
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "info",

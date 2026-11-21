@@ -490,6 +490,23 @@
     "significance": "United the Mediterranean world under Roman law, Latin language, and extensive infrastructure, leaving an enduring legacy in Western governance, architecture, and religion."
   },
   {
+    "id": "construction-of-the-pyramid-of-the-sun",
+    "name": "Construction of the Pyramid of the Sun",
+    "startYear": 100,
+    "endYear": 250,
+    "description": "The building, in phases, of Teotihuacan's largest monument: a stepped platform of rubble and earth faced with stone, about sixty-five metres high, set beside the city's great avenue above a man-made tunnel.",
+    "categories": [
+      "Culture",
+      "Religion"
+    ],
+    "region": "Americas",
+    "importance": 4,
+    "kind": "period",
+    "significance": "The Pyramid of the Sun is one of the largest structures of the ancient Americas and a sign of Teotihuacan's power to organise labour and belief. Its name comes from the Aztecs, who found the city in ruins centuries later; what its builders called it is unknown.",
+    "approximate": true,
+    "dateDisplay": "c. 100–250 CE (built in phases; the main structure c. 200)"
+  },
+  {
     "id": "kingdom-of-aksum",
     "name": "Kingdom of Aksum",
     "startYear": 100,
@@ -804,6 +821,22 @@
     "significance": "Transformed China's economy with paper money, booming maritime trade and widespread printing. The Song saw the first use of the magnetic compass at sea and of gunpowder weapons in war, while Neo-Confucian thought shaped East Asian education for centuries."
   },
   {
+    "id": "polynesian-settlement-of-hawaii",
+    "name": "Polynesian Settlement of Hawaii",
+    "startYear": 1000,
+    "endYear": 1250,
+    "description": "The arrival of Polynesian voyagers, probably from the Marquesas or Society Islands, in the Hawaiian Islands, and their settlement of the island chain. Recent radiocarbon dating places the first arrival somewhere in this window; when exactly is still debated.",
+    "categories": [
+      "Exploration"
+    ],
+    "region": "Oceania",
+    "importance": 4,
+    "kind": "period",
+    "significance": "The settlement of Hawaii was one of the great feats of Polynesian navigation, made without instruments or writing. The society that grew from it developed into powerful chiefdoms and later the Kingdom of Hawaii, and the revival of traditional voyaging since the 1970s has made it a symbol of Native Hawaiian identity.",
+    "approximate": true,
+    "dateDisplay": "first arrival dated c. 1000–1250 by recent radiocarbon work (older estimates: 300–800); the span marks that window"
+  },
+  {
     "id": "swahili-coast-trading-cities",
     "name": "Swahili Coast Trading Cities",
     "startYear": 1000,
@@ -834,6 +867,23 @@
     "importance": 6,
     "kind": "empire",
     "significance": "Seljuk victories in Anatolia permanently weakened Byzantine control over Asia Minor, opened the region to Turkic settlement and prompted the Byzantine emperor to appeal to Western Europe for military aid, helping trigger the First Crusade."
+  },
+  {
+    "id": "cahokia",
+    "name": "Cahokia",
+    "startYear": 1050,
+    "endYear": 1350,
+    "description": "The largest city in North America north of Mexico before European contact, near the Mississippi River across from modern St. Louis. Its plazas, wooden sun circles and over a hundred earthen mounds, led by the great Monks Mound, made it the centre of the Mississippian culture.",
+    "categories": [
+      "Social",
+      "Culture"
+    ],
+    "region": "North America",
+    "importance": 4,
+    "kind": "period",
+    "significance": "Cahokia showed that Native North Americans built a planned city with monumental earthworks and wide regional influence centuries before Europeans arrived. Its rise and its abandonment, possibly linked to drought, flooding and political strain, are still studied and debated.",
+    "approximate": true,
+    "dateDisplay": "c. 1050–1350 as a city (a village before c. 1050; peak c. 1100–1200; largely abandoned by c. 1350)"
   },
   {
     "id": "crusades",

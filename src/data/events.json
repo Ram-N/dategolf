@@ -2459,6 +2459,51 @@
     "importance": 5
   },
   {
+    "id": "lalibela-rock-hewn-churches",
+    "name": "Lalibela's Rock-Hewn Churches Carved",
+    "year": 1200,
+    "categories": [
+      "Religion",
+      "Arts"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Lalibela",
+      "Rock-hewn churches of Lalibela",
+      "Church of Saint George",
+      "Zagwe dynasty",
+      "New Jerusalem"
+    ],
+    "description": "In the highlands of Ethiopia, under King Lalibela of the Zagwe dynasty, workers carve eleven churches down into solid volcanic rock, shaping roofs, windows and columns from a single mass of stone. Tradition says the king meant the town to be a new Jerusalem for Christians who could not make the pilgrimage.",
+    "difficulty": "hard",
+    "importance": 5,
+    "significance": "Lalibela's churches are among the most remarkable buildings of medieval Christianity and still a living centre of the Ethiopian Orthodox Church, which holds services and great pilgrimages there. They show the strength of Ethiopia's Christian kingdom, whose faith went back to Aksum's conversion.",
+    "approximate": true,
+    "dateDisplay": "c. 1181–1221 (the reign of King Lalibela; some churches may be older or later)"
+  },
+  {
+    "id": "polynesians-reach-rapa-nui",
+    "name": "Polynesians Reach Rapa Nui",
+    "year": 1200,
+    "categories": [
+      "Exploration"
+    ],
+    "region": "Oceania",
+    "aliases": [
+      "Easter Island",
+      "Rapa Nui",
+      "Settlement of Easter Island",
+      "Moai"
+    ],
+    "description": "Polynesian voyagers reach Rapa Nui, a small island at the far eastern corner of the Polynesian triangle, more than two thousand kilometres from the nearest inhabited land. Their descendants carve and raise hundreds of giant stone statues, the moai, which represent their ancestors.",
+    "difficulty": "hard",
+    "importance": 4,
+    "significance": "Rapa Nui marks the eastern limit of Polynesian settlement, one of the most remote places humans have ever colonised. Its moai made it world-famous, and debate over what changed the island, from deforestation to the disease and slave raids that followed European contact, has made it a case study for historians.",
+    "dateflowOnly": true,
+    "approximate": true,
+    "dateDisplay": "c. 1150–1250 (radiocarbon dating)"
+  },
+  {
     "id": "university-of-paris-founded",
     "name": "Philip II Grants the University of Paris a Royal Charter",
     "year": 1200,
@@ -2550,6 +2595,30 @@
     "description": "English King John is forced by rebellious barons to seal the Magna Carta at Runnymede, establishing for the first time that the king was subject to the rule of law. The document becomes a cornerstone of constitutional governance and influences legal systems around the world.",
     "difficulty": "easy",
     "importance": 5
+  },
+  {
+    "id": "battle-of-kirina",
+    "name": "Sundiata Keita Wins the Battle of Kirina",
+    "year": 1235,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Battle of Kirina",
+      "Sundiata",
+      "Sunjata",
+      "Sumanguru",
+      "Epic of Sundiata",
+      "Founding of Mali"
+    ],
+    "description": "Near Kirina, on the upper Niger River, the Mande leader Sundiata Keita defeats Sumanguru, king of the Sosso. The victory unites the Mande peoples under Sundiata, who founds the Mali Empire; its story is told in the Epic of Sundiata, still recited by West African griots.",
+    "difficulty": "hard",
+    "importance": 5,
+    "significance": "Sundiata's victory founded the Mali Empire, which grew rich on gold and trans-Saharan trade and became one of the largest states in West African history. The epic of his life, passed down by griots, remains a foundation of Mande identity and oral literature.",
+    "approximate": true,
+    "dateDisplay": "c. 1235 (known from oral tradition; the exact year is uncertain)"
   },
   {
     "id": "razia-sultana-accession",
@@ -2644,6 +2713,27 @@
     "description": "Under Kublai Khan, the Mongol Empire reaches its greatest territorial extent, becoming the largest contiguous land empire in history spanning from the Pacific Ocean to Eastern Europe. The Pax Mongolica facilitates unprecedented trade and cultural exchange across Eurasia along the Silk Road.",
     "difficulty": "medium",
     "importance": 5
+  },
+  {
+    "id": "polynesians-settle-new-zealand",
+    "name": "Polynesian Voyagers Settle New Zealand",
+    "year": 1280,
+    "categories": [
+      "Exploration"
+    ],
+    "region": "Oceania",
+    "aliases": [
+      "Settlement of New Zealand",
+      "Aotearoa",
+      "Māori ancestors",
+      "Polynesian migration to New Zealand"
+    ],
+    "description": "Voyagers from eastern Polynesia, sailing double-hulled canoes, reach New Zealand, the last large land mass apart from Antarctica to be settled by people. Their descendants become the Māori, adapting a tropical island way of life to a cooler land of forests and giant flightless birds.",
+    "difficulty": "medium",
+    "importance": 5,
+    "significance": "The settlement founded Māori society, whose culture, language and traditions of descent from voyaging canoes remain central to New Zealand today. Within about two centuries the moa had been hunted to extinction, an early example of people transforming a new environment.",
+    "approximate": true,
+    "dateDisplay": "c. 1250–1300 (radiocarbon dating; a firm consensus)"
   },
   {
     "id": "alauddin-khalji-accession",
@@ -3083,6 +3173,28 @@
     "description": "Under Moctezuma I, the Aztec Triple Alliance expands rapidly to control much of Mesoamerica, extracting tribute from hundreds of subject peoples. Tenochtitlan, built on an island in Lake Texcoco, becomes one of the largest cities in the world with a population rivaling contemporary European capitals.",
     "difficulty": "medium",
     "importance": 4
+  },
+  {
+    "id": "machu-picchu-built",
+    "name": "Machu Picchu Built",
+    "year": 1450,
+    "categories": [
+      "Arts",
+      "Culture"
+    ],
+    "region": "South America",
+    "aliases": [
+      "Machu Picchu",
+      "Inca citadel",
+      "Royal estate of Pachacuti",
+      "Lost City of the Incas"
+    ],
+    "description": "High on a ridge above the Urubamba River in the Peruvian Andes, the Inca build Machu Picchu, probably as a royal estate for the emperor Pachacuti. Its temples, terraces and houses are made of finely fitted stone laid without mortar.",
+    "difficulty": "easy",
+    "importance": 6,
+    "significance": "Because the Spanish never found it, Machu Picchu survived largely intact, one of the best-preserved Inca sites. Brought to international attention by Hiram Bingham in 1911, though local farmers had always known it, it is now a UNESCO World Heritage Site and Peru's most famous monument.",
+    "approximate": true,
+    "dateDisplay": "c. 1420–1450 (traditionally c. 1450; radiocarbon shows it was in use by c. 1420)"
   },
   {
     "id": "fall-of-constantinople",
