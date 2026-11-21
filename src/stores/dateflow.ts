@@ -7,12 +7,16 @@ import { spanParents } from '@/engine/dateflow/durations'
 import { buildStory, featuredStories, frameYears, storyCounts, storyStops, type Direction } from '@/engine/dateflow/stories'
 import { compareYears, distance, overlap, worldAt } from '@/engine/dateflow/contemporaries'
 import { pickSurprise, rememberPick } from '@/engine/dateflow/surprise'
+import erasData from '@/data/eras.json'
 import type { TrackAxis } from '@/engine/dateflow/constellation'
 import type { Family } from '@/engine/dateflow/categoryGroups'
 import { eventStop, searchStops, sortStops, spanStop, stepIndex, type TourSpeed } from '@/engine/dateflow/tour'
 import milestoneIds from '@/data/milestones.json'
 import {
   FULL_VIEW,
+  eraInView,
+  eraView,
+  type Era,
   centerOn,
   easeOutCubic,
   interpolateView,
@@ -57,6 +61,19 @@ const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's defa
 const SURPRISE_SPAN = 40 // narrow enough that every importance level shows (visibility.ts)
 const TOUR_SPAN = 100 // a tour frames each event in a century, like "Jump to year"
 const ANIM_MS = 350
+
+// Step 5: a first visit (nothing remembered) opens Date Constellation on the Medieval era, so every
+// region shows at once ("what was happening around 1200?", issue #6). Returning visitors keep theirs.
+const ERAS = erasData as Era[]
+const ENTRY_ERA = 'medieval'
+
+function remembers(key: string): boolean {
+  try {
+    return localStorage.getItem(key) !== null
+  } catch {
+    return false
+  }
+}
 
 function loadView(): View {
   try {
@@ -131,7 +148,9 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const durations = ref<Duration[]>([])
   const relationships = ref<RelationshipData>({ types: {}, links: [] })
   const isLoading = ref(true)
-  const view = ref<View>(loadView())
+  // Nothing remembered at all: a first visit
+  const firstVisit = !remembers(MODE_KEY) && !remembers(VIEW_KEY)
+  const view = ref<View>(firstVisit ? eraView(ERAS.find((e) => e.id === ENTRY_ERA)!) : loadView())
   const selectedEventId = ref<string | null>(null)
   const selectedDurationId = ref<string | null>(null)
   const summaryRange = ref<{ start: number; end: number } | null>(null)
@@ -157,7 +176,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const density = ref<Density>(savedDensity === 'simple' || savedDensity === 'detailed' ? savedDensity : 'standard')
   const colorMode = ref<ColorMode>(loadJson<ColorMode>(COLORS_KEY) === 'subtle' ? 'subtle' : 'colorful')
   const savedMode = loadJson<ViewMode>(MODE_KEY)
-  const mode = ref<ViewMode>(savedMode && MODES.includes(savedMode) ? savedMode : 'world')
+  const mode = ref<ViewMode>(savedMode && MODES.includes(savedMode) ? savedMode : firstVisit ? 'constellation' : 'world')
   // Date Constellation's Y-axis (issue #7)
   const trackAxis = ref<TrackAxis>(loadJson<TrackAxis>(TRACKS_KEY) === 'activity' ? 'activity' : 'geography')
   const laneState = ref<LaneState>(sanitizeLanes(loadJson<LaneState>(LANES_KEY)))
@@ -436,6 +455,16 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   function reset() {
     animateTo(FULL_VIEW)
   }
+
+  /** Era chips: show one era's years exactly. */
+  function showEra(id: string) {
+    const era = ERAS.find((e) => e.id === id)
+    if (era) animateTo(eraView(era))
+  }
+  /** The chip to light up: an era the view matches, 'all' for the whole of history, else null. */
+  const activeEra = computed(() =>
+    eraInView(view.value, ERAS)?.id ?? (eraInView(view.value, [{ id: 'all', name: 'All', ...FULL_VIEW }]) ? 'all' : null),
+  )
 
   /** Frame a span of years with a little margin either side. */
   function showSpan(startYear: number, endYear: number) {
@@ -880,6 +909,10 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     centerAt,
     jumpTo,
     reset,
+    showEra,
+    activeEra,
+    eras: ERAS,
+    firstVisit,
     showSpan,
     select,
     selectDuration,

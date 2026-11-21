@@ -8,7 +8,7 @@
       </p>
     </div>
 
-    <div class="flex items-center gap-2">
+    <div class="flex flex-wrap items-center gap-2">
       <div class="seg flex rounded-lg p-0.5" role="group" aria-label="Timeline layout">
         <button
           v-for="m in MODES"
@@ -77,10 +77,31 @@
       <button type="submit" class="btn">Go</button>
     </form>
 
-    <div class="flex items-center gap-1">
+    <div class="flex flex-wrap items-center gap-1">
       <button class="btn w-9" aria-label="Zoom out" @click="emit('zoomOut')">−</button>
       <button class="btn w-9" aria-label="Zoom in" @click="emit('zoomIn')">+</button>
-      <button class="btn" @click="emit('reset')">Reset</button>
+      <div class="seg flex flex-wrap rounded-lg p-0.5" role="group" aria-label="Show an era">
+        <button
+          v-for="e in eras"
+          :key="e.id"
+          class="seg-btn era"
+          :class="{ active: activeEra === e.id }"
+          :aria-pressed="activeEra === e.id"
+          :title="`${formatYear(e.start)} – ${formatYear(e.end)}`"
+          @click="emit('showEra', e.id)"
+        >
+          {{ e.name }}
+        </button>
+        <button
+          class="seg-btn era"
+          :class="{ active: activeEra === 'all' }"
+          :aria-pressed="activeEra === 'all'"
+          title="All of history"
+          @click="emit('reset')"
+        >
+          All
+        </button>
+      </div>
       <button class="btn" title="See the whole world in one year, compare two years, or two empires" @click="emit('timeMachine')">
         Time Machine
       </button>
@@ -118,7 +139,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import type { View } from '@/engine/dateflow/timeScale'
+import type { Era, View } from '@/engine/dateflow/timeScale'
 import type { ColorMode, Theme, ViewMode } from '@/stores/dateflow'
 import type { LaneId, LaneState } from '@/engine/dateflow/lanes'
 import { TRACK_AXES, type TrackAxis } from '@/engine/dateflow/constellation'
@@ -141,11 +162,14 @@ defineProps<{
   filters: Filters
   categories: string[]
   stories: FeaturedStory[]
+  eras: Era[]
+  activeEra: string | null
 }>()
 const emit = defineEmits<{
   zoomIn: []
   zoomOut: []
   reset: []
+  showEra: [id: string]
   jump: [year: number]
   search: [query: string]
   watch: []
@@ -247,6 +271,9 @@ function submit() {
   color: var(--df-text-2);
   font-size: 0.875rem;
   font-weight: 600;
+}
+.seg-btn.era {
+  padding: 0 0.5rem; /* six chips: keeps the toolbar to two rows on a laptop screen */
 }
 .seg-btn.active {
   background: var(--df-surface);

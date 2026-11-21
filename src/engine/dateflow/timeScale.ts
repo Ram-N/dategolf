@@ -49,6 +49,24 @@ export function centerOn(year: number, spanYears: number): View {
   return makeView(year - spanYears / 2, spanYears)
 }
 
+// ── Eras ──────────────────────────────────────────────────────────────────────
+// The era chips (step 5): each jumps to one era's own years, so the axis stays evenly spaced.
+export interface Era {
+  id: string
+  name: string
+  start: number
+  end: number
+}
+
+/** The window an era chip opens: exactly the era's years. */
+export const eraView = (era: Era): View => makeView(era.start, era.end - era.start)
+
+/** The era whose bounds the view matches (each end within 2% of the view's span), or null. */
+export function eraInView(view: View, eras: Era[]): Era | null {
+  const tol = span(view) * 0.02
+  return eras.find((e) => Math.abs(view.start - e.start) <= tol && Math.abs(view.end - e.end) <= tol) ?? null
+}
+
 // ── Ticks ─────────────────────────────────────────────────────────────────────
 const TICK_STEPS = [1, 2, 5, 10, 25, 50, 100, 250, 500, 1000]
 

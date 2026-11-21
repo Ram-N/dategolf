@@ -11,12 +11,15 @@
       :filters="store.filters"
       :categories="store.categories"
       :stories="store.featured"
+      :eras="store.eras"
+      :active-era="store.activeEra"
       @open-story="(id) => store.openStory(id)"
       @time-machine="store.openTimeMachine()"
       @surprise="store.surprise()"
       @zoom-in="store.zoomIn()"
       @zoom-out="store.zoomOut()"
       @reset="store.reset()"
+      @show-era="store.showEra"
       @jump="store.jumpTo"
       @search="store.searchFor"
       @watch="store.watchFilters()"
@@ -350,6 +353,8 @@ watch(
 onMounted(async () => {
   window.addEventListener('keydown', onKey)
   if (store.isLoading) await store.load()
+  // A first visit opens on Date Constellation, but a shared story needs its threads (World and Lanes only)
+  if (store.firstVisit && typeof route.query.story === 'string') store.setMode('world')
   openFromUrl()
   openTimeMachineFromUrl()
   if (typeof route.query.q === 'string' && route.query.q.trim()) store.searchFor(route.query.q)

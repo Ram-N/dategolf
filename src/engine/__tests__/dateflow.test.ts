@@ -5,6 +5,8 @@ import {
   MIN_SPAN,
   MIN_YEAR,
   centerOn,
+  eraInView,
+  eraView,
   formatTick,
   interpolateView,
   pan,
@@ -51,11 +53,24 @@ import eventsData from '@/data/events.json'
 import { constellationThreshold, dotRadius, scatter, trackOf, tracksFor } from '../dateflow/constellation'
 import type { Duration, RelationshipData } from '@/types/dateflow'
 import durationsData from '@/data/durations.json'
+import erasData from '@/data/eras.json'
 import relationshipsData from '@/data/relationships.json'
 
 const W = 1000
 
 describe('timeScale', () => {
+  it('era chips open an era exactly, and light up only when the view matches one', () => {
+    const eras = erasData
+    const medieval = eras.find((e) => e.id === 'medieval')!
+    expect(eraView(medieval)).toEqual({ start: 500, end: 1500 })
+    expect(eraInView(eraView(medieval), eras)?.id).toBe('medieval')
+    expect(eraInView({ start: 510, end: 1505 }, eras)?.id).toBe('medieval') // within 2% of the span
+    expect(eraInView({ start: 600, end: 1500 }, eras)).toBeNull() // zoomed in: no chip lit
+    expect(eraInView(FULL_VIEW, eras)).toBeNull()
+    const ancient = eras.find((e) => e.id === 'ancient')!
+    expect(eraView(ancient)).toEqual({ start: MIN_YEAR, end: -800 }) // clamped to the history bounds
+  })
+
   it('round-trips year ↔ x', () => {
     const view = { start: 1400, end: 1500 }
     expect(yearToX(1450, view, W)).toBe(500)
