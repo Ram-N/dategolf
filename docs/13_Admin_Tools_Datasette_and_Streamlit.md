@@ -168,7 +168,7 @@ Run it with `npm run data:dashboard` → `streamlit run dashboard/app.py --serve
 | *Links (v4)* | — | *Added with Step 3b* | — |
 | **Significance** (doc 17, 2026-11-11) | proposed texts | Name, year, description beside the proposed "Why it matters", origin, review note, source links; `item` = proposed for a draft's text (also approved with the draft) | **Approve** · **Reject** (with a reason) · **Write or replace** (an expander: saves as proposed; replacing a reviewed text takes it out of the games until approved) |
 
-Each tab has a **table with selectable rows** (pick one or many), a **detail card** for a single selection, and **action buttons** that apply to every selected row. Destructive actions (Reject, Needs a split) ask for confirmation in a dialog. After any action, the page refreshes, and a note reminds you to **Export** (Overview) when the game JSON is affected.
+Each tab has a **table with selectable rows** (pick one or many), a **detail card** for a single selection, and **action buttons** that apply to every selected row. **Search** (2026-11-20): a box above every table keeps the rows where every word appears somewhere in the row, in any column (including ids and descriptions the table doesn't show), case and accents ignored. A new search clears the ticks. The Decision log, Map and Connections tables have one too. Destructive actions (Reject, Needs a split) ask for confirmation in a dialog. After any action, the page refreshes, and a note reminds you to **Export** (Overview) when the game JSON is affected.
 
 #### New and changed tool functions
 
