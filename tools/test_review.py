@@ -360,6 +360,7 @@ class TestMemoryAids(unittest.TestCase):
         # All-or-nothing: one bad entry (wrong year label, bad order, existing aids, not an event) loads nothing
         for bad in ({b: {"groups": [{"label": "Year of 1", "items": ["x"]}]}},
                     {b: {"groups": [{"label": "Look Ahead", "items": ["x"]}, {"label": "Look Back", "items": ["y"]}]}},
+                    {b: {"groups": [{"label": "Event Timeline", "items": ["1 — x", "2 — y"]}]}},  # a timeline needs 3–6
                     {has: good}, {"no-such-event": good}):
             self.assertEqual(quiet(memory_aids.load, self.batch({a: good, **bad}, "bad")), 1)
         self.assertIsNone(db().execute("SELECT 1 FROM learning_content_groups WHERE entity_id = ?", (a,)).fetchone())

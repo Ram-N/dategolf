@@ -8,7 +8,8 @@ Batch file (JSON), the same shape as datelinks.json:
   {"origin": "ai_drafted:<model>",
    "aids": {"<event id>": {"groups": [{"label": "Look Back", "items": ["...", ...]}, ...]}}}
 Labels, in this order: "Look Back", "Year of <the event's year>" (e.g. "Year of 587 BCE"),
-"Look Ahead", "Event Timeline". 1 to 4 groups, 1 to 4 items each. An event that already has aids
+"Look Ahead", "Event Timeline". 1 to 4 groups, 1 to 4 items each (an Event Timeline 3 to 6, as docs/06
+says). An event that already has aids
 is refused: remove them first (remove-memory-aids) to replace them.
 """
 
@@ -42,9 +43,10 @@ def entry_problems(entity_id, entry, year):
         elif kind == "Year of" and label != year_label(year):
             problems.append(f"{entity_id}: label {label!r} should be {year_label(year)!r}, the event's year")
         kinds.append(kind)
-        if not isinstance(items, list) or not 1 <= len(items) <= 4 \
+        low, high = (3, 6) if kind == "Event Timeline" else (1, 4)
+        if not isinstance(items, list) or not low <= len(items) <= high \
                 or not all(isinstance(i, str) and i.strip() for i in items):
-            problems.append(f"{entity_id}: group {label!r} needs 1 to 4 non-empty items")
+            problems.append(f"{entity_id}: group {label!r} needs {low} to {high} non-empty items")
     known = [k for k in kinds if k in ORDER]
     if len(set(known)) != len(known):
         problems.append(f"{entity_id}: a label is used twice")
