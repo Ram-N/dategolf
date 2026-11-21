@@ -433,8 +433,213 @@
     {
       "severity": "review",
       "check": "Missing events and spans to decide (dashboard Review → Missing)",
-      "count": 0,
-      "rows": []
+      "count": 51,
+      "rows": [
+        [
+          97,
+          "span · Norte Chico Civilization (-3000) · open"
+        ],
+        [
+          98,
+          "event · Caral Becomes a Monumental City (-2600) · open"
+        ],
+        [
+          137,
+          "event · Stonehenge's Sarsen Circle Raised (-2500) · open"
+        ],
+        [
+          138,
+          "event · Ur-Nammu Issues the Earliest Surviving Law Code (-2100) · open"
+        ],
+        [
+          139,
+          "event · Palace of Knossos Built (-1900) · open"
+        ],
+        [
+          115,
+          "span · Nok Culture (-1500) · open"
+        ],
+        [
+          110,
+          "event · Hatshepsut Becomes Pharaoh (-1479) · open"
+        ],
+        [
+          140,
+          "event · Rigveda Composed (-1400) · open"
+        ],
+        [
+          111,
+          "event · Akhenaten Introduces the Worship of the Aten (-1350) · open"
+        ],
+        [
+          112,
+          "event · Battle of Kadesh (-1274) · open"
+        ],
+        [
+          141,
+          "event · Oracle-Bone Writing Appears in Shang China (-1250) · open"
+        ],
+        [
+          142,
+          "span · Late Bronze Age Collapse (-1200) · open"
+        ],
+        [
+          116,
+          "span · Bantu Expansion (-1000) · open"
+        ],
+        [
+          132,
+          "event · Lapita Voyagers Settle Remote Oceania (-1000) · open"
+        ],
+        [
+          143,
+          "span · Neo-Assyrian Empire (-911) · open"
+        ],
+        [
+          99,
+          "span · Chavín Culture (-900) · open"
+        ],
+        [
+          113,
+          "event · Carthage Founded (-814) · open"
+        ],
+        [
+          114,
+          "event · Kushite King Piye Conquers Egypt (-728) · open"
+        ],
+        [
+          117,
+          "event · Library of Alexandria Founded (-285) · open"
+        ],
+        [
+          100,
+          "span · Teotihuacan (-100) · open"
+        ],
+        [
+          123,
+          "event · Trung Sisters Lead a Revolt Against Han Rule (40) · open"
+        ],
+        [
+          124,
+          "span · Funan (50) · open"
+        ],
+        [
+          144,
+          "event · Buddhism Reaches Han China (65) · open"
+        ],
+        [
+          104,
+          "span · Moche Culture (100) · open"
+        ],
+        [
+          101,
+          "event · Teotihuacan's Pyramid of the Sun Built (200) · open"
+        ],
+        [
+          145,
+          "span · Three Kingdoms of China (220) · open"
+        ],
+        [
+          146,
+          "event · Queen Himiko Sends an Envoy to Wei China (239) · open"
+        ],
+        [
+          147,
+          "span · Kofun Period (250) · open"
+        ],
+        [
+          102,
+          "event · Siyaj K'ak' Arrives at Tikal (378) · open"
+        ],
+        [
+          103,
+          "event · Pakal the Great Becomes Ruler of Palenque (615) · open"
+        ],
+        [
+          118,
+          "event · Arabs Conquer Egypt (641) · open"
+        ],
+        [
+          125,
+          "event · Earliest Srivijaya Inscription Carved (682) · open"
+        ],
+        [
+          126,
+          "event · Borobudur Completed (825) · open"
+        ],
+        [
+          105,
+          "span · Chaco Canyon Culture (850) · open"
+        ],
+        [
+          127,
+          "event · Battle of Bach Dang Ends Chinese Rule in Vietnam (938) · open"
+        ],
+        [
+          122,
+          "span · Swahili Coast Trading Cities (1000) · open"
+        ],
+        [
+          128,
+          "event · Anawrahta Founds the Pagan Empire (1044) · open"
+        ],
+        [
+          106,
+          "event · Cahokia Grows into a City (1050) · open"
+        ],
+        [
+          133,
+          "event · Polynesians Settle Hawaii (1100) · open"
+        ],
+        [
+          134,
+          "event · Nan Madol Built on Pohnpei (1180) · open"
+        ],
+        [
+          119,
+          "event · Lalibela's Rock-Hewn Churches Carved (1200) · open"
+        ],
+        [
+          135,
+          "event · Polynesians Reach Rapa Nui (1200) · open"
+        ],
+        [
+          120,
+          "event · Sundiata Keita Wins the Battle of Kirina (1235) · open"
+        ],
+        [
+          136,
+          "event · Polynesian Voyagers Settle New Zealand (1280) · open"
+        ],
+        [
+          129,
+          "event · Majapahit Founded (1293) · open"
+        ],
+        [
+          107,
+          "event · Tenochtitlan Founded (1325) · open"
+        ],
+        [
+          130,
+          "event · Kingdom of Ayutthaya Founded (1351) · open"
+        ],
+        [
+          121,
+          "event · Ibn Battuta Visits the Mali Empire (1352) · open"
+        ],
+        [
+          131,
+          "event · Malacca Sultanate Founded (1400) · open"
+        ],
+        [
+          108,
+          "event · Pachacuti Begins the Inca Expansion (1438) · open"
+        ],
+        [
+          109,
+          "event · Machu Picchu Built (1450) · open"
+        ]
+      ]
     },
     {
       "severity": "review",
