@@ -5,6 +5,7 @@ import io
 import json
 from pathlib import Path
 
+import phases
 from common import APP_FILES, DUMP_PATH, ROOT, connect
 
 NULLS_LAST = "position IS NULL, position"
@@ -66,6 +67,7 @@ def render_durations(conn):
     why = significance(conn)
     has_currents = conn.execute("SELECT 1 FROM sqlite_master WHERE name = 'historical_currents'").fetchone()
     currents = {r[0] for r in conn.execute("SELECT entity_id FROM historical_currents")} if has_currents else set()
+    has_phases = conn.execute("SELECT 1 FROM sqlite_master WHERE name = 'entity_phases'").fetchone()
     for s in conn.execute(f"SELECT * FROM time_spans WHERE kind <> 'era' AND {PUBLISHED} "
                           f"ORDER BY start_year, {NULLS_LAST}, entity_id"):
         rec = {
@@ -85,6 +87,8 @@ def render_durations(conn):
             rec["approximate"] = True
             if s["date_display"]:
                 rec["dateDisplay"] = s["date_display"]  # historians' dates or the dispute, on the span card
+        if has_phases and (life := phases.exported(conn, s["entity_id"])):  # reviewed life-cycle phases (Phase 12)
+            rec["phases"] = life
         if s["entity_id"] in currents:
             rec["current"] = True
         out.append(rec)

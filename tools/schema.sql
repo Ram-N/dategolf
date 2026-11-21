@@ -404,6 +404,29 @@ CREATE TABLE IF NOT EXISTS entity_significance (
   updated_at TEXT
 );
 
+-- Life-cycle phases of an empire or period (Date Flow Phase 12; tools/phases.py). Contiguous, covering the
+-- span; a neutral kind drives the colour and the title says what happened (never "golden age" / "decline").
+CREATE TABLE IF NOT EXISTS entity_phases (
+  id             INTEGER PRIMARY KEY,
+  entity_id      TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,  -- the span
+  position       INTEGER NOT NULL,
+  kind           TEXT NOT NULL CHECK (kind IN ('foundation', 'expansion', 'consolidation', 'height',
+                                               'transformation', 'contraction', 'end')),
+  title          TEXT NOT NULL CHECK (trim(title) <> ''),
+  start_year     INTEGER NOT NULL CHECK (start_year <> 0),
+  end_year       INTEGER NOT NULL CHECK (end_year <> 0),
+  approximate    INTEGER CHECK (approximate IS NULL OR approximate = 1),
+  date_display   TEXT,                             -- historians' dates or the dispute, when approximate
+  description    TEXT NOT NULL CHECK (trim(description) <> ''),
+  start_event_id TEXT REFERENCES entities(id) ON DELETE SET NULL,          -- the milestone that opens it
+  source         TEXT,                             -- a Wikipedia URL
+  note           TEXT,                             -- for the reviewer
+  status         TEXT NOT NULL DEFAULT 'proposed' CHECK (status IN ('proposed', 'reviewed')),
+  origin         TEXT NOT NULL,
+  UNIQUE (entity_id, position),
+  CHECK (start_year < end_year)
+);
+
 -- Significance beside its entity's name, year and description, proposed first.
 CREATE VIEW IF NOT EXISTS v_significance_review AS
 SELECT x.entity_id,

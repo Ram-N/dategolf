@@ -14,6 +14,7 @@ import exporter
 import identity
 import links
 import memory_aids
+import phases
 import missing
 import reconcile
 import significance
@@ -225,6 +226,24 @@ def main():
     p.add_argument("ids", nargs="+")
     p.add_argument("--remove", action="store_true", help="Stop drawing them as currents")
     p.set_defaults(fn=lambda a: edit.set_current(a.ids, a.remove))
+
+    p = sub.add_parser("load-phases", help="Add life-cycle phases for spans as proposed (all-or-nothing)")
+    p.add_argument("path", help='JSON {"origin": ..., "phases": {"<span id>": [{kind, title, start_year, ...}]}}')
+    p.set_defaults(fn=lambda a: phases.load(a.path))
+
+    p = sub.add_parser("approve-phases", help="Approve spans' proposed life-cycle phases so they export")
+    p.add_argument("ids", nargs="+")
+    p.set_defaults(fn=lambda a: phases.approve(a.ids))
+
+    p = sub.add_parser("reject-phases", help="Delete spans' proposed life-cycle phases (logged, with a reason)")
+    p.add_argument("ids", nargs="+")
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: phases.reject(a.ids, a.reason))
+
+    p = sub.add_parser("remove-phases", help="Delete all of a span's life-cycle phases, published too (to replace them)")
+    p.add_argument("ids", nargs="+")
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: phases.remove(a.ids, a.reason))
 
     p = sub.add_parser("load-memory-aids", help="Add DateLinks memory aids for events as proposed (all-or-nothing)")
     p.add_argument("path", help='JSON {"origin": ..., "aids": {"<event id>": {"groups": [...]}}} (docs/06)')

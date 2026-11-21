@@ -129,6 +129,12 @@ CHECKS = [
     ("review", "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
      "SELECT id, source_id || ' ' || type || ' ' || target_id || coalesce(' — ' || why, '') "
      "FROM v_link_review WHERE status = 'proposed'"),
+    ("review", "Life-cycle phases awaiting approval (not exported; dashboard Review → Life cycles)",
+     "SELECT entity_id, count(*) || ' phase(s)' FROM entity_phases WHERE status = 'proposed' GROUP BY entity_id"),
+    ("warning", "Life-cycle phases no longer cover their span (its years changed): fix with remove-phases + load-phases",
+     "SELECT p.entity_id, min(p.start_year) || ' to ' || max(p.end_year) || ' vs span ' || s.start_year || ' to ' "
+     "|| s.end_year FROM entity_phases p JOIN time_spans s ON s.entity_id = p.entity_id GROUP BY p.entity_id "
+     "HAVING min(p.start_year) <> s.start_year OR max(p.end_year) <> s.end_year"),
     ("review", "Memory aids awaiting approval (not exported; dashboard Review → Memory aids)",
      "SELECT g.entity_id, count(*) || ' item(s)' FROM learning_content_groups g "
      "JOIN learning_content_items i ON i.group_id = g.id WHERE i.editorial_status = 'proposed' "

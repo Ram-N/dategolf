@@ -28,6 +28,7 @@ import edit  # noqa: E402
 import exporter  # noqa: E402
 import identity  # noqa: E402
 import memory_aids  # noqa: E402
+import phases  # noqa: E402
 import missing  # noqa: E402
 
 
@@ -338,6 +339,45 @@ class TestIdentity(unittest.TestCase):
     def test_refuses_ids_that_are_not_shared(self):
         self.assertEqual(quiet(identity.decide, ["battle-of-plassey"], "one"), 1)
         self.assertEqual(quiet(identity.decide, ["punic-wars"], "maybe"), 1)
+
+
+class TestPhases(unittest.TestCase):
+    def batch(self, spans, name):
+        path = TMP / f"{name}.json"
+        path.write_text(json.dumps({"origin": "test", "phases": spans}))
+        return path
+
+    def test_load_review_and_export(self):
+        sid = "sur-empire"  # 1540–1556
+        a, b = db().execute("SELECT start_year, end_year FROM time_spans WHERE entity_id = ?", (sid,)).fetchone()
+        mid = (a + b) // 2
+        good = [{"kind": "foundation", "title": "Sher Shah takes power", "start_year": a, "end_year": mid,
+                 "description": "x", "start_event": "humayun-defeated-kanauj"},
+                {"kind": "end", "title": "Humayun returns", "start_year": mid, "end_year": b, "description": "y"}]
+        durations = lambda: {d["id"]: d for d in json.loads(exporter.render_durations(common.connect()))}
+
+        for bad in ([{**good[0], "end_year": mid - 1}, good[1]],                    # a gap
+                    [{**good[0], "start_year": a + 1}, good[1]],                    # doesn't start with the span
+                    [{**good[0], "kind": "golden age"}, good[1]],                   # not a neutral kind
+                    [{**good[0], "start_event": "no-such-event"}, good[1]],
+                    [{**good[0], "date_display": "c. x"}, good[1]],                 # range without approximate
+                    [good[0]]):                                                     # one phase isn't a life cycle
+            self.assertEqual(quiet(phases.load, self.batch({sid: bad}, "bad")), 1)
+        self.assertEqual(quiet(phases.load, self.batch({"ancient": good}, "era")), 1)  # eras have no phases
+        self.assertIsNone(db().execute("SELECT 1 FROM entity_phases WHERE entity_id = ?", (sid,)).fetchone())
+
+        self.assertEqual(quiet(phases.load, self.batch({sid: good}, "good")), 0)
+        self.assertEqual(quiet(phases.load, self.batch({sid: good}, "again")), 1)  # already has phases
+        self.assertNotIn("phases", durations()[sid])                                # proposed: not exported
+        self.assertEqual(quiet(phases.approve, [sid], "test"), 0)
+        out = durations()[sid]["phases"]
+        self.assertEqual([p["kind"] for p in out], ["foundation", "end"])
+        self.assertEqual(out[0]["startEvent"], "humayun-defeated-kanauj")
+        self.assertEqual(log_rows(sid)[-1][0], "approve-phases")
+
+        self.assertEqual(quiet(phases.reject, [sid], "x", "test"), 1)               # only proposed ones
+        self.assertEqual(quiet(phases.remove, [sid], "replacing", "test"), 0)
+        self.assertNotIn("phases", durations()[sid])
 
 
 class TestMemoryAids(unittest.TestCase):

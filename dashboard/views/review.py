@@ -89,6 +89,11 @@ proposed_sources = (q("SELECT * FROM v_source_review WHERE status = 'proposed'")
 has_why = has_table("entity_significance")
 proposed_why = (q("SELECT * FROM v_significance_review WHERE status = 'proposed'") if has_why
                 else q("SELECT NULL AS entity_id WHERE 0"))
+proposed_phases = q("""SELECT s.entity_id, s.name, s.start_year || ' to ' || s.end_year AS years,
+                              count(*) AS phases, group_concat(p.kind, ' → ') AS kinds
+    FROM entity_phases p JOIN time_spans s ON s.entity_id = p.entity_id
+    WHERE p.status = 'proposed' GROUP BY s.entity_id ORDER BY s.start_year""") if has_table("entity_phases") \
+    else q("SELECT NULL AS entity_id WHERE 0")
 proposed_aids = q("""SELECT e.entity_id, e.year, e.name, e.description, e.date_display,
                             count(*) AS items, group_concat(DISTINCT g.label) AS groups
     FROM learning_content_groups g JOIN learning_content_items i ON i.group_id = g.id
@@ -98,7 +103,7 @@ proposed_aids = q("""SELECT e.entity_id, e.year, e.name, e.description, e.date_d
 TAB_LABELS = [
     f"Event drafts ({len(drafts)})", f"Span drafts ({len(span_drafts)})", f"Country tags ({len(tags)})", f"Identity, Step 3a ({len(shared)})",
     f"Links ({len(proposed_links)})", f"Sources ({len(proposed_sources)})",
-    f"Significance ({len(proposed_why)})", f"Memory aids ({len(proposed_aids)})", f"Missing ({n_missing})",
+    f"Significance ({len(proposed_why)})", f"Life cycles ({len(proposed_phases)})", f"Memory aids ({len(proposed_aids)})", f"Missing ({n_missing})",
     "Fix any country tags", "Decision log"]
 # Stay on the same tab after an action. The counts in the labels change, so remember the name without them,
 # and key the widget on the labels (a changed label is a new widget, opened on the remembered tab).
@@ -107,7 +112,7 @@ tabs_key = "review_tabs_" + hashlib.sha1("|".join(TAB_LABELS).encode()).hexdiges
 # The default is fixed when this widget is first made: changing it on a later run would reset the tab.
 remembered = st.session_state.setdefault(
     tabs_key + ":default", next((l for l in TAB_LABELS if tab_name(l) == st.session_state.get("review_tab")), None))
-t_drafts, t_spans, t_tags, t_identity, t_links, t_sources, t_why, t_aids, t_missing, t_fix, t_log = st.tabs(
+t_drafts, t_spans, t_tags, t_identity, t_links, t_sources, t_why, t_phases, t_aids, t_missing, t_fix, t_log = st.tabs(
     TAB_LABELS, default=remembered, key=tabs_key, on_change="rerun")
 if st.session_state.get(tabs_key):
     st.session_state["review_tab"] = tab_name(st.session_state[tabs_key])
@@ -404,6 +409,49 @@ with t_why:
                     note = st.text_input("Note for the reviewer (optional)")
                     if st.form_submit_button("Save as proposed", type="primary", disabled=False):
                         finish(f"Significance for {choice}", actions.set_significance(choice, text, note or None))
+
+# ── Life-cycle phases (Date Flow Phase 12) ──────────────────────────────────
+with t_phases:
+    if proposed_phases.empty:
+        st.success("No life cycles waiting. New ones arrive with `load-phases`.")
+    else:
+        bar = st.container()
+        picked = selectable(proposed_phases, "phases", ["years", "name", "phases", "kinds"])
+        if len(picked) == 1:
+            d = picked.iloc[0]
+            with st.container(border=True):
+                st.markdown(f"**{d['name']}** ({d['years']})")
+                st.caption("Check each phase: are the years right, does the title say what happened (no verdicts "
+                           "like golden age or decline), and does the description stay true for the whole phase?")
+                rows = q("""SELECT p.kind, p.start_year, p.end_year, p.approximate, p.date_display, p.title,
+                                   p.description, coalesce(e.name, p.start_event_id) AS starts_at, p.source, p.note
+                            FROM entity_phases p LEFT JOIN events e ON e.entity_id = p.start_event_id
+                            WHERE p.entity_id = ? ORDER BY p.position""", d["entity_id"])
+                for r in rows.itertuples():
+                    years = f"{'c. ' if r.approximate == 1 else ''}{r.start_year}–{r.end_year}"
+                    st.markdown(f"**{r.kind.capitalize()} · {years} · {r.title}**"
+                                + (f"  \n_{r.date_display}_" if r.date_display else ""))
+                    st.write(r.description)
+                    extra = [f"starts at: {r.starts_at}" if r.starts_at else None,
+                             f"[source]({r.source})" if r.source else None]
+                    if any(extra):
+                        st.caption(" · ".join(x for x in extra if x))
+                    if r.note:
+                        st.warning(f"Review note: {r.note}")
+        ids = picked["entity_id"].tolist()
+        c1, c2, _ = bar.columns([1, 1, 4])
+        if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary", key="approve_phases"):
+            finish("Approve life cycles", actions.approve_phases(ids))
+
+        @st.dialog("Reject life cycles")
+        def reject_phases_dialog(ids):
+            st.write(f"Delete the proposed phases of {len(ids)} span(s). The spans themselves stay.")
+            reason = st.text_input("Reason (recorded in the log)")
+            if st.button("Reject", key="confirm_reject_phases", type="primary", disabled=not reason.strip()):
+                finish("Reject life cycles", actions.reject_phases(ids, reason))
+
+        if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_phases"):
+            reject_phases_dialog(ids)
 
 # ── Memory aids (DateLinks, docs/06) ─────────────────────────────────────────
 with t_aids:

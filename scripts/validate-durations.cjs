@@ -57,5 +57,21 @@ durations.forEach((d) => {
 })
 pass('Kind / importance checks passed')
 
+// 5. Life-cycle phases (Phase 12): contiguous, covering the span, neutral kinds
+const PHASE_KINDS = ['foundation', 'expansion', 'consolidation', 'height', 'transformation', 'contraction', 'end']
+durations.forEach((d) => {
+  if (d.phases === undefined) return
+  const p = d.phases
+  if (!Array.isArray(p) || p.length < 2) return fail(`phases must be a list of 2 or more: ${d.id}`)
+  if (p[0].start !== d.startYear || p[p.length - 1].end !== d.endYear) fail(`phases don't cover the span: ${d.id}`)
+  p.forEach((x, i) => {
+    if (!PHASE_KINDS.includes(x.kind)) fail(`Invalid phase kind on ${d.id}: ${x.kind}`)
+    if (!x.title || !x.description) fail(`Phase without a title or description on: ${d.id}`)
+    if (!(x.start < x.end)) fail(`Phase starts after it ends on: ${d.id}`)
+    if (i > 0 && x.start !== p[i - 1].end) fail(`Phases not contiguous on: ${d.id} (${p[i - 1].end} → ${x.start})`)
+  })
+})
+pass('Phase checks passed')
+
 console.log(errors === 0 ? '\n✅ All checks passed\n' : `\n❌ ${errors} error(s)\n`)
 process.exit(errors === 0 ? 0 : 1)

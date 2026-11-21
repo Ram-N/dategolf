@@ -15,6 +15,21 @@ export interface Duration {
   approximate?: boolean // start/end are traditional or disputed dates
   dateDisplay?: string // historians' dates or the dispute, e.g. "traditionally 563–483 BCE; many scholars c. 480–400 BCE"
   current?: boolean // a Historical Current: drawn as a background band (step 3d)
+  phases?: Phase[] // life-cycle phases (Phase 12): contiguous, covering startYear–endYear
+}
+
+// A life-cycle phase of an empire or period. The kind is neutral and drives the colour; the title says
+// what happened (never a verdict like "golden age" or "decline").
+export type PhaseKind = 'foundation' | 'expansion' | 'consolidation' | 'height' | 'transformation' | 'contraction' | 'end'
+export interface Phase {
+  kind: PhaseKind
+  title: string
+  start: number
+  end: number
+  description: string
+  approximate?: boolean
+  dateDisplay?: string
+  startEvent?: string // the milestone event that opens it
 }
 
 // ── Relationships ─────────────────────────────────────────────────────────────

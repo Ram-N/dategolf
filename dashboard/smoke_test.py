@@ -130,6 +130,20 @@ ok, output = actions.approve_memory_aids([aid_event])
 if not ok:
     problems.append(f"approve_memory_aids failed: {output}")
 
+# Life-cycle phases: load a pair on the copy; the Review page must render them, and approving must work.
+import phases  # noqa: E402
+
+life = TMP / "phases.json"
+life.write_text(json.dumps({"origin": "smoke", "phases": {"sur-empire": [
+    {"kind": "foundation", "title": "A", "start_year": 1540, "end_year": 1545, "description": "x"},
+    {"kind": "end", "title": "B", "start_year": 1545, "end_year": 1556, "description": "y"}]}}))
+if phases.load(life) != 0:
+    problems.append("phases.load failed")
+problems += check("views/review.py")
+ok, output = actions.approve_phases(["sur-empire"])
+if not ok:
+    problems.append(f"approve_phases failed: {output}")
+
 # Search: the matching rule, then typed into the Review page's boxes (each must still render).
 import pandas as pd  # noqa: E402
 from lib.search import filter_rows  # noqa: E402
