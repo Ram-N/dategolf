@@ -2167,7 +2167,9 @@
     ],
     "description": "The Varangian prince Oleg captures Kiev and makes it the capital of a new state uniting the East Slavic and Norse trading communities along the Dnieper river route connecting Scandinavia to Byzantium. Kievan Rus becomes the first major East Slavic political entity, laying the cultural, religious, and political foundations for the later nations of Russia, Ukraine, and Belarus. Its adoption of Orthodox Christianity from Byzantium in 988 shapes Eastern European civilization for centuries.",
     "difficulty": "hard",
-    "importance": 6
+    "importance": 6,
+    "approximate": true,
+    "dateDisplay": "c. 882 (the date in the Primary Chronicle, compiled over two centuries later)"
   },
   {
     "id": "battle-of-bach-dang-938",

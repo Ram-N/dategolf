@@ -2073,7 +2073,7 @@ INSERT INTO "entities" VALUES('islamic-golden-age','event','reviewed',NULL,'2026
 INSERT INTO "entities" VALUES('viking-raids-begin','event','imported',NULL,'2026-11-12 00:37:17');
 INSERT INTO "entities" VALUES('charlemagne-crowned-emperor','event','imported',NULL,'2026-11-12 00:37:15');
 INSERT INTO "entities" VALUES('gunpowder-invented','event','imported',NULL,'2026-11-12 00:40:09');
-INSERT INTO "entities" VALUES('kievan-rus-founded','event','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('kievan-rus-founded','event','imported',NULL,'2026-11-21 15:06:21');
 INSERT INTO "entities" VALUES('chola-rajaraja-peak','event','imported',NULL,'2026-11-12 00:37:15');
 INSERT INTO "entities" VALUES('viking-exploration-north-america','event','imported',NULL,'2026-11-12 00:40:09');
 INSERT INTO "entities" VALUES('mahmud-ghazni-somnath','event','imported',NULL,NULL);
@@ -8191,7 +8191,7 @@ INSERT INTO "events" VALUES('islamic-golden-age','Islamic Golden Age Begins',786
 INSERT INTO "events" VALUES('viking-raids-begin','Vikings Raid Lindisfarne',793,'Europe','Norse warriors raid the monastery of Lindisfarne on the English coast in one of the first recorded Viking attacks, inaugurating the Viking Age. Over the following centuries, Norsemen range from Newfoundland to Russia, Constantinople to North Africa, as traders, settlers, and raiders reshaping European history.','medium',4,NULL,NULL,NULL,64);
 INSERT INTO "events" VALUES('charlemagne-crowned-emperor','Charlemagne Crowned Emperor in Rome',800,'Europe','Pope Leo III crowns Charlemagne, King of the Franks, as Emperor of the Romans on Christmas Day in St. Peter''s Basilica, creating a new imperial power in Western Europe. Charlemagne''s reign unites much of Western Europe, promotes literacy and education, and shapes the political and cultural identity of medieval Europe.','medium',4,NULL,NULL,NULL,65);
 INSERT INTO "events" VALUES('gunpowder-invented','Gunpowder Invented in China',850,'East Asia','Chinese alchemists experimenting with elixirs of immortality discover the explosive properties of a mixture of sulfur, charcoal, and saltpeter, inventing gunpowder. The discovery revolutionizes warfare when it reaches Europe centuries later, making medieval fortifications obsolete and transforming military tactics worldwide.','medium',5,NULL,1,'9th century CE (the first written formula dates from 1044)',66);
-INSERT INTO "events" VALUES('kievan-rus-founded','Founding of Kievan Rus',882,'Europe','The Varangian prince Oleg captures Kiev and makes it the capital of a new state uniting the East Slavic and Norse trading communities along the Dnieper river route connecting Scandinavia to Byzantium. Kievan Rus becomes the first major East Slavic political entity, laying the cultural, religious, and political foundations for the later nations of Russia, Ukraine, and Belarus. Its adoption of Orthodox Christianity from Byzantium in 988 shapes Eastern European civilization for centuries.','hard',6,NULL,NULL,NULL,67);
+INSERT INTO "events" VALUES('kievan-rus-founded','Founding of Kievan Rus',882,'Europe','The Varangian prince Oleg captures Kiev and makes it the capital of a new state uniting the East Slavic and Norse trading communities along the Dnieper river route connecting Scandinavia to Byzantium. Kievan Rus becomes the first major East Slavic political entity, laying the cultural, religious, and political foundations for the later nations of Russia, Ukraine, and Belarus. Its adoption of Orthodox Christianity from Byzantium in 988 shapes Eastern European civilization for centuries.','hard',6,NULL,1,'c. 882 (the date in the Primary Chronicle, compiled over two centuries later)',67);
 INSERT INTO "events" VALUES('chola-rajaraja-peak','Rajaraja I Becomes Chola King',985,'South Asia','Rajaraja I ascends to the Chola throne and expands the dynasty into a maritime empire dominating South India and parts of Southeast Asia. He commissions the great Brihadeeswarar temple at Thanjavur, a masterpiece of Dravidian architecture.','medium',4,NULL,NULL,NULL,68);
 INSERT INTO "events" VALUES('viking-exploration-north-america','Vikings Reach North America',1000,'Americas','Leif Erikson leads a Norse expedition that establishes a settlement at L''Anse aux Meadows in what is now Newfoundland, Canada, nearly five centuries before Columbus. Archaeological evidence confirms this as the first known European contact with the Americas.','medium',3,NULL,1,'c. 1000 (tree rings date Norse woodcutting at L''Anse aux Meadows to 1021)',69);
 INSERT INTO "events" VALUES('mahmud-ghazni-somnath','Mahmud of Ghazni Raids Somnath',1026,'South Asia','Sultan Mahmud of Ghazni leads one of his many raids into the Indian subcontinent, sacking the wealthy Somnath temple on the Gujarat coast. The raid becomes a defining moment in the history of Muslim-Hindu relations on the subcontinent.','medium',3,NULL,NULL,NULL,70);
@@ -9907,6 +9907,14 @@ INSERT INTO "learning_content_groups" VALUES(80,'space-shuttle-columbia','Look A
 INSERT INTO "learning_content_groups" VALUES(81,'act-of-union-1707','Look Back',0);
 INSERT INTO "learning_content_groups" VALUES(82,'act-of-union-1707','Year of 1707',1);
 INSERT INTO "learning_content_groups" VALUES(83,'act-of-union-1707','Look Ahead',2);
+INSERT INTO "learning_content_groups" VALUES(84,'kievan-rus-founded','Look Back',0);
+INSERT INTO "learning_content_groups" VALUES(85,'kievan-rus-founded','Year of 882',1);
+INSERT INTO "learning_content_groups" VALUES(86,'kievan-rus-founded','Look Ahead',2);
+INSERT INTO "learning_content_groups" VALUES(87,'kievan-rus-founded','Event Timeline',3);
+INSERT INTO "learning_content_groups" VALUES(88,'tokugawa-ieyasu-becomes-shogun','Look Back',0);
+INSERT INTO "learning_content_groups" VALUES(89,'tokugawa-ieyasu-becomes-shogun','Year of 1603',1);
+INSERT INTO "learning_content_groups" VALUES(90,'tokugawa-ieyasu-becomes-shogun','Look Ahead',2);
+INSERT INTO "learning_content_groups" VALUES(91,'tokugawa-ieyasu-becomes-shogun','Event Timeline',3);
 CREATE TABLE learning_content_items (
   id               INTEGER PRIMARY KEY,
   group_id         INTEGER NOT NULL REFERENCES learning_content_groups(id) ON DELETE CASCADE,
@@ -10113,6 +10121,26 @@ INSERT INTO "learning_content_items" VALUES(195,82,1,'The Mughal emperor Aurangz
 INSERT INTO "learning_content_items" VALUES(196,83,0,'Declaration of Independence 1776 → subtract 69 years → 1707. The American colonists broke away from a Great Britain that was less than 70 years old.','imported');
 INSERT INTO "learning_content_items" VALUES(197,83,1,'Ireland joins in 1801 to make the United Kingdom of Great Britain and Ireland. Subtract 94 years → 1707. First Great Britain (1707), then the United Kingdom (1801).','imported');
 INSERT INTO "learning_content_items" VALUES(198,83,2,'Scotland voted on leaving the union in 2014 and stayed. Subtract 307 years → 1707. The union was just past its 300th birthday.','imported');
+INSERT INTO "learning_content_items" VALUES(199,84,0,'Charlemagne was crowned emperor in Rome in 800. Add 82 years → 882: in the far east of Europe, another new power was taking shape around Kiev.','proposed');
+INSERT INTO "learning_content_items" VALUES(200,84,1,'The Viking Age opened with the raid on Lindisfarne in 793. The Norse traders who sailed down Russia''s rivers were part of the same wave; about ninety years later, one of their princes held Kiev → 882.','proposed');
+INSERT INTO "learning_content_items" VALUES(201,85,0,'Think 8-8-2: the 800s were the Vikings'' century, and the two eights are the two cities Oleg joined, Novgorod in the north and Kiev in the south.','proposed');
+INSERT INTO "learning_content_items" VALUES(202,86,0,'Prince Vladimir of Kiev converted to Christianity in 988, the famous ''Baptism of Rus''. Subtract about a century (106 years) → 882, when Kiev first became the Rus capital.','proposed');
+INSERT INTO "learning_content_items" VALUES(203,86,1,'Kievan Rus lasted until the Mongols sacked Kyiv in 1240. If you remember it fell in the 1200s after more than three and a half centuries, count back → the late 800s.','proposed');
+INSERT INTO "learning_content_items" VALUES(204,87,0,'862 — Rurik''s rule at Novgorod begins (the Primary Chronicle''s date)','proposed');
+INSERT INTO "learning_content_items" VALUES(205,87,1,'882 — His successor Oleg takes Kiev and makes it the capital','proposed');
+INSERT INTO "learning_content_items" VALUES(206,87,2,'988 — Vladimir''s conversion: Christianity becomes the Rus faith','proposed');
+INSERT INTO "learning_content_items" VALUES(207,87,3,'1240 — The Mongols sack Kyiv, ending the Kievan state''s power','proposed');
+INSERT INTO "learning_content_items" VALUES(208,88,0,'Ieyasu won the Battle of Sekigahara in 1600, the round-number year. The emperor made him shogun three years later → 1603.','proposed');
+INSERT INTO "learning_content_items" VALUES(209,89,0,'1603 is also the year Elizabeth I died and James VI of Scotland became James I of England. One island nation got a new dynasty in London, the other a new shogunate in Edo, in the same year.','proposed');
+INSERT INTO "learning_content_items" VALUES(210,89,1,'1603 is the first year of Japan''s Edo period, named after Ieyasu''s capital, Edo, which is today''s Tokyo.','proposed');
+INSERT INTO "learning_content_items" VALUES(211,90,0,'Commodore Perry''s warships arrived in Edo Bay in 1853, exactly 250 years later. Subtract 250 → 1603.','proposed');
+INSERT INTO "learning_content_items" VALUES(212,90,1,'The Tokugawa shogunate ended with the Meiji Restoration in 1868. It lasted 265 years: 1868 − 265 → 1603.','proposed');
+INSERT INTO "learning_content_items" VALUES(213,90,2,'Not 1605 or 1607: Akbar died in 1605 and Jamestown was founded in 1607. Ieyasu came first, in 1603.','proposed');
+INSERT INTO "learning_content_items" VALUES(214,91,0,'1600 — Victory at Sekigahara','proposed');
+INSERT INTO "learning_content_items" VALUES(215,91,1,'1603 — Named shogun by Emperor Go-Yōzei; rules from Edo','proposed');
+INSERT INTO "learning_content_items" VALUES(216,91,2,'1605 — Hands the title to his son Hidetada but keeps real power','proposed');
+INSERT INTO "learning_content_items" VALUES(217,91,3,'1615 — Siege of Osaka destroys the rival Toyotomi family','proposed');
+INSERT INTO "learning_content_items" VALUES(218,91,4,'1616 — Ieyasu dies','proposed');
 CREATE TABLE legacy_csv_crosswalk (
   csv_event_id INTEGER NOT NULL REFERENCES legacy_csv_rows(event_id),
   entity_id    TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
@@ -13356,6 +13384,9 @@ INSERT INTO "review_log" VALUES(1616,'2026-11-21 03:56:09','approve-link','polyn
 INSERT INTO "review_log" VALUES(1617,'2026-11-21 03:56:09','approve-link','polynesians-settle-new-zealand','link #466: polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific','dashboard');
 INSERT INTO "review_log" VALUES(1618,'2026-11-21 03:56:09','approve-link','polynesian-settlement-of-hawaii','link #467: polynesian-settlement-of-hawaii part_of polynesian-settlement-of-the-pacific','dashboard');
 INSERT INTO "review_log" VALUES(1619,'2026-11-21 03:56:09','approve-link','construction-of-the-pyramid-of-the-sun','link #468: construction-of-the-pyramid-of-the-sun part_of teotihuacan','dashboard');
+INSERT INTO "review_log" VALUES(1620,'2026-11-21 14:59:15','load-memory-aids','kievan-rus-founded','4 group(s) from ai_drafted:claude-opus-5-5','cli');
+INSERT INTO "review_log" VALUES(1621,'2026-11-21 14:59:15','load-memory-aids','tokugawa-ieyasu-becomes-shogun','4 group(s) from ai_drafted:claude-opus-5-5','cli');
+INSERT INTO "review_log" VALUES(1622,'2026-11-21 15:06:21','set-event-date','kievan-rus-founded','882 → c. 882 (c. 882 (the date in the Primary Chronicle, compiled over two centuries later))','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),

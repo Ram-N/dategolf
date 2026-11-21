@@ -3,9 +3,9 @@
     "events": 510,
     "time_spans": 157,
     "eras": 5,
-    "datelinks_keys": 26,
-    "datelinks_groups": 83,
-    "datelinks_items": 198,
+    "datelinks_keys": 28,
+    "datelinks_groups": 91,
+    "datelinks_items": 218,
     "milestones": 16,
     "daily_challenge_dates": 366,
     "csv_rows": 310,
@@ -455,8 +455,17 @@
     {
       "severity": "review",
       "check": "Memory aids awaiting approval (not exported; dashboard Review → Memory aids)",
-      "count": 0,
-      "rows": []
+      "count": 2,
+      "rows": [
+        [
+          "kievan-rus-founded",
+          "9 item(s)"
+        ],
+        [
+          "tokugawa-ieyasu-becomes-shogun",
+          "11 item(s)"
+        ]
+      ]
     },
     {
       "severity": "review",
@@ -610,7 +619,7 @@
     {
       "severity": "info",
       "check": "Counts changed since the legacy import",
-      "count": 2,
+      "count": 5,
       "rows": [
         [
           "events",
@@ -619,6 +628,18 @@
         [
           "time_spans",
           "98 at import -> 157 now"
+        ],
+        [
+          "datelinks_keys",
+          "26 at import -> 28 now"
+        ],
+        [
+          "datelinks_groups",
+          "83 at import -> 91 now"
+        ],
+        [
+          "datelinks_items",
+          "198 at import -> 218 now"
         ]
       ]
     }

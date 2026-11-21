@@ -42,7 +42,7 @@
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 3 |
 | review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
-| review | Memory aids awaiting approval (not exported; dashboard Review → Memory aids) | pass |
+| review | Memory aids awaiting approval (not exported; dashboard Review → Memory aids) | 2 |
 | review | Missing events and spans to decide (dashboard Review → Missing) | 2 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
@@ -56,16 +56,16 @@
 | warning | Link runs backwards in time (cause or sequence after its target) | pass |
 | warning | part_of link outside the target's years | pass |
 | warning | began / ended link not at the start / end of its target | pass |
-| info | Counts changed since the legacy import | 2 |
+| info | Counts changed since the legacy import | 5 |
 
 ## Counts
 
 - events: 510
 - time_spans: 157
 - eras: 5
-- datelinks_keys: 26
-- datelinks_groups: 83
-- datelinks_items: 198
+- datelinks_keys: 28
+- datelinks_groups: 91
+- datelinks_items: 218
 - milestones: 16
 - daily_challenge_dates: 366
 - csv_rows: 310
@@ -130,6 +130,11 @@
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
 
+## [review] Memory aids awaiting approval (not exported; dashboard Review → Memory aids)
+
+- `kievan-rus-founded` — 9 item(s)
+- `tokugawa-ieyasu-becomes-shogun` — 11 item(s)
+
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 
 - `149` — event · Egyptian–Hittite Peace Treaty (-1259) · wanted
@@ -160,3 +165,6 @@
 
 - `events` — 343 at import -> 510 now
 - `time_spans` — 98 at import -> 157 now
+- `datelinks_keys` — 26 at import -> 28 now
+- `datelinks_groups` — 83 at import -> 91 now
+- `datelinks_items` — 198 at import -> 218 now
