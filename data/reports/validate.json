@@ -449,33 +449,8 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 6,
-      "rows": [
-        [
-          463,
-          "battle-of-kirina began mali-empire — The victory at Kirina is the traditional founding of the Mali Empire under Sundiata."
-        ],
-        [
-          464,
-          "machu-picchu-built part_of inca-empire — Machu Picchu was built as an Inca royal estate, probably for Pachacuti."
-        ],
-        [
-          465,
-          "polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific — Rapa Nui, the eastern corner of the Polynesian triangle, was among the last islands reached."
-        ],
-        [
-          466,
-          "polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific — New Zealand, the southern corner of the triangle, was the last large land mass settled."
-        ],
-        [
-          467,
-          "polynesian-settlement-of-hawaii part_of polynesian-settlement-of-the-pacific — Hawaii, the northern corner of the triangle, was settled from East Polynesia."
-        ],
-        [
-          468,
-          "construction-of-the-pyramid-of-the-sun part_of teotihuacan — The pyramid was Teotihuacan's largest monument, on its main avenue."
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "review",

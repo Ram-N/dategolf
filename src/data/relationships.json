@@ -3022,6 +3022,48 @@
       "target": "polynesian-settlement-of-the-pacific",
       "why": "The Lapita crossing into Remote Oceania opened the settlement of the far Pacific.",
       "confidence": "high"
+    },
+    {
+      "source": "battle-of-kirina",
+      "type": "began",
+      "target": "mali-empire",
+      "why": "The victory at Kirina is the traditional founding of the Mali Empire under Sundiata.",
+      "confidence": "high"
+    },
+    {
+      "source": "machu-picchu-built",
+      "type": "part_of",
+      "target": "inca-empire",
+      "why": "Machu Picchu was built as an Inca royal estate, probably for Pachacuti.",
+      "confidence": "high"
+    },
+    {
+      "source": "polynesians-reach-rapa-nui",
+      "type": "part_of",
+      "target": "polynesian-settlement-of-the-pacific",
+      "why": "Rapa Nui, the eastern corner of the Polynesian triangle, was among the last islands reached.",
+      "confidence": "high"
+    },
+    {
+      "source": "polynesians-settle-new-zealand",
+      "type": "part_of",
+      "target": "polynesian-settlement-of-the-pacific",
+      "why": "New Zealand, the southern corner of the triangle, was the last large land mass settled.",
+      "confidence": "high"
+    },
+    {
+      "source": "polynesian-settlement-of-hawaii",
+      "type": "part_of",
+      "target": "polynesian-settlement-of-the-pacific",
+      "why": "Hawaii, the northern corner of the triangle, was settled from East Polynesia.",
+      "confidence": "high"
+    },
+    {
+      "source": "construction-of-the-pyramid-of-the-sun",
+      "type": "part_of",
+      "target": "teotihuacan",
+      "why": "The pyramid was Teotihuacan's largest monument, on its main avenue.",
+      "confidence": "high"
     }
   ]
 }

@@ -41,7 +41,7 @@
 | warning | Span with a date note but not marked approximate (the note is then not exported) | pass |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 3 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 6 |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
 | review | Memory aids awaiting approval (not exported; dashboard Review → Memory aids) | pass |
 | review | Missing events and spans to decide (dashboard Review → Missing) | 2 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
@@ -129,15 +129,6 @@
 - `apollo-soyuz-test-project` — actors only
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
-
-## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
-
-- `463` — battle-of-kirina began mali-empire — The victory at Kirina is the traditional founding of the Mali Empire under Sundiata.
-- `464` — machu-picchu-built part_of inca-empire — Machu Picchu was built as an Inca royal estate, probably for Pachacuti.
-- `465` — polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific — Rapa Nui, the eastern corner of the Polynesian triangle, was among the last islands reached.
-- `466` — polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific — New Zealand, the southern corner of the triangle, was the last large land mass settled.
-- `467` — polynesian-settlement-of-hawaii part_of polynesian-settlement-of-the-pacific — Hawaii, the northern corner of the triangle, was settled from East Polynesia.
-- `468` — construction-of-the-pyramid-of-the-sun part_of teotihuacan — The pyramid was Teotihuacan's largest monument, on its main avenue.
 
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 

@@ -41,7 +41,7 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 |---|---:|---|
 | Events | **510** | 3500 BCE – 2023; 54 approximate (with ranges), 7 DateFlow-only |
 | Spans | **157** | 60 empires, 97 periods (plus 5 eras); approximate spans can carry a `date_display` |
-| Links | **423**, all reviewed | 164 part_of · 71 preceded · 57 began · 50 ended · 35 contributed_to · 15 influenced · 15 enabled · 8 triggered · 6 opposed · 2 interacted_with (30 medium confidence = "debated") |
+| Links | **429**, all reviewed | 169 part_of · 71 preceded · 58 began · 50 ended · 35 contributed_to · 15 influenced · 15 enabled · 8 triggered · 6 opposed · 2 interacted_with (30 medium confidence = "debated") |
 | Sources | **379** reviewed, 273 proposed | Every event and span has one; Ram is reviewing batch 1 (Review → Sources) |
 | Country tags | 116 countries | Location and actor roles; the dashboard Map |
 | Significance ("Why it matters") | **212 reviewed** | doc 17: `entity_significance`, reviewed before export. Every importance 7+ item has one (4 Gemini batches, pre-sorted by Claude), plus 2 seeds |

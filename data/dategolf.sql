@@ -11723,12 +11723,12 @@ INSERT INTO "relationships" VALUES(457,'tenochtitlan-founded','preceded','aztec-
 INSERT INTO "relationships" VALUES(458,'ayutthaya-founded','preceded','ayutthaya-sacks-angkor','Ayutthaya grew into the regional power that sacked the Khmer capital.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 03:10:38');
 INSERT INTO "relationships" VALUES(459,'pachacuti-begins-inca-expansion','began','inca-empire','Pachacuti''s accession and conquests are the traditional start of the Inca Empire.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 03:10:38');
 INSERT INTO "relationships" VALUES(462,'lapita-voyagers-settle-remote-oceania','began','polynesian-settlement-of-the-pacific','The Lapita crossing into Remote Oceania opened the settlement of the far Pacific.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 03:21:29');
-INSERT INTO "relationships" VALUES(463,'battle-of-kirina','began','mali-empire','The victory at Kirina is the traditional founding of the Mali Empire under Sundiata.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
-INSERT INTO "relationships" VALUES(464,'machu-picchu-built','part_of','inca-empire','Machu Picchu was built as an Inca royal estate, probably for Pachacuti.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
-INSERT INTO "relationships" VALUES(465,'polynesians-reach-rapa-nui','part_of','polynesian-settlement-of-the-pacific','Rapa Nui, the eastern corner of the Polynesian triangle, was among the last islands reached.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
-INSERT INTO "relationships" VALUES(466,'polynesians-settle-new-zealand','part_of','polynesian-settlement-of-the-pacific','New Zealand, the southern corner of the triangle, was the last large land mass settled.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
-INSERT INTO "relationships" VALUES(467,'polynesian-settlement-of-hawaii','part_of','polynesian-settlement-of-the-pacific','Hawaii, the northern corner of the triangle, was settled from East Polynesia.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
-INSERT INTO "relationships" VALUES(468,'construction-of-the-pyramid-of-the-sun','part_of','teotihuacan','The pyramid was Teotihuacan''s largest monument, on its main avenue.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
+INSERT INTO "relationships" VALUES(463,'battle-of-kirina','began','mali-empire','The victory at Kirina is the traditional founding of the Mali Empire under Sundiata.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
+INSERT INTO "relationships" VALUES(464,'machu-picchu-built','part_of','inca-empire','Machu Picchu was built as an Inca royal estate, probably for Pachacuti.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
+INSERT INTO "relationships" VALUES(465,'polynesians-reach-rapa-nui','part_of','polynesian-settlement-of-the-pacific','Rapa Nui, the eastern corner of the Polynesian triangle, was among the last islands reached.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
+INSERT INTO "relationships" VALUES(466,'polynesians-settle-new-zealand','part_of','polynesian-settlement-of-the-pacific','New Zealand, the southern corner of the triangle, was the last large land mass settled.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
+INSERT INTO "relationships" VALUES(467,'polynesian-settlement-of-hawaii','part_of','polynesian-settlement-of-the-pacific','Hawaii, the northern corner of the triangle, was settled from East Polynesia.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
+INSERT INTO "relationships" VALUES(468,'construction-of-the-pyramid-of-the-sun','part_of','teotihuacan','The pyramid was Teotihuacan''s largest monument, on its main avenue.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -13350,6 +13350,12 @@ INSERT INTO "review_log" VALUES(1610,'2026-11-21 03:54:17','approve-countries','
 INSERT INTO "review_log" VALUES(1611,'2026-11-21 03:54:17','approve-countries','machu-picchu-built',NULL,'dashboard');
 INSERT INTO "review_log" VALUES(1612,'2026-11-21 03:54:30','missing-wanted','missing:149','Egyptian–Hittite Peace Treaty','dashboard');
 INSERT INTO "review_log" VALUES(1613,'2026-11-21 03:54:30','missing-wanted','missing:148','Fall of Nineveh','dashboard');
+INSERT INTO "review_log" VALUES(1614,'2026-11-21 03:56:09','approve-link','battle-of-kirina','link #463: battle-of-kirina began mali-empire','dashboard');
+INSERT INTO "review_log" VALUES(1615,'2026-11-21 03:56:09','approve-link','machu-picchu-built','link #464: machu-picchu-built part_of inca-empire','dashboard');
+INSERT INTO "review_log" VALUES(1616,'2026-11-21 03:56:09','approve-link','polynesians-reach-rapa-nui','link #465: polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific','dashboard');
+INSERT INTO "review_log" VALUES(1617,'2026-11-21 03:56:09','approve-link','polynesians-settle-new-zealand','link #466: polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific','dashboard');
+INSERT INTO "review_log" VALUES(1618,'2026-11-21 03:56:09','approve-link','polynesian-settlement-of-hawaii','link #467: polynesian-settlement-of-hawaii part_of polynesian-settlement-of-the-pacific','dashboard');
+INSERT INTO "review_log" VALUES(1619,'2026-11-21 03:56:09','approve-link','construction-of-the-pyramid-of-the-sun','link #468: construction-of-the-pyramid-of-the-sun part_of teotihuacan','dashboard');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
