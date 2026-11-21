@@ -148,6 +148,9 @@ def reject(ids, reason, via="cli"):
             ok = False
             continue
         csv_id = row[0]
+        # A gap-list item this draft filled is closed with the reason (else it would stay 'drafted' with no draft)
+        conn.execute("UPDATE missing_entities SET status = 'dismissed', note = ? WHERE entity_id = ?",
+                     (f"Draft {entity_id} rejected at review: {reason.strip()}", entity_id))
         conn.execute("DELETE FROM entities WHERE id = ?", (entity_id,))  # cascades to its rows
         if csv_id is not None:
             note = f"Draft {entity_id} rejected at review: {reason.strip()}"

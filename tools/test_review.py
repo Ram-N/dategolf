@@ -196,6 +196,14 @@ class TestMissing(unittest.TestCase):
         quiet(drafts.load, path)
         self.assertEqual(db().execute("SELECT status, entity_id FROM missing_entities WHERE id = ?", (item_id,)
                                       ).fetchone(), ("drafted", "test-akbar-accession"))
+        self.assertEqual(quiet(missing.set_status, [item_id], "open", via="test"), 1)  # it has a live draft
+
+        # Rejecting the draft closes the gap item with the reason; it can then be decided again
+        quiet(drafts.reject, ["test-akbar-accession"], "false precision", "test")
+        status, note = db().execute("SELECT status, note FROM missing_entities WHERE id = ?", (item_id,)).fetchone()
+        self.assertEqual(status, "dismissed")
+        self.assertIn("false precision", note)
+        self.assertEqual(quiet(missing.set_status, [item_id], "wanted", via="test"), 0)
 
     def test_refuses_bad_items(self):
         existing = db().execute("SELECT name FROM events LIMIT 1").fetchone()[0]

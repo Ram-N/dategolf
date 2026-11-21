@@ -117,13 +117,20 @@ with t_drafts:
     if drafts.empty:
         st.success("No event drafts waiting. New batches arrive with `load-drafts`.")
     else:
+        # "c. 1200", never a bare year, for an approximate draft: the reviewer must see what students will see
+        drafts["when"] = drafts.apply(
+            lambda r: when_text({"year": r["year"], "end_year": None, "approximate": r["is_approximate"]}), axis=1)
         bar = st.container()  # buttons go above the table (filled once the selection is known)
-        picked = selectable(drafts, "drafts", ["year", "name", "region", "categories", "importance", "review_note"])
+        picked = selectable(drafts, "drafts", ["when", "name", "date_display", "region", "categories", "importance",
+                                               "review_note"],
+                            column_config={"date_display": st.column_config.TextColumn("historians' dates")})
         if len(picked) == 1:
             d = picked.iloc[0]
             with st.container(border=True):
-                st.markdown(f"**{d['name']}** · {d['year']} · {d['region']} · {d['categories']} · "
+                st.markdown(f"**{d['name']}** · {d['when']} · {d['region']} · {d['categories']} · "
                             f"importance {d['importance']} · {d['difficulty']}")
+                if d["date_display"]:
+                    st.info(f"≈ Approximate date. Students see \"{d['when']}\" and the note: {d['date_display']}")
                 st.write(d["description"])
                 st.caption(f"Aliases: {d['aliases']}")
                 if d["review_note"]:

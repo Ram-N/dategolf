@@ -112,8 +112,9 @@ def set_status(ids, status, note=None, via="cli"):
     ensure_schema(conn)
     ok = True
     for item_id in ids:
-        row = conn.execute("SELECT name, status FROM missing_entities WHERE id = ?", (item_id,)).fetchone()
-        if row is None or row["status"] == "drafted":
+        row = conn.execute("SELECT name, status, entity_id FROM missing_entities WHERE id = ?",
+                           (item_id,)).fetchone()
+        if row is None or (row["status"] == "drafted" and row["entity_id"]):  # a draft that was deleted frees it
             ok = False
             print(f"  ✗ #{item_id}: {'already drafted' if row else 'no such item'}")
             continue
