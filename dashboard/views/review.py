@@ -7,6 +7,7 @@ import streamlit as st
 
 from lib import actions
 from lib.db import has_sources, has_table, link_sentence, q, source_links, starts_span
+from lib.search import search_box
 
 st.header("Review", divider=False)
 
@@ -37,7 +38,9 @@ def selectable(df, key, columns=None, id_col="entity_id", column_config=None):
     Streamlit remembers a selection by row *position*. After an action the rows change
     (decided items leave, flagged ones move), so a remembered position could point at the
     wrong item. Keying the widget on the exact list of ids resets the ticks whenever it changes.
+    A search box above the table narrows the rows (a new search clears the ticks for the same reason).
     """
+    df = search_box(df, key)
     ids = "|".join(df[id_col].astype(str))
     widget_key = f"{key}-{hashlib.sha1(ids.encode()).hexdigest()[:10]}"
     shown = df[columns] if columns else df
@@ -449,5 +452,7 @@ with t_fix:
 # ── Decision log ─────────────────────────────────────────────────────────────
 with t_log:
     st.caption("Every review decision, from the dashboard or the CLI (table `review_log`).")
-    st.dataframe(q("SELECT at, action, entity_id, detail, via FROM review_log ORDER BY id DESC LIMIT 200"),
-                 hide_index=True, width="stretch")
+    log_rows = search_box(q("SELECT at, action, entity_id, detail, via FROM review_log ORDER BY id DESC"), "log")
+    st.dataframe(log_rows.head(500), hide_index=True, width="stretch")
+    if len(log_rows) > 500:
+        st.caption(f"Showing the newest 500 of {len(log_rows)}: search to narrow them.")

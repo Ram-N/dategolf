@@ -4,6 +4,7 @@ import pandas as pd
 import streamlit as st
 
 from lib.db import forward_label, q, source_links, when
+from lib.search import search_box
 
 st.title("Connections")
 st.caption("Links are stored once and read from either end: on Kilby's chip it says *preceded*, "
@@ -54,7 +55,7 @@ else:
                      "other": f"{other} ({year})", "why": r["why"], "other id": other_id})
     table = pd.DataFrame(rows).sort_values(["relation", "other"])
     st.markdown(f"**{labels.get(choice, choice)}**")
-    st.dataframe(table, hide_index=True, width="stretch")
+    st.dataframe(search_box(table, f"links-{choice}"), hide_index=True, width="stretch")
 
 with st.expander("Most connected so far"):
     st.dataframe(degree.head(25), hide_index=True, width="stretch")

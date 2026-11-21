@@ -113,8 +113,29 @@ ok, output = actions.approve_significance(["mughal-empire"])
 if not ok:
     problems.append(f"approve_significance failed: {output}")
 
+# Search: the matching rule, then typed into the Review page's boxes (each must still render).
+import pandas as pd  # noqa: E402
+from lib.search import filter_rows  # noqa: E402
+
+rows = pd.DataFrame({"name": ["Battle of Bạch Đằng", "Battle of Kadesh", "Borobudur"], "year": [938, -1274, None]})
+for query, expected in [("", 3), ("battle", 2), ("bach dang", 1), ("BATTLE kadesh", 1), ("-1274", 1),
+                        ("battle borobudur", 0), ("nan", 0)]:
+    if len(filter_rows(rows, query)) != expected:
+        problems.append(f"search {query!r}: {len(filter_rows(rows, query))} rows, expected {expected}")
+
+
+def search_everywhere(at):
+    for box in at.text_input:
+        if box.key and box.key.startswith("search-"):
+            box.input("kadesh")
+    return at.run()
+
+
+problems += check("views/review.py", after=search_everywhere)
 shutil.rmtree(TMP, ignore_errors=True)
+
 if problems:
     print("FAIL\n" + "\n".join(problems))
     sys.exit(1)
-print(f"OK: {len(PAGES)} pages render, 'Validate now' runs, and a review decision works (on a temporary copy)")
+print(f"OK: {len(PAGES)} pages render, 'Validate now' runs, search works, and a review decision works "
+      "(on a temporary copy)")

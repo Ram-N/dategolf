@@ -4,6 +4,7 @@ import plotly.express as px
 import streamlit as st
 
 from lib.db import country_tags
+from lib.search import search_box
 
 st.title("Map")
 st.caption("Counts events and spans by their country tags (`entity_countries`). "
@@ -50,4 +51,4 @@ if choice:
     rows = (view[view["country"] == choice]
               .sort_values("start_year")[["start_year", "name", "kind", "role", "categories", "entity_id"]]
               .rename(columns={"start_year": "year"}))
-    st.dataframe(rows, hide_index=True, width="stretch")
+    st.dataframe(search_box(rows, f"map-{choice}"), hide_index=True, width="stretch")
