@@ -209,11 +209,14 @@ class TestSpanDrafts(unittest.TestCase):
         path.write_text(json.dumps({"origin": "test", "events": [], "spans": [{
             "id": "test-span", "kind": "period", "name": "Test Span", "start_year": 1500, "end_year": 1600,
             "description": "A test span.", "region": "Europe", "importance": 3, "categories": ["Politics"],
+            "approximate": True, "date_display": "c. 1500–1600 (test)",
             "countries": ["FR"], "source": "https://en.wikipedia.org/wiki/Test_span"}]}))
         quiet(drafts.load, path)
         conn = db()
         self.assertEqual(conn.execute("SELECT editorial_status, primary_type FROM entities WHERE id = 'test-span'"
                                       ).fetchone(), ("proposed", "period"))
+        self.assertEqual(conn.execute("SELECT approximate, date_display FROM time_spans WHERE entity_id = 'test-span'"
+                                      ).fetchone(), (1, "c. 1500–1600 (test)"))
         self.assertEqual(conn.execute("SELECT country, status FROM entity_countries WHERE entity_id = 'test-span'"
                                       ).fetchone(), ("FR", "proposed"))
         quiet(drafts.approve, ["test-span"], "test")

@@ -6,7 +6,7 @@ Draft file shape (JSON):
                importance, csv_event_id?, note?, source?, countries?, fills_missing?,
                approximate? (or is_approximate), date_display?, date_precision?, significance?}, ...],
    "spans": [{id, kind, name, start_year, end_year, description, region, importance,
-              categories, countries?, approximate?, note?, source?, significance?}, ...],
+              categories, countries?, approximate?, date_display?, note?, source?, significance?}, ...],
    "significance": [{id, text, note?}, ...],
    "csv_triage": [{csv_event_id, outcome, related_entity_id?, note?}, ...]}
 `source` is a Wikipedia URL. It loads as a proposed source and is approved with its draft.
@@ -74,9 +74,9 @@ def load(path):
             ins("INSERT INTO entities (id, primary_type, editorial_status) VALUES (?, ?, 'proposed')",
                 (t["id"], t["kind"]))
             ins("INSERT INTO time_spans (entity_id, kind, name, start_year, end_year, description, region, "
-                "importance, approximate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                "importance, approximate, date_display) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (t["id"], t["kind"], t["name"], t["start_year"], t["end_year"], t["description"], t["region"],
-                 t["importance"], 1 if t.get("approximate") else None))
+                 t["importance"], 1 if t.get("approximate") else None, t.get("date_display")))
             conn.executemany("INSERT INTO entity_categories VALUES (?, 'span', ?, ?)",
                              [(t["id"], i, c) for i, c in enumerate(t["categories"])])
             conn.executemany("INSERT INTO entity_countries (entity_id, position, country, confidence, status, role) "

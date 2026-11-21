@@ -258,6 +258,8 @@ def check(path, trial=True):
             a = None
         if s.get("kind") not in KINDS:
             errors.append(f"{where}: kind must be period or empire")
+        if s.get("date_display") and not s.get("approximate"):
+            warnings.append(f"{where}: date_display given but approximate is false (it won't be shown)")
         common_checks(where, s, "span", a)
 
     # Significance for existing items (or this batch's): one per item, never replacing one.
