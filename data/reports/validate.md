@@ -42,7 +42,7 @@
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 3 |
 | review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
-| review | Memory aids awaiting approval (not exported; dashboard Review → Memory aids) | 2 |
+| review | Memory aids awaiting approval (not exported; dashboard Review → Memory aids) | pass |
 | review | Missing events and spans to decide (dashboard Review → Missing) | 2 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
 | review | Country tags awaiting review (manage.py approve-countries) | pass |
@@ -129,11 +129,6 @@
 - `apollo-soyuz-test-project` — actors only
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
-
-## [review] Memory aids awaiting approval (not exported; dashboard Review → Memory aids)
-
-- `kievan-rus-founded` — 9 item(s)
-- `tokugawa-ieyasu-becomes-shogun` — 11 item(s)
 
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 

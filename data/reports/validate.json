@@ -455,17 +455,8 @@
     {
       "severity": "review",
       "check": "Memory aids awaiting approval (not exported; dashboard Review → Memory aids)",
-      "count": 2,
-      "rows": [
-        [
-          "kievan-rus-founded",
-          "9 item(s)"
-        ],
-        [
-          "tokugawa-ieyasu-becomes-shogun",
-          "11 item(s)"
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "review",

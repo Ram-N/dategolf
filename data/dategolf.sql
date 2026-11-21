@@ -5401,7 +5401,6 @@ INSERT INTO "entity_sources" VALUES('ancient',148,'proposed','title_match','medi
 INSERT INTO "entity_sources" VALUES('old-kingdom-egypt',149,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('construction-great-pyramid',150,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('indus-valley-begins',151,'proposed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('indus-valley-mature',151,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('egyptian-pyramids-built',150,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('akkadian-empire',152,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('code-of-hammurabi',153,'reviewed','ai_drafted','high',NULL);
@@ -5488,7 +5487,6 @@ INSERT INTO "entity_sources" VALUES('gunpowder-invented',233,'reviewed','ai_draf
 INSERT INTO "entity_sources" VALUES('song-dynasty',234,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('chola-rajaraja-peak',235,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('mahmud-of-ghazni-accession',236,'reviewed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('mahmud-ghazni-somnath',237,'proposed','ai_drafted','medium',NULL);
 INSERT INTO "entity_sources" VALUES('printing-movable-type-china',238,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('great-schism',239,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('battle-of-hastings',240,'reviewed','title_match','high',NULL);
@@ -5533,7 +5531,6 @@ INSERT INTO "entity_sources" VALUES('early-modern',275,'proposed','title_match',
 INSERT INTO "entity_sources" VALUES('safavid-empire',276,'proposed','title_match','medium',NULL);
 INSERT INTO "entity_sources" VALUES('first-portable-watches',277,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('renaissance-michelangelo',278,'proposed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('protestant-reformation',279,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('magellan-circumnavigation',280,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('spanish-conquest-mexico',281,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('babur-founds-mughal-empire',282,'proposed','ai_drafted','high',NULL);
@@ -5559,7 +5556,7 @@ INSERT INTO "entity_sources" VALUES('galileo-telescope',298,'proposed','ai_draft
 INSERT INTO "entity_sources" VALUES('kepler-laws-planetary-motion',299,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('jahangir-marries-nur-jahan',300,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('thirty-years-war',301,'proposed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('birth-of-shivaji',303,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('birth-of-shivaji',303,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('construction-taj-mahal',304,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('taj-mahal-construction-begins',304,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('galileo-inquisition',305,'proposed','ai_drafted','high',NULL);
@@ -5832,7 +5829,7 @@ INSERT INTO "entity_sources" VALUES('modi-elected-pm',564,'proposed','ai_drafted
 INSERT INTO "entity_sources" VALUES('paris-climate-agreement',565,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('demonetization-india',566,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('gst-implemented-india',567,'proposed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('black-holes-confirmed',568,'proposed','ai_drafted','medium',NULL);
+INSERT INTO "entity_sources" VALUES('black-holes-confirmed',568,'reviewed','ai_drafted','medium',NULL);
 INSERT INTO "entity_sources" VALUES('caa-protests-india',569,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('chandrayaan-2-launched',570,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('covid-19-pandemic',571,'proposed','ai_drafted','high',NULL);
@@ -10121,26 +10118,26 @@ INSERT INTO "learning_content_items" VALUES(195,82,1,'The Mughal emperor Aurangz
 INSERT INTO "learning_content_items" VALUES(196,83,0,'Declaration of Independence 1776 → subtract 69 years → 1707. The American colonists broke away from a Great Britain that was less than 70 years old.','imported');
 INSERT INTO "learning_content_items" VALUES(197,83,1,'Ireland joins in 1801 to make the United Kingdom of Great Britain and Ireland. Subtract 94 years → 1707. First Great Britain (1707), then the United Kingdom (1801).','imported');
 INSERT INTO "learning_content_items" VALUES(198,83,2,'Scotland voted on leaving the union in 2014 and stayed. Subtract 307 years → 1707. The union was just past its 300th birthday.','imported');
-INSERT INTO "learning_content_items" VALUES(199,84,0,'Charlemagne was crowned emperor in Rome in 800. Add 82 years → 882: in the far east of Europe, another new power was taking shape around Kiev.','proposed');
-INSERT INTO "learning_content_items" VALUES(200,84,1,'The Viking Age opened with the raid on Lindisfarne in 793. The Norse traders who sailed down Russia''s rivers were part of the same wave; about ninety years later, one of their princes held Kiev → 882.','proposed');
-INSERT INTO "learning_content_items" VALUES(201,85,0,'Think 8-8-2: the 800s were the Vikings'' century, and the two eights are the two cities Oleg joined, Novgorod in the north and Kiev in the south.','proposed');
-INSERT INTO "learning_content_items" VALUES(202,86,0,'Prince Vladimir of Kiev converted to Christianity in 988, the famous ''Baptism of Rus''. Subtract about a century (106 years) → 882, when Kiev first became the Rus capital.','proposed');
-INSERT INTO "learning_content_items" VALUES(203,86,1,'Kievan Rus lasted until the Mongols sacked Kyiv in 1240. If you remember it fell in the 1200s after more than three and a half centuries, count back → the late 800s.','proposed');
-INSERT INTO "learning_content_items" VALUES(204,87,0,'862 — Rurik''s rule at Novgorod begins (the Primary Chronicle''s date)','proposed');
-INSERT INTO "learning_content_items" VALUES(205,87,1,'882 — His successor Oleg takes Kiev and makes it the capital','proposed');
-INSERT INTO "learning_content_items" VALUES(206,87,2,'988 — Vladimir''s conversion: Christianity becomes the Rus faith','proposed');
-INSERT INTO "learning_content_items" VALUES(207,87,3,'1240 — The Mongols sack Kyiv, ending the Kievan state''s power','proposed');
-INSERT INTO "learning_content_items" VALUES(208,88,0,'Ieyasu won the Battle of Sekigahara in 1600, the round-number year. The emperor made him shogun three years later → 1603.','proposed');
-INSERT INTO "learning_content_items" VALUES(209,89,0,'1603 is also the year Elizabeth I died and James VI of Scotland became James I of England. One island nation got a new dynasty in London, the other a new shogunate in Edo, in the same year.','proposed');
-INSERT INTO "learning_content_items" VALUES(210,89,1,'1603 is the first year of Japan''s Edo period, named after Ieyasu''s capital, Edo, which is today''s Tokyo.','proposed');
-INSERT INTO "learning_content_items" VALUES(211,90,0,'Commodore Perry''s warships arrived in Edo Bay in 1853, exactly 250 years later. Subtract 250 → 1603.','proposed');
-INSERT INTO "learning_content_items" VALUES(212,90,1,'The Tokugawa shogunate ended with the Meiji Restoration in 1868. It lasted 265 years: 1868 − 265 → 1603.','proposed');
-INSERT INTO "learning_content_items" VALUES(213,90,2,'Not 1605 or 1607: Akbar died in 1605 and Jamestown was founded in 1607. Ieyasu came first, in 1603.','proposed');
-INSERT INTO "learning_content_items" VALUES(214,91,0,'1600 — Victory at Sekigahara','proposed');
-INSERT INTO "learning_content_items" VALUES(215,91,1,'1603 — Named shogun by Emperor Go-Yōzei; rules from Edo','proposed');
-INSERT INTO "learning_content_items" VALUES(216,91,2,'1605 — Hands the title to his son Hidetada but keeps real power','proposed');
-INSERT INTO "learning_content_items" VALUES(217,91,3,'1615 — Siege of Osaka destroys the rival Toyotomi family','proposed');
-INSERT INTO "learning_content_items" VALUES(218,91,4,'1616 — Ieyasu dies','proposed');
+INSERT INTO "learning_content_items" VALUES(199,84,0,'Charlemagne was crowned emperor in Rome in 800. Add 82 years → 882: in the far east of Europe, another new power was taking shape around Kiev.','reviewed');
+INSERT INTO "learning_content_items" VALUES(200,84,1,'The Viking Age opened with the raid on Lindisfarne in 793. The Norse traders who sailed down Russia''s rivers were part of the same wave; about ninety years later, one of their princes held Kiev → 882.','reviewed');
+INSERT INTO "learning_content_items" VALUES(201,85,0,'Think 8-8-2: the 800s were the Vikings'' century, and the two eights are the two cities Oleg joined, Novgorod in the north and Kiev in the south.','reviewed');
+INSERT INTO "learning_content_items" VALUES(202,86,0,'Prince Vladimir of Kiev converted to Christianity in 988, the famous ''Baptism of Rus''. Subtract about a century (106 years) → 882, when Kiev first became the Rus capital.','reviewed');
+INSERT INTO "learning_content_items" VALUES(203,86,1,'Kievan Rus lasted until the Mongols sacked Kyiv in 1240. If you remember it fell in the 1200s after more than three and a half centuries, count back → the late 800s.','reviewed');
+INSERT INTO "learning_content_items" VALUES(204,87,0,'862 — Rurik''s rule at Novgorod begins (the Primary Chronicle''s date)','reviewed');
+INSERT INTO "learning_content_items" VALUES(205,87,1,'882 — His successor Oleg takes Kiev and makes it the capital','reviewed');
+INSERT INTO "learning_content_items" VALUES(206,87,2,'988 — Vladimir''s conversion: Christianity becomes the Rus faith','reviewed');
+INSERT INTO "learning_content_items" VALUES(207,87,3,'1240 — The Mongols sack Kyiv, ending the Kievan state''s power','reviewed');
+INSERT INTO "learning_content_items" VALUES(208,88,0,'Ieyasu won the Battle of Sekigahara in 1600, the round-number year. The emperor made him shogun three years later → 1603.','reviewed');
+INSERT INTO "learning_content_items" VALUES(209,89,0,'1603 is also the year Elizabeth I died and James VI of Scotland became James I of England. One island nation got a new dynasty in London, the other a new shogunate in Edo, in the same year.','reviewed');
+INSERT INTO "learning_content_items" VALUES(210,89,1,'1603 is the first year of Japan''s Edo period, named after Ieyasu''s capital, Edo, which is today''s Tokyo.','reviewed');
+INSERT INTO "learning_content_items" VALUES(211,90,0,'Commodore Perry''s warships arrived in Edo Bay in 1853, exactly 250 years later. Subtract 250 → 1603.','reviewed');
+INSERT INTO "learning_content_items" VALUES(212,90,1,'The Tokugawa shogunate ended with the Meiji Restoration in 1868. It lasted 265 years: 1868 − 265 → 1603.','reviewed');
+INSERT INTO "learning_content_items" VALUES(213,90,2,'Not 1605 or 1607: Akbar died in 1605 and Jamestown was founded in 1607. Ieyasu came first, in 1603.','reviewed');
+INSERT INTO "learning_content_items" VALUES(214,91,0,'1600 — Victory at Sekigahara','reviewed');
+INSERT INTO "learning_content_items" VALUES(215,91,1,'1603 — Named shogun by Emperor Go-Yōzei; rules from Edo','reviewed');
+INSERT INTO "learning_content_items" VALUES(216,91,2,'1605 — Hands the title to his son Hidetada but keeps real power','reviewed');
+INSERT INTO "learning_content_items" VALUES(217,91,3,'1615 — Siege of Osaka destroys the rival Toyotomi family','reviewed');
+INSERT INTO "learning_content_items" VALUES(218,91,4,'1616 — Ieyasu dies','reviewed');
 CREATE TABLE legacy_csv_crosswalk (
   csv_event_id INTEGER NOT NULL REFERENCES legacy_csv_rows(event_id),
   entity_id    TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
@@ -13387,6 +13384,13 @@ INSERT INTO "review_log" VALUES(1619,'2026-11-21 03:56:09','approve-link','const
 INSERT INTO "review_log" VALUES(1620,'2026-11-21 14:59:15','load-memory-aids','kievan-rus-founded','4 group(s) from ai_drafted:claude-opus-5-5','cli');
 INSERT INTO "review_log" VALUES(1621,'2026-11-21 14:59:15','load-memory-aids','tokugawa-ieyasu-becomes-shogun','4 group(s) from ai_drafted:claude-opus-5-5','cli');
 INSERT INTO "review_log" VALUES(1622,'2026-11-21 15:06:21','set-event-date','kievan-rus-founded','882 → c. 882 (c. 882 (the date in the Primary Chronicle, compiled over two centuries later))','cli');
+INSERT INTO "review_log" VALUES(1623,'2026-11-21 15:07:19','approve-memory-aids','kievan-rus-founded','9 item(s)','dashboard');
+INSERT INTO "review_log" VALUES(1624,'2026-11-21 15:07:19','approve-memory-aids','tokugawa-ieyasu-becomes-shogun','11 item(s)','dashboard');
+INSERT INTO "review_log" VALUES(1625,'2026-11-21 15:10:00','reject-source','mahmud-ghazni-somnath','Somnath Temple — https://en.wikipedia.org/wiki/Somnath_Temple#Mahmud_of_Ghazni%E2%80%99s_Raid_(1026_CE)','dashboard');
+INSERT INTO "review_log" VALUES(1626,'2026-11-21 15:12:46','reject-source','indus-valley-mature','Indus Valley Civilisation — An exact repeat if Indus Valley Cities Enter Their Mature Phase','dashboard');
+INSERT INTO "review_log" VALUES(1627,'2026-11-21 15:13:35','approve-source','birth-of-shivaji','Shivaji','dashboard');
+INSERT INTO "review_log" VALUES(1628,'2026-11-21 15:14:10','approve-source','black-holes-confirmed','Messier 87','dashboard');
+INSERT INTO "review_log" VALUES(1629,'2026-11-21 15:15:07','reject-source','protestant-reformation','Reformation — https://en.wikipedia.org/wiki/Reformation#Luther_and_the_Ninety-five_Theses','dashboard');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -13624,7 +13628,6 @@ INSERT INTO "sources" VALUES(233,'wikipedia','History of gunpowder','https://en.
 INSERT INTO "sources" VALUES(234,'wikipedia','Song dynasty','https://en.wikipedia.org/wiki/Song_dynasty','2026-11-20 03:18:42');
 INSERT INTO "sources" VALUES(235,'wikipedia','Rajaraja I','https://en.wikipedia.org/wiki/Rajaraja_I','2026-11-20 03:18:42');
 INSERT INTO "sources" VALUES(236,'wikipedia','Mahmud of Ghazni','https://en.wikipedia.org/wiki/Mahmud_of_Ghazni','2026-11-20 03:18:42');
-INSERT INTO "sources" VALUES(237,'wikipedia','Somnath Temple','https://en.wikipedia.org/wiki/Somnath_Temple','2026-11-20 03:18:42');
 INSERT INTO "sources" VALUES(238,'wikipedia','Bi Sheng','https://en.wikipedia.org/wiki/Bi_Sheng','2026-11-20 03:18:42');
 INSERT INTO "sources" VALUES(239,'wikipedia','East–West Schism','https://en.wikipedia.org/wiki/East%E2%80%93West_Schism','2026-11-20 03:18:42');
 INSERT INTO "sources" VALUES(240,'wikipedia','Battle of Hastings','https://en.wikipedia.org/wiki/Battle_of_Hastings','2026-11-20 03:18:42');
@@ -13664,7 +13667,6 @@ INSERT INTO "sources" VALUES(275,'wikipedia','Early modern period','https://en.w
 INSERT INTO "sources" VALUES(276,'wikipedia','Safavid Iran','https://en.wikipedia.org/wiki/Safavid_Iran','2026-11-20 03:18:42');
 INSERT INTO "sources" VALUES(277,'wikipedia','Peter Henlein','https://en.wikipedia.org/wiki/Peter_Henlein','2026-11-20 03:18:42');
 INSERT INTO "sources" VALUES(278,'wikipedia','Sistine Chapel ceiling','https://en.wikipedia.org/wiki/Sistine_Chapel_ceiling','2026-11-20 03:18:42');
-INSERT INTO "sources" VALUES(279,'wikipedia','Reformation','https://en.wikipedia.org/wiki/Reformation','2026-11-20 03:18:42');
 INSERT INTO "sources" VALUES(280,'wikipedia','Magellan expedition','https://en.wikipedia.org/wiki/Magellan_expedition','2026-11-20 03:18:42');
 INSERT INTO "sources" VALUES(281,'wikipedia','Spanish conquest of the Aztec Empire','https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Aztec_Empire','2026-11-20 03:18:42');
 INSERT INTO "sources" VALUES(282,'wikipedia','First Battle of Panipat','https://en.wikipedia.org/wiki/First_Battle_of_Panipat','2026-11-20 03:18:42');
