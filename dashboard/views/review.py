@@ -89,11 +89,16 @@ proposed_sources = (q("SELECT * FROM v_source_review WHERE status = 'proposed'")
 has_why = has_table("entity_significance")
 proposed_why = (q("SELECT * FROM v_significance_review WHERE status = 'proposed'") if has_why
                 else q("SELECT NULL AS entity_id WHERE 0"))
+proposed_aids = q("""SELECT e.entity_id, e.year, e.name, e.description, e.date_display,
+                            count(*) AS items, group_concat(DISTINCT g.label) AS groups
+    FROM learning_content_groups g JOIN learning_content_items i ON i.group_id = g.id
+    JOIN events e ON e.entity_id = g.entity_id
+    WHERE i.editorial_status = 'proposed' GROUP BY e.entity_id ORDER BY e.year""")
 
 TAB_LABELS = [
     f"Event drafts ({len(drafts)})", f"Span drafts ({len(span_drafts)})", f"Country tags ({len(tags)})", f"Identity, Step 3a ({len(shared)})",
     f"Links ({len(proposed_links)})", f"Sources ({len(proposed_sources)})",
-    f"Significance ({len(proposed_why)})", f"Missing ({n_missing})",
+    f"Significance ({len(proposed_why)})", f"Memory aids ({len(proposed_aids)})", f"Missing ({n_missing})",
     "Fix any country tags", "Decision log"]
 # Stay on the same tab after an action. The counts in the labels change, so remember the name without them,
 # and key the widget on the labels (a changed label is a new widget, opened on the remembered tab).
@@ -102,7 +107,7 @@ tabs_key = "review_tabs_" + hashlib.sha1("|".join(TAB_LABELS).encode()).hexdiges
 # The default is fixed when this widget is first made: changing it on a later run would reset the tab.
 remembered = st.session_state.setdefault(
     tabs_key + ":default", next((l for l in TAB_LABELS if tab_name(l) == st.session_state.get("review_tab")), None))
-t_drafts, t_spans, t_tags, t_identity, t_links, t_sources, t_why, t_missing, t_fix, t_log = st.tabs(
+t_drafts, t_spans, t_tags, t_identity, t_links, t_sources, t_why, t_aids, t_missing, t_fix, t_log = st.tabs(
     TAB_LABELS, default=remembered, key=tabs_key, on_change="rerun")
 if st.session_state.get(tabs_key):
     st.session_state["review_tab"] = tab_name(st.session_state[tabs_key])
@@ -392,6 +397,41 @@ with t_why:
                     note = st.text_input("Note for the reviewer (optional)")
                     if st.form_submit_button("Save as proposed", type="primary", disabled=False):
                         finish(f"Significance for {choice}", actions.set_significance(choice, text, note or None))
+
+# ── Memory aids (DateLinks, docs/06) ─────────────────────────────────────────
+with t_aids:
+    if proposed_aids.empty:
+        st.success("No memory aids waiting. New ones arrive with `load-memory-aids` (or `/add-memory-aid`).")
+    else:
+        bar = st.container()
+        picked = selectable(proposed_aids, "aids", ["year", "name", "groups", "items"])
+        if len(picked) == 1:
+            d = picked.iloc[0]
+            with st.container(border=True):
+                st.markdown(f"**{d['name']}** ({d['year']}" + (f"; {d['date_display']}" if d["date_display"] else "")
+                            + ")")
+                st.caption(d["description"])
+                st.caption("Check every anchor: is each date right, and is each sum true? (Shown on DatePick's "
+                           "reveal screen.)")
+                aids = q("SELECT g.label, i.body FROM learning_content_groups g JOIN learning_content_items i "
+                         "ON i.group_id = g.id WHERE g.entity_id = ? ORDER BY g.display_order, i.display_order",
+                         d["entity_id"])
+                for label, rows in aids.groupby("label", sort=False):
+                    st.markdown(f"**{label}**\n" + "\n".join(f"- {b}" for b in rows["body"]))
+        ids = picked["entity_id"].tolist()
+        c1, c2, _ = bar.columns([1, 1, 4])
+        if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary", key="approve_aids"):
+            finish("Approve memory aids", actions.approve_memory_aids(ids))
+
+        @st.dialog("Reject memory aids")
+        def reject_aids_dialog(ids):
+            st.write(f"Delete the proposed memory aids of {len(ids)} event(s). The events themselves stay.")
+            reason = st.text_input("Reason (recorded in the log)")
+            if st.button("Reject", key="confirm_reject_aids", type="primary", disabled=not reason.strip()):
+                finish("Reject memory aids", actions.reject_memory_aids(ids, reason))
+
+        if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_aids"):
+            reject_aids_dialog(ids)
 
 # ── Missing events and spans ─────────────────────────────────────────────────
 with t_missing:

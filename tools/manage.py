@@ -13,6 +13,7 @@ import edit
 import exporter
 import identity
 import links
+import memory_aids
 import missing
 import reconcile
 import significance
@@ -224,6 +225,24 @@ def main():
     p.add_argument("ids", nargs="+")
     p.add_argument("--remove", action="store_true", help="Stop drawing them as currents")
     p.set_defaults(fn=lambda a: edit.set_current(a.ids, a.remove))
+
+    p = sub.add_parser("load-memory-aids", help="Add DateLinks memory aids for events as proposed (all-or-nothing)")
+    p.add_argument("path", help='JSON {"origin": ..., "aids": {"<event id>": {"groups": [...]}}} (docs/06)')
+    p.set_defaults(fn=lambda a: memory_aids.load(a.path))
+
+    p = sub.add_parser("approve-memory-aids", help="Approve events' proposed memory aids so they export")
+    p.add_argument("ids", nargs="+")
+    p.set_defaults(fn=lambda a: memory_aids.approve(a.ids))
+
+    p = sub.add_parser("reject-memory-aids", help="Delete events' proposed memory aids (logged, with a reason)")
+    p.add_argument("ids", nargs="+")
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: memory_aids.reject(a.ids, a.reason))
+
+    p = sub.add_parser("remove-memory-aids", help="Delete all of an event's memory aids, published too (to replace them)")
+    p.add_argument("ids", nargs="+")
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: memory_aids.remove(a.ids, a.reason))
 
     p = sub.add_parser("set-memory-aid", help="Replace one DateLinks memory-aid item's text")
     p.add_argument("item_id", type=int)

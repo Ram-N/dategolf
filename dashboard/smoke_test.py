@@ -113,6 +113,23 @@ ok, output = actions.approve_significance(["mughal-empire"])
 if not ok:
     problems.append(f"approve_significance failed: {output}")
 
+# Memory aids: load one on the copy; the Review page must render it, and approving through actions must work.
+import memory_aids  # noqa: E402
+import sqlite3  # noqa: E402
+
+aid_event = sqlite3.connect(TMP / "dategolf.db").execute(
+    "SELECT entity_id FROM events WHERE year > 0 AND entity_id NOT IN "
+    "(SELECT entity_id FROM learning_content_groups) ORDER BY entity_id LIMIT 1").fetchone()[0]
+aids = TMP / "aids.json"
+aids.write_text(json.dumps({"origin": "smoke", "aids": {aid_event: {"groups": [
+    {"label": "Look Back", "items": ["A smoke-test anchor."]}]}}}))
+if memory_aids.load(aids) != 0:
+    problems.append("memory_aids.load failed")
+problems += check("views/review.py")
+ok, output = actions.approve_memory_aids([aid_event])
+if not ok:
+    problems.append(f"approve_memory_aids failed: {output}")
+
 # Search: the matching rule, then typed into the Review page's boxes (each must still render).
 import pandas as pd  # noqa: E402
 from lib.search import filter_rows  # noqa: E402

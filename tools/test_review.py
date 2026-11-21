@@ -25,7 +25,9 @@ import common  # noqa: E402
 import countries  # noqa: E402
 import drafts  # noqa: E402
 import edit  # noqa: E402
+import exporter  # noqa: E402
 import identity  # noqa: E402
+import memory_aids  # noqa: E402
 import missing  # noqa: E402
 
 
@@ -328,6 +330,51 @@ class TestIdentity(unittest.TestCase):
     def test_refuses_ids_that_are_not_shared(self):
         self.assertEqual(quiet(identity.decide, ["battle-of-plassey"], "one"), 1)
         self.assertEqual(quiet(identity.decide, ["punic-wars"], "maybe"), 1)
+
+
+class TestMemoryAids(unittest.TestCase):
+    def batch(self, aids, name):
+        path = TMP / f"{name}.json"
+        path.write_text(json.dumps({"origin": "test", "aids": aids}))
+        return path
+
+    def test_load_review_and_export(self):
+        conn = db()
+        bare = [r[0] for r in conn.execute("SELECT entity_id FROM events WHERE year > 0 AND entity_id NOT IN "
+                                           "(SELECT entity_id FROM learning_content_groups) ORDER BY entity_id LIMIT 2")]
+        has = conn.execute("SELECT entity_id FROM learning_content_groups LIMIT 1").fetchone()[0]
+        a, b = bare
+        year = conn.execute("SELECT year FROM events WHERE entity_id = ?", (a,)).fetchone()[0]
+        good = {"groups": [{"label": "Look Back", "items": ["One.", "Two."]},
+                           {"label": f"Year of {year}", "items": ["Three."]}]}
+        exported = lambda: json.loads(exporter.render_datelinks(common.connect()))
+
+        # All-or-nothing: one bad entry (wrong year label, bad order, existing aids, not an event) loads nothing
+        for bad in ({b: {"groups": [{"label": "Year of 1", "items": ["x"]}]}},
+                    {b: {"groups": [{"label": "Look Ahead", "items": ["x"]}, {"label": "Look Back", "items": ["y"]}]}},
+                    {has: good}, {"no-such-event": good}):
+            self.assertEqual(quiet(memory_aids.load, self.batch({a: good, **bad}, "bad")), 1)
+        self.assertIsNone(db().execute("SELECT 1 FROM learning_content_groups WHERE entity_id = ?", (a,)).fetchone())
+
+        # Loads as proposed and stays out of the export until approved
+        self.assertEqual(quiet(memory_aids.load, self.batch({a: good}, "good")), 0)
+        self.assertNotIn(a, exported())
+        self.assertEqual(quiet(memory_aids.approve, [a], "test"), 0)
+        self.assertEqual(exported()[a], good)
+        self.assertEqual(log_rows(a)[-1][0], "approve-memory-aids")
+
+        # Reject only touches proposed aids; remove takes published ones too
+        self.assertEqual(quiet(memory_aids.reject, [a], "wrong anchor", "test"), 1)
+        self.assertEqual(quiet(memory_aids.remove, [a], "replacing", "test"), 0)
+        self.assertNotIn(a, exported())
+        quiet(memory_aids.load, self.batch({a: good}, "again"))
+        self.assertEqual(quiet(memory_aids.reject, [a], "wrong anchor", "test"), 0)
+        self.assertIn("wrong anchor", log_rows(a)[-1][1])
+        self.assertEqual(quiet(memory_aids.reject, [a], " ", "test"), 1)  # a reason is required
+
+    def test_year_label(self):
+        self.assertEqual(memory_aids.year_label(-587), "Year of 587 BCE")
+        self.assertEqual(memory_aids.year_label(1962), "Year of 1962")
 
 
 if __name__ == "__main__":

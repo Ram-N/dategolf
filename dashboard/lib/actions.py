@@ -17,6 +17,7 @@ import drafts  # noqa: E402
 import exporter  # noqa: E402
 import identity  # noqa: E402
 import links  # noqa: E402
+import memory_aids  # noqa: E402
 import manage  # noqa: E402
 import missing  # noqa: E402
 import significance  # noqa: E402
@@ -110,6 +111,14 @@ def approve_significance(ids):
 
 def reject_significance(ids, reason):
     return _run(significance.reject, ids, reason, "dashboard")
+
+
+def approve_memory_aids(ids):
+    return _run(memory_aids.approve, ids, "dashboard")
+
+
+def reject_memory_aids(ids, reason):
+    return _run(memory_aids.reject, ids, reason, "dashboard")
 
 
 def set_significance(entity_id, text, note=None):

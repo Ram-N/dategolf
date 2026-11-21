@@ -73,6 +73,10 @@ CHECKS = [
      "SELECT r.id, r.source_entity_id || ' ' || r.relationship_type || ' ' || r.target_entity_id "
      "FROM relationships r JOIN relationship_types t ON t.type = r.relationship_type "
      "WHERE t.symmetric = 1 AND r.source_entity_id > r.target_entity_id"),
+    ("warning", "DateLinks 'Year of' label doesn't match the event's year (rename-memory-aid-group)",
+     "SELECT g.entity_id, g.label || ' vs ' || e.year FROM learning_content_groups g "
+     "JOIN events e ON e.entity_id = g.entity_id WHERE g.label LIKE 'Year of %' AND g.label <> "
+     "CASE WHEN e.year < 0 THEN 'Year of ' || -e.year || ' BCE' ELSE 'Year of ' || e.year END"),
     ("warning", "Link touches a proposed (unpublished) entity",
      "SELECT r.id, r.source_entity_id || ' ' || r.relationship_type || ' ' || r.target_entity_id "
      "FROM relationships r WHERE r.source_entity_id IN (SELECT id FROM entities WHERE editorial_status = 'proposed') "
@@ -125,6 +129,10 @@ CHECKS = [
     ("review", "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
      "SELECT id, source_id || ' ' || type || ' ' || target_id || coalesce(' — ' || why, '') "
      "FROM v_link_review WHERE status = 'proposed'"),
+    ("review", "Memory aids awaiting approval (not exported; dashboard Review → Memory aids)",
+     "SELECT g.entity_id, count(*) || ' item(s)' FROM learning_content_groups g "
+     "JOIN learning_content_items i ON i.group_id = g.id WHERE i.editorial_status = 'proposed' "
+     "GROUP BY g.entity_id"),
     ("review", "Missing events and spans to decide (dashboard Review → Missing)",
      "SELECT id, kind || ' · ' || name || coalesce(' (' || year || ')', '') || ' · ' || status "
      "FROM missing_entities WHERE status IN ('open', 'wanted') ORDER BY status DESC, year"),

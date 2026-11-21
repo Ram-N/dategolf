@@ -112,9 +112,11 @@ def render_datelinks(conn):
                               "WHERE entity_id = ? ORDER BY display_order", (entity_id,)):
             items = [r["body"] for r in conn.execute(
                 "SELECT body FROM learning_content_items WHERE group_id = ? "
-                "ORDER BY display_order", (g["id"],))]
-            groups.append({"label": g["label"], "items": items})
-        out[entity_id] = {"groups": groups}
+                "AND editorial_status <> 'proposed' ORDER BY display_order", (g["id"],))]
+            if items:  # proposed aids wait for review (tools/memory_aids.py)
+                groups.append({"label": g["label"], "items": items})
+        if groups:
+            out[entity_id] = {"groups": groups}
     return dumps(out)
 
 
