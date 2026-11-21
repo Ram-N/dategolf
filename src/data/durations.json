@@ -1,5 +1,22 @@
 [
   {
+    "id": "caral-supe-civilization",
+    "name": "Caral–Supe Civilization (Norte Chico)",
+    "startYear": -3000,
+    "endYear": -1800,
+    "description": "The oldest known urban society in the Americas, on the coast of north-central Peru. Its towns, such as Caral, built platform mounds and sunken plazas, without pottery and with little sign of warfare.",
+    "categories": [
+      "Culture",
+      "Social"
+    ],
+    "region": "South America",
+    "importance": 4,
+    "kind": "period",
+    "significance": "Caral–Supe shows that cities and monumental building arose in the Andes independently, about as early as in Mesopotamia and Egypt. It overturned the older view that Andean civilization began much later, with the Chavín.",
+    "approximate": true,
+    "dateDisplay": "c. 3000–1800 BCE (radiocarbon dates; the city of Caral c. 2600–2000 BCE)"
+  },
+  {
     "id": "old-kingdom-egypt",
     "name": "Old Kingdom of Egypt",
     "startYear": -2700,
@@ -89,6 +106,40 @@
     "approximate": true
   },
   {
+    "id": "nok-culture",
+    "name": "Nok Culture",
+    "startYear": -1500,
+    "endYear": -1,
+    "description": "A culture of central Nigeria known for its terracotta sculptures of human heads and figures, among the oldest figurative sculpture in Africa south of the Sahara. Its people were also among West Africa's early iron smelters.",
+    "categories": [
+      "Arts",
+      "Technology"
+    ],
+    "region": "Africa",
+    "importance": 3,
+    "kind": "period",
+    "significance": "Nok's terracottas are among the earliest known sculpture in West Africa, and its furnaces show that iron was being smelted in the region by the first millennium BCE. Some art historians see echoes of its style in later art at Ife, though a direct link is debated.",
+    "approximate": true,
+    "dateDisplay": "c. 1500 BCE to the turn of the era; the terracottas from c. 900 BCE"
+  },
+  {
+    "id": "late-bronze-age-collapse",
+    "name": "Late Bronze Age Collapse",
+    "startYear": -1200,
+    "endYear": -1150,
+    "description": "A few decades in which many states of the eastern Mediterranean and the Near East collapsed: the Hittite Empire and Mycenaean Greece fell, cities such as Ugarit were destroyed, and Egypt lost its empire in the Levant. Its causes, possibly drought, migrations, the Sea Peoples' raids and failing trade, are debated.",
+    "categories": [
+      "Disasters",
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 6,
+    "kind": "period",
+    "significance": "The collapse ended the Bronze Age world of palaces, scribes and long-distance trade, and Greece lost the art of writing for centuries. In the recovery that followed, iron came into wide use and new peoples, among them the Phoenicians and the Israelites, rose to prominence.",
+    "approximate": true,
+    "dateDisplay": "c. 1200–1150 BCE (some extend it to c. 1225–1100)"
+  },
+  {
     "id": "olmec-civilization",
     "name": "Olmec Civilization",
     "startYear": -1200,
@@ -119,6 +170,55 @@
     "kind": "empire",
     "approximate": true,
     "dateDisplay": "c. 1046–256 BCE; the start is disputed (1122–1027 BCE), the end is fixed"
+  },
+  {
+    "id": "bantu-expansion",
+    "name": "Bantu Expansion",
+    "startYear": -1000,
+    "endYear": 500,
+    "description": "The gradual spread of Bantu-speaking farming peoples from the region of modern Cameroon and Nigeria across much of central, eastern and southern Africa. Over many centuries they carried farming, ironworking and the languages now spoken across the southern half of the continent.",
+    "categories": [
+      "Social",
+      "Technology"
+    ],
+    "region": "Africa",
+    "importance": 6,
+    "kind": "period",
+    "significance": "The Bantu expansion shaped the language map of Africa: Bantu languages, from Swahili and Lingala to Zulu, are spoken today by hundreds of millions of people. It also spread farming and ironworking across the south of the continent, the base on which later states such as Great Zimbabwe and Kongo grew.",
+    "approximate": true,
+    "dateDisplay": "a gradual process: beginnings estimated c. 2000–1000 BCE; Bantu speakers reached southern Africa by c. 300–500 CE"
+  },
+  {
+    "id": "polynesian-settlement-of-the-pacific",
+    "name": "Polynesian Settlement of the Pacific",
+    "startYear": -1000,
+    "endYear": 1300,
+    "description": "The long settlement of the remote Pacific by seafaring peoples. Lapita voyagers reached Fiji, Tonga and Samoa, where Polynesian culture took shape; after a long pause their descendants sailed on to settle the islands from Hawaii to Rapa Nui and New Zealand.",
+    "categories": [
+      "Exploration",
+      "Culture"
+    ],
+    "region": "Oceania",
+    "importance": 6,
+    "kind": "period",
+    "significance": "Without metal tools, writing or navigational instruments, Pacific voyagers found and settled nearly every habitable island across a vast stretch of ocean. Their wayfinding by stars, swells and birds ranks among the great achievements of human exploration, and modern canoes such as Hōkūleʻa have revived it.",
+    "approximate": true,
+    "dateDisplay": "c. 1000 BCE–1300 CE: from the Lapita voyages to the settlement of New Zealand"
+  },
+  {
+    "id": "neo-assyrian-empire",
+    "name": "Neo-Assyrian Empire",
+    "startYear": -911,
+    "endYear": -609,
+    "description": "The Assyrian state of northern Mesopotamia, which from capitals such as Nimrud and Nineveh built the largest empire the world had yet seen, reaching at its height from Egypt to western Iran. The Babylonians and Medes destroyed it, sacking Nineveh in 612 BCE.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Middle East",
+    "importance": 7,
+    "kind": "empire",
+    "significance": "Assyria pioneered the methods of a large empire: provinces under appointed governors, a network of roads and royal messengers, and mass deportations of conquered peoples, including the people of the kingdom of Israel. Babylon and Persia inherited much of this system."
   },
   {
     "id": "axial-age",
@@ -346,6 +446,23 @@
     "kind": "period"
   },
   {
+    "id": "teotihuacan",
+    "name": "Teotihuacan",
+    "startYear": -100,
+    "endYear": 550,
+    "description": "The great city of the Valley of Mexico, which at its height held perhaps 100,000 people or more, one of the largest cities in the world at the time. Laid out along a grand avenue, it influenced much of Mesoamerica before it declined and its centre was burned.",
+    "categories": [
+      "Politics",
+      "Culture"
+    ],
+    "region": "Americas",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Teotihuacan's trade, architecture and political reach shaped Mesoamerica for centuries; in 378 CE a Teotihuacan-backed warlord installed a new dynasty at the Maya city of Tikal. Centuries after its fall, the Aztecs revered its ruins as the place where the gods had created the sun.",
+    "approximate": true,
+    "dateDisplay": "c. 100 BCE–550 CE (its decline and the burning of its centre are dated within decades)"
+  },
+  {
     "id": "pax-romana-period",
     "name": "Pax Romana",
     "startYear": -27,
@@ -390,6 +507,21 @@
     "approximate": true
   },
   {
+    "id": "three-kingdoms-china",
+    "name": "Three Kingdoms of China",
+    "startYear": 220,
+    "endYear": 280,
+    "description": "The period after the fall of the Han dynasty when China was divided among three rival states: Wei in the north, Shu in the southwest and Wu in the southeast. It ended when the Jin dynasty, which had replaced Wei, conquered Wu and reunified China.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "East Asia",
+    "importance": 6,
+    "kind": "period",
+    "significance": "Though marked by long wars and a steep fall in registered population, the period became one of the most celebrated in Chinese culture through the novel Romance of the Three Kingdoms. Its heroes, such as Zhuge Liang and Guan Yu, remain famous across East Asia in opera, film and games."
+  },
+  {
     "id": "classic-maya",
     "name": "Classic Maya",
     "startYear": 250,
@@ -403,6 +535,23 @@
     "importance": 6,
     "kind": "empire",
     "approximate": true
+  },
+  {
+    "id": "kofun-period",
+    "name": "Kofun Period",
+    "startYear": 250,
+    "endYear": 538,
+    "description": "The era in Japan named after the kofun, huge earthen burial mounds, many of them keyhole-shaped, built for the ruling elite. During it the Yamato kings of the Nara–Osaka region extended their power over much of Japan.",
+    "categories": [
+      "Culture",
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 4,
+    "kind": "period",
+    "significance": "The Kofun period saw the rise of the Yamato state, from which Japan's imperial line traces its descent. Close contact with Korea brought ironworking, horses and new crafts, and the arrival of Buddhism at its end deepened Chinese and Korean influence on Japanese culture and government.",
+    "approximate": true,
+    "dateDisplay": "c. 250–538 (conventional; 538 is the traditional arrival of Buddhism)"
   },
   {
     "id": "ghana-empire",
@@ -653,6 +802,23 @@
     "importance": 7,
     "kind": "empire",
     "significance": "Transformed China's economy with paper money, booming maritime trade and widespread printing. The Song saw the first use of the magnetic compass at sea and of gunpowder weapons in war, while Neo-Confucian thought shaped East Asian education for centuries."
+  },
+  {
+    "id": "swahili-coast-trading-cities",
+    "name": "Swahili Coast Trading Cities",
+    "startYear": 1000,
+    "endYear": 1500,
+    "description": "The Muslim trading towns of the East African coast, among them Kilwa, Mombasa, Malindi and Zanzibar, which grew rich linking the African interior to the Indian Ocean trade. Their Swahili language and culture blended Bantu African roots with Arab and Persian influences.",
+    "categories": [
+      "Economy",
+      "Culture"
+    ],
+    "region": "Africa",
+    "importance": 5,
+    "kind": "period",
+    "significance": "The Swahili towns tied East Africa into a trading world reaching Arabia, India and China, exporting gold, ivory and enslaved people. They spread Islam along the coast and gave rise to the Swahili language, today spoken by many millions across East Africa.",
+    "approximate": true,
+    "dateDisplay": "their peak c. 1000–1500; the towns began earlier, and Portuguese attacks started in 1505"
   },
   {
     "id": "seljuk-empire",

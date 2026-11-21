@@ -134,6 +134,73 @@
     "dateDisplay": "c. 2600–2560 BCE"
   },
   {
+    "id": "stonehenge-sarsen-circle-raised",
+    "name": "Stonehenge's Sarsen Circle Raised",
+    "year": -2500,
+    "categories": [
+      "Culture",
+      "Religion"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Stonehenge",
+      "Sarsen circle",
+      "Stonehenge trilithons",
+      "Building of Stonehenge"
+    ],
+    "description": "On Salisbury Plain in southern England, Neolithic builders raise the great sarsen stones of Stonehenge: a ring of uprights capped with lintels, enclosing five giant trilithons. Many sarsens weigh over twenty tonnes and were dragged about twenty-five kilometres; the smaller bluestones had been brought from the Preseli Hills in Wales.",
+    "difficulty": "medium",
+    "importance": 5,
+    "significance": "Stonehenge's stones frame the midsummer sunrise and midwinter sunset, showing that Neolithic farming communities could organise labour on a huge scale and follow the sun's yearly cycle. It became one of the world's best-known prehistoric monuments, and its purpose is still debated.",
+    "dateflowOnly": true,
+    "approximate": true,
+    "dateDisplay": "c. 2600–2400 BCE (the site itself is older, from c. 3000 BCE)"
+  },
+  {
+    "id": "code-of-ur-nammu",
+    "name": "Code of Ur-Nammu Issued in Sumer",
+    "year": -2100,
+    "categories": [
+      "Politics",
+      "Social"
+    ],
+    "region": "Middle East",
+    "aliases": [
+      "Code of Ur-Nammu",
+      "Laws of Ur-Nammu",
+      "Oldest surviving law code",
+      "Third Dynasty of Ur laws"
+    ],
+    "description": "In the Sumerian city of Ur, a king of the Third Dynasty of Ur issues a collection of laws written on clay tablets. Many of its rules set fixed fines in silver for injuries rather than physical punishment. It is the oldest law code whose text survives, older than Hammurabi's.",
+    "difficulty": "hard",
+    "importance": 4,
+    "significance": "The code shows that written law, with penalties set by the state, was already established in Sumer centuries before Hammurabi. It belongs to a Mesopotamian legal tradition that later codes, including Hammurabi's, continued and expanded.",
+    "approximate": true,
+    "dateDisplay": "c. 2100–2050 BCE (middle chronology; issued by Ur-Nammu or his son Shulgi)"
+  },
+  {
+    "id": "first-palace-at-knossos",
+    "name": "First Palace Built at Knossos",
+    "year": -1900,
+    "categories": [
+      "Culture",
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Palace of Knossos",
+      "Knossos",
+      "Minoan palace",
+      "Minoan civilization"
+    ],
+    "description": "On the island of Crete, the Minoans build the first palace at Knossos, a great complex of storerooms, workshops and halls arranged around a central court. It becomes the largest centre of the Minoan civilization, Europe's earliest palace-based society, later famous for its colourful frescoes and advanced drains.",
+    "difficulty": "hard",
+    "importance": 4,
+    "significance": "Knossos shows that a literate state with long-distance trade had arisen in Europe by the early second millennium BCE. The Minoans influenced the Mycenaean Greeks, who later took over the palace, and Arthur Evans's excavations from 1900 shaped modern ideas of Bronze Age Europe.",
+    "approximate": true,
+    "dateDisplay": "c. 2000–1900 BCE (the first palace; rebuilt after an earthquake c. 1700 BCE)"
+  },
+  {
     "id": "code-of-hammurabi",
     "name": "Hammurabi Issues His Law Code",
     "year": -1754,
@@ -154,6 +221,117 @@
     "importance": 4,
     "approximate": true,
     "dateDisplay": "c. 1755–1750 BCE (middle chronology)"
+  },
+  {
+    "id": "hatshepsut-becomes-pharaoh",
+    "name": "Hatshepsut Becomes Pharaoh",
+    "year": -1473,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Hatshepsut",
+      "Queen Hatshepsut",
+      "Female pharaoh",
+      "Hatshepsut crowned"
+    ],
+    "description": "Hatshepsut, widow of Thutmose II and regent for her young stepson Thutmose III, has herself crowned king of Egypt. Ruling as pharaoh, often shown in the regalia of a male king, she sponsors great building works, including her temple at Deir el-Bahari, and a trading expedition to the land of Punt.",
+    "difficulty": "medium",
+    "importance": 5,
+    "significance": "Hatshepsut ruled for about two decades of peace and prosperity, one of the few women to hold full royal power in ancient Egypt. After her death many of her images were defaced and her name left off king lists, and she was largely forgotten until Egyptologists pieced her reign back together.",
+    "approximate": true,
+    "dateDisplay": "c. 1473 BCE (regent from c. 1479; crowned about seven years later)"
+  },
+  {
+    "id": "rigveda-composed",
+    "name": "Rigveda Composed",
+    "year": -1400,
+    "categories": [
+      "Religion",
+      "Culture"
+    ],
+    "region": "South Asia",
+    "aliases": [
+      "Rigveda",
+      "Rig Veda",
+      "Vedic hymns",
+      "Oldest Veda"
+    ],
+    "description": "In the northwest of the Indian subcontinent, poet-priests compose the hymns of the Rigveda, over a thousand Sanskrit hymns to gods such as Indra, Agni and Varuna. Memorised and recited with great precision, they are passed down orally for many centuries before being written down.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "The Rigveda is the oldest text of Hinduism and one of the oldest in any Indo-European language. Its hymns and rituals shaped later Vedic religion and Hindu practice, and it remains a key source for the language, society and beliefs of early South Asia.",
+    "dateflowOnly": true,
+    "approximate": true,
+    "dateDisplay": "c. 1500–1200 BCE (composed over centuries and passed down orally)"
+  },
+  {
+    "id": "akhenaten-elevates-the-aten",
+    "name": "Akhenaten Elevates the Aten Above Egypt's Gods",
+    "year": -1350,
+    "categories": [
+      "Religion",
+      "Politics"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Akhenaten",
+      "Amenhotep IV",
+      "Atenism",
+      "Amarna period",
+      "Amarna revolution"
+    ],
+    "description": "The pharaoh Amenhotep IV renames himself Akhenaten and makes the Aten, the disc of the sun, the centre of Egypt's state religion, closing temples of other gods such as Amun. He builds a new capital at Amarna, where royal art takes on a strikingly new and informal style.",
+    "difficulty": "medium",
+    "importance": 5,
+    "significance": "Akhenaten's religious revolution is one of the earliest known attempts to centre a state's worship on a single god, though whether it was true monotheism is debated. It was reversed soon after his death, under Tutankhamun, and later kings tried to erase him from the record.",
+    "approximate": true,
+    "dateDisplay": "c. 1353–1346 BCE (early in his reign, c. 1353–1336)"
+  },
+  {
+    "id": "battle-of-kadesh",
+    "name": "Battle of Kadesh",
+    "year": -1274,
+    "categories": [
+      "War"
+    ],
+    "region": "Middle East",
+    "aliases": [
+      "Kadesh",
+      "Qadesh",
+      "Ramesses II at Kadesh",
+      "Egyptian–Hittite war"
+    ],
+    "description": "Near the city of Kadesh in western Syria, the Egyptian army of Ramesses II clashes with the Hittite army of Muwatalli II in one of the largest chariot battles ever fought. Ramesses narrowly escapes an ambush; both sides claim victory, but neither takes control of the region.",
+    "difficulty": "medium",
+    "importance": 5,
+    "significance": "Kadesh is one of the best-documented battles of the ancient world, recorded in Egyptian texts and temple reliefs and in Hittite letters. Its stalemate was followed, about fifteen years later, by the Egyptian–Hittite peace treaty, one of the earliest peace treaties whose text survives.",
+    "approximate": true,
+    "dateDisplay": "c. 1274 BCE (the most widely used date)"
+  },
+  {
+    "id": "oracle-bone-writing",
+    "name": "Oracle-Bone Writing Appears in Shang China",
+    "year": -1250,
+    "categories": [
+      "Culture",
+      "Religion"
+    ],
+    "region": "East Asia",
+    "aliases": [
+      "Oracle bones",
+      "Oracle bone script",
+      "Jiaguwen",
+      "Earliest Chinese writing",
+      "Shang divination"
+    ],
+    "description": "At the Shang capital near modern Anyang, diviners for King Wu Ding carve questions to the ancestors on turtle shells and ox shoulder blades, then crack them with heat and read the answers. These inscriptions are the earliest known Chinese writing, ancestors of the characters still used today.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "The oracle bones are the oldest known Chinese writing and the main record of the Shang state, confirming kings named in much later histories. Their script is directly ancestral to modern Chinese characters, one of the longest continuous writing traditions in the world.",
+    "approximate": true,
+    "dateDisplay": "c. 1250 BCE (the earliest inscriptions, from the reign of Wu Ding)"
   },
   {
     "id": "fall-of-troy",
@@ -246,6 +424,53 @@
     "importance": 4,
     "approximate": true,
     "dateDisplay": "c. 1000 BCE (biblical tradition)"
+  },
+  {
+    "id": "lapita-voyagers-settle-remote-oceania",
+    "name": "Lapita Voyagers Settle Remote Oceania",
+    "year": -1000,
+    "categories": [
+      "Exploration"
+    ],
+    "region": "Oceania",
+    "aliases": [
+      "Lapita culture",
+      "Lapita people",
+      "Settlement of Remote Oceania",
+      "Lapita pottery",
+      "Austronesian voyagers"
+    ],
+    "description": "Seafarers of the Lapita culture, known for their finely stamped pottery, sail east from the islands off New Guinea into Remote Oceania. In sailing canoes they cross wide stretches of open sea to settle Vanuatu, New Caledonia, Fiji, Tonga and Samoa, islands no human had reached before.",
+    "difficulty": "hard",
+    "importance": 5,
+    "significance": "The Lapita voyages were the first human crossings of truly open ocean, far beyond sight of land. Their descendants in Tonga and Samoa became the ancestral Polynesians, who later settled the rest of the Pacific, from Hawaii to New Zealand and Rapa Nui.",
+    "dateflowOnly": true,
+    "approximate": true,
+    "dateDisplay": "c. 1100–800 BCE (Vanuatu c. 1000; Fiji, Tonga and Samoa by c. 800 BCE)"
+  },
+  {
+    "id": "carthage-founded",
+    "name": "Carthage Founded",
+    "year": -814,
+    "categories": [
+      "Politics",
+      "Economy"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Founding of Carthage",
+      "Carthage",
+      "Queen Dido",
+      "Elissa",
+      "Phoenician Carthage",
+      "Qart-hadasht"
+    ],
+    "description": "Phoenician settlers from the city of Tyre found Carthage on the coast of modern Tunisia; its name means 'new city'. Greek and Roman legend credits the founding to Queen Dido. Commanding the narrows between Sicily and Africa, it grows into a wealthy trading power with colonies across the western Mediterranean.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Carthage became the leading power of the western Mediterranean, spreading Phoenician trade, language and religion from Sicily to Spain. Its rivalry with Rome led to the three Punic Wars, which ended with the city's destruction and Rome's dominance of the whole region.",
+    "approximate": true,
+    "dateDisplay": "814 BCE by tradition; the earliest remains date from the late 9th century BCE"
   },
   {
     "id": "greek-alphabet-adapted-from-phoenician",
@@ -703,6 +928,28 @@
     "importance": 4
   },
   {
+    "id": "library-of-alexandria-founded",
+    "name": "Library of Alexandria Founded",
+    "year": -285,
+    "categories": [
+      "Science",
+      "Culture"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Library of Alexandria",
+      "Great Library",
+      "Mouseion",
+      "Musaeum of Alexandria"
+    ],
+    "description": "In Alexandria, Egypt's new Greek-ruled capital, the Ptolemaic kings found a great library within the Mouseion, a royal institution for scholars. Its librarians set out to collect copies of every book they can find, and it becomes the greatest centre of learning in the Greek world.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "The library made Alexandria the intellectual capital of the Hellenistic world, where scholars such as Eratosthenes worked and many Greek texts were edited and preserved. Its gradual decline, rather than a single famous fire, made it a lasting symbol of lost knowledge.",
+    "approximate": true,
+    "dateDisplay": "c. 300–285 BCE (under Ptolemy I or Ptolemy II; the exact year is unknown)"
+  },
+  {
     "id": "ashoka-becomes-emperor",
     "name": "Ashoka Becomes Mauryan Emperor",
     "year": -268,
@@ -1073,6 +1320,26 @@
     "dateDisplay": "c. 30–33 CE (most scholars favour 30 or 33)"
   },
   {
+    "id": "trung-sisters-revolt",
+    "name": "Trung Sisters Lead a Revolt Against Han Rule",
+    "year": 40,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Southeast Asia",
+    "aliases": [
+      "Trung Sisters",
+      "Trưng sisters' rebellion",
+      "Hai Bà Trưng",
+      "Trưng Trắc and Trưng Nhị"
+    ],
+    "description": "In the Red River delta of northern Vietnam, the sisters Trưng Trắc and Trưng Nhị lead a rebellion against the Chinese Han governor and drive his forces out. Trưng Trắc rules as queen until a Han army under the general Ma Yuan crushes the revolt about three years later.",
+    "difficulty": "hard",
+    "importance": 4,
+    "significance": "Although it was crushed, the revolt made the Trưng sisters enduring national heroines in Vietnam, honoured in temples, street names and a yearly festival. They became a lasting symbol of resistance to Chinese rule, which ended only nine centuries later."
+  },
+  {
     "id": "great-fire-of-rome",
     "name": "Great Fire of Rome",
     "year": 64,
@@ -1156,6 +1423,27 @@
     "description": "The Roman Emperor Hadrian orders the construction of a defensive wall stretching coast to coast across northern Britain, from the Solway Firth to the River Tyne, to control movement between Roman Britain and the unconquered tribes of Caledonia. The wall is the most heavily fortified frontier in the entire Roman Empire, lined with forts, milecastles, and turrets garrisoned by tens of thousands of soldiers. It remains the best-preserved Roman military structure in the world and a UNESCO World Heritage Site.",
     "difficulty": "medium",
     "importance": 5
+  },
+  {
+    "id": "himiko-sends-envoy-to-wei",
+    "name": "Queen Himiko Sends an Envoy to Wei China",
+    "year": 239,
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "aliases": [
+      "Himiko",
+      "Pimiko",
+      "Yamatai",
+      "Queen of Wa"
+    ],
+    "description": "Himiko, a ruler in the land of Wa in Japan, sends an envoy to the Chinese kingdom of Wei. The Chinese chronicle that records the mission describes her as an unmarried queen who practised sorcery and ruled a country called Yamatai, and says the Wei emperor named her Queen of Wa, Friendly to Wei.",
+    "difficulty": "hard",
+    "importance": 4,
+    "significance": "Himiko is the first ruler of Japan known by name from written records, and her mission is one of the earliest documented contacts between Japan and China. Where her Yamatai lay, in Kyushu or the Nara region, is still debated, one of Japanese history's famous puzzles.",
+    "approximate": true,
+    "dateDisplay": "238 or 239 (the Chinese record says 238; most historians read 239)"
   },
   {
     "id": "maya-classic-period",
@@ -1510,6 +1798,26 @@
     "importance": 5
   },
   {
+    "id": "pakal-becomes-ruler-of-palenque",
+    "name": "Pakal the Great Becomes Ruler of Palenque",
+    "year": 615,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Pakal",
+      "K'inich Janaab' Pakal",
+      "Pacal the Great",
+      "Palenque",
+      "Temple of the Inscriptions"
+    ],
+    "description": "At the age of twelve, K'inich Janaab' Pakal takes the throne of Palenque, a Maya city in the rainforest of southern Mexico. In a reign of almost seventy years he rebuilds the city with palaces and temples, and he is buried in a richly furnished tomb inside the Temple of the Inscriptions.",
+    "difficulty": "hard",
+    "importance": 4,
+    "significance": "Pakal's long reign made Palenque one of the leading Classic Maya cities, and his inscriptions are among the longest Maya texts. The discovery of his tomb in 1952, with its jade mask and carved sarcophagus lid, transformed what was known about Maya kingship."
+  },
+  {
     "id": "hijra",
     "name": "The Hijra: Muhammad Migrates to Medina",
     "year": 622,
@@ -1609,6 +1917,28 @@
     "description": "The Prophet Muhammad dies in Medina, having united much of the Arabian Peninsula under Islam. The dispute over his succession, beginning with the choice of Abu Bakr as the first caliph, later shapes the division between Sunni and Shia Muslims.",
     "difficulty": "medium",
     "importance": 5
+  },
+  {
+    "id": "arabs-conquer-egypt",
+    "name": "Arabs Conquer Egypt",
+    "year": 641,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Arab conquest of Egypt",
+      "Muslim conquest of Egypt",
+      "Amr ibn al-As",
+      "Fall of Alexandria"
+    ],
+    "description": "An Arab army under Amr ibn al-As takes Egypt from the Byzantine Empire, winning at Heliopolis and capturing the fortress of Babylon near modern Cairo. Alexandria surrenders by treaty, and Egypt becomes a province of the caliphate, governed from a new garrison town, Fustat.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "The conquest ended nearly a thousand years of Greek and Roman rule in Egypt and cost Constantinople its main grain supply. Over the following centuries Egypt became largely Arabic-speaking and Muslim, and Fustat, later absorbed into Cairo, grew into a leading city of the Islamic world.",
+    "approximate": true,
+    "dateDisplay": "639–642 (invasion 639; Alexandria surrendered in 641 and was handed over in 642)"
   },
   {
     "id": "moors-invade-spain",
@@ -1756,6 +2086,28 @@
     "importance": 4
   },
   {
+    "id": "borobudur-completed",
+    "name": "Borobudur Completed",
+    "year": 825,
+    "categories": [
+      "Religion",
+      "Arts"
+    ],
+    "region": "Southeast Asia",
+    "aliases": [
+      "Borobudur",
+      "Borobudur temple",
+      "Sailendra dynasty",
+      "Javanese Buddhist monument"
+    ],
+    "description": "In central Java, builders under the Sailendra dynasty finish Borobudur, a vast Buddhist monument of stone terraces crowned with stupas. Pilgrims climb it in a spiral, passing more than two thousand carved relief panels that tell Buddhist stories, until they reach the open circular terraces at the top.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Borobudur is the largest Buddhist monument in the world and a high point of the Hindu-Buddhist civilization of early Java. Neglected for centuries after the centre of Javanese power moved east, it was restored in the twentieth century and is now a UNESCO World Heritage Site.",
+    "approximate": true,
+    "dateDisplay": "c. 780–830 (built in stages under the Sailendra dynasty)"
+  },
+  {
     "id": "mihira-bhoja-kannauj",
     "name": "Mihira Bhoja Becomes King of Kannauj",
     "year": 836,
@@ -1816,6 +2168,26 @@
     "description": "The Varangian prince Oleg captures Kiev and makes it the capital of a new state uniting the East Slavic and Norse trading communities along the Dnieper river route connecting Scandinavia to Byzantium. Kievan Rus becomes the first major East Slavic political entity, laying the cultural, religious, and political foundations for the later nations of Russia, Ukraine, and Belarus. Its adoption of Orthodox Christianity from Byzantium in 988 shapes Eastern European civilization for centuries.",
     "difficulty": "hard",
     "importance": 6
+  },
+  {
+    "id": "battle-of-bach-dang-938",
+    "name": "Battle of Bạch Đằng Ends Chinese Rule in Vietnam",
+    "year": 938,
+    "categories": [
+      "War"
+    ],
+    "region": "Southeast Asia",
+    "aliases": [
+      "Bach Dang",
+      "Ngô Quyền",
+      "Ngo Quyen",
+      "Bạch Đằng River",
+      "Vietnamese independence from China"
+    ],
+    "description": "On the Bạch Đằng River in northern Vietnam, Ngô Quyền defeats a fleet of the Southern Han kingdom of China. His men drive iron-tipped stakes into the riverbed, lure the enemy ships in at high tide, and attack as the falling tide leaves them stranded on the stakes.",
+    "difficulty": "hard",
+    "importance": 5,
+    "significance": "The victory ended about a thousand years of rule by Chinese dynasties over northern Vietnam, and Ngô Quyền founded an independent kingdom the next year. The same river saw later victories over Song and Mongol fleets, the last won with the same stake tactic."
   },
   {
     "id": "chola-rajaraja-peak",
@@ -2351,6 +2723,28 @@
     "importance": 3
   },
   {
+    "id": "tenochtitlan-founded",
+    "name": "Tenochtitlan Founded",
+    "year": 1325,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Americas",
+    "aliases": [
+      "Founding of Tenochtitlan",
+      "Tenochtitlan",
+      "Mexica",
+      "Eagle on a cactus",
+      "Mexico City"
+    ],
+    "description": "The Mexica, a people who had migrated into the Valley of Mexico, found their city of Tenochtitlan on a marshy island in Lake Texcoco. According to their tradition, they settled where they saw an eagle perched on a cactus, the sign their god Huitzilopochtli had promised.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Tenochtitlan became the capital of the Aztec Empire and one of the largest cities in the world, with causeways, canals and a great temple. Spanish Mexico City was built on its ruins, and the eagle on the cactus from its founding story appears on Mexico's flag.",
+    "approximate": true,
+    "dateDisplay": "1325 by tradition (some sources give 1345)"
+  },
+  {
     "id": "black-death-arrives-china",
     "name": "Black Death Spreads from Central Asia",
     "year": 1331,
@@ -2431,6 +2825,26 @@
     "importance": 5
   },
   {
+    "id": "ayutthaya-founded",
+    "name": "Kingdom of Ayutthaya Founded",
+    "year": 1351,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Southeast Asia",
+    "aliases": [
+      "Ayutthaya",
+      "Ayutthaya Kingdom",
+      "Siam",
+      "Uthong",
+      "Ramathibodi I"
+    ],
+    "description": "King Uthong, also known as Ramathibodi I, founds the city of Ayutthaya on an island where three rivers meet, in the central plain of modern Thailand. Well placed for rice farming and river trade, it becomes the capital of a powerful Siamese kingdom.",
+    "difficulty": "hard",
+    "importance": 5,
+    "significance": "Ayutthaya dominated much of mainland Southeast Asia for four centuries, sacking Angkor and trading with China, Japan, Persia and Europe. It was destroyed by a Burmese army in 1767, and the kingdom that rose after it, centred on Bangkok, became modern Thailand."
+  },
+  {
     "id": "firuz-shah-tughlaq-accession",
     "name": "Firuz Shah Tughlaq Becomes Sultan of Delhi",
     "year": 1351,
@@ -2448,6 +2862,26 @@
     "description": "Firuz Shah Tughlaq succeeds his cousin Muhammad bin Tughlaq as sultan of Delhi. His long reign is remembered for public works such as canals, new towns and the Feroz Shah Kotla citadel, even as the sultanate's power declines.",
     "difficulty": "hard",
     "importance": 3
+  },
+  {
+    "id": "ibn-battuta-visits-mali",
+    "name": "Ibn Battuta Visits the Mali Empire",
+    "year": 1352,
+    "categories": [
+      "Exploration",
+      "Culture"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Ibn Battuta in Mali",
+      "Ibn Battuta",
+      "Rihla",
+      "Travels of Ibn Battuta"
+    ],
+    "description": "The Moroccan traveller Ibn Battuta crosses the Sahara with a caravan and spends months in the Mali Empire, at the court of Mansa Sulayman. His account praises the kingdom's safety for travellers and its devotion to Islamic learning, while criticising customs that he, a strict jurist, disapproved of.",
+    "difficulty": "hard",
+    "importance": 4,
+    "significance": "Ibn Battuta's Rihla is one of the few eyewitness descriptions of the Mali Empire at its height, and a key source for historians of West Africa. It shows Mali as part of a wider Islamic world linked by trade, scholarship and pilgrimage."
   },
   {
     "id": "ming-dynasty-founded",
@@ -2586,6 +3020,29 @@
     "difficulty": "hard",
     "importance": 6,
     "significance": "The capture of Angkor marks the conventional end of the classical Khmer Empire. Relocating their capital southward toward the Mekong-Tonle Sap junction, Cambodian monarchs oriented the kingdom more toward maritime trade while contending with stronger Siamese and Vietnamese neighbors."
+  },
+  {
+    "id": "pachacuti-begins-inca-expansion",
+    "name": "Pachacuti Begins the Inca Expansion",
+    "year": 1438,
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "South America",
+    "aliases": [
+      "Pachacuti",
+      "Pachacutec",
+      "Chanka war",
+      "Founding of the Inca Empire",
+      "Tawantinsuyu"
+    ],
+    "description": "After defending Cusco against an attack by the Chanka, the Inca prince Cusi Yupanqui takes the throne as Pachacuti, 'he who remakes the world'. He rebuilds Cusco and launches the conquests that turn a small Andean kingdom into the Inca Empire, Tawantinsuyu.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Pachacuti's conquests and reforms, continued by his son Tupac Inca Yupanqui, created the largest empire in the Americas before Europeans arrived, held together by roads, storehouses and labour service. It lasted barely a century before the Spanish conquest.",
+    "approximate": true,
+    "dateDisplay": "1438 in the traditional chronology; radiocarbon dates suggest the expansion began some decades earlier"
   },
   {
     "id": "gutenberg-printing-press",

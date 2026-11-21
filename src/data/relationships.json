@@ -30,6 +30,12 @@
       "causal": true,
       "story": "cause"
     },
+    "interacted_with": {
+      "label": "interacted with",
+      "inverse": "interacted with",
+      "causal": false,
+      "story": "context"
+    },
     "opposed": {
       "label": "opposed",
       "inverse": "opposed",
@@ -2847,6 +2853,174 @@
       "type": "influenced",
       "target": "french-revolution-declaration",
       "why": "Article 6 calls law the expression of the general will, Rousseau's phrase.",
+      "confidence": "high"
+    },
+    {
+      "source": "code-of-ur-nammu",
+      "type": "influenced",
+      "target": "code-of-hammurabi",
+      "why": "Hammurabi's laws continued the Mesopotamian tradition of written codes with set penalties seen first at Ur.",
+      "confidence": "medium"
+    },
+    {
+      "source": "hatshepsut-becomes-pharaoh",
+      "type": "part_of",
+      "target": "new-kingdom-egypt",
+      "why": "Hatshepsut ruled in the New Kingdom's Eighteenth Dynasty.",
+      "confidence": "high"
+    },
+    {
+      "source": "akhenaten-elevates-the-aten",
+      "type": "part_of",
+      "target": "new-kingdom-egypt",
+      "why": "Akhenaten's Amarna period fell within the New Kingdom's Eighteenth Dynasty.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-kadesh",
+      "type": "part_of",
+      "target": "new-kingdom-egypt",
+      "why": "Ramesses II fought at Kadesh to defend Egypt's empire in the Levant.",
+      "confidence": "high"
+    },
+    {
+      "source": "oracle-bone-writing",
+      "type": "part_of",
+      "target": "shang-dynasty",
+      "why": "The inscriptions record the divinations of Shang kings, beginning with Wu Ding.",
+      "confidence": "high"
+    },
+    {
+      "source": "fall-of-troy",
+      "type": "part_of",
+      "target": "late-bronze-age-collapse",
+      "why": "The destruction of Troy VIIa is usually counted among the Late Bronze Age destructions; the legend is harder to date.",
+      "confidence": "medium"
+    },
+    {
+      "source": "carthage-founded",
+      "type": "preceded",
+      "target": "punic-wars",
+      "why": "Carthage grew into the western Mediterranean power that later fought Rome in the Punic Wars.",
+      "confidence": "high"
+    },
+    {
+      "source": "ptolemaic-dynasty-founded",
+      "type": "enabled",
+      "target": "library-of-alexandria-founded",
+      "why": "The Ptolemies' patronage funded the Mouseion and its library in their new capital.",
+      "confidence": "high"
+    },
+    {
+      "source": "library-of-alexandria-founded",
+      "type": "enabled",
+      "target": "eratosthenes-measures-earth",
+      "why": "As the library's chief librarian, Eratosthenes worked with its records and scholarship.",
+      "confidence": "medium"
+    },
+    {
+      "source": "han-dynasty",
+      "type": "opposed",
+      "target": "trung-sisters-revolt",
+      "why": "The sisters rose against the Han governor of Jiaozhi and drove his forces out.",
+      "confidence": "high"
+    },
+    {
+      "source": "teotihuacan",
+      "type": "influenced",
+      "target": "classic-maya",
+      "why": "Teotihuacan's trade and styles reached the Maya, and in 378 it backed a new dynasty at Tikal.",
+      "confidence": "high"
+    },
+    {
+      "source": "han-dynasty",
+      "type": "preceded",
+      "target": "three-kingdoms-china",
+      "why": "When Cao Pi deposed the last Han emperor, China split among Wei, Shu and Wu.",
+      "confidence": "high"
+    },
+    {
+      "source": "jin-reunifies-china",
+      "type": "ended",
+      "target": "three-kingdoms-china",
+      "why": "Jin's conquest of Wu ended the division and reunified China.",
+      "confidence": "high"
+    },
+    {
+      "source": "himiko-sends-envoy-to-wei",
+      "type": "interacted_with",
+      "target": "three-kingdoms-china",
+      "why": "Himiko sent envoys and tribute to Wei, one of the Three Kingdoms, and received a royal title.",
+      "confidence": "high"
+    },
+    {
+      "source": "himiko-sends-envoy-to-wei",
+      "type": "preceded",
+      "target": "kofun-period",
+      "why": "Himiko's reign came just before the great keyhole mounds; some link her to the early Hashihaka tomb.",
+      "confidence": "medium"
+    },
+    {
+      "source": "pakal-becomes-ruler-of-palenque",
+      "type": "part_of",
+      "target": "classic-maya",
+      "why": "Pakal ruled Palenque at the height of the Classic Maya period.",
+      "confidence": "high"
+    },
+    {
+      "source": "islamic-caliphate-expands",
+      "type": "preceded",
+      "target": "arabs-conquer-egypt",
+      "why": "After Abu Bakr united Arabia, his successors' armies moved into Byzantine Syria and then Egypt.",
+      "confidence": "high"
+    },
+    {
+      "source": "arabs-conquer-egypt",
+      "type": "preceded",
+      "target": "moors-invade-spain",
+      "why": "From Egypt the Arab armies pushed west across North Africa, crossing into Spain seventy years later.",
+      "confidence": "medium"
+    },
+    {
+      "source": "great-zimbabwe",
+      "type": "interacted_with",
+      "target": "swahili-coast-trading-cities",
+      "why": "Gold from the Zimbabwe plateau reached the coast and was shipped out through Kilwa.",
+      "confidence": "high"
+    },
+    {
+      "source": "ibn-battuta-visits-mali",
+      "type": "part_of",
+      "target": "mali-empire",
+      "why": "Ibn Battuta saw Mali at its height, under Mansa Musa's brother Sulayman.",
+      "confidence": "high"
+    },
+    {
+      "source": "tenochtitlan-founded",
+      "type": "preceded",
+      "target": "aztec-empire",
+      "why": "The Mexica of Tenochtitlan later formed the Triple Alliance that created the Aztec Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "ayutthaya-founded",
+      "type": "preceded",
+      "target": "ayutthaya-sacks-angkor",
+      "why": "Ayutthaya grew into the regional power that sacked the Khmer capital.",
+      "confidence": "high"
+    },
+    {
+      "source": "pachacuti-begins-inca-expansion",
+      "type": "began",
+      "target": "inca-empire",
+      "why": "Pachacuti's accession and conquests are the traditional start of the Inca Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "lapita-voyagers-settle-remote-oceania",
+      "type": "began",
+      "target": "polynesian-settlement-of-the-pacific",
+      "why": "The Lapita crossing into Remote Oceania opened the settlement of the far Pacific.",
       "confidence": "high"
     }
   ]

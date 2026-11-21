@@ -25,25 +25,27 @@
 | error | Link stored as 'followed' (should be stored as the inverse 'preceded') | pass |
 | error | Contradictory links (A→B and B→A of the same one-way type) | pass |
 | error | Symmetric link not stored in id order | pass |
-| warning | Link touches a proposed (unpublished) entity | 36 |
+| warning | DateLinks 'Year of' label doesn't match the event's year (rename-memory-aid-group) | pass |
+| warning | Link touches a proposed (unpublished) entity | pass |
 | warning | Time spans with the same normalised name | pass |
 | warning | Event names that differ only in case or spacing | pass |
 | warning | Event with no aliases (search falls back to name only) | pass |
 | warning | Imported entity with no import record (provenance lost) | pass |
 | review | Event + time span share one ID (identity decision needed) | pass |
 | review | Legacy CSV rows with no accepted match and no triage outcome | pass |
-| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | 30 |
+| review | Proposed events awaiting approval (not exported; manage.py approve <id>) | pass |
 | review | CSV rows triaged as duplicate / not recommended (incl. date conflicts) | 39 |
-| info | DateFlow-only events (excluded from DatePick and DateGolf) | 8 |
+| info | DateFlow-only events (excluded from DatePick and DateGolf) | 6 |
 | warning | Approximate event with no range (set-event-date --display): students see "c." with nothing to explain it | pass |
 | warning | Event with a range but not marked approximate (the range is then not exported) | pass |
 | warning | Span with a date note but not marked approximate (the note is then not exported) | pass |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 3 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 36 |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
+| review | Memory aids awaiting approval (not exported; dashboard Review → Memory aids) | pass |
 | review | Missing events and spans to decide (dashboard Review → Missing) | 2 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
-| review | Country tags awaiting review (manage.py approve-countries) | 40 |
+| review | Country tags awaiting review (manage.py approve-countries) | pass |
 | info | Region labels in use, with their DateFlow lane | 12 |
 | warning | Description mentions a year near the answer (DatePick shows it before the guess) | pass |
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
@@ -58,7 +60,7 @@
 
 ## Counts
 
-- events: 514
+- events: 505
 - time_spans: 154
 - eras: 5
 - datelinks_keys: 26
@@ -67,80 +69,8 @@
 - milestones: 16
 - daily_challenge_dates: 366
 - csv_rows: 310
-- significance_reviewed: 173
-- significance_proposed: 40
-
-## [warning] Link touches a proposed (unpublished) entity
-
-- `432` — akhenaten-elevates-the-aten part_of new-kingdom-egypt
-- `450` — arabs-conquer-egypt preceded moors-invade-spain
-- `458` — ayutthaya-founded preceded ayutthaya-sacks-angkor
-- `433` — battle-of-kadesh part_of new-kingdom-egypt
-- `454` — battle-of-kirina began mali-empire
-- `437` — carthage-founded preceded punic-wars
-- `430` — code-of-ur-nammu influenced code-of-hammurabi
-- `453` — ezana-of-aksum-adopts-christianity influenced lalibela-rock-hewn-churches
-- `435` — fall-of-troy part_of late-bronze-age-collapse
-- `452` — great-zimbabwe interacted_with swahili-coast-trading-cities
-- `440` — han-dynasty opposed trung-sisters-revolt
-- `444` — han-dynasty preceded three-kingdoms-china
-- `431` — hatshepsut-becomes-pharaoh part_of new-kingdom-egypt
-- `446` — himiko-sends-envoy-to-wei interacted_with three-kingdoms-china
-- `447` — himiko-sends-envoy-to-wei preceded kofun-period
-- `455` — ibn-battuta-visits-mali part_of mali-empire
-- `449` — islamic-caliphate-expands preceded arabs-conquer-egypt
-- `445` — jin-reunifies-china ended three-kingdoms-china
-- `462` — lapita-voyagers-settle-remote-oceania began polynesian-settlement-of-the-pacific
-- `461` — lapita-voyagers-settle-remote-oceania preceded polynesians-settle-hawaii
-- `436` — late-bronze-age-collapse contributed_to ironworking-spreads
-- `439` — library-of-alexandria-founded enabled eratosthenes-measures-earth
-- `460` — machu-picchu-built part_of inca-empire
-- `456` — majapahit-founded opposed yuan-dynasty
-- `434` — oracle-bone-writing part_of shang-dynasty
-- `459` — pachacuti-begins-inca-expansion began inca-empire
-- `448` — pakal-becomes-ruler-of-palenque part_of classic-maya
-- `464` — polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific
-- `463` — polynesians-settle-hawaii part_of polynesian-settlement-of-the-pacific
-- `465` — polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific
-- `438` — ptolemaic-dynasty-founded enabled library-of-alexandria-founded
-- `441` — pyramid-of-the-sun-built part_of teotihuacan
-- `457` — tenochtitlan-founded preceded aztec-empire
-- `443` — teotihuacan influenced aztec-empire
-- `442` — teotihuacan influenced classic-maya
-- `451` — trung-sisters-revolt preceded battle-of-bach-dang-938
-
-## [review] Proposed events awaiting approval (not exported; manage.py approve <id>)
-
-- `stonehenge-sarsen-circle-raised` — -2500 · Stonehenge's Sarsen Circle Raised — English Heritage dates the sarsen phase to c. 2500 BCE; the ditch and bank are c. 3000 BCE. Sarsen source (West Woods, ~25 km) from Nash et al. 2020.
-- `code-of-ur-nammu` — -2100 · Code of Ur-Nammu Issued in Sumer — Ur-Nammu reigned c. 2112–2095 BCE (middle chronology); some scholars credit the code to his son Shulgi, so the name says 'Code of Ur-Nammu' (its conventional name) rather than 'Ur-Nammu issues'. Renamed from the gap-list wording for that reason.
-- `first-palace-at-knossos` — -1900 · First Palace Built at Knossos — Protopalatial period begins c. 1900 BCE; the visible ruins are mostly from the rebuilt palace. The labyrinth legend is left out (only a suggested connection).
-- `hatshepsut-becomes-pharaoh` — -1473 · Hatshepsut Becomes Pharaoh — The gap list said c. 1479, but that is the start of her regency; she was crowned c. 1473 (Shaw: reign c. 1473–1458). Year moved to 1473 for accuracy.
-- `rigveda-composed` — -1400 · Rigveda Composed — A process over centuries, not one year (some scholars say c. 1700–1100 BCE). Recommend DateFlow-only (manage.py dateflow-only) so it isn't a guessing question.
-- `akhenaten-elevates-the-aten` — -1350 · Akhenaten Elevates the Aten Above Egypt's Gods — Renamed from the gap-list 'Introduces the Worship of the Aten': the Aten was worshipped before him; he raised it above all other gods. Whether this was true monotheism is debated.
-- `battle-of-kadesh` — -1274 · Battle of Kadesh — Year 5 of Ramesses II, c. 1274 BCE in the usual chronology. The Egyptian accounts are royal propaganda; the result was a stalemate.
-- `oracle-bone-writing` — -1250 · Oracle-Bone Writing Appears in Shang China — Earliest securely dated inscriptions from Wu Ding's reign (c. 1250–1192 BCE); a mature script, so writing may be older. First recognised in 1899.
-- `lapita-voyagers-settle-remote-oceania` — -1000 · Lapita Voyagers Settle Remote Oceania — A process over two or three centuries (radiocarbon). Recommend DateFlow-only. Countries VU, FJ, TO, WS, PG are new to the countries table (add-country before loading).
-- `carthage-founded` — -814 · Carthage Founded — 814 BCE is from the Greek historian Timaeus; archaeology supports a foundation in the late 9th century BCE. The Dido story is legend, and the description says so.
-- `library-of-alexandria-founded` — -285 · Library of Alexandria Founded — Founding credited to Ptolemy I (advised by Demetrius of Phalerum) or Ptolemy II. Its end was a gradual decline, not one fire: the significance avoids the myth.
-- `trung-sisters-revolt` — 40 · Trung Sisters Lead a Revolt Against Han Rule — The revolt ran 40–43 CE.
-- `pyramid-of-the-sun-built` — 200 · Teotihuacan's Pyramid of the Sun Built — Construction is usually dated c. 200 CE. The tunnel beneath was long thought to be a natural cave.
-- `himiko-sends-envoy-to-wei` — 239 · Queen Himiko Sends an Envoy to Wei China — Recorded in the Wei zhi section of the Records of the Three Kingdoms. The text gives the second year of Jingchu (238); many historians correct it to 239.
-- `pakal-becomes-ruler-of-palenque` — 615 · Pakal the Great Becomes Ruler of Palenque — Accession on 29 July 615, from Palenque's inscriptions; died 683.
-- `arabs-conquer-egypt` — 641 · Arabs Conquer Egypt — The story that Amr burned the Library of Alexandria is a later legend: left out.
-- `borobudur-completed` — 825 · Borobudur Completed — Completion usually placed c. 825, in the reign of Samaratungga. Why it was abandoned is uncertain, so the significance doesn't give a reason.
-- `battle-of-bach-dang-938` — 938 · Battle of Bạch Đằng Ends Chinese Rule in Vietnam — Late 938. Ngô Quyền proclaimed himself king in 939.
-- `cahokia-grows-into-a-city` — 1050 · Cahokia Grows into a City — Archaeologists call the sudden growth around 1050 Cahokia's 'Big Bang'. Population estimates vary widely.
-- `polynesians-settle-hawaii` — 1100 · Polynesians Settle Hawaii — The settlement date is debated (Kirch; Wilmshurst et al. 2011). Recommend DateFlow-only: a range of over two centuries.
-- `lalibela-rock-hewn-churches` — 1200 · Lalibela's Rock-Hewn Churches Carved — Tradition credits all eleven to King Lalibela; archaeologists think some may be older or later.
-- `polynesians-reach-rapa-nui` — 1200 · Polynesians Reach Rapa Nui — Older estimates went as early as 300–800; current radiocarbon work favours c. 1150–1250. The 'ecocide' story is debated, so the significance presents it as debate. Recommend DateFlow-only.
-- `battle-of-kirina` — 1235 · Sundiata Keita Wins the Battle of Kirina — Known mainly from oral tradition and later Arabic sources; c. 1235 is conventional.
-- `polynesians-settle-new-zealand` — 1280 · Polynesian Voyagers Settle New Zealand — Wilmshurst et al. date first settlement to c. 1250–1300.
-- `majapahit-founded` — 1293 · Majapahit Founded — Raden Wijaya was crowned in November 1293. The flag connection in the significance is hedged ('often linked').
-- `tenochtitlan-founded` — 1325 · Tenochtitlan Founded — 1325 is the date in Mexica tradition, widely used.
-- `ayutthaya-founded` — 1351 · Kingdom of Ayutthaya Founded — Traditional date 4 March 1351, used everywhere.
-- `ibn-battuta-visits-mali` — 1352 · Ibn Battuta Visits the Mali Empire — Left Sijilmasa in early 1352; back in Morocco by early 1354.
-- `pachacuti-begins-inca-expansion` — 1438 · Pachacuti Begins the Inca Expansion — 1438 is Rowe's chronology, from Spanish-era sources; radiocarbon work (Marsh et al. 2017) suggests Inca expansion started around 1400.
-- `machu-picchu-built` — 1450 · Machu Picchu Built — Burger et al. (Antiquity, 2021) date occupation from c. 1420. 'Lost city' is a popular label; local farmers always knew it.
+- significance_reviewed: 204
+- significance_proposed: 0
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 
@@ -191,8 +121,6 @@
 - `ironworking-spreads` — -670 · Ironworking Spreads Across the Old World — A process over seven centuries; no single year to guess. Precision batch 2026-11-09.
 - `rigveda-composed` — -1400 · Rigveda Composed — Composed over centuries (c. 1500–1200 BCE); no single year to guess
 - `lapita-voyagers-settle-remote-oceania` — -1000 · Lapita Voyagers Settle Remote Oceania — A process over two or three centuries (c. 1100–800 BCE)
-- `polynesians-settle-hawaii` — 1100 · Polynesians Settle Hawaii — Settlement date debated (c. 1000–1250; older estimates 300–800)
-- `polynesians-reach-rapa-nui` — 1200 · Polynesians Reach Rapa Nui — Radiocarbon range c. 1150–1250; no single year
 - `stonehenge-sarsen-circle-raised` — -2500 · Stonehenge's Sarsen Circle Raised — Sarsen phase c. 2600–2400 BCE; no single year
 
 ## [info] Entities with an actor but no location (e.g. events on the Moon or Mars)
@@ -201,106 +129,24 @@
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
 
-## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
-
-- `430` — code-of-ur-nammu influenced code-of-hammurabi — Hammurabi's laws continued the Mesopotamian tradition of written codes with set penalties seen first at Ur.
-- `431` — hatshepsut-becomes-pharaoh part_of new-kingdom-egypt — Hatshepsut ruled in the New Kingdom's Eighteenth Dynasty.
-- `432` — akhenaten-elevates-the-aten part_of new-kingdom-egypt — Akhenaten's Amarna period fell within the New Kingdom's Eighteenth Dynasty.
-- `433` — battle-of-kadesh part_of new-kingdom-egypt — Ramesses II fought at Kadesh to defend Egypt's empire in the Levant.
-- `434` — oracle-bone-writing part_of shang-dynasty — The inscriptions record the divinations of Shang kings, beginning with Wu Ding.
-- `435` — fall-of-troy part_of late-bronze-age-collapse — The destruction of Troy VIIa is usually counted among the Late Bronze Age destructions; the legend is harder to date.
-- `436` — late-bronze-age-collapse contributed_to ironworking-spreads — With bronze trade networks broken, iron, smelted from more common ores, came into wider use; historians debate how much.
-- `437` — carthage-founded preceded punic-wars — Carthage grew into the western Mediterranean power that later fought Rome in the Punic Wars.
-- `438` — ptolemaic-dynasty-founded enabled library-of-alexandria-founded — The Ptolemies' patronage funded the Mouseion and its library in their new capital.
-- `439` — library-of-alexandria-founded enabled eratosthenes-measures-earth — As the library's chief librarian, Eratosthenes worked with its records and scholarship.
-- `440` — han-dynasty opposed trung-sisters-revolt — The sisters rose against the Han governor of Jiaozhi and drove his forces out.
-- `441` — pyramid-of-the-sun-built part_of teotihuacan — The pyramid was Teotihuacan's largest monument, on its main avenue.
-- `442` — teotihuacan influenced classic-maya — Teotihuacan's trade and styles reached the Maya, and in 378 it backed a new dynasty at Tikal.
-- `443` — teotihuacan influenced aztec-empire — The Aztecs revered its ruins as sacred and borrowed its imagery and objects.
-- `444` — han-dynasty preceded three-kingdoms-china — When Cao Pi deposed the last Han emperor, China split among Wei, Shu and Wu.
-- `445` — jin-reunifies-china ended three-kingdoms-china — Jin's conquest of Wu ended the division and reunified China.
-- `446` — himiko-sends-envoy-to-wei interacted_with three-kingdoms-china — Himiko sent envoys and tribute to Wei, one of the Three Kingdoms, and received a royal title.
-- `447` — himiko-sends-envoy-to-wei preceded kofun-period — Himiko's reign came just before the great keyhole mounds; some link her to the early Hashihaka tomb.
-- `448` — pakal-becomes-ruler-of-palenque part_of classic-maya — Pakal ruled Palenque at the height of the Classic Maya period.
-- `449` — islamic-caliphate-expands preceded arabs-conquer-egypt — After Abu Bakr united Arabia, his successors' armies moved into Byzantine Syria and then Egypt.
-- `450` — arabs-conquer-egypt preceded moors-invade-spain — From Egypt the Arab armies pushed west across North Africa, crossing into Spain seventy years later.
-- `451` — trung-sisters-revolt preceded battle-of-bach-dang-938 — Both were Vietnamese risings against Chinese rule; the second, nine centuries later, finally won independence.
-- `452` — great-zimbabwe interacted_with swahili-coast-trading-cities — Gold from the Zimbabwe plateau reached the coast and was shipped out through Kilwa.
-- `453` — ezana-of-aksum-adopts-christianity influenced lalibela-rock-hewn-churches — Aksum's conversion founded the Ethiopian church whose faith Lalibela's churches were carved to serve.
-- `454` — battle-of-kirina began mali-empire — The victory at Kirina is the traditional founding of the Mali Empire under Sundiata.
-- `455` — ibn-battuta-visits-mali part_of mali-empire — Ibn Battuta saw Mali at its height, under Mansa Musa's brother Sulayman.
-- `456` — majapahit-founded opposed yuan-dynasty — Raden Wijaya turned on the Yuan fleet sent by Kublai Khan and drove it from Java.
-- `457` — tenochtitlan-founded preceded aztec-empire — The Mexica of Tenochtitlan later formed the Triple Alliance that created the Aztec Empire.
-- `458` — ayutthaya-founded preceded ayutthaya-sacks-angkor — Ayutthaya grew into the regional power that sacked the Khmer capital.
-- `459` — pachacuti-begins-inca-expansion began inca-empire — Pachacuti's accession and conquests are the traditional start of the Inca Empire.
-- `460` — machu-picchu-built part_of inca-empire — Machu Picchu was built as an Inca royal estate, probably for Pachacuti.
-- `461` — lapita-voyagers-settle-remote-oceania preceded polynesians-settle-hawaii — The Lapita settlers of Tonga and Samoa were the ancestors of the Polynesians who later voyaged to Hawaii.
-- `462` — lapita-voyagers-settle-remote-oceania began polynesian-settlement-of-the-pacific — The Lapita crossing into Remote Oceania opened the settlement of the far Pacific.
-- `463` — polynesians-settle-hawaii part_of polynesian-settlement-of-the-pacific — Hawaii, the northern corner of the Polynesian triangle, was settled from East Polynesia.
-- `464` — polynesians-reach-rapa-nui part_of polynesian-settlement-of-the-pacific — Rapa Nui, the eastern corner of the triangle, was among the last islands reached.
-- `465` — polynesians-settle-new-zealand part_of polynesian-settlement-of-the-pacific — New Zealand, the southern corner of the triangle, was the last large land mass settled.
-
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 
 - `149` — event · Egyptian–Hittite Peace Treaty (-1259) · open
 - `148` — event · Fall of Nineveh (-612) · open
-
-## [review] Country tags awaiting review (manage.py approve-countries)
-
-- `akhenaten-elevates-the-aten` — high
-- `arabs-conquer-egypt` — high
-- `ayutthaya-founded` — high
-- `bantu-expansion` — high
-- `battle-of-bach-dang-938` — high
-- `battle-of-kadesh` — high
-- `battle-of-kirina` — high
-- `borobudur-completed` — high
-- `cahokia-grows-into-a-city` — high
-- `caral-supe-civilization` — high
-- `carthage-founded` — high
-- `code-of-ur-nammu` — high
-- `first-palace-at-knossos` — high
-- `hatshepsut-becomes-pharaoh` — high
-- `himiko-sends-envoy-to-wei` — high
-- `ibn-battuta-visits-mali` — high
-- `kofun-period` — high
-- `lalibela-rock-hewn-churches` — high
-- `lapita-voyagers-settle-remote-oceania` — high
-- `late-bronze-age-collapse` — high
-- `library-of-alexandria-founded` — high
-- `machu-picchu-built` — high
-- `majapahit-founded` — high
-- `neo-assyrian-empire` — high
-- `nok-culture` — high
-- `oracle-bone-writing` — high
-- `pachacuti-begins-inca-expansion` — high
-- `pakal-becomes-ruler-of-palenque` — high
-- `polynesian-settlement-of-the-pacific` — high
-- `polynesians-reach-rapa-nui` — high
-- `polynesians-settle-hawaii` — high
-- `polynesians-settle-new-zealand` — high
-- `pyramid-of-the-sun-built` — high
-- `rigveda-composed` — high
-- `stonehenge-sarsen-circle-raised` — high
-- `swahili-coast-trading-cities` — high
-- `tenochtitlan-founded` — high
-- `teotihuacan` — high
-- `three-kingdoms-china` — high
-- `trung-sisters-revolt` — high
 
 ## [info] Region labels in use, with their DateFlow lane
 
 - `Europe` — europe · 183 records
 - `South Asia` — south-asia · 149 records
 - `East Asia` — east-asia · 72 records
-- `Americas` — americas · 69 records
+- `Americas` — americas · 68 records
 - `Middle East` — middle-east · 55 records
-- `Africa` — africa · 55 records
+- `Africa` — africa · 53 records
 - `Global` — global · 35 records
-- `Southeast Asia` — east-asia · 22 records
-- `North America` — americas · 13 records
-- `Oceania` — global · 10 records
-- `South America` — americas · 4 records
+- `Southeast Asia` — east-asia · 21 records
+- `North America` — americas · 12 records
+- `Oceania` — global · 7 records
+- `South America` — americas · 3 records
 - `Antarctica` — global · 1 records
 
 ## [info] Accepted region exceptions (region deliberately differs from location)
@@ -311,5 +157,5 @@
 
 ## [info] Counts changed since the legacy import
 
-- `events` — 343 at import -> 514 now
+- `events` — 343 at import -> 505 now
 - `time_spans` — 98 at import -> 154 now
