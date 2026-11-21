@@ -12,6 +12,8 @@ npm run dev   # → http://localhost:5173
 ## Key Rules — Don't Break These
 
 - **Historical accuracy trumps everything else.** This is an educational game: never show false precision or a misleading claim to students. Mark uncertain dates approximate and show "c." prominently. Fix a wrong date or name even when that breaks memory aids, links or tests (redo those instead). Push back on any request that would make the data less accurate.
+- **A gradual process is a span, not a one-year event** — Ram rejects events that pin a process (or a date known only within decades) to one year; an event with a range of a century or more is made DateFlow-only
+- **Links need closeness in time** — no `preceded` / `influenced` / `contributed_to` between items centuries apart; put long-range legacies in the "Why it matters" text
 - **No backend** — the app reads static JSON + localStorage; no server
 - **SQLite is the data source of truth** — edit `data/dategolf.db`, then `npm run data:export`; never hand-edit the generated JSON in `src/data/` or `public/data/`
 - **No year 0** — years are signed (`-1` = 1 BCE); the schema rejects 0
