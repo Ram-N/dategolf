@@ -74,7 +74,7 @@ def when_text(r) -> str:
 
 
 missing_items = q("""SELECT id, status, kind, year, end_year, approximate, name, region, why, found_while,
-                            related_ids, entity_id, note
+                            related_ids, entity_id, note, url
     FROM missing_entities ORDER BY status = 'wanted' DESC, coalesce(year, 9999)""") if has_table("missing_entities") \
     else q("SELECT NULL AS id, NULL AS status WHERE 0")
 if not missing_items.empty:
@@ -402,11 +402,14 @@ with t_missing:
         shown = {"To decide": missing_items["status"] == "open", "Wanted": missing_items["status"] == "wanted",
                  "Done": missing_items["status"].isin(["drafted", "dismissed"])}[view_as]
         picked = selectable(missing_items[shown], "missing",
-                            ["kind", "when", "name", "region", "why", "note"], id_col="id")
+                            ["kind", "when", "name", "url", "region", "why", "note"], id_col="id",
+                            column_config={"url": st.column_config.LinkColumn("article", display_text="open")})
         if len(picked) == 1:
             d = picked.iloc[0]
             with st.container(border=True):
                 st.markdown(f"**{d['name']}** ({d['kind']}, {d['when']}) — {d['why']}")
+                if d["url"]:
+                    st.markdown(f"📖 [Read on Wikipedia]({d['url']})")
                 st.caption(f"Would link to: {d['related_ids'] or '—'} · found while {d['found_while'] or '—'}"
                            + (f" · drafted as `{d['entity_id']}`" if d["entity_id"] else ""))
         ids = [int(i) for i in picked["id"]]

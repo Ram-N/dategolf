@@ -2,16 +2,20 @@
 
 Batch file (JSON):
   {"found_while": "link batch 2",
-   "items": [{kind, name, year?, end_year?, approximate?, region?, why, related_ids?: [..]}, ...]}
+   "items": [{kind, name, year?, end_year?, approximate?, region?, why, related_ids?: [..], url?}, ...]}
+
+Article links for items already on the list (missing-urls): {"titles": {"<item name>": "Page" or "Page#Section"}}
 """
 
 import json
 import sqlite3
 from pathlib import Path
 
+import sources
 from common import connect, ensure_schema, log
 
 STATUSES = ("open", "wanted", "drafted", "dismissed")
+WIKI = "https://en.wikipedia.org/wiki/"
 
 
 def load(path):
@@ -42,22 +46,57 @@ def load(path):
         for rid in related:
             if rid not in known:
                 problems.append(f"{where}: unknown related id {rid}")
+        if it.get("url") and not it["url"].startswith(WIKI):
+            problems.append(f"{where}: url must be a Wikipedia article ({WIKI}...)")
         seen.add((kind, name.casefold()))
         rows.append((kind, name, it.get("year"), it.get("end_year"), 1 if it.get("approximate") else None,
-                     it.get("region"), why, it.get("found_while") or batch.get("found_while"), " ".join(related) or None))
+                     it.get("region"), why, it.get("found_while") or batch.get("found_while"), " ".join(related) or None,
+                     it.get("url") or None))
     if problems:
         print("  ✗ Nothing added:\n    " + "\n    ".join(problems))
         conn.close()
         return 1
     try:
         conn.executemany("INSERT INTO missing_entities (kind, name, year, end_year, approximate, region, why, "
-                         "found_while, related_ids) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
+                         "found_while, related_ids, url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
     except sqlite3.Error as exc:
         conn.rollback()
         raise SystemExit(f"Nothing added: {exc} (while loading {path})")
     conn.commit()
     conn.close()
     print(f"  Added {len(rows)} missing items. Review them on the dashboard (Review → Missing).")
+    return 0
+
+
+def set_urls(path, via="cli"):
+    """Attach a Wikipedia article to items on the list, by name. Every title is checked on Wikipedia
+    ("Page#Section" links to the section; the section itself isn't checked). All-or-nothing."""
+    titles = json.loads(Path(path).read_text(encoding="utf-8"))["titles"]
+    conn = connect()
+    ensure_schema(conn)
+    ids = {r["name"].casefold(): r["id"] for r in conn.execute("SELECT id, name FROM missing_entities")}
+    asks = {name: title.partition("#") for name, title in titles.items()}
+    answers = sources.resolve(sorted({page.strip() for page, _, _ in asks.values()}))
+    problems, rows = [], []
+    for name, (page, _, section) in asks.items():
+        answer = answers[page.strip()]
+        if name.casefold() not in ids:
+            problems.append(f"{name}: not on the list")
+        elif "problem" in answer:
+            problems.append(f"{name}: {page.strip()}: {answer['problem']}")
+        else:
+            rows.append((ids[name.casefold()], name,
+                         sources.wiki_url(answer["title"], section.strip() or answer["fragment"])))
+    if problems:
+        print("  ✗ Nothing changed:\n    " + "\n    ".join(problems))
+        conn.close()
+        return 1
+    for item_id, name, url in rows:
+        conn.execute("UPDATE missing_entities SET url = ? WHERE id = ?", (url, item_id))
+        log(conn, "missing-url", f"missing:{item_id}", f"{name} — {url}", via=via)
+    conn.commit()
+    conn.close()
+    print(f"  ✓ {len(rows)} article link(s) set. They show in Review → Missing.")
     return 0
 
 

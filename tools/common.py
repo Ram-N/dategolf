@@ -57,6 +57,7 @@ ADDED_COLUMNS = [
     ("relationship_types", "inverse_label", "TEXT"),
     ("relationship_types", "symmetric", "INTEGER NOT NULL DEFAULT 0"),
     ("time_spans", "date_display", "TEXT"),
+    ("missing_entities", "url", "TEXT"),
 ]
 
 

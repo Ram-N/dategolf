@@ -358,6 +358,10 @@ def main():
     p.add_argument("path")
     p.set_defaults(fn=lambda a: missing.load(a.path))
 
+    p = sub.add_parser("missing-urls", help="Attach checked Wikipedia articles to items on the missing list")
+    p.add_argument("path", help='JSON {"titles": {"<item name>": "Page" or "Page#Section"}}')
+    p.set_defaults(fn=lambda a: missing.set_urls(a.path))
+
     p = sub.add_parser("missing-status", help="Mark missing items wanted, dismissed (with --note) or open")
     p.add_argument("ids", nargs="+", type=int)
     p.add_argument("--status", required=True, choices=["open", "wanted", "dismissed"])

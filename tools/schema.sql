@@ -432,6 +432,7 @@ CREATE TABLE IF NOT EXISTS missing_entities (
   why         TEXT NOT NULL,                                       -- why it matters, what it would link to
   found_while TEXT,                                                -- e.g. "link batch 2"
   related_ids TEXT,                                                -- existing ids it would link to, space-separated
+  url         TEXT,                                                -- a Wikipedia article to read before deciding
   status      TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open', 'wanted', 'drafted', 'dismissed')),
   entity_id   TEXT REFERENCES entities(id) ON DELETE SET NULL,     -- the draft that filled it
   note        TEXT,

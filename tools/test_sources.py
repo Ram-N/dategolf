@@ -23,6 +23,7 @@ sys.path.insert(0, str(HERE))
 
 import common  # noqa: E402
 import drafts  # noqa: E402
+import missing  # noqa: E402
 import sources  # noqa: E402
 import validate  # noqa: E402
 
@@ -181,6 +182,36 @@ class TestDraftSources(unittest.TestCase):
         self.draft("source-test-b")
         quiet(drafts.reject, ["source-test-b"], "test", "test")
         self.assertIsNone(db().execute("SELECT 1 FROM sources WHERE url LIKE '%source-test-b'").fetchone())
+
+
+class TestMissingUrls(unittest.TestCase):
+    def test_links_are_checked_and_all_or_nothing(self):
+        items = TMP / "missing_items.json"
+        items.write_text(json.dumps({"items": [
+            {"kind": "event", "name": "Test Gap Hastings", "year": 1066, "why": "test"},
+            {"kind": "event", "name": "Test Gap Rome", "year": 476, "why": "test",
+             "url": "https://en.wikipedia.org/wiki/Rome"}]}))
+        self.assertEqual(quiet(missing.load, items), 0)
+        url = lambda name: db().execute("SELECT url FROM missing_entities WHERE name = ?", (name,)).fetchone()[0]
+        self.assertEqual(url("Test Gap Rome"), "https://en.wikipedia.org/wiki/Rome")  # given at load
+
+        bad = TMP / "missing_bad.json"
+        bad.write_text(json.dumps({"titles": {"Test Gap Hastings": "Battle of Hastings", "Test Gap Rome": "Mercury"}}))
+        self.assertEqual(quiet(missing.set_urls, bad), 1)  # a disambiguation page: nothing changes
+        self.assertIsNone(url("Test Gap Hastings"))
+
+        good = TMP / "missing_good.json"
+        good.write_text(json.dumps({"titles": {"Test Gap Hastings": "Battle of Hastings#Aftermath",
+                                               "Test Gap Rome": "Fall of Rome"}}))
+        self.assertEqual(quiet(missing.set_urls, good), 0)
+        self.assertEqual(url("Test Gap Hastings"), "https://en.wikipedia.org/wiki/Battle_of_Hastings#Aftermath")
+        self.assertEqual(url("Test Gap Rome"), "https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire")
+
+    def test_load_rejects_a_non_wikipedia_url(self):
+        items = TMP / "missing_url.json"
+        items.write_text(json.dumps({"items": [{"kind": "event", "name": "Test Gap Elsewhere", "why": "test",
+                                                "url": "https://example.com/x"}]}))
+        self.assertEqual(quiet(missing.load, items), 1)
 
 
 class TestValidate(unittest.TestCase):
