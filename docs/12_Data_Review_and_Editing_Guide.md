@@ -370,6 +370,15 @@ Whenever Claude notices a gap while doing other work, it goes on a list in the `
 
 **CLI:** `manage.py load-missing <file>` (Claude adds batches, all-or-nothing; refuses names that already exist) and `manage.py missing-status <ids> --status wanted|dismissed|open [--note "..."]`. A draft fills an item with `"fills_missing": <id>` in its `load-drafts` entry.
 
+### 4.6e2 Memory aids (DateLinks)
+
+DatePick's reveal screen shows DateLinks memory aids ("Look Back", "Year of …", "Look Ahead"). They're written to docs/06 and stored in the db; `datelinks.json` is generated.
+
+1. **Claude drafts** a batch (`/add-memory-aid <event>`, or several events at once) and loads it: `manage.py load-memory-aids <file>`. They arrive as **proposed** and aren't exported.
+2. **Review → Memory aids** lists each event with aids waiting. Select one to see its groups. The question: *is every date right and every sum true?*
+3. **Approve** (then Export), or **Reject…** with a reason (the aids are deleted, logged with their text).
+4. **Fix later:** `set-memory-aid <item id> "text"` edits one line; `rename-memory-aid-group` fixes a label; `remove-memory-aids <id> --reason` deletes an event's aids to replace them. Validate warns if a `Year of` label doesn't match the event's year.
+
 ### 4.6f Drafts from outside AIs
 
 Other AIs can draft events, spans and links with the prompt in **doc 15**. Run `manage.py ai-reference` and attach its output, save their JSON in `data/drafts/incoming/`, and run `manage.py check-drafts <file>`. Then load it as usual (`load-drafts`, then `load-links`, on the same file) and review on the dashboard.

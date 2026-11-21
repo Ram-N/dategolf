@@ -1,6 +1,8 @@
 # date-LINKS Authoring Guide
 
-**For AI agents and human contributors adding entries to `src/data/datelinks.json`.**
+**For AI agents and human contributors writing DateLinks memory aids.**
+
+> **Where they live (2026-11-20):** in the SQLite db (`learning_content_groups` / `learning_content_items`). `src/data/datelinks.json` is **generated** by `npm run data:export`: never edit it by hand. New aids go in a batch file loaded with `manage.py load-memory-aids` (see the workflow below); they arrive as proposed and are exported only after review. The format sections below describe each entry's shape, which is the same in a batch file and in the exported JSON.
 
 ---
 
@@ -249,13 +251,16 @@ Event ID: `code-of-hammurabi`
 ## How to Add a New Entry (Workflow for an AI Agent)
 
 1. **Get the event name and year** from the user or from a DatePick question.
-2. **Look up the event ID** — search `src/data/events.json` for the name, copy the `"id"` field exactly.
-3. **Check if an entry already exists** — search `datelinks.json` for that ID. If yes, add to or update it rather than replacing.
+2. **Look up the event ID** — search `src/data/events.json` for the name, copy the `"id"` field exactly. Use the year from that file.
+3. **Check if an entry already exists** — search `src/data/datelinks.json` (or the db) for that ID. An event with aids can't be loaded again: to replace them, `manage.py remove-memory-aids <id> --reason "..."` first.
 4. **Draft groups** — decide which of the three group types have useful anchors. Start with the strongest.
 5. **Write items** — 2–3 per group, concrete, anchor-first.
-6. **Verify all dates in your items are accurate** — wrong dates are worse than no aid.
-7. **Append the new key** to `datelinks.json`, preserving valid JSON (commas between entries, no trailing comma after the last entry).
-8. **Do not modify** `events.json`, `src/engine/`, `src/stores/`, or `src/types/datepick.ts`.
+6. **Verify all dates in your items are accurate** — wrong dates are worse than no aid. Check every person, invention and cause existed at that date.
+7. **Write a batch file** `data/drafts/incoming/<date>_<who>_aids_<topic>.json`:
+   `{"origin": "ai_drafted:<model>", "aids": {"<event id>": {"groups": [...]}}}` (one or many events).
+8. **Load it:** `uv run python tools/manage.py load-memory-aids <file>`. It checks the labels (the `Year of` label must match the event's year, e.g. `Year of 587 BCE`), the group order and the counts, and loads nothing if any entry is wrong.
+9. **Review:** the aids wait in the dashboard's **Review → Memory aids** (or `approve-memory-aids` / `reject-memory-aids`). Once approved, `npm run data:export` puts them in `datelinks.json`.
+10. **Do not modify** `src/data/*.json` by hand, `src/engine/`, `src/stores/`, or `src/types/datepick.ts`.
 
 ---
 
