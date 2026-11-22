@@ -250,7 +250,9 @@
     "importance": 4,
     "kind": "period",
     "approximate": true,
-    "dateDisplay": "traditionally 563–483 BCE; many scholars c. 480–400 BCE"
+    "dateDisplay": "traditionally 563–483 BCE; many scholars c. 480–400 BCE",
+    "person": true,
+    "role": "Founder of Buddhism"
   },
   {
     "id": "achaemenid-empire",

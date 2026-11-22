@@ -1,0 +1,421 @@
+{
+  "origin": "ai_drafted:claude-opus-5-5",
+  "about": "Phase 13 pilot (Ram, 2026-11-21): ten people's lives, flagged person, with their birth, death and key events linked.",
+  "events": [],
+  "spans": [
+    {
+      "id": "confucius",
+      "kind": "period",
+      "name": "Confucius",
+      "start_year": -551,
+      "end_year": -479,
+      "approximate": true,
+      "region": "East Asia",
+      "categories": [
+        "Philosophy",
+        "Social"
+      ],
+      "description": "The Chinese teacher and philosopher Kong Qiu, known as Confucius, whose sayings on ethics, family duty and good government were gathered by his followers in the Analects.",
+      "importance": 8,
+      "countries": [
+        "CN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Confucius",
+      "significance": "Confucius's teachings became the core of the state ideology and education of imperial China and shaped Korea, Japan and Vietnam. His ideals of duty to family, proper conduct and government by moral example remain central to East Asian culture.",
+      "person": true,
+      "role": "Philosopher and teacher",
+      "date_display": "551–479 BCE by tradition",
+      "note": "551–479 BCE are the traditional dates (some sources give 552 for his birth)."
+    },
+    {
+      "id": "alexander-the-great",
+      "kind": "period",
+      "name": "Alexander the Great",
+      "start_year": -356,
+      "end_year": -323,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "description": "The Macedonian king who came to the throne at twenty, conquered the Persian Empire and led his army as far as the Indus, dying in Babylon at thirty-two.",
+      "importance": 8,
+      "countries": [
+        "GR"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Alexander_the_Great",
+      "significance": "Alexander's conquests spread Greek language and culture from Egypt to Central Asia, opening the Hellenistic age. His empire split among his generals soon after his death, founding kingdoms such as Ptolemaic Egypt that lasted until Rome absorbed them.",
+      "person": true,
+      "role": "King of Macedon",
+      "note": "Born July 356 BCE, died June 323 BCE."
+    },
+    {
+      "id": "ashoka",
+      "kind": "period",
+      "name": "Ashoka",
+      "start_year": -304,
+      "end_year": -232,
+      "approximate": true,
+      "region": "South Asia",
+      "categories": [
+        "Politics",
+        "Religion"
+      ],
+      "description": "The third Mauryan emperor, grandson of Chandragupta, who ruled most of the Indian subcontinent and, after the bloody Kalinga war, promoted Buddhist ethics in edicts carved on rocks and pillars.",
+      "importance": 7,
+      "countries": [
+        "IN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Ashoka",
+      "significance": "Ashoka's edicts are among the earliest deciphered written records of Indian history, and his patronage helped Buddhism spread across and beyond South Asia. His lion capital at Sarnath is now India's national emblem.",
+      "person": true,
+      "role": "Mauryan emperor",
+      "date_display": "c. 304–232 BCE (birth year uncertain; death by tradition)",
+      "note": "His birth year is uncertain; 232 BCE is the traditional date of his death."
+    },
+    {
+      "id": "muhammad",
+      "kind": "period",
+      "name": "Muhammad",
+      "start_year": 570,
+      "end_year": 632,
+      "approximate": true,
+      "region": "Middle East",
+      "categories": [
+        "Religion",
+        "Politics"
+      ],
+      "description": "Born in Mecca, Muhammad preached belief in one God, founded the first Muslim community at Medina and, by his death, had brought most of Arabia under its rule. Muslims regard him as the last of God's prophets.",
+      "importance": 9,
+      "countries": [
+        "SA"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Muhammad",
+      "significance": "The faith and community Muhammad founded grew within a century into a state stretching from Spain to Central Asia. Islam is now followed by about a quarter of the world's people.",
+      "person": true,
+      "role": "Prophet of Islam",
+      "date_display": "c. 570 (by tradition) – 632",
+      "note": "Birth c. 570 is traditional; his death in 632 is well attested."
+    },
+    {
+      "id": "genghis-khan",
+      "kind": "period",
+      "name": "Genghis Khan",
+      "start_year": 1162,
+      "end_year": 1227,
+      "approximate": true,
+      "region": "East Asia",
+      "categories": [
+        "War",
+        "Politics"
+      ],
+      "description": "Born Temüjin on the Mongolian steppe, he united the Mongol tribes, took the title Genghis Khan and launched conquests across northern China and Central Asia that began the largest contiguous land empire in history.",
+      "importance": 8,
+      "countries": [
+        "MN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Genghis_Khan",
+      "significance": "Genghis Khan's conquests were hugely destructive, but the empire they began linked China, Persia and Europe more closely than ever before, carrying trade and ideas, and, many historians think, the plague, along routes the Mongols kept open.",
+      "person": true,
+      "role": "Founder of the Mongol Empire",
+      "date_display": "c. 1162 (sources give 1155–1167) – 1227",
+      "note": "Birth year disputed: 1155, 1162 and 1167 are all given; 1162 is the most common. Died August 1227."
+    },
+    {
+      "id": "elizabeth-i",
+      "kind": "period",
+      "name": "Elizabeth I",
+      "start_year": 1533,
+      "end_year": 1603,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "Politics"
+      ],
+      "description": "Daughter of Henry VIII and Anne Boleyn, she ruled England for forty-four years, restoring a Protestant church settlement, surviving plots and the Spanish Armada, and presiding over a flowering of English drama.",
+      "importance": 7,
+      "countries": [
+        "GB"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Elizabeth_I",
+      "significance": "Elizabeth's long reign settled England's Protestant church and saw the defeat of the Spanish Armada, the first English colonial ventures and the plays of Shakespeare. She left no heir, and her death joined the English and Scottish crowns under James I.",
+      "person": true,
+      "role": "Queen of England",
+      "note": "Born 7 September 1533; reigned November 1558 – March 1603."
+    },
+    {
+      "id": "akbar",
+      "kind": "period",
+      "name": "Akbar",
+      "start_year": 1542,
+      "end_year": 1605,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "description": "The Mughal emperor who came to the throne at thirteen, extended the empire across most of northern and central India, and built a lasting administration while promoting tolerance among its many faiths.",
+      "importance": 8,
+      "countries": [
+        "IN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Akbar",
+      "significance": "Akbar's reforms and alliances made the Mughal Empire the dominant power of the subcontinent for more than a century. His policy of religious tolerance, unusual for its time, remains a reference point in debates about India's pluralism.",
+      "person": true,
+      "role": "Mughal emperor",
+      "note": "Born 15 October 1542 at Umerkot; died October 1605."
+    },
+    {
+      "id": "isaac-newton",
+      "kind": "period",
+      "name": "Isaac Newton",
+      "start_year": 1643,
+      "end_year": 1727,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "Science"
+      ],
+      "description": "The English mathematician and physicist whose Principia set out the laws of motion and universal gravitation. He also co-developed calculus and showed that white light is made of the colours of the spectrum.",
+      "importance": 8,
+      "countries": [
+        "GB"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Isaac_Newton",
+      "significance": "Newton's laws of motion and gravitation explained the movement of planets and falling objects with one set of rules, and they remained the foundation of physics until Einstein. His work became a model of science for the Enlightenment.",
+      "person": true,
+      "role": "Mathematician and physicist",
+      "note": "Born 25 December 1642 in the Julian calendar England then used, which is 4 January 1643 in the modern (Gregorian) calendar; 1643 is used here. Calculus was developed independently by Leibniz, hence 'co-developed'."
+    },
+    {
+      "id": "marie-curie",
+      "kind": "period",
+      "name": "Marie Curie",
+      "start_year": 1867,
+      "end_year": 1934,
+      "approximate": false,
+      "region": "Europe",
+      "categories": [
+        "Science"
+      ],
+      "description": "Born Maria Skłodowska in Warsaw, she worked in Paris, where with her husband Pierre she discovered polonium and radium. She was the first woman to win a Nobel Prize and the first person to win two, in physics and in chemistry.",
+      "importance": 7,
+      "countries": [
+        "FR",
+        "PL"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Marie_Curie",
+      "significance": "Curie's research on radioactivity opened a new field of physics and chemistry and led to medical uses of radiation. As a pioneering woman in science she became a lasting role model; her death is thought to have been caused by her long exposure to radiation.",
+      "person": true,
+      "role": "Physicist and chemist",
+      "note": "Nobel Prizes 1903 (physics) and 1911 (chemistry)."
+    },
+    {
+      "id": "mahatma-gandhi",
+      "kind": "period",
+      "name": "Mahatma Gandhi",
+      "start_year": 1869,
+      "end_year": 1948,
+      "approximate": false,
+      "region": "South Asia",
+      "categories": [
+        "Politics"
+      ],
+      "description": "Mohandas Karamchand Gandhi, a lawyer trained in London, developed nonviolent mass resistance in South Africa and then led India's independence movement against British rule. He was assassinated by a Hindu nationalist months after independence.",
+      "importance": 9,
+      "countries": [
+        "IN"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
+      "significance": "Gandhi's method of nonviolent mass protest, which he called satyagraha, helped end British rule in India and inspired civil rights movements around the world, including those led by Martin Luther King Jr. and Nelson Mandela.",
+      "person": true,
+      "role": "Leader of India's independence movement",
+      "note": "Born 2 October 1869; assassinated 30 January 1948."
+    }
+  ],
+  "links": [
+    {
+      "source": "birth-of-confucius",
+      "type": "began",
+      "target": "confucius",
+      "confidence": "high",
+      "why": "Confucius's birth, by the traditional date."
+    },
+    {
+      "source": "alexander-conquests",
+      "type": "part_of",
+      "target": "alexander-the-great",
+      "confidence": "high",
+      "why": "Alexander's campaign against Persia filled the last eleven years of his life."
+    },
+    {
+      "source": "battle-of-gaugamela",
+      "type": "part_of",
+      "target": "alexander-the-great",
+      "confidence": "high",
+      "why": "Alexander's decisive victory over Darius III of Persia."
+    },
+    {
+      "source": "alexander-founds-alexandria",
+      "type": "part_of",
+      "target": "alexander-the-great",
+      "confidence": "high",
+      "why": "Alexander founded the city during his campaign in Egypt."
+    },
+    {
+      "source": "death-of-alexander",
+      "type": "ended",
+      "target": "alexander-the-great",
+      "confidence": "high",
+      "why": "Alexander died in Babylon at thirty-two."
+    },
+    {
+      "source": "ashoka-becomes-emperor",
+      "type": "part_of",
+      "target": "ashoka",
+      "confidence": "high",
+      "why": "His accession as the third Mauryan emperor."
+    },
+    {
+      "source": "kalinga-war",
+      "type": "part_of",
+      "target": "ashoka",
+      "confidence": "high",
+      "why": "The war whose bloodshed, by his own edict, turned Ashoka to Buddhist ethics."
+    },
+    {
+      "source": "ashoka-converts-to-buddhism",
+      "type": "part_of",
+      "target": "ashoka",
+      "confidence": "high",
+      "why": "Ashoka's turn to Buddhism after the Kalinga war."
+    },
+    {
+      "source": "birth-of-muhammad",
+      "type": "began",
+      "target": "muhammad",
+      "confidence": "high",
+      "why": "Muhammad's birth in Mecca, by the traditional date."
+    },
+    {
+      "source": "founding-of-islam",
+      "type": "part_of",
+      "target": "muhammad",
+      "confidence": "high",
+      "why": "Muslim tradition dates Muhammad's first revelation to this year."
+    },
+    {
+      "source": "hijra",
+      "type": "part_of",
+      "target": "muhammad",
+      "confidence": "high",
+      "why": "Muhammad's migration from Mecca to Medina."
+    },
+    {
+      "source": "death-of-muhammad",
+      "type": "ended",
+      "target": "muhammad",
+      "confidence": "high",
+      "why": "Muhammad died in Medina."
+    },
+    {
+      "source": "genghis-khan-unifies-mongols",
+      "type": "part_of",
+      "target": "genghis-khan",
+      "confidence": "high",
+      "why": "Temüjin was proclaimed Genghis Khan after uniting the Mongol tribes."
+    },
+    {
+      "source": "spanish-armada-defeated",
+      "type": "part_of",
+      "target": "elizabeth-i",
+      "confidence": "high",
+      "why": "The Armada was sent against Elizabeth's England."
+    },
+    {
+      "source": "death-of-elizabeth-i",
+      "type": "ended",
+      "target": "elizabeth-i",
+      "confidence": "high",
+      "why": "Elizabeth died without an heir."
+    },
+    {
+      "source": "birth-of-akbar",
+      "type": "began",
+      "target": "akbar",
+      "confidence": "high",
+      "why": "Akbar's birth at Umerkot, while his father Humayun was in flight."
+    },
+    {
+      "source": "akbar-becomes-mughal-emperor",
+      "type": "part_of",
+      "target": "akbar",
+      "confidence": "high",
+      "why": "Akbar became emperor at thirteen."
+    },
+    {
+      "source": "mughal-akbar-administration",
+      "type": "part_of",
+      "target": "akbar",
+      "confidence": "high",
+      "why": "One of Akbar's main reforms."
+    },
+    {
+      "source": "akbar-din-i-ilahi",
+      "type": "part_of",
+      "target": "akbar",
+      "confidence": "high",
+      "why": "Akbar's own religious movement, late in his reign."
+    },
+    {
+      "source": "death-of-akbar",
+      "type": "ended",
+      "target": "akbar",
+      "confidence": "high",
+      "why": "Akbar's death in Agra."
+    },
+    {
+      "source": "newton-laws-of-motion",
+      "type": "part_of",
+      "target": "isaac-newton",
+      "confidence": "high",
+      "why": "Newton's best-known work."
+    },
+    {
+      "source": "curie-radioactivity",
+      "type": "part_of",
+      "target": "marie-curie",
+      "confidence": "high",
+      "why": "Marie and Pierre Curie's discovery of two new elements."
+    },
+    {
+      "source": "gandhi-born",
+      "type": "began",
+      "target": "mahatma-gandhi",
+      "confidence": "high",
+      "why": "Gandhi's birth at Porbandar."
+    },
+    {
+      "source": "gandhi-returns-to-india",
+      "type": "part_of",
+      "target": "mahatma-gandhi",
+      "confidence": "high",
+      "why": "Gandhi came home from South Africa to join India's national movement."
+    },
+    {
+      "source": "gandhi-salt-march",
+      "type": "part_of",
+      "target": "mahatma-gandhi",
+      "confidence": "high",
+      "why": "Gandhi's best-known act of nonviolent protest."
+    },
+    {
+      "source": "mahatma-gandhi-assassinated",
+      "type": "ended",
+      "target": "mahatma-gandhi",
+      "confidence": "high",
+      "why": "Gandhi was shot in Delhi by a Hindu nationalist."
+    }
+  ]
+}
