@@ -2681,6 +2681,9 @@ INSERT INTO "entities" VALUES('isaac-newton','period','reviewed','2026-11-22 02:
 INSERT INTO "entities" VALUES('marie-curie','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:05');
 INSERT INTO "entities" VALUES('mahatma-gandhi','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:05');
 INSERT INTO "entities" VALUES('islamic-golden-age-period','period','reviewed','2026-11-22 03:00:54','2026-11-22 03:00:54');
+INSERT INTO "entities" VALUES('british-empire','empire','proposed','2026-11-22 03:03:52',NULL);
+INSERT INTO "entities" VALUES('greek-philosophy-thales-to-aristotle','period','proposed','2026-11-22 03:03:52',NULL);
+INSERT INTO "entities" VALUES('life-of-mahavira','period','proposed','2026-11-22 03:03:52',NULL);
 CREATE TABLE entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   facet     TEXT NOT NULL CHECK (facet IN ('event', 'span')),
@@ -3865,6 +3868,12 @@ INSERT INTO "entity_categories" VALUES('akbar','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('isaac-newton','span',0,'Science');
 INSERT INTO "entity_categories" VALUES('marie-curie','span',0,'Science');
 INSERT INTO "entity_categories" VALUES('mahatma-gandhi','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('british-empire','span',0,'Politics');
+INSERT INTO "entity_categories" VALUES('british-empire','span',1,'Economy');
+INSERT INTO "entity_categories" VALUES('greek-philosophy-thales-to-aristotle','span',0,'Philosophy');
+INSERT INTO "entity_categories" VALUES('greek-philosophy-thales-to-aristotle','span',1,'Science');
+INSERT INTO "entity_categories" VALUES('life-of-mahavira','span',0,'Religion');
+INSERT INTO "entity_categories" VALUES('life-of-mahavira','span',1,'Philosophy');
 CREATE TABLE entity_countries (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   position   INTEGER NOT NULL,
@@ -4868,6 +4877,10 @@ INSERT INTO "entity_countries" VALUES('marie-curie',1,'PL','high','reviewed',NUL
 INSERT INTO "entity_countries" VALUES('mahatma-gandhi',0,'IN','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('islamic-golden-age-period',1,'ES','low','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('islamic-golden-age-period',0,'IQ','low','reviewed','Defining moments: Baghdad''s House of Wisdom; Córdoba.','location');
+INSERT INTO "entity_countries" VALUES('british-empire',0,'GB','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('greek-philosophy-thales-to-aristotle',0,'GR','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('greek-philosophy-thales-to-aristotle',1,'TR','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('life-of-mahavira',0,'IN','high','proposed',NULL,'location');
 CREATE TABLE entity_phases (
   id             INTEGER PRIMARY KEY,
   entity_id      TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,  -- the span
@@ -5167,6 +5180,9 @@ INSERT INTO "entity_provenance" VALUES('akbar','ai_drafted:claude-opus-5-5',NULL
 INSERT INTO "entity_provenance" VALUES('isaac-newton','ai_drafted:claude-opus-5-5',NULL,'Born 25 December 1642 in the Julian calendar England then used, which is 4 January 1643 in the modern (Gregorian) calendar; 1643 is used here. Calculus was developed independently by Leibniz, hence ''co-developed''.');
 INSERT INTO "entity_provenance" VALUES('marie-curie','ai_drafted:claude-opus-5-5',NULL,'Nobel Prizes 1903 (physics) and 1911 (chemistry).');
 INSERT INTO "entity_provenance" VALUES('mahatma-gandhi','ai_drafted:claude-opus-5-5',NULL,'Born 2 October 1869; assassinated 30 January 1948.');
+INSERT INTO "entity_provenance" VALUES('british-empire','ai_drafted:claude-opus-5-5',NULL,'There is no single founding date. 1607 (Jamestown) is the first permanent settlement; Gilbert claimed Newfoundland in 1583. 1997 (Hong Kong) is the usual end.');
+INSERT INTO "entity_provenance" VALUES('greek-philosophy-thales-to-aristotle','ai_drafted:claude-opus-5-5',NULL,'The start is conventional: Thales is traditionally the first Greek philosopher, and his eclipse prediction (585 BCE, reported by Herodotus) is the usual marker. Ancient Greek philosophy as a whole runs on to late antiquity; this span covers its founding era only, hence the name.');
+INSERT INTO "entity_provenance" VALUES('life-of-mahavira','ai_drafted:claude-opus-5-5',NULL,'Dates follow the Svetambara tradition (Digambaras give 615 BCE for his birth), the same approach as the Buddha''s span.');
 CREATE TABLE entity_significance (
   entity_id  TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   text       TEXT NOT NULL CHECK (trim(text) <> ''),
@@ -5410,6 +5426,9 @@ INSERT INTO "entity_significance" VALUES('akbar','Akbar''s reforms and alliances
 INSERT INTO "entity_significance" VALUES('isaac-newton','Newton''s laws of motion and gravitation explained the movement of planets and falling objects with one set of rules, and they remained the foundation of physics until Einstein. His work became a model of science for the Enlightenment.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:05');
 INSERT INTO "entity_significance" VALUES('marie-curie','Curie''s research on radioactivity opened a new field of physics and chemistry and led to medical uses of radiation. As a pioneering woman in science she became a lasting role model; her death is thought to have been caused by her long exposure to radiation.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:05');
 INSERT INTO "entity_significance" VALUES('mahatma-gandhi','Gandhi''s method of nonviolent mass protest, which he called satyagraha, helped end British rule in India and inspired civil rights movements around the world, including those led by Martin Luther King Jr. and Nelson Mandela.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:05');
+INSERT INTO "entity_significance" VALUES('british-empire','It spread the English language, common law, parliamentary government and sports such as cricket around the world, and its trade and investment tied distant economies together. It also rested on conquest and, until abolition, on slavery: British ships were the leading carriers of enslaved Africans across the Atlantic in the 1700s. Its legacy is still argued over in Britain and in its former colonies.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 03:03:52',NULL);
+INSERT INTO "entity_significance" VALUES('greek-philosophy-thales-to-aristotle','Their habits of definition, logical argument and testing ideas against evidence became the foundation of Western philosophy and science. Scholars writing in Arabic, and later in Latin, translated and debated Plato and Aristotle for nearly two thousand years.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 03:03:52',NULL);
+INSERT INTO "entity_significance" VALUES('life-of-mahavira','Jainism''s ideal of non-violence (ahimsa) toward every living thing shaped Indian ethics, vegetarianism and trade communities. It also influenced Gandhi, whose early mentor Shrimad Rajchandra was a Jain thinker.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 03:03:52',NULL);
 CREATE TABLE entity_sources (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   source_id  INTEGER NOT NULL REFERENCES sources(id) ON DELETE CASCADE,
@@ -6091,6 +6110,9 @@ INSERT INTO "entity_sources" VALUES('isaac-newton',653,'reviewed','ai_drafted',N
 INSERT INTO "entity_sources" VALUES('marie-curie',386,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('mahatma-gandhi',119,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('islamic-golden-age-period',227,'reviewed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('british-empire',654,'proposed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('greek-philosophy-thales-to-aristotle',655,'proposed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('life-of-mahavira',656,'proposed','ai_drafted',NULL,NULL);
 CREATE TABLE event_aliases (
   entity_id TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   position  INTEGER NOT NULL,
@@ -10072,6 +10094,95 @@ INSERT INTO "import_records" VALUES('events_master.csv','306',306,'{"eventID": "
 INSERT INTO "import_records" VALUES('events_master.csv','307',307,'{"eventID": "307", "stem": "1997", "event": "Tony Blair back in power in UK. Mohd. Khatami elected president of Iran. Hong Kong goes back to China after 99 year British rule.", "details": "", "wikipedia": "", "mnemonic": "", "itemDifficulty": "5", "categories": "", "America": "", "Europe": "", "Asia": "", "Africa": "", "China": "1.0", "Discovery": "", "Britain": "1.0", "France": "", "Greek": "", "India": "", "Inventions": "", "MiddleEast": "", "prehistory": "", "Religion": "", "Roman": "", "Royalty": "", "Russia": "", "Science": "", "SouthAmerica": "", "Wars": "", "World": "", "YearNum": "1997"}');
 INSERT INTO "import_records" VALUES('events_master.csv','308',308,'{"eventID": "308", "stem": "1998", "event": "Indonesian President Suharto resigns. Pakistan test fires `Gauri'' missile. US President Clinton faces impeachment.", "details": "", "wikipedia": "", "mnemonic": "", "itemDifficulty": "8", "categories": "", "America": "1.0", "Europe": "", "Asia": "", "Africa": "", "China": "", "Discovery": "", "Britain": "", "France": "", "Greek": "", "India": "", "Inventions": "", "MiddleEast": "", "prehistory": "", "Religion": "", "Roman": "", "Royalty": "", "Russia": "", "Science": "", "SouthAmerica": "", "Wars": "", "World": "", "YearNum": "1998"}');
 INSERT INTO "import_records" VALUES('events_master.csv','309',309,'{"eventID": "309", "stem": "1999", "event": "Yugoslavia accepts a peace plan for Kosovo.", "details": "", "wikipedia": "", "mnemonic": "", "itemDifficulty": "8", "categories": "", "America": "", "Europe": "1.0", "Asia": "", "Africa": "", "China": "", "Discovery": "", "Britain": "", "France": "", "Greek": "", "India": "", "Inventions": "", "MiddleEast": "", "prehistory": "", "Religion": "", "Roman": "", "Royalty": "", "Russia": "", "Science": "", "SouthAmerica": "", "Wars": "", "World": "", "YearNum": "1999"}');
+CREATE TABLE journey_stop_items (
+  journey_id    TEXT NOT NULL,
+  position      INTEGER NOT NULL,
+  item_position INTEGER NOT NULL,
+  entity_id     TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
+  PRIMARY KEY (journey_id, position, item_position),
+  FOREIGN KEY (journey_id, position) REFERENCES journey_stops(journey_id, position) ON DELETE CASCADE
+);
+INSERT INTO "journey_stop_items" VALUES('rise-and-fall-of-empires',0,0,'achaemenid-empire');
+INSERT INTO "journey_stop_items" VALUES('rise-and-fall-of-empires',1,0,'alexanders-conquests');
+INSERT INTO "journey_stop_items" VALUES('rise-and-fall-of-empires',2,0,'roman-empire');
+INSERT INTO "journey_stop_items" VALUES('rise-and-fall-of-empires',3,0,'byzantine-empire');
+INSERT INTO "journey_stop_items" VALUES('rise-and-fall-of-empires',4,0,'mongol-conquests');
+INSERT INTO "journey_stop_items" VALUES('rise-and-fall-of-empires',5,0,'ottoman-empire');
+INSERT INTO "journey_stop_items" VALUES('rise-and-fall-of-empires',6,0,'mughal-empire');
+INSERT INTO "journey_stop_items" VALUES('rise-and-fall-of-empires',7,0,'british-empire');
+INSERT INTO "journey_stop_items" VALUES('history-of-ideas',0,0,'axial-age');
+INSERT INTO "journey_stop_items" VALUES('history-of-ideas',1,0,'life-of-the-buddha');
+INSERT INTO "journey_stop_items" VALUES('history-of-ideas',1,1,'life-of-mahavira');
+INSERT INTO "journey_stop_items" VALUES('history-of-ideas',2,0,'confucius');
+INSERT INTO "journey_stop_items" VALUES('history-of-ideas',3,0,'greek-philosophy-thales-to-aristotle');
+INSERT INTO "journey_stop_items" VALUES('history-of-ideas',4,0,'islamic-golden-age-period');
+INSERT INTO "journey_stop_items" VALUES('history-of-ideas',5,0,'italian-renaissance');
+INSERT INTO "journey_stop_items" VALUES('history-of-ideas',6,0,'scientific-revolution');
+INSERT INTO "journey_stop_items" VALUES('history-of-ideas',7,0,'age-of-enlightenment');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',0,0,'age-of-exploration');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',1,0,'spanish-conquest-mexico');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',1,1,'trans-atlantic-slave-trade-peak');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',1,2,'company-rule-in-india');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',2,0,'scientific-revolution');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',3,0,'industrial-revolution');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',4,0,'american-revolution');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',5,0,'french-revolution');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',6,0,'scramble-for-africa');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',7,0,'world-war-1');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',7,1,'world-war-2');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',8,0,'decolonization-of-asia-and-africa');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',9,0,'dissolution-soviet-union');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',9,1,'internet-invented');
+INSERT INTO "journey_stop_items" VALUES('how-the-modern-world-emerged',9,2,'wto-founded');
+CREATE TABLE journey_stops (
+  journey_id TEXT NOT NULL REFERENCES journeys(id) ON DELETE CASCADE,
+  position   INTEGER NOT NULL,
+  title      TEXT,                                -- only for a stop of several items; else the item's own name
+  narration  TEXT NOT NULL CHECK (trim(narration) <> ''),
+  question   TEXT,                                -- on a few stops only (Ram: more "feels like a gimmick")
+  PRIMARY KEY (journey_id, position)
+);
+INSERT INTO "journey_stops" VALUES('rise-and-fall-of-empires',0,NULL,'Cyrus the Great founded the first Persian Empire, and his successors extended it from the Indus to Egypt and the edge of Greece: the largest empire the world had yet seen. It held together partly by letting conquered peoples keep their languages, gods and local leaders, as long as they paid tribute and sent soldiers. Royal roads and relays of messengers carried the king''s orders across it.',NULL);
+INSERT INTO "journey_stops" VALUES('rise-and-fall-of-empires',1,NULL,'In a little over a decade, Alexander of Macedon conquered the whole Persian Empire and marched on to the Indus. His empire did not outlive him: after his death in 323 BCE his generals fought over it and divided it into rival kingdoms. Compare this short bar with Persia''s two centuries.','Why might an empire won by one man''s campaigns break apart when he dies?');
+INSERT INTO "journey_stops" VALUES('rise-and-fall-of-empires',2,NULL,'Rome had conquered most of the Mediterranean while it was still a republic; Augustus turned it into an empire ruled by one man. Follow its phases along the bar: its greatest extent under the Nerva–Antonine emperors, a crisis of civil wars, invasions and plague, then an empire reorganised by Diocletian and Constantine. In the West, power passed to Germanic kings, and the last western emperor was deposed in 476.',NULL);
+INSERT INTO "journey_stops" VALUES('rise-and-fall-of-empires',3,NULL,'The eastern half of the empire carried on, ruled from Constantinople, the city Constantine founded on the Bosporus. Its people called themselves Romans; the name ''Byzantine'' was given later by historians. Greek replaced Latin, and the empire kept Greek and Roman learning alive while it lost and won back territory many times. Notice how its bar overlaps Rome''s.','The last western emperor was deposed, yet emperors ruled from Constantinople for almost a thousand years more. So when did the Roman Empire end?');
+INSERT INTO "journey_stops" VALUES('rise-and-fall-of-empires',4,NULL,'From the steppes of Mongolia, Genghis Khan and his heirs built the largest connected land empire in history, from Korea to Hungary. Their conquests were devastating (Baghdad was sacked and its libraries destroyed), yet the empire also kept the overland routes safe for merchants and travellers such as Marco Polo. About half a century after its founding it split into four khanates, each going its own way.',NULL);
+INSERT INTO "journey_stops" VALUES('rise-and-fall-of-empires',5,NULL,'The Ottomans began as one of many small Turkish principalities in Anatolia. They took Constantinople, ending the Byzantine Empire, and made the city their capital. Under Suleiman their empire reached from Hungary to Iraq and along the coast of North Africa. Its later centuries were not simply a decline: it lost wars and land but also reformed itself, and it lasted until after the First World War.',NULL);
+INSERT INTO "journey_stops" VALUES('rise-and-fall-of-empires',6,NULL,'Babur, a descendant of both Timur and Genghis Khan, founded the Mughal Empire in northern India. Under Akbar and his successors it grew to rule most of the subcontinent, became one of the largest economies in the world and built monuments such as the Taj Mahal. After Aurangzeb, regional powers broke away, and in the end the emperors in Delhi ruled in name only.',NULL);
+INSERT INTO "journey_stops" VALUES('rise-and-fall-of-empires',7,NULL,'England''s first lasting colony was in North America. Over the next three centuries Britain built an empire of settler colonies, trading posts and conquered lands that at its height covered about a quarter of the world. In India it began as a trading company that took power as the Mughals'' hold weakened. It came apart mostly after the Second World War, colony by colony, and ended with the handover of Hong Kong.',NULL);
+INSERT INTO "journey_stops" VALUES('history-of-ideas',0,NULL,'Between about 800 BCE and 200 BCE, in several parts of the world at once, teachers asked new questions: how should a person live, what makes a good ruler, what is the world made of? The philosopher Karl Jaspers called these centuries the Axial Age. Historians debate whether it was one shared turning point or separate traditions that happen to overlap, but the overlap on the timeline is striking.',NULL);
+INSERT INTO "journey_stops" VALUES('history-of-ideas',1,'Buddhism and Jainism','In the Ganges valley of northern India, two princes gave up comfortable lives to become wandering ascetics. The Buddha taught a ''middle way'' to escape suffering, between luxury and harsh self-denial. Mahavira, whom Jains revere as the last of 24 great teachers, taught strict non-violence toward every living thing. Their dates are uncertain: notice the ''c.'' on both bars.',NULL);
+INSERT INTO "journey_stops" VALUES('history-of-ideas',2,NULL,'At about the same time in China, Confucius taught that good government starts with good people: rulers should lead by moral example, and everyone should honour their duties to family and community. The rulers of his day mostly ignored him. His followers collected his sayings in the Analects, and centuries later his ideas became the basis of Chinese education and government.',NULL);
+INSERT INTO "journey_stops" VALUES('history-of-ideas',3,NULL,'In Greek cities around the Aegean, thinkers began explaining nature by natural causes rather than myths: Thales asked what everything is made of. In Athens, Socrates questioned everyone he met and was condemned to death; his pupil Plato founded the Academy, where Aristotle studied before writing on almost every subject, from logic to biology.',NULL);
+INSERT INTO "journey_stops" VALUES('history-of-ideas',4,NULL,'About a thousand years later, in Baghdad and other cities of the Islamic world, scholars translated Greek, Persian and Indian works into Arabic and went beyond them: al-Khwarizmi''s algebra, Ibn al-Haytham''s optics, Ibn Sina''s medicine. Indian numerals, including zero, reached Europe through Arabic books, which is why we call them Arabic numerals.','Much of Aristotle reached medieval Europe through Arabic translations. What does that tell you about how ideas travel?');
+INSERT INTO "journey_stops" VALUES('history-of-ideas',5,NULL,'In the cities of Italy, scholars revived the study of ancient Greek and Latin texts (the word renaissance means ''rebirth''), and artists such as Leonardo and Michelangelo studied nature and the human body closely. The printing press, developed in Germany in the same years, spread books and ideas faster than ever before.',NULL);
+INSERT INTO "journey_stops" VALUES('history-of-ideas',6,NULL,'Copernicus argued that the Earth goes around the Sun. Over the next century and a half, Galileo, Kepler and others tested ideas against observation, experiment and mathematics. The era is usually closed with Newton''s laws of motion and gravity, which explained the heavens and the Earth by the same rules.',NULL);
+INSERT INTO "journey_stops" VALUES('history-of-ideas',7,NULL,'Inspired by the success of science, Enlightenment writers asked whether reason could also improve government, religion and society. Locke argued that governments need the consent of the governed, Voltaire attacked religious intolerance, and Montesquieu proposed dividing the powers of government. Their ideas fed into the American and French revolutions.',NULL);
+INSERT INTO "journey_stops" VALUES('how-the-modern-world-emerged',0,NULL,'Portuguese and Spanish sailors, looking for sea routes to the spices and silks of Asia, opened ocean routes linking Europe with Africa, Asia and the Americas. Columbus reached the Caribbean, and da Gama sailed around Africa to India. They were not the first long-distance voyagers: Chinese fleets under Zheng He had reached East Africa decades earlier.',NULL);
+INSERT INTO "journey_stops" VALUES('how-the-modern-world-emerged',1,'Conquest, colonies and slavery','Exploration turned into conquest. Spanish forces, with indigenous allies and the help of epidemic diseases, overthrew the Aztec Empire. Plantations in the Americas were worked by enslaved Africans, more than twelve million of whom were shipped across the Atlantic. In India, a British trading company became a ruler.',NULL);
+INSERT INTO "journey_stops" VALUES('how-the-modern-world-emerged',2,NULL,'While empires spread, a new way of finding out about the world took hold in Europe: test ideas against observation and experiment, and describe nature in mathematics. From Copernicus to Newton, it changed how people saw the universe, and later gave engineers the tools to build machines.',NULL);
+INSERT INTO "journey_stops" VALUES('how-the-modern-world-emerged',3,NULL,'Starting in Britain, machines driven first by water and then by steam began making cloth and iron, and soon pulling railway trains. Work moved from homes and fields into factories, and cities grew fast. Notice how this bar overlaps the next two: the industrial and political revolutions happened in the same decades.',NULL);
+INSERT INTO "journey_stops" VALUES('how-the-modern-world-emerged',4,NULL,'Thirteen British colonies in North America rebelled against taxes imposed without their consent and declared independence, proclaiming that ''all men are created equal''. The new republic did not extend those words to enslaved people or to Native Americans, a contradiction fought over for almost a century afterwards.',NULL);
+INSERT INTO "journey_stops" VALUES('how-the-modern-world-emerged',5,NULL,'A few years later France''s monarchy, deep in debt, called an assembly that soon claimed to speak for the whole nation. The revolution abolished noble privileges, declared the rights of man, executed the king and spread its ideas across Europe through war, before it ended when Napoleon seized power.','Both revolutions appealed to natural rights and government by consent. Where did those ideas come from?');
+INSERT INTO "journey_stops" VALUES('how-the-modern-world-emerged',6,NULL,'Products of the industrial age, such as steamships, quinine against malaria and machine guns, let European powers conquer almost all of Africa in barely a generation. They drew borders across the continent with little regard for the peoples who lived there, and many of those borders remain today.',NULL);
+INSERT INTO "journey_stops" VALUES('how-the-modern-world-emerged',7,'The World Wars','Industrial power became industrial war. The First World War killed some 15 to 22 million people and brought down the German, Austro-Hungarian, Russian and Ottoman empires. Barely two decades later the Second World War, the deadliest conflict in history, killed some 70 to 85 million, including six million Jews murdered in the Holocaust, and ended with the first use of atomic bombs.',NULL);
+INSERT INTO "journey_stops" VALUES('how-the-modern-world-emerged',8,NULL,'Weakened by the war and facing strong independence movements, European powers gave up most of their colonies within a generation, some through negotiation and others after long wars. India and Pakistan, Indonesia, Ghana and Algeria were among dozens of new states, and the membership of the United Nations nearly tripled.',NULL);
+INSERT INTO "journey_stops" VALUES('how-the-modern-world-emerged',9,'A connected world','When the Soviet Union broke up and the Cold War ended, most of the world joined a single global market, and the World Trade Organization was set up to make its rules. In the same years the World Wide Web went public, and goods, money, people and information began to move around the world faster than ever. Historians debate when globalization began; some date it to the voyages at the start of this journey.',NULL);
+CREATE TABLE journeys (
+  id         TEXT PRIMARY KEY,                    -- slug, used in ?journey=
+  title      TEXT NOT NULL CHECK (trim(title) <> ''),
+  intro      TEXT NOT NULL CHECK (trim(intro) <> ''),
+  closing    TEXT,                                -- the wrap-up after the last stop
+  question   TEXT,                                -- one question to end on
+  position   INTEGER NOT NULL,                    -- order in the Stories menu
+  status     TEXT NOT NULL DEFAULT 'proposed' CHECK (status IN ('proposed', 'reviewed')),
+  origin     TEXT NOT NULL,
+  note       TEXT,                                -- for the reviewer
+  created_at TEXT DEFAULT (datetime('now'))
+);
+INSERT INTO "journeys" VALUES('rise-and-fall-of-empires','The Rise and Fall of Empires','An empire is a state that rules many different peoples, usually after conquering them. This journey visits eight empires over about two and a half thousand years. At each stop, look at the bar: how quickly the empire grew, how long it held together, and what came after it. Not every empire simply fell. Some split apart, some changed into something new, and some were taken apart piece by piece.','Look back along the row of bars. Persia and Byzantium were conquered; Alexander''s empire and the Mongols'' split apart; Rome''s western half broke up while its eastern half went on; the Ottoman and Mughal empires changed over centuries before their final end; and the British Empire was dismantled colony by colony. Many of them left languages, laws and religions that outlived them by centuries.','Which empire lasted longest, and what do the long-lived ones have in common?',0,'proposed','ai_drafted:claude-opus-5-5','Ottoman stop added (has phases; the bridge from Byzantium). The British Empire span is proposed with this batch: approve it first, or the journey waits.','2026-11-22 03:11:23');
+INSERT INTO "journeys" VALUES('history-of-ideas','The History of Ideas','Some of history''s biggest changes happened in people''s heads. This journey follows ideas about how to live, how to rule and how the world works, from teachers in India, China and Greece to the scientists and philosophers of early modern Europe. Look for the moments when ideas travelled: translated, argued over and built on by people far away.','Ideas travelled along this journey. Greek philosophy was preserved and extended in Arabic, translated into Latin in medieval Europe and studied anew in the Renaissance. Meanwhile the teachings of the Buddha and Confucius spread across Asia, where they still shape the lives of hundreds of millions of people.','Which of these ideas do you still meet in everyday life?',1,'proposed','ai_drafted:claude-opus-5-5','Starts with the Axial Age as a frame, then India, China and Greece as contemporaries (Confucius was born before Socrates, so doc 16''s order isn''t chronological). Mahavira and the Greek philosophy span are proposed with this batch.','2026-11-22 03:11:23');
+INSERT INTO "journeys" VALUES('how-the-modern-world-emerged','How the Modern World Emerged','The world you live in, with its nation-states, factories, global trade and ideas about rights, took shape over the last five centuries. This journey follows the main threads: ocean voyages that connected the continents, empires and slavery, new science and machines, revolutions, two world wars and the end of empires. Watch how the bars crowd together as you get closer to today.','In about five hundred years the world went from regions linked by a few sea routes to one connected system. Many of its features, from global trade and nation-states to industrial technology and ideas of equal rights, appeared along this journey, and so did its wars and inequalities.','Which stop do you think changed the most people''s lives, and why?',2,'proposed','ai_drafted:claude-opus-5-5','Colonial expansion is split in two: conquest and slavery early, the Scramble for Africa after the Industrial Revolution (whose steamships, quinine and guns made it possible). Globalization is a stop of three events, not a span: historians date its start anywhere from 1500 to 1990.','2026-11-22 03:11:23');
 CREATE TABLE learning_content_groups (
   id            INTEGER PRIMARY KEY,
   entity_id     TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
@@ -11535,6 +11646,8 @@ INSERT INTO "missing_entities" VALUES(150,'span','Polynesian Settlement of the P
 INSERT INTO "missing_entities" VALUES(151,'span','Construction of the Pyramid of the Sun',100,250,1,'Americas','Replaces the rejected event (gap #101): built in phases, so a span.','2026-11-21: Ram rejected these as events (''more spans than concrete events'') and asked for spans','teotihuacan','drafted','construction-of-the-pyramid-of-the-sun','Ram in chat 2026-11-21: redraft the three as spans','2026-11-21 03:47:00','https://en.wikipedia.org/wiki/Pyramid_of_the_Sun');
 INSERT INTO "missing_entities" VALUES(152,'span','Cahokia',1050,1350,1,'North America','Replaces the rejected event (gap #106): the city''s rise and abandonment as a span.','2026-11-21: Ram rejected these as events (''more spans than concrete events'') and asked for spans',NULL,'drafted','cahokia','Ram in chat 2026-11-21: redraft the three as spans','2026-11-21 03:47:00','https://en.wikipedia.org/wiki/Cahokia');
 INSERT INTO "missing_entities" VALUES(153,'span','Polynesian Settlement of Hawaii',1000,1250,1,'Oceania','Replaces the rejected event (gap #133): the settlement window as a span, part of the Polynesian Settlement of the Pacific.','2026-11-21: Ram rejected these as events (''more spans than concrete events'') and asked for spans','polynesian-settlement-of-the-pacific','drafted','polynesian-settlement-of-hawaii','Ram in chat 2026-11-21: redraft the three as spans','2026-11-21 03:47:00','https://en.wikipedia.org/wiki/History_of_Hawaii#Polynesian_migration_and_arrival');
+INSERT INTO "missing_entities" VALUES(154,'span','Hellenistic Kingdoms',-323,-30,NULL,'Middle East','What Alexander''s empire split into (Seleucid, Ptolemaic, Antigonid); bridges the Alexander and Roman stops of the Empires journey. Ends with Rome''s annexation of Ptolemaic Egypt.','2026-11-21: Phase 14 journeys (Rise and Fall of Empires)','alexander-the-great ptolemaic-dynasty-founded roman-republic','open',NULL,NULL,'2026-11-22 03:03:53','https://en.wikipedia.org/wiki/Hellenistic_period');
+INSERT INTO "missing_entities" VALUES(155,'event','Jamestown Founded',1607,NULL,NULL,'North America','The first permanent English settlement in the Americas; the conventional start of the British Empire span, which it would begin.','2026-11-21: Phase 14 journeys (Rise and Fall of Empires)','british-empire','open',NULL,NULL,'2026-11-22 03:03:53','https://en.wikipedia.org/wiki/Jamestown,_Virginia');
 CREATE TABLE people (
   entity_id TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   role      TEXT                                  -- shown under the name, e.g. "Mughal emperor"
@@ -11550,6 +11663,7 @@ INSERT INTO "people" VALUES('isaac-newton','Mathematician and physicist');
 INSERT INTO "people" VALUES('marie-curie','Physicist and chemist');
 INSERT INTO "people" VALUES('mahatma-gandhi','Leader of India''s independence movement');
 INSERT INTO "people" VALUES('life-of-the-buddha','Founder of Buddhism');
+INSERT INTO "people" VALUES('life-of-mahavira','Teacher of Jainism');
 CREATE TABLE regions (
   label TEXT PRIMARY KEY,
   lane  TEXT NOT NULL CHECK (lane IN
@@ -12070,6 +12184,14 @@ INSERT INTO "relationships" VALUES(509,'gandhi-salt-march','part_of','mahatma-ga
 INSERT INTO "relationships" VALUES(510,'mahatma-gandhi-assassinated','ended','mahatma-gandhi','Gandhi was shot in Delhi by a Hindu nationalist.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
 INSERT INTO "relationships" VALUES(511,'islamic-golden-age','part_of','islamic-golden-age-period','''Islamic Golden Age Begins'' is a moment within ''Islamic Golden Age'' (created by the split).','high','reviewed',NULL,NULL);
 INSERT INTO "relationships" VALUES(512,'mongols-sack-baghdad','ended','islamic-golden-age-period','The destruction of Baghdad''s palaces, libraries and scholarly institutions conventionally marks the end of the Islamic Golden Age.','high','reviewed','ai_drafted:gemini','2026-11-22 03:00:56');
+INSERT INTO "relationships" VALUES(513,'hong-kong-handover','ended','british-empire','The return of Hong Kong to China is usually taken as the end of the British Empire.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 03:03:52');
+INSERT INTO "relationships" VALUES(514,'british-raj','part_of','british-empire','Crown rule in India was the largest part of the British Empire.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 03:03:52');
+INSERT INTO "relationships" VALUES(515,'company-rule-in-india','part_of','british-empire','The East India Company ruled under a royal charter, so historians count its Indian territories in the empire, though the Crown took direct control only in 1858.','medium','proposed','ai_drafted:claude-opus-5-5','2026-11-22 03:03:52');
+INSERT INTO "relationships" VALUES(516,'thales-solar-eclipse','began','greek-philosophy-thales-to-aristotle','Thales is traditionally the first Greek philosopher, and his eclipse prediction is the usual marker of the start.','medium','proposed','ai_drafted:claude-opus-5-5','2026-11-22 03:03:52');
+INSERT INTO "relationships" VALUES(517,'platos-academy-founded','part_of','greek-philosophy-thales-to-aristotle','Plato''s Academy in Athens was the era''s leading school; Aristotle studied there for twenty years.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 03:03:52');
+INSERT INTO "relationships" VALUES(518,'socrates-execution','part_of','greek-philosophy-thales-to-aristotle','Socrates''s trial and death, recorded by his pupil Plato, are a central episode of Greek philosophy.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 03:03:52');
+INSERT INTO "relationships" VALUES(519,'greek-philosophy-thales-to-aristotle','part_of','axial-age','Jaspers counted the Greek philosophers among the Axial Age''s thinkers; historians debate the label.','medium','proposed','ai_drafted:claude-opus-5-5','2026-11-22 03:03:52');
+INSERT INTO "relationships" VALUES(520,'life-of-mahavira','part_of','axial-age','Mahavira taught in the same centuries and region as the Buddha; historians debate the Axial Age label.','medium','proposed','ai_drafted:claude-opus-5-5','2026-11-22 03:03:52');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -13807,6 +13929,9 @@ INSERT INTO "review_log" VALUES(1726,'2026-11-22 03:00:55','rename-event','islam
 INSERT INTO "review_log" VALUES(1727,'2026-11-22 03:00:55','rename-span','mongol-conquests','''Mongol Conquests'' → ''Mongol Empire''; new description','cli');
 INSERT INTO "review_log" VALUES(1728,'2026-11-22 03:01:10','approve-link','mongols-sack-baghdad','link #512: mongols-sack-baghdad ended islamic-golden-age-period','cli');
 INSERT INTO "review_log" VALUES(1729,'2026-11-22 03:01:10','remove-link','mongols-sack-baghdad','link #323: mongols-sack-baghdad ended islamic-golden-age — moved to islamic-golden-age-period: the shared id was split, the Mongol sack ended the age (span), not Harun''s accession','cli');
+INSERT INTO "review_log" VALUES(1730,'2026-11-22 03:11:23','load-journey','rise-and-fall-of-empires','''The Rise and Fall of Empires'': 8 stops from ai_drafted:claude-opus-5-5','cli');
+INSERT INTO "review_log" VALUES(1731,'2026-11-22 03:11:23','load-journey','history-of-ideas','''The History of Ideas'': 8 stops from ai_drafted:claude-opus-5-5','cli');
+INSERT INTO "review_log" VALUES(1732,'2026-11-22 03:11:23','load-journey','how-the-modern-world-emerged','''How the Modern World Emerged'': 10 stops from ai_drafted:claude-opus-5-5','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -14441,6 +14566,9 @@ INSERT INTO "sources" VALUES(650,'wikipedia','Ottoman entry into World War I','h
 INSERT INTO "sources" VALUES(651,'wikipedia','Alexander the Great','https://en.wikipedia.org/wiki/Alexander_the_Great','2026-11-22 02:36:11');
 INSERT INTO "sources" VALUES(652,'wikipedia','Elizabeth I','https://en.wikipedia.org/wiki/Elizabeth_I','2026-11-22 02:36:11');
 INSERT INTO "sources" VALUES(653,'wikipedia','Isaac Newton','https://en.wikipedia.org/wiki/Isaac_Newton','2026-11-22 02:36:11');
+INSERT INTO "sources" VALUES(654,'wikipedia','British Empire','https://en.wikipedia.org/wiki/British_Empire','2026-11-22 03:03:52');
+INSERT INTO "sources" VALUES(655,'wikipedia','Ancient Greek philosophy','https://en.wikipedia.org/wiki/Ancient_Greek_philosophy','2026-11-22 03:03:52');
+INSERT INTO "sources" VALUES(656,'wikipedia','Mahavira','https://en.wikipedia.org/wiki/Mahavira','2026-11-22 03:03:52');
 CREATE TABLE time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json
@@ -14626,6 +14754,9 @@ INSERT INTO "time_spans" VALUES('akbar','period','Akbar',1542,1605,'The Mughal e
 INSERT INTO "time_spans" VALUES('isaac-newton','period','Isaac Newton',1643,1727,'The English mathematician and physicist whose Principia set out the laws of motion and universal gravitation. He also co-developed calculus and showed that white light is made of the colours of the spectrum.','Europe',8,NULL,NULL,NULL);
 INSERT INTO "time_spans" VALUES('marie-curie','period','Marie Curie',1867,1934,'Born Maria Skłodowska in Warsaw, she worked in Paris, where with her husband Pierre she discovered polonium and radium. She was the first woman to win a Nobel Prize and the first person to win two, in physics and in chemistry.','Europe',7,NULL,NULL,NULL);
 INSERT INTO "time_spans" VALUES('mahatma-gandhi','period','Mahatma Gandhi',1869,1948,'Mohandas Karamchand Gandhi, a lawyer trained in London, developed nonviolent mass resistance in South Africa and then led India''s independence movement against British rule. He was assassinated by a Hindu nationalist months after independence.','South Asia',9,NULL,NULL,NULL);
+INSERT INTO "time_spans" VALUES('british-empire','empire','British Empire',1607,1997,'The colonies, trading posts, protectorates and dominions ruled by England and then Britain, built by settlement, trade and conquest. At its height it covered about a quarter of the world''s land and people; most of it became independent in the decades after the Second World War.','Global',8,1,NULL,'1607 (Jamestown, the first lasting colony) to 1997 (the handover of Hong Kong); some date it from Newfoundland, 1583');
+INSERT INTO "time_spans" VALUES('greek-philosophy-thales-to-aristotle','period','Greek Philosophy from Thales to Aristotle',-585,-322,'The Greek thinkers who tried to explain the world by observation, reason and argument rather than myth: the natural philosophers of Ionia, then Socrates, Plato and Aristotle in Athens. After Aristotle, new schools such as the Stoics and Epicureans carried Greek philosophy on for centuries.','Europe',7,1,NULL,'c. 585 BCE (Thales) to 322 BCE (the death of Aristotle)');
+INSERT INTO "time_spans" VALUES('life-of-mahavira','period','Life of Mahavira',-599,-527,'Vardhamana, called Mahavira (''great hero''), revered by Jains as the 24th and last tirthankara, or teacher who shows the way to liberation. In the Ganges valley he taught non-violence toward all living beings, truthfulness and strict self-discipline.','South Asia',5,1,NULL,'traditionally 599–527 BCE; many historians place him later, as an older contemporary of the Buddha');
 CREATE TRIGGER events_touch AFTER UPDATE ON events BEGIN
   UPDATE entities SET updated_at = datetime('now') WHERE id = NEW.entity_id;
 END;

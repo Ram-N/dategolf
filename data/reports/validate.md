@@ -26,7 +26,7 @@
 | error | Contradictory links (A→B and B→A of the same one-way type) | pass |
 | error | Symmetric link not stored in id order | pass |
 | warning | DateLinks 'Year of' label doesn't match the event's year (rename-memory-aid-group) | pass |
-| warning | Link touches a proposed (unpublished) entity | pass |
+| warning | Link touches a proposed (unpublished) entity | 8 |
 | warning | Time spans with the same normalised name | pass |
 | warning | Event names that differ only in case or spacing | pass |
 | warning | Event with no aliases (search falls back to name only) | pass |
@@ -41,14 +41,16 @@
 | warning | Span with a date note but not marked approximate (the note is then not exported) | pass |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 3 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 8 |
 | warning | A span is part_of a person's life (a reign is its own span; only events go inside a life) | pass |
 | review | Life-cycle phases awaiting approval (not exported; dashboard Review → Life cycles) | pass |
 | warning | Life-cycle phases no longer cover their span (its years changed): fix with remove-phases + load-phases | pass |
+| review | Journeys awaiting approval (not exported; dashboard Review → Journeys) | 3 |
+| warning | Approved journey not exported: a stop shows an unpublished item (approve it) or none at all | pass |
 | review | Memory aids awaiting approval (not exported; dashboard Review → Memory aids) | pass |
-| review | Missing events and spans to decide (dashboard Review → Missing) | 2 |
+| review | Missing events and spans to decide (dashboard Review → Missing) | 4 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
-| review | Country tags awaiting review (manage.py approve-countries) | pass |
+| review | Country tags awaiting review (manage.py approve-countries) | 3 |
 | info | Region labels in use, with their DateFlow lane | 12 |
 | warning | Description mentions a year near the answer (DatePick shows it before the guess) | pass |
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
@@ -64,7 +66,7 @@
 ## Counts
 
 - events: 522
-- time_spans: 167
+- time_spans: 170
 - eras: 5
 - datelinks_keys: 28
 - datelinks_groups: 91
@@ -73,7 +75,18 @@
 - daily_challenge_dates: 366
 - csv_rows: 310
 - significance_reviewed: 234
-- significance_proposed: 0
+- significance_proposed: 3
+
+## [warning] Link touches a proposed (unpublished) entity
+
+- `514` — british-raj part_of british-empire
+- `515` — company-rule-in-india part_of british-empire
+- `519` — greek-philosophy-thales-to-aristotle part_of axial-age
+- `513` — hong-kong-handover ended british-empire
+- `520` — life-of-mahavira part_of axial-age
+- `517` — platos-academy-founded part_of greek-philosophy-thales-to-aristotle
+- `518` — socrates-execution part_of greek-philosophy-thales-to-aristotle
+- `516` — thales-solar-eclipse began greek-philosophy-thales-to-aristotle
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 
@@ -133,20 +146,45 @@
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
 
+## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
+
+- `513` — hong-kong-handover ended british-empire — The return of Hong Kong to China is usually taken as the end of the British Empire.
+- `514` — british-raj part_of british-empire — Crown rule in India was the largest part of the British Empire.
+- `515` — company-rule-in-india part_of british-empire — The East India Company ruled under a royal charter, so historians count its Indian territories in the empire, though the Crown took direct control only in 1858.
+- `516` — thales-solar-eclipse began greek-philosophy-thales-to-aristotle — Thales is traditionally the first Greek philosopher, and his eclipse prediction is the usual marker of the start.
+- `517` — platos-academy-founded part_of greek-philosophy-thales-to-aristotle — Plato's Academy in Athens was the era's leading school; Aristotle studied there for twenty years.
+- `518` — socrates-execution part_of greek-philosophy-thales-to-aristotle — Socrates's trial and death, recorded by his pupil Plato, are a central episode of Greek philosophy.
+- `519` — greek-philosophy-thales-to-aristotle part_of axial-age — Jaspers counted the Greek philosophers among the Axial Age's thinkers; historians debate the label.
+- `520` — life-of-mahavira part_of axial-age — Mahavira taught in the same centuries and region as the Buddha; historians debate the Axial Age label.
+
+## [review] Journeys awaiting approval (not exported; dashboard Review → Journeys)
+
+- `rise-and-fall-of-empires` — The Rise and Fall of Empires
+- `history-of-ideas` — The History of Ideas
+- `how-the-modern-world-emerged` — How the Modern World Emerged
+
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 
 - `149` — event · Egyptian–Hittite Peace Treaty (-1259) · wanted
 - `148` — event · Fall of Nineveh (-612) · wanted
+- `154` — span · Hellenistic Kingdoms (-323) · open
+- `155` — event · Jamestown Founded (1607) · open
+
+## [review] Country tags awaiting review (manage.py approve-countries)
+
+- `british-empire` — high
+- `greek-philosophy-thales-to-aristotle` — high
+- `life-of-mahavira` — high
 
 ## [info] Region labels in use, with their DateFlow lane
 
-- `Europe` — europe · 193 records
-- `South Asia` — south-asia · 152 records
+- `Europe` — europe · 194 records
+- `South Asia` — south-asia · 153 records
 - `East Asia` — east-asia · 74 records
 - `Americas` — americas · 69 records
 - `Middle East` — middle-east · 61 records
 - `Africa` — africa · 56 records
-- `Global` — global · 35 records
+- `Global` — global · 36 records
 - `Southeast Asia` — east-asia · 21 records
 - `North America` — americas · 13 records
 - `Oceania` — global · 10 records
@@ -162,7 +200,7 @@
 ## [info] Counts changed since the legacy import
 
 - `events` — 343 at import -> 522 now
-- `time_spans` — 98 at import -> 167 now
+- `time_spans` — 98 at import -> 170 now
 - `datelinks_keys` — 26 at import -> 28 now
 - `datelinks_groups` — 83 at import -> 91 now
 - `datelinks_items` — 198 at import -> 218 now

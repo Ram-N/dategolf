@@ -1,0 +1,92 @@
+{
+ "origin": "ai_drafted:claude-opus-5-5",
+ "journeys": [
+  {
+   "id": "rise-and-fall-of-empires",
+   "title": "The Rise and Fall of Empires",
+   "intro": "An empire is a state that rules many different peoples, usually after conquering them. This journey visits eight empires over about two and a half thousand years. At each stop, look at the bar: how quickly the empire grew, how long it held together, and what came after it. Not every empire simply fell. Some split apart, some changed into something new, and some were taken apart piece by piece.",
+   "note": "Ottoman stop added (has phases; the bridge from Byzantium). The British Empire span is proposed with this batch: approve it first, or the journey waits.",
+   "stops": [
+    {"items": ["achaemenid-empire"],
+     "narration": "Cyrus the Great founded the first Persian Empire, and his successors extended it from the Indus to Egypt and the edge of Greece: the largest empire the world had yet seen. It held together partly by letting conquered peoples keep their languages, gods and local leaders, as long as they paid tribute and sent soldiers. Royal roads and relays of messengers carried the king's orders across it."},
+    {"items": ["alexanders-conquests"],
+     "narration": "In a little over a decade, Alexander of Macedon conquered the whole Persian Empire and marched on to the Indus. His empire did not outlive him: after his death in 323 BCE his generals fought over it and divided it into rival kingdoms. Compare this short bar with Persia's two centuries.",
+     "question": "Why might an empire won by one man's campaigns break apart when he dies?"},
+    {"items": ["roman-empire"],
+     "narration": "Rome had conquered most of the Mediterranean while it was still a republic; Augustus turned it into an empire ruled by one man. Follow its phases along the bar: its greatest extent under the Nerva–Antonine emperors, a crisis of civil wars, invasions and plague, then an empire reorganised by Diocletian and Constantine. In the West, power passed to Germanic kings, and the last western emperor was deposed in 476."},
+    {"items": ["byzantine-empire"],
+     "narration": "The eastern half of the empire carried on, ruled from Constantinople, the city Constantine founded on the Bosporus. Its people called themselves Romans; the name 'Byzantine' was given later by historians. Greek replaced Latin, and the empire kept Greek and Roman learning alive while it lost and won back territory many times. Notice how its bar overlaps Rome's.",
+     "question": "The last western emperor was deposed, yet emperors ruled from Constantinople for almost a thousand years more. So when did the Roman Empire end?"},
+    {"items": ["mongol-conquests"],
+     "narration": "From the steppes of Mongolia, Genghis Khan and his heirs built the largest connected land empire in history, from Korea to Hungary. Their conquests were devastating (Baghdad was sacked and its libraries destroyed), yet the empire also kept the overland routes safe for merchants and travellers such as Marco Polo. About half a century after its founding it split into four khanates, each going its own way."},
+    {"items": ["ottoman-empire"],
+     "narration": "The Ottomans began as one of many small Turkish principalities in Anatolia. They took Constantinople, ending the Byzantine Empire, and made the city their capital. Under Suleiman their empire reached from Hungary to Iraq and along the coast of North Africa. Its later centuries were not simply a decline: it lost wars and land but also reformed itself, and it lasted until after the First World War."},
+    {"items": ["mughal-empire"],
+     "narration": "Babur, a descendant of both Timur and Genghis Khan, founded the Mughal Empire in northern India. Under Akbar and his successors it grew to rule most of the subcontinent, became one of the largest economies in the world and built monuments such as the Taj Mahal. After Aurangzeb, regional powers broke away, and in the end the emperors in Delhi ruled in name only."},
+    {"items": ["british-empire"],
+     "narration": "England's first lasting colony was in North America. Over the next three centuries Britain built an empire of settler colonies, trading posts and conquered lands that at its height covered about a quarter of the world. In India it began as a trading company that took power as the Mughals' hold weakened. It came apart mostly after the Second World War, colony by colony, and ended with the handover of Hong Kong."}
+   ],
+   "closing": "Look back along the row of bars. Persia and Byzantium were conquered; Alexander's empire and the Mongols' split apart; Rome's western half broke up while its eastern half went on; the Ottoman and Mughal empires changed over centuries before their final end; and the British Empire was dismantled colony by colony. Many of them left languages, laws and religions that outlived them by centuries.",
+   "question": "Which empire lasted longest, and what do the long-lived ones have in common?"
+  },
+  {
+   "id": "history-of-ideas",
+   "title": "The History of Ideas",
+   "intro": "Some of history's biggest changes happened in people's heads. This journey follows ideas about how to live, how to rule and how the world works, from teachers in India, China and Greece to the scientists and philosophers of early modern Europe. Look for the moments when ideas travelled: translated, argued over and built on by people far away.",
+   "note": "Starts with the Axial Age as a frame, then India, China and Greece as contemporaries (Confucius was born before Socrates, so doc 16's order isn't chronological). Mahavira and the Greek philosophy span are proposed with this batch.",
+   "stops": [
+    {"items": ["axial-age"],
+     "narration": "Between about 800 BCE and 200 BCE, in several parts of the world at once, teachers asked new questions: how should a person live, what makes a good ruler, what is the world made of? The philosopher Karl Jaspers called these centuries the Axial Age. Historians debate whether it was one shared turning point or separate traditions that happen to overlap, but the overlap on the timeline is striking."},
+    {"items": ["life-of-the-buddha", "life-of-mahavira"], "title": "Buddhism and Jainism",
+     "narration": "In the Ganges valley of northern India, two princes gave up comfortable lives to become wandering ascetics. The Buddha taught a 'middle way' to escape suffering, between luxury and harsh self-denial. Mahavira, whom Jains revere as the last of 24 great teachers, taught strict non-violence toward every living thing. Their dates are uncertain: notice the 'c.' on both bars."},
+    {"items": ["confucius"],
+     "narration": "At about the same time in China, Confucius taught that good government starts with good people: rulers should lead by moral example, and everyone should honour their duties to family and community. The rulers of his day mostly ignored him. His followers collected his sayings in the Analects, and centuries later his ideas became the basis of Chinese education and government."},
+    {"items": ["greek-philosophy-thales-to-aristotle"],
+     "narration": "In Greek cities around the Aegean, thinkers began explaining nature by natural causes rather than myths: Thales asked what everything is made of. In Athens, Socrates questioned everyone he met and was condemned to death; his pupil Plato founded the Academy, where Aristotle studied before writing on almost every subject, from logic to biology."},
+    {"items": ["islamic-golden-age-period"],
+     "narration": "About a thousand years later, in Baghdad and other cities of the Islamic world, scholars translated Greek, Persian and Indian works into Arabic and went beyond them: al-Khwarizmi's algebra, Ibn al-Haytham's optics, Ibn Sina's medicine. Indian numerals, including zero, reached Europe through Arabic books, which is why we call them Arabic numerals.",
+     "question": "Much of Aristotle reached medieval Europe through Arabic translations. What does that tell you about how ideas travel?"},
+    {"items": ["italian-renaissance"],
+     "narration": "In the cities of Italy, scholars revived the study of ancient Greek and Latin texts (the word renaissance means 'rebirth'), and artists such as Leonardo and Michelangelo studied nature and the human body closely. The printing press, developed in Germany in the same years, spread books and ideas faster than ever before."},
+    {"items": ["scientific-revolution"],
+     "narration": "Copernicus argued that the Earth goes around the Sun. Over the next century and a half, Galileo, Kepler and others tested ideas against observation, experiment and mathematics. The era is usually closed with Newton's laws of motion and gravity, which explained the heavens and the Earth by the same rules."},
+    {"items": ["age-of-enlightenment"],
+     "narration": "Inspired by the success of science, Enlightenment writers asked whether reason could also improve government, religion and society. Locke argued that governments need the consent of the governed, Voltaire attacked religious intolerance, and Montesquieu proposed dividing the powers of government. Their ideas fed into the American and French revolutions."}
+   ],
+   "closing": "Ideas travelled along this journey. Greek philosophy was preserved and extended in Arabic, translated into Latin in medieval Europe and studied anew in the Renaissance. Meanwhile the teachings of the Buddha and Confucius spread across Asia, where they still shape the lives of hundreds of millions of people.",
+   "question": "Which of these ideas do you still meet in everyday life?"
+  },
+  {
+   "id": "how-the-modern-world-emerged",
+   "title": "How the Modern World Emerged",
+   "intro": "The world you live in, with its nation-states, factories, global trade and ideas about rights, took shape over the last five centuries. This journey follows the main threads: ocean voyages that connected the continents, empires and slavery, new science and machines, revolutions, two world wars and the end of empires. Watch how the bars crowd together as you get closer to today.",
+   "note": "Colonial expansion is split in two: conquest and slavery early, the Scramble for Africa after the Industrial Revolution (whose steamships, quinine and guns made it possible). Globalization is a stop of three events, not a span: historians date its start anywhere from 1500 to 1990.",
+   "stops": [
+    {"items": ["age-of-exploration"],
+     "narration": "Portuguese and Spanish sailors, looking for sea routes to the spices and silks of Asia, opened ocean routes linking Europe with Africa, Asia and the Americas. Columbus reached the Caribbean, and da Gama sailed around Africa to India. They were not the first long-distance voyagers: Chinese fleets under Zheng He had reached East Africa decades earlier."},
+    {"items": ["spanish-conquest-mexico", "trans-atlantic-slave-trade-peak", "company-rule-in-india"],
+     "title": "Conquest, colonies and slavery",
+     "narration": "Exploration turned into conquest. Spanish forces, with indigenous allies and the help of epidemic diseases, overthrew the Aztec Empire. Plantations in the Americas were worked by enslaved Africans, more than twelve million of whom were shipped across the Atlantic. In India, a British trading company became a ruler."},
+    {"items": ["scientific-revolution"],
+     "narration": "While empires spread, a new way of finding out about the world took hold in Europe: test ideas against observation and experiment, and describe nature in mathematics. From Copernicus to Newton, it changed how people saw the universe, and later gave engineers the tools to build machines."},
+    {"items": ["industrial-revolution"],
+     "narration": "Starting in Britain, machines driven first by water and then by steam began making cloth and iron, and soon pulling railway trains. Work moved from homes and fields into factories, and cities grew fast. Notice how this bar overlaps the next two: the industrial and political revolutions happened in the same decades."},
+    {"items": ["american-revolution"],
+     "narration": "Thirteen British colonies in North America rebelled against taxes imposed without their consent and declared independence, proclaiming that 'all men are created equal'. The new republic did not extend those words to enslaved people or to Native Americans, a contradiction fought over for almost a century afterwards."},
+    {"items": ["french-revolution"],
+     "narration": "A few years later France's monarchy, deep in debt, called an assembly that soon claimed to speak for the whole nation. The revolution abolished noble privileges, declared the rights of man, executed the king and spread its ideas across Europe through war, before it ended when Napoleon seized power.",
+     "question": "Both revolutions appealed to natural rights and government by consent. Where did those ideas come from?"},
+    {"items": ["scramble-for-africa"],
+     "narration": "Products of the industrial age, such as steamships, quinine against malaria and machine guns, let European powers conquer almost all of Africa in barely a generation. They drew borders across the continent with little regard for the peoples who lived there, and many of those borders remain today."},
+    {"items": ["world-war-1", "world-war-2"], "title": "The World Wars",
+     "narration": "Industrial power became industrial war. The First World War killed some 15 to 22 million people and brought down the German, Austro-Hungarian, Russian and Ottoman empires. Barely two decades later the Second World War, the deadliest conflict in history, killed some 70 to 85 million, including six million Jews murdered in the Holocaust, and ended with the first use of atomic bombs."},
+    {"items": ["decolonization-of-asia-and-africa"],
+     "narration": "Weakened by the war and facing strong independence movements, European powers gave up most of their colonies within a generation, some through negotiation and others after long wars. India and Pakistan, Indonesia, Ghana and Algeria were among dozens of new states, and the membership of the United Nations nearly tripled."},
+    {"items": ["dissolution-soviet-union", "internet-invented", "wto-founded"], "title": "A connected world",
+     "narration": "When the Soviet Union broke up and the Cold War ended, most of the world joined a single global market, and the World Trade Organization was set up to make its rules. In the same years the World Wide Web went public, and goods, money, people and information began to move around the world faster than ever. Historians debate when globalization began; some date it to the voyages at the start of this journey."}
+   ],
+   "closing": "In about five hundred years the world went from regions linked by a few sea routes to one connected system. Many of its features, from global trade and nation-states to industrial technology and ideas of equal rights, appeared along this journey, and so did its wars and inequalities.",
+   "question": "Which stop do you think changed the most people's lives, and why?"
+  }
+ ]
+}

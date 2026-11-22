@@ -1,7 +1,7 @@
 {
   "counts": {
     "events": 522,
-    "time_spans": 167,
+    "time_spans": 170,
     "eras": 5,
     "datelinks_keys": 28,
     "datelinks_groups": 91,
@@ -10,7 +10,7 @@
     "daily_challenge_dates": 366,
     "csv_rows": 310,
     "significance_reviewed": 234,
-    "significance_proposed": 0
+    "significance_proposed": 3
   },
   "checks": [
     {
@@ -160,8 +160,41 @@
     {
       "severity": "warning",
       "check": "Link touches a proposed (unpublished) entity",
-      "count": 0,
-      "rows": []
+      "count": 8,
+      "rows": [
+        [
+          514,
+          "british-raj part_of british-empire"
+        ],
+        [
+          515,
+          "company-rule-in-india part_of british-empire"
+        ],
+        [
+          519,
+          "greek-philosophy-thales-to-aristotle part_of axial-age"
+        ],
+        [
+          513,
+          "hong-kong-handover ended british-empire"
+        ],
+        [
+          520,
+          "life-of-mahavira part_of axial-age"
+        ],
+        [
+          517,
+          "platos-academy-founded part_of greek-philosophy-thales-to-aristotle"
+        ],
+        [
+          518,
+          "socrates-execution part_of greek-philosophy-thales-to-aristotle"
+        ],
+        [
+          516,
+          "thales-solar-eclipse began greek-philosophy-thales-to-aristotle"
+        ]
+      ]
     },
     {
       "severity": "warning",
@@ -449,8 +482,41 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 0,
-      "rows": []
+      "count": 8,
+      "rows": [
+        [
+          513,
+          "hong-kong-handover ended british-empire — The return of Hong Kong to China is usually taken as the end of the British Empire."
+        ],
+        [
+          514,
+          "british-raj part_of british-empire — Crown rule in India was the largest part of the British Empire."
+        ],
+        [
+          515,
+          "company-rule-in-india part_of british-empire — The East India Company ruled under a royal charter, so historians count its Indian territories in the empire, though the Crown took direct control only in 1858."
+        ],
+        [
+          516,
+          "thales-solar-eclipse began greek-philosophy-thales-to-aristotle — Thales is traditionally the first Greek philosopher, and his eclipse prediction is the usual marker of the start."
+        ],
+        [
+          517,
+          "platos-academy-founded part_of greek-philosophy-thales-to-aristotle — Plato's Academy in Athens was the era's leading school; Aristotle studied there for twenty years."
+        ],
+        [
+          518,
+          "socrates-execution part_of greek-philosophy-thales-to-aristotle — Socrates's trial and death, recorded by his pupil Plato, are a central episode of Greek philosophy."
+        ],
+        [
+          519,
+          "greek-philosophy-thales-to-aristotle part_of axial-age — Jaspers counted the Greek philosophers among the Axial Age's thinkers; historians debate the label."
+        ],
+        [
+          520,
+          "life-of-mahavira part_of axial-age — Mahavira taught in the same centuries and region as the Buddha; historians debate the Axial Age label."
+        ]
+      ]
     },
     {
       "severity": "warning",
@@ -472,6 +538,31 @@
     },
     {
       "severity": "review",
+      "check": "Journeys awaiting approval (not exported; dashboard Review → Journeys)",
+      "count": 3,
+      "rows": [
+        [
+          "rise-and-fall-of-empires",
+          "The Rise and Fall of Empires"
+        ],
+        [
+          "history-of-ideas",
+          "The History of Ideas"
+        ],
+        [
+          "how-the-modern-world-emerged",
+          "How the Modern World Emerged"
+        ]
+      ]
+    },
+    {
+      "severity": "warning",
+      "check": "Approved journey not exported: a stop shows an unpublished item (approve it) or none at all",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "review",
       "check": "Memory aids awaiting approval (not exported; dashboard Review → Memory aids)",
       "count": 0,
       "rows": []
@@ -479,7 +570,7 @@
     {
       "severity": "review",
       "check": "Missing events and spans to decide (dashboard Review → Missing)",
-      "count": 2,
+      "count": 4,
       "rows": [
         [
           149,
@@ -488,6 +579,14 @@
         [
           148,
           "event · Fall of Nineveh (-612) · wanted"
+        ],
+        [
+          154,
+          "span · Hellenistic Kingdoms (-323) · open"
+        ],
+        [
+          155,
+          "event · Jamestown Founded (1607) · open"
         ]
       ]
     },
@@ -500,8 +599,21 @@
     {
       "severity": "review",
       "check": "Country tags awaiting review (manage.py approve-countries)",
-      "count": 0,
-      "rows": []
+      "count": 3,
+      "rows": [
+        [
+          "british-empire",
+          "high"
+        ],
+        [
+          "greek-philosophy-thales-to-aristotle",
+          "high"
+        ],
+        [
+          "life-of-mahavira",
+          "high"
+        ]
+      ]
     },
     {
       "severity": "info",
@@ -510,11 +622,11 @@
       "rows": [
         [
           "Europe",
-          "europe · 193 records"
+          "europe · 194 records"
         ],
         [
           "South Asia",
-          "south-asia · 152 records"
+          "south-asia · 153 records"
         ],
         [
           "East Asia",
@@ -534,7 +646,7 @@
         ],
         [
           "Global",
-          "global · 35 records"
+          "global · 36 records"
         ],
         [
           "Southeast Asia",
@@ -636,7 +748,7 @@
         ],
         [
           "time_spans",
-          "98 at import -> 167 now"
+          "98 at import -> 170 now"
         ],
         [
           "datelinks_keys",
