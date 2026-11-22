@@ -11,6 +11,7 @@ import erasData from '@/data/eras.json'
 import type { TrackAxis } from '@/engine/dateflow/constellation'
 import type { Family } from '@/engine/dateflow/categoryGroups'
 import { eventStop, searchStops, sortStops, spanStop, stepIndex, type TourSpeed } from '@/engine/dateflow/tour'
+import { journeyIds, resolveJourney, stepJourneyIndex, type Journey, type JourneyData } from '@/engine/dateflow/journeys'
 import milestoneIds from '@/data/milestones.json'
 import {
   FULL_VIEW,
@@ -167,6 +168,11 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const tourStep = ref<number | null>(null)
   const tourPlaying = ref(false)
   const tourSpeed = ref<TourSpeed>('normal')
+  // Phase 14: a curated journey. journeyStep: null = the intro, 0…n-1 the stops, n the end. A journey
+  // needs span bars, so it switches Constellation or Simple to World / Standard and switches back on close.
+  const journeyData = ref<JourneyData[]>([])
+  const journey = ref<{ id: string; restore: { mode: ViewMode; density: Density } | null } | null>(null)
+  const journeyStep = ref<number | null>(null)
   const theme = ref<Theme>(loadTheme())
   // Phase 11: Colorful (8 family hues, the default) or Subtle (the 3 group hues), remembered per viewer
   // Phase 11 Focus: one family vivid, the rest faded. Per visit, not remembered.
@@ -216,6 +222,18 @@ export const useDateFlowStore = defineStore('dateflow', () => {
       : null,
   )
   const currentStops = computed(() => (currentStory.value ? storyStops(currentStory.value) : []))
+  /** Every published journey, its items looked up (for the Stories menu). */
+  const journeys = computed<Journey[]>(() =>
+    journeyData.value
+      .map((j) => resolveJourney(j, events.value, durations.value, relationships.value))
+      .filter((j): j is Journey => !!j),
+  )
+  const currentJourney = computed(() => journeys.value.find((j) => j.id === journey.value?.id) ?? null)
+  /** The journey's current stop (null at the intro and the end). */
+  const journeyStop = computed(() =>
+    currentJourney.value && journeyStep.value !== null ? (currentJourney.value.stops[journeyStep.value] ?? null) : null,
+  )
+  const journeyRing = computed(() => (currentJourney.value ? journeyIds(currentJourney.value, journeyStep.value) : null))
   /** Story steps to ring on the timeline (the story replaces any "show connections" highlight). */
   const storyIds = computed(() => (currentStory.value ? new Set(currentStory.value.nodes.map((n) => n.id)) : null))
   const featured = computed(() =>
@@ -299,7 +317,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
    * Off in Simple and Constellation, and while a story or the Time Machine draws its own overlay.
    */
   const currentSpans = computed(() =>
-    density.value === 'simple' || mode.value === 'constellation' || story.value || timeMachine.value
+    density.value === 'simple' || mode.value === 'constellation' || story.value || timeMachine.value || journey.value
       ? []
       : durations.value.filter((d) => d.current),
   )
@@ -313,6 +331,24 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     durations.value.filter((d) => matchesFilters(d, filters.value, applyRegions.value)),
   )
   const categories = computed(() => categoriesByFrequency([...events.value, ...durations.value]))
+  /** What the timeline draws: the filtered items, plus a journey's own items even if the filters hide them. */
+  const timelineEvents = computed(() => withJourneyItems(filteredEvents.value, events.value))
+  const timelineDurations = computed(() => withJourneyItems(filteredDurations.value, durations.value))
+  function withJourneyItems<T extends { id: string }>(shown: T[], all: T[]): T[] {
+    const ids = journeyRing.value
+    if (!ids) return shown
+    const have = new Set(shown.map((x) => x.id))
+    const extra = all.filter((x) => ids.has(x.id) && !have.has(x.id))
+    return extra.length ? [...shown, ...extra] : shown
+  }
+  /** The student has panned or zoomed away from the current stop: offer "Back to the stop". */
+  const journeyOffView = computed(() => {
+    const s = journeyStop.value
+    if (!s) return false
+    const v = view.value
+    const width = Math.max(s.end - s.start, TOUR_SPAN)
+    return s.start < v.start || s.end > v.end || span(v) > width * 4
+  })
 
   // ── Tour (step 4) ──
   /** Every search match, before the filters. */
@@ -376,11 +412,13 @@ export const useDateFlowStore = defineStore('dateflow', () => {
 
   // ── Actions ────────────────────────────────────────────────────────────────
   async function load() {
-    const [eventsModule, durationsModule, relationshipsModule] = await Promise.all([
+    const [eventsModule, durationsModule, relationshipsModule, journeysModule] = await Promise.all([
       import('@/data/events.json'),
       import('@/data/durations.json'),
       import('@/data/relationships.json'),
+      import('@/data/journeys.json'),
     ])
+    journeyData.value = journeysModule.default as JourneyData[]
     events.value = eventsModule.default as Event[]
     durations.value = durationsModule.default as Duration[]
     relationships.value = relationshipsModule.default as RelationshipData
@@ -529,6 +567,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     const e = pickSurprise(filteredEvents.value, hasStory, Math.random, recentSurprises)
     if (!e) return
     recentSurprises = rememberPick(recentSurprises, e.id)
+    closeJourney()
     closeTour()
     closeStory()
     closeTimeMachine()
@@ -562,6 +601,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   }
 
   function openStory(id: string, direction: Direction = 'back') {
+    closeJourney()
     closeTour()
     timeMachine.value = null
     select(null)
@@ -617,6 +657,50 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     goToStep(next)
   }
 
+  // ── Journeys (Phase 14) ─────────────────────────────────────────────────────
+  function openJourney(id: string) {
+    if (!journeys.value.some((j) => j.id === id)) return
+    const restore = journey.value?.restore ??
+      (mode.value === 'constellation' || density.value === 'simple' ? { mode: mode.value, density: density.value } : null)
+    closeStory()
+    closeTour()
+    closeTimeMachine()
+    select(null)
+    selectDuration(null)
+    summaryRange.value = null
+    focusId.value = null
+    if (mode.value === 'constellation') mode.value = 'world'
+    if (density.value === 'simple') density.value = 'standard'
+    journey.value = { id, restore }
+    goToJourneyStep(null)
+  }
+
+  function closeJourney() {
+    const r = journey.value?.restore
+    journey.value = null
+    journeyStep.value = null
+    if (r) {
+      mode.value = r.mode
+      density.value = r.density
+    }
+  }
+
+  /** Make a step current and frame it: a stop's items (an event in a century around it), else the whole journey. */
+  function goToJourneyStep(i: number | null) {
+    const j = currentJourney.value
+    if (!j) return
+    journeyStep.value = i
+    const s = i === null ? undefined : j.stops[i]
+    if (!s) showSpan(j.start, j.end)
+    else if (s.end === s.start) animateTo(centerOn(s.start, TOUR_SPAN))
+    else showSpan(s.start, s.end)
+  }
+
+  function stepJourney(delta: 1 | -1) {
+    const j = currentJourney.value
+    if (j) goToJourneyStep(stepJourneyIndex(journeyStep.value, delta, j.stops.length))
+  }
+
   // ── Time Machine ───────────────────────────────────────────────────────────
   function frameTimeMachine() {
     const tm = timeMachine.value
@@ -637,6 +721,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
 
   /** Open the Time Machine (closing any card or story); by default on the year at the view's centre. */
   function openTimeMachine(patch: Partial<TimeMachine> = {}) {
+    closeJourney()
     closeTour()
     closeStory()
     select(null)
@@ -678,6 +763,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
 
   // ── Tour (step 4) ────────────────────────────────────────────────────────
   function startTour(t: { source: 'search' | 'filters'; query: string }) {
+    closeJourney()
     closeStory()
     closeTimeMachine()
     select(null)
@@ -777,6 +863,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
 
   function setDensity(d: Density) {
     density.value = d
+    if (journey.value) journey.value.restore = null // the student chose; closing keeps it
   }
 
   function toggleColorMode() {
@@ -785,6 +872,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
 
   function setMode(m: ViewMode) {
     mode.value = m
+    if (journey.value) journey.value.restore = null // the student chose; closing keeps it
   }
 
   function setTrackAxis(t: TrackAxis) {
@@ -857,6 +945,19 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     toggleTourPlay,
     setTourSpeed,
     openTourStop,
+    journeys,
+    journey,
+    journeyStep,
+    currentJourney,
+    journeyStop,
+    journeyRing,
+    journeyOffView,
+    openJourney,
+    closeJourney,
+    goToJourneyStep,
+    stepJourney,
+    timelineEvents,
+    timelineDurations,
     story,
     storyStep,
     playing,

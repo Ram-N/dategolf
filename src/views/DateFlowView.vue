@@ -11,9 +11,11 @@
       :filters="store.filters"
       :categories="store.categories"
       :stories="store.featured"
+      :journeys="store.journeys"
       :eras="store.eras"
       :active-era="store.activeEra"
       @open-story="(id) => store.openStory(id)"
+      @open-journey="(id) => store.openJourney(id)"
       @time-machine="store.openTimeMachine()"
       @surprise="store.surprise()"
       @zoom-in="store.zoomIn()"
@@ -47,9 +49,9 @@
       <div class="flex-1 min-w-0">
       <DateFlowTimeline
         ref="timeline"
-        :events="store.filteredEvents"
+        :events="store.timelineEvents"
         :all-events="store.events"
-        :durations="store.filteredDurations"
+        :durations="store.timelineDurations"
         :span-parents="store.subSpanParents"
         :currents="store.currentSpans"
         :detail="store.detailLevel"
@@ -60,7 +62,7 @@
         :track-axis="store.trackAxis"
         :selected-id="store.selectedEvent?.id ?? (store.tourCurrent?.kind === 'event' ? store.tourCurrent.id : null)"
         :selected-duration-id="store.selectedDuration?.id ?? (store.tourCurrent?.kind === 'span' ? store.tourCurrent.id : null)"
-        :highlight-ids="store.storyIds ?? store.tmIds ?? store.tourIds ?? store.cardIds ?? store.focusIds"
+        :highlight-ids="store.journeyRing ?? store.storyIds ?? store.tmIds ?? store.tourIds ?? store.cardIds ?? store.focusIds"
         :marks="store.tmMarks"
         :story="store.currentStory"
         :focus-family="store.focusFamily"
@@ -106,6 +108,16 @@
         @go-to="store.goToTourStop"
         @speed="store.setTourSpeed"
         @open="store.openTourStop"
+      />
+      <JourneyPanel
+        v-if="store.currentJourney"
+        :journey="store.currentJourney"
+        :step="store.journeyStep"
+        :off-view="store.journeyOffView"
+        @close="store.closeJourney()"
+        @step="store.stepJourney"
+        @go-to="store.goToJourneyStep"
+        @open="(id, kind) => (kind === 'span' ? store.selectDuration(id) : store.select(id))"
       />
       <StoryPanel
         v-if="store.currentStory"
@@ -222,6 +234,7 @@ import '@/assets/dateflow-theme.css'
 import EventInfoCard from '@/components/EventInfoCard.vue'
 import EventConnections from '@/components/dateflow/EventConnections.vue'
 import StoryPanel from '@/components/dateflow/StoryPanel.vue'
+import JourneyPanel from '@/components/dateflow/JourneyPanel.vue'
 import TimeMachinePanel from '@/components/dateflow/TimeMachinePanel.vue'
 import TourPanel from '@/components/dateflow/TourPanel.vue'
 import DurationInfoCard from '@/components/dateflow/DurationInfoCard.vue'
@@ -255,6 +268,11 @@ function onKey(e: KeyboardEvent) {
       const step = (e.shiftKey ? 10 : 1) * (e.key === 'ArrowRight' ? 1 : -1)
       return store.stepYear(step)
     }
+  }
+  if (store.currentJourney) {
+    if (e.key === 'Escape') return store.closeJourney()
+    if (e.key === 'ArrowRight') return store.stepJourney(1)
+    if (e.key === 'ArrowLeft') return store.stepJourney(-1)
   }
   if (store.tour) {
     if (e.key === 'Escape') return store.closeTour()
@@ -336,14 +354,15 @@ function openFromUrl() {
 }
 // One sync for the whole URL, built from the current state: two separate watchers each rewrote it
 // from a stale copy and left the other's keys behind.
-// Searches too: /dateflow?q=Mughal (issue #9).
-const OWN_KEYS = [...TM_KEYS, 'story', 'dir', 'q']
+// Searches too: /dateflow?q=Mughal (issue #9), and journeys: /dateflow?journey=history-of-ideas (Phase 14).
+const OWN_KEYS = [...TM_KEYS, 'story', 'dir', 'q', 'journey']
+const journeyQuery = (): Record<string, string> => (store.journey ? { journey: store.journey.id } : {})
 const storyQuery = (): Record<string, string> =>
   store.story ? { story: store.story.rootId, dir: store.story.direction } : {}
 const searchQuery = (): Record<string, string> =>
   store.tour?.source === 'search' ? { q: store.tour.query } : {}
 watch(
-  () => JSON.stringify({ ...storyQuery(), ...tmQuery(), ...searchQuery() }),
+  () => JSON.stringify({ ...storyQuery(), ...tmQuery(), ...searchQuery(), ...journeyQuery() }),
   (q) => {
     const rest = Object.fromEntries(Object.entries(route.query).filter(([k]) => !OWN_KEYS.includes(k)))
     const next = { ...rest, ...JSON.parse(q) }
@@ -359,6 +378,7 @@ onMounted(async () => {
   openFromUrl()
   openTimeMachineFromUrl()
   if (typeof route.query.q === 'string' && route.query.q.trim()) store.searchFor(route.query.q)
+  if (typeof route.query.journey === 'string') store.openJourney(route.query.journey)
 })
 onUnmounted(() => window.removeEventListener('keydown', onKey))
 </script>

@@ -10,6 +10,18 @@
       role="dialog"
       aria-label="Stories"
     >
+      <template v-if="journeys.length">
+        <h3 class="heading">Take a journey</h3>
+        <p class="hint mb-2">Guided tours of big themes, stop by stop, with the timeline moving as you go.</p>
+        <ul class="space-y-1 mb-3">
+          <li v-for="j in journeys" :key="j.id">
+            <button class="row w-full text-left rounded-lg px-2 py-1.5" @click="chooseJourney(j.id)">
+              <span class="name">{{ j.title }}</span>
+              <span class="meta">{{ j.stops.length }} stops · {{ formatYear(j.start) }} → {{ formatYear(j.end) }}</span>
+            </button>
+          </li>
+        </ul>
+      </template>
       <h3 class="heading">Follow a story</h3>
       <p class="hint mb-2">How one event led to another: causes, beginnings, endings and what came next.</p>
       <ul class="space-y-1">
@@ -32,11 +44,12 @@
 
 <script setup lang="ts">
 import type { FeaturedStory } from '@/engine/dateflow/stories'
+import type { Journey } from '@/engine/dateflow/journeys'
 import { usePopover } from '@/composables/usePopover'
 import { formatYear } from '@/utils/formatYear'
 
-defineProps<{ stories: FeaturedStory[] }>()
-const emit = defineEmits<{ open: [id: string] }>()
+defineProps<{ stories: FeaturedStory[]; journeys: Journey[] }>()
+const emit = defineEmits<{ open: [id: string]; openJourney: [id: string] }>()
 
 const PANEL_W = 340
 const { open, rootEl, panelLeft, toggle } = usePopover(PANEL_W)
@@ -44,6 +57,11 @@ const { open, rootEl, panelLeft, toggle } = usePopover(PANEL_W)
 function choose(id: string) {
   open.value = false
   emit('open', id)
+}
+
+function chooseJourney(id: string) {
+  open.value = false
+  emit('openJourney', id)
 }
 </script>
 
@@ -62,6 +80,8 @@ function choose(id: string) {
   background: var(--df-btn-hover);
 }
 .panel {
+  max-height: calc(100dvh - 7rem);
+  overflow-y: auto;
   background: var(--df-surface);
   border-color: var(--df-border);
   color: var(--df-text);

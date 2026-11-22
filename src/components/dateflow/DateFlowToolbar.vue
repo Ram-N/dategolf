@@ -131,7 +131,9 @@
       <button class="btn" title="Play through the events your filters show, one at a time" @click="emit('watch')">
         Watch
       </button>
-      <StoriesMenu data-keep-open :stories="stories" @open="(id) => { moreOpen = false; emit('openStory', id) }" />
+      <StoriesMenu data-keep-open :stories="stories" :journeys="journeys"
+                   @open="(id) => { moreOpen = false; emit('openStory', id) }"
+                   @open-journey="(id) => { moreOpen = false; emit('openJourney', id) }" />
       <button class="btn" title="Summarise the period in view (or shift-drag across the timeline)" @click="emit('summarize')">
         What happened?
       </button>
@@ -167,6 +169,7 @@ import DateFlowLanePicker from './DateFlowLanePicker.vue'
 import DateFlowFilters from './DateFlowFilters.vue'
 import StoriesMenu from './StoriesMenu.vue'
 import type { FeaturedStory } from '@/engine/dateflow/stories'
+import type { Journey } from '@/engine/dateflow/journeys'
 import { DENSITIES, type Density, type Filters } from '@/engine/dateflow/filters'
 import { formatYear, parseYear } from '@/utils/formatYear'
 import { MIN_QUERY } from '@/engine/dateflow/tour'
@@ -182,6 +185,7 @@ defineProps<{
   filters: Filters
   categories: string[]
   stories: FeaturedStory[]
+  journeys: Journey[]
   eras: Era[]
   activeEra: string | null
 }>()
@@ -207,6 +211,7 @@ const emit = defineEmits<{
   clearFilters: []
   summarize: []
   openStory: [id: string]
+  openJourney: [id: string]
   timeMachine: []
   surprise: []
 }>()

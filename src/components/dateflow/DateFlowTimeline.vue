@@ -601,7 +601,7 @@ function layoutMarkers(t: Track, sectionIds: Set<string>) {
   })
 }
 
-// Duration bars in view: important ones, plus any wide enough to read, packed into rows.
+// Duration bars in view: important ones, any wide enough to read and any ringed, packed into rows.
 function layoutBars(t: Track) {
   const minImp = importanceThreshold(span(props.view), props.detail)
   const candidates = t.durations
@@ -610,7 +610,7 @@ function layoutBars(t: Track) {
       x1: yearToX(d.startYear, props.view, width.value),
       x2: yearToX(d.endYear, props.view, width.value),
     }))
-    .filter((c) => c.d.importance >= minImp || c.x2 - c.x1 >= BAR_MIN_PX)
+    .filter((c) => c.d.importance >= minImp || c.x2 - c.x1 >= BAR_MIN_PX || lit(c.d.id))
   const byId = new Map(candidates.map((c) => [c.d.id, c]))
 
   // Pack in rounds. A sub-span whose parent is a candidate rides inside the parent's bar
