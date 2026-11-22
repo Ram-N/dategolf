@@ -2658,6 +2658,18 @@ INSERT INTO "entities" VALUES('machu-picchu-built','event','reviewed','2026-11-2
 INSERT INTO "entities" VALUES('construction-of-the-pyramid-of-the-sun','period','reviewed','2026-11-21 03:47:29','2026-11-21 03:53:55');
 INSERT INTO "entities" VALUES('cahokia','period','reviewed','2026-11-21 03:47:29','2026-11-21 03:53:55');
 INSERT INTO "entities" VALUES('polynesian-settlement-of-hawaii','period','reviewed','2026-11-21 03:47:29','2026-11-21 03:53:55');
+INSERT INTO "entities" VALUES('roman-empire-greatest-extent','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entities" VALUES('death-of-marcus-aurelius','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entities" VALUES('severus-alexander-murdered','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entities" VALUES('diocletian-becomes-emperor','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entities" VALUES('ottomans-capture-bursa','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entities" VALUES('ottomans-conquer-egypt','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entities" VALUES('suleiman-becomes-sultan','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entities" VALUES('ottoman-siege-of-vienna-fails','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entities" VALUES('treaty-of-karlowitz','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entities" VALUES('selim-iii-becomes-sultan','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entities" VALUES('tanzimat-edict','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:11:34');
+INSERT INTO "entities" VALUES('ottoman-empire-enters-world-war-i','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:11:34');
 CREATE TABLE entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   facet     TEXT NOT NULL CHECK (facet IN ('event', 'span')),
@@ -3809,6 +3821,24 @@ INSERT INTO "entity_categories" VALUES('construction-of-the-pyramid-of-the-sun',
 INSERT INTO "entity_categories" VALUES('cahokia','span',0,'Social');
 INSERT INTO "entity_categories" VALUES('cahokia','span',1,'Culture');
 INSERT INTO "entity_categories" VALUES('polynesian-settlement-of-hawaii','span',0,'Exploration');
+INSERT INTO "entity_categories" VALUES('roman-empire-greatest-extent','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('roman-empire-greatest-extent','event',1,'War');
+INSERT INTO "entity_categories" VALUES('death-of-marcus-aurelius','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('death-of-marcus-aurelius','event',1,'Philosophy');
+INSERT INTO "entity_categories" VALUES('severus-alexander-murdered','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('severus-alexander-murdered','event',1,'War');
+INSERT INTO "entity_categories" VALUES('diocletian-becomes-emperor','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('ottomans-capture-bursa','event',0,'War');
+INSERT INTO "entity_categories" VALUES('ottomans-capture-bursa','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('ottomans-conquer-egypt','event',0,'War');
+INSERT INTO "entity_categories" VALUES('ottomans-conquer-egypt','event',1,'Politics');
+INSERT INTO "entity_categories" VALUES('suleiman-becomes-sultan','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('ottoman-siege-of-vienna-fails','event',0,'War');
+INSERT INTO "entity_categories" VALUES('treaty-of-karlowitz','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('selim-iii-becomes-sultan','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('tanzimat-edict','event',0,'Politics');
+INSERT INTO "entity_categories" VALUES('tanzimat-edict','event',1,'Social');
+INSERT INTO "entity_categories" VALUES('ottoman-empire-enters-world-war-i','event',0,'War');
 CREATE TABLE entity_countries (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   position   INTEGER NOT NULL,
@@ -4780,6 +4810,68 @@ INSERT INTO "entity_countries" VALUES('machu-picchu-built',0,'PE','high','review
 INSERT INTO "entity_countries" VALUES('construction-of-the-pyramid-of-the-sun',0,'MX','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('cahokia',0,'US','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('polynesian-settlement-of-hawaii',0,'US','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('roman-empire-greatest-extent',0,'IT','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('roman-empire-greatest-extent',1,'RO','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('roman-empire-greatest-extent',2,'IQ','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('death-of-marcus-aurelius',0,'AT','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('severus-alexander-murdered',0,'DE','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('diocletian-becomes-emperor',0,'TR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ottomans-capture-bursa',0,'TR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ottomans-conquer-egypt',0,'EG','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ottomans-conquer-egypt',1,'TR','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('suleiman-becomes-sultan',0,'TR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ottoman-siege-of-vienna-fails',0,'AT','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ottoman-siege-of-vienna-fails',1,'TR','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('ottoman-siege-of-vienna-fails',2,'PL','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('treaty-of-karlowitz',0,'RS','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('treaty-of-karlowitz',1,'TR','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('treaty-of-karlowitz',2,'AT','high','reviewed',NULL,'actor');
+INSERT INTO "entity_countries" VALUES('selim-iii-becomes-sultan',0,'TR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('tanzimat-edict',0,'TR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ottoman-empire-enters-world-war-i',0,'TR','high','reviewed',NULL,'location');
+CREATE TABLE entity_phases (
+  id             INTEGER PRIMARY KEY,
+  entity_id      TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,  -- the span
+  position       INTEGER NOT NULL,
+  kind           TEXT NOT NULL CHECK (kind IN ('foundation', 'expansion', 'consolidation', 'height',
+                                               'transformation', 'contraction', 'end')),
+  title          TEXT NOT NULL CHECK (trim(title) <> ''),
+  start_year     INTEGER NOT NULL CHECK (start_year <> 0),
+  end_year       INTEGER NOT NULL CHECK (end_year <> 0),
+  approximate    INTEGER CHECK (approximate IS NULL OR approximate = 1),
+  date_display   TEXT,                             -- historians' dates or the dispute, when approximate
+  description    TEXT NOT NULL CHECK (trim(description) <> ''),
+  start_event_id TEXT REFERENCES entities(id) ON DELETE SET NULL,          -- the milestone that opens it
+  source         TEXT,                             -- a Wikipedia URL
+  note           TEXT,                             -- for the reviewer
+  status         TEXT NOT NULL DEFAULT 'proposed' CHECK (status IN ('proposed', 'reviewed')),
+  origin         TEXT NOT NULL,
+  UNIQUE (entity_id, position),
+  CHECK (start_year < end_year)
+);
+INSERT INTO "entity_phases" VALUES(1,'mughal-empire',0,'foundation','Babur''s conquest of northern India',1526,1530,NULL,NULL,'Babur, a Timurid prince from Central Asia, defeats Ibrahim Lodi at Panipat and the Rajput confederacy at Khanwa a year later, establishing Mughal rule over the Delhi–Agra region.','first-battle-of-panipat','https://en.wikipedia.org/wiki/Babur',NULL,'reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(2,'mughal-empire',1,'contraction','Humayun loses the empire and wins it back',1530,1556,NULL,NULL,'Babur''s son Humayun is driven out by Sher Shah Suri, and for fifteen years the Sur dynasty, not the Mughals, rules northern India. Humayun returns with Persian help and retakes Delhi in 1555, dying months later.','humayun-succeeds-babur','https://en.wikipedia.org/wiki/Humayun','The Mughals ruled nothing in India from 1540 to 1555 (the Sur Empire span covers it); the title and description say so rather than calling it ''early instability''.','reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(3,'mughal-empire',2,'expansion','Expansion and reorganisation under Akbar',1556,1605,NULL,NULL,'Akbar''s conquests stretch the empire from Kabul to Bengal and into the Deccan. He builds a lasting administration of ranked officers and a land-revenue system, allies with Rajput rulers, and follows a policy of religious accommodation.','akbar-becomes-mughal-emperor','https://en.wikipedia.org/wiki/Akbar',NULL,'reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(4,'mughal-empire',3,'height','Stable rule and great building under Jahangir and Shah Jahan',1605,1658,NULL,NULL,'A largely stable half-century in which court painting and architecture flourish: the Taj Mahal and the new capital at Delhi, Shahjahanabad, date from these years. The empire grows more slowly, and a costly attempt to win back Central Asia fails.','death-of-akbar','https://en.wikipedia.org/wiki/Shah_Jahan','''Height'' here means stability, wealth and court culture; the territorial peak came later, under Aurangzeb (next phase), so the two are kept apart as the brief asked.','reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(5,'mughal-empire',4,'expansion','Aurangzeb''s wars in the Deccan',1658,1707,NULL,NULL,'Aurangzeb annexes the Deccan sultanates of Bijapur and Golconda, bringing the empire to its greatest extent. Decades of campaigning against the Marathas, and revolts by Jats, Sikhs and some Rajputs, strain its army and finances.','aurangzeb-becomes-emperor','https://en.wikipedia.org/wiki/Aurangzeb',NULL,'reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(6,'mughal-empire',5,'contraction','Regional powers break away',1707,1739,NULL,NULL,'After Aurangzeb''s death, wars of succession weaken the throne. The governors of Hyderabad, Bengal and Awadh become rulers in their own right while still acknowledging the emperor, and the Marathas push north.','mughal-empire-zenith-aurangzeb','https://en.wikipedia.org/wiki/Mughal_Empire',NULL,'reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(7,'mughal-empire',6,'contraction','Invasions and the rise of the East India Company',1739,1765,NULL,NULL,'Nadir Shah of Persia sacks Delhi and carries off the Peacock Throne. Afghan invasions follow, and the East India Company wins Bengal at Plassey and Buxar, while the emperor controls little beyond Delhi.','nadir-shah-sacks-delhi','https://en.wikipedia.org/wiki/Nader_Shah%27s_invasion_of_India',NULL,'reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(8,'mughal-empire',7,'end','Emperors in name, under Maratha and then British power',1765,1857,NULL,NULL,'The Company takes over Bengal''s revenues, and the emperors keep their title and court in Delhi under Maratha and then, from 1803, British protection. After the 1857 rebellion, in which he was named its leader, the last emperor, Bahadur Shah Zafar, is exiled to Burma.','east-india-company-bengal','https://en.wikipedia.org/wiki/Bahadur_Shah_Zafar','The span ends at 1857 by convention; Bahadur Shah Zafar was tried and exiled in 1858.','reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(9,'roman-empire',0,'foundation','Augustus creates the imperial system',-27,14,NULL,NULL,'After decades of civil war, Octavian takes the name Augustus and rules as the first emperor while keeping the outward forms of the Republic. He creates a standing army, reorganises the provinces and begins the long Pax Romana.','augustus-first-emperor','https://en.wikipedia.org/wiki/Augustus',NULL,'reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(10,'roman-empire',1,'consolidation','Julio-Claudian and Flavian emperors',14,96,NULL,NULL,'Power passes within a few families, through murders and one year of civil war in which four emperors rule. The system survives these crises; Britain is conquered, and the Colosseum is built.',NULL,'https://en.wikipedia.org/wiki/Julio-Claudian_dynasty','No milestone event exists for 14 (Augustus''s death) or 96 (Nerva''s accession); none drafted, since both are minor as quiz events. The ''year of four emperors'' is 69.','reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(11,'roman-empire',2,'height','The Nerva–Antonine emperors',96,180,NULL,NULL,'Emperors chosen by adoption rather than birth rule for most of a century of internal stability. Trajan''s conquests bring the empire to its greatest extent; Hadrian then fixes and fortifies its frontiers.',NULL,'https://en.wikipedia.org/wiki/Nerva%E2%80%93Antonine_dynasty','The source document called this ''Golden age / Pax Romana 96–180''. The Pax Romana is conventionally 27 BCE–180 CE (its own span); 96–180 is the Nerva–Antonine period, the ''Five Good Emperors'' (Machiavelli''s and Gibbon''s label, avoided here).','reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(12,'roman-empire',3,'transformation','The Severans and a growing army state',180,235,NULL,NULL,'Commodus''s misrule ends in his murder and a civil war won by Septimius Severus, whose dynasty relies heavily on the army. Citizenship is extended to nearly all free people of the empire, and pressure grows on the frontiers.','death-of-marcus-aurelius','https://en.wikipedia.org/wiki/Severan_dynasty',NULL,'reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(13,'roman-empire',4,'contraction','The crisis of civil wars, invasions and plague',235,284,NULL,NULL,'Some two dozen emperors claim power in fifty years. Invasions, plague and a collapsing currency follow, and for a time the Gallic and Palmyrene empires break away, until Aurelian reunites the empire.','severus-alexander-murdered','https://en.wikipedia.org/wiki/Crisis_of_the_Third_Century',NULL,'reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(14,'roman-empire',5,'transformation','Diocletian, Constantine and a reorganised empire',284,395,NULL,NULL,'Diocletian shares power among co-emperors and rebuilds the army, taxes and provinces. Constantine ends the persecution of Christians and founds Constantinople as a new capital, and Christianity becomes the state religion under Theodosius.','diocletian-becomes-emperor','https://en.wikipedia.org/wiki/Tetrarchy',NULL,'reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(15,'roman-empire',6,'end','The Western empire breaks up',395,476,NULL,NULL,'After Theodosius''s death the empire is permanently ruled as two halves. The West loses its provinces to Goths, Vandals and Franks, Rome is sacked twice, and the last Western emperor is deposed. The East carries on, ruled from Constantinople.','division-of-the-roman-empire','https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire','Rome''s span ends at 476; the Eastern continuation is the Byzantine Empire span (330–1453), linked as ''evolved into'' in the milestones batch.','reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(16,'ottoman-empire',0,'foundation','Osman''s frontier principality',1299,1326,1,'c. 1299 (the traditional founding date) to 1326','Osman leads one of several small Turkish principalities on the Byzantine frontier in northwest Anatolia, raiding and taking Byzantine towns.',NULL,'https://en.wikipedia.org/wiki/Osman_I','1299 is a traditional date, not a recorded event, so this phase is approximate. The Ottoman Empire span itself (1299–1922) is not marked approximate; it probably should be (c. 1299). Ram to decide.','reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(17,'ottoman-empire',1,'expansion','Expansion into Anatolia and the Balkans',1326,1453,NULL,NULL,'From Bursa the Ottomans spread across Anatolia and cross into Europe, defeating the Serbs at Kosovo. A crushing defeat by Timur at Ankara and a decade of civil war nearly end the state before it recovers.','ottomans-capture-bursa','https://en.wikipedia.org/wiki/Rise_of_the_Ottoman_Empire',NULL,'reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(18,'ottoman-empire',2,'expansion','Constantinople and the conquest of the Arab lands',1453,1520,NULL,NULL,'Mehmed II makes Constantinople, now Istanbul, his capital. Selim I defeats the Safavids of Persia and the Mamluks, taking Syria, Egypt and the holy cities of Arabia.','fall-of-constantinople','https://en.wikipedia.org/wiki/Mehmed_II',NULL,'reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(19,'ottoman-empire',3,'height','Suleiman''s reign',1520,1566,NULL,NULL,'Suleiman takes Belgrade, Rhodes and most of Hungary, besieges Vienna and dominates the eastern Mediterranean. His law codes and the mosques of his architect Sinan make the reign a high point of Ottoman government and culture.','suleiman-becomes-sultan','https://en.wikipedia.org/wiki/Suleiman_the_Magnificent',NULL,'reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(20,'ottoman-empire',4,'transformation','A changing empire, still a great power',1566,1683,NULL,NULL,'Sultans rule less from the battlefield and more through viziers and the court, and the army and finances are remade. The empire stays a great power: it rebuilds its fleet after Lepanto, takes Crete, and under the Köprülü viziers reaches its largest extent in Europe.',NULL,'https://en.wikipedia.org/wiki/Transformation_of_the_Ottoman_Empire','No milestone event for 1566 (Suleiman''s death); his accession event''s text covers it. Historians now call this period a transformation rather than the start of decline (e.g. Tezcan, ''The Second Ottoman Empire'').','reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(21,'ottoman-empire',5,'contraction','Wars with the Habsburgs and Russia',1683,1789,NULL,NULL,'Defeat at Vienna is followed by the loss of Hungary at Karlowitz. It is not a steady decline: the Ottomans win back Belgrade, but Russia''s victories take the northern Black Sea coast, and Crimea is annexed by Russia.','ottoman-siege-of-vienna-fails','https://en.wikipedia.org/wiki/Treaty_of_Karlowitz','Kept as ''contraction'' (land lost), not ''decline'': the empire also won wars in this period (Pruth 1711, Belgrade 1739).','reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(22,'ottoman-empire',6,'transformation','Reform and the rise of nationalism',1789,1914,NULL,NULL,'Selim III and Mahmud II rebuild the army, abolishing the Janissaries, and the Tanzimat reforms promise equal rights to all subjects, leading to a constitution. Meanwhile Greece, Serbia, Romania and Bulgaria break away, and European powers intervene.','selim-iii-becomes-sultan','https://en.wikipedia.org/wiki/Decline_and_modernization_of_the_Ottoman_Empire','The source document gave 1792; Selim III''s reign, and his reforms'' first steps, begin in 1789.','reviewed','ai_drafted:claude-opus-5-5');
+INSERT INTO "entity_phases" VALUES(23,'ottoman-empire',7,'end','World war and the end of the sultanate',1914,1922,NULL,NULL,'Allied with Germany, the empire wins at Gallipoli but loses its Arab lands; the war years see the Armenian genocide. Defeat brings occupation and the Turkish War of Independence, and the sultanate is abolished.','ottoman-empire-enters-world-war-i','https://en.wikipedia.org/wiki/Dissolution_of_the_Ottoman_Empire',NULL,'reviewed','ai_drafted:claude-opus-5-5');
 CREATE TABLE entity_provenance (
   entity_id    TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   origin       TEXT NOT NULL,                      -- e.g. ai_drafted_from_csv
@@ -5014,6 +5106,18 @@ INSERT INTO "entity_provenance" VALUES('machu-picchu-built','ai_drafted:claude-o
 INSERT INTO "entity_provenance" VALUES('construction-of-the-pyramid-of-the-sun','ai_drafted:claude-opus-5-5',NULL,'Redrafted as a span at Ram''s request (the event was rejected 2026-11-21 as false precision). Phases are dated by archaeology, c. 100–250 CE.');
 INSERT INTO "entity_provenance" VALUES('cahokia','ai_drafted:claude-opus-5-5',NULL,'Redrafted as a span at Ram''s request (the event was rejected 2026-11-21). Population estimates at the peak run about 10,000–20,000.');
 INSERT INTO "entity_provenance" VALUES('polynesian-settlement-of-hawaii','ai_drafted:claude-opus-5-5',NULL,'Redrafted as a span at Ram''s request. Caution: the years are mainly the uncertainty window for first arrival (Kirch c. 1000; Wilmshurst et al. 2011: c. 1219–1266), not a known 250-year process; date_display and the description say so.');
+INSERT INTO "entity_provenance" VALUES('roman-empire-greatest-extent','ai_drafted:claude-opus-5-5',NULL,'The empire''s extent peaked in 116–117; Trajan died in August 117 and Hadrian withdrew from Mesopotamia soon after.');
+INSERT INTO "entity_provenance" VALUES('death-of-marcus-aurelius','ai_drafted:claude-opus-5-5',NULL,'Died 17 March 180, at Vindobona (Vienna) or Sirmium; sources differ. AT chosen for Vindobona.');
+INSERT INTO "entity_provenance" VALUES('severus-alexander-murdered','ai_drafted:claude-opus-5-5',NULL,'Killed in March 235 near Mogontiacum (Mainz). Name avoids ''Crisis of the Third Century'' because it names the century.');
+INSERT INTO "entity_provenance" VALUES('diocletian-becomes-emperor','ai_drafted:claude-opus-5-5',NULL,'Proclaimed at Nicomedia (Izmit, Turkey) in November 284. The tetrarchy itself dates from 293; the description doesn''t tie it to the accession year.');
+INSERT INTO "entity_provenance" VALUES('ottomans-capture-bursa','ai_drafted:claude-opus-5-5',NULL,'Bursa (Byzantine Prusa) fell in April 1326 after a siege of several years.');
+INSERT INTO "entity_provenance" VALUES('ottomans-conquer-egypt','ai_drafted:claude-opus-5-5',NULL,'Ridaniya was fought in January 1517; Syria fell after Marj Dabiq (August 1516).');
+INSERT INTO "entity_provenance" VALUES('suleiman-becomes-sultan','ai_drafted:claude-opus-5-5',NULL,'Acceded September 1520; died 1566 at the siege of Szigetvár.');
+INSERT INTO "entity_provenance" VALUES('ottoman-siege-of-vienna-fails','ai_drafted:claude-opus-5-5',NULL,'The siege began in July; the relief battle was fought on 12 September 1683.');
+INSERT INTO "entity_provenance" VALUES('treaty-of-karlowitz','ai_drafted:claude-opus-5-5',NULL,'Signed 26 January 1699 at Sremski Karlovci.');
+INSERT INTO "entity_provenance" VALUES('selim-iii-becomes-sultan','ai_drafted:claude-opus-5-5',NULL,'Acceded April 1789; the New Order army dates from 1792–93; deposed 1807, killed 1808. The phase boundary is his accession (the source document''s 1792 would be the army, not the reign).');
+INSERT INTO "entity_provenance" VALUES('tanzimat-edict','ai_drafted:claude-opus-5-5',NULL,'Proclaimed 3 November 1839.');
+INSERT INTO "entity_provenance" VALUES('ottoman-empire-enters-world-war-i','ai_drafted:claude-opus-5-5',NULL,'Black Sea raid 29 October 1914; Russia, Britain and France declared war in early November.');
 CREATE TABLE entity_significance (
   entity_id  TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   text       TEXT NOT NULL CHECK (trim(text) <> ''),
@@ -5235,6 +5339,18 @@ INSERT INTO "entity_significance" VALUES('machu-picchu-built','Because the Spani
 INSERT INTO "entity_significance" VALUES('construction-of-the-pyramid-of-the-sun','The Pyramid of the Sun is one of the largest structures of the ancient Americas and a sign of Teotihuacan''s power to organise labour and belief. Its name comes from the Aztecs, who found the city in ruins centuries later; what its builders called it is unknown.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 03:47:29','2026-11-21 03:53:55');
 INSERT INTO "entity_significance" VALUES('cahokia','Cahokia showed that Native North Americans built a planned city with monumental earthworks and wide regional influence centuries before Europeans arrived. Its rise and its abandonment, possibly linked to drought, flooding and political strain, are still studied and debated.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 03:47:29','2026-11-21 03:53:55');
 INSERT INTO "entity_significance" VALUES('polynesian-settlement-of-hawaii','The settlement of Hawaii was one of the great feats of Polynesian navigation, made without instruments or writing. The society that grew from it developed into powerful chiefdoms and later the Kingdom of Hawaii, and the revival of traditional voyaging since the 1970s has made it a symbol of Native Hawaiian identity.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 03:47:29','2026-11-21 03:53:55');
+INSERT INTO "entity_significance" VALUES('roman-empire-greatest-extent','Trajan''s conquests marked the high-water mark of Roman territory. Hadrian''s decision to pull back and fortify the frontiers, as with his wall in Britain, shifted the empire from expansion to defence, a policy his successors largely kept.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entity_significance" VALUES('death-of-marcus-aurelius','Marcus Aurelius was the last of a run of emperors chosen by adoption rather than birth. Passing power to his son Commodus, whose rule ended in assassination, opened decades of instability. His private Meditations became one of the most widely read works of Stoic philosophy.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entity_significance" VALUES('severus-alexander-murdered','The murder began what historians call the Crisis of the Third Century, when some two dozen men claimed the throne in fifty years. The empire survived, but only after soldier-emperors such as Aurelian and Diocletian rebuilt its army and government.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entity_significance" VALUES('diocletian-becomes-emperor','Diocletian''s reforms, a larger army, smaller provinces, a new tax system and power shared among several emperors, ended the crisis and set the pattern of the late Roman state. He is also remembered for the last great persecution of Christians.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entity_significance" VALUES('ottomans-capture-bursa','Bursa gave the young Ottoman state a wealthy city, a capital and a base for further conquest. From there it expanded across northwest Anatolia and, within a generation, into the Balkans.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entity_significance" VALUES('ottomans-conquer-egypt','The conquest made the Ottomans the leading power of the Islamic world: Egypt''s grain and taxes enriched Istanbul, and guardianship of the holy cities gave the sultans new religious prestige. Ottoman rule in Egypt lasted, at least in name, until 1914.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entity_significance" VALUES('suleiman-becomes-sultan','Suleiman''s reign is often seen as the Ottoman high point: the empire reached deep into Europe, dominated the eastern Mediterranean and filled Istanbul with great mosques. Historians now stress that it stayed powerful long after him rather than declining from his death.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entity_significance" VALUES('ottoman-siege-of-vienna-fails','The defeat at Vienna ended Ottoman expansion into central Europe. In the war that followed, a Holy League of the Habsburgs, Poland, Venice and later Russia took Hungary, the first large permanent loss of Ottoman territory in Europe.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entity_significance" VALUES('treaty-of-karlowitz','Karlowitz was the first time the Ottomans formally gave up large European lands by treaty, and it marked a turn from expansion to defence on that frontier. The empire still won back ground later, including Belgrade, so it was not the start of a steady decline.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entity_significance" VALUES('selim-iii-becomes-sultan','Selim III''s New Order was the first systematic Ottoman attempt to remodel the state on European lines. It failed and cost him his life, but his successors Mahmud II and the Tanzimat reformers carried the same programme much further.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:09:29');
+INSERT INTO "entity_significance" VALUES('tanzimat-edict','The Tanzimat modernised Ottoman law, schools and government and moved towards equal citizenship regardless of religion, leading to the first Ottoman constitution in 1876. It also met resistance at home and did not stop nationalist movements or European pressure.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:11:34');
+INSERT INTO "entity_significance" VALUES('ottoman-empire-enters-world-war-i','Entering the war proved fatal to the empire. Despite victories at Gallipoli and Kut it was defeated by 1918 and occupied, and the war years saw the Armenian genocide. The peace settlement divided its Arab lands between Britain and France, and the sultanate was abolished in 1922.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:11:34');
 CREATE TABLE entity_sources (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   source_id  INTEGER NOT NULL REFERENCES sources(id) ON DELETE CASCADE,
@@ -5893,6 +6009,18 @@ INSERT INTO "entity_sources" VALUES('machu-picchu-built',635,'reviewed','ai_draf
 INSERT INTO "entity_sources" VALUES('construction-of-the-pyramid-of-the-sun',636,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('cahokia',637,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('polynesian-settlement-of-hawaii',638,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('roman-empire-greatest-extent',639,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('death-of-marcus-aurelius',640,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('severus-alexander-murdered',641,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('diocletian-becomes-emperor',642,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('ottomans-capture-bursa',643,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('ottomans-conquer-egypt',644,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('suleiman-becomes-sultan',645,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('ottoman-siege-of-vienna-fails',646,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('treaty-of-karlowitz',647,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('selim-iii-becomes-sultan',648,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('tanzimat-edict',649,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('ottoman-empire-enters-world-war-i',650,'reviewed','ai_drafted',NULL,NULL);
 CREATE TABLE event_aliases (
   entity_id TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   position  INTEGER NOT NULL,
@@ -8108,6 +8236,53 @@ INSERT INTO "event_aliases" VALUES('machu-picchu-built',0,'Machu Picchu');
 INSERT INTO "event_aliases" VALUES('machu-picchu-built',1,'Inca citadel');
 INSERT INTO "event_aliases" VALUES('machu-picchu-built',2,'Royal estate of Pachacuti');
 INSERT INTO "event_aliases" VALUES('machu-picchu-built',3,'Lost City of the Incas');
+INSERT INTO "event_aliases" VALUES('roman-empire-greatest-extent',0,'Trajan''s conquests');
+INSERT INTO "event_aliases" VALUES('roman-empire-greatest-extent',1,'Greatest extent of the Roman Empire');
+INSERT INTO "event_aliases" VALUES('roman-empire-greatest-extent',2,'Trajan');
+INSERT INTO "event_aliases" VALUES('roman-empire-greatest-extent',3,'Roman Empire at its height');
+INSERT INTO "event_aliases" VALUES('death-of-marcus-aurelius',0,'Marcus Aurelius');
+INSERT INTO "event_aliases" VALUES('death-of-marcus-aurelius',1,'Meditations');
+INSERT INTO "event_aliases" VALUES('death-of-marcus-aurelius',2,'End of the Pax Romana');
+INSERT INTO "event_aliases" VALUES('death-of-marcus-aurelius',3,'Commodus becomes emperor');
+INSERT INTO "event_aliases" VALUES('severus-alexander-murdered',0,'Murder of Severus Alexander');
+INSERT INTO "event_aliases" VALUES('severus-alexander-murdered',1,'Maximinus Thrax');
+INSERT INTO "event_aliases" VALUES('severus-alexander-murdered',2,'Barracks emperors');
+INSERT INTO "event_aliases" VALUES('severus-alexander-murdered',3,'Imperial crisis begins');
+INSERT INTO "event_aliases" VALUES('diocletian-becomes-emperor',0,'Diocletian');
+INSERT INTO "event_aliases" VALUES('diocletian-becomes-emperor',1,'Tetrarchy');
+INSERT INTO "event_aliases" VALUES('diocletian-becomes-emperor',2,'Rule of four');
+INSERT INTO "event_aliases" VALUES('diocletian-becomes-emperor',3,'Dominate');
+INSERT INTO "event_aliases" VALUES('ottomans-capture-bursa',0,'Siege of Bursa');
+INSERT INTO "event_aliases" VALUES('ottomans-capture-bursa',1,'Orhan takes Bursa');
+INSERT INTO "event_aliases" VALUES('ottomans-capture-bursa',2,'First Ottoman capital');
+INSERT INTO "event_aliases" VALUES('ottomans-capture-bursa',3,'Prusa');
+INSERT INTO "event_aliases" VALUES('ottomans-conquer-egypt',0,'Ottoman conquest of Egypt');
+INSERT INTO "event_aliases" VALUES('ottomans-conquer-egypt',1,'Battle of Ridaniya');
+INSERT INTO "event_aliases" VALUES('ottomans-conquer-egypt',2,'Selim I takes Cairo');
+INSERT INTO "event_aliases" VALUES('ottomans-conquer-egypt',3,'End of the Mamluk Sultanate');
+INSERT INTO "event_aliases" VALUES('suleiman-becomes-sultan',0,'Suleiman the Magnificent');
+INSERT INTO "event_aliases" VALUES('suleiman-becomes-sultan',1,'Süleyman I');
+INSERT INTO "event_aliases" VALUES('suleiman-becomes-sultan',2,'Kanuni Sultan Süleyman');
+INSERT INTO "event_aliases" VALUES('suleiman-becomes-sultan',3,'Suleiman the Lawgiver');
+INSERT INTO "event_aliases" VALUES('ottoman-siege-of-vienna-fails',0,'Battle of Vienna');
+INSERT INTO "event_aliases" VALUES('ottoman-siege-of-vienna-fails',1,'Siege of Vienna');
+INSERT INTO "event_aliases" VALUES('ottoman-siege-of-vienna-fails',2,'Jan III Sobieski');
+INSERT INTO "event_aliases" VALUES('ottoman-siege-of-vienna-fails',3,'Kara Mustafa Pasha');
+INSERT INTO "event_aliases" VALUES('treaty-of-karlowitz',0,'Treaty of Karlowitz');
+INSERT INTO "event_aliases" VALUES('treaty-of-karlowitz',1,'Peace of Karlowitz');
+INSERT INTO "event_aliases" VALUES('treaty-of-karlowitz',2,'Karlovci');
+INSERT INTO "event_aliases" VALUES('treaty-of-karlowitz',3,'End of the Great Turkish War');
+INSERT INTO "event_aliases" VALUES('selim-iii-becomes-sultan',0,'Selim III');
+INSERT INTO "event_aliases" VALUES('selim-iii-becomes-sultan',1,'Nizam-ı Cedid');
+INSERT INTO "event_aliases" VALUES('selim-iii-becomes-sultan',2,'New Order army');
+INSERT INTO "event_aliases" VALUES('selim-iii-becomes-sultan',3,'Ottoman military reform');
+INSERT INTO "event_aliases" VALUES('tanzimat-edict',0,'Tanzimat');
+INSERT INTO "event_aliases" VALUES('tanzimat-edict',1,'Edict of Gülhane');
+INSERT INTO "event_aliases" VALUES('tanzimat-edict',2,'Hatt-ı Şerif of Gülhane');
+INSERT INTO "event_aliases" VALUES('tanzimat-edict',3,'Ottoman reorganisation');
+INSERT INTO "event_aliases" VALUES('ottoman-empire-enters-world-war-i',0,'Ottoman entry into World War I');
+INSERT INTO "event_aliases" VALUES('ottoman-empire-enters-world-war-i',1,'Black Sea raid');
+INSERT INTO "event_aliases" VALUES('ottoman-empire-enters-world-war-i',2,'Ottoman–German alliance');
 CREATE TABLE events (
   entity_id      TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   name           TEXT NOT NULL UNIQUE,
@@ -8631,6 +8806,18 @@ INSERT INTO "events" VALUES('polynesians-reach-rapa-nui','Polynesians Reach Rapa
 INSERT INTO "events" VALUES('battle-of-kirina','Sundiata Keita Wins the Battle of Kirina',1235,'Africa','Near Kirina, on the upper Niger River, the Mande leader Sundiata Keita defeats Sumanguru, king of the Sosso. The victory unites the Mande peoples under Sundiata, who founds the Mali Empire; its story is told in the Epic of Sundiata, still recited by West African griots.','hard',5,NULL,1,'c. 1235 (known from oral tradition; the exact year is uncertain)',NULL);
 INSERT INTO "events" VALUES('polynesians-settle-new-zealand','Polynesian Voyagers Settle New Zealand',1280,'Oceania','Voyagers from eastern Polynesia, sailing double-hulled canoes, reach New Zealand, the last large land mass apart from Antarctica to be settled by people. Their descendants become the Māori, adapting a tropical island way of life to a cooler land of forests and giant flightless birds.','medium',5,NULL,1,'c. 1250–1300 (radiocarbon dating; a firm consensus)',NULL);
 INSERT INTO "events" VALUES('machu-picchu-built','Machu Picchu Built',1450,'South America','High on a ridge above the Urubamba River in the Peruvian Andes, the Inca build Machu Picchu, probably as a royal estate for the emperor Pachacuti. Its temples, terraces and houses are made of finely fitted stone laid without mortar.','easy',6,NULL,1,'c. 1420–1450 (traditionally c. 1450; radiocarbon shows it was in use by c. 1420)',NULL);
+INSERT INTO "events" VALUES('roman-empire-greatest-extent','Roman Empire Reaches Its Greatest Extent',117,'Europe','Under the emperor Trajan, conquests in Dacia and Mesopotamia bring the Roman Empire to its greatest size, stretching from Britain to the Persian Gulf. On Trajan''s death his successor Hadrian gives up the new eastern provinces as too costly to hold.','medium',5,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('death-of-marcus-aurelius','Death of Marcus Aurelius',180,'Europe','The emperor and Stoic philosopher Marcus Aurelius dies on campaign near the Danube frontier, and his son Commodus succeeds him. His death is often taken as the end of the long era of internal peace known as the Pax Romana.','medium',5,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('severus-alexander-murdered','Severus Alexander Murdered by His Own Troops',235,'Europe','Soldiers on the Rhine frontier kill the emperor Severus Alexander and proclaim their commander, Maximinus Thrax. It opens about fifty years of civil wars, short reigns, invasions, plague and debased coinage, during which the empire briefly splits into three.','hard',4,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('diocletian-becomes-emperor','Diocletian Becomes Roman Emperor',284,'Europe','The army proclaims Diocletian, a soldier of humble birth from Dalmatia, as emperor. He ends the long run of short reigns, shares power with co-emperors in a tetrarchy of four rulers, and reorganises the provinces, taxes and army.','hard',5,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('ottomans-capture-bursa','Ottomans Capture Bursa',1326,'Middle East','After a long siege, the forces of Orhan, son of the dynasty''s founder Osman, take the Byzantine city of Bursa in northwest Anatolia. It becomes the first Ottoman capital and the burial place of the early sultans.','hard',4,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('ottomans-conquer-egypt','Ottomans Conquer Mamluk Egypt',1517,'Africa','Sultan Selim I defeats the Mamluk sultanate at Ridaniya outside Cairo and takes Egypt, having seized Syria the year before. The Ottomans gain the Nile''s wealth and become the protectors of Mecca and Medina.','hard',5,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('suleiman-becomes-sultan','Suleiman the Magnificent Becomes Sultan',1520,'Middle East','Suleiman, the only surviving son of Selim I, succeeds his father. In a reign of forty-six years he takes Belgrade, Rhodes and much of Hungary, besieges Vienna, issues law codes that earn him the name Kanuni, the Lawgiver, and patronises the architect Sinan.','medium',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('ottoman-siege-of-vienna-fails','Ottoman Siege of Vienna Fails',1683,'Europe','A large Ottoman army under the grand vizier Kara Mustafa Pasha besieges the Habsburg capital, Vienna. A relief army led by the Polish king Jan III Sobieski routs the besiegers, and the defeat begins a long war in which the Ottomans lose Hungary.','medium',6,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('treaty-of-karlowitz','Treaty of Karlowitz Signed',1699,'Europe','After sixteen years of war with the Holy League, the Ottoman Empire makes peace at Karlowitz in Serbia, giving up most of Hungary and Transylvania to the Habsburgs and other lands to Poland and Venice.','hard',4,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('selim-iii-becomes-sultan','Selim III Becomes Sultan',1789,'Middle East','Selim III comes to the throne in the middle of a losing war with Russia and Austria. He launches the New Order, a European-style army and new taxes to pay for it, but the Janissaries and their allies resist, and he is eventually deposed and killed.','hard',3,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('tanzimat-edict','Edict of Gülhane Launches the Tanzimat Reforms',1839,'Middle East','Under the young sultan Abdulmejid I, the government proclaims the Edict of Gülhane, promising security of life and property, fair taxation and regular military service for all subjects, Muslim and non-Muslim. It opens the period of reorganisation known as the Tanzimat.','hard',4,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('ottoman-empire-enters-world-war-i','Ottoman Empire Enters World War I',1914,'Middle East','Allied with Germany, Ottoman warships bombard Russian ports on the Black Sea, and the empire enters the war against Russia, Britain and France. It goes on to fight at Gallipoli and in the Caucasus, Mesopotamia and Palestine.','medium',5,NULL,NULL,NULL,NULL);
 CREATE TABLE historical_currents (
   entity_id TEXT PRIMARY KEY REFERENCES time_spans(entity_id) ON DELETE CASCADE
 );
@@ -11754,6 +11941,22 @@ INSERT INTO "relationships" VALUES(465,'polynesians-reach-rapa-nui','part_of','p
 INSERT INTO "relationships" VALUES(466,'polynesians-settle-new-zealand','part_of','polynesian-settlement-of-the-pacific','New Zealand, the southern corner of the triangle, was the last large land mass settled.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
 INSERT INTO "relationships" VALUES(467,'polynesian-settlement-of-hawaii','part_of','polynesian-settlement-of-the-pacific','Hawaii, the northern corner of the triangle, was settled from East Polynesia.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
 INSERT INTO "relationships" VALUES(468,'construction-of-the-pyramid-of-the-sun','part_of','teotihuacan','The pyramid was Teotihuacan''s largest monument, on its main avenue.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 03:47:29');
+INSERT INTO "relationships" VALUES(469,'roman-empire-greatest-extent','part_of','pax-romana-period','Trajan''s conquests came during the long internal peace of the Pax Romana.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(470,'roman-empire-greatest-extent','preceded','hadrians-wall','Trajan''s successor Hadrian gave up the new eastern lands and fortified the frontiers, including his wall in Britain.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(471,'death-of-marcus-aurelius','ended','pax-romana-period','His death and Commodus''s troubled reign are the conventional end of the Pax Romana.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(472,'severus-alexander-murdered','part_of','roman-empire','The murder opened the Roman Empire''s third-century crisis.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(473,'diocletian-becomes-emperor','part_of','roman-empire','Diocletian''s reign ended the crisis and reshaped the late Roman state.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(474,'roman-empire','evolved_into','byzantine-empire','The eastern half of the Roman Empire, ruled from Constantinople, carried on as the Byzantine Empire.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(475,'ottomans-capture-bursa','part_of','ottoman-empire','Bursa became the first Ottoman capital.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(476,'ottomans-conquer-egypt','part_of','ottoman-empire','Selim I''s conquest added Egypt and the holy cities to the empire.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(477,'suleiman-becomes-sultan','part_of','ottoman-empire','Suleiman''s long reign is one of the best-known periods of Ottoman history.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(478,'ottoman-siege-of-vienna-fails','part_of','ottoman-empire','The failed siege ended Ottoman expansion into central Europe.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(479,'ottoman-siege-of-vienna-fails','preceded','treaty-of-karlowitz','The defeat at Vienna began the sixteen-year war that Karlowitz ended.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(480,'treaty-of-karlowitz','part_of','ottoman-empire','The treaty gave up most of Ottoman Hungary.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(481,'selim-iii-becomes-sultan','part_of','ottoman-empire','Selim III began the empire''s first systematic military reforms.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(482,'tanzimat-edict','part_of','ottoman-empire','The edict opened the Tanzimat, the empire''s great reform era.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(483,'ottoman-empire-enters-world-war-i','part_of','world-war-1','The Ottoman Empire fought in the war as Germany''s ally.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
+INSERT INTO "relationships" VALUES(484,'ottoman-empire-enters-world-war-i','preceded','ottoman-empire-falls','Defeat in the war led to occupation, the Turkish War of Independence and the abolition of the sultanate.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -13391,6 +13594,52 @@ INSERT INTO "review_log" VALUES(1626,'2026-11-21 15:12:46','reject-source','indu
 INSERT INTO "review_log" VALUES(1627,'2026-11-21 15:13:35','approve-source','birth-of-shivaji','Shivaji','dashboard');
 INSERT INTO "review_log" VALUES(1628,'2026-11-21 15:14:10','approve-source','black-holes-confirmed','Messier 87','dashboard');
 INSERT INTO "review_log" VALUES(1629,'2026-11-21 15:15:07','reject-source','protestant-reformation','Reformation — https://en.wikipedia.org/wiki/Reformation#Luther_and_the_Ninety-five_Theses','dashboard');
+INSERT INTO "review_log" VALUES(1630,'2026-11-21 17:35:57','load-phases','mughal-empire','8 phases from ai_drafted:claude-opus-5-5','cli');
+INSERT INTO "review_log" VALUES(1631,'2026-11-21 17:35:57','load-phases','roman-empire','7 phases from ai_drafted:claude-opus-5-5','cli');
+INSERT INTO "review_log" VALUES(1632,'2026-11-21 17:35:57','load-phases','ottoman-empire','8 phases from ai_drafted:claude-opus-5-5','cli');
+INSERT INTO "review_log" VALUES(1633,'2026-11-22 02:07:28','approve-phases','roman-empire','7 phase(s)','dashboard');
+INSERT INTO "review_log" VALUES(1634,'2026-11-22 02:08:04','approve-phases','ottoman-empire','8 phase(s)','dashboard');
+INSERT INTO "review_log" VALUES(1635,'2026-11-22 02:08:38','approve-phases','mughal-empire','8 phase(s)','dashboard');
+INSERT INTO "review_log" VALUES(1636,'2026-11-22 02:09:29','approve-draft','roman-empire-greatest-extent',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1637,'2026-11-22 02:09:29','approve-draft','death-of-marcus-aurelius',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1638,'2026-11-22 02:09:29','approve-draft','severus-alexander-murdered',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1639,'2026-11-22 02:09:29','approve-draft','diocletian-becomes-emperor',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1640,'2026-11-22 02:09:29','approve-draft','ottomans-capture-bursa',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1641,'2026-11-22 02:09:29','approve-draft','ottomans-conquer-egypt',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1642,'2026-11-22 02:09:29','approve-draft','suleiman-becomes-sultan',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1643,'2026-11-22 02:09:29','approve-draft','ottoman-siege-of-vienna-fails',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1644,'2026-11-22 02:09:29','approve-draft','treaty-of-karlowitz',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1645,'2026-11-22 02:09:29','approve-draft','selim-iii-becomes-sultan',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1646,'2026-11-22 02:10:08','approve-countries','roman-empire-greatest-extent',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1647,'2026-11-22 02:10:08','approve-countries','severus-alexander-murdered',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1648,'2026-11-22 02:10:08','approve-countries','diocletian-becomes-emperor',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1649,'2026-11-22 02:10:08','approve-countries','ottomans-capture-bursa',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1650,'2026-11-22 02:10:08','approve-countries','ottomans-conquer-egypt',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1651,'2026-11-22 02:10:08','approve-countries','suleiman-becomes-sultan',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1652,'2026-11-22 02:10:08','approve-countries','ottoman-siege-of-vienna-fails',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1653,'2026-11-22 02:10:08','approve-countries','treaty-of-karlowitz',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1654,'2026-11-22 02:10:08','approve-countries','selim-iii-becomes-sultan',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1655,'2026-11-22 02:10:19','approve-countries','tanzimat-edict',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1656,'2026-11-22 02:10:19','approve-countries','ottoman-empire-enters-world-war-i',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1657,'2026-11-22 02:11:20','approve-countries','death-of-marcus-aurelius',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1658,'2026-11-22 02:11:34','approve-draft','tanzimat-edict',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1659,'2026-11-22 02:11:34','approve-draft','ottoman-empire-enters-world-war-i',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1660,'2026-11-22 02:12:24','approve-link','roman-empire-greatest-extent','link #469: roman-empire-greatest-extent part_of pax-romana-period','dashboard');
+INSERT INTO "review_log" VALUES(1661,'2026-11-22 02:12:24','approve-link','roman-empire-greatest-extent','link #470: roman-empire-greatest-extent preceded hadrians-wall','dashboard');
+INSERT INTO "review_log" VALUES(1662,'2026-11-22 02:12:24','approve-link','death-of-marcus-aurelius','link #471: death-of-marcus-aurelius ended pax-romana-period','dashboard');
+INSERT INTO "review_log" VALUES(1663,'2026-11-22 02:12:24','approve-link','severus-alexander-murdered','link #472: severus-alexander-murdered part_of roman-empire','dashboard');
+INSERT INTO "review_log" VALUES(1664,'2026-11-22 02:12:24','approve-link','diocletian-becomes-emperor','link #473: diocletian-becomes-emperor part_of roman-empire','dashboard');
+INSERT INTO "review_log" VALUES(1665,'2026-11-22 02:12:24','approve-link','roman-empire','link #474: roman-empire evolved_into byzantine-empire','dashboard');
+INSERT INTO "review_log" VALUES(1666,'2026-11-22 02:12:24','approve-link','ottomans-capture-bursa','link #475: ottomans-capture-bursa part_of ottoman-empire','dashboard');
+INSERT INTO "review_log" VALUES(1667,'2026-11-22 02:12:24','approve-link','ottomans-conquer-egypt','link #476: ottomans-conquer-egypt part_of ottoman-empire','dashboard');
+INSERT INTO "review_log" VALUES(1668,'2026-11-22 02:12:24','approve-link','suleiman-becomes-sultan','link #477: suleiman-becomes-sultan part_of ottoman-empire','dashboard');
+INSERT INTO "review_log" VALUES(1669,'2026-11-22 02:12:24','approve-link','ottoman-siege-of-vienna-fails','link #478: ottoman-siege-of-vienna-fails part_of ottoman-empire','dashboard');
+INSERT INTO "review_log" VALUES(1670,'2026-11-22 02:12:41','approve-link','ottoman-siege-of-vienna-fails','link #479: ottoman-siege-of-vienna-fails preceded treaty-of-karlowitz','dashboard');
+INSERT INTO "review_log" VALUES(1671,'2026-11-22 02:12:41','approve-link','treaty-of-karlowitz','link #480: treaty-of-karlowitz part_of ottoman-empire','dashboard');
+INSERT INTO "review_log" VALUES(1672,'2026-11-22 02:12:41','approve-link','selim-iii-becomes-sultan','link #481: selim-iii-becomes-sultan part_of ottoman-empire','dashboard');
+INSERT INTO "review_log" VALUES(1673,'2026-11-22 02:12:41','approve-link','tanzimat-edict','link #482: tanzimat-edict part_of ottoman-empire','dashboard');
+INSERT INTO "review_log" VALUES(1674,'2026-11-22 02:12:41','approve-link','ottoman-empire-enters-world-war-i','link #483: ottoman-empire-enters-world-war-i part_of world-war-1','dashboard');
+INSERT INTO "review_log" VALUES(1675,'2026-11-22 02:12:41','approve-link','ottoman-empire-enters-world-war-i','link #484: ottoman-empire-enters-world-war-i preceded ottoman-empire-falls','dashboard');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -14010,6 +14259,18 @@ INSERT INTO "sources" VALUES(635,'wikipedia','Machu Picchu','https://en.wikipedi
 INSERT INTO "sources" VALUES(636,'wikipedia','Pyramid of the Sun','https://en.wikipedia.org/wiki/Pyramid_of_the_Sun','2026-11-21 03:47:29');
 INSERT INTO "sources" VALUES(637,'wikipedia','Cahokia','https://en.wikipedia.org/wiki/Cahokia','2026-11-21 03:47:29');
 INSERT INTO "sources" VALUES(638,'wikipedia','History of Hawaii','https://en.wikipedia.org/wiki/History_of_Hawaii#Polynesian_migration_and_arrival','2026-11-21 03:47:29');
+INSERT INTO "sources" VALUES(639,'wikipedia','Trajan','https://en.wikipedia.org/wiki/Trajan','2026-11-21 17:34:55');
+INSERT INTO "sources" VALUES(640,'wikipedia','Marcus Aurelius','https://en.wikipedia.org/wiki/Marcus_Aurelius','2026-11-21 17:34:55');
+INSERT INTO "sources" VALUES(641,'wikipedia','Crisis of the Third Century','https://en.wikipedia.org/wiki/Crisis_of_the_Third_Century','2026-11-21 17:34:55');
+INSERT INTO "sources" VALUES(642,'wikipedia','Diocletian','https://en.wikipedia.org/wiki/Diocletian','2026-11-21 17:34:55');
+INSERT INTO "sources" VALUES(643,'wikipedia','Siege of Bursa','https://en.wikipedia.org/wiki/Siege_of_Bursa','2026-11-21 17:34:55');
+INSERT INTO "sources" VALUES(644,'wikipedia','Ottoman–Mamluk War (1516–1517)','https://en.wikipedia.org/wiki/Ottoman%E2%80%93Mamluk_War_(1516%E2%80%931517)','2026-11-21 17:34:55');
+INSERT INTO "sources" VALUES(645,'wikipedia','Suleiman the Magnificent','https://en.wikipedia.org/wiki/Suleiman_the_Magnificent','2026-11-21 17:34:55');
+INSERT INTO "sources" VALUES(646,'wikipedia','Battle of Vienna','https://en.wikipedia.org/wiki/Battle_of_Vienna','2026-11-21 17:34:55');
+INSERT INTO "sources" VALUES(647,'wikipedia','Treaty of Karlowitz','https://en.wikipedia.org/wiki/Treaty_of_Karlowitz','2026-11-21 17:34:55');
+INSERT INTO "sources" VALUES(648,'wikipedia','Selim III','https://en.wikipedia.org/wiki/Selim_III','2026-11-21 17:34:55');
+INSERT INTO "sources" VALUES(649,'wikipedia','Edict of Gülhane','https://en.wikipedia.org/wiki/Edict_of_G%C3%BClhane','2026-11-21 17:34:55');
+INSERT INTO "sources" VALUES(650,'wikipedia','Ottoman entry into World War I','https://en.wikipedia.org/wiki/Ottoman_entry_into_World_War_I','2026-11-21 17:34:55');
 CREATE TABLE time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json

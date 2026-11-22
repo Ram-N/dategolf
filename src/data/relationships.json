@@ -24,6 +24,12 @@
       "causal": true,
       "story": "frame"
     },
+    "evolved_into": {
+      "label": "evolved into",
+      "inverse": "evolved from",
+      "causal": false,
+      "story": "context"
+    },
     "influenced": {
       "label": "influenced",
       "inverse": "was influenced by",
@@ -3063,6 +3069,118 @@
       "type": "part_of",
       "target": "teotihuacan",
       "why": "The pyramid was Teotihuacan's largest monument, on its main avenue.",
+      "confidence": "high"
+    },
+    {
+      "source": "roman-empire-greatest-extent",
+      "type": "part_of",
+      "target": "pax-romana-period",
+      "why": "Trajan's conquests came during the long internal peace of the Pax Romana.",
+      "confidence": "high"
+    },
+    {
+      "source": "roman-empire-greatest-extent",
+      "type": "preceded",
+      "target": "hadrians-wall",
+      "why": "Trajan's successor Hadrian gave up the new eastern lands and fortified the frontiers, including his wall in Britain.",
+      "confidence": "high"
+    },
+    {
+      "source": "death-of-marcus-aurelius",
+      "type": "ended",
+      "target": "pax-romana-period",
+      "why": "His death and Commodus's troubled reign are the conventional end of the Pax Romana.",
+      "confidence": "high"
+    },
+    {
+      "source": "severus-alexander-murdered",
+      "type": "part_of",
+      "target": "roman-empire",
+      "why": "The murder opened the Roman Empire's third-century crisis.",
+      "confidence": "high"
+    },
+    {
+      "source": "diocletian-becomes-emperor",
+      "type": "part_of",
+      "target": "roman-empire",
+      "why": "Diocletian's reign ended the crisis and reshaped the late Roman state.",
+      "confidence": "high"
+    },
+    {
+      "source": "roman-empire",
+      "type": "evolved_into",
+      "target": "byzantine-empire",
+      "why": "The eastern half of the Roman Empire, ruled from Constantinople, carried on as the Byzantine Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "ottomans-capture-bursa",
+      "type": "part_of",
+      "target": "ottoman-empire",
+      "why": "Bursa became the first Ottoman capital.",
+      "confidence": "high"
+    },
+    {
+      "source": "ottomans-conquer-egypt",
+      "type": "part_of",
+      "target": "ottoman-empire",
+      "why": "Selim I's conquest added Egypt and the holy cities to the empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "suleiman-becomes-sultan",
+      "type": "part_of",
+      "target": "ottoman-empire",
+      "why": "Suleiman's long reign is one of the best-known periods of Ottoman history.",
+      "confidence": "high"
+    },
+    {
+      "source": "ottoman-siege-of-vienna-fails",
+      "type": "part_of",
+      "target": "ottoman-empire",
+      "why": "The failed siege ended Ottoman expansion into central Europe.",
+      "confidence": "high"
+    },
+    {
+      "source": "ottoman-siege-of-vienna-fails",
+      "type": "preceded",
+      "target": "treaty-of-karlowitz",
+      "why": "The defeat at Vienna began the sixteen-year war that Karlowitz ended.",
+      "confidence": "high"
+    },
+    {
+      "source": "treaty-of-karlowitz",
+      "type": "part_of",
+      "target": "ottoman-empire",
+      "why": "The treaty gave up most of Ottoman Hungary.",
+      "confidence": "high"
+    },
+    {
+      "source": "selim-iii-becomes-sultan",
+      "type": "part_of",
+      "target": "ottoman-empire",
+      "why": "Selim III began the empire's first systematic military reforms.",
+      "confidence": "high"
+    },
+    {
+      "source": "tanzimat-edict",
+      "type": "part_of",
+      "target": "ottoman-empire",
+      "why": "The edict opened the Tanzimat, the empire's great reform era.",
+      "confidence": "high"
+    },
+    {
+      "source": "ottoman-empire-enters-world-war-i",
+      "type": "part_of",
+      "target": "world-war-1",
+      "why": "The Ottoman Empire fought in the war as Germany's ally.",
+      "confidence": "high"
+    },
+    {
+      "source": "ottoman-empire-enters-world-war-i",
+      "type": "preceded",
+      "target": "ottoman-empire-falls",
+      "why": "Defeat in the war led to occupation, the Turkish War of Independence and the abolition of the sultanate.",
       "confidence": "high"
     }
   ]

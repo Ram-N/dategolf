@@ -1404,6 +1404,26 @@
     "significance": "Provided a lightweight, affordable writing medium that replaced bamboo strips and silk, revolutionizing record-keeping, bureaucracy, and the preservation of knowledge worldwide."
   },
   {
+    "id": "roman-empire-greatest-extent",
+    "name": "Roman Empire Reaches Its Greatest Extent",
+    "year": 117,
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Trajan's conquests",
+      "Greatest extent of the Roman Empire",
+      "Trajan",
+      "Roman Empire at its height"
+    ],
+    "description": "Under the emperor Trajan, conquests in Dacia and Mesopotamia bring the Roman Empire to its greatest size, stretching from Britain to the Persian Gulf. On Trajan's death his successor Hadrian gives up the new eastern provinces as too costly to hold.",
+    "difficulty": "medium",
+    "importance": 5,
+    "significance": "Trajan's conquests marked the high-water mark of Roman territory. Hadrian's decision to pull back and fortify the frontiers, as with his wall in Britain, shifted the empire from expansion to defence, a policy his successors largely kept."
+  },
+  {
     "id": "hadrians-wall",
     "name": "Hadrian's Wall Construction Begins",
     "year": 122,
@@ -1423,6 +1443,46 @@
     "description": "The Roman Emperor Hadrian orders the construction of a defensive wall stretching coast to coast across northern Britain, from the Solway Firth to the River Tyne, to control movement between Roman Britain and the unconquered tribes of Caledonia. The wall is the most heavily fortified frontier in the entire Roman Empire, lined with forts, milecastles, and turrets garrisoned by tens of thousands of soldiers. It remains the best-preserved Roman military structure in the world and a UNESCO World Heritage Site.",
     "difficulty": "medium",
     "importance": 5
+  },
+  {
+    "id": "death-of-marcus-aurelius",
+    "name": "Death of Marcus Aurelius",
+    "year": 180,
+    "categories": [
+      "Politics",
+      "Philosophy"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Marcus Aurelius",
+      "Meditations",
+      "End of the Pax Romana",
+      "Commodus becomes emperor"
+    ],
+    "description": "The emperor and Stoic philosopher Marcus Aurelius dies on campaign near the Danube frontier, and his son Commodus succeeds him. His death is often taken as the end of the long era of internal peace known as the Pax Romana.",
+    "difficulty": "medium",
+    "importance": 5,
+    "significance": "Marcus Aurelius was the last of a run of emperors chosen by adoption rather than birth. Passing power to his son Commodus, whose rule ended in assassination, opened decades of instability. His private Meditations became one of the most widely read works of Stoic philosophy."
+  },
+  {
+    "id": "severus-alexander-murdered",
+    "name": "Severus Alexander Murdered by His Own Troops",
+    "year": 235,
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Murder of Severus Alexander",
+      "Maximinus Thrax",
+      "Barracks emperors",
+      "Imperial crisis begins"
+    ],
+    "description": "Soldiers on the Rhine frontier kill the emperor Severus Alexander and proclaim their commander, Maximinus Thrax. It opens about fifty years of civil wars, short reigns, invasions, plague and debased coinage, during which the empire briefly splits into three.",
+    "difficulty": "hard",
+    "importance": 4,
+    "significance": "The murder began what historians call the Crisis of the Third Century, when some two dozen men claimed the throne in fifty years. The empire survived, but only after soldier-emperors such as Aurelian and Diocletian rebuilt its army and government."
   },
   {
     "id": "himiko-sends-envoy-to-wei",
@@ -1484,6 +1544,25 @@
     "description": "The Western Jin dynasty conquers the state of Wu, ending the Three Kingdoms period and reuniting China under Emperor Wu (Sima Yan). The unity is short-lived: within decades civil war and invasions split northern and southern China again.",
     "difficulty": "hard",
     "importance": 4
+  },
+  {
+    "id": "diocletian-becomes-emperor",
+    "name": "Diocletian Becomes Roman Emperor",
+    "year": 284,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Diocletian",
+      "Tetrarchy",
+      "Rule of four",
+      "Dominate"
+    ],
+    "description": "The army proclaims Diocletian, a soldier of humble birth from Dalmatia, as emperor. He ends the long run of short reigns, shares power with co-emperors in a tetrarchy of four rulers, and reorganises the provinces, taxes and army.",
+    "difficulty": "hard",
+    "importance": 5,
+    "significance": "Diocletian's reforms, a larger army, smaller provinces, a new tax system and power shared among several emperors, ended the crisis and set the pattern of the late Roman state. He is also remembered for the last great persecution of Christians."
   },
   {
     "id": "christianity-roman-empire",
@@ -2837,6 +2916,26 @@
     "dateDisplay": "1325 by tradition (some sources give 1345)"
   },
   {
+    "id": "ottomans-capture-bursa",
+    "name": "Ottomans Capture Bursa",
+    "year": 1326,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Middle East",
+    "aliases": [
+      "Siege of Bursa",
+      "Orhan takes Bursa",
+      "First Ottoman capital",
+      "Prusa"
+    ],
+    "description": "After a long siege, the forces of Orhan, son of the dynasty's founder Osman, take the Byzantine city of Bursa in northwest Anatolia. It becomes the first Ottoman capital and the burial place of the early sultans.",
+    "difficulty": "hard",
+    "importance": 4,
+    "significance": "Bursa gave the young Ottoman state a wealthy city, a capital and a base for further conquest. From there it expanded across northwest Anatolia and, within a generation, into the Balkans."
+  },
+  {
     "id": "black-death-arrives-china",
     "name": "Black Death Spreads from Central Asia",
     "year": 1331,
@@ -3410,6 +3509,26 @@
     "importance": 5
   },
   {
+    "id": "ottomans-conquer-egypt",
+    "name": "Ottomans Conquer Mamluk Egypt",
+    "year": 1517,
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Africa",
+    "aliases": [
+      "Ottoman conquest of Egypt",
+      "Battle of Ridaniya",
+      "Selim I takes Cairo",
+      "End of the Mamluk Sultanate"
+    ],
+    "description": "Sultan Selim I defeats the Mamluk sultanate at Ridaniya outside Cairo and takes Egypt, having seized Syria the year before. The Ottomans gain the Nile's wealth and become the protectors of Mecca and Medina.",
+    "difficulty": "hard",
+    "importance": 5,
+    "significance": "The conquest made the Ottomans the leading power of the Islamic world: Egypt's grain and taxes enriched Istanbul, and guardianship of the holy cities gave the sultans new religious prestige. Ottoman rule in Egypt lasted, at least in name, until 1914."
+  },
+  {
     "id": "magellan-circumnavigation",
     "name": "Magellan Expedition Sets Sail",
     "year": 1519,
@@ -3448,6 +3567,25 @@
     "description": "Hernán Cortés leads a Spanish expedition that, with the aid of indigenous allies and devastating diseases, overthrows the Aztec Empire and its emperor Moctezuma within two years. The conquest of Mexico opens the way for Spanish colonization of the Americas and the destruction of Mesoamerican civilizations.",
     "difficulty": "medium",
     "importance": 5
+  },
+  {
+    "id": "suleiman-becomes-sultan",
+    "name": "Suleiman the Magnificent Becomes Sultan",
+    "year": 1520,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "aliases": [
+      "Suleiman the Magnificent",
+      "Süleyman I",
+      "Kanuni Sultan Süleyman",
+      "Suleiman the Lawgiver"
+    ],
+    "description": "Suleiman, the only surviving son of Selim I, succeeds his father. In a reign of forty-six years he takes Belgrade, Rhodes and much of Hungary, besieges Vienna, issues law codes that earn him the name Kanuni, the Lawgiver, and patronises the architect Sinan.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "Suleiman's reign is often seen as the Ottoman high point: the empire reached deep into Europe, dominated the eastern Mediterranean and filled Istanbul with great mosques. Historians now stress that it stayed powerful long after him rather than declining from his death."
   },
   {
     "id": "fall-of-tenochtitlan",
@@ -4375,6 +4513,25 @@
     "importance": 3
   },
   {
+    "id": "ottoman-siege-of-vienna-fails",
+    "name": "Ottoman Siege of Vienna Fails",
+    "year": 1683,
+    "categories": [
+      "War"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Battle of Vienna",
+      "Siege of Vienna",
+      "Jan III Sobieski",
+      "Kara Mustafa Pasha"
+    ],
+    "description": "A large Ottoman army under the grand vizier Kara Mustafa Pasha besieges the Habsburg capital, Vienna. A relief army led by the Polish king Jan III Sobieski routs the besiegers, and the defeat begins a long war in which the Ottomans lose Hungary.",
+    "difficulty": "medium",
+    "importance": 6,
+    "significance": "The defeat at Vienna ended Ottoman expansion into central Europe. In the war that followed, a Holy League of the Habsburgs, Poland, Venice and later Russia took Hungary, the first large permanent loss of Ottoman territory in Europe."
+  },
+  {
     "id": "newton-laws-of-motion",
     "name": "Newton Publishes the Principia",
     "year": 1687,
@@ -4450,6 +4607,25 @@
     "difficulty": "medium",
     "importance": 6,
     "significance": "Gave Sikhism a distinct corporate identity and egalitarian code that rejected caste hierarchy, empowering a community that later challenged Mughal authority and built an independent state in the Punjab."
+  },
+  {
+    "id": "treaty-of-karlowitz",
+    "name": "Treaty of Karlowitz Signed",
+    "year": 1699,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "aliases": [
+      "Treaty of Karlowitz",
+      "Peace of Karlowitz",
+      "Karlovci",
+      "End of the Great Turkish War"
+    ],
+    "description": "After sixteen years of war with the Holy League, the Ottoman Empire makes peace at Karlowitz in Serbia, giving up most of Hungary and Transylvania to the Habsburgs and other lands to Poland and Venice.",
+    "difficulty": "hard",
+    "importance": 4,
+    "significance": "Karlowitz was the first time the Ottomans formally gave up large European lands by treaty, and it marked a turn from expansion to defence on that frontier. The empire still won back ground later, including Belgrade, so it was not the start of a steady decline."
   },
   {
     "id": "battle-of-blenheim",
@@ -5021,6 +5197,25 @@
     "importance": 5
   },
   {
+    "id": "selim-iii-becomes-sultan",
+    "name": "Selim III Becomes Sultan",
+    "year": 1789,
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "aliases": [
+      "Selim III",
+      "Nizam-ı Cedid",
+      "New Order army",
+      "Ottoman military reform"
+    ],
+    "description": "Selim III comes to the throne in the middle of a losing war with Russia and Austria. He launches the New Order, a European-style army and new taxes to pay for it, but the Janissaries and their allies resist, and he is eventually deposed and killed.",
+    "difficulty": "hard",
+    "importance": 3,
+    "significance": "Selim III's New Order was the first systematic Ottoman attempt to remodel the state on European lines. It failed and cost him his life, but his successors Mahmud II and the Tanzimat reformers carried the same programme much further."
+  },
+  {
     "id": "haitian-revolution",
     "name": "Haitian Revolution",
     "year": 1791,
@@ -5429,6 +5624,26 @@
     "description": "Imperial Commissioner Lin Zexu seizes and destroys over 20,000 chests of opium from British merchants in Canton, in a dramatic demonstration of Chinese resistance to the drug trade. Britain responds by launching the First Opium War, setting in motion China's century of humiliation.",
     "difficulty": "hard",
     "importance": 3
+  },
+  {
+    "id": "tanzimat-edict",
+    "name": "Edict of Gülhane Launches the Tanzimat Reforms",
+    "year": 1839,
+    "categories": [
+      "Politics",
+      "Social"
+    ],
+    "region": "Middle East",
+    "aliases": [
+      "Tanzimat",
+      "Edict of Gülhane",
+      "Hatt-ı Şerif of Gülhane",
+      "Ottoman reorganisation"
+    ],
+    "description": "Under the young sultan Abdulmejid I, the government proclaims the Edict of Gülhane, promising security of life and property, fair taxation and regular military service for all subjects, Muslim and non-Muslim. It opens the period of reorganisation known as the Tanzimat.",
+    "difficulty": "hard",
+    "importance": 4,
+    "significance": "The Tanzimat modernised Ottoman law, schools and government and moved towards equal citizenship regardless of religion, leading to the first Ottoman constitution in 1876. It also met resistance at home and did not stop nationalist movements or European pressure."
   },
   {
     "id": "treaty-of-nanking",
@@ -6510,6 +6725,24 @@
     "difficulty": "easy",
     "importance": 8,
     "significance": "The killings set off the July Crisis, during which Austria-Hungary issued an ultimatum to Serbia and declared war a month later. Europe's interlocking alliance systems rapidly drew Germany, Russia, France and Britain into the First World War."
+  },
+  {
+    "id": "ottoman-empire-enters-world-war-i",
+    "name": "Ottoman Empire Enters World War I",
+    "year": 1914,
+    "categories": [
+      "War"
+    ],
+    "region": "Middle East",
+    "aliases": [
+      "Ottoman entry into World War I",
+      "Black Sea raid",
+      "Ottoman–German alliance"
+    ],
+    "description": "Allied with Germany, Ottoman warships bombard Russian ports on the Black Sea, and the empire enters the war against Russia, Britain and France. It goes on to fight at Gallipoli and in the Caucasus, Mesopotamia and Palestine.",
+    "difficulty": "medium",
+    "importance": 5,
+    "significance": "Entering the war proved fatal to the empire. Despite victories at Gallipoli and Kut it was defeated by 1918 and occupied, and the war years saw the Armenian genocide. The peace settlement divided its Arab lands between Britain and France, and the sultanate was abolished in 1922."
   },
   {
     "id": "gandhi-returns-to-india",
