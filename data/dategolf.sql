@@ -2069,7 +2069,7 @@ INSERT INTO "entities" VALUES('islamic-caliphate-expands','event','imported',NUL
 INSERT INTO "entities" VALUES('moors-invade-spain','event','imported',NULL,'2026-11-12 00:37:16');
 INSERT INTO "entities" VALUES('woodblock-printing-china','event','imported',NULL,'2026-11-12 00:40:09');
 INSERT INTO "entities" VALUES('battle-of-tours','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('islamic-golden-age','event','reviewed',NULL,'2026-11-07 21:12:22');
+INSERT INTO "entities" VALUES('islamic-golden-age','event','reviewed',NULL,'2026-11-22 03:00:55');
 INSERT INTO "entities" VALUES('viking-raids-begin','event','imported',NULL,'2026-11-12 00:37:17');
 INSERT INTO "entities" VALUES('charlemagne-crowned-emperor','event','imported',NULL,'2026-11-12 00:37:15');
 INSERT INTO "entities" VALUES('gunpowder-invented','event','imported',NULL,'2026-11-12 00:40:09');
@@ -2378,7 +2378,7 @@ INSERT INTO "entities" VALUES('holy-roman-empire','empire','imported',NULL,NULL)
 INSERT INTO "entities" VALUES('chola-empire','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('song-dynasty','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('crusades','period','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('mongol-conquests','period','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('mongol-conquests','period','imported',NULL,'2026-11-22 03:00:55');
 INSERT INTO "entities" VALUES('delhi-sultanate','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('mali-empire','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('ottoman-empire','empire','imported',NULL,'2026-11-22 02:22:24');
@@ -2680,6 +2680,7 @@ INSERT INTO "entities" VALUES('akbar','period','reviewed','2026-11-22 02:36:11',
 INSERT INTO "entities" VALUES('isaac-newton','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:05');
 INSERT INTO "entities" VALUES('marie-curie','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:05');
 INSERT INTO "entities" VALUES('mahatma-gandhi','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:05');
+INSERT INTO "entities" VALUES('islamic-golden-age-period','period','reviewed','2026-11-22 03:00:54','2026-11-22 03:00:54');
 CREATE TABLE entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   facet     TEXT NOT NULL CHECK (facet IN ('event', 'span')),
@@ -3348,7 +3349,7 @@ INSERT INTO "entity_categories" VALUES('byzantine-empire','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('fall-western-roman-empire','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('tang-dynasty','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('umayyad-caliphate','span',0,'Politics');
-INSERT INTO "entity_categories" VALUES('islamic-golden-age','span',0,'Culture');
+INSERT INTO "entity_categories" VALUES('islamic-golden-age-period','span',0,'Culture');
 INSERT INTO "entity_categories" VALUES('abbasid-caliphate','span',0,'Politics');
 INSERT INTO "entity_categories" VALUES('viking-age','span',0,'Culture');
 INSERT INTO "entity_categories" VALUES('holy-roman-empire','span',0,'Politics');
@@ -4865,6 +4866,8 @@ INSERT INTO "entity_countries" VALUES('isaac-newton',0,'GB','high','reviewed',NU
 INSERT INTO "entity_countries" VALUES('marie-curie',0,'FR','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('marie-curie',1,'PL','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('mahatma-gandhi',0,'IN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('islamic-golden-age-period',1,'ES','low','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('islamic-golden-age-period',0,'IQ','low','reviewed','Defining moments: Baghdad''s House of Wisdom; Córdoba.','location');
 CREATE TABLE entity_phases (
   id             INTEGER PRIMARY KEY,
   entity_id      TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,  -- the span
@@ -6087,6 +6090,7 @@ INSERT INTO "entity_sources" VALUES('akbar',59,'reviewed','ai_drafted',NULL,NULL
 INSERT INTO "entity_sources" VALUES('isaac-newton',653,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('marie-curie',386,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('mahatma-gandhi',119,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('islamic-golden-age-period',227,'reviewed','ai_drafted','high',NULL);
 CREATE TABLE event_aliases (
   entity_id TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   position  INTEGER NOT NULL,
@@ -8349,6 +8353,7 @@ INSERT INTO "event_aliases" VALUES('tanzimat-edict',3,'Ottoman reorganisation');
 INSERT INTO "event_aliases" VALUES('ottoman-empire-enters-world-war-i',0,'Ottoman entry into World War I');
 INSERT INTO "event_aliases" VALUES('ottoman-empire-enters-world-war-i',1,'Black Sea raid');
 INSERT INTO "event_aliases" VALUES('ottoman-empire-enters-world-war-i',2,'Ottoman–German alliance');
+INSERT INTO "event_aliases" VALUES('islamic-golden-age',4,'Islamic Golden Age Begins');
 CREATE TABLE events (
   entity_id      TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   name           TEXT NOT NULL UNIQUE,
@@ -8425,7 +8430,7 @@ INSERT INTO "events" VALUES('islamic-caliphate-expands','Abu Bakr Becomes the Fi
 INSERT INTO "events" VALUES('moors-invade-spain','Umayyad Conquest of Hispania Begins',711,'Europe','A Muslim army under Tariq ibn Ziyad crosses the Strait of Gibraltar — a name derived from ''Jabal al-Tariq,'' or ''Rock of Tariq'' — and defeats the Visigothic King Roderic, rapidly overrunning most of the Iberian Peninsula. The resulting Muslim territory of Al-Andalus becomes a center of Islamic culture, science, and philosophy, transmitting Greek and Arabic knowledge to medieval Europe through translations in Toledo and Cordoba. The Moorish presence in Spain lasts nearly eight centuries until the final Reconquista in 1492.','medium',7,NULL,NULL,NULL,60);
 INSERT INTO "events" VALUES('woodblock-printing-china','Woodblock Printing Invented in China',730,'East Asia','Woodblock printing is developed in Tang dynasty China, enabling text and images carved in relief on wooden blocks to be reproduced cheaply and repeatedly on paper. The technology enables the mass production of Buddhist texts, government documents, and eventually paper money, dramatically increasing access to information and accelerating literacy. Woodblock printing spreads across East Asia before Bi Sheng''s invention of movable type three centuries later further refines the process.','hard',6,NULL,1,'c. 650–750 CE (Tang dynasty; the earliest dated print is from 868)',61);
 INSERT INTO "events" VALUES('battle-of-tours','Battle of Tours',732,'Europe','Frankish leader Charles Martel defeats an advancing Muslim army at Tours in central France, halting the northward expansion of the Umayyad Caliphate into Western Europe. Many historians regard this battle as decisive in preserving Christianity as the dominant religion of Europe.','medium',4,NULL,NULL,NULL,62);
-INSERT INTO "events" VALUES('islamic-golden-age','Islamic Golden Age Begins',786,'Middle East','The reign of Harun al-Rashid and the establishment of the House of Wisdom in Baghdad inaugurates a golden age of Islamic science, mathematics, philosophy, and medicine. Scholars translate and extend Greek knowledge while making original contributions in algebra, optics, astronomy, and medicine.','medium',4,NULL,NULL,NULL,63);
+INSERT INTO "events" VALUES('islamic-golden-age','Harun al-Rashid Becomes Caliph',786,'Middle East','Harun al-Rashid becomes the fifth Abbasid caliph. His reign in Baghdad is remembered as a high point of the Islamic Golden Age: the caliphate is at its wealthiest, and the court sponsors scholars, poets and translators of Greek, Persian and Indian works. Tradition credits him with the palace library that grew into the House of Wisdom, which his son al-Ma''mun expanded.','medium',4,NULL,NULL,NULL,63);
 INSERT INTO "events" VALUES('viking-raids-begin','Vikings Raid Lindisfarne',793,'Europe','Norse warriors raid the monastery of Lindisfarne on the English coast in one of the first recorded Viking attacks, inaugurating the Viking Age. Over the following centuries, Norsemen range from Newfoundland to Russia, Constantinople to North Africa, as traders, settlers, and raiders reshaping European history.','medium',4,NULL,NULL,NULL,64);
 INSERT INTO "events" VALUES('charlemagne-crowned-emperor','Charlemagne Crowned Emperor in Rome',800,'Europe','Pope Leo III crowns Charlemagne, King of the Franks, as Emperor of the Romans on Christmas Day in St. Peter''s Basilica, creating a new imperial power in Western Europe. Charlemagne''s reign unites much of Western Europe, promotes literacy and education, and shapes the political and cultural identity of medieval Europe.','medium',4,NULL,NULL,NULL,65);
 INSERT INTO "events" VALUES('gunpowder-invented','Gunpowder Invented in China',850,'East Asia','Chinese alchemists experimenting with elixirs of immortality discover the explosive properties of a mixture of sulfur, charcoal, and saltpeter, inventing gunpowder. The discovery revolutionizes warfare when it reaches Europe centuries later, making medieval fortifications obsolete and transforming military tactics worldwide.','medium',5,NULL,1,'9th century CE (the first written formula dates from 1044)',66);
@@ -8888,7 +8893,7 @@ CREATE TABLE historical_currents (
   entity_id TEXT PRIMARY KEY REFERENCES time_spans(entity_id) ON DELETE CASCADE
 );
 INSERT INTO "historical_currents" VALUES('axial-age');
-INSERT INTO "historical_currents" VALUES('islamic-golden-age');
+INSERT INTO "historical_currents" VALUES('islamic-golden-age-period');
 INSERT INTO "historical_currents" VALUES('italian-renaissance');
 INSERT INTO "historical_currents" VALUES('age-of-exploration');
 INSERT INTO "historical_currents" VALUES('protestant-reformation');
@@ -11888,7 +11893,6 @@ INSERT INTO "relationships" VALUES(319,'mongol-conquests','contributed_to','gold
 INSERT INTO "relationships" VALUES(320,'mamluk-sultanate','opposed','mongol-conquests','Mamluk forces halted Mongol westward expansion into Syria and Egypt at the Battle of Ain Jalut.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
 INSERT INTO "relationships" VALUES(321,'mongols-sack-baghdad','part_of','ilkhanate','Hulagu Khan''s capture of Baghdad was the major conquest establishing Ilkhanid power in Mesopotamia.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
 INSERT INTO "relationships" VALUES(322,'mongols-sack-baghdad','ended','abbasid-caliphate','Hulagu Khan''s capture of Baghdad and execution of Caliph al-Mustasim ended the Abbasid Caliphate there.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
-INSERT INTO "relationships" VALUES(323,'mongols-sack-baghdad','ended','islamic-golden-age','The destruction of Baghdad''s palaces, libraries and scholarly institutions conventionally marks the end of the Islamic Golden Age.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
 INSERT INTO "relationships" VALUES(324,'yuan-dynasty','preceded','ming-dynasty','Peasant rebellions overthrew Mongol Yuan rule in China, leading to the founding of the Ming Dynasty.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
 INSERT INTO "relationships" VALUES(325,'mansa-musas-pilgrimage-to-mecca','part_of','mali-empire','Mansa Musa''s pilgrimage showcased the Mali Empire''s gold wealth across North Africa and the Middle East.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
 INSERT INTO "relationships" VALUES(326,'hundred-years-war','began','hundred-years-war-period','Competing claims to the French crown and Gascony opened the Hundred Years'' War in 1337.','high','reviewed','ai_drafted:gemini','2026-11-13 22:49:07');
@@ -12064,6 +12068,8 @@ INSERT INTO "relationships" VALUES(507,'gandhi-born','began','mahatma-gandhi','G
 INSERT INTO "relationships" VALUES(508,'gandhi-returns-to-india','part_of','mahatma-gandhi','Gandhi came home from South Africa to join India''s national movement.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
 INSERT INTO "relationships" VALUES(509,'gandhi-salt-march','part_of','mahatma-gandhi','Gandhi''s best-known act of nonviolent protest.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
 INSERT INTO "relationships" VALUES(510,'mahatma-gandhi-assassinated','ended','mahatma-gandhi','Gandhi was shot in Delhi by a Hindu nationalist.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(511,'islamic-golden-age','part_of','islamic-golden-age-period','''Islamic Golden Age Begins'' is a moment within ''Islamic Golden Age'' (created by the split).','high','reviewed',NULL,NULL);
+INSERT INTO "relationships" VALUES(512,'mongols-sack-baghdad','ended','islamic-golden-age-period','The destruction of Baghdad''s palaces, libraries and scholarly institutions conventionally marks the end of the Islamic Golden Age.','high','reviewed','ai_drafted:gemini','2026-11-22 03:00:56');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -13795,6 +13801,12 @@ INSERT INTO "review_log" VALUES(1720,'2026-11-22 02:45:04','approve-link','akbar
 INSERT INTO "review_log" VALUES(1721,'2026-11-22 02:45:04','approve-link','death-of-akbar','link #504: death-of-akbar ended akbar','dashboard');
 INSERT INTO "review_log" VALUES(1722,'2026-11-22 02:45:11','approve-link','newton-laws-of-motion','link #505: newton-laws-of-motion part_of isaac-newton','dashboard');
 INSERT INTO "review_log" VALUES(1723,'2026-11-22 02:45:11','approve-link','curie-radioactivity','link #506: curie-radioactivity part_of marie-curie','dashboard');
+INSERT INTO "review_log" VALUES(1724,'2026-11-22 03:00:54','identity-split-done','islamic-golden-age','span moved to islamic-golden-age-period; part_of link added','cli');
+INSERT INTO "review_log" VALUES(1725,'2026-11-22 03:00:54','identity-split-done','islamic-golden-age-period','new span id, split from islamic-golden-age','cli');
+INSERT INTO "review_log" VALUES(1726,'2026-11-22 03:00:55','rename-event','islamic-golden-age','''Islamic Golden Age Begins'' → ''Harun al-Rashid Becomes Caliph''; new description','cli');
+INSERT INTO "review_log" VALUES(1727,'2026-11-22 03:00:55','rename-span','mongol-conquests','''Mongol Conquests'' → ''Mongol Empire''; new description','cli');
+INSERT INTO "review_log" VALUES(1728,'2026-11-22 03:01:10','approve-link','mongols-sack-baghdad','link #512: mongols-sack-baghdad ended islamic-golden-age-period','cli');
+INSERT INTO "review_log" VALUES(1729,'2026-11-22 03:01:10','remove-link','mongols-sack-baghdad','link #323: mongols-sack-baghdad ended islamic-golden-age — moved to islamic-golden-age-period: the shared id was split, the Mongol sack ended the age (span), not Harun''s accession','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -14467,14 +14479,14 @@ INSERT INTO "time_spans" VALUES('byzantine-empire','empire','Byzantine Empire',3
 INSERT INTO "time_spans" VALUES('fall-western-roman-empire','period','Fall of the Western Roman Empire',395,476,'Decline and collapse of the western half of the Roman Empire','Europe',8,NULL,22,NULL);
 INSERT INTO "time_spans" VALUES('tang-dynasty','empire','Tang Dynasty',618,907,'A cosmopolitan golden age of Chinese poetry, trade and woodblock printing.','East Asia',7,NULL,23,NULL);
 INSERT INTO "time_spans" VALUES('umayyad-caliphate','empire','Umayyad Caliphate',661,750,'The first hereditary Islamic dynasty, ruling from Damascus over lands from Spain to Central Asia.','Middle East',6,NULL,24,NULL);
-INSERT INTO "time_spans" VALUES('islamic-golden-age','period','Islamic Golden Age',750,1258,'Period of cultural, economic, and scientific flourishing in the Islamic world','Middle East',5,NULL,25,NULL);
+INSERT INTO "time_spans" VALUES('islamic-golden-age-period','period','Islamic Golden Age',750,1258,'Period of cultural, economic, and scientific flourishing in the Islamic world','Middle East',5,NULL,25,NULL);
 INSERT INTO "time_spans" VALUES('abbasid-caliphate','empire','Abbasid Caliphate',750,1258,'Ruled from Baghdad, home of the House of Wisdom and the Islamic Golden Age, until the Mongols sacked the city.','Middle East',7,NULL,26,NULL);
 INSERT INTO "time_spans" VALUES('viking-age','period','Viking Age',793,1066,'Period of Norse exploration, expansion, and raids across Europe','Europe',5,NULL,27,NULL);
 INSERT INTO "time_spans" VALUES('holy-roman-empire','empire','Holy Roman Empire',800,1806,'A union of central European territories, from Charlemagne''s coronation until Napoleon dissolved it.','Europe',6,NULL,28,NULL);
 INSERT INTO "time_spans" VALUES('chola-empire','empire','Chola Empire',848,1279,'A south Indian maritime empire whose navy reached Sri Lanka and Southeast Asia; builders of great temples.','South Asia',6,1,29,NULL);
 INSERT INTO "time_spans" VALUES('song-dynasty','empire','Song Dynasty',960,1279,'An age of invention in China, with movable type, the compass, gunpowder weapons and paper money.','East Asia',7,NULL,30,NULL);
 INSERT INTO "time_spans" VALUES('crusades','period','The Crusades',1096,1291,'Series of religious wars sanctioned by the Latin Church to recover the Holy Land','Middle East',5,NULL,31,NULL);
-INSERT INTO "time_spans" VALUES('mongol-conquests','period','Mongol Conquests',1206,1368,'Rapid expansion of the Mongol Empire across Asia and Europe','East Asia',5,NULL,32,NULL);
+INSERT INTO "time_spans" VALUES('mongol-conquests','period','Mongol Empire',1206,1368,'The empire Genghis Khan founded, which conquered its way to the largest contiguous land empire in history, from Korea to Hungary. After a succession war it split into four rival khanates; this span ends with the fall of the last of them in China, the Yuan dynasty.','East Asia',5,NULL,32,NULL);
 INSERT INTO "time_spans" VALUES('delhi-sultanate','empire','Delhi Sultanate',1206,1526,'A series of five dynasties ruling much of northern India from Delhi until the Mughal conquest.','South Asia',7,NULL,33,NULL);
 INSERT INTO "time_spans" VALUES('mali-empire','empire','Mali Empire',1235,1600,'A West African empire grown rich on gold and salt trade; Timbuktu became a centre of learning.','Africa',6,1,34,NULL);
 INSERT INTO "time_spans" VALUES('ottoman-empire','empire','Ottoman Empire',1299,1922,'From Anatolia it grew to rule southeastern Europe, the Middle East and North Africa for six centuries.','Middle East',8,1,35,'c. 1299 (the traditional founding date) to 1922, when the sultanate was abolished');

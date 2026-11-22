@@ -2134,13 +2134,6 @@
       "confidence": "high"
     },
     {
-      "source": "mongols-sack-baghdad",
-      "type": "ended",
-      "target": "islamic-golden-age",
-      "why": "The destruction of Baghdad's palaces, libraries and scholarly institutions conventionally marks the end of the Islamic Golden Age.",
-      "confidence": "high"
-    },
-    {
       "source": "yuan-dynasty",
       "type": "preceded",
       "target": "ming-dynasty",
@@ -3363,6 +3356,20 @@
       "type": "ended",
       "target": "mahatma-gandhi",
       "why": "Gandhi was shot in Delhi by a Hindu nationalist.",
+      "confidence": "high"
+    },
+    {
+      "source": "islamic-golden-age",
+      "type": "part_of",
+      "target": "islamic-golden-age-period",
+      "why": "'Islamic Golden Age Begins' is a moment within 'Islamic Golden Age' (created by the split).",
+      "confidence": "high"
+    },
+    {
+      "source": "mongols-sack-baghdad",
+      "type": "ended",
+      "target": "islamic-golden-age-period",
+      "why": "The destruction of Baghdad's palaces, libraries and scholarly institutions conventionally marks the end of the Islamic Golden Age.",
       "confidence": "high"
     }
   ]

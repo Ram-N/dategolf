@@ -806,7 +806,7 @@
     "kind": "empire"
   },
   {
-    "id": "islamic-golden-age",
+    "id": "islamic-golden-age-period",
     "name": "Islamic Golden Age",
     "startYear": 750,
     "endYear": 1258,
@@ -1100,10 +1100,10 @@
   },
   {
     "id": "mongol-conquests",
-    "name": "Mongol Conquests",
+    "name": "Mongol Empire",
     "startYear": 1206,
     "endYear": 1368,
-    "description": "Rapid expansion of the Mongol Empire across Asia and Europe",
+    "description": "The empire Genghis Khan founded, which conquered its way to the largest contiguous land empire in history, from Korea to Hungary. After a succession war it split into four rival khanates; this span ends with the fall of the last of them in China, the Yuan dynasty.",
     "categories": [
       "War"
     ],

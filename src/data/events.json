@@ -2106,7 +2106,7 @@
   },
   {
     "id": "islamic-golden-age",
-    "name": "Islamic Golden Age Begins",
+    "name": "Harun al-Rashid Becomes Caliph",
     "year": 786,
     "categories": [
       "Science",
@@ -2118,9 +2118,10 @@
       "Abbasid caliphate",
       "House of Wisdom",
       "Baghdad golden age",
-      "Arab science"
+      "Arab science",
+      "Islamic Golden Age Begins"
     ],
-    "description": "The reign of Harun al-Rashid and the establishment of the House of Wisdom in Baghdad inaugurates a golden age of Islamic science, mathematics, philosophy, and medicine. Scholars translate and extend Greek knowledge while making original contributions in algebra, optics, astronomy, and medicine.",
+    "description": "Harun al-Rashid becomes the fifth Abbasid caliph. His reign in Baghdad is remembered as a high point of the Islamic Golden Age: the caliphate is at its wealthiest, and the court sponsors scholars, poets and translators of Greek, Persian and Indian works. Tradition credits him with the palace library that grew into the House of Wisdom, which his son al-Ma'mun expanded.",
     "difficulty": "medium",
     "importance": 4
   },
