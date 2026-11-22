@@ -193,6 +193,7 @@
     <DurationInfoCard
       v-if="store.selectedDuration"
       :duration="store.selectedDuration"
+      :durations="store.durations"
       :events="store.events"
       :connections="store.connections"
       @close="store.closeCard()"

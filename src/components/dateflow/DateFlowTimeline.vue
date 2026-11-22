@@ -180,7 +180,7 @@
           v-for="b in t.bars"
           :key="b.d.id"
           class="cursor-pointer bar"
-          :class="[b.d.kind, { selected: b.d.id === selectedDurationId, lit: lit(b.d.id), dimmed: dimming && !lit(b.d.id), faded: fades(b.family, b.d.id) }]"
+          :class="[rowKind(b.d), { selected: b.d.id === selectedDurationId, lit: lit(b.d.id), dimmed: dimming && !lit(b.d.id), faded: fades(b.family, b.d.id) }]"
           @click="onBarClick(b.d.id)"
         >
           <title>{{ b.tooltip }}</title>
@@ -195,7 +195,7 @@
             :y="b.y"
             :width="b.w"
             :height="BAR_H"
-            rx="3"
+            :rx="b.d.person ? BAR_H / 2 : 3"
             :fill="`var(--df-f-${b.family})`"
             :stroke="`var(--df-f-${b.family})`"
             class="bar-rect"
@@ -371,8 +371,11 @@ const BAR_H = 12
 const BAR_ROW = 16
 const WORLD_ROWS_PER_KIND = 3
 const SUB_HEADER = 15
-const WORLD_BAND_H = 2 * (SUB_HEADER + WORLD_ROWS_PER_KIND * BAR_ROW) + 4
+const WORLD_PEOPLE_ROWS = 2
+const worldBandH = (people: boolean) =>
+  2 * (SUB_HEADER + WORLD_ROWS_PER_KIND * BAR_ROW) + (people ? SUB_HEADER + WORLD_PEOPLE_ROWS * BAR_ROW : 0) + 4
 const LANE_TWO_ROW_MIN_H = 120
+const LANE_THREE_ROW_MIN_H = 160 // room for a People row too
 const BAR_MIN_PX = 80 // a bar this wide shows even if below the importance threshold
 
 const MILESTONE_RANK = new Map((milestoneIds as string[]).map((id, i) => [id, i]))
@@ -436,8 +439,12 @@ const milestoneLines = computed(() => {
 })
 
 // ── Tracks ──────────────────────────────────────────────────────────────────
+// A bar's row: empires, periods, or people's lives (Phase 13: a life is a period span flagged person)
+type BarKind = Duration['kind'] | 'person'
+const rowKind = (d: Duration): BarKind => (d.person ? 'person' : d.kind)
+
 interface BarRow {
-  kind: Duration['kind']
+  kind: BarKind
   title: string
   top: number
   rows: number
@@ -464,11 +471,13 @@ const tracks = computed<Track[]>(() => {
     (d) => d.endYear >= props.view.start && d.startYear <= props.view.end,
   )
 
+  const people = props.durations.some((d) => d.person)
   if (props.mode === 'world') {
     const bars = props.density !== 'simple'
-    const bandTop = h - (bars ? WORLD_BAND_H : 0)
+    const bandTop = h - (bars ? worldBandH(people) : 0)
     const empiresTop = bandTop + SUB_HEADER
     const periodsTop = empiresTop + WORLD_ROWS_PER_KIND * BAR_ROW + SUB_HEADER
+    const peopleTop = periodsTop + WORLD_ROWS_PER_KIND * BAR_ROW + SUB_HEADER
     const axisY = Math.round((ERA_SPACE + bandTop) / 2)
     const above = axisY - AXIS_GAP - ERA_SPACE
     const below = bandTop - axisY - TICK_SPACE - 6
@@ -486,6 +495,7 @@ const tracks = computed<Track[]>(() => {
           ? [
               { kind: 'empire', title: 'Empires & dynasties', top: empiresTop, rows: WORLD_ROWS_PER_KIND },
               { kind: 'period', title: 'Periods', top: periodsTop, rows: WORLD_ROWS_PER_KIND },
+              ...(people ? [{ kind: 'person' as const, title: 'People', top: peopleTop, rows: WORLD_PEOPLE_ROWS }] : []),
             ]
           : [],
         events: inView.value,
@@ -495,8 +505,14 @@ const tracks = computed<Track[]>(() => {
   }
 
   const laneH = (h - ERA_SPACE - TICK_STRIP) / Math.max(1, props.lanes.length)
-  const kinds: Duration['kind'][] =
-    props.density === 'simple' ? [] : laneH >= LANE_TWO_ROW_MIN_H ? ['empire', 'period'] : ['empire']
+  const kinds: BarKind[] =
+    props.density === 'simple'
+      ? []
+      : people && laneH >= LANE_THREE_ROW_MIN_H
+        ? ['empire', 'period', 'person']
+        : laneH >= LANE_TWO_ROW_MIN_H
+          ? ['empire', 'period']
+          : ['empire']
   return props.lanes.map((id, index) => {
     const top = ERA_SPACE + index * laneH
     const bandTop = top + laneH - kinds.length * BAR_ROW - 4
@@ -600,6 +616,9 @@ function layoutBars(t: Track) {
   // Pack in rounds. A sub-span whose parent is a candidate rides inside the parent's bar
   // instead of taking a row; if the parent finds no row, its sub-spans compete on their own.
   const rows = t.barRows.map((r) => emptyRows(r.rows))
+  // A lane too short for a People row shows people in its Periods row instead of not at all
+  const peopleRow = t.barRows.some((r) => r.kind === 'person')
+  const rowOf = (d: Duration): BarKind => (d.person && !peopleRow ? 'period' : rowKind(d))
   const placed: { id: string; row: number; top: number }[] = []
   let pending = candidates.map((c) => c.d.id)
   while (pending.length) {
@@ -607,7 +626,7 @@ function layoutBars(t: Track) {
     if (!round.size) break // only a part_of cycle could leave no top level
     t.barRows.forEach((r, i) => {
       const items = candidates
-        .filter((c) => c.d.kind === r.kind && round.has(c.d.id))
+        .filter((c) => rowOf(c.d) === r.kind && round.has(c.d.id))
         .map((c) => ({
           id: c.d.id,
           // Clamp so off-screen ends don't stop other bars sharing the row.
@@ -1146,6 +1165,10 @@ function onArcClick(key: string, e: MouseEvent) {
 .bar.period .bar-rect {
   fill-opacity: 0.12;
   stroke-dasharray: 4 2;
+}
+/* A person's life: a rounded pill, between an empire's fill and a period's */
+.bar.person .bar-rect {
+  fill-opacity: 0.25;
 }
 .bar:hover .bar-rect,
 .bar.selected .bar-rect {

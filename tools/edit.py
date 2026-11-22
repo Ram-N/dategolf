@@ -123,6 +123,30 @@ def set_current(ids, remove=False, via="cli"):
     return 0 if ok else 1
 
 
+def set_person(ids, role=None, remove=False, via="cli"):
+    """Mark spans as people's lives (Date Flow Phase 13), with an optional role, or unmark them."""
+    conn = connect()
+    ensure_schema(conn)
+    ok = True
+    for entity_id in ids:
+        if not conn.execute("SELECT 1 FROM time_spans WHERE entity_id = ? AND kind <> 'era'", (entity_id,)).fetchone():
+            print(f"  ✗ no span with id {entity_id}")
+            ok = False
+            continue
+        if remove:
+            conn.execute("DELETE FROM people WHERE entity_id = ?", (entity_id,))
+            detail = "not a person"
+        else:
+            conn.execute("INSERT INTO people VALUES (?, ?) ON CONFLICT (entity_id) DO UPDATE SET "
+                         "role = coalesce(excluded.role, role)", (entity_id, (role or "").strip() or None))
+            detail = "a person" + (f" ({role.strip()})" if role and role.strip() else "")
+        log(conn, "person", entity_id, detail, via=via)
+        print(f"  ✓ {entity_id}: {detail}")
+    conn.commit()
+    conn.close()
+    return 0 if ok else 1
+
+
 def set_dateflow_only(entity_id, reason=None, remove=False, via="cli"):
     """Show an event only in DateFlow (not DatePick or DateGolf): for dates too disputed to guess fairly."""
     conn = connect()

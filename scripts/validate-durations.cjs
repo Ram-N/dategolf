@@ -73,5 +73,12 @@ durations.forEach((d) => {
 })
 pass('Phase checks passed')
 
+// 6. People (Phase 13): a flag and an optional role
+durations.forEach((d) => {
+  if (d.person !== undefined && d.person !== true) fail(`person must be true when present: ${d.id}`)
+  if (d.role !== undefined && (!d.person || typeof d.role !== 'string' || !d.role.trim())) fail(`role without a person, or empty: ${d.id}`)
+})
+pass('People checks passed')
+
 console.log(errors === 0 ? '\n✅ All checks passed\n' : `\n❌ ${errors} error(s)\n`)
 process.exit(errors === 0 ? 0 : 1)

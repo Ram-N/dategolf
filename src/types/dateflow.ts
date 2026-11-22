@@ -16,6 +16,8 @@ export interface Duration {
   dateDisplay?: string // historians' dates or the dispute, e.g. "traditionally 563–483 BCE; many scholars c. 480–400 BCE"
   current?: boolean // a Historical Current: drawn as a background band (step 3d)
   phases?: Phase[] // life-cycle phases (Phase 12): contiguous, covering startYear–endYear
+  person?: boolean // a person's life, birth to death (Phase 13): drawn in the People row
+  role?: string // a person's role, e.g. "Mughal emperor"
 }
 
 // A life-cycle phase of an empire or period. The kind is neutral and drives the colour; the title says

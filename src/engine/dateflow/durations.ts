@@ -78,11 +78,32 @@ export function phaseSegments(
   })
 }
 
+// ── People (Phase 13) ─────────────────────────────────────────────────────────────────
+/** Years between two signed years, allowing for the missing year 0. */
+export const yearsBetween = (a: number, b: number) => b - a - (a < 0 && b > 0 ? 1 : 0)
+
+/**
+ * Other people alive at the same time as `person`, longest shared stretch first: the years their
+ * lives overlapped. Only people, and only overlaps of at least a year.
+ */
+export function aliveTogether(person: Duration, durations: Duration[]): { d: Duration; from: number; to: number; years: number }[] {
+  return durations
+    .filter((d) => d.person && d.id !== person.id)
+    .map((d) => {
+      const from = Math.max(d.startYear, person.startYear)
+      const to = Math.min(d.endYear, person.endYear)
+      return { d, from, to, years: yearsBetween(from, to) }
+    })
+    .filter((x) => x.years >= 1)
+    .sort((a, b) => b.years - a.years || a.from - b.from)
+}
+
 // ── Sub-spans (Phase 11): spans `part_of` another span nest inside its bar ─────────────
 
 /** child span id → parent span id, from `part_of` links between two spans. */
 export function spanParents(links: Relationship[], durations: Duration[]): Map<string, string> {
-  const ids = new Set(durations.map((d) => d.id))
+  // A person's life never nests, nor holds other spans: it has its own People row (Phase 13)
+  const ids = new Set(durations.filter((d) => !d.person).map((d) => d.id))
   const parents = new Map<string, string>()
   for (const l of links) if (l.type === 'part_of' && ids.has(l.source) && ids.has(l.target)) parents.set(l.source, l.target)
   return parents

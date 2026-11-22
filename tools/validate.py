@@ -129,6 +129,10 @@ CHECKS = [
     ("review", "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
      "SELECT id, source_id || ' ' || type || ' ' || target_id || coalesce(' — ' || why, '') "
      "FROM v_link_review WHERE status = 'proposed'"),
+    ("warning", "A span is part_of a person's life (a reign is its own span; only events go inside a life)",
+     "SELECT r.source_entity_id, r.source_entity_id || ' part_of ' || r.target_entity_id FROM relationships r "
+     "JOIN time_spans a ON a.entity_id = r.source_entity_id "
+     "WHERE r.relationship_type = 'part_of' AND r.target_entity_id IN (SELECT entity_id FROM people)"),
     ("review", "Life-cycle phases awaiting approval (not exported; dashboard Review → Life cycles)",
      "SELECT entity_id, count(*) || ' phase(s)' FROM entity_phases WHERE status = 'proposed' GROUP BY entity_id"),
     ("warning", "Life-cycle phases no longer cover their span (its years changed): fix with remove-phases + load-phases",

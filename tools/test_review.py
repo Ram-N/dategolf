@@ -235,6 +235,31 @@ class TestSpanDrafts(unittest.TestCase):
                          "reviewed")
 
 
+class TestPeople(unittest.TestCase):
+    def test_person_from_a_draft_and_from_the_cli(self):
+        path = TMP / "person.json"
+        path.write_text(json.dumps({"origin": "test", "events": [], "spans": [{
+            "id": "test-person", "kind": "period", "name": "Test Person", "start_year": 1500, "end_year": 1570,
+            "description": "A test life.", "region": "Europe", "importance": 3, "categories": ["Politics"],
+            "person": True, "role": "Test ruler"}]}))
+        quiet(drafts.load, path)
+        self.assertEqual(db().execute("SELECT role FROM people WHERE entity_id = 'test-person'").fetchone()[0],
+                         "Test ruler")
+        quiet(drafts.approve, ["test-person"], "test")
+        spans = {d["id"]: d for d in json.loads(exporter.render_durations(common.connect()))}
+        self.assertEqual((spans["test-person"]["person"], spans["test-person"]["role"]), (True, "Test ruler"))
+        self.assertNotIn("person", spans["roman-empire"])
+
+        # The CLI flags an existing span (and keeps its role when none is given); rejecting a draft drops it
+        self.assertEqual(quiet(edit.set_person, ["life-of-the-buddha"], "Teacher", via="test"), 0)
+        self.assertEqual(quiet(edit.set_person, ["life-of-the-buddha"], via="test"), 0)
+        self.assertEqual(db().execute("SELECT role FROM people WHERE entity_id = 'life-of-the-buddha'").fetchone()[0],
+                         "Teacher")
+        self.assertEqual(quiet(edit.set_person, ["no-such-span"], via="test"), 1)
+        self.assertEqual(quiet(edit.set_person, ["life-of-the-buddha"], remove=True, via="test"), 0)
+        self.assertIsNone(db().execute("SELECT 1 FROM people WHERE entity_id = 'life-of-the-buddha'").fetchone())
+
+
 class TestCountries(unittest.TestCase):
     def test_add_country(self):
         self.assertEqual(quiet(countries.add_country, "XQ", "Testland", "Africa", "XQT", via="test"), 0)

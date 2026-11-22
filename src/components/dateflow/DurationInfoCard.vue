@@ -10,10 +10,11 @@
         <div>
           <div class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest secondary">
             <span class="inline-block w-2.5 h-2.5 rounded-sm" :style="{ background: `var(--df-f-${family})` }" />
-            {{ duration.kind === 'empire' ? 'Empire / dynasty' : 'Period' }}
+            {{ duration.person ? 'Person' : duration.kind === 'empire' ? 'Empire / dynasty' : 'Period' }}
           </div>
           <div class="text-2xl font-black tabular-nums mt-2 accent">{{ formatSpan(duration, formatYear) }}</div>
           <h2 class="text-xl font-bold mt-1">{{ duration.name }}</h2>
+          <p v-if="duration.role" class="text-sm secondary">{{ duration.role }}</p>
           <p class="text-xs mt-1 secondary">
             {{ lengthText }} · {{ duration.region }} · {{ duration.categories.join(' · ') }}
           </p>
@@ -35,6 +36,20 @@
           <template v-else>Historians give different start and end years. These are conventional estimates.</template>
         </p>
       </div>
+
+      <!-- People (Phase 13): who else was alive, and for how long their lives overlapped -->
+      <section v-if="duration.person && together.length" class="mt-4" aria-label="Alive at the same time">
+        <h3 class="text-[11px] font-semibold uppercase tracking-widest secondary mb-2">Alive at the same time</h3>
+        <ul class="space-y-1">
+          <li v-for="x in together" :key="x.d.id">
+            <button class="related w-full text-left text-sm px-2 py-1.5 rounded-lg" @click="emit('openDuration', x.d.id)">
+              <span class="font-semibold">{{ x.d.name }}</span>
+              <span class="secondary"> · both alive {{ formatYear(x.from) }} – {{ formatYear(x.to) }}
+                ({{ x.years }} {{ x.years === 1 ? 'year' : 'years' }})</span>
+            </button>
+          </li>
+        </ul>
+      </section>
 
       <!-- Life cycle (Phase 12): the bar's segments, each in the same shade -->
       <section v-if="duration.phases?.length" class="mt-4" aria-label="Life cycle">
@@ -97,7 +112,7 @@
 import { computed, onMounted, onUnmounted } from 'vue'
 import type { Event } from '@/types'
 import type { Duration } from '@/types/dateflow'
-import { PHASE_KIND_LABEL, eventsDuring, formatPhase, formatSpan } from '@/engine/dateflow/durations'
+import { PHASE_KIND_LABEL, aliveTogether, eventsDuring, formatPhase, formatSpan, yearsBetween } from '@/engine/dateflow/durations'
 import { familyFor } from '@/engine/dateflow/categoryGroups'
 import type { ConnectionGroup } from '@/engine/dateflow/connections'
 import EventConnections from './EventConnections.vue'
@@ -105,6 +120,7 @@ import { formatEventYear, formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{
   duration: Duration
+  durations: Duration[]
   events: Event[]
   connections: ConnectionGroup[]
   storyCounts?: { back: number; forward: number }
@@ -122,12 +138,14 @@ const emit = defineEmits<{
 
 const family = computed(() => familyFor(props.duration.categories))
 const eventName = (id: string) => props.events.find((e) => e.id === id)?.name
+const together = computed(() => (props.duration.person ? aliveTogether(props.duration, props.durations) : []))
 const related = computed(() => eventsDuring(props.events, props.duration))
 const lengthText = computed(() => {
   // No year 0: a span crossing the BCE/CE boundary is one year shorter than the difference.
   const { startYear: s, endYear: e } = props.duration
-  const years = e - s - (s < 0 && e > 0 ? 1 : 0)
-  return `${props.duration.approximate ? '~' : ''}${Math.max(1, years).toLocaleString()} years`
+  const years = Math.max(1, yearsBetween(s, e)).toLocaleString()
+  const about = props.duration.approximate ? (props.duration.person ? 'about ' : '~') : ''
+  return props.duration.person ? `Lived ${about}${years} years` : `${about}${years} years`
 })
 
 function onKey(e: KeyboardEvent) {

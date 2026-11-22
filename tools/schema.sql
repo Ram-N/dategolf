@@ -231,6 +231,13 @@ CREATE TABLE IF NOT EXISTS dateflow_only_events (
 
 -- Spans drawn as "Historical Currents" in DateFlow: long movements shown as background bands
 -- (exported as current: true). Set with `manage.py current`.
+-- People (Date Flow Phase 13): a span that is a person's life, birth to death. Drawn in its own
+-- People row. A reign is a separate span, never part_of a life; events go inside a life (began / ended / part_of).
+CREATE TABLE IF NOT EXISTS people (
+  entity_id TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
+  role      TEXT                                  -- shown under the name, e.g. "Mughal emperor"
+);
+
 CREATE TABLE IF NOT EXISTS historical_currents (
   entity_id TEXT PRIMARY KEY REFERENCES time_spans(entity_id) ON DELETE CASCADE
 );

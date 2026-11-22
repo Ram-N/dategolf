@@ -49,6 +49,7 @@ import {
 import {
   emptyRows,
   eventsDuring,
+  aliveTogether,
   formatPhase,
   formatSpan,
   packBars,
@@ -56,17 +57,48 @@ import {
   revealedSubSpans,
   spanParents,
   topLevelSpans,
+  yearsBetween,
 } from '../dateflow/durations'
 import { formatYear, parseYear } from '@/utils/formatYear'
 import type { Event } from '@/types'
 import eventsData from '@/data/events.json'
 import { constellationThreshold, dotRadius, scatter, trackOf, tracksFor } from '../dateflow/constellation'
-import type { Duration, RelationshipData } from '@/types/dateflow'
+import type { Duration, Relationship, RelationshipData } from '@/types/dateflow'
 import durationsData from '@/data/durations.json'
 import erasData from '@/data/eras.json'
 import relationshipsData from '@/data/relationships.json'
 
 const W = 1000
+
+describe('people (Phase 13)', () => {
+  const life = (id: string, startYear: number, endYear: number, person = true): Duration => ({
+    id, name: id, startYear, endYear, description: '', categories: ['Politics'], region: 'Europe', importance: 5,
+    kind: 'period', person,
+  })
+  const akbar = life('akbar', 1542, 1605)
+  const elizabeth = life('elizabeth', 1533, 1603)
+  const newton = life('newton', 1643, 1727)
+  const reign = life('reign-of-akbar', 1556, 1605, false)
+
+  it('lists the people alive at the same time, longest overlap first, never non-people', () => {
+    expect(aliveTogether(akbar, [akbar, elizabeth, newton, reign]).map((x) => [x.d.id, x.from, x.to, x.years]))
+      .toEqual([['elizabeth', 1542, 1603, 61]])
+  })
+
+  it('counts years across the BCE/CE boundary without a year 0', () => {
+    expect(yearsBetween(-4, 30)).toBe(33)
+    expect(yearsBetween(1869, 1948)).toBe(79)
+  })
+
+  it('keeps a life out of bar nesting, so a reign stays inside its empire', () => {
+    const empire = { ...life('mughal', 1526, 1857, false), kind: 'empire' as const }
+    const links = [
+      { source: 'reign-of-akbar', type: 'part_of', target: 'mughal' },
+      { source: 'reign-of-akbar', type: 'part_of', target: 'akbar' }, // a stray link to a life is ignored
+    ] as Relationship[]
+    expect(spanParents(links, [empire, akbar, reign]).get('reign-of-akbar')).toBe('mughal')
+  })
+})
 
 describe('life-cycle phases (Phase 12)', () => {
   const phases = [

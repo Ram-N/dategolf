@@ -227,6 +227,12 @@ def main():
     p.add_argument("--remove", action="store_true", help="Stop drawing them as currents")
     p.set_defaults(fn=lambda a: edit.set_current(a.ids, a.remove))
 
+    p = sub.add_parser("person", help="Mark spans as people's lives (Date Flow's People row)")
+    p.add_argument("ids", nargs="+")
+    p.add_argument("--role", help='Shown under the name, e.g. "Mughal emperor"')
+    p.add_argument("--remove", action="store_true", help="Stop treating them as people")
+    p.set_defaults(fn=lambda a: edit.set_person(a.ids, a.role, a.remove))
+
     p = sub.add_parser("load-phases", help="Add life-cycle phases for spans as proposed (all-or-nothing)")
     p.add_argument("path", help='JSON {"origin": ..., "phases": {"<span id>": [{kind, title, start_year, ...}]}}')
     p.set_defaults(fn=lambda a: phases.load(a.path))
