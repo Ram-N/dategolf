@@ -2381,7 +2381,7 @@ INSERT INTO "entities" VALUES('crusades','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('mongol-conquests','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('delhi-sultanate','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('mali-empire','empire','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('ottoman-empire','empire','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('ottoman-empire','empire','imported',NULL,'2026-11-22 02:22:24');
 INSERT INTO "entities" VALUES('vijayanagara-empire','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('black-death','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('ming-dynasty','empire','imported',NULL,NULL);
@@ -13640,6 +13640,7 @@ INSERT INTO "review_log" VALUES(1672,'2026-11-22 02:12:41','approve-link','selim
 INSERT INTO "review_log" VALUES(1673,'2026-11-22 02:12:41','approve-link','tanzimat-edict','link #482: tanzimat-edict part_of ottoman-empire','dashboard');
 INSERT INTO "review_log" VALUES(1674,'2026-11-22 02:12:41','approve-link','ottoman-empire-enters-world-war-i','link #483: ottoman-empire-enters-world-war-i part_of world-war-1','dashboard');
 INSERT INTO "review_log" VALUES(1675,'2026-11-22 02:12:41','approve-link','ottoman-empire-enters-world-war-i','link #484: ottoman-empire-enters-world-war-i preceded ottoman-empire-falls','dashboard');
+INSERT INTO "review_log" VALUES(1676,'2026-11-22 02:22:24','set-span-years','ottoman-empire','1299 to 1922 → c. 1299 to 1922 (c. 1299 (the traditional founding date) to 1922, when the sultanate was abolished)','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -14319,7 +14320,7 @@ INSERT INTO "time_spans" VALUES('crusades','period','The Crusades',1096,1291,'Se
 INSERT INTO "time_spans" VALUES('mongol-conquests','period','Mongol Conquests',1206,1368,'Rapid expansion of the Mongol Empire across Asia and Europe','East Asia',5,NULL,32,NULL);
 INSERT INTO "time_spans" VALUES('delhi-sultanate','empire','Delhi Sultanate',1206,1526,'A series of five dynasties ruling much of northern India from Delhi until the Mughal conquest.','South Asia',7,NULL,33,NULL);
 INSERT INTO "time_spans" VALUES('mali-empire','empire','Mali Empire',1235,1600,'A West African empire grown rich on gold and salt trade; Timbuktu became a centre of learning.','Africa',6,1,34,NULL);
-INSERT INTO "time_spans" VALUES('ottoman-empire','empire','Ottoman Empire',1299,1922,'From Anatolia it grew to rule southeastern Europe, the Middle East and North Africa for six centuries.','Middle East',8,NULL,35,NULL);
+INSERT INTO "time_spans" VALUES('ottoman-empire','empire','Ottoman Empire',1299,1922,'From Anatolia it grew to rule southeastern Europe, the Middle East and North Africa for six centuries.','Middle East',8,1,35,'c. 1299 (the traditional founding date) to 1922, when the sultanate was abolished');
 INSERT INTO "time_spans" VALUES('vijayanagara-empire','empire','Vijayanagara Empire',1336,1646,'A south Indian empire centred on its capital at Hampi, a great Hindu power of the age.','South Asia',5,NULL,36,NULL);
 INSERT INTO "time_spans" VALUES('black-death','period','The Black Death',1347,1353,'Devastating pandemic of bubonic plague that killed an estimated one-third of Europe''s population','Europe',5,NULL,37,NULL);
 INSERT INTO "time_spans" VALUES('ming-dynasty','empire','Ming Dynasty',1368,1644,'Built the Forbidden City and most of today''s Great Wall; Zheng He''s fleets sailed to Africa.','East Asia',8,NULL,38,NULL);

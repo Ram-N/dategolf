@@ -1147,6 +1147,8 @@
     "importance": 8,
     "kind": "empire",
     "significance": "For more than six centuries the Ottomans ruled a multi-ethnic, multi-faith empire that at its height joined southeastern Europe, the Middle East and North Africa, shaping Mediterranean trade, Islamic law and politics, and the borders of the modern Middle East and Balkans.",
+    "approximate": true,
+    "dateDisplay": "c. 1299 (the traditional founding date) to 1922, when the sultanate was abolished",
     "phases": [
       {
         "kind": "foundation",
