@@ -62,8 +62,9 @@ def decide(ids, decision, via="cli"):
 def split(entity_id, new_span_id, via="cli"):
     """Give a shared id's span its own id. The event keeps `entity_id`; the span moves to `new_span_id`.
 
-    The span keeps its categories, gets a copy of the country tags, and is linked from the event
-    with a reviewed `part_of` relationship.
+    The span keeps its categories, Historical Current flag, person row and life-cycle phases, gets a
+    copy of the country tags and sources, and is linked from the event with a reviewed `part_of`
+    relationship. Links stay on `entity_id`; move any that are about the span.
     """
     conn = connect()
     row = conn.execute("SELECT n.editorial_status, s.kind, s.name FROM entities n "
@@ -83,9 +84,15 @@ def split(entity_id, new_span_id, via="cli"):
     status, kind, span_name = row
     conn.execute("INSERT INTO entities (id, primary_type, editorial_status) VALUES (?, ?, 'reviewed')",
                  (new_span_id, kind))
+    conn.execute("PRAGMA defer_foreign_keys = ON")  # historical_currents references time_spans
     conn.execute("UPDATE time_spans SET entity_id = ? WHERE entity_id = ?", (new_span_id, entity_id))
     conn.execute("UPDATE entity_categories SET entity_id = ? WHERE entity_id = ? AND facet = 'span'",
                  (new_span_id, entity_id))
+    for table in ("historical_currents", "people", "entity_phases"):
+        conn.execute(f"UPDATE {table} SET entity_id = ? WHERE entity_id = ?", (new_span_id, entity_id))
+    conn.execute("INSERT INTO entity_sources (entity_id, source_id, status, origin, confidence, note) "
+                 "SELECT ?, source_id, status, origin, confidence, note FROM entity_sources "
+                 "WHERE entity_id = ?", (new_span_id, entity_id))
     conn.execute("INSERT INTO entity_countries (entity_id, position, country, confidence, status, note, role) "
                  "SELECT ?, position, country, confidence, status, note, role FROM entity_countries "
                  "WHERE entity_id = ?", (new_span_id, entity_id))

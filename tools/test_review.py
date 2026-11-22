@@ -355,6 +355,17 @@ class TestIdentity(unittest.TestCase):
         self.assertEqual(con.execute("PRAGMA foreign_key_check").fetchall(), [])
         self.assertEqual(log_rows(eid)[-1][0], "identity-split-done")
 
+    def test_split_moves_a_current_and_copies_sources(self):
+        eid, new = "protestant-reformation", "protestant-reformation-period"
+        n_sources = db().execute("SELECT COUNT(*) FROM entity_sources WHERE entity_id = ?", (eid,)).fetchone()[0]
+        self.assertEqual(quiet(identity.split, eid, new, via="test"), 0)
+        con = db()
+        self.assertEqual(con.execute("SELECT entity_id FROM historical_currents WHERE entity_id LIKE "
+                                     "'protestant-reformation%'").fetchall(), [(new,)])
+        self.assertEqual(con.execute("SELECT COUNT(*) FROM entity_sources WHERE entity_id = ?", (new,)).fetchone()[0],
+                         n_sources)
+        self.assertEqual(con.execute("PRAGMA foreign_key_check").fetchall(), [])
+
     def test_split_refuses_bad_ids(self):
         self.assertEqual(quiet(identity.split, "battle-of-plassey", "plassey-period"), 1)  # not shared
         self.assertEqual(quiet(identity.split, "french-revolution", "french-revolution"), 1)  # same id
