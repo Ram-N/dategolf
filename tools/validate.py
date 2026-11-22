@@ -139,6 +139,16 @@ CHECKS = [
      "SELECT p.entity_id, min(p.start_year) || ' to ' || max(p.end_year) || ' vs span ' || s.start_year || ' to ' "
      "|| s.end_year FROM entity_phases p JOIN time_spans s ON s.entity_id = p.entity_id GROUP BY p.entity_id "
      "HAVING min(p.start_year) <> s.start_year OR max(p.end_year) <> s.end_year"),
+    ("review", "Journeys awaiting approval (not exported; dashboard Review → Journeys)",
+     "SELECT id, title FROM journeys WHERE status = 'proposed'"),
+    ("warning", "Approved journey not exported: a stop shows an unpublished item (approve it) or none at all",
+     "SELECT j.id, 'stop ' || (s.position + 1) || ': ' || coalesce((SELECT group_concat(i.entity_id, ' ') "
+     "FROM journey_stop_items i JOIN entities n ON n.id = i.entity_id WHERE i.journey_id = s.journey_id "
+     "AND i.position = s.position AND n.editorial_status = 'proposed'), 'no items') "
+     "FROM journeys j JOIN journey_stops s ON s.journey_id = j.id WHERE j.status = 'reviewed' AND ("
+     "NOT EXISTS (SELECT 1 FROM journey_stop_items i WHERE i.journey_id = s.journey_id AND i.position = s.position) "
+     "OR EXISTS (SELECT 1 FROM journey_stop_items i JOIN entities n ON n.id = i.entity_id "
+     "WHERE i.journey_id = s.journey_id AND i.position = s.position AND n.editorial_status = 'proposed'))"),
     ("review", "Memory aids awaiting approval (not exported; dashboard Review → Memory aids)",
      "SELECT g.entity_id, count(*) || ' item(s)' FROM learning_content_groups g "
      "JOIN learning_content_items i ON i.group_id = g.id WHERE i.editorial_status = 'proposed' "

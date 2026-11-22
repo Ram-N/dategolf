@@ -20,6 +20,7 @@ import links  # noqa: E402
 import memory_aids  # noqa: E402
 import manage  # noqa: E402
 import missing  # noqa: E402
+import journeys  # noqa: E402
 import phases  # noqa: E402
 import significance  # noqa: E402
 import sources  # noqa: E402
@@ -120,6 +121,14 @@ def approve_phases(ids):
 
 def reject_phases(ids, reason):
     return _run(phases.reject, ids, reason, "dashboard")
+
+
+def approve_journeys(ids):
+    return _run(journeys.approve, ids, "dashboard")
+
+
+def reject_journeys(ids, reason):
+    return _run(journeys.reject, ids, reason, "dashboard")
 
 
 def approve_memory_aids(ids):

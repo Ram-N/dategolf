@@ -5,6 +5,7 @@ import io
 import json
 from pathlib import Path
 
+import journeys
 import phases
 from common import APP_FILES, DUMP_PATH, ROOT, connect
 
@@ -209,6 +210,11 @@ def render_relationships(conn):
     return dumps({"types": types, "links": out})
 
 
+def render_journeys(conn):
+    """Reviewed curated journeys for Date Flow's Story panel (Phase 14)."""
+    return dumps(journeys.exported(conn))
+
+
 RENDERERS = {
     "events.json": render_events,
     "durations.json": render_durations,
@@ -218,6 +224,7 @@ RENDERERS = {
     "daily_challenges.json": render_daily,
     "regions.json": render_regions,
     "relationships.json": render_relationships,
+    "journeys.json": render_journeys,
 }
 
 

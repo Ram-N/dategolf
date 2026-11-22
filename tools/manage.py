@@ -12,6 +12,7 @@ import drafts
 import edit
 import exporter
 import identity
+import journeys
 import links
 import memory_aids
 import phases
@@ -250,6 +251,24 @@ def main():
     p.add_argument("ids", nargs="+")
     p.add_argument("--reason", required=True)
     p.set_defaults(fn=lambda a: phases.remove(a.ids, a.reason))
+
+    p = sub.add_parser("load-journeys", help="Add curated journeys as proposed (all-or-nothing)")
+    p.add_argument("path", help='JSON {"origin": ..., "journeys": [{id, title, intro, stops: [...]}]}')
+    p.set_defaults(fn=lambda a: journeys.load(a.path))
+
+    p = sub.add_parser("approve-journey", help="Approve proposed journeys so they export")
+    p.add_argument("ids", nargs="+")
+    p.set_defaults(fn=lambda a: journeys.approve(a.ids))
+
+    p = sub.add_parser("reject-journey", help="Delete proposed journeys (logged, with a reason)")
+    p.add_argument("ids", nargs="+")
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: journeys.reject(a.ids, a.reason))
+
+    p = sub.add_parser("remove-journey", help="Delete journeys, published too (to replace them)")
+    p.add_argument("ids", nargs="+")
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: journeys.remove(a.ids, a.reason))
 
     p = sub.add_parser("load-memory-aids", help="Add DateLinks memory aids for events as proposed (all-or-nothing)")
     p.add_argument("path", help='JSON {"origin": ..., "aids": {"<event id>": {"groups": [...]}}} (docs/06)')

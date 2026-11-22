@@ -434,6 +434,42 @@ CREATE TABLE IF NOT EXISTS entity_phases (
   CHECK (start_year < end_year)
 );
 
+-- Curated journeys (Date Flow Phase 14; tools/journeys.py): a guided tour of chosen stops, each with narration.
+-- A stop points at existing events and spans and never has dates of its own, so it can't disagree with the
+-- timeline. Interpretive prose, so a journey loads as proposed and is exported only once approved.
+CREATE TABLE IF NOT EXISTS journeys (
+  id         TEXT PRIMARY KEY,                    -- slug, used in ?journey=
+  title      TEXT NOT NULL CHECK (trim(title) <> ''),
+  intro      TEXT NOT NULL CHECK (trim(intro) <> ''),
+  closing    TEXT,                                -- the wrap-up after the last stop
+  question   TEXT,                                -- one question to end on
+  position   INTEGER NOT NULL,                    -- order in the Stories menu
+  status     TEXT NOT NULL DEFAULT 'proposed' CHECK (status IN ('proposed', 'reviewed')),
+  origin     TEXT NOT NULL,
+  note       TEXT,                                -- for the reviewer
+  created_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS journey_stops (
+  journey_id TEXT NOT NULL REFERENCES journeys(id) ON DELETE CASCADE,
+  position   INTEGER NOT NULL,
+  title      TEXT,                                -- only for a stop of several items; else the item's own name
+  narration  TEXT NOT NULL CHECK (trim(narration) <> ''),
+  question   TEXT,                                -- on a few stops only (Ram: more "feels like a gimmick")
+  PRIMARY KEY (journey_id, position)
+);
+
+-- The events and spans a stop shows; the first frames it. Deleting an entity drops it here (validate reports
+-- a stop left empty).
+CREATE TABLE IF NOT EXISTS journey_stop_items (
+  journey_id    TEXT NOT NULL,
+  position      INTEGER NOT NULL,
+  item_position INTEGER NOT NULL,
+  entity_id     TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
+  PRIMARY KEY (journey_id, position, item_position),
+  FOREIGN KEY (journey_id, position) REFERENCES journey_stops(journey_id, position) ON DELETE CASCADE
+);
+
 -- Significance beside its entity's name, year and description, proposed first.
 CREATE VIEW IF NOT EXISTS v_significance_review AS
 SELECT x.entity_id,

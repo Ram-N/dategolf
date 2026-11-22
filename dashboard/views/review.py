@@ -94,6 +94,10 @@ proposed_phases = q("""SELECT s.entity_id, s.name, s.start_year || ' to ' || s.e
     FROM entity_phases p JOIN time_spans s ON s.entity_id = p.entity_id
     WHERE p.status = 'proposed' GROUP BY s.entity_id ORDER BY s.start_year""") if has_table("entity_phases") \
     else q("SELECT NULL AS entity_id WHERE 0")
+proposed_journeys = q("""SELECT j.id AS entity_id, j.title, count(*) AS stops, j.origin
+    FROM journeys j JOIN journey_stops s ON s.journey_id = j.id
+    WHERE j.status = 'proposed' GROUP BY j.id ORDER BY j.position""") if has_table("journeys") \
+    else q("SELECT NULL AS entity_id WHERE 0")
 proposed_aids = q("""SELECT e.entity_id, e.year, e.name, e.description, e.date_display,
                             count(*) AS items, group_concat(DISTINCT g.label) AS groups
     FROM learning_content_groups g JOIN learning_content_items i ON i.group_id = g.id
@@ -103,7 +107,7 @@ proposed_aids = q("""SELECT e.entity_id, e.year, e.name, e.description, e.date_d
 TAB_LABELS = [
     f"Event drafts ({len(drafts)})", f"Span drafts ({len(span_drafts)})", f"Country tags ({len(tags)})", f"Identity, Step 3a ({len(shared)})",
     f"Links ({len(proposed_links)})", f"Sources ({len(proposed_sources)})",
-    f"Significance ({len(proposed_why)})", f"Life cycles ({len(proposed_phases)})", f"Memory aids ({len(proposed_aids)})", f"Missing ({n_missing})",
+    f"Significance ({len(proposed_why)})", f"Life cycles ({len(proposed_phases)})", f"Journeys ({len(proposed_journeys)})", f"Memory aids ({len(proposed_aids)})", f"Missing ({n_missing})",
     "Fix any country tags", "Decision log"]
 # Stay on the same tab after an action. The counts in the labels change, so remember the name without them,
 # and key the widget on the labels (a changed label is a new widget, opened on the remembered tab).
@@ -112,7 +116,7 @@ tabs_key = "review_tabs_" + hashlib.sha1("|".join(TAB_LABELS).encode()).hexdiges
 # The default is fixed when this widget is first made: changing it on a later run would reset the tab.
 remembered = st.session_state.setdefault(
     tabs_key + ":default", next((l for l in TAB_LABELS if tab_name(l) == st.session_state.get("review_tab")), None))
-t_drafts, t_spans, t_tags, t_identity, t_links, t_sources, t_why, t_phases, t_aids, t_missing, t_fix, t_log = st.tabs(
+t_drafts, t_spans, t_tags, t_identity, t_links, t_sources, t_why, t_phases, t_journeys, t_aids, t_missing, t_fix, t_log = st.tabs(
     TAB_LABELS, default=remembered, key=tabs_key, on_change="rerun")
 if st.session_state.get(tabs_key):
     st.session_state["review_tab"] = tab_name(st.session_state[tabs_key])
@@ -452,6 +456,59 @@ with t_phases:
 
         if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_phases"):
             reject_phases_dialog(ids)
+
+# ── Curated journeys (Date Flow Phase 14) ───────────────────────────────────
+with t_journeys:
+    if proposed_journeys.empty:
+        st.success("No journeys waiting. New ones arrive with `load-journeys`.")
+    else:
+        bar = st.container()
+        picked = selectable(proposed_journeys, "journeys", ["title", "stops", "origin"])
+        if len(picked) == 1:
+            j = q("SELECT * FROM journeys WHERE id = ?", picked.iloc[0]["entity_id"]).iloc[0]
+            with st.container(border=True):
+                st.markdown(f"### {j['title']}")
+                st.caption("Read it as a student would: is every sentence true, does it avoid causes the links "
+                           "don't support, and do the stops run as a story? Dates come from the items, never the text.")
+                st.write(j["intro"])
+                if j["note"]:
+                    st.warning(f"Review note: {j['note']}")
+                items = q("""SELECT i.position, coalesce(t.name, e.name) AS name, coalesce(t.start_year, e.year) AS year,
+                                    t.end_year, coalesce(t.approximate, e.is_approximate) AS approximate,
+                                    coalesce(t.date_display, e.date_display) AS date_display, n.editorial_status
+                             FROM journey_stop_items i JOIN entities n ON n.id = i.entity_id
+                             LEFT JOIN time_spans t ON t.entity_id = i.entity_id
+                             LEFT JOIN events e ON e.entity_id = i.entity_id AND t.entity_id IS NULL
+                             WHERE i.journey_id = ? ORDER BY i.position, i.item_position""", j["id"])
+                stops = q("SELECT * FROM journey_stops WHERE journey_id = ? ORDER BY position", j["id"])
+                for stop in stops.itertuples():
+                    shown = items[items["position"] == stop.position]
+                    names = [f"{r['name']} ({when_text(r)})" + (" · *proposed*" if r["editorial_status"] == "proposed"
+                                                                 else "") for _, r in shown.iterrows()]
+                    st.markdown(f"**{stop.position + 1}. {stop.title or shown.iloc[0]['name']}**  \n"
+                                + " · ".join(names))
+                    st.write(stop.narration)
+                    if stop.question:
+                        st.markdown(f"*{stop.question}*")
+                if j["closing"]:
+                    st.markdown("**Closing**")
+                    st.write(j["closing"])
+                if j["question"]:
+                    st.markdown(f"*{j['question']}*")
+        ids = picked["entity_id"].tolist()
+        c1, c2, _ = bar.columns([1, 1, 4])
+        if c1.button(f"Approve ({len(ids)})", disabled=not ids, type="primary", key="approve_journeys"):
+            finish("Approve journeys", actions.approve_journeys(ids))
+
+        @st.dialog("Reject journeys")
+        def reject_journeys_dialog(ids):
+            st.write(f"Delete {len(ids)} proposed journey(s). The events and spans they show stay.")
+            reason = st.text_input("Reason (recorded in the log)")
+            if st.button("Reject", key="confirm_reject_journeys", type="primary", disabled=not reason.strip()):
+                finish("Reject journeys", actions.reject_journeys(ids, reason))
+
+        if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_journeys"):
+            reject_journeys_dialog(ids)
 
 # ── Memory aids (DateLinks, docs/06) ─────────────────────────────────────────
 with t_aids:

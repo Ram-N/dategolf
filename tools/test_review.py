@@ -27,6 +27,7 @@ import drafts  # noqa: E402
 import edit  # noqa: E402
 import exporter  # noqa: E402
 import identity  # noqa: E402
+import journeys  # noqa: E402
 import memory_aids  # noqa: E402
 import phases  # noqa: E402
 import missing  # noqa: E402
@@ -414,6 +415,59 @@ class TestPhases(unittest.TestCase):
         self.assertEqual(quiet(phases.reject, [sid], "x", "test"), 1)               # only proposed ones
         self.assertEqual(quiet(phases.remove, [sid], "replacing", "test"), 0)
         self.assertNotIn("phases", durations()[sid])
+
+
+class TestJourneys(unittest.TestCase):
+    def batch(self, journeys_, name):
+        path = TMP / f"{name}.json"
+        path.write_text(json.dumps({"origin": "test", "journeys": journeys_}))
+        return path
+
+    def test_years_in(self):
+        self.assertEqual(journeys.years_in("Cyrus took Babylon in 539 BCE; by 1453, and 44 BC"), [-539, 1453, -44])
+        self.assertEqual(journeys.years_in("over 2,500 years, 300 ships, the 1920s, the 24th"), [])
+
+    def test_load_review_and_export(self):
+        stops = [{"items": ["achaemenid-empire"], "narration": "Cyrus builds it."},
+                 {"items": ["alexanders-conquests"], "narration": "Alexander dies in 323 BCE.", "question": "Why?"},
+                 {"items": ["roman-empire", "byzantine-empire"], "title": "Rome", "narration": "East and west."}]
+        good = {"id": "test-empires", "title": "Empires", "intro": "Watch the bars.", "stops": stops}
+        exported = lambda: {j["id"]: j for j in json.loads(exporter.render_journeys(common.connect()))}
+
+        for bad in ({**good, "id": "Test Empires"},
+                    {**good, "stops": stops[:2]},                                                # too few stops
+                    {**good, "stops": [stops[0], {**stops[1], "items": ["no-such-id"]}, stops[2]]},
+                    {**good, "stops": [stops[0], stops[1], {**stops[2], "title": None}]},        # several items, no title
+                    {**good, "stops": [{**stops[0], "title": "Persia"}, stops[1], stops[2]]},    # one item, titled
+                    {**good, "stops": [stops[0], {**stops[1], "narration": "He dies in 320 BCE."}, stops[2]]},
+                    {**good, "intro": "From 1066 on."},                                         # no item's year
+                    {**good, "stops": [stops[2], stops[0], stops[1]]}):                          # runs backwards
+            self.assertEqual(quiet(journeys.load, self.batch([bad], "bad")), 1)
+        self.assertIsNone(db().execute("SELECT 1 FROM journeys WHERE id = 'test-empires'").fetchone())
+
+        self.assertEqual(quiet(journeys.load, self.batch([good], "good")), 0)
+        self.assertEqual(quiet(journeys.load, self.batch([good], "again")), 1)  # already exists
+        self.assertNotIn("test-empires", exported())                            # proposed: not exported
+        self.assertEqual(quiet(journeys.approve, ["test-empires"], "test"), 0)
+        out = exported()["test-empires"]
+        self.assertEqual([s["items"] for s in out["stops"]], [s["items"] for s in stops])
+        self.assertEqual(out["stops"][1]["question"], "Why?")
+        self.assertNotIn("title", out["stops"][0])
+        self.assertEqual(log_rows("test-empires")[-1][0], "approve-journey")
+
+        self.assertEqual(quiet(journeys.reject, ["test-empires"], "x", "test"), 1)  # only proposed ones
+        self.assertEqual(quiet(journeys.remove, ["test-empires"], "replacing", "test"), 0)
+        self.assertIsNone(db().execute("SELECT 1 FROM journey_stop_items WHERE journey_id = 'test-empires'").fetchone())
+
+    def test_waits_on_unpublished_items(self):
+        load_draft("test-journey-event")  # proposed, 1234
+        stops = [{"items": ["achaemenid-empire"], "narration": "a"}, {"items": ["roman-empire"], "narration": "b"},
+                 {"items": ["test-journey-event"], "narration": "c"}]
+        quiet(journeys.load, self.batch([{"id": "test-waits", "title": "T", "intro": "i", "stops": stops}], "waits"))
+        quiet(journeys.approve, ["test-waits"], "test")
+        self.assertNotIn("test-waits", [j["id"] for j in json.loads(exporter.render_journeys(common.connect()))])
+        quiet(drafts.approve, ["test-journey-event"], "test")
+        self.assertIn("test-waits", [j["id"] for j in json.loads(exporter.render_journeys(common.connect()))])
 
 
 class TestMemoryAids(unittest.TestCase):
