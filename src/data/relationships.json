@@ -3371,6 +3371,62 @@
       "target": "islamic-golden-age-period",
       "why": "The destruction of Baghdad's palaces, libraries and scholarly institutions conventionally marks the end of the Islamic Golden Age.",
       "confidence": "high"
+    },
+    {
+      "source": "hong-kong-handover",
+      "type": "ended",
+      "target": "british-empire",
+      "why": "The return of Hong Kong to China is usually taken as the end of the British Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "british-raj",
+      "type": "part_of",
+      "target": "british-empire",
+      "why": "Crown rule in India was the largest part of the British Empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "company-rule-in-india",
+      "type": "part_of",
+      "target": "british-empire",
+      "why": "The East India Company ruled under a royal charter, so historians count its Indian territories in the empire, though the Crown took direct control only in 1858.",
+      "confidence": "medium"
+    },
+    {
+      "source": "thales-solar-eclipse",
+      "type": "began",
+      "target": "greek-philosophy-thales-to-aristotle",
+      "why": "Thales is traditionally the first Greek philosopher, and his eclipse prediction is the usual marker of the start.",
+      "confidence": "medium"
+    },
+    {
+      "source": "platos-academy-founded",
+      "type": "part_of",
+      "target": "greek-philosophy-thales-to-aristotle",
+      "why": "Plato's Academy in Athens was the era's leading school; Aristotle studied there for twenty years.",
+      "confidence": "high"
+    },
+    {
+      "source": "socrates-execution",
+      "type": "part_of",
+      "target": "greek-philosophy-thales-to-aristotle",
+      "why": "Socrates's trial and death, recorded by his pupil Plato, are a central episode of Greek philosophy.",
+      "confidence": "high"
+    },
+    {
+      "source": "greek-philosophy-thales-to-aristotle",
+      "type": "part_of",
+      "target": "axial-age",
+      "why": "Jaspers counted the Greek philosophers among the Axial Age's thinkers; historians debate the label.",
+      "confidence": "medium"
+    },
+    {
+      "source": "life-of-mahavira",
+      "type": "part_of",
+      "target": "axial-age",
+      "why": "Mahavira taught in the same centuries and region as the Buddha; historians debate the Axial Age label.",
+      "confidence": "medium"
     }
   ]
 }

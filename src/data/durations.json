@@ -238,6 +238,42 @@
     "current": true
   },
   {
+    "id": "life-of-mahavira",
+    "name": "Life of Mahavira",
+    "startYear": -599,
+    "endYear": -527,
+    "description": "Vardhamana, called Mahavira ('great hero'), revered by Jains as the 24th and last tirthankara, or teacher who shows the way to liberation. In the Ganges valley he taught non-violence toward all living beings, truthfulness and strict self-discipline.",
+    "categories": [
+      "Religion",
+      "Philosophy"
+    ],
+    "region": "South Asia",
+    "importance": 5,
+    "kind": "period",
+    "significance": "Jainism's ideal of non-violence (ahimsa) toward every living thing shaped Indian ethics, vegetarianism and trade communities. It also influenced Gandhi, whose early mentor Shrimad Rajchandra was a Jain thinker.",
+    "approximate": true,
+    "dateDisplay": "traditionally 599–527 BCE; many historians place him later, as an older contemporary of the Buddha",
+    "person": true,
+    "role": "Teacher of Jainism"
+  },
+  {
+    "id": "greek-philosophy-thales-to-aristotle",
+    "name": "Greek Philosophy from Thales to Aristotle",
+    "startYear": -585,
+    "endYear": -322,
+    "description": "The Greek thinkers who tried to explain the world by observation, reason and argument rather than myth: the natural philosophers of Ionia, then Socrates, Plato and Aristotle in Athens. After Aristotle, new schools such as the Stoics and Epicureans carried Greek philosophy on for centuries.",
+    "categories": [
+      "Philosophy",
+      "Science"
+    ],
+    "region": "Europe",
+    "importance": 7,
+    "kind": "period",
+    "significance": "Their habits of definition, logical argument and testing ideas against evidence became the foundation of Western philosophy and science. Scholars writing in Arabic, and later in Latin, translated and debated Plato and Aristotle for nearly two thousand years.",
+    "approximate": true,
+    "dateDisplay": "c. 585 BCE (Thales) to 322 BCE (the death of Aristotle)"
+  },
+  {
     "id": "life-of-the-buddha",
     "name": "Life of the Buddha",
     "startYear": -563,
@@ -1704,6 +1740,23 @@
     "region": "East Asia",
     "importance": 6,
     "kind": "empire"
+  },
+  {
+    "id": "british-empire",
+    "name": "British Empire",
+    "startYear": 1607,
+    "endYear": 1997,
+    "description": "The colonies, trading posts, protectorates and dominions ruled by England and then Britain, built by settlement, trade and conquest. At its height it covered about a quarter of the world's land and people; most of it became independent in the decades after the Second World War.",
+    "categories": [
+      "Politics",
+      "Economy"
+    ],
+    "region": "Global",
+    "importance": 8,
+    "kind": "empire",
+    "significance": "It spread the English language, common law, parliamentary government and sports such as cricket around the world, and its trade and investment tied distant economies together. It also rested on conquest and, until abolition, on slavery: British ships were the leading carriers of enslaved Africans across the Atlantic in the 1700s. Its legacy is still argued over in Britain and in its former colonies.",
+    "approximate": true,
+    "dateDisplay": "1607 (Jamestown, the first lasting colony) to 1997 (the handover of Hong Kong); some date it from Newfoundland, 1583"
   },
   {
     "id": "thirty-years-war-period",

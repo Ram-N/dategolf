@@ -159,6 +159,6 @@ describe('dateflow stories — real data', () => {
   it('counts story steps for the card buttons', () => {
     const c = storyCounts('japan-world-war-two-defeat', data, events, durations)
     expect(c.back).toBeGreaterThan(3)
-    expect(storyCounts('thales-solar-eclipse', data, events, durations)).toEqual({ back: 0, forward: 0 })
+    expect(storyCounts('invention-of-the-wheel', data, events, durations)).toEqual({ back: 0, forward: 0 })
   })
 })
