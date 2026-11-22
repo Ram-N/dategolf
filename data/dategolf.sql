@@ -2670,16 +2670,16 @@ INSERT INTO "entities" VALUES('treaty-of-karlowitz','event','reviewed','2026-11-
 INSERT INTO "entities" VALUES('selim-iii-becomes-sultan','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:09:29');
 INSERT INTO "entities" VALUES('tanzimat-edict','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:11:34');
 INSERT INTO "entities" VALUES('ottoman-empire-enters-world-war-i','event','reviewed','2026-11-21 17:34:55','2026-11-22 02:11:34');
-INSERT INTO "entities" VALUES('confucius','period','proposed','2026-11-22 02:36:11',NULL);
-INSERT INTO "entities" VALUES('alexander-the-great','period','proposed','2026-11-22 02:36:11',NULL);
-INSERT INTO "entities" VALUES('ashoka','period','proposed','2026-11-22 02:36:11',NULL);
-INSERT INTO "entities" VALUES('muhammad','period','proposed','2026-11-22 02:36:11',NULL);
-INSERT INTO "entities" VALUES('genghis-khan','period','proposed','2026-11-22 02:36:11',NULL);
-INSERT INTO "entities" VALUES('elizabeth-i','period','proposed','2026-11-22 02:36:11',NULL);
-INSERT INTO "entities" VALUES('akbar','period','proposed','2026-11-22 02:36:11',NULL);
-INSERT INTO "entities" VALUES('isaac-newton','period','proposed','2026-11-22 02:36:11',NULL);
-INSERT INTO "entities" VALUES('marie-curie','period','proposed','2026-11-22 02:36:11',NULL);
-INSERT INTO "entities" VALUES('mahatma-gandhi','period','proposed','2026-11-22 02:36:11',NULL);
+INSERT INTO "entities" VALUES('confucius','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:41');
+INSERT INTO "entities" VALUES('alexander-the-great','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:46');
+INSERT INTO "entities" VALUES('ashoka','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:23');
+INSERT INTO "entities" VALUES('muhammad','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:23');
+INSERT INTO "entities" VALUES('genghis-khan','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:23');
+INSERT INTO "entities" VALUES('elizabeth-i','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:23');
+INSERT INTO "entities" VALUES('akbar','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:05');
+INSERT INTO "entities" VALUES('isaac-newton','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:05');
+INSERT INTO "entities" VALUES('marie-curie','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:05');
+INSERT INTO "entities" VALUES('mahatma-gandhi','period','reviewed','2026-11-22 02:36:11','2026-11-22 02:43:05');
 CREATE TABLE entity_categories (
   entity_id TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   facet     TEXT NOT NULL CHECK (facet IN ('event', 'span')),
@@ -4854,17 +4854,17 @@ INSERT INTO "entity_countries" VALUES('treaty-of-karlowitz',2,'AT','high','revie
 INSERT INTO "entity_countries" VALUES('selim-iii-becomes-sultan',0,'TR','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('tanzimat-edict',0,'TR','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('ottoman-empire-enters-world-war-i',0,'TR','high','reviewed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('confucius',0,'CN','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('alexander-the-great',0,'GR','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('ashoka',0,'IN','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('muhammad',0,'SA','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('genghis-khan',0,'MN','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('elizabeth-i',0,'GB','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('akbar',0,'IN','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('isaac-newton',0,'GB','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('marie-curie',0,'FR','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('marie-curie',1,'PL','high','proposed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('mahatma-gandhi',0,'IN','high','proposed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('confucius',0,'CN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('alexander-the-great',0,'GR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('ashoka',0,'IN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('muhammad',0,'SA','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('genghis-khan',0,'MN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('elizabeth-i',0,'GB','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('akbar',0,'IN','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('isaac-newton',0,'GB','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('marie-curie',0,'FR','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('marie-curie',1,'PL','high','reviewed',NULL,'location');
+INSERT INTO "entity_countries" VALUES('mahatma-gandhi',0,'IN','high','reviewed',NULL,'location');
 CREATE TABLE entity_phases (
   id             INTEGER PRIMARY KEY,
   entity_id      TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,  -- the span
@@ -5397,16 +5397,16 @@ INSERT INTO "entity_significance" VALUES('treaty-of-karlowitz','Karlowitz was th
 INSERT INTO "entity_significance" VALUES('selim-iii-becomes-sultan','Selim III''s New Order was the first systematic Ottoman attempt to remodel the state on European lines. It failed and cost him his life, but his successors Mahmud II and the Tanzimat reformers carried the same programme much further.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:09:29');
 INSERT INTO "entity_significance" VALUES('tanzimat-edict','The Tanzimat modernised Ottoman law, schools and government and moved towards equal citizenship regardless of religion, leading to the first Ottoman constitution in 1876. It also met resistance at home and did not stop nationalist movements or European pressure.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:11:34');
 INSERT INTO "entity_significance" VALUES('ottoman-empire-enters-world-war-i','Entering the war proved fatal to the empire. Despite victories at Gallipoli and Kut it was defeated by 1918 and occupied, and the war years saw the Armenian genocide. The peace settlement divided its Arab lands between Britain and France, and the sultanate was abolished in 1922.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-21 17:34:55','2026-11-22 02:11:34');
-INSERT INTO "entity_significance" VALUES('confucius','Confucius''s teachings became the core of the state ideology and education of imperial China and shaped Korea, Japan and Vietnam. His ideals of duty to family, proper conduct and government by moral example remain central to East Asian culture.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11',NULL);
-INSERT INTO "entity_significance" VALUES('alexander-the-great','Alexander''s conquests spread Greek language and culture from Egypt to Central Asia, opening the Hellenistic age. His empire split among his generals soon after his death, founding kingdoms such as Ptolemaic Egypt that lasted until Rome absorbed them.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11',NULL);
-INSERT INTO "entity_significance" VALUES('ashoka','Ashoka''s edicts are among the earliest deciphered written records of Indian history, and his patronage helped Buddhism spread across and beyond South Asia. His lion capital at Sarnath is now India''s national emblem.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11',NULL);
-INSERT INTO "entity_significance" VALUES('muhammad','The faith and community Muhammad founded grew within a century into a state stretching from Spain to Central Asia. Islam is now followed by about a quarter of the world''s people.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11',NULL);
-INSERT INTO "entity_significance" VALUES('genghis-khan','Genghis Khan''s conquests were hugely destructive, but the empire they began linked China, Persia and Europe more closely than ever before, carrying trade and ideas, and, many historians think, the plague, along routes the Mongols kept open.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11',NULL);
-INSERT INTO "entity_significance" VALUES('elizabeth-i','Elizabeth''s long reign settled England''s Protestant church and saw the defeat of the Spanish Armada, the first English colonial ventures and the plays of Shakespeare. She left no heir, and her death joined the English and Scottish crowns under James I.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11',NULL);
-INSERT INTO "entity_significance" VALUES('akbar','Akbar''s reforms and alliances made the Mughal Empire the dominant power of the subcontinent for more than a century. His policy of religious tolerance, unusual for its time, remains a reference point in debates about India''s pluralism.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11',NULL);
-INSERT INTO "entity_significance" VALUES('isaac-newton','Newton''s laws of motion and gravitation explained the movement of planets and falling objects with one set of rules, and they remained the foundation of physics until Einstein. His work became a model of science for the Enlightenment.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11',NULL);
-INSERT INTO "entity_significance" VALUES('marie-curie','Curie''s research on radioactivity opened a new field of physics and chemistry and led to medical uses of radiation. As a pioneering woman in science she became a lasting role model; her death is thought to have been caused by her long exposure to radiation.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11',NULL);
-INSERT INTO "entity_significance" VALUES('mahatma-gandhi','Gandhi''s method of nonviolent mass protest, which he called satyagraha, helped end British rule in India and inspired civil rights movements around the world, including those led by Martin Luther King Jr. and Nelson Mandela.','proposed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11',NULL);
+INSERT INTO "entity_significance" VALUES('confucius','Confucius''s teachings became the core of the state ideology and education of imperial China and shaped Korea, Japan and Vietnam. His ideals of duty to family, proper conduct and government by moral example remain central to East Asian culture.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:41');
+INSERT INTO "entity_significance" VALUES('alexander-the-great','Alexander''s conquests spread Greek language and culture from Egypt to Central Asia, opening the Hellenistic age. His empire split among his generals soon after his death, founding kingdoms such as Ptolemaic Egypt that lasted until Rome absorbed them.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:46');
+INSERT INTO "entity_significance" VALUES('ashoka','Ashoka''s edicts are among the earliest deciphered written records of Indian history, and his patronage helped Buddhism spread across and beyond South Asia. His lion capital at Sarnath is now India''s national emblem.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:23');
+INSERT INTO "entity_significance" VALUES('muhammad','The faith and community Muhammad founded grew within a century into a state stretching from Spain to Central Asia. Islam is now followed by about a quarter of the world''s people.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:23');
+INSERT INTO "entity_significance" VALUES('genghis-khan','Genghis Khan''s conquests were hugely destructive, but the empire they began linked China, Persia and Europe more closely than ever before, carrying trade and ideas, and, many historians think, the plague, along routes the Mongols kept open.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:23');
+INSERT INTO "entity_significance" VALUES('elizabeth-i','Elizabeth''s long reign settled England''s Protestant church and saw the defeat of the Spanish Armada, the first English colonial ventures and the plays of Shakespeare. She left no heir, and her death joined the English and Scottish crowns under James I.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:23');
+INSERT INTO "entity_significance" VALUES('akbar','Akbar''s reforms and alliances made the Mughal Empire the dominant power of the subcontinent for more than a century. His policy of religious tolerance, unusual for its time, remains a reference point in debates about India''s pluralism.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:05');
+INSERT INTO "entity_significance" VALUES('isaac-newton','Newton''s laws of motion and gravitation explained the movement of planets and falling objects with one set of rules, and they remained the foundation of physics until Einstein. His work became a model of science for the Enlightenment.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:05');
+INSERT INTO "entity_significance" VALUES('marie-curie','Curie''s research on radioactivity opened a new field of physics and chemistry and led to medical uses of radiation. As a pioneering woman in science she became a lasting role model; her death is thought to have been caused by her long exposure to radiation.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:05');
+INSERT INTO "entity_significance" VALUES('mahatma-gandhi','Gandhi''s method of nonviolent mass protest, which he called satyagraha, helped end British rule in India and inspired civil rights movements around the world, including those led by Martin Luther King Jr. and Nelson Mandela.','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-22 02:36:11','2026-11-22 02:43:05');
 CREATE TABLE entity_sources (
   entity_id  TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   source_id  INTEGER NOT NULL REFERENCES sources(id) ON DELETE CASCADE,
@@ -6077,16 +6077,16 @@ INSERT INTO "entity_sources" VALUES('treaty-of-karlowitz',647,'reviewed','ai_dra
 INSERT INTO "entity_sources" VALUES('selim-iii-becomes-sultan',648,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('tanzimat-edict',649,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('ottoman-empire-enters-world-war-i',650,'reviewed','ai_drafted',NULL,NULL);
-INSERT INTO "entity_sources" VALUES('confucius',165,'proposed','ai_drafted',NULL,NULL);
-INSERT INTO "entity_sources" VALUES('alexander-the-great',651,'proposed','ai_drafted',NULL,NULL);
-INSERT INTO "entity_sources" VALUES('ashoka',129,'proposed','ai_drafted',NULL,NULL);
-INSERT INTO "entity_sources" VALUES('muhammad',585,'proposed','ai_drafted',NULL,NULL);
-INSERT INTO "entity_sources" VALUES('genghis-khan',245,'proposed','ai_drafted',NULL,NULL);
-INSERT INTO "entity_sources" VALUES('elizabeth-i',652,'proposed','ai_drafted',NULL,NULL);
-INSERT INTO "entity_sources" VALUES('akbar',59,'proposed','ai_drafted',NULL,NULL);
-INSERT INTO "entity_sources" VALUES('isaac-newton',653,'proposed','ai_drafted',NULL,NULL);
-INSERT INTO "entity_sources" VALUES('marie-curie',386,'proposed','ai_drafted',NULL,NULL);
-INSERT INTO "entity_sources" VALUES('mahatma-gandhi',119,'proposed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('confucius',165,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('alexander-the-great',651,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('ashoka',129,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('muhammad',585,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('genghis-khan',245,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('elizabeth-i',652,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('akbar',59,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('isaac-newton',653,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('marie-curie',386,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('mahatma-gandhi',119,'reviewed','ai_drafted',NULL,NULL);
 CREATE TABLE event_aliases (
   entity_id TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   position  INTEGER NOT NULL,
@@ -12038,32 +12038,32 @@ INSERT INTO "relationships" VALUES(481,'selim-iii-becomes-sultan','part_of','ott
 INSERT INTO "relationships" VALUES(482,'tanzimat-edict','part_of','ottoman-empire','The edict opened the Tanzimat, the empire''s great reform era.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
 INSERT INTO "relationships" VALUES(483,'ottoman-empire-enters-world-war-i','part_of','world-war-1','The Ottoman Empire fought in the war as Germany''s ally.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
 INSERT INTO "relationships" VALUES(484,'ottoman-empire-enters-world-war-i','preceded','ottoman-empire-falls','Defeat in the war led to occupation, the Turkish War of Independence and the abolition of the sultanate.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-21 17:34:56');
-INSERT INTO "relationships" VALUES(485,'birth-of-confucius','began','confucius','Confucius''s birth, by the traditional date.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(486,'alexander-conquests','part_of','alexander-the-great','Alexander''s campaign against Persia filled the last eleven years of his life.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(487,'battle-of-gaugamela','part_of','alexander-the-great','Alexander''s decisive victory over Darius III of Persia.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(488,'alexander-founds-alexandria','part_of','alexander-the-great','Alexander founded the city during his campaign in Egypt.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(489,'death-of-alexander','ended','alexander-the-great','Alexander died in Babylon at thirty-two.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(490,'ashoka-becomes-emperor','part_of','ashoka','His accession as the third Mauryan emperor.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(491,'kalinga-war','part_of','ashoka','The war whose bloodshed, by his own edict, turned Ashoka to Buddhist ethics.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(492,'ashoka-converts-to-buddhism','part_of','ashoka','Ashoka''s turn to Buddhism after the Kalinga war.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(493,'birth-of-muhammad','began','muhammad','Muhammad''s birth in Mecca, by the traditional date.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(494,'founding-of-islam','part_of','muhammad','Muslim tradition dates Muhammad''s first revelation to this year.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(495,'hijra','part_of','muhammad','Muhammad''s migration from Mecca to Medina.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(496,'death-of-muhammad','ended','muhammad','Muhammad died in Medina.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(497,'genghis-khan-unifies-mongols','part_of','genghis-khan','Temüjin was proclaimed Genghis Khan after uniting the Mongol tribes.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(498,'spanish-armada-defeated','part_of','elizabeth-i','The Armada was sent against Elizabeth''s England.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(499,'death-of-elizabeth-i','ended','elizabeth-i','Elizabeth died without an heir.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(500,'birth-of-akbar','began','akbar','Akbar''s birth at Umerkot, while his father Humayun was in flight.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(501,'akbar-becomes-mughal-emperor','part_of','akbar','Akbar became emperor at thirteen.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(502,'mughal-akbar-administration','part_of','akbar','One of Akbar''s main reforms.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(503,'akbar-din-i-ilahi','part_of','akbar','Akbar''s own religious movement, late in his reign.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(504,'death-of-akbar','ended','akbar','Akbar''s death in Agra.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(505,'newton-laws-of-motion','part_of','isaac-newton','Newton''s best-known work.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(506,'curie-radioactivity','part_of','marie-curie','Marie and Pierre Curie''s discovery of two new elements.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(507,'gandhi-born','began','mahatma-gandhi','Gandhi''s birth at Porbandar.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(508,'gandhi-returns-to-india','part_of','mahatma-gandhi','Gandhi came home from South Africa to join India''s national movement.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(509,'gandhi-salt-march','part_of','mahatma-gandhi','Gandhi''s best-known act of nonviolent protest.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
-INSERT INTO "relationships" VALUES(510,'mahatma-gandhi-assassinated','ended','mahatma-gandhi','Gandhi was shot in Delhi by a Hindu nationalist.','high','proposed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(485,'birth-of-confucius','began','confucius','Confucius''s birth, by the traditional date.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(486,'alexander-conquests','part_of','alexander-the-great','Alexander''s campaign against Persia filled the last eleven years of his life.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(487,'battle-of-gaugamela','part_of','alexander-the-great','Alexander''s decisive victory over Darius III of Persia.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(488,'alexander-founds-alexandria','part_of','alexander-the-great','Alexander founded the city during his campaign in Egypt.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(489,'death-of-alexander','ended','alexander-the-great','Alexander died in Babylon at thirty-two.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(490,'ashoka-becomes-emperor','part_of','ashoka','His accession as the third Mauryan emperor.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(491,'kalinga-war','part_of','ashoka','The war whose bloodshed, by his own edict, turned Ashoka to Buddhist ethics.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(492,'ashoka-converts-to-buddhism','part_of','ashoka','Ashoka''s turn to Buddhism after the Kalinga war.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(493,'birth-of-muhammad','began','muhammad','Muhammad''s birth in Mecca, by the traditional date.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(494,'founding-of-islam','part_of','muhammad','Muslim tradition dates Muhammad''s first revelation to this year.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(495,'hijra','part_of','muhammad','Muhammad''s migration from Mecca to Medina.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(496,'death-of-muhammad','ended','muhammad','Muhammad died in Medina.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(497,'genghis-khan-unifies-mongols','part_of','genghis-khan','Temüjin was proclaimed Genghis Khan after uniting the Mongol tribes.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(498,'spanish-armada-defeated','part_of','elizabeth-i','The Armada was sent against Elizabeth''s England.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(499,'death-of-elizabeth-i','ended','elizabeth-i','Elizabeth died without an heir.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(500,'birth-of-akbar','began','akbar','Akbar''s birth at Umerkot, while his father Humayun was in flight.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(501,'akbar-becomes-mughal-emperor','part_of','akbar','Akbar became emperor at thirteen.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(502,'mughal-akbar-administration','part_of','akbar','One of Akbar''s main reforms.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(503,'akbar-din-i-ilahi','part_of','akbar','Akbar''s own religious movement, late in his reign.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(504,'death-of-akbar','ended','akbar','Akbar''s death in Agra.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(505,'newton-laws-of-motion','part_of','isaac-newton','Newton''s best-known work.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(506,'curie-radioactivity','part_of','marie-curie','Marie and Pierre Curie''s discovery of two new elements.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(507,'gandhi-born','began','mahatma-gandhi','Gandhi''s birth at Porbandar.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(508,'gandhi-returns-to-india','part_of','mahatma-gandhi','Gandhi came home from South Africa to join India''s national movement.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(509,'gandhi-salt-march','part_of','mahatma-gandhi','Gandhi''s best-known act of nonviolent protest.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
+INSERT INTO "relationships" VALUES(510,'mahatma-gandhi-assassinated','ended','mahatma-gandhi','Gandhi was shot in Delhi by a Hindu nationalist.','high','reviewed','ai_drafted:claude-opus-5-5','2026-11-22 02:36:11');
 CREATE TABLE review_log (
   id        INTEGER PRIMARY KEY,
   at        TEXT NOT NULL DEFAULT (datetime('now')),
@@ -13749,6 +13749,52 @@ INSERT INTO "review_log" VALUES(1674,'2026-11-22 02:12:41','approve-link','ottom
 INSERT INTO "review_log" VALUES(1675,'2026-11-22 02:12:41','approve-link','ottoman-empire-enters-world-war-i','link #484: ottoman-empire-enters-world-war-i preceded ottoman-empire-falls','dashboard');
 INSERT INTO "review_log" VALUES(1676,'2026-11-22 02:22:24','set-span-years','ottoman-empire','1299 to 1922 → c. 1299 to 1922 (c. 1299 (the traditional founding date) to 1922, when the sultanate was abolished)','cli');
 INSERT INTO "review_log" VALUES(1677,'2026-11-22 02:36:12','person','life-of-the-buddha','a person (Founder of Buddhism)','cli');
+INSERT INTO "review_log" VALUES(1678,'2026-11-22 02:43:05','approve-draft','akbar',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1679,'2026-11-22 02:43:05','approve-draft','isaac-newton',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1680,'2026-11-22 02:43:05','approve-draft','marie-curie',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1681,'2026-11-22 02:43:05','approve-draft','mahatma-gandhi',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1682,'2026-11-22 02:43:23','approve-draft','ashoka',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1683,'2026-11-22 02:43:23','approve-draft','muhammad',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1684,'2026-11-22 02:43:23','approve-draft','genghis-khan',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1685,'2026-11-22 02:43:23','approve-draft','elizabeth-i',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1686,'2026-11-22 02:43:41','approve-draft','confucius',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1687,'2026-11-22 02:43:46','approve-draft','alexander-the-great',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1688,'2026-11-22 02:44:08','approve-countries','confucius',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1689,'2026-11-22 02:44:08','approve-countries','alexander-the-great',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1690,'2026-11-22 02:44:08','approve-countries','ashoka',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1691,'2026-11-22 02:44:08','approve-countries','muhammad',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1692,'2026-11-22 02:44:08','approve-countries','genghis-khan',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1693,'2026-11-22 02:44:08','approve-countries','elizabeth-i',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1694,'2026-11-22 02:44:08','approve-countries','akbar',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1695,'2026-11-22 02:44:08','approve-countries','isaac-newton',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1696,'2026-11-22 02:44:08','approve-countries','marie-curie',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1697,'2026-11-22 02:44:08','approve-countries','mahatma-gandhi',NULL,'dashboard');
+INSERT INTO "review_log" VALUES(1698,'2026-11-22 02:44:26','approve-link','gandhi-born','link #507: gandhi-born began mahatma-gandhi','dashboard');
+INSERT INTO "review_log" VALUES(1699,'2026-11-22 02:44:26','approve-link','gandhi-returns-to-india','link #508: gandhi-returns-to-india part_of mahatma-gandhi','dashboard');
+INSERT INTO "review_log" VALUES(1700,'2026-11-22 02:44:26','approve-link','gandhi-salt-march','link #509: gandhi-salt-march part_of mahatma-gandhi','dashboard');
+INSERT INTO "review_log" VALUES(1701,'2026-11-22 02:44:26','approve-link','mahatma-gandhi-assassinated','link #510: mahatma-gandhi-assassinated ended mahatma-gandhi','dashboard');
+INSERT INTO "review_log" VALUES(1702,'2026-11-22 02:44:43','approve-link','birth-of-confucius','link #485: birth-of-confucius began confucius','dashboard');
+INSERT INTO "review_log" VALUES(1703,'2026-11-22 02:44:43','approve-link','alexander-conquests','link #486: alexander-conquests part_of alexander-the-great','dashboard');
+INSERT INTO "review_log" VALUES(1704,'2026-11-22 02:44:43','approve-link','battle-of-gaugamela','link #487: battle-of-gaugamela part_of alexander-the-great','dashboard');
+INSERT INTO "review_log" VALUES(1705,'2026-11-22 02:44:43','approve-link','alexander-founds-alexandria','link #488: alexander-founds-alexandria part_of alexander-the-great','dashboard');
+INSERT INTO "review_log" VALUES(1706,'2026-11-22 02:44:43','approve-link','death-of-alexander','link #489: death-of-alexander ended alexander-the-great','dashboard');
+INSERT INTO "review_log" VALUES(1707,'2026-11-22 02:44:43','approve-link','ashoka-becomes-emperor','link #490: ashoka-becomes-emperor part_of ashoka','dashboard');
+INSERT INTO "review_log" VALUES(1708,'2026-11-22 02:44:43','approve-link','kalinga-war','link #491: kalinga-war part_of ashoka','dashboard');
+INSERT INTO "review_log" VALUES(1709,'2026-11-22 02:44:43','approve-link','ashoka-converts-to-buddhism','link #492: ashoka-converts-to-buddhism part_of ashoka','dashboard');
+INSERT INTO "review_log" VALUES(1710,'2026-11-22 02:44:43','approve-link','birth-of-muhammad','link #493: birth-of-muhammad began muhammad','dashboard');
+INSERT INTO "review_log" VALUES(1711,'2026-11-22 02:44:43','approve-link','founding-of-islam','link #494: founding-of-islam part_of muhammad','dashboard');
+INSERT INTO "review_log" VALUES(1712,'2026-11-22 02:45:04','approve-link','hijra','link #495: hijra part_of muhammad','dashboard');
+INSERT INTO "review_log" VALUES(1713,'2026-11-22 02:45:04','approve-link','death-of-muhammad','link #496: death-of-muhammad ended muhammad','dashboard');
+INSERT INTO "review_log" VALUES(1714,'2026-11-22 02:45:04','approve-link','genghis-khan-unifies-mongols','link #497: genghis-khan-unifies-mongols part_of genghis-khan','dashboard');
+INSERT INTO "review_log" VALUES(1715,'2026-11-22 02:45:04','approve-link','spanish-armada-defeated','link #498: spanish-armada-defeated part_of elizabeth-i','dashboard');
+INSERT INTO "review_log" VALUES(1716,'2026-11-22 02:45:04','approve-link','death-of-elizabeth-i','link #499: death-of-elizabeth-i ended elizabeth-i','dashboard');
+INSERT INTO "review_log" VALUES(1717,'2026-11-22 02:45:04','approve-link','birth-of-akbar','link #500: birth-of-akbar began akbar','dashboard');
+INSERT INTO "review_log" VALUES(1718,'2026-11-22 02:45:04','approve-link','akbar-becomes-mughal-emperor','link #501: akbar-becomes-mughal-emperor part_of akbar','dashboard');
+INSERT INTO "review_log" VALUES(1719,'2026-11-22 02:45:04','approve-link','mughal-akbar-administration','link #502: mughal-akbar-administration part_of akbar','dashboard');
+INSERT INTO "review_log" VALUES(1720,'2026-11-22 02:45:04','approve-link','akbar-din-i-ilahi','link #503: akbar-din-i-ilahi part_of akbar','dashboard');
+INSERT INTO "review_log" VALUES(1721,'2026-11-22 02:45:04','approve-link','death-of-akbar','link #504: death-of-akbar ended akbar','dashboard');
+INSERT INTO "review_log" VALUES(1722,'2026-11-22 02:45:11','approve-link','newton-laws-of-motion','link #505: newton-laws-of-motion part_of isaac-newton','dashboard');
+INSERT INTO "review_log" VALUES(1723,'2026-11-22 02:45:11','approve-link','curie-radioactivity','link #506: curie-radioactivity part_of marie-curie','dashboard');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),

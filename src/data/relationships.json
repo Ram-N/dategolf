@@ -3182,6 +3182,188 @@
       "target": "ottoman-empire-falls",
       "why": "Defeat in the war led to occupation, the Turkish War of Independence and the abolition of the sultanate.",
       "confidence": "high"
+    },
+    {
+      "source": "birth-of-confucius",
+      "type": "began",
+      "target": "confucius",
+      "why": "Confucius's birth, by the traditional date.",
+      "confidence": "high"
+    },
+    {
+      "source": "alexander-conquests",
+      "type": "part_of",
+      "target": "alexander-the-great",
+      "why": "Alexander's campaign against Persia filled the last eleven years of his life.",
+      "confidence": "high"
+    },
+    {
+      "source": "battle-of-gaugamela",
+      "type": "part_of",
+      "target": "alexander-the-great",
+      "why": "Alexander's decisive victory over Darius III of Persia.",
+      "confidence": "high"
+    },
+    {
+      "source": "alexander-founds-alexandria",
+      "type": "part_of",
+      "target": "alexander-the-great",
+      "why": "Alexander founded the city during his campaign in Egypt.",
+      "confidence": "high"
+    },
+    {
+      "source": "death-of-alexander",
+      "type": "ended",
+      "target": "alexander-the-great",
+      "why": "Alexander died in Babylon at thirty-two.",
+      "confidence": "high"
+    },
+    {
+      "source": "ashoka-becomes-emperor",
+      "type": "part_of",
+      "target": "ashoka",
+      "why": "His accession as the third Mauryan emperor.",
+      "confidence": "high"
+    },
+    {
+      "source": "kalinga-war",
+      "type": "part_of",
+      "target": "ashoka",
+      "why": "The war whose bloodshed, by his own edict, turned Ashoka to Buddhist ethics.",
+      "confidence": "high"
+    },
+    {
+      "source": "ashoka-converts-to-buddhism",
+      "type": "part_of",
+      "target": "ashoka",
+      "why": "Ashoka's turn to Buddhism after the Kalinga war.",
+      "confidence": "high"
+    },
+    {
+      "source": "birth-of-muhammad",
+      "type": "began",
+      "target": "muhammad",
+      "why": "Muhammad's birth in Mecca, by the traditional date.",
+      "confidence": "high"
+    },
+    {
+      "source": "founding-of-islam",
+      "type": "part_of",
+      "target": "muhammad",
+      "why": "Muslim tradition dates Muhammad's first revelation to this year.",
+      "confidence": "high"
+    },
+    {
+      "source": "hijra",
+      "type": "part_of",
+      "target": "muhammad",
+      "why": "Muhammad's migration from Mecca to Medina.",
+      "confidence": "high"
+    },
+    {
+      "source": "death-of-muhammad",
+      "type": "ended",
+      "target": "muhammad",
+      "why": "Muhammad died in Medina.",
+      "confidence": "high"
+    },
+    {
+      "source": "genghis-khan-unifies-mongols",
+      "type": "part_of",
+      "target": "genghis-khan",
+      "why": "Temüjin was proclaimed Genghis Khan after uniting the Mongol tribes.",
+      "confidence": "high"
+    },
+    {
+      "source": "spanish-armada-defeated",
+      "type": "part_of",
+      "target": "elizabeth-i",
+      "why": "The Armada was sent against Elizabeth's England.",
+      "confidence": "high"
+    },
+    {
+      "source": "death-of-elizabeth-i",
+      "type": "ended",
+      "target": "elizabeth-i",
+      "why": "Elizabeth died without an heir.",
+      "confidence": "high"
+    },
+    {
+      "source": "birth-of-akbar",
+      "type": "began",
+      "target": "akbar",
+      "why": "Akbar's birth at Umerkot, while his father Humayun was in flight.",
+      "confidence": "high"
+    },
+    {
+      "source": "akbar-becomes-mughal-emperor",
+      "type": "part_of",
+      "target": "akbar",
+      "why": "Akbar became emperor at thirteen.",
+      "confidence": "high"
+    },
+    {
+      "source": "mughal-akbar-administration",
+      "type": "part_of",
+      "target": "akbar",
+      "why": "One of Akbar's main reforms.",
+      "confidence": "high"
+    },
+    {
+      "source": "akbar-din-i-ilahi",
+      "type": "part_of",
+      "target": "akbar",
+      "why": "Akbar's own religious movement, late in his reign.",
+      "confidence": "high"
+    },
+    {
+      "source": "death-of-akbar",
+      "type": "ended",
+      "target": "akbar",
+      "why": "Akbar's death in Agra.",
+      "confidence": "high"
+    },
+    {
+      "source": "newton-laws-of-motion",
+      "type": "part_of",
+      "target": "isaac-newton",
+      "why": "Newton's best-known work.",
+      "confidence": "high"
+    },
+    {
+      "source": "curie-radioactivity",
+      "type": "part_of",
+      "target": "marie-curie",
+      "why": "Marie and Pierre Curie's discovery of two new elements.",
+      "confidence": "high"
+    },
+    {
+      "source": "gandhi-born",
+      "type": "began",
+      "target": "mahatma-gandhi",
+      "why": "Gandhi's birth at Porbandar.",
+      "confidence": "high"
+    },
+    {
+      "source": "gandhi-returns-to-india",
+      "type": "part_of",
+      "target": "mahatma-gandhi",
+      "why": "Gandhi came home from South Africa to join India's national movement.",
+      "confidence": "high"
+    },
+    {
+      "source": "gandhi-salt-march",
+      "type": "part_of",
+      "target": "mahatma-gandhi",
+      "why": "Gandhi's best-known act of nonviolent protest.",
+      "confidence": "high"
+    },
+    {
+      "source": "mahatma-gandhi-assassinated",
+      "type": "ended",
+      "target": "mahatma-gandhi",
+      "why": "Gandhi was shot in Delhi by a Hindu nationalist.",
+      "confidence": "high"
     }
   ]
 }

@@ -255,6 +255,25 @@
     "role": "Founder of Buddhism"
   },
   {
+    "id": "confucius",
+    "name": "Confucius",
+    "startYear": -551,
+    "endYear": -479,
+    "description": "The Chinese teacher and philosopher Kong Qiu, known as Confucius, whose sayings on ethics, family duty and good government were gathered by his followers in the Analects.",
+    "categories": [
+      "Philosophy",
+      "Social"
+    ],
+    "region": "East Asia",
+    "importance": 8,
+    "kind": "period",
+    "significance": "Confucius's teachings became the core of the state ideology and education of imperial China and shaped Korea, Japan and Vietnam. His ideals of duty to family, proper conduct and government by moral example remain central to East Asian culture.",
+    "approximate": true,
+    "dateDisplay": "551–479 BCE by tradition",
+    "person": true,
+    "role": "Philosopher and teacher"
+  },
+  {
     "id": "achaemenid-empire",
     "name": "Achaemenid Persian Empire",
     "startYear": -550,
@@ -309,6 +328,23 @@
     "kind": "period"
   },
   {
+    "id": "alexander-the-great",
+    "name": "Alexander the Great",
+    "startYear": -356,
+    "endYear": -323,
+    "description": "The Macedonian king who came to the throne at twenty, conquered the Persian Empire and led his army as far as the Indus, dying in Babylon at thirty-two.",
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 8,
+    "kind": "period",
+    "significance": "Alexander's conquests spread Greek language and culture from Egypt to Central Asia, opening the Hellenistic age. His empire split among his generals soon after his death, founding kingdoms such as Ptolemaic Egypt that lasted until Rome absorbed them.",
+    "person": true,
+    "role": "King of Macedon"
+  },
+  {
     "id": "alexanders-conquests",
     "name": "Conquests of Alexander the Great",
     "startYear": -334,
@@ -334,6 +370,25 @@
     "importance": 8,
     "kind": "empire",
     "significance": "Unified most of the Indian subcontinent under one centralized administration for the first time, and under Ashoka sent Buddhist missions beyond India, notably to Sri Lanka, helping Buddhism grow into a major Asian religion."
+  },
+  {
+    "id": "ashoka",
+    "name": "Ashoka",
+    "startYear": -304,
+    "endYear": -232,
+    "description": "The third Mauryan emperor, grandson of Chandragupta, who ruled most of the Indian subcontinent and, after the bloody Kalinga war, promoted Buddhist ethics in edicts carved on rocks and pillars.",
+    "categories": [
+      "Politics",
+      "Religion"
+    ],
+    "region": "South Asia",
+    "importance": 7,
+    "kind": "period",
+    "significance": "Ashoka's edicts are among the earliest deciphered written records of Indian history, and his patronage helped Buddhism spread across and beyond South Asia. His lion capital at Sarnath is now India's national emblem.",
+    "approximate": true,
+    "dateDisplay": "c. 304–232 BCE (birth year uncertain; death by tradition)",
+    "person": true,
+    "role": "Mauryan emperor"
   },
   {
     "id": "reign-of-ashoka",
@@ -688,6 +743,25 @@
     "significance": "Replaced centralized imperial authority across Western Europe with competing Germanic kingdoms, fragmenting long-distance trade and urban administration while leaving the Catholic Church as the region's main unifying institution."
   },
   {
+    "id": "muhammad",
+    "name": "Muhammad",
+    "startYear": 570,
+    "endYear": 632,
+    "description": "Born in Mecca, Muhammad preached belief in one God, founded the first Muslim community at Medina and, by his death, had brought most of Arabia under its rule. Muslims regard him as the last of God's prophets.",
+    "categories": [
+      "Religion",
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 9,
+    "kind": "period",
+    "significance": "The faith and community Muhammad founded grew within a century into a state stretching from Spain to Central Asia. Islam is now followed by about a quarter of the world's people.",
+    "approximate": true,
+    "dateDisplay": "c. 570 (by tradition) – 632",
+    "person": true,
+    "role": "Prophet of Islam"
+  },
+  {
     "id": "tang-dynasty",
     "name": "Tang Dynasty",
     "startYear": 618,
@@ -972,6 +1046,25 @@
     "kind": "empire",
     "significance": "Constructed without mortar from granite blocks, Great Zimbabwe's Hill Complex and Great Enclosure stand as the largest pre-colonial stone structures in sub-Saharan Africa. Its trade links connected southern African goldfields to Indian Ocean merchants as far away as Persia and China.",
     "approximate": true
+  },
+  {
+    "id": "genghis-khan",
+    "name": "Genghis Khan",
+    "startYear": 1162,
+    "endYear": 1227,
+    "description": "Born Temüjin on the Mongolian steppe, he united the Mongol tribes, took the title Genghis Khan and launched conquests across northern China and Central Asia that began the largest contiguous land empire in history.",
+    "categories": [
+      "War",
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 8,
+    "kind": "period",
+    "significance": "Genghis Khan's conquests were hugely destructive, but the empire they began linked China, Persia and Europe more closely than ever before, carrying trade and ideas, and, many historians think, the plague, along routes the Mongols kept open.",
+    "approximate": true,
+    "dateDisplay": "c. 1162 (sources give 1155–1167) – 1227",
+    "person": true,
+    "role": "Founder of the Mongol Empire"
   },
   {
     "id": "ayyubid-sultanate",
@@ -1526,6 +1619,22 @@
     ]
   },
   {
+    "id": "elizabeth-i",
+    "name": "Elizabeth I",
+    "startYear": 1533,
+    "endYear": 1603,
+    "description": "Daughter of Henry VIII and Anne Boleyn, she ruled England for forty-four years, restoring a Protestant church settlement, surviving plots and the Spanish Armada, and presiding over a flowering of English drama.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 7,
+    "kind": "period",
+    "significance": "Elizabeth's long reign settled England's Protestant church and saw the defeat of the Spanish Armada, the first English colonial ventures and the plays of Shakespeare. She left no heir, and her death joined the English and Scottish crowns under James I.",
+    "person": true,
+    "role": "Queen of England"
+  },
+  {
     "id": "sur-empire",
     "name": "Sur Empire",
     "startYear": 1540,
@@ -1538,6 +1647,22 @@
     "importance": 5,
     "kind": "empire",
     "significance": "Introduced standardized silver rupiya currency, upgraded the Grand Trunk Road, and created land-measurement and revenue systems that Akbar later adopted as the backbone of Mughal administration."
+  },
+  {
+    "id": "akbar",
+    "name": "Akbar",
+    "startYear": 1542,
+    "endYear": 1605,
+    "description": "The Mughal emperor who came to the throne at thirteen, extended the empire across most of northern and central India, and built a lasting administration while promoting tolerance among its many faiths.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 8,
+    "kind": "period",
+    "significance": "Akbar's reforms and alliances made the Mughal Empire the dominant power of the subcontinent for more than a century. His policy of religious tolerance, unusual for its time, remains a reference point in debates about India's pluralism.",
+    "person": true,
+    "role": "Mughal emperor"
   },
   {
     "id": "scientific-revolution",
@@ -1637,6 +1762,22 @@
     "region": "Europe",
     "importance": 5,
     "kind": "period"
+  },
+  {
+    "id": "isaac-newton",
+    "name": "Isaac Newton",
+    "startYear": 1643,
+    "endYear": 1727,
+    "description": "The English mathematician and physicist whose Principia set out the laws of motion and universal gravitation. He also co-developed calculus and showed that white light is made of the colours of the spectrum.",
+    "categories": [
+      "Science"
+    ],
+    "region": "Europe",
+    "importance": 8,
+    "kind": "period",
+    "significance": "Newton's laws of motion and gravitation explained the movement of planets and falling objects with one set of rules, and they remained the foundation of physics until Einstein. His work became a model of science for the Enlightenment.",
+    "person": true,
+    "role": "Mathematician and physicist"
   },
   {
     "id": "qing-dynasty",
@@ -1911,6 +2052,22 @@
     "significance": "Preserved the United States as a single nation, strengthened federal authority over individual states, and accelerated Northern industrialization while leaving deep regional divisions and unresolved struggles over racial equality."
   },
   {
+    "id": "marie-curie",
+    "name": "Marie Curie",
+    "startYear": 1867,
+    "endYear": 1934,
+    "description": "Born Maria Skłodowska in Warsaw, she worked in Paris, where with her husband Pierre she discovered polonium and radium. She was the first woman to win a Nobel Prize and the first person to win two, in physics and in chemistry.",
+    "categories": [
+      "Science"
+    ],
+    "region": "Europe",
+    "importance": 7,
+    "kind": "period",
+    "significance": "Curie's research on radioactivity opened a new field of physics and chemistry and led to medical uses of radiation. As a pioneering woman in science she became a lasting role model; her death is thought to have been caused by her long exposure to radiation.",
+    "person": true,
+    "role": "Physicist and chemist"
+  },
+  {
     "id": "meiji-restoration",
     "name": "Meiji Era",
     "startYear": 1868,
@@ -1922,6 +2079,22 @@
     "region": "East Asia",
     "importance": 5,
     "kind": "period"
+  },
+  {
+    "id": "mahatma-gandhi",
+    "name": "Mahatma Gandhi",
+    "startYear": 1869,
+    "endYear": 1948,
+    "description": "Mohandas Karamchand Gandhi, a lawyer trained in London, developed nonviolent mass resistance in South Africa and then led India's independence movement against British rule. He was assassinated by a Hindu nationalist months after independence.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "South Asia",
+    "importance": 9,
+    "kind": "period",
+    "significance": "Gandhi's method of nonviolent mass protest, which he called satyagraha, helped end British rule in India and inspired civil rights movements around the world, including those led by Martin Luther King Jr. and Nelson Mandela.",
+    "person": true,
+    "role": "Leader of India's independence movement"
   },
   {
     "id": "scramble-for-africa",
