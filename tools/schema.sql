@@ -515,3 +515,17 @@ END;
 CREATE TRIGGER IF NOT EXISTS time_spans_touch AFTER UPDATE ON time_spans BEGIN
   UPDATE entities SET updated_at = datetime('now') WHERE id = NEW.entity_id;
 END;
+
+-- Which state an event belongs to (Date Flow's "Empires & states" axis, doc 18 item 2a; tools/states.py).
+-- A state is a span of kind 'empire' (empires, kingdoms, dynasties, republics). Links already say it for some
+-- events (part_of / began / ended a state); these rows cover the rest, and an event of two states (a war) has
+-- two rows. Tie to the most specific state (Khalji Dynasty, not Delhi Sultanate): the app rolls sub-states up.
+CREATE TABLE IF NOT EXISTS event_states (
+  event_id   TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
+  state_id   TEXT NOT NULL REFERENCES time_spans(entity_id) ON DELETE CASCADE,
+  status     TEXT NOT NULL DEFAULT 'proposed' CHECK (status IN ('proposed', 'reviewed')),
+  origin     TEXT NOT NULL,
+  note       TEXT,                                -- for the reviewer
+  created_at TEXT DEFAULT (datetime('now')),
+  PRIMARY KEY (event_id, state_id)
+);

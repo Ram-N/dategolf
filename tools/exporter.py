@@ -7,6 +7,7 @@ from pathlib import Path
 
 import journeys
 import phases
+import states
 from common import APP_FILES, DUMP_PATH, ROOT, connect
 
 NULLS_LAST = "position IS NULL, position"
@@ -215,6 +216,11 @@ def render_journeys(conn):
     return dumps(journeys.exported(conn))
 
 
+def render_states(conn):
+    """Each event's states, for Date Flow's "Empires & states" axis (doc 18 item 2a)."""
+    return dumps(states.exported(conn))
+
+
 RENDERERS = {
     "events.json": render_events,
     "durations.json": render_durations,
@@ -225,6 +231,7 @@ RENDERERS = {
     "regions.json": render_regions,
     "relationships.json": render_relationships,
     "journeys.json": render_journeys,
+    "states.json": render_states,
 }
 
 

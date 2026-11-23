@@ -24,6 +24,7 @@ import journeys  # noqa: E402
 import phases  # noqa: E402
 import significance  # noqa: E402
 import sources  # noqa: E402
+import states  # noqa: E402
 import validate  # noqa: E402
 
 LOCKED_HINT = ("The database is locked, probably by DB Browser holding unwritten changes. "
@@ -129,6 +130,14 @@ def approve_journeys(ids):
 
 def reject_journeys(ids, reason):
     return _run(journeys.reject, ids, reason, "dashboard")
+
+
+def approve_states(keys):
+    return _run(states.approve, keys, "dashboard")
+
+
+def reject_states(keys, reason):
+    return _run(states.reject, keys, reason, "dashboard")
 
 
 def approve_memory_aids(ids):

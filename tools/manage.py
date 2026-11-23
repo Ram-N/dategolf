@@ -13,6 +13,7 @@ import edit
 import exporter
 import identity
 import journeys
+import states
 import links
 import memory_aids
 import phases
@@ -274,6 +275,19 @@ def main():
     p.add_argument("ids", nargs="+")
     p.add_argument("--reason", required=True)
     p.set_defaults(fn=lambda a: journeys.remove(a.ids, a.reason))
+
+    p = sub.add_parser("load-states", help="Tie events to their states, as proposed (all-or-nothing)")
+    p.add_argument("path", help='JSON {"origin": ..., "ties": [{"event": id, "states": [span ids], "note"?}]}')
+    p.set_defaults(fn=lambda a: states.load(a.path))
+
+    p = sub.add_parser("approve-states", help='Approve proposed event → state ties ("event|state" keys)')
+    p.add_argument("keys", nargs="+")
+    p.set_defaults(fn=lambda a: states.approve(a.keys))
+
+    p = sub.add_parser("reject-states", help='Delete proposed event → state ties ("event|state" keys, with a reason)')
+    p.add_argument("keys", nargs="+")
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: states.reject(a.keys, a.reason))
 
     p = sub.add_parser("load-memory-aids", help="Add DateLinks memory aids for events as proposed (all-or-nothing)")
     p.add_argument("path", help='JSON {"origin": ..., "aids": {"<event id>": {"groups": [...]}}} (docs/06)')

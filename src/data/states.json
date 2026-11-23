@@ -1,0 +1,358 @@
+{
+  "afonso-i-becomes-king-of-kongo": [
+    "kingdom-of-kongo"
+  ],
+  "akbar-becomes-mughal-emperor": [
+    "mughal-empire"
+  ],
+  "akbar-din-i-ilahi": [
+    "mughal-empire"
+  ],
+  "akhenaten-elevates-the-aten": [
+    "new-kingdom-egypt"
+  ],
+  "alauddin-khalji-accession": [
+    "delhi-sultanate",
+    "khalji-dynasty"
+  ],
+  "angkor-wat-built": [
+    "khmer-empire"
+  ],
+  "ashoka-becomes-emperor": [
+    "maurya-empire"
+  ],
+  "ashoka-converts-to-buddhism": [
+    "maurya-empire"
+  ],
+  "attila-hun-invasions": [
+    "roman-empire"
+  ],
+  "augustus-first-emperor": [
+    "roman-empire",
+    "roman-republic"
+  ],
+  "aurangzeb-becomes-emperor": [
+    "mughal-empire"
+  ],
+  "ayutthaya-sacks-angkor": [
+    "khmer-empire"
+  ],
+  "aztec-empire-peak": [
+    "aztec-empire"
+  ],
+  "babur-founds-mughal-empire": [
+    "mughal-empire"
+  ],
+  "battle-of-haldighati": [
+    "mughal-empire"
+  ],
+  "battle-of-kadesh": [
+    "new-kingdom-egypt"
+  ],
+  "battle-of-khanwa": [
+    "mughal-empire"
+  ],
+  "battle-of-kirina": [
+    "mali-empire"
+  ],
+  "battle-of-plassey": [
+    "british-empire"
+  ],
+  "caesar-crosses-rubicon": [
+    "roman-republic"
+  ],
+  "chandragupta-ii-vikramaditya": [
+    "gupta-empire"
+  ],
+  "charlemagne-crowned-emperor": [
+    "holy-roman-empire"
+  ],
+  "chola-raids-on-srivijaya": [
+    "chola-empire"
+  ],
+  "chola-rajaraja-peak": [
+    "chola-empire"
+  ],
+  "christianity-roman-empire": [
+    "roman-empire"
+  ],
+  "conquest-of-peru-inca": [
+    "inca-empire"
+  ],
+  "constantinople-founded": [
+    "roman-empire"
+  ],
+  "crown-takes-over-government-of-india": [
+    "british-empire",
+    "british-raj"
+  ],
+  "cyrus-founds-persian-empire": [
+    "achaemenid-empire"
+  ],
+  "death-of-akbar": [
+    "mughal-empire"
+  ],
+  "death-of-jahangir": [
+    "mughal-empire"
+  ],
+  "death-of-marcus-aurelius": [
+    "roman-empire"
+  ],
+  "death-of-shivaji": [
+    "maratha-empire"
+  ],
+  "death-of-stalin": [
+    "soviet-union"
+  ],
+  "diocletian-becomes-emperor": [
+    "roman-empire"
+  ],
+  "dissolution-soviet-union": [
+    "soviet-union"
+  ],
+  "division-of-the-roman-empire": [
+    "roman-empire"
+  ],
+  "ezana-of-aksum-adopts-christianity": [
+    "kingdom-of-aksum"
+  ],
+  "fall-of-constantinople": [
+    "byzantine-empire",
+    "ottoman-empire"
+  ],
+  "fall-of-qing-dynasty": [
+    "qing-dynasty"
+  ],
+  "fall-of-roman-empire-west": [
+    "roman-empire"
+  ],
+  "fall-of-tenochtitlan": [
+    "aztec-empire"
+  ],
+  "fall-of-the-ming-dynasty": [
+    "ming-dynasty"
+  ],
+  "first-battle-of-panipat": [
+    "delhi-sultanate",
+    "lodi-dynasty",
+    "mughal-empire"
+  ],
+  "first-triumvirate": [
+    "roman-republic"
+  ],
+  "firuz-shah-tughlaq-accession": [
+    "delhi-sultanate",
+    "tughlaq-dynasty"
+  ],
+  "genghis-khan-unifies-mongols": [
+    "mongol-conquests"
+  ],
+  "gorbachev-becomes-leader": [
+    "soviet-union"
+  ],
+  "gupta-empire-founded": [
+    "gupta-empire"
+  ],
+  "hadrians-wall": [
+    "roman-empire"
+  ],
+  "hatshepsut-becomes-pharaoh": [
+    "new-kingdom-egypt"
+  ],
+  "hong-kong-handover": [
+    "british-empire"
+  ],
+  "humayun-defeated-kanauj": [
+    "mughal-empire",
+    "sur-empire"
+  ],
+  "humayun-recaptures-delhi": [
+    "mughal-empire"
+  ],
+  "humayun-succeeds-babur": [
+    "mughal-empire"
+  ],
+  "ibn-battuta-visits-mali": [
+    "mali-empire"
+  ],
+  "iltutmish-becomes-sultan-of-delhi": [
+    "mamluk-dynasty-delhi"
+  ],
+  "indian-independence": [
+    "british-raj"
+  ],
+  "indus-valley-begins": [
+    "indus-valley-mature"
+  ],
+  "invention-of-compass": [
+    "song-dynasty"
+  ],
+  "jahangir-marries-nur-jahan": [
+    "mughal-empire"
+  ],
+  "julius-caesar-assassination": [
+    "roman-republic"
+  ],
+  "kalinga-war": [
+    "maurya-empire"
+  ],
+  "kievan-rus-founded": [
+    "kievan-rus"
+  ],
+  "machu-picchu-built": [
+    "inca-empire"
+  ],
+  "mansa-musas-pilgrimage-to-mecca": [
+    "mali-empire"
+  ],
+  "maurya-empire-founded": [
+    "maurya-empire"
+  ],
+  "maya-classic-period": [
+    "classic-maya"
+  ],
+  "meiji-restoration-japan": [
+    "tokugawa-shogunate"
+  ],
+  "ming-dynasty-founded": [
+    "ming-dynasty"
+  ],
+  "mongol-empire-peak": [
+    "mongol-conquests"
+  ],
+  "mongols-sack-baghdad": [
+    "abbasid-caliphate",
+    "ilkhanate"
+  ],
+  "mongols-sack-kyiv": [
+    "kievan-rus",
+    "mongol-conquests"
+  ],
+  "moors-invade-spain": [
+    "umayyad-caliphate"
+  ],
+  "mughal-akbar-administration": [
+    "mughal-empire"
+  ],
+  "mughal-empire-zenith-aurangzeb": [
+    "mughal-empire"
+  ],
+  "muhammad-bin-tughlaq-accession": [
+    "delhi-sultanate",
+    "tughlaq-dynasty"
+  ],
+  "oracle-bone-writing": [
+    "shang-dynasty"
+  ],
+  "ottoman-empire-falls": [
+    "ottoman-empire"
+  ],
+  "ottoman-siege-of-vienna-fails": [
+    "ottoman-empire"
+  ],
+  "ottomans-capture-bursa": [
+    "ottoman-empire"
+  ],
+  "ottomans-conquer-egypt": [
+    "ottoman-empire"
+  ],
+  "pachacuti-begins-inca-expansion": [
+    "inca-empire"
+  ],
+  "pakal-becomes-ruler-of-palenque": [
+    "classic-maya"
+  ],
+  "paper-invented-china": [
+    "han-dynasty"
+  ],
+  "partition-of-bengal": [
+    "british-raj"
+  ],
+  "pax-romana": [
+    "roman-empire"
+  ],
+  "portuguese-reach-the-kingdom-of-kongo": [
+    "kingdom-of-kongo"
+  ],
+  "printing-movable-type-china": [
+    "song-dynasty"
+  ],
+  "qing-capture-of-beijing": [
+    "qing-dynasty"
+  ],
+  "qutb-ud-din-aibak-delhi": [
+    "delhi-sultanate",
+    "mamluk-dynasty-delhi"
+  ],
+  "razia-sultana-accession": [
+    "delhi-sultanate",
+    "mamluk-dynasty-delhi"
+  ],
+  "roman-empire-greatest-extent": [
+    "roman-empire"
+  ],
+  "roman-republic-founded": [
+    "roman-republic"
+  ],
+  "second-anglo-mysore-war": [
+    "british-empire"
+  ],
+  "second-battle-of-panipat": [
+    "mughal-empire",
+    "sur-empire"
+  ],
+  "second-triumvirate": [
+    "roman-republic"
+  ],
+  "selim-iii-becomes-sultan": [
+    "ottoman-empire"
+  ],
+  "severus-alexander-murdered": [
+    "roman-empire"
+  ],
+  "shah-jahan-becomes-mughal-emperor": [
+    "mughal-empire"
+  ],
+  "shivaji-crowned-chhatrapati": [
+    "maratha-empire"
+  ],
+  "silk-road-opens": [
+    "han-dynasty"
+  ],
+  "spanish-conquest-mexico": [
+    "aztec-empire"
+  ],
+  "suleiman-becomes-sultan": [
+    "ottoman-empire"
+  ],
+  "taj-mahal-construction-begins": [
+    "mughal-empire"
+  ],
+  "tanzimat-edict": [
+    "ottoman-empire"
+  ],
+  "third-battle-of-panipat": [
+    "maratha-empire"
+  ],
+  "tipu-sultan-killed": [
+    "british-empire"
+  ],
+  "tokugawa-ieyasu-becomes-shogun": [
+    "tokugawa-shogunate"
+  ],
+  "treaty-of-karlowitz": [
+    "ottoman-empire"
+  ],
+  "vijayanagara-empire-founded": [
+    "vijayanagara-empire"
+  ],
+  "visigoths-sack-rome": [
+    "roman-empire"
+  ],
+  "woodblock-printing-china": [
+    "tang-dynasty"
+  ],
+  "zheng-he-voyages": [
+    "ming-dynasty"
+  ]
+}

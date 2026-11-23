@@ -98,6 +98,14 @@ proposed_journeys = q("""SELECT j.id AS entity_id, j.title, count(*) AS stops, j
     FROM journeys j JOIN journey_stops s ON s.journey_id = j.id
     WHERE j.status = 'proposed' GROUP BY j.id ORDER BY j.position""") if has_table("journeys") \
     else q("SELECT NULL AS entity_id WHERE 0")
+proposed_states = q("""SELECT x.event_id || '|' || x.state_id AS entity_id, s.name AS state,
+                              s.start_year AS s_start, s.end_year AS s_end, s.approximate AS s_approx,
+                              n.editorial_status = 'proposed' AS new_state, e.year, e.is_approximate AS approximate,
+                              e.name AS event, e.region, x.note, x.origin
+    FROM event_states x JOIN events e ON e.entity_id = x.event_id JOIN time_spans s ON s.entity_id = x.state_id
+    JOIN entities n ON n.id = x.state_id
+    WHERE x.status = 'proposed' ORDER BY s.start_year, s.name, e.year""") if has_table("event_states") \
+    else q("SELECT NULL AS entity_id WHERE 0")
 proposed_aids = q("""SELECT e.entity_id, e.year, e.name, e.description, e.date_display,
                             count(*) AS items, group_concat(DISTINCT g.label) AS groups
     FROM learning_content_groups g JOIN learning_content_items i ON i.group_id = g.id
@@ -107,7 +115,7 @@ proposed_aids = q("""SELECT e.entity_id, e.year, e.name, e.description, e.date_d
 TAB_LABELS = [
     f"Event drafts ({len(drafts)})", f"Span drafts ({len(span_drafts)})", f"Country tags ({len(tags)})", f"Identity, Step 3a ({len(shared)})",
     f"Links ({len(proposed_links)})", f"Sources ({len(proposed_sources)})",
-    f"Significance ({len(proposed_why)})", f"Life cycles ({len(proposed_phases)})", f"Journeys ({len(proposed_journeys)})", f"Memory aids ({len(proposed_aids)})", f"Missing ({n_missing})",
+    f"Significance ({len(proposed_why)})", f"Life cycles ({len(proposed_phases)})", f"Journeys ({len(proposed_journeys)})", f"States ({len(proposed_states)})", f"Memory aids ({len(proposed_aids)})", f"Missing ({n_missing})",
     "Fix any country tags", "Decision log"]
 # Stay on the same tab after an action. The counts in the labels change, so remember the name without them,
 # and key the widget on the labels (a changed label is a new widget, opened on the remembered tab).
@@ -116,7 +124,7 @@ tabs_key = "review_tabs_" + hashlib.sha1("|".join(TAB_LABELS).encode()).hexdiges
 # The default is fixed when this widget is first made: changing it on a later run would reset the tab.
 remembered = st.session_state.setdefault(
     tabs_key + ":default", next((l for l in TAB_LABELS if tab_name(l) == st.session_state.get("review_tab")), None))
-t_drafts, t_spans, t_tags, t_identity, t_links, t_sources, t_why, t_phases, t_journeys, t_aids, t_missing, t_fix, t_log = st.tabs(
+t_drafts, t_spans, t_tags, t_identity, t_links, t_sources, t_why, t_phases, t_journeys, t_states, t_aids, t_missing, t_fix, t_log = st.tabs(
     TAB_LABELS, default=remembered, key=tabs_key, on_change="rerun")
 if st.session_state.get(tabs_key):
     st.session_state["review_tab"] = tab_name(st.session_state[tabs_key])
@@ -509,6 +517,43 @@ with t_journeys:
 
         if c2.button(f"Reject ({len(ids)})…", disabled=not ids, key="reject_journeys"):
             reject_journeys_dialog(ids)
+
+# ── States (doc 18 item 2a: the Empires & states axis) ───────────────────────
+with t_states:
+    if proposed_states.empty:
+        st.success("No event → state ties waiting. New ones arrive with `load-states`.")
+    else:
+        view = proposed_states.assign(
+            when=proposed_states.apply(lambda r: when_text({"year": r["year"], "end_year": None,
+                                                            "approximate": r["approximate"]}), axis=1),
+            state_years=proposed_states.apply(lambda r: when_text({"year": r["s_start"], "end_year": r["s_end"],
+                                                                   "approximate": r["s_approx"]}), axis=1))
+        names = view.drop_duplicates("state")
+        options = ["All states"] + [f"{r.state} ({r.state_years}) · {int((view['state'] == r.state).sum())}"
+                                    + (" · new state" if r.new_state else "") for r in names.itertuples()]
+        c1, c2, f1 = st.columns([1, 1, 4], vertical_alignment="center")
+        pick = f1.selectbox("State", options, label_visibility="collapsed",
+                            help="Review one state at a time: is each event really inside this state? An event of "
+                                 "two states (a war) appears under both. Tick the header box to select all shown.")
+        if pick != "All states":
+            view = view[view["state"] == pick.split(" (")[0]]
+        picked = selectable(view, "states", ["state", "when", "event", "region", "note"])
+        if view["new_state"].any():
+            st.caption("Rows under a *new state* wait for that span to be approved (Span drafts) before they show.")
+        keys = picked["entity_id"].tolist()
+        if c1.button(f"Approve ({len(keys)})", disabled=not keys, type="primary", key="approve_states",
+                     width="stretch"):
+            finish("Approve states", actions.approve_states(keys))
+
+        @st.dialog("Reject event → state ties")
+        def reject_states_dialog(keys):
+            st.write(f"Delete {len(keys)} proposed tie(s). The events and states stay.")
+            reason = st.text_input("Reason (recorded in the log)")
+            if st.button("Reject", key="confirm_reject_states", type="primary", disabled=not reason.strip()):
+                finish("Reject states", actions.reject_states(keys, reason))
+
+        if c2.button(f"Reject ({len(keys)})…", disabled=not keys, key="reject_states", width="stretch"):
+            reject_states_dialog(keys)
 
 # ── Memory aids (DateLinks, docs/06) ─────────────────────────────────────────
 with t_aids:

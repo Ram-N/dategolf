@@ -30,6 +30,7 @@ import identity  # noqa: E402
 import journeys  # noqa: E402
 import memory_aids  # noqa: E402
 import phases  # noqa: E402
+import states  # noqa: E402
 import missing  # noqa: E402
 
 
@@ -118,6 +119,7 @@ class TestRename(unittest.TestCase):
 
 
     def test_set_span_kind(self):
+        self.assertEqual(quiet(edit.set_span_kind, "mongol-conquests", "period", via="test"), 0)
         self.assertEqual(quiet(edit.set_span_kind, "mongol-conquests", "empire", via="test"), 0)
         self.assertEqual(db().execute("SELECT s.kind, n.primary_type FROM time_spans s JOIN entities n "
                                       "ON n.id = s.entity_id WHERE s.entity_id = 'mongol-conquests'").fetchone(),
@@ -477,6 +479,46 @@ class TestJourneys(unittest.TestCase):
         self.assertNotIn("test-waits", [j["id"] for j in json.loads(exporter.render_journeys(common.connect()))])
         quiet(drafts.approve, ["test-journey-event"], "test")
         self.assertIn("test-waits", [j["id"] for j in json.loads(exporter.render_journeys(common.connect()))])
+
+
+class TestStates(unittest.TestCase):
+    def batch(self, ties, name):
+        path = TMP / f"{name}.json"
+        path.write_text(json.dumps({"origin": "test", "ties": ties}))
+        return path
+
+    def test_links_already_place_events(self):
+        linked = states.linked(common.connect())
+        self.assertEqual(linked["fall-of-constantinople"], {"byzantine-empire", "ottoman-empire"})  # two states
+        self.assertIn("mughal-empire", linked["shah-jahan-becomes-mughal-emperor"])  # began a reign inside it
+
+    def test_load_review_and_export(self):
+        with db() as conn:  # the copied db holds the real drafted ties; start from none
+            conn.execute("DELETE FROM event_states")
+        exported = lambda: json.loads(exporter.render_states(common.connect()))
+        good = [{"event": "battle-of-chausa", "states": ["mughal-empire"], "note": "Humayun lost"},
+                {"event": "birth-of-akbar", "states": ["mughal-empire", "sur-empire"]}]
+        for bad in ([{"event": "no-such-event", "states": ["mughal-empire"]}],
+                    [{"event": "battle-of-chausa", "states": ["sur-empire"]}],                   # a year before it
+                    [{"event": "battle-of-chausa", "states": ["reign-of-akbar"]}],               # not a state
+                    [{"event": "battle-of-hastings", "states": []}],
+                    [{"event": "humayun-succeeds-babur", "states": ["mughal-empire"]}],          # a link says it
+                    [{"event": "alauddin-khalji-accession", "states": ["khalji-dynasty"]}],      # a link says it
+                    [good[0], {"event": "battle-of-chausa", "states": ["sur-empire"]}]):         # event twice
+            self.assertEqual(quiet(states.load, self.batch(bad, "bad-states")), 1)
+        self.assertEqual(quiet(states.load, self.batch(
+            [{"event": "razia-sultana-accession", "states": ["delhi-sultanate"]}], "parent")), 1)  # already via its sub-state
+        self.assertIsNone(db().execute("SELECT 1 FROM event_states WHERE event_id = 'battle-of-chausa'").fetchone())
+
+        self.assertEqual(quiet(states.load, self.batch(good, "good-states")), 0)
+        self.assertNotIn("battle-of-chausa", exported())                                   # proposed: not exported
+        self.assertEqual(quiet(states.approve, ["battle-of-chausa|mughal-empire"], "test"), 0)
+        self.assertEqual(exported()["battle-of-chausa"], ["mughal-empire"])
+        self.assertEqual(log_rows("battle-of-chausa")[-1], ("approve-state", "mughal-empire", "test"))
+        self.assertEqual(quiet(states.reject, ["birth-of-akbar|sur-empire"], " ", "test"), 1)  # needs a reason
+        self.assertEqual(quiet(states.reject, ["birth-of-akbar|sur-empire"], "no", "test"), 0)
+        self.assertEqual(quiet(states.reject, ["battle-of-chausa|mughal-empire"], "no", "test"), 1)  # reviewed
+        self.assertEqual(exported()["fall-of-constantinople"], ["byzantine-empire", "ottoman-empire"])
 
 
 class TestMemoryAids(unittest.TestCase):

@@ -149,6 +149,11 @@ CHECKS = [
      "NOT EXISTS (SELECT 1 FROM journey_stop_items i WHERE i.journey_id = s.journey_id AND i.position = s.position) "
      "OR EXISTS (SELECT 1 FROM journey_stop_items i JOIN entities n ON n.id = i.entity_id "
      "WHERE i.journey_id = s.journey_id AND i.position = s.position AND n.editorial_status = 'proposed'))"),
+    ("review", "Event → state ties awaiting approval (not exported; dashboard Review → States)",
+     "SELECT state_id, count(*) || ' event(s)' FROM event_states WHERE status = 'proposed' GROUP BY state_id"),
+    ("warning", "Approved event → state tie not exported: its state is still proposed (approve the span)",
+     "SELECT x.event_id, x.state_id FROM event_states x JOIN entities n ON n.id = x.state_id "
+     "WHERE x.status = 'reviewed' AND n.editorial_status = 'proposed'"),
     ("review", "Memory aids awaiting approval (not exported; dashboard Review → Memory aids)",
      "SELECT g.entity_id, count(*) || ' item(s)' FROM learning_content_groups g "
      "JOIN learning_content_items i ON i.group_id = g.id WHERE i.editorial_status = 'proposed' "

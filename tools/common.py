@@ -29,6 +29,7 @@ APP_FILES = {
     "regions.json": "src/data/regions.json",
     "relationships.json": "src/data/relationships.json",  # links (Step 3c); no legacy original
     "journeys.json": "src/data/journeys.json",  # curated journeys (Phase 14)
+    "states.json": "src/data/states.json",  # event → states, for the Empires & states axis (doc 18, 2a)
 }
 LEGACY_CSV = "events_master.csv"
 
