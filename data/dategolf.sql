@@ -2378,7 +2378,7 @@ INSERT INTO "entities" VALUES('holy-roman-empire','empire','imported',NULL,NULL)
 INSERT INTO "entities" VALUES('chola-empire','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('song-dynasty','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('crusades','period','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('mongol-conquests','period','imported',NULL,'2026-11-22 03:00:55');
+INSERT INTO "entities" VALUES('mongol-conquests','empire','imported',NULL,'2026-11-23 19:17:27');
 INSERT INTO "entities" VALUES('delhi-sultanate','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('mali-empire','empire','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('ottoman-empire','empire','imported',NULL,'2026-11-22 02:22:24');
@@ -5613,14 +5613,14 @@ INSERT INTO "entity_sources" VALUES('birth-of-confucius',165,'reviewed','ai_draf
 INSERT INTO "entity_sources" VALUES('achaemenid-empire',166,'proposed','title_match','medium',NULL);
 INSERT INTO "entity_sources" VALUES('cyrus-founds-persian-empire',167,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('roman-republic',168,'reviewed','title_match','high',NULL);
-INSERT INTO "entity_sources" VALUES('roman-republic-founded',169,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('roman-republic-founded',169,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('greek-democracy-athens',170,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('persian-wars',171,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('battle-of-marathon',172,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('peloponnesian-war',173,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('hippocrates-medicine',174,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('socrates-execution',175,'proposed','title_match','medium',NULL);
-INSERT INTO "entity_sources" VALUES('platos-academy-founded',176,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('platos-academy-founded',176,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('alexander-conquests',177,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('alexanders-conquests',177,'proposed','title_match','medium',NULL);
 INSERT INTO "entity_sources" VALUES('alexander-founds-alexandria',178,'reviewed','ai_drafted','high',NULL);
@@ -5633,12 +5633,12 @@ INSERT INTO "entity_sources" VALUES('punic-wars',185,'reviewed','ai_drafted','hi
 INSERT INTO "entity_sources" VALUES('eratosthenes-measures-earth',186,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('qin-unification-china',187,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('construction-great-wall',188,'reviewed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('great-wall-china',188,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('great-wall-china',188,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('han-dynasty',189,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('battle-of-zama',190,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('fall-of-roman-republic',191,'proposed','title_match','medium',NULL);
-INSERT INTO "entity_sources" VALUES('silk-road-opens',192,'proposed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('caesar-invades-britain',193,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('silk-road-opens',192,'reviewed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('caesar-invades-britain',193,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('caesar-crosses-rubicon',194,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('julius-caesar-assassination',195,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('second-triumvirate',196,'reviewed','ai_drafted','high',NULL);
@@ -5697,7 +5697,7 @@ INSERT INTO "entity_sources" VALUES('mongol-empire-peak',251,'proposed','ai_draf
 INSERT INTO "entity_sources" VALUES('alauddin-khalji-accession',252,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('ottoman-empire',253,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('battle-of-bannockburn',254,'reviewed','title_match','high',NULL);
-INSERT INTO "entity_sources" VALUES('muhammad-bin-tughlaq-accession',255,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('muhammad-bin-tughlaq-accession',255,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('black-death-arrives-china',256,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('vijayanagara-empire',257,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('vijayanagara-empire-founded',257,'proposed','ai_drafted','high',NULL);
@@ -5716,7 +5716,7 @@ INSERT INTO "entity_sources" VALUES('joan-of-arc-burned',266,'reviewed','ai_draf
 INSERT INTO "entity_sources" VALUES('inca-empire',267,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('gutenberg-printing-press',268,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('fall-of-constantinople',269,'reviewed','title_match','high',NULL);
-INSERT INTO "entity_sources" VALUES('guru-nanak-born',270,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('guru-nanak-born',270,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('age-of-exploration',271,'proposed','title_match','medium',NULL);
 INSERT INTO "entity_sources" VALUES('columbus-reaches-americas',272,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('babur-ruler-of-ferghana',273,'proposed','ai_drafted','high',NULL);
@@ -6039,7 +6039,7 @@ INSERT INTO "entity_sources" VALUES('unification-germany',579,'proposed','ai_dra
 INSERT INTO "entity_sources" VALUES('partition-of-africa-colonial',580,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('decolonization-africa',581,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('martin-luther-king-speech',582,'proposed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('maurya-empire-founded',583,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('maurya-empire-founded',583,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('classic-maya',584,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('maya-classic-period',584,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('birth-of-muhammad',585,'reviewed','ai_drafted','high',NULL);
@@ -13954,6 +13954,15 @@ INSERT INTO "review_log" VALUES(1751,'2026-11-22 03:49:36','missing-wanted','mis
 INSERT INTO "review_log" VALUES(1752,'2026-11-22 03:49:52','approve-draft','british-empire',NULL,'dashboard');
 INSERT INTO "review_log" VALUES(1753,'2026-11-22 03:50:08','approve-source','vasco-da-gama-india-route','Portuguese India Armadas','dashboard');
 INSERT INTO "review_log" VALUES(1754,'2026-11-22 03:50:08','approve-source','tiananmen-one','Reform and opening up','dashboard');
+INSERT INTO "review_log" VALUES(1755,'2026-11-22 03:52:34','approve-source','roman-republic-founded','Overthrow of the Roman monarchy','dashboard');
+INSERT INTO "review_log" VALUES(1756,'2026-11-22 03:52:45','approve-source','muhammad-bin-tughlaq-accession','Muhammad bin Tughluq','dashboard');
+INSERT INTO "review_log" VALUES(1757,'2026-11-22 03:53:06','approve-source','platos-academy-founded','Platonic Academy','dashboard');
+INSERT INTO "review_log" VALUES(1758,'2026-11-22 03:53:06','approve-source','maurya-empire-founded','Chandragupta Maurya','dashboard');
+INSERT INTO "review_log" VALUES(1759,'2026-11-22 03:53:06','approve-source','great-wall-china','Great Wall of China','dashboard');
+INSERT INTO "review_log" VALUES(1760,'2026-11-22 03:53:06','approve-source','silk-road-opens','Silk Road','dashboard');
+INSERT INTO "review_log" VALUES(1761,'2026-11-22 03:53:06','approve-source','caesar-invades-britain','Julius Caesar''s invasions of Britain','dashboard');
+INSERT INTO "review_log" VALUES(1762,'2026-11-22 03:53:06','approve-source','guru-nanak-born','Guru Nanak','dashboard');
+INSERT INTO "review_log" VALUES(1763,'2026-11-23 19:17:27','set-span-kind','mongol-conquests','period → empire','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -14636,7 +14645,7 @@ INSERT INTO "time_spans" VALUES('holy-roman-empire','empire','Holy Roman Empire'
 INSERT INTO "time_spans" VALUES('chola-empire','empire','Chola Empire',848,1279,'A south Indian maritime empire whose navy reached Sri Lanka and Southeast Asia; builders of great temples.','South Asia',6,1,29,NULL);
 INSERT INTO "time_spans" VALUES('song-dynasty','empire','Song Dynasty',960,1279,'An age of invention in China, with movable type, the compass, gunpowder weapons and paper money.','East Asia',7,NULL,30,NULL);
 INSERT INTO "time_spans" VALUES('crusades','period','The Crusades',1096,1291,'Series of religious wars sanctioned by the Latin Church to recover the Holy Land','Middle East',5,NULL,31,NULL);
-INSERT INTO "time_spans" VALUES('mongol-conquests','period','Mongol Empire',1206,1368,'The empire Genghis Khan founded, which conquered its way to the largest contiguous land empire in history, from Korea to Hungary. After a succession war it split into four rival khanates; this span ends with the fall of the last of them in China, the Yuan dynasty.','East Asia',5,NULL,32,NULL);
+INSERT INTO "time_spans" VALUES('mongol-conquests','empire','Mongol Empire',1206,1368,'The empire Genghis Khan founded, which conquered its way to the largest contiguous land empire in history, from Korea to Hungary. After a succession war it split into four rival khanates; this span ends with the fall of the last of them in China, the Yuan dynasty.','East Asia',5,NULL,32,NULL);
 INSERT INTO "time_spans" VALUES('delhi-sultanate','empire','Delhi Sultanate',1206,1526,'A series of five dynasties ruling much of northern India from Delhi until the Mughal conquest.','South Asia',7,NULL,33,NULL);
 INSERT INTO "time_spans" VALUES('mali-empire','empire','Mali Empire',1235,1600,'A West African empire grown rich on gold and salt trade; Timbuktu became a centre of learning.','Africa',6,1,34,NULL);
 INSERT INTO "time_spans" VALUES('ottoman-empire','empire','Ottoman Empire',1299,1922,'From Anatolia it grew to rule southeastern Europe, the Middle East and North Africa for six centuries.','Middle East',8,1,35,'c. 1299 (the traditional founding date) to 1922, when the sultanate was abolished');

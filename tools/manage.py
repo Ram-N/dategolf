@@ -208,6 +208,11 @@ def main():
                                       'many scholars c. 480–400 BCE" ("" clears it)')
     p.set_defaults(fn=lambda a: edit.set_span_years(a.id, a.start, a.end, a.approximate, a.display))
 
+    p = sub.add_parser("set-span-kind", help="Make a span an empire or a period")
+    p.add_argument("id")
+    p.add_argument("kind", choices=["empire", "period"])
+    p.set_defaults(fn=lambda a: edit.set_span_kind(a.id, a.kind))
+
     p = sub.add_parser("set-event-date", help="Change an event's year, 'c.' flag or displayed range")
     p.add_argument("id")
     p.add_argument("--year", type=int, help="Signed year; -2560 = 2560 BCE")

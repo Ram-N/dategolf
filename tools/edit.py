@@ -74,6 +74,34 @@ def set_span_years(entity_id, start, end, approximate=None, display=None, via="c
     return 0
 
 
+def set_span_kind(entity_id, kind, via="cli"):
+    """Make a span an empire or a period (eras live in eras.json and aren't changed here)."""
+    if kind not in ("empire", "period"):
+        print(f"  ✗ kind must be empire or period, not {kind!r}")
+        return 1
+    conn = connect()
+    ensure_schema(conn)
+    row = conn.execute("SELECT kind FROM time_spans WHERE entity_id = ?", (entity_id,)).fetchone()
+    if row is None or row["kind"] == "era":
+        print(f"  ✗ no empire or period span with id {entity_id}")
+        conn.close()
+        return 1
+    old = row["kind"]
+    if old == kind:
+        print(f"  · {entity_id} is already {kind}")
+        conn.close()
+        return 0
+    conn.execute("UPDATE time_spans SET kind = ? WHERE entity_id = ?", (kind, entity_id))
+    # A span-only entity takes its type from the span; one shared with an event stays 'event'
+    conn.execute("UPDATE entities SET primary_type = CASE WHEN primary_type = ? THEN ? ELSE primary_type END, "
+                 "updated_at = datetime('now') WHERE id = ?", (old, kind, entity_id))
+    log(conn, "set-span-kind", entity_id, f"{old} → {kind}", via=via)
+    conn.commit()
+    conn.close()
+    print(f"  ✓ {entity_id}: {old} → {kind}")
+    return 0
+
+
 def set_event_date(entity_id, year=None, approximate=None, display=None, via="cli"):
     """Change an event's year, its 'c.' flag and/or its date_display (the true range). None leaves a field."""
     if year == 0:

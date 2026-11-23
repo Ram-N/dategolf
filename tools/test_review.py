@@ -117,6 +117,15 @@ class TestRename(unittest.TestCase):
         self.assertEqual(quiet(edit.rename, "battle-of-hastings", "  ", via="test"), 1)
 
 
+    def test_set_span_kind(self):
+        self.assertEqual(quiet(edit.set_span_kind, "mongol-conquests", "empire", via="test"), 0)
+        self.assertEqual(db().execute("SELECT s.kind, n.primary_type FROM time_spans s JOIN entities n "
+                                      "ON n.id = s.entity_id WHERE s.entity_id = 'mongol-conquests'").fetchone(),
+                         ("empire", "empire"))
+        self.assertEqual(log_rows("mongol-conquests")[-1][0], "set-span-kind")
+        self.assertEqual(quiet(edit.set_span_kind, "mongol-conquests", "era", via="test"), 1)
+        self.assertEqual(quiet(edit.set_span_kind, "no-such-id", "period", via="test"), 1)
+
     def test_set_span_years(self):
         self.assertEqual(quiet(edit.set_span_years, "construction-great-wall", -215, -206, True, via="test"), 0)
         self.assertEqual(db().execute("SELECT start_year, end_year, approximate FROM time_spans "
