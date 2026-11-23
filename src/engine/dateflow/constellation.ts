@@ -2,13 +2,16 @@ import { laneFor, LANES, type LaneId } from './lanes'
 
 // Date Constellation (issues #5–#7): every event as a dot, no labels, on switchable Y-axis tracks.
 // Geography reuses the regional lanes; Human activity groups events by their primary category;
-// Empires & states (doc 18, 2a) gives a row to each state in view, from states.json.
+// Society (doc 18, 2b) by their first non-political one; Empires & states (2a) gives a row to each
+// state in view, from states.json.
 
-export type TrackAxis = 'geography' | 'activity' | 'states'
+export type TrackAxis = 'geography' | 'activity' | 'society' | 'states'
+type FixedAxis = Exclude<TrackAxis, 'states'>
 
 export const TRACK_AXES: { id: TrackAxis; label: string }[] = [
   { id: 'geography', label: 'Geography' },
   { id: 'activity', label: 'Human activity' },
+  { id: 'society', label: 'Society' },
   { id: 'states', label: 'Empires & states' },
 ]
 
@@ -49,16 +52,48 @@ const ACTIVITY_BY_CATEGORY: Record<string, string> = {
   Disasters: 'society',
 }
 
+// Society (#7): the side of history that isn't politics or war. An event sits on the track of its first
+// category that has one; an event that is only politics or war goes to the last track, switched off at first.
+export const SOCIETY_TRACKS: ConstellationTrack[] = [
+  { id: 'social', label: 'Social change' },
+  { id: 'trade', label: 'Trade & economy' },
+  { id: 'exploration', label: 'Exploration' },
+  { id: 'technology', label: 'Science & technology' },
+  { id: 'culture', label: 'Culture & the arts' },
+  { id: 'thought', label: 'Belief & thought' },
+  { id: 'politics-war', label: 'Politics & war' },
+]
+
+const SOCIETY_BY_CATEGORY: Record<string, string> = {
+  Social: 'social',
+  Disasters: 'social',
+  Economy: 'trade',
+  Exploration: 'exploration',
+  Science: 'technology',
+  Technology: 'technology',
+  Medicine: 'technology',
+  Culture: 'culture',
+  Arts: 'culture',
+  Sports: 'culture',
+  Religion: 'thought',
+  Philosophy: 'thought',
+}
+
+/** Tracks switched off until the viewer turns them on. */
+const DEFAULT_HIDDEN: Partial<Record<TrackAxis, string[]>> = { society: ['politics-war'] }
+
 /** The fixed tracks of an axis (Empires & states has none: its rows come from the view, see stateTracks). */
 export function tracksFor(axis: TrackAxis): ConstellationTrack[] {
   if (axis === 'states') return []
   if (axis === 'activity') return ACTIVITY_TRACKS
+  if (axis === 'society') return SOCIETY_TRACKS
   return GEO_ORDER.map((id) => ({ id, label: LANE_LABEL.get(id) ?? id }))
 }
 
 /** The track an event sits on: its region's lane, or its primary category's activity (unknown → Society). */
-export function trackOf(e: { region: string; categories: string[] }, axis: 'geography' | 'activity'): string {
+export function trackOf(e: { region: string; categories: string[] }, axis: FixedAxis): string {
   if (axis === 'geography') return laneFor(e.region)
+  if (axis === 'society') return e.categories.map((c) => SOCIETY_BY_CATEGORY[c]).find(Boolean) ?? 'politics-war'
   return ACTIVITY_BY_CATEGORY[e.categories[0] ?? ''] ?? 'society'
 }
 
@@ -114,11 +149,16 @@ export function layoutTracks(defs: ConstellationTrack[], hidden: string[], top: 
   })
 }
 
+/** The tracks switched off on an axis: the viewer's choice, else the axis's default. */
+export function hiddenOn(hidden: HiddenTracks, axis: TrackAxis): string[] {
+  return hidden[axis] ?? DEFAULT_HIDDEN[axis] ?? []
+}
+
 /** Switch one track on or off; on a fixed axis, ids that don't belong to it are dropped (state rows vary with the view). */
 export function toggleTrack(hidden: HiddenTracks, axis: TrackAxis, id: string): HiddenTracks {
   const fixed = tracksFor(axis)
   const valid = (x: string) => !fixed.length || fixed.some((t) => t.id === x)
-  const cur = (hidden[axis] ?? []).filter(valid)
+  const cur = hiddenOn(hidden, axis).filter(valid)
   const next = cur.includes(id) ? cur.filter((x) => x !== id) : valid(id) ? [...cur, id] : cur
   return { ...hidden, [axis]: next }
 }

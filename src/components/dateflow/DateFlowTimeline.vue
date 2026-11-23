@@ -327,7 +327,7 @@ import {
 import { pickCurrents } from '@/engine/dateflow/currents'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
 import {
-  constellationThreshold, dotRadius, layoutTracks, scatter, stateTracks, trackOf, tracksFor,
+  constellationThreshold, dotRadius, hiddenOn, layoutTracks, scatter, stateTracks, trackOf, tracksFor,
   type HiddenTracks, type StateSpan, type TrackAxis,
 } from '@/engine/dateflow/constellation'
 import type { ViewMode } from '@/stores/dateflow'
@@ -761,8 +761,8 @@ const constellation = computed(() => {
   // Empires & states: a row per state in view, and an event of two states on both rows
   const states = axis === 'states' ? stateTracks(shown, props.eventStates, props.stateSpans, props.spanParents) : null
   const defs = states ? states.tracks : tracksFor(axis)
-  const of = (e: Event) => (states ? states.of(e.id) : [trackOf(e, axis as 'geography' | 'activity')])
-  const tracks = layoutTracks(defs, props.hiddenTracks[axis] ?? [], ERA_SPACE, height.value - ERA_SPACE - TICK_STRIP)
+  const of = (e: Event) => (states ? states.of(e.id) : [trackOf(e, axis as Exclude<TrackAxis, 'states'>)])
+  const tracks = layoutTracks(defs, hiddenOn(props.hiddenTracks, axis), ERA_SPACE, height.value - ERA_SPACE - TICK_STRIP)
     .map((t) => {
       if (t.start === undefined || t.end === undefined || !t.on) return { ...t, band: null }
       const x = Math.max(-2, yearToX(t.start, props.view, width.value))

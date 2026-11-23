@@ -62,7 +62,7 @@ import {
 import { formatYear, parseYear } from '@/utils/formatYear'
 import type { Event } from '@/types'
 import eventsData from '@/data/events.json'
-import { constellationThreshold, dotRadius, layoutTracks, OFF_TRACK_H, OTHER_STATES, scatter, stateTracks, toggleTrack, trackOf, tracksFor } from '../dateflow/constellation'
+import { constellationThreshold, dotRadius, hiddenOn, layoutTracks, OFF_TRACK_H, OTHER_STATES, scatter, stateTracks, toggleTrack, trackOf, tracksFor } from '../dateflow/constellation'
 import type { Duration, Relationship, RelationshipData } from '@/types/dateflow'
 import durationsData from '@/data/durations.json'
 import erasData from '@/data/eras.json'
@@ -570,10 +570,19 @@ describe('constellation', () => {
   })
 
   it('has a track for every event', () => {
-    for (const axis of ['geography', 'activity'] as const) {
+    for (const axis of ['geography', 'activity', 'society'] as const) {
       const ids = new Set(tracksFor(axis).map((t) => t.id))
       for (const e of eventsData as Event[]) expect(ids.has(trackOf(e, axis))).toBe(true)
     }
+  })
+
+  it('puts events on Society tracks by their first non-political category', () => {
+    expect(trackOf({ region: 'Europe', categories: ['Politics', 'Economy'] }, 'society')).toBe('trade')
+    expect(trackOf({ region: 'Europe', categories: ['Disasters'] }, 'society')).toBe('social')
+    expect(trackOf({ region: 'Europe', categories: ['War', 'Politics'] }, 'society')).toBe('politics-war')
+    expect(hiddenOn({}, 'society')).toEqual(['politics-war']) // off until the viewer turns it on
+    expect(hiddenOn(toggleTrack({}, 'society', 'politics-war'), 'society')).toEqual([])
+    expect(hiddenOn({}, 'geography')).toEqual([])
   })
 
   it('sizes dots logarithmically by importance', () => {

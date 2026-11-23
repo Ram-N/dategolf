@@ -8,7 +8,7 @@ import { buildStory, featuredStories, frameYears, storyCounts, storyStops, type 
 import { compareYears, distance, overlap, worldAt } from '@/engine/dateflow/contemporaries'
 import { pickSurprise, rememberPick } from '@/engine/dateflow/surprise'
 import erasData from '@/data/eras.json'
-import { toggleTrack as toggleTrackIn, type HiddenTracks, type TrackAxis } from '@/engine/dateflow/constellation'
+import { TRACK_AXES, toggleTrack as toggleTrackIn, type HiddenTracks, type TrackAxis } from '@/engine/dateflow/constellation'
 import type { Family } from '@/engine/dateflow/categoryGroups'
 import { eventStop, searchStops, sortStops, spanStop, stepIndex, type TourSpeed } from '@/engine/dateflow/tour'
 import { journeyIds, resolveJourney, stepJourneyIndex, type Journey, type JourneyData } from '@/engine/dateflow/journeys'
@@ -187,7 +187,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const mode = ref<ViewMode>('constellation')
   // Date Constellation's Y-axis (issue #7)
   const savedAxis = loadJson<TrackAxis>(TRACKS_KEY)
-  const trackAxis = ref<TrackAxis>(savedAxis === 'activity' || savedAxis === 'states' ? savedAxis : 'geography')
+  const trackAxis = ref<TrackAxis>(TRACK_AXES.some((a) => a.id === savedAxis) ? savedAxis! : 'geography')
   // Tracks switched off, per axis (#5, #7), remembered per viewer
   const savedHidden = loadJson<HiddenTracks>(HIDDEN_TRACKS_KEY)
   const hiddenTracks = ref<HiddenTracks>(savedHidden && typeof savedHidden === 'object' ? savedHidden : {})

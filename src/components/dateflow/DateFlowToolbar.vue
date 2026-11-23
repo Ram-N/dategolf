@@ -23,7 +23,7 @@
       </div>
       <!-- On phones these fold behind "More" (the timeline needs the room) -->
       <div class="fold fold-sm" :class="{ open: moreOpen }">
-      <div v-if="mode === 'constellation'" class="seg flex rounded-lg p-0.5" role="group" aria-label="Tracks">
+      <div v-if="mode === 'constellation'" class="seg flex flex-wrap rounded-lg p-0.5" role="group" aria-label="Tracks">
         <button
           v-for="t in TRACK_AXES"
           :key="t.id"
@@ -296,6 +296,7 @@ function submit() {
   background: var(--df-btn);
 }
 .seg-btn {
+  white-space: nowrap;
   height: 2rem;
   padding: 0 0.75rem;
   border-radius: 0.375rem;
