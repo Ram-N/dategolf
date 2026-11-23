@@ -24,7 +24,7 @@ Constellation already opens a first visit (Medieval era, Geography tracks) and h
 
 - **2a. An "Empires & states" axis** (#7's "Political history"; decided 2026-11-23). One row per **named state** (Roman Empire, Byzantine Empire, Mughal Empire, Ottoman Empire, Mongol Empire, British Empire, Athens, Venice…), not per type of state: a row runs only across its state's lifetime, so states are seen rising, overlapping and ending, and the empire life cycles (3d) read straight off it. Each event sits on the row of the state it belongs to, mostly through existing `part_of` links; **an event of two states (a war, a conquest) shows on both rows**; events with no state go to a final "Other" row rather than a guessed one. Only the states in view get a row (the top 6–8 by importance), so the axis never fills with 40 rows. The name is "Empires & states" because not every state is an empire (Athens, Venice). A by-type version (Empires · Kingdoms · Republics…) was dropped as abstract and full of judgement calls. **Needs data:** a pass to tie unlinked events to their state, drafted through doc 15 and reviewed.
 - **2b. A Society axis** (#7: Culture · Technology · Trade · Exploration · Social change), from categories like Human activity. Cheap once 2a's switch generalises.
-- **2c. Constellation for everyone, not only first visits.** **Decide:** make Constellation the default layout for every visit, or keep "returning visitors get what they last used".
+- ~~**2c. Constellation for everyone, not only first visits.**~~ ✅ 2026-11-23: every visit opens on Constellation (Ram: "at least for now"); the last mode is still saved, so reverting is small. A shared story link still opens World.
 - **2d. Spans in Constellation.** Today it shows only event dots. Faint span bands behind each track (Rome behind Europe; on the Empires & states axis, each row is its own span) would let journeys and life cycles work there too (see 3).
 - **2e. Tracks switch on and off by click** (#5, Ram 2026-11-23): a switched-off track shows none of its dots. This applies on every axis: Geography, Human activity, and the new ones. The two-colour dots from #5 stay wanted.
 - Size: M (2a needs a data pass first: events tied to their state, drafted through doc 15, then reviewed).
@@ -33,7 +33,7 @@ Constellation already opens a first visit (Medieval era, Geography tracks) and h
 The three journeys and the Roman, Mughal and Ottoman life cycles are the richest things in DateFlow, but they sit under **More → Stories** and inside bars. No new pilots until these shine.
 
 - **3a. A front-door invitation:** on a first visit (and on an empty view), a small card offers "Take a journey" with the three journeys, so a student never faces a blank timeline. Dismissable, remembered per viewer.
-- **3b. A Journeys button in the main toolbar**, not under More → Stories.
+- ~~**3b. A Journeys button in the main toolbar**~~ ✅ 2026-11-23: a Journeys menu at the front of the always-visible row; the Stories menu now holds only stories.
 - **3c. Progress:** a journey remembers where the viewer stopped (per viewer, browser storage) and the menu shows "Stop 4 of 8 · Continue".
 - **3d. Life cycles up front:** when a journey stop (or a card) is an empire with phases, the panel shows its phase strip (Foundation → … → End) with each phase's title and years, clickable to frame that phase on the timeline. Rome, the Mughals and the Ottomans become the showcase.
 - **3e. Polish pass on the player** after Ram has tried it: pacing, typography, how the timeline moves between stops, the phone bottom sheet.
@@ -43,12 +43,12 @@ The three journeys and the Roman, Mughal and Ottoman life cycles are the richest
 ### 4. AI questions ("What was happening in India when Rome peaked?")
 Ram wants this high. It breaks the **no backend** rule, so the first step is a decision, not code.
 
-- **Decide (first):** how answers are produced. Options:
+- How answers are produced (decided below). Options:
   1. **Curated questions, no backend:** a set of good questions answered offline from our own data, reviewed like journeys, and shipped as JSON. Safe and accurate, but not free-form.
   2. **A small serverless function** (e.g. a Cloudflare Worker) that calls the Claude API with only our reviewed data as its source, and shows which events and spans the answer used. Free-form, but it costs money per question and needs a guard against made-up claims.
   3. Both: start with 1, add 2 later.
 - Whatever the choice, the accuracy rule holds: answers come only from reviewed data, every date shown comes from the data, and an answer says when the data doesn't cover the question.
-- Recommendation: 3, starting with ~30 curated questions that the Time Machine and the explorers can already answer, presented as a "Questions" entry in the toolbar.
+- **Decided 2026-11-23: 3**, starting with ~30 curated, pre-generated questions that the Time Machine and the explorers can already answer, presented as a "Questions" entry in the toolbar.
 - Size: S to decide; M for option 1; M–L for option 2.
 
 ---
@@ -64,7 +64,7 @@ Ram wants this high. It breaks the **no backend** rule, so the first step is a d
 ### 6. 100 more historical people, and a People row that doesn't crowd
 - **Data:** about 100 people from ChronoLogic's `people.json`, **only people who have died**. Of its 1,218, 912 have died, but they lean modern (581 born after 1800; 140 died before 1500), so the 100 must be chosen for balance across eras and regions, not taken from the top. Pre-sort: drop celebrities and duplicates; flag ancient birth and death dates that look exact but aren't (they become approximate, with a `date_display`). Drafted through doc 15, loaded as proposed, reviewed on the dashboard.
 - **Display:** the People row has room for only a few lives at a time (2 rows in World), whatever the database size. Rather than a fixed percentage, show **as many as fit without overlap**, chosen by importance with a **stable shuffle** among equals (the same view shows the same people, so pills don't flicker while panning), plus a "+N more people lived in this time" link that lists the rest. A **Shuffle** button shows a different set.
-  **Decide:** stable shuffle (recommended) or a fresh random pick each time the view settles; and whether the shuffle favours regional variety (one per region before a second from the same region).
+  **Decided 2026-11-23:** a stable shuffle, favouring regional variety (one per region before a second from the same region). Stable across zoom too: a person shown at one zoom must not vanish and be replaced by someone else when zooming in (zooming in only adds people; zooming out drops the lowest-ranked first), because a swap confuses students.
 - Rough capacity: at a 300-year view, a 70-year life is about a quarter of the screen, so the two rows hold 6–10 lives. With ~110 people, the busiest centuries (1700–1900) would show roughly 1 in 4; ancient views would show nearly everyone.
 - Size: M (data) + S–M (display).
 
@@ -87,8 +87,8 @@ Ram wants this high. It breaks the **no backend** rule, so the first step is a d
 
 ## Small known fixes
 
-- **Mongol Empire span is still kind "period"** (drawn dashed in the Periods row); it should be an empire. Needs a `set-span-kind` command (S).
-- A reload in the middle of a journey keeps World mode instead of switching back to Constellation (minor).
+- ~~Mongol Empire span drawn as a period~~ ✅ 2026-11-23 (`manage.py set-span-kind`).
+- ~~A reload mid-journey closed back into World~~ ✅ 2026-11-23 (fixed by every visit opening on Constellation).
 
 ## GitHub issues
 
