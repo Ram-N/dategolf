@@ -171,6 +171,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   // Phase 14: a curated journey. journeyStep: null = the intro, 0…n-1 the stops, n the end. A journey
   // needs span bars, so it switches Constellation or Simple to World / Standard and switches back on close.
   const journeyData = ref<JourneyData[]>([])
+  const eventStates = ref<Record<string, string[]>>({}) // event → its states (doc 18, 2a)
   const journey = ref<{ id: string; restore: { mode: ViewMode; density: Density } | null } | null>(null)
   const journeyStep = ref<number | null>(null)
   const theme = ref<Theme>(loadTheme())
@@ -185,7 +186,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   // to "returning visitors get what they last used" means starting from the saved mode again.
   const mode = ref<ViewMode>('constellation')
   // Date Constellation's Y-axis (issue #7)
-  const trackAxis = ref<TrackAxis>(loadJson<TrackAxis>(TRACKS_KEY) === 'activity' ? 'activity' : 'geography')
+  const savedAxis = loadJson<TrackAxis>(TRACKS_KEY)
+  const trackAxis = ref<TrackAxis>(savedAxis === 'activity' || savedAxis === 'states' ? savedAxis : 'geography')
   // Tracks switched off, per axis (#5, #7), remembered per viewer
   const savedHidden = loadJson<HiddenTracks>(HIDDEN_TRACKS_KEY)
   const hiddenTracks = ref<HiddenTracks>(savedHidden && typeof savedHidden === 'object' ? savedHidden : {})
@@ -309,6 +311,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const viewSpan = computed(() => span(view.value))
   /** Sub-span → parent span (part_of), for nesting bars on the timeline. */
   const subSpanParents = computed(() => spanParents(relationships.value.links, durations.value))
+  /** The states the Empires & states axis can give a row to: every empire-kind span, filters aside. */
+  const stateSpans = computed(() => new Map(durations.value.filter((d) => d.kind === 'empire').map((d) => [d.id, d])))
   /** The detail level the timeline draws with: the Filters slider shifted by the density preset. */
   const detailLevel = computed(() => effectiveDetail(filters.value.detail, density.value))
   /** Detailed: an open card rings its connections on the timeline, as "Show connections" does. */
@@ -417,13 +421,15 @@ export const useDateFlowStore = defineStore('dateflow', () => {
 
   // ── Actions ────────────────────────────────────────────────────────────────
   async function load() {
-    const [eventsModule, durationsModule, relationshipsModule, journeysModule] = await Promise.all([
+    const [eventsModule, durationsModule, relationshipsModule, journeysModule, statesModule] = await Promise.all([
       import('@/data/events.json'),
       import('@/data/durations.json'),
       import('@/data/relationships.json'),
       import('@/data/journeys.json'),
+      import('@/data/states.json'),
     ])
     journeyData.value = journeysModule.default as JourneyData[]
+    eventStates.value = statesModule.default as Record<string, string[]>
     events.value = eventsModule.default as Event[]
     durations.value = durationsModule.default as Duration[]
     relationships.value = relationshipsModule.default as RelationshipData
@@ -999,6 +1005,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     density,
     setDensity,
     subSpanParents,
+    eventStates,
+    stateSpans,
     currentSpans,
     detailLevel,
     cardIds,

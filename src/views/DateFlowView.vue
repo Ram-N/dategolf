@@ -61,6 +61,8 @@
         :lanes="store.lanes"
         :track-axis="store.trackAxis"
         :hidden-tracks="store.hiddenTracks"
+        :event-states="store.eventStates"
+        :state-spans="store.stateSpans"
         :selected-id="store.selectedEvent?.id ?? (store.tourCurrent?.kind === 'event' ? store.tourCurrent.id : null)"
         :selected-duration-id="store.selectedDuration?.id ?? (store.tourCurrent?.kind === 'span' ? store.tourCurrent.id : null)"
         :highlight-ids="store.journeyRing ?? store.storyIds ?? store.tmIds ?? store.tourIds ?? store.cardIds ?? store.focusIds"

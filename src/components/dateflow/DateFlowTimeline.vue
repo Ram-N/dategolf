@@ -61,11 +61,14 @@
       <g v-if="constellation">
         <g v-for="t in constellation.tracks" :key="t.id">
           <rect v-if="t.index % 2 === 1" x="0" :y="t.top" :width="width" :height="t.h" class="track-band" />
+          <!-- A state's lifetime, behind its row: states rise, overlap and end across the axis -->
+          <rect v-if="t.band" :x="t.band.x" :y="t.top + 2" :width="t.band.w" :height="Math.max(0, t.h - 4)" rx="4"
+                class="state-band" />
           <line v-if="t.index > 0" x1="0" :x2="width" :y1="t.top" :y2="t.top" class="lane-rule" />
         </g>
         <path
           v-for="d in constellation.dots"
-          :key="d.event.id"
+          :key="d.key"
           :d="shapePath(d.shape, d.x, d.y, d.r)"
           :fill="`var(--df-f-${d.family})`"
           class="star cursor-pointer"
@@ -323,7 +326,10 @@ import {
 } from '@/engine/dateflow/durations'
 import { pickCurrents } from '@/engine/dateflow/currents'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
-import { constellationThreshold, dotRadius, layoutTracks, scatter, trackOf, type HiddenTracks, type TrackAxis } from '@/engine/dateflow/constellation'
+import {
+  constellationThreshold, dotRadius, layoutTracks, scatter, stateTracks, trackOf, tracksFor,
+  type HiddenTracks, type StateSpan, type TrackAxis,
+} from '@/engine/dateflow/constellation'
 import type { ViewMode } from '@/stores/dateflow'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
 import { gapText, joinFrom, joinTo, yearGap, type Story, type StoryEdge, type StoryNode } from '@/engine/dateflow/stories'
@@ -341,6 +347,8 @@ const props = defineProps<{
   lanes: LaneId[]
   trackAxis: TrackAxis
   hiddenTracks: HiddenTracks // Constellation tracks switched off
+  eventStates: Record<string, string[]> // event → its states, for the Empires & states axis
+  stateSpans: Map<string, StateSpan>
   selectedId: string | null
   selectedDurationId: string | null
   highlightIds?: Set<string> | null // "Show connections": ring these, dim the rest
@@ -747,16 +755,28 @@ const DOT_MARGIN = 5 // keeps a dot clear of its track's edges
 
 const constellation = computed(() => {
   if (props.mode !== 'constellation') return null
-  const tracks = layoutTracks(props.trackAxis, props.hiddenTracks, ERA_SPACE, height.value - ERA_SPACE - TICK_STRIP)
-  const byId = new Map(tracks.map((t) => [t.id, t]))
+  const axis = props.trackAxis
   const minImp = constellationThreshold(props.detail)
-  const dots = inView.value
-    .filter((e) => (e.importance >= minImp || kept(e.id)) && byId.get(trackOf(e, props.trackAxis))!.on)
-    .map((e) => {
-      const t = byId.get(trackOf(e, props.trackAxis))!
+  const shown = inView.value.filter((e) => e.importance >= minImp || kept(e.id))
+  // Empires & states: a row per state in view, and an event of two states on both rows
+  const states = axis === 'states' ? stateTracks(shown, props.eventStates, props.stateSpans, props.spanParents) : null
+  const defs = states ? states.tracks : tracksFor(axis)
+  const of = (e: Event) => (states ? states.of(e.id) : [trackOf(e, axis as 'geography' | 'activity')])
+  const tracks = layoutTracks(defs, props.hiddenTracks[axis] ?? [], ERA_SPACE, height.value - ERA_SPACE - TICK_STRIP)
+    .map((t) => {
+      if (t.start === undefined || t.end === undefined || !t.on) return { ...t, band: null }
+      const x = Math.max(-2, yearToX(t.start, props.view, width.value))
+      return { ...t, band: { x, w: Math.max(0, Math.min(width.value + 2, yearToX(t.end, props.view, width.value)) - x) } }
+    })
+  const byId = new Map(tracks.map((t) => [t.id, t]))
+  const dots = shown
+    .flatMap((e) => of(e).map((id) => ({ e, t: byId.get(id)! })))
+    .filter(({ t }) => t.on)
+    .map(({ e, t }) => {
       const r = dotRadius(e.importance)
       const spread = Math.max(0, t.h / 2 - DOT_MARGIN - r)
       return {
+        key: `${e.id}@${t.id}`,
         event: e,
         x: yearToX(e.year, props.view, width.value),
         y: t.top + t.h / 2 + scatter(e.id) * spread,
@@ -1133,6 +1153,12 @@ function onArcClick(key: string, e: MouseEvent) {
 }
 .track-toggle {
   cursor: pointer;
+}
+.state-band {
+  fill: var(--df-text-2);
+  fill-opacity: 0.07;
+  stroke: var(--df-text-2);
+  stroke-opacity: 0.18;
 }
 .track-pill {
   fill: var(--df-bg);

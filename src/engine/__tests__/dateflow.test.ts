@@ -62,7 +62,7 @@ import {
 import { formatYear, parseYear } from '@/utils/formatYear'
 import type { Event } from '@/types'
 import eventsData from '@/data/events.json'
-import { constellationThreshold, dotRadius, layoutTracks, OFF_TRACK_H, scatter, toggleTrack, trackOf, tracksFor } from '../dateflow/constellation'
+import { constellationThreshold, dotRadius, layoutTracks, OFF_TRACK_H, OTHER_STATES, scatter, stateTracks, toggleTrack, trackOf, tracksFor } from '../dateflow/constellation'
 import type { Duration, Relationship, RelationshipData } from '@/types/dateflow'
 import durationsData from '@/data/durations.json'
 import erasData from '@/data/eras.json'
@@ -595,13 +595,33 @@ describe('constellation', () => {
     let hidden = toggleTrack({}, 'geography', 'europe')
     hidden = toggleTrack(hidden, 'geography', 'nowhere') // not a track: ignored
     expect(hidden).toEqual({ geography: ['europe'] })
-    const rows = layoutTracks('geography', hidden, 0, 7 * 100)
+    const rows = layoutTracks(tracksFor('geography'), hidden.geography!, 0, 7 * 100)
     const europe = rows.find((r) => r.id === 'europe')!
     expect([europe.on, europe.h]).toEqual([false, OFF_TRACK_H])
     expect(rows.filter((r) => r.on).every((r) => r.h === (700 - OFF_TRACK_H) / 6)).toBe(true)
     expect(rows[rows.length - 1]!.top + rows[rows.length - 1]!.h).toBeCloseTo(700) // fills the height exactly
-    expect(layoutTracks('activity', hidden, 0, 600).every((r) => r.on)).toBe(true) // per axis
+    expect(layoutTracks(tracksFor('activity'), hidden.activity ?? [], 0, 600).every((r) => r.on)).toBe(true)
     expect(toggleTrack(hidden, 'geography', 'europe')).toEqual({ geography: [] })
+  })
+
+  it('gives each state in view a row, oldest first, with sub-states rolled up and the rest on Other', () => {
+    const st = (id: string, startYear: number, endYear: number, importance = 6) =>
+      [id, { id, name: id.toUpperCase(), startYear, endYear, importance }] as const
+    const states = new Map([st('delhi', 1206, 1526), st('khalji', 1290, 1320), st('mughal', 1526, 1857, 8),
+                            st('timurid', 1370, 1507), st('rome', -27, 476, 9)])
+    const parents = new Map([['khalji', 'delhi']])
+    const eventStates = { a: ['khalji'], b: ['delhi'], c: ['mughal', 'delhi'], d: ['timurid'], e: [], f: ['rome'] }
+    const evs = ['a', 'b', 'c', 'd', 'e'].map((id) => ({ id }))
+    const { tracks, of } = stateTracks(evs, eventStates, states, parents)
+    expect(tracks.map((t) => t.id)).toEqual(['delhi', 'timurid', 'mughal', OTHER_STATES]) // Rome isn't in view
+    expect(tracks[0]).toMatchObject({ start: 1206, end: 1526 })
+    expect(of('a')).toEqual(['delhi'])
+    expect(of('c')).toEqual(['mughal', 'delhi']) // two states, two rows
+    expect(of('e')).toEqual([OTHER_STATES])
+    const two = stateTracks(evs, eventStates, states, parents, 1) // only Delhi (3 events) gets a row
+    expect(two.tracks.map((t) => t.id)).toEqual(['delhi', OTHER_STATES])
+    expect(two.of('d')).toEqual([OTHER_STATES])
+    expect(toggleTrack({}, 'states', 'delhi')).toEqual({ states: ['delhi'] }) // rows vary: any id is kept
   })
 
   it('scatters deterministically within [-1, 1]', () => {
