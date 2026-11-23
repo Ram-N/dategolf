@@ -26,7 +26,7 @@ Constellation already opens a first visit (Medieval era, Geography tracks) and h
 - **2b. A Society axis** (#7: Culture · Technology · Trade · Exploration · Social change), from categories like Human activity. Cheap once 2a's switch generalises.
 - ~~**2c. Constellation for everyone, not only first visits.**~~ ✅ 2026-11-23: every visit opens on Constellation (Ram: "at least for now"); the last mode is still saved, so reverting is small. A shared story link still opens World.
 - **2d. Spans in Constellation.** Today it shows only event dots. Faint span bands behind each track (Rome behind Europe; on the Empires & states axis, each row is its own span) would let journeys and life cycles work there too (see 3).
-- **2e. Tracks switch on and off by click** (#5, Ram 2026-11-23): a switched-off track shows none of its dots. This applies on every axis: Geography, Human activity, and the new ones. The two-colour dots from #5 stay wanted.
+- ~~**2e. Tracks switch on and off by click**~~ ✅ 2026-11-23 (click a track name; an off track shrinks to a strip; per axis, remembered per viewer) (#5, Ram 2026-11-23): a switched-off track shows none of its dots. This applies on every axis: Geography, Human activity, and the new ones. The two-colour dots from #5 stay wanted.
 - Size: M (2a needs a data pass first: events tied to their state, drafted through doc 15, then reviewed).
 
 ### 3. Make the journeys and empire life cycles stand out
