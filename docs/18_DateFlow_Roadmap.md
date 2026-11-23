@@ -22,12 +22,12 @@ Ram uses DateFlow for a few days and lists small aesthetic, usability and experi
 ### 2. Date Constellation as the front door, with switchable Y-axis tracks (#7)
 Constellation already opens a first visit (Medieval era, Geography tracks) and has two Y-axes: **Geography** (7 regions) and **Human activity** (6 activity groups, by primary category). This item makes it *the* way into DateFlow.
 
-- **2a. A Polity axis** (#7's "Political history": e.g. Empires · Kingdoms · Republics · City-states · Peoples and confederations). Each event sits on the track of the state it belongs to. **Needs data:** a polity type on each empire/period span (a reviewed field, set through `tools/`), and each event tied to a polity, mostly through existing `part_of` links; events with no polity go to an "Other / between states" track rather than a guessed one. **Decide:** the track list (draft below), and whether an event of two states (a war) shows on both tracks or on the attacker's.
-  *Draft tracks:* Empires · Kingdoms and dynasties · Republics and city-states · Religious and colonial authorities · No single state.
+- **2a. An "Empires & states" axis** (#7's "Political history"; decided 2026-11-23). One row per **named state** (Roman Empire, Byzantine Empire, Mughal Empire, Ottoman Empire, Mongol Empire, British Empire, Athens, Venice…), not per type of state: a row runs only across its state's lifetime, so states are seen rising, overlapping and ending, and the empire life cycles (3d) read straight off it. Each event sits on the row of the state it belongs to, mostly through existing `part_of` links; **an event of two states (a war, a conquest) shows on both rows**; events with no state go to a final "Other" row rather than a guessed one. Only the states in view get a row (the top 6–8 by importance), so the axis never fills with 40 rows. The name is "Empires & states" because not every state is an empire (Athens, Venice). A by-type version (Empires · Kingdoms · Republics…) was dropped as abstract and full of judgement calls. **Needs data:** a pass to tie unlinked events to their state, drafted through doc 15 and reviewed.
 - **2b. A Society axis** (#7: Culture · Technology · Trade · Exploration · Social change), from categories like Human activity. Cheap once 2a's switch generalises.
 - **2c. Constellation for everyone, not only first visits.** **Decide:** make Constellation the default layout for every visit, or keep "returning visitors get what they last used".
-- **2d. Spans in Constellation.** Today it shows only event dots. Faint span bands behind each track (Rome behind Europe, or behind Empires on the Polity axis) would let journeys and life cycles work there too (see 3).
-- Size: M (2a needs a data pass first: polity types drafted through doc 15, then reviewed).
+- **2d. Spans in Constellation.** Today it shows only event dots. Faint span bands behind each track (Rome behind Europe; on the Empires & states axis, each row is its own span) would let journeys and life cycles work there too (see 3).
+- **2e. Tracks switch on and off by click** (#5, Ram 2026-11-23): a switched-off track shows none of its dots, on every axis. The two-colour dots from #5 stay wanted.
+- Size: M (2a needs a data pass first: events tied to their state, drafted through doc 15, then reviewed).
 
 ### 3. Make the journeys and empire life cycles stand out
 The three journeys and the Roman, Mughal and Ottoman life cycles are the richest things in DateFlow, but they sit under **More → Stories** and inside bars. No new pilots until these shine.
@@ -81,7 +81,6 @@ Ram wants this high. It breaks the **no backend** rule, so the first step is a d
 | Places | Cities and trade routes as their own kind of item | New entity type |
 | More pilots | More life cycles (parked), more journeys, more people beyond 100 | After 3 and 6 |
 | "Find events during X" game | Students find events inside a span | Deprioritised by Ram 2026-11-23 |
-| Colorful mode refinement (#8) | Further work toward the night-train-map look, if wanted after Ram's usage notes | Ram's call |
 | Immersive | Stepping inside historical moments (doc 16) | Parked |
 
 ---
@@ -95,10 +94,10 @@ Ram wants this high. It breaks the **no backend** rule, so the first step is a d
 
 | # | What | Proposed |
 |---|---|---|
-| #1 | Focus, Detailed, Light/Dark and Colorful viewing modes | Close: all four built (doc 14, step 3) |
-| #5 | Date Constellation: region tracks | Close: built as Constellation v1 (Geography axis) |
-| #7 | Date Constellation: switchable Y-axis tracks | Keep open: Polity and Society axes are item 2 |
-| #8 | Colorful mode modelled on the night-train map | Close, or keep as the Later refinement |
+| #1 | Focus, Detailed, Light/Dark and Colorful viewing modes | Open: Ram sees hardly any difference between Standard and Detailed (2026-11-23) |
+| #5 | Date Constellation: region tracks | Open: seven tracks are enough; tracks to switch on/off by click; two-colour dots still wanted |
+| #7 | Date Constellation: switchable Y-axis tracks | Open: the Empires & states and Society axes are item 2 |
+| #8 | Colorful mode modelled on the night-train map | Closed 2026-11-23: what's built is good enough |
 
 ## Done (for the record)
 
