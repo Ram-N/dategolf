@@ -373,8 +373,8 @@ watch(
 onMounted(async () => {
   window.addEventListener('keydown', onKey)
   if (store.isLoading) await store.load()
-  // A first visit opens on Date Constellation, but a shared story needs its threads (World and Lanes only)
-  if (store.firstVisit && typeof route.query.story === 'string') store.setMode('world')
+  // Every visit opens on Date Constellation, but a shared story needs its threads (World and Lanes only)
+  if (typeof route.query.story === 'string') store.setMode('world')
   openFromUrl()
   openTimeMachineFromUrl()
   if (typeof route.query.q === 'string' && route.query.q.trim()) store.searchFor(route.query.q)

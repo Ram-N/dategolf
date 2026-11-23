@@ -81,6 +81,7 @@
     </form>
 
     <div class="flex flex-wrap items-center gap-1">
+      <JourneysMenu v-if="journeys.length" :journeys="journeys" @open="(id) => emit('openJourney', id)" />
       <button class="btn w-9" aria-label="Zoom out" @click="emit('zoomOut')">−</button>
       <button class="btn w-9" aria-label="Zoom in" @click="emit('zoomIn')">+</button>
       <div class="seg flex flex-wrap rounded-lg p-0.5" role="group" aria-label="Show an era">
@@ -131,9 +132,7 @@
       <button class="btn" title="Play through the events your filters show, one at a time" @click="emit('watch')">
         Watch
       </button>
-      <StoriesMenu data-keep-open :stories="stories" :journeys="journeys"
-                   @open="(id) => { moreOpen = false; emit('openStory', id) }"
-                   @open-journey="(id) => { moreOpen = false; emit('openJourney', id) }" />
+      <StoriesMenu data-keep-open :stories="stories" @open="(id) => { moreOpen = false; emit('openStory', id) }" />
       <button class="btn" title="Summarise the period in view (or shift-drag across the timeline)" @click="emit('summarize')">
         What happened?
       </button>
@@ -168,6 +167,7 @@ import { TRACK_AXES, type TrackAxis } from '@/engine/dateflow/constellation'
 import DateFlowLanePicker from './DateFlowLanePicker.vue'
 import DateFlowFilters from './DateFlowFilters.vue'
 import StoriesMenu from './StoriesMenu.vue'
+import JourneysMenu from './JourneysMenu.vue'
 import type { FeaturedStory } from '@/engine/dateflow/stories'
 import type { Journey } from '@/engine/dateflow/journeys'
 import { DENSITIES, type Density, type Filters } from '@/engine/dateflow/filters'

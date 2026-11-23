@@ -102,7 +102,6 @@ export interface TimeMachine {
 export type Theme = 'light' | 'dark'
 export type ColorMode = 'colorful' | 'subtle'
 export type ViewMode = 'world' | 'lanes' | 'constellation'
-const MODES: ViewMode[] = ['world', 'lanes', 'constellation']
 
 function loadJson<T>(key: string): T | null {
   try {
@@ -181,8 +180,9 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const savedDensity = loadJson<Density>(DENSITY_KEY)
   const density = ref<Density>(savedDensity === 'simple' || savedDensity === 'detailed' ? savedDensity : 'standard')
   const colorMode = ref<ColorMode>(loadJson<ColorMode>(COLORS_KEY) === 'subtle' ? 'subtle' : 'colorful')
-  const savedMode = loadJson<ViewMode>(MODE_KEY)
-  const mode = ref<ViewMode>(savedMode && MODES.includes(savedMode) ? savedMode : firstVisit ? 'constellation' : 'world')
+  // Every visit opens on Date Constellation (Ram, 2026-11-23). The last mode is still saved, so going back
+  // to "returning visitors get what they last used" means starting from the saved mode again.
+  const mode = ref<ViewMode>('constellation')
   // Date Constellation's Y-axis (issue #7)
   const trackAxis = ref<TrackAxis>(loadJson<TrackAxis>(TRACKS_KEY) === 'activity' ? 'activity' : 'geography')
   const laneState = ref<LaneState>(sanitizeLanes(loadJson<LaneState>(LANES_KEY)))
