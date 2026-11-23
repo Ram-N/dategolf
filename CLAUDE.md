@@ -1,6 +1,6 @@
 # CLAUDE.md — DateGolf
 
-See `QUICKSTART.md` for how to run it and the project structure, and **`docs/14_Product_Overview_and_Roadmap.md` for what exists and what's next** (the live roadmap: keep it updated when work finishes).
+See `QUICKSTART.md` for how to run it and the project structure, and **`docs/14_Product_Overview_and_Roadmap.md` for what exists and what's next** (the live roadmap: keep it updated when work finishes). **DateFlow's own roadmap is `docs/18_DateFlow_Roadmap.md`.**
 
 ## Quick Start
 

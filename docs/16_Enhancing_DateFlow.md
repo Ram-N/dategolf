@@ -1,3 +1,5 @@
+*Note (2026-11-23): the original DateFlow vision. Its plan (Phases 10–14) is built; current priorities are in [doc 18](18_DateFlow_Roadmap.md).*
+
 I think Date Flow has the potential to become something quite special. And I would approach this as more than a historical timeline. I'd aim for an **interactive visual encyclopedia of human history**, where students discover history rather than simply read about it.
 
 There are three dimensions I'd like us to think about:

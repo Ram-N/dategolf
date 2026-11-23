@@ -67,6 +67,8 @@ All three are seeded by date (same date = same challenge for everyone). There's 
 
 ## 2. What's next
 
+**DateFlow's roadmap now lives in [doc 18](18_DateFlow_Roadmap.md)** (2026-11-23). The DateFlow rows below (6a–6f and the build sequence) are kept as history.
+
 ### Waiting on you (Ram)
 
 | # | What | Where | Why it matters |
