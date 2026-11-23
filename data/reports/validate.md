@@ -26,7 +26,7 @@
 | error | Contradictory links (A→B and B→A of the same one-way type) | pass |
 | error | Symmetric link not stored in id order | pass |
 | warning | DateLinks 'Year of' label doesn't match the event's year (rename-memory-aid-group) | pass |
-| warning | Link touches a proposed (unpublished) entity | pass |
+| warning | Link touches a proposed (unpublished) entity | 13 |
 | warning | Time spans with the same normalised name | pass |
 | warning | Event names that differ only in case or spacing | pass |
 | warning | Event with no aliases (search falls back to name only) | pass |
@@ -41,17 +41,19 @@
 | warning | Span with a date note but not marked approximate (the note is then not exported) | pass |
 | warning | Published event or span with no country tag | pass |
 | info | Entities with an actor but no location (e.g. events on the Moon or Mars) | 3 |
-| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | pass |
+| review | Links awaiting review (dashboard Review → Links, or approve-links / reject-links) | 13 |
 | warning | A span is part_of a person's life (a reign is its own span; only events go inside a life) | pass |
 | review | Life-cycle phases awaiting approval (not exported; dashboard Review → Life cycles) | pass |
 | warning | Life-cycle phases no longer cover their span (its years changed): fix with remove-phases + load-phases | pass |
 | review | Journeys awaiting approval (not exported; dashboard Review → Journeys) | pass |
 | warning | Approved journey not exported: a stop shows an unpublished item (approve it) or none at all | pass |
+| review | Event → state ties awaiting approval (not exported; dashboard Review → States) | 45 |
+| warning | Approved event → state tie not exported: its state is still proposed (approve the span) | pass |
 | review | Memory aids awaiting approval (not exported; dashboard Review → Memory aids) | pass |
 | review | Missing events and spans to decide (dashboard Review → Missing) | 4 |
 | review | Shared ids flagged for a split (Step 3a; do the split with Claude) | pass |
-| review | Country tags awaiting review (manage.py approve-countries) | pass |
-| info | Region labels in use, with their DateFlow lane | 12 |
+| review | Country tags awaiting review (manage.py approve-countries) | 23 |
+| info | Region labels in use, with their DateFlow lane | 13 |
 | warning | Description mentions a year near the answer (DatePick shows it before the guess) | pass |
 | warning | Alias mentions a year near the answer (DateGolf search would reveal it) | pass |
 | warning | No tagged country fits the event's region lane (fix the tags, add an actor, or accept it) | pass |
@@ -66,7 +68,7 @@
 ## Counts
 
 - events: 522
-- time_spans: 170
+- time_spans: 193
 - eras: 5
 - datelinks_keys: 28
 - datelinks_groups: 91
@@ -75,7 +77,23 @@
 - daily_challenge_dates: 366
 - csv_rows: 310
 - significance_reviewed: 237
-- significance_proposed: 0
+- significance_proposed: 23
+
+## [warning] Link touches a proposed (unpublished) entity
+
+- `527` — act-of-union-1707 began kingdom-of-great-britain
+- `526` — act-of-union-1707 ended kingdom-of-england
+- `531` — age-of-exploration-portugal began portuguese-empire
+- `521` — carthage-founded began carthage
+- `532` — columbus-reaches-americas began spanish-empire
+- `522` — destruction-of-carthage ended carthage
+- `533` — germany-surrenders-ve-day ended nazi-germany
+- `525` — islamic-caliphate-expands began rashidun-caliphate
+- `528` — napoleon-crowned-emperor began first-french-empire
+- `529` — napoleon-defeat-waterloo ended first-french-empire
+- `523` — ptolemaic-dynasty-founded began ptolemaic-kingdom
+- `524` — qin-unification-china began qin-dynasty
+- `530` — unification-germany began german-empire
 
 ## [review] CSV rows triaged as duplicate / not recommended (incl. date conflicts)
 
@@ -135,6 +153,70 @@
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
 
+## [review] Links awaiting review (dashboard Review → Links, or approve-links / reject-links)
+
+- `521` — carthage-founded began carthage — The founding of the city by settlers from Tyre began the state.
+- `522` — destruction-of-carthage ended carthage — Rome razed the city at the end of the Third Punic War and made its land a province.
+- `523` — ptolemaic-dynasty-founded began ptolemaic-kingdom — Ptolemy, already governing Egypt, took the title of king and founded the dynasty.
+- `524` — qin-unification-china began qin-dynasty — Conquering the last rival state made the king of Qin the first emperor of a unified China.
+- `525` — islamic-caliphate-expands began rashidun-caliphate — Abu Bakr's election as the first caliph after Muhammad's death began the caliphate.
+- `526` — act-of-union-1707 ended kingdom-of-england — The Act of Union merged England into the new Kingdom of Great Britain.
+- `527` — act-of-union-1707 began kingdom-of-great-britain — The union of England and Scotland under one Parliament created Great Britain.
+- `528` — napoleon-crowned-emperor began first-french-empire — Napoleon's coronation as Emperor of the French replaced the republic with an empire.
+- `529` — napoleon-defeat-waterloo ended first-french-empire — Defeat at Waterloo ended Napoleon's return to power, and with it the empire.
+- `530` — unification-germany began german-empire — The proclamation of the King of Prussia as German Emperor created the empire.
+- `531` — age-of-exploration-portugal began portuguese-empire — Ceuta was Portugal's first overseas possession, the usual starting point of its empire.
+- `532` — columbus-reaches-americas began spanish-empire — Columbus's voyage for the Spanish crown began Spain's empire in the Americas.
+- `533` — germany-surrenders-ve-day ended nazi-germany — Germany's unconditional surrender ended the Nazi state.
+
+## [review] Event → state ties awaiting approval (not exported; dashboard Review → States)
+
+- `abbasid-caliphate` — 1 event(s)
+- `achaemenid-empire` — 3 event(s)
+- `austria-hungary` — 1 event(s)
+- `british-empire` — 23 event(s)
+- `british-raj` — 11 event(s)
+- `byzantine-empire` — 2 event(s)
+- `carthage` — 2 event(s)
+- `classical-athens` — 4 event(s)
+- `empire-of-japan` — 7 event(s)
+- `first-dynasty-of-babylon` — 1 event(s)
+- `first-french-empire` — 1 event(s)
+- `french-first-republic` — 4 event(s)
+- `german-empire` — 4 event(s)
+- `ghaznavid-empire` — 2 event(s)
+- `gupta-empire` — 2 event(s)
+- `han-dynasty` — 1 event(s)
+- `holy-roman-empire` — 8 event(s)
+- `kingdom-of-england` — 20 event(s)
+- `kingdom-of-france` — 9 event(s)
+- `kingdom-of-great-britain` — 4 event(s)
+- `kingdom-of-macedon` — 5 event(s)
+- `lodi-dynasty` — 1 event(s)
+- `mughal-empire` — 8 event(s)
+- `nazi-germany` — 8 event(s)
+- `neo-babylonian-empire` — 1 event(s)
+- `old-kingdom-egypt` — 1 event(s)
+- `ottoman-empire` — 3 event(s)
+- `portuguese-empire` — 2 event(s)
+- `ptolemaic-kingdom` — 2 event(s)
+- `qin-dynasty` — 1 event(s)
+- `qing-dynasty` — 4 event(s)
+- `rashidun-caliphate` — 1 event(s)
+- `roman-empire` — 3 event(s)
+- `roman-republic` — 4 event(s)
+- `russian-empire` — 3 event(s)
+- `soviet-union` — 8 event(s)
+- `spanish-empire` — 5 event(s)
+- `tang-dynasty` — 1 event(s)
+- `third-dynasty-of-ur` — 1 event(s)
+- `timurid-empire` — 2 event(s)
+- `tokugawa-shogunate` — 1 event(s)
+- `tughlaq-dynasty` — 1 event(s)
+- `umayyad-caliphate` — 2 event(s)
+- `yuan-dynasty` — 2 event(s)
+- `zhou-dynasty` — 1 event(s)
+
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 
 - `149` — event · Egyptian–Hittite Peace Treaty (-1259) · wanted
@@ -142,19 +224,46 @@
 - `154` — span · Hellenistic Kingdoms (-323) · wanted
 - `155` — event · Jamestown Founded (1607) · wanted
 
+## [review] Country tags awaiting review (manage.py approve-countries)
+
+- `austria-hungary` — high
+- `carthage` — high
+- `classical-athens` — high
+- `empire-of-japan` — high
+- `first-dynasty-of-babylon` — high
+- `first-french-empire` — high
+- `french-first-republic` — high
+- `german-empire` — high
+- `ghaznavid-empire` — high
+- `kingdom-of-england` — high
+- `kingdom-of-france` — high
+- `kingdom-of-great-britain` — high
+- `kingdom-of-macedon` — high
+- `nazi-germany` — high
+- `neo-babylonian-empire` — high
+- `portuguese-empire` — high
+- `ptolemaic-kingdom` — high
+- `qin-dynasty` — high
+- `rashidun-caliphate` — high
+- `russian-empire` — high
+- `spanish-empire` — high
+- `third-dynasty-of-ur` — high
+- `timurid-empire` — high
+
 ## [info] Region labels in use, with their DateFlow lane
 
-- `Europe` — europe · 194 records
+- `Europe` — europe · 205 records
 - `South Asia` — south-asia · 153 records
-- `East Asia` — east-asia · 74 records
+- `East Asia` — east-asia · 76 records
 - `Americas` — americas · 69 records
-- `Middle East` — middle-east · 61 records
-- `Africa` — africa · 56 records
-- `Global` — global · 36 records
+- `Middle East` — middle-east · 65 records
+- `Africa` — africa · 58 records
+- `Global` — global · 38 records
 - `Southeast Asia` — east-asia · 21 records
 - `North America` — americas · 13 records
 - `Oceania` — global · 10 records
 - `South America` — americas · 4 records
+- `Central Asia` — middle-east · 2 records
 - `Antarctica` — global · 1 records
 
 ## [info] Accepted region exceptions (region deliberately differs from location)
@@ -166,7 +275,7 @@
 ## [info] Counts changed since the legacy import
 
 - `events` — 343 at import -> 522 now
-- `time_spans` — 98 at import -> 170 now
+- `time_spans` — 98 at import -> 193 now
 - `datelinks_keys` — 26 at import -> 28 now
 - `datelinks_groups` — 83 at import -> 91 now
 - `datelinks_items` — 198 at import -> 218 now

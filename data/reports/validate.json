@@ -1,7 +1,7 @@
 {
   "counts": {
     "events": 522,
-    "time_spans": 170,
+    "time_spans": 193,
     "eras": 5,
     "datelinks_keys": 28,
     "datelinks_groups": 91,
@@ -10,7 +10,7 @@
     "daily_challenge_dates": 366,
     "csv_rows": 310,
     "significance_reviewed": 237,
-    "significance_proposed": 0
+    "significance_proposed": 23
   },
   "checks": [
     {
@@ -160,8 +160,61 @@
     {
       "severity": "warning",
       "check": "Link touches a proposed (unpublished) entity",
-      "count": 0,
-      "rows": []
+      "count": 13,
+      "rows": [
+        [
+          527,
+          "act-of-union-1707 began kingdom-of-great-britain"
+        ],
+        [
+          526,
+          "act-of-union-1707 ended kingdom-of-england"
+        ],
+        [
+          531,
+          "age-of-exploration-portugal began portuguese-empire"
+        ],
+        [
+          521,
+          "carthage-founded began carthage"
+        ],
+        [
+          532,
+          "columbus-reaches-americas began spanish-empire"
+        ],
+        [
+          522,
+          "destruction-of-carthage ended carthage"
+        ],
+        [
+          533,
+          "germany-surrenders-ve-day ended nazi-germany"
+        ],
+        [
+          525,
+          "islamic-caliphate-expands began rashidun-caliphate"
+        ],
+        [
+          528,
+          "napoleon-crowned-emperor began first-french-empire"
+        ],
+        [
+          529,
+          "napoleon-defeat-waterloo ended first-french-empire"
+        ],
+        [
+          523,
+          "ptolemaic-dynasty-founded began ptolemaic-kingdom"
+        ],
+        [
+          524,
+          "qin-unification-china began qin-dynasty"
+        ],
+        [
+          530,
+          "unification-germany began german-empire"
+        ]
+      ]
     },
     {
       "severity": "warning",
@@ -449,8 +502,61 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 0,
-      "rows": []
+      "count": 13,
+      "rows": [
+        [
+          521,
+          "carthage-founded began carthage — The founding of the city by settlers from Tyre began the state."
+        ],
+        [
+          522,
+          "destruction-of-carthage ended carthage — Rome razed the city at the end of the Third Punic War and made its land a province."
+        ],
+        [
+          523,
+          "ptolemaic-dynasty-founded began ptolemaic-kingdom — Ptolemy, already governing Egypt, took the title of king and founded the dynasty."
+        ],
+        [
+          524,
+          "qin-unification-china began qin-dynasty — Conquering the last rival state made the king of Qin the first emperor of a unified China."
+        ],
+        [
+          525,
+          "islamic-caliphate-expands began rashidun-caliphate — Abu Bakr's election as the first caliph after Muhammad's death began the caliphate."
+        ],
+        [
+          526,
+          "act-of-union-1707 ended kingdom-of-england — The Act of Union merged England into the new Kingdom of Great Britain."
+        ],
+        [
+          527,
+          "act-of-union-1707 began kingdom-of-great-britain — The union of England and Scotland under one Parliament created Great Britain."
+        ],
+        [
+          528,
+          "napoleon-crowned-emperor began first-french-empire — Napoleon's coronation as Emperor of the French replaced the republic with an empire."
+        ],
+        [
+          529,
+          "napoleon-defeat-waterloo ended first-french-empire — Defeat at Waterloo ended Napoleon's return to power, and with it the empire."
+        ],
+        [
+          530,
+          "unification-germany began german-empire — The proclamation of the King of Prussia as German Emperor created the empire."
+        ],
+        [
+          531,
+          "age-of-exploration-portugal began portuguese-empire — Ceuta was Portugal's first overseas possession, the usual starting point of its empire."
+        ],
+        [
+          532,
+          "columbus-reaches-americas began spanish-empire — Columbus's voyage for the Spanish crown began Spain's empire in the Americas."
+        ],
+        [
+          533,
+          "germany-surrenders-ve-day ended nazi-germany — Germany's unconditional surrender ended the Nazi state."
+        ]
+      ]
     },
     {
       "severity": "warning",
@@ -479,6 +585,199 @@
     {
       "severity": "warning",
       "check": "Approved journey not exported: a stop shows an unpublished item (approve it) or none at all",
+      "count": 0,
+      "rows": []
+    },
+    {
+      "severity": "review",
+      "check": "Event → state ties awaiting approval (not exported; dashboard Review → States)",
+      "count": 45,
+      "rows": [
+        [
+          "abbasid-caliphate",
+          "1 event(s)"
+        ],
+        [
+          "achaemenid-empire",
+          "3 event(s)"
+        ],
+        [
+          "austria-hungary",
+          "1 event(s)"
+        ],
+        [
+          "british-empire",
+          "23 event(s)"
+        ],
+        [
+          "british-raj",
+          "11 event(s)"
+        ],
+        [
+          "byzantine-empire",
+          "2 event(s)"
+        ],
+        [
+          "carthage",
+          "2 event(s)"
+        ],
+        [
+          "classical-athens",
+          "4 event(s)"
+        ],
+        [
+          "empire-of-japan",
+          "7 event(s)"
+        ],
+        [
+          "first-dynasty-of-babylon",
+          "1 event(s)"
+        ],
+        [
+          "first-french-empire",
+          "1 event(s)"
+        ],
+        [
+          "french-first-republic",
+          "4 event(s)"
+        ],
+        [
+          "german-empire",
+          "4 event(s)"
+        ],
+        [
+          "ghaznavid-empire",
+          "2 event(s)"
+        ],
+        [
+          "gupta-empire",
+          "2 event(s)"
+        ],
+        [
+          "han-dynasty",
+          "1 event(s)"
+        ],
+        [
+          "holy-roman-empire",
+          "8 event(s)"
+        ],
+        [
+          "kingdom-of-england",
+          "20 event(s)"
+        ],
+        [
+          "kingdom-of-france",
+          "9 event(s)"
+        ],
+        [
+          "kingdom-of-great-britain",
+          "4 event(s)"
+        ],
+        [
+          "kingdom-of-macedon",
+          "5 event(s)"
+        ],
+        [
+          "lodi-dynasty",
+          "1 event(s)"
+        ],
+        [
+          "mughal-empire",
+          "8 event(s)"
+        ],
+        [
+          "nazi-germany",
+          "8 event(s)"
+        ],
+        [
+          "neo-babylonian-empire",
+          "1 event(s)"
+        ],
+        [
+          "old-kingdom-egypt",
+          "1 event(s)"
+        ],
+        [
+          "ottoman-empire",
+          "3 event(s)"
+        ],
+        [
+          "portuguese-empire",
+          "2 event(s)"
+        ],
+        [
+          "ptolemaic-kingdom",
+          "2 event(s)"
+        ],
+        [
+          "qin-dynasty",
+          "1 event(s)"
+        ],
+        [
+          "qing-dynasty",
+          "4 event(s)"
+        ],
+        [
+          "rashidun-caliphate",
+          "1 event(s)"
+        ],
+        [
+          "roman-empire",
+          "3 event(s)"
+        ],
+        [
+          "roman-republic",
+          "4 event(s)"
+        ],
+        [
+          "russian-empire",
+          "3 event(s)"
+        ],
+        [
+          "soviet-union",
+          "8 event(s)"
+        ],
+        [
+          "spanish-empire",
+          "5 event(s)"
+        ],
+        [
+          "tang-dynasty",
+          "1 event(s)"
+        ],
+        [
+          "third-dynasty-of-ur",
+          "1 event(s)"
+        ],
+        [
+          "timurid-empire",
+          "2 event(s)"
+        ],
+        [
+          "tokugawa-shogunate",
+          "1 event(s)"
+        ],
+        [
+          "tughlaq-dynasty",
+          "1 event(s)"
+        ],
+        [
+          "umayyad-caliphate",
+          "2 event(s)"
+        ],
+        [
+          "yuan-dynasty",
+          "2 event(s)"
+        ],
+        [
+          "zhou-dynasty",
+          "1 event(s)"
+        ]
+      ]
+    },
+    {
+      "severity": "warning",
+      "check": "Approved event → state tie not exported: its state is still proposed (approve the span)",
       "count": 0,
       "rows": []
     },
@@ -520,17 +819,110 @@
     {
       "severity": "review",
       "check": "Country tags awaiting review (manage.py approve-countries)",
-      "count": 0,
-      "rows": []
+      "count": 23,
+      "rows": [
+        [
+          "austria-hungary",
+          "high"
+        ],
+        [
+          "carthage",
+          "high"
+        ],
+        [
+          "classical-athens",
+          "high"
+        ],
+        [
+          "empire-of-japan",
+          "high"
+        ],
+        [
+          "first-dynasty-of-babylon",
+          "high"
+        ],
+        [
+          "first-french-empire",
+          "high"
+        ],
+        [
+          "french-first-republic",
+          "high"
+        ],
+        [
+          "german-empire",
+          "high"
+        ],
+        [
+          "ghaznavid-empire",
+          "high"
+        ],
+        [
+          "kingdom-of-england",
+          "high"
+        ],
+        [
+          "kingdom-of-france",
+          "high"
+        ],
+        [
+          "kingdom-of-great-britain",
+          "high"
+        ],
+        [
+          "kingdom-of-macedon",
+          "high"
+        ],
+        [
+          "nazi-germany",
+          "high"
+        ],
+        [
+          "neo-babylonian-empire",
+          "high"
+        ],
+        [
+          "portuguese-empire",
+          "high"
+        ],
+        [
+          "ptolemaic-kingdom",
+          "high"
+        ],
+        [
+          "qin-dynasty",
+          "high"
+        ],
+        [
+          "rashidun-caliphate",
+          "high"
+        ],
+        [
+          "russian-empire",
+          "high"
+        ],
+        [
+          "spanish-empire",
+          "high"
+        ],
+        [
+          "third-dynasty-of-ur",
+          "high"
+        ],
+        [
+          "timurid-empire",
+          "high"
+        ]
+      ]
     },
     {
       "severity": "info",
       "check": "Region labels in use, with their DateFlow lane",
-      "count": 12,
+      "count": 13,
       "rows": [
         [
           "Europe",
-          "europe · 194 records"
+          "europe · 205 records"
         ],
         [
           "South Asia",
@@ -538,7 +930,7 @@
         ],
         [
           "East Asia",
-          "east-asia · 74 records"
+          "east-asia · 76 records"
         ],
         [
           "Americas",
@@ -546,15 +938,15 @@
         ],
         [
           "Middle East",
-          "middle-east · 61 records"
+          "middle-east · 65 records"
         ],
         [
           "Africa",
-          "africa · 56 records"
+          "africa · 58 records"
         ],
         [
           "Global",
-          "global · 36 records"
+          "global · 38 records"
         ],
         [
           "Southeast Asia",
@@ -571,6 +963,10 @@
         [
           "South America",
           "americas · 4 records"
+        ],
+        [
+          "Central Asia",
+          "middle-east · 2 records"
         ],
         [
           "Antarctica",
@@ -656,7 +1052,7 @@
         ],
         [
           "time_spans",
-          "98 at import -> 170 now"
+          "98 at import -> 193 now"
         ],
         [
           "datelinks_keys",

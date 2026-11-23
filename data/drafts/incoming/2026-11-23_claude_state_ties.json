@@ -1,0 +1,983 @@
+{
+ "origin": "ai_drafted:claude-opus-5-5",
+ "about": "Event → state ties for the Empires & states axis (doc 18 item 2a); events whose links already name a state are left out.",
+ "ties": [
+  {
+   "event": "egyptian-pyramids-built",
+   "states": [
+    "old-kingdom-egypt"
+   ]
+  },
+  {
+   "event": "code-of-ur-nammu",
+   "states": [
+    "third-dynasty-of-ur"
+   ]
+  },
+  {
+   "event": "code-of-hammurabi",
+   "states": [
+    "first-dynasty-of-babylon"
+   ]
+  },
+  {
+   "event": "babylonian-conquest-jerusalem",
+   "states": [
+    "neo-babylonian-empire"
+   ]
+  },
+  {
+   "event": "birth-of-confucius",
+   "states": [
+    "zhou-dynasty"
+   ],
+   "note": "Lu was a state under the nominal rule of the Zhou kings."
+  },
+  {
+   "event": "greek-democracy-athens",
+   "states": [
+    "classical-athens"
+   ]
+  },
+  {
+   "event": "battle-of-marathon",
+   "states": [
+    "classical-athens",
+    "achaemenid-empire"
+   ]
+  },
+  {
+   "event": "socrates-execution",
+   "states": [
+    "classical-athens"
+   ]
+  },
+  {
+   "event": "platos-academy-founded",
+   "states": [
+    "classical-athens"
+   ]
+  },
+  {
+   "event": "alexander-conquests",
+   "states": [
+    "kingdom-of-macedon",
+    "achaemenid-empire"
+   ]
+  },
+  {
+   "event": "alexander-founds-alexandria",
+   "states": [
+    "kingdom-of-macedon"
+   ]
+  },
+  {
+   "event": "battle-of-gaugamela",
+   "states": [
+    "kingdom-of-macedon",
+    "achaemenid-empire"
+   ]
+  },
+  {
+   "event": "battle-of-the-hydaspes",
+   "states": [
+    "kingdom-of-macedon"
+   ]
+  },
+  {
+   "event": "death-of-alexander",
+   "states": [
+    "kingdom-of-macedon"
+   ]
+  },
+  {
+   "event": "library-of-alexandria-founded",
+   "states": [
+    "ptolemaic-kingdom"
+   ]
+  },
+  {
+   "event": "eratosthenes-measures-earth",
+   "states": [
+    "ptolemaic-kingdom"
+   ]
+  },
+  {
+   "event": "punic-wars",
+   "states": [
+    "roman-republic",
+    "carthage"
+   ]
+  },
+  {
+   "event": "great-wall-china",
+   "states": [
+    "qin-dynasty"
+   ]
+  },
+  {
+   "event": "battle-of-zama",
+   "states": [
+    "roman-republic",
+    "carthage"
+   ]
+  },
+  {
+   "event": "destruction-of-carthage",
+   "states": [
+    "roman-republic"
+   ]
+  },
+  {
+   "event": "caesar-invades-britain",
+   "states": [
+    "roman-republic"
+   ]
+  },
+  {
+   "event": "crucifixion-of-jesus",
+   "states": [
+    "roman-empire"
+   ]
+  },
+  {
+   "event": "trung-sisters-revolt",
+   "states": [
+    "han-dynasty"
+   ]
+  },
+  {
+   "event": "great-fire-of-rome",
+   "states": [
+    "roman-empire"
+   ]
+  },
+  {
+   "event": "eruption-of-vesuvius",
+   "states": [
+    "roman-empire"
+   ]
+  },
+  {
+   "event": "nalanda-university-founded",
+   "states": [
+    "gupta-empire"
+   ]
+  },
+  {
+   "event": "aryabhata-heliocentric",
+   "states": [
+    "gupta-empire"
+   ]
+  },
+  {
+   "event": "arabs-conquer-egypt",
+   "states": [
+    "rashidun-caliphate",
+    "byzantine-empire"
+   ]
+  },
+  {
+   "event": "arab-conquest-of-sindh",
+   "states": [
+    "umayyad-caliphate"
+   ]
+  },
+  {
+   "event": "battle-of-tours",
+   "states": [
+    "umayyad-caliphate"
+   ]
+  },
+  {
+   "event": "islamic-golden-age",
+   "states": [
+    "abbasid-caliphate"
+   ]
+  },
+  {
+   "event": "gunpowder-invented",
+   "states": [
+    "tang-dynasty"
+   ]
+  },
+  {
+   "event": "mahmud-of-ghazni-accession",
+   "states": [
+    "ghaznavid-empire"
+   ]
+  },
+  {
+   "event": "mahmud-ghazni-somnath",
+   "states": [
+    "ghaznavid-empire"
+   ]
+  },
+  {
+   "event": "great-schism",
+   "states": [
+    "byzantine-empire"
+   ],
+   "note": "The Patriarch of Constantinople's side of the split; Rome has no state span."
+  },
+  {
+   "event": "battle-of-hastings",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "tower-of-london-begun",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "university-of-bologna-founded",
+   "states": [
+    "holy-roman-empire"
+   ],
+   "note": "Bologna was in the Kingdom of Italy, part of the Holy Roman Empire."
+  },
+  {
+   "event": "university-of-paris-founded",
+   "states": [
+    "kingdom-of-france"
+   ]
+  },
+  {
+   "event": "magna-carta",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "marco-polo-china",
+   "states": [
+    "yuan-dynasty"
+   ]
+  },
+  {
+   "event": "battle-of-bannockburn",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "black-death-arrives-china",
+   "states": [
+    "yuan-dynasty"
+   ]
+  },
+  {
+   "event": "hundred-years-war",
+   "states": [
+    "kingdom-of-england",
+    "kingdom-of-france"
+   ]
+  },
+  {
+   "event": "timur-sacks-delhi",
+   "states": [
+    "timurid-empire",
+    "tughlaq-dynasty"
+   ]
+  },
+  {
+   "event": "joan-of-arc-burned",
+   "states": [
+    "kingdom-of-france",
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "gutenberg-printing-press",
+   "states": [
+    "holy-roman-empire"
+   ]
+  },
+  {
+   "event": "guru-nanak-born",
+   "states": [
+    "lodi-dynasty"
+   ],
+   "note": "Talwandi (Nankana Sahib) was in the Lodi-ruled Punjab."
+  },
+  {
+   "event": "babur-ruler-of-ferghana",
+   "states": [
+    "timurid-empire"
+   ]
+  },
+  {
+   "event": "vasco-da-gama-india-route",
+   "states": [
+    "portuguese-empire"
+   ]
+  },
+  {
+   "event": "first-portable-watches",
+   "states": [
+    "holy-roman-empire"
+   ]
+  },
+  {
+   "event": "protestant-reformation",
+   "states": [
+    "holy-roman-empire"
+   ]
+  },
+  {
+   "event": "magellan-circumnavigation",
+   "states": [
+    "spanish-empire"
+   ]
+  },
+  {
+   "event": "battle-of-chausa",
+   "states": [
+    "mughal-empire"
+   ]
+  },
+  {
+   "event": "portuguese-arrive-japan",
+   "states": [
+    "portuguese-empire"
+   ]
+  },
+  {
+   "event": "shakespeare-born",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "spanish-armada-defeated",
+   "states": [
+    "kingdom-of-england",
+    "spanish-empire"
+   ]
+  },
+  {
+   "event": "renaissance-shakespeare",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "east-india-company-founded",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "death-of-elizabeth-i",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "martyrdom-of-guru-arjan",
+   "states": [
+    "mughal-empire"
+   ]
+  },
+  {
+   "event": "kepler-laws-planetary-motion",
+   "states": [
+    "holy-roman-empire"
+   ]
+  },
+  {
+   "event": "thirty-years-war",
+   "states": [
+    "holy-roman-empire"
+   ]
+  },
+  {
+   "event": "pilgrims-land-plymouth",
+   "states": [
+    "british-empire"
+   ],
+   "note": "Plymouth Colony was an English colony (the British Empire span starts at Jamestown, 1607)."
+  },
+  {
+   "event": "english-civil-war",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "signing-of-treaty-westphalia",
+   "states": [
+    "holy-roman-empire"
+   ]
+  },
+  {
+   "event": "execution-of-charles-i",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "english-restoration",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "great-plague-london",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "great-fire-london",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "execution-of-guru-tegh-bahadur",
+   "states": [
+    "mughal-empire"
+   ]
+  },
+  {
+   "event": "newton-laws-of-motion",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "glorious-revolution",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "locke-two-treatises",
+   "states": [
+    "kingdom-of-england"
+   ]
+  },
+  {
+   "event": "battle-of-blenheim",
+   "states": [
+    "kingdom-of-england",
+    "kingdom-of-france",
+    "holy-roman-empire"
+   ],
+   "note": "England, the Habsburg emperor and the Dutch against France and Bavaria, fought in Bavaria."
+  },
+  {
+   "event": "death-of-guru-gobind-singh",
+   "states": [
+    "mughal-empire"
+   ]
+  },
+  {
+   "event": "nadir-shah-sacks-delhi",
+   "states": [
+    "mughal-empire"
+   ]
+  },
+  {
+   "event": "montesquieu-spirit-of-the-laws",
+   "states": [
+    "kingdom-of-france"
+   ]
+  },
+  {
+   "event": "industrial-revolution-textile",
+   "states": [
+    "kingdom-of-great-britain"
+   ]
+  },
+  {
+   "event": "battle-of-buxar",
+   "states": [
+    "mughal-empire",
+    "british-empire"
+   ]
+  },
+  {
+   "event": "east-india-company-bengal",
+   "states": [
+    "mughal-empire",
+    "british-empire"
+   ]
+  },
+  {
+   "event": "steam-engine-watt",
+   "states": [
+    "kingdom-of-great-britain"
+   ]
+  },
+  {
+   "event": "great-bengal-famine",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "boston-tea-party",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "opium-trade-china-east-india",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "intolerable-acts",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "battles-of-lexington-and-concord",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "american-revolution",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "wealth-of-nations-published",
+   "states": [
+    "kingdom-of-great-britain"
+   ]
+  },
+  {
+   "event": "american-war-independence-ends",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "french-revolution",
+   "states": [
+    "kingdom-of-france"
+   ]
+  },
+  {
+   "event": "french-revolution-storming-bastille",
+   "states": [
+    "kingdom-of-france"
+   ]
+  },
+  {
+   "event": "french-revolution-declaration",
+   "states": [
+    "kingdom-of-france"
+   ]
+  },
+  {
+   "event": "haitian-revolution",
+   "states": [
+    "kingdom-of-france"
+   ]
+  },
+  {
+   "event": "execution-of-louis-xvi",
+   "states": [
+    "french-first-republic"
+   ]
+  },
+  {
+   "event": "abolition-slavery-france",
+   "states": [
+    "french-first-republic"
+   ]
+  },
+  {
+   "event": "first-vaccine-smallpox",
+   "states": [
+    "kingdom-of-great-britain"
+   ]
+  },
+  {
+   "event": "coup-of-18-brumaire",
+   "states": [
+    "french-first-republic"
+   ]
+  },
+  {
+   "event": "napoleonic-wars",
+   "states": [
+    "french-first-republic"
+   ],
+   "note": "Napoleon was First Consul of the republic when the wars began."
+  },
+  {
+   "event": "battle-of-trafalgar",
+   "states": [
+    "first-french-empire",
+    "spanish-empire"
+   ]
+  },
+  {
+   "event": "latin-american-independence",
+   "states": [
+    "spanish-empire"
+   ]
+  },
+  {
+   "event": "greek-independence",
+   "states": [
+    "ottoman-empire"
+   ]
+  },
+  {
+   "event": "opium-wars-china",
+   "states": [
+    "qing-dynasty",
+    "british-empire"
+   ]
+  },
+  {
+   "event": "chinese-opium-ban",
+   "states": [
+    "qing-dynasty"
+   ]
+  },
+  {
+   "event": "treaty-of-nanking",
+   "states": [
+    "qing-dynasty",
+    "british-empire"
+   ]
+  },
+  {
+   "event": "crimean-war",
+   "states": [
+    "ottoman-empire",
+    "russian-empire"
+   ]
+  },
+  {
+   "event": "commodore-perry-arrives-in-japan",
+   "states": [
+    "tokugawa-shogunate"
+   ]
+  },
+  {
+   "event": "opium-war-second",
+   "states": [
+    "qing-dynasty",
+    "british-empire"
+   ]
+  },
+  {
+   "event": "indian-rebellion-1857",
+   "states": [
+    "british-empire",
+    "mughal-empire"
+   ]
+  },
+  {
+   "event": "alaska-purchase",
+   "states": [
+    "russian-empire"
+   ]
+  },
+  {
+   "event": "gandhi-born",
+   "states": [
+    "british-raj"
+   ],
+   "note": "Porbandar was a princely state under British paramountcy."
+  },
+  {
+   "event": "cricket-test-first",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "zulu-war",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "colonial-africa-berlin",
+   "states": [
+    "german-empire"
+   ],
+   "note": "Hosted by Bismarck in Berlin; most European powers took part."
+  },
+  {
+   "event": "indian-national-congress-founded",
+   "states": [
+    "british-raj"
+   ]
+  },
+  {
+   "event": "benz-motorwagen",
+   "states": [
+    "german-empire"
+   ]
+  },
+  {
+   "event": "ramanujan-born",
+   "states": [
+    "british-raj"
+   ]
+  },
+  {
+   "event": "japan-meiji-constitution",
+   "states": [
+    "empire-of-japan"
+   ]
+  },
+  {
+   "event": "suffrage-new-zealand",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "x-rays-discovered",
+   "states": [
+    "german-empire"
+   ]
+  },
+  {
+   "event": "spanish-american-war",
+   "states": [
+    "spanish-empire"
+   ]
+  },
+  {
+   "event": "south-african-boer-war",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "australia-federation",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "russo-japanese-war",
+   "states": [
+    "empire-of-japan",
+    "russian-empire"
+   ]
+  },
+  {
+   "event": "swadeshi-movement",
+   "states": [
+    "british-raj"
+   ]
+  },
+  {
+   "event": "tagore-nobel-prize",
+   "states": [
+    "british-raj"
+   ]
+  },
+  {
+   "event": "assassination-of-archduke-franz-ferdinand",
+   "states": [
+    "austria-hungary"
+   ]
+  },
+  {
+   "event": "ottoman-empire-enters-world-war-i",
+   "states": [
+    "ottoman-empire"
+   ]
+  },
+  {
+   "event": "gandhi-returns-to-india",
+   "states": [
+    "british-raj"
+   ]
+  },
+  {
+   "event": "battle-of-the-somme",
+   "states": [
+    "british-empire",
+    "german-empire"
+   ]
+  },
+  {
+   "event": "jallianwala-bagh-massacre",
+   "states": [
+    "british-raj"
+   ]
+  },
+  {
+   "event": "non-cooperation-movement",
+   "states": [
+    "british-raj"
+   ]
+  },
+  {
+   "event": "gandhi-salt-march",
+   "states": [
+    "british-raj"
+   ]
+  },
+  {
+   "event": "japanese-empire-manchuria",
+   "states": [
+    "empire-of-japan"
+   ]
+  },
+  {
+   "event": "hitler-rise-chancellor",
+   "states": [
+    "nazi-germany"
+   ],
+   "note": "Appointed under the Weimar Republic; the appointment begins Nazi rule."
+  },
+  {
+   "event": "rise-of-nazism",
+   "states": [
+    "nazi-germany"
+   ]
+  },
+  {
+   "event": "world-war-two",
+   "states": [
+    "nazi-germany"
+   ],
+   "note": "Begins with Germany's invasion of Poland; the war's other states have no span yet."
+  },
+  {
+   "event": "battle-of-britain",
+   "states": [
+    "nazi-germany"
+   ]
+  },
+  {
+   "event": "holocaust",
+   "states": [
+    "nazi-germany"
+   ]
+  },
+  {
+   "event": "japanese-pearl-harbor",
+   "states": [
+    "empire-of-japan"
+   ]
+  },
+  {
+   "event": "germany-invades-soviet-union",
+   "states": [
+    "nazi-germany",
+    "soviet-union"
+   ]
+  },
+  {
+   "event": "quit-india-movement",
+   "states": [
+    "british-raj"
+   ]
+  },
+  {
+   "event": "battle-of-midway",
+   "states": [
+    "empire-of-japan"
+   ]
+  },
+  {
+   "event": "battle-of-stalingrad",
+   "states": [
+    "nazi-germany",
+    "soviet-union"
+   ]
+  },
+  {
+   "event": "d-day-normandy",
+   "states": [
+    "nazi-germany"
+   ]
+  },
+  {
+   "event": "atomic-bomb-hiroshima",
+   "states": [
+    "empire-of-japan"
+   ]
+  },
+  {
+   "event": "japan-world-war-two-defeat",
+   "states": [
+    "empire-of-japan"
+   ]
+  },
+  {
+   "event": "partition-india-pakistan",
+   "states": [
+    "british-raj"
+   ]
+  },
+  {
+   "event": "burma-independence",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "ceylon-independence",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "sputnik-launch",
+   "states": [
+    "soviet-union"
+   ]
+  },
+  {
+   "event": "ghana-independence",
+   "states": [
+    "british-empire"
+   ]
+  },
+  {
+   "event": "space-race-yuri-gagarin",
+   "states": [
+    "soviet-union"
+   ]
+  },
+  {
+   "event": "cuban-missile-crisis",
+   "states": [
+    "soviet-union"
+   ]
+  },
+  {
+   "event": "apollo-soyuz-test-project",
+   "states": [
+    "soviet-union"
+   ]
+  },
+  {
+   "event": "chernobyl-disaster",
+   "states": [
+    "soviet-union"
+   ]
+  },
+  {
+   "event": "spitak-earthquake",
+   "states": [
+    "soviet-union"
+   ]
+  }
+ ]
+}
