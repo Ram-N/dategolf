@@ -74,9 +74,26 @@
           @pointerleave="hoveredDot = null"
           @click="onMarkerClick(d.event.id)"
         />
-        <text v-for="t in constellation.tracks" :key="t.id" x="8" :y="t.top + 14" class="lane-label" pointer-events="none">
-          {{ t.label }}
-        </text>
+        <!-- Each track name switches its track on and off (#5, #7) -->
+        <g
+          v-for="t in constellation.tracks"
+          :key="t.id"
+          class="track-toggle"
+          :class="{ off: !t.on }"
+          role="button"
+          tabindex="0"
+          :aria-pressed="t.on"
+          :aria-label="`${t.label}: ${t.on ? 'shown, click to hide' : 'hidden, click to show'}`"
+          @pointerdown.stop
+          @click.stop="emit('toggleTrack', t.id)"
+          @keydown.enter.prevent="emit('toggleTrack', t.id)"
+          @keydown.space.prevent="emit('toggleTrack', t.id)"
+        >
+          <title>{{ t.on ? 'Hide this track' : 'Show this track' }}</title>
+          <rect x="4" :y="t.top + 3" :width="t.label.length * 8.3 + 26" height="16" rx="8" class="track-pill" />
+          <circle cx="14" :cy="t.top + 11" r="3.5" class="track-dot" />
+          <text x="22" :y="t.top + 15" class="lane-label">{{ t.label }}</text>
+        </g>
       </g>
 
       <!-- Story backdrops: the spans that hold a story's steps (World War II behind the WWII chain) -->
@@ -306,7 +323,7 @@ import {
 } from '@/engine/dateflow/durations'
 import { pickCurrents } from '@/engine/dateflow/currents'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
-import { constellationThreshold, dotRadius, scatter, trackOf, tracksFor, type TrackAxis } from '@/engine/dateflow/constellation'
+import { constellationThreshold, dotRadius, layoutTracks, scatter, trackOf, type HiddenTracks, type TrackAxis } from '@/engine/dateflow/constellation'
 import type { ViewMode } from '@/stores/dateflow'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
 import { gapText, joinFrom, joinTo, yearGap, type Story, type StoryEdge, type StoryNode } from '@/engine/dateflow/stories'
@@ -323,6 +340,7 @@ const props = defineProps<{
   mode: ViewMode
   lanes: LaneId[]
   trackAxis: TrackAxis
+  hiddenTracks: HiddenTracks // Constellation tracks switched off
   selectedId: string | null
   selectedDurationId: string | null
   highlightIds?: Set<string> | null // "Show connections": ring these, dim the rest
@@ -341,6 +359,7 @@ const emit = defineEmits<{
   selectDuration: [id: string]
   selectRange: [startYear: number, endYear: number]
   selectStop: [id: string] // a story thread was clicked: the stop it leads into
+  toggleTrack: [id: string] // a Constellation track name was clicked
   backgroundClick: [] // a click (not a drag) anywhere on the timeline: clears ringed connections
 }>()
 
@@ -728,13 +747,11 @@ const DOT_MARGIN = 5 // keeps a dot clear of its track's edges
 
 const constellation = computed(() => {
   if (props.mode !== 'constellation') return null
-  const defs = tracksFor(props.trackAxis)
-  const h = (height.value - ERA_SPACE - TICK_STRIP) / defs.length
-  const tracks = defs.map((t, index) => ({ ...t, index, top: ERA_SPACE + index * h, h }))
+  const tracks = layoutTracks(props.trackAxis, props.hiddenTracks, ERA_SPACE, height.value - ERA_SPACE - TICK_STRIP)
   const byId = new Map(tracks.map((t) => [t.id, t]))
   const minImp = constellationThreshold(props.detail)
   const dots = inView.value
-    .filter((e) => e.importance >= minImp || kept(e.id))
+    .filter((e) => (e.importance >= minImp || kept(e.id)) && byId.get(trackOf(e, props.trackAxis))!.on)
     .map((e) => {
       const t = byId.get(trackOf(e, props.trackAxis))!
       const r = dotRadius(e.importance)
@@ -1113,6 +1130,32 @@ function onArcClick(key: string, e: MouseEvent) {
 }
 .lane-rule {
   stroke: var(--df-border-soft);
+}
+.track-toggle {
+  cursor: pointer;
+}
+.track-pill {
+  fill: var(--df-bg);
+  fill-opacity: 0.85;
+  stroke: var(--df-border);
+}
+.track-toggle:hover .track-pill,
+.track-toggle:focus-visible .track-pill {
+  stroke: var(--df-text-2);
+}
+.track-toggle:focus {
+  outline: none;
+}
+.track-dot {
+  fill: var(--df-text-2);
+  stroke: var(--df-text-2);
+  stroke-width: 1.2;
+}
+.track-toggle.off .track-dot {
+  fill: none;
+}
+.track-toggle.off .lane-label {
+  fill: var(--df-muted);
 }
 .lane-label {
   fill: var(--df-text-2);

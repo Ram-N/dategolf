@@ -62,7 +62,7 @@ import {
 import { formatYear, parseYear } from '@/utils/formatYear'
 import type { Event } from '@/types'
 import eventsData from '@/data/events.json'
-import { constellationThreshold, dotRadius, scatter, trackOf, tracksFor } from '../dateflow/constellation'
+import { constellationThreshold, dotRadius, layoutTracks, OFF_TRACK_H, scatter, toggleTrack, trackOf, tracksFor } from '../dateflow/constellation'
 import type { Duration, Relationship, RelationshipData } from '@/types/dateflow'
 import durationsData from '@/data/durations.json'
 import erasData from '@/data/eras.json'
@@ -589,6 +589,19 @@ describe('constellation', () => {
     expect(constellationThreshold(2)).toBe(0)
     expect(constellationThreshold(-1)).toBe(5)
     expect(constellationThreshold(-2)).toBe(6)
+  })
+
+  it('switches tracks off: no room wasted, the rest share the height', () => {
+    let hidden = toggleTrack({}, 'geography', 'europe')
+    hidden = toggleTrack(hidden, 'geography', 'nowhere') // not a track: ignored
+    expect(hidden).toEqual({ geography: ['europe'] })
+    const rows = layoutTracks('geography', hidden, 0, 7 * 100)
+    const europe = rows.find((r) => r.id === 'europe')!
+    expect([europe.on, europe.h]).toEqual([false, OFF_TRACK_H])
+    expect(rows.filter((r) => r.on).every((r) => r.h === (700 - OFF_TRACK_H) / 6)).toBe(true)
+    expect(rows[rows.length - 1]!.top + rows[rows.length - 1]!.h).toBeCloseTo(700) // fills the height exactly
+    expect(layoutTracks('activity', hidden, 0, 600).every((r) => r.on)).toBe(true) // per axis
+    expect(toggleTrack(hidden, 'geography', 'europe')).toEqual({ geography: [] })
   })
 
   it('scatters deterministically within [-1, 1]', () => {

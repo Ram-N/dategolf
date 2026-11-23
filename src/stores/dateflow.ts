@@ -8,7 +8,7 @@ import { buildStory, featuredStories, frameYears, storyCounts, storyStops, type 
 import { compareYears, distance, overlap, worldAt } from '@/engine/dateflow/contemporaries'
 import { pickSurprise, rememberPick } from '@/engine/dateflow/surprise'
 import erasData from '@/data/eras.json'
-import type { TrackAxis } from '@/engine/dateflow/constellation'
+import { toggleTrack as toggleTrackIn, type HiddenTracks, type TrackAxis } from '@/engine/dateflow/constellation'
 import type { Family } from '@/engine/dateflow/categoryGroups'
 import { eventStop, searchStops, sortStops, spanStop, stepIndex, type TourSpeed } from '@/engine/dateflow/tour'
 import { journeyIds, resolveJourney, stepJourneyIndex, type Journey, type JourneyData } from '@/engine/dateflow/journeys'
@@ -56,6 +56,7 @@ const MODE_KEY = 'dateflow:mode'
 const LANES_KEY = 'dateflow:lanes'
 const FILTERS_KEY = 'dateflow:filters'
 const TRACKS_KEY = 'dateflow:tracks'
+const HIDDEN_TRACKS_KEY = 'dateflow:hidden-tracks'
 const COLORS_KEY = 'dateflow:colors'
 const DENSITY_KEY = 'dateflow:density'
 const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's default zoom
@@ -185,6 +186,9 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const mode = ref<ViewMode>('constellation')
   // Date Constellation's Y-axis (issue #7)
   const trackAxis = ref<TrackAxis>(loadJson<TrackAxis>(TRACKS_KEY) === 'activity' ? 'activity' : 'geography')
+  // Tracks switched off, per axis (#5, #7), remembered per viewer
+  const savedHidden = loadJson<HiddenTracks>(HIDDEN_TRACKS_KEY)
+  const hiddenTracks = ref<HiddenTracks>(savedHidden && typeof savedHidden === 'object' ? savedHidden : {})
   const laneState = ref<LaneState>(sanitizeLanes(loadJson<LaneState>(LANES_KEY)))
   const filters = ref<Filters>(loadFilters())
 
@@ -391,6 +395,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   watch(mode, (m) => saveJson(MODE_KEY, m))
   watch(laneState, (l) => saveJson(LANES_KEY, l))
   watch(trackAxis, (t) => saveJson(TRACKS_KEY, t))
+  watch(hiddenTracks, (h) => saveJson(HIDDEN_TRACKS_KEY, h))
   watch(colorMode, (c) => saveJson(COLORS_KEY, c))
   watch(density, (d) => saveJson(DENSITY_KEY, d))
 
@@ -875,6 +880,10 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     if (journey.value) journey.value.restore = null // the student chose; closing keeps it
   }
 
+  function toggleTrack(id: string) {
+    hiddenTracks.value = toggleTrackIn(hiddenTracks.value, trackAxis.value, id)
+  }
+
   function setTrackAxis(t: TrackAxis) {
     trackAxis.value = t
   }
@@ -998,6 +1007,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     lanes,
     trackAxis,
     setTrackAxis,
+    hiddenTracks,
+    toggleTrack,
     filters,
     filteredEvents,
     filteredDurations,

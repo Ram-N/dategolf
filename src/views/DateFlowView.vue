@@ -60,6 +60,7 @@
         :mode="store.mode"
         :lanes="store.lanes"
         :track-axis="store.trackAxis"
+        :hidden-tracks="store.hiddenTracks"
         :selected-id="store.selectedEvent?.id ?? (store.tourCurrent?.kind === 'event' ? store.tourCurrent.id : null)"
         :selected-duration-id="store.selectedDuration?.id ?? (store.tourCurrent?.kind === 'span' ? store.tourCurrent.id : null)"
         :highlight-ids="store.journeyRing ?? store.storyIds ?? store.tmIds ?? store.tourIds ?? store.cardIds ?? store.focusIds"
@@ -72,6 +73,7 @@
         @select="store.select"
         @select-duration="store.selectDuration"
         @select-range="store.openSummary"
+        @toggle-track="store.toggleTrack"
         @background-click="store.clearFocus()"
         @select-stop="(id) => store.goToStep(store.currentStops.findIndex((s) => s.node.id === id), false)"
       />

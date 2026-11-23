@@ -79,3 +79,40 @@ export function scatter(id: string): number {
   }
   return ((h >>> 0) / 0xffffffff) * 2 - 1
 }
+
+/** Tracks switched off, per axis (#5, #7): an off track shows no dots and shrinks to a thin strip. */
+export type HiddenTracks = Partial<Record<TrackAxis, string[]>>
+
+export const OFF_TRACK_H = 22
+
+export interface TrackRow extends ConstellationTrack {
+  index: number
+  top: number
+  h: number
+  on: boolean
+}
+
+/** Stack an axis's tracks from `top` down through `height` px: off tracks get a thin strip, on tracks share the rest. */
+export function layoutTracks(axis: TrackAxis, hidden: HiddenTracks, top: number, height: number): TrackRow[] {
+  const off = new Set(hidden[axis] ?? [])
+  const defs = tracksFor(axis)
+  const nOff = defs.filter((t) => off.has(t.id)).length
+  const nOn = defs.length - nOff
+  const onH = nOn ? Math.max(0, height - nOff * OFF_TRACK_H) / nOn : 0
+  let y = top
+  return defs.map((t, index) => {
+    const on = !off.has(t.id)
+    const h = on ? onH : OFF_TRACK_H
+    const row = { ...t, index, top: y, h, on }
+    y += h
+    return row
+  })
+}
+
+/** Switch one track on or off; ids that no longer belong to the axis are dropped. */
+export function toggleTrack(hidden: HiddenTracks, axis: TrackAxis, id: string): HiddenTracks {
+  const valid = new Set(tracksFor(axis).map((t) => t.id))
+  const cur = (hidden[axis] ?? []).filter((x) => valid.has(x))
+  const next = cur.includes(id) ? cur.filter((x) => x !== id) : valid.has(id) ? [...cur, id] : cur
+  return { ...hidden, [axis]: next }
+}
