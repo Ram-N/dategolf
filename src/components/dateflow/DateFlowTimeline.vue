@@ -66,6 +66,19 @@
                 class="state-band" />
           <line v-if="t.index > 0" x1="0" :x2="width" :y1="t.top" :y2="t.top" class="lane-rule" />
         </g>
+        <!-- 2d: spans along the bottom of their track, under the dots -->
+        <g
+          v-for="b in constellation.bars"
+          :key="b.d.id"
+          class="cursor-pointer bar c-bar"
+          :class="[rowKind(b.d), { selected: b.d.id === selectedDurationId, lit: lit(b.d.id), dimmed: dimming && !lit(b.d.id), faded: fades(b.family, b.d.id) }]"
+          @click.stop="onBarClick(b.d.id)"
+        >
+          <title>{{ b.tooltip }}</title>
+          <rect :x="b.x" :y="b.y" :width="b.w" :height="C_BAR_H" rx="3" :fill="`var(--df-f-${b.family})`"
+                :stroke="`var(--df-f-${b.family})`" class="bar-rect" />
+          <text v-if="b.label" :x="b.labelX" :y="b.y + C_BAR_H - 2" class="bar-text c-bar-text">{{ b.label }}</text>
+        </g>
         <path
           v-for="d in constellation.dots"
           :key="d.key"
@@ -752,6 +765,11 @@ const layouts = computed(() => {
 
 // ── Date Constellation (issues #5–#7) ───────────────────────────────────────
 const DOT_MARGIN = 5 // keeps a dot clear of its track's edges
+// 2d: spans as thin bars along the bottom of their track (not on Empires & states, whose rows are spans)
+const C_BAR_H = 10
+const C_BAR_ROWS = 2
+const C_BAR_ZONE = C_BAR_ROWS * (C_BAR_H + 2) + 2
+const C_BAR_MIN_IMPORTANCE = 5
 
 const constellation = computed(() => {
   if (props.mode !== 'constellation') return null
@@ -769,17 +787,21 @@ const constellation = computed(() => {
       return { ...t, band: { x, w: Math.max(0, Math.min(width.value + 2, yearToX(t.end, props.view, width.value)) - x) } }
     })
   const byId = new Map(tracks.map((t) => [t.id, t]))
+  const withBars = axis !== 'states' && props.density !== 'simple'
+  const zone = withBars ? C_BAR_ZONE : 0
+  const bars = withBars ? constellationBars(tracks, axis as Exclude<TrackAxis, 'states'>) : []
   const dots = shown
     .flatMap((e) => of(e).map((id) => ({ e, t: byId.get(id)! })))
     .filter(({ t }) => t.on)
     .map(({ e, t }) => {
       const r = dotRadius(e.importance)
-      const spread = Math.max(0, t.h / 2 - DOT_MARGIN - r)
+      const h = Math.max(0, t.h - zone) // dots keep clear of the span bars at the bottom
+      const spread = Math.max(0, h / 2 - DOT_MARGIN - r)
       return {
         key: `${e.id}@${t.id}`,
         event: e,
         x: yearToX(e.year, props.view, width.value),
-        y: t.top + t.h / 2 + scatter(e.id) * spread,
+        y: t.top + h / 2 + scatter(e.id) * spread,
         r,
         family: familyFor(e.categories),
         shape: shapeOf(familyFor(e.categories)),
@@ -787,8 +809,43 @@ const constellation = computed(() => {
     })
     // Big dots underneath, so the small ones near them stay visible and clickable.
     .sort((a, b) => b.r - a.r)
-  return { tracks, dots }
+  return { tracks, dots, bars }
 })
+
+/** The spans in view on each track that is on: important or ringed ones, packed into two thin rows. */
+function constellationBars(tracks: { id: string; top: number; h: number; on: boolean }[], axis: Exclude<TrackAxis, 'states'>) {
+  const { start, end } = props.view
+  const byTrack = new Map<string, Duration[]>()
+  for (const d of props.durations) {
+    if (d.person || props.spanParents.has(d.id) || d.endYear < start || d.startYear > end) continue
+    if (d.importance < C_BAR_MIN_IMPORTANCE && !lit(d.id)) continue
+    // An empire is political whatever else it did: on Society it goes with politics and war
+    const id = axis === 'society' && d.kind === 'empire' ? 'politics-war' : trackOf(d, axis)
+    byTrack.set(id, [...(byTrack.get(id) ?? []), d])
+  }
+  return tracks.flatMap((t) => {
+    const ds = t.on ? byTrack.get(t.id) ?? [] : []
+    const at = new Map(ds.map((d) => {
+      const x1 = Math.max(-2, yearToX(d.startYear, props.view, width.value))
+      return [d.id, { d, x1, x2: Math.min(width.value + 2, yearToX(d.endYear, props.view, width.value)) }]
+    }))
+    const items = [...at.values()].map(({ d, x1, x2 }) => ({ id: d.id, x1, x2, priority: d.importance + (lit(d.id) ? 100 : 0) }))
+    return packBars(items, C_BAR_ROWS, 4).map(({ id, row }) => {
+      const { d, x1, x2 } = at.get(id)!
+      const w = Math.max(2, x2 - x1)
+      return {
+        d,
+        x: x1,
+        y: t.top + t.h - C_BAR_ZONE + 2 + row * (C_BAR_H + 2),
+        w,
+        family: familyFor(d.categories),
+        label: fitLabel(d.name, w - 8),
+        labelX: Math.max(x1, 0) + 4,
+        tooltip: `${formatSpan(d, formatYear)} — ${d.name}`,
+      }
+    })
+  })
+}
 
 const hoveredDot = ref<{ event: Event; x: number; y: number } | null>(null)
 function onDotHover(e: Event, ev: PointerEvent) {
@@ -1153,6 +1210,13 @@ function onArcClick(key: string, e: MouseEvent) {
 }
 .track-toggle {
   cursor: pointer;
+}
+.c-bar-text {
+  font-size: 9px;
+}
+/* Constellation is about the dots: its span bars sit back */
+.c-bar:not(.period) .bar-rect {
+  fill-opacity: 0.22;
 }
 .state-band {
   fill: var(--df-text-2);
