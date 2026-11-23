@@ -29,6 +29,18 @@ if "review_result" in st.session_state:
         st.info("The game JSON now differs from the db: **Export** on the Overview page when you're done reviewing.")
 
 
+def with_wiki(df):
+    """Add each row's first source URL (its Wikipedia article for a draft) as a 'wiki' column."""
+    if df.empty or not has_sources():
+        return df.assign(wiki=None)
+    urls = q("SELECT entity_id, min(url) AS wiki FROM v_source_review WHERE url IS NOT NULL GROUP BY entity_id")
+    return df.merge(urls, on="entity_id", how="left")
+
+
+WIKI_COLUMN = st.column_config.LinkColumn("wiki", display_text="open",
+                                          help="The article the draft was written from: check it against this")
+
+
 TABLE_H = 388  # about 10 rows: with the buttons above, a whole queue fits on one screen
 
 
@@ -138,9 +150,11 @@ with t_drafts:
         drafts["when"] = drafts.apply(
             lambda r: when_text({"year": r["year"], "end_year": None, "approximate": r["is_approximate"]}), axis=1)
         bar = st.container()  # buttons go above the table (filled once the selection is known)
-        picked = selectable(drafts, "drafts", ["when", "name", "date_display", "region", "categories", "importance",
-                                               "review_note"],
-                            column_config={"date_display": st.column_config.TextColumn("historians' dates")})
+        drafts = with_wiki(drafts)
+        picked = selectable(drafts, "drafts", ["when", "name", "wiki", "date_display", "region", "categories",
+                                               "importance", "review_note"],
+                            column_config={"date_display": st.column_config.TextColumn("historians' dates"),
+                                           "wiki": WIKI_COLUMN})
         if len(picked) == 1:
             d = picked.iloc[0]
             with st.container(border=True):
@@ -182,14 +196,20 @@ with t_spans:
         span_drafts["years"] = span_drafts.apply(
             lambda r: when_text({"year": r["start_year"], "end_year": r["end_year"], "approximate": r["approximate"]}),
             axis=1)
+        span_drafts = with_wiki(span_drafts).merge(
+            q("SELECT entity_id, date_display FROM time_spans WHERE date_display IS NOT NULL"), on="entity_id", how="left")
         bar = st.container()
-        picked = selectable(span_drafts, "span_drafts", ["years", "name", "kind", "region", "categories", "importance",
-                                                         "review_note"])
+        picked = selectable(span_drafts, "span_drafts", ["years", "name", "wiki", "date_display", "kind", "region",
+                                                         "categories", "importance", "review_note"],
+                            column_config={"date_display": st.column_config.TextColumn("historians' dates"),
+                                           "wiki": WIKI_COLUMN})
         if len(picked) == 1:
             d = picked.iloc[0]
             with st.container(border=True):
                 st.markdown(f"**{d['name']}** · {d['years']} · {d['kind']} · {d['region']} · {d['categories']} · "
                             f"importance {d['importance']}")
+                if isinstance(d["date_display"], str):
+                    st.info(f"≈ Approximate. Students see \"{d['years']}\" and the note: {d['date_display']}")
                 st.write(d["description"])
                 tagged = q("SELECT countries FROM v_country_review WHERE entity_id = ?", d["entity_id"])
                 if not tagged.empty:
