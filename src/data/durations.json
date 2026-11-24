@@ -43,7 +43,7 @@
     ],
     "region": "South Asia",
     "importance": 8,
-    "kind": "state",
+    "kind": "period",
     "significance": "Demonstrated advanced Bronze Age urban planning, standardized weights and measures, and sanitation systems across one of the ancient world's largest civilizations.",
     "approximate": true
   },
@@ -825,7 +825,7 @@
     ],
     "region": "Americas",
     "importance": 6,
-    "kind": "state",
+    "kind": "period",
     "approximate": true
   },
   {

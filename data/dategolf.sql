@@ -2350,7 +2350,7 @@ INSERT INTO "entities" VALUES('covid-lockdown-india','event','imported',NULL,NUL
 INSERT INTO "entities" VALUES('covid-19-pandemic','event','reviewed',NULL,'2026-11-12 00:37:16');
 INSERT INTO "entities" VALUES('chandrayaan-3-lunar-landing','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('old-kingdom-egypt','state','imported',NULL,'2026-11-20 03:33:15');
-INSERT INTO "entities" VALUES('indus-valley-mature','state','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('indus-valley-mature','period','imported',NULL,'2026-11-24 20:01:18');
 INSERT INTO "entities" VALUES('construction-great-pyramid','period','imported',NULL,'2026-11-08 22:01:05');
 INSERT INTO "entities" VALUES('akkadian-empire','state','imported',NULL,'2026-11-20 03:33:16');
 INSERT INTO "entities" VALUES('shang-dynasty','state','imported',NULL,'2026-11-20 03:33:16');
@@ -2366,7 +2366,7 @@ INSERT INTO "entities" VALUES('construction-great-wall','period','imported',NULL
 INSERT INTO "entities" VALUES('han-dynasty','state','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('fall-of-roman-republic','period','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('roman-empire','state','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('classic-maya','state','imported',NULL,NULL);
+INSERT INTO "entities" VALUES('classic-maya','period','imported',NULL,'2026-11-24 20:01:18');
 INSERT INTO "entities" VALUES('gupta-empire','state','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('byzantine-empire','state','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('fall-western-roman-empire','period','imported',NULL,NULL);
@@ -14821,6 +14821,8 @@ INSERT INTO "review_log" VALUES(2233,'2026-11-24 16:55:13','approve-source','ame
 INSERT INTO "review_log" VALUES(2234,'2026-11-24 16:55:13','approve-source','trans-atlantic-slave-trade-peak','Atlantic slave trade','dashboard');
 INSERT INTO "review_log" VALUES(2235,'2026-11-24 16:55:13','approve-source','founding-of-united-states','Constitution of the United States','dashboard');
 INSERT INTO "review_log" VALUES(2236,'2026-11-24 16:55:13','approve-source','tipu-sultan-killed','Siege of Seringapatam (1799)','dashboard');
+INSERT INTO "review_log" VALUES(2237,'2026-11-24 20:01:18','set-span-kind','indus-valley-mature','state → period','cli');
+INSERT INTO "review_log" VALUES(2238,'2026-11-24 20:01:18','set-span-kind','classic-maya','state → period','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -15494,7 +15496,7 @@ CREATE TABLE "time_spans" (
   date_display TEXT,                               -- historians' dates or a dispute, exported as dateDisplay when approximate
   CHECK (start_year <= end_year));
 INSERT INTO "time_spans" VALUES('old-kingdom-egypt','state','Old Kingdom of Egypt',-2700,-2200,'The age of the pyramid builders, when pharaohs ruled a unified Egypt from Memphis.','Africa',6,1,0,'c. 2700–2200 BCE (often given as 2686–2181 BCE)');
-INSERT INTO "time_spans" VALUES('indus-valley-mature','state','Indus Valley Civilization (Mature Phase)',-2600,-1900,'Planned cities such as Harappa and Mohenjo-daro flourished with drainage, standard weights and an undeciphered script.','South Asia',8,1,1,NULL);
+INSERT INTO "time_spans" VALUES('indus-valley-mature','period','Indus Valley Civilization (Mature Phase)',-2600,-1900,'Planned cities such as Harappa and Mohenjo-daro flourished with drainage, standard weights and an undeciphered script.','South Asia',8,1,1,NULL);
 INSERT INTO "time_spans" VALUES('construction-great-pyramid','period','Construction of the Great Pyramid of Giza',-2600,-2560,'Construction of the largest Egyptian pyramid as a tomb for Pharaoh Khufu','Africa',5,1,2,NULL);
 INSERT INTO "time_spans" VALUES('akkadian-empire','state','Akkadian Empire',-2350,-2150,'Founded by Sargon of Akkad, often called the first empire, uniting the city-states of Mesopotamia.','Middle East',5,1,3,'c. 2334–2154 BCE in the middle chronology; 64 years later in the short chronology');
 INSERT INTO "time_spans" VALUES('shang-dynasty','state','Shang Dynasty',-1600,-1050,'The first Chinese dynasty with written records, known for bronze work and oracle-bone inscriptions.','East Asia',6,1,4,'c. 1600–1046 BCE; the Zhou conquest is dated anywhere from 1122 to 1027 BCE');
@@ -15512,7 +15514,7 @@ INSERT INTO "time_spans" VALUES('han-dynasty','state','Han Dynasty',-206,220,'A 
 INSERT INTO "time_spans" VALUES('fall-of-roman-republic','period','Fall of the Roman Republic',-133,-27,'Period of political upheaval leading to the end of the Roman Republic and rise of the Empire','Europe',5,NULL,16,NULL);
 INSERT INTO "time_spans" VALUES('pax-romana-period','period','Pax Romana',-27,180,'Period of relative peace and stability across the Roman Empire','Europe',5,NULL,17,NULL);
 INSERT INTO "time_spans" VALUES('roman-empire','state','Roman Empire',-27,476,'From Augustus to the fall of the West, Rome ruled the Mediterranean world and shaped European law, language and culture.','Europe',9,NULL,18,NULL);
-INSERT INTO "time_spans" VALUES('classic-maya','state','Classic Maya',250,900,'City-states such as Tikal and Palenque flourished with monumental pyramids, writing and astronomy.','Americas',6,1,19,NULL);
+INSERT INTO "time_spans" VALUES('classic-maya','period','Classic Maya',250,900,'City-states such as Tikal and Palenque flourished with monumental pyramids, writing and astronomy.','Americas',6,1,19,NULL);
 INSERT INTO "time_spans" VALUES('gupta-empire','state','Gupta Empire',320,550,'India''s classical age of mathematics, astronomy, literature and art; the decimal system and zero took shape.','South Asia',8,1,20,NULL);
 INSERT INTO "time_spans" VALUES('byzantine-empire','state','Byzantine Empire',330,1453,'The eastern Roman Empire, ruled from Constantinople, preserving Greek and Roman learning for a thousand years.','Europe',8,NULL,21,NULL);
 INSERT INTO "time_spans" VALUES('fall-western-roman-empire','period','Fall of the Western Roman Empire',395,476,'Decline and collapse of the western half of the Roman Empire','Europe',8,NULL,22,NULL);
@@ -15695,6 +15697,9 @@ CREATE TRIGGER events_touch AFTER UPDATE ON events BEGIN
   UPDATE entities SET updated_at = datetime('now') WHERE id = NEW.entity_id;
 END;
 CREATE UNIQUE INDEX countries_iso3 ON countries(iso3);
+CREATE TRIGGER time_spans_touch AFTER UPDATE ON time_spans BEGIN
+  UPDATE entities SET updated_at = datetime('now') WHERE id = NEW.entity_id;
+END;
 CREATE VIEW v_csv_crosswalk_review AS
 SELECT x.csv_event_id, c.year_num AS csv_year, c.event AS csv_text,
        x.rank, x.tier, x.score, e.year AS event_year, x.entity_id, e.name AS event_name,
@@ -15779,7 +15784,4 @@ JOIN entities n ON n.id = x.entity_id
 LEFT JOIN events e ON e.entity_id = x.entity_id
 LEFT JOIN time_spans s ON s.entity_id = x.entity_id AND e.entity_id IS NULL
 ORDER BY x.status = 'reviewed', coalesce(e.year, s.start_year);
-CREATE TRIGGER time_spans_touch AFTER UPDATE ON time_spans BEGIN
-  UPDATE entities SET updated_at = datetime('now') WHERE id = NEW.entity_id;
-END;
 COMMIT;
