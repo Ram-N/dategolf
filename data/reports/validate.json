@@ -9,8 +9,8 @@
     "milestones": 16,
     "daily_challenge_dates": 366,
     "csv_rows": 310,
-    "significance_reviewed": 237,
-    "significance_proposed": 23
+    "significance_reviewed": 260,
+    "significance_proposed": 0
   },
   "checks": [
     {
@@ -160,61 +160,8 @@
     {
       "severity": "warning",
       "check": "Link touches a proposed (unpublished) entity",
-      "count": 13,
-      "rows": [
-        [
-          527,
-          "act-of-union-1707 began kingdom-of-great-britain"
-        ],
-        [
-          526,
-          "act-of-union-1707 ended kingdom-of-england"
-        ],
-        [
-          531,
-          "age-of-exploration-portugal began portuguese-empire"
-        ],
-        [
-          521,
-          "carthage-founded began carthage"
-        ],
-        [
-          532,
-          "columbus-reaches-americas began spanish-empire"
-        ],
-        [
-          522,
-          "destruction-of-carthage ended carthage"
-        ],
-        [
-          533,
-          "germany-surrenders-ve-day ended nazi-germany"
-        ],
-        [
-          525,
-          "islamic-caliphate-expands began rashidun-caliphate"
-        ],
-        [
-          528,
-          "napoleon-crowned-emperor began first-french-empire"
-        ],
-        [
-          529,
-          "napoleon-defeat-waterloo ended first-french-empire"
-        ],
-        [
-          523,
-          "ptolemaic-dynasty-founded began ptolemaic-kingdom"
-        ],
-        [
-          524,
-          "qin-unification-china began qin-dynasty"
-        ],
-        [
-          530,
-          "unification-germany began german-empire"
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "warning",
@@ -502,61 +449,8 @@
     {
       "severity": "review",
       "check": "Links awaiting review (dashboard Review → Links, or approve-links / reject-links)",
-      "count": 13,
-      "rows": [
-        [
-          521,
-          "carthage-founded began carthage — The founding of the city by settlers from Tyre began the state."
-        ],
-        [
-          522,
-          "destruction-of-carthage ended carthage — Rome razed the city at the end of the Third Punic War and made its land a province."
-        ],
-        [
-          523,
-          "ptolemaic-dynasty-founded began ptolemaic-kingdom — Ptolemy, already governing Egypt, took the title of king and founded the dynasty."
-        ],
-        [
-          524,
-          "qin-unification-china began qin-dynasty — Conquering the last rival state made the king of Qin the first emperor of a unified China."
-        ],
-        [
-          525,
-          "islamic-caliphate-expands began rashidun-caliphate — Abu Bakr's election as the first caliph after Muhammad's death began the caliphate."
-        ],
-        [
-          526,
-          "act-of-union-1707 ended kingdom-of-england — The Act of Union merged England into the new Kingdom of Great Britain."
-        ],
-        [
-          527,
-          "act-of-union-1707 began kingdom-of-great-britain — The union of England and Scotland under one Parliament created Great Britain."
-        ],
-        [
-          528,
-          "napoleon-crowned-emperor began first-french-empire — Napoleon's coronation as Emperor of the French replaced the republic with an empire."
-        ],
-        [
-          529,
-          "napoleon-defeat-waterloo ended first-french-empire — Defeat at Waterloo ended Napoleon's return to power, and with it the empire."
-        ],
-        [
-          530,
-          "unification-germany began german-empire — The proclamation of the King of Prussia as German Emperor created the empire."
-        ],
-        [
-          531,
-          "age-of-exploration-portugal began portuguese-empire — Ceuta was Portugal's first overseas possession, the usual starting point of its empire."
-        ],
-        [
-          532,
-          "columbus-reaches-americas began spanish-empire — Columbus's voyage for the Spanish crown began Spain's empire in the Americas."
-        ],
-        [
-          533,
-          "germany-surrenders-ve-day ended nazi-germany — Germany's unconditional surrender ended the Nazi state."
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "warning",
@@ -819,101 +713,8 @@
     {
       "severity": "review",
       "check": "Country tags awaiting review (manage.py approve-countries)",
-      "count": 23,
-      "rows": [
-        [
-          "austria-hungary",
-          "high"
-        ],
-        [
-          "carthage",
-          "high"
-        ],
-        [
-          "classical-athens",
-          "high"
-        ],
-        [
-          "empire-of-japan",
-          "high"
-        ],
-        [
-          "first-dynasty-of-babylon",
-          "high"
-        ],
-        [
-          "first-french-empire",
-          "high"
-        ],
-        [
-          "french-first-republic",
-          "high"
-        ],
-        [
-          "german-empire",
-          "high"
-        ],
-        [
-          "ghaznavid-empire",
-          "high"
-        ],
-        [
-          "kingdom-of-england",
-          "high"
-        ],
-        [
-          "kingdom-of-france",
-          "high"
-        ],
-        [
-          "kingdom-of-great-britain",
-          "high"
-        ],
-        [
-          "kingdom-of-macedon",
-          "high"
-        ],
-        [
-          "nazi-germany",
-          "high"
-        ],
-        [
-          "neo-babylonian-empire",
-          "high"
-        ],
-        [
-          "portuguese-empire",
-          "high"
-        ],
-        [
-          "ptolemaic-kingdom",
-          "high"
-        ],
-        [
-          "qin-dynasty",
-          "high"
-        ],
-        [
-          "rashidun-caliphate",
-          "high"
-        ],
-        [
-          "russian-empire",
-          "high"
-        ],
-        [
-          "spanish-empire",
-          "high"
-        ],
-        [
-          "third-dynasty-of-ur",
-          "high"
-        ],
-        [
-          "timurid-empire",
-          "high"
-        ]
-      ]
+      "count": 0,
+      "rows": []
     },
     {
       "severity": "info",

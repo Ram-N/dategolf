@@ -3427,6 +3427,97 @@
       "target": "axial-age",
       "why": "Mahavira taught in the same centuries and region as the Buddha; historians debate the Axial Age label.",
       "confidence": "medium"
+    },
+    {
+      "source": "carthage-founded",
+      "type": "began",
+      "target": "carthage",
+      "why": "The founding of the city by settlers from Tyre began the state.",
+      "confidence": "high"
+    },
+    {
+      "source": "destruction-of-carthage",
+      "type": "ended",
+      "target": "carthage",
+      "why": "Rome razed the city at the end of the Third Punic War and made its land a province.",
+      "confidence": "high"
+    },
+    {
+      "source": "ptolemaic-dynasty-founded",
+      "type": "began",
+      "target": "ptolemaic-kingdom",
+      "why": "Ptolemy, already governing Egypt, took the title of king and founded the dynasty.",
+      "confidence": "high"
+    },
+    {
+      "source": "qin-unification-china",
+      "type": "began",
+      "target": "qin-dynasty",
+      "why": "Conquering the last rival state made the king of Qin the first emperor of a unified China.",
+      "confidence": "high"
+    },
+    {
+      "source": "islamic-caliphate-expands",
+      "type": "began",
+      "target": "rashidun-caliphate",
+      "why": "Abu Bakr's election as the first caliph after Muhammad's death began the caliphate.",
+      "confidence": "high"
+    },
+    {
+      "source": "act-of-union-1707",
+      "type": "ended",
+      "target": "kingdom-of-england",
+      "why": "The Act of Union merged England into the new Kingdom of Great Britain.",
+      "confidence": "high"
+    },
+    {
+      "source": "act-of-union-1707",
+      "type": "began",
+      "target": "kingdom-of-great-britain",
+      "why": "The union of England and Scotland under one Parliament created Great Britain.",
+      "confidence": "high"
+    },
+    {
+      "source": "napoleon-crowned-emperor",
+      "type": "began",
+      "target": "first-french-empire",
+      "why": "Napoleon's coronation as Emperor of the French replaced the republic with an empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "napoleon-defeat-waterloo",
+      "type": "ended",
+      "target": "first-french-empire",
+      "why": "Defeat at Waterloo ended Napoleon's return to power, and with it the empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "unification-germany",
+      "type": "began",
+      "target": "german-empire",
+      "why": "The proclamation of the King of Prussia as German Emperor created the empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "age-of-exploration-portugal",
+      "type": "began",
+      "target": "portuguese-empire",
+      "why": "Ceuta was Portugal's first overseas possession, the usual starting point of its empire.",
+      "confidence": "high"
+    },
+    {
+      "source": "columbus-reaches-americas",
+      "type": "began",
+      "target": "spanish-empire",
+      "why": "Columbus's voyage for the Spanish crown began Spain's empire in the Americas.",
+      "confidence": "high"
+    },
+    {
+      "source": "germany-surrenders-ve-day",
+      "type": "ended",
+      "target": "nazi-germany",
+      "why": "Germany's unconditional surrender ended the Nazi state.",
+      "confidence": "high"
     }
   ]
 }

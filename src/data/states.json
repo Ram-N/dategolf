@@ -1,6 +1,13 @@
 {
+  "act-of-union-1707": [
+    "kingdom-of-england",
+    "kingdom-of-great-britain"
+  ],
   "afonso-i-becomes-king-of-kongo": [
     "kingdom-of-kongo"
+  ],
+  "age-of-exploration-portugal": [
+    "portuguese-empire"
   ],
   "akbar-becomes-mughal-emperor": [
     "mughal-empire"
@@ -61,6 +68,9 @@
   "caesar-crosses-rubicon": [
     "roman-republic"
   ],
+  "carthage-founded": [
+    "carthage"
+  ],
   "chandragupta-ii-vikramaditya": [
     "gupta-empire"
   ],
@@ -75,6 +85,9 @@
   ],
   "christianity-roman-empire": [
     "roman-empire"
+  ],
+  "columbus-reaches-americas": [
+    "spanish-empire"
   ],
   "conquest-of-peru-inca": [
     "inca-empire"
@@ -103,6 +116,9 @@
   ],
   "death-of-stalin": [
     "soviet-union"
+  ],
+  "destruction-of-carthage": [
+    "carthage"
   ],
   "diocletian-becomes-emperor": [
     "roman-empire"
@@ -147,6 +163,9 @@
   "genghis-khan-unifies-mongols": [
     "mongol-conquests"
   ],
+  "germany-surrenders-ve-day": [
+    "nazi-germany"
+  ],
   "gorbachev-becomes-leader": [
     "soviet-union"
   ],
@@ -186,6 +205,9 @@
   ],
   "invention-of-compass": [
     "song-dynasty"
+  ],
+  "islamic-caliphate-expands": [
+    "rashidun-caliphate"
   ],
   "jahangir-marries-nur-jahan": [
     "mughal-empire"
@@ -241,6 +263,12 @@
     "delhi-sultanate",
     "tughlaq-dynasty"
   ],
+  "napoleon-crowned-emperor": [
+    "first-french-empire"
+  ],
+  "napoleon-defeat-waterloo": [
+    "first-french-empire"
+  ],
   "oracle-bone-writing": [
     "shang-dynasty"
   ],
@@ -276,6 +304,12 @@
   ],
   "printing-movable-type-china": [
     "song-dynasty"
+  ],
+  "ptolemaic-dynasty-founded": [
+    "ptolemaic-kingdom"
+  ],
+  "qin-unification-china": [
+    "qin-dynasty"
   ],
   "qing-capture-of-beijing": [
     "qing-dynasty"
@@ -342,6 +376,9 @@
   ],
   "treaty-of-karlowitz": [
     "ottoman-empire"
+  ],
+  "unification-germany": [
+    "german-empire"
   ],
   "vijayanagara-empire-founded": [
     "vijayanagara-empire"

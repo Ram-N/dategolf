@@ -77,6 +77,38 @@
     "dateDisplay": "c. 2334–2154 BCE in the middle chronology; 64 years later in the short chronology"
   },
   {
+    "id": "third-dynasty-of-ur",
+    "name": "Third Dynasty of Ur",
+    "startYear": -2112,
+    "endYear": -2004,
+    "description": "The last Sumerian state to rule Mesopotamia, governed from the city of Ur. Its kings built the great ziggurat of Ur and ran a large, record-keeping bureaucracy, until Elamite invaders sacked the city.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 5,
+    "kind": "empire",
+    "significance": "Its law code of Ur-Nammu is the oldest surviving one, centuries before Hammurabi's, and its tens of thousands of clay tablets make it one of the best-documented states of the ancient world.",
+    "approximate": true,
+    "dateDisplay": "c. 2112–2004 BCE (the middle chronology; other chronologies shift it by decades)"
+  },
+  {
+    "id": "first-dynasty-of-babylon",
+    "name": "First Dynasty of Babylon",
+    "startYear": -1894,
+    "endYear": -1595,
+    "description": "The Amorite kings who made Babylon a great power. Its sixth king, Hammurabi, united most of Mesopotamia; the dynasty ended when the Hittites sacked Babylon.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "It made Babylon the political and religious centre of Mesopotamia for the next thousand years, and Hammurabi's law code became the most famous of the ancient Near East.",
+    "approximate": true,
+    "dateDisplay": "c. 1894–1595 BCE (the middle chronology)"
+  },
+  {
     "id": "shang-dynasty",
     "name": "Shang Dynasty",
     "startYear": -1600,
@@ -221,6 +253,40 @@
     "significance": "Assyria pioneered the methods of a large empire: provinces under appointed governors, a network of roads and royal messengers, and mass deportations of conquered peoples, including the people of the kingdom of Israel. Babylon and Persia inherited much of this system."
   },
   {
+    "id": "carthage",
+    "name": "Carthage",
+    "startYear": -814,
+    "endYear": -146,
+    "description": "A city in present-day Tunisia, founded by Phoenician settlers from Tyre, that grew into the leading sea power of the western Mediterranean, with territory in North Africa, Spain, Sardinia and Sicily. It fought three wars with Rome and was destroyed in the last.",
+    "categories": [
+      "Politics",
+      "Economy"
+    ],
+    "region": "Africa",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Its long struggle with Rome, including Hannibal's march over the Alps, decided that Rome rather than Carthage would rule the Mediterranean world.",
+    "approximate": true,
+    "dateDisplay": "traditionally founded 814 BCE; destroyed by Rome in 146 BCE"
+  },
+  {
+    "id": "kingdom-of-macedon",
+    "name": "Kingdom of Macedon",
+    "startYear": -808,
+    "endYear": -168,
+    "description": "An ancient kingdom in northern Greece. Philip II made it the master of Greece, and his son Alexander conquered the Persian Empire as far as India; after Alexander's death his generals divided the conquests, and Macedon itself was later conquered by Rome.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Alexander's conquests spread Greek language and culture from Egypt to Afghanistan, beginning the Hellenistic age.",
+    "approximate": true,
+    "dateDisplay": "traditionally founded c. 808 BCE; Rome abolished the kingdom in 168 BCE"
+  },
+  {
     "id": "axial-age",
     "name": "Axial Age",
     "startYear": -800,
@@ -236,6 +302,20 @@
     "significance": "The idea of an Axial Age points out that Buddhism, Confucianism, Greek philosophy and the teaching of the Hebrew prophets all took shape, largely independently, within a few centuries. Scholars still argue whether that reflects a real shared turning point or a pattern drawn afterwards.",
     "approximate": true,
     "current": true
+  },
+  {
+    "id": "neo-babylonian-empire",
+    "name": "Neo-Babylonian Empire",
+    "startYear": -626,
+    "endYear": -539,
+    "description": "The last empire ruled by native Mesopotamian kings. After helping to destroy Assyria, its kings ruled from Babylon over the Fertile Crescent, until the Persian king Cyrus the Great took the city.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Middle East",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Under Nebuchadnezzar II it rebuilt Babylon on a grand scale and destroyed Jerusalem and its temple, beginning the Babylonian exile that shaped Judaism and the Hebrew Bible."
   },
   {
     "id": "life-of-mahavira",
@@ -338,6 +418,23 @@
     "significance": "Developed elected magistrates, a powerful Senate and the written Twelve Tables of law, ideas later admired by modern republics, while expanding Roman rule across the Mediterranean basin."
   },
   {
+    "id": "classical-athens",
+    "name": "Classical Athens",
+    "startYear": -508,
+    "endYear": -322,
+    "description": "The Greek city-state of Athens in the age of its democracy, when citizens voted on laws and war in their own assembly. It led the Greek resistance to Persia, built an empire of allied cities and the Parthenon, and lost the Peloponnesian War to Sparta.",
+    "categories": [
+      "Politics",
+      "Philosophy"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Its democracy, drama, history writing and philosophy (Socrates, Plato, Aristotle) became founding models for Western politics and thought.",
+    "approximate": true,
+    "dateDisplay": "508/507 BCE (Cleisthenes' reforms) to 322 BCE (Macedon ends the democracy); the city-state itself is much older"
+  },
+  {
     "id": "persian-wars",
     "name": "Greco-Persian Wars",
     "startYear": -499,
@@ -408,6 +505,21 @@
     "significance": "Unified most of the Indian subcontinent under one centralized administration for the first time, and under Ashoka sent Buddhist missions beyond India, notably to Sri Lanka, helping Buddhism grow into a major Asian religion."
   },
   {
+    "id": "ptolemaic-kingdom",
+    "name": "Ptolemaic Kingdom",
+    "startYear": -305,
+    "endYear": -30,
+    "description": "The Greek-speaking kingdom that ruled Egypt after Alexander the Great, founded by his general Ptolemy and ruled from Alexandria by his descendants. Its last ruler was Cleopatra VII, after whose death Egypt became a Roman province.",
+    "categories": [
+      "Politics",
+      "Science"
+    ],
+    "region": "Africa",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Its kings made Alexandria, with its Library and Museum, the leading centre of learning in the Mediterranean, where scholars such as Euclid and Eratosthenes worked."
+  },
+  {
     "id": "ashoka",
     "name": "Ashoka",
     "startYear": -304,
@@ -468,6 +580,20 @@
     "importance": 5,
     "kind": "period",
     "significance": "Victory forced Rome to build a major war fleet for the first time and gave it Sicily, its first overseas province. Carthage's defeat and heavy war indemnity sparked a mercenary revolt and pushed Carthaginian leaders to expand into Spain, setting up the next conflict."
+  },
+  {
+    "id": "qin-dynasty",
+    "name": "Qin Dynasty",
+    "startYear": -221,
+    "endYear": -206,
+    "description": "The first dynasty to rule a unified China, founded when the state of Qin conquered its rivals and its king took the new title of emperor, Qin Shi Huang. It standardised writing, coins, weights and laws, and collapsed in revolt soon after his death.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "East Asia",
+    "importance": 7,
+    "kind": "empire",
+    "significance": "Though it lasted only fifteen years, it created the idea and the institutions of a single Chinese empire, which the Han and later dynasties kept; the name China may come from Qin."
   },
   {
     "id": "second-punic-war",
@@ -812,6 +938,21 @@
     "significance": "Expanded Chinese influence deep into Central Asia, widened the civil service examinations, and fostered cosmopolitan trade and poetry that deeply shaped neighboring Korea, Japan, and Vietnam."
   },
   {
+    "id": "rashidun-caliphate",
+    "name": "Rashidun Caliphate",
+    "startYear": 632,
+    "endYear": 661,
+    "description": "The state ruled by the first four caliphs after the death of Muhammad: Abu Bakr, Umar, Uthman and Ali. In three decades its armies took Syria, Egypt, Iraq and Persia from the Byzantine and Sasanian empires.",
+    "categories": [
+      "Politics",
+      "Religion"
+    ],
+    "region": "Middle East",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Its conquests carried Islam and Arabic far beyond Arabia, and the disputes over who should lead it, ending in civil war, led to the division between Sunni and Shia Muslims."
+  },
+  {
     "id": "srivijaya",
     "name": "Srivijaya",
     "startYear": 650,
@@ -975,6 +1116,20 @@
     "significance": "The Fatimids founded Cairo and Al-Azhar Mosque, turning Egypt into a major center of Mediterranean trade, science and Islamic scholarship. As the only major Shia caliphate, they reshaped medieval Islamic politics before Saladin restored Sunni rule in Egypt."
   },
   {
+    "id": "kingdom-of-england",
+    "name": "Kingdom of England",
+    "startYear": 927,
+    "endYear": 1707,
+    "description": "The kingdom formed when Æthelstan united the English, ruled after 1066 by Norman and later dynasties. Apart from a republic between the Civil War and the Restoration, it was a monarchy throughout, sharing a king with Scotland from 1603 and merging with it to form Great Britain.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Its Parliament, common law and the limits it placed on royal power, from Magna Carta to the Glorious Revolution, became models for constitutional government in Britain, America and beyond."
+  },
+  {
     "id": "song-dynasty",
     "name": "Song Dynasty",
     "startYear": 960,
@@ -987,6 +1142,37 @@
     "importance": 7,
     "kind": "empire",
     "significance": "Transformed China's economy with paper money, booming maritime trade and widespread printing. The Song saw the first use of the magnetic compass at sea and of gunpowder weapons in war, while Neo-Confucian thought shaped East Asian education for centuries."
+  },
+  {
+    "id": "ghaznavid-empire",
+    "name": "Ghaznavid Empire",
+    "startYear": 977,
+    "endYear": 1186,
+    "description": "A Turkic dynasty ruling from Ghazni in present-day Afghanistan. Its greatest ruler, Mahmud of Ghazni, raided deep into northern India and ruled from eastern Iran to the Punjab; it was later squeezed out by the Seljuks and the Ghurids.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Central Asia",
+    "importance": 5,
+    "kind": "empire",
+    "significance": "Its raids and its rule over the Punjab opened the way for later Muslim states in India, and its court patronised Persian literature, including Ferdowsi's Shahnameh and the scholar al-Biruni."
+  },
+  {
+    "id": "kingdom-of-france",
+    "name": "Kingdom of France",
+    "startYear": 987,
+    "endYear": 1792,
+    "description": "The French monarchy from the Capetian kings to the Revolution. Its kings slowly gathered a patchwork of lordships into one realm, won the Hundred Years' War against England and, under Louis XIV, became the strongest power in Europe.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 7,
+    "kind": "empire",
+    "significance": "Its absolute monarchy became a model for European courts, and the crisis of its finances and authority set off the French Revolution.",
+    "approximate": true,
+    "dateDisplay": "from 987 (Hugh Capet); some date it from West Francia, 843; the monarchy was abolished in 1792"
   },
   {
     "id": "polynesian-settlement-of-hawaii",
@@ -1417,6 +1603,21 @@
     "significance": "Restored native Han rule in China after Mongol domination, rebuilt the Great Wall and Grand Canal, and drew global silver into East Asia through porcelain and silk exports even after curbing state-sponsored ocean voyages."
   },
   {
+    "id": "timurid-empire",
+    "name": "Timurid Empire",
+    "startYear": 1370,
+    "endYear": 1507,
+    "description": "The empire founded by the Turco-Mongol conqueror Timur (Tamerlane), whose campaigns from Samarkand devastated cities from Delhi to Damascus. His descendants held a shrinking realm in Central Asia and Iran until the Uzbeks took Herat.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Central Asia",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Its courts at Samarkand and Herat led a flowering of Persian art, architecture and science, and a Timurid prince, Babur, went on to found the Mughal Empire in India."
+  },
+  {
     "id": "kingdom-of-kongo",
     "name": "Kingdom of Kongo",
     "startYear": 1390,
@@ -1460,6 +1661,22 @@
     "importance": 3,
     "kind": "empire",
     "significance": "Maintained nominal continuity of the Delhi Sultanate during a period of regional fragmentation in northern India before peacefully ceding power to the Afghan Lodi dynasty."
+  },
+  {
+    "id": "portuguese-empire",
+    "name": "Portuguese Empire",
+    "startYear": 1415,
+    "endYear": 1999,
+    "description": "The first global sea empire, begun with the capture of Ceuta in North Africa. Portuguese ships opened the sea route to India and built a chain of trading posts and colonies from Brazil and Africa to Goa, Malacca and Macau.",
+    "categories": [
+      "Politics",
+      "Economy",
+      "Exploration"
+    ],
+    "region": "Global",
+    "importance": 7,
+    "kind": "empire",
+    "significance": "It linked Europe, Africa, Asia and the Americas by sea, and it began the Atlantic slave trade on a large scale. It was the longest-lived of the modern European colonial empires, ending with the handover of Macau to China."
   },
   {
     "id": "aztec-empire",
@@ -1545,6 +1762,23 @@
     "importance": 5,
     "kind": "period",
     "current": true
+  },
+  {
+    "id": "spanish-empire",
+    "name": "Spanish Empire",
+    "startYear": 1492,
+    "endYear": 1976,
+    "description": "The colonies ruled by Spain, built on the conquest of the Aztec and Inca empires and reaching from the Americas to the Philippines. Silver from its American mines flowed across the world, and its colonies became independent states in the 19th century.",
+    "categories": [
+      "Politics",
+      "Economy"
+    ],
+    "region": "Global",
+    "importance": 7,
+    "kind": "empire",
+    "significance": "It spread the Spanish language and Catholicism across the Americas, and its conquests and the diseases they carried devastated Indigenous peoples. Its silver helped create the first truly global trade.",
+    "approximate": true,
+    "dateDisplay": "1492 to 1976 (Western Sahara); most of its American empire was lost by the 1820s and its last major colonies in 1898"
   },
   {
     "id": "safavid-empire",
@@ -1891,6 +2125,34 @@
     "kind": "period"
   },
   {
+    "id": "kingdom-of-great-britain",
+    "name": "Kingdom of Great Britain",
+    "startYear": 1707,
+    "endYear": 1800,
+    "description": "The state created when England and Scotland united under one Parliament. It became a leading naval and trading power, began the Industrial Revolution and lost its American colonies, before union with Ireland made it the United Kingdom.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "In less than a century it went from a new union to the centre of a world empire and the first industrial economy."
+  },
+  {
+    "id": "russian-empire",
+    "name": "Russian Empire",
+    "startYear": 1721,
+    "endYear": 1917,
+    "description": "The empire proclaimed by Peter the Great and ruled by the tsars until the Russian Revolution. It stretched from the Baltic and Poland across Siberia to the Pacific, and at times into Alaska.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 7,
+    "kind": "empire",
+    "significance": "It was the third-largest empire in history, and its collapse in the First World War brought the Bolsheviks to power and created the Soviet Union."
+  },
+  {
     "id": "company-rule-in-india",
     "name": "Company Rule in India",
     "startYear": 1757,
@@ -1979,6 +2241,20 @@
     "kind": "period"
   },
   {
+    "id": "french-first-republic",
+    "name": "French First Republic",
+    "startYear": 1792,
+    "endYear": 1804,
+    "description": "The republic declared when the Revolution abolished the monarchy. It executed the king, went through the Terror, fought most of Europe and ended when its First Consul, Napoleon Bonaparte, made himself emperor.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "It was the first large European state to abolish its monarchy, and its ideas of citizenship and rights spread across Europe with its armies."
+  },
+  {
     "id": "reign-of-terror",
     "name": "Reign of Terror",
     "startYear": 1793,
@@ -2035,6 +2311,21 @@
     "importance": 6,
     "kind": "period",
     "significance": "While Britain's naval victory at Trafalgar secured British mastery of the seas, Napoleon's decisive triumphs at Ulm and Austerlitz shattered the Third Coalition on land. The resulting Peace of Pressburg led directly to the dissolution of the thousand-year-old Holy Roman Empire in 1806."
+  },
+  {
+    "id": "first-french-empire",
+    "name": "First French Empire",
+    "startYear": 1804,
+    "endYear": 1815,
+    "description": "Napoleon's empire, which at its height ruled or controlled most of continental Europe. Defeated in Russia and Germany, Napoleon abdicated in 1814, returned for a hundred days, and was finally beaten at Waterloo.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "Its conquests spread the Napoleonic Code and ended the Holy Roman Empire, redrawing the map of Europe and stirring the nationalism that shaped the next century."
   },
   {
     "id": "latin-american-independence",
@@ -2105,6 +2396,20 @@
     "significance": "Preserved the United States as a single nation, strengthened federal authority over individual states, and accelerated Northern industrialization while leaving deep regional divisions and unresolved struggles over racial equality."
   },
   {
+    "id": "austria-hungary",
+    "name": "Austria-Hungary",
+    "startYear": 1867,
+    "endYear": 1918,
+    "description": "The Habsburg monarchy reorganised as two partner states, the Austrian Empire and the Kingdom of Hungary, under one ruler. It held a dozen nationalities in central Europe and broke apart at the end of the First World War.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 6,
+    "kind": "empire",
+    "significance": "The assassination of its heir in Sarajevo started the First World War, and its break-up created the nation-states of central Europe."
+  },
+  {
     "id": "marie-curie",
     "name": "Marie Curie",
     "startYear": 1867,
@@ -2134,6 +2439,21 @@
     "kind": "period"
   },
   {
+    "id": "empire-of-japan",
+    "name": "Empire of Japan",
+    "startYear": 1868,
+    "endYear": 1947,
+    "description": "Japan from the Meiji Restoration to its postwar constitution. It industrialised rapidly, defeated China and Russia, and built a colonial empire in Korea, Taiwan and Manchuria; its expansion into China and the Pacific ended in defeat in the Second World War.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "East Asia",
+    "importance": 7,
+    "kind": "empire",
+    "significance": "It was the first non-Western country to industrialise and become a great power, and its wars and occupations caused immense suffering across East and Southeast Asia."
+  },
+  {
     "id": "mahatma-gandhi",
     "name": "Mahatma Gandhi",
     "startYear": 1869,
@@ -2148,6 +2468,20 @@
     "significance": "Gandhi's method of nonviolent mass protest, which he called satyagraha, helped end British rule in India and inspired civil rights movements around the world, including those led by Martin Luther King Jr. and Nelson Mandela.",
     "person": true,
     "role": "Leader of India's independence movement"
+  },
+  {
+    "id": "german-empire",
+    "name": "German Empire",
+    "startYear": 1871,
+    "endYear": 1918,
+    "description": "The united Germany created under Prussian leadership by Otto von Bismarck, with the King of Prussia as its emperor. It became Europe's leading industrial and scientific power and ended when the emperor abdicated at the close of the First World War.",
+    "categories": [
+      "Politics"
+    ],
+    "region": "Europe",
+    "importance": 7,
+    "kind": "empire",
+    "significance": "Its rise upset the European balance of power, and its rivalry with Britain, France and Russia helped lead to the First World War."
   },
   {
     "id": "scramble-for-africa",
@@ -2315,6 +2649,21 @@
     "importance": 8,
     "kind": "period",
     "significance": "Devastated global trade, industrial output, and employment throughout the 1930s, prompting governments to expand welfare states and economic regulation while deepening political extremism that helped bring authoritarian regimes to power."
+  },
+  {
+    "id": "nazi-germany",
+    "name": "Nazi Germany",
+    "startYear": 1933,
+    "endYear": 1945,
+    "description": "Germany under Adolf Hitler's Nazi Party, a one-party dictatorship that persecuted its opponents and Jewish citizens, started the Second World War in Europe and occupied most of the continent before its total defeat.",
+    "categories": [
+      "Politics",
+      "War"
+    ],
+    "region": "Europe",
+    "importance": 7,
+    "kind": "empire",
+    "significance": "It carried out the Holocaust, the murder of six million Jews and millions of others, and its war of conquest left tens of millions dead and Europe divided for half a century."
   },
   {
     "id": "spanish-civil-war",
