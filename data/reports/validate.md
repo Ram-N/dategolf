@@ -47,7 +47,7 @@
 | warning | Life-cycle phases no longer cover their span (its years changed): fix with remove-phases + load-phases | pass |
 | review | Journeys awaiting approval (not exported; dashboard Review → Journeys) | pass |
 | warning | Approved journey not exported: a stop shows an unpublished item (approve it) or none at all | pass |
-| review | Event → state ties awaiting approval (not exported; dashboard Review → States) | 45 |
+| review | Event → state ties awaiting approval (not exported; dashboard Review → States) | pass |
 | warning | Approved event → state tie not exported: its state is still proposed (approve the span) | pass |
 | review | Memory aids awaiting approval (not exported; dashboard Review → Memory aids) | pass |
 | review | Missing events and spans to decide (dashboard Review → Missing) | 4 |
@@ -136,54 +136,6 @@
 - `apollo-soyuz-test-project` — actors only
 - `moon-landing` — actors only
 - `viking-1-mars` — actors only
-
-## [review] Event → state ties awaiting approval (not exported; dashboard Review → States)
-
-- `abbasid-caliphate` — 1 event(s)
-- `achaemenid-empire` — 3 event(s)
-- `austria-hungary` — 1 event(s)
-- `british-empire` — 23 event(s)
-- `british-raj` — 11 event(s)
-- `byzantine-empire` — 2 event(s)
-- `carthage` — 2 event(s)
-- `classical-athens` — 4 event(s)
-- `empire-of-japan` — 7 event(s)
-- `first-dynasty-of-babylon` — 1 event(s)
-- `first-french-empire` — 1 event(s)
-- `french-first-republic` — 4 event(s)
-- `german-empire` — 4 event(s)
-- `ghaznavid-empire` — 2 event(s)
-- `gupta-empire` — 2 event(s)
-- `han-dynasty` — 1 event(s)
-- `holy-roman-empire` — 8 event(s)
-- `kingdom-of-england` — 20 event(s)
-- `kingdom-of-france` — 9 event(s)
-- `kingdom-of-great-britain` — 4 event(s)
-- `kingdom-of-macedon` — 5 event(s)
-- `lodi-dynasty` — 1 event(s)
-- `mughal-empire` — 8 event(s)
-- `nazi-germany` — 8 event(s)
-- `neo-babylonian-empire` — 1 event(s)
-- `old-kingdom-egypt` — 1 event(s)
-- `ottoman-empire` — 3 event(s)
-- `portuguese-empire` — 2 event(s)
-- `ptolemaic-kingdom` — 2 event(s)
-- `qin-dynasty` — 1 event(s)
-- `qing-dynasty` — 4 event(s)
-- `rashidun-caliphate` — 1 event(s)
-- `roman-empire` — 3 event(s)
-- `roman-republic` — 4 event(s)
-- `russian-empire` — 3 event(s)
-- `soviet-union` — 8 event(s)
-- `spanish-empire` — 5 event(s)
-- `tang-dynasty` — 1 event(s)
-- `third-dynasty-of-ur` — 1 event(s)
-- `timurid-empire` — 2 event(s)
-- `tokugawa-shogunate` — 1 event(s)
-- `tughlaq-dynasty` — 1 event(s)
-- `umayyad-caliphate` — 2 event(s)
-- `yuan-dynasty` — 2 event(s)
-- `zhou-dynasty` — 1 event(s)
 
 ## [review] Missing events and spans to decide (dashboard Review → Missing)
 

@@ -1,4 +1,7 @@
 {
+  "abolition-slavery-france": [
+    "french-first-republic"
+  ],
   "act-of-union-1707": [
     "kingdom-of-england",
     "kingdom-of-great-britain"
@@ -18,18 +21,53 @@
   "akhenaten-elevates-the-aten": [
     "new-kingdom-egypt"
   ],
+  "alaska-purchase": [
+    "russian-empire"
+  ],
   "alauddin-khalji-accession": [
     "delhi-sultanate",
     "khalji-dynasty"
   ],
+  "alexander-conquests": [
+    "achaemenid-empire",
+    "kingdom-of-macedon"
+  ],
+  "alexander-founds-alexandria": [
+    "kingdom-of-macedon"
+  ],
+  "american-revolution": [
+    "british-empire"
+  ],
+  "american-war-independence-ends": [
+    "british-empire"
+  ],
   "angkor-wat-built": [
     "khmer-empire"
+  ],
+  "apollo-soyuz-test-project": [
+    "soviet-union"
+  ],
+  "arab-conquest-of-sindh": [
+    "umayyad-caliphate"
+  ],
+  "arabs-conquer-egypt": [
+    "byzantine-empire",
+    "rashidun-caliphate"
+  ],
+  "aryabhata-heliocentric": [
+    "gupta-empire"
   ],
   "ashoka-becomes-emperor": [
     "maurya-empire"
   ],
   "ashoka-converts-to-buddhism": [
     "maurya-empire"
+  ],
+  "assassination-of-archduke-franz-ferdinand": [
+    "austria-hungary"
+  ],
+  "atomic-bomb-hiroshima": [
+    "empire-of-japan"
   ],
   "attila-hun-invasions": [
     "roman-empire"
@@ -41,6 +79,9 @@
   "aurangzeb-becomes-emperor": [
     "mughal-empire"
   ],
+  "australia-federation": [
+    "british-empire"
+  ],
   "ayutthaya-sacks-angkor": [
     "khmer-empire"
   ],
@@ -50,8 +91,39 @@
   "babur-founds-mughal-empire": [
     "mughal-empire"
   ],
+  "babur-ruler-of-ferghana": [
+    "timurid-empire"
+  ],
+  "babylonian-conquest-jerusalem": [
+    "neo-babylonian-empire"
+  ],
+  "battle-of-bannockburn": [
+    "kingdom-of-england"
+  ],
+  "battle-of-blenheim": [
+    "holy-roman-empire",
+    "kingdom-of-england",
+    "kingdom-of-france"
+  ],
+  "battle-of-britain": [
+    "nazi-germany"
+  ],
+  "battle-of-buxar": [
+    "british-empire",
+    "mughal-empire"
+  ],
+  "battle-of-chausa": [
+    "mughal-empire"
+  ],
+  "battle-of-gaugamela": [
+    "achaemenid-empire",
+    "kingdom-of-macedon"
+  ],
   "battle-of-haldighati": [
     "mughal-empire"
+  ],
+  "battle-of-hastings": [
+    "kingdom-of-england"
   ],
   "battle-of-kadesh": [
     "new-kingdom-egypt"
@@ -62,20 +134,79 @@
   "battle-of-kirina": [
     "mali-empire"
   ],
+  "battle-of-marathon": [
+    "achaemenid-empire",
+    "classical-athens"
+  ],
+  "battle-of-midway": [
+    "empire-of-japan"
+  ],
   "battle-of-plassey": [
+    "british-empire"
+  ],
+  "battle-of-stalingrad": [
+    "nazi-germany",
+    "soviet-union"
+  ],
+  "battle-of-the-hydaspes": [
+    "kingdom-of-macedon"
+  ],
+  "battle-of-the-somme": [
+    "british-empire",
+    "german-empire"
+  ],
+  "battle-of-tours": [
+    "umayyad-caliphate"
+  ],
+  "battle-of-trafalgar": [
+    "first-french-empire",
+    "spanish-empire"
+  ],
+  "battle-of-zama": [
+    "carthage",
+    "roman-republic"
+  ],
+  "battles-of-lexington-and-concord": [
+    "british-empire"
+  ],
+  "benz-motorwagen": [
+    "german-empire"
+  ],
+  "birth-of-confucius": [
+    "zhou-dynasty"
+  ],
+  "black-death-arrives-china": [
+    "yuan-dynasty"
+  ],
+  "boston-tea-party": [
+    "british-empire"
+  ],
+  "burma-independence": [
     "british-empire"
   ],
   "caesar-crosses-rubicon": [
     "roman-republic"
   ],
+  "caesar-invades-britain": [
+    "roman-republic"
+  ],
   "carthage-founded": [
     "carthage"
+  ],
+  "ceylon-independence": [
+    "british-empire"
   ],
   "chandragupta-ii-vikramaditya": [
     "gupta-empire"
   ],
   "charlemagne-crowned-emperor": [
     "holy-roman-empire"
+  ],
+  "chernobyl-disaster": [
+    "soviet-union"
+  ],
+  "chinese-opium-ban": [
+    "qing-dynasty"
   ],
   "chola-raids-on-srivijaya": [
     "chola-empire"
@@ -86,8 +217,20 @@
   "christianity-roman-empire": [
     "roman-empire"
   ],
+  "code-of-hammurabi": [
+    "first-dynasty-of-babylon"
+  ],
+  "code-of-ur-nammu": [
+    "third-dynasty-of-ur"
+  ],
+  "colonial-africa-berlin": [
+    "german-empire"
+  ],
   "columbus-reaches-americas": [
     "spanish-empire"
+  ],
+  "commodore-perry-arrives-in-japan": [
+    "tokugawa-shogunate"
   ],
   "conquest-of-peru-inca": [
     "inca-empire"
@@ -95,14 +238,42 @@
   "constantinople-founded": [
     "roman-empire"
   ],
+  "coup-of-18-brumaire": [
+    "french-first-republic"
+  ],
+  "cricket-test-first": [
+    "british-empire"
+  ],
+  "crimean-war": [
+    "ottoman-empire",
+    "russian-empire"
+  ],
   "crown-takes-over-government-of-india": [
     "british-empire",
     "british-raj"
   ],
+  "crucifixion-of-jesus": [
+    "roman-empire"
+  ],
+  "cuban-missile-crisis": [
+    "soviet-union"
+  ],
   "cyrus-founds-persian-empire": [
     "achaemenid-empire"
   ],
+  "d-day-normandy": [
+    "nazi-germany"
+  ],
   "death-of-akbar": [
+    "mughal-empire"
+  ],
+  "death-of-alexander": [
+    "kingdom-of-macedon"
+  ],
+  "death-of-elizabeth-i": [
+    "kingdom-of-england"
+  ],
+  "death-of-guru-gobind-singh": [
     "mughal-empire"
   ],
   "death-of-jahangir": [
@@ -118,7 +289,8 @@
     "soviet-union"
   ],
   "destruction-of-carthage": [
-    "carthage"
+    "carthage",
+    "roman-republic"
   ],
   "diocletian-becomes-emperor": [
     "roman-empire"
@@ -128,6 +300,37 @@
   ],
   "division-of-the-roman-empire": [
     "roman-empire"
+  ],
+  "east-india-company-bengal": [
+    "british-empire",
+    "mughal-empire"
+  ],
+  "east-india-company-founded": [
+    "kingdom-of-england"
+  ],
+  "egyptian-pyramids-built": [
+    "old-kingdom-egypt"
+  ],
+  "english-civil-war": [
+    "kingdom-of-england"
+  ],
+  "english-restoration": [
+    "kingdom-of-england"
+  ],
+  "eratosthenes-measures-earth": [
+    "ptolemaic-kingdom"
+  ],
+  "eruption-of-vesuvius": [
+    "roman-empire"
+  ],
+  "execution-of-charles-i": [
+    "kingdom-of-england"
+  ],
+  "execution-of-guru-tegh-bahadur": [
+    "mughal-empire"
+  ],
+  "execution-of-louis-xvi": [
+    "french-first-republic"
   ],
   "ezana-of-aksum-adopts-christianity": [
     "kingdom-of-aksum"
@@ -153,30 +356,106 @@
     "lodi-dynasty",
     "mughal-empire"
   ],
+  "first-portable-watches": [
+    "holy-roman-empire"
+  ],
   "first-triumvirate": [
     "roman-republic"
+  ],
+  "first-vaccine-smallpox": [
+    "kingdom-of-great-britain"
   ],
   "firuz-shah-tughlaq-accession": [
     "delhi-sultanate",
     "tughlaq-dynasty"
   ],
+  "french-revolution": [
+    "kingdom-of-france"
+  ],
+  "french-revolution-declaration": [
+    "kingdom-of-france"
+  ],
+  "french-revolution-storming-bastille": [
+    "kingdom-of-france"
+  ],
+  "gandhi-born": [
+    "british-raj"
+  ],
+  "gandhi-returns-to-india": [
+    "british-raj"
+  ],
+  "gandhi-salt-march": [
+    "british-raj"
+  ],
   "genghis-khan-unifies-mongols": [
     "mongol-conquests"
+  ],
+  "germany-invades-soviet-union": [
+    "nazi-germany",
+    "soviet-union"
   ],
   "germany-surrenders-ve-day": [
     "nazi-germany"
   ],
+  "ghana-independence": [
+    "british-empire"
+  ],
+  "glorious-revolution": [
+    "kingdom-of-england"
+  ],
   "gorbachev-becomes-leader": [
     "soviet-union"
+  ],
+  "great-bengal-famine": [
+    "british-empire"
+  ],
+  "great-fire-london": [
+    "kingdom-of-england"
+  ],
+  "great-fire-of-rome": [
+    "roman-empire"
+  ],
+  "great-plague-london": [
+    "kingdom-of-england"
+  ],
+  "great-schism": [
+    "byzantine-empire"
+  ],
+  "great-wall-china": [
+    "qin-dynasty"
+  ],
+  "greek-democracy-athens": [
+    "classical-athens"
+  ],
+  "greek-independence": [
+    "ottoman-empire"
+  ],
+  "gunpowder-invented": [
+    "tang-dynasty"
   ],
   "gupta-empire-founded": [
     "gupta-empire"
   ],
+  "guru-nanak-born": [
+    "lodi-dynasty"
+  ],
+  "gutenberg-printing-press": [
+    "holy-roman-empire"
+  ],
   "hadrians-wall": [
     "roman-empire"
   ],
+  "haitian-revolution": [
+    "kingdom-of-france"
+  ],
   "hatshepsut-becomes-pharaoh": [
     "new-kingdom-egypt"
+  ],
+  "hitler-rise-chancellor": [
+    "nazi-germany"
+  ],
+  "holocaust": [
+    "nazi-germany"
   ],
   "hong-kong-handover": [
     "british-empire"
@@ -191,6 +470,10 @@
   "humayun-succeeds-babur": [
     "mughal-empire"
   ],
+  "hundred-years-war": [
+    "kingdom-of-england",
+    "kingdom-of-france"
+  ],
   "ibn-battuta-visits-mali": [
     "mali-empire"
   ],
@@ -200,8 +483,21 @@
   "indian-independence": [
     "british-raj"
   ],
+  "indian-national-congress-founded": [
+    "british-raj"
+  ],
+  "indian-rebellion-1857": [
+    "british-empire",
+    "mughal-empire"
+  ],
   "indus-valley-begins": [
     "indus-valley-mature"
+  ],
+  "industrial-revolution-textile": [
+    "kingdom-of-great-britain"
+  ],
+  "intolerable-acts": [
+    "british-empire"
   ],
   "invention-of-compass": [
     "song-dynasty"
@@ -209,8 +505,30 @@
   "islamic-caliphate-expands": [
     "rashidun-caliphate"
   ],
+  "islamic-golden-age": [
+    "abbasid-caliphate"
+  ],
   "jahangir-marries-nur-jahan": [
     "mughal-empire"
+  ],
+  "jallianwala-bagh-massacre": [
+    "british-raj"
+  ],
+  "japan-meiji-constitution": [
+    "empire-of-japan"
+  ],
+  "japan-world-war-two-defeat": [
+    "empire-of-japan"
+  ],
+  "japanese-empire-manchuria": [
+    "empire-of-japan"
+  ],
+  "japanese-pearl-harbor": [
+    "empire-of-japan"
+  ],
+  "joan-of-arc-burned": [
+    "kingdom-of-england",
+    "kingdom-of-france"
   ],
   "julius-caesar-assassination": [
     "roman-republic"
@@ -218,14 +536,44 @@
   "kalinga-war": [
     "maurya-empire"
   ],
+  "kepler-laws-planetary-motion": [
+    "holy-roman-empire"
+  ],
   "kievan-rus-founded": [
     "kievan-rus"
+  ],
+  "latin-american-independence": [
+    "spanish-empire"
+  ],
+  "library-of-alexandria-founded": [
+    "ptolemaic-kingdom"
+  ],
+  "locke-two-treatises": [
+    "kingdom-of-england"
   ],
   "machu-picchu-built": [
     "inca-empire"
   ],
+  "magellan-circumnavigation": [
+    "spanish-empire"
+  ],
+  "magna-carta": [
+    "kingdom-of-england"
+  ],
+  "mahmud-ghazni-somnath": [
+    "ghaznavid-empire"
+  ],
+  "mahmud-of-ghazni-accession": [
+    "ghaznavid-empire"
+  ],
   "mansa-musas-pilgrimage-to-mecca": [
     "mali-empire"
+  ],
+  "marco-polo-china": [
+    "yuan-dynasty"
+  ],
+  "martyrdom-of-guru-arjan": [
+    "mughal-empire"
   ],
   "maurya-empire-founded": [
     "maurya-empire"
@@ -250,6 +598,9 @@
     "kievan-rus",
     "mongol-conquests"
   ],
+  "montesquieu-spirit-of-the-laws": [
+    "kingdom-of-france"
+  ],
   "moors-invade-spain": [
     "umayyad-caliphate"
   ],
@@ -263,14 +614,43 @@
     "delhi-sultanate",
     "tughlaq-dynasty"
   ],
+  "nadir-shah-sacks-delhi": [
+    "mughal-empire"
+  ],
+  "nalanda-university-founded": [
+    "gupta-empire"
+  ],
   "napoleon-crowned-emperor": [
     "first-french-empire"
   ],
   "napoleon-defeat-waterloo": [
     "first-french-empire"
   ],
+  "napoleonic-wars": [
+    "french-first-republic"
+  ],
+  "newton-laws-of-motion": [
+    "kingdom-of-england"
+  ],
+  "non-cooperation-movement": [
+    "british-raj"
+  ],
+  "opium-trade-china-east-india": [
+    "british-empire"
+  ],
+  "opium-war-second": [
+    "british-empire",
+    "qing-dynasty"
+  ],
+  "opium-wars-china": [
+    "british-empire",
+    "qing-dynasty"
+  ],
   "oracle-bone-writing": [
     "shang-dynasty"
+  ],
+  "ottoman-empire-enters-world-war-i": [
+    "ottoman-empire"
   ],
   "ottoman-empire-falls": [
     "ottoman-empire"
@@ -293,11 +673,23 @@
   "paper-invented-china": [
     "han-dynasty"
   ],
+  "partition-india-pakistan": [
+    "british-raj"
+  ],
   "partition-of-bengal": [
     "british-raj"
   ],
   "pax-romana": [
     "roman-empire"
+  ],
+  "pilgrims-land-plymouth": [
+    "british-empire"
+  ],
+  "platos-academy-founded": [
+    "classical-athens"
+  ],
+  "portuguese-arrive-japan": [
+    "portuguese-empire"
   ],
   "portuguese-reach-the-kingdom-of-kongo": [
     "kingdom-of-kongo"
@@ -305,8 +697,15 @@
   "printing-movable-type-china": [
     "song-dynasty"
   ],
+  "protestant-reformation": [
+    "holy-roman-empire"
+  ],
   "ptolemaic-dynasty-founded": [
     "ptolemaic-kingdom"
+  ],
+  "punic-wars": [
+    "carthage",
+    "roman-republic"
   ],
   "qin-unification-china": [
     "qin-dynasty"
@@ -314,19 +713,35 @@
   "qing-capture-of-beijing": [
     "qing-dynasty"
   ],
+  "quit-india-movement": [
+    "british-raj"
+  ],
   "qutb-ud-din-aibak-delhi": [
     "delhi-sultanate",
     "mamluk-dynasty-delhi"
   ],
+  "ramanujan-born": [
+    "british-raj"
+  ],
   "razia-sultana-accession": [
     "delhi-sultanate",
     "mamluk-dynasty-delhi"
+  ],
+  "renaissance-shakespeare": [
+    "kingdom-of-england"
+  ],
+  "rise-of-nazism": [
+    "nazi-germany"
   ],
   "roman-empire-greatest-extent": [
     "roman-empire"
   ],
   "roman-republic-founded": [
     "roman-republic"
+  ],
+  "russo-japanese-war": [
+    "empire-of-japan",
+    "russian-empire"
   ],
   "second-anglo-mysore-war": [
     "british-empire"
@@ -347,17 +762,57 @@
   "shah-jahan-becomes-mughal-emperor": [
     "mughal-empire"
   ],
+  "shakespeare-born": [
+    "kingdom-of-england"
+  ],
   "shivaji-crowned-chhatrapati": [
     "maratha-empire"
+  ],
+  "signing-of-treaty-westphalia": [
+    "holy-roman-empire"
   ],
   "silk-road-opens": [
     "han-dynasty"
   ],
+  "socrates-execution": [
+    "classical-athens"
+  ],
+  "south-african-boer-war": [
+    "british-empire"
+  ],
+  "space-race-yuri-gagarin": [
+    "soviet-union"
+  ],
+  "spanish-american-war": [
+    "spanish-empire"
+  ],
+  "spanish-armada-defeated": [
+    "kingdom-of-england",
+    "spanish-empire"
+  ],
   "spanish-conquest-mexico": [
     "aztec-empire"
   ],
+  "spitak-earthquake": [
+    "soviet-union"
+  ],
+  "sputnik-launch": [
+    "soviet-union"
+  ],
+  "steam-engine-watt": [
+    "kingdom-of-great-britain"
+  ],
+  "suffrage-new-zealand": [
+    "british-empire"
+  ],
   "suleiman-becomes-sultan": [
     "ottoman-empire"
+  ],
+  "swadeshi-movement": [
+    "british-raj"
+  ],
+  "tagore-nobel-prize": [
+    "british-raj"
   ],
   "taj-mahal-construction-begins": [
     "mughal-empire"
@@ -368,17 +823,43 @@
   "third-battle-of-panipat": [
     "maratha-empire"
   ],
+  "thirty-years-war": [
+    "holy-roman-empire"
+  ],
+  "timur-sacks-delhi": [
+    "timurid-empire",
+    "tughlaq-dynasty"
+  ],
   "tipu-sultan-killed": [
     "british-empire"
   ],
   "tokugawa-ieyasu-becomes-shogun": [
     "tokugawa-shogunate"
   ],
+  "tower-of-london-begun": [
+    "kingdom-of-england"
+  ],
   "treaty-of-karlowitz": [
     "ottoman-empire"
   ],
+  "treaty-of-nanking": [
+    "british-empire",
+    "qing-dynasty"
+  ],
+  "trung-sisters-revolt": [
+    "han-dynasty"
+  ],
   "unification-germany": [
     "german-empire"
+  ],
+  "university-of-bologna-founded": [
+    "holy-roman-empire"
+  ],
+  "university-of-paris-founded": [
+    "kingdom-of-france"
+  ],
+  "vasco-da-gama-india-route": [
+    "portuguese-empire"
   ],
   "vijayanagara-empire-founded": [
     "vijayanagara-empire"
@@ -386,10 +867,22 @@
   "visigoths-sack-rome": [
     "roman-empire"
   ],
+  "wealth-of-nations-published": [
+    "kingdom-of-great-britain"
+  ],
   "woodblock-printing-china": [
     "tang-dynasty"
   ],
+  "world-war-two": [
+    "nazi-germany"
+  ],
+  "x-rays-discovered": [
+    "german-empire"
+  ],
   "zheng-he-voyages": [
     "ming-dynasty"
+  ],
+  "zulu-war": [
+    "british-empire"
   ]
 }
