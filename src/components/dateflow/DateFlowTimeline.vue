@@ -204,7 +204,7 @@
           </text>
         </g>
 
-        <!-- Duration bars: empires/dynasties (solid) and periods (dashed) -->
+        <!-- Span bars: empires/dynasties (solid) and periods (dashed) -->
         <template v-if="!t.label && t.barRows.length">
           <line x1="0" :x2="width" :y1="t.bandTop" :y2="t.bandTop" class="lane-rule" />
           <text v-for="r in t.barRows" :key="r.kind" x="8" :y="r.top - 4" class="band-title">{{ r.title }}</text>
@@ -315,7 +315,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateflow'
+import type { Span } from '@/types/dateflow'
 import erasData from '@/data/eras.json'
 import milestoneIds from '@/data/milestones.json'
 import { formatTick, span, ticks, xToYear, yearToX, type View } from '@/engine/dateflow/timeScale'
@@ -352,7 +352,7 @@ import ConnectionCard from './ConnectionCard.vue'
 const props = defineProps<{
   events: Event[] // already filtered
   allEvents: Event[] // unfiltered: milestone section lines stay put whatever the filters
-  durations: Duration[]
+  durations: Span[]
   spanParents: Map<string, string> // sub-span → the span it is part of
   detail: number
   view: View
@@ -369,7 +369,7 @@ const props = defineProps<{
   stepId?: string | null // the stop being played
   density: Density // Simple hides span bars and milestone lines
   focusFamily?: Family | null // Phase 11 Focus: this family stays vivid, the rest fade (never hidden)
-  currents?: Duration[] | null // step 3d: spans that may be drawn as Historical Currents (empty = layer off)
+  currents?: Span[] | null // step 3d: spans that may be drawn as Historical Currents (empty = layer off)
   // Phase 10, the Time Machine: year lines, a shaded band (two spans' shared years), a bracket (two events)
   marks?: { lines: number[]; band: [number, number] | null; bracket: [number, number] | null; label: string } | null
 }>()
@@ -405,7 +405,7 @@ const MILESTONE_PRIORITY = 100 // milestones claim label space before everything
 const HIGHLIGHT_PRIORITY = 200 // highlighted connections claim it before milestones
 const FOCUS_BOOST = 20 // the focused family's labels beat other events, not milestones
 
-// Duration bars. World mode has two sub-bands so long empires can't crowd out periods;
+// Span bars. World mode has two sub-bands so long empires can't crowd out periods;
 // each lane gets one row per kind (or just empires when the lane is short).
 const BAR_H = 12
 const BAR_ROW = 16
@@ -480,8 +480,8 @@ const milestoneLines = computed(() => {
 
 // ── Tracks ──────────────────────────────────────────────────────────────────
 // A bar's row: empires, periods, or people's lives (Phase 13: a life is a period span flagged person)
-type BarKind = Duration['kind'] | 'person'
-const rowKind = (d: Duration): BarKind => (d.person ? 'person' : d.kind)
+type BarKind = Span['kind'] | 'person'
+const rowKind = (d: Span): BarKind => (d.person ? 'person' : d.kind)
 
 interface BarRow {
   kind: BarKind
@@ -501,7 +501,7 @@ interface Track {
   bandTop: number
   barRows: BarRow[]
   events: Event[]
-  durations: Duration[]
+  durations: Span[]
 }
 
 const tracks = computed<Track[]>(() => {
@@ -641,7 +641,7 @@ function layoutMarkers(t: Track, sectionIds: Set<string>) {
   })
 }
 
-// Duration bars in view: important ones, any wide enough to read and any ringed, packed into rows.
+// Span bars in view: important ones, any wide enough to read and any ringed, packed into rows.
 function layoutBars(t: Track) {
   const minImp = importanceThreshold(span(props.view), props.detail)
   const candidates = t.durations
@@ -658,7 +658,7 @@ function layoutBars(t: Track) {
   const rows = t.barRows.map((r) => emptyRows(r.rows))
   // A lane too short for a People row shows people in its Periods row instead of not at all
   const peopleRow = t.barRows.some((r) => r.kind === 'person')
-  const rowOf = (d: Duration): BarKind => (d.person && !peopleRow ? 'period' : rowKind(d))
+  const rowOf = (d: Span): BarKind => (d.person && !peopleRow ? 'period' : rowKind(d))
   const placed: { id: string; row: number; top: number }[] = []
   let pending = candidates.map((c) => c.d.id)
   while (pending.length) {
@@ -723,7 +723,7 @@ function fitLabel(name: string, px: number): string {
 /** Segments for the sub-spans of a bar spanning [barX1, barX2]; their labels start after the bar's own. */
 function layoutSegments(t: Track, barId: string, barX1: number, barX2: number, labelEnd: number) {
   const inTrack = new Map(t.durations.map((d) => [d.id, d]))
-  const xs = (d: Duration) => [yearToX(d.startYear, props.view, width.value), yearToX(d.endYear, props.view, width.value)] as const
+  const xs = (d: Span) => [yearToX(d.startYear, props.view, width.value), yearToX(d.endYear, props.view, width.value)] as const
   const revealed = (id: string) => {
     const d = inTrack.get(id)
     if (!d) return false
@@ -815,7 +815,7 @@ const constellation = computed(() => {
 /** The spans in view on each track that is on: important or ringed ones, packed into two thin rows. */
 function constellationBars(tracks: { id: string; top: number; h: number; on: boolean }[], axis: Exclude<TrackAxis, 'states'>) {
   const { start, end } = props.view
-  const byTrack = new Map<string, Duration[]>()
+  const byTrack = new Map<string, Span[]>()
   for (const d of props.durations) {
     if (d.endYear < start || d.startYear > end) continue
     // A ringed span (a journey stop, a connection) always gets a bar, even a life or a sub-span

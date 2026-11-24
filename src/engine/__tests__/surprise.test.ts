@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import type { Event } from '@/types'
-import type { Duration, RelationshipData } from '@/types/dateflow'
+import type { Span, RelationshipData } from '@/types/dateflow'
 import eventsJson from '@/data/events.json'
 import durationsJson from '@/data/durations.json'
 import relationshipsJson from '@/data/relationships.json'
@@ -9,7 +9,7 @@ import { storyCounts } from '../dateflow/stories'
 import { pickSurprise, rememberPick, SURPRISE_MEMORY } from '../dateflow/surprise'
 
 const events = eventsJson as Event[]
-const durations = durationsJson as Duration[]
+const durations = durationsJson as Span[]
 const data = relationshipsJson as RelationshipData
 const realHasStory = (id: string) => {
   const c = storyCounts(id, data, events, durations)

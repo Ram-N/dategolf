@@ -1,5 +1,5 @@
 import type { Event } from '@/types'
-import type { Duration, RelationshipData } from '@/types/dateflow'
+import type { Span, RelationshipData } from '@/types/dateflow'
 import { buildStory } from '../stories'
 import { laneFor, type LaneId } from '../lanes'
 import { formatSpan } from '../durations'
@@ -77,7 +77,7 @@ const pointItem = (e: Event, role: RevealItem['role']): RevealItem => ({
   ...(e.approximate ? { approximate: true } : {}),
   role,
 })
-const spanItem = (d: Duration, role: RevealItem['role']): RevealItem => ({
+const spanItem = (d: Span, role: RevealItem['role']): RevealItem => ({
   id: d.id,
   label: d.name,
   start: d.startYear,
@@ -287,10 +287,10 @@ function happeningElsewhere(i: number, events: Event[], rng: Rng, used: Set<stri
 }
 
 // ── Find the Duration ────────────────────────────────────────────────────────
-const sameSpan = (a: Duration, b: Duration) =>
+const sameSpan = (a: Span, b: Span) =>
   Math.abs(a.startYear - b.startYear) < 50 && Math.abs(a.endYear - b.endYear) < 50
 
-function findDuration(i: number, durations: Duration[], rng: Rng, used: Set<string>): Question | null {
+function findDuration(i: number, durations: Span[], rng: Rng, used: Set<string>): Question | null {
   const empires = durations.filter((d) => d.kind === 'empire')
   const pool = empires.filter((d) => !used.has(d.id))
   for (let t = 0; t < TRIES; t++) {
@@ -298,7 +298,7 @@ function findDuration(i: number, durations: Duration[], rng: Rng, used: Set<stri
     const others = empires.filter((d) => d.id !== target.id && !sameSpan(d, target))
     // Early: empires from clearly different eras. Later: same region where possible,
     // so the dates — not the region — decide the answer.
-    let candidates: Duration[]
+    let candidates: Span[]
     if (i < 2) {
       candidates = others.filter((d) => Math.abs(d.startYear - target.startYear) >= 500)
     } else {
@@ -346,8 +346,8 @@ const CAUSE_PROMPT: Record<string, [cause: string, effect: string]> = {
   influenced: ['What influenced {x}?', 'What did {x} influence?'],
 }
 
-function causeEffect(i: number, events: Event[], _d: Duration[], rng: Rng, used: Set<string>, rel?: RelationshipData,
-                     durations: Duration[] = []): Question | null {
+function causeEffect(i: number, events: Event[], _d: Span[], rng: Rng, used: Set<string>, rel?: RelationshipData,
+                     durations: Span[] = []): Question | null {
   if (!rel) return null
   const byId = new Map(events.map((e) => [e.id, e]))
   const spans = new Set(durations.map((d) => d.id))
@@ -405,7 +405,7 @@ function causeEffect(i: number, events: Event[], _d: Duration[], rng: Rng, used:
 }
 
 /** The round's last question: four steps of one real story, to put in order. */
-function storyInOrder(events: Event[], durations: Duration[], rng: Rng, used: Set<string>, rel: RelationshipData):
+function storyInOrder(events: Event[], durations: Span[], rng: Rng, used: Set<string>, rel: RelationshipData):
   Question | null {
   const byId = new Map(events.map((e) => [e.id, e]))
   const spans = new Set(durations.map((d) => d.id))
@@ -438,7 +438,7 @@ function storyInOrder(events: Event[], durations: Duration[], rng: Rng, used: Se
   return null
 }
 
-type Generator = (i: number, events: Event[], durations: Duration[], rng: Rng, used: Set<string>,
+type Generator = (i: number, events: Event[], durations: Span[], rng: Rng, used: Set<string>,
                   rel?: RelationshipData) => Question | null
 
 const GENERATORS: Record<GameId, Generator> = {
@@ -454,7 +454,7 @@ const GENERATORS: Record<GameId, Generator> = {
 export function generateRound(
   game: GameId,
   events: Event[],
-  durations: Duration[],
+  durations: Span[],
   rng: Rng,
   relationships?: RelationshipData, // needed by Cause & Effect; the other games ignore it
 ): Question[] {

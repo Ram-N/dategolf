@@ -1,5 +1,5 @@
 import type { Event } from '@/types'
-import type { Duration, RelationshipData } from '@/types/dateflow'
+import type { Span, RelationshipData } from '@/types/dateflow'
 import { resolve } from './connections'
 import { laneFor, type LaneId } from './lanes'
 
@@ -79,15 +79,15 @@ function storyEdges(data: RelationshipData, lanes: Map<string, LaneId>): StoryEd
 // Built once per data set: the edges and lookups every story uses.
 interface Index {
   eventById: Map<string, Event>
-  spanById: Map<string, Duration>
+  spanById: Map<string, Span>
   edges: StoryEdge[]
   into: Map<string, StoryEdge[]>
   outOf: Map<string, StoryEdge[]>
   partOf: Map<string, string[]> // entity → spans it's part of
 }
-const indexes = new WeakMap<RelationshipData, { events: Event[]; durations: Duration[]; index: Index }>()
+const indexes = new WeakMap<RelationshipData, { events: Event[]; durations: Span[]; index: Index }>()
 
-function indexFor(data: RelationshipData, events: Event[], durations: Duration[]): Index {
+function indexFor(data: RelationshipData, events: Event[], durations: Span[]): Index {
   const cached = indexes.get(data)
   if (cached && cached.events === events && cached.durations === durations) return cached.index
   const eventById = new Map(events.map((e) => [e.id, e]))
@@ -115,7 +115,7 @@ export function buildStory(
   rootId: string,
   data: RelationshipData,
   events: Event[],
-  durations: Duration[],
+  durations: Span[],
   { direction = 'back', depth = 4, max = 30 }: StoryOptions = {},
 ): Story | null {
   const ix = indexFor(data, events, durations)
@@ -269,7 +269,7 @@ export function narrate(story: Story, maxSentences = 6): string {
 }
 
 /** How many stops a story would have behind and ahead of an entity (for the card buttons). */
-export function storyCounts(id: string, data: RelationshipData, events: Event[], durations: Duration[]) {
+export function storyCounts(id: string, data: RelationshipData, events: Event[], durations: Span[]) {
   const size = (direction: Direction) => (buildStory(id, data, events, durations, { direction })?.nodes.length ?? 1) - 1
   return { back: size('back'), forward: size('forward') }
 }
@@ -284,7 +284,7 @@ export interface FeaturedStory {
 }
 
 /** The richest stories to offer in the Stories menu: deep, cross-regional and not repeating each other. */
-export function featuredStories(data: RelationshipData, events: Event[], durations: Duration[], n = 8): FeaturedStory[] {
+export function featuredStories(data: RelationshipData, events: Event[], durations: Span[], n = 8): FeaturedStory[] {
   const ix = indexFor(data, events, durations)
   const candidates = [...ix.into.keys()]
     .map((id) => buildStory(id, data, events, durations, { direction: 'back', depth: 6 }))

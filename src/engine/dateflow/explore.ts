@@ -1,5 +1,5 @@
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateflow'
+import type { Span } from '@/types/dateflow'
 import { LANES, laneFor, type LaneId } from './lanes'
 
 // "What was happening elsewhere?" — pure queries behind the event card's Meanwhile
@@ -43,7 +43,7 @@ export function beforeAndAfter(events: Event[], target: Event, count = 2): { bef
 }
 
 /** Durations of a kind overlapping [start, end] (a single year when start === end), most important first. */
-export function activeDuring(durations: Duration[], start: number, end: number, kind: Duration['kind']): Duration[] {
+export function activeDuring(durations: Span[], start: number, end: number, kind: Span['kind']): Span[] {
   return durations
     .filter((d) => d.kind === kind && d.startYear <= end && d.endYear >= start)
     .sort((a, b) => b.importance - a.importance || a.startYear - b.startYear)
@@ -52,8 +52,8 @@ export function activeDuring(durations: Duration[], start: number, end: number, 
 export interface PeriodSummary {
   start: number
   end: number
-  empires: Duration[]
-  periods: Duration[]
+  empires: Span[]
+  periods: Span[]
   lanes: LaneEvents[]
   total: number
 }
@@ -61,7 +61,7 @@ export interface PeriodSummary {
 /** Everything in [start, end]: active empires and periods, and the top events per lane. */
 export function summarizePeriod(
   events: Event[],
-  durations: Duration[],
+  durations: Span[],
   start: number,
   end: number,
   perLane = 4,

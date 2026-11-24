@@ -1,13 +1,13 @@
 import { describe, it, expect } from 'vitest'
 import type { Event } from '@/types'
-import type { Duration, RelationshipData } from '@/types/dateflow'
+import type { Span, RelationshipData } from '@/types/dateflow'
 import eventsJson from '@/data/events.json'
 import durationsJson from '@/data/durations.json'
 import relationshipsJson from '@/data/relationships.json'
 import { connectedIds, connectionsFor } from '../dateflow/connections'
 
 const events = eventsJson as Event[]
-const durations = durationsJson as Duration[]
+const durations = durationsJson as Span[]
 const data = relationshipsJson as RelationshipData
 
 const ev = (id: string, year: number, name = id) =>
@@ -15,7 +15,7 @@ const ev = (id: string, year: number, name = id) =>
      importance: 5 }) as Event
 const span = (id: string, startYear: number, endYear: number, name = id) =>
   ({ id, name, startYear, endYear, description: '', categories: [], region: 'Global', importance: 5,
-     kind: 'period' }) as Duration
+     kind: 'period' }) as Span
 const types = {
   part_of: { label: 'is part of', inverse: 'includes', causal: false, story: 'context' as const },
   ended: { label: 'ended', inverse: 'was ended by', causal: true, story: 'frame' as const },

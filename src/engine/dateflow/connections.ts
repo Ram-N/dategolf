@@ -1,5 +1,5 @@
 import type { Event } from '@/types'
-import type { Duration, RelationshipData } from '@/types/dateflow'
+import type { Span, RelationshipData } from '@/types/dateflow'
 
 // Connections (Phase 8): every link of one event or span, read from its own side.
 // A link is stored once: on its source it reads forwards ("is part of"), on its target
@@ -38,7 +38,7 @@ function rank(type: string, forward: boolean): number {
  * Resolve a link end to something showable. A shared id (an event and a span, one subject)
  * shows as its span: "Napoleonic Wars, 1803–1815", not its event "Napoleonic Wars Begin".
  */
-export function resolve(id: string, events: Map<string, Event>, spans: Map<string, Duration>) {
+export function resolve(id: string, events: Map<string, Event>, spans: Map<string, Span>) {
   const s = spans.get(id)
   if (s) {
     return { kind: 'span' as const, name: s.name, year: s.startYear, endYear: s.endYear, region: s.region,
@@ -56,7 +56,7 @@ export function connectionsFor(
   id: string,
   data: RelationshipData,
   events: Event[],
-  durations: Duration[],
+  durations: Span[],
 ): ConnectionGroup[] {
   const eventById = new Map(events.map((e) => [e.id, e]))
   const spanById = new Map(durations.map((d) => [d.id, d]))

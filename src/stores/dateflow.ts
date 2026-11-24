@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
 import type { Event } from '@/types'
-import type { Duration, RelationshipData } from '@/types/dateflow'
+import type { Span, RelationshipData } from '@/types/dateflow'
 import { connectedIds, connectionsFor } from '@/engine/dateflow/connections'
 import { spanParents } from '@/engine/dateflow/durations'
 import { buildStory, featuredStories, frameYears, storyCounts, storyStops, type Direction } from '@/engine/dateflow/stories'
@@ -151,7 +151,7 @@ function loadFilters(): Filters {
 export const useDateFlowStore = defineStore('dateflow', () => {
   // ── State ──────────────────────────────────────────────────────────────────
   const events = ref<Event[]>([])
-  const durations = ref<Duration[]>([])
+  const durations = ref<Span[]>([])
   const relationships = ref<RelationshipData>({ types: {}, links: [] })
   const isLoading = ref(true)
   // Nothing remembered at all: a first visit
@@ -452,7 +452,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     journeyData.value = journeysModule.default as JourneyData[]
     eventStates.value = statesModule.default as Record<string, string[]>
     events.value = eventsModule.default as Event[]
-    durations.value = durationsModule.default as Duration[]
+    durations.value = durationsModule.default as Span[]
     relationships.value = relationshipsModule.default as RelationshipData
     isLoading.value = false
   }
@@ -749,7 +749,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
       showSpan(a - 40, b + 40)
     } else if (tm.mode === 'overlap') {
       const { a, b } = tmSpans.value
-      const ends = [a, b].filter((x): x is Duration => !!x).flatMap((d) => [d.startYear, d.endYear])
+      const ends = [a, b].filter((x): x is Span => !!x).flatMap((d) => [d.startYear, d.endYear])
       if (ends.length) showSpan(Math.min(...ends), Math.max(...ends))
     } else {
       const d = tmDistance.value

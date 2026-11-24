@@ -1,5 +1,5 @@
 import type { Event } from '@/types'
-import type { Duration, Relationship } from '@/types/dateflow'
+import type { Span, Relationship } from '@/types/dateflow'
 
 // Step 4 (issues #3, #4, #9): one navigation over an ordered set of events and spans.
 // A set comes from a free-text search or from whatever the filters let through; the
@@ -52,7 +52,7 @@ export function eventStop(e: Event, via?: string): TourStop {
   }
 }
 
-export function spanStop(d: Duration, via?: string): TourStop {
+export function spanStop(d: Span, via?: string): TourStop {
   return {
     id: d.id, kind: 'span', name: d.name, year: d.startYear, endYear: d.endYear, approximate: d.approximate,
     dateDisplay: d.dateDisplay, description: d.description, significance: d.significance, region: d.region, importance: d.importance,
@@ -73,7 +73,7 @@ export function sortStops(stops: TourStop[]): TourStop[] {
  * also brings in everything reviewed as `part_of` it, at any depth: "Mughal" finds the
  * Mughal Empire, Shah Jahan's reign inside it, and the Taj Mahal inside that.
  */
-export function searchStops(query: string, events: Event[], durations: Duration[], links: Relationship[]): TourStop[] {
+export function searchStops(query: string, events: Event[], durations: Span[], links: Relationship[]): TourStop[] {
   const q = words(query)
   if (query.trim().length < MIN_QUERY || !q.length) return []
 

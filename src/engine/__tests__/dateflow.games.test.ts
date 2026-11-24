@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateflow'
+import type { Span } from '@/types/dateflow'
 import eventsJson from '@/data/events.json'
 import durationsJson from '@/data/durations.json'
 import relationshipsJson from '@/data/relationships.json'
@@ -22,7 +22,7 @@ import {
 
 // Real data on purpose: these tests also prove the data can supply every game.
 const events = eventsJson as Event[]
-const durations = durationsJson as Duration[]
+const durations = durationsJson as Span[]
 const relationships = relationshipsJson as RelationshipData
 const eventById = new Map(events.map((e) => [e.id, e]))
 const durationById = new Map(durations.map((d) => [d.id, d]))

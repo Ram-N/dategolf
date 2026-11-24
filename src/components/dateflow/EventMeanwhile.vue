@@ -48,12 +48,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateflow'
+import type { Span } from '@/types/dateflow'
 import { activeDuring, beforeAndAfter, meanwhile } from '@/engine/dateflow/explore'
 import { LANES, laneFor } from '@/engine/dateflow/lanes'
 import { formatEventYear } from '@/utils/formatYear'
 
-const props = defineProps<{ event: Event; events: Event[]; durations: Duration[] }>()
+const props = defineProps<{ event: Event; events: Event[]; durations: Span[] }>()
 const emit = defineEmits<{ openEvent: [id: string]; openDuration: [id: string]; showSurrounding: []; timeMachine: [] }>()
 
 const WINDOW = 50

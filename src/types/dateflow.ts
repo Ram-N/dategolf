@@ -1,7 +1,7 @@
-// ── Duration ──────────────────────────────────────────────────────────────────
+// ── Span ──────────────────────────────────────────────────────────────────
 // Something that lasted: an empire/dynasty, or a period (war, movement, era).
 // Source: src/data/durations.json (validate with scripts/validate-durations.cjs).
-export interface Duration {
+export interface Span {
   id: string
   name: string
   startYear: number // BCE years are negative, like Event.year

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateflow'
+import type { Span } from '@/types/dateflow'
 import eventsJson from '@/data/events.json'
 import durationsJson from '@/data/durations.json'
 import milestonesJson from '@/data/milestones.json'
@@ -9,7 +9,7 @@ import { compareYears, distance, overlap, worldAt } from '../dateflow/contempora
 import { yearGap } from '../dateflow/stories'
 
 const events = eventsJson as Event[]
-const durations = durationsJson as Duration[]
+const durations = durationsJson as Span[]
 const milestones = milestonesJson as string[]
 const span = (id: string) => durations.find((d) => d.id === id)!
 const event = (id: string) => events.find((e) => e.id === id)!

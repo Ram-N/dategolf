@@ -111,7 +111,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue'
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateflow'
+import type { Span } from '@/types/dateflow'
 import { PHASE_KIND_LABEL, aliveTogether, eventsDuring, formatPhase, formatSpan, yearsBetween } from '@/engine/dateflow/durations'
 import { familyFor } from '@/engine/dateflow/categoryGroups'
 import type { ConnectionGroup } from '@/engine/dateflow/connections'
@@ -119,8 +119,8 @@ import EventConnections from './EventConnections.vue'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
 
 const props = defineProps<{
-  duration: Duration
-  durations: Duration[]
+  duration: Span
+  durations: Span[]
   events: Event[]
   connections: ConnectionGroup[]
   storyCounts?: { back: number; forward: number }

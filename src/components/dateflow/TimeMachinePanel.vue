@@ -155,7 +155,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateflow'
+import type { Span } from '@/types/dateflow'
 import type { ActiveSpan, Distance, Overlap, RegionChange, WorldAt, YearComparison } from '@/engine/dateflow/contemporaries'
 import type { TimeMachine, TimeMachineMode } from '@/stores/dateflow'
 import { laneFor } from '@/engine/dateflow/lanes'
@@ -169,10 +169,10 @@ const props = defineProps<{
   world: WorldAt
   compare: YearComparison | null
   overlapResult: Overlap | null
-  spans: { a: Duration | null; b: Duration | null }
+  spans: { a: Span | null; b: Span | null }
   distanceResult: Distance | null
   events: Event[]
-  durations: Duration[]
+  durations: Span[]
   range: [number, number]
 }>()
 const emit = defineEmits<{
@@ -207,7 +207,7 @@ const about = (approx: boolean) => (approx ? 'about ' : '')
 const approxFor = (...es: Event[]) => (es.some((e) => e.approximate) ? 'about ' : '')
 const yearsText = (a: number, b: number) => `${Math.abs(yearGap(a, b)).toLocaleString()} years`
 const hasChange = (r: RegionChange) => r.gone.length + r.new.length + r.cameAndWent.length > 0
-const spanYears = (d: Duration) => `${d.approximate ? 'c. ' : ''}${formatYear(d.startYear)}–${formatYear(d.endYear)}`
+const spanYears = (d: Span) => `${d.approximate ? 'c. ' : ''}${formatYear(d.startYear)}–${formatYear(d.endYear)}`
 
 /** "since 960 · ends 1279", "its first year", "its last 8 years". */
 function spanMeta(s: ActiveSpan): string {

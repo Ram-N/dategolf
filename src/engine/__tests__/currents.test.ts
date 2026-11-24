@@ -1,12 +1,12 @@
 import { describe, it, expect } from 'vitest'
-import type { Duration } from '@/types/dateflow'
+import type { Span } from '@/types/dateflow'
 import durationsJson from '@/data/durations.json'
 import { CURRENT_CAP, pickCurrents } from '../dateflow/currents'
 
-const durations = durationsJson as Duration[]
+const durations = durationsJson as Span[]
 const cur = (id: string, startYear: number, endYear: number, importance = 5, current = true) =>
   ({ id, name: id, startYear, endYear, importance, current, description: '', categories: [], region: 'Global',
-     kind: 'period' }) as Duration
+     kind: 'period' }) as Span
 
 /** The most bands covering any one year. */
 function maxDepth(bands: { startYear: number; endYear: number }[], start: number, end: number) {

@@ -1,4 +1,4 @@
-import type { Duration } from '@/types/dateflow'
+import type { Span } from '@/types/dateflow'
 
 // Historical Currents (Phase 11, step 3d): long movements drawn as translucent bands behind the
 // timeline. At most CURRENT_CAP bands overlap at any year in view; the most important win.
@@ -35,14 +35,14 @@ function depthWithin(range: [number, number], others: [number, number][]): numbe
  * The currents to draw for the years start…end: every flagged span in view, most important first
  * (then the one with more of itself in view), skipping any that would make a year hold more than `cap`.
  */
-export function pickCurrents(durations: Duration[], start: number, end: number, cap = CURRENT_CAP): CurrentBand[] {
-  const visible = (d: Duration) => Math.min(d.endYear, end) - Math.max(d.startYear, start)
+export function pickCurrents(durations: Span[], start: number, end: number, cap = CURRENT_CAP): CurrentBand[] {
+  const visible = (d: Span) => Math.min(d.endYear, end) - Math.max(d.startYear, start)
   const candidates = durations
     .filter((d) => d.current && d.endYear >= start && d.startYear <= end)
     .sort((a, b) => b.importance - a.importance || visible(b) - visible(a) || a.name.localeCompare(b.name))
 
-  const chosen: Duration[] = []
-  const clip = (d: Duration): [number, number] => [Math.max(d.startYear, start), Math.min(d.endYear, end)]
+  const chosen: Span[] = []
+  const clip = (d: Span): [number, number] => [Math.max(d.startYear, start), Math.min(d.endYear, end)]
   for (const d of candidates) {
     if (depthWithin(clip(d), chosen.map(clip)) < cap) chosen.push(d)
   }

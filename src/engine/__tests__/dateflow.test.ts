@@ -63,7 +63,7 @@ import { formatYear, parseYear } from '@/utils/formatYear'
 import type { Event } from '@/types'
 import eventsData from '@/data/events.json'
 import { constellationThreshold, dotRadius, hiddenOn, layoutTracks, OFF_TRACK_H, OTHER_STATES, scatter, stateTracks, toggleTrack, trackOf, tracksFor } from '../dateflow/constellation'
-import type { Duration, Relationship, RelationshipData } from '@/types/dateflow'
+import type { Span, Relationship, RelationshipData } from '@/types/dateflow'
 import durationsData from '@/data/durations.json'
 import erasData from '@/data/eras.json'
 import relationshipsData from '@/data/relationships.json'
@@ -71,7 +71,7 @@ import relationshipsData from '@/data/relationships.json'
 const W = 1000
 
 describe('people (Phase 13)', () => {
-  const life = (id: string, startYear: number, endYear: number, person = true): Duration => ({
+  const life = (id: string, startYear: number, endYear: number, person = true): Span => ({
     id, name: id, startYear, endYear, description: '', categories: ['Politics'], region: 'Europe', importance: 5,
     kind: 'period', person,
   })
@@ -374,7 +374,7 @@ describe('durations', () => {
     expect(placed.map((p) => p.id)).toEqual(['a'])
   })
 
-  const roman: Duration = {
+  const roman: Span = {
     id: 'roman-empire',
     name: 'Roman Empire',
     startYear: -27,
@@ -528,7 +528,7 @@ describe('explore', () => {
     expect(after).toEqual([])
   })
 
-  const dur = (id: string, s: number, e: number, kind: Duration['kind'], importance = 5): Duration => ({
+  const dur = (id: string, s: number, e: number, kind: Span['kind'], importance = 5): Span => ({
     id,
     name: id,
     startYear: s,
@@ -681,7 +681,7 @@ describe('sub-spans', () => {
     expect(packBars([{ id: 'c', x1: 120, x2: 200, priority: 1 }], 1, 4, rows)).toEqual([{ id: 'c', row: 0 }])
   })
 
-  const span = (id: string): Duration => ({
+  const span = (id: string): Span => ({
     id, name: id, startYear: 1, endYear: 2, description: '', categories: [], region: 'Europe', importance: 5, kind: 'period',
   })
   const spans = ['mughal', 'shahjahan', 'taj', 'akbar', 'punic'].map(span)
@@ -717,7 +717,7 @@ describe('sub-spans', () => {
   })
 
   it('finds the nested spans in the real data', () => {
-    const real = spanParents((relationshipsData as RelationshipData).links, durationsData as Duration[])
+    const real = spanParents((relationshipsData as RelationshipData).links, durationsData as Span[])
     expect(real.get('khalji-dynasty')).toBe('delhi-sultanate')
     expect(topLevelSpans([...real.keys(), 'delhi-sultanate'], real)).not.toContain('khalji-dynasty')
   })

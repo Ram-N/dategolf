@@ -1,13 +1,13 @@
 import { describe, it, expect } from 'vitest'
 import type { Event } from '@/types'
-import type { Duration, RelationshipData } from '@/types/dateflow'
+import type { Span, RelationshipData } from '@/types/dateflow'
 import eventsJson from '@/data/events.json'
 import durationsJson from '@/data/durations.json'
 import relationshipsJson from '@/data/relationships.json'
 import { searchStops, sortStops, stepIndex, words, eventStop, spanStop } from '../dateflow/tour'
 
 const events = eventsJson as Event[]
-const durations = durationsJson as Duration[]
+const durations = durationsJson as Span[]
 const links = (relationshipsJson as RelationshipData).links
 
 const ev = (id: string, name: string, year: number, extra: Partial<Event> = {}) =>
@@ -15,7 +15,7 @@ const ev = (id: string, name: string, year: number, extra: Partial<Event> = {}) 
      importance: 5, ...extra }) as Event
 const sp = (id: string, name: string, startYear: number, endYear: number) =>
   ({ id, name, startYear, endYear, description: '', categories: [], region: 'Global', importance: 5,
-     kind: 'empire' }) as Duration
+     kind: 'empire' }) as Span
 
 describe('words', () => {
   it('lower-cases, strips accents and splits on punctuation', () => {

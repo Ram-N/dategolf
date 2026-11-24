@@ -1,5 +1,5 @@
 import type { Event } from '@/types'
-import type { Duration } from '@/types/dateflow'
+import type { Span } from '@/types/dateflow'
 import { activeDuring } from './explore'
 import { LANES, laneFor, type LaneId } from './lanes'
 import { yearGap } from './stories'
@@ -10,7 +10,7 @@ import { approxMinGap } from '../datepick/distractorEngine'
 // that happened: a region with nothing is kept and marked empty, never silently dropped.
 
 export interface ActiveSpan {
-  span: Duration
+  span: Span
   since: number // years since it began (0 = its first year)
   until: number // years until it ends (0 = its last year)
   uncertain: boolean // an approximate start or end lies close to the chosen year
@@ -35,7 +35,7 @@ const byImportanceThenCloseness = (year: number) => (a: Event, b: Event) =>
   b.importance - a.importance || Math.abs(yearGap(a.year, year)) - Math.abs(yearGap(b.year, year))
 
 /** The world in one year: each region's active empires and periods, and the events nearby. */
-export function worldAt(year: number, events: Event[], durations: Duration[], window = 25, perLane = 4): WorldAt {
+export function worldAt(year: number, events: Event[], durations: Span[], window = 25, perLane = 4): WorldAt {
   const active = [...activeDuring(durations, year, year, 'empire'), ...activeDuring(durations, year, year, 'period')]
   const fuzz = approxMinGap(year)
   const regions = LANES.map((l) => {
@@ -66,10 +66,10 @@ export function worldAt(year: number, events: Event[], durations: Duration[], wi
 export interface RegionChange {
   lane: LaneId
   label: string
-  gone: Duration[] // active in the earlier year, not the later
-  new: Duration[] // active in the later year, not the earlier
-  continuing: Duration[] // active in both
-  cameAndWent: Duration[] // began and ended between the two years
+  gone: Span[] // active in the earlier year, not the later
+  new: Span[] // active in the later year, not the earlier
+  continuing: Span[] // active in both
+  cameAndWent: Span[] // began and ended between the two years
 }
 
 export interface YearComparison {
@@ -80,10 +80,10 @@ export interface YearComparison {
 }
 
 /** How the world changed between two years (given in either order). */
-export function compareYears(a: number, b: number, durations: Duration[]): YearComparison {
+export function compareYears(a: number, b: number, durations: Span[]): YearComparison {
   const [from, to] = a <= b ? [a, b] : [b, a]
-  const at = (d: Duration, y: number) => d.startYear <= y && d.endYear >= y
-  const byImportance = (x: Duration, y: Duration) => y.importance - x.importance || x.startYear - y.startYear
+  const at = (d: Span, y: number) => d.startYear <= y && d.endYear >= y
+  const byImportance = (x: Span, y: Span) => y.importance - x.importance || x.startYear - y.startYear
   const regions = LANES.map((l) => {
     const mine = durations.filter((d) => laneFor(d.region) === l.id)
     return {
@@ -106,10 +106,10 @@ export function compareYears(a: number, b: number, durations: Duration[]): YearC
 
 export type Overlap =
   | { kind: 'overlap'; start: number; end: number; years: number; approximate: boolean }
-  | { kind: 'apart'; first: Duration; second: Duration; years: number; approximate: boolean }
+  | { kind: 'apart'; first: Span; second: Span; years: number; approximate: boolean }
 
 /** How long two spans coexisted, or how far apart they were. */
-export function overlap(a: Duration, b: Duration): Overlap {
+export function overlap(a: Span, b: Span): Overlap {
   const approximate = !!(a.approximate || b.approximate)
   const start = Math.max(a.startYear, b.startYear)
   const end = Math.min(a.endYear, b.endYear)

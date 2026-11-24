@@ -1,5 +1,5 @@
 import type { Event } from '@/types'
-import type { Duration, Phase, PhaseKind, Relationship } from '@/types/dateflow'
+import type { Span, Phase, PhaseKind, Relationship } from '@/types/dateflow'
 
 export interface BarItem {
   id: string
@@ -30,7 +30,7 @@ export function packBars(items: BarItem[], rows: number, gapPx = 4, occupied: Ba
 }
 
 /** The most important events in the same region during a duration, in date order. */
-export function eventsDuring(events: Event[], d: Duration, limit = 8): Event[] {
+export function eventsDuring(events: Event[], d: Span, limit = 8): Event[] {
   return events
     .filter((e) => e.region === d.region && e.year >= d.startYear && e.year <= d.endYear)
     .sort((a, b) => b.importance - a.importance)
@@ -39,7 +39,7 @@ export function eventsDuring(events: Event[], d: Duration, limit = 8): Event[] {
 }
 
 /** "c. 320 – c. 550" style range for display. */
-export function formatSpan(d: Duration, formatYear: (y: number) => string): string {
+export function formatSpan(d: Span, formatYear: (y: number) => string): string {
   const c = d.approximate ? 'c. ' : ''
   return `${c}${formatYear(d.startYear)} – ${c}${formatYear(d.endYear)}`
 }
@@ -86,7 +86,7 @@ export const yearsBetween = (a: number, b: number) => b - a - (a < 0 && b > 0 ? 
  * Other people alive at the same time as `person`, longest shared stretch first: the years their
  * lives overlapped. Only people, and only overlaps of at least a year.
  */
-export function aliveTogether(person: Duration, durations: Duration[]): { d: Duration; from: number; to: number; years: number }[] {
+export function aliveTogether(person: Span, durations: Span[]): { d: Span; from: number; to: number; years: number }[] {
   return durations
     .filter((d) => d.person && d.id !== person.id)
     .map((d) => {
@@ -101,7 +101,7 @@ export function aliveTogether(person: Duration, durations: Duration[]): { d: Dur
 // ── Sub-spans (Phase 11): spans `part_of` another span nest inside its bar ─────────────
 
 /** child span id → parent span id, from `part_of` links between two spans. */
-export function spanParents(links: Relationship[], durations: Duration[]): Map<string, string> {
+export function spanParents(links: Relationship[], durations: Span[]): Map<string, string> {
   // A person's life never nests, nor holds other spans: it has its own People row (Phase 13)
   const ids = new Set(durations.filter((d) => !d.person).map((d) => d.id))
   const parents = new Map<string, string>()

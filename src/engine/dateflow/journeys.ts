@@ -1,5 +1,5 @@
 import type { Event } from '@/types'
-import type { Duration, RelationshipData } from '@/types/dateflow'
+import type { Span, RelationshipData } from '@/types/dateflow'
 import { gapText } from './stories'
 import { eventStop, spanStop, type TourStop } from './tour'
 
@@ -82,7 +82,7 @@ function bridge(prev: JourneyStop, next: Omit<JourneyStop, 'bridge'>, data: Rela
 export function resolveJourney(
   j: JourneyData,
   events: Event[],
-  durations: Duration[],
+  durations: Span[],
   data: RelationshipData,
 ): Journey | null {
   const spans = new Map(durations.map((d) => [d.id, d]))

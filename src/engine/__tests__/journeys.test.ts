@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import type { Event } from '@/types'
-import type { Duration, RelationshipData } from '@/types/dateflow'
+import type { Span, RelationshipData } from '@/types/dateflow'
 import eventsJson from '@/data/events.json'
 import durationsJson from '@/data/durations.json'
 import relationshipsJson from '@/data/relationships.json'
@@ -8,7 +8,7 @@ import journeysJson from '@/data/journeys.json'
 import { journeyIds, recordStep, resolveJourney, resumeStep, stepJourneyIndex, type JourneyData } from '../dateflow/journeys'
 
 const events = eventsJson as Event[]
-const durations = durationsJson as Duration[]
+const durations = durationsJson as Span[]
 const data = relationshipsJson as RelationshipData
 const journeys = journeysJson as JourneyData[]
 
@@ -17,7 +17,7 @@ const ev = (id: string, name: string, year: number) =>
      importance: 5 }) as Event
 const sp = (id: string, name: string, startYear: number, endYear: number, approximate = false) =>
   ({ id, name, startYear, endYear, description: '', categories: [], region: 'Global', importance: 5,
-     kind: 'empire', ...(approximate ? { approximate } : {}) }) as Duration
+     kind: 'empire', ...(approximate ? { approximate } : {}) }) as Span
 
 describe('resolveJourney', () => {
   const fixture = {
