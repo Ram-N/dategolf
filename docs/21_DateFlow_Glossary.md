@@ -1,0 +1,160 @@
+# DateFlow Glossary
+
+*Written 2026-11-24, checked against the code and data on that date. It replaces the draft in doc 20, which mixed real terms with ideas DateFlow doesn't have. Sections 1–5 describe what exists. Proposals are kept apart in sections 6 and 7.*
+
+**How to read the entries.** **Bold** is the term used here. "UI:" is the wording a student sees, and "Code:" is the name in `src/`, where it differs. Counts are from the exported data on 2026-11-24.
+
+---
+
+## 1. History data: what DateFlow knows
+
+| Term | What it is | UI / Code | Now |
+|---|---|---|---|
+| **Event** | Something that happened in one year (`year`; negative = BCE, no year 0). The same events also feed DateGolf and DatePick. | UI: an event, a dot or label. Code: `Event`, `events.json` | 522 |
+| **Span** | Something with a start and an end year. It has a **kind**: `empire` or `period` (a third kind, `era`, is exported separately, see *Era*). | UI: never says "span"; shows a bar under *Empires & dynasties*, *Periods* or *People*. Code: `Duration`, `durations.json`; db: `time_spans` | 193 (85 empire, 108 period) |
+| **Empire** (span kind) | Any state-like span: empires, but also kingdoms, dynasties, sultanates, shogunates, republics, city-states (Classical Athens) and some civilizations (Indus Valley, Classic Maya, Teotihuacan). See §6.2. | UI: "Empires & dynasties" row, "Empire" in the legend, "Empire / dynasty" on its card, a row on the *Empires & states* axis | 85 |
+| **Period** (span kind) | Any span that isn't a state: wars, movements, eras of culture (Italian Renaissance, Industrial Revolution), and people's lives. | UI: the "Periods" row, drawn dashed | 108 |
+| **Person** | A period span flagged `person`: a life, birth to death, with a `role`. | UI: the "People" row (World and Lanes), rounded pills; a person's card lists who was *Alive at the same time* | 12 (pilot) |
+| **Sub-span** | A span that is `part_of` another span (Shah Jahan's reign inside the Mughal Empire). | UI: a labelled segment inside the parent's bar once zoomed in (≥ 48 px), two levels deep | — |
+| **Life cycle / phase** | An empire's years split into contiguous phases, each with a neutral **kind** (foundation, expansion, consolidation, height, transformation, contraction, end), a title, a description and, sometimes, the milestone event that *opens* it. Never a verdict ("golden age", "decline"). | UI: the bar shaded by phase; the card's *Life cycle* list; the strip in a journey stop. Code: `phases` on a `Duration` | 3 (Roman, Ottoman, Mughal) |
+| **Historical Current** | A span flagged `current`: a long movement (Axial Age, Enlightenment, Decolonization…) drawn as a translucent band behind the timeline, at most 3 at any year. Hidden in Simple, Constellation, stories, the Time Machine and journeys. | UI: background bands. Code: `current`, `pickCurrents` | 9 |
+| **Link** | A reviewed relationship between two items, stored once and read from either side ("is part of" / "includes"), with a one-line *why* and a confidence (medium/low show as *debated*). Eleven **types** (table below). | UI: "Connections" on a card. Code: `relationships.json`; also called *relationship* and *connection* | 493 |
+| **State (of an event)** | Which state(s) an event belongs to: from reviewed ties, or from a `part_of` / `began` / `ended` link to an empire-kind span (directly or through a sub-span). An event of two states, such as a war, has both. | UI: the *Empires & states* axis. Code: `states.json`, db `event_states` | 282 events |
+| **Milestone** | One of 16 hand-picked turning-point events (writing in Sumer, Gutenberg, Columbus, the Moon landing…). Not a separate kind of item. | UI: dashed vertical **milestone lines** across the timeline (hidden in Simple); also the famous third event in the Time Machine's *Two events* comparison. Code: `milestones.json` | 16 |
+| **Era** | One of five fixed slices of history: Ancient (to 800 BCE), Classical (800 BCE–500), Medieval (500–1500), Early Modern (1500–1800), Modern (1800–). | UI: the era chips (each jumps to its era) and the named, alternately shaded era bands. Code: `eras.json`, span kind `era` in the db | 5 |
+| **Category** | Subject tags on an event or span, the first one being the **primary** category. | UI: the Filters menu. Code: `categories` | 14 |
+| **Family** | The 8 groups the categories fold into, for colour and **shape** (Politics & Governance ●, Wars & Conflicts ▲, Science & Technology ◆, Exploration & Environment ✚, Arts & Culture ★, Religion & Philosophy ⬢, Economy & Trade ■, Society & People ▼). Set by the primary category. | UI: the legend. Code: `Family`, `categoryGroups.ts` | 8 |
+| **Region** | Where an item belongs: one of 12 labels in the data, each mapped to one of 7 **lanes** (South Asia, East Asia, Europe, Middle East, Africa, Americas, Global). Unknown → Global. | Code: `region`, `regions.json`, `laneFor` | 12 labels → 7 lanes |
+| **Importance** | 1–9. It decides what shows at each zoom, label priority, dot size, and which states get rows. It's a display priority, not a verdict on history. (A rubric is being drafted in doc 19.) | Code: `importance` | events mostly 3–6 |
+| **Approximate / historians' dates** | A date known only roughly is flagged `approximate` and shown with **c.**; `dateDisplay` holds the true range or the dispute ("traditionally 563–483 BCE; many scholars c. 480–400 BCE"). | UI: "c.", the *≈ Approximate* badge, "Historians' dates:" on a card | 55 events |
+| **Why it matters** | A reviewed paragraph on an item's significance. | UI: *Why it matters* on a card. Code: `significance` | — |
+| **DateFlow-only event** | An event whose date is too disputed to guess, so it's shown in DateFlow but kept out of DateGolf and DatePick. | Code: `dateflowOnly` | 7 |
+| **Shared id** | One subject stored as both an event and a span with the same id (e.g. a war's start and the war). It reads as its span in Connections and journeys. | Code only | — |
+
+**Link types** (as exported; *role* is how stories and journeys treat them):
+
+| Type | Reads | Inverse | Role | Count |
+|---|---|---|---|---|
+| part_of | is part of | includes | context | 204 |
+| preceded | preceded | followed | sequence ("then…", never a cause) | 74 |
+| began | began | began with | frame | 72 |
+| ended | ended | was ended by | frame | 61 |
+| contributed_to | contributed to | had as a contributing factor | cause | 35 |
+| enabled | enabled | was made possible by | cause | 15 |
+| influenced | influenced | was influenced by | cause | 15 |
+| triggered | triggered | was triggered by | cause | 8 |
+| opposed | opposed | opposed | context | 6 |
+| interacted_with | interacted with | interacted with | context | 2 |
+| evolved_into | evolved into | evolved from | context | 1 |
+
+---
+
+## 2. On screen: layouts and what they draw
+
+| Term | What it is | UI / Code |
+|---|---|---|
+| **Timeline** | The whole time canvas, 3600 BCE to 2030, strictly linear (one year is the same width everywhere at a given zoom). Zooming reveals more events rather than enlarging them. | — |
+| **View** | The window of years on screen right now. | UI: the range under the DateFlow title ("1500 – 1800 · 300 years"). Code: `View` |
+| **Layout** | How the timeline is drawn: **World**, **Lanes** or **Constellation**. Every visit opens on Constellation. | UI: the first toolbar group (aria "Timeline layout"). Code: `mode` / `ViewMode` |
+| **World** | One shared axis with labelled events above and below, then bar rows: *Empires & dynasties*, *Periods*, *People*. | — |
+| **Lanes** | One horizontal lane per region, each with its own events and bars; the **Lanes menu** hides and reorders lanes. | Code: `LaneState` |
+| **Constellation** | Every event as an unlabelled dot (size = importance, on a log scale; shape and colour = family) on horizontal **tracks**, chosen by an **axis**. Spans of importance 5+ sit as thin bars along the bottom of their track. Hover a dot for its name; click to open its card. | — |
+| **Axis (Constellation)** | What the tracks mean, chosen in the toolbar: **Geography** (the 7 lanes), **Human activity** (6 tracks by primary category), **Society** (7 tracks by the first non-political category; a *Politics & war* track starts switched off), **Empires & states** (a row per state in view, up to 8, with a band for its lifetime, then *Other*). | Code: `TrackAxis` |
+| **Track** | One horizontal row of the Constellation. Clicking its name switches it off (it shrinks to a strip); remembered per axis. | Code: `layoutTracks`, `hiddenTracks` |
+| **Bar** | A span drawn across its years: solid for empires, dashed for periods, a rounded pill for people, shaded by phase where it has a life cycle. | — |
+| **Era band / era chip** | See *Era* (§1). | — |
+| **Milestone line** | See *Milestone* (§1). | — |
+| **Current band** | See *Historical Current* (§1). | — |
+| **Story threads** | Curved arrows drawn between a story's stops (World and Lanes only); each opens its link's card. | Code: `StoryArcs` |
+| **Rings / dimming** | Items outlined while everything else fades: an open story, journey, search, the Time Machine, or *Show connections*. | Code: `highlightIds`, `lit` |
+| **Minimap** | The strip under the toolbar showing how many events fall in each slice of all history; the box is the current view; click to jump. | Code: `DateFlowMinimap`, `densityBins` |
+| **Legend** | The family shapes and colours along the bottom; click a family to **Focus** on it (§3). | — |
+| **Card** | The panel for one item. *Event card*: date, Why it matters, approximate note, Connections, story buttons, *Before & after in* its lane, *Meanwhile around the world* (±50 years), *Empires in* its year. *Span card*: years, historians' dates, Why it matters, *Alive at the same time* (people), *Life cycle*, Connections, *Meanwhile in* its region, *Compare with* (Time Machine). | Code: `EventInfoCard` (shared with DateGolf), `DurationInfoCard` |
+
+---
+
+## 3. Controls and settings
+
+| Term | What it does | Remembered? |
+|---|---|---|
+| **Zoom / pan** | Scroll or pinch to zoom; drag or ← → to pan; + / − buttons. | the view, yes |
+| **Era chips** | Jump to one era's exact years; *All* shows everything. | — |
+| **Search** | Finds events and spans by name or alias (never by year or description); a matching span also brings in everything `part_of` it. Typing a year ("500 BC") jumps there instead. Results open in the **search panel** (§4). | — |
+| **Filters** | Category and region checkboxes (empty = all; AND across the two) plus the **detail slider** (−2 … +2), which shifts how many events show at each zoom. | yes |
+| **Density preset** | *Simple* (−1 detail; no span bars, milestone lines or currents), *Standard*, *Detailed* (+2 detail; an open card rings its connections and keeps them ringed). Shifts the detail slider rather than replacing it. | yes |
+| **Focus** | Clicking a family in the legend keeps it vivid and fades the rest to 15% (never hidden). Esc clears it. | no (per visit) |
+| **Show connections** | From a card: rings the item and everything linked to it. | no |
+| **Colour mode** | *Colorful* (a hue per family, the default) or *Subtle* (three colourblind-safe hues). Shapes stay in both. | yes |
+| **Theme** | Light or dark (☾ / ☀). | yes |
+| **Hide a track / lane** | Constellation: click a track name. Lanes: the Lanes menu. | yes |
+| **Copy link** | Shares what's open: `?journey=`, `?story=`, `?q=` (search), `?year=` / `?tm=` (Time Machine). | — |
+
+---
+
+## 4. Ways to explore
+
+| Term | What it is | Where |
+|---|---|---|
+| **Story** | Built automatically from links: from one event, follow the causes and sequences back (*How did we get here?*) or forward (*What happened next?*). A sequence is never shown as a cause, and debated links say so. Played stop by stop with threads on the timeline. | Card buttons; *Stories* menu (8 featured stories) |
+| **Journey** | A curated, reviewed guided tour of a big theme: an intro, 8–10 **stops** (each showing existing events or spans, with narration), a closing, and a **Think about it** question on a few stops. Between stops a **bridge** says how they connect: a reviewed link if there is one, else "at the same time" or "538 years later", never an implied cause. A stop with an empire shows its life-cycle strip. Plays in any layout. | *Journeys* menu (with *Continue* / *Start over* / *✓ Finished*); the first-visit invitation card; `?journey=` |
+| **Search panel** | Steps through search results in time order: *Overview*, then each match, with ‹ ›, a scrubber, and *Play* at Slow / Normal / Fast. | Search box |
+| **Watch** | The same panel, stepping through every event the filters let through. | *Watch* button |
+| **Time Machine** | Four comparisons: **A year** (each region's empires, periods and events around one year), **Two years** (what was *Gone*, *New*, *Still there*, *Came and went*), **Two empires** (how long two spans overlapped or how far apart they were), **Two events** (the years between them, plus a striking comparison with a famous third event). | *Time Machine* button; span card *Compare with* |
+| **What happened?** | A summary of the view, or a shift-dragged stretch of years: its empires and dynasties, periods, and top events around the world. | *What happened?* button; shift-drag |
+| **Meanwhile** | The "elsewhere at the same time" sections of a card (§2). | Cards |
+| **Surprise Me** | Opens a random event, preferring ones with a story, without repeating the last 20. | *Surprise Me* button |
+| **Games** | Six quiz games over DateFlow's data: *Which Came First?*, *Put Them in Order*, *What's Missing?*, *What's Happening Elsewhere?*, *Find the Duration*, *Cause & Effect*. Rounds get harder as they go. | *▶ Play* button → `/dateflow/play` |
+
+---
+
+## 5. Behind the scenes (data workflow)
+
+| Term | Meaning |
+|---|---|
+| **Entity** | Any event or span in the db; events and spans hang off `entities`. |
+| **Draft / proposed / reviewed** | New data (often AI-drafted, its `origin` recorded) loads as *proposed* and is invisible to the app until Ram approves it on the dashboard. |
+| **Dashboard** | The Streamlit review app (port 8501): Review tabs for event and span drafts, links, sources, significance, life cycles, journeys, states, memory aids, the gap list. |
+| **Export** | `npm run data:export`: the db becomes the JSON the app reads. The JSON is never edited by hand. |
+| **Source** | A Wikipedia (or other) article attached to an item; proposed ones are checked on the dashboard. |
+| **Gap list** | Missing events and spans noticed along the way, marked wanted or dismissed. |
+
+---
+
+## 6. Where the words collide
+
+These are the places where one word means several things, or several words mean one thing. Each has a proposal; none is decided.
+
+1. **Span / Duration / time span / "bar".** One concept, three names (UI never names it; code `Duration`; db `time_spans`). *Proposal:* "span" in docs and conversation; rename `Duration` → `Span` in code when convenient.
+2. **"Empire" covers every state, and some things that aren't states.** The kind includes kingdoms, dynasties, republics and Athens, *and* civilizations such as the Indus Valley, Classic Maya and Teotihuacan, which weren't single states. The same kind is labelled four ways: *Empires & dynasties* (World row), *Empire* (legend), *Empire / dynasty* (card), *Empires & states* (axis). *Proposal:* call the kind **state** throughout ("Empires & states" everywhere), and move the civilizations to a period kind (or a new *civilization* kind) after review.
+3. **Four groupings of the same 14 categories.** Families (8, for colour and shape), Human activity tracks (6), Society tracks (7) and Subtle's colour groups (3) each fold the categories differently. An *Exploration* event is a ✚ in *Exploration & Environment*, sits on *Science & Technology* in Human activity and on *Exploration* in Society. *Disasters* is in the *Exploration & Environment* family but on *Society* tracks. *Proposal:* make Human activity's tracks the 8 families (so shape and track always agree), and keep Society as the one deliberately different lens.
+4. **Era means three things:** the 5 era chips and bands, the db span kind `era`, and loosely any "age" (the Axial Age, an Age-of-… period span). *Proposal:* keep "era" for the five fixed eras only.
+5. **Period means three things:** the span kind, the *Periods* row, and the *What happened?* summary ("period summary" in code). *Proposal:* call the summary **"What happened?"** everywhere.
+6. **Story, journey, tour, Watch.** *Story* is automatic (from links), *journey* is curated, *tour* is only the code name of the search/Watch panel, and doc 16 used "tour" for what became journeys. *Proposal:* use "tour" nowhere user-facing; name the panel *search results*; consider renaming *Watch* to *Play through*.
+7. **Two "Play"s.** *▶ Play* opens the games; *Play* in the search panel auto-advances. *Proposal:* label the games button *▶ Games*.
+8. **Detail: a slider and a preset that do the same job.** The Filters slider and Simple / Standard / Detailed both shift the detail level, and Standard vs Detailed barely differ (#1, the four viewing modes). *Proposal:* one control. Make the presets clearly different and drop the slider, or keep only the slider.
+9. **Focus.** The legend's *Focus* (one family), *Show connections* (an item's links; called `focusId` in code), and the "Focus mode" of #1 (which was meant per event) are three things. *Proposal:* "Focus" means the legend only; rename the code's `focusId` to `ringedId`.
+10. **Three ways to hide a region.** The Filters region checkboxes, the Lanes menu, and the Constellation's Geography track toggles all do it, with separate memories. *Proposal:* one region on/off state shared by all three.
+11. **Layout / mode / view.** UI says nothing ("World · Lanes · Constellation"); code says `mode`; "view" in code is the visible window. *Proposal:* "layout" in docs and UI hints; "view" only for the visible window.
+12. **Lane / track / row.** Lanes (Lanes layout, regions), tracks (Constellation, any axis) and rows (World's bar rows, the Empires & states axis). Defensible, but worth keeping exactly so.
+13. **Connections / links / relationships.** One thing. *Proposal:* "Connections" in the UI, "links" everywhere else; "relationships" only for the file name.
+14. **Regions in the data are inconsistent.** Events use *Americas* (54) and also *North America* (12) and *South America* (3), which land in the same lane. *Proposal:* a data pass to settle one scheme (likely the sub-regions, since they're more informative), as with Southeast Asia and Oceania.
+15. **"Two empires" isn't limited to empires.** The Time Machine's overlap mode takes any two spans (the span card's *Compare with* sends periods too). *Proposal:* label it *Two spans*, or *Two empires or periods*.
+16. **Milestone, two uses.** The 16 milestone events, and a phase's "opens with" event in a life cycle. Minor; keep "milestone" for the 16.
+
+---
+
+## 7. Terms from doc 20 that DateFlow does not have
+
+To keep them from creeping into specs as if they existed:
+
+- **Experience, Collection, Discovery:** not features. The nearest real things are the *games* (interactive), *journeys* and *stories* (curated or guided), and *Surprise Me*.
+- **Map view:** a *Later* roadmap item (doc 18); countries are tagged but there's no map.
+- **Civilization, Institution, Movement as item types:** not types. Civilizations are currently empire-kind spans (§6.2); movements are period spans; there are no institutions.
+- **Constellation as "a web of related items":** wrong. It's the dot layout described in §2. Relationships are shown by Connections, stories and rings.
+- **Date / Duration as concepts:** an event has a year; a span has a start and an end. "Duration" in the code is a span, not a length of time (§6.1).
+
+---
+
+## 8. Keeping this current
+
+Update this glossary in the same commit as any change that adds, renames or removes a user-facing term. Doc 18 (roadmap) links here. Doc 20 can be deleted once Ram agrees this replaces it.

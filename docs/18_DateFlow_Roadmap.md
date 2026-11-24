@@ -2,6 +2,8 @@
 
 *Started 2026-11-23. This is the live DateFlow roadmap: it replaces the plan in doc 16 (the original vision, now mostly built) and the DateFlow rows of doc 14 §2. Ram edits the order; Claude keeps it current as work finishes. Doc 14 stays the product overview and covers the other games and data work.*
 
+*Terms used here are defined in the [DateFlow Glossary](21_DateFlow_Glossary.md) (doc 21).*
+
 ## How to read it
 
 - **Now** is worked top to bottom. **Next** follows once Now is done or blocked. **Later** is unordered.
@@ -44,6 +46,7 @@ The three journeys and the Roman, Mughal and Ottoman life cycles are the richest
 - Size: M.
 
 ### 4. AI questions ("What was happening in India when Rome peaked?")
+**On hold (Ram, 2026-11-24):** first a step back to take stock of DateFlow as it is: the glossary (doc 21) and its list of colliding terms.
 Ram wants this high. It breaks the **no backend** rule, so the first step is a decision, not code.
 
 - How answers are produced (decided below). Options:
