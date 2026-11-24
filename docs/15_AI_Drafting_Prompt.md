@@ -73,7 +73,9 @@ EVENT (something that happened in one year):
   approximate   REQUIRED. true if the year is uncertain, conventional or debated; else false.
   date_display  REQUIRED when approximate is true: the true range, e.g. "c. 4000–3500 BCE",
                 "587 or 586 BCE", "c. 1250–1180 BCE (legendary)".
-  region        REQUIRED. Exactly one region label from the reference.
+  region        REQUIRED. Exactly one region label from the reference. In the Americas use
+                North America (with Mexico, Central America and the Caribbean) or South
+                America; "Americas" only for something spanning both.
   categories    REQUIRED. 1 to 3 labels from the reference, the main one first.
   aliases       REQUIRED. 2 to 6 other names or search terms a player might type
                 (e.g. "Accession of Akbar"). NEVER a year or date.

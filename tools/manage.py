@@ -214,6 +214,11 @@ def main():
     p.add_argument("kind", choices=["state", "period"])
     p.set_defaults(fn=lambda a: edit.set_span_kind(a.id, a.kind))
 
+    p = sub.add_parser("set-region", help="Set the region of events and spans (a label from the regions table)")
+    p.add_argument("region")
+    p.add_argument("ids", nargs="+")
+    p.set_defaults(fn=lambda a: edit.set_region(a.ids, a.region))
+
     p = sub.add_parser("set-event-date", help="Change an event's year, 'c.' flag or displayed range")
     p.add_argument("id")
     p.add_argument("--year", type=int, help="Signed year; -2560 = 2560 BCE")

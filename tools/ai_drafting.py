@@ -57,7 +57,8 @@ def reference(out_path=None):
         "",
         "## Allowed values",
         "",
-        f"- **region** (exactly one): {', '.join(regions)}",
+        f"- **region** (exactly one): {', '.join(regions)}. In the Americas use North America (with Mexico, "
+        "Central America and the Caribbean) or South America; *Americas* only for something spanning both",
         f"- **categories** (1 to 3, primary first): {', '.join(categories)}",
         f"- **difficulty**: {', '.join(DIFFICULTIES)}",
         "- **importance**: 1 to 9 (see the prompt)",

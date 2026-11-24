@@ -149,14 +149,14 @@
 - `Europe` — europe · 205 records
 - `South Asia` — south-asia · 153 records
 - `East Asia` — east-asia · 76 records
-- `Americas` — americas · 69 records
+- `North America` — americas · 75 records
 - `Middle East` — middle-east · 65 records
 - `Africa` — africa · 58 records
 - `Global` — global · 38 records
 - `Southeast Asia` — east-asia · 21 records
-- `North America` — americas · 13 records
 - `Oceania` — global · 10 records
-- `South America` — americas · 4 records
+- `South America` — americas · 7 records
+- `Americas` — americas · 4 records
 - `Central Asia` — middle-east · 2 records
 - `Antarctica` — global · 1 records
 

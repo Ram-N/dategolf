@@ -102,6 +102,35 @@ def set_span_kind(entity_id, kind, via="cli"):
     return 0
 
 
+def set_region(entity_ids, region, via="cli"):
+    """Set the region of events and spans (both rows when an id is both). The region must be in the regions table."""
+    conn = connect()
+    ensure_schema(conn)
+    if conn.execute("SELECT 1 FROM regions WHERE label = ?", (region,)).fetchone() is None:
+        print(f"  ✗ unknown region {region!r} (see the regions table)")
+        conn.close()
+        return 1
+    bad = 0
+    for entity_id in entity_ids:
+        rows = [(t, r[0]) for t in ("events", "time_spans")
+                for r in conn.execute(f"SELECT region FROM {t} WHERE entity_id = ?", (entity_id,))]
+        if not rows:
+            print(f"  ✗ no event or span with id {entity_id}")
+            bad += 1
+            continue
+        old = rows[0][1]
+        if all(r == region for _, r in rows):
+            print(f"  · {entity_id} is already {region}")
+            continue
+        for table, _ in rows:
+            conn.execute(f"UPDATE {table} SET region = ? WHERE entity_id = ?", (region, entity_id))
+        log(conn, "set-region", entity_id, f"{old} → {region}", via=via)
+        print(f"  ✓ {entity_id}: {old} → {region}")
+    conn.commit()
+    conn.close()
+    return 1 if bad else 0
+
+
 def set_event_date(entity_id, year=None, approximate=None, display=None, via="cli"):
     """Change an event's year, its 'c.' flag and/or its date_display (the true range). None leaves a field."""
     if year == 0:

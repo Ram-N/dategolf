@@ -128,6 +128,16 @@ class TestRename(unittest.TestCase):
         self.assertEqual(quiet(edit.set_span_kind, "mongol-conquests", "era", via="test"), 1)
         self.assertEqual(quiet(edit.set_span_kind, "no-such-id", "period", via="test"), 1)
 
+    def test_set_region(self):
+        self.assertEqual(quiet(edit.set_region, ["machu-picchu-built", "inca-empire"], "Americas", via="test"), 0)
+        self.assertEqual(db().execute("SELECT region FROM events WHERE entity_id = 'machu-picchu-built'").fetchone(),
+                         ("Americas",))
+        self.assertEqual(db().execute("SELECT region FROM time_spans WHERE entity_id = 'inca-empire'").fetchone(),
+                         ("Americas",))
+        self.assertEqual(log_rows("machu-picchu-built")[-1][0], "set-region")
+        self.assertEqual(quiet(edit.set_region, ["inca-empire"], "Atlantis", via="test"), 1)
+        self.assertEqual(quiet(edit.set_region, ["no-such-id"], "Europe", via="test"), 1)
+
     def test_set_span_years(self):
         self.assertEqual(quiet(edit.set_span_years, "construction-great-wall", -215, -206, True, via="test"), 0)
         self.assertEqual(db().execute("SELECT start_year, end_year, approximate FROM time_spans "

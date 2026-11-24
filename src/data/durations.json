@@ -182,7 +182,7 @@
       "Arts",
       "Politics"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 6,
     "kind": "period",
     "significance": "Olmec centers pioneered monumental stone sculpture, ceremonial plaza planning, long-distance jade and obsidian trade, and early Mesoamerican ballgame and ritual traditions. Later societies across Mesoamerica, including the Maya, built upon artistic and religious motifs first developed along the Gulf Coast.",
@@ -674,7 +674,7 @@
       "Politics",
       "Culture"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 6,
     "kind": "state",
     "significance": "Teotihuacan's trade, architecture and political reach shaped Mesoamerica for centuries; in 378 CE a Teotihuacan-backed warlord installed a new dynasty at the Maya city of Tikal. Centuries after its fall, the Aztecs revered its ruins as the place where the gods had created the sun.",
@@ -774,7 +774,7 @@
       "Culture",
       "Religion"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 4,
     "kind": "period",
     "significance": "The Pyramid of the Sun is one of the largest structures of the ancient Americas and a sign of Teotihuacan's power to organise labour and belief. Its name comes from the Aztecs, who found the city in ruins centuries later; what its builders called it is unknown.",
@@ -823,7 +823,7 @@
       "Culture",
       "Politics"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 6,
     "kind": "period",
     "approximate": true
@@ -1687,7 +1687,7 @@
     "categories": [
       "Politics"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 6,
     "kind": "state"
   },
@@ -1716,7 +1716,7 @@
     "categories": [
       "Politics"
     ],
-    "region": "Americas",
+    "region": "South America",
     "importance": 6,
     "kind": "state"
   },
@@ -2208,7 +2208,7 @@
       "Politics",
       "War"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 8,
     "kind": "period",
     "significance": "Created an independent republic founded on popular sovereignty and, soon after, a written federal constitution. Its example helped inspire revolutions in France, Haiti and Latin America."
@@ -2236,7 +2236,7 @@
     "categories": [
       "Politics"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 5,
     "kind": "period"
   },
@@ -2363,7 +2363,7 @@
     "categories": [
       "Culture"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 3,
     "kind": "period"
   },
@@ -2390,7 +2390,7 @@
     "categories": [
       "War"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 8,
     "kind": "period",
     "significance": "Preserved the United States as a single nation, strengthened federal authority over individual states, and accelerated Northern industrialization while leaving deep regional divisions and unresolved struggles over racial equality."
@@ -2743,7 +2743,7 @@
     "categories": [
       "Science"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 5,
     "kind": "period"
   },
@@ -2815,7 +2815,7 @@
     "categories": [
       "Politics"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 5,
     "kind": "period"
   },
@@ -2828,7 +2828,7 @@
     "categories": [
       "Politics"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 8,
     "kind": "period",
     "significance": "Dismantled legal racial segregation and disenfranchisement across the American South through mass nonviolent protest and legal challenges, securing federal protections for voting and equal access that inspired broader rights movements in the United States and abroad."
@@ -2895,7 +2895,7 @@
     "categories": [
       "Politics"
     ],
-    "region": "Americas",
+    "region": "North America",
     "importance": 5,
     "kind": "period"
   },
