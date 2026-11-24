@@ -22,7 +22,7 @@
     </section>
 
     <section v-if="empires.length">
-      <h3 class="heading">Empires in {{ formatEventYear(event.year, event.approximate) }}</h3>
+      <h3 class="heading">Empires &amp; states in {{ formatEventYear(event.year, event.approximate) }}</h3>
       <div class="flex flex-wrap gap-1.5">
         <button v-for="d in empires" :key="d.id" class="chip" @click="emit('openDuration', d.id)">{{ d.name }}</button>
       </div>
@@ -63,7 +63,7 @@ const ownLane = computed(() => LANES.find((l) => l.id === laneFor(props.event.re
 const nearby = computed(() => beforeAndAfter(props.events, props.event))
 const elsewhere = computed(() => meanwhile(props.events, props.event, WINDOW))
 const empires = computed(() =>
-  activeDuring(props.durations, props.event.year, props.event.year, 'empire').slice(0, MAX_EMPIRES),
+  activeDuring(props.durations, props.event.year, props.event.year, 'state').slice(0, MAX_EMPIRES),
 )
 </script>
 

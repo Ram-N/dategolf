@@ -130,7 +130,7 @@
 .dateflow .secondary {
   color: var(--df-text-2);
 }
-.dateflow .kind-empire {
+.dateflow .kind-state {
   background: color-mix(in srgb, var(--df-text-2) 40%, transparent);
   border: 1px solid var(--df-text-2);
 }

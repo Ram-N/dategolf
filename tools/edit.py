@@ -75,15 +75,15 @@ def set_span_years(entity_id, start, end, approximate=None, display=None, via="c
 
 
 def set_span_kind(entity_id, kind, via="cli"):
-    """Make a span an empire or a period (eras live in eras.json and aren't changed here)."""
-    if kind not in ("empire", "period"):
-        print(f"  ✗ kind must be empire or period, not {kind!r}")
+    """Make a span a state or a period (eras live in eras.json and aren't changed here)."""
+    if kind not in ("state", "period"):
+        print(f"  ✗ kind must be state or period, not {kind!r}")
         return 1
     conn = connect()
     ensure_schema(conn)
     row = conn.execute("SELECT kind FROM time_spans WHERE entity_id = ?", (entity_id,)).fetchone()
     if row is None or row["kind"] == "era":
-        print(f"  ✗ no empire or period span with id {entity_id}")
+        print(f"  ✗ no state or period span with id {entity_id}")
         conn.close()
         return 1
     old = row["kind"]

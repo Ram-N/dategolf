@@ -326,8 +326,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
       name: d.name, phases: d.phases!, start: d.startYear, end: d.endYear, family: familyFor(d.categories),
     }])),
   )
-  /** The states the Empires & states axis can give a row to: every empire-kind span, filters aside. */
-  const stateSpans = computed(() => new Map(durations.value.filter((d) => d.kind === 'empire').map((d) => [d.id, d])))
+  /** The states the Empires & states axis can give a row to: every state span, filters aside. */
+  const stateSpans = computed(() => new Map(durations.value.filter((d) => d.kind === 'state').map((d) => [d.id, d])))
   /** The detail level the timeline draws with: the Filters slider shifted by the density preset. */
   const detailLevel = computed(() => effectiveDetail(filters.value.detail, density.value))
   /** Detailed: an open card rings its connections on the timeline, as "Show connections" does. */

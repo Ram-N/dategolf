@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS event_aliases (
 
 CREATE TABLE IF NOT EXISTS time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
-  kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json
+  kind        TEXT NOT NULL CHECK (kind IN ('period', 'state', 'era')),  -- state: empires, kingdoms, dynasties, republics…; era -> eras.json
   name        TEXT NOT NULL,
   start_year  INTEGER NOT NULL CHECK (start_year <> 0),
   end_year    INTEGER NOT NULL CHECK (end_year <> 0),
@@ -517,7 +517,7 @@ CREATE TRIGGER IF NOT EXISTS time_spans_touch AFTER UPDATE ON time_spans BEGIN
 END;
 
 -- Which state an event belongs to (Date Flow's "Empires & states" axis, doc 18 item 2a; tools/states.py).
--- A state is a span of kind 'empire' (empires, kingdoms, dynasties, republics). Links already say it for some
+-- A state is a span of kind 'state' (empires, kingdoms, dynasties, republics). Links already say it for some
 -- events (part_of / began / ended a state); these rows cover the rest, and an event of two states (a war) has
 -- two rows. Tie to the most specific state (Khalji Dynasty, not Delhi Sultanate): the app rolls sub-states up.
 CREATE TABLE IF NOT EXISTS event_states (

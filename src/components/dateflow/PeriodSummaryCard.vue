@@ -21,7 +21,7 @@
       </div>
 
       <section v-if="summary.empires.length" class="mt-5">
-        <h3 class="heading">Empires &amp; dynasties</h3>
+        <h3 class="heading">Empires &amp; states</h3>
         <div class="flex flex-wrap gap-1.5">
           <button v-for="d in summary.empires.slice(0, MAX_CHIPS)" :key="d.id" class="chip" @click="emit('openDuration', d.id)">
             {{ d.name }}

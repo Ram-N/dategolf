@@ -49,7 +49,7 @@ pass('Year checks passed')
 
 // 4. Kind, importance, approximate flag
 durations.forEach((d) => {
-  if (!['empire', 'period'].includes(d.kind)) fail(`Invalid kind: ${d.id} → ${d.kind}`)
+  if (!['state', 'period'].includes(d.kind)) fail(`Invalid kind: ${d.id} → ${d.kind}`)
   if (!Number.isInteger(d.importance) || d.importance < 1 || d.importance > 9) fail(`Invalid importance: ${d.id} → ${d.importance}`)
   if (d.approximate !== undefined && typeof d.approximate !== 'boolean') fail(`approximate must be boolean: ${d.id}`)
   if (d.significance !== undefined && (typeof d.significance !== 'string' || !d.significance.trim()))

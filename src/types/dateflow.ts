@@ -1,5 +1,5 @@
 // ── Span ──────────────────────────────────────────────────────────────────
-// Something that lasted: an empire/dynasty, or a period (war, movement, era).
+// Something that lasted: a state (empire, kingdom, dynasty, republic…) or a period (war, movement, life).
 // Source: src/data/durations.json (validate with scripts/validate-durations.cjs).
 export interface Span {
   id: string
@@ -11,7 +11,7 @@ export interface Span {
   categories: string[]
   region: string
   importance: number // 1–9, same scale as events
-  kind: 'empire' | 'period'
+  kind: 'state' | 'period'
   approximate?: boolean // start/end are traditional or disputed dates
   dateDisplay?: string // historians' dates or the dispute, e.g. "traditionally 563–483 BCE; many scholars c. 480–400 BCE"
   current?: boolean // a Historical Current: drawn as a background band (step 3d)

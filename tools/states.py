@@ -1,6 +1,6 @@
 """Which state an event belongs to, for Date Flow's "Empires & states" axis (doc 18 item 2a).
 
-A state is a span of kind 'empire'. An event's states are its reviewed rows here plus the states its reviewed
+A state is a span of kind 'state'. An event's states are its reviewed rows here plus the states its reviewed
 links already name (part_of / began / ended). An event of two states (a war, a conquest) belongs to both
 (Ram, 2026-11-23). Tie an event to the most specific state; the app rolls a sub-state (Khalji Dynasty) up
 into its parent (Delhi Sultanate) when it needs to.
@@ -22,22 +22,22 @@ SLACK = 25  # years of leeway at a state's edges when either date is approximate
 def _states(conn):
     """id → row for every state span."""
     return {r["entity_id"]: r for r in conn.execute(
-        "SELECT entity_id, name, start_year, end_year, approximate FROM time_spans WHERE kind = 'empire'")}
+        "SELECT entity_id, name, start_year, end_year, approximate FROM time_spans WHERE kind = 'state'")}
 
 
 def _parents(conn):
     """state id → the state it is part of (Khalji Dynasty → Delhi Sultanate)."""
     return dict(conn.execute(
         "SELECT r.source_entity_id, r.target_entity_id FROM relationships r "
-        "JOIN time_spans a ON a.entity_id = r.source_entity_id AND a.kind = 'empire' "
-        "JOIN time_spans b ON b.entity_id = r.target_entity_id AND b.kind = 'empire' "
+        "JOIN time_spans a ON a.entity_id = r.source_entity_id AND a.kind = 'state' "
+        "JOIN time_spans b ON b.entity_id = r.target_entity_id AND b.kind = 'state' "
         "WHERE r.relationship_type = 'part_of' AND r.editorial_status = 'reviewed'").fetchall())
 
 
 def linked(conn):
     """event id → the states its reviewed links already name: part_of / began / ended a state, or a span that is
     itself (through part_of) inside a state (beginning "Reign of Shah Jahan" puts an event in the Mughal Empire)."""
-    states = {r[0] for r in conn.execute("SELECT entity_id FROM time_spans WHERE kind = 'empire'")}
+    states = {r[0] for r in conn.execute("SELECT entity_id FROM time_spans WHERE kind = 'state'")}
     up = dict(conn.execute(
         "SELECT r.source_entity_id, r.target_entity_id FROM relationships r "
         "JOIN time_spans a ON a.entity_id = r.source_entity_id JOIN time_spans b ON b.entity_id = r.target_entity_id "

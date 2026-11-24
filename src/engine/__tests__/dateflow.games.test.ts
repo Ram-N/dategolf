@@ -113,7 +113,7 @@ describe('dateflow games — each question has exactly one right answer', () => 
       for (const q of round as PickQuestion[]) {
         const answer = durationById.get(q.options[q.correct]!.id)!
         expect(q.clue).toContain(answer.region)
-        q.options.forEach((o) => expect(durationById.get(o.id)!.kind).toBe('empire'))
+        q.options.forEach((o) => expect(durationById.get(o.id)!.kind).toBe('state'))
         q.options
           .filter((_, k) => k !== q.correct)
           .forEach((o) => {

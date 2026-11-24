@@ -104,7 +104,7 @@ EVENT (something that happened in one year):
 
 SPAN (something that lasted: an empire, dynasty, reign, war or movement):
   id, name, region, categories, importance, countries, source, note, significance, fills_missing: as above.
-  kind          REQUIRED. "empire" (a state, empire or dynasty) or "period" (a war, reign,
+  kind          REQUIRED. "state" (an empire, kingdom, dynasty or republic) or "period" (a war, reign,
                 movement or age).
   name          A noun phrase, e.g. "Reign of Akbar", "Sur Empire", "Second Punic War".
   start_year, end_year  REQUIRED. Whole numbers, never 0, start not after end.

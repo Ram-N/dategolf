@@ -171,7 +171,7 @@
       <button v-if="store.focusFamily" class="secondary underline" @click="store.setFocusFamily(null)">Show all</button>
       <template v-if="store.mode !== 'constellation' && store.density !== 'simple'">
         <span class="flex items-center gap-1.5 secondary">
-          <span class="inline-block w-4 h-2.5 rounded-sm kind-empire" /> Empire
+          <span class="inline-block w-4 h-2.5 rounded-sm kind-state" /> Empire or state
         </span>
         <span class="flex items-center gap-1.5 secondary">
           <span class="inline-block w-4 h-2.5 rounded-sm kind-period" /> Period

@@ -36,7 +36,7 @@ const byImportanceThenCloseness = (year: number) => (a: Event, b: Event) =>
 
 /** The world in one year: each region's active empires and periods, and the events nearby. */
 export function worldAt(year: number, events: Event[], durations: Span[], window = 25, perLane = 4): WorldAt {
-  const active = [...activeDuring(durations, year, year, 'empire'), ...activeDuring(durations, year, year, 'period')]
+  const active = [...activeDuring(durations, year, year, 'state'), ...activeDuring(durations, year, year, 'period')]
   const fuzz = approxMinGap(year)
   const regions = LANES.map((l) => {
     const spans = active

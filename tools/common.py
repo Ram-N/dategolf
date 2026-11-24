@@ -63,8 +63,39 @@ ADDED_COLUMNS = [
 ]
 
 
+def _rename_empire_kind(conn):
+    """2026-11-24 (doc 21 §6.2): the span kind 'empire' became 'state'. SQLite can't change a CHECK in place,
+    so time_spans is rebuilt from schema.sql once, with foreign keys off and checked before committing."""
+    row = conn.execute("SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'time_spans'").fetchone()
+    if not row or "'empire'" not in row[0]:
+        return
+    ddl = re.search(r"CREATE TABLE IF NOT EXISTS time_spans \((.*?)\n\);", SCHEMA.read_text(encoding="utf-8"), re.S)
+    cols = [r[1] for r in conn.execute("PRAGMA table_info(time_spans)")]
+    picked = ", ".join("CASE kind WHEN 'empire' THEN 'state' ELSE kind END" if c == "kind" else c for c in cols)
+    conn.commit()
+    conn.execute("PRAGMA foreign_keys = OFF")  # only takes effect outside a transaction
+    conn.execute("PRAGMA legacy_alter_table = ON")  # don't re-check views while the table is briefly missing
+    try:
+        conn.execute("BEGIN")
+        conn.execute(f"CREATE TABLE time_spans_new ({ddl.group(1)})")
+        conn.execute(f"INSERT INTO time_spans_new ({', '.join(cols)}) SELECT {picked} FROM time_spans")
+        conn.execute("DROP TABLE time_spans")
+        conn.execute("ALTER TABLE time_spans_new RENAME TO time_spans")
+        conn.execute("UPDATE entities SET primary_type = 'state' WHERE primary_type = 'empire'")
+        if conn.execute("PRAGMA foreign_key_check").fetchall():
+            raise sqlite3.IntegrityError("foreign keys broken by the time_spans rebuild")
+        conn.execute("COMMIT")
+    except Exception:
+        conn.execute("ROLLBACK")
+        raise
+    finally:
+        conn.execute("PRAGMA legacy_alter_table = OFF")
+        conn.execute("PRAGMA foreign_keys = ON")
+
+
 def ensure_schema(conn):
     """Apply additive schema changes (new columns, tables and views) to an existing db."""
+    _rename_empire_kind(conn)  # before the views and triggers below are (re)created
     for table, column, ddl in ADDED_COLUMNS:  # before the views, which may use these columns
         cols = [r[1] for r in conn.execute(f"PRAGMA table_info({table})")]
         if cols and column not in cols:

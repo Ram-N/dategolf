@@ -17,7 +17,7 @@ const ev = (id: string, name: string, year: number) =>
      importance: 5 }) as Event
 const sp = (id: string, name: string, startYear: number, endYear: number, approximate = false) =>
   ({ id, name, startYear, endYear, description: '', categories: [], region: 'Global', importance: 5,
-     kind: 'empire', ...(approximate ? { approximate } : {}) }) as Span
+     kind: 'state', ...(approximate ? { approximate } : {}) }) as Span
 
 describe('resolveJourney', () => {
   const fixture = {

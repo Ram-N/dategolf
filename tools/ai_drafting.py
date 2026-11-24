@@ -23,7 +23,7 @@ from links import overlapping_sequences, skip_links
 from significance import row_text, text_problems
 
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-KINDS = ("period", "empire")
+KINDS = ("period", "state")
 DIFFICULTIES = ("easy", "medium", "hard")
 WIKI = "https://en.wikipedia.org/wiki/"
 YEAR_NOW = date.today().year
@@ -257,7 +257,7 @@ def check(path, trial=True):
             errors.append(f"{where}: start_year and end_year must be whole numbers, never 0, start not after end")
             a = None
         if s.get("kind") not in KINDS:
-            errors.append(f"{where}: kind must be period or empire")
+            errors.append(f"{where}: kind must be period or state (an empire, kingdom, dynasty or republic)")
         if s.get("date_display") and not s.get("approximate"):
             warnings.append(f"{where}: date_display given but approximate is false (it won't be shown)")
         common_checks(where, s, "span", a)

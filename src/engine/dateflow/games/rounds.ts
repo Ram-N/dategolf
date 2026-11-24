@@ -291,7 +291,7 @@ const sameSpan = (a: Span, b: Span) =>
   Math.abs(a.startYear - b.startYear) < 50 && Math.abs(a.endYear - b.endYear) < 50
 
 function findDuration(i: number, durations: Span[], rng: Rng, used: Set<string>): Question | null {
-  const empires = durations.filter((d) => d.kind === 'empire')
+  const empires = durations.filter((d) => d.kind === 'state')
   const pool = empires.filter((d) => !used.has(d.id))
   for (let t = 0; t < TRIES; t++) {
     const target = pickOne(pool, rng)

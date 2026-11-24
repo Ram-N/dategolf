@@ -533,7 +533,7 @@ const tracks = computed<Track[]>(() => {
         bandTop,
         barRows: bars
           ? [
-              { kind: 'empire', title: 'Empires & dynasties', top: empiresTop, rows: WORLD_ROWS_PER_KIND },
+              { kind: 'state', title: 'Empires & states', top: empiresTop, rows: WORLD_ROWS_PER_KIND },
               { kind: 'period', title: 'Periods', top: periodsTop, rows: WORLD_ROWS_PER_KIND },
               ...(people ? [{ kind: 'person' as const, title: 'People', top: peopleTop, rows: WORLD_PEOPLE_ROWS }] : []),
             ]
@@ -549,10 +549,10 @@ const tracks = computed<Track[]>(() => {
     props.density === 'simple'
       ? []
       : people && laneH >= LANE_THREE_ROW_MIN_H
-        ? ['empire', 'period', 'person']
+        ? ['state', 'period', 'person']
         : laneH >= LANE_TWO_ROW_MIN_H
-          ? ['empire', 'period']
-          : ['empire']
+          ? ['state', 'period']
+          : ['state']
   return props.lanes.map((id, index) => {
     const top = ERA_SPACE + index * laneH
     const bandTop = top + laneH - kinds.length * BAR_ROW - 4
@@ -821,7 +821,7 @@ function constellationBars(tracks: { id: string; top: number; h: number; on: boo
     // A ringed span (a journey stop, a connection) always gets a bar, even a life or a sub-span
     if (!lit(d.id) && (d.person || props.spanParents.has(d.id) || d.importance < C_BAR_MIN_IMPORTANCE)) continue
     // An empire is political whatever else it did: on Society it goes with politics and war
-    const id = axis === 'society' && d.kind === 'empire' ? 'politics-war' : trackOf(d, axis)
+    const id = axis === 'society' && d.kind === 'state' ? 'politics-war' : trackOf(d, axis)
     byTrack.set(id, [...(byTrack.get(id) ?? []), d])
   }
   return tracks.flatMap((t) => {

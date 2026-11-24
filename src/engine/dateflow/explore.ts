@@ -71,7 +71,7 @@ export function summarizePeriod(
   return {
     start,
     end,
-    empires: activeDuring(durations, start, end, 'empire'),
+    empires: activeDuring(durations, start, end, 'state'),
     periods: activeDuring(durations, start, end, 'period'),
     lanes: LANES.map((l) => ({
       lane: l.id,

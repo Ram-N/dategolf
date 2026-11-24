@@ -120,10 +120,10 @@ class TestRename(unittest.TestCase):
 
     def test_set_span_kind(self):
         self.assertEqual(quiet(edit.set_span_kind, "mongol-conquests", "period", via="test"), 0)
-        self.assertEqual(quiet(edit.set_span_kind, "mongol-conquests", "empire", via="test"), 0)
+        self.assertEqual(quiet(edit.set_span_kind, "mongol-conquests", "state", via="test"), 0)
         self.assertEqual(db().execute("SELECT s.kind, n.primary_type FROM time_spans s JOIN entities n "
                                       "ON n.id = s.entity_id WHERE s.entity_id = 'mongol-conquests'").fetchone(),
-                         ("empire", "empire"))
+                         ("state", "state"))
         self.assertEqual(log_rows("mongol-conquests")[-1][0], "set-span-kind")
         self.assertEqual(quiet(edit.set_span_kind, "mongol-conquests", "era", via="test"), 1)
         self.assertEqual(quiet(edit.set_span_kind, "no-such-id", "period", via="test"), 1)

@@ -15,7 +15,7 @@ const ev = (id: string, name: string, year: number, extra: Partial<Event> = {}) 
      importance: 5, ...extra }) as Event
 const sp = (id: string, name: string, startYear: number, endYear: number) =>
   ({ id, name, startYear, endYear, description: '', categories: [], region: 'Global', importance: 5,
-     kind: 'empire' }) as Span
+     kind: 'state' }) as Span
 
 describe('words', () => {
   it('lower-cases, strips accents and splits on punctuation', () => {

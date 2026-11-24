@@ -91,7 +91,7 @@ describe('people (Phase 13)', () => {
   })
 
   it('keeps a life out of bar nesting, so a reign stays inside its empire', () => {
-    const empire = { ...life('mughal', 1526, 1857, false), kind: 'empire' as const }
+    const empire = { ...life('mughal', 1526, 1857, false), kind: 'state' as const }
     const links = [
       { source: 'reign-of-akbar', type: 'part_of', target: 'mughal' },
       { source: 'reign-of-akbar', type: 'part_of', target: 'akbar' }, // a stray link to a life is ignored
@@ -383,7 +383,7 @@ describe('durations', () => {
     categories: ['Politics'],
     region: 'Europe',
     importance: 9,
-    kind: 'empire',
+    kind: 'state',
     approximate: true,
   }
 
@@ -540,15 +540,15 @@ describe('explore', () => {
     region: 'Europe',
   })
   const durations = [
-    dur('byzantine', 330, 1453, 'empire', 8),
-    dur('ottoman', 1299, 1922, 'empire', 8),
-    dur('ming', 1368, 1644, 'empire', 9),
+    dur('byzantine', 330, 1453, 'state', 8),
+    dur('ottoman', 1299, 1922, 'state', 8),
+    dur('ming', 1368, 1644, 'state', 9),
     dur('renaissance', 1400, 1600, 'period', 5),
-    dur('rome', -27, 476, 'empire', 9),
+    dur('rome', -27, 476, 'state', 9),
   ]
 
   it('lists durations active at a year, most important first', () => {
-    expect(activeDuring(durations, 1453, 1453, 'empire').map((d) => d.id)).toEqual(['ming', 'byzantine', 'ottoman'])
+    expect(activeDuring(durations, 1453, 1453, 'state').map((d) => d.id)).toEqual(['ming', 'byzantine', 'ottoman'])
     expect(activeDuring(durations, 1453, 1453, 'period').map((d) => d.id)).toEqual(['renaissance'])
   })
 

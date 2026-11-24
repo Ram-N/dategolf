@@ -27,7 +27,7 @@
     ],
     "region": "Africa",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "approximate": true,
     "dateDisplay": "c. 2700–2200 BCE (often given as 2686–2181 BCE)"
   },
@@ -43,7 +43,7 @@
     ],
     "region": "South Asia",
     "importance": 8,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Demonstrated advanced Bronze Age urban planning, standardized weights and measures, and sanitation systems across one of the ancient world's largest civilizations.",
     "approximate": true
   },
@@ -72,7 +72,7 @@
     ],
     "region": "Middle East",
     "importance": 5,
-    "kind": "empire",
+    "kind": "state",
     "approximate": true,
     "dateDisplay": "c. 2334–2154 BCE in the middle chronology; 64 years later in the short chronology"
   },
@@ -87,7 +87,7 @@
     ],
     "region": "Middle East",
     "importance": 5,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Its law code of Ur-Nammu is the oldest surviving one, centuries before Hammurabi's, and its tens of thousands of clay tablets make it one of the best-documented states of the ancient world.",
     "approximate": true,
     "dateDisplay": "c. 2112–2004 BCE (the middle chronology; other chronologies shift it by decades)"
@@ -103,7 +103,7 @@
     ],
     "region": "Middle East",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "It made Babylon the political and religious centre of Mesopotamia for the next thousand years, and Hammurabi's law code became the most famous of the ancient Near East.",
     "approximate": true,
     "dateDisplay": "c. 1894–1595 BCE (the middle chronology)"
@@ -119,7 +119,7 @@
     ],
     "region": "East Asia",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "approximate": true,
     "dateDisplay": "c. 1600–1046 BCE; the Zhou conquest is dated anywhere from 1122 to 1027 BCE"
   },
@@ -134,7 +134,7 @@
     ],
     "region": "Africa",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "approximate": true
   },
   {
@@ -199,7 +199,7 @@
     ],
     "region": "East Asia",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "approximate": true,
     "dateDisplay": "c. 1046–256 BCE; the start is disputed (1122–1027 BCE), the end is fixed"
   },
@@ -249,7 +249,7 @@
     ],
     "region": "Middle East",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Assyria pioneered the methods of a large empire: provinces under appointed governors, a network of roads and royal messengers, and mass deportations of conquered peoples, including the people of the kingdom of Israel. Babylon and Persia inherited much of this system."
   },
   {
@@ -264,7 +264,7 @@
     ],
     "region": "Africa",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Its long struggle with Rome, including Hannibal's march over the Alps, decided that Rome rather than Carthage would rule the Mediterranean world.",
     "approximate": true,
     "dateDisplay": "traditionally founded 814 BCE; destroyed by Rome in 146 BCE"
@@ -281,7 +281,7 @@
     ],
     "region": "Europe",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Alexander's conquests spread Greek language and culture from Egypt to Afghanistan, beginning the Hellenistic age.",
     "approximate": true,
     "dateDisplay": "traditionally founded c. 808 BCE; Rome abolished the kingdom in 168 BCE"
@@ -314,7 +314,7 @@
     ],
     "region": "Middle East",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Under Nebuchadnezzar II it rebuilt Babylon on a grand scale and destroyed Jerusalem and its temple, beginning the Babylonian exile that shaped Judaism and the Hebrew Bible."
   },
   {
@@ -400,7 +400,7 @@
     ],
     "region": "Middle East",
     "importance": 8,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Connected diverse regions from the Balkans to the Indus Valley through road networks, a postal system, and satrapy administration, setting the template for imperial rule in the Near East."
   },
   {
@@ -414,7 +414,7 @@
     ],
     "region": "Europe",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Developed elected magistrates, a powerful Senate and the written Twelve Tables of law, ideas later admired by modern republics, while expanding Roman rule across the Mediterranean basin."
   },
   {
@@ -429,7 +429,7 @@
     ],
     "region": "Europe",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Its democracy, drama, history writing and philosophy (Socrates, Plato, Aristotle) became founding models for Western politics and thought.",
     "approximate": true,
     "dateDisplay": "508/507 BCE (Cleisthenes' reforms) to 322 BCE (Macedon ends the democracy); the city-state itself is much older"
@@ -501,7 +501,7 @@
     ],
     "region": "South Asia",
     "importance": 8,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Unified most of the Indian subcontinent under one centralized administration for the first time, and under Ashoka sent Buddhist missions beyond India, notably to Sri Lanka, helping Buddhism grow into a major Asian religion."
   },
   {
@@ -516,7 +516,7 @@
     ],
     "region": "Africa",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Its kings made Alexandria, with its Library and Museum, the leading centre of learning in the Mediterranean, where scholars such as Euclid and Eratosthenes worked."
   },
   {
@@ -592,7 +592,7 @@
     ],
     "region": "East Asia",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Though it lasted only fifteen years, it created the idea and the institutions of a single Chinese empire, which the Han and later dynasties kept; the name China may come from Qin."
   },
   {
@@ -634,7 +634,7 @@
     ],
     "region": "East Asia",
     "importance": 8,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Consolidated Chinese imperial institutions, made Confucianism the basis of state ideology and official training, pushed trade routes into Central Asia that became part of the Silk Road, and gave its name to the Han Chinese people."
   },
   {
@@ -676,7 +676,7 @@
     ],
     "region": "Americas",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Teotihuacan's trade, architecture and political reach shaped Mesoamerica for centuries; in 378 CE a Teotihuacan-backed warlord installed a new dynasty at the Maya city of Tikal. Centuries after its fall, the Aztecs revered its ruins as the place where the gods had created the sun.",
     "approximate": true,
     "dateDisplay": "c. 100 BCE–550 CE (its decline and the burning of its centre are dated within decades)"
@@ -705,7 +705,7 @@
     ],
     "region": "Europe",
     "importance": 9,
-    "kind": "empire",
+    "kind": "state",
     "significance": "United the Mediterranean world under Roman law, Latin language, and extensive infrastructure, leaving an enduring legacy in Western governance, architecture, and religion.",
     "phases": [
       {
@@ -794,7 +794,7 @@
     ],
     "region": "Africa",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Aksum linked inland Northeast Africa to Red Sea and Indian Ocean trade networks, minting its own gold coinage and erecting monumental stelae. King Ezana's adoption of Christianity in the fourth century established the enduring roots of the Ethiopian Orthodox Church.",
     "approximate": true
   },
@@ -825,7 +825,7 @@
     ],
     "region": "Americas",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "approximate": true
   },
   {
@@ -857,7 +857,7 @@
     ],
     "region": "Africa",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "By mediating trade between West African goldfields and North African salt and merchant caravans, Ghana anchored the trans-Saharan commercial network. Its administrative traditions and control of trade routes laid the groundwork for the later Mali and Songhai empires.",
     "approximate": true
   },
@@ -872,7 +872,7 @@
     ],
     "region": "South Asia",
     "importance": 8,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Presided over what is often called a classical age of northern India, with major advances in mathematics, astronomy, Sanskrit literature, and Hindu and Buddhist art.",
     "approximate": true
   },
@@ -887,7 +887,7 @@
     ],
     "region": "Europe",
     "importance": 8,
-    "kind": "empire",
+    "kind": "state",
     "significance": "For a thousand years the empire preserved Roman law and Greek learning in the eastern Mediterranean, and its missionaries, such as Cyril and Methodius, carried Orthodox Christianity and a written Slavic language to the Slavic world, shaping Russia and the Balkans."
   },
   {
@@ -934,7 +934,7 @@
     ],
     "region": "East Asia",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Expanded Chinese influence deep into Central Asia, widened the civil service examinations, and fostered cosmopolitan trade and poetry that deeply shaped neighboring Korea, Japan, and Vietnam."
   },
   {
@@ -949,7 +949,7 @@
     ],
     "region": "Middle East",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Its conquests carried Islam and Arabic far beyond Arabia, and the disputes over who should lead it, ending in civil war, led to the division between Sunni and Shia Muslims."
   },
   {
@@ -965,7 +965,7 @@
     ],
     "region": "Southeast Asia",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Controlling the sea lanes between India and Tang and Song China, Srivijaya became an indispensable hub of Indian Ocean trade and Vajrayana Buddhist learning, visited by Chinese pilgrims like Yijing. Its maritime network helped spread Malay as the regional lingua franca.",
     "approximate": true
   },
@@ -980,7 +980,7 @@
     ],
     "region": "Middle East",
     "importance": 6,
-    "kind": "empire"
+    "kind": "state"
   },
   {
     "id": "islamic-golden-age-period",
@@ -1007,7 +1007,7 @@
     ],
     "region": "Middle East",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Moved the center of Islamic governance from Syria to Iraq, integrating non-Arab converts into administration and patronizing translations and research in Baghdad that advanced mathematics, medicine, and philosophy across the Islamic world."
   },
   {
@@ -1050,7 +1050,7 @@
     ],
     "region": "Europe",
     "importance": 6,
-    "kind": "empire"
+    "kind": "state"
   },
   {
     "id": "khmer-empire",
@@ -1065,7 +1065,7 @@
     ],
     "region": "Southeast Asia",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "At its twelfth-century height, the Khmer Empire ruled much of mainland Southeast Asia and built Angkor Wat, the largest religious monument in the world. Its reservoirs, canals and stone temples left an enduring architectural and cultural legacy across Cambodia and neighboring states.",
     "approximate": true
   },
@@ -1080,7 +1080,7 @@
     ],
     "region": "South Asia",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "approximate": true
   },
   {
@@ -1096,7 +1096,7 @@
     ],
     "region": "Europe",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Vladimir the Great's adoption of Byzantine Christianity in 988 brought Kievan Rus' into the Orthodox Christian world, introducing Cyrillic literacy, church architecture and legal codes. Today, Belarus, Russia and Ukraine all trace key cultural and historical roots to this medieval federation.",
     "approximate": true
   },
@@ -1112,7 +1112,7 @@
     ],
     "region": "Middle East",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "The Fatimids founded Cairo and Al-Azhar Mosque, turning Egypt into a major center of Mediterranean trade, science and Islamic scholarship. As the only major Shia caliphate, they reshaped medieval Islamic politics before Saladin restored Sunni rule in Egypt."
   },
   {
@@ -1126,7 +1126,7 @@
     ],
     "region": "Europe",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Its Parliament, common law and the limits it placed on royal power, from Magna Carta to the Glorious Revolution, became models for constitutional government in Britain, America and beyond."
   },
   {
@@ -1140,7 +1140,7 @@
     ],
     "region": "East Asia",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Transformed China's economy with paper money, booming maritime trade and widespread printing. The Song saw the first use of the magnetic compass at sea and of gunpowder weapons in war, while Neo-Confucian thought shaped East Asian education for centuries."
   },
   {
@@ -1155,7 +1155,7 @@
     ],
     "region": "Central Asia",
     "importance": 5,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Its raids and its rule over the Punjab opened the way for later Muslim states in India, and its court patronised Persian literature, including Ferdowsi's Shahnameh and the scholar al-Biruni."
   },
   {
@@ -1169,7 +1169,7 @@
     ],
     "region": "Europe",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Its absolute monarchy became a model for European courts, and the crisis of its finances and authority set off the French Revolution.",
     "approximate": true,
     "dateDisplay": "from 987 (Hugh Capet); some date it from West Francia, 843; the monarchy was abolished in 1792"
@@ -1219,7 +1219,7 @@
     ],
     "region": "Middle East",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Seljuk victories in Anatolia permanently weakened Byzantine control over Asia Minor, opened the region to Turkic settlement and prompted the Byzantine emperor to appeal to Western Europe for military aid, helping trigger the First Crusade."
   },
   {
@@ -1265,7 +1265,7 @@
     ],
     "region": "Africa",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Constructed without mortar from granite blocks, Great Zimbabwe's Hill Complex and Great Enclosure stand as the largest pre-colonial stone structures in sub-Saharan Africa. Its trade links connected southern African goldfields to Indian Ocean merchants as far away as Persia and China.",
     "approximate": true
   },
@@ -1300,7 +1300,7 @@
     ],
     "region": "Middle East",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "By uniting Egypt and Syria under Sunni rule, Saladin broke the Crusader states' strategic advantage and restored Muslim control over Jerusalem. The Ayyubids also revitalized Sunni madrasas and trade with Italian maritime republics before being supplanted by their own Mamluk slave soldiers.",
     "approximate": true
   },
@@ -1316,7 +1316,7 @@
     ],
     "region": "East Asia",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "The Kamakura shogunate shifted real political power from the Kyoto imperial court to the samurai class, inaugurating nearly seven centuries of military rule in Japan. Although it repelled Kublai Khan's invasion fleets in 1274 and 1281, the cost of the defence, with no conquered land to reward its vassals, weakened their loyalty and helped bring about its fall.",
     "approximate": true
   },
@@ -1331,7 +1331,7 @@
     ],
     "region": "East Asia",
     "importance": 5,
-    "kind": "empire"
+    "kind": "state"
   },
   {
     "id": "delhi-sultanate",
@@ -1344,7 +1344,7 @@
     ],
     "region": "South Asia",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Established lasting Muslim rule across northern India, introducing Persianate administration, new architectural styles and an Indo-Islamic cultural synthesis, while repelling Mongol invasions of the subcontinent."
   },
   {
@@ -1358,7 +1358,7 @@
     ],
     "region": "South Asia",
     "importance": 5,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Established permanent Muslim sultanate rule in northern India, built early Indo-Islamic landmarks such as the Qutb Minar complex, and defended the Indus frontier against Mongol raids."
   },
   {
@@ -1372,7 +1372,7 @@
     ],
     "region": "Africa",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "approximate": true
   },
   {
@@ -1387,7 +1387,7 @@
     ],
     "region": "Europe",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "For over two centuries, the Golden Horde's tribute system and yarlik patents reshaped Russian politics, inadvertently helping the princes of Moscow consolidate power as chief tax collectors. Its later fragmentation gave rise to the Crimean, Kazan and Astrakhan khanates."
   },
   {
@@ -1402,7 +1402,7 @@
     ],
     "region": "Middle East",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "By defeating the Mongols at Ain Jalut in 1260 and expelling the last Crusader strongholds from the Levant by 1291, the Mamluks preserved Egypt and Syria from conquest. Cairo flourished under Mamluk patronage as the foremost cultural and commercial hub of the Arab world until the Ottoman conquest."
   },
   {
@@ -1418,7 +1418,7 @@
     ],
     "region": "Middle East",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Initially devastating cities and irrigation works, the Ilkhanate later fostered a revival of Persian literature, historical writing and astronomy under scholars like Rashid al-Din and Nasir al-Din al-Tusi. Its integration into the Pax Mongolica linked Iranian artisans and merchants directly to Yuan China."
   },
   {
@@ -1433,7 +1433,7 @@
     ],
     "region": "East Asia",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "The Yuan unified China after centuries of division, made Dadu (modern Beijing) the imperial capital and expanded paper currency and Grand Canal transport. Open overland and maritime routes brought foreign merchants and travelers such as Marco Polo to China before rebellions ushered in the Ming."
   },
   {
@@ -1448,7 +1448,7 @@
     ],
     "region": "South Asia",
     "importance": 5,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Broadened the social base of Delhi's ruling elite beyond Turkic nobles, repelled major Chagatai Mongol invasions, and carried sultanate armies deep into the Deccan and southern India for the first time."
   },
   {
@@ -1462,7 +1462,7 @@
     ],
     "region": "Middle East",
     "importance": 8,
-    "kind": "empire",
+    "kind": "state",
     "significance": "For more than six centuries the Ottomans ruled a multi-ethnic, multi-faith empire that at its height joined southeastern Europe, the Middle East and North Africa, shaping Mediterranean trade, Islamic law and politics, and the borders of the modern Middle East and Balkans.",
     "approximate": true,
     "dateDisplay": "c. 1299 (the traditional founding date) to 1922, when the sultanate was abolished",
@@ -1544,7 +1544,7 @@
     ],
     "region": "South Asia",
     "importance": 5,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Reached the widest territorial extent of the Delhi Sultanate before failed experiments like token copper currency and a forced capital shift to Daulatabad helped trigger regional breakaway states such as Vijayanagara and the Bahmani Sultanate."
   },
   {
@@ -1558,7 +1558,7 @@
     ],
     "region": "South Asia",
     "importance": 5,
-    "kind": "empire"
+    "kind": "state"
   },
   {
     "id": "hundred-years-war-period",
@@ -1599,7 +1599,7 @@
     ],
     "region": "East Asia",
     "importance": 8,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Restored native Han rule in China after Mongol domination, rebuilt the Great Wall and Grand Canal, and drew global silver into East Asia through porcelain and silk exports even after curbing state-sponsored ocean voyages."
   },
   {
@@ -1614,7 +1614,7 @@
     ],
     "region": "Central Asia",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Its courts at Samarkand and Herat led a flowering of Persian art, architecture and science, and a Timurid prince, Babur, went on to found the Mughal Empire in India."
   },
   {
@@ -1630,7 +1630,7 @@
     ],
     "region": "Africa",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Under rulers like Afonso I, Kongo adopted Catholicism, literacy and diplomatic relations with Europe while initially attempting to regulate Portuguese trade. Over time, however, the transatlantic slave trade and succession wars undermined royal authority, leaving Kongo vulnerable to Portuguese colonial subjugation.",
     "approximate": true
   },
@@ -1659,7 +1659,7 @@
     ],
     "region": "South Asia",
     "importance": 3,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Maintained nominal continuity of the Delhi Sultanate during a period of regional fragmentation in northern India before peacefully ceding power to the Afghan Lodi dynasty."
   },
   {
@@ -1675,7 +1675,7 @@
     ],
     "region": "Global",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "It linked Europe, Africa, Asia and the Americas by sea, and it began the Atlantic slave trade on a large scale. It was the longest-lived of the modern European colonial empires, ending with the handover of Macau to China."
   },
   {
@@ -1689,7 +1689,7 @@
     ],
     "region": "Americas",
     "importance": 6,
-    "kind": "empire"
+    "kind": "state"
   },
   {
     "id": "mutapa-empire",
@@ -1703,7 +1703,7 @@
     ],
     "region": "Africa",
     "importance": 5,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Controlling goldfields across the Zimbabwe plateau and trade routes down the Zambezi River, Mutapa drew both Swahili and Portuguese merchants into southern Africa. Its gold led the Portuguese to identify it with the biblical land of Ophir and led to centuries of diplomatic and military entanglement with Portugal.",
     "approximate": true
   },
@@ -1718,7 +1718,7 @@
     ],
     "region": "Americas",
     "importance": 6,
-    "kind": "empire"
+    "kind": "state"
   },
   {
     "id": "lodi-dynasty",
@@ -1731,7 +1731,7 @@
     ],
     "region": "South Asia",
     "importance": 4,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Rebuilt sultanate control over Jaunpur and much of the Gangetic plain and founded Agra as a major imperial center, though friction between Sultan Ibrahim Lodi and Afghan nobles invited Babur's invasion."
   },
   {
@@ -1746,7 +1746,7 @@
     ],
     "region": "Africa",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Under Sonni Ali and Askia Muhammad, Songhai became the largest empire in West African history, administering provinces along the Niger and patronizing Islamic scholarship in Timbuktu. Its defeat by a firearm-equipped Moroccan army in 1591 fractured imperial rule across the western Sahel."
   },
   {
@@ -1775,7 +1775,7 @@
     ],
     "region": "Global",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "It spread the Spanish language and Catholicism across the Americas, and its conquests and the diseases they carried devastated Indigenous peoples. Its silver helped create the first truly global trade.",
     "approximate": true,
     "dateDisplay": "1492 to 1976 (Western Sahara); most of its American empire was lost by the 1820s and its last major colonies in 1898"
@@ -1791,7 +1791,7 @@
     ],
     "region": "Middle East",
     "importance": 5,
-    "kind": "empire"
+    "kind": "state"
   },
   {
     "id": "protestant-reformation",
@@ -1819,7 +1819,7 @@
     ],
     "region": "South Asia",
     "importance": 8,
-    "kind": "empire",
+    "kind": "state",
     "significance": "At their height the Mughals ruled most of South Asia. Their revenue and ranking systems shaped later states, including British India; their courts blended Persian, Central Asian and Indian traditions in art, language and buildings such as the Taj Mahal; and their decline in the 1700s opened the way for regional powers and, in time, British rule.",
     "phases": [
       {
@@ -1915,7 +1915,7 @@
     ],
     "region": "South Asia",
     "importance": 5,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Introduced standardized silver rupiya currency, upgraded the Grand Trunk Road, and created land-measurement and revenue systems that Akbar later adopted as the backbone of Mughal administration."
   },
   {
@@ -1973,7 +1973,7 @@
     ],
     "region": "East Asia",
     "importance": 6,
-    "kind": "empire"
+    "kind": "state"
   },
   {
     "id": "british-empire",
@@ -1987,7 +1987,7 @@
     ],
     "region": "Global",
     "importance": 8,
-    "kind": "empire",
+    "kind": "state",
     "significance": "It spread the English language, common law, parliamentary government and sports such as cricket around the world, and its trade and investment tied distant economies together. It also rested on conquest and, until abolition, on slavery: British ships were the leading carriers of enslaved Africans across the Atlantic in the 1700s. Its legacy is still argued over in Britain and in its former colonies.",
     "approximate": true,
     "dateDisplay": "1607 (Jamestown, the first lasting colony) to 1997 (the handover of Hong Kong); some date it from Newfoundland, 1583"
@@ -2077,7 +2077,7 @@
     ],
     "region": "East Asia",
     "importance": 8,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Roughly doubled the territory ruled from Beijing by bringing Mongolia, Xinjiang, Tibet and Taiwan under Manchu rule, the basis of China's modern borders, before rebellions and foreign pressure in its last century eroded imperial authority."
   },
   {
@@ -2091,7 +2091,7 @@
     ],
     "region": "South Asia",
     "importance": 5,
-    "kind": "empire"
+    "kind": "state"
   },
   {
     "id": "age-of-enlightenment",
@@ -2135,7 +2135,7 @@
     ],
     "region": "Europe",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "In less than a century it went from a new union to the centre of a world empire and the first industrial economy."
   },
   {
@@ -2149,7 +2149,7 @@
     ],
     "region": "Europe",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "It was the third-largest empire in history, and its collapse in the First World War brought the Bolsheviks to power and created the Soviet Union."
   },
   {
@@ -2251,7 +2251,7 @@
     ],
     "region": "Europe",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "It was the first large European state to abolish its monarchy, and its ideas of citizenship and rights spread across Europe with its armies."
   },
   {
@@ -2280,7 +2280,7 @@
     ],
     "region": "South Asia",
     "importance": 5,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Unified the Punjab into a modernized, religiously pluralistic kingdom that halted Afghan invasions from the northwest and was one of the last major Indian powers annexed by Britain."
   },
   {
@@ -2324,7 +2324,7 @@
     ],
     "region": "Europe",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Its conquests spread the Napoleonic Code and ended the Holy Roman Empire, redrawing the map of Europe and stirring the nationalism that shaped the next century."
   },
   {
@@ -2378,7 +2378,7 @@
     ],
     "region": "South Asia",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Placed the Indian subcontinent under direct British Crown rule, expanding railways, telegraphs and a unified legal bureaucracy while extracting wealth and restructuring farming, and it fuelled the nationalist movement that ended British rule."
   },
   {
@@ -2406,7 +2406,7 @@
     ],
     "region": "Europe",
     "importance": 6,
-    "kind": "empire",
+    "kind": "state",
     "significance": "The assassination of its heir in Sarajevo started the First World War, and its break-up created the nation-states of central Europe."
   },
   {
@@ -2450,7 +2450,7 @@
     ],
     "region": "East Asia",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "It was the first non-Western country to industrialise and become a great power, and its wars and occupations caused immense suffering across East and Southeast Asia."
   },
   {
@@ -2480,7 +2480,7 @@
     ],
     "region": "Europe",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Its rise upset the European balance of power, and its rivalry with Britain, France and Russia helped lead to the First World War."
   },
   {
@@ -2619,7 +2619,7 @@
     ],
     "region": "Europe",
     "importance": 8,
-    "kind": "empire",
+    "kind": "state",
     "significance": "Transformed a mostly agrarian empire into a nuclear superpower through state-planned industrialization at immense human cost, bore the heaviest share of the land war against Nazi Germany, and defined Cold War geopolitics until its collapse in 1991."
   },
   {
@@ -2662,7 +2662,7 @@
     ],
     "region": "Europe",
     "importance": 7,
-    "kind": "empire",
+    "kind": "state",
     "significance": "It carried out the Holocaust, the murder of six million Jews and millions of others, and its war of conquest left tens of millions dead and Europe divided for half a century."
   },
   {

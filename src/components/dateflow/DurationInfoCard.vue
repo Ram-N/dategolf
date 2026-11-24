@@ -10,7 +10,7 @@
         <div>
           <div class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest secondary">
             <span class="inline-block w-2.5 h-2.5 rounded-sm" :style="{ background: `var(--df-f-${family})` }" />
-            {{ duration.person ? 'Person' : duration.kind === 'empire' ? 'Empire / dynasty' : 'Period' }}
+            {{ duration.person ? 'Person' : duration.kind === 'state' ? 'Empire or state' : 'Period' }}
           </div>
           <div class="text-2xl font-black tabular-nums mt-2 accent">{{ formatSpan(duration, formatYear) }}</div>
           <h2 class="text-xl font-bold mt-1">{{ duration.name }}</h2>

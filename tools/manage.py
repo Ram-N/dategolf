@@ -125,7 +125,7 @@ def coverage(args):
         row = grid[b]
         cells = [bin_label(b, width), str(sum(row.values()))]
         cells += [str(row[r]) if row[r] else "·" for r in regions]
-        cells += [str(active("period", b)), str(active("empire", b))]
+        cells += [str(active("period", b)), str(active("state", b))]
         lines.append("| " + " | ".join(cells) + " |")
     empty = [bin_label(b, width) for b in bins if not sum(grid[b].values())]
     lines += ["", f"Bins with no events: {', '.join(empty) or 'none'}", ""]
@@ -209,9 +209,9 @@ def main():
                                       'many scholars c. 480–400 BCE" ("" clears it)')
     p.set_defaults(fn=lambda a: edit.set_span_years(a.id, a.start, a.end, a.approximate, a.display))
 
-    p = sub.add_parser("set-span-kind", help="Make a span an empire or a period")
+    p = sub.add_parser("set-span-kind", help="Make a span a state or a period")
     p.add_argument("id")
-    p.add_argument("kind", choices=["empire", "period"])
+    p.add_argument("kind", choices=["state", "period"])
     p.set_defaults(fn=lambda a: edit.set_span_kind(a.id, a.kind))
 
     p = sub.add_parser("set-event-date", help="Change an event's year, 'c.' flag or displayed range")
