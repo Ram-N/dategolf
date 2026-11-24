@@ -1,0 +1,61 @@
+{
+  "about": "From suggest-sources. Every title was checked against Wikipedia. 'unresolved' entities need a pick (suggest-sources --picks). load-sources loads 'sources' only.",
+  "sources": [
+    {
+      "id": "indus-valley-mature",
+      "name": "Indus Valley Civilization (Mature Phase)",
+      "year": -2600,
+      "title": "Indus Valley Civilisation",
+      "url": "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Indus Valley Civilisation",
+      "note": null
+    },
+    {
+      "id": "invention-of-zero",
+      "name": "Brahmagupta Sets Out the Rules for Zero",
+      "year": 628,
+      "title": "Brahmagupta",
+      "url": "https://en.wikipedia.org/wiki/Brahmagupta",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Brahmagupta",
+      "note": "His Brahmasphutasiddhanta sets out the rules for zero; the article covers them"
+    },
+    {
+      "id": "mahmud-ghazni-somnath",
+      "name": "Mahmud of Ghazni Raids Somnath",
+      "year": 1026,
+      "title": "Somnath Temple",
+      "url": "https://en.wikipedia.org/wiki/Somnath_Temple",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Somnath temple",
+      "note": "Covers Mahmud's raid of 1026; Mahmud of Ghazni is the alternative"
+    },
+    {
+      "id": "protestant-reformation",
+      "name": "Protestant Reformation Begins",
+      "year": 1517,
+      "title": "Reformation",
+      "url": "https://en.wikipedia.org/wiki/Reformation",
+      "origin": "ai_drafted",
+      "confidence": "high",
+      "asked": "Reformation",
+      "note": null
+    },
+    {
+      "id": "opium-trade-china-east-india",
+      "name": "East India Company Takes Over Bengal's Opium",
+      "year": 1773,
+      "title": "Company rule in India",
+      "url": "https://en.wikipedia.org/wiki/Company_rule_in_India",
+      "origin": "ai_drafted",
+      "confidence": "medium",
+      "asked": "Company rule in India",
+      "note": "Covers the Company opium monopoly and its Opium Agency; Warren Hastings is the alternative"
+    }
+  ],
+  "unresolved": []
+}

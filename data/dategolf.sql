@@ -5922,12 +5922,12 @@ INSERT INTO "entity_sources" VALUES('shivaji-crowned-chhatrapati',303,'reviewed'
 INSERT INTO "entity_sources" VALUES('execution-of-guru-tegh-bahadur',315,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('death-of-shivaji',303,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('newton-laws-of-motion',316,'reviewed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('glorious-revolution',317,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('glorious-revolution',317,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('battle-of-blenheim',318,'reviewed','title_match','high',NULL);
-INSERT INTO "entity_sources" VALUES('act-of-union-1707',319,'proposed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('death-of-guru-gobind-singh',320,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('act-of-union-1707',319,'reviewed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('death-of-guru-gobind-singh',320,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('nadir-shah-sacks-delhi',321,'reviewed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('trans-atlantic-slave-trade-peak',322,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('trans-atlantic-slave-trade-peak',322,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('battle-of-plassey',323,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('industrial-revolution',324,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('industrial-revolution-textile',324,'reviewed','ai_drafted','high',NULL);
@@ -5936,17 +5936,17 @@ INSERT INTO "entity_sources" VALUES('battle-of-buxar',326,'reviewed','title_matc
 INSERT INTO "entity_sources" VALUES('east-india-company-bengal',327,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('steam-engine-watt',328,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('boston-tea-party',329,'reviewed','title_match','high',NULL);
-INSERT INTO "entity_sources" VALUES('american-declaration',331,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('american-declaration',331,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('american-revolution',332,'reviewed','title_match','high',NULL);
-INSERT INTO "entity_sources" VALUES('second-anglo-mysore-war',333,'proposed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('american-war-independence-ends',334,'proposed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('founding-of-united-states',335,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('second-anglo-mysore-war',333,'reviewed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('american-war-independence-ends',334,'reviewed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('founding-of-united-states',335,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('french-revolution',336,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('french-revolution-declaration',337,'proposed','title_match','medium',NULL);
 INSERT INTO "entity_sources" VALUES('french-revolution-storming-bastille',338,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('haitian-revolution',339,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('abolition-slavery-france',340,'reviewed','ai_drafted','medium',NULL);
-INSERT INTO "entity_sources" VALUES('tipu-sultan-killed',341,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('tipu-sultan-killed',341,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('modern',342,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('napoleonic-wars',343,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('battle-of-trafalgar',344,'reviewed','title_match','high',NULL);
@@ -6188,7 +6188,7 @@ INSERT INTO "entity_sources" VALUES('islamic-caliphate-expands',575,'reviewed','
 INSERT INTO "entity_sources" VALUES('age-of-exploration-portugal',576,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('aztec-empire-peak',577,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('renaissance-shakespeare',578,'reviewed','ai_drafted','high',NULL);
-INSERT INTO "entity_sources" VALUES('mughal-empire-zenith-aurangzeb',311,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('mughal-empire-zenith-aurangzeb',311,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('unification-germany',579,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('partition-of-africa-colonial',580,'proposed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('decolonization-africa',581,'proposed','ai_drafted','high',NULL);
@@ -6290,6 +6290,11 @@ INSERT INTO "entity_sources" VALUES('empire-of-japan',675,'reviewed','ai_drafted
 INSERT INTO "entity_sources" VALUES('german-empire',676,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('austria-hungary',677,'reviewed','ai_drafted',NULL,NULL);
 INSERT INTO "entity_sources" VALUES('nazi-germany',419,'reviewed','ai_drafted',NULL,NULL);
+INSERT INTO "entity_sources" VALUES('indus-valley-mature',151,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('invention-of-zero',678,'proposed','ai_drafted','high','His Brahmasphutasiddhanta sets out the rules for zero; the article covers them');
+INSERT INTO "entity_sources" VALUES('mahmud-ghazni-somnath',679,'proposed','ai_drafted','high','Covers Mahmud''s raid of 1026; Mahmud of Ghazni is the alternative');
+INSERT INTO "entity_sources" VALUES('protestant-reformation',680,'proposed','ai_drafted','high',NULL);
+INSERT INTO "entity_sources" VALUES('opium-trade-china-east-india',72,'proposed','ai_drafted','medium','Covers the Company opium monopoly and its Opium Agency; Warren Hastings is the alternative');
 CREATE TABLE event_aliases (
   entity_id TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   position  INTEGER NOT NULL,
@@ -14806,6 +14811,16 @@ INSERT INTO "review_log" VALUES(2223,'2026-11-24 03:45:17','approve-state','holo
 INSERT INTO "review_log" VALUES(2224,'2026-11-24 03:45:17','approve-state','germany-invades-soviet-union','nazi-germany','dashboard');
 INSERT INTO "review_log" VALUES(2225,'2026-11-24 03:45:17','approve-state','battle-of-stalingrad','nazi-germany','dashboard');
 INSERT INTO "review_log" VALUES(2226,'2026-11-24 03:45:17','approve-state','d-day-normandy','nazi-germany','dashboard');
+INSERT INTO "review_log" VALUES(2227,'2026-11-24 16:55:13','approve-source','glorious-revolution','Glorious Revolution','dashboard');
+INSERT INTO "review_log" VALUES(2228,'2026-11-24 16:55:13','approve-source','act-of-union-1707','Acts of Union 1707','dashboard');
+INSERT INTO "review_log" VALUES(2229,'2026-11-24 16:55:13','approve-source','mughal-empire-zenith-aurangzeb','Aurangzeb','dashboard');
+INSERT INTO "review_log" VALUES(2230,'2026-11-24 16:55:13','approve-source','death-of-guru-gobind-singh','Guru Gobind Singh','dashboard');
+INSERT INTO "review_log" VALUES(2231,'2026-11-24 16:55:13','approve-source','american-declaration','United States Declaration of Independence','dashboard');
+INSERT INTO "review_log" VALUES(2232,'2026-11-24 16:55:13','approve-source','second-anglo-mysore-war','Second Anglo-Mysore War','dashboard');
+INSERT INTO "review_log" VALUES(2233,'2026-11-24 16:55:13','approve-source','american-war-independence-ends','Treaty of Paris (1783)','dashboard');
+INSERT INTO "review_log" VALUES(2234,'2026-11-24 16:55:13','approve-source','trans-atlantic-slave-trade-peak','Atlantic slave trade','dashboard');
+INSERT INTO "review_log" VALUES(2235,'2026-11-24 16:55:13','approve-source','founding-of-united-states','Constitution of the United States','dashboard');
+INSERT INTO "review_log" VALUES(2236,'2026-11-24 16:55:13','approve-source','tipu-sultan-killed','Siege of Seringapatam (1799)','dashboard');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
@@ -15462,6 +15477,9 @@ INSERT INTO "sources" VALUES(674,'wikipedia','Russian Empire','https://en.wikipe
 INSERT INTO "sources" VALUES(675,'wikipedia','Empire of Japan','https://en.wikipedia.org/wiki/Empire_of_Japan','2026-11-23 19:33:39');
 INSERT INTO "sources" VALUES(676,'wikipedia','German Empire','https://en.wikipedia.org/wiki/German_Empire','2026-11-23 19:33:39');
 INSERT INTO "sources" VALUES(677,'wikipedia','Austria-Hungary','https://en.wikipedia.org/wiki/Austria-Hungary','2026-11-23 19:33:39');
+INSERT INTO "sources" VALUES(678,'wikipedia','Brahmagupta','https://en.wikipedia.org/wiki/Brahmagupta','2026-11-24 17:53:38');
+INSERT INTO "sources" VALUES(679,'wikipedia','Somnath Temple','https://en.wikipedia.org/wiki/Somnath_Temple','2026-11-24 17:53:38');
+INSERT INTO "sources" VALUES(680,'wikipedia','Reformation','https://en.wikipedia.org/wiki/Reformation','2026-11-24 17:53:38');
 CREATE TABLE time_spans (
   entity_id   TEXT PRIMARY KEY REFERENCES entities(id) ON DELETE CASCADE,
   kind        TEXT NOT NULL CHECK (kind IN ('period', 'empire', 'era')),  -- era -> eras.json
