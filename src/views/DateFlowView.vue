@@ -118,9 +118,11 @@
         :journey="store.currentJourney"
         :step="store.journeyStep"
         :off-view="store.journeyOffView"
+        :life-cycles="store.lifeCycles"
         @close="store.closeJourney()"
         @step="store.stepJourney"
         @go-to="store.goToJourneyStep"
+        @show-years="store.showSpan"
         @open="(id, kind) => (kind === 'span' ? store.selectDuration(id) : store.select(id))"
       />
       <StoryPanel

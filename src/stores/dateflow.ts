@@ -9,7 +9,7 @@ import { compareYears, distance, overlap, worldAt } from '@/engine/dateflow/cont
 import { pickSurprise, rememberPick } from '@/engine/dateflow/surprise'
 import erasData from '@/data/eras.json'
 import { TRACK_AXES, toggleTrack as toggleTrackIn, type HiddenTracks, type TrackAxis } from '@/engine/dateflow/constellation'
-import type { Family } from '@/engine/dateflow/categoryGroups'
+import { familyFor, type Family } from '@/engine/dateflow/categoryGroups'
 import { eventStop, searchStops, sortStops, spanStop, stepIndex, type TourSpeed } from '@/engine/dateflow/tour'
 import { journeyIds, resolveJourney, stepJourneyIndex, type Journey, type JourneyData } from '@/engine/dateflow/journeys'
 import milestoneIds from '@/data/milestones.json'
@@ -311,6 +311,12 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const viewSpan = computed(() => span(view.value))
   /** Sub-span → parent span (part_of), for nesting bars on the timeline. */
   const subSpanParents = computed(() => spanParents(relationships.value.links, durations.value))
+  /** Spans with a life cycle (Phase 12), for the strip in journey stops (doc 18, 3d). */
+  const lifeCycles = computed(() =>
+    Object.fromEntries(durations.value.filter((d) => d.phases?.length).map((d) => [d.id, {
+      name: d.name, phases: d.phases!, start: d.startYear, end: d.endYear, family: familyFor(d.categories),
+    }])),
+  )
   /** The states the Empires & states axis can give a row to: every empire-kind span, filters aside. */
   const stateSpans = computed(() => new Map(durations.value.filter((d) => d.kind === 'empire').map((d) => [d.id, d])))
   /** The detail level the timeline draws with: the Filters slider shifted by the density preset. */
@@ -1007,6 +1013,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     subSpanParents,
     eventStates,
     stateSpans,
+    lifeCycles,
     currentSpans,
     detailLevel,
     cardIds,

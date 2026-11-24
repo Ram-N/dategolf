@@ -50,6 +50,13 @@
           </li>
         </ul>
         <p class="text">{{ stop.narration }}</p>
+        <PhaseStrip
+          v-for="x in stop.items.filter((x) => lifeCycles[x.id])"
+          :id="x.id"
+          :key="x.id"
+          v-bind="lifeCycles[x.id]!"
+          @show="(a, b) => emit('showYears', a, b)"
+        />
         <p v-if="stop.question" class="question"><span class="q-label">Think about it</span>{{ stop.question }}</p>
         <div class="actions">
           <button v-if="offView" class="back" @click="emit('goTo', step)">↩ Back to the stop</button>
@@ -90,6 +97,9 @@
 import { computed, nextTick, ref, watch } from 'vue'
 import type { Journey, JourneyStop } from '@/engine/dateflow/journeys'
 import type { TourStop } from '@/engine/dateflow/tour'
+import type { Family } from '@/engine/dateflow/categoryGroups'
+import type { Phase } from '@/types/dateflow'
+import PhaseStrip from './PhaseStrip.vue'
 import { formatEventYear, formatYear } from '@/utils/formatYear'
 import { copyText } from '@/services/sharing'
 
@@ -97,12 +107,14 @@ const props = defineProps<{
   journey: Journey
   step: number | null // null = the intro, stops.length = the end
   offView: boolean // the student has moved away from the current stop
+  lifeCycles: Record<string, { name: string; phases: Phase[]; start: number; end: number; family: Family }>
 }>()
 const emit = defineEmits<{
   close: []
   step: [delta: 1 | -1]
   goTo: [i: number | null]
   open: [id: string, kind: 'event' | 'span']
+  showYears: [start: number, end: number] // frame a life-cycle phase
 }>()
 
 const stop = computed(() => (props.step === null ? null : (props.journey.stops[props.step] ?? null)))
