@@ -1414,7 +1414,7 @@ function onArcClick(key: string, e: MouseEvent) {
   stroke: var(--df-text);
   stroke-width: 1.5;
 }
-/* "Show connections": the focus and its links stand out, everything else steps back */
+/* "Show connections": the ringed item and its links stand out, everything else steps back */
 .marker.lit .label-bg,
 .bar.lit .bar-rect {
   stroke: var(--df-text);

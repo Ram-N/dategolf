@@ -26,22 +26,23 @@
         </div>
       </section>
 
-      <section v-if="mode !== 'lanes'">
+      <section>
         <h3 class="heading">Regions</h3>
         <div class="flex flex-wrap gap-1.5">
           <button
             v-for="l in LANES"
             :key="l.id"
             class="chip"
-            :class="{ on: filters.regions.includes(l.id) }"
-            :aria-pressed="filters.regions.includes(l.id)"
+            :class="{ on: !hiddenRegions.includes(l.id) }"
+            :aria-pressed="!hiddenRegions.includes(l.id)"
+            :disabled="hiddenRegions.length === LANES.length - 1 && !hiddenRegions.includes(l.id)"
             @click="emit('toggleRegion', l.id)"
           >
             {{ l.label }}
           </button>
         </div>
+        <p class="hint mt-1">A region switched off is hidden in every layout (the same switch as the Constellation's Geography tracks).</p>
       </section>
-      <p v-else class="hint">In Lanes view, choose regions with the Lanes menu.</p>
 
       <button class="clear w-full py-1.5 rounded-lg text-xs font-semibold" :disabled="!activeCount" @click="emit('clear')">
         Clear all filters
@@ -55,9 +56,8 @@ import { computed } from 'vue'
 import { LANES, type LaneId } from '@/engine/dateflow/lanes'
 import type { Filters } from '@/engine/dateflow/filters'
 import { usePopover } from '@/composables/usePopover'
-import type { ViewMode } from '@/stores/dateflow'
 
-const props = defineProps<{ filters: Filters; categories: string[]; mode: ViewMode }>()
+const props = defineProps<{ filters: Filters; categories: string[]; hiddenRegions: LaneId[] }>()
 const emit = defineEmits<{
   toggleCategory: [c: string]
   toggleRegion: [id: LaneId]
@@ -67,9 +67,7 @@ const emit = defineEmits<{
 const PANEL_W = 320
 const { open, rootEl, panelLeft, toggle } = usePopover(PANEL_W)
 
-const activeCount = computed(
-  () => props.filters.categories.length + (props.mode !== 'lanes' ? props.filters.regions.length : 0),
-)
+const activeCount = computed(() => props.filters.categories.length + props.hiddenRegions.length)
 </script>
 
 <style scoped>
@@ -114,6 +112,9 @@ const activeCount = computed(
   background: var(--df-btn);
   color: var(--df-text-2);
   border: 1px solid transparent;
+}
+.chip:disabled {
+  opacity: 0.5;
 }
 .chip:hover {
   background: var(--df-btn-hover);

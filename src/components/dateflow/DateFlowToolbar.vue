@@ -16,6 +16,7 @@
           class="seg-btn"
           :class="{ active: mode === m.id }"
           :aria-pressed="mode === m.id"
+          :title="`Layout: ${m.hint}`"
           @click="emit('setMode', m.id)"
         >
           {{ m.label }}
@@ -51,7 +52,7 @@
       <DateFlowFilters
         :filters="filters"
         :categories="categories"
-        :mode="mode"
+        :hidden-regions="hiddenRegions"
         @toggle-category="(c) => emit('toggleCategory', c)"
         @toggle-region="(id) => emit('toggleRegion', id)"
         @clear="emit('clearFilters')"
@@ -59,6 +60,7 @@
       <DateFlowLanePicker
         v-if="mode === 'lanes'"
         :state="laneState"
+        :hidden="hiddenRegions"
         @toggle="(id) => emit('toggleLane', id)"
         @move="(id, dir) => emit('moveLane', id, dir)"
         @reset="emit('resetLanes')"
@@ -181,6 +183,7 @@ defineProps<{
   density: Density
   mode: ViewMode
   laneState: LaneState
+  hiddenRegions: LaneId[]
   trackAxis: TrackAxis
   filters: Filters
   categories: string[]
@@ -216,10 +219,11 @@ const emit = defineEmits<{
   surprise: []
 }>()
 
-const MODES: { id: ViewMode; label: string }[] = [
-  { id: 'world', label: 'World' },
-  { id: 'lanes', label: 'Lanes' },
-  { id: 'constellation', label: 'Constellation' },
+// "Layout" in hints and docs; "view" means only the years on screen (doc 21 §6.11)
+const MODES: { id: ViewMode; label: string; hint: string }[] = [
+  { id: 'world', label: 'World', hint: 'everything on one timeline' },
+  { id: 'lanes', label: 'Lanes', hint: 'one row per region' },
+  { id: 'constellation', label: 'Constellation', hint: 'every event as a dot, sorted into tracks' },
 ]
 
 const moreOpen = ref(false)

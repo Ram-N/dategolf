@@ -19,10 +19,11 @@
           <input
             type="checkbox"
             :checked="state.visible.includes(id)"
-            :disabled="state.visible.length === 1 && state.visible.includes(id)"
+            :disabled="hidden.includes(id) || (state.visible.length === 1 && state.visible.includes(id))"
             @change="emit('toggle', id)"
           />
           {{ labelOf(id) }}
+          <span v-if="hidden.includes(id)" class="off" title="Switched off in Filters">off</span>
         </label>
         <button class="move" :disabled="i === 0" :aria-label="`Move ${labelOf(id)} up`" @click="emit('move', id, -1)">↑</button>
         <button
@@ -45,7 +46,7 @@
 import { LANES, type LaneId, type LaneState } from '@/engine/dateflow/lanes'
 import { usePopover } from '@/composables/usePopover'
 
-defineProps<{ state: LaneState }>()
+defineProps<{ state: LaneState; hidden: LaneId[] }>()
 const emit = defineEmits<{ toggle: [id: LaneId]; move: [id: LaneId, dir: -1 | 1]; reset: [] }>()
 
 const { open, rootEl, panelLeft, toggle: toggleOpen } = usePopover(256) // panel is w-64
@@ -75,6 +76,12 @@ const labelOf = (id: LaneId) => LABELS.get(id) ?? id
 }
 .row:hover {
   background: var(--df-btn);
+}
+.off {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--df-muted);
 }
 .move {
   width: 1.75rem;

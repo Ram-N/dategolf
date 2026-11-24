@@ -9,6 +9,7 @@
       :lane-state="store.laneState"
       :track-axis="store.trackAxis"
       :filters="store.filters"
+      :hidden-regions="store.hiddenRegions"
       :categories="store.categories"
       :stories="store.featured"
       :journeys="store.journeys"
@@ -60,12 +61,12 @@
         :mode="store.mode"
         :lanes="store.lanes"
         :track-axis="store.trackAxis"
-        :hidden-tracks="store.hiddenTracks"
+        :hidden-tracks="store.trackSwitches"
         :event-states="store.eventStates"
         :state-spans="store.stateSpans"
         :selected-id="store.selectedEvent?.id ?? (store.tourCurrent?.kind === 'event' ? store.tourCurrent.id : null)"
         :selected-duration-id="store.selectedDuration?.id ?? (store.tourCurrent?.kind === 'span' ? store.tourCurrent.id : null)"
-        :highlight-ids="store.journeyRing ?? store.storyIds ?? store.tmIds ?? store.tourIds ?? store.cardIds ?? store.focusIds"
+        :highlight-ids="store.journeyRing ?? store.storyIds ?? store.tmIds ?? store.tourIds ?? store.cardIds ?? store.ringedIds"
         :marks="store.tmMarks"
         :story="store.currentStory"
         :focus-family="store.focusFamily"
@@ -76,7 +77,7 @@
         @select-duration="store.selectDuration"
         @select-range="store.openSummary"
         @toggle-track="store.toggleTrack"
-        @background-click="store.clearFocus()"
+        @background-click="store.clearRinged()"
         @select-stop="(id) => store.goToStep(store.currentStops.findIndex((s) => s.node.id === id), false)"
       />
       <JourneyInvite
@@ -148,9 +149,9 @@
       />
     </div>
 
-    <div v-if="store.focusName" class="focus flex items-center justify-center gap-3 px-4 py-1.5 border-t text-sm">
-      <span>Connections of <strong>{{ store.focusName }}</strong> are ringed</span>
-      <button class="underline font-semibold" @click="store.clearFocus()">Clear</button>
+    <div v-if="store.ringedName" class="focus flex items-center justify-center gap-3 px-4 py-1.5 border-t text-sm">
+      <span>Connections of <strong>{{ store.ringedName }}</strong> are ringed</span>
+      <button class="underline font-semibold" @click="store.clearRinged()">Clear</button>
     </div>
     <div class="flex flex-wrap items-center gap-x-5 gap-y-1 px-4 py-2 border-t text-[11px] footer">
       <button
@@ -208,7 +209,7 @@
     <WhatHappenedCard
       v-if="summary"
       :summary="summary"
-      :filtered="isFiltering(store.filters)"
+      :filtered="isFiltering(store.filters, store.hiddenRegions)"
       @close="store.closeSummary()"
       @open-event="store.goToEvent"
       @open-duration="store.selectDuration"
@@ -273,13 +274,14 @@ const showInvite = computed(
 const filterSummary = computed(() => {
   const f = store.filters
   const parts = [...f.categories]
-  if (store.mode !== 'lanes') parts.push(...f.regions.map((id) => LANES.find((l) => l.id === id)?.label ?? id))
+  const off = store.hiddenRegions.map((id) => LANES.find((l) => l.id === id)?.label ?? id)
+  if (off.length) parts.push(`without ${off.join(', ')}`)
   return parts.join(' · ')
 })
 
 function onKey(e: KeyboardEvent) {
   if (e.target instanceof HTMLInputElement || store.selectedEvent || store.selectedDuration || store.summaryRange) return
-  if (e.key === 'Escape' && store.focusId) return store.clearFocus()
+  if (e.key === 'Escape' && store.ringedId) return store.clearRinged()
   if (e.key === 'Escape' && store.focusFamily) return store.setFocusFamily(null)
   if (store.timeMachine) {
     if (e.key === 'Escape') return store.closeTimeMachine()

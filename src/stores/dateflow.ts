@@ -35,8 +35,9 @@ import {
   LANES,
   moveLane as moveLaneIn,
   sanitizeLanes,
+  lanesShown,
+  toggleRegionOff,
   toggleLane as toggleLaneIn,
-  visibleLanes,
   type LaneId,
   type LaneState,
 } from '@/engine/dateflow/lanes'
@@ -55,6 +56,7 @@ const VIEW_KEY = 'dateflow:view'
 const THEME_KEY = 'dateflow:theme'
 const MODE_KEY = 'dateflow:mode'
 const LANES_KEY = 'dateflow:lanes'
+const HIDDEN_REGIONS_KEY = 'dateflow:hidden-regions'
 const FILTERS_KEY = 'dateflow:filters'
 const TRACKS_KEY = 'dateflow:tracks'
 const HIDDEN_TRACKS_KEY = 'dateflow:hidden-tracks'
@@ -136,11 +138,20 @@ function loadTheme(): Theme {
 
 const LANE_IDS = new Set<string>(LANES.map((l) => l.id))
 
+/** Regions switched off. Before doc 21 §6.10 they were a Filters selection (regions shown) and Geography track switches. */
+function loadHiddenRegions(oldTracks: HiddenTracks | null): LaneId[] {
+  const saved = loadJson<string[]>(HIDDEN_REGIONS_KEY)
+  if (Array.isArray(saved)) return saved.filter((id): id is LaneId => LANE_IDS.has(id))
+  const shown = loadJson<{ regions?: string[] }>(FILTERS_KEY)?.regions?.filter((id) => LANE_IDS.has(id)) ?? []
+  const off = new Set<LaneId>(shown.length ? LANES.map((l) => l.id).filter((id) => !shown.includes(id)) : [])
+  for (const id of oldTracks?.geography ?? []) if (LANE_IDS.has(id)) off.add(id as LaneId)
+  return off.size < LANES.length ? [...off] : []
+}
+
 function loadFilters(): Filters {
   const raw = loadJson<Partial<Filters>>(FILTERS_KEY)
   return {
     categories: Array.isArray(raw?.categories) ? raw.categories.filter((c) => typeof c === 'string') : [],
-    regions: Array.isArray(raw?.regions) ? raw.regions.filter((id) => LANE_IDS.has(id)) : [],
   }
 }
 
@@ -156,7 +167,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const selectedEventId = ref<string | null>(null)
   const selectedDurationId = ref<string | null>(null)
   const summaryRange = ref<{ start: number; end: number } | null>(null)
-  const focusId = ref<string | null>(null) // whose connections are highlighted on the timeline
+  const ringedId = ref<string | null>(null) // whose connections are highlighted on the timeline
   // Phase 9: the open story ("How did we get here?" / "What happened next?") and its playback.
   const story = ref<{ rootId: string; direction: Direction; depth: number } | null>(null)
   const storyStep = ref<number | null>(null) // index into storyStops during playback; null = the overview
@@ -197,6 +208,9 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const savedHidden = loadJson<HiddenTracks>(HIDDEN_TRACKS_KEY)
   const hiddenTracks = ref<HiddenTracks>(savedHidden && typeof savedHidden === 'object' ? savedHidden : {})
   const laneState = ref<LaneState>(sanitizeLanes(loadJson<LaneState>(LANES_KEY)))
+  const hiddenRegions = ref<LaneId[]>(loadHiddenRegions(savedHidden))
+  /** The Constellation's track switches, with Geography's taken from the shared region state. */
+  const trackSwitches = computed<HiddenTracks>(() => ({ ...hiddenTracks.value, geography: hiddenRegions.value }))
   const filters = ref<Filters>(loadFilters())
 
   // ── Computed ───────────────────────────────────────────────────────────────
@@ -216,11 +230,11 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     openId.value ? connectedIds(openId.value, relationships.value) : new Set<string>(),
   )
   /** The focused entity and everything linked to it, ringed on the timeline (empty = no highlight). */
-  const focusIds = computed(() =>
-    focusId.value ? new Set([focusId.value, ...connectedIds(focusId.value, relationships.value)]) : null,
+  const ringedIds = computed(() =>
+    ringedId.value ? new Set([ringedId.value, ...connectedIds(ringedId.value, relationships.value)]) : null,
   )
-  const focusName = computed(() => {
-    const id = focusId.value
+  const ringedName = computed(() => {
+    const id = ringedId.value
     if (!id) return null
     return durations.value.find((d) => d.id === id)?.name ?? events.value.find((e) => e.id === id)?.name ?? id
   })
@@ -330,7 +344,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const cardIds = computed(() =>
     density.value === 'detailed' && openId.value ? new Set([openId.value, ...relatedIds.value]) : null,
   )
-  const lanes = computed(() => visibleLanes(laneState.value))
+  const lanes = computed(() => lanesShown(laneState.value, hiddenRegions.value))
   /**
    * Historical Currents (step 3d) are context, like eras: drawn from every span, whatever the filters.
    * Off in Simple and Constellation, and while a story or the Time Machine draws its own overlay.
@@ -341,13 +355,10 @@ export const useDateFlowStore = defineStore('dateflow', () => {
       : durations.value.filter((d) => d.current),
   )
 
-  // Region filtering is a World / Constellation control; in Lanes mode the lane picker decides regions.
-  const applyRegions = computed(() => mode.value !== 'lanes')
-  const filteredEvents = computed(() =>
-    events.value.filter((e) => matchesFilters(e, filters.value, applyRegions.value)),
-  )
+  // Regions switched off (Filters, Lanes menu or Geography tracks) are off in every layout.
+  const filteredEvents = computed(() => events.value.filter((e) => matchesFilters(e, filters.value, hiddenRegions.value)))
   const filteredDurations = computed(() =>
-    durations.value.filter((d) => matchesFilters(d, filters.value, applyRegions.value)),
+    durations.value.filter((d) => matchesFilters(d, filters.value, hiddenRegions.value)),
   )
   const categories = computed(() => categoriesByFrequency([...events.value, ...durations.value]))
   /** What the timeline draws: the filtered items, plus a journey's own items even if the filters hide them. */
@@ -409,6 +420,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   watch(filters, (f) => saveJson(FILTERS_KEY, f), { deep: true })
   watch(mode, (m) => saveJson(MODE_KEY, m))
   watch(laneState, (l) => saveJson(LANES_KEY, l))
+  // Immediate: a state migrated from the old keys is saved before they are rewritten without it
+  watch(hiddenRegions, (h) => saveJson(HIDDEN_REGIONS_KEY, h), { immediate: true })
   watch(trackAxis, (t) => saveJson(TRACKS_KEY, t))
   watch(hiddenTracks, (h) => saveJson(HIDDEN_TRACKS_KEY, h))
   watch(journeyProgress, (p) => saveJson(JOURNEY_PROGRESS_KEY, p))
@@ -564,7 +577,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     const keepRings = density.value === 'detailed' && !!id && relatedIds.value.size > 0
     select(null)
     selectDuration(null)
-    if (keepRings) focusId.value = id
+    if (keepRings) ringedId.value = id
   }
 
   function openSummary(start: number, end: number) {
@@ -599,7 +612,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     closeTour()
     closeStory()
     closeTimeMachine()
-    clearFocus()
+    clearRinged()
     select(e.id)
     animateTo(centerOn(e.year, SURPRISE_SPAN))
   }
@@ -612,12 +625,12 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     for (const d of durations.value) if (ids.has(d.id)) years.push(d.startYear, d.endYear)
     select(null)
     selectDuration(null)
-    focusId.value = id
+    ringedId.value = id
     if (years.length) showSpan(Math.min(...years), Math.max(...years))
   }
 
-  function clearFocus() {
-    focusId.value = null
+  function clearRinged() {
+    ringedId.value = null
   }
 
   // ── Stories ──────────────────────────────────────────────────────────────
@@ -635,7 +648,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     select(null)
     selectDuration(null)
     summaryRange.value = null
-    focusId.value = null
+    ringedId.value = null
     playing.value = false
     storyStep.value = null
     story.value = { rootId: id, direction, depth: 4 }
@@ -701,7 +714,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     select(null)
     selectDuration(null)
     summaryRange.value = null
-    focusId.value = null
+    ringedId.value = null
     if (statesAxis) trackAxis.value = 'geography'
     if (density.value === 'simple') density.value = 'standard'
     journey.value = { id, restore }
@@ -761,7 +774,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     select(null)
     selectDuration(null)
     summaryRange.value = null
-    focusId.value = null
+    ringedId.value = null
     const centre = Math.round((view.value.start + view.value.end) / 2) || 1 // never year 0
     const year = (patch.year ?? centre) || 1
     timeMachine.value = {
@@ -803,7 +816,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     select(null)
     selectDuration(null)
     summaryRange.value = null
-    focusId.value = null
+    ringedId.value = null
     tour.value = t
     tourStep.value = null
     tourPlaying.value = false
@@ -909,6 +922,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   }
 
   function toggleTrack(id: string) {
+    if (trackAxis.value === 'geography') return toggleRegion(id as LaneId)
     hiddenTracks.value = toggleTrackIn(hiddenTracks.value, trackAxis.value, id)
   }
 
@@ -929,16 +943,17 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     laneState.value = DEFAULT_LANES
   }
 
+  function toggleRegion(id: LaneId) {
+    hiddenRegions.value = toggleRegionOff(hiddenRegions.value, id)
+  }
+
   function toggleCategory(c: string) {
     filters.value = { ...filters.value, categories: toggleIn(filters.value.categories, c) }
   }
 
-  function toggleRegion(id: LaneId) {
-    filters.value = { ...filters.value, regions: toggleIn(filters.value.regions, id) }
-  }
-
   function clearFilters() {
     filters.value = NO_FILTERS
+    hiddenRegions.value = []
   }
 
   return {
@@ -947,8 +962,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     relationships,
     connections,
     relatedIds,
-    focusId,
-    focusIds,
+    ringedId,
+    ringedIds,
     timeMachine,
     tmWorld,
     tmCompare,
@@ -1009,9 +1024,9 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     goToStep,
     stepStory,
     togglePlay,
-    focusName,
+    ringedName,
     showConnections,
-    clearFocus,
+    clearRinged,
     isLoading,
     view,
     viewSpan,
@@ -1037,7 +1052,9 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     lanes,
     trackAxis,
     setTrackAxis,
-    hiddenTracks,
+    trackSwitches,
+    hiddenRegions,
+    toggleRegion,
     toggleTrack,
     filters,
     filteredEvents,
@@ -1070,7 +1087,6 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     moveLane,
     resetLanes,
     toggleCategory,
-    toggleRegion,
     clearFilters,
   }
 })

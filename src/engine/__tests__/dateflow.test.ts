@@ -39,9 +39,12 @@ import {
 } from '../dateflow/filters'
 import {
   DEFAULT_LANES,
+  LANES,
   laneFor,
   moveLane,
   sanitizeLanes,
+  lanesShown,
+  toggleRegionOff,
   toggleLane,
   visibleLanes,
   type LaneId,
@@ -423,6 +426,19 @@ describe('lanes', () => {
     expect(toggleLane(one, 'africa').visible).toEqual(['europe', 'africa'])
   })
 
+  it('switches regions off everywhere, keeping one on', () => {
+    expect(toggleRegionOff([], 'africa')).toEqual(['africa'])
+    expect(toggleRegionOff(['africa'], 'africa')).toEqual([])
+    const sixOff = LANES.map((l) => l.id).filter((id) => id !== 'europe')
+    expect(toggleRegionOff(sixOff, 'europe')).toBe(sixOff)
+  })
+
+  it('draws the chosen lanes minus regions switched off, else the first regions on', () => {
+    expect(lanesShown(DEFAULT_LANES, ['europe'])).toEqual(['south-asia', 'east-asia', 'global'])
+    const one = { order: DEFAULT_LANES.order, visible: ['europe'] as LaneId[] }
+    expect(lanesShown(one, ['europe', 'south-asia'])).toEqual(['east-asia', 'middle-east', 'africa', 'americas'])
+  })
+
   it('reorders lanes and ignores moves past either end', () => {
     const moved = moveLane(DEFAULT_LANES, 'europe', -1)
     expect(moved.order.slice(0, 3)).toEqual(['south-asia', 'europe', 'east-asia'])
@@ -444,21 +460,21 @@ describe('filters', () => {
   const war = { categories: ['War'], region: 'North America' }
 
   it('lets everything through with no filters', () => {
-    expect(matchesFilters(sci, NO_FILTERS, true)).toBe(true)
-    expect(matchesFilters(war, NO_FILTERS, true)).toBe(true)
+    expect(matchesFilters(sci, NO_FILTERS, [])).toBe(true)
+    expect(matchesFilters(war, NO_FILTERS, [])).toBe(true)
   })
 
   it('matches any selected category', () => {
     const f = { ...NO_FILTERS, categories: ['Technology', 'Religion'] }
-    expect(matchesFilters(sci, f, true)).toBe(true)
-    expect(matchesFilters(war, f, true)).toBe(false)
+    expect(matchesFilters(sci, f, [])).toBe(true)
+    expect(matchesFilters(war, f, [])).toBe(false)
   })
 
-  it('combines categories and regions with AND, regions via lanes', () => {
-    const f = { ...NO_FILTERS, categories: ['War'], regions: ['americas' as LaneId] }
-    expect(matchesFilters(war, f, true)).toBe(true) // North America → americas lane
-    expect(matchesFilters({ ...war, region: 'Europe' }, f, true)).toBe(false)
-    expect(matchesFilters({ ...war, region: 'Europe' }, f, false)).toBe(true) // regions ignored in Lanes mode
+  it('combines categories and switched-off regions with AND, regions via lanes', () => {
+    const f = { ...NO_FILTERS, categories: ['War'] }
+    expect(matchesFilters(war, f, ['europe'])).toBe(true)
+    expect(matchesFilters(war, f, ['americas'])).toBe(false) // North America → americas lane
+    expect(matchesFilters({ ...war, region: 'Europe' }, f, ['americas'])).toBe(true)
   })
 
   it('shifts the importance threshold with the detail setting', () => {

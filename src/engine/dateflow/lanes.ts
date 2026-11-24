@@ -22,6 +22,7 @@ export function laneFor(region: string): LaneId {
   return BY_REGION.get(region) ?? 'global'
 }
 
+/** The Lanes layout's rows: which regions get a lane (4 by default, so lanes have room for labels) and in what order. */
 export interface LaneState {
   order: LaneId[]
   visible: LaneId[]
@@ -35,6 +36,22 @@ export const DEFAULT_LANES: LaneState = {
 /** Visible lanes in display order. */
 export function visibleLanes(state: LaneState): LaneId[] {
   return state.order.filter((id) => state.visible.includes(id))
+}
+
+/**
+ * Regions switched off everywhere (doc 21 §6.10): one state behind the Filters region chips and the
+ * Constellation's Geography tracks. At least one region stays on.
+ */
+export function toggleRegionOff(hidden: LaneId[], id: LaneId): LaneId[] {
+  if (hidden.includes(id)) return hidden.filter((h) => h !== id)
+  return hidden.length >= LANES.length - 1 ? hidden : [...hidden, id]
+}
+
+/** The lanes the Lanes layout draws: its chosen rows minus regions switched off, or else the first regions still on. */
+export function lanesShown(state: LaneState, hidden: LaneId[]): LaneId[] {
+  const on = (id: LaneId) => !hidden.includes(id)
+  const chosen = visibleLanes(state).filter(on)
+  return chosen.length ? chosen : state.order.filter(on).slice(0, DEFAULT_LANES.visible.length)
 }
 
 /** Show or hide a lane; the last visible lane can't be hidden. */

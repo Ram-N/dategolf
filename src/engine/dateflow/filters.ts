@@ -1,24 +1,24 @@
 import { laneFor, type LaneId } from './lanes'
 import { minImportanceForSpan } from './visibility'
 
-// Category / region filters. An empty selection means "all".
+// Category filters (an empty selection means "all") and the regions switched off, which are the
+// lanes' shared on/off state (lanes.ts), not part of Filters.
 
 export interface Filters {
   categories: string[]
-  regions: LaneId[]
 }
 
-export const NO_FILTERS: Filters = { categories: [], regions: [] }
+export const NO_FILTERS: Filters = { categories: [] }
 
 interface Filterable {
   categories: string[]
   region: string
 }
 
-/** Passes if it has any selected category and sits in any selected region (AND across the two). */
-export function matchesFilters(item: Filterable, f: Filters, applyRegions: boolean): boolean {
+/** Passes if it has any selected category and its region isn't switched off (AND across the two). */
+export function matchesFilters(item: Filterable, f: Filters, hiddenRegions: LaneId[]): boolean {
   if (f.categories.length && !item.categories.some((c) => f.categories.includes(c))) return false
-  if (applyRegions && f.regions.length && !f.regions.includes(laneFor(item.region))) return false
+  if (hiddenRegions.length && hiddenRegions.includes(laneFor(item.region))) return false
   return true
 }
 
@@ -38,7 +38,7 @@ export function toggleIn<T>(list: T[], value: T): T[] {
   return list.includes(value) ? list.filter((v) => v !== value) : [...list, value]
 }
 
-export const isFiltering = (f: Filters) => f.categories.length > 0 || f.regions.length > 0
+export const isFiltering = (f: Filters, hiddenRegions: LaneId[]) => f.categories.length > 0 || hiddenRegions.length > 0
 
 // ── Density presets (Phase 11, issue #1) ──────────────────────────────────────
 // Simple / Standard / Detailed are the one detail control (doc 21 §6.8; the Filters slider is gone).
