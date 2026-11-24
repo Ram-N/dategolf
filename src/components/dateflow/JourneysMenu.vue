@@ -14,10 +14,15 @@
       <p class="hint mb-2">Guided tours of big themes, stop by stop, with the timeline moving as you go.</p>
       <ul class="space-y-1">
         <li v-for="j in journeys" :key="j.id">
-          <button class="row w-full text-left rounded-lg px-2 py-1.5" @click="chooseJourney(j.id)">
+          <!-- A journey under way continues where this viewer stopped; a finished one starts again -->
+          <button class="row w-full text-left rounded-lg px-2 py-1.5"
+                  @click="chooseJourney(j.id, resumeAt(j) === null ? 'start' : 'resume')">
             <span class="name">{{ j.title }}</span>
             <span class="meta">{{ j.stops.length }} stops · {{ formatYear(j.start) }} → {{ formatYear(j.end) }}</span>
+            <span v-if="resumeAt(j) !== null" class="status">Stop {{ resumeAt(j)! + 1 }} of {{ j.stops.length }} · Continue ›</span>
+            <span v-else-if="progress[j.id]?.done" class="status done">✓ Finished · take it again</span>
           </button>
+          <button v-if="resumeAt(j) !== null" class="restart" @click="chooseJourney(j.id, 'start')">Start over</button>
         </li>
       </ul>
     </div>
@@ -25,23 +30,40 @@
 </template>
 
 <script setup lang="ts">
-import type { Journey } from '@/engine/dateflow/journeys'
+import { resumeStep, type Journey, type JourneyProgress } from '@/engine/dateflow/journeys'
 import { usePopover } from '@/composables/usePopover'
 import { formatYear } from '@/utils/formatYear'
 
-defineProps<{ journeys: Journey[] }>()
-const emit = defineEmits<{ open: [id: string] }>()
+const props = defineProps<{ journeys: Journey[]; progress: Record<string, JourneyProgress> }>()
+const emit = defineEmits<{ open: [id: string, from: 'start' | 'resume'] }>()
+
+const resumeAt = (j: Journey) => resumeStep(props.progress[j.id], j.stops.length)
 
 const PANEL_W = 340
 const { open, rootEl, panelLeft, toggle } = usePopover(PANEL_W)
 
-function chooseJourney(id: string) {
+function chooseJourney(id: string, from: 'start' | 'resume') {
   open.value = false
-  emit('open', id)
+  emit('open', id, from)
 }
 </script>
 
 <style scoped>
+.status {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--df-text);
+}
+.status.done {
+  font-weight: 600;
+  color: var(--df-text-2);
+}
+.restart {
+  margin: 0 0 0.25rem 0.5rem;
+  font-size: 11px;
+  text-decoration: underline;
+  color: var(--df-text-2);
+}
 .btn {
   white-space: nowrap;
   height: 2.25rem;

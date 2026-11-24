@@ -11,7 +11,10 @@ import erasData from '@/data/eras.json'
 import { TRACK_AXES, toggleTrack as toggleTrackIn, type HiddenTracks, type TrackAxis } from '@/engine/dateflow/constellation'
 import { familyFor, type Family } from '@/engine/dateflow/categoryGroups'
 import { eventStop, searchStops, sortStops, spanStop, stepIndex, type TourSpeed } from '@/engine/dateflow/tour'
-import { journeyIds, resolveJourney, stepJourneyIndex, type Journey, type JourneyData } from '@/engine/dateflow/journeys'
+import {
+  journeyIds, recordStep, resolveJourney, resumeStep, stepJourneyIndex,
+  type Journey, type JourneyData, type JourneyProgress,
+} from '@/engine/dateflow/journeys'
 import milestoneIds from '@/data/milestones.json'
 import {
   FULL_VIEW,
@@ -57,6 +60,8 @@ const LANES_KEY = 'dateflow:lanes'
 const FILTERS_KEY = 'dateflow:filters'
 const TRACKS_KEY = 'dateflow:tracks'
 const HIDDEN_TRACKS_KEY = 'dateflow:hidden-tracks'
+const JOURNEY_PROGRESS_KEY = 'dateflow:journey-progress'
+const INVITE_KEY = 'dateflow:journey-invite-dismissed'
 const COLORS_KEY = 'dateflow:colors'
 const DENSITY_KEY = 'dateflow:density'
 const JUMP_SPAN = 100 // "Jump to year" opens a 100-year window, the spec's default zoom
@@ -172,6 +177,9 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   // needs span bars, so it switches Constellation or Simple to World / Standard and switches back on close.
   const journeyData = ref<JourneyData[]>([])
   const eventStates = ref<Record<string, string[]>>({}) // event → its states (doc 18, 2a)
+  // Where this viewer stopped in each journey (doc 18, 3c), remembered in their browser
+  const journeyProgress = ref<Record<string, JourneyProgress>>(loadJson(JOURNEY_PROGRESS_KEY) ?? {})
+  const inviteDismissed = ref(loadJson<boolean>(INVITE_KEY) === true)
   const journey = ref<{ id: string; restore: { mode: ViewMode; density: Density } | null } | null>(null)
   const journeyStep = ref<number | null>(null)
   const theme = ref<Theme>(loadTheme())
@@ -406,6 +414,12 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   watch(laneState, (l) => saveJson(LANES_KEY, l))
   watch(trackAxis, (t) => saveJson(TRACKS_KEY, t))
   watch(hiddenTracks, (h) => saveJson(HIDDEN_TRACKS_KEY, h))
+  watch(journeyProgress, (p) => saveJson(JOURNEY_PROGRESS_KEY, p))
+  watch(inviteDismissed, (d) => saveJson(INVITE_KEY, d))
+  watch(journeyStep, (s) => {
+    const j = currentJourney.value
+    if (j) journeyProgress.value = recordStep(journeyProgress.value, j.id, s, j.stops.length)
+  })
   watch(colorMode, (c) => saveJson(COLORS_KEY, c))
   watch(density, (d) => saveJson(DENSITY_KEY, d))
 
@@ -675,8 +689,10 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   }
 
   // ── Journeys (Phase 14) ─────────────────────────────────────────────────────
-  function openJourney(id: string) {
-    if (!journeys.value.some((j) => j.id === id)) return
+  /** Open a journey at its intro, or (from the menu's "Continue") where this viewer last stopped. */
+  function openJourney(id: string, from: 'start' | 'resume' = 'start') {
+    const target = journeys.value.find((j) => j.id === id)
+    if (!target) return
     const restore = journey.value?.restore ??
       (mode.value === 'constellation' || density.value === 'simple' ? { mode: mode.value, density: density.value } : null)
     closeStory()
@@ -689,7 +705,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     if (mode.value === 'constellation') mode.value = 'world'
     if (density.value === 'simple') density.value = 'standard'
     journey.value = { id, restore }
-    goToJourneyStep(null)
+    inviteDismissed.value = true
+    goToJourneyStep(from === 'resume' ? resumeStep(journeyProgress.value[id], target.stops.length) : null)
   }
 
   function closeJourney() {
@@ -974,6 +991,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     journeyRing,
     journeyOffView,
     openJourney,
+    journeyProgress,
+    inviteDismissed,
     closeJourney,
     goToJourneyStep,
     stepJourney,

@@ -81,7 +81,8 @@
     </form>
 
     <div class="flex flex-wrap items-center gap-1">
-      <JourneysMenu v-if="journeys.length" :journeys="journeys" @open="(id) => emit('openJourney', id)" />
+      <JourneysMenu v-if="journeys.length" :journeys="journeys" :progress="journeyProgress"
+                    @open="(id, from) => emit('openJourney', id, from)" />
       <button class="btn w-9" aria-label="Zoom out" @click="emit('zoomOut')">−</button>
       <button class="btn w-9" aria-label="Zoom in" @click="emit('zoomIn')">+</button>
       <div class="seg flex flex-wrap rounded-lg p-0.5" role="group" aria-label="Show an era">
@@ -169,7 +170,7 @@ import DateFlowFilters from './DateFlowFilters.vue'
 import StoriesMenu from './StoriesMenu.vue'
 import JourneysMenu from './JourneysMenu.vue'
 import type { FeaturedStory } from '@/engine/dateflow/stories'
-import type { Journey } from '@/engine/dateflow/journeys'
+import type { Journey, JourneyProgress } from '@/engine/dateflow/journeys'
 import { DENSITIES, type Density, type Filters } from '@/engine/dateflow/filters'
 import { formatYear, parseYear } from '@/utils/formatYear'
 import { MIN_QUERY } from '@/engine/dateflow/tour'
@@ -186,6 +187,7 @@ defineProps<{
   categories: string[]
   stories: FeaturedStory[]
   journeys: Journey[]
+  journeyProgress: Record<string, JourneyProgress>
   eras: Era[]
   activeEra: string | null
 }>()
@@ -211,7 +213,7 @@ const emit = defineEmits<{
   clearFilters: []
   summarize: []
   openStory: [id: string]
-  openJourney: [id: string]
+  openJourney: [id: string, from: 'start' | 'resume']
   timeMachine: []
   surprise: []
 }>()

@@ -12,10 +12,11 @@
       :categories="store.categories"
       :stories="store.featured"
       :journeys="store.journeys"
+      :journey-progress="store.journeyProgress"
       :eras="store.eras"
       :active-era="store.activeEra"
       @open-story="(id) => store.openStory(id)"
-      @open-journey="(id) => store.openJourney(id)"
+      @open-journey="(id, from) => store.openJourney(id, from)"
       @time-machine="store.openTimeMachine()"
       @surprise="store.surprise()"
       @zoom-in="store.zoomIn()"
@@ -46,7 +47,7 @@
       Loading…
     </div>
     <div v-else class="flex-1 min-h-[320px] flex">
-      <div class="flex-1 min-w-0">
+      <div class="flex-1 min-w-0 relative">
       <DateFlowTimeline
         ref="timeline"
         :events="store.timelineEvents"
@@ -78,6 +79,12 @@
         @toggle-track="store.toggleTrack"
         @background-click="store.clearFocus()"
         @select-stop="(id) => store.goToStep(store.currentStops.findIndex((s) => s.node.id === id), false)"
+      />
+      <JourneyInvite
+        v-if="showInvite"
+        :journeys="store.journeys"
+        @open="(id) => store.openJourney(id)"
+        @dismiss="store.inviteDismissed = true"
       />
       </div>
       <TimeMachinePanel
@@ -241,6 +248,7 @@ import EventInfoCard from '@/components/EventInfoCard.vue'
 import EventConnections from '@/components/dateflow/EventConnections.vue'
 import StoryPanel from '@/components/dateflow/StoryPanel.vue'
 import JourneyPanel from '@/components/dateflow/JourneyPanel.vue'
+import JourneyInvite from '@/components/dateflow/JourneyInvite.vue'
 import TimeMachinePanel from '@/components/dateflow/TimeMachinePanel.vue'
 import TourPanel from '@/components/dateflow/TourPanel.vue'
 import DurationInfoCard from '@/components/dateflow/DurationInfoCard.vue'
@@ -254,6 +262,13 @@ const timeline = useTemplateRef<InstanceType<typeof DateFlowTimeline>>('timeline
 const hiddenCount = computed(() => timeline.value?.hiddenCount ?? 0)
 // The minimap shows the density of whatever the filters let through — e.g. a history of science.
 const eventYears = computed(() => store.filteredEvents.map((e) => e.year))
+/** The "Take a journey" card (doc 18, 3a): until dismissed or a journey is under way, and only on a quiet screen. */
+const showInvite = computed(
+  () =>
+    !store.inviteDismissed && store.journeys.length > 0 && !Object.keys(store.journeyProgress).length &&
+    !store.currentJourney && !store.currentStory && !store.timeMachine && !store.tourCurrent &&
+    !store.selectedEvent && !store.selectedDuration,
+)
 
 // Footer summary of active filters.
 const filterSummary = computed(() => {

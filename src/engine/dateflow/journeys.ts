@@ -139,3 +139,28 @@ export function stepJourneyIndex(step: number | null, delta: 1 | -1, n: number):
   if (next < 0) return null
   return Math.min(next, n)
 }
+
+// ── Progress (doc 18, 3c): where each viewer stopped, kept in their browser ──
+
+/** The furthest-along place in a journey: the step last shown, and whether it was ever finished. */
+export interface JourneyProgress {
+  step: number
+  done?: boolean
+}
+
+/** Progress after showing `step` (null = the intro, n = the end). The intro never erases progress. */
+export function recordStep(
+  all: Record<string, JourneyProgress>,
+  id: string,
+  step: number | null,
+  n: number,
+): Record<string, JourneyProgress> {
+  if (step === null) return all
+  const done = step >= n || !!all[id]?.done
+  return { ...all, [id]: { step: Math.min(step, n), ...(done ? { done } : {}) } }
+}
+
+/** Where "Continue" picks up: the last stop shown, or null (the intro) for a new or finished journey. */
+export function resumeStep(p: JourneyProgress | undefined, n: number): number | null {
+  return p && p.step < n ? p.step : null
+}

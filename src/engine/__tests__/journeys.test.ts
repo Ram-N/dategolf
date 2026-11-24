@@ -5,7 +5,7 @@ import eventsJson from '@/data/events.json'
 import durationsJson from '@/data/durations.json'
 import relationshipsJson from '@/data/relationships.json'
 import journeysJson from '@/data/journeys.json'
-import { journeyIds, resolveJourney, stepJourneyIndex, type JourneyData } from '../dateflow/journeys'
+import { journeyIds, recordStep, resolveJourney, resumeStep, stepJourneyIndex, type JourneyData } from '../dateflow/journeys'
 
 const events = eventsJson as Event[]
 const durations = durationsJson as Duration[]
@@ -76,6 +76,22 @@ describe('stepJourneyIndex', () => {
     expect(stepJourneyIndex(2, 1, 3)).toBe(3)
     expect(stepJourneyIndex(3, 1, 3)).toBe(3)
     expect(stepJourneyIndex(3, -1, 3)).toBe(2)
+  })
+})
+
+describe('journey progress', () => {
+  it('remembers the last stop, marks the end as done, and resumes only an unfinished journey', () => {
+    let p = recordStep({}, 'j', null, 5)
+    expect(p).toEqual({}) // the intro alone is not progress
+    p = recordStep(p, 'j', 2, 5)
+    expect(resumeStep(p.j, 5)).toBe(2)
+    p = recordStep(p, 'j', 5, 5)
+    expect(p.j).toEqual({ step: 5, done: true })
+    expect(resumeStep(p.j, 5)).toBeNull() // finished: start again from the intro
+    p = recordStep(p, 'j', 1, 5) // taking it again
+    expect(p.j).toEqual({ step: 1, done: true })
+    expect(resumeStep(p.j, 5)).toBe(1)
+    expect(resumeStep(undefined, 5)).toBeNull()
   })
 })
 
