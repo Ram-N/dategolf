@@ -3,7 +3,7 @@ import type { Span } from '@/types/dateflow'
 import { LANES, laneFor, type LaneId } from './lanes'
 
 // "What was happening elsewhere?" — pure queries behind the event card's Meanwhile
-// section and the period summary.
+// section and What happened?.
 
 export interface LaneEvents {
   lane: LaneId

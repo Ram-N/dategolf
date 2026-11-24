@@ -36,7 +36,6 @@
       @reset-lanes="store.resetLanes()"
       @toggle-category="store.toggleCategory"
       @toggle-region="store.toggleRegion"
-      @set-detail="store.setDetail"
       @clear-filters="store.clearFilters()"
       @summarize="store.openSummary(store.view.start, store.view.end)"
     />
@@ -184,7 +183,7 @@
       </span>
       <span v-if="filterSummary && store.filteredEvents.length === 0" class="secondary">— nothing matches these filters</span>
       <span v-if="hiddenCount > 0" class="secondary">· {{ hiddenCount }} more in view — zoom in to reveal</span>
-      <span class="ml-auto muted hidden sm:inline">Scroll to zoom · drag to move · shift-drag to summarise · ← → pan · + − zoom</span>
+      <span class="ml-auto muted hidden sm:inline">Scroll to zoom · drag to move · shift-drag: What happened? · ← → pan · + − zoom</span>
     </div>
 
     <EventInfoCard v-if="store.selectedEvent" :event="store.selectedEvent" @close="store.closeCard()">
@@ -206,7 +205,7 @@
         @time-machine="store.openTimeMachine({ mode: 'year', year: store.selectedEvent!.year })"
       />
     </EventInfoCard>
-    <PeriodSummaryCard
+    <WhatHappenedCard
       v-if="summary"
       :summary="summary"
       :filtered="isFiltering(store.filters)"
@@ -253,7 +252,7 @@ import TimeMachinePanel from '@/components/dateflow/TimeMachinePanel.vue'
 import TourPanel from '@/components/dateflow/TourPanel.vue'
 import DurationInfoCard from '@/components/dateflow/DurationInfoCard.vue'
 import EventMeanwhile from '@/components/dateflow/EventMeanwhile.vue'
-import PeriodSummaryCard from '@/components/dateflow/PeriodSummaryCard.vue'
+import WhatHappenedCard from '@/components/dateflow/WhatHappenedCard.vue'
 import { summarizePeriod } from '@/engine/dateflow/explore'
 import { isFiltering } from '@/engine/dateflow/filters'
 
@@ -275,7 +274,6 @@ const filterSummary = computed(() => {
   const f = store.filters
   const parts = [...f.categories]
   if (store.mode !== 'lanes') parts.push(...f.regions.map((id) => LANES.find((l) => l.id === id)?.label ?? id))
-  if (f.detail) parts.push(f.detail > 0 ? `more detail (+${f.detail})` : `less detail (${f.detail})`)
   return parts.join(' · ')
 })
 

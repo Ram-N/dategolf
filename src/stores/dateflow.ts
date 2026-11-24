@@ -41,11 +41,9 @@ import {
   type LaneState,
 } from '@/engine/dateflow/lanes'
 import {
-  DETAIL_MAX,
-  DETAIL_MIN,
   NO_FILTERS,
   categoriesByFrequency,
-  effectiveDetail,
+  detailFor,
   importanceThreshold,
   matchesFilters,
   toggleIn,
@@ -140,11 +138,9 @@ const LANE_IDS = new Set<string>(LANES.map((l) => l.id))
 
 function loadFilters(): Filters {
   const raw = loadJson<Partial<Filters>>(FILTERS_KEY)
-  const detail = Number(raw?.detail)
   return {
     categories: Array.isArray(raw?.categories) ? raw.categories.filter((c) => typeof c === 'string') : [],
     regions: Array.isArray(raw?.regions) ? raw.regions.filter((id) => LANE_IDS.has(id)) : [],
-    detail: Number.isInteger(detail) ? Math.min(DETAIL_MAX, Math.max(DETAIL_MIN, detail)) : 0,
   }
 }
 
@@ -328,8 +324,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   )
   /** The states the Empires & states axis can give a row to: every state span, filters aside. */
   const stateSpans = computed(() => new Map(durations.value.filter((d) => d.kind === 'state').map((d) => [d.id, d])))
-  /** The detail level the timeline draws with: the Filters slider shifted by the density preset. */
-  const detailLevel = computed(() => effectiveDetail(filters.value.detail, density.value))
+  /** The detail level the timeline draws with, from the density preset. */
+  const detailLevel = computed(() => detailFor(density.value))
   /** Detailed: an open card rings its connections on the timeline, as "Show connections" does. */
   const cardIds = computed(() =>
     density.value === 'detailed' && openId.value ? new Set([openId.value, ...relatedIds.value]) : null,
@@ -542,7 +538,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     animateTo(makeView(startYear - s * 0.15, s * 1.3))
   }
 
-  // Only one card shows at a time: event, duration, or period summary.
+  // Only one card shows at a time: event, span, or What happened?.
   function select(id: string | null) {
     selectedEventId.value = id
     if (id) {
@@ -941,10 +937,6 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     filters.value = { ...filters.value, regions: toggleIn(filters.value.regions, id) }
   }
 
-  function setDetail(detail: number) {
-    filters.value = { ...filters.value, detail: Math.min(DETAIL_MAX, Math.max(DETAIL_MIN, Math.round(detail))) }
-  }
-
   function clearFilters() {
     filters.value = NO_FILTERS
   }
@@ -1079,7 +1071,6 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     resetLanes,
     toggleCategory,
     toggleRegion,
-    setDetail,
     clearFilters,
   }
 })

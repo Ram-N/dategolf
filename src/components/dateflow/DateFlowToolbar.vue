@@ -54,7 +54,6 @@
         :mode="mode"
         @toggle-category="(c) => emit('toggleCategory', c)"
         @toggle-region="(id) => emit('toggleRegion', id)"
-        @set-detail="(d) => emit('setDetail', d)"
         @clear="emit('clearFilters')"
       />
       <DateFlowLanePicker
@@ -131,13 +130,13 @@
         Surprise Me
       </button>
       <button class="btn" title="Play through the events your filters show, one at a time" @click="emit('watch')">
-        Watch
+        Play through
       </button>
       <StoriesMenu data-keep-open :stories="stories" @open="(id) => { moreOpen = false; emit('openStory', id) }" />
-      <button class="btn" title="Summarise the period in view (or shift-drag across the timeline)" @click="emit('summarize')">
+      <button class="btn" title="What happened in the years in view (or shift-drag across the timeline)" @click="emit('summarize')">
         What happened?
       </button>
-      <RouterLink to="/dateflow/play" class="btn play">▶ Play</RouterLink>
+      <RouterLink to="/dateflow/play" class="btn play" title="The DateFlow games">▶ Games</RouterLink>
       <button
         class="btn"
         :aria-pressed="colorMode === 'colorful'"
@@ -209,7 +208,6 @@ const emit = defineEmits<{
   resetLanes: []
   toggleCategory: [c: string]
   toggleRegion: [id: LaneId]
-  setDetail: [detail: number]
   clearFilters: []
   summarize: []
   openStory: [id: string]

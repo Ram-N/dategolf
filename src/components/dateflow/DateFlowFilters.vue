@@ -43,30 +43,7 @@
       </section>
       <p v-else class="hint">In Lanes view, choose regions with the Lanes menu.</p>
 
-      <section>
-        <h3 class="heading">Detail</h3>
-        <div class="flex items-center gap-2 text-xs">
-          <span class="hint">Fewer</span>
-          <input
-            type="range"
-            :min="DETAIL_MIN"
-            :max="DETAIL_MAX"
-            step="1"
-            :value="filters.detail"
-            aria-label="Detail level"
-            class="flex-1"
-            @input="emit('setDetail', Number(($event.target as HTMLInputElement).value))"
-          />
-          <span class="hint">More</span>
-        </div>
-        <p class="hint mt-1">
-          {{ mode === 'constellation'
-            ? 'Every event shows; Fewer keeps only the bigger ones.'
-            : filters.detail === 0 ? 'Automatic: zoom in to reveal more events.' : 'Adjusts how many events show at each zoom level.' }}
-        </p>
-      </section>
-
-      <button class="clear w-full py-1.5 rounded-lg text-xs font-semibold" :disabled="!activeCount && filters.detail === 0" @click="emit('clear')">
+      <button class="clear w-full py-1.5 rounded-lg text-xs font-semibold" :disabled="!activeCount" @click="emit('clear')">
         Clear all filters
       </button>
     </div>
@@ -76,7 +53,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { LANES, type LaneId } from '@/engine/dateflow/lanes'
-import { DETAIL_MAX, DETAIL_MIN, type Filters } from '@/engine/dateflow/filters'
+import type { Filters } from '@/engine/dateflow/filters'
 import { usePopover } from '@/composables/usePopover'
 import type { ViewMode } from '@/stores/dateflow'
 
@@ -84,7 +61,6 @@ const props = defineProps<{ filters: Filters; categories: string[]; mode: ViewMo
 const emit = defineEmits<{
   toggleCategory: [c: string]
   toggleRegion: [id: LaneId]
-  setDetail: [detail: number]
   clear: []
 }>()
 

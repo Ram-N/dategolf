@@ -164,6 +164,21 @@
           :class="{ lit: lit(h.id), dimmed: dimming && !lit(h.id) }"
         />
 
+        <!-- Detailed: events with no room for a label, marked small -->
+        <path
+          v-for="q in t.quiet"
+          :key="q.event.id"
+          :d="shapePath(q.shape, q.x, t.axisY, QUIET_R)"
+          :fill="`var(--df-f-${q.family})`"
+          stroke="var(--df-bg)"
+          stroke-width="1"
+          class="cursor-pointer quiet"
+          :class="{ dimmed: dimming && !lit(q.event.id), faded: fades(q.family, q.event.id) }"
+          @click="onMarkerClick(q.event.id)"
+        >
+          <title>{{ q.tooltip }}</title>
+        </path>
+
         <!-- Visible events -->
         <path
           v-for="m in t.markers"
@@ -394,6 +409,7 @@ const MAX_LINES = 3
 const CHAR_W = 6.2 // approx width of an 11px system-ui character
 const CHAR_W_BOLD = 6.8
 const ANCHOR_IMPORTANCE = 7
+const QUIET_R = 3.5 // Detailed's unlabelled markers: smaller than any labelled one (5px floor)
 const ERA_SPACE = 28 // room at the top for era names
 const AXIS_GAP = 10 // gap between an axis and the nearest label
 const TICK_SPACE = 24 // World mode: room under the axis for year labels
@@ -756,10 +772,23 @@ const layouts = computed(() => {
   return tracks.value.map((t) => {
     const markers = layoutMarkers(t, sectionIds)
     const shown = new Set(markers.map((m) => m.event.id))
-    const hiddenDots = t.events
-      .filter((e) => !shown.has(e.id))
+    // Detailed: an event that passes the threshold but finds no room for a label is still marked,
+    // smaller and unlabelled (doc 21 §6.8), rather than left as a faint hint.
+    const minImp = props.density === 'detailed' ? importanceThreshold(span(props.view), props.detail) : Infinity
+    const unshown = t.events.filter((e) => !shown.has(e.id))
+    const quiet = unshown
+      .filter((e) => e.importance >= minImp)
+      .map((e) => {
+        const family = familyFor(e.categories)
+        return {
+          event: e, family, shape: shapeOf(family), x: yearToX(e.year, props.view, width.value),
+          tooltip: `${formatEventYear(e.year, e.approximate)} — ${e.name}`,
+        }
+      })
+    const hiddenDots = unshown
+      .filter((e) => e.importance < minImp)
       .map((e) => ({ id: e.id, x: yearToX(e.year, props.view, width.value) }))
-    return { ...t, markers, hiddenDots, bars: layoutBars(t) }
+    return { ...t, markers, quiet, hiddenDots, bars: layoutBars(t) }
   })
 })
 

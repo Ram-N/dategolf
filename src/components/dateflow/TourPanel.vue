@@ -1,5 +1,5 @@
 <template>
-  <aside class="tour-panel" role="region" :aria-label="title">
+  <aside class="tour-panel" role="region" :aria-label="source === 'search' ? `Search results for ${title}` : title">
     <!-- Header: what's being toured, and the player -->
     <header class="head">
       <div class="flex items-start justify-between gap-3">
@@ -110,7 +110,7 @@ const emit = defineEmits<{
 const HINT = 'Search looks at event and span names (and other names they go by), not descriptions. ' +
   'Try a person, a place or an empire.'
 
-const title = computed(() => (props.source === 'search' ? `“${props.query}”` : 'Watch history'))
+const title = computed(() => (props.source === 'search' ? `“${props.query}”` : 'Play through history'))
 const current = computed(() => (props.step === null ? null : (props.stops[props.step] ?? null)))
 const first = computed(() => props.stops[0]?.year ?? 0)
 const last = computed(() => Math.max(...props.stops.map((s) => s.endYear ?? s.year)))

@@ -7,7 +7,7 @@
       </div>
       <button class="close" aria-label="No thanks" @click="emit('dismiss')">✕</button>
     </div>
-    <p class="hint">A guided tour, stop by stop, with the timeline moving as you go.</p>
+    <p class="hint">A guided path, stop by stop, with the timeline moving as you go.</p>
     <ul class="list">
       <li v-for="j in journeys" :key="j.id">
         <button class="row" @click="emit('open', j.id)">

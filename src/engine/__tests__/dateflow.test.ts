@@ -32,7 +32,7 @@ import { activeDuring, beforeAndAfter, meanwhile, summarizePeriod } from '../dat
 import {
   NO_FILTERS,
   categoriesByFrequency,
-  effectiveDetail,
+  detailFor,
   importanceThreshold,
   matchesFilters,
   toggleIn,
@@ -468,12 +468,13 @@ describe('filters', () => {
     expect(importanceThreshold(10, 2)).toBe(0) // never below zero
   })
 
-  it('shifts detail by the density preset on top of the slider', () => {
-    expect(effectiveDetail(0, 'standard')).toBe(0)
-    expect(effectiveDetail(0, 'simple')).toBe(-1)
-    expect(effectiveDetail(1, 'detailed')).toBe(3)
-    expect(importanceThreshold(5000, effectiveDetail(2, 'detailed'))).toBe(3) // more than the slider alone allows
-    expect(constellationThreshold(effectiveDetail(0, 'simple'))).toBe(5)
+  it('takes the detail level from the density preset alone', () => {
+    expect(detailFor('standard')).toBe(0)
+    expect(detailFor('simple')).toBe(-1)
+    expect(detailFor('detailed')).toBe(2)
+    expect(importanceThreshold(5000, detailFor('detailed'))).toBe(5)
+    expect(constellationThreshold(detailFor('simple'))).toBe(5)
+    expect(constellationThreshold(detailFor('detailed'))).toBe(0)
   })
 
   it('lists categories most common first', () => {

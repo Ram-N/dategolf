@@ -88,6 +88,7 @@ Ram wants this high. It breaks the **no backend** rule, so the first step is a d
 | More pilots | More life cycles (parked), more journeys, more people beyond 100 | After 3 and 6 |
 | "Find events during X" game | Students find events inside a span | Deprioritised by Ram 2026-11-23 |
 | Immersive | Stepping inside historical moments (doc 16) | Parked |
+| Detail slider, back | A fine-grained "more / fewer events" slider, dropped 2026-11-24 in favour of the three presets (doc 21 §6.8). Ram may bring it back as part of a rethink of all the controls | A controls redesign |
 
 ---
 

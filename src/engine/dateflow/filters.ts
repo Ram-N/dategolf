@@ -1,18 +1,14 @@
 import { laneFor, type LaneId } from './lanes'
 import { minImportanceForSpan } from './visibility'
 
-// Category / region filters and the detail control. An empty selection means "all".
+// Category / region filters. An empty selection means "all".
 
 export interface Filters {
   categories: string[]
   regions: LaneId[]
-  /** −2 (fewer) … +2 (more): shifts the zoom-driven importance threshold. */
-  detail: number
 }
 
-export const NO_FILTERS: Filters = { categories: [], regions: [], detail: 0 }
-export const DETAIL_MIN = -2
-export const DETAIL_MAX = 2
+export const NO_FILTERS: Filters = { categories: [], regions: [] }
 
 interface Filterable {
   categories: string[]
@@ -45,20 +41,21 @@ export function toggleIn<T>(list: T[], value: T): T[] {
 export const isFiltering = (f: Filters) => f.categories.length > 0 || f.regions.length > 0
 
 // ── Density presets (Phase 11, issue #1) ──────────────────────────────────────
-// Simple / Standard / Detailed bundle settings that already exist. The preset shifts the
-// detail level on top of the Filters slider (which stays the viewer's own adjustment).
+// Simple / Standard / Detailed are the one detail control (doc 21 §6.8; the Filters slider is gone).
+// Each shifts the zoom-driven importance threshold; Detailed also marks, unlabelled, every event
+// that passes it but finds no room for a label.
 
 export type Density = 'simple' | 'standard' | 'detailed'
 
 export const DENSITIES: { id: Density; label: string; hint: string }[] = [
-  { id: 'simple', label: 'Simple', hint: 'Fewer events; no empire bars or milestone lines' },
-  { id: 'standard', label: 'Standard', hint: 'The usual timeline' },
-  { id: 'detailed', label: 'Detailed', hint: 'More events at every zoom; an open card rings its connections' },
+  { id: 'simple', label: 'Simple', hint: 'Only the bigger events; no span bars, milestone lines or currents' },
+  { id: 'standard', label: 'Standard', hint: 'The usual timeline: zoom in to reveal more' },
+  { id: 'detailed', label: 'Detailed', hint: 'More events at every zoom, a dot for each one without room for a label; an open card rings its connections' },
 ]
 
 const DENSITY_SHIFT: Record<Density, number> = { simple: -1, standard: 0, detailed: 2 }
 
-/** The detail level the timeline uses: the slider plus the preset's shift. */
-export function effectiveDetail(sliderDetail: number, density: Density): number {
-  return sliderDetail + DENSITY_SHIFT[density]
+/** The detail level the timeline uses: how far the preset shifts the importance threshold. */
+export function detailFor(density: Density): number {
+  return DENSITY_SHIFT[density]
 }

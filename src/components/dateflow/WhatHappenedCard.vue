@@ -4,11 +4,11 @@
       class="card w-full max-w-2xl rounded-2xl border p-6 max-h-[85vh] overflow-y-auto"
       role="dialog"
       aria-modal="true"
-      aria-label="Period summary"
+      aria-label="What happened?"
     >
       <div class="flex items-start justify-between gap-4">
         <div>
-          <div class="text-[11px] font-semibold uppercase tracking-widest secondary">What happened</div>
+          <div class="text-[11px] font-semibold uppercase tracking-widest secondary">What happened?</div>
           <h2 class="text-2xl font-black tabular-nums mt-1">
             {{ formatYear(Math.round(summary.start)) }} – {{ formatYear(Math.round(summary.end)) }}
           </h2>
