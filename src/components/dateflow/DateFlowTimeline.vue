@@ -124,7 +124,7 @@
         <text :x="b.x + 6" :y="ERA_SPACE + 14" class="backdrop-label">{{ b.name }}</text>
       </g>
 
-      <!-- One track in World mode, one per visible lane in Lanes mode -->
+      <!-- One track in the Timeline layout (mode "world"), one per visible lane in Lanes mode -->
       <g v-for="t in layouts" :key="t.id">
         <template v-if="t.label">
           <line v-if="t.index > 0" x1="0" :x2="width" :y1="t.top" :y2="t.top" class="lane-rule" />

@@ -14,9 +14,9 @@
 |---|---|---|---|
 | **Event** | Something that happened in one year (`year`; negative = BCE, no year 0). The same events also feed DateGolf and DatePick. | UI: an event, a dot or label. Code: `Event`, `events.json` | 522 |
 | **Span** | Something with a start and an end year. It has a **kind**: `state` or `period` (a third kind, `era`, is exported separately, see *Era*). | UI: never says "span"; shows a bar under *Empires & states*, *Periods* or *People*. Code: `Span`, `durations.json`; db: `time_spans` | 193 (83 state, 110 period) |
-| **State** (span kind) | A polity: empires, kingdoms, dynasties, sultanates, shogunates, republics, city-states (Classical Athens, Teotihuacan). Shared civilizations that were never one state (Indus Valley, Classic Maya) are periods (§6.2). | UI: "Empires & states" for a group (World row, *What happened?*, Meanwhile, the axis), "Empire or state" for one (legend, card) | 83 |
+| **State** (span kind) | A polity: empires, kingdoms, dynasties, sultanates, shogunates, republics, city-states (Classical Athens, Teotihuacan). Shared civilizations that were never one state (Indus Valley, Classic Maya) are periods (§6.2). | UI: "Empires & states" for a group (Timeline row, *What happened?*, Meanwhile, the axis), "Empire or state" for one (legend, card) | 83 |
 | **Period** (span kind) | Any span that isn't a state: wars, movements, cultural periods (Italian Renaissance, Industrial Revolution), and people's lives. | UI: the "Periods" row, drawn dashed | 110 |
-| **Person** | A period span flagged `person`: a life, birth to death, with a `role`. | UI: the "People" row (World and Lanes), rounded pills; a person's card lists who was *Alive at the same time* | 12 (pilot) |
+| **Person** | A period span flagged `person`: a life, birth to death, with a `role`. | UI: the "People" row (Timeline and Lanes), rounded pills; a person's card lists who was *Alive at the same time* | 12 (pilot) |
 | **Sub-span** | A span that is `part_of` another span (Shah Jahan's reign inside the Mughal Empire). | UI: a labelled segment inside the parent's bar once zoomed in (≥ 48 px), two levels deep | — |
 | **Life cycle / phase** | An empire's years split into contiguous phases, each with a neutral **kind** (foundation, expansion, consolidation, height, transformation, contraction, end), a title, a description and, sometimes, the event that *opens* it (*Opens with* in the card; not called a milestone). Never a verdict ("golden age", "decline"). | UI: the bar shaded by phase; the card's *Life cycle* list; the strip in a journey stop. Code: `phases` on a `Span` | 3 (Roman, Ottoman, Mughal) |
 | **Historical Current** | A span flagged `current`: a long movement (Axial Age, Enlightenment, Decolonization…) drawn as a translucent band behind the timeline, at most 3 at any year. Hidden in Simple, Constellation, stories, the Time Machine and journeys. | UI: background bands. Code: `current`, `pickCurrents` | 9 |
@@ -59,8 +59,8 @@
 |---|---|---|
 | **Timeline** | The whole time canvas, 3600 BCE to 2030, strictly linear (one year is the same width everywhere at a given zoom). Zooming reveals more events rather than enlarging them. | — |
 | **View** | The window of years on screen right now. | UI: the range under the DateFlow title ("1500 – 1800 · 300 years"). Code: `View` |
-| **Layout** | How the timeline is drawn: **World**, **Lanes** or **Constellation**. Every visit opens on Constellation. Docs and UI hints say "layout"; "view" means only the years on screen. | UI: the first toolbar group (aria "Timeline layout"; each button's hint starts "Layout:"). Code: `mode` / `ViewMode` |
-| **World** | One shared axis with labelled events above and below, then bar rows: *Empires & states*, *Periods*, *People*. | — |
+| **Layout** | How the timeline is drawn: **Timeline**, **Lanes** or **Constellation**. Every visit opens on Constellation. Docs and UI hints say "layout"; "view" means only the years on screen. | UI: the first toolbar group (aria "Timeline layout"; each button's hint starts "Layout:"). Code: `mode` / `ViewMode` |
+| **Timeline** (layout) | One shared line, the single story: labelled events above and below the axis, then bar rows: *Empires & states*, *Periods*, *People*. Called *World* until 2026-11-24. | Code: mode `'world'` |
 | **Lanes** | One horizontal lane per region, each with its own events and bars; the **Lanes menu** picks which regions get a lane (4 by default, so each has room for labels) and their order. A region switched off in Filters is off here too (shown as *off*). | Code: `LaneState`, `lanesShown` |
 | **Constellation** | Every event as an unlabelled dot (size = importance, on a log scale; shape and colour = family) on horizontal **tracks**, chosen by an **axis**. Spans of importance 5+ sit as thin bars along the bottom of their track. Hover a dot for its name; click to open its card. | — |
 | **Axis (Constellation)** | What the tracks mean, chosen in the toolbar: **Geography** (the 7 lanes), **Human activity** (the 8 families, so a dot's shape always matches its track), **Society** (7 tracks by the first non-political category; a *Politics & war* track starts switched off), **Empires & states** (a row per state in view, up to 8, with a band for its lifetime, then *Other*). | Code: `TrackAxis` |
@@ -69,7 +69,7 @@
 | **Era band / era chip** | See *Era* (§1). | — |
 | **Milestone line** | See *Milestone* (§1). | — |
 | **Current band** | See *Historical Current* (§1). | — |
-| **Story threads** | Curved arrows drawn between a story's stops (World and Lanes only); each opens its link's card. | Code: `StoryArcs` |
+| **Story threads** | Curved arrows drawn between a story's stops (Timeline and Lanes only); each opens its link's card. | Code: `StoryArcs` |
 | **Rings / dimming** | Items outlined while everything else fades: an open story, journey, search, the Time Machine, or *Show connections*. | Code: `highlightIds`, `lit` |
 | **Minimap** | The strip under the toolbar showing how many events fall in each slice of all history; the box is the current view; click to jump. | Code: `DateFlowMinimap`, `densityBins` |
 | **Legend** | The family shapes and colours along the bottom; click a family to **Focus** on it (§3). | — |
@@ -128,7 +128,7 @@
 
 | Feature | What it shows of Rome |
 |---|---|
-| **World / Lanes** | The Roman Republic and Roman Empire bars in *Empires & states*, the Pax Romana and Fall of the Western Roman Empire in *Periods*, and its events labelled on the axis. |
+| **Timeline / Lanes** | The Roman Republic and Roman Empire bars in *Empires & states*, the Pax Romana and Fall of the Western Roman Empire in *Periods*, and its events labelled on the axis. |
 | **Life cycle** | The Roman Empire bar shaded by its 7 phases; the card lists them. |
 | **Constellation** | Roman events as dots on the Europe track (Geography) or its own row (Empires & states), with the Republic → Empire bands one after the other. |
 | **Card** | Why it matters, Connections ("evolved into Byzantine Empire"), Meanwhile in Europe, *Compare with* another span. |
@@ -188,7 +188,7 @@ To keep them from creeping into specs as if they existed:
 
 - **The timeline** runs from 3600 BCE to today. Scroll to zoom: more events appear as you zoom in.
 - **Dots and labels** are events; **bars** are things that lasted (empires, wars, movements, lives). "c." means the date is approximate.
-- **Three layouts:** *World* (everything on one line), *Lanes* (one row per region), *Constellation* (every event as a dot, sorted by region, activity, society or state).
+- **Three layouts:** *Timeline* (everything on one line), *Lanes* (one row per region), *Constellation* (every event as a dot, sorted by region, activity, society or state).
 - **Click anything** to read about it: why it matters, what it's connected to, what was happening elsewhere.
 - **Take a journey** through a big theme, or follow a **story** from any event: *How did we get here?*
 - **Time Machine** to compare years, empires or events; **What happened?** to sum up any stretch of time; **▶ Games** for games.
