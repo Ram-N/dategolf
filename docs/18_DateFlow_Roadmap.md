@@ -35,12 +35,12 @@ Constellation already opens a first visit (Medieval era, Geography tracks) and h
 ### 3. Make the journeys and empire life cycles stand out
 The three journeys and the Roman, Mughal and Ottoman life cycles are the richest things in DateFlow, but they sit under **More → Stories** and inside bars. No new pilots until these shine.
 
-- **3a. A front-door invitation:** on a first visit (and on an empty view), a small card offers "Take a journey" with the three journeys, so a student never faces a blank timeline. Dismissable, remembered per viewer.
+- ~~**3a. A front-door invitation**~~ ✅ 2026-11-24: a "Take a journey" card over the timeline, shown until the viewer dismisses it ("Explore on my own") or starts a journey; remembered per viewer.
 - ~~**3b. A Journeys button in the main toolbar**~~ ✅ 2026-11-23: a Journeys menu at the front of the always-visible row; the Stories menu now holds only stories.
-- **3c. Progress:** a journey remembers where the viewer stopped (per viewer, browser storage) and the menu shows "Stop 4 of 8 · Continue".
-- **3d. Life cycles up front:** when a journey stop (or a card) is an empire with phases, the panel shows its phase strip (Foundation → … → End) with each phase's title and years, clickable to frame that phase on the timeline. Rome, the Mughals and the Ottomans become the showcase.
+- ~~**3c. Progress**~~ ✅ 2026-11-24: the Journeys menu shows "Stop 4 of 8 · Continue ›" (with Start over) or "✓ Finished"; per viewer, browser storage. A shared `?journey=` link still starts at the intro.
+- ~~**3d. Life cycles up front**~~ ✅ 2026-11-24: a journey stop showing an empire with phases (Rome, Ottomans, Mughals) has a phase strip shaded by kind; picking a phase frames its years and shows its title, story and ‹ › to step through. (The span card still lists phases; it could use the strip too.)
 - **3e. Polish pass on the player** after Ram has tried it: pacing, typography, how the timeline moves between stops, the phone bottom sheet.
-- **3f. Journeys in Constellation** once 2d lands.
+- ~~**3f. Journeys in Constellation**~~ ✅ 2026-11-24: journeys no longer switch to World; ringed spans always get a bar (lives and sub-spans too). Empires & states switches to Geography and Simple to Standard for the journey, restored on close.
 - Size: M.
 
 ### 4. AI questions ("What was happening in India when Rome peaked?")

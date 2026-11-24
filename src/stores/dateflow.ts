@@ -180,7 +180,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   // Where this viewer stopped in each journey (doc 18, 3c), remembered in their browser
   const journeyProgress = ref<Record<string, JourneyProgress>>(loadJson(JOURNEY_PROGRESS_KEY) ?? {})
   const inviteDismissed = ref(loadJson<boolean>(INVITE_KEY) === true)
-  const journey = ref<{ id: string; restore: { mode: ViewMode; density: Density } | null } | null>(null)
+  // A journey may switch Simple to Standard and Empires & states to Geography; closing switches back
+  const journey = ref<{ id: string; restore: { density: Density; trackAxis: TrackAxis } | null } | null>(null)
   const journeyStep = ref<number | null>(null)
   const theme = ref<Theme>(loadTheme())
   // Phase 11: Colorful (8 family hues, the default) or Subtle (the 3 group hues), remembered per viewer
@@ -693,8 +694,11 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   function openJourney(id: string, from: 'start' | 'resume' = 'start') {
     const target = journeys.value.find((j) => j.id === id)
     if (!target) return
+    // Journeys play in any layout (doc 18, 3f), but need spans: Simple hides them, and Empires & states draws
+    // only states
+    const statesAxis = mode.value === 'constellation' && trackAxis.value === 'states'
     const restore = journey.value?.restore ??
-      (mode.value === 'constellation' || density.value === 'simple' ? { mode: mode.value, density: density.value } : null)
+      (statesAxis || density.value === 'simple' ? { density: density.value, trackAxis: trackAxis.value } : null)
     closeStory()
     closeTour()
     closeTimeMachine()
@@ -702,7 +706,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     selectDuration(null)
     summaryRange.value = null
     focusId.value = null
-    if (mode.value === 'constellation') mode.value = 'world'
+    if (statesAxis) trackAxis.value = 'geography'
     if (density.value === 'simple') density.value = 'standard'
     journey.value = { id, restore }
     inviteDismissed.value = true
@@ -714,8 +718,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     journey.value = null
     journeyStep.value = null
     if (r) {
-      mode.value = r.mode
       density.value = r.density
+      trackAxis.value = r.trackAxis
     }
   }
 
@@ -906,7 +910,6 @@ export const useDateFlowStore = defineStore('dateflow', () => {
 
   function setMode(m: ViewMode) {
     mode.value = m
-    if (journey.value) journey.value.restore = null // the student chose; closing keeps it
   }
 
   function toggleTrack(id: string) {
@@ -915,6 +918,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
 
   function setTrackAxis(t: TrackAxis) {
     trackAxis.value = t
+    if (journey.value) journey.value.restore = null // the student chose; closing keeps it
   }
 
   function toggleLane(id: LaneId) {
