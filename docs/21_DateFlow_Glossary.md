@@ -1,6 +1,8 @@
 # DateFlow Glossary
 
-*Written 2026-11-24, checked against the code and data on that date. It replaces the draft in doc 20, which mixed real terms with ideas DateFlow doesn't have. Sections 1–5 describe what exists. Proposals are kept apart in sections 6 and 7.*
+*Written 2026-11-24, checked against the code and data on that date. It replaces an early draft (doc 20, now deleted), which mixed real terms with ideas DateFlow doesn't have; its useful parts (the audiences, the historical-vs-product distinction, the worked example, the audit steps) are folded in here. Sections 1–5 describe what exists. Proposals are kept apart in sections 6 and 7.*
+
+**Who it's for.** Ram, as a map of what DateFlow contains. Developers and AI agents, so a new feature doesn't duplicate or redefine an existing one. And later, students: §9 is the seed of a short student guide. Throughout, historical things (an event, an empire) are kept apart from DateFlow's own product terms (a layout, a journey).
 
 **How to read the entries.** **Bold** is the term used here. "UI:" is the wording a student sees, and "Code:" is the name in `src/`, where it differs. Counts are from the exported data on 2026-11-24.
 
@@ -46,6 +48,8 @@
 | opposed | opposed | opposed | context | 6 |
 | interacted_with | interacted with | interacted with | context | 2 |
 | evolved_into | evolved into | evolved from | context | 1 |
+
+**Kinds of connection.** Every link type has a *role* (above). A **cause** (contributed to, enabled, influenced, triggered) says one thing helped bring about another. A **sequence** (preceded) says only that one came after the other. A **frame** (began, ended) marks a span's start or end. **Context** (part of, opposed, interacted with, evolved into) is anything else. Things that merely happened at the same time aren't linked at all; DateFlow shows them as *contemporaries* (Meanwhile, the Time Machine). Stories and journey bridges never present a sequence or a coincidence in time as a cause.
 
 ---
 
@@ -120,6 +124,23 @@
 
 ---
 
+## 5a. One subject, every feature: Rome
+
+| Feature | What it shows of Rome |
+|---|---|
+| **World / Lanes** | The Roman Republic and Roman Empire bars in *Empires & dynasties*, the Pax Romana and Fall of the Western Roman Empire in *Periods*, and its events labelled on the axis. |
+| **Life cycle** | The Roman Empire bar shaded by its 7 phases; the card lists them. |
+| **Constellation** | Roman events as dots on the Europe track (Geography) or its own row (Empires & states), with the Republic → Empire bands one after the other. |
+| **Card** | Why it matters, Connections ("evolved into Byzantine Empire"), Meanwhile in Europe, *Compare with* another span. |
+| **Story** | From *Last Western Roman Emperor Deposed*, *How did we get here?* follows the reviewed links back. |
+| **Journey** | Stop 3 of *The Rise and Fall of Empires*, with its narration, its life-cycle strip, and the bridge to Byzantium ("Roman Empire evolved into Byzantine Empire"). |
+| **Time Machine** | *Two empires*: how long Rome and Han China coexisted. *A year*: the world in, say, 117. |
+| **Games** | *Find the Duration*: name the empire from where and when it ruled. |
+
+**In one line each:** a *layout* shows history; a *card* explains one item; a *story* follows its links; a *journey* guides you through a theme; the *Time Machine* compares; the *games* test.
+
+---
+
 ## 6. Where the words collide
 
 These are the places where one word means several things, or several words mean one thing. Each has a proposal; none is decided.
@@ -143,7 +164,7 @@ These are the places where one word means several things, or several words mean 
 
 ---
 
-## 7. Terms from doc 20 that DateFlow does not have
+## 7. Terms DateFlow does not have
 
 To keep them from creeping into specs as if they existed:
 
@@ -155,6 +176,23 @@ To keep them from creeping into specs as if they existed:
 
 ---
 
-## 8. Keeping this current
+## 8. Next steps (the terminology audit)
 
-Update this glossary in the same commit as any change that adds, renames or removes a user-facing term. Doc 18 (roadmap) links here. Doc 20 can be deleted once Ram agrees this replaces it.
+1. ~~**Glossary**~~: this document.
+2. ~~**Inventory**~~: §§1–5 list every item type, layout, control and feature that exists today.
+3. **Classify and decide**: Ram goes through §6 and accepts, changes or rejects each proposal.
+4. **Simplify**: carry out the accepted renames and merges (UI, code, docs), updating this glossary in the same commits.
+5. **Student guide**: from §9, a two-minute "how to use DateFlow" a student can read in the app.
+
+## 9. For students (draft wording)
+
+- **The timeline** runs from 3600 BCE to today. Scroll to zoom: more events appear as you zoom in.
+- **Dots and labels** are events; **bars** are things that lasted (empires, wars, movements, lives). "c." means the date is approximate.
+- **Three layouts:** *World* (everything on one line), *Lanes* (one row per region), *Constellation* (every event as a dot, sorted by region, activity, society or state).
+- **Click anything** to read about it: why it matters, what it's connected to, what was happening elsewhere.
+- **Take a journey** for a guided tour of a big theme, or follow a **story** from any event: *How did we get here?*
+- **Time Machine** to compare years, empires or events; **What happened?** to sum up any stretch of time; **▶ Play** for games.
+
+## 10. Keeping this current
+
+Update this glossary in the same commit as any change that adds, renames or removes a user-facing term. Doc 18 (roadmap) links here. It replaces doc 20 (an early draft, deleted 2026-11-24).
