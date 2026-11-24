@@ -214,6 +214,11 @@ def main():
     p.add_argument("kind", choices=["state", "period"])
     p.set_defaults(fn=lambda a: edit.set_span_kind(a.id, a.kind))
 
+    p = sub.add_parser("set-milestone-label", help="Give a milestone a short name for its DateFlow tag")
+    p.add_argument("id")
+    p.add_argument("label", help='a few words, e.g. "Printing press" ("" clears it)')
+    p.set_defaults(fn=lambda a: edit.set_milestone_label(a.id, a.label))
+
     p = sub.add_parser("set-region", help="Set the region of events and spans (a label from the regions table)")
     p.add_argument("region")
     p.add_argument("ids", nargs="+")

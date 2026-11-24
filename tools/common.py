@@ -29,7 +29,8 @@ APP_FILES = {
     "regions.json": "src/data/regions.json",
     "relationships.json": "src/data/relationships.json",  # links (Step 3c); no legacy original
     "journeys.json": "src/data/journeys.json",  # curated journeys (Phase 14)
-    "states.json": "src/data/states.json",  # event → states, for the Empires & states axis (doc 18, 2a)
+    "states.json": "src/data/states.json",
+    "milestone_labels.json": "src/data/milestone_labels.json",  # short names for DateFlow's milestone tags  # event → states, for the Empires & states axis (doc 18, 2a)
 }
 LEGACY_CSV = "events_master.csv"
 
@@ -60,6 +61,7 @@ ADDED_COLUMNS = [
     ("relationship_types", "symmetric", "INTEGER NOT NULL DEFAULT 0"),
     ("time_spans", "date_display", "TEXT"),
     ("missing_entities", "url", "TEXT"),
+    ("milestone_designations", "short_label", "TEXT"),
 ]
 
 

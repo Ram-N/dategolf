@@ -128,6 +128,13 @@ class TestRename(unittest.TestCase):
         self.assertEqual(quiet(edit.set_span_kind, "mongol-conquests", "era", via="test"), 1)
         self.assertEqual(quiet(edit.set_span_kind, "no-such-id", "period", via="test"), 1)
 
+    def test_set_milestone_label(self):
+        self.assertEqual(quiet(edit.set_milestone_label, "moon-landing", "Moon landing", via="test"), 0)
+        self.assertEqual(db().execute("SELECT short_label FROM milestone_designations "
+                                      "WHERE entity_id = 'moon-landing'").fetchone(), ("Moon landing",))
+        self.assertEqual(log_rows("moon-landing")[-1][0], "set-milestone-label")
+        self.assertEqual(quiet(edit.set_milestone_label, "no-such-id", "x", via="test"), 1)
+
     def test_set_region(self):
         self.assertEqual(quiet(edit.set_region, ["machu-picchu-built", "inca-empire"], "Americas", via="test"), 0)
         self.assertEqual(db().execute("SELECT region FROM events WHERE entity_id = 'machu-picchu-built'").fetchone(),

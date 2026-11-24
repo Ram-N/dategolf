@@ -157,6 +157,7 @@ CREATE TABLE IF NOT EXISTS milestone_designations (
   milestone_set TEXT NOT NULL DEFAULT 'legacy_default',
   display_order INTEGER NOT NULL,
   active        INTEGER NOT NULL DEFAULT 1,
+  short_label   TEXT,  -- a few words for DateFlow's milestone tag ("Printing press"); the event name is the full one
   PRIMARY KEY (milestone_set, entity_id)
 );
 

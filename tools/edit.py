@@ -102,6 +102,26 @@ def set_span_kind(entity_id, kind, via="cli"):
     return 0
 
 
+def set_milestone_label(entity_id, label, via="cli"):
+    """Give a milestone a short name for its DateFlow tag ("" clears it)."""
+    conn = connect()
+    ensure_schema(conn)
+    row = conn.execute("SELECT short_label FROM milestone_designations WHERE milestone_set = 'legacy_default' "
+                       "AND entity_id = ?", (entity_id,)).fetchone()
+    if row is None:
+        print(f"  ✗ {entity_id} is not a milestone")
+        conn.close()
+        return 1
+    label = label.strip() or None
+    conn.execute("UPDATE milestone_designations SET short_label = ? WHERE milestone_set = 'legacy_default' "
+                 "AND entity_id = ?", (label, entity_id))
+    log(conn, "set-milestone-label", entity_id, f"{row[0]} → {label}", via=via)
+    conn.commit()
+    conn.close()
+    print(f"  ✓ {entity_id}: {label}")
+    return 0
+
+
 def set_region(entity_ids, region, via="cli"):
     """Set the region of events and spans (both rows when an id is both). The region must be in the regions table."""
     conn = connect()

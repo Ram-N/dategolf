@@ -45,17 +45,23 @@
         :stroke="t.year === 0 ? 'var(--df-axis)' : 'var(--df-grid)'"
       />
 
-      <!-- Milestone section lines run through every lane, so they line up across regions -->
-      <line
+      <!-- Milestone section lines run through every lane, so they line up across regions. Each is
+           named in a tag in the era strip (when there's room) and opens its event's card on click. -->
+      <g
         v-for="ms in milestoneLines"
         :key="ms.id"
-        :x1="ms.x"
-        :x2="ms.x"
-        y1="0"
-        :y2="height"
-        class="milestone-line"
-        pointer-events="none"
-      />
+        class="milestone cursor-pointer"
+        @click.stop="onMarkerClick(ms.id)"
+      >
+        <title>{{ ms.tooltip }}</title>
+        <line :x1="ms.x" :x2="ms.x" y1="0" :y2="height" class="milestone-line" />
+        <!-- A wider invisible stroke makes the thin dashed line easy to hover -->
+        <line :x1="ms.x" :x2="ms.x" y1="0" :y2="height" class="milestone-hit" />
+        <template v-if="ms.tag !== null">
+          <rect :x="ms.x - 4" y="9" :width="ms.tagW" height="15" rx="7.5" class="milestone-tag" />
+          <text :x="ms.x + 2" y="20" class="milestone-tag-text">◆<tspan v-if="ms.tag" dx="3">{{ ms.tag }}</tspan></text>
+        </template>
+      </g>
 
       <!-- Date Constellation: every event as a dot on its track; no labels or bars -->
       <g v-if="constellation">
@@ -333,6 +339,7 @@ import type { Event } from '@/types'
 import type { Span } from '@/types/dateflow'
 import erasData from '@/data/eras.json'
 import milestoneIds from '@/data/milestones.json'
+import milestoneLabels from '@/data/milestone_labels.json'
 import { formatTick, span, ticks, xToYear, yearToX, type View } from '@/engine/dateflow/timeScale'
 import { importanceThreshold, type Density } from '@/engine/dateflow/filters'
 import {
@@ -435,6 +442,7 @@ const LANE_THREE_ROW_MIN_H = 160 // room for a People row too
 const BAR_MIN_PX = 80 // a bar this wide shows even if below the importance threshold
 
 const MILESTONE_RANK = new Map((milestoneIds as string[]).map((id, i) => [id, i]))
+const MILESTONE_LABEL = new Map(Object.entries(milestoneLabels as Record<string, string>))
 const LANE_LABEL = new Map(LANES.map((l) => [l.id, l.label]))
 
 // ── Size ────────────────────────────────────────────────────────────────────
@@ -490,8 +498,20 @@ const milestoneLines = computed(() => {
     .filter((e) => e.year >= props.view.start && e.year <= props.view.end)
     .filter((e) => MILESTONE_RANK.has(e.id))
     .sort((a, b) => MILESTONE_RANK.get(a.id)! - MILESTONE_RANK.get(b.id)!)
-    .map((e) => ({ id: e.id, x: yearToX(e.year, props.view, width.value) }))
-  return spaceMilestones(ranked, MILESTONE_GAP_PX)
+    .map((e) => ({ id: e.id, name: MILESTONE_LABEL.get(e.id) ?? e.name, x: yearToX(e.year, props.view, width.value),
+      tooltip: `Milestone · ${formatEventYear(e.year, e.approximate)} — ${e.name} (click to open)` }))
+  const lines = spaceMilestones(ranked, MILESTONE_GAP_PX).sort((a, b) => a.x - b.x)
+  // Name tags share the era strip with era names, which win. A tag shows the milestone's short name
+  // when it fits before the next line, else a bare ◆ (the full event name is on hover).
+  const eraNames = eraBands.value.filter((e) => e.showLabel).map((e) => [e.labelX - 6, e.labelX + e.name.length * 8.5 + 6])
+  return lines.map((m, i) => {
+    const end = Math.min(lines[i + 1]?.x ?? width.value, width.value) - 6
+    const clash = (x1: number, x2: number) => eraNames.some(([a, b]) => x1 < b! && x2 > a!)
+    const text = m.name.length * BAR_CHAR_W + 21 <= end - m.x ? m.name : '' // ◆ and padding
+    const tagW = (text ? text.length * BAR_CHAR_W + 3 : 0) + 18
+    if (!clash(m.x - 4, m.x - 4 + tagW)) return { ...m, tag: text, tagW }
+    return { ...m, tag: clash(m.x - 4, m.x + 14) ? null : '', tagW: 18 }
+  })
 })
 
 // ── Tracks ──────────────────────────────────────────────────────────────────
@@ -1234,6 +1254,30 @@ function onArcClick(key: string, e: MouseEvent) {
   stroke: var(--df-milestone);
   stroke-width: 1.5;
   stroke-dasharray: 6 4;
+  pointer-events: none;
+}
+.milestone-hit {
+  stroke: transparent;
+  stroke-width: 9;
+  pointer-events: stroke;
+}
+.milestone-tag {
+  fill: var(--df-bg);
+  stroke: var(--df-milestone);
+  stroke-width: 1;
+}
+.milestone-tag-text {
+  fill: var(--df-text-2);
+  font-size: 10px;
+  font-weight: 600;
+  pointer-events: none;
+}
+.milestone:hover .milestone-line {
+  stroke: var(--df-text);
+  stroke-dasharray: none;
+}
+.milestone:hover .milestone-tag {
+  stroke: var(--df-text);
 }
 .lane-rule {
   stroke: var(--df-border-soft);

@@ -138,6 +138,13 @@ def render_milestones(conn):
         "WHERE milestone_set = 'legacy_default' AND active = 1 ORDER BY display_order")])
 
 
+def render_milestone_labels(conn):
+    """Short names for DateFlow's milestone tags (milestones.json stays a plain id list for DateGolf)."""
+    return dumps({r["entity_id"]: r["short_label"] for r in conn.execute(
+        "SELECT entity_id, short_label FROM milestone_designations WHERE milestone_set = 'legacy_default' "
+        "AND active = 1 AND short_label IS NOT NULL ORDER BY display_order")})
+
+
 def render_daily(conn):
     out = {}
     for r in conn.execute("SELECT * FROM daily_challenges ORDER BY date_key, position"):
@@ -232,6 +239,7 @@ RENDERERS = {
     "relationships.json": render_relationships,
     "journeys.json": render_journeys,
     "states.json": render_states,
+    "milestone_labels.json": render_milestone_labels,
 }
 
 

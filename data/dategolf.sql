@@ -11829,25 +11829,25 @@ CREATE TABLE milestone_designations (
   entity_id     TEXT NOT NULL REFERENCES entities(id) ON DELETE CASCADE,
   milestone_set TEXT NOT NULL DEFAULT 'legacy_default',
   display_order INTEGER NOT NULL,
-  active        INTEGER NOT NULL DEFAULT 1,
+  active        INTEGER NOT NULL DEFAULT 1, short_label TEXT,
   PRIMARY KEY (milestone_set, entity_id)
 );
-INSERT INTO "milestone_designations" VALUES('sumerian-writing','legacy_default',0,1);
-INSERT INTO "milestone_designations" VALUES('gutenberg-printing-press','legacy_default',1,1);
-INSERT INTO "milestone_designations" VALUES('columbus-reaches-americas','legacy_default',2,1);
-INSERT INTO "milestone_designations" VALUES('industrial-revolution-textile','legacy_default',3,1);
-INSERT INTO "milestone_designations" VALUES('birth-of-buddha','legacy_default',4,1);
-INSERT INTO "milestone_designations" VALUES('fall-of-roman-empire-west','legacy_default',5,1);
-INSERT INTO "milestone_designations" VALUES('moon-landing','legacy_default',6,1);
-INSERT INTO "milestone_designations" VALUES('end-world-war-two','legacy_default',7,1);
-INSERT INTO "milestone_designations" VALUES('french-revolution','legacy_default',8,1);
-INSERT INTO "milestone_designations" VALUES('hijra','legacy_default',9,1);
-INSERT INTO "milestone_designations" VALUES('egyptian-pyramids-built','legacy_default',10,1);
-INSERT INTO "milestone_designations" VALUES('greek-democracy-athens','legacy_default',11,1);
-INSERT INTO "milestone_designations" VALUES('augustus-first-emperor','legacy_default',12,1);
-INSERT INTO "milestone_designations" VALUES('world-war-one','legacy_default',13,1);
-INSERT INTO "milestone_designations" VALUES('internet-invented','legacy_default',14,1);
-INSERT INTO "milestone_designations" VALUES('newton-laws-of-motion','legacy_default',15,1);
+INSERT INTO "milestone_designations" VALUES('sumerian-writing','legacy_default',0,1,'Writing in Sumer');
+INSERT INTO "milestone_designations" VALUES('gutenberg-printing-press','legacy_default',1,1,'Printing press');
+INSERT INTO "milestone_designations" VALUES('columbus-reaches-americas','legacy_default',2,1,'Columbus');
+INSERT INTO "milestone_designations" VALUES('industrial-revolution-textile','legacy_default',3,1,'Industrial Revolution');
+INSERT INTO "milestone_designations" VALUES('birth-of-buddha','legacy_default',4,1,'Buddha born');
+INSERT INTO "milestone_designations" VALUES('fall-of-roman-empire-west','legacy_default',5,1,'Western Rome ends');
+INSERT INTO "milestone_designations" VALUES('moon-landing','legacy_default',6,1,'Moon landing');
+INSERT INTO "milestone_designations" VALUES('end-world-war-two','legacy_default',7,1,'WWII ends');
+INSERT INTO "milestone_designations" VALUES('french-revolution','legacy_default',8,1,'French Revolution');
+INSERT INTO "milestone_designations" VALUES('hijra','legacy_default',9,1,'Hijra');
+INSERT INTO "milestone_designations" VALUES('egyptian-pyramids-built','legacy_default',10,1,'Great Pyramid');
+INSERT INTO "milestone_designations" VALUES('greek-democracy-athens','legacy_default',11,1,'Athenian democracy');
+INSERT INTO "milestone_designations" VALUES('augustus-first-emperor','legacy_default',12,1,'Augustus');
+INSERT INTO "milestone_designations" VALUES('world-war-one','legacy_default',13,1,'WWI begins');
+INSERT INTO "milestone_designations" VALUES('internet-invented','legacy_default',14,1,'World Wide Web');
+INSERT INTO "milestone_designations" VALUES('newton-laws-of-motion','legacy_default',15,1,'Newton''s Principia');
 CREATE TABLE missing_entities (
   id          INTEGER PRIMARY KEY,
   kind        TEXT NOT NULL CHECK (kind IN ('event', 'span')),
@@ -14884,6 +14884,22 @@ INSERT INTO "review_log" VALUES(2296,'2026-11-24 22:50:59','set-region','waterga
 INSERT INTO "review_log" VALUES(2297,'2026-11-24 22:50:59','set-region','conquest-of-peru-inca','Americas → South America','cli');
 INSERT INTO "review_log" VALUES(2298,'2026-11-24 22:50:59','set-region','first-football-world-cup','Americas → South America','cli');
 INSERT INTO "review_log" VALUES(2299,'2026-11-24 22:50:59','set-region','inca-empire','Americas → South America','cli');
+INSERT INTO "review_log" VALUES(2300,'2026-11-24 23:28:21','set-milestone-label','sumerian-writing','None → Writing in Sumer','cli');
+INSERT INTO "review_log" VALUES(2301,'2026-11-24 23:28:22','set-milestone-label','gutenberg-printing-press','None → Printing press','cli');
+INSERT INTO "review_log" VALUES(2302,'2026-11-24 23:28:22','set-milestone-label','columbus-reaches-americas','None → Columbus','cli');
+INSERT INTO "review_log" VALUES(2303,'2026-11-24 23:28:23','set-milestone-label','industrial-revolution-textile','None → Industrial Revolution','cli');
+INSERT INTO "review_log" VALUES(2304,'2026-11-24 23:28:23','set-milestone-label','birth-of-buddha','None → Buddha born','cli');
+INSERT INTO "review_log" VALUES(2305,'2026-11-24 23:28:23','set-milestone-label','fall-of-roman-empire-west','None → Western Rome ends','cli');
+INSERT INTO "review_log" VALUES(2306,'2026-11-24 23:28:24','set-milestone-label','moon-landing','None → Moon landing','cli');
+INSERT INTO "review_log" VALUES(2307,'2026-11-24 23:28:24','set-milestone-label','end-world-war-two','None → WWII ends','cli');
+INSERT INTO "review_log" VALUES(2308,'2026-11-24 23:28:25','set-milestone-label','french-revolution','None → French Revolution','cli');
+INSERT INTO "review_log" VALUES(2309,'2026-11-24 23:28:25','set-milestone-label','hijra','None → Hijra','cli');
+INSERT INTO "review_log" VALUES(2310,'2026-11-24 23:28:26','set-milestone-label','egyptian-pyramids-built','None → Great Pyramid','cli');
+INSERT INTO "review_log" VALUES(2311,'2026-11-24 23:28:26','set-milestone-label','greek-democracy-athens','None → Athenian democracy','cli');
+INSERT INTO "review_log" VALUES(2312,'2026-11-24 23:28:27','set-milestone-label','augustus-first-emperor','None → Augustus','cli');
+INSERT INTO "review_log" VALUES(2313,'2026-11-24 23:28:27','set-milestone-label','world-war-one','None → WWI begins','cli');
+INSERT INTO "review_log" VALUES(2314,'2026-11-24 23:28:27','set-milestone-label','internet-invented','None → World Wide Web','cli');
+INSERT INTO "review_log" VALUES(2315,'2026-11-24 23:28:28','set-milestone-label','newton-laws-of-motion','None → Newton''s Principia','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),
