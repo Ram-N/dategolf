@@ -565,7 +565,8 @@ describe('constellation', () => {
   it('puts events on geography or activity tracks', () => {
     const e = { region: 'North America', categories: ['Technology', 'War'] }
     expect(trackOf(e, 'geography')).toBe('americas')
-    expect(trackOf(e, 'activity')).toBe('science') // primary category decides
+    expect(trackOf(e, 'activity')).toBe('science') // the family of the primary category
+    expect(trackOf({ region: 'Mars', categories: ['Exploration'] }, 'activity')).toBe('earth') // as its shape
     expect(trackOf({ region: 'Mars', categories: [] }, 'activity')).toBe('society')
   })
 

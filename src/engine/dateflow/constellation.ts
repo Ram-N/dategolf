@@ -1,7 +1,8 @@
+import { FAMILIES, familyFor } from './categoryGroups'
 import { laneFor, LANES, type LaneId } from './lanes'
 
 // Date Constellation (issues #5–#7): every event as a dot, no labels, on switchable Y-axis tracks.
-// Geography reuses the regional lanes; Human activity groups events by their primary category;
+// Geography reuses the regional lanes; Human activity groups events by their family (primary category);
 // Society (doc 18, 2b) by their first non-political one; Empires & states (2a) gives a row to each
 // state in view, from states.json.
 
@@ -26,31 +27,8 @@ export interface ConstellationTrack {
 const GEO_ORDER: LaneId[] = ['europe', 'africa', 'middle-east', 'south-asia', 'east-asia', 'americas', 'global']
 const LANE_LABEL = new Map(LANES.map((l) => [l.id, l.label]))
 
-export const ACTIVITY_TRACKS: ConstellationTrack[] = [
-  { id: 'politics', label: 'Politics' },
-  { id: 'war', label: 'Warfare' },
-  { id: 'science', label: 'Science & Technology' },
-  { id: 'belief', label: 'Religion & Thought' },
-  { id: 'culture', label: 'Arts & Culture' },
-  { id: 'society', label: 'Society & Economy' },
-]
-
-const ACTIVITY_BY_CATEGORY: Record<string, string> = {
-  Politics: 'politics',
-  War: 'war',
-  Science: 'science',
-  Technology: 'science',
-  Medicine: 'science',
-  Exploration: 'science',
-  Religion: 'belief',
-  Philosophy: 'belief',
-  Culture: 'culture',
-  Arts: 'culture',
-  Sports: 'culture',
-  Social: 'society',
-  Economy: 'society',
-  Disasters: 'society',
-}
+// Human activity: one track per category family (doc 21 §6.3), so a dot's shape always matches its track
+export const ACTIVITY_TRACKS: ConstellationTrack[] = FAMILIES.map((f) => ({ id: f.id, label: f.label }))
 
 // Society (#7): the side of history that isn't politics or war. An event sits on the track of its first
 // category that has one; an event that is only politics or war goes to the last track, switched off at first.
@@ -94,7 +72,7 @@ export function tracksFor(axis: TrackAxis): ConstellationTrack[] {
 export function trackOf(e: { region: string; categories: string[] }, axis: FixedAxis): string {
   if (axis === 'geography') return laneFor(e.region)
   if (axis === 'society') return e.categories.map((c) => SOCIETY_BY_CATEGORY[c]).find(Boolean) ?? 'politics-war'
-  return ACTIVITY_BY_CATEGORY[e.categories[0] ?? ''] ?? 'society'
+  return familyFor(e.categories) // activity
 }
 
 /**
