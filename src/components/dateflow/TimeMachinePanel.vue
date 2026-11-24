@@ -185,7 +185,7 @@ const emit = defineEmits<{
 const TABS: { id: TimeMachineMode; label: string }[] = [
   { id: 'year', label: 'A year' },
   { id: 'compare', label: 'Two years' },
-  { id: 'overlap', label: 'Two empires' },
+  { id: 'overlap', label: 'Two empires or periods' },
   { id: 'distance', label: 'Two events' },
 ]
 const GROUPS: { key: 'gone' | 'new' | 'continuing' | 'cameAndWent'; label: string }[] = [

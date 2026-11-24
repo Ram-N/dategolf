@@ -18,7 +18,7 @@
 | **Period** (span kind) | Any span that isn't a state: wars, movements, cultural periods (Italian Renaissance, Industrial Revolution), and people's lives. | UI: the "Periods" row, drawn dashed | 110 |
 | **Person** | A period span flagged `person`: a life, birth to death, with a `role`. | UI: the "People" row (World and Lanes), rounded pills; a person's card lists who was *Alive at the same time* | 12 (pilot) |
 | **Sub-span** | A span that is `part_of` another span (Shah Jahan's reign inside the Mughal Empire). | UI: a labelled segment inside the parent's bar once zoomed in (≥ 48 px), two levels deep | — |
-| **Life cycle / phase** | An empire's years split into contiguous phases, each with a neutral **kind** (foundation, expansion, consolidation, height, transformation, contraction, end), a title, a description and, sometimes, the milestone event that *opens* it. Never a verdict ("golden age", "decline"). | UI: the bar shaded by phase; the card's *Life cycle* list; the strip in a journey stop. Code: `phases` on a `Duration` | 3 (Roman, Ottoman, Mughal) |
+| **Life cycle / phase** | An empire's years split into contiguous phases, each with a neutral **kind** (foundation, expansion, consolidation, height, transformation, contraction, end), a title, a description and, sometimes, the event that *opens* it (*Opens with* in the card; not called a milestone). Never a verdict ("golden age", "decline"). | UI: the bar shaded by phase; the card's *Life cycle* list; the strip in a journey stop. Code: `phases` on a `Span` | 3 (Roman, Ottoman, Mughal) |
 | **Historical Current** | A span flagged `current`: a long movement (Axial Age, Enlightenment, Decolonization…) drawn as a translucent band behind the timeline, at most 3 at any year. Hidden in Simple, Constellation, stories, the Time Machine and journeys. | UI: background bands. Code: `current`, `pickCurrents` | 9 |
 | **Link** | A reviewed relationship between two items, stored once and read from either side ("is part of" / "includes"), with a one-line *why* and a confidence (medium/low show as *debated*). Eleven **types** (table below). | UI: "Connections" on a card. Code: `relationships.json`; also called *relationship* and *connection* | 493 |
 | **State (of an event)** | Which state(s) an event belongs to: from reviewed ties, or from a `part_of` / `began` / `ended` link to an empire-kind span (directly or through a sub-span). An event of two states, such as a war, has both. | UI: the *Empires & states* axis. Code: `states.json`, db `event_states` | 282 events |
@@ -26,7 +26,7 @@
 | **Era** | One of five fixed slices of history: Ancient (to 800 BCE), Classical (800 BCE–500), Medieval (500–1500), Early Modern (1500–1800), Modern (1800–). | UI: the era chips (each jumps to its era) and the named, alternately shaded era bands. Code: `eras.json`, span kind `era` in the db | 5 |
 | **Category** | Subject tags on an event or span, the first one being the **primary** category. | UI: the Filters menu. Code: `categories` | 14 |
 | **Family** | The 8 groups the categories fold into, for colour and **shape** (Politics & Governance ●, Wars & Conflicts ▲, Science & Technology ◆, Exploration & Environment ✚, Arts & Culture ★, Religion & Philosophy ⬢, Economy & Trade ■, Society & People ▼). Set by the primary category. | UI: the legend. Code: `Family`, `categoryGroups.ts` | 8 |
-| **Region** | Where an item belongs: one of 12 labels in the data, each mapped to one of 7 **lanes** (South Asia, East Asia, Europe, Middle East, Africa, Americas, Global). Unknown → Global. | Code: `region`, `regions.json`, `laneFor` | 12 labels → 7 lanes |
+| **Region** | Where an item belongs: one of 13 labels in the data, each mapped to one of 7 **lanes** (South Asia, East Asia, Europe, Middle East, Africa, Americas, Global). Unknown → Global. In the Americas, items use *North America* (with Mexico, Central America and the Caribbean) or *South America*; *Americas* only for something spanning both (3 events, 1 span). | Code: `region`, `regions.json`, `laneFor`; `manage.py set-region` | 13 labels → 7 lanes |
 | **Importance** | 1–9. It decides what shows at each zoom, label priority, dot size, and which states get rows. It's a display priority, not a verdict on history. (A rubric is being drafted in doc 19.) | Code: `importance` | events mostly 3–6 |
 | **Approximate / historians' dates** | A date known only roughly is flagged `approximate` and shown with **c.**; `dateDisplay` holds the true range or the dispute ("traditionally 563–483 BCE; many scholars c. 480–400 BCE"). | UI: "c.", the *≈ Approximate* badge, "Historians' dates:" on a card | 55 events |
 | **Why it matters** | A reviewed paragraph on an item's significance. | UI: *Why it matters* on a card. Code: `significance` | — |
@@ -103,7 +103,7 @@
 | **Journey** | A curated, reviewed guided path through a big theme: an intro, 8–10 **stops** (each showing existing events or spans, with narration), a closing, and a **Think about it** question on a few stops. Between stops a **bridge** says how they connect: a reviewed link if there is one, else "at the same time" or "538 years later", never an implied cause. A stop with an empire shows its life-cycle strip. Plays in any layout. | *Journeys* menu (with *Continue* / *Start over* / *✓ Finished*); the first-visit invitation card; `?journey=` |
 | **Search results** | Steps through search results in time order: *Overview*, then each match, with ‹ ›, a scrubber, and *Play* at Slow / Normal / Fast. | Search box |
 | **Play through** | The same panel (titled *Play through history*), stepping through every event the filters let through. | *Play through* button |
-| **Time Machine** | Four comparisons: **A year** (each region's empires, periods and events around one year), **Two years** (what was *Gone*, *New*, *Still there*, *Came and went*), **Two empires** (how long two spans overlapped or how far apart they were), **Two events** (the years between them, plus a striking comparison with a famous third event). | *Time Machine* button; span card *Compare with* |
+| **Time Machine** | Four comparisons: **A year** (each region's empires, periods and events around one year), **Two years** (what was *Gone*, *New*, *Still there*, *Came and went*), **Two empires or periods** (how long two spans overlapped or how far apart they were), **Two events** (the years between them, plus a striking comparison with a famous third event). | *Time Machine* button; span card *Compare with* |
 | **What happened?** | A summary of the view, or a shift-dragged stretch of years: its empires and states, periods, and top events around the world. | *What happened?* button; shift-drag |
 | **Meanwhile** | The "elsewhere at the same time" sections of a card (§2). | Cards |
 | **Surprise Me** | Opens a random event, preferring ones with a story, without repeating the last 20. | *Surprise Me* button |
@@ -134,7 +134,7 @@
 | **Card** | Why it matters, Connections ("evolved into Byzantine Empire"), Meanwhile in Europe, *Compare with* another span. |
 | **Story** | From *Last Western Roman Emperor Deposed*, *How did we get here?* follows the reviewed links back. |
 | **Journey** | Stop 3 of *The Rise and Fall of Empires*, with its narration, its life-cycle strip, and the bridge to Byzantium ("Roman Empire evolved into Byzantine Empire"). |
-| **Time Machine** | *Two empires*: how long Rome and Han China coexisted. *A year*: the world in, say, 117. |
+| **Time Machine** | *Two empires or periods*: how long Rome and Han China coexisted. *A year*: the world in, say, 117. |
 | **Games** | *Find the Duration*: name the empire from where and when it ruled. |
 
 **In one line each:** a *layout* shows history; a *card* explains one item; a *story* follows its links; a *journey* guides you through a theme; the *Time Machine* compares; the *games* test.
@@ -143,7 +143,7 @@
 
 ## 6. Where the words collide
 
-These are the places where one word means several things, or several words mean one thing. Each has a proposal; none is decided.
+These are the places where one word means several things, or several words mean one thing. Each has a proposal. All 16 were decided and carried out on 2026-11-24.
 
 1. ~~**Span / Duration / time span / "bar".**~~ **Done 2026-11-24:** "span" in docs and conversation; the code type `Duration` is now `Span` (variable and file names such as `durations.json` and `DurationInfoCard` are unchanged for now).
 2. **"Empire" covers every state, and some things that aren't states.** The kind includes kingdoms, dynasties, republics and Athens, *and* civilizations such as the Indus Valley, Classic Maya and Teotihuacan, which weren't single states. The same kind is labelled four ways: *Empires & dynasties* (World row), *Empire* (legend), *Empire / dynasty* (card), *Empires & states* (axis). *Proposal:* call the kind **state** throughout ("Empires & states" everywhere), and move the civilizations to a period kind (or a new *civilization* kind) after review. **Done 2026-11-24** for the kind and the labels (db, tools, drafting rules, app); Indus Valley and Classic Maya moved to period on Ram's review; Teotihuacan and Great Zimbabwe stay states (a city-state and a kingdom's capital).
@@ -157,10 +157,10 @@ These are the places where one word means several things, or several words mean 
 10. **Three ways to hide a region.** The Filters region checkboxes, the Lanes menu, and the Constellation's Geography track toggles all do it, with separate memories. *Proposal:* one region on/off state shared by all three. **Done 2026-11-24, as two switches (Ram's choice):** one region switch shared by Filters and the Geography tracks, off in every layout; the Lanes menu stays the Lanes layout's own choice of rows (still 4 by default, since 6–7 lanes leave no room for labels), minus any region switched off. Old saved region choices carry over.
 11. **Layout / mode / view.** UI says nothing ("World · Lanes · Constellation"); code says `mode`; "view" in code is the visible window. *Proposal:* "layout" in docs and UI hints; "view" only for the visible window. **Done 2026-11-24:** the layout buttons' hints say *Layout: …*; the one hint that said "Lanes view" is gone. The code keeps `mode`.
 12. **Lane / track / row.** Lanes (Lanes layout, regions), tracks (Constellation, any axis) and rows (World's bar rows, the Empires & states axis). Defensible, but worth keeping exactly so. **Agreed 2026-11-24:** lanes are Lanes-layout regions, tracks are Constellation's, rows are bar rows and the Empires & states axis's rows.
-13. **Connections / links / relationships.** One thing. *Proposal:* "Connections" in the UI, "links" everywhere else; "relationships" only for the file name.
-14. **Regions in the data are inconsistent.** Events use *Americas* (54) and also *North America* (12) and *South America* (3), which land in the same lane. *Proposal:* a data pass to settle one scheme (likely the sub-regions, since they're more informative), as with Southeast Asia and Oceania.
-15. **"Two empires" isn't limited to empires.** The Time Machine's overlap mode takes any two spans (the span card's *Compare with* sends periods too). *Proposal:* label it *Two spans*, or *Two empires or periods*.
-16. **Milestone, two uses.** The 16 milestone events, and a phase's "opens with" event in a life cycle. Minor; keep "milestone" for the 16.
+13. **Connections / links / relationships.** One thing. *Proposal:* "Connections" in the UI, "links" everywhere else; "relationships" only for the file name. **Done 2026-11-24:** the one UI "links" (the story panel's footer) now says *reviewed connections*; the code keeps `relationships` for the file's contents.
+14. **Regions in the data are inconsistent.** Events use *Americas* (54) and also *North America* (12) and *South America* (3), which land in the same lane. *Proposal:* a data pass to settle one scheme (likely the sub-regions, since they're more informative), as with Southeast Asia and Oceania. **Done 2026-11-24:** 51 events and 14 spans moved to *North America* or *South America*; *Americas* is kept for Columbus, the Latin American wars of independence and the Spanish–American War. The drafting rules (doc 15, `ai-reference`) say so; new tool `manage.py set-region`.
+15. **"Two empires" isn't limited to empires.** The Time Machine's overlap mode takes any two spans (the span card's *Compare with* sends periods too). *Proposal:* label it *Two spans*, or *Two empires or periods*. **Done 2026-11-24:** *Two empires or periods* (students never see "span").
+16. **Milestone, two uses.** The 16 milestone events, and a phase's "opens with" event in a life cycle. Minor; keep "milestone" for the 16. **Done 2026-11-24:** the card already said *Opens with*; the glossary and a code comment no longer call it a milestone.
 
 ---
 
@@ -180,8 +180,8 @@ To keep them from creeping into specs as if they existed:
 
 1. ~~**Glossary**~~: this document.
 2. ~~**Inventory**~~: §§1–5 list every item type, layout, control and feature that exists today.
-3. **Classify and decide**: Ram goes through §6 and accepts, changes or rejects each proposal.
-4. **Simplify**: carry out the accepted renames and merges (UI, code, docs), updating this glossary in the same commits.
+3. ~~**Classify and decide**~~: Ram accepted all 16 proposals in §6 (2026-11-24; for 8 the slider was dropped, for 10 two switches rather than one).
+4. ~~**Simplify**~~: done 2026-11-24, glossary updated in the same commits.
 5. **Student guide**: from §9, a two-minute "how to use DateFlow" a student can read in the app.
 
 ## 9. For students (draft wording)

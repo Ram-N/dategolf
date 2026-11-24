@@ -31,7 +31,7 @@ export interface Phase {
   description: string
   approximate?: boolean
   dateDisplay?: string
-  startEvent?: string // the milestone event that opens it
+  startEvent?: string // the event that opens it ("milestone" is kept for the 16 milestones)
 }
 
 // ── Relationships ─────────────────────────────────────────────────────────────

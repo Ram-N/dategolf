@@ -125,7 +125,7 @@
       :class="{ open: moreOpen }"
       @click="closeAfterAction"
     >
-      <button class="btn" title="See the whole world in one year, compare two years, or two empires" @click="emit('timeMachine')">
+      <button class="btn" title="See the whole world in one year, compare two years, two empires or periods, or two events" @click="emit('timeMachine')">
         Time Machine
       </button>
       <button class="btn" title="Open a random event and explore from there" @click="emit('surprise')">

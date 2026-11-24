@@ -70,7 +70,7 @@
       <button v-if="story.truncated" class="extend" @click="emit('extend')">
         {{ story.direction === 'back' ? 'Go further back' : 'Go further ahead' }} (+4 steps)
       </button>
-      <p class="foot">Built from {{ story.edges.length }} reviewed links. A thin grey "then" is a sequence, not a cause.</p>
+      <p class="foot">Built from {{ story.edges.length }} reviewed connections. A thin grey "then" is a sequence, not a cause.</p>
     </div>
   </aside>
 </template>
