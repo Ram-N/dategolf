@@ -13,8 +13,8 @@
 | Term | What it is | UI / Code | Now |
 |---|---|---|---|
 | **Event** | Something that happened in one year (`year`; negative = BCE, no year 0). The same events also feed DateGolf and DatePick. | UI: an event, a dot or label. Code: `Event`, `events.json` | 522 |
-| **Span** | Something with a start and an end year. It has a **kind**: `empire` or `period` (a third kind, `era`, is exported separately, see *Era*). | UI: never says "span"; shows a bar under *Empires & dynasties*, *Periods* or *People*. Code: `Duration`, `durations.json`; db: `time_spans` | 193 (85 empire, 108 period) |
-| **Empire** (span kind) | Any state-like span: empires, but also kingdoms, dynasties, sultanates, shogunates, republics, city-states (Classical Athens) and some civilizations (Indus Valley, Classic Maya, Teotihuacan). See §6.2. | UI: "Empires & dynasties" row, "Empire" in the legend, "Empire / dynasty" on its card, a row on the *Empires & states* axis | 85 |
+| **Span** | Something with a start and an end year. It has a **kind**: `state` or `period` (a third kind, `era`, is exported separately, see *Era*). | UI: never says "span"; shows a bar under *Empires & states*, *Periods* or *People*. Code: `Span`, `durations.json`; db: `time_spans` | 193 (85 state, 108 period) |
+| **State** (span kind) | A polity: empires, kingdoms, dynasties, sultanates, shogunates, republics, city-states (Classical Athens). Some civilizations are still in this kind pending review (Indus Valley, Classic Maya, Teotihuacan; §6.2). | UI: "Empires & states" for a group (World row, *What happened?*, Meanwhile, the axis), "Empire or state" for one (legend, card) | 85 |
 | **Period** (span kind) | Any span that isn't a state: wars, movements, eras of culture (Italian Renaissance, Industrial Revolution), and people's lives. | UI: the "Periods" row, drawn dashed | 108 |
 | **Person** | A period span flagged `person`: a life, birth to death, with a `role`. | UI: the "People" row (World and Lanes), rounded pills; a person's card lists who was *Alive at the same time* | 12 (pilot) |
 | **Sub-span** | A span that is `part_of` another span (Shah Jahan's reign inside the Mughal Empire). | UI: a labelled segment inside the parent's bar once zoomed in (≥ 48 px), two levels deep | — |
@@ -60,10 +60,10 @@
 | **Timeline** | The whole time canvas, 3600 BCE to 2030, strictly linear (one year is the same width everywhere at a given zoom). Zooming reveals more events rather than enlarging them. | — |
 | **View** | The window of years on screen right now. | UI: the range under the DateFlow title ("1500 – 1800 · 300 years"). Code: `View` |
 | **Layout** | How the timeline is drawn: **World**, **Lanes** or **Constellation**. Every visit opens on Constellation. | UI: the first toolbar group (aria "Timeline layout"). Code: `mode` / `ViewMode` |
-| **World** | One shared axis with labelled events above and below, then bar rows: *Empires & dynasties*, *Periods*, *People*. | — |
+| **World** | One shared axis with labelled events above and below, then bar rows: *Empires & states*, *Periods*, *People*. | — |
 | **Lanes** | One horizontal lane per region, each with its own events and bars; the **Lanes menu** hides and reorders lanes. | Code: `LaneState` |
 | **Constellation** | Every event as an unlabelled dot (size = importance, on a log scale; shape and colour = family) on horizontal **tracks**, chosen by an **axis**. Spans of importance 5+ sit as thin bars along the bottom of their track. Hover a dot for its name; click to open its card. | — |
-| **Axis (Constellation)** | What the tracks mean, chosen in the toolbar: **Geography** (the 7 lanes), **Human activity** (6 tracks by primary category), **Society** (7 tracks by the first non-political category; a *Politics & war* track starts switched off), **Empires & states** (a row per state in view, up to 8, with a band for its lifetime, then *Other*). | Code: `TrackAxis` |
+| **Axis (Constellation)** | What the tracks mean, chosen in the toolbar: **Geography** (the 7 lanes), **Human activity** (the 8 families, so a dot's shape always matches its track), **Society** (7 tracks by the first non-political category; a *Politics & war* track starts switched off), **Empires & states** (a row per state in view, up to 8, with a band for its lifetime, then *Other*). | Code: `TrackAxis` |
 | **Track** | One horizontal row of the Constellation. Clicking its name switches it off (it shrinks to a strip); remembered per axis. | Code: `layoutTracks`, `hiddenTracks` |
 | **Bar** | A span drawn across its years: solid for empires, dashed for periods, a rounded pill for people, shaded by phase where it has a life cycle. | — |
 | **Era band / era chip** | See *Era* (§1). | — |
@@ -73,7 +73,7 @@
 | **Rings / dimming** | Items outlined while everything else fades: an open story, journey, search, the Time Machine, or *Show connections*. | Code: `highlightIds`, `lit` |
 | **Minimap** | The strip under the toolbar showing how many events fall in each slice of all history; the box is the current view; click to jump. | Code: `DateFlowMinimap`, `densityBins` |
 | **Legend** | The family shapes and colours along the bottom; click a family to **Focus** on it (§3). | — |
-| **Card** | The panel for one item. *Event card*: date, Why it matters, approximate note, Connections, story buttons, *Before & after in* its lane, *Meanwhile around the world* (±50 years), *Empires in* its year. *Span card*: years, historians' dates, Why it matters, *Alive at the same time* (people), *Life cycle*, Connections, *Meanwhile in* its region, *Compare with* (Time Machine). | Code: `EventInfoCard` (shared with DateGolf), `DurationInfoCard` |
+| **Card** | The panel for one item. *Event card*: date, Why it matters, approximate note, Connections, story buttons, *Before & after in* its lane, *Meanwhile around the world* (±50 years), *Empires & states in* its year. *Span card*: years, historians' dates, Why it matters, *Alive at the same time* (people), *Life cycle*, Connections, *Meanwhile in* its region, *Compare with* (Time Machine). | Code: `EventInfoCard` (shared with DateGolf), `DurationInfoCard` |
 
 ---
 
@@ -104,7 +104,7 @@
 | **Search panel** | Steps through search results in time order: *Overview*, then each match, with ‹ ›, a scrubber, and *Play* at Slow / Normal / Fast. | Search box |
 | **Watch** | The same panel, stepping through every event the filters let through. | *Watch* button |
 | **Time Machine** | Four comparisons: **A year** (each region's empires, periods and events around one year), **Two years** (what was *Gone*, *New*, *Still there*, *Came and went*), **Two empires** (how long two spans overlapped or how far apart they were), **Two events** (the years between them, plus a striking comparison with a famous third event). | *Time Machine* button; span card *Compare with* |
-| **What happened?** | A summary of the view, or a shift-dragged stretch of years: its empires and dynasties, periods, and top events around the world. | *What happened?* button; shift-drag |
+| **What happened?** | A summary of the view, or a shift-dragged stretch of years: its empires and states, periods, and top events around the world. | *What happened?* button; shift-drag |
 | **Meanwhile** | The "elsewhere at the same time" sections of a card (§2). | Cards |
 | **Surprise Me** | Opens a random event, preferring ones with a story, without repeating the last 20. | *Surprise Me* button |
 | **Games** | Six quiz games over DateFlow's data: *Which Came First?*, *Put Them in Order*, *What's Missing?*, *What's Happening Elsewhere?*, *Find the Duration*, *Cause & Effect*. Rounds get harder as they go. | *▶ Play* button → `/dateflow/play` |
@@ -128,7 +128,7 @@
 
 | Feature | What it shows of Rome |
 |---|---|
-| **World / Lanes** | The Roman Republic and Roman Empire bars in *Empires & dynasties*, the Pax Romana and Fall of the Western Roman Empire in *Periods*, and its events labelled on the axis. |
+| **World / Lanes** | The Roman Republic and Roman Empire bars in *Empires & states*, the Pax Romana and Fall of the Western Roman Empire in *Periods*, and its events labelled on the axis. |
 | **Life cycle** | The Roman Empire bar shaded by its 7 phases; the card lists them. |
 | **Constellation** | Roman events as dots on the Europe track (Geography) or its own row (Empires & states), with the Republic → Empire bands one after the other. |
 | **Card** | Why it matters, Connections ("evolved into Byzantine Empire"), Meanwhile in Europe, *Compare with* another span. |
@@ -145,9 +145,9 @@
 
 These are the places where one word means several things, or several words mean one thing. Each has a proposal; none is decided.
 
-1. **Span / Duration / time span / "bar".** One concept, three names (UI never names it; code `Duration`; db `time_spans`). *Proposal:* "span" in docs and conversation; rename `Duration` → `Span` in code when convenient.
-2. **"Empire" covers every state, and some things that aren't states.** The kind includes kingdoms, dynasties, republics and Athens, *and* civilizations such as the Indus Valley, Classic Maya and Teotihuacan, which weren't single states. The same kind is labelled four ways: *Empires & dynasties* (World row), *Empire* (legend), *Empire / dynasty* (card), *Empires & states* (axis). *Proposal:* call the kind **state** throughout ("Empires & states" everywhere), and move the civilizations to a period kind (or a new *civilization* kind) after review.
-3. **Four groupings of the same 14 categories.** Families (8, for colour and shape), Human activity tracks (6), Society tracks (7) and Subtle's colour groups (3) each fold the categories differently. An *Exploration* event is a ✚ in *Exploration & Environment*, sits on *Science & Technology* in Human activity and on *Exploration* in Society. *Disasters* is in the *Exploration & Environment* family but on *Society* tracks. *Proposal:* make Human activity's tracks the 8 families (so shape and track always agree), and keep Society as the one deliberately different lens.
+1. ~~**Span / Duration / time span / "bar".**~~ **Done 2026-11-24:** "span" in docs and conversation; the code type `Duration` is now `Span` (variable and file names such as `durations.json` and `DurationInfoCard` are unchanged for now).
+2. **"Empire" covers every state, and some things that aren't states.** The kind includes kingdoms, dynasties, republics and Athens, *and* civilizations such as the Indus Valley, Classic Maya and Teotihuacan, which weren't single states. The same kind is labelled four ways: *Empires & dynasties* (World row), *Empire* (legend), *Empire / dynasty* (card), *Empires & states* (axis). *Proposal:* call the kind **state** throughout ("Empires & states" everywhere), and move the civilizations to a period kind (or a new *civilization* kind) after review. **Done 2026-11-24** for the kind and the labels (db, tools, drafting rules, app); the civilizations await Ram's review.
+3. **Four groupings of the same 14 categories.** Families (8, for colour and shape), Human activity tracks (6), Society tracks (7) and Subtle's colour groups (3) each fold the categories differently. An *Exploration* event is a ✚ in *Exploration & Environment*, sits on *Science & Technology* in Human activity and on *Exploration* in Society. *Disasters* is in the *Exploration & Environment* family but on *Society* tracks. *Proposal:* make Human activity's tracks the 8 families (so shape and track always agree), and keep Society as the one deliberately different lens. **Done 2026-11-24.**
 4. **Era means three things:** the 5 era chips and bands, the db span kind `era`, and loosely any "age" (the Axial Age, an Age-of-… period span). *Proposal:* keep "era" for the five fixed eras only.
 5. **Period means three things:** the span kind, the *Periods* row, and the *What happened?* summary ("period summary" in code). *Proposal:* call the summary **"What happened?"** everywhere.
 6. **Story, journey, tour, Watch.** *Story* is automatic (from links), *journey* is curated, *tour* is only the code name of the search/Watch panel, and doc 16 used "tour" for what became journeys. *Proposal:* use "tour" nowhere user-facing; name the panel *search results*; consider renaming *Watch* to *Play through*.
@@ -170,7 +170,7 @@ To keep them from creeping into specs as if they existed:
 
 - **Experience, Collection, Discovery:** not features. The nearest real things are the *games* (interactive), *journeys* and *stories* (curated or guided), and *Surprise Me*.
 - **Map view:** a *Later* roadmap item (doc 18); countries are tagged but there's no map.
-- **Civilization, Institution, Movement as item types:** not types. Civilizations are currently empire-kind spans (§6.2); movements are period spans; there are no institutions.
+- **Civilization, Institution, Movement as item types:** not types. Civilizations are currently state spans, pending review (§6.2); movements are period spans; there are no institutions.
 - **Constellation as "a web of related items":** wrong. It's the dot layout described in §2. Relationships are shown by Connections, stories and rings.
 - **Date / Duration as concepts:** an event has a year; a span has a start and an end. "Duration" in the code is a span, not a length of time (§6.1).
 
