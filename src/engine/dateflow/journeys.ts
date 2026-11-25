@@ -123,10 +123,32 @@ export function resolveJourney(
   }
 }
 
-/** The ids a step rings on the timeline: the stop's items, or every item at the intro and the end. */
+/**
+ * The ids a step rings on the timeline: the stop's items and its neighbours' (so the eye can follow from
+ * one stop to the next; the current stop is spotlit on top), or every item at the intro and the end.
+ */
 export function journeyIds(j: Journey, step: number | null): Set<string> {
-  const stop = step === null ? undefined : j.stops[step]
-  return new Set((stop ? [stop] : j.stops).flatMap((s) => s.items.map((x) => x.id)))
+  const stops = step === null || !j.stops[step] ? j.stops : j.stops.slice(Math.max(0, step - 1), step + 2)
+  return new Set(stops.flatMap((s) => s.items.map((x) => x.id)))
+}
+
+/**
+ * The years to frame for stop i. A single year gets `pointSpan` around it. The frame then reaches far enough
+ * to show the end of the previous stop and the start of the next, but only when they are near (within half
+ * the frame), so a short stop isn't stretched to reach one centuries away. A neighbour that overlaps the
+ * stop is already in view.
+ */
+export function stopFrame(j: Journey, i: number, pointSpan: number): [number, number] {
+  const s = j.stops[i]!
+  let [a, b] = s.end === s.start ? [s.start - pointSpan / 2, s.start + pointSpan / 2] : [s.start, s.end]
+  const reach = (b - a) / 2
+  const peek = (b - a) * 0.1 // how much of the neighbour shows
+  const prev = j.stops[i - 1]
+  const next = j.stops[i + 1]
+  const [a0, b0] = [a, b]
+  if (prev && prev.end < a0 && a0 - prev.end <= reach) a = prev.end - peek
+  if (next && next.start > b0 && next.start - b0 <= reach) b = next.start + peek
+  return [a, b]
 }
 
 /**

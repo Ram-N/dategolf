@@ -5,7 +5,7 @@ import eventsJson from '@/data/events.json'
 import durationsJson from '@/data/durations.json'
 import relationshipsJson from '@/data/relationships.json'
 import journeysJson from '@/data/journeys.json'
-import { journeyIds, recordStep, resolveJourney, resumeStep, stepJourneyIndex, type JourneyData } from '../dateflow/journeys'
+import { journeyIds, recordStep, stopFrame, resolveJourney, resumeStep, stepJourneyIndex, type JourneyData } from '../dateflow/journeys'
 
 const events = eventsJson as Event[]
 const durations = durationsJson as Span[]
@@ -60,11 +60,40 @@ describe('resolveJourney', () => {
     expect(j.stops.map((s) => s.items.map((x) => x.id))).toEqual([['rome'], ['web']])
   })
 
-  it('rings a stop’s items, or every item at the intro and the end', () => {
-    const j = run([{ items: ['rome'], narration: 'a' }, { items: ['byz', 'sack'], title: 'East', narration: 'b' }])
-    expect([...journeyIds(j, 1)]).toEqual(['byz', 'sack'])
-    expect([...journeyIds(j, null)]).toEqual(['rome', 'byz', 'sack'])
-    expect([...journeyIds(j, 2)]).toEqual(['rome', 'byz', 'sack'])
+  it('rings a stop’s items and its neighbours’, or every item at the intro and the end', () => {
+    const j = run([{ items: ['rome'], narration: 'a' }, { items: ['byz', 'sack'], title: 'East', narration: 'b' },
+                   { items: ['web'], narration: 'c' }])
+    expect([...journeyIds(j, 0)]).toEqual(['rome', 'byz', 'sack'])
+    expect([...journeyIds(j, 2)]).toEqual(['byz', 'sack', 'web'])
+    expect([...journeyIds(j, null)]).toEqual(['rome', 'byz', 'sack', 'web'])
+    expect([...journeyIds(j, 3)]).toEqual(['rome', 'byz', 'sack', 'web'])
+  })
+})
+
+describe('stopFrame', () => {
+  const fixture = {
+    events: [ev('sack', 'Fall of Constantinople', 1453), ev('web', 'Web Goes Public', 1991)],
+    durations: [sp('alex', 'Conquests of Alexander', -334, -323), sp('pers', 'Achaemenid Empire', -550, -330),
+                sp('rome', 'Roman Empire', -27, 476), sp('a', 'A', 1000, 1100), sp('b', 'B', 1120, 1200),
+                sp('c', 'C', 1230, 1300)],
+    data: { types: {}, links: [] } as RelationshipData,
+  }
+  const run = (ids: string[]) =>
+    resolveJourney({ id: 'j', title: 'J', intro: 'i', stops: ids.map((id) => ({ items: [id], narration: '' })) },
+                   fixture.events, fixture.durations, fixture.data)!
+
+  it('frames a span by its years when its neighbours overlap it or are far away', () => {
+    // Persia overlaps Alexander; Rome starts ~300 years after Alexander's 11, far beyond half his frame
+    expect(stopFrame(run(['pers', 'alex', 'rome']), 1, 100)).toEqual([-334, -323])
+  })
+
+  it('reaches for the end of the previous stop and the start of the next when they are near', () => {
+    // B is 80 years: half is 40, so A's end (20 years before) and C's start (30 after) peek in by 8 years
+    expect(stopFrame(run(['a', 'b', 'c']), 1, 100)).toEqual([1092, 1238])
+  })
+
+  it('gives a single year a span around it', () => {
+    expect(stopFrame(run(['sack', 'web']), 0, 100)).toEqual([1403, 1503])
   })
 })
 

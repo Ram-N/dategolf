@@ -846,6 +846,7 @@ const DOT_MARGIN = 5 // keeps a dot clear of its track's edges
 // 2d: spans as thin bars along the bottom of their track (not on Empires & states, whose rows are spans)
 const C_BAR_H = 10
 const C_BAR_ROWS = 2
+const C_RING_ROWS = 5 // ringed bars may stack this high
 const C_BAR_ZONE = C_BAR_ROWS * (C_BAR_H + 2) + 2
 const C_BAR_MIN_IMPORTANCE = 5
 
@@ -924,14 +925,22 @@ function constellationBars(tracks: { id: string; top: number; h: number; on: boo
       const x1 = Math.max(-2, yearToX(d.startYear, props.view, width.value))
       return [d.id, { d, x1, x2: Math.min(width.value + 2, yearToX(d.endYear, props.view, width.value)) }]
     }))
-    const items = [...at.values()].map(({ d, x1, x2 }) => ({ id: d.id, x1, x2, priority: d.importance + (lit(d.id) ? 100 : 0) }))
-    return packBars(items, C_BAR_ROWS, 4).map(({ id, row }) => {
+    const items = [...at.values()].map(({ d, x1, x2 }) => ({ id: d.id, x1, x2, priority: d.importance }))
+    // Ringed bars (a journey's empires) get the rows they need, stacked above the usual two, so none is
+    // dropped where several overlap; the rest share the usual two
+    const occupied = emptyRows(C_RING_ROWS)
+    const placed = [
+      ...packBars(items.filter((x) => lit(x.id)), C_RING_ROWS, 4, occupied),
+      ...packBars(items.filter((x) => !lit(x.id)), C_BAR_ROWS, 4, occupied.slice(0, C_BAR_ROWS)),
+    ]
+    const zoneTop = t.top + t.h - C_BAR_ZONE + 2
+    return placed.map(({ id, row }) => {
       const { d, x1, x2 } = at.get(id)!
       const w = Math.max(2, x2 - x1)
       return {
         d,
         x: x1,
-        y: t.top + t.h - C_BAR_ZONE + 2 + row * (C_BAR_H + 2),
+        y: row < C_BAR_ROWS ? zoneTop + row * (C_BAR_H + 2) : Math.max(t.top + 2, zoneTop - (row - C_BAR_ROWS + 1) * (C_BAR_H + 2)),
         w,
         family: familyFor(d.categories),
         label: fitLabel(d.name, w - 8),

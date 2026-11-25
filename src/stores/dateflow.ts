@@ -12,7 +12,7 @@ import { TRACK_AXES, toggleTrack as toggleTrackIn, type HiddenTracks, type Track
 import { familyFor, type Family } from '@/engine/dateflow/categoryGroups'
 import { eventStop, searchStops, sortStops, spanStop, stepIndex, type TourSpeed } from '@/engine/dateflow/tour'
 import {
-  journeyIds, recordStep, resolveJourney, resumeStep, stepJourneyIndex,
+  journeyIds, recordStep, resolveJourney, resumeStep, stepJourneyIndex, stopFrame,
   type Journey, type JourneyData, type JourneyProgress,
 } from '@/engine/dateflow/journeys'
 import milestoneIds from '@/data/milestones.json'
@@ -744,15 +744,17 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     }
   }
 
-  /** Make a step current and frame it: a stop's items (an event in a century around it), else the whole journey. */
+  /**
+   * Make a step current and frame it: a stop with the near ends of its neighbours (an event in a century
+   * around it). The intro and the end show all of history, so the journey's stops are seen in their place.
+   */
   function goToJourneyStep(i: number | null) {
     const j = currentJourney.value
     if (!j) return
     journeyStep.value = i
-    const s = i === null ? undefined : j.stops[i]
-    if (!s) showSpan(j.start, j.end)
-    else if (s.end === s.start) animateTo(centerOn(s.start, TOUR_SPAN))
-    else showSpan(s.start, s.end)
+    if (i === null || !j.stops[i]) return animateTo(FULL_VIEW)
+    const [a, b] = stopFrame(j, i, TOUR_SPAN)
+    showSpan(a, b)
   }
 
   function stepJourney(delta: 1 | -1) {
