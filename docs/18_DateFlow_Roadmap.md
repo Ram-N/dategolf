@@ -67,6 +67,13 @@ Ram wants this high. It breaks the **no backend** rule, so the first step is a d
 - Journeys and stories sit side by side in the gallery.
 - Size: M.
 
+### 5b. "What's this?" help mode (Ram, 2026-11-24)
+- A **?** button in the toolbar. Clicking it turns the cursor into a question mark; the next click on anything (a lane, a region name, a bar, a dot, a milestone tag, a toolbar button, the legend) shows a short help card for that thing: what it is and how to use it ("A **period**: something that lasted, like a war or a movement. Click the bar for its story"). Esc, a second click on **?**, or closing the card leaves help mode. The thing clicked is not opened or changed while in help mode.
+- **Phones:** no cursor, so the **?** stays highlighted and a banner says "Tap anything to learn what it is".
+- **Content:** one entry per term, written for students and taken from the glossary (doc 21 §§1–5 and the §9 student wording), so the glossary stays the one source. Elements carry a help key (e.g. `data-help="lane"`); one handler looks it up. Each card can link onward ("See also: Region").
+- **Why it's good:** it answers the question where it arises, with no manual to read, and it covers exactly the confusions the glossary found (lane vs region, period vs span, the dashed lines). It also replaces the student guide planned in doc 21 §8 step 5, or carries it.
+- Size: M (about 25–30 entries, a capture-mode click handler, one card component).
+
 ### 6. 100 more historical people, and a People row that doesn't crowd
 - **Data:** about 100 people from ChronoLogic's `people.json`, **only people who have died**. Of its 1,218, 912 have died, but they lean modern (581 born after 1800; 140 died before 1500), so the 100 must be chosen for balance across eras and regions, not taken from the top. Pre-sort: drop celebrities and duplicates; flag ancient birth and death dates that look exact but aren't (they become approximate, with a `date_display`). Drafted through doc 15, loaded as proposed, reviewed on the dashboard.
 - **Display:** the People row has room for only a few lives at a time (2 rows in the Timeline layout), whatever the database size. Rather than a fixed percentage, show **as many as fit without overlap**, chosen by importance with a **stable shuffle** among equals (the same view shows the same people, so pills don't flicker while panning), plus a "+N more people lived in this time" link that lists the rest. A **Shuffle** button shows a different set.

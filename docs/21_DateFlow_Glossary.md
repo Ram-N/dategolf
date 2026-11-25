@@ -188,7 +188,7 @@ To keep them from creeping into specs as if they existed:
 
 - **The timeline** runs from 3600 BCE to today. Scroll to zoom: more events appear as you zoom in.
 - **Dots and labels** are events; **bars** are things that lasted (empires, wars, movements, lives). "c." means the date is approximate.
-- **Three layouts:** *Timeline* (everything on one line), *Lanes* (one row per region), *Constellation* (every event as a dot, sorted by region, activity, society or state).
+- **Three layouts:** *Timeline* (one road through history), *Lanes* (a lane for each region, side by side), *Constellation* (every event a star, sorted by region, activity, society or state). The first three phrases are the layout buttons' hover hints.
 - **Click anything** to read about it: why it matters, what it's connected to, what was happening elsewhere.
 - **Take a journey** through a big theme, or follow a **story** from any event: *How did we get here?*
 - **Time Machine** to compare years, empires or events; **What happened?** to sum up any stretch of time; **▶ Games** for games.

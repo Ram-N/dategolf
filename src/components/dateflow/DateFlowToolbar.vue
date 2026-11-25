@@ -221,9 +221,9 @@ const emit = defineEmits<{
 
 // "Layout" in hints and docs; "view" means only the years on screen (doc 21 §6.11)
 const MODES: { id: ViewMode; label: string; hint: string }[] = [
-  { id: 'world', label: 'Timeline', hint: 'everything on one line' },
-  { id: 'lanes', label: 'Lanes', hint: 'one row per region' },
-  { id: 'constellation', label: 'Constellation', hint: 'every event as a dot, sorted into tracks' },
+  { id: 'world', label: 'Timeline', hint: 'one road through history' },
+  { id: 'lanes', label: 'Lanes', hint: 'a lane for each region, side by side' },
+  { id: 'constellation', label: 'Constellation', hint: 'every event a star' },
 ]
 
 const moreOpen = ref(false)
