@@ -71,7 +71,7 @@
 | **Current band** | See *Historical Current* (§1). | — |
 | **Story threads** | Curved arrows drawn between a story's stops (Timeline and Lanes only); each opens its link's card. | Code: `StoryArcs` |
 | **Rings / dimming** | Items outlined while everything else fades: an open story, journey, search, the Time Machine, or *Show connections*. | Code: `highlightIds`, `lit` |
-| **Minimap** | The strip under the toolbar showing how many events fall in each slice of all history; the box is the current view; click to jump. | Code: `DateFlowMinimap`, `densityBins` |
+| **History overview** | The bar chart under the toolbar showing how many events (those the filters let through) fall in each slice of all history, captioned *ALL HISTORY* with three faint year labels. The **box** is the current view and a shaded **wedge** opens from it to the full width of the timeline below, so the overview's years don't read as the chart's axis. Click to jump; drag the box to scrub. The visualization pattern is *overview + detail*; "minimap" is only the code name. | UI: help *The history overview*; aria *History overview*. Code: `DateFlowMinimap`, `densityBins`, help key `minimap` |
 | **Legend** | The family shapes and colours along the bottom; click a family to **Focus** on it (§3). | — |
 | **Card** | The panel for one item. *Event card*: date, Why it matters, approximate note, Connections, story buttons, *Before & after in* its lane, *Meanwhile around the world* (±50 years), *Empires & states in* its year. *Span card*: years, historians' dates, Why it matters, *Alive at the same time* (people), *Life cycle*, Connections, *Meanwhile in* its region, *Compare with* (Time Machine). | Code: `EventInfoCard` (shared with DateGolf), `DurationInfoCard` |
 
@@ -144,7 +144,7 @@
 
 ## 6. Where the words collide
 
-These are the places where one word means several things, or several words mean one thing. Each has a proposal. All 16 were decided and carried out on 2026-11-24.
+These are the places where one word means several things, or several words mean one thing. Each has a proposal. All 17 were decided and carried out on 2026-11-24.
 
 1. ~~**Span / Duration / time span / "bar".**~~ **Done 2026-11-24:** "span" in docs and conversation; the code type `Duration` is now `Span` (variable and file names such as `durations.json` and `DurationInfoCard` are unchanged for now).
 2. **"Empire" covers every state, and some things that aren't states.** The kind includes kingdoms, dynasties, republics and Athens, *and* civilizations such as the Indus Valley, Classic Maya and Teotihuacan, which weren't single states. The same kind is labelled four ways: *Empires & dynasties* (World row), *Empire* (legend), *Empire / dynasty* (card), *Empires & states* (axis). *Proposal:* call the kind **state** throughout ("Empires & states" everywhere), and move the civilizations to a period kind (or a new *civilization* kind) after review. **Done 2026-11-24** for the kind and the labels (db, tools, drafting rules, app); Indus Valley and Classic Maya moved to period on Ram's review; Teotihuacan and Great Zimbabwe stay states (a city-state and a kingdom's capital).
@@ -162,6 +162,7 @@ These are the places where one word means several things, or several words mean 
 14. **Regions in the data are inconsistent.** Events use *Americas* (54) and also *North America* (12) and *South America* (3), which land in the same lane. *Proposal:* a data pass to settle one scheme (likely the sub-regions, since they're more informative), as with Southeast Asia and Oceania. **Done 2026-11-24:** 51 events and 14 spans moved to *North America* or *South America*; *Americas* is kept for Columbus, the Latin American wars of independence and the Spanish–American War. The drafting rules (doc 15, `ai-reference`) say so; new tool `manage.py set-region`.
 15. **"Two empires" isn't limited to empires.** The Time Machine's overlap mode takes any two spans (the span card's *Compare with* sends periods too). *Proposal:* label it *Two spans*, or *Two empires or periods*. **Done 2026-11-24:** *Two empires or periods* (students never see "span").
 16. **Milestone, two uses.** The 16 milestone events, and a phase's "opens with" event in a life cycle. Minor; keep "milestone" for the 16. **Done 2026-11-24:** the card already said *Opens with*; the glossary and a code comment no longer call it a milestone.
+17. **Minimap / overview strip / History overview.** One thing, three names (glossary, help, aria label), and "strip" also means a life-cycle strip and a switched-off track. It isn't a miniature of the timeline, so "minimap" was inaccurate. **Done 2026-11-24:** **History overview** wherever users or docs see it; `DateFlowMinimap` stays as the code name.
 
 ---
 

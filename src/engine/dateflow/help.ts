@@ -167,9 +167,9 @@ export const HELP = {
     see: ['zoom', 'minimap'],
   },
   minimap: {
-    title: 'The overview strip',
-    text: 'All of history in one strip. Each little bar shows how many events DateFlow has in that stretch of time; the box is what is on screen.',
-    tip: 'Click anywhere on the strip to jump there, or drag the box.',
+    title: 'The history overview',
+    text: 'All of history at a glance. Each little bar shows how many events DateFlow has in that stretch of time; the box is what is on screen, and the shaded wedge shows it opening out into the timeline below.',
+    tip: 'Click anywhere on it to jump there, or drag the box.',
     see: ['zoom', 'view-range'],
   },
   journeys: {

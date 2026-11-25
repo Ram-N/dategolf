@@ -31,7 +31,12 @@
       </rect>
       <line x1="0" :x2="width" :y1="BAR_BASE" :y2="BAR_BASE" class="baseline" />
 
-      <text v-for="t in tickMarks" :key="t.year" :x="t.x" :y="HEIGHT - 3" :text-anchor="t.anchor" class="tick">
+      <!-- Zoom funnel: the view box opens out to the full width of the timeline below, so the strip
+           reads as "all of history, magnified below" and not as a second axis for the chart. -->
+      <polygon :points="funnel" class="funnel" pointer-events="none" />
+
+      <text x="3" y="9" class="caption">ALL HISTORY</text>
+      <text v-for="t in tickMarks" :key="t.year" :x="t.x" :y="BAR_BASE + 9" :text-anchor="t.anchor" class="tick">
         {{ t.label }}
       </text>
 
@@ -59,11 +64,11 @@ import { formatYear } from '@/utils/formatYear'
 const props = defineProps<{ years: number[]; view: View }>()
 const emit = defineEmits<{ centerAt: [year: number, animate: boolean] }>()
 
-const HEIGHT = 46
-const BAR_BASE = 32 // bars grow up from here; tick labels sit below
+const HEIGHT = 52
+const BAR_BASE = 32 // bars grow up from here; tick labels and the zoom funnel sit below
 const BAR_PX = 5 // target width of one histogram bar
 const MIN_BOX_PX = 8 // keep the view box grabbable when zoomed far in
-const TICK_YEARS = [-3000, -2000, -1000, 0, 1000, 2000]
+const TICK_YEARS = [-3000, 0, 2000] // sparse and faint, so they don't compete with the chart's own axis
 
 // ── Size ────────────────────────────────────────────────────────────────────
 const containerEl = ref<HTMLDivElement | null>(null)
@@ -115,6 +120,11 @@ const box = computed(() => {
   return { x: Math.min(Math.max(0, (x1 + x2) / 2 - w / 2), width.value - w), w }
 })
 
+const funnel = computed(() => {
+  const { x, w } = box.value
+  return `${x},${BAR_BASE} ${x + w},${BAR_BASE} ${width.value},${HEIGHT} 0,${HEIGHT}`
+})
+
 // ── Click to jump (animated), drag to scrub (instant). Grabbing inside the box keeps its offset so it doesn't jump.
 const dragging = ref(false)
 let grabOffsetYears = 0
@@ -159,8 +169,23 @@ function onPointerUp(e: PointerEvent) {
 }
 .tick {
   fill: var(--df-muted);
-  font-size: 10px;
+  opacity: 0.7;
+  font-size: 9px;
   font-variant-numeric: tabular-nums;
+  paint-order: stroke;
+  stroke: var(--df-bg);
+  stroke-width: 3px;
+}
+.caption {
+  fill: var(--df-muted);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+.funnel {
+  fill: var(--df-text);
+  opacity: 0.1;
 }
 .dim {
   fill: var(--df-bg);

@@ -19,7 +19,7 @@ Ram uses DateFlow for a few days and lists small aesthetic, usability and experi
 
 | Batch | Date | Status |
 |---|---|---|
-| — | — | Waiting for the first list |
+| Testers read the overview's years as the chart's axis | 2026-11-24 | ✅ Done: the History overview has an *ALL HISTORY* caption, three faint year labels and a zoom wedge from its box to the timeline; renamed from "minimap" in the glossary and help (doc 21 §6.17) |
 
 ### 2. Date Constellation as the front door, with switchable Y-axis tracks (#7)
 Constellation already opens a first visit (Medieval era, Geography tracks) and has two Y-axes: **Geography** (7 regions) and **Human activity** (6 activity groups, by primary category). This item makes it *the* way into DateFlow.
@@ -46,7 +46,7 @@ The three journeys and the Roman, Mughal and Ottoman life cycles are the richest
 - Size: M.
 
 ### 4. AI questions ("What was happening in India when Rome peaked?")
-**On hold (Ram, 2026-11-24):** first a step back to take stock of DateFlow as it is: the glossary (doc 21) and its list of colliding terms. **Done 2026-11-24:** all 16 proposals in doc 21 §6 carried out; next in doc 21 §8 is a student guide (step 5), then item 4 when Ram resumes it.
+**On hold (Ram, 2026-11-24):** first a step back to take stock of DateFlow as it is: the glossary (doc 21) and its list of colliding terms. **Done 2026-11-24:** all 16 proposals in doc 21 §6 carried out (a 17th, the History overview's name, on the same day); next in doc 21 §8 is a student guide (step 5), then item 4 when Ram resumes it.
 Ram wants this high. It breaks the **no backend** rule, so the first step is a decision, not code.
 
 - How answers are produced (decided below). Options:
