@@ -212,7 +212,7 @@
           :key="m.event.id"
           class="cursor-pointer marker"
           data-help="event"
-          :class="{ selected: m.event.id === selectedId, lit: lit(m.event.id), dimmed: dimming && !lit(m.event.id), faded: fades(m.family, m.event.id) }"
+          :class="{ selected: m.event.id === selectedId, lit: lit(m.event.id), spot: !!spotlightIds?.has(m.event.id), dimmed: dimming && !lit(m.event.id), faded: fades(m.family, m.event.id) }"
           @click="onMarkerClick(m.event.id)"
         >
           <title>{{ m.tooltip }}</title>
@@ -307,8 +307,26 @@
         </g>
       </g>
 
-      <StoryArcs v-if="story" data-help="story-thread" :arcs="storyArcs" :spans="storySpanMarks" :pulse="storyPulse" :step-edge-keys="stepEdgeKeys"
+      <StoryArcs v-if="story" data-help="story-thread" :arcs="storyArcs" :spans="storySpanMarks" :pulse="spotlights.length ? null : storyPulse" :step-edge-keys="stepEdgeKeys"
                  :active-key="cardArc?.arc.key ?? null" @hover="onArcHover" @pick="onArcClick" />
+
+      <!-- Spotlight: the stop being shown in a story, journey or Play through, ringed in its own colour
+           and named on the timeline, so the eye can find it next to the card -->
+      <g v-for="sp in spotlights" :key="sp.key" class="spotlight" pointer-events="none" aria-hidden="true">
+        <template v-if="sp.bar">
+          <rect :x="sp.bar.x - 3" :y="sp.bar.y - 3" :width="sp.bar.w + 6" :height="sp.bar.h + 6" rx="5" class="spot-bar" />
+        </template>
+        <template v-else-if="sp.dot">
+          <circle :cx="sp.dot.x" :cy="sp.dot.y" :r="sp.dot.r + 5" class="spot-ring" />
+          <circle :cx="sp.dot.x" :cy="sp.dot.y" :r="sp.dot.r + 5" class="spot-pulse" />
+        </template>
+        <template v-if="sp.tag">
+          <line v-if="sp.tag.leader" :x1="sp.tag.leader.x" :x2="sp.tag.leader.x" :y1="sp.tag.leader.y1" :y2="sp.tag.leader.y2"
+                class="spot-leader" />
+          <rect :x="sp.tag.x" :y="sp.tag.y" :width="sp.tag.w" height="20" rx="10" class="spot-tag" />
+          <text :x="sp.tag.x + 9" :y="sp.tag.y + 14" class="spot-tag-text">{{ sp.tag.text }}</text>
+        </template>
+      </g>
 
       <!-- Shift-drag period selection -->
       <g v-if="selection" pointer-events="none">
@@ -399,6 +417,7 @@ const props = defineProps<{
   highlightIds?: Set<string> | null // "Show connections": ring these, dim the rest
   story?: Story | null // Phase 9: draw this story's threads
   stepId?: string | null // the stop being played
+  spotlightIds?: Set<string> | null // the current stop of a story, journey or Play through
   density: Density // Simple hides span bars and milestone lines
   focusFamily?: Family | null // Phase 11 Focus: this family stays vivid, the rest fade (never hidden)
   currents?: Span[] | null // step 3d: spans that may be drawn as Historical Currents (empty = layer off)
@@ -938,6 +957,56 @@ const dotCard = computed(() => {
   const left = clamp(h.x + 14, 4, Math.max(4, width.value - DOT_CARD_W - 4))
   const top = h.y > height.value - 130 ? h.y - 120 : h.y + 14
   return { year: formatEventYear(h.event.year, h.event.approximate), name: h.event.name, text, left, top }
+})
+
+// ── Spotlight: the current stop, ringed and named ─────────────────────────────
+const SPOT_CHAR_W = 6.6 // rough width of one character of the tag, for sizing its pill
+const SPOT_MAX_CHARS = 48
+
+function spotTag(text: string, x: number, top: number, bottom: number) {
+  const t = text.length > SPOT_MAX_CHARS ? text.slice(0, SPOT_MAX_CHARS - 1).trimEnd() + '…' : text
+  const w = t.length * SPOT_CHAR_W + 18
+  // Above the item when there's room under the era strip, else below it
+  const above = top - 30 >= ERA_SPACE
+  const y = above ? top - 30 : bottom + 10
+  const tx = clamp(x - w / 2, 4, Math.max(4, width.value - w - 4))
+  const leader = above ? { x: clamp(x, tx + 8, tx + w - 8), y1: y + 20, y2: top - 2 } : { x: clamp(x, tx + 8, tx + w - 8), y1: bottom + 2, y2: y }
+  return { x: tx, y, w, text: t, leader }
+}
+
+const spotlights = computed(() => {
+  const ids = props.spotlightIds
+  if (!ids?.size) return []
+  const out: { key: string; dot?: { x: number; y: number; r: number }; bar?: { x: number; y: number; w: number; h: number }; tag?: ReturnType<typeof spotTag> }[] = []
+  const eventTag = (e: Event) => `${formatEventYear(e.year, e.approximate)} · ${e.name}`
+  const spanTag = (d: Span) => `${formatSpan(d, formatYear)} · ${d.name}`
+  const barSpot = (key: string, d: Span, x: number, y: number, w: number, h: number) => {
+    const x1 = Math.max(x, 0)
+    const x2 = Math.min(x + w, width.value)
+    out.push({ key, bar: { x, y, w, h }, tag: spotTag(spanTag(d), (x1 + x2) / 2, y, y + h) })
+  }
+  const c = constellation.value
+  if (c) {
+    for (const d of c.dots) if (ids.has(d.event.id)) out.push({ key: d.key, dot: d, tag: spotTag(eventTag(d.event), d.x, d.y - d.r, d.y + d.r) })
+    for (const b of c.bars) if (ids.has(b.d.id)) barSpot(b.d.id, b.d, b.x, b.y, b.w, C_BAR_H)
+    return out
+  }
+  for (const t of layouts.value) {
+    // A labelled marker already carries its name: the ring alone marks it
+    for (const m of t.markers) if (ids.has(m.event.id)) out.push({ key: `${t.id}:${m.event.id}`, dot: { x: m.x, y: t.axisY, r: m.radius } })
+    for (const q of t.quiet) {
+      if (ids.has(q.event.id)) out.push({ key: `${t.id}:${q.event.id}`, dot: { x: q.x, y: t.axisY, r: QUIET_R }, tag: spotTag(eventTag(q.event), q.x, t.axisY - QUIET_R, t.axisY + QUIET_R) })
+    }
+    for (const h of t.hiddenDots) {
+      const e = ids.has(h.id) ? t.events.find((x) => x.id === h.id) : undefined
+      if (e) out.push({ key: `${t.id}:${h.id}`, dot: { x: h.x, y: t.axisY, r: 4 }, tag: spotTag(eventTag(e), h.x, t.axisY - 4, t.axisY + 4) })
+    }
+    for (const b of t.bars) {
+      if (ids.has(b.d.id)) barSpot(`${t.id}:${b.d.id}`, b.d, b.x, b.y, b.w, BAR_H)
+      for (const sg of b.segments) if (ids.has(sg.d.id)) barSpot(`${t.id}:${sg.d.id}`, sg.d, sg.x, b.y, sg.w, BAR_H)
+    }
+  }
+  return out
 })
 
 // ── Story threads (Phase 9) ──────────────────────────────────────────────────
@@ -1510,6 +1579,62 @@ function onArcClick(key: string, e: MouseEvent) {
   fill-opacity: 1;
   stroke: var(--df-text);
   stroke-width: 2;
+}
+/* A spotlit marker's own label takes the spotlight colour */
+.marker.spot .label-bg,
+.marker.spot.lit .label-bg {
+  fill: var(--df-spot);
+  stroke: var(--df-spot);
+}
+.marker.spot .label-text,
+.marker.spot .label-text.anchor {
+  fill: var(--df-spot-text);
+}
+.spot-ring {
+  fill: none;
+  stroke: var(--df-spot);
+  stroke-width: 3;
+}
+.spot-pulse {
+  fill: none;
+  stroke: var(--df-spot);
+  stroke-width: 2.5;
+  animation: spot-pulse 1.4s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.spot-bar {
+  fill: none;
+  stroke: var(--df-spot);
+  stroke-width: 3;
+}
+.spot-leader {
+  stroke: var(--df-spot);
+  stroke-width: 1.5;
+}
+.spot-tag {
+  fill: var(--df-spot);
+}
+.spot-tag-text {
+  fill: var(--df-spot-text);
+  font-size: 11px;
+  font-weight: 700;
+}
+@keyframes spot-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spot-pulse {
+    animation: none;
+    opacity: 0;
+  }
 }
 .dot-card {
   position: absolute;

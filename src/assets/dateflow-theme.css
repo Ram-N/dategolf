@@ -20,6 +20,9 @@
   --df-other: #8b8b94;
   --df-approx: #fbbf24;
   --df-approx-bg: rgb(245 158 11 / 0.12);
+  /* Spotlight: the current stop of a story, journey or Play through */
+  --df-spot: #facc15;
+  --df-spot-text: #1c1917;
   --df-approx-border: #b45309;
   /* Story threads (Phase 9): one colour per kind of link; line style differs too */
   --df-arc-trigger: #fb923c;
@@ -55,6 +58,8 @@
   --df-approx: #92400e;
   --df-approx-bg: #fffbeb;
   --df-approx-border: #f59e0b;
+  --df-spot: #ea580c;
+  --df-spot-text: #ffffff;
   --df-arc-trigger: #c2410c;
   --df-arc-contrib: #b45309;
   --df-arc-enable: #1d4ed8;

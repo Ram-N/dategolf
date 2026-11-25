@@ -69,7 +69,8 @@
         :state-spans="store.stateSpans"
         :selected-id="store.selectedEvent?.id ?? (store.tourCurrent?.kind === 'event' ? store.tourCurrent.id : null)"
         :selected-duration-id="store.selectedDuration?.id ?? (store.tourCurrent?.kind === 'span' ? store.tourCurrent.id : null)"
-        :highlight-ids="store.journeyRing ?? store.storyIds ?? store.tmIds ?? store.tourIds ?? store.cardIds ?? store.ringedIds"
+        :highlight-ids="store.highlightIds"
+        :spotlight-ids="store.spotlightIds"
         :marks="store.tmMarks"
         :story="store.currentStory"
         :focus-family="store.focusFamily"
@@ -157,7 +158,7 @@
       />
     </div>
 
-    <div v-if="store.ringedName" data-help="connections" class="focus flex items-center justify-center gap-3 px-4 py-1.5 border-t text-sm">
+    <div v-if="store.ringedName && store.highlightIds === store.ringedIds" data-help="connections" class="focus flex items-center justify-center gap-3 px-4 py-1.5 border-t text-sm">
       <span>Connections of <strong>{{ store.ringedName }}</strong> are ringed</span>
       <button class="underline font-semibold" @click="store.clearRinged()">Clear</button>
     </div>

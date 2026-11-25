@@ -406,6 +406,17 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const tourCurrent = computed(() => (tourStep.value === null ? null : (tourStops.value[tourStep.value] ?? null)))
   /** A search rings its matches; watching the filters rings nothing (every dot would be lit). */
   const tourIds = computed(() => (tour.value?.source === 'search' ? new Set(tourStops.value.map((s) => s.id)) : null))
+  /** The rings a story, journey, search or Time Machine draws (they win over a card's or Show connections'). */
+  const overlayIds = computed(() => journeyRing.value ?? storyIds.value ?? tmIds.value ?? tourIds.value)
+  /** What the timeline rings now, everything else dimmed. */
+  const highlightIds = computed(() => overlayIds.value ?? cardIds.value ?? ringedIds.value)
+  /** The stop being shown in a journey, story or Play through: spotlit and named on the timeline. */
+  const spotlightIds = computed<Set<string> | null>(() => {
+    if (journeyStop.value) return new Set(journeyStop.value.items.map((x) => x.id))
+    const node = storyStep.value === null ? null : currentStops.value[storyStep.value]?.node
+    if (node) return new Set([node.id])
+    return tourCurrent.value ? new Set([tourCurrent.value.id]) : null
+  })
   // The filters can change under an open tour: don't point past its end.
   watch(
     () => tourStops.value.length,
@@ -574,7 +585,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
    */
   function closeCard() {
     const id = openId.value
-    const keepRings = density.value === 'detailed' && !!id && relatedIds.value.size > 0
+    // A story, journey, search or Time Machine draws its own rings, which win; leave those alone
+    const keepRings = density.value === 'detailed' && !!id && relatedIds.value.size > 0 && !overlayIds.value
     select(null)
     selectDuration(null)
     if (keepRings) ringedId.value = id
@@ -964,6 +976,8 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     relatedIds,
     ringedId,
     ringedIds,
+    highlightIds,
+    spotlightIds,
     timeMachine,
     tmWorld,
     tmCompare,
