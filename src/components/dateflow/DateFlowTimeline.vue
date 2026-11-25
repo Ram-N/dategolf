@@ -839,7 +839,19 @@ const constellation = computed(() => {
   const states = axis === 'states' ? stateTracks(shown, props.eventStates, props.stateSpans, props.spanParents) : null
   const defs = states ? states.tracks : tracksFor(axis)
   const of = (e: Event) => (states ? states.of(e.id) : [trackOf(e, axis as Exclude<TrackAxis, 'states'>)])
-  const tracks = layoutTracks(defs, hiddenOn(props.hiddenTracks, axis), ERA_SPACE, height.value - ERA_SPACE - TICK_STRIP)
+  // A switched-off track holding a ringed item in view (a journey stop, a story, a search) opens while the
+  // ring lasts; otherwise the ring dims everything and lights nothing (Society hides every empire this way)
+  const ringedOn = new Set<string>()
+  if (dimming.value) {
+    for (const e of shown) if (lit(e.id)) of(e).forEach((id) => ringedOn.add(id))
+    if (axis !== 'states') {
+      for (const d of props.durations) {
+        if (lit(d.id) && d.endYear >= props.view.start && d.startYear <= props.view.end) ringedOn.add(spanTrack(d, axis))
+      }
+    }
+  }
+  const hidden = hiddenOn(props.hiddenTracks, axis).filter((id) => !ringedOn.has(id))
+  const tracks = layoutTracks(defs, hidden, ERA_SPACE, height.value - ERA_SPACE - TICK_STRIP)
     .map((t) => {
       if (t.start === undefined || t.end === undefined || !t.on) return { ...t, band: null }
       const x = Math.max(-2, yearToX(t.start, props.view, width.value))
@@ -871,6 +883,11 @@ const constellation = computed(() => {
   return { tracks, dots, bars }
 })
 
+/** A span's Constellation track. An empire is political whatever else it did: on Society it goes with politics and war. */
+function spanTrack(d: Span, axis: Exclude<TrackAxis, 'states'>) {
+  return axis === 'society' && d.kind === 'state' ? 'politics-war' : trackOf(d, axis)
+}
+
 /** The spans in view on each track that is on: important or ringed ones, packed into two thin rows. */
 function constellationBars(tracks: { id: string; top: number; h: number; on: boolean }[], axis: Exclude<TrackAxis, 'states'>) {
   const { start, end } = props.view
@@ -879,8 +896,7 @@ function constellationBars(tracks: { id: string; top: number; h: number; on: boo
     if (d.endYear < start || d.startYear > end) continue
     // A ringed span (a journey stop, a connection) always gets a bar, even a life or a sub-span
     if (!lit(d.id) && (d.person || props.spanParents.has(d.id) || d.importance < C_BAR_MIN_IMPORTANCE)) continue
-    // An empire is political whatever else it did: on Society it goes with politics and war
-    const id = axis === 'society' && d.kind === 'state' ? 'politics-war' : trackOf(d, axis)
+    const id = spanTrack(d, axis)
     byTrack.set(id, [...(byTrack.get(id) ?? []), d])
   }
   return tracks.flatMap((t) => {
