@@ -23,6 +23,7 @@ Ram uses DateFlow for a few days and lists small aesthetic, usability and experi
 | Journey stops invisible on the Society axis (empires and wars sit on *Politics & war*, off by default) | 2026-11-24 | ✅ Done: a switched-off track opens while it holds a ringed item in view |
 | The colour button's label (the state) and hint (the action) read as opposites | 2026-11-24 | ✅ Done: a *Colorful \| Subtle* pair like the detail presets, each hint describing its own choice |
 | The current stop of a story or journey can't be found on the timeline | 2026-11-24 | ✅ Done: a **spotlight** (ring or outline plus a name tag, in its own colour) on the current stop of a story, journey or Play through. Also: the "Connections of … are ringed" footer no longer shows when a story or journey's rings are what's drawn |
+| *Story* promises a written narrative, but they're built automatically from links | 2026-11-24 | ✅ Done: renamed **chain of events** (*Chains* menu, `?chain=`; old `?story=` links still open); curated paths stay journeys (doc 21 §6.18) |
 
 ### 2. Date Constellation as the front door, with switchable Y-axis tracks (#7)
 Constellation already opens a first visit (Medieval era, Geography tracks) and has two Y-axes: **Geography** (7 regions) and **Human activity** (6 activity groups, by primary category). This item makes it *the* way into DateFlow.
@@ -38,7 +39,7 @@ Constellation already opens a first visit (Medieval era, Geography tracks) and h
 - Size: M (2a needs a data pass first: events tied to their state, drafted through doc 15, then reviewed).
 
 ### 3. Make the journeys and empire life cycles stand out
-The three journeys and the Roman, Mughal and Ottoman life cycles are the richest things in DateFlow, but they sit under **More → Stories** and inside bars. No new pilots until these shine.
+The three journeys and the Roman, Mughal and Ottoman life cycles are the richest things in DateFlow, but they sat under **More → Stories** (now *Chains*) and inside bars. No new pilots until these shine.
 
 - ~~**3a. A front-door invitation**~~ ✅ 2026-11-24: a "Take a journey" card over the timeline, shown until the viewer dismisses it ("Explore on my own") or starts a journey; remembered per viewer.
 - ~~**3b. A Journeys button in the main toolbar**~~ ✅ 2026-11-23: a Journeys menu at the front of the always-visible row; the Stories menu now holds only stories.
@@ -51,7 +52,7 @@ The three journeys and the Roman, Mughal and Ottoman life cycles are the richest
 - Size: M.
 
 ### 4. AI questions ("What was happening in India when Rome peaked?")
-**On hold (Ram, 2026-11-24):** first a step back to take stock of DateFlow as it is: the glossary (doc 21) and its list of colliding terms. **Done 2026-11-24:** all 16 proposals in doc 21 §6 carried out (a 17th, the History overview's name, on the same day); next in doc 21 §8 is a student guide (step 5), then item 4 when Ram resumes it.
+**On hold (Ram, 2026-11-24):** first a step back to take stock of DateFlow as it is: the glossary (doc 21) and its list of colliding terms. **Done 2026-11-24:** all 16 proposals in doc 21 §6 carried out (a 17th, the History overview's name, and an 18th, *story* → *chain of events*, on the same day); next in doc 21 §8 is a student guide (step 5), then item 4 when Ram resumes it.
 Ram wants this high. It breaks the **no backend** rule, so the first step is a decision, not code.
 
 - How answers are produced (decided below). Options:
@@ -66,10 +67,10 @@ Ram wants this high. It breaks the **no backend** rule, so the first step is a d
 
 ## Next
 
-### 5. Stories gallery and a story of the day
-- A gallery page (or a large panel) of the best stories as cards: title, years, regions, a one-line hook, a tiny thread preview. Today there are 8 featured stories in a menu.
-- **Story of the day:** chosen from the date alone, like the daily games (same date → same story, no randomness).
-- Journeys and stories sit side by side in the gallery.
+### 5. A gallery of journeys and chains, and a chain of the day
+- A gallery page (or a large panel) of the best chains of events as cards: title, years, regions, a one-line hook, a tiny thread preview. Today there are 8 featured chains in a menu. A chain is automatic; a curated, hand-written path is a journey (Ram, 2026-11-24).
+- **Chain of the day:** chosen from the date alone, like the daily games (same date → same chain, no randomness).
+- Journeys and chains sit side by side in the gallery.
 - Size: M.
 
 ### ~~5b. "What's this?" help mode (Ram, 2026-11-24)~~ ✅ 2026-11-24

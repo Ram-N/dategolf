@@ -19,7 +19,7 @@
 | **Person** | A period span flagged `person`: a life, birth to death, with a `role`. | UI: the "People" row (Timeline and Lanes), rounded pills; a person's card lists who was *Alive at the same time* | 12 (pilot) |
 | **Sub-span** | A span that is `part_of` another span (Shah Jahan's reign inside the Mughal Empire). | UI: a labelled segment inside the parent's bar once zoomed in (≥ 48 px), two levels deep | — |
 | **Life cycle / phase** | An empire's years split into contiguous phases, each with a neutral **kind** (foundation, expansion, consolidation, height, transformation, contraction, end), a title, a description and, sometimes, the event that *opens* it (*Opens with* in the card; not called a milestone). Never a verdict ("golden age", "decline"). | UI: the bar shaded by phase; the card's *Life cycle* list; the strip in a journey stop. Code: `phases` on a `Span` | 3 (Roman, Ottoman, Mughal) |
-| **Historical Current** | A span flagged `current`: a long movement (Axial Age, Enlightenment, Decolonization…) drawn as a translucent band behind the timeline, at most 3 at any year. Hidden in Simple, Constellation, stories, the Time Machine and journeys. | UI: background bands. Code: `current`, `pickCurrents` | 9 |
+| **Historical Current** | A span flagged `current`: a long movement (Axial Age, Enlightenment, Decolonization…) drawn as a translucent band behind the timeline, at most 3 at any year. Hidden in Simple, Constellation, chains of events, the Time Machine and journeys. | UI: background bands. Code: `current`, `pickCurrents` | 9 |
 | **Link** | A reviewed relationship between two items, stored once and read from either side ("is part of" / "includes"), with a one-line *why* and a confidence (medium/low show as *debated*). Eleven **types** (table below). | UI: "Connections" on a card. Code: `relationships.json`; also called *relationship* and *connection* | 493 |
 | **State (of an event)** | Which state(s) an event belongs to: from reviewed ties, or from a `part_of` / `began` / `ended` link to an empire-kind span (directly or through a sub-span). An event of two states, such as a war, has both. | UI: the *Empires & states* axis. Code: `states.json`, db `event_states` | 282 events |
 | **Milestone** | One of 16 hand-picked turning-point events (writing in Sumer, Gutenberg, Columbus, the Moon landing…). Not a separate kind of item. | UI: dashed vertical **milestone lines** across the timeline (hidden in Simple), each with a **tag** in the era strip giving its short name ("Printing press"; a bare ◆ when crowded); hover shows the full event, click opens its card. Short names: `manage.py set-milestone-label`, exported as `milestone_labels.json`; also the famous third event in the Time Machine's *Two events* comparison. Code: `milestones.json` | 16 |
@@ -33,7 +33,7 @@
 | **DateFlow-only event** | An event whose date is too disputed to guess, so it's shown in DateFlow but kept out of DateGolf and DatePick. | Code: `dateflowOnly` | 7 |
 | **Shared id** | One subject stored as both an event and a span with the same id (e.g. a war's start and the war). It reads as its span in Connections and journeys. | Code only | — |
 
-**Link types** (as exported; *role* is how stories and journeys treat them):
+**Link types** (as exported; *role* is how chains of events and journeys treat them):
 
 | Type | Reads | Inverse | Role | Count |
 |---|---|---|---|---|
@@ -49,7 +49,7 @@
 | interacted_with | interacted with | interacted with | context | 2 |
 | evolved_into | evolved into | evolved from | context | 1 |
 
-**Kinds of connection.** Every link type has a *role* (above). A **cause** (contributed to, enabled, influenced, triggered) says one thing helped bring about another. A **sequence** (preceded) says only that one came after the other. A **frame** (began, ended) marks a span's start or end. **Context** (part of, opposed, interacted with, evolved into) is anything else. Things that merely happened at the same time aren't linked at all; DateFlow shows them as *contemporaries* (Meanwhile, the Time Machine). Stories and journey bridges never present a sequence or a coincidence in time as a cause.
+**Kinds of connection.** Every link type has a *role* (above). A **cause** (contributed to, enabled, influenced, triggered) says one thing helped bring about another. A **sequence** (preceded) says only that one came after the other. A **frame** (began, ended) marks a span's start or end. **Context** (part of, opposed, interacted with, evolved into) is anything else. Things that merely happened at the same time aren't linked at all; DateFlow shows them as *contemporaries* (Meanwhile, the Time Machine). Chains of events and journey bridges never present a sequence or a coincidence in time as a cause.
 
 ---
 
@@ -60,21 +60,21 @@
 | **Timeline** | The whole time canvas, 3600 BCE to 2030, strictly linear (one year is the same width everywhere at a given zoom). Zooming reveals more events rather than enlarging them. | — |
 | **View** | The window of years on screen right now. | UI: the range under the DateFlow title ("1500 – 1800 · 300 years"). Code: `View` |
 | **Layout** | How the timeline is drawn: **Timeline**, **Lanes** or **Constellation**. Every visit opens on Constellation. Docs and UI hints say "layout"; "view" means only the years on screen. | UI: the first toolbar group (aria "Timeline layout"; each button's hint starts "Layout:"). Code: `mode` / `ViewMode` |
-| **Timeline** (layout) | One shared line, the single story: labelled events above and below the axis, then bar rows: *Empires & states*, *Periods*, *People*. Called *World* until 2026-11-24. | Code: mode `'world'` |
+| **Timeline** (layout) | One shared line, one road through history: labelled events above and below the axis, then bar rows: *Empires & states*, *Periods*, *People*. Called *World* until 2026-11-24. | Code: mode `'world'` |
 | **Lanes** | One horizontal lane per region, each with its own events and bars; the **Lanes menu** picks which regions get a lane (4 by default, so each has room for labels) and their order. A region switched off in Filters is off here too (shown as *off*). | Code: `LaneState`, `lanesShown` |
 | **Constellation** | Every event as an unlabelled dot (size = importance, on a log scale; shape and colour = family) on horizontal **tracks**, chosen by an **axis**. Spans of importance 5+ sit as thin bars along the bottom of their track. Hover a dot for its name; click to open its card. | — |
 | **Axis (Constellation)** | What the tracks mean, chosen in the toolbar: **Geography** (the 7 lanes), **Human activity** (the 8 families, so a dot's shape always matches its track), **Society** (7 tracks by the first non-political category; a *Politics & war* track starts switched off), **Empires & states** (a row per state in view, up to 8, with a band for its lifetime, then *Other*). | Code: `TrackAxis` |
-| **Track** | One horizontal row of the Constellation. Clicking its name switches it off (it shrinks to a strip); remembered per axis. A switched-off track opens by itself while it holds a ringed item in view (a journey stop, a story, a search result), so a ring never lights only hidden things. | Code: `layoutTracks`, `hiddenTracks` |
+| **Track** | One horizontal row of the Constellation. Clicking its name switches it off (it shrinks to a strip); remembered per axis. A switched-off track opens by itself while it holds a ringed item in view (a journey stop, a chain of events, a search result), so a ring never lights only hidden things. | Code: `layoutTracks`, `hiddenTracks` |
 | **Bar** | A span drawn across its years: solid for empires, dashed for periods, a rounded pill for people, shaded by phase where it has a life cycle. | — |
 | **Era band / era chip** | See *Era* (§1). | — |
 | **Milestone line** | See *Milestone* (§1). | — |
 | **Current band** | See *Historical Current* (§1). | — |
-| **Story threads** | Curved arrows drawn between a story's stops (Timeline and Lanes only); each opens its link's card. | Code: `StoryArcs` |
-| **Rings / dimming** | Items outlined while everything else fades: an open story, journey, search, the Time Machine, or *Show connections*. | Code: `highlightIds`, `lit` |
-| **Spotlight** | The stop being shown in a story, journey or *Play through*: a pulsing ring (or a thick outline on a bar) in the spotlight colour (yellow on dark, orange on light) and its year and name on the timeline (in a tag, or in its own label filled with that colour). The rest of the story or journey stays ringed. | Code: `spotlightIds`, `--df-spot` |
+| **Threads** | Curved arrows drawn between a chain's stops (Timeline and Lanes only); each opens its link's card. | Help *A thread*. Code: `StoryArcs` |
+| **Rings / dimming** | Items outlined while everything else fades: an open chain of events, journey, search, the Time Machine, or *Show connections*. | Code: `highlightIds`, `lit` |
+| **Spotlight** | The stop being shown in a chain of events, journey or *Play through*: a pulsing ring (or a thick outline on a bar) in the spotlight colour (yellow on dark, orange on light) and its year and name on the timeline (in a tag, or in its own label filled with that colour). The rest of the chain or journey stays ringed. | Code: `spotlightIds`, `--df-spot` |
 | **History overview** | The bar chart under the toolbar showing how many events (those the filters let through) fall in each slice of all history, captioned *ALL HISTORY* with three faint year labels. The **box** is the current view and a shaded **wedge** opens from it to the full width of the timeline below, so the overview's years don't read as the chart's axis. Click to jump; drag the box to scrub. The visualization pattern is *overview + detail*; "minimap" is only the code name. | UI: help *The history overview*; aria *History overview*. Code: `DateFlowMinimap`, `densityBins`, help key `minimap` |
 | **Legend** | The family shapes and colours along the bottom; click a family to **Focus** on it (§3). | — |
-| **Card** | The panel for one item. *Event card*: date, Why it matters, approximate note, Connections, story buttons, *Before & after in* its lane, *Meanwhile around the world* (±50 years), *Empires & states in* its year. *Span card*: years, historians' dates, Why it matters, *Alive at the same time* (people), *Life cycle*, Connections, *Meanwhile in* its region, *Compare with* (Time Machine). | Code: `EventInfoCard` (shared with DateGolf), `DurationInfoCard` |
+| **Card** | The panel for one item. *Event card*: date, Why it matters, approximate note, Connections, chain buttons (*How did we get here?*, *What happened next?*), *Before & after in* its lane, *Meanwhile around the world* (±50 years), *Empires & states in* its year. *Span card*: years, historians' dates, Why it matters, *Alive at the same time* (people), *Life cycle*, Connections, *Meanwhile in* its region, *Compare with* (Time Machine). | Code: `EventInfoCard` (shared with DateGolf), `DurationInfoCard` |
 
 ---
 
@@ -93,7 +93,7 @@
 | **Theme** | Light or dark (☾ / ☀). | yes |
 | **Hide a track / lane** | Constellation: click a track name (on Geography this is the region switch shared with Filters). Lanes: the Lanes menu (that layout's rows only). | yes |
 | **What's this? (help mode)** | The **?** button (or `?` key): the next clicks show what anything is, from `engine/dateflow/help.ts`, written from this glossary. Update both together. | no |
-| **Copy link** | Shares what's open: `?journey=`, `?story=`, `?q=` (search), `?year=` / `?tm=` (Time Machine). | — |
+| **Copy link** | Shares what's open: `?journey=`, `?chain=` (old `?story=` links still open), `?q=` (search), `?year=` / `?tm=` (Time Machine). | — |
 
 ---
 
@@ -101,14 +101,14 @@
 
 | Term | What it is | Where |
 |---|---|---|
-| **Story** | Built automatically from links: from one event, follow the causes and sequences back (*How did we get here?*) or forward (*What happened next?*). A sequence is never shown as a cause, and debated links say so. Played stop by stop with threads on the timeline. | Card buttons; *Stories* menu (8 featured stories) |
+| **Chain of events** (*chain*) | Built automatically from reviewed links, never written by hand: from one event, follow the causes and sequences back (*How did we get here?*) or forward (*What happened next?*). A sequence is never shown as a cause, and debated links say so. Played stop by stop with threads on the timeline. Called *story* until 2026-11-24 (§6.18); anything curated is a journey. | Card buttons; *Chains* menu (8 featured starting points); `?chain=`. Code: still `story` (`StoryPanel`, `stories.ts`) |
 | **Journey** | A curated, reviewed guided path through a big theme: an intro, 8–10 **stops** (each showing existing events or spans, with narration), a closing, and a **Think about it** question on a few stops. Between stops a **bridge** says how they connect: a reviewed link if there is one, else "at the same time" or "538 years later", never an implied cause. A stop with an empire shows its life-cycle strip. Plays in any layout. | *Journeys* menu (with *Continue* / *Start over* / *✓ Finished*); the first-visit invitation card; `?journey=` |
 | **Search results** | Steps through search results in time order: *Overview*, then each match, with ‹ ›, a scrubber, and *Play* at Slow / Normal / Fast. | Search box |
 | **Play through** | The same panel (titled *Play through history*), stepping through every event the filters let through. | *Play through* button |
 | **Time Machine** | Four comparisons: **A year** (each region's empires, periods and events around one year), **Two years** (what was *Gone*, *New*, *Still there*, *Came and went*), **Two empires or periods** (how long two spans overlapped or how far apart they were), **Two events** (the years between them, plus a striking comparison with a famous third event). | *Time Machine* button; span card *Compare with* |
 | **What happened?** | A summary of the view, or a shift-dragged stretch of years: its empires and states, periods, and top events around the world. | *What happened?* button; shift-drag |
 | **Meanwhile** | The "elsewhere at the same time" sections of a card (§2). | Cards |
-| **Surprise Me** | Opens a random event, preferring ones with a story, without repeating the last 20. | *Surprise Me* button |
+| **Surprise Me** | Opens a random event, preferring ones with a chain of events, without repeating the last 20. | *Surprise Me* button |
 | **Games** | Six quiz games over DateFlow's data: *Which Came First?*, *Put Them in Order*, *What's Missing?*, *What's Happening Elsewhere?*, *Find the Duration*, *Cause & Effect*. Rounds get harder as they go. | *▶ Games* button → `/dateflow/play` |
 
 ---
@@ -134,18 +134,18 @@
 | **Life cycle** | The Roman Empire bar shaded by its 7 phases; the card lists them. |
 | **Constellation** | Roman events as dots on the Europe track (Geography) or its own row (Empires & states), with the Republic → Empire bands one after the other. |
 | **Card** | Why it matters, Connections ("evolved into Byzantine Empire"), Meanwhile in Europe, *Compare with* another span. |
-| **Story** | From *Last Western Roman Emperor Deposed*, *How did we get here?* follows the reviewed links back. |
+| **Chain of events** | From *Last Western Roman Emperor Deposed*, *How did we get here?* follows the reviewed links back. |
 | **Journey** | Stop 3 of *The Rise and Fall of Empires*, with its narration, its life-cycle strip, and the bridge to Byzantium ("Roman Empire evolved into Byzantine Empire"). |
 | **Time Machine** | *Two empires or periods*: how long Rome and Han China coexisted. *A year*: the world in, say, 117. |
 | **Games** | *Find the Duration*: name the empire from where and when it ruled. |
 
-**In one line each:** a *layout* shows history; a *card* explains one item; a *story* follows its links; a *journey* guides you through a theme; the *Time Machine* compares; the *games* test.
+**In one line each:** a *layout* shows history; a *card* explains one item; a *chain of events* follows its links; a *journey* guides you through a theme; the *Time Machine* compares; the *games* test.
 
 ---
 
 ## 6. Where the words collide
 
-These are the places where one word means several things, or several words mean one thing. Each has a proposal. All 17 were decided and carried out on 2026-11-24.
+These are the places where one word means several things, or several words mean one thing. Each has a proposal. All 18 were decided and carried out on 2026-11-24.
 
 1. ~~**Span / Duration / time span / "bar".**~~ **Done 2026-11-24:** "span" in docs and conversation; the code type `Duration` is now `Span` (variable and file names such as `durations.json` and `DurationInfoCard` are unchanged for now).
 2. **"Empire" covers every state, and some things that aren't states.** The kind includes kingdoms, dynasties, republics and Athens, *and* civilizations such as the Indus Valley, Classic Maya and Teotihuacan, which weren't single states. The same kind is labelled four ways: *Empires & dynasties* (World row), *Empire* (legend), *Empire / dynasty* (card), *Empires & states* (axis). *Proposal:* call the kind **state** throughout ("Empires & states" everywhere), and move the civilizations to a period kind (or a new *civilization* kind) after review. **Done 2026-11-24** for the kind and the labels (db, tools, drafting rules, app); Indus Valley and Classic Maya moved to period on Ram's review; Teotihuacan and Great Zimbabwe stay states (a city-state and a kingdom's capital).
@@ -164,6 +164,7 @@ These are the places where one word means several things, or several words mean 
 15. **"Two empires" isn't limited to empires.** The Time Machine's overlap mode takes any two spans (the span card's *Compare with* sends periods too). *Proposal:* label it *Two spans*, or *Two empires or periods*. **Done 2026-11-24:** *Two empires or periods* (students never see "span").
 16. **Milestone, two uses.** The 16 milestone events, and a phase's "opens with" event in a life cycle. Minor; keep "milestone" for the 16. **Done 2026-11-24:** the card already said *Opens with*; the glossary and a code comment no longer call it a milestone.
 17. **Minimap / overview strip / History overview.** One thing, three names (glossary, help, aria label), and "strip" also means a life-cycle strip and a switched-off track. It isn't a miniature of the timeline, so "minimap" was inaccurate. **Done 2026-11-24:** **History overview** wherever users or docs see it; `DateFlowMinimap` stays as the code name.
+18. **Story.** The automatic, link-built paths were called *stories*, which promises a narrative someone wrote. *Proposal (Ram):* be honest, call them **chains of events** (*chain* for short) and keep anything curated for journeys. Not *sequence*: that is already the role of a *preceded* link, the opposite of a cause (§1). **Done 2026-11-24:** the *Chains* menu, the chain panel (*Play the chain*, *Chain from here*), help, games and `?chain=` (old `?story=` links still open); the code keeps `story`.
 
 ---
 
@@ -171,10 +172,11 @@ These are the places where one word means several things, or several words mean 
 
 To keep them from creeping into specs as if they existed:
 
-- **Experience, Collection, Discovery:** not features. The nearest real things are the *games* (interactive), *journeys* and *stories* (curated or guided), and *Surprise Me*.
+- **Experience, Collection, Discovery:** not features. The nearest real things are the *games* (interactive), *journeys* (curated) and *chains of events* (automatic), and *Surprise Me*.
+- **Story:** renamed *chain of events* (§6.18). A hand-written narrative would be a journey.
 - **Map view:** a *Later* roadmap item (doc 18); countries are tagged but there's no map.
 - **Civilization, Institution, Movement as item types:** not types. Civilizations are currently state spans, pending review (§6.2); movements are period spans; there are no institutions.
-- **Constellation as "a web of related items":** wrong. It's the dot layout described in §2. Relationships are shown by Connections, stories and rings.
+- **Constellation as "a web of related items":** wrong. It's the dot layout described in §2. Relationships are shown by Connections, chains of events and rings.
 - **Date / Duration as concepts:** an event has a year; a span has a start and an end. "Duration" in the code is a span, not a length of time (§6.1).
 
 ---
@@ -193,7 +195,7 @@ To keep them from creeping into specs as if they existed:
 - **Dots and labels** are events; **bars** are things that lasted (empires, wars, movements, lives). "c." means the date is approximate.
 - **Three layouts:** *Timeline* (one road through history), *Lanes* (a lane for each region, side by side), *Constellation* (every event a star, sorted by region, activity, society or state). The first three phrases are the layout buttons' hover hints.
 - **Click anything** to read about it: why it matters, what it's connected to, what was happening elsewhere.
-- **Take a journey** through a big theme, or follow a **story** from any event: *How did we get here?*
+- **Take a journey** through a big theme, or follow a **chain of events** from any event: *How did we get here?*
 - **Time Machine** to compare years, empires or events; **What happened?** to sum up any stretch of time; **▶ Games** for games.
 
 ## 10. Keeping this current

@@ -1,21 +1,21 @@
 <template>
   <div ref="rootEl" class="relative">
-    <button class="btn" :aria-expanded="open" aria-haspopup="true" title="Follow how events led to one another" @click="toggle">
-      Stories ▾
+    <button class="btn" :aria-expanded="open" aria-haspopup="true" title="Chains of events: follow how one event led to another" @click="toggle">
+      Chains ▾
     </button>
     <div
       v-if="open"
       class="panel absolute top-11 z-40 rounded-xl border p-3"
       :style="{ left: panelLeft + 'px', width: PANEL_W + 'px' }"
       role="dialog"
-      aria-label="Stories"
+      aria-label="Chains of events"
     >
-      <h3 class="heading">Follow a story</h3>
-      <p class="hint mb-2">How one event led to another: causes, beginnings, endings and what came next.</p>
+      <h3 class="heading">Follow a chain of events</h3>
+      <p class="hint mb-2">How one event led to another: causes, beginnings, endings and what came next, built automatically from reviewed connections.</p>
       <ul class="space-y-1">
         <li v-for="s in stories" :key="s.rootId">
           <button class="row w-full text-left rounded-lg px-2 py-1.5" @click="choose(s.rootId)">
-            <span class="label">The story behind</span>
+            <span class="label">The chain behind</span>
             <span class="name">{{ s.name }}</span>
             <span class="meta">
               {{ s.steps }} steps · {{ formatYear(s.start) }} → {{ formatYear(s.end) }}<template v-if="s.regions > 1">
@@ -24,7 +24,7 @@
           </button>
         </li>
       </ul>
-      <p v-if="!stories.length" class="hint">Stories appear once events are linked.</p>
+      <p v-if="!stories.length" class="hint">Chains appear once events are linked.</p>
       <p class="hint mt-2">Or open any event and choose <strong>How did we get here?</strong></p>
     </div>
   </div>

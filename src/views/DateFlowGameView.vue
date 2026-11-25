@@ -93,7 +93,7 @@
             <button class="btn primary" @click="next">
               {{ index < ROUND_LENGTH - 1 ? 'Next question →' : 'See results' }}
             </button>
-            <button v-if="q.story" class="btn" @click="exploreStory(q.story)">Explore this story</button>
+            <button v-if="q.story" class="btn" @click="exploreStory(q.story)">Explore this chain</button>
             <button v-else class="btn" @click="explore(q.reveal)">Explore on the timeline</button>
           </div>
         </div>
@@ -237,7 +237,7 @@ function next() {
 
 /** Cause & Effect: open the question's story ("How did we get here?") on the timeline. */
 function exploreStory(s: { id: string; direction: 'back' | 'forward' }) {
-  router.push({ path: '/dateflow', query: { story: s.id, dir: s.direction } })
+  router.push({ path: '/dateflow', query: { chain: s.id, dir: s.direction } })
 }
 
 /** Frame this question's events on the main timeline. */

@@ -1,6 +1,6 @@
 <template>
-  <aside class="story-panel" role="region" :aria-label="`Story: ${rootName}`">
-    <!-- Header: what this story is, and the controls -->
+  <aside class="story-panel" role="region" :aria-label="`Chain of events: ${rootName}`">
+    <!-- Header: what this chain of events is, and the controls -->
     <header class="head">
       <div class="flex items-start justify-between gap-3">
         <div class="min-w-0">
@@ -16,12 +16,12 @@
               v-if="regionCount > 1"> · {{ regionCount }} regions</template>
           </p>
         </div>
-        <button class="icon" aria-label="Close the story (Esc)" @click="emit('close')">✕</button>
+        <button class="icon" aria-label="Close the chain of events (Esc)" @click="emit('close')">✕</button>
       </div>
 
       <div class="controls">
-        <button class="play" :aria-label="playing ? 'Pause' : 'Play the story'" @click="emit('play')">
-          {{ playing ? '❚❚ Pause' : '▶ Play the story' }}
+        <button class="play" :aria-label="playing ? 'Pause' : 'Play the chain'" @click="emit('play')">
+          {{ playing ? '❚❚ Pause' : '▶ Play the chain' }}
         </button>
         <button class="icon" aria-label="Previous stop (←)" @click="emit('step', -1)">‹</button>
         <span class="counter" aria-live="polite">{{ step === null ? 'Overview' : `${step + 1} / ${stops.length}` }}</span>
@@ -61,7 +61,7 @@
           <div class="stop-meta">
             <span class="chip">{{ laneLabel(s.node.lane) }}</span>
             <button v-if="s.node.id !== story.rootId" class="reroot" @click="emit('reroot', s.node.id)">
-              Story from here ↺
+              Chain from here ↺
             </button>
           </div>
         </li>
@@ -171,7 +171,7 @@ onUnmounted(() => {
 
 const copied = ref(false)
 async function copyLink() {
-  const url = `${location.origin}${location.pathname}?story=${encodeURIComponent(props.story.rootId)}&dir=${props.story.direction}`
+  const url = `${location.origin}${location.pathname}?chain=${encodeURIComponent(props.story.rootId)}&dir=${props.story.direction}`
   copied.value = await copyText(url)
   setTimeout(() => (copied.value = false), 2000)
 }

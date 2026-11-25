@@ -18,7 +18,7 @@ export const GAMES: { id: GameId; title: string; blurb: string }[] = [
   { id: 'missing', title: "What's Missing?", blurb: 'Two events from one region. Which event happened in between?' },
   { id: 'elsewhere', title: "What's Happening Elsewhere?", blurb: 'One event. Which of these happened elsewhere at about the same time?' },
   { id: 'duration', title: 'Find the Duration', blurb: 'Given where and when it ruled, name the empire or dynasty.' },
-  { id: 'cause-effect', title: 'Cause & Effect', blurb: 'What led to what? Pick the cause, the result, and put a story in order.' },
+  { id: 'cause-effect', title: 'Cause & Effect', blurb: 'What led to what? Pick the cause, the result, and put a chain of events in order.' },
 ]
 
 export const ROUND_LENGTH = 5
@@ -43,7 +43,7 @@ interface QuestionBase {
   prompt: string
   reveal: RevealItem[]
   explain?: string // Cause & Effect: the link's "why", shown on the reveal
-  story?: { id: string; direction: 'back' | 'forward' } // "Explore this story"
+  story?: { id: string; direction: 'back' | 'forward' } // "Explore this chain"
 }
 
 export interface PickQuestion extends QuestionBase {
@@ -337,7 +337,7 @@ function findDuration(i: number, durations: Span[], rng: Rng, used: Set<string>)
 // - only high-confidence cause links become questions (a sequence is order, not cause);
 // - wrong options come from a different region than both the question and the answer, and have no
 //   path at all (cause, sequence, beginning or ending, either way) to either of them;
-// - "put this story in order" uses events far enough apart to tell apart (approximate dates included).
+// - "put this chain of events in order" uses events far enough apart to tell apart (approximate dates included).
 const CAUSE_PROMPT: Record<string, [cause: string, effect: string]> = {
   triggered: ['What triggered {x}?', 'What did {x} trigger?'],
   caused: ['What caused {x}?', 'What did {x} cause?'],
@@ -428,7 +428,7 @@ function storyInOrder(events: Event[], durations: Span[], rng: Rng, used: Set<st
     return {
       kind: 'order',
       game: 'cause-effect',
-      prompt: `Put this story in order, earliest first: the road to ${byId.get(root)!.name}.`,
+      prompt: `Put this chain of events in order, earliest first: the road to ${byId.get(root)!.name}.`,
       events: shown,
       answer: sorted.map((e) => e.id),
       story: { id: root, direction: 'back' },

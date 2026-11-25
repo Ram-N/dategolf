@@ -20,7 +20,7 @@ export const HELP = {
   },
   'layout-timeline': {
     title: 'Timeline layout',
-    text: 'One road through history: every event from every region on a single line, with empires, periods and people as bars underneath. Best for the big story of a stretch of time.',
+    text: 'One road through history: every event from every region on a single line, with empires, periods and people as bars underneath. Best for the big picture of a stretch of time.',
     tip: 'Busy places can crowd out quieter ones. Try Lanes to give each region its own row.',
     see: ['layout-lanes', 'layout-constellation', 'state'],
   },
@@ -85,7 +85,7 @@ export const HELP = {
   state: {
     title: 'An empire or state',
     text: 'A solid bar from the year a state began to the year it ended: empires, kingdoms, dynasties, republics, city-states. Some empires are shaded by phase: lightest as they begin and end, strongest at their height.',
-    tip: 'Click a bar to read its story. Empires, periods and lives are all "spans": things with a start and an end.',
+    tip: 'Click a bar to read about it. Empires, periods and lives are all "spans": things with a start and an end.',
     see: ['period', 'person', 'span-card'],
   },
   period: {
@@ -178,14 +178,14 @@ export const HELP = {
     see: ['stories', 'layout-timeline'],
   },
   stories: {
-    title: 'Stories',
-    text: 'Follow causes and consequences: from one event back through what led to it (How did we get here?) or forward to what came next. Threads on the timeline show each connection.',
+    title: 'Chains of events',
+    text: 'Follow causes and consequences: from one event back through what led to it (How did we get here?) or forward to what came next. DateFlow builds each chain automatically from reviewed connections; threads on the timeline show each one.',
     tip: 'A thin grey "then" means one thing came after another, not that it caused it.',
     see: ['story-thread', 'journeys'],
   },
   'story-thread': {
-    title: 'A story thread',
-    text: "An arrow from one event in a story to the next. Its colour and style say how they're connected; the key is in the story panel.",
+    title: 'A thread',
+    text: "An arrow from one event in a chain to the next. Its colour and style say how they're connected; the key is in the chain's panel.",
     tip: 'Hover or click it to read the connection.',
     see: ['stories'],
   },
@@ -221,7 +221,7 @@ export const HELP = {
   },
   more: {
     title: 'More',
-    text: "Holds the tools that don't fit on a smaller screen: Time Machine, Surprise Me, Play through, Stories, What happened?, Games and the colour settings.",
+    text: "Holds the tools that don't fit on a smaller screen: Time Machine, Surprise Me, Play through, Chains, What happened?, Games and the colour settings.",
   },
   'event-card': {
     title: "An event's card",
@@ -231,7 +231,7 @@ export const HELP = {
   },
   'span-card': {
     title: 'The card for an empire, period or life',
-    text: 'Its years and its story. Some empires also show their life cycle, phase by phase, from foundation to end.',
+    text: 'Its years and what happened. Some empires also show their life cycle, phase by phase, from foundation to end.',
     tip: 'Compare with opens the Time Machine to set it beside another empire or period.',
     see: ['state', 'time-machine'],
   },

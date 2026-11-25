@@ -420,20 +420,25 @@ function openTimeMachineFromUrl() {
   }
 }
 
-// Shareable stories: /dateflow?story=<id>&dir=back|forward opens one, and the URL follows the open story.
+// Shareable chains of events: /dateflow?chain=<id>&dir=back|forward opens one, and the URL follows the open chain.
 const route = useRoute()
 const router = useRouter()
+/** A chain of events in the URL: ?chain=, or ?story= from links shared before the rename. */
+function chainParam(): string | null {
+  const q = route.query.chain ?? route.query.story
+  return typeof q === 'string' ? q : null
+}
 function openFromUrl() {
-  const id = typeof route.query.story === 'string' ? route.query.story : null
+  const id = chainParam()
   if (id && id !== store.story?.rootId) store.openStory(id, route.query.dir === 'forward' ? 'forward' : 'back')
 }
 // One sync for the whole URL, built from the current state: two separate watchers each rewrote it
 // from a stale copy and left the other's keys behind.
 // Searches too: /dateflow?q=Mughal (issue #9), and journeys: /dateflow?journey=history-of-ideas (Phase 14).
-const OWN_KEYS = [...TM_KEYS, 'story', 'dir', 'q', 'journey']
+const OWN_KEYS = [...TM_KEYS, 'chain', 'story', 'dir', 'q', 'journey']
 const journeyQuery = (): Record<string, string> => (store.journey ? { journey: store.journey.id } : {})
 const storyQuery = (): Record<string, string> =>
-  store.story ? { story: store.story.rootId, dir: store.story.direction } : {}
+  store.story ? { chain: store.story.rootId, dir: store.story.direction } : {}
 const searchQuery = (): Record<string, string> =>
   store.tour?.source === 'search' ? { q: store.tour.query } : {}
 watch(
@@ -450,8 +455,8 @@ onMounted(async () => {
   window.addEventListener('pointerdown', onHelpPress, true)
   window.addEventListener('click', onHelpClick, true)
   if (store.isLoading) await store.load()
-  // Every visit opens on Date Constellation, but a shared story needs its threads (World and Lanes only)
-  if (typeof route.query.story === 'string') store.setMode('world')
+  // Every visit opens on Date Constellation, but a shared chain needs its threads (World and Lanes only)
+  if (chainParam()) store.setMode('world')
   openFromUrl()
   openTimeMachineFromUrl()
   if (typeof route.query.q === 'string' && route.query.q.trim()) store.searchFor(route.query.q)
