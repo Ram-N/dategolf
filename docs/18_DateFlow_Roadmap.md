@@ -21,6 +21,7 @@ Ram uses DateFlow for a few days and lists small aesthetic, usability and experi
 |---|---|---|
 | Testers read the overview's years as the chart's axis | 2026-11-24 | ✅ Done: the History overview has an *ALL HISTORY* caption, three faint year labels and a zoom wedge from its box to the timeline; renamed from "minimap" in the glossary and help (doc 21 §6.17) |
 | Journey stops invisible on the Society axis (empires and wars sit on *Politics & war*, off by default) | 2026-11-24 | ✅ Done: a switched-off track opens while it holds a ringed item in view |
+| The colour button's label (the state) and hint (the action) read as opposites | 2026-11-24 | ✅ Done: a *Colorful \| Subtle* pair like the detail presets, each hint describing its own choice |
 
 ### 2. Date Constellation as the front door, with switchable Y-axis tracks (#7)
 Constellation already opens a first visit (Medieval era, Geography tracks) and has two Y-axes: **Geography** (7 regions) and **Human activity** (6 activity groups, by primary category). This item makes it *the* way into DateFlow.

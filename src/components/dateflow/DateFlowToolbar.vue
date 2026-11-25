@@ -155,15 +155,19 @@
         What happened?
       </button>
       <RouterLink to="/dateflow/play" class="btn play" data-help="games" title="The DateFlow games">▶ Games</RouterLink>
-      <button
-        class="btn"
-        data-help="colours"
-        :aria-pressed="colorMode === 'colorful'"
-        :title="colorMode === 'colorful' ? 'Switch to subtle colours (3 hues)' : 'Switch to colourful (a hue per family)'"
-        @click="emit('toggleColors')"
-      >
-        {{ colorMode === 'colorful' ? 'Colorful' : 'Subtle' }}
-      </button>
+      <div class="seg flex rounded-lg p-0.5" role="group" aria-label="Colours" data-help="colours">
+        <button
+          v-for="c in COLOR_MODES"
+          :key="c.id"
+          class="seg-btn"
+          :class="{ active: colorMode === c.id }"
+          :aria-pressed="colorMode === c.id"
+          :title="c.hint"
+          @click="colorMode !== c.id && emit('toggleColors')"
+        >
+          {{ c.label }}
+        </button>
+      </div>
       <button
         class="btn w-9"
         data-help="theme"
@@ -193,6 +197,13 @@ import type { Journey, JourneyProgress } from '@/engine/dateflow/journeys'
 import { DENSITIES, type Density, type Filters } from '@/engine/dateflow/filters'
 import { formatYear, parseYear } from '@/utils/formatYear'
 import { MIN_QUERY } from '@/engine/dateflow/tour'
+
+// Both choices on show, like the detail presets (a single button labelled with the state but
+// hinting the action read both ways round)
+const COLOR_MODES: { id: ColorMode; label: string; hint: string }[] = [
+  { id: 'colorful', label: 'Colorful', hint: 'Colorful: a colour for each family of events' },
+  { id: 'subtle', label: 'Subtle', hint: 'Subtle: three colours, easier to tell apart for colour-blind eyes' },
+]
 
 defineProps<{
   view: View

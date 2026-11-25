@@ -211,7 +211,7 @@ export const HELP = {
   },
   colours: {
     title: 'Colours',
-    text: 'Colorful gives each family its own colour. Subtle uses three colours that are easier to tell apart for colour-blind eyes. The shapes stay the same in both.',
+    text: 'Pick Colorful or Subtle. Colorful gives each family its own colour; Subtle uses three colours that are easier to tell apart for colour-blind eyes. The shapes stay the same in both.',
     see: ['family', 'theme'],
   },
   theme: {
