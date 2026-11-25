@@ -20,6 +20,7 @@ npm run dev   # → http://localhost:5173
 - **The db is the only source** — `import-legacy` was removed (rebuilding from `data/legacy/` would wipe all later work); backups are git (`data/dategolf.db`) and the `data/dategolf.sql` dump
 - **Engine stays pure** — `src/engine/` must have zero Vue/Pinia dependencies
 - **Year never indexed** — `eventSearch.ts` only searches `name` + `aliases`, never `year`
+- **DateFlow names follow the glossary** (`docs/21_DateFlow_Glossary.md`): automatic, link-built paths are **chains of events** (never "stories"); curated, hand-written paths are **journeys**; the strip under the toolbar is the **History overview**. Add a new term there before using it in the UI
 - **Same date = same challenge** — daily PRNG seed comes from date string only; don't add randomness
 - **Used-event rule** — each event can only be picked once per game; enforced in engine
 
