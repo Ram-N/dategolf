@@ -5,6 +5,7 @@
       :width="width"
       :height="height"
       class="block cursor-grab touch-none"
+      :data-help="mode === 'world' ? 'layout-timeline' : `layout-${mode}`"
       :class="{ 'cursor-grabbing': dragging }"
       @wheel.prevent="onWheel"
       @pointerdown="onPointerDown"
@@ -14,14 +15,14 @@
       @click="onBackgroundClick"
     >
       <!-- Era bands: alternating faint fills, name pinned to the visible part of the band -->
-      <g v-for="era in eraBands" :key="era.id">
+      <g v-for="era in eraBands" :key="era.id" data-help="era">
         <rect v-if="era.shaded" :x="era.x1" y="0" :width="era.x2 - era.x1" :height="height" fill="var(--df-era)" />
         <text v-if="era.showLabel" :x="era.labelX" y="20" class="era-label">{{ era.name }}</text>
       </g>
 
       <!-- Historical Currents (step 3d): long movements as washes behind everything; at most 3 overlap.
            A dashed edge = an approximate start or end. The name (with its years) opens the span's card. -->
-      <g v-for="c in currentBands" :key="c.id" class="current">
+      <g v-for="c in currentBands" :key="c.id" class="current" data-help="current">
         <rect :x="c.x1" :y="c.top" :width="c.x2 - c.x1" :height="c.h" class="current-band" pointer-events="none" />
         <line v-if="c.startIn" :x1="c.x1" :x2="c.x1" :y1="c.top" :y2="c.top + c.h" class="current-edge"
               :class="{ approx: c.approximate }" pointer-events="none" />
@@ -51,6 +52,7 @@
         v-for="ms in milestoneLines"
         :key="ms.id"
         class="milestone cursor-pointer"
+        data-help="milestone"
         @click.stop="onMarkerClick(ms.id)"
       >
         <title>{{ ms.tooltip }}</title>
@@ -66,10 +68,10 @@
       <!-- Date Constellation: every event as a dot on its track; no labels or bars -->
       <g v-if="constellation">
         <g v-for="t in constellation.tracks" :key="t.id">
-          <rect v-if="t.index % 2 === 1" x="0" :y="t.top" :width="width" :height="t.h" class="track-band" />
+          <rect v-if="t.index % 2 === 1" x="0" :y="t.top" :width="width" :height="t.h" class="track-band" data-help="track" />
           <!-- A state's lifetime, behind its row: states rise, overlap and end across the axis -->
           <rect v-if="t.band" :x="t.band.x" :y="t.top + 2" :width="t.band.w" :height="Math.max(0, t.h - 4)" rx="4"
-                class="state-band" />
+                class="state-band" data-help="state" />
           <line v-if="t.index > 0" x1="0" :x2="width" :y1="t.top" :y2="t.top" class="lane-rule" />
         </g>
         <!-- 2d: spans along the bottom of their track, under the dots -->
@@ -77,6 +79,7 @@
           v-for="b in constellation.bars"
           :key="b.d.id"
           class="cursor-pointer bar c-bar"
+          :data-help="rowKind(b.d)"
           :class="[rowKind(b.d), { selected: b.d.id === selectedDurationId, lit: lit(b.d.id), dimmed: dimming && !lit(b.d.id), faded: fades(b.family, b.d.id) }]"
           @click.stop="onBarClick(b.d.id)"
         >
@@ -91,6 +94,7 @@
           :d="shapePath(d.shape, d.x, d.y, d.r)"
           :fill="`var(--df-f-${d.family})`"
           class="star cursor-pointer"
+          data-help="dot"
           :class="{ selected: d.event.id === selectedId, lit: lit(d.event.id), dimmed: dimming && !lit(d.event.id), faded: fades(d.family, d.event.id) }"
           @pointerenter="onDotHover(d.event, $event)"
           @pointerleave="hoveredDot = null"
@@ -101,6 +105,7 @@
           v-for="t in constellation.tracks"
           :key="t.id"
           class="track-toggle"
+          data-help="track"
           :class="{ off: !t.on }"
           role="button"
           tabindex="0"
@@ -128,7 +133,7 @@
       <g v-for="t in layouts" :key="t.id">
         <template v-if="t.label">
           <line v-if="t.index > 0" x1="0" :x2="width" :y1="t.top" :y2="t.top" class="lane-rule" />
-          <text x="8" :y="t.top + 13" class="lane-label">{{ t.label }}</text>
+          <text x="8" :y="t.top + 13" class="lane-label" data-help="lane">{{ t.label }}</text>
         </template>
 
         <!-- Leaders (dot → label, angled when the label is shifted sideways) sit beneath all labels -->
@@ -167,6 +172,7 @@
           :cy="t.axisY"
           :r="lit(h.id) ? 4 : 2"
           class="hidden-dot"
+          data-help="hidden-dot"
           :class="{ lit: lit(h.id), dimmed: dimming && !lit(h.id) }"
         />
 
@@ -179,6 +185,7 @@
           stroke="var(--df-bg)"
           stroke-width="1"
           class="cursor-pointer quiet"
+          data-help="quiet"
           :class="{ dimmed: dimming && !lit(q.event.id), faded: fades(q.family, q.event.id) }"
           @click="onMarkerClick(q.event.id)"
         >
@@ -194,6 +201,7 @@
           :stroke="m.event.id === selectedId || lit(m.event.id) ? 'var(--df-text)' : 'var(--df-bg)'"
           :stroke-width="lit(m.event.id) ? 3 : 2"
           class="cursor-pointer"
+          data-help="event"
           :class="{ dimmed: dimming && !lit(m.event.id), faded: fades(m.family, m.event.id) }"
           @click="onMarkerClick(m.event.id)"
         >
@@ -203,6 +211,7 @@
           v-for="m in t.markers"
           :key="m.event.id"
           class="cursor-pointer marker"
+          data-help="event"
           :class="{ selected: m.event.id === selectedId, lit: lit(m.event.id), dimmed: dimming && !lit(m.event.id), faded: fades(m.family, m.event.id) }"
           @click="onMarkerClick(m.event.id)"
         >
@@ -228,12 +237,13 @@
         <!-- Span bars: empires/dynasties (solid) and periods (dashed) -->
         <template v-if="!t.label && t.barRows.length">
           <line x1="0" :x2="width" :y1="t.bandTop" :y2="t.bandTop" class="lane-rule" />
-          <text v-for="r in t.barRows" :key="r.kind" x="8" :y="r.top - 4" class="band-title">{{ r.title }}</text>
+          <text v-for="r in t.barRows" :key="r.kind" x="8" :y="r.top - 4" class="band-title" :data-help="r.kind">{{ r.title }}</text>
         </template>
         <g
           v-for="b in t.bars"
           :key="b.d.id"
           class="cursor-pointer bar"
+          :data-help="rowKind(b.d)"
           :class="[rowKind(b.d), { selected: b.d.id === selectedDurationId, lit: lit(b.d.id), dimmed: dimming && !lit(b.d.id), faded: fades(b.family, b.d.id) }]"
           @click="onBarClick(b.d.id)"
         >
@@ -297,7 +307,7 @@
         </g>
       </g>
 
-      <StoryArcs v-if="story" :arcs="storyArcs" :spans="storySpanMarks" :pulse="storyPulse" :step-edge-keys="stepEdgeKeys"
+      <StoryArcs v-if="story" data-help="story-thread" :arcs="storyArcs" :spans="storySpanMarks" :pulse="storyPulse" :step-edge-keys="stepEdgeKeys"
                  :active-key="cardArc?.arc.key ?? null" @hover="onArcHover" @pick="onArcClick" />
 
       <!-- Shift-drag period selection -->

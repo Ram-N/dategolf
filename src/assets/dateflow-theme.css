@@ -158,3 +158,19 @@
 .dateflow .family.off {
   opacity: 0.5;
 }
+
+/* "What's this?" help mode (doc 18, 5b): a question-mark cursor over everything but the ? button and the help card */
+.dateflow.help-mode,
+.dateflow.help-mode * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='13' cy='13' r='11' fill='%23fde047' stroke='%23111111' stroke-width='2'/%3E%3Ctext x='13' y='18.5' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='15' fill='%23111111'%3E%3F%3C/text%3E%3C/svg%3E") 13 13, help !important;
+}
+.dateflow.help-mode [data-help-toggle] {
+  cursor: pointer !important;
+}
+.dateflow.help-mode [data-help-card],
+.dateflow.help-mode [data-help-card] * {
+  cursor: auto !important;
+}
+.dateflow.help-mode [data-help-card] button {
+  cursor: pointer !important;
+}

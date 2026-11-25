@@ -1,5 +1,6 @@
 <template>
-  <div class="dateflow flex flex-col h-[calc(100dvh-40px)]" :data-theme="store.theme" :data-colors="store.colorMode">
+  <div class="dateflow flex flex-col h-[calc(100dvh-40px)]" :class="{ 'help-mode': helpOn }" :data-theme="store.theme"
+       :data-colors="store.colorMode">
     <DateFlowToolbar
       :view="store.view"
       :theme="store.theme"
@@ -10,6 +11,7 @@
       :track-axis="store.trackAxis"
       :filters="store.filters"
       :hidden-regions="store.hiddenRegions"
+      :help-on="helpOn"
       :categories="store.categories"
       :stories="store.featured"
       :journeys="store.journeys"
@@ -39,9 +41,10 @@
       @toggle-region="store.toggleRegion"
       @clear-filters="store.clearFilters()"
       @summarize="store.openSummary(store.view.start, store.view.end)"
+      @toggle-help="toggleHelp"
     />
 
-    <DateFlowMinimap v-if="!store.isLoading" :years="eventYears" :view="store.view" @center-at="store.centerAt" />
+    <DateFlowMinimap v-if="!store.isLoading" data-help="minimap" :years="eventYears" :view="store.view" @center-at="store.centerAt" />
 
     <div v-if="store.isLoading" class="flex-1 flex items-center justify-center text-sm muted">
       Loading…
@@ -82,6 +85,7 @@
       />
       <JourneyInvite
         v-if="showInvite"
+        data-help="journeys"
         :journeys="store.journeys"
         @open="(id) => store.openJourney(id)"
         @dismiss="store.inviteDismissed = true"
@@ -89,6 +93,7 @@
       </div>
       <TimeMachinePanel
         v-if="store.timeMachine && store.tmWorld"
+        data-help="time-machine"
         :tm="store.timeMachine"
         :world="store.tmWorld"
         :compare="store.tmCompare"
@@ -105,6 +110,7 @@
       />
       <TourPanel
         v-if="store.tour"
+        :data-help="store.tour.source === 'search' ? 'search-results' : 'play-through'"
         :source="store.tour.source"
         :query="store.tour.query"
         :stops="store.tourStops"
@@ -122,6 +128,7 @@
       />
       <JourneyPanel
         v-if="store.currentJourney"
+        data-help="journeys"
         :journey="store.currentJourney"
         :step="store.journeyStep"
         :off-view="store.journeyOffView"
@@ -134,6 +141,7 @@
       />
       <StoryPanel
         v-if="store.currentStory"
+        data-help="stories"
         :story="store.currentStory"
         :stops="store.currentStops"
         :step="store.storyStep"
@@ -149,7 +157,7 @@
       />
     </div>
 
-    <div v-if="store.ringedName" class="focus flex items-center justify-center gap-3 px-4 py-1.5 border-t text-sm">
+    <div v-if="store.ringedName" data-help="connections" class="focus flex items-center justify-center gap-3 px-4 py-1.5 border-t text-sm">
       <span>Connections of <strong>{{ store.ringedName }}</strong> are ringed</span>
       <button class="underline font-semibold" @click="store.clearRinged()">Clear</button>
     </div>
@@ -158,6 +166,7 @@
         v-for="f in FAMILIES"
         :key="f.id"
         class="family flex items-center gap-1.5 secondary"
+        data-help="family"
         :class="{ on: store.focusFamily === f.id, off: store.focusFamily && store.focusFamily !== f.id }"
         :aria-pressed="store.focusFamily === f.id"
         :title="store.focusFamily === f.id ? 'Show all families again (Esc)' : `Focus on ${f.label}: the rest fade`"
@@ -168,26 +177,26 @@
         </svg>
         {{ f.label }}
       </button>
-      <button v-if="store.focusFamily" class="secondary underline" @click="store.setFocusFamily(null)">Show all</button>
+      <button v-if="store.focusFamily" data-help="family" class="secondary underline" @click="store.setFocusFamily(null)">Show all</button>
       <template v-if="store.mode !== 'constellation' && store.density !== 'simple'">
-        <span class="flex items-center gap-1.5 secondary">
+        <span class="flex items-center gap-1.5 secondary" data-help="state">
           <span class="inline-block w-4 h-2.5 rounded-sm kind-state" /> Empire or state
         </span>
-        <span class="flex items-center gap-1.5 secondary">
+        <span class="flex items-center gap-1.5 secondary" data-help="period">
           <span class="inline-block w-4 h-2.5 rounded-sm kind-period" /> Period
         </span>
       </template>
-      <span v-else-if="store.mode === 'constellation'" class="secondary">Bigger dot = more important</span>
-      <span v-if="filterSummary" class="secondary">
+      <span v-else-if="store.mode === 'constellation'" class="secondary" data-help="dot">Bigger dot = more important</span>
+      <span v-if="filterSummary" class="secondary" data-help="filters">
         · Showing: <strong>{{ filterSummary }}</strong>
         <button class="underline ml-1" @click="store.clearFilters()">Clear</button>
       </span>
       <span v-if="filterSummary && store.filteredEvents.length === 0" class="secondary">— nothing matches these filters</span>
-      <span v-if="hiddenCount > 0" class="secondary">· {{ hiddenCount }} more in view — zoom in to reveal</span>
-      <span class="ml-auto muted hidden sm:inline">Scroll to zoom · drag to move · shift-drag: What happened? · ← → pan · + − zoom</span>
+      <span v-if="hiddenCount > 0" class="secondary" data-help="hidden-dot">· {{ hiddenCount }} more in view — zoom in to reveal</span>
+      <span class="ml-auto muted hidden sm:inline" data-help="zoom">Scroll to zoom · drag to move · shift-drag: What happened? · ← → pan · + − zoom</span>
     </div>
 
-    <EventInfoCard v-if="store.selectedEvent" :event="store.selectedEvent" @close="store.closeCard()">
+    <EventInfoCard v-if="store.selectedEvent" data-help="event-card" :event="store.selectedEvent" @close="store.closeCard()">
       <EventConnections
         :groups="store.connections"
         @open-event="store.goToEvent"
@@ -208,6 +217,7 @@
     </EventInfoCard>
     <WhatHappenedCard
       v-if="summary"
+      data-help="what-happened"
       :summary="summary"
       :filtered="isFiltering(store.filters, store.hiddenRegions)"
       @close="store.closeSummary()"
@@ -217,6 +227,7 @@
     />
     <DurationInfoCard
       v-if="store.selectedDuration"
+      data-help="span-card"
       :duration="store.selectedDuration"
       :durations="store.durations"
       :events="store.events"
@@ -231,11 +242,12 @@
       :story-counts="store.openStoryCounts"
       @story="(d) => store.openStory(store.selectedDuration!.id, d)"
     />
+    <HelpCard v-if="helpOn" :help-key="helpKey" @show="(k) => (helpKey = k)" @close="closeHelp" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, useTemplateRef, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useDateFlowStore } from '@/stores/dateflow'
 import { FAMILIES, shapePath } from '@/engine/dateflow/categoryGroups'
@@ -254,6 +266,8 @@ import TourPanel from '@/components/dateflow/TourPanel.vue'
 import DurationInfoCard from '@/components/dateflow/DurationInfoCard.vue'
 import EventMeanwhile from '@/components/dateflow/EventMeanwhile.vue'
 import WhatHappenedCard from '@/components/dateflow/WhatHappenedCard.vue'
+import HelpCard from '@/components/dateflow/HelpCard.vue'
+import { helpKeyFor, type HelpKey } from '@/engine/dateflow/help'
 import { summarizePeriod } from '@/engine/dateflow/explore'
 import { isFiltering } from '@/engine/dateflow/filters'
 
@@ -279,7 +293,46 @@ const filterSummary = computed(() => {
   return parts.join(' · ')
 })
 
+// ── "What's this?" help mode (doc 18, 5b) ──
+// While it's on, a click anywhere in DateFlow shows the help for the nearest element tagged
+// data-help (else DateFlow's own) and does nothing else; the ? button and the help card work as usual.
+const helpOn = ref(false)
+const helpKey = ref<HelpKey | null>(null)
+
+function toggleHelp() {
+  helpOn.value = !helpOn.value
+  helpKey.value = null
+}
+
+function closeHelp() {
+  helpOn.value = false
+  helpKey.value = null
+}
+
+/** The click (or press) belongs to help mode: inside DateFlow, not on the ? button or the help card. */
+function helpTarget(e: Event): Element | null {
+  if (!helpOn.value || !(e.target instanceof Element)) return null
+  const t = e.target
+  if (!t.closest('.dateflow') || t.closest('[data-help-toggle], [data-help-card]')) return null
+  return t
+}
+
+function onHelpPress(e: PointerEvent) {
+  // Stops a drag or a menu opening; the click that follows shows the help
+  if (helpTarget(e)) e.stopPropagation()
+}
+
+function onHelpClick(e: MouseEvent) {
+  const t = helpTarget(e)
+  if (!t) return
+  e.preventDefault()
+  e.stopPropagation()
+  helpKey.value = helpKeyFor(t.closest('[data-help]')?.getAttribute('data-help'))
+}
+
 function onKey(e: KeyboardEvent) {
+  if (e.key === 'Escape' && helpOn.value) return closeHelp()
+  if (e.key === '?' && !(e.target instanceof HTMLInputElement)) return toggleHelp()
   if (e.target instanceof HTMLInputElement || store.selectedEvent || store.selectedDuration || store.summaryRange) return
   if (e.key === 'Escape' && store.ringedId) return store.clearRinged()
   if (e.key === 'Escape' && store.focusFamily) return store.setFocusFamily(null)
@@ -393,6 +446,8 @@ watch(
 
 onMounted(async () => {
   window.addEventListener('keydown', onKey)
+  window.addEventListener('pointerdown', onHelpPress, true)
+  window.addEventListener('click', onHelpClick, true)
   if (store.isLoading) await store.load()
   // Every visit opens on Date Constellation, but a shared story needs its threads (World and Lanes only)
   if (typeof route.query.story === 'string') store.setMode('world')
@@ -401,5 +456,9 @@ onMounted(async () => {
   if (typeof route.query.q === 'string' && route.query.q.trim()) store.searchFor(route.query.q)
   if (typeof route.query.journey === 'string') store.openJourney(route.query.journey)
 })
-onUnmounted(() => window.removeEventListener('keydown', onKey))
+onUnmounted(() => {
+  window.removeEventListener('keydown', onKey)
+  window.removeEventListener('pointerdown', onHelpPress, true)
+  window.removeEventListener('click', onHelpClick, true)
+})
 </script>

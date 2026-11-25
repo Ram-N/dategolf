@@ -91,6 +91,7 @@
 | **Colour mode** | *Colorful* (a hue per family, the default) or *Subtle* (three colourblind-safe hues). Shapes stay in both. | yes |
 | **Theme** | Light or dark (☾ / ☀). | yes |
 | **Hide a track / lane** | Constellation: click a track name (on Geography this is the region switch shared with Filters). Lanes: the Lanes menu (that layout's rows only). | yes |
+| **What's this? (help mode)** | The **?** button (or `?` key): the next clicks show what anything is, from `engine/dateflow/help.ts`, written from this glossary. Update both together. | no |
 | **Copy link** | Shares what's open: `?journey=`, `?story=`, `?q=` (search), `?year=` / `?tm=` (Time Machine). | — |
 
 ---
@@ -195,4 +196,4 @@ To keep them from creeping into specs as if they existed:
 
 ## 10. Keeping this current
 
-Update this glossary in the same commit as any change that adds, renames or removes a user-facing term. Doc 18 (roadmap) links here. It replaces doc 20 (an early draft, deleted 2026-11-24).
+Update this glossary in the same commit as any change that adds, renames or removes a user-facing term. Doc 18 (roadmap) links here. It replaces doc 20 (an early draft, deleted 2026-11-24). The help-mode texts in `src/engine/dateflow/help.ts` are written from this glossary: change them in the same commit.

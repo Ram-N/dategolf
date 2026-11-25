@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 border-b toolbar">
     <div class="mr-auto">
-      <h1 class="text-xl font-black tracking-tight title">DateFlow</h1>
-      <p class="text-xs tabular-nums range">
+      <h1 class="text-xl font-black tracking-tight title" data-help="dateflow">DateFlow</h1>
+      <p class="text-xs tabular-nums range" data-help="view-range">
         {{ formatYear(Math.round(view.start)) }} – {{ formatYear(Math.round(view.end)) }}
         · {{ Math.round(view.end - view.start).toLocaleString() }} years
       </p>
@@ -17,6 +17,7 @@
           :class="{ active: mode === m.id }"
           :aria-pressed="mode === m.id"
           :title="`Layout: ${m.hint}`"
+          :data-help="`layout-${m.help}`"
           @click="emit('setMode', m.id)"
         >
           {{ m.label }}
@@ -24,7 +25,7 @@
       </div>
       <!-- On phones these fold behind "More" (the timeline needs the room) -->
       <div class="fold fold-sm" :class="{ open: moreOpen }">
-      <div v-if="mode === 'constellation'" class="seg flex flex-wrap rounded-lg p-0.5" role="group" aria-label="Tracks">
+      <div v-if="mode === 'constellation'" class="seg flex flex-wrap rounded-lg p-0.5" role="group" aria-label="Tracks" data-help="axis">
         <button
           v-for="t in TRACK_AXES"
           :key="t.id"
@@ -36,7 +37,7 @@
           {{ t.label }}
         </button>
       </div>
-      <div class="seg flex rounded-lg p-0.5" role="group" aria-label="Detail preset">
+      <div class="seg flex rounded-lg p-0.5" role="group" aria-label="Detail preset" data-help="density">
         <button
           v-for="d in DENSITIES"
           :key="d.id"
@@ -50,6 +51,7 @@
         </button>
       </div>
       <DateFlowFilters
+        data-help="filters"
         :filters="filters"
         :categories="categories"
         :hidden-regions="hiddenRegions"
@@ -59,6 +61,7 @@
       />
       <DateFlowLanePicker
         v-if="mode === 'lanes'"
+        data-help="lanes-menu"
         :state="laneState"
         :hidden="hiddenRegions"
         @toggle="(id) => emit('toggleLane', id)"
@@ -68,7 +71,7 @@
       </div>
     </div>
 
-    <form class="flex items-center gap-2" role="search" @submit.prevent="submit">
+    <form class="flex items-center gap-2" role="search" data-help="search" @submit.prevent="submit">
       <input
         v-model="query"
         type="search"
@@ -82,11 +85,11 @@
     </form>
 
     <div class="flex flex-wrap items-center gap-1">
-      <JourneysMenu v-if="journeys.length" :journeys="journeys" :progress="journeyProgress"
+      <JourneysMenu v-if="journeys.length" data-help="journeys" :journeys="journeys" :progress="journeyProgress"
                     @open="(id, from) => emit('openJourney', id, from)" />
-      <button class="btn w-9" aria-label="Zoom out" @click="emit('zoomOut')">−</button>
-      <button class="btn w-9" aria-label="Zoom in" @click="emit('zoomIn')">+</button>
-      <div class="seg flex flex-wrap rounded-lg p-0.5" role="group" aria-label="Show an era">
+      <button class="btn w-9" aria-label="Zoom out" data-help="zoom" @click="emit('zoomOut')">−</button>
+      <button class="btn w-9" aria-label="Zoom in" data-help="zoom" @click="emit('zoomIn')">+</button>
+      <div class="seg flex flex-wrap rounded-lg p-0.5" role="group" aria-label="Show an era" data-help="era">
         <button
           v-for="e in eras"
           :key="e.id"
@@ -112,9 +115,22 @@
         class="btn more"
         :aria-expanded="moreOpen"
         aria-controls="dateflow-more"
+        data-help="more"
         @click="moreOpen = !moreOpen"
       >
         {{ moreOpen ? 'Less ▴' : 'More ▾' }}
+      </button>
+      <!-- Help mode (doc 18, 5b): the next click on anything explains it -->
+      <button
+        class="btn w-9 help-toggle"
+        :class="{ active: helpOn }"
+        :aria-pressed="helpOn"
+        aria-label="What's this? Click, then click anything to learn what it is"
+        title="What's this? (?)"
+        data-help-toggle
+        @click="emit('toggleHelp')"
+      >
+        ?
       </button>
     </div>
 
@@ -125,22 +141,23 @@
       :class="{ open: moreOpen }"
       @click="closeAfterAction"
     >
-      <button class="btn" title="See the whole world in one year, compare two years, two empires or periods, or two events" @click="emit('timeMachine')">
+      <button class="btn" data-help="time-machine" title="See the whole world in one year, compare two years, two empires or periods, or two events" @click="emit('timeMachine')">
         Time Machine
       </button>
-      <button class="btn" title="Open a random event and explore from there" @click="emit('surprise')">
+      <button class="btn" data-help="surprise" title="Open a random event and explore from there" @click="emit('surprise')">
         Surprise Me
       </button>
-      <button class="btn" title="Play through the events your filters show, one at a time" @click="emit('watch')">
+      <button class="btn" data-help="play-through" title="Play through the events your filters show, one at a time" @click="emit('watch')">
         Play through
       </button>
-      <StoriesMenu data-keep-open :stories="stories" @open="(id) => { moreOpen = false; emit('openStory', id) }" />
-      <button class="btn" title="What happened in the years in view (or shift-drag across the timeline)" @click="emit('summarize')">
+      <StoriesMenu data-keep-open data-help="stories" :stories="stories" @open="(id) => { moreOpen = false; emit('openStory', id) }" />
+      <button class="btn" data-help="what-happened" title="What happened in the years in view (or shift-drag across the timeline)" @click="emit('summarize')">
         What happened?
       </button>
-      <RouterLink to="/dateflow/play" class="btn play" title="The DateFlow games">▶ Games</RouterLink>
+      <RouterLink to="/dateflow/play" class="btn play" data-help="games" title="The DateFlow games">▶ Games</RouterLink>
       <button
         class="btn"
+        data-help="colours"
         :aria-pressed="colorMode === 'colorful'"
         :title="colorMode === 'colorful' ? 'Switch to subtle colours (3 hues)' : 'Switch to colourful (a hue per family)'"
         @click="emit('toggleColors')"
@@ -149,6 +166,7 @@
       </button>
       <button
         class="btn w-9"
+        data-help="theme"
         :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
         :title="theme === 'dark' ? 'Light mode' : 'Dark mode'"
         @click="emit('toggleTheme')"
@@ -184,6 +202,7 @@ defineProps<{
   mode: ViewMode
   laneState: LaneState
   hiddenRegions: LaneId[]
+  helpOn: boolean
   trackAxis: TrackAxis
   filters: Filters
   categories: string[]
@@ -216,14 +235,15 @@ const emit = defineEmits<{
   openStory: [id: string]
   openJourney: [id: string, from: 'start' | 'resume']
   timeMachine: []
+  toggleHelp: []
   surprise: []
 }>()
 
 // "Layout" in hints and docs; "view" means only the years on screen (doc 21 §6.11)
-const MODES: { id: ViewMode; label: string; hint: string }[] = [
-  { id: 'world', label: 'Timeline', hint: 'one road through history' },
-  { id: 'lanes', label: 'Lanes', hint: 'a lane for each region, side by side' },
-  { id: 'constellation', label: 'Constellation', hint: 'every event a star' },
+const MODES: { id: ViewMode; label: string; hint: string; help: 'timeline' | 'lanes' | 'constellation' }[] = [
+  { id: 'world', label: 'Timeline', hint: 'one road through history', help: 'timeline' },
+  { id: 'lanes', label: 'Lanes', hint: 'a lane for each region, side by side', help: 'lanes' },
+  { id: 'constellation', label: 'Constellation', hint: 'every event a star', help: 'constellation' },
 ]
 
 const moreOpen = ref(false)
@@ -295,6 +315,14 @@ function submit() {
 }
 .btn.play:hover {
   opacity: 0.9;
+}
+.help-toggle {
+  padding: 0;
+  font-weight: 800;
+}
+.help-toggle.active {
+  background: var(--df-text);
+  color: var(--df-bg);
 }
 .seg {
   background: var(--df-btn);

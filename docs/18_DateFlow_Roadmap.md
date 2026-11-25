@@ -67,7 +67,8 @@ Ram wants this high. It breaks the **no backend** rule, so the first step is a d
 - Journeys and stories sit side by side in the gallery.
 - Size: M.
 
-### 5b. "What's this?" help mode (Ram, 2026-11-24)
+### ~~5b. "What's this?" help mode (Ram, 2026-11-24)~~ ✅ 2026-11-24
+**Built:** a **?** button at the end of the always-visible toolbar row (or the `?` key). The cursor becomes a yellow question mark; a click anywhere in DateFlow shows the help for the nearest element tagged `data-help` (41 entries in `engine/dateflow/help.ts`, each with *See also* links), and does nothing else: menus don't open, cards don't open, the timeline doesn't drag. Esc, ✕, *Done* or **?** again leaves help mode. A test checks every `data-help` key has an entry. The plan as written:
 - A **?** button in the toolbar. Clicking it turns the cursor into a question mark; the next click on anything (a lane, a region name, a bar, a dot, a milestone tag, a toolbar button, the legend) shows a short help card for that thing: what it is and how to use it ("A **period**: something that lasted, like a war or a movement. Click the bar for its story"). Esc, a second click on **?**, or closing the card leaves help mode. The thing clicked is not opened or changed while in help mode.
 - **Phones:** no cursor, so the **?** stays highlighted and a banner says "Tap anything to learn what it is".
 - **Content:** one entry per term, written for students and taken from the glossary (doc 21 §§1–5 and the §9 student wording), so the glossary stays the one source. Elements carry a help key (e.g. `data-help="lane"`); one handler looks it up. Each card can link onward ("See also: Region").
