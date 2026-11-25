@@ -35,7 +35,9 @@ import {
   LANES,
   moveLane as moveLaneIn,
   sanitizeLanes,
+  laneFor,
   lanesShown,
+  lanesWith,
   toggleRegionOff,
   toggleLane as toggleLaneIn,
   type LaneId,
@@ -344,7 +346,13 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const cardIds = computed(() =>
     density.value === 'detailed' && openId.value ? new Set([openId.value, ...relatedIds.value]) : null,
   )
-  const lanes = computed(() => lanesShown(laneState.value, hiddenRegions.value))
+  const lanes = computed(() => {
+    const shown = lanesShown(laneState.value, hiddenRegions.value)
+    const ids = guidedIds.value
+    if (!ids) return shown
+    const needed = [...events.value, ...durations.value].filter((x) => ids.has(x.id)).map((x) => laneFor(x.region))
+    return lanesWith(shown, laneState.value.order, needed)
+  })
   /**
    * Historical Currents (step 3d) are context, like eras: drawn from every span, whatever the filters.
    * Off in Simple and Constellation, and while a story or the Time Machine draws its own overlay.
@@ -361,11 +369,13 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     durations.value.filter((d) => matchesFilters(d, filters.value, hiddenRegions.value)),
   )
   const categories = computed(() => categoriesByFrequency([...events.value, ...durations.value]))
-  /** What the timeline draws: the filtered items, plus a journey's own items even if the filters hide them. */
-  const timelineEvents = computed(() => withJourneyItems(filteredEvents.value, events.value))
-  const timelineDurations = computed(() => withJourneyItems(filteredDurations.value, durations.value))
-  function withJourneyItems<T extends { id: string }>(shown: T[], all: T[]): T[] {
-    const ids = journeyRing.value
+  /** The items of the open journey or chain of events: always drawn, whatever the filters, regions or lanes. */
+  const guidedIds = computed(() => journeyRing.value ?? storyIds.value)
+  /** What the timeline draws: the filtered items, plus a journey's or chain's own items even if the filters hide them. */
+  const timelineEvents = computed(() => withGuidedItems(filteredEvents.value, events.value))
+  const timelineDurations = computed(() => withGuidedItems(filteredDurations.value, durations.value))
+  function withGuidedItems<T extends { id: string }>(shown: T[], all: T[]): T[] {
+    const ids = guidedIds.value
     if (!ids) return shown
     const have = new Set(shown.map((x) => x.id))
     const extra = all.filter((x) => ids.has(x.id) && !have.has(x.id))

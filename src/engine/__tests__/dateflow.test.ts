@@ -44,6 +44,7 @@ import {
   moveLane,
   sanitizeLanes,
   lanesShown,
+  lanesWith,
   toggleRegionOff,
   toggleLane,
   visibleLanes,
@@ -437,6 +438,12 @@ describe('lanes', () => {
     expect(lanesShown(DEFAULT_LANES, ['europe'])).toEqual(['south-asia', 'east-asia', 'global'])
     const one = { order: DEFAULT_LANES.order, visible: ['europe'] as LaneId[] }
     expect(lanesShown(one, ['europe', 'south-asia'])).toEqual(['east-asia', 'middle-east', 'africa', 'americas'])
+  })
+
+  it('adds the lanes an open journey or chain needs, in lane order', () => {
+    const shown: LaneId[] = ['east-asia', 'europe', 'global']
+    expect(lanesWith(shown, DEFAULT_LANES.order, ['south-asia', 'europe'])).toEqual(['south-asia', 'east-asia', 'europe', 'global'])
+    expect(lanesWith(shown, DEFAULT_LANES.order, ['europe'])).toBe(shown)
   })
 
   it('reorders lanes and ignores moves past either end', () => {

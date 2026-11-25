@@ -81,3 +81,12 @@ export function sanitizeLanes(raw: Partial<LaneState> | null | undefined): LaneS
   const visible = (raw?.visible ?? []).filter((id): id is LaneId => known.has(id as LaneId))
   return { order, visible: visible.length ? visible : [...DEFAULT_LANES.visible] }
 }
+
+/**
+ * The lanes to draw while a journey or chain of events is open: the usual ones plus any lane its items
+ * need, in lane order, so no stop sits in a lane that isn't drawn.
+ */
+export function lanesWith(shown: LaneId[], order: LaneId[], needed: Iterable<LaneId>): LaneId[] {
+  const want = new Set([...shown, ...needed])
+  return want.size === shown.length ? shown : order.filter((id) => want.has(id))
+}
