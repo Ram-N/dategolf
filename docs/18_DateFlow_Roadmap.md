@@ -24,6 +24,12 @@ Ram uses DateFlow for a few days and lists small aesthetic, usability and experi
 | The colour button's label (the state) and hint (the action) read as opposites | 2026-11-24 | ✅ Done: a *Colorful \| Subtle* pair like the detail presets, each hint describing its own choice |
 | The current stop of a story or journey can't be found on the timeline | 2026-11-24 | ✅ Done: a **spotlight** (ring or outline plus a name tag, in its own colour) on the current stop of a story, journey or Play through. Also: the "Connections of … are ringed" footer no longer shows when a story or journey's rings are what's drawn |
 | *Story* promises a written narrative, but they're built automatically from links | 2026-11-24 | ✅ Done: renamed **chain of events** (*Chains* menu, `?chain=`; old `?story=` links still open); curated paths stay journeys (doc 21 §6.18) |
+| Detailed, *Show connections*: threads between events close in time loop tightly and look ugly | 2026-11-24 | Open: waiting for Ram's screenshot |
+| Switching layout (Timeline ↔ Lanes ↔ Constellation) moves every toolbar button: the axis group shows only in Constellation, the Lanes menu only in Lanes, so the rows reflow | 2026-11-24 | Folded into **1b** (the navigation rethink) |
+| A box around an open chain of events, to draw the eye to it | 2026-11-24 | Parked (Ram: "probably not needed") |
+
+### 1b. Rethink DateFlow's navigation and menus (Ram, 2026-11-24: start here on 2026-11-25)
+Taking a step back from the one-off fixes: the toolbar has grown button by button (layouts, axes, detail, eras, Journeys, Chains, Time Machine, Play through, What happened?, Games, colours, theme, help) and shifts as the layout changes. Rethink it as a whole: what a student needs first, what can be grouped or tucked away, and a layout that stays put when the layout changes. Start from the glossary (doc 21 §3, *Controls and settings*) as the inventory; plan with Ram before building.
 
 ### 2. Date Constellation as the front door, with switchable Y-axis tracks (#7)
 Constellation already opens a first visit (Medieval era, Geography tracks) and has two Y-axes: **Geography** (7 regions) and **Human activity** (6 activity groups, by primary category). This item makes it *the* way into DateFlow.
