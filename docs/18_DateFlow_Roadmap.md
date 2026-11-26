@@ -91,6 +91,16 @@ Ram wants this high. It breaks the **no backend** rule, so the first step is a d
 - **Why it's good:** it answers the question where it arises, with no manual to read, and it covers exactly the confusions the glossary found (lane vs region, period vs span, the dashed lines). It also replaces the student guide planned in doc 21 §8 step 5, or carries it.
 - Size: M (about 25–30 entries, a capture-mode click handler, one card component).
 
+### 5c. Century colour bands (Ram, 2026-11-26: idea, after the navigation rethink)
+Give each century its own background shade so the eye feels time passing while zooming.
+- **Alternate 2 or 3 colours by century** (A, B, A, B or A, B, C): all of 1700–1799 in one, 1800–1899 in the next, and so on.
+- **Two palettes:** warm, "older" sepia tones for BCE and a separate set for CE, so a student sees at a glance that something happened long ago.
+- **Questions for the plan:**
+  - The shades must stay faint washes behind the marks: family colours carry meaning on dots and bars and must not compete. They also need to work in light and dark themes, and in Subtle.
+  - They replace or sit with today's alternating **era** shading (five eras): probably eras when zoomed far out and centuries when closer in. At full history there are ~56 centuries, too many stripes.
+  - Accuracy: there's no year 0, so the 1st century BCE is 100–1 BCE and the 1st century CE is 1–100. Bands follow "the 1700s" (1700–1799), as Ram put it; label them that way if they're labelled at all.
+- Size: S–M.
+
 ### 6. 100 more historical people, and a People row that doesn't crowd
 - **Data:** about 100 people from ChronoLogic's `people.json`, **only people who have died**. Of its 1,218, 912 have died, but they lean modern (581 born after 1800; 140 died before 1500), so the 100 must be chosen for balance across eras and regions, not taken from the top. Pre-sort: drop celebrities and duplicates; flag ancient birth and death dates that look exact but aren't (they become approximate, with a `date_display`). Drafted through doc 15, loaded as proposed, reviewed on the dashboard.
 - **Display:** the People row has room for only a few lives at a time (2 rows in the Timeline layout), whatever the database size. Rather than a fixed percentage, show **as many as fit without overlap**, chosen by importance with a **stable shuffle** among equals (the same view shows the same people, so pills don't flicker while panning), plus a "+N more people lived in this time" link that lists the rest. A **Shuffle** button shows a different set.
