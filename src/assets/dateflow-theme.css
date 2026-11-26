@@ -20,6 +20,11 @@
   --df-other: #8b8b94;
   --df-approx: #fbbf24;
   --df-approx-bg: rgb(245 158 11 / 0.12);
+  /* Century bands (doc 18, 5c): faint washes, sepia for BCE, cool for CE, two shades each */
+  --df-bce-a: rgb(214 168 100 / 0.10);
+  --df-bce-b: rgb(214 168 100 / 0.04);
+  --df-ce-a: rgb(140 175 230 / 0.08);
+  --df-ce-b: rgb(140 175 230 / 0.03);
   /* Spotlight: the current stop of a story, journey or Play through */
   --df-spot: #facc15;
   --df-spot-text: #1c1917;
@@ -58,6 +63,10 @@
   --df-approx: #92400e;
   --df-approx-bg: #fffbeb;
   --df-approx-border: #f59e0b;
+  --df-bce-a: rgb(150 100 30 / 0.10);
+  --df-bce-b: rgb(150 100 30 / 0.04);
+  --df-ce-a: rgb(50 95 170 / 0.07);
+  --df-ce-b: rgb(50 95 170 / 0.025);
   --df-spot: #ea580c;
   --df-spot-text: #ffffff;
   --df-arc-trigger: #c2410c;

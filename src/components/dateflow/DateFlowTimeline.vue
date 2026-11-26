@@ -14,9 +14,16 @@
       @pointercancel="onPointerUp"
       @click="onBackgroundClick"
     >
+      <!-- Century bands (doc 18, 5c): zoomed in, each century a faint wash, sepia for BCE and cool for CE,
+           two shades alternating; they take over from the era shading, whose names stay -->
+      <g v-for="c in centuryBandsX" :key="c.start" pointer-events="none" aria-hidden="true">
+        <rect :x="c.x1" y="0" :width="c.x2 - c.x1" :height="height" :class="`century ${c.bce ? 'bce' : 'ce'}-${c.shade}`" />
+        <text v-if="c.x2 - c.x1 >= 56" :x="c.x2 - 4" y="9" text-anchor="end" class="century-label">{{ c.label }}</text>
+      </g>
+
       <!-- Era bands: alternating faint fills, name pinned to the visible part of the band -->
       <g v-for="era in eraBands" :key="era.id" data-help="era">
-        <rect v-if="era.shaded" :x="era.x1" y="0" :width="era.x2 - era.x1" :height="height" fill="var(--df-era)" />
+        <rect v-if="era.shaded && !centuryBandsX.length" :x="era.x1" y="0" :width="era.x2 - era.x1" :height="height" fill="var(--df-era)" />
         <text v-if="era.showLabel" :x="era.labelX" y="20" class="era-label">{{ era.name }}</text>
       </g>
 
@@ -388,6 +395,7 @@ import {
   topLevelSpans,
 } from '@/engine/dateflow/durations'
 import { pickCurrents } from '@/engine/dateflow/currents'
+import { CENTURY_MAX_SPAN, centuryBands } from '@/engine/dateflow/centuries'
 import { LANES, laneFor, type LaneId } from '@/engine/dateflow/lanes'
 import {
   constellationThreshold, dotRadius, hiddenOn, layoutTracks, scatter, stateTracks, trackOf, tracksFor,
@@ -515,6 +523,15 @@ const eraBands = computed(() =>
     })
     .filter((era) => era.x2 > era.x1),
 )
+
+const centuryBandsX = computed(() => {
+  if (span(props.view) > CENTURY_MAX_SPAN) return []
+  return centuryBands(props.view.start, props.view.end).map((c) => ({
+    ...c,
+    x1: Math.max(0, yearToX(c.start, props.view, width.value)),
+    x2: Math.min(width.value, yearToX(c.end, props.view, width.value)),
+  }))
+})
 
 const inView = computed(() =>
   props.events.filter((e) => e.year >= props.view.start && e.year <= props.view.end),
@@ -1346,6 +1363,25 @@ function onArcClick(key: string, e: MouseEvent) {
 }
 .current-label:hover {
   text-decoration: underline;
+}
+.century.bce-0 {
+  fill: var(--df-bce-a);
+}
+.century.bce-1 {
+  fill: var(--df-bce-b);
+}
+.century.ce-0 {
+  fill: var(--df-ce-a);
+}
+.century.ce-1 {
+  fill: var(--df-ce-b);
+}
+.century-label {
+  fill: var(--df-muted);
+  font-size: 9px;
+  font-weight: 600;
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
 }
 .era-label {
   fill: var(--df-muted);

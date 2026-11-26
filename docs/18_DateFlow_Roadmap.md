@@ -91,7 +91,8 @@ Ram wants this high. It breaks the **no backend** rule, so the first step is a d
 - **Why it's good:** it answers the question where it arises, with no manual to read, and it covers exactly the confusions the glossary found (lane vs region, period vs span, the dashed lines). It also replaces the student guide planned in doc 21 §8 step 5, or carries it.
 - Size: M (about 25–30 entries, a capture-mode click handler, one card component).
 
-### 5c. Century colour bands (Ram, 2026-11-26: idea, after the navigation rethink)
+### ~~5c. Century colour bands (Ram, 2026-11-26)~~ ✅ 2026-11-26
+**Built:** when the view spans 2,000 years or less, each century gets a faint wash behind everything (sepia pair for BCE, cool pair for CE, alternating), replacing the era shading; the era names stay. Each band is named at its top right when there's room ("1700s", "100s BCE", and "99–1 BCE" / "1–99" at the epoch). Wider views keep the five era bands (~56 stripes would be a barcode). Code: `engine/dateflow/centuries.ts`, tokens `--df-bce-*` / `--df-ce-*`. The idea as noted:
 Give each century its own background shade so the eye feels time passing while zooming.
 - **Alternate 2 or 3 colours by century** (A, B, A, B or A, B, C): all of 1700–1799 in one, 1800–1899 in the next, and so on.
 - **Two palettes:** warm, "older" sepia tones for BCE and a separate set for CE, so a student sees at a glance that something happened long ago.

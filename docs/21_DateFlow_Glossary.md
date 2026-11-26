@@ -66,6 +66,7 @@
 | **Axis (Constellation)** | What the tracks mean, chosen in the toolbar: **Geography** (the 7 lanes), **Human activity** (the 8 families, so a dot's shape always matches its track), **Society** (7 tracks by the first non-political category; a *Politics & war* track starts switched off), **Empires & states** (a row per state in view, up to 8, with a band for its lifetime, then *Other*). | Code: `TrackAxis` |
 | **Track** | One horizontal row of the Constellation. Clicking its name switches it off (it shrinks to a strip); remembered per axis. A switched-off track opens by itself while it holds a ringed item in view (a journey stop, a chain of events, a search result), so a ring never lights only hidden things. | Code: `layoutTracks`, `hiddenTracks` |
 | **Bar** | A span drawn across its years: solid for empires, dashed for periods, a rounded pill for people, shaded by phase where it has a life cycle. | — |
+| **Century bands** | Zoomed in to 2,000 years or less, each century is a faint background wash: two sepia shades alternating for BCE, two cool ones for CE, named at the top ("the 1700s", "the 100s BCE" = 199–100 BCE; "99–1 BCE" and "1–99" either side of the epoch, since there is no year 0). Wider views show the era shading instead. | Code: `centuryBands`, `--df-bce-*`, `--df-ce-*` |
 | **Era band / era chip** | See *Era* (§1). | — |
 | **Milestone line** | See *Milestone* (§1). | — |
 | **Current band** | See *Historical Current* (§1). | — |
