@@ -72,7 +72,7 @@
 | **Threads** | Curved arrows drawn between a chain's stops (Timeline and Lanes only); each opens its link's card. | Help *A thread*. Code: `StoryArcs` |
 | **Rings / dimming** | Items outlined while everything else fades: an open chain of events, journey, search, the Time Machine, or *Show connections*. | Code: `highlightIds`, `lit` |
 | **Spotlight** | The stop being shown in a chain of events, journey or *Play through*: a pulsing ring (or a thick outline on a bar) in the spotlight colour (yellow on dark, orange on light) and its year and name on the timeline (in a tag, or in its own label filled with that colour). The rest of the chain or journey stays ringed. | Code: `spotlightIds`, `--df-spot` |
-| **History overview** | The bar chart under the toolbar showing how many events (those the filters let through) fall in each slice of all history, captioned *ALL HISTORY* with three faint year labels. The **box** is the current view and a shaded **wedge** opens from it to the full width of the timeline below, so the overview's years don't read as the chart's axis. Click to jump; drag the box to scrub. The visualization pattern is *overview + detail*; "minimap" is only the code name. | UI: help *The history overview*; aria *History overview*. Code: `DateFlowMinimap`, `densityBins`, help key `minimap` |
+| **History overview** | The bar chart under the toolbar showing how many events (those the filters let through) fall in each slice of all history, captioned *ALL HISTORY* with three faint year labels. The **box** is the current view, with its start and end years written just above it (one centred label when it's narrow), and a shaded **wedge** opens from it to the full width of the timeline below, so the overview's years don't read as the chart's axis. Click to jump; drag the box to scrub. The visualization pattern is *overview + detail*; "minimap" is only the code name. | UI: help *The history overview*; aria *History overview*. Code: `DateFlowMinimap`, `densityBins`, help key `minimap` |
 | **Legend** | The family shapes and colours along the bottom; click a family to **Focus** on it (§3). | — |
 | **Card** | The panel for one item. *Event card*: date, Why it matters, approximate note, Connections, chain buttons (*How did we get here?*, *What happened next?*), *Before & after in* its lane, *Meanwhile around the world* (±50 years), *Empires & states in* its year. *Span card*: years, historians' dates, Why it matters, *Alive at the same time* (people), *Life cycle*, Connections, *Meanwhile in* its region, *Compare with* (Time Machine). | Code: `EventInfoCard` (shared with DateGolf), `DurationInfoCard` |
 
@@ -82,6 +82,7 @@
 
 | Term | What it does | Remembered? |
 |---|---|---|
+| **Control bands** | Where the controls live (doc 20): the **header** (search, Journeys, Chains and the other guided paths, Games, Display ▾, ?), the **time band** (era chips, − / +, the years on screen, the History overview), the **view band** (layout, that layout's own controls, Simple / Standard / Detailed, Filters and the *Showing:* line). On smaller screens some sit behind **More ▾**, **View ▾** or ☰. No control moves when the layout changes. | — |
 | **Zoom / pan** | Scroll or pinch to zoom; drag or ← → to pan; + / − buttons. | the view, yes |
 | **Era chips** | Jump to one era's exact years; *All* shows everything. | — |
 | **Search** | Finds events and spans by name or alias (never by year or description); a matching span also brings in everything `part_of` it. Typing a year ("500 BC") jumps there instead. Results open in the **search panel** (§4). | — |
@@ -89,8 +90,8 @@
 | **Density preset** | The one detail control. *Simple* (fewer events; no span bars, milestone lines or currents), *Standard*, *Detailed* (more events at every zoom; every event that passes but has no room for a label still shows as a small, clickable, unlabelled marker; an open card rings its connections and keeps them ringed). | yes |
 | **Focus** | Clicking a family in the legend keeps it vivid and fades the rest to 15% (never hidden). Esc clears it. | no (per visit) |
 | **Show connections** | From a card: rings the item and everything linked to it. Not "focus". | no; code `ringedId` |
-| **Colour mode** | *Colorful* (a hue per family, the default) or *Subtle* (three colourblind-safe hues). Shapes stay in both. | yes |
-| **Theme** | Light or dark (☾ / ☀). | yes |
+| **Colour mode** | *Colorful* (a hue per family, the default) or *Subtle* (three colourblind-safe hues). Shapes stay in both. In the **Display ▾** menu. | yes |
+| **Theme** | Light or dark, in the **Display ▾** menu. | yes |
 | **Hide a track / lane** | Constellation: click a track name (on Geography this is the region switch shared with Filters). Lanes: the Lanes menu (that layout's rows only). | yes |
 | **What's this? (help mode)** | The **?** button (or `?` key): the next clicks show what anything is, from `engine/dateflow/help.ts`, written from this glossary. Update both together. | no |
 | **Copy link** | Shares what's open: `?journey=`, `?chain=` (old `?story=` links still open), `?q=` (search), `?year=` / `?tm=` (Time Machine). | — |

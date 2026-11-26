@@ -1,50 +1,57 @@
 <template>
   <div class="dateflow flex flex-col h-[calc(100dvh-40px)]" :class="{ 'help-mode': helpOn }" :data-theme="store.theme"
        :data-colors="store.colorMode">
-    <DateFlowToolbar
-      :view="store.view"
+    <!-- The control bands (doc 20): no control moves when the layout or a panel changes -->
+    <DateFlowHeader
       :theme="store.theme"
       :color-mode="store.colorMode"
-      :density="store.density"
-      :mode="store.mode"
-      :lane-state="store.laneState"
-      :track-axis="store.trackAxis"
-      :filters="store.filters"
-      :hidden-regions="store.hiddenRegions"
       :help-on="helpOn"
-      :categories="store.categories"
       :stories="store.featured"
       :journeys="store.journeys"
       :journey-progress="store.journeyProgress"
-      :eras="store.eras"
-      :active-era="store.activeEra"
       @open-story="(id) => store.openStory(id)"
       @open-journey="(id, from) => store.openJourney(id, from)"
       @time-machine="store.openTimeMachine()"
       @surprise="store.surprise()"
-      @zoom-in="store.zoomIn()"
-      @zoom-out="store.zoomOut()"
-      @reset="store.reset()"
-      @show-era="store.showEra"
       @jump="store.jumpTo"
       @search="store.searchFor"
       @watch="store.watchFilters()"
       @toggle-theme="store.toggleTheme()"
       @toggle-colors="store.toggleColorMode()"
-      @set-density="store.setDensity"
+      @summarize="store.openSummary(store.view.start, store.view.end)"
+      @toggle-help="toggleHelp"
+    />
+    <DateFlowTimeBar
+      :view="store.view"
+      :eras="store.eras"
+      :active-era="store.activeEra"
+      @zoom-in="store.zoomIn()"
+      @zoom-out="store.zoomOut()"
+      @reset="store.reset()"
+      @show-era="store.showEra"
+    />
+    <DateFlowMinimap v-if="!store.isLoading" data-help="minimap" :years="eventYears" :view="store.view" @center-at="store.centerAt" />
+    <DateFlowViewBar
+      :mode="store.mode"
+      :track-axis="store.trackAxis"
+      :lane-state="store.laneState"
+      :density="store.density"
+      :filters="store.filters"
+      :categories="store.categories"
+      :hidden-regions="store.hiddenRegions"
+      :focus-label="focusLabel"
+      :nothing-matches="store.filteredEvents.length === 0"
       @set-mode="store.setMode"
       @set-track-axis="store.setTrackAxis"
       @toggle-lane="store.toggleLane"
       @move-lane="store.moveLane"
       @reset-lanes="store.resetLanes()"
+      @set-density="store.setDensity"
       @toggle-category="store.toggleCategory"
       @toggle-region="store.toggleRegion"
       @clear-filters="store.clearFilters()"
-      @summarize="store.openSummary(store.view.start, store.view.end)"
-      @toggle-help="toggleHelp"
+      @clear-focus="store.setFocusFamily(null)"
     />
-
-    <DateFlowMinimap v-if="!store.isLoading" data-help="minimap" :years="eventYears" :view="store.view" @center-at="store.centerAt" />
 
     <div v-if="store.isLoading" class="flex-1 flex items-center justify-center text-sm muted">
       Loading…
@@ -188,11 +195,6 @@
         </span>
       </template>
       <span v-else-if="store.mode === 'constellation'" class="secondary" data-help="dot">Bigger dot = more important</span>
-      <span v-if="filterSummary" class="secondary" data-help="filters">
-        · Showing: <strong>{{ filterSummary }}</strong>
-        <button class="underline ml-1" @click="store.clearFilters()">Clear</button>
-      </span>
-      <span v-if="filterSummary && store.filteredEvents.length === 0" class="secondary">— nothing matches these filters</span>
       <span v-if="hiddenCount > 0" class="secondary" data-help="hidden-dot">· {{ hiddenCount }} more in view — zoom in to reveal</span>
       <span class="ml-auto muted hidden sm:inline" data-help="zoom">Scroll to zoom · drag to move · shift-drag: What happened? · ← → pan · + − zoom</span>
     </div>
@@ -252,11 +254,13 @@ import { computed, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vu
 import { useRoute, useRouter } from 'vue-router'
 import { useDateFlowStore } from '@/stores/dateflow'
 import { FAMILIES, shapePath } from '@/engine/dateflow/categoryGroups'
-import { LANES } from '@/engine/dateflow/lanes'
-import DateFlowToolbar from '@/components/dateflow/DateFlowToolbar.vue'
+import DateFlowHeader from '@/components/dateflow/DateFlowHeader.vue'
+import DateFlowTimeBar from '@/components/dateflow/DateFlowTimeBar.vue'
+import DateFlowViewBar from '@/components/dateflow/DateFlowViewBar.vue'
 import DateFlowTimeline from '@/components/dateflow/DateFlowTimeline.vue'
 import DateFlowMinimap from '@/components/dateflow/DateFlowMinimap.vue'
 import '@/assets/dateflow-theme.css'
+import '@/assets/dateflow-controls.css'
 import EventInfoCard from '@/components/EventInfoCard.vue'
 import EventConnections from '@/components/dateflow/EventConnections.vue'
 import StoryPanel from '@/components/dateflow/StoryPanel.vue'
@@ -285,14 +289,8 @@ const showInvite = computed(
     !store.selectedEvent && !store.selectedDuration,
 )
 
-// Footer summary of active filters.
-const filterSummary = computed(() => {
-  const f = store.filters
-  const parts = [...f.categories]
-  const off = store.hiddenRegions.map((id) => LANES.find((l) => l.id === id)?.label ?? id)
-  if (off.length) parts.push(`without ${off.join(', ')}`)
-  return parts.join(' · ')
-})
+// The legend's Focus, named in the view bar's "Showing:" line with the filters
+const focusLabel = computed(() => FAMILIES.find((f) => f.id === store.focusFamily)?.label ?? null)
 
 // ── "What's this?" help mode (doc 18, 5b) ──
 // While it's on, a click anywhere in DateFlow shows the help for the nearest element tagged

@@ -1,9 +1,9 @@
 <template>
-  <div ref="containerEl" class="relative w-full select-none minimap" :style="{ height: HEIGHT + 'px' }">
+  <div ref="containerEl" class="relative w-full select-none minimap" :style="{ height: TOP + HEIGHT + 'px' }">
     <svg
       v-if="width > 0"
       :width="width"
-      :height="HEIGHT"
+      :height="TOP + HEIGHT"
       class="block touch-none"
       :class="dragging ? 'cursor-grabbing' : 'cursor-pointer'"
       role="slider"
@@ -16,6 +16,12 @@
       @pointerup="onPointerUp"
       @pointercancel="onPointerUp"
     >
+      <!-- The years the box covers (doc 20), on a strip above it and styled like it, so they read as
+           "your window" and not as an axis: one at each edge, or one centred label when the box is narrow -->
+      <text v-for="l in boxLabels" :key="l.key" :x="l.x" :y="TOP - 3" :text-anchor="l.anchor" class="box-years">
+        {{ l.text }}
+      </text>
+      <g :transform="`translate(0, ${TOP})`">
       <!-- Density histogram: events per slice of time (sqrt scale so sparse eras stay visible) -->
       <rect
         v-for="b in bars"
@@ -51,6 +57,7 @@
         pointer-events="none"
       />
       <rect :x="box.x" y="1" :width="box.w" :height="BAR_BASE - 1" rx="2" class="viewport" pointer-events="none" />
+      </g>
     </svg>
   </div>
 </template>
@@ -64,6 +71,7 @@ import { formatYear } from '@/utils/formatYear'
 const props = defineProps<{ years: number[]; view: View }>()
 const emit = defineEmits<{ centerAt: [year: number, animate: boolean] }>()
 
+const TOP = 13 // the strip above the overview for the box's years
 const HEIGHT = 52
 const BAR_BASE = 32 // bars grow up from here; tick labels and the zoom funnel sit below
 const BAR_PX = 5 // target width of one histogram bar
@@ -123,6 +131,23 @@ const box = computed(() => {
 const funnel = computed(() => {
   const { x, w } = box.value
   return `${x},${BAR_BASE} ${x + w},${BAR_BASE} ${width.value},${HEIGHT} 0,${HEIGHT}`
+})
+
+const YEAR_CHAR_W = 6 // rough width of a character of the box years
+const boxLabels = computed(() => {
+  const a = formatYear(Math.round(props.view.start))
+  const b = formatYear(Math.round(props.view.end))
+  const { x, w } = box.value
+  // Room for both, each hanging outward from its edge? Else one label, centred on the box but kept on screen.
+  if (x - a.length * YEAR_CHAR_W >= 0 && x + w + b.length * YEAR_CHAR_W <= width.value) {
+    return [
+      { key: 'a', x: x - 2, anchor: 'end', text: a },
+      { key: 'b', x: x + w + 2, anchor: 'start', text: b },
+    ]
+  }
+  const text = `${a} – ${b}`
+  const half = (text.length * YEAR_CHAR_W) / 2
+  return [{ key: 'ab', x: Math.min(Math.max(x + w / 2, half + 2), width.value - half - 2), anchor: 'middle', text }]
 })
 
 // ── Click to jump (animated), drag to scrub (instant). Grabbing inside the box keeps its offset so it doesn't jump.
@@ -186,6 +211,12 @@ function onPointerUp(e: PointerEvent) {
 .funnel {
   fill: var(--df-text);
   opacity: 0.1;
+}
+.box-years {
+  fill: var(--df-text);
+  font-size: 10px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 .dim {
   fill: var(--df-bg);

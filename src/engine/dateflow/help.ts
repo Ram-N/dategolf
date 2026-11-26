@@ -163,7 +163,7 @@ export const HELP = {
   },
   'view-range': {
     title: 'The years on screen',
-    text: 'The years you are looking at now, and how many years that is.',
+    text: 'The years you are looking at now, and how many years that is. The same years are written on the box in the history overview just below.',
     see: ['zoom', 'minimap'],
   },
   minimap: {
@@ -221,7 +221,17 @@ export const HELP = {
   },
   more: {
     title: 'More',
-    text: "Holds the tools that don't fit on a smaller screen: Time Machine, Surprise Me, Play through, Chains, What happened?, Games and the colour settings.",
+    text: "On a smaller screen, holds the tools that don't fit in the top row: on a laptop, Play through and Surprise Me; on a phone, also Time Machine, What happened?, Games, Display and What's this?.",
+  },
+  display: {
+    title: 'Display',
+    text: 'How DateFlow looks: Colorful or Subtle colours, and a light or dark page. Your choice is remembered.',
+    see: ['colours', 'theme'],
+  },
+  'view-menu': {
+    title: 'View',
+    text: "On a smaller screen, View holds how much detail to show (Simple, Standard, Detailed) and the Filters; on a phone, also the layout's own controls (the Lanes menu, or the Constellation's tracks).",
+    see: ['density', 'filters'],
   },
   'event-card': {
     title: "An event's card",

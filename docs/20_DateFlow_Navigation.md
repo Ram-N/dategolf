@@ -1,6 +1,7 @@
 # DateFlow Navigation: Where Every Control Goes
 
-Status: **draft for Ram's review** (2026-11-25). No code until it's approved. Roadmap item: doc 18, 1b.
+Status: **built 2026-11-26** with the three recommendations in §7 (Ram: "go with your recommendations"). Roadmap item: doc 18, 1b.
+As built: `DateFlowHeader.vue`, `DateFlowTimeBar.vue`, `DateFlowViewBar.vue`, `BandMenu.vue` (Display, More, ☰), `DisplaySettings.vue`; shared styles in `src/assets/dateflow-controls.css`. Breakpoints: Band 3 is all inline from 1280px; from 1024px the layout's own controls stay inline and Simple / Standard / Detailed and Filters sit behind **View ▾**; below 1024px all three do. The header may wrap to two rows between 1024 and 1279px; it wraps the same way in every layout, so nothing jumps.
 Terms follow the glossary (doc 21).
 
 ---
@@ -127,7 +128,7 @@ Band 1 keeps Journeys ▾, Chains ▾, Time Machine and What happened?. **Play t
 | Connections ringed · Clear | Above the footer | Unchanged |
 | Copy link | In each panel | Unchanged |
 
-## 7. Decisions for Ram
+## 7. Decisions for Ram (all three: the recommendation, 2026-11-26)
 
 1. **Colours and theme in a Display ▾ menu**, or kept on the main row? *Recommendation:* the menu. They're set once, and the row is crowded.
 2. **Years on screen in Band 2 as well as on the overview box?** *Recommendation:* yes. The box label is small, and the text also gives the length ("26 years").
