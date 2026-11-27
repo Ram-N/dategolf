@@ -16,6 +16,20 @@
       >
         <path d="M0,0 L10,5 L0,10 z" :fill="`var(--df-arc-${k})`" />
       </marker>
+      <!-- A smaller head for the short straight arrows between close items -->
+      <marker
+        v-for="k in KINDS"
+        :id="`arrow-${k}-short`"
+        :key="`${k}-short`"
+        viewBox="0 0 10 10"
+        refX="9"
+        refY="5"
+        markerWidth="3.5"
+        markerHeight="3.5"
+        orient="auto-start-reverse"
+      >
+        <path d="M0,0 L10,5 L0,10 z" :fill="`var(--df-arc-${k})`" />
+      </marker>
     </defs>
 
     <path
@@ -24,10 +38,10 @@
       :d="a.d"
       pathLength="1"
       class="arc"
-      :class="[a.kind, { debated: a.debated, active: a.key === activeKey,
+      :class="[a.kind, { short: a.short, debated: a.debated, active: a.key === activeKey,
                          faded: stepEdgeKeys && !stepEdgeKeys.has(a.key) && a.key !== activeKey }]"
       :style="{ animationDelay: `${a.order * 0.12}s`, stroke: `var(--df-arc-${a.kind})` }"
-      :marker-end="`url(#arrow-${a.kind})`"
+      :marker-end="`url(#arrow-${a.kind}${a.short ? '-short' : ''})`"
     />
     <path
       v-for="a in arcs"
@@ -64,6 +78,7 @@ export interface Arc {
   kind: 'trigger' | 'contrib' | 'enable' | 'influence' | 'frame' | 'then'
   debated: boolean
   order: number
+  short: boolean // too close for an arc: a short straight arrow just above the axis
   label: string
   labelX: number
   labelY: number

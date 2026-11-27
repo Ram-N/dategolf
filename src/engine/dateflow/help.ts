@@ -185,7 +185,7 @@ export const HELP = {
   },
   'story-thread': {
     title: 'A thread',
-    text: "An arrow from one event in a chain to the next. Its colour and style say how they're connected; the key is in the chain's panel.",
+    text: "An arrow from one event in a chain to the next. Its colour and style say how they're connected; the key is in the chain's panel. Events very close together get a short straight arrow, or none until you zoom in.",
     tip: 'Hover or click it to read the connection.',
     see: ['stories'],
   },

@@ -1127,6 +1127,9 @@ const ARC_KIND: Record<string, Arc['kind']> = {
   began: 'frame', ended: 'frame', preceded: 'then',
 }
 const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi)
+const MIN_ARC_GAP = 28 // px: closer than this on one axis, a thread is a short straight arrow
+const SHORT_ARC_RISE = 9 // px above the axis, clear of the dots
+const MIN_ARROW_LEN = 12 // px: shorter than this, an arrow is only a head, so no thread is drawn
 
 /** The axis a story node sits on: the World track, or its lane's track (null if that lane is hidden). */
 function axisFor(n: StoryNode): number | null {
@@ -1157,16 +1160,19 @@ const storyArcs = computed<Arc[]>(() => {
     const x1 = yearToX(joinFrom(a, b), props.view, width.value)
     const x2 = yearToX(joinTo(b, a), props.view, width.value)
     const dx = Math.abs(x2 - x1)
+    // Too close for an arc (it would curl into a knot over the labels): a short straight arrow just above
+    // the axis, and below a few pixels no thread at all. The chain panel lists every link either way.
+    const short = ya === yb && dx < MIN_ARC_GAP
+    if (short && dx < MIN_ARROW_LEN) return
     const lift = clamp(dx * 0.35, 22, Math.max(30, Math.min(ya, yb) - ERA_SPACE - 8))
-    // Same year (a beginning, or two events in one year): a small loop, so the thread still shows.
-    const d = dx < 8 && ya === yb
-      ? `M ${x1} ${ya} C ${x1 - 18} ${ya - 34}, ${x2 + 18} ${yb - 34}, ${x2 + 1} ${yb}`
+    const d = short
+      ? `M ${x1} ${ya - SHORT_ARC_RISE} L ${x2} ${yb - SHORT_ARC_RISE}`
       : ya === yb
         ? `M ${x1} ${ya} C ${x1} ${ya - lift}, ${x2} ${yb - lift}, ${x2} ${yb}`
         : `M ${x1} ${ya} C ${x1} ${ya - lift}, ${x2} ${yb - lift * 0.6}, ${x2} ${yb}`
     const label = dx > 90 ? shortGap(e, a, b) : ''
     arcs.push({
-      key: `${e.from}>${e.to}`, d, kind: ARC_KIND[e.type] ?? 'then', debated: e.debated, order,
+      key: `${e.from}>${e.to}`, d, kind: ARC_KIND[e.type] ?? 'then', debated: e.debated, order, short,
       label, labelX: (x1 + x2) / 2, labelY: Math.min(ya, yb) - lift * 0.75 - 4, to: e.to,
       fromName: a.name, toName: b.name, verb: e.label, why: e.why,
       gap: gapText(joinFrom(a, b), joinTo(b, a), !!(a.approximate || b.approximate)),
