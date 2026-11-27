@@ -103,6 +103,14 @@ Give each century its own background shade so the eye feels time passing while z
   - Accuracy: there's no year 0, so the 1st century BCE is 100–1 BCE and the 1st century CE is 1–100. Bands follow "the 1700s" (1700–1799), as Ram put it; label them that way if they're labelled at all.
 - Size: S–M.
 
+### 5d. Empire territory silhouettes (Ram, 2026-11-26; pilot on Rome; data first)
+Instead of a flat bar, an empire is drawn as a silhouette of its size over time: thin at its start, swelling to its largest extent, narrowing to its end. Prompted by AnyChart's Roman History Timeline (which itself uses only range bars and moments).
+- **The height must measure something real: territory** (land area controlled at a date), never a curve derived from the life-cycle phase kinds, which are qualitative and would invent numbers. Sources: Rein Taagepera's empire-size estimates; the Seshat databank.
+- **Data first (Ram is finding it):** a new table of extent points (span, year, area in km², approximate, source), drafted and reviewed like other batches. Pilot: the Roman Empire alone (5–10 dated points), then the journey's other 7 empires.
+- **Drawing:** in a journey stop and the span card first (later perhaps the bar itself in Timeline / Lanes when zoomed in). The curve passes only through dated, sourced points ("c." where approximate), with the stretches between drawn as estimates; the peak labelled ("largest extent, c. 117 CE") and the source in the card. One shared scale within a journey so empires compare at a glance.
+- **Caveat on screen:** size isn't strength or wealth (Byzantium was small and rich); the card says so.
+- Size: data M, drawing S–M.
+
 ### 6. 100 more historical people, and a People row that doesn't crowd
 - **Data:** about 100 people from ChronoLogic's `people.json`, **only people who have died**. Of its 1,218, 912 have died, but they lean modern (581 born after 1800; 140 died before 1500), so the 100 must be chosen for balance across eras and regions, not taken from the top. Pre-sort: drop celebrities and duplicates; flag ancient birth and death dates that look exact but aren't (they become approximate, with a `date_display`). Drafted through doc 15, loaded as proposed, reviewed on the dashboard.
 - **Display:** the People row has room for only a few lives at a time (2 rows in the Timeline layout), whatever the database size. Rather than a fixed percentage, show **as many as fit without overlap**, chosen by importance with a **stable shuffle** among equals (the same view shows the same people, so pills don't flicker while panning), plus a "+N more people lived in this time" link that lists the rest. A **Shuffle** button shows a different set.
