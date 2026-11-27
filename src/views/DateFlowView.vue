@@ -79,6 +79,7 @@
         :highlight-ids="store.highlightIds"
         :spotlight-ids="store.spotlightIds"
         :marks="store.tmMarks"
+        :stop-bands="store.journeyStopBands"
         :story="store.currentStory"
         :focus-family="store.focusFamily"
         :step-id="store.storyStep === null ? null : (store.currentStops[store.storyStep]?.node.id ?? null)"

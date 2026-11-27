@@ -2,6 +2,7 @@ import type { Event } from '@/types'
 import type { Span, RelationshipData } from '@/types/dateflow'
 import { gapText } from './stories'
 import { eventStop, spanStop, type TourStop } from './tour'
+import { formatYear } from '@/utils/formatYear'
 
 // Phase 14: curated journeys (journeys.json, reviewed), played stop by stop in the Story panel.
 // A stop shows existing events and spans and has no dates of its own: its years come from its items.
@@ -130,6 +131,12 @@ export function resolveJourney(
 export function journeyIds(j: Journey, step: number | null): Set<string> {
   const stops = step === null || !j.stops[step] ? j.stops : j.stops.slice(Math.max(0, step - 1), step + 2)
   return new Set(stops.flatMap((s) => s.items.map((x) => x.id)))
+}
+
+/** A stop's years as students read them: "c. 1519–1858", or one year. */
+export function stopRange(s: JourneyStop): string {
+  const c = s.approximate ? 'c. ' : ''
+  return s.end === s.start ? `${c}${formatYear(s.start)}` : `${c}${formatYear(s.start)}–${formatYear(s.end)}`
 }
 
 /**

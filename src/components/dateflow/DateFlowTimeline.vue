@@ -299,6 +299,15 @@
         </g>
       </g>
 
+      <!-- A journey stop's years: a band with edges and a label; the previous stop's as a dashed outline -->
+      <g v-for="b in stopBandsX" :key="b.label" pointer-events="none" aria-hidden="true" class="stop-band">
+        <rect v-if="b.current" :x="b.x1" :y="ERA_SPACE" :width="b.x2 - b.x1" :height="height - ERA_SPACE" class="stop-fill" />
+        <line v-if="b.startIn" :x1="b.x1" :x2="b.x1" :y1="ERA_SPACE" :y2="height" :class="b.current ? 'stop-edge' : 'stop-edge prev'" />
+        <line v-if="b.endIn" :x1="b.x2" :x2="b.x2" :y1="ERA_SPACE" :y2="height" :class="b.current ? 'stop-edge' : 'stop-edge prev'" />
+        <rect :x="b.tagX" :y="ERA_SPACE + 2" :width="b.tagW" height="18" rx="9" :class="b.current ? 'stop-tag' : 'stop-tag prev'" />
+        <text :x="b.tagX + b.tagW / 2" :y="ERA_SPACE + 15" text-anchor="middle" :class="b.current ? 'stop-tag-text' : 'stop-tag-text prev'">{{ b.label }}</text>
+      </g>
+
       <!-- Time Machine marks -->
       <g v-if="marks" pointer-events="none" aria-hidden="true" class="tm">
         <template v-if="marks.band">
@@ -439,6 +448,7 @@ const props = defineProps<{
   focusFamily?: Family | null // Phase 11 Focus: this family stays vivid, the rest fade (never hidden)
   currents?: Span[] | null // step 3d: spans that may be drawn as Historical Currents (empty = layer off)
   // Phase 10, the Time Machine: year lines, a shaded band (two spans' shared years), a bracket (two events)
+  stopBands?: { start: number; end: number; current: boolean; label: string }[] // a journey stop's years, and the last stop's
   marks?: { lines: number[]; band: [number, number] | null; bracket: [number, number] | null; label: string } | null
 }>()
 const emit = defineEmits<{
@@ -531,6 +541,28 @@ const eraBands = computed(() =>
       }
     })
     .filter((era) => era.x2 > era.x1),
+)
+
+const STOP_TAG_MIN_X = 150 // past the track and lane names at the left
+const stopBandsX = computed(() =>
+  (props.stopBands ?? [])
+    .map((b) => {
+      const a = yearToX(b.start, props.view, width.value)
+      const z = yearToX(b.end === b.start ? b.start : b.end, props.view, width.value)
+      const x1 = Math.max(0, a)
+      const x2 = Math.min(width.value, Math.max(z, a + 2))
+      const tagW = b.label.length * 6.4 + 18
+      const startIn = a >= 0
+      const endIn = z <= width.value
+      // The tag sits inside the band at its start, clear of the track and lane names on the left; the last
+      // stop's sits at its end where that's on screen (where the new stop takes over), else at its start
+      const atEnd = !b.current && endIn
+      const want = atEnd ? x2 - tagW - 4 : Math.max(x1 + 4, x1 < STOP_TAG_MIN_X ? STOP_TAG_MIN_X : 0)
+      const tagX = Math.min(Math.max(want, 4), Math.max(4, width.value - tagW - 4))
+      return { ...b, x1, x2, startIn, endIn, tagX, tagW }
+    })
+    // The last stop's outline only helps where one of its edges is on screen
+    .filter((b) => b.x2 > b.x1 && (b.current || b.startIn || b.endIn)),
 )
 
 const centuryBandsX = computed(() => {
@@ -749,7 +781,12 @@ function layoutBars(t: Track) {
   const rows = t.barRows.map((r) => emptyRows(r.rows))
   // A lane too short for a People row shows people in its Periods row instead of not at all
   const peopleRow = t.barRows.some((r) => r.kind === 'person')
-  const rowOf = (d: Span): BarKind => (d.person && !peopleRow ? 'period' : rowKind(d))
+  // A ringed span whose row isn't drawn here (a short lane has only the Empires row) borrows the first row
+  const kindsHere = new Set(t.barRows.map((r) => r.kind))
+  const rowOf = (d: Span): BarKind => {
+    const k = d.person && !peopleRow ? 'period' : rowKind(d)
+    return kindsHere.has(k) || !lit(d.id) || !t.barRows.length ? k : t.barRows[0]!.kind
+  }
   const placed: { id: string; row: number; top: number }[] = []
   let pending = candidates.map((c) => c.d.id)
   while (pending.length) {
@@ -1732,6 +1769,38 @@ function onArcClick(key: string, e: MouseEvent) {
 .tm-line {
   stroke: var(--df-approx-border);
   stroke-width: 2;
+}
+.stop-fill {
+  fill: var(--df-spot);
+  opacity: 0.06;
+}
+.stop-edge {
+  stroke: var(--df-spot);
+  stroke-width: 2;
+}
+.stop-edge.prev {
+  stroke: var(--df-text-2);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+  opacity: 0.7;
+}
+.stop-tag {
+  fill: var(--df-spot);
+}
+.stop-tag.prev {
+  fill: var(--df-surface);
+  stroke: var(--df-text-2);
+  stroke-dasharray: 3 2;
+}
+.stop-tag-text {
+  fill: var(--df-spot-text);
+  font-size: 11px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.stop-tag-text.prev {
+  fill: var(--df-text-2);
+  font-weight: 700;
 }
 .tm-pill {
   fill: var(--df-approx-border);

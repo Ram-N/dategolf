@@ -95,7 +95,7 @@
 
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue'
-import type { Journey, JourneyStop } from '@/engine/dateflow/journeys'
+import { stopRange, type Journey } from '@/engine/dateflow/journeys'
 import type { TourStop } from '@/engine/dateflow/tour'
 import type { Family } from '@/engine/dateflow/categoryGroups'
 import type { Phase } from '@/types/dateflow'
@@ -130,10 +130,7 @@ function when(s: TourStop): string {
   return formatEventYear(s.year, s.approximate)
 }
 
-function range(s: JourneyStop): string {
-  const c = s.approximate ? 'c. ' : ''
-  return s.end === s.start ? `${c}${formatYear(s.start)}` : `${c}${formatYear(s.start)}–${formatYear(s.end)}`
-}
+const range = stopRange
 
 // Each step starts at the top of the panel: the link from the last stop, then the stop itself.
 const bodyEl = ref<HTMLElement | null>(null)

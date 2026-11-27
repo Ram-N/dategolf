@@ -12,7 +12,7 @@ import { TRACK_AXES, toggleTrack as toggleTrackIn, type HiddenTracks, type Track
 import { familyFor, type Family } from '@/engine/dateflow/categoryGroups'
 import { eventStop, searchStops, sortStops, spanStop, stepIndex, type TourSpeed } from '@/engine/dateflow/tour'
 import {
-  journeyIds, recordStep, resolveJourney, resumeStep, stepJourneyIndex, stopFrame,
+  journeyIds, recordStep, resolveJourney, resumeStep, stepJourneyIndex, stopFrame, stopRange,
   type Journey, type JourneyData, type JourneyProgress,
 } from '@/engine/dateflow/journeys'
 import milestoneIds from '@/data/milestones.json'
@@ -260,6 +260,20 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const journeyStop = computed(() =>
     currentJourney.value && journeyStep.value !== null ? (currentJourney.value.stops[journeyStep.value] ?? null) : null,
   )
+  /**
+   * At a journey stop: its years as a band on the timeline, and the previous stop's as a faint outline, so a
+   * change of frame between stops can be followed (Ram, 2026-11-26).
+   */
+  const journeyStopBands = computed(() => {
+    const j = currentJourney.value
+    const i = journeyStep.value
+    if (!j || i === null || !j.stops[i]) return []
+    const band = (k: number, current: boolean) => {
+      const s = j.stops[k]!
+      return { start: s.start, end: s.end, current, label: current ? `Stop ${k + 1} · ${stopRange(s)}` : `Stop ${k + 1}` }
+    }
+    return i > 0 ? [band(i - 1, false), band(i, true)] : [band(i, true)]
+  })
   const journeyRing = computed(() => (currentJourney.value ? journeyIds(currentJourney.value, journeyStep.value) : null))
   /** Story steps to ring on the timeline (the story replaces any "show connections" highlight). */
   const storyIds = computed(() => (currentStory.value ? new Set(currentStory.value.nodes.map((n) => n.id)) : null))
@@ -1026,6 +1040,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     currentJourney,
     journeyStop,
     journeyRing,
+    journeyStopBands,
     journeyOffView,
     openJourney,
     journeyProgress,
