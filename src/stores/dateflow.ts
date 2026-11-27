@@ -270,7 +270,7 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     if (!j || i === null || !j.stops[i]) return []
     const band = (k: number, current: boolean) => {
       const s = j.stops[k]!
-      return { start: s.start, end: s.end, current, label: current ? `Stop ${k + 1} · ${stopRange(s)}` : `Stop ${k + 1}` }
+      return { start: s.start, end: s.end, current, stop: k + 1, range: stopRange(s) }
     }
     return i > 0 ? [band(i - 1, false), band(i, true)] : [band(i, true)]
   })

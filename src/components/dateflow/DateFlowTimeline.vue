@@ -18,7 +18,8 @@
            two shades alternating; they take over from the era shading, whose names stay -->
       <g v-for="c in centuryBandsX" :key="c.start" pointer-events="none" aria-hidden="true">
         <rect :x="c.x1" y="0" :width="c.x2 - c.x1" :height="height" :class="`century ${c.bce ? 'bce' : 'ce'}-${c.shade}`" />
-        <text v-if="c.x2 - c.x1 >= 56" :x="c.x2 - 4" y="9" text-anchor="end" class="century-label">{{ c.label }}</text>
+        <!-- Named over the middle of the part on screen, so the name sits over its own century -->
+        <text v-if="c.x2 - c.x1 >= 56" :x="(c.x1 + c.x2) / 2" y="9" text-anchor="middle" class="century-label">{{ c.label }}</text>
       </g>
 
       <!-- Era bands: alternating faint fills, name pinned to the visible part of the band -->
@@ -300,12 +301,13 @@
       </g>
 
       <!-- A journey stop's years: a band with edges and a label; the previous stop's as a dashed outline -->
-      <g v-for="b in stopBandsX" :key="b.label" pointer-events="none" aria-hidden="true" class="stop-band">
+      <g v-for="b in stopBandsX" :key="b.stop" pointer-events="none" aria-hidden="true" class="stop-band">
         <rect v-if="b.current" :x="b.x1" :y="ERA_SPACE" :width="b.x2 - b.x1" :height="height - ERA_SPACE" class="stop-fill" />
         <line v-if="b.startIn" :x1="b.x1" :x2="b.x1" :y1="ERA_SPACE" :y2="height" :class="b.current ? 'stop-edge' : 'stop-edge prev'" />
         <line v-if="b.endIn" :x1="b.x2" :x2="b.x2" :y1="ERA_SPACE" :y2="height" :class="b.current ? 'stop-edge' : 'stop-edge prev'" />
-        <rect :x="b.tagX" :y="ERA_SPACE + 2" :width="b.tagW" height="18" rx="9" :class="b.current ? 'stop-tag' : 'stop-tag prev'" />
-        <text :x="b.tagX + b.tagW / 2" :y="ERA_SPACE + 15" text-anchor="middle" :class="b.current ? 'stop-tag-text' : 'stop-tag-text prev'">{{ b.label }}</text>
+        <!-- The last stop's tag on a row of its own, below the current one, so the two never collide -->
+        <rect :x="b.tagX" :y="ERA_SPACE + (b.current ? 2 : 24)" :width="b.tagW" height="18" rx="9" :class="b.current ? 'stop-tag' : 'stop-tag prev'" />
+        <text :x="b.tagX + b.tagW / 2" :y="ERA_SPACE + (b.current ? 15 : 37)" text-anchor="middle" :class="b.current ? 'stop-tag-text' : 'stop-tag-text prev'">{{ b.label }}</text>
       </g>
 
       <!-- Time Machine marks -->
@@ -449,7 +451,7 @@ const props = defineProps<{
   focusFamily?: Family | null // Phase 11 Focus: this family stays vivid, the rest fade (never hidden)
   currents?: Span[] | null // step 3d: spans that may be drawn as Historical Currents (empty = layer off)
   // Phase 10, the Time Machine: year lines, a shaded band (two spans' shared years), a bracket (two events)
-  stopBands?: { start: number; end: number; current: boolean; label: string }[] // a journey stop's years, and the last stop's
+  stopBands?: { start: number; end: number; current: boolean; stop: number; range: string }[] // a journey stop's years, and the last stop's
   marks?: { lines: number[]; band: [number, number] | null; bracket: [number, number] | null; label: string } | null
 }>()
 const emit = defineEmits<{
@@ -552,15 +554,21 @@ const stopBandsX = computed(() =>
       const z = yearToX(b.end === b.start ? b.start : b.end, props.view, width.value)
       const x1 = Math.max(0, a)
       const x2 = Math.min(width.value, Math.max(z, a + 2))
-      const tagW = b.label.length * 6.4 + 18
       const startIn = a >= 0
       const endIn = z <= width.value
       // The tag sits inside the band at its start, clear of the track and lane names on the left; the last
-      // stop's sits at its end where that's on screen (where the new stop takes over), else at its start
+      // stop's sits at its end where that's on screen (where the new stop takes over), else at its start,
+      // and says which edge it is, with an arrow into its own band, so it can't read as a stop further on
       const atEnd = !b.current && endIn
+      const label = b.current
+        ? `Stop ${b.stop} · ${b.range}`
+        : atEnd
+          ? `◂ Stop ${b.stop} (${b.range}) ends here`
+          : `Stop ${b.stop} (${b.range}) starts here ▸`
+      const tagW = label.length * 6.4 + 18
       const want = atEnd ? x2 - tagW - 4 : Math.max(x1 + 4, x1 < STOP_TAG_MIN_X ? STOP_TAG_MIN_X : 0)
       const tagX = Math.min(Math.max(want, 4), Math.max(4, width.value - tagW - 4))
-      return { ...b, x1, x2, startIn, endIn, tagX, tagW }
+      return { ...b, x1, x2, startIn, endIn, tagX, tagW, label }
     })
     // The last stop's outline only helps where one of its edges is on screen
     .filter((b) => b.x2 > b.x1 && (b.current || b.startIn || b.endIn)),
