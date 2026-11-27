@@ -29,6 +29,7 @@ Ram uses DateFlow for a few days and lists small aesthetic, usability and experi
 | A box around an open chain of events, to draw the eye to it | 2026-11-24 | Parked (Ram: "probably not needed") |
 | Lanes: the India chain didn't show at all (South Asia switched off, so its stops were filtered out and had no lane) | 2026-11-24 | ✅ Done: an open chain draws its own items like a journey does, and Lanes adds the lanes a chain or journey needs while it's open |
 | History overview: show the years the box covers, so the time frame reads at a glance | 2026-11-25 | ✅ Done in **1b**, 2026-11-26: the start and end years on the box itself (one centred "350 – 600" when the box is narrow), styled like the box so they don't read as an axis. 1b decides whether the range under the DateFlow title then stays |
+| Hovering an event's label highlights only the label; with close neighbours you can't tell which dot it belongs to | 2026-11-26 | ✅ Done: hovering a label or its dot (or opening its card) picks out both: the dot grows, gets a ring, and its leader line darkens (Timeline and Lanes) |
 
 ### 1b. Rethink DateFlow's navigation and menus (Ram, 2026-11-24: start here on 2026-11-25)
 **✅ Built 2026-11-26 (doc 20): five fixed bands (Header, Time, View, Chart, Footer); no control moves when the layout, a panel or the screen changes (checked at 1600, 1280, 1100 and 390px).** The notes below fed it.

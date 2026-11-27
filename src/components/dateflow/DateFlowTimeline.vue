@@ -152,7 +152,8 @@
           :y1="t.axisY"
           :y2="m.leaderEnd"
           :stroke="`var(--df-f-${m.family})`"
-          stroke-opacity="0.55"
+          :stroke-opacity="isPicked(m.event.id) ? 1 : 0.55"
+          :stroke-width="isPicked(m.event.id) ? 2 : 1"
           :class="{ dimmed: dimming && !lit(m.event.id), faded: fades(m.family, m.event.id) }"
           pointer-events="none"
         />
@@ -199,17 +200,23 @@
           <title>{{ q.tooltip }}</title>
         </path>
 
-        <!-- Visible events -->
+        <!-- Visible events. Hovering a dot or its label (or opening its card) picks out both: the dot
+             grows and gets a ring, so close neighbours can't be confused -->
+        <template v-for="m in t.markers" :key="`ring-${m.event.id}`">
+          <circle v-if="isPicked(m.event.id)" :cx="m.x" :cy="t.axisY" :r="m.radius + 6" class="pick-ring" pointer-events="none" />
+        </template>
         <path
           v-for="m in t.markers"
           :key="m.event.id"
-          :d="shapePath(m.shape, m.x, t.axisY, m.radius)"
+          :d="shapePath(m.shape, m.x, t.axisY, isPicked(m.event.id) ? m.radius * 1.35 : m.radius)"
           :fill="`var(--df-f-${m.family})`"
           :stroke="m.event.id === selectedId || lit(m.event.id) ? 'var(--df-text)' : 'var(--df-bg)'"
           :stroke-width="lit(m.event.id) ? 3 : 2"
           class="cursor-pointer"
           data-help="event"
           :class="{ dimmed: dimming && !lit(m.event.id), faded: fades(m.family, m.event.id) }"
+          @pointerenter="pickedId = m.event.id"
+          @pointerleave="pickedId = null"
           @click="onMarkerClick(m.event.id)"
         >
           <title>{{ m.tooltip }}</title>
@@ -219,7 +226,9 @@
           :key="m.event.id"
           class="cursor-pointer marker"
           data-help="event"
-          :class="{ selected: m.event.id === selectedId, lit: lit(m.event.id), spot: !!spotlightIds?.has(m.event.id), dimmed: dimming && !lit(m.event.id), faded: fades(m.family, m.event.id) }"
+          :class="{ selected: m.event.id === selectedId, picked: m.event.id === pickedId, lit: lit(m.event.id), spot: !!spotlightIds?.has(m.event.id), dimmed: dimming && !lit(m.event.id), faded: fades(m.family, m.event.id) }"
+          @pointerenter="pickedId = m.event.id"
+          @pointerleave="pickedId = null"
           @click="onMarkerClick(m.event.id)"
         >
           <title>{{ m.tooltip }}</title>
@@ -968,6 +977,10 @@ function constellationBars(tracks: { id: string; top: number; h: number; on: boo
   })
 }
 
+/** The labelled marker under the pointer (its dot or its label): both halves are picked out together. */
+const pickedId = ref<string | null>(null)
+const isPicked = (id: string) => id === pickedId.value || id === props.selectedId
+
 const hoveredDot = ref<{ event: Event; x: number; y: number } | null>(null)
 function onDotHover(e: Event, ev: PointerEvent) {
   if (dragging.value || ev.pointerType === 'touch') return
@@ -1594,6 +1607,7 @@ function onArcClick(key: string, e: MouseEvent) {
   stroke-width: 4px;
 }
 .marker:hover .label-bg,
+.marker.picked .label-bg,
 .marker.selected .label-bg {
   stroke: var(--df-text);
   stroke-width: 1.5;
@@ -1634,6 +1648,11 @@ function onArcClick(key: string, e: MouseEvent) {
 .marker.spot .label-text,
 .marker.spot .label-text.anchor {
   fill: var(--df-spot-text);
+}
+.pick-ring {
+  fill: none;
+  stroke: var(--df-text);
+  stroke-width: 2;
 }
 .spot-ring {
   fill: none;
