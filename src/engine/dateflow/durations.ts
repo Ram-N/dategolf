@@ -109,6 +109,22 @@ export function spanParents(links: Relationship[], durations: Span[]): Map<strin
   return parents
 }
 
+/** Everything reviewed as `part_of` the given spans, at any depth (the card's *Includes*, and their parts). */
+export function partsOf(spanIds: Iterable<string>, links: Relationship[]): Set<string> {
+  const parts = new Map<string, string[]>()
+  for (const l of links) if (l.type === 'part_of') parts.set(l.target, [...(parts.get(l.target) ?? []), l.source])
+  const out = new Set<string>()
+  const queue = [...spanIds]
+  while (queue.length) {
+    for (const id of parts.get(queue.shift()!) ?? []) {
+      if (out.has(id)) continue
+      out.add(id)
+      queue.push(id)
+    }
+  }
+  return out
+}
+
 /** Candidates that get a bar of their own: those with no ancestor among the candidates (it holds them). */
 export function topLevelSpans(ids: string[], parents: Map<string, string>): string[] {
   const set = new Set(ids)

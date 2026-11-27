@@ -3,7 +3,7 @@ import { ref, computed, watch } from 'vue'
 import type { Event } from '@/types'
 import type { Span, RelationshipData } from '@/types/dateflow'
 import { connectedIds, connectionsFor } from '@/engine/dateflow/connections'
-import { spanParents } from '@/engine/dateflow/durations'
+import { partsOf, spanParents } from '@/engine/dateflow/durations'
 import { buildStory, featuredStories, frameYears, storyCounts, storyStops, type Direction } from '@/engine/dateflow/stories'
 import { compareYears, distance, overlap, worldAt } from '@/engine/dateflow/contemporaries'
 import { pickSurprise, rememberPick } from '@/engine/dateflow/surprise'
@@ -274,7 +274,18 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     }
     return i > 0 ? [band(i - 1, false), band(i, true)] : [band(i, true)]
   })
-  const journeyRing = computed(() => (currentJourney.value ? journeyIds(currentJourney.value, journeyStep.value) : null))
+  /**
+   * What a journey rings: the step's items and its neighbours (journeyIds), and at a stop, everything that is
+   * part of the stop's spans (the Enlightenment's Locke, Montesquieu, Rousseau…), so they stand out to hover.
+   */
+  const journeyRing = computed(() => {
+    const j = currentJourney.value
+    if (!j) return null
+    const ids = journeyIds(j, journeyStep.value)
+    const stop = journeyStop.value
+    if (stop) for (const id of partsOf(stop.items.filter((x) => x.kind === 'span').map((x) => x.id), relationships.value.links)) ids.add(id)
+    return ids
+  })
   /** Story steps to ring on the timeline (the story replaces any "show connections" highlight). */
   const storyIds = computed(() => (currentStory.value ? new Set(currentStory.value.nodes.map((n) => n.id)) : null))
   const featured = computed(() =>

@@ -57,6 +57,7 @@ import {
   formatPhase,
   formatSpan,
   packBars,
+  partsOf,
   phaseSegments,
   revealedSubSpans,
   spanParents,
@@ -744,5 +745,15 @@ describe('sub-spans', () => {
     const real = spanParents((relationshipsData as RelationshipData).links, durationsData as Span[])
     expect(real.get('khalji-dynasty')).toBe('delhi-sultanate')
     expect(topLevelSpans([...real.keys(), 'delhi-sultanate'], real)).not.toContain('khalji-dynasty')
+  })
+})
+
+describe('partsOf', () => {
+  it('finds everything part of the given spans, at any depth', () => {
+    const link = (source: string, target: string, type = 'part_of') => ({ source, target, type }) as Relationship
+    const links = [link('locke', 'enlightenment'), link('reign', 'mughal'), link('taj', 'reign'), link('x', 'enlightenment', 'influenced')]
+    expect([...partsOf(['enlightenment'], links)]).toEqual(['locke'])
+    expect([...partsOf(['mughal'], links)]).toEqual(['reign', 'taj'])
+    expect(partsOf(['nothing'], links).size).toBe(0)
   })
 })
