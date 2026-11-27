@@ -346,10 +346,11 @@
           <circle :cx="sp.dot.x" :cy="sp.dot.y" :r="sp.dot.r + 5" class="spot-pulse" />
         </template>
         <template v-if="sp.tag">
-          <line v-if="sp.tag.leader" :x1="sp.tag.leader.x" :x2="sp.tag.leader.x" :y1="sp.tag.leader.y1" :y2="sp.tag.leader.y2"
-                class="spot-leader" />
-          <rect :x="sp.tag.x" :y="sp.tag.y" :width="sp.tag.w" height="20" rx="10" class="spot-tag" />
-          <text :x="sp.tag.x + 9" :y="sp.tag.y + 14" class="spot-tag-text">{{ sp.tag.text }}</text>
+          <!-- A callout (name over years, outlined, with a pointer), so it can't be mistaken for a bar -->
+          <line :x1="sp.tag.leader.x" :x2="sp.tag.leader.x" :y1="sp.tag.leader.y1" :y2="sp.tag.leader.y2" class="spot-leader" />
+          <rect :x="sp.tag.x" :y="sp.tag.y" :width="sp.tag.w" :height="SPOT_TAG_H" rx="5" class="spot-tag" />
+          <text :x="sp.tag.x + 8" :y="sp.tag.y + 14" class="spot-tag-name">{{ sp.tag.name }}</text>
+          <text :x="sp.tag.x + 8" :y="sp.tag.y + 27" class="spot-tag-years">{{ sp.tag.years }}</text>
         </template>
       </g>
 
@@ -543,7 +544,7 @@ const eraBands = computed(() =>
     .filter((era) => era.x2 > era.x1),
 )
 
-const STOP_TAG_MIN_X = 150 // past the track and lane names at the left
+const STOP_TAG_MIN_X = 210 // past the track and lane names at the left ("SCIENCE & TECHNOLOGY" is the widest)
 const stopBandsX = computed(() =>
   (props.stopBands ?? [])
     .map((b) => {
@@ -1036,52 +1037,79 @@ const dotCard = computed(() => {
 })
 
 // ── Spotlight: the current stop, ringed and named ─────────────────────────────
-const SPOT_CHAR_W = 6.6 // rough width of one character of the tag, for sizing its pill
-const SPOT_MAX_CHARS = 48
+const SPOT_CHAR_W = 7.2 // rough width of one bold character of the callout, for sizing its box
+const SPOT_MAX_CHARS = 34
+const SPOT_TAG_H = 33 // two lines: the name, then the years
+const SPOT_GAP = 12 // between the callout and its item (room for the pointer)
 
-function spotTag(text: string, x: number, top: number, bottom: number) {
-  const t = text.length > SPOT_MAX_CHARS ? text.slice(0, SPOT_MAX_CHARS - 1).trimEnd() + '…' : text
-  const w = t.length * SPOT_CHAR_W + 18
+/**
+ * A spotlight callout: the name over the years, in an outlined box with a pointer to the item. A dot's sits
+ * centred over it; a bar's starts at the bar's left end, so it reads as a label for that bar.
+ */
+function spotTag(name: string, years: string, x: number, top: number, bottom: number, align: 'center' | 'start') {
+  const n = name.length > SPOT_MAX_CHARS ? name.slice(0, SPOT_MAX_CHARS - 1).trimEnd() + '…' : name
+  const w = Math.max(n.length * SPOT_CHAR_W, years.length * 5.8) + 16
   // Above the item when there's room under the era strip, else below it
-  const above = top - 30 >= ERA_SPACE
-  const y = above ? top - 30 : bottom + 10
-  const tx = clamp(x - w / 2, 4, Math.max(4, width.value - w - 4))
-  const leader = above ? { x: clamp(x, tx + 8, tx + w - 8), y1: y + 20, y2: top - 2 } : { x: clamp(x, tx + 8, tx + w - 8), y1: bottom + 2, y2: y }
-  return { x: tx, y, w, text: t, leader }
+  const above = top - SPOT_GAP - SPOT_TAG_H >= ERA_SPACE
+  const y = above ? top - SPOT_GAP - SPOT_TAG_H : bottom + SPOT_GAP
+  const tx = clamp(align === 'center' ? x - w / 2 : x, 4, Math.max(4, width.value - w - 4))
+  const px = clamp(align === 'center' ? x : x + 10, tx + 8, tx + w - 8)
+  return { x: tx, y, w, name: n, years, above, leader: { x: px, y1: above ? y + SPOT_TAG_H : bottom + 1, y2: above ? top - 1 : y } }
+}
+
+type SpotTag = ReturnType<typeof spotTag>
+
+/** Callouts that would overlap step away from their item (up when above, down when below), in turn. */
+function unclash(tags: SpotTag[]) {
+  const placed: SpotTag[] = []
+  for (const t of [...tags].sort((a, b) => a.x - b.x)) {
+    for (let tries = 0; tries < 6; tries++) {
+      const hit = placed.some((p) => t.x < p.x + p.w + 4 && p.x < t.x + t.w + 4 && t.y < p.y + SPOT_TAG_H + 4 && p.y < t.y + SPOT_TAG_H + 4)
+      if (!hit) break
+      const dy = (SPOT_TAG_H + 6) * (t.above ? -1 : 1)
+      if (t.above && t.y + dy < ERA_SPACE) break
+      t.y += dy
+      if (t.above) t.leader.y1 = t.y + SPOT_TAG_H
+      else t.leader.y2 = t.y
+    }
+    placed.push(t)
+  }
 }
 
 const spotlights = computed(() => {
   const ids = props.spotlightIds
   if (!ids?.size) return []
-  const out: { key: string; dot?: { x: number; y: number; r: number }; bar?: { x: number; y: number; w: number; h: number }; tag?: ReturnType<typeof spotTag> }[] = []
-  const eventTag = (e: Event) => `${formatEventYear(e.year, e.approximate)} · ${e.name}`
-  const spanTag = (d: Span) => `${formatSpan(d, formatYear)} · ${d.name}`
+  const out: { key: string; dot?: { x: number; y: number; r: number }; bar?: { x: number; y: number; w: number; h: number }; tag?: SpotTag }[] = []
+  const eventTag = (e: Event, x: number, top: number, bottom: number) =>
+    spotTag(e.name, formatEventYear(e.year, e.approximate), x, top, bottom, 'center')
   const barSpot = (key: string, d: Span, x: number, y: number, w: number, h: number) => {
-    const x1 = Math.max(x, 0)
-    const x2 = Math.min(x + w, width.value)
-    out.push({ key, bar: { x, y, w, h }, tag: spotTag(spanTag(d), (x1 + x2) / 2, y, y + h) })
+    // Clear of the track and lane names at the left, if the bar reaches past them
+    const at = x < STOP_TAG_MIN_X && x + w > STOP_TAG_MIN_X + 20 ? STOP_TAG_MIN_X : Math.max(x, 0)
+    out.push({ key, bar: { x, y, w, h }, tag: spotTag(d.name, formatSpan(d, formatYear), at, y, y + h, 'start') })
   }
   const c = constellation.value
   if (c) {
-    for (const d of c.dots) if (ids.has(d.event.id)) out.push({ key: d.key, dot: d, tag: spotTag(eventTag(d.event), d.x, d.y - d.r, d.y + d.r) })
+    for (const d of c.dots) if (ids.has(d.event.id)) out.push({ key: d.key, dot: d, tag: eventTag(d.event, d.x, d.y - d.r, d.y + d.r) })
     for (const b of c.bars) if (ids.has(b.d.id)) barSpot(b.d.id, b.d, b.x, b.y, b.w, C_BAR_H)
+    unclash(out.flatMap((o) => (o.tag ? [o.tag] : [])))
     return out
   }
   for (const t of layouts.value) {
     // A labelled marker already carries its name: the ring alone marks it
     for (const m of t.markers) if (ids.has(m.event.id)) out.push({ key: `${t.id}:${m.event.id}`, dot: { x: m.x, y: t.axisY, r: m.radius } })
     for (const q of t.quiet) {
-      if (ids.has(q.event.id)) out.push({ key: `${t.id}:${q.event.id}`, dot: { x: q.x, y: t.axisY, r: QUIET_R }, tag: spotTag(eventTag(q.event), q.x, t.axisY - QUIET_R, t.axisY + QUIET_R) })
+      if (ids.has(q.event.id)) out.push({ key: `${t.id}:${q.event.id}`, dot: { x: q.x, y: t.axisY, r: QUIET_R }, tag: eventTag(q.event, q.x, t.axisY - QUIET_R, t.axisY + QUIET_R) })
     }
     for (const h of t.hiddenDots) {
       const e = ids.has(h.id) ? t.events.find((x) => x.id === h.id) : undefined
-      if (e) out.push({ key: `${t.id}:${h.id}`, dot: { x: h.x, y: t.axisY, r: 4 }, tag: spotTag(eventTag(e), h.x, t.axisY - 4, t.axisY + 4) })
+      if (e) out.push({ key: `${t.id}:${h.id}`, dot: { x: h.x, y: t.axisY, r: 4 }, tag: eventTag(e, h.x, t.axisY - 4, t.axisY + 4) })
     }
     for (const b of t.bars) {
       if (ids.has(b.d.id)) barSpot(`${t.id}:${b.d.id}`, b.d, b.x, b.y, b.w, BAR_H)
       for (const sg of b.segments) if (ids.has(sg.d.id)) barSpot(`${t.id}:${sg.d.id}`, sg.d, sg.x, b.y, sg.w, BAR_H)
     }
   }
+  unclash(out.flatMap((o) => (o.tag ? [o.tag] : [])))
   return out
 })
 
@@ -1714,12 +1742,20 @@ function onArcClick(key: string, e: MouseEvent) {
   stroke-width: 1.5;
 }
 .spot-tag {
-  fill: var(--df-spot);
+  fill: var(--df-surface);
+  stroke: var(--df-spot);
+  stroke-width: 2;
 }
-.spot-tag-text {
-  fill: var(--df-spot-text);
+.spot-tag-name {
+  fill: var(--df-text);
   font-size: 11px;
   font-weight: 700;
+}
+.spot-tag-years {
+  fill: var(--df-text-2);
+  font-size: 10px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 @keyframes spot-pulse {
   0% {
