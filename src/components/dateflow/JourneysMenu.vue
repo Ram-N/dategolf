@@ -1,6 +1,6 @@
 <template>
   <div ref="rootEl" class="relative">
-    <button class="btn" :aria-expanded="open" aria-haspopup="true" title="Guided tours of big themes, stop by stop" @click="toggle">
+    <button class="btn" :aria-expanded="open" aria-haspopup="true" title="Journeys: guided tours of a big theme" @click="toggle">
       Journeys ▾
     </button>
     <div
@@ -10,15 +10,15 @@
       role="dialog"
       aria-label="Journeys"
     >
-      <h3 class="heading">Take a journey</h3>
-      <p class="hint mb-2">Guided tours of big themes, stop by stop, with the timeline moving as you go.</p>
+      <h3 class="heading">Journeys: guided tours of a big theme</h3>
+      <p class="hint mb-2">Stop by stop, with the timeline moving as you go.</p>
       <ul class="space-y-1">
         <li v-for="j in journeys" :key="j.id">
           <!-- A journey under way continues where this viewer stopped; a finished one starts again -->
           <button class="row w-full text-left rounded-lg px-2 py-1.5"
                   @click="chooseJourney(j.id, resumeAt(j) === null ? 'start' : 'resume')">
             <span class="name">{{ j.title }}</span>
-            <span class="meta">{{ j.stops.length }} stops · {{ formatYear(j.start) }} → {{ formatYear(j.end) }}</span>
+            <span class="meta">Journey · {{ j.stops.length }} stops · {{ formatYear(j.start) }} → {{ formatYear(j.end) }}</span>
             <span v-if="resumeAt(j) !== null" class="status">Stop {{ resumeAt(j)! + 1 }} of {{ j.stops.length }} · Continue ›</span>
             <span v-else-if="progress[j.id]?.done" class="status done">✓ Finished · take it again</span>
           </button>

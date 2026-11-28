@@ -3,16 +3,16 @@
     <div class="flex items-start justify-between gap-2">
       <div>
         <p class="kicker">New here?</p>
-        <h2 class="title">Take a journey through history</h2>
+        <h2 class="title">Take a journey through a theme</h2>
       </div>
       <button class="close" aria-label="No thanks" @click="emit('dismiss')">✕</button>
     </div>
-    <p class="hint">A guided path, stop by stop, with the timeline moving as you go.</p>
+    <p class="hint">A guided tour, stop by stop, with the timeline moving as you go.</p>
     <ul class="list">
       <li v-for="j in journeys" :key="j.id">
         <button class="row" @click="emit('open', j.id)">
           <span class="name">{{ j.title }} ›</span>
-          <span class="meta">{{ j.stops.length }} stops · {{ formatYear(j.start) }} → {{ formatYear(j.end) }}</span>
+          <span class="meta">Journey · {{ j.stops.length }} stops · {{ formatYear(j.start) }} → {{ formatYear(j.end) }}</span>
         </button>
       </li>
     </ul>

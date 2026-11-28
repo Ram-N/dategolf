@@ -5,7 +5,7 @@
         <div class="min-w-0">
           <p class="kicker">Journey</p>
           <h2 class="title">{{ journey.title }}</h2>
-          <p class="sub">{{ journey.stops.length }} stops · {{ formatYear(journey.start) }} → {{ formatYear(journey.end) }}</p>
+          <p class="sub">Journey · {{ journey.stops.length }} stops · {{ formatYear(journey.start) }} → {{ formatYear(journey.end) }}</p>
         </div>
         <button class="icon" aria-label="Close the journey (Esc)" @click="emit('close')">✕</button>
       </div>
