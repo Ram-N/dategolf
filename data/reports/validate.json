@@ -1,12 +1,12 @@
 {
   "counts": {
-    "events": 522,
+    "events": 521,
     "time_spans": 193,
     "eras": 5,
     "datelinks_keys": 28,
     "datelinks_groups": 91,
     "datelinks_items": 218,
-    "milestones": 16,
+    "milestones": 15,
     "daily_challenge_dates": 366,
     "csv_rows": 310,
     "significance_reviewed": 260,
@@ -542,7 +542,7 @@
       "rows": [
         [
           "Europe",
-          "europe · 205 records"
+          "europe · 204 records"
         ],
         [
           "South Asia",
@@ -664,11 +664,11 @@
     {
       "severity": "info",
       "check": "Counts changed since the legacy import",
-      "count": 5,
+      "count": 6,
       "rows": [
         [
           "events",
-          "343 at import -> 522 now"
+          "343 at import -> 521 now"
         ],
         [
           "time_spans",
@@ -685,6 +685,10 @@
         [
           "datelinks_items",
           "198 at import -> 218 now"
+        ],
+        [
+          "milestones",
+          "16 at import -> 15 now"
         ]
       ]
     }

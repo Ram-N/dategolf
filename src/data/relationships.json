@@ -846,13 +846,6 @@
       "confidence": "high"
     },
     {
-      "source": "industrial-revolution-textile",
-      "type": "began",
-      "target": "industrial-revolution",
-      "why": "Mechanised textiles, the revolution's first industry.",
-      "confidence": "high"
-    },
-    {
       "source": "steam-engine-watt",
       "type": "part_of",
       "target": "industrial-revolution",

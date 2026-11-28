@@ -3452,7 +3452,7 @@
   },
   {
     "id": "first-portable-watches",
-    "name": "Peter Henlein Makes the First Portable Watch",
+    "name": "Peter Henlein Makes Early Portable Watches",
     "year": 1508,
     "categories": [
       "Technology"
@@ -3463,9 +3463,10 @@
       "Nuremberg egg",
       "first watch",
       "steel mainspring",
-      "spring-driven clock"
+      "spring-driven clock",
+      "Peter Henlein Makes the First Portable Watch"
     ],
-    "description": "The Nuremberg locksmith Peter Henlein, traditionally credited as the inventor, builds small timepieces driven by a coiled steel mainspring instead of heavy falling weights. These 'Nuremberg eggs' are worn as pendants or carried in pouches, since pockets are not yet common, and begin the shift towards personal timekeeping.",
+    "description": "The Nuremberg locksmith Peter Henlein makes small timepieces driven by a coiled steel mainspring instead of heavy falling weights, worn as pendants or carried in pouches. He is traditionally called the inventor of the watch, but the credit rests mainly on one contemporary account, and spring-driven clocks were already being made decades earlier. These early watches begin the shift towards personal timekeeping.",
     "difficulty": "medium",
     "importance": 3,
     "approximate": true,
@@ -4778,29 +4779,6 @@
       "East India Company victory"
     ],
     "description": "Robert Clive of the British East India Company defeats the Nawab of Bengal, Siraj ud-Daulah, at Plassey through a combination of military force and strategic treachery. This decisive battle marks the beginning of British political control over India.",
-    "difficulty": "easy",
-    "importance": 5
-  },
-  {
-    "id": "industrial-revolution-textile",
-    "name": "Industrial Revolution Begins in Britain",
-    "year": 1760,
-    "categories": [
-      "Technology",
-      "Social",
-      "Culture",
-      "Economy"
-    ],
-    "region": "Europe",
-    "aliases": [
-      "factory system Britain",
-      "textile mills",
-      "spinning jenny",
-      "coal and iron",
-      "urbanization",
-      "Industrial Revolution Transforms Britain"
-    ],
-    "description": "Britain begins a transformation from manual craft production to machine-based manufacturing in factories, dramatically increasing industrial output and triggering mass urbanization. The Industrial Revolution creates new social classes, alters working conditions, and sets the template for modern economic development worldwide.",
     "difficulty": "easy",
     "importance": 5
   },

@@ -2144,7 +2144,6 @@ INSERT INTO "entities" VALUES('act-of-union-1707','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('euler-konigsberg-bridges','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('trans-atlantic-slave-trade-peak','event','imported',NULL,'2026-11-12 00:40:09');
 INSERT INTO "entities" VALUES('battle-of-plassey','event','imported',NULL,NULL);
-INSERT INTO "entities" VALUES('industrial-revolution-textile','event','imported',NULL,'2026-11-08 21:47:28');
 INSERT INTO "entities" VALUES('east-india-company-bengal','event','imported',NULL,'2026-11-12 00:37:17');
 INSERT INTO "entities" VALUES('steam-engine-watt','event','imported',NULL,NULL);
 INSERT INTO "entities" VALUES('boston-tea-party','event','imported',NULL,'2026-11-24 22:50:59');
@@ -2447,7 +2446,7 @@ INSERT INTO "entities" VALUES('alauddin-khalji-accession','event','reviewed','20
 INSERT INTO "entities" VALUES('muhammad-bin-tughlaq-accession','event','reviewed','2026-11-04 16:45:57','2026-11-12 00:37:17');
 INSERT INTO "entities" VALUES('firuz-shah-tughlaq-accession','event','reviewed','2026-11-04 16:45:57','2026-11-12 00:37:17');
 INSERT INTO "entities" VALUES('babur-ruler-of-ferghana','event','reviewed','2026-11-04 16:45:57','2026-11-06 21:23:08');
-INSERT INTO "entities" VALUES('first-portable-watches','event','reviewed','2026-11-04 16:45:57','2026-11-06 22:56:58');
+INSERT INTO "entities" VALUES('first-portable-watches','event','reviewed','2026-11-04 16:45:57','2026-11-28 04:31:23');
 INSERT INTO "entities" VALUES('humayun-succeeds-babur','event','reviewed','2026-11-04 16:45:57','2026-11-06 21:23:08');
 INSERT INTO "entities" VALUES('humayun-recaptures-delhi','event','reviewed','2026-11-04 16:45:57','2026-11-06 21:23:08');
 INSERT INTO "entities" VALUES('death-of-akbar','event','reviewed','2026-11-04 16:45:57','2026-11-06 21:23:08');
@@ -2966,9 +2965,6 @@ INSERT INTO "entity_categories" VALUES('trans-atlantic-slave-trade-peak','event'
 INSERT INTO "entity_categories" VALUES('trans-atlantic-slave-trade-peak','event',1,'Culture');
 INSERT INTO "entity_categories" VALUES('battle-of-plassey','event',0,'War');
 INSERT INTO "entity_categories" VALUES('battle-of-plassey','event',1,'Politics');
-INSERT INTO "entity_categories" VALUES('industrial-revolution-textile','event',0,'Technology');
-INSERT INTO "entity_categories" VALUES('industrial-revolution-textile','event',1,'Social');
-INSERT INTO "entity_categories" VALUES('industrial-revolution-textile','event',2,'Culture');
 INSERT INTO "entity_categories" VALUES('east-india-company-bengal','event',0,'Politics');
 INSERT INTO "entity_categories" VALUES('steam-engine-watt','event',0,'Technology');
 INSERT INTO "entity_categories" VALUES('steam-engine-watt','event',1,'Science');
@@ -3607,7 +3603,6 @@ INSERT INTO "entity_categories" VALUES('hobbes-leviathan','event',0,'Philosophy'
 INSERT INTO "entity_categories" VALUES('hobbes-leviathan','event',1,'Politics');
 INSERT INTO "entity_categories" VALUES('age-of-exploration-portugal','event',2,'Economy');
 INSERT INTO "entity_categories" VALUES('trans-atlantic-slave-trade-peak','event',2,'Economy');
-INSERT INTO "entity_categories" VALUES('industrial-revolution-textile','event',3,'Economy');
 INSERT INTO "entity_categories" VALUES('east-india-company-bengal','event',1,'Economy');
 INSERT INTO "entity_categories" VALUES('panama-canal-opens','event',2,'Economy');
 INSERT INTO "entity_categories" VALUES('thales-solar-eclipse','event',1,'Philosophy');
@@ -4140,7 +4135,6 @@ INSERT INTO "entity_countries" VALUES('death-of-guru-gobind-singh',0,'IN','high'
 INSERT INTO "entity_countries" VALUES('euler-konigsberg-bridges',0,'RU','high','reviewed','Königsberg is now Kaliningrad, Russia','location');
 INSERT INTO "entity_countries" VALUES('nadir-shah-sacks-delhi',0,'IN','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('battle-of-plassey',0,'IN','high','reviewed',NULL,'location');
-INSERT INTO "entity_countries" VALUES('industrial-revolution-textile',0,'GB','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('third-battle-of-panipat',0,'IN','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('battle-of-buxar',0,'IN','high','reviewed',NULL,'location');
 INSERT INTO "entity_countries" VALUES('east-india-company-bengal',0,'IN','low','reviewed','Bengal is now split between India and Bangladesh','location');
@@ -5930,7 +5924,6 @@ INSERT INTO "entity_sources" VALUES('nadir-shah-sacks-delhi',321,'reviewed','ai_
 INSERT INTO "entity_sources" VALUES('trans-atlantic-slave-trade-peak',322,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('battle-of-plassey',323,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('industrial-revolution',324,'reviewed','title_match','high',NULL);
-INSERT INTO "entity_sources" VALUES('industrial-revolution-textile',324,'reviewed','ai_drafted','high',NULL);
 INSERT INTO "entity_sources" VALUES('third-battle-of-panipat',325,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('battle-of-buxar',326,'reviewed','title_match','high',NULL);
 INSERT INTO "entity_sources" VALUES('east-india-company-bengal',327,'reviewed','ai_drafted','high',NULL);
@@ -6930,11 +6923,6 @@ INSERT INTO "event_aliases" VALUES('battle-of-plassey',1,'Robert Clive');
 INSERT INTO "event_aliases" VALUES('battle-of-plassey',2,'Siraj ud-Daulah');
 INSERT INTO "event_aliases" VALUES('battle-of-plassey',3,'British India begins');
 INSERT INTO "event_aliases" VALUES('battle-of-plassey',4,'East India Company victory');
-INSERT INTO "event_aliases" VALUES('industrial-revolution-textile',0,'factory system Britain');
-INSERT INTO "event_aliases" VALUES('industrial-revolution-textile',1,'textile mills');
-INSERT INTO "event_aliases" VALUES('industrial-revolution-textile',2,'spinning jenny');
-INSERT INTO "event_aliases" VALUES('industrial-revolution-textile',3,'coal and iron');
-INSERT INTO "event_aliases" VALUES('industrial-revolution-textile',4,'urbanization');
 INSERT INTO "event_aliases" VALUES('east-india-company-bengal',0,'Diwani rights');
 INSERT INTO "event_aliases" VALUES('east-india-company-bengal',1,'British Bengal');
 INSERT INTO "event_aliases" VALUES('east-india-company-bengal',2,'Company Raj');
@@ -8158,7 +8146,6 @@ INSERT INTO "event_aliases" VALUES('george-hw-bush-elected',2,'George Bush senio
 INSERT INTO "event_aliases" VALUES('black-death-europe',4,'Black Death Strikes Europe');
 INSERT INTO "event_aliases" VALUES('holocaust',5,'Holocaust');
 INSERT INTO "event_aliases" VALUES('chinese-cultural-revolution',4,'Chinese Cultural Revolution');
-INSERT INTO "event_aliases" VALUES('industrial-revolution-textile',5,'Industrial Revolution Transforms Britain');
 INSERT INTO "event_aliases" VALUES('iran-islamic-revolution',4,'Iranian Islamic Revolution');
 INSERT INTO "event_aliases" VALUES('fall-of-roman-empire-west',4,'Fall of the Western Roman Empire');
 INSERT INTO "event_aliases" VALUES('egyptian-pyramids-built',4,'Great Pyramid of Giza Built');
@@ -8558,6 +8545,7 @@ INSERT INTO "event_aliases" VALUES('ottoman-empire-enters-world-war-i',0,'Ottoma
 INSERT INTO "event_aliases" VALUES('ottoman-empire-enters-world-war-i',1,'Black Sea raid');
 INSERT INTO "event_aliases" VALUES('ottoman-empire-enters-world-war-i',2,'Ottoman–German alliance');
 INSERT INTO "event_aliases" VALUES('islamic-golden-age',4,'Islamic Golden Age Begins');
+INSERT INTO "event_aliases" VALUES('first-portable-watches',5,'Peter Henlein Makes the First Portable Watch');
 CREATE TABLE event_states (
   event_id   TEXT NOT NULL REFERENCES events(entity_id) ON DELETE CASCADE,
   state_id   TEXT NOT NULL REFERENCES time_spans(entity_id) ON DELETE CASCADE,
@@ -8657,7 +8645,6 @@ INSERT INTO "event_states" VALUES('battle-of-blenheim','holy-roman-empire','revi
 INSERT INTO "event_states" VALUES('death-of-guru-gobind-singh','mughal-empire','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-23 19:35:12');
 INSERT INTO "event_states" VALUES('nadir-shah-sacks-delhi','mughal-empire','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-23 19:35:12');
 INSERT INTO "event_states" VALUES('montesquieu-spirit-of-the-laws','kingdom-of-france','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-23 19:35:12');
-INSERT INTO "event_states" VALUES('industrial-revolution-textile','kingdom-of-great-britain','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-23 19:35:12');
 INSERT INTO "event_states" VALUES('battle-of-buxar','mughal-empire','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-23 19:35:12');
 INSERT INTO "event_states" VALUES('battle-of-buxar','british-empire','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-23 19:35:12');
 INSERT INTO "event_states" VALUES('east-india-company-bengal','mughal-empire','reviewed','ai_drafted:claude-opus-5-5',NULL,'2026-11-23 19:35:12');
@@ -8899,7 +8886,6 @@ INSERT INTO "events" VALUES('act-of-union-1707','Act of Union Creates Great Brit
 INSERT INTO "events" VALUES('euler-konigsberg-bridges','Euler Solves the Königsberg Bridge Problem',1735,'Europe','The Swiss mathematician Leonhard Euler proves that it is impossible to walk through the city of Königsberg crossing each of its seven bridges exactly once, in the process founding the mathematical field of graph theory. By abstracting the city''s geography into nodes and edges, Euler creates a new framework for analyzing connectivity and networks that has no precedent. The paper is considered the first work in graph theory and topology and becomes foundational to modern network analysis, computer science, logistics, and the study of social networks.','hard',5,NULL,NULL,NULL,135);
 INSERT INTO "events" VALUES('trans-atlantic-slave-trade-peak','Peak of the Transatlantic Slave Trade',1785,'Africa','The transatlantic slave trade reaches its peak volume, with around 80,000 Africans forcibly transported to the Americas each year. The trade, which forcibly displaced more than 12 million Africans over nearly four centuries, represents one of history''s greatest human catastrophes and shapes the demographic and cultural landscape of the Americas.','medium',5,NULL,1,'c. 1780s (the trade''s busiest decade)',136);
 INSERT INTO "events" VALUES('battle-of-plassey','Battle of Plassey',1757,'South Asia','Robert Clive of the British East India Company defeats the Nawab of Bengal, Siraj ud-Daulah, at Plassey through a combination of military force and strategic treachery. This decisive battle marks the beginning of British political control over India.','easy',5,NULL,NULL,NULL,137);
-INSERT INTO "events" VALUES('industrial-revolution-textile','Industrial Revolution Begins in Britain',1760,'Europe','Britain begins a transformation from manual craft production to machine-based manufacturing in factories, dramatically increasing industrial output and triggering mass urbanization. The Industrial Revolution creates new social classes, alters working conditions, and sets the template for modern economic development worldwide.','easy',5,NULL,NULL,NULL,138);
 INSERT INTO "events" VALUES('east-india-company-bengal','East India Company Gains the Diwani of Bengal',1765,'South Asia','The British East India Company receives the Diwani rights — the right to collect revenue from Bengal, Bihar, and Orissa — through the Treaty of Allahabad. This marks a decisive shift from a trading company to a governing power controlling vast territories.','medium',4,NULL,NULL,NULL,139);
 INSERT INTO "events" VALUES('steam-engine-watt','James Watt Improves the Steam Engine',1769,'Europe','James Watt develops a dramatically improved steam engine with a separate condenser, greatly increasing its efficiency and making it practical for widespread industrial use. His invention becomes the driving force of the Industrial Revolution, powering factories, mines, locomotives, and ships.','easy',5,NULL,NULL,NULL,140);
 INSERT INTO "events" VALUES('boston-tea-party','Boston Tea Party',1773,'North America','American colonists disguised as Mohawk warriors dump 342 chests of British East India Company tea into Boston Harbor in protest of taxation without representation. The dramatic act of defiance galvanizes colonial opposition to British rule and pushes events toward the American Revolution.','easy',4,NULL,NULL,NULL,141);
@@ -9123,7 +9109,7 @@ INSERT INTO "events" VALUES('alauddin-khalji-accession','Alauddin Khalji Becomes
 INSERT INTO "events" VALUES('muhammad-bin-tughlaq-accession','Muhammad bin Tughlaq Becomes Sultan of Delhi',1325,'South Asia','Muhammad bin Tughlaq becomes sultan of Delhi. A learned but erratic ruler, he is remembered for ambitious schemes that failed, including moving the capital to Daulatabad in the Deccan and issuing a token copper currency.','hard',3,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('firuz-shah-tughlaq-accession','Firuz Shah Tughlaq Becomes Sultan of Delhi',1351,'South Asia','Firuz Shah Tughlaq succeeds his cousin Muhammad bin Tughlaq as sultan of Delhi. His long reign is remembered for public works such as canals, new towns and the Feroz Shah Kotla citadel, even as the sultanate''s power declines.','hard',3,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('babur-ruler-of-ferghana','Babur Becomes Ruler of Ferghana',1494,'South Asia','Babur, a Timurid prince descended from both Timur and Genghis Khan, inherits the small kingdom of Ferghana in Central Asia at about the age of eleven. Repeatedly driven from his homeland, he eventually turns south and founds the Mughal Empire in India.','medium',3,NULL,NULL,NULL,NULL);
-INSERT INTO "events" VALUES('first-portable-watches','Peter Henlein Makes the First Portable Watch',1508,'Europe','The Nuremberg locksmith Peter Henlein, traditionally credited as the inventor, builds small timepieces driven by a coiled steel mainspring instead of heavy falling weights. These ''Nuremberg eggs'' are worn as pendants or carried in pouches, since pockets are not yet common, and begin the shift towards personal timekeeping.','medium',3,'approximate range',1,'c. 1505–1510',NULL);
+INSERT INTO "events" VALUES('first-portable-watches','Peter Henlein Makes Early Portable Watches',1508,'Europe','The Nuremberg locksmith Peter Henlein makes small timepieces driven by a coiled steel mainspring instead of heavy falling weights, worn as pendants or carried in pouches. He is traditionally called the inventor of the watch, but the credit rests mainly on one contemporary account, and spring-driven clocks were already being made decades earlier. These early watches begin the shift towards personal timekeeping.','medium',3,'approximate range',1,'c. 1505–1510',NULL);
 INSERT INTO "events" VALUES('humayun-succeeds-babur','Humayun Succeeds Babur',1530,'South Asia','Babur, founder of the Mughal Empire, dies in Agra and is succeeded by his son Humayun. Humayun inherits a young, unsettled empire and soon faces challenges from his own brothers and from the Afghan leader Sher Shah Suri.','hard',3,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('humayun-recaptures-delhi','Humayun Recaptures Delhi',1555,'South Asia','After fifteen years in exile, Humayun returns with Persian help, defeats the Suri dynasty and retakes Delhi, restoring Mughal rule. He dies months later after a fall on the steps of his library, leaving the throne to his young son Akbar.','hard',4,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('death-of-akbar','Death of Akbar',1605,'South Asia','Akbar the Great dies at Agra after nearly fifty years on the throne, having built the Mughal Empire into the dominant power of the subcontinent. His son Salim succeeds him as the emperor Jahangir.','hard',4,NULL,NULL,NULL,NULL);
@@ -11835,7 +11821,6 @@ CREATE TABLE milestone_designations (
 INSERT INTO "milestone_designations" VALUES('sumerian-writing','legacy_default',0,1,'Writing in Sumer');
 INSERT INTO "milestone_designations" VALUES('gutenberg-printing-press','legacy_default',1,1,'Printing press');
 INSERT INTO "milestone_designations" VALUES('columbus-reaches-americas','legacy_default',2,1,'Columbus');
-INSERT INTO "milestone_designations" VALUES('industrial-revolution-textile','legacy_default',3,1,'Industrial Revolution');
 INSERT INTO "milestone_designations" VALUES('birth-of-buddha','legacy_default',4,1,'Buddha born');
 INSERT INTO "milestone_designations" VALUES('fall-of-roman-empire-west','legacy_default',5,1,'Western Rome ends');
 INSERT INTO "milestone_designations" VALUES('moon-landing','legacy_default',6,1,'Moon landing');
@@ -12195,7 +12180,6 @@ INSERT INTO "relationships" VALUES(118,'copernicus-heliocentric','began','scient
 INSERT INTO "relationships" VALUES(119,'galileo-telescope','part_of','scientific-revolution','Galileo''s telescope observations.','high','reviewed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(120,'kepler-laws-planetary-motion','part_of','scientific-revolution','Kepler''s laws of planetary motion.','high','reviewed','ai_drafted','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(121,'galileo-inquisition','part_of','scientific-revolution','Galileo''s trial over heliocentrism.','high','reviewed','suggested','2026-11-07 21:41:29');
-INSERT INTO "relationships" VALUES(123,'industrial-revolution-textile','began','industrial-revolution','Mechanised textiles, the revolution''s first industry.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(124,'steam-engine-watt','part_of','industrial-revolution','Watt''s improved steam engine.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(125,'first-steam-railway','part_of','industrial-revolution','The first public steam railway.','high','reviewed','suggested','2026-11-07 21:41:29');
 INSERT INTO "relationships" VALUES(128,'abolition-slavery-france','part_of','french-revolution','Abolition by the revolutionary National Convention.','high','reviewed','suggested','2026-11-07 21:41:29');
@@ -14900,6 +14884,8 @@ INSERT INTO "review_log" VALUES(2312,'2026-11-24 23:28:27','set-milestone-label'
 INSERT INTO "review_log" VALUES(2313,'2026-11-24 23:28:27','set-milestone-label','world-war-one','None → WWI begins','cli');
 INSERT INTO "review_log" VALUES(2314,'2026-11-24 23:28:27','set-milestone-label','internet-invented','None → World Wide Web','cli');
 INSERT INTO "review_log" VALUES(2315,'2026-11-24 23:28:28','set-milestone-label','newton-laws-of-motion','None → Newton''s Principia','cli');
+INSERT INTO "review_log" VALUES(2316,'2026-11-28 04:31:23','rename-event','first-portable-watches','''Peter Henlein Makes the First Portable Watch'' → ''Peter Henlein Makes Early Portable Watches''; new description','cli');
+INSERT INTO "review_log" VALUES(2317,'2026-11-28 04:31:24','remove-event','industrial-revolution-textile','removed event ''Industrial Revolution Begins in Britain'' (1760), 1 link(s), its milestone: A gradual process pinned to one year (1760); the Industrial Revolution span (c. 1760–1840) covers it (Ram, 2026-11-27)','cli');
 CREATE TABLE sources (
   id         INTEGER PRIMARY KEY,
   kind       TEXT NOT NULL DEFAULT 'wikipedia' CHECK (kind IN ('wikipedia', 'web', 'book')),

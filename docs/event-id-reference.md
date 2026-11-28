@@ -185,7 +185,6 @@ For use when authoring date-LINKS entries. Always copy the ID exactly.
 | indira-gandhi-assassination | Assassination of Indira Gandhi | 1984 |
 | indo-pak-1965-war | India-Pakistan War over Kashmir | 1965 |
 | indus-valley-begins | Indus Valley Cities Enter Their Mature Phase | 2600 BCE |
-| industrial-revolution-textile | Industrial Revolution Begins in Britain | 1760 |
 | internet-invented | World Wide Web Goes Public | 1991 |
 | invention-of-compass | Magnetic Compass Developed in China | 1100 |
 | invention-of-the-wheel | Invention of the Wheel | 3500 BCE |

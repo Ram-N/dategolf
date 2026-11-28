@@ -63,17 +63,17 @@
 | warning | Link runs backwards in time (cause or sequence after its target) | pass |
 | warning | part_of link outside the target's years | pass |
 | warning | began / ended link not at the start / end of its target | pass |
-| info | Counts changed since the legacy import | 5 |
+| info | Counts changed since the legacy import | 6 |
 
 ## Counts
 
-- events: 522
+- events: 521
 - time_spans: 193
 - eras: 5
 - datelinks_keys: 28
 - datelinks_groups: 91
 - datelinks_items: 218
-- milestones: 16
+- milestones: 15
 - daily_challenge_dates: 366
 - csv_rows: 310
 - significance_reviewed: 260
@@ -146,7 +146,7 @@
 
 ## [info] Region labels in use, with their DateFlow lane
 
-- `Europe` — europe · 205 records
+- `Europe` — europe · 204 records
 - `South Asia` — south-asia · 153 records
 - `East Asia` — east-asia · 76 records
 - `North America` — americas · 75 records
@@ -168,8 +168,9 @@
 
 ## [info] Counts changed since the legacy import
 
-- `events` — 343 at import -> 522 now
+- `events` — 343 at import -> 521 now
 - `time_spans` — 98 at import -> 193 now
 - `datelinks_keys` — 26 at import -> 28 now
 - `datelinks_groups` — 83 at import -> 91 now
 - `datelinks_items` — 198 at import -> 218 now
+- `milestones` — 16 at import -> 15 now
