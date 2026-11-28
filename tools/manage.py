@@ -233,6 +233,11 @@ def main():
     p.add_argument("--display", help='The true range, e.g. "c. 2600–2560 BCE" ("" clears it)')
     p.set_defaults(fn=lambda a: edit.set_event_date(a.id, a.year, a.approximate, a.display))
 
+    p = sub.add_parser("remove-event", help="Delete a reviewed event with its links and tags (logged, with a reason)")
+    p.add_argument("id")
+    p.add_argument("--reason", required=True)
+    p.set_defaults(fn=lambda a: edit.remove_event(a.id, a.reason))
+
     p = sub.add_parser("dateflow-only", help="Keep an event out of DatePick and DateGolf (disputed date)")
     p.add_argument("id")
     p.add_argument("--reason", help="Why its date can't be guessed fairly")

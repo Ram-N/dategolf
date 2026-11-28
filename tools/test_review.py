@@ -183,6 +183,19 @@ class TestAccuracyTools(unittest.TestCase):
                                        ).fetchone())
         self.assertEqual(quiet(edit.set_dateflow_only, "fall-of-troy", " ", via="test"), 1)
 
+    def test_remove_event(self):
+        self.assertEqual(quiet(edit.remove_event, "industrial-revolution-textile", " ", via="test"), 1)
+        self.assertEqual(quiet(edit.remove_event, "industrial-revolution", "test", via="test"), 1)  # a span
+        self.assertEqual(quiet(edit.remove_event, "industrial-revolution-textile", "test reason", via="test"), 0)
+        con = db()
+        for sql in ("SELECT 1 FROM entities WHERE id = ?", "SELECT 1 FROM milestone_designations WHERE entity_id = ?",
+                    "SELECT 1 FROM relationships WHERE ? IN (source_entity_id, target_entity_id)"):
+            self.assertIsNone(con.execute(sql, ("industrial-revolution-textile",)).fetchone())
+        self.assertEqual(log_rows("industrial-revolution-textile")[-1][0], "remove-event")
+        stop = con.execute("SELECT entity_id FROM journey_stop_items WHERE entity_id IN "
+                           "(SELECT entity_id FROM events) LIMIT 1").fetchone()[0]
+        self.assertEqual(quiet(edit.remove_event, stop, "test", via="test"), 1)  # a journey stop
+
     def test_current(self):
         self.assertEqual(quiet(edit.set_current, ["industrial-revolution"], via="test"), 0)
         current = "SELECT 1 FROM historical_currents WHERE entity_id = 'industrial-revolution'"

@@ -1,5 +1,6 @@
 """Edit an existing event or span (ids never change; they're stable keys for DateLinks, milestones and saves)."""
 
+import sources
 from common import connect, ensure_schema, log
 
 
@@ -222,6 +223,46 @@ def set_person(ids, role=None, remove=False, via="cli"):
     conn.commit()
     conn.close()
     return 0 if ok else 1
+
+
+def remove_event(entity_id, reason, via="cli"):
+    """Delete a reviewed event and everything hanging off it (links, aliases, tags, sources, milestone).
+
+    For an event that shouldn't exist at all, e.g. a gradual process pinned to one year whose span exists.
+    Refused while the event carries content someone wrote around it: DateLinks, a journey stop, a phase opening.
+    """
+    if not (reason or "").strip():
+        print("  ✗ a reason is required")
+        return 1
+    conn = connect()
+    ensure_schema(conn)
+    event = conn.execute("SELECT name, year FROM events WHERE entity_id = ?", (entity_id,)).fetchone()
+    if event is None:
+        print(f"  ✗ no event with id {entity_id}")
+        conn.close()
+        return 1
+    blockers = [name for name, sql in (
+        ("its id is shared with a span (use identity drop-event)", "SELECT 1 FROM time_spans WHERE entity_id = ?"),
+        ("it has DateLinks content", "SELECT 1 FROM learning_content_groups WHERE entity_id = ?"),
+        ("it is a journey stop", "SELECT 1 FROM journey_stop_items WHERE entity_id = ?"),
+        ("it opens a life-cycle phase", "SELECT 1 FROM entity_phases WHERE start_event_id = ?"),
+    ) if conn.execute(sql, (entity_id,)).fetchone()]
+    if blockers:
+        print(f"  ✗ {entity_id}: can't remove the event because {' and '.join(blockers)}. Move or remove that first.")
+        conn.close()
+        return 1
+    links = conn.execute("SELECT count(*) FROM relationships WHERE ? IN (source_entity_id, target_entity_id)",
+                         (entity_id,)).fetchone()[0]
+    milestone = conn.execute("SELECT 1 FROM milestone_designations WHERE entity_id = ?", (entity_id,)).fetchone()
+    conn.execute("DELETE FROM entities WHERE id = ?", (entity_id,))  # cascades to its rows
+    sources.drop_orphans(conn)
+    detail = (f"removed event {event['name']!r} ({event['year']}), {links} link(s)"
+              + (", its milestone" if milestone else "") + f": {reason.strip()}")
+    log(conn, "remove-event", entity_id, detail, via=via)
+    conn.commit()
+    conn.close()
+    print(f"  ✓ {entity_id}: {detail}")
+    return 0
 
 
 def set_dateflow_only(entity_id, reason=None, remove=False, via="cli"):
