@@ -181,7 +181,13 @@ export const HELP = {
     title: 'Chains of events',
     text: 'Follow causes and consequences: from one event back through what led to it (How did we get here?) or forward to what came next. DateFlow builds each chain automatically from reviewed connections; threads on the timeline show each one.',
     tip: 'A thin grey "then" means one thing came after another, not that it caused it.',
-    see: ['story-thread', 'journeys'],
+    see: ['story-thread', 'journeys', 'gallery'],
+  },
+  gallery: {
+    title: 'All journeys and chains',
+    text: "Every journey and every chain of events as a card: its years, its steps or stops, the regions it crosses, and a tiny preview of its items in time. Today's chain is at the top: the same for everyone today, a different one tomorrow.",
+    tip: 'Open it from See all at the foot of the Journeys or Chains menu.',
+    see: ['journeys', 'stories'],
   },
   'story-thread': {
     title: 'A thread',

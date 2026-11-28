@@ -4,6 +4,7 @@ import type { Event } from '@/types'
 import type { Span, RelationshipData } from '@/types/dateflow'
 import { connectedIds, connectionsFor } from '@/engine/dateflow/connections'
 import { partsOf, spanParents } from '@/engine/dateflow/durations'
+import { chainOfTheDay, galleryChains, journeyCard } from '@/engine/dateflow/gallery'
 import { buildStory, featuredStories, frameYears, storyCounts, storyStops, type Direction } from '@/engine/dateflow/stories'
 import { compareYears, distance, overlap, worldAt } from '@/engine/dateflow/contemporaries'
 import { pickSurprise, rememberPick } from '@/engine/dateflow/surprise'
@@ -291,6 +292,13 @@ export const useDateFlowStore = defineStore('dateflow', () => {
   const featured = computed(() =>
     relationships.value.links.length ? featuredStories(relationships.value, events.value, durations.value) : [],
   )
+  // The gallery (doc 18, item 5): every journey and every distinct chain, and the chain of the day,
+  // chosen from today's date alone (UTC, the daily games' convention)
+  const galleryJourneys = computed(() => journeys.value.map(journeyCard))
+  const galleryChainCards = computed(() =>
+    relationships.value.links.length ? galleryChains(relationships.value, events.value, durations.value) : [],
+  )
+  const todaysChain = computed(() => chainOfTheDay(new Date().toISOString().slice(0, 10), galleryChainCards.value))
   /** Story sizes for the open card's buttons ("How did we get here? (7)"). */
   const openStoryCounts = computed(() =>
     openId.value ? storyCounts(openId.value, relationships.value, events.value, durations.value) : { back: 0, forward: 0 },
@@ -1068,6 +1076,9 @@ export const useDateFlowStore = defineStore('dateflow', () => {
     currentStops,
     storyIds,
     featured,
+    galleryJourneys,
+    galleryChainCards,
+    todaysChain,
     openStoryCounts,
     openStory,
     closeStory,

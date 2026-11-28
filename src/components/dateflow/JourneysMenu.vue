@@ -18,13 +18,14 @@
           <button class="row w-full text-left rounded-lg px-2 py-1.5"
                   @click="chooseJourney(j.id, resumeAt(j) === null ? 'start' : 'resume')">
             <span class="name">{{ j.title }}</span>
-            <span class="meta">Journey · {{ j.stops.length }} stops · {{ formatYear(j.start) }} → {{ formatYear(j.end) }}</span>
+            <span class="meta">Journey · {{ j.stops.length }} stops · {{ cardYears(journeyCard(j)) }}</span>
             <span v-if="resumeAt(j) !== null" class="status">Stop {{ resumeAt(j)! + 1 }} of {{ j.stops.length }} · Continue ›</span>
             <span v-else-if="progress[j.id]?.done" class="status done">✓ Finished · take it again</span>
           </button>
           <button v-if="resumeAt(j) !== null" class="restart" @click="chooseJourney(j.id, 'start')">Start over</button>
         </li>
       </ul>
+      <button class="see-all" @click="seeAll">See all journeys and chains ›</button>
     </div>
   </div>
 </template>
@@ -32,10 +33,10 @@
 <script setup lang="ts">
 import { resumeStep, type Journey, type JourneyProgress } from '@/engine/dateflow/journeys'
 import { usePopover } from '@/composables/usePopover'
-import { formatYear } from '@/utils/formatYear'
+import { cardYears, journeyCard } from '@/engine/dateflow/gallery'
 
 const props = defineProps<{ journeys: Journey[]; progress: Record<string, JourneyProgress> }>()
-const emit = defineEmits<{ open: [id: string, from: 'start' | 'resume'] }>()
+const emit = defineEmits<{ open: [id: string, from: 'start' | 'resume']; gallery: [] }>()
 
 const resumeAt = (j: Journey) => resumeStep(props.progress[j.id], j.stops.length)
 
@@ -45,6 +46,11 @@ const { open, rootEl, panelLeft, toggle } = usePopover(PANEL_W)
 function chooseJourney(id: string, from: 'start' | 'resume') {
   open.value = false
   emit('open', id, from)
+}
+
+function seeAll() {
+  open.value = false
+  emit('gallery')
 }
 </script>
 
@@ -57,6 +63,20 @@ function chooseJourney(id: string, from: 'start' | 'resume') {
 .status.done {
   font-weight: 600;
   color: var(--df-text-2);
+}
+.see-all {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.5rem;
+  text-align: left;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--df-btn);
+}
+.see-all:hover {
+  background: var(--df-btn-hover);
 }
 .restart {
   margin: 0 0 0.25rem 0.5rem;

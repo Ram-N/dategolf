@@ -281,6 +281,7 @@ export interface FeaturedStory {
   start: number
   end: number
   regions: number
+  story: Story // the chain itself, for the gallery's cards (doc 18, item 5)
 }
 
 /** The richest stories to offer in the Stories menu: deep, cross-regional and not repeating each other. */
@@ -313,5 +314,6 @@ export function featuredStories(data: RelationshipData, events: Event[], duratio
     start: s.start,
     end: s.end,
     regions,
+    story: s,
   }))
 }

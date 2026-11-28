@@ -7,6 +7,7 @@
       :color-mode="store.colorMode"
       :help-on="helpOn"
       :stories="store.featured"
+      :todays-chain="store.todaysChain"
       :journeys="store.journeys"
       :journey-progress="store.journeyProgress"
       @open-story="(id) => store.openStory(id)"
@@ -20,6 +21,7 @@
       @toggle-colors="store.toggleColorMode()"
       @summarize="store.openSummary(store.view.start, store.view.end)"
       @toggle-help="toggleHelp"
+      @gallery="galleryOpen = true"
     />
     <DateFlowTimeBar
       :view="store.view"
@@ -246,6 +248,17 @@
       :story-counts="store.openStoryCounts"
       @story="(d) => store.openStory(store.selectedDuration!.id, d)"
     />
+    <ChainGallery
+      v-if="galleryOpen"
+      data-help="gallery"
+      :journeys="store.galleryJourneys"
+      :chains="store.galleryChainCards"
+      :today="store.todaysChain"
+      :progress="store.journeyProgress"
+      @open-journey="(id, from) => { galleryOpen = false; store.openJourney(id, from) }"
+      @open-chain="(id) => { galleryOpen = false; store.openStory(id) }"
+      @close="galleryOpen = false"
+    />
     <HelpCard v-if="helpOn" :help-key="helpKey" @show="(k) => (helpKey = k)" @close="closeHelp" />
   </div>
 </template>
@@ -273,6 +286,7 @@ import DurationInfoCard from '@/components/dateflow/DurationInfoCard.vue'
 import EventMeanwhile from '@/components/dateflow/EventMeanwhile.vue'
 import WhatHappenedCard from '@/components/dateflow/WhatHappenedCard.vue'
 import HelpCard from '@/components/dateflow/HelpCard.vue'
+import ChainGallery from '@/components/dateflow/ChainGallery.vue'
 import { helpKeyFor, type HelpKey } from '@/engine/dateflow/help'
 import { summarizePeriod } from '@/engine/dateflow/explore'
 import { isFiltering } from '@/engine/dateflow/filters'
@@ -292,6 +306,9 @@ const showInvite = computed(
 
 // The legend's Focus, named in the view bar's "Showing:" line with the filters
 const focusLabel = computed(() => FAMILIES.find((f) => f.id === store.focusFamily)?.label ?? null)
+
+/** The gallery of journeys and chains (doc 18, item 5), opened from either menu's "See all". */
+const galleryOpen = ref(false)
 
 // ── "What's this?" help mode (doc 18, 5b) ──
 // While it's on, a click anywhere in DateFlow shows the help for the nearest element tagged
@@ -333,6 +350,11 @@ function onHelpClick(e: MouseEvent) {
 function onKey(e: KeyboardEvent) {
   if (e.key === 'Escape' && helpOn.value) return closeHelp()
   if (e.key === '?' && !(e.target instanceof HTMLInputElement)) return toggleHelp()
+  // The gallery sits over the timeline: Esc closes it, and the timeline's keys wait
+  if (galleryOpen.value) {
+    if (e.key === 'Escape') galleryOpen.value = false
+    return
+  }
   if (e.target instanceof HTMLInputElement || store.selectedEvent || store.selectedDuration || store.summaryRange) return
   if (e.key === 'Escape' && store.ringedId) return store.clearRinged()
   if (e.key === 'Escape' && store.focusFamily) return store.setFocusFamily(null)

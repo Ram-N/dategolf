@@ -82,7 +82,8 @@ Ram wants this high. It breaks the **no backend** rule, so the first step is a d
 
 ## Next
 
-### 5. A gallery of journeys and chains, and a chain of the day
+### ~~5. A gallery of journeys and chains, and a chain of the day~~ ✅ 2026-11-27
+**Built:** *See all journeys and chains ›* at the foot of the Journeys and Chains menus opens a panel over the timeline (full-screen on a phone; Esc or ✕ closes it): *Today's chain*, the 3 journeys, then all 20 distinct chains earliest first, as cards with years, steps or stops, region chips, a mini time-axis preview and a generated line. *Today's chain* is also the Chains menu's first row. Years show "c." only when every item at that end is approximate (an approximate span ending in the year of an exact event doesn't make it "c."); the two menus now show "c." too, which they didn't. Code: `engine/dateflow/gallery.ts` (tests in `gallery.test.ts`), `ChainGallery.vue`, `GalleryCardButton.vue`; help entry `gallery`; glossary §4. The plan as written:
 - A gallery page (or a large panel) of the best chains of events as cards: title, years, regions, a one-line hook, a tiny thread preview. Today there are 8 featured chains in a menu. A chain is automatic; a curated, hand-written path is a journey (Ram, 2026-11-24).
 - **Chain of the day:** chosen from the date alone, like the daily games (same date → same chain, no randomness).
 - Journeys and chains sit side by side in the gallery.

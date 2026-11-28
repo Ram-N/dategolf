@@ -22,8 +22,9 @@
     <!-- Guided paths: Journeys and Chains side by side, then the other ways to explore -->
     <div class="flex items-center gap-1">
       <JourneysMenu v-if="journeys.length" data-help="journeys" :journeys="journeys" :progress="journeyProgress"
-                    @open="(id, from) => emit('openJourney', id, from)" />
-      <StoriesMenu data-help="stories" :stories="stories" @open="(id) => emit('openStory', id)" />
+                    @open="(id, from) => emit('openJourney', id, from)" @gallery="emit('gallery')" />
+      <StoriesMenu data-help="stories" :stories="stories" :today="todaysChain" @open="(id) => emit('openStory', id)"
+                   @gallery="emit('gallery')" />
       <button class="df-btn df-wide-only" data-help="play-through" :title="HINT.play" @click="emit('watch')">Play through</button>
       <button class="df-btn df-not-phone" data-help="time-machine" :title="HINT.tm" @click="emit('timeMachine')">Time Machine</button>
       <button class="df-btn df-not-phone" data-help="what-happened" :title="HINT.what" @click="emit('summarize')">What happened?</button>
@@ -78,6 +79,7 @@ import { RouterLink } from 'vue-router'
 import type { ColorMode, Theme } from '@/stores/dateflow'
 import type { FeaturedStory } from '@/engine/dateflow/stories'
 import type { Journey, JourneyProgress } from '@/engine/dateflow/journeys'
+import type { GalleryCard } from '@/engine/dateflow/gallery'
 import { parseYear } from '@/utils/formatYear'
 import { MIN_QUERY } from '@/engine/dateflow/tour'
 import JourneysMenu from './JourneysMenu.vue'
@@ -90,6 +92,7 @@ defineProps<{
   colorMode: ColorMode
   helpOn: boolean
   stories: FeaturedStory[]
+  todaysChain: GalleryCard | null
   journeys: Journey[]
   journeyProgress: Record<string, JourneyProgress>
 }>()
@@ -102,6 +105,7 @@ const emit = defineEmits<{
   summarize: []
   openStory: [id: string]
   openJourney: [id: string, from: 'start' | 'resume']
+  gallery: []
   timeMachine: []
   toggleHelp: []
   surprise: []

@@ -13,18 +13,26 @@
       <h3 class="heading">Follow a chain of events</h3>
       <p class="hint mb-2">How one event led to another: causes, beginnings, endings and what came next, built automatically from reviewed connections.</p>
       <ul class="space-y-1">
+        <li v-if="today">
+          <button class="row today w-full text-left rounded-lg px-2 py-1.5" @click="choose(today.id)">
+            <span class="label">Today's chain · the chain behind</span>
+            <span class="name">{{ today.title }}</span>
+            <span class="meta">{{ today.count }} steps · {{ cardYears(today) }}</span>
+          </button>
+        </li>
         <li v-for="s in stories" :key="s.rootId">
           <button class="row w-full text-left rounded-lg px-2 py-1.5" @click="choose(s.rootId)">
             <span class="label">The chain behind</span>
             <span class="name">{{ s.name }}</span>
             <span class="meta">
-              {{ s.steps }} steps · {{ formatYear(s.start) }} → {{ formatYear(s.end) }}<template v-if="s.regions > 1">
+              {{ s.steps }} steps · {{ cardYears(chainCard(s)) }}<template v-if="s.regions > 1">
                 · {{ s.regions }} regions</template>
             </span>
           </button>
         </li>
       </ul>
       <p v-if="!stories.length" class="hint">Chains appear once events are linked.</p>
+      <button class="see-all" @click="seeAll">See all journeys and chains ›</button>
       <p class="hint mt-2">Or open any event and choose <strong>How did we get here?</strong></p>
     </div>
   </div>
@@ -33,10 +41,10 @@
 <script setup lang="ts">
 import type { FeaturedStory } from '@/engine/dateflow/stories'
 import { usePopover } from '@/composables/usePopover'
-import { formatYear } from '@/utils/formatYear'
+import { cardYears, chainCard, type GalleryCard } from '@/engine/dateflow/gallery'
 
-defineProps<{ stories: FeaturedStory[] }>()
-const emit = defineEmits<{ open: [id: string] }>()
+defineProps<{ stories: FeaturedStory[]; today: GalleryCard | null }>()
+const emit = defineEmits<{ open: [id: string]; gallery: [] }>()
 
 const PANEL_W = 340
 const { open, rootEl, panelLeft, toggle } = usePopover(PANEL_W)
@@ -44,6 +52,11 @@ const { open, rootEl, panelLeft, toggle } = usePopover(PANEL_W)
 function choose(id: string) {
   open.value = false
   emit('open', id)
+}
+
+function seeAll() {
+  open.value = false
+  emit('gallery')
 }
 </script>
 
@@ -83,6 +96,24 @@ function choose(id: string) {
 .row {
   display: flex;
   flex-direction: column;
+}
+.row.today {
+  border: 1px solid var(--df-border);
+  margin-bottom: 0.25rem;
+}
+.see-all {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.5rem;
+  text-align: left;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--df-btn);
+}
+.see-all:hover {
+  background: var(--df-btn-hover);
 }
 .row:hover {
   background: var(--df-btn-hover);
